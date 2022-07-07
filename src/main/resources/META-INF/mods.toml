@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[41,)"
+license="MIT"
+
+[[mods]]
+modId="deeperdarker"
+version="${file.jarVersion}"
+displayName="Deeper and Darker"
+credits="TeamAbnormals, for creating the Blueprint mod upon which the majority of this mod relies."
+authors="nitro_dynamite18"
+description='''
+This mod adds new features to the Minecraft 1.19 Deep Dark biome to make it feel more complete. It also has compatibility features for Quark and TeamAbnormals' Buzzier Bees mod.
+'''
+
+[[dependencies.deeperdarker]]
+modId = "blueprint"
+mandatory = true
+versionRange = "[6.0.2,)"
+ordering = "BEFORE"
+side = "BOTH"
+
+[[dependencies.deeperdarker]]
+modId="forge"
+mandatory=true
+versionRange="[41, 42)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.deeperdarker]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.19, 1.20)"
+ordering="NONE"
+side="BOTH"
