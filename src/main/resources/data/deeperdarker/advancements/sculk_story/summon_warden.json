@@ -1,0 +1,39 @@
+{
+  "parent": "deeperdarker:sculk_story/find_ancient_city",
+  "criteria": {
+    "summoned": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:warden"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:summoned_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sculk_story.summon_warden.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:sculk_shrieker"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sculk_story.summon_warden.title"
+    }
+  },
+  "requirements": [
+    [
+      "summoned"
+    ]
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:sculk",
+    "minecraft:sculk_catalyst",
+    "deeperdarker:sculk_bone_block"
+  ]
+}

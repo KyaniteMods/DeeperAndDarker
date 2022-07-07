@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "item": "deeperdarker:sculk_bone_planks"
+    }
+  },
+  "pattern": [
+    "B#B",
+    "B#B"
+  ],
+  "result": {
+    "count": 3,
+    "item": "deeperdarker:sculk_bone_fence"
+  }
+}

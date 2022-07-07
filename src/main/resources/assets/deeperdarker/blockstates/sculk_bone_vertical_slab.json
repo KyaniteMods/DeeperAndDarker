@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "type=north": { "model": "deeperdarker:block/sculk_bone_vertical_slab", "y": 0, "uvlock": true },
+    "type=south": { "model": "deeperdarker:block/sculk_bone_vertical_slab", "y": 180, "uvlock": true },
+    "type=east": { "model": "deeperdarker:block/sculk_bone_vertical_slab", "y": 90, "uvlock": true },
+    "type=west": { "model": "deeperdarker:block/sculk_bone_vertical_slab", "y": 270, "uvlock": true },
+    "type=double": { "model": "deeperdarker:block/sculk_bone_planks" }
+  }
+}

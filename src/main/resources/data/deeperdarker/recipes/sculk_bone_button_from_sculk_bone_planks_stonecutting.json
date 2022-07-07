@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "deeperdarker:sculk_bone_planks"
+  },
+  "result": "deeperdarker:sculk_bone_button"
+}

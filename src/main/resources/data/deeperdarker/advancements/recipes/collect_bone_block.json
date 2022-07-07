@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:bone_block"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "deeperdarker:bone_button",
+      "deeperdarker:bone_button_from_bone_planks_stonecutting",
+      "deeperdarker:bone_door",
+      "deeperdarker:bone_door_from_bone_planks_stonecutting",
+      "deeperdarker:bone_fence",
+      "deeperdarker:bone_fence_from_bone_planks_stonecutting",
+      "deeperdarker:bone_fence_gate",
+      "deeperdarker:bone_fence_gate_from_bone_planks_stonecutting",
+      "deeperdarker:bone_planks_from_bone_block_stonecutting",
+      "deeperdarker:bone_pressure_plate",
+      "deeperdarker:bone_pressure_plate_from_bone_planks_stonecutting",
+      "deeperdarker:bone_sign",
+      "deeperdarker:bone_sign_from_bone_planks_stonecutting",
+      "deeperdarker:bone_slab",
+      "deeperdarker:bone_slab_from_bone_planks_stonecutting",
+      "deeperdarker:bone_stairs",
+      "deeperdarker:bone_stairs_from_bone_planks_stonecutting",
+      "deeperdarker:bone_trapdoor",
+      "deeperdarker:bone_trapdoor_from_bone_planks_stonecutting",
+      "deeperdarker:sculk_bone_block"
+    ]
+  }
+}

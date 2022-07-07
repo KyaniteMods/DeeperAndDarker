@@ -1,0 +1,16 @@
+{
+  "values": [
+    "minecraft:bone_block",
+    "deeperdarker:bone_planks",
+    "deeperdarker:bone_slab",
+    "deeperdarker:bone_stairs",
+    "deeperdarker:bone_fence",
+    "deeperdarker:bone_fence_gate",
+    "deeperdarker:bone_button",
+    "deeperdarker:bone_pressure_plate",
+    "deeperdarker:bone_door",
+    "deeperdarker:bone_trapdoor",
+    "deeperdarker:bone_wall_sign",
+    "deeperdarker:bone_sign"
+  ]
+}

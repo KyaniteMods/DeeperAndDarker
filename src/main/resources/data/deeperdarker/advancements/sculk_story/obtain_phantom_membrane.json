@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:sculk_story/root",
+  "criteria": {
+    "phantom_membrane": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:phantom_membrane"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sculk_story.obtain_phantom_membrane.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sculk_story.obtain_phantom_membrane.title"
+    }
+  },
+  "requirements": [
+    [
+      "phantom_membrane"
+    ]
+  ]
+}

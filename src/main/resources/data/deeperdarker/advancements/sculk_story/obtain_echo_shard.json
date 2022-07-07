@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:sculk_story/find_ancient_city",
+  "criteria": {
+    "echo_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:echo_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sculk_story.obtain_echo_shard.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "minecraft:echo_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sculk_story.obtain_echo_shard.title"
+    }
+  },
+  "requirements": [
+    [
+      "echo_shard"
+    ]
+  ]
+}

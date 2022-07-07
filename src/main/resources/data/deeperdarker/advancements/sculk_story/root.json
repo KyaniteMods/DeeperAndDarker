@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:sculk"
+    },
+    "title": {
+      "translate": "advancements.sculk_story.root.title"
+    },
+    "description": {
+      "translate": "advancements.sculk_story.root.description"
+    },
+    "background": "minecraft:textures/block/sculk_catalyst_top.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "minecraft:phantom": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:phantom"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  }
+}

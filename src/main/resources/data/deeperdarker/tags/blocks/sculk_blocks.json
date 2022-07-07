@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:sculk",
+    "minecraft:sculk_catalyst",
+    "minecraft:sculk_sensor",
+    "minecraft:sculk_shrieker",
+    "minecraft:sculk_vein",
+    "#deeperdarker:sculk_bone_wood"
+  ]
+}

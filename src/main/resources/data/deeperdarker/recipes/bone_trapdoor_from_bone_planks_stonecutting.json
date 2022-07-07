@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "deeperdarker:bone_planks"
+  },
+  "result": "deeperdarker:bone_trapdoor"
+}
