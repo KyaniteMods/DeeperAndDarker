@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "deeperdarker:bone_planks",
-    "deeperdarker:sculk_bone_planks"
+    "deeperdarker:vertical_bone_planks",
+    "deeperdarker:sculk_bone_planks",
+    "deeperdarker:vertical_sculk_bone_planks"
   ]
 }
