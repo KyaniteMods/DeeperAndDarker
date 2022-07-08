@@ -16,16 +16,14 @@ import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 import static net.minecraft.world.level.block.state.BlockBehaviour.*;
 
+@Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DDBlocks {
     public static final BlockSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getBlockSubHelper();
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MOD_ID);
-
 
     // Bone Block "wood" variants
     public static final RegistryObject<Block> BONE_PLANKS = HELPER.createBlock("bone_planks", () -> new PlanksBlock(DDProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);

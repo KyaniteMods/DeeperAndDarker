@@ -5,10 +5,12 @@ import com.nitro.deeperdarker.core.DeeperAndDarker;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DDItems {
     public static final ItemSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getItemSubHelper();
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MOD_ID);
