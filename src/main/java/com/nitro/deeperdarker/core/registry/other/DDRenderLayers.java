@@ -9,12 +9,12 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 public class DDRenderLayers {
 
     public static void setupRenderLayers() {
-        setRenderLayer(DDBlocks.BONE_DOOR.get(), RenderType.cutout());
-        setRenderLayer(DDBlocks.BONE_TRAPDOOR.get(), RenderType.cutout());
+        setRenderLayer(DDBlocks.BONE_DOOR.get(), RenderType.translucent());
+        setRenderLayer(DDBlocks.BONE_TRAPDOOR.get(), RenderType.translucent());
         setRenderLayer(DDBlocks.BONE_LADDER.get(), RenderType.cutout());
         setRenderLayer(DDBlocks.BONE_POST.get(), RenderType.cutout());
-        setRenderLayer(DDBlocks.SCULK_BONE_DOOR.get(), RenderType.cutout());
-        setRenderLayer(DDBlocks.SCULK_BONE_TRAPDOOR.get(), RenderType.cutout());
+        setRenderLayer(DDBlocks.SCULK_BONE_DOOR.get(), RenderType.translucent());
+        setRenderLayer(DDBlocks.SCULK_BONE_TRAPDOOR.get(), RenderType.translucent());
         setRenderLayer(DDBlocks.SCULK_BONE_LADDER.get(), RenderType.cutout());
         setRenderLayer(DDBlocks.SCULK_BONE_POST.get(), RenderType.cutout());
     }
