@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "deeperdarker:block/sculk_bone_planks",
+    "side": "deeperdarker:block/sculk_bone_bookshelf"
+  }
+}

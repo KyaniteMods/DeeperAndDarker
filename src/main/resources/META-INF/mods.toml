@@ -16,7 +16,7 @@ This mod adds new features to the Minecraft 1.19 Deep Dark biome to make it feel
 modId = "blueprint"
 mandatory = true
 versionRange = "[6.0.2,)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.deeperdarker]]
