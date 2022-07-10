@@ -12,14 +12,14 @@ public class DDTags {
     public static class Items {
         @SuppressWarnings("unused")
         private static TagKey<Item> createTag(String name) {
-            return TagUtil.itemTag(DeeperAndDarker.MOD_ID, name);
+            return TagUtil.itemTag(DeeperAndDarker.MODID, name);
         }
     }
 
     public static class Blocks {
         @SuppressWarnings("unused")
         private static TagKey<Block> createTag(String name) {
-            return TagUtil.blockTag(DeeperAndDarker.MOD_ID, name);
+            return TagUtil.blockTag(DeeperAndDarker.MODID, name);
         }
     }
 
@@ -28,7 +28,7 @@ public class DDTags {
 
 
         private static TagKey<EntityType<?>> createTag(String name) {
-            return TagUtil.entityTypeTag(DeeperAndDarker.MOD_ID, name);
+            return TagUtil.entityTypeTag(DeeperAndDarker.MODID, name);
         }
     }
 }

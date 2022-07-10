@@ -17,12 +17,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
-@Mod(DeeperAndDarker.MOD_ID)
+@Mod(DeeperAndDarker.MODID)
 public class DeeperAndDarker
 {
-    public static final String MOD_ID = "deeperdarker";
+    public static final String MODID = "deeperdarker";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MOD_ID, helper -> {
+    public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MODID, helper -> {
         helper.putSubHelper(ForgeRegistries.ITEMS, new ItemSubRegistryHelper(helper));
         helper.putSubHelper(ForgeRegistries.BLOCKS, new BlockSubRegistryHelper(helper));
         helper.putSubHelper(ForgeRegistries.ENTITIES, new EntitySubRegistryHelper(helper));
