@@ -6,8 +6,6 @@ import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -35,6 +33,7 @@ public class DeeperAndDarker
 
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -42,8 +41,7 @@ public class DeeperAndDarker
 
     }
 
-    @OnlyIn(Dist.CLIENT)
-    void setupClient(final FMLClientSetupEvent event) {
+    private void clientSetup(final FMLClientSetupEvent event) {
         DDRenderLayers.setupRenderLayers();
     }
 }
