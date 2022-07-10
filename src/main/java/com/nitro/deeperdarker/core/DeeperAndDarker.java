@@ -2,9 +2,9 @@ package com.nitro.deeperdarker.core;
 
 import com.mojang.logging.LogUtils;
 import com.nitro.deeperdarker.core.registry.other.DDRenderLayers;
+import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
-import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
