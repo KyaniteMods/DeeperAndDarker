@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#W#",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "W": {
+      "item": "deeperdarker:sculk_bone_planks"
+    }
+  },
+  "result": {
+    "item": "deeperdarker:sculk_bone_ladder",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "variant_ladders"
+    }
+  ]
+}

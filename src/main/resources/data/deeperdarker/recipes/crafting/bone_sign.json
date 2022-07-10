@@ -6,7 +6,7 @@
       "item": "deeperdarker:bone_planks"
     },
     "X": {
-      "item": "minecraft:stick"
+      "tag": "forge:rods/wooden"
     }
   },
   "pattern": [

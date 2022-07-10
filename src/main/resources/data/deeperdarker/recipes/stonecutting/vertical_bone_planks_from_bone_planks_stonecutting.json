@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "deeperdarker:bone_planks"
+  },
+  "result": "deeperdarker:vertical_bone_planks",
+  "count": 1,
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "vertical_planks"
+    }
+  ]
+}

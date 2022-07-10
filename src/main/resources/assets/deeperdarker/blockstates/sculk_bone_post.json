@@ -5,7 +5,7 @@
         "axis": "y"
       },
       "apply": {
-        "model": "deeperdarker:block/sculk_post"
+        "model": "deeperdarker:block/sculk_bone_post"
       }
     },
     {
@@ -13,7 +13,7 @@
         "axis": "x"
       },
       "apply": {
-        "model": "deeperdarker:block/sculk_post",
+        "model": "deeperdarker:block/sculk_bone_post",
         "x": 90,
         "y": 90
       }
@@ -23,7 +23,7 @@
         "axis": "z"
       },
       "apply": {
-        "model": "deeperdarker:block/sculk_post",
+        "model": "deeperdarker:block/sculk_bone_post",
         "x": 90
       }
     },

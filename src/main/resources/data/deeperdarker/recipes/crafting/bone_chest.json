@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bone_chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "deeperdarker:bone_planks"
+    }
+  },
+  "result": {
+    "item": "deeperdarker:bone_chest",
+    "count": 1
+  },
+  "conditions": [
+    {
+      "type": "blueprint:quark_flag",
+      "flag": "variant_chests"
+    }
+  ]
+}
