@@ -6,7 +6,10 @@ license = "MIT"
 modId = "deeperdarker"
 version = "${file.jarVersion}"
 displayName = "Deeper and Darker"
-credits = "TeamAbnormals, for creating the Blueprint mod upon which the majority of this mod relies."
+credits = '''
+TeamAbnormals, for creating the Blueprint mod upon which the majority of this mod relies.
+VanillaTweaks, for the recipes.
+'''
 authors = "nitro_dynamite18"
 description = '''
 This mod adds new features to the Minecraft 1.19 Deep Dark biome to make it feel more complete. It also has compatibility features for Quark and TeamAbnormals' Buzzier Bees mod.
