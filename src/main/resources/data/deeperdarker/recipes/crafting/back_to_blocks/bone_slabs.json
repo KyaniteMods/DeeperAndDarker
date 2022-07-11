@@ -1,0 +1,16 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "deeperdarker:bone_slab"
+    }
+  },
+  "result": {
+    "item": "deeperdarker:bone_planks",
+    "count": 1
+  },
+  "group": "back_to_blocks"
+}
