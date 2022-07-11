@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 public class DeeperAndDarker
 {
     public static final String MODID = "deeperdarker";
-    private static final Logger LOGGER = LogUtils.getLogger();
     public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MODID, helper -> {
         helper.putSubHelper(ForgeRegistries.ITEMS, new ItemSubRegistryHelper(helper));
         helper.putSubHelper(ForgeRegistries.BLOCKS, new BlockSubRegistryHelper(helper));
