@@ -1,6 +1,5 @@
 package com.nitro.deeperdarker.core;
 
-import com.mojang.logging.LogUtils;
 import com.nitro.deeperdarker.core.registry.other.DDRenderLayers;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
@@ -13,13 +12,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.slf4j.Logger;
 
 @Mod(DeeperAndDarker.MODID)
 public class DeeperAndDarker
 {
     public static final String MODID = "deeperdarker";
-    private static final Logger LOGGER = LogUtils.getLogger();
     public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MODID, helper -> {
         helper.putSubHelper(ForgeRegistries.ITEMS, new ItemSubRegistryHelper(helper));
         helper.putSubHelper(ForgeRegistries.BLOCKS, new BlockSubRegistryHelper(helper));
