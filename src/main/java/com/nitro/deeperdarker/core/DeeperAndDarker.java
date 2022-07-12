@@ -20,7 +20,7 @@ public class DeeperAndDarker
     public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MODID, helper -> {
         helper.putSubHelper(ForgeRegistries.ITEMS, new ItemSubRegistryHelper(helper));
         helper.putSubHelper(ForgeRegistries.BLOCKS, new BlockSubRegistryHelper(helper));
-        helper.putSubHelper(ForgeRegistries.ENTITIES, new EntitySubRegistryHelper(helper));
+        helper.putSubHelper(ForgeRegistries.ENTITY_TYPES, new EntitySubRegistryHelper(helper));
     });
 
     public DeeperAndDarker() {
@@ -28,15 +28,12 @@ public class DeeperAndDarker
 
         REGISTRY_HELPER.register(modEventBus);
 
-
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-
-    }
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
     private void clientSetup(final FMLClientSetupEvent event) {
         DDRenderLayers.setupRenderLayers();
