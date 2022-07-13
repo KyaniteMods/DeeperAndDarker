@@ -1,4 +1,5 @@
 {
+  "_comment": "Blocks",
   "block.deeperdarker.bone_planks": "Bone Planks",
   "block.deeperdarker.bone_slab": "Bone Slab",
   "block.deeperdarker.bone_stairs": "Bone Stairs",
@@ -40,7 +41,19 @@
   "block.deeperdarker.sculk_bone_beehive": "Sculk Bone Beehive",
   "block.deeperdarker.sculk_bone_post": "Sculk Bone Post",
 
+  "__comment": "Items",
+  "item.deeperdarker.bone_boat": "Bone Boat",
+  "item.deeperdarker.bone_chest_boat": "Bone Chest Boat",
+  "item.deeperdarker.sculk_bone_boat": "Sculk Bone Boat",
+  "item.deeperdarker.sculk_bone_chest_boat": "Sculk Bone Chest Boat",
 
+  "___comment": "Entities",
+  "entity.deeperdarker.bone_boat": "Bone Boat",
+  "entity.deeperdarker.bone_chest_boat": "Bone Chest Boat",
+  "entity.deeperdarker.sculk_bone_boat": "Sculk Bone Boat",
+  "entity.deeperdarker.sculk_bone_chest_boat": "Sculk Bone Chest Boat",
+
+  "____comment": "Advancements",
   "advancements.sculk_story.root.title": "Sculk Story",
   "advancements.sculk_story.root.description": "You feel something pulling you toward the underground...",
   "advancements.sculk_story.obtain_phantom_membrane.title": "Sleepless Nights",
