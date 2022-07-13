@@ -1,6 +1,7 @@
 package com.nitro.deeperdarker.common;
 
 import com.nitro.deeperdarker.core.registry.other.DDTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import static net.minecraft.world.effect.MobEffects.*;
 import static net.minecraft.world.item.enchantment.Enchantments.*;
@@ -17,7 +18,7 @@ public class DDChecks {
         return potentialVictim.hasEffect(SLOW_FALLING);
     }
 
-    public static boolean isSculkSafe(LivingEntity potentialVictim) {
+    public static boolean isSculkSafe(Entity potentialVictim) {
         return potentialVictim.getType().is(DDTags.EntityTypes.SCULK_SAFE);
     }
 
