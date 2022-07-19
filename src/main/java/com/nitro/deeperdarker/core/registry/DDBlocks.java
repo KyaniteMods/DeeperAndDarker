@@ -39,9 +39,9 @@ public class DDBlocks {
     public static final Pair<RegistryObject<BlueprintChestBlock>, RegistryObject<BlueprintTrappedChestBlock>> BONE_CHEST = HELPER.createCompatChestBlocks("indev", "bone", MaterialColor.SAND);
     public static final RegistryObject<Block> BONE_VERTICAL_PLANKS = HELPER.createCompatBlock("indev", "vertical_bone_planks", () -> new Block(DDProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block> BONE_VERTICAL_SLAB = HELPER.createCompatBlock("indev", "bone_vertical_slab", () -> new VerticalSlabBlock(DDProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block> BONE_BOOKSHELF = HELPER.createCompatBlock("indev", "bone_bookshelf", () -> new BookshelfBlock(Properties.copy(Blocks.BOOKSHELF)), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block> BONE_LADDER = HELPER.createCompatBlock("indev", "bone_ladder", () -> new BlueprintLadderBlock(Properties.copy(Blocks.LADDER)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> BONE_BEEHIVE = HELPER.createCompatBlock("indev", "bone_beehive", () -> new BlueprintBeehiveBlock(Properties.copy(Blocks.BEEHIVE)), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> BONE_BOOKSHELF = HELPER.createCompatBlock("indev", "bone_bookshelf", () -> new BookshelfBlock(DDProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> BONE_LADDER = HELPER.createCompatBlock("indev", "bone_ladder", () -> new BlueprintLadderBlock(DDProperties.BONE_WOOD_NOT_SOLID), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> BONE_BEEHIVE = HELPER.createCompatBlock("indev", "bone_beehive", () -> new BlueprintBeehiveBlock(DDProperties.BONE_WOOD), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> BONE_POST = HELPER.createCompatBlock("indev", "bone_post", () -> new WoodPostBlock(DDProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 
@@ -60,8 +60,8 @@ public class DDBlocks {
     public static final Pair<RegistryObject<BlueprintChestBlock>, RegistryObject<BlueprintTrappedChestBlock>> SCULK_BONE_CHEST = HELPER.createCompatChestBlocks("indev", "sculk_bone", MaterialColor.COLOR_BLACK);
     public static final RegistryObject<Block> SCULK_BONE_VERTICAL_PLANKS = HELPER.createCompatBlock("indev", "vertical_sculk_bone_planks", () -> new Block(DDProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block> SCULK_BONE_VERTICAL_SLAB = HELPER.createCompatBlock("indev", "sculk_bone_vertical_slab", () -> new VerticalSlabBlock(DDProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block> SCULK_BONE_BOOKSHELF = HELPER.createCompatBlock("indev", "sculk_bone_bookshelf", () -> new BookshelfBlock(Properties.copy(Blocks.BOOKSHELF)), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    public static final RegistryObject<Block> SCULK_BONE_LADDER = HELPER.createCompatBlock("indev", "sculk_bone_ladder", () -> new BlueprintLadderBlock(Properties.copy(Blocks.LADDER)), CreativeModeTab.TAB_DECORATIONS);
-    public static final RegistryObject<Block> SCULK_BONE_BEEHIVE = HELPER.createCompatBlock("indev", "sculk_bone_beehive", () -> new BlueprintBeehiveBlock(Properties.copy(Blocks.BEEHIVE)), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> SCULK_BONE_BOOKSHELF = HELPER.createCompatBlock("indev", "sculk_bone_bookshelf", () -> new BookshelfBlock(DDProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SCULK_BONE_LADDER = HELPER.createCompatBlock("indev", "sculk_bone_ladder", () -> new BlueprintLadderBlock(DDProperties.SCULK_BONE_WOOD_NOT_SOLID), CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Block> SCULK_BONE_BEEHIVE = HELPER.createCompatBlock("indev", "sculk_bone_beehive", () -> new BlueprintBeehiveBlock(DDProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> SCULK_BONE_POST = HELPER.createCompatBlock("indev", "sculk_bone_post", () -> new WoodPostBlock(DDProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
 }
