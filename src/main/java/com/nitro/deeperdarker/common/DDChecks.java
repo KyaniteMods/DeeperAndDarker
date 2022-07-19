@@ -18,11 +18,11 @@ public class DDChecks {
         return potentialVictim.hasEffect(SLOW_FALLING);
     }
 
-    public static boolean isSculkSafe(Entity potentialVictim) {
-        return potentialVictim.getType().is(DDTags.EntityTypes.SCULK_SAFE);
+    public static boolean isSculk(Entity potentialVictim) {
+        return potentialVictim.getType().is(DDTags.EntityTypes.SCULK);
     }
 
     public static boolean doesEntityTriggerSculk(LivingEntity checkEntity) {
-        return DDChecks.hasFeatherFalling(checkEntity) || DDChecks.hasSlowFall(checkEntity) || DDChecks.isSculkSafe(checkEntity);
+        return DDChecks.hasFeatherFalling(checkEntity) || DDChecks.hasSlowFall(checkEntity) || DDChecks.isSculk(checkEntity);
     }
 }

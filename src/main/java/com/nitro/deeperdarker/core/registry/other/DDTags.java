@@ -6,25 +6,39 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class DDTags {
 
     public static class Items {
-        @SuppressWarnings("unused")
+        public static final TagKey<Item> BONE_WOOD = createTag("bone_wood");
+        public static final TagKey<Item> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
+
         private static TagKey<Item> createTag(String name) {
             return TagUtil.itemTag(DeeperAndDarker.MODID, name);
         }
     }
 
     public static class Blocks {
-        @SuppressWarnings("unused")
+        public static final TagKey<Block> BONE_WOOD = createTag("bone_wood");
+        public static final TagKey<Block> SCULK_BLOCKS = createTag("sculk_blocks");
+        public static final TagKey<Block> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
+
         private static TagKey<Block> createTag(String name) {
             return TagUtil.blockTag(DeeperAndDarker.MODID, name);
         }
     }
 
+    public static class Structures {
+        public static final TagKey<Structure> ON_ANCIENT_CITY_MAPS = createTag("on_ancient_city_maps");
+
+        private static TagKey<Structure> createTag(String name) {
+            return TagUtil.structureTag(DeeperAndDarker.MODID, name);
+        }
+    }
+
     public static class EntityTypes {
-        public static final TagKey<EntityType<?>> SCULK_SAFE = createTag("sculk_safe");
+        public static final TagKey<EntityType<?>> SCULK = createTag("sculk");
 
 
         private static TagKey<EntityType<?>> createTag(String name) {
