@@ -84,7 +84,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.94'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.96'
     implementation fg.deobf("com.teamabnormals:blueprint:1.19-6.0.4")
 }
 
