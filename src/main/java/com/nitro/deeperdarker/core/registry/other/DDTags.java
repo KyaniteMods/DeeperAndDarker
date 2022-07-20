@@ -30,13 +30,6 @@ public class DDTags {
         }
     }
 
-    public static class Structures {
-        @SuppressWarnings("unused")
-        private static TagKey<Structure> createTag(String name) {
-            return TagUtil.structureTag(DeeperAndDarker.MODID, name);
-        }
-    }
-
     public static class EntityTypes {
         public static final TagKey<EntityType<?>> SCULK = createTag("sculk");
 
