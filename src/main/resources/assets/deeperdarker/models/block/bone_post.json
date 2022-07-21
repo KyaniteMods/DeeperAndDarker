@@ -2,5 +2,6 @@
   "parent": "blueprint:block/post",
   "textures": {
     "texture": "minecraft:block/bone_block_side"
-  }
+  },
+  "render_type": "cutout"
 }

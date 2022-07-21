@@ -3,5 +3,6 @@
   "textures": {
     "bottom": "deeperdarker:block/sculk_bone_door_bottom",
     "top": "deeperdarker:block/sculk_bone_door_top"
-  }
+  },
+  "render_type": "translucent"
 }

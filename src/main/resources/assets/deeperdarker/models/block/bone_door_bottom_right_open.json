@@ -3,5 +3,6 @@
   "textures": {
     "bottom": "deeperdarker:block/bone_door_bottom",
     "top": "deeperdarker:block/bone_door_top"
-  }
+  },
+  "render_type": "translucent"
 }

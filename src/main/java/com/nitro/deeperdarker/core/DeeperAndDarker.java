@@ -1,6 +1,5 @@
 package com.nitro.deeperdarker.core;
 
-import com.nitro.deeperdarker.core.registry.other.DDRenderLayers;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
@@ -35,7 +34,5 @@ public class DeeperAndDarker
 
     private void commonSetup(final FMLCommonSetupEvent event) {}
 
-    private void clientSetup(final FMLClientSetupEvent event) {
-        DDRenderLayers.setupRenderLayers();
-    }
+    private void clientSetup(final FMLClientSetupEvent event) {}
 }
