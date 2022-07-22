@@ -6,8 +6,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import org.checkerframework.framework.qual.Unused;
 
 public class DDTags {
 

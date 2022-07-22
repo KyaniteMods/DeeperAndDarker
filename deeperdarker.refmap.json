@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "com/nitro/deeperdarker/core/mixins/VibrationListenerMixin": {
+      "VibrationListenerConfig": "Lnet/minecraft/world/level/gameevent/vibrations/VibrationListener$VibrationListenerConfig"
+    }
+  },
+  "data": {
+    "searge": {
+      "com/nitro/deeperdarker/core/mixins/VibrationListenerMixin": {
+        "VibrationListenerConfig": "Lnet/minecraft/world/level/gameevent/vibrations/VibrationListener$VibrationListenerConfig"
+      }
+    }
+  }
+}

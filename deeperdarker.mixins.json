@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.nitro.deeperdarker.core.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "blueprint.refmap.json",
+  "mixins": [
+    "VibrationListenerMixin",
+    "VibrationListenerConfigMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
