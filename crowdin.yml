@@ -1,3 +1,0 @@
-files:
-  - source: /src/main/resources/assets/deeperdarker/lang
-    translation: /src/main/resources/assets/deeperdarker/lang/%locale_with_underscore%.json

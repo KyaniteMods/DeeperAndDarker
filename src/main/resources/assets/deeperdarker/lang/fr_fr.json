@@ -19,6 +19,7 @@
   "block.deeperdarker.bone_ladder": "Échelle d'os",
   "block.deeperdarker.bone_beehive": "Ruche en os",
   "block.deeperdarker.bone_post": "Poteau d'os",
+
   "block.deeperdarker.sculk_bone_block": "Bloc d'os de sculk",
   "block.deeperdarker.sculk_bone_planks": "Planches d'os de sculk",
   "block.deeperdarker.sculk_bone_slab": "Dalle en os de sculk",
@@ -39,16 +40,19 @@
   "block.deeperdarker.sculk_bone_ladder": "Échelle d'os de sculk",
   "block.deeperdarker.sculk_bone_beehive": "Ruche en os de sculk",
   "block.deeperdarker.sculk_bone_post": "Poteau d'os de sculk",
+
   "__comment": "Éléments",
   "item.deeperdarker.bone_boat": "Bateau en os",
   "item.deeperdarker.bone_chest_boat": "Bateau de stockage en os",
   "item.deeperdarker.sculk_bone_boat": "Bateau en os de sculk",
   "item.deeperdarker.sculk_bone_chest_boat": "Bateau de stockage en os de sculk",
+
   "___comment": "Entités",
   "entity.deeperdarker.bone_boat": "Bateau en os",
   "entity.deeperdarker.bone_chest_boat": "Bateau de stockage en os",
   "entity.deeperdarker.sculk_bone_boat": "Bateau en os de sculk",
   "entity.deeperdarker.sculk_bone_chest_boat": "Bateau de stockage en os de sculk",
+
   "____comment": "Avancées",
   "advancements.sculk_story.root.title": "Histoire du sculk",
   "advancements.sculk_story.root.description": "Tu ressens quelque chose qui t'attire vers le souterrain...",
