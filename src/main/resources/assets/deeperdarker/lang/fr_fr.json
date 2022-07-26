@@ -46,7 +46,12 @@
   "item.deeperdarker.bone_chest_boat": "Bateau de stockage en os",
   "item.deeperdarker.sculk_bone_boat": "Bateau en os de sculk",
   "item.deeperdarker.sculk_bone_chest_boat": "Bateau de stockage en os de sculk",
+
   "item.deeperdarker.warden_carapace": "Carapace de Warden",
+  "item.deeperdarker.warden_helmet": "Casque en carapace de warden",
+  "item.deeperdarker.warden_chestplate": "Plastron en carapace de warden",
+  "item.deeperdarker.warden_leggings": "Jambières en carapace de warden",
+  "item.deeperdarker.warden_boots": "Bottes en carapace de warden",
 
   "___comment": "Entités",
   "entity.deeperdarker.bone_boat": "Bateau en os",

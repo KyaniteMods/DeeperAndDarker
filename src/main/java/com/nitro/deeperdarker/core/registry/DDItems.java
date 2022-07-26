@@ -23,7 +23,7 @@ public class DDItems {
 
     // Warden Carapace and armor
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().tab(CreativeModeTab.TAB_MATERIALS).rarity(Rarity.EPIC)));
-
+    //public static final RegistryObject<Item> WARDEN_HELMET = ITEMS.register("warden_helmet");
 
     // Sculk Reactor Core
 
