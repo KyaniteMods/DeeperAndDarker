@@ -1,4 +1,4 @@
-package com.nitro.deeperdarker.common.properties;
+package com.nitro.deeperdarker.core.registry.properties;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;

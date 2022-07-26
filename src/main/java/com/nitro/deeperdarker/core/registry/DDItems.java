@@ -12,8 +12,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = DeeperAndDarker.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DDItems {
-    public static final ItemSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getItemSubHelper();
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MODID);
+    private static final ItemSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getItemSubHelper();
+    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MODID);
 
     // Boats
     public static final Pair<RegistryObject<Item>, RegistryObject<Item>> BONE_BOAT = HELPER.createBoatAndChestBoatItem("bone", DDBlocks.BONE_PLANKS);

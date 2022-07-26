@@ -1,7 +1,7 @@
 package com.nitro.deeperdarker.core.registry;
 
 import com.mojang.datafixers.util.Pair;
-import com.nitro.deeperdarker.common.properties.DDBlockProperties;
+import com.nitro.deeperdarker.core.registry.properties.DDBlockProperties;
 import com.nitro.deeperdarker.core.DeeperAndDarker;
 import com.teamabnormals.blueprint.common.block.BlueprintBeehiveBlock;
 import com.teamabnormals.blueprint.common.block.BlueprintLadderBlock;
@@ -21,7 +21,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = DeeperAndDarker.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DDBlocks {
-    public static final BlockSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getBlockSubHelper();
+    private static final BlockSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getBlockSubHelper();
 
     // Bone Block "wood" variants
     public static final RegistryObject<Block> BONE_PLANKS = HELPER.createBlock("bone_planks", () -> new PlanksBlock(DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);

@@ -1,11 +1,8 @@
-package com.nitro.deeperdarker.common;
+package com.nitro.deeperdarker.core.util;
 
-import com.nitro.deeperdarker.core.registry.other.DDTags;
+import com.nitro.deeperdarker.core.registry.properties.DDTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import static net.minecraft.world.effect.MobEffects.*;
-import static net.minecraft.world.item.enchantment.Enchantments.*;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 
 public class DDChecks {

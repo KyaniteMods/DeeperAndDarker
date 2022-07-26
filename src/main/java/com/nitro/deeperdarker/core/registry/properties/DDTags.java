@@ -1,4 +1,4 @@
-package com.nitro.deeperdarker.core.registry.other;
+package com.nitro.deeperdarker.core.registry.properties;
 
 import com.nitro.deeperdarker.core.DeeperAndDarker;
 import com.teamabnormals.blueprint.core.util.TagUtil;
