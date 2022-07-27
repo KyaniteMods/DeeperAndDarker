@@ -1,7 +1,7 @@
-package com.nitro.deeperdarker.core.registry.properties;
+package com.nitro.deeperdarker.registry.properties;
 
-import com.nitro.deeperdarker.core.DeeperAndDarker;
-import com.nitro.deeperdarker.core.registry.items.DDItems;
+import com.nitro.deeperdarker.DeeperAndDarker;
+import com.nitro.deeperdarker.registry.items.DDItems;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;

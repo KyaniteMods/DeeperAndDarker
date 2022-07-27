@@ -1,8 +1,10 @@
-package com.nitro.deeperdarker.core.registry;
+package com.nitro.deeperdarker.registry;
 
 import com.mojang.datafixers.util.Pair;
-import com.nitro.deeperdarker.core.DeeperAndDarker;
-import com.nitro.deeperdarker.core.registry.properties.DDBlockProperties;
+import com.nitro.deeperdarker.DeeperAndDarker;
+import com.nitro.deeperdarker.registry.items.DDItems;
+import com.nitro.deeperdarker.registry.properties.DDBlockProperties;
+import com.nitro.deeperdarker.util.DDCreativeTab;
 import com.teamabnormals.blueprint.common.block.BlueprintBeehiveBlock;
 import com.teamabnormals.blueprint.common.block.BlueprintLadderBlock;
 import com.teamabnormals.blueprint.common.block.BookshelfBlock;
@@ -13,17 +15,25 @@ import com.teamabnormals.blueprint.common.block.sign.BlueprintStandingSignBlock;
 import com.teamabnormals.blueprint.common.block.sign.BlueprintWallSignBlock;
 import com.teamabnormals.blueprint.common.block.wood.*;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Supplier;
 
 public class DDBlocks {
     private static final BlockSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getBlockSubHelper();
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MODID);
 
     // Bone Block "wood" variants
-    public static final RegistryObject<Block> BONE_PLANKS = HELPER.createBlock("bone_planks", () -> new PlanksBlock(DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> BONE_PLANKS = register("bone_planks", () -> new PlanksBlock(DDBlockProperties.BONE_WOOD));
     public static final RegistryObject<Block> BONE_SLAB = HELPER.createBlock("bone_slab", () -> new WoodSlabBlock(DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block> BONE_STAIRS = HELPER.createBlock("bone_stairs", () -> new WoodStairBlock(BONE_PLANKS.get().defaultBlockState(), DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
     public static final RegistryObject<Block> BONE_FENCE = HELPER.createBlock("bone_fence", () -> new WoodFenceBlock(DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_DECORATIONS);
@@ -60,4 +70,10 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_BONE_LADDER = HELPER.createCompatBlock("indev", "sculk_bone_ladder", () -> new BlueprintLadderBlock(DDBlockProperties.SCULK_BONE_WOOD_NOT_SOLID), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> SCULK_BONE_BEEHIVE = HELPER.createCompatBlock("indev", "sculk_bone_beehive", () -> new BlueprintBeehiveBlock(DDBlockProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> SCULK_BONE_POST = HELPER.createCompatBlock("indev", "sculk_bone_post", () -> new WoodPostBlock(DDBlockProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
+        RegistryObject<T> block = BLOCKS.register(name, blockProperties);
+        DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeTab.DEEPER_DARKER)));
+        return block;
+    }
 }

@@ -1,6 +1,6 @@
-package com.nitro.deeperdarker.core.registry.properties;
+package com.nitro.deeperdarker.registry.properties;
 
-import com.nitro.deeperdarker.core.DeeperAndDarker;
+import com.nitro.deeperdarker.DeeperAndDarker;
 import com.teamabnormals.blueprint.core.util.TagUtil;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;

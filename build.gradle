@@ -2,6 +2,7 @@ buildscript {
     repositories {
         maven { url = "https://files.minecraftforge.net/maven" }
         maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
+        mavenCentral()
     }
     dependencies {
         classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
@@ -9,15 +10,20 @@ buildscript {
     }
 }
 
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+}
+
 apply plugin: "net.minecraftforge.gradle"
-apply plugin: "maven-publish"
 apply plugin: "org.spongepowered.mixin"
+apply plugin: "maven-publish"
 
 mixin {
     add sourceSets.main, "deeperdarker.refmap.json"
 }
 
-version = '0.0.1-1.19'
+version = "1.19-${mod_version}"
 group = 'com.nitro.deeperdarker'
 archivesBaseName = 'deeperdarker'
 
@@ -95,7 +101,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.96'
+    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
     implementation fg.deobf("com.teamabnormals:blueprint:1.19-6.0.4")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
@@ -106,9 +112,9 @@ jar {
         attributes([
                 "Specification-Title"     : "deeperdarker",
                 "Specification-Vendor"    : "nitro_dynamite18",
-                "Specification-Version"   : "1",
+                "Specification-Version"   : "${mod_version}",
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Version"  : "${mod_version}",
                 "Implementation-Vendor"   : "nitro_dynamite18",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])

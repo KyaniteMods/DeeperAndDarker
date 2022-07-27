@@ -1,6 +1,6 @@
-package com.nitro.deeperdarker.core.util;
+package com.nitro.deeperdarker.util;
 
-import com.nitro.deeperdarker.core.registry.properties.DDTags;
+import com.nitro.deeperdarker.registry.properties.DDTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 

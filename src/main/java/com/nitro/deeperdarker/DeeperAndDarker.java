@@ -1,6 +1,7 @@
-package com.nitro.deeperdarker.core;
+package com.nitro.deeperdarker;
 
-import com.nitro.deeperdarker.core.registry.items.DDItems;
+import com.nitro.deeperdarker.registry.DDBlocks;
+import com.nitro.deeperdarker.registry.items.DDItems;
 import com.teamabnormals.blueprint.core.util.registry.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,8 +20,9 @@ public class DeeperAndDarker {
     });
 
     public DeeperAndDarker() {
-        final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        DDBlocks.BLOCKS.register(eventBus);
         DDItems.register(eventBus);
         REGISTRY_HELPER.register(eventBus);
 

@@ -1,9 +1,9 @@
-package com.nitro.deeperdarker.core.registry.items;
+package com.nitro.deeperdarker.registry.items;
 
 import com.mojang.datafixers.util.Pair;
-import com.nitro.deeperdarker.core.DeeperAndDarker;
-import com.nitro.deeperdarker.core.registry.DDBlocks;
-import com.nitro.deeperdarker.core.registry.properties.DDArmorMaterials;
+import com.nitro.deeperdarker.DeeperAndDarker;
+import com.nitro.deeperdarker.registry.DDBlocks;
+import com.nitro.deeperdarker.registry.properties.DDArmorMaterials;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
@@ -17,7 +17,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class DDItems {
     private static final ItemSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getItemSubHelper();
-    private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MODID);
 
     // Boats
     public static final Pair<RegistryObject<Item>, RegistryObject<Item>> BONE_BOAT = HELPER.createBoatAndChestBoatItem("bone", DDBlocks.BONE_PLANKS);
