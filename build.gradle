@@ -96,13 +96,10 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {
-    maven { url = "https://maven.jaackson.me" }
-}
+repositories { }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19-41.1.0'
-    implementation fg.deobf("com.teamabnormals:blueprint:1.19-6.0.4")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }

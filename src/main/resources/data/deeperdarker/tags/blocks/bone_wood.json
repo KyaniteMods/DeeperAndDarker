@@ -10,15 +10,6 @@
     "deeperdarker:bone_door",
     "deeperdarker:bone_trapdoor",
     "deeperdarker:bone_fence_gate",
-    "deeperdarker:bone_wall_sign",
-    "deeperdarker:bone_sign",
-    "deeperdarker:bone_chest",
-    "deeperdarker:bone_trapped_chest",
-    "deeperdarker:vertical_bone_planks",
-    "deeperdarker:bone_vertical_slab",
-    "deeperdarker:bone_bookshelf",
-    "deeperdarker:bone_ladder",
-    "deeperdarker:bone_beehive",
-    "deeperdarker:bone_post"
+    "deeperdarker:bone_beehive"
   ]
 }

@@ -1,20 +1,20 @@
 package com.nitro.deeperdarker.registry.properties;
 
 import com.nitro.deeperdarker.DeeperAndDarker;
-import com.teamabnormals.blueprint.core.util.TagUtil;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class DDTags {
-
     public static class Items {
         public static final TagKey<Item> BONE_WOOD = createTag("bone_wood");
         public static final TagKey<Item> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
 
         private static TagKey<Item> createTag(String name) {
-            return TagUtil.itemTag(DeeperAndDarker.MODID, name);
+            return ItemTags.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         }
     }
 
@@ -24,16 +24,7 @@ public class DDTags {
         public static final TagKey<Block> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
 
         private static TagKey<Block> createTag(String name) {
-            return TagUtil.blockTag(DeeperAndDarker.MODID, name);
-        }
-    }
-
-    public static class EntityTypes {
-        public static final TagKey<EntityType<?>> SCULK = createTag("sculk");
-
-
-        private static TagKey<EntityType<?>> createTag(String name) {
-            return TagUtil.entityTypeTag(DeeperAndDarker.MODID, name);
+            return BlockTags.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         }
     }
 }

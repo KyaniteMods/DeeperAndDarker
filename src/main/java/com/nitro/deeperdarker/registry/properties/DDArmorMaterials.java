@@ -55,7 +55,7 @@ public enum DDArmorMaterials implements ArmorMaterial {
     }
 
     public String getName() {
-        return DeeperAndDarker.MODID + ":" + this.name;
+        return DeeperAndDarker.MOD_ID + ":" + this.name;
     }
 
     public float getToughness() {

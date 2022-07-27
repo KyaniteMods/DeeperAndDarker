@@ -7,9 +7,9 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(DeeperAndDarker.MODID)
+@Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarker {
-    public static final String MODID = "deeperdarker";
+    public static final String MOD_ID = "deeperdarker";
 
     public DeeperAndDarker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();

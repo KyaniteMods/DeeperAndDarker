@@ -10,15 +10,6 @@
     "deeperdarker:sculk_bone_door",
     "deeperdarker:sculk_bone_trapdoor",
     "deeperdarker:sculk_bone_fence_gate",
-    "deeperdarker:sculk_bone_wall_sign",
-    "deeperdarker:sculk_bone_sign",
-    "deeperdarker:sculk_bone_chest",
-    "deeperdarker:sculk_bone_trapped_chest",
-    "deeperdarker:vertical_sculk_bone_planks",
-    "deeperdarker:sculk_bone_vertical_slab",
-    "deeperdarker:sculk_bone_bookshelf",
-    "deeperdarker:sculk_bone_ladder",
-    "deeperdarker:sculk_bone_beehive",
-    "deeperdarker:sculk_bone_post"
+    "deeperdarker:sculk_bone_beehive"
   ]
 }
