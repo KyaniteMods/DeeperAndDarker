@@ -23,7 +23,7 @@ mixin {
     add sourceSets.main, "deeperdarker.refmap.json"
 }
 
-version = "1.19-${mod_version}"
+version = "${mod_version}-1.19"
 group = 'com.nitro.deeperdarker'
 archivesBaseName = 'deeperdarker'
 
