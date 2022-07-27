@@ -2,7 +2,7 @@ package com.nitro.deeperdarker.registry.blocks;
 
 import com.nitro.deeperdarker.DeeperAndDarker;
 import com.nitro.deeperdarker.registry.items.DDItems;
-import com.nitro.deeperdarker.util.DDCreativeTab;
+import com.nitro.deeperdarker.util.DDCreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -41,7 +41,7 @@ public class DDBlocks {
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);
-        DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeTab.DEEPER_DARKER)));
+        DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
         return block;
     }
 }
