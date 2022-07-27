@@ -1,4 +1,4 @@
-package com.nitro.deeperdarker.registry;
+package com.nitro.deeperdarker.registry.misc;
 
 import com.nitro.deeperdarker.DeeperAndDarker;
 import com.teamabnormals.blueprint.core.util.registry.SoundSubRegistryHelper;

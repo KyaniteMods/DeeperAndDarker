@@ -1,6 +1,6 @@
 package com.nitro.deeperdarker;
 
-import com.nitro.deeperdarker.registry.DDBlocks;
+import com.nitro.deeperdarker.registry.blocks.DDBlocks;
 import com.nitro.deeperdarker.registry.items.DDItems;
 import com.teamabnormals.blueprint.core.util.registry.*;
 import net.minecraftforge.common.MinecraftForge;

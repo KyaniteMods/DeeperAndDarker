@@ -2,7 +2,7 @@ package com.nitro.deeperdarker.registry.items;
 
 import com.mojang.datafixers.util.Pair;
 import com.nitro.deeperdarker.DeeperAndDarker;
-import com.nitro.deeperdarker.registry.DDBlocks;
+import com.nitro.deeperdarker.registry.blocks.DDBlocks;
 import com.nitro.deeperdarker.registry.properties.DDArmorMaterials;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import net.minecraft.world.entity.EquipmentSlot;
