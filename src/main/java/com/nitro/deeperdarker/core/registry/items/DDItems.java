@@ -1,8 +1,12 @@
-package com.nitro.deeperdarker.core.registry;
+package com.nitro.deeperdarker.core.registry.items;
 
 import com.mojang.datafixers.util.Pair;
 import com.nitro.deeperdarker.core.DeeperAndDarker;
+import com.nitro.deeperdarker.core.registry.DDBlocks;
+import com.nitro.deeperdarker.core.registry.properties.DDArmorMaterials;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -23,7 +27,10 @@ public class DDItems {
 
     // Warden Carapace and armor
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().tab(CreativeModeTab.TAB_MATERIALS).rarity(Rarity.EPIC)));
-    //public static final RegistryObject<Item> WARDEN_HELMET = ITEMS.register("warden_helmet");
+    public static final RegistryObject<Item> WARDEN_HELMET = ITEMS.register("warden_helmet", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.HEAD, new Item.Properties().fireResistant().tab(CreativeModeTab.TAB_COMBAT).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.CHEST, new Item.Properties().fireResistant().tab(CreativeModeTab.TAB_COMBAT).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.LEGS, new Item.Properties().fireResistant().tab(CreativeModeTab.TAB_COMBAT).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.FEET, new Item.Properties().fireResistant().tab(CreativeModeTab.TAB_COMBAT).rarity(Rarity.EPIC)));
 
     // Sculk Reactor Core
 

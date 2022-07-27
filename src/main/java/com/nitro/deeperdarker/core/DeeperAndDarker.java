@@ -1,7 +1,6 @@
 package com.nitro.deeperdarker.core;
 
-import com.nitro.deeperdarker.core.registry.DDItems;
-import com.nitro.deeperdarker.core.registry.properties.DDArmorMaterials;
+import com.nitro.deeperdarker.core.registry.items.DDItems;
 import com.teamabnormals.blueprint.core.util.registry.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
