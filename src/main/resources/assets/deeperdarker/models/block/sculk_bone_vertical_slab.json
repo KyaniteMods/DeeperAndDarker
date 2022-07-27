@@ -1,8 +1,0 @@
-{
-  "parent": "deeperdarker:block/vertical_slab",
-  "textures": {
-    "bottom": "deeperdarker:block/sculk_bone_planks",
-    "top": "deeperdarker:block/sculk_bone_planks",
-    "side": "deeperdarker:block/sculk_bone_planks"
-  }
-}

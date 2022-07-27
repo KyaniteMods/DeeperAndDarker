@@ -1,6 +1,0 @@
-{
-  "parent": "deeperdarker:block/vertical_planks",
-  "textures": {
-    "all": "deeperdarker:block/bone_planks"
-  }
-}

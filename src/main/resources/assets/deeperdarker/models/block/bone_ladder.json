@@ -1,8 +1,0 @@
-{
-  "parent": "block/ladder",
-  "textures": {
-    "particle": "deeperdarker:block/bone_ladder",
-    "texture": "deeperdarker:block/bone_ladder"
-  },
-  "render_type": "translucent"
-}
