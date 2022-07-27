@@ -12,13 +12,13 @@
     "deeperdarker:bone_fence_gate",
     "deeperdarker:bone_wall_sign",
     "deeperdarker:bone_sign",
-    "deeperdarker:bone_chest",
-    "deeperdarker:bone_trapped_chest",
-    "deeperdarker:vertical_bone_planks",
-    "deeperdarker:bone_vertical_slab",
-    "deeperdarker:bone_bookshelf",
-    "deeperdarker:bone_ladder",
-    "deeperdarker:bone_beehive",
-    "deeperdarker:bone_post"
+    "deeperdarkercompat:bone_chest",
+    "deeperdarkercompat:bone_trapped_chest",
+    "deeperdarkercompat:vertical_bone_planks",
+    "deeperdarkercompat:bone_vertical_slab",
+    "deeperdarkercompat:bone_bookshelf",
+    "deeperdarkercompat:bone_ladder",
+    "deeperdarkercompat:bone_beehive",
+    "deeperdarkercompat:bone_post"
   ]
 }

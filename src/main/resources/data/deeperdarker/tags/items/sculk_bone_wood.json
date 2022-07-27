@@ -12,13 +12,13 @@
     "deeperdarker:sculk_bone_fence_gate",
     "deeperdarker:sculk_bone_wall_sign",
     "deeperdarker:sculk_bone_sign",
-    "deeperdarker:sculk_bone_chest",
-    "deeperdarker:sculk_bone_trapped_chest",
-    "deeperdarker:vertical_sculk_bone_planks",
-    "deeperdarker:sculk_bone_vertical_slab",
-    "deeperdarker:sculk_bone_bookshelf",
-    "deeperdarker:sculk_bone_ladder",
-    "deeperdarker:sculk_bone_beehive",
-    "deeperdarker:sculk_bone_post"
+    "deeperdarkercompat:sculk_bone_chest",
+    "deeperdarkercompat:sculk_bone_trapped_chest",
+    "deeperdarkercompat:vertical_sculk_bone_planks",
+    "deeperdarkercompat:sculk_bone_vertical_slab",
+    "deeperdarkercompat:sculk_bone_bookshelf",
+    "deeperdarkercompat:sculk_bone_ladder",
+    "deeperdarkercompat:sculk_bone_beehive",
+    "deeperdarkercompat:sculk_bone_post"
   ]
 }
