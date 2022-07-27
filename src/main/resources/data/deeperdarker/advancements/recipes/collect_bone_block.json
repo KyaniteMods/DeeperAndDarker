@@ -16,13 +16,11 @@
   },
   "rewards": {
     "recipes": [
-      "deeperdarker:crafting/bone_beehive",
       "deeperdarker:crafting/bone_button",
       "deeperdarker:crafting/bone_door",
       "deeperdarker:crafting/bone_fence",
       "deeperdarker:crafting/bone_fence_gate",
       "deeperdarker:crafting/bone_pressure_plate",
-      "deeperdarker:crafting/bone_sign",
       "deeperdarker:crafting/bone_slab",
       "deeperdarker:crafting/bone_stairs",
       "deeperdarker:crafting/bone_trapdoor",

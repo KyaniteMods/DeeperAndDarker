@@ -1,8 +1,0 @@
-{
-  "parent": "block/ladder",
-  "textures": {
-    "particle": "deeperdarker:block/sculk_bone_ladder",
-    "texture": "deeperdarker:block/sculk_bone_ladder"
-  },
-  "render_type": "translucent"
-}
