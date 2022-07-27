@@ -3,36 +3,34 @@ loaderVersion = "[41,)"
 license = "MIT"
 
 [[mods]]
-modId = "deeperdarker"
-version = "${file.jarVersion}"
-displayName = "Deeper and Darker"
-credits = '''
-TeamAbnormals, for creating the Blueprint mod upon which the majority of this mod relies.
-VanillaTweaks, for the recipes.
-My sister, for helping create the textures. Her YouTube channel: https://www.youtube.com/channel/UCgaSBWe-EfZ-SiyRsotHKBw
-'''
-authors = "nitro_dynamite18"
-description = '''
-This mod adds new features to the Minecraft 1.19 Deep Dark biome to make it feel more complete. It also has compatibility features for Quark and TeamAbnormals' Buzzier Bees mod.
-'''
+    modId = "deeperdarker"
+    version = "0.0.1"
+    displayName = "Deeper and Darker"
+    credits = '''
+    TeamAbnormals, for creating the Blueprint mod upon which the majority of this mod relies.
+    VanillaTweaks, for the recipes.
+    My sister, for helping create the textures. Her YouTube channel: https://www.youtube.com/channel/UCgaSBWe-EfZ-SiyRsotHKBw
+    '''
+    authors = "nitro_dynamite18"
+    description = '''This mod adds new features to the Minecraft 1.19 Deep Dark biome to make it feel more complete. It also has compatibility features for Quark and TeamAbnormals' Buzzier Bees mod.'''
 
 [[dependencies.deeperdarker]]
-modId = "blueprint"
-mandatory = true
-versionRange = "[6.0.4,)"
-ordering = "BEFORE"
-side = "BOTH"
+    modId = "blueprint"
+    mandatory = true
+    versionRange = "[6.0.4,)"
+    ordering = "BEFORE"
+    side = "BOTH"
 
 [[dependencies.deeperdarker]]
-modId = "forge"
-mandatory = true
-versionRange = "[41, 42)"
-ordering = "NONE"
-side = "BOTH"
+    modId = "forge"
+    mandatory = true
+    versionRange = "[41, 42)"
+    ordering = "NONE"
+    side = "BOTH"
 
 [[dependencies.deeperdarker]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.19, 1.20)"
-ordering = "NONE"
-side = "BOTH"
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.19, 1.20)"
+    ordering = "NONE"
+    side = "BOTH"

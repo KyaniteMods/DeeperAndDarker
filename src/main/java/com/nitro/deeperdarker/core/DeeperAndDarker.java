@@ -5,14 +5,11 @@ import com.teamabnormals.blueprint.core.util.registry.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(DeeperAndDarker.MODID)
-public class DeeperAndDarker
-{
+public class DeeperAndDarker {
     public static final String MODID = "deeperdarker";
     public static final RegistryHelper REGISTRY_HELPER = RegistryHelper.create(MODID, helper -> {
         helper.putSubHelper(ForgeRegistries.SOUND_EVENTS, new SoundSubRegistryHelper(helper));
@@ -22,18 +19,11 @@ public class DeeperAndDarker
     });
 
     public DeeperAndDarker() {
-        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        DDItems.register(modEventBus);
+        DDItems.register(eventBus);
+        REGISTRY_HELPER.register(eventBus);
 
-        REGISTRY_HELPER.register(modEventBus);
-
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::clientSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {}
-
-    private void clientSetup(final FMLClientSetupEvent event) {}
 }

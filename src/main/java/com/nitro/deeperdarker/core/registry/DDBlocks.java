@@ -1,8 +1,8 @@
 package com.nitro.deeperdarker.core.registry;
 
 import com.mojang.datafixers.util.Pair;
-import com.nitro.deeperdarker.core.registry.properties.DDBlockProperties;
 import com.nitro.deeperdarker.core.DeeperAndDarker;
+import com.nitro.deeperdarker.core.registry.properties.DDBlockProperties;
 import com.teamabnormals.blueprint.common.block.BlueprintBeehiveBlock;
 import com.teamabnormals.blueprint.common.block.BlueprintLadderBlock;
 import com.teamabnormals.blueprint.common.block.BookshelfBlock;
@@ -14,12 +14,11 @@ import com.teamabnormals.blueprint.common.block.sign.BlueprintWallSignBlock;
 import com.teamabnormals.blueprint.common.block.wood.*;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(modid = DeeperAndDarker.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DDBlocks {
     private static final BlockSubRegistryHelper HELPER = DeeperAndDarker.REGISTRY_HELPER.getBlockSubHelper();
 
@@ -41,7 +40,6 @@ public class DDBlocks {
     public static final RegistryObject<Block> BONE_LADDER = HELPER.createCompatBlock("indev", "bone_ladder", () -> new BlueprintLadderBlock(DDBlockProperties.BONE_WOOD_NOT_SOLID), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> BONE_BEEHIVE = HELPER.createCompatBlock("indev", "bone_beehive", () -> new BlueprintBeehiveBlock(DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_DECORATIONS);
     public static final RegistryObject<Block> BONE_POST = HELPER.createCompatBlock("indev", "bone_post", () -> new WoodPostBlock(DDBlockProperties.BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
-
 
     // Sculk Bone Block and "wood" variants
     public static final RegistryObject<Block> SCULK_BONE_BLOCK = HELPER.createBlock("sculk_bone_block", () -> new StrippedLogBlock(DDBlockProperties.SCULK_BONE_WOOD), CreativeModeTab.TAB_BUILDING_BLOCKS);
