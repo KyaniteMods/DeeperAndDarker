@@ -2,25 +2,28 @@ buildscript {
     repositories {
         maven { url = "https://files.minecraftforge.net/maven" }
         maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
-        maven { url = 'https://maven.parchmentmc.org' }
+        mavenCentral()
     }
     dependencies {
         classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
         classpath group: "org.spongepowered", name: "mixingradle", version: "0.7-SNAPSHOT"
-        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+}
+
 apply plugin: "net.minecraftforge.gradle"
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: "maven-publish"
 apply plugin: "org.spongepowered.mixin"
+apply plugin: "maven-publish"
 
 mixin {
     add sourceSets.main, "deeperdarker.refmap.json"
 }
 
-version = '0.0.1-1.19'
+version = "${mod_version}-1.19"
 group = 'com.nitro.deeperdarker'
 archivesBaseName = 'deeperdarker'
 
@@ -28,7 +31,8 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '1.18.2-2022.03.13-1.19'
+    mappings channel: 'official', version: '1.19'
+
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
@@ -92,13 +96,10 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories {
-    maven { url = "https://maven.jaackson.me" }
-}
+repositories { }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.96'
-    implementation fg.deobf("com.teamabnormals:blueprint:1.19-6.0.4")
+    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
@@ -108,9 +109,9 @@ jar {
         attributes([
                 "Specification-Title"     : "deeperdarker",
                 "Specification-Vendor"    : "nitro_dynamite18",
-                "Specification-Version"   : "1",
+                "Specification-Version"   : "${mod_version}",
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Version"  : "${mod_version}",
                 "Implementation-Vendor"   : "nitro_dynamite18",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
