@@ -1,4 +1,4 @@
-package com.nitro.deeperdarker.core.registry;
+package com.nitro.deeperdarker.core.registry.blocks;
 
 import com.mojang.datafixers.util.Pair;
 import com.nitro.deeperdarker.core.DeeperAndDarker;
