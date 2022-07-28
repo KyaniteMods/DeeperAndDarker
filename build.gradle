@@ -26,7 +26,7 @@ mixin {
 }
 
 version = "${mod_version}-1.19.1"
-group = 'com.nitro.deeperdarker'
+group = 'com.kyanite.deeperdarker'
 archivesBaseName = 'deeperdarker'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

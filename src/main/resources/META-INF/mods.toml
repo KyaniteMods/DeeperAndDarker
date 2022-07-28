@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[41,)"
+loaderVersion = "[42,)"
 license = "MIT"
 issueTrackerURL = "https://github.com/nitrodynamite18/DeeperAndDarker/issues"
 
@@ -7,17 +7,15 @@ issueTrackerURL = "https://github.com/nitrodynamite18/DeeperAndDarker/issues"
     modId = "deeperdarker"
     version = "0.0.1"
     displayName = "Deeper and Darker"
-    credits = '''
-    VanillaTweaks, for the recipes.
-    My sister, for helping create the textures. Her YouTube channel: https://www.youtube.com/channel/UCgaSBWe-EfZ-SiyRsotHKBw
-    '''
-    authors = "nitro_dynamite18"
-    description = '''This mod adds new features to the Minecraft 1.19 Deep Dark biome to make it feel more complete. It also has compatibility features for Quark and TeamAbnormals' Buzzier Bees mod.'''
+    credits = '''VanillaTweaks for the recipes
+    Kyanite Team for models, textures, and programming.'''
+    authors = "kyanite"
+    description = '''A Minecraft 1.19 mod which features more blocks, items, armors, and hidden mysteries to complement the new Deep Dark biome.'''
 
 [[dependencies.deeperdarker]]
     modId = "forge"
     mandatory = true
-    versionRange = "[41, 42)"
+    versionRange = "[42,)"
     ordering = "NONE"
     side = "BOTH"
 
