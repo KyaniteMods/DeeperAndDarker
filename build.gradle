@@ -101,10 +101,26 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-repositories { }
+repositories {
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+}
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19-41.1.0'
+
+    compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:11.1.1.239")
+    compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:11.1.1.239")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:11.1.1.239")
+
+    compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-6.2.0-6:api") { transitive = false }
+    runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-6.2.0-6") { transitive = false }
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
