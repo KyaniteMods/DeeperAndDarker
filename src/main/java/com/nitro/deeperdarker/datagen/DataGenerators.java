@@ -2,6 +2,7 @@ package com.nitro.deeperdarker.datagen;
 
 import com.nitro.deeperdarker.DeeperAndDarker;
 import com.nitro.deeperdarker.datagen.lang.ENLanguageProvider;
+import com.nitro.deeperdarker.datagen.loot.DDLootTableProvider;
 import com.nitro.deeperdarker.datagen.models.DDBlockStateProvider;
 import com.nitro.deeperdarker.datagen.models.DDItemModelProvider;
 import net.minecraft.data.DataGenerator;
@@ -18,6 +19,8 @@ public class DataGenerators {
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
         generator.addProvider(event.includeClient(), new ENLanguageProvider(generator));
+
+        generator.addProvider(event.includeServer(), new DDLootTableProvider(generator));
 
         generator.addProvider(event.includeClient(), new DDBlockStateProvider(generator, fileHelper));
         generator.addProvider(event.includeClient(), new DDItemModelProvider(generator, fileHelper));
