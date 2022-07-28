@@ -48,6 +48,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
+        // itemModel(DDItems.SCULK_HEART, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {
