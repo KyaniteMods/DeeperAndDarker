@@ -6,10 +6,11 @@ issueTrackerURL = "https://github.com/KyaniteMods/DeeperAndDarker/issues"
 [[mods]]
     modId = "deeperdarker"
     version = "0.0.1"
-    displayName = "Deeper and Darker"
-    credits = '''VanillaTweaks for the recipes
-    Kyanite Team for models, textures, and programming.'''
-    authors = "kyanite"
+    displayName = "Deeper And Darker"
+    displayURL = "https://github.com/KyaniteMods/DeeperAndDarker"
+    #logoFile = "deeperdarker.png"
+    credits = '''Kyanite Team for models, textures, and programming.'''
+    authors = "Kyanite Mods"
     description = '''A Minecraft 1.19 mod which features more blocks, items, armors, and hidden mysteries to complement the new Deep Dark biome.'''
 
 [[dependencies.deeperdarker]]
