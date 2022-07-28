@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.dimension;
+package com.kyanite.deeperdarker.registry.world.dimension;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.core.Registry;
@@ -10,5 +10,10 @@ import net.minecraft.world.level.dimension.DimensionType;
 public class DDDimensions {
     public static final ResourceKey<Level> OTHERSIDE_KEY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"));
 
+    @SuppressWarnings("Unused")
     public static final ResourceKey<DimensionType> OTHERSIDE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, OTHERSIDE_KEY.registry());
+
+    public static void register() {
+        System.out.println("Registering ModDimensions for " + DeeperAndDarker.MOD_ID);
+    }
 }

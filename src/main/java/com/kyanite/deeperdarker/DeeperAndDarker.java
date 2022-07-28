@@ -2,6 +2,8 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
+import com.kyanite.deeperdarker.util.DDPOIs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +18,8 @@ public class DeeperAndDarker {
 
         DDBlocks.BLOCKS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
+        DDDimensions.register();
+        DDPOIs.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
