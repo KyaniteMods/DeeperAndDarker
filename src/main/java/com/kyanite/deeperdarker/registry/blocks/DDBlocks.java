@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 public class DDBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MOD_ID);
 
-    // Bone Block "wood" variants
+    // Bone Block Wood
     public static final RegistryObject<Block> BONE_PLANKS = register("bone_planks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
     public static final RegistryObject<SlabBlock> BONE_SLAB = register("bone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
     public static final RegistryObject<StairBlock> BONE_STAIRS = register("bone_stairs", () -> new StairBlock(BONE_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
@@ -28,7 +28,7 @@ public class DDBlocks {
     public static final RegistryObject<TrapDoorBlock> BONE_TRAPDOOR = register("bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> BONE_FENCE_GATE = register("bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
 
-    // Sculk Bone Block and "wood" variants
+    // Sculk Bone Block Wood
     public static final RegistryObject<RotatedPillarBlock> SCULK_BONE_BLOCK = register("sculk_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SCULK_BONE_PLANKS = register("sculk_bone_planks", () -> new Block(BlockBehaviour.Properties.copy(SCULK_BONE_BLOCK.get()).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
     public static final RegistryObject<SlabBlock> SCULK_BONE_SLAB = register("sculk_bone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
@@ -40,16 +40,11 @@ public class DDBlocks {
     public static final RegistryObject<TrapDoorBlock> SCULK_BONE_TRAPDOOR = register("sculk_bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> SCULK_BONE_FENCE_GATE = register("sculk_bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
 
-    // Portal blocks
-    public static final  RegistryObject<Block> OTHERSIDE_PORTAL = registerBlockWithoutBlockItem("otherside_portal", DDPortalBlock::new);
+    public static final  RegistryObject<Block> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", DDPortalBlock::new);
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);
         DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
         return block;
-    }
-
-    private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
-        return BLOCKS.register(name, block);
     }
 }

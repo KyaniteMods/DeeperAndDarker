@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.registry.world.dimension.portal;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.DDPortalBlock;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
-import com.kyanite.deeperdarker.util.DDPOIs;
+import com.kyanite.deeperdarker.util.DDPoiTypes;
 import net.minecraft.BlockUtil;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
@@ -38,10 +38,10 @@ public class DDTeleporter implements ITeleporter {
     }
 
     public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {
-        PoiManager poiManager = this.level.getPoiManager();
-        poiManager.ensureLoadedAndValid(this.level, pos, 64);
-        Optional<PoiRecord> optional = poiManager.getInSquare((poiType) ->
-                poiType.get() == DDPOIs.OTHERSIDE_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
+        PoiManager manager = this.level.getPoiManager();
+        manager.ensureLoadedAndValid(this.level, pos, 64);
+        Optional<PoiRecord> optional = manager.getInSquare((poiType) ->
+                poiType.get() == DDPoiTypes.OTHERSIDE_PORTAL.get(), pos, 64, PoiManager.Occupancy.ANY).sorted(Comparator.<PoiRecord>comparingDouble((poi) ->
                 poi.getPos().distSqr(pos)).thenComparingInt((poi) ->
                 poi.getPos().getY())).filter((poi) ->
                 this.level.getBlockState(poi.getPos()).hasProperty(BlockStateProperties.HORIZONTAL_AXIS)).findFirst();
@@ -57,39 +57,39 @@ public class DDTeleporter implements ITeleporter {
     public Optional<BlockUtil.FoundRectangle> makePortal(BlockPos pos, Direction.Axis axis) {
         Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
         double d0 = -1.0D;
-        BlockPos blockpos = null;
+        BlockPos blockPos = null;
         double d1 = -1.0D;
-        BlockPos blockpos1 = null;
+        BlockPos blockPos1 = null;
         WorldBorder worldborder = this.level.getWorldBorder();
         int dimensionLogicalHeight = this.level.getHeight() - 1;
         BlockPos.MutableBlockPos mutablePos = pos.mutable();
 
-        for(BlockPos.MutableBlockPos blockpos$mutable1 : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
-            int j = Math.min(dimensionLogicalHeight, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, blockpos$mutable1.getX(), blockpos$mutable1.getZ()));
-            if (worldborder.isWithinBounds(blockpos$mutable1) && worldborder.isWithinBounds(blockpos$mutable1.move(direction, 1))) {
-                blockpos$mutable1.move(direction.getOpposite(), 1);
+        for(BlockPos.MutableBlockPos mutableBlockPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
+            int j = Math.min(dimensionLogicalHeight, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, mutableBlockPos.getX(), mutableBlockPos.getZ()));
+            if (worldborder.isWithinBounds(mutableBlockPos) && worldborder.isWithinBounds(mutableBlockPos.move(direction, 1))) {
+                mutableBlockPos.move(direction.getOpposite(), 1);
 
                 for(int l = j; l >= 0; --l) {
-                    blockpos$mutable1.setY(l);
-                    if (this.level.isEmptyBlock(blockpos$mutable1)) {
+                    mutableBlockPos.setY(l);
+                    if (this.level.isEmptyBlock(mutableBlockPos)) {
                         int i1;
-                        for(i1 = l; l > 0 && this.level.isEmptyBlock(blockpos$mutable1.move(Direction.DOWN)); --l) {
+                        for(i1 = l; l > 0 && this.level.isEmptyBlock(mutableBlockPos.move(Direction.DOWN)); --l) {
                         }
 
                         if (l + 4 <= dimensionLogicalHeight) {
                             int j1 = i1 - l;
                             if (j1 <= 0 || j1 >= 3) {
-                                blockpos$mutable1.setY(l);
-                                if (this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, 0)) {
-                                    double d2 = pos.distSqr(blockpos$mutable1);
-                                    if (this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, -1) && this.checkRegionForPlacement(blockpos$mutable1, mutablePos, direction, 1) && (d0 == -1.0D || d0 > d2)) {
+                                mutableBlockPos.setY(l);
+                                if (this.checkRegionForPlacement(mutableBlockPos, mutablePos, direction, 0)) {
+                                    double d2 = pos.distSqr(mutableBlockPos);
+                                    if (this.checkRegionForPlacement(mutableBlockPos, mutablePos, direction, -1) && this.checkRegionForPlacement(mutableBlockPos, mutablePos, direction, 1) && (d0 == -1.0D || d0 > d2)) {
                                         d0 = d2;
-                                        blockpos = blockpos$mutable1.immutable();
+                                        blockPos = mutableBlockPos.immutable();
                                     }
 
                                     if (d0 == -1.0D && (d1 == -1.0D || d1 > d2)) {
                                         d1 = d2;
-                                        blockpos1 = blockpos$mutable1.immutable();
+                                        blockPos1 = mutableBlockPos.immutable();
                                     }
                                 }
                             }
@@ -100,32 +100,32 @@ public class DDTeleporter implements ITeleporter {
         }
         
         if (d0 == -1.0D && d1 != -1.0D) {
-            blockpos = blockpos1;
+            blockPos = blockPos1;
             d0 = d1;
         }
 
         if (d0 == -1.0D) {
-            blockpos = (new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 70, this.level.getHeight() - 10), pos.getZ())).immutable();
+            blockPos = (new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 70, this.level.getHeight() - 10), pos.getZ())).immutable();
             Direction direction1 = direction.getClockWise();
-            if (!worldborder.isWithinBounds(blockpos)) {
+            if (!worldborder.isWithinBounds(blockPos)) {
                 return Optional.empty();
             }
 
-            for(int l1 = -1; l1 < 2; ++l1) {
-                for(int k2 = 0; k2 < 2; ++k2) {
-                    for(int i3 = -1; i3 < 3; ++i3) {
-                        BlockState blockstate1 = i3 < 0 ? Blocks.REINFORCED_DEEPSLATE.defaultBlockState() : Blocks.AIR.defaultBlockState();
-                        mutablePos.setWithOffset(blockpos, k2 * direction.getStepX() + l1 * direction1.getStepX(), i3, k2 * direction.getStepZ() + l1 * direction1.getStepZ());
+            for(int i = -1; i < 2; i++) {
+                for(int j = 0; j < 2; j++) {
+                    for(int k = -1; k < 3; k++) {
+                        BlockState blockstate1 = k < 0 ? Blocks.REINFORCED_DEEPSLATE.defaultBlockState() : Blocks.AIR.defaultBlockState();
+                        mutablePos.setWithOffset(blockPos, j * direction.getStepX() + i * direction1.getStepX(), k, j * direction.getStepZ() + i * direction1.getStepZ());
                         this.level.setBlockAndUpdate(mutablePos, blockstate1);
                     }
                 }
             }
         }
 
-        for(int k1 = -1; k1 < 3; ++k1) {
-            for(int i2 = -1; i2 < 4; ++i2) {
-                if (k1 == -1 || k1 == 2 || i2 == -1 || i2 == 3) {
-                    mutablePos.setWithOffset(blockpos, k1 * direction.getStepX(), i2, k1 * direction.getStepZ());
+        for(int i = -1; i < 3; i++) {
+            for(int j = -1; j < 4; j++) {
+                if (i == -1 || i == 2 || j == -1 || j == 3) {
+                    mutablePos.setWithOffset(blockPos, i * direction.getStepX(), j, i * direction.getStepZ());
                     this.level.setBlock(mutablePos, Blocks.REINFORCED_DEEPSLATE.defaultBlockState(), 3);
                 }
             }
@@ -133,21 +133,21 @@ public class DDTeleporter implements ITeleporter {
 
         BlockState othersidePortal = DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(DDPortalBlock.AXIS, axis);
 
-        for(int j2 = 0; j2 < 2; ++j2) {
-            for(int l2 = 0; l2 < 3; ++l2) {
-                mutablePos.setWithOffset(blockpos, j2 * direction.getStepX(), l2, j2 * direction.getStepZ());
+        for(int i = 0; i < 2; i++) {
+            for(int j = 0; j < 3; j++) {
+                mutablePos.setWithOffset(blockPos, i * direction.getStepX(), j, i * direction.getStepZ());
                 this.level.setBlock(mutablePos, othersidePortal, 18);
             }
         }
 
-        return Optional.of(new BlockUtil.FoundRectangle(blockpos.immutable(), 2, 3));
+        return Optional.of(new BlockUtil.FoundRectangle(blockPos.immutable(), 2, 3));
     }
 
     private boolean checkRegionForPlacement(BlockPos originalPos, BlockPos.MutableBlockPos offsetPos, Direction directionIn, int offsetScale) {
         Direction direction = directionIn.getClockWise();
 
-        for(int i = -1; i < 3; ++i) {
-            for(int j = -1; j < 4; ++j) {
+        for(int i = -1; i < 3; i++) {
+            for(int j = -1; j < 4; j++) {
                 offsetPos.setWithOffset(originalPos, directionIn.getStepX() * i + direction.getStepX() * offsetScale, j, directionIn.getStepZ() * i + direction.getStepZ() * offsetScale);
                 if (j < 0 && !this.level.getBlockState(offsetPos).getMaterial().isSolid()) {
                     return false;
@@ -164,18 +164,18 @@ public class DDTeleporter implements ITeleporter {
 
     @Nullable
     @Override
-    public PortalInfo getPortalInfo(Entity entity, ServerLevel level, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        boolean destinationIsUG = level.dimension() == DDDimensions.OTHERSIDE_KEY;
+    public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
+        boolean destinationIsUG = destWorld.dimension() == DDDimensions.OTHERSIDE_KEY;
         if (entity.level.dimension() != DDDimensions.OTHERSIDE_KEY && !destinationIsUG) {
             return null;
         }
         else {
-            WorldBorder border = level.getWorldBorder();
+            WorldBorder border = destWorld.getWorldBorder();
             double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);
             double minZ = Math.max(-2.9999872E7D, border.getMinZ() + 16.0D);
             double maxX = Math.min(2.9999872E7D, border.getMaxX() - 16.0D);
             double maxZ = Math.min(2.9999872E7D, border.getMaxZ() - 16.0D);
-            double coordinateDifference = DimensionType.getTeleportationScale(entity.level.dimensionType(), level.dimensionType());
+            double coordinateDifference = DimensionType.getTeleportationScale(entity.level.dimensionType(), destWorld.dimensionType());
             BlockPos blockpos = new BlockPos(Mth.clamp(entity.getX() * coordinateDifference, minX, maxX), entity.getY(), Mth.clamp(entity.getZ() * coordinateDifference, minZ, maxZ));
             return this.getOrMakePortal(entity, blockpos).map((result) -> {
                 BlockState blockstate = entity.level.getBlockState(entity.portalEntrancePos);
@@ -191,7 +191,7 @@ public class DDTeleporter implements ITeleporter {
                     vector3d = new Vec3(0.5D, 0.0D, 0.0D);
                 }
 
-                return PortalShape.createPortalInfo(level, result, axis, vector3d, entity.getDimensions(entity.getPose()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
+                return PortalShape.createPortalInfo(destWorld, result, axis, vector3d, entity.getDimensions(entity.getPose()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
             }).orElse(null);
         }
     }

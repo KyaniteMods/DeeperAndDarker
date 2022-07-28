@@ -1,6 +1,10 @@
 {
   "variants": {
-    "axis=z": { "model": "deeperdarker:block/otherside_portal_ew" },
-    "axis=x": { "model": "deeperdarker:block/otherside_portal_ns" }
+    "axis=x": {
+      "model":"deeperdarker:block/otherside_portal_ns"
+    },
+    "axis=z": {
+      "model": "deeperdarker:block/otherside_portal_ew"
+    }
   }
 }
