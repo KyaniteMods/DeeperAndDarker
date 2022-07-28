@@ -53,7 +53,7 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "minecraft:plains",
+          "biome": "deeperdarker:otherside_lowland",
           "parameters": {
             "temperature": 0,
             "humidity": 0,

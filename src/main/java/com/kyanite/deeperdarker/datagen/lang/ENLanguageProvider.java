@@ -32,6 +32,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_echo_shard.description", "Collect some Echo Shards from an Ancient City");
         add("advancements.deeperdarker.summon_warden.title", "Ancient Guardian");
         add("advancements.deeperdarker.summon_warden.description", "Summon the Warden... then run!");
+
+        add("biomes.deeperdarker.otherside_lowland", "Otherside Lowland");
     }
 
     private void addBlock(RegistryObject<Block> block) {
