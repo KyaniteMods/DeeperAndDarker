@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Warden.class)
-public class WardenNerfMixin {
+public class WardenMixin {
     @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
     private static void createAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.setReturnValue(Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 350).add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 15));

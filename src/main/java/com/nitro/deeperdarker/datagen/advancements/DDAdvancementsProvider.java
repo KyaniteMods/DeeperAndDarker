@@ -28,7 +28,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
         Advancement root = Advancement.Builder.advancement().display(Blocks.SCULK,
                 Component.translatable("advancements.deeperdarker.root.title"),
                 Component.translatable("advancements.deeperdarker.root.description"),
-                new ResourceLocation("textures/block/sculk_catalyst_top.png"),
+                new ResourceLocation("textures/block/sculk.png"),
                 FrameType.TASK, false, false, false)
                 .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
                 .save(consumer, id + "root");
