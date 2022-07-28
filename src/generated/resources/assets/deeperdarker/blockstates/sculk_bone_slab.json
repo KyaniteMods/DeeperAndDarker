@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deeperdarker:block/sculk_bone_slab"
+    },
+    "type=double": {
+      "model": "deeperdarker:block/sculk_bone_planks"
+    },
+    "type=top": {
+      "model": "deeperdarker:block/sculk_bone_slab_top"
+    }
+  }
+}

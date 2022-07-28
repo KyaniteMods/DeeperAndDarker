@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "bottom": "deeperdarker:block/bone_door_bottom",
+    "top": "deeperdarker:block/bone_door_top"
+  }
+}

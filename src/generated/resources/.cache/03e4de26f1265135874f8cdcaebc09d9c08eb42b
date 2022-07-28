@@ -1,0 +1,12 @@
+// 1.19	2022-07-28T01:02:00.9308028	Tags for minecraft:item
+8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/items/bone_wood.json
+b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/items/sculk_bone_wood.json
+559b853bd220d520b0dcceb6b71657f89b7fe2b3 data/minecraft/tags/items/non_flammable_wood.json
+58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/items/planks.json
+1bb566eecd4d7c3bfaeec4ba569208820c955530 data/minecraft/tags/items/wooden_buttons.json
+930e760175a4652e0869fd0119aa05615e86bb9f data/minecraft/tags/items/wooden_doors.json
+74b243f682609b01304a301d05a95151177201f3 data/minecraft/tags/items/wooden_fences.json
+83631a5a696490a592bffe36d730b3222f5add12 data/minecraft/tags/items/wooden_pressure_plates.json
+42192b164921aa90ba11ee7d19bdd07f0d95ed09 data/minecraft/tags/items/wooden_slabs.json
+a9ec06a1b7c29c7cc7f672eb3357178362343b8f data/minecraft/tags/items/wooden_stairs.json
+3c326f61fda2dffb9345bc014ef8a5b07fceb627 data/minecraft/tags/items/wooden_trapdoors.json

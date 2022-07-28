@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "deeperdarker:sculk_bone_planks"
+    }
+  ],
+  "result": {
+    "item": "deeperdarker:sculk_bone_button"
+  }
+}

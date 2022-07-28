@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_orientable_trapdoor_open",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "texture": "deeperdarker:block/sculk_bone_trapdoor"
+  }
+}
