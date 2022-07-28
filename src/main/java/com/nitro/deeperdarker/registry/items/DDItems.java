@@ -1,7 +1,7 @@
 package com.nitro.deeperdarker.registry.items;
 
 import com.nitro.deeperdarker.DeeperAndDarker;
-import com.nitro.deeperdarker.registry.properties.DDArmorMaterials;
+import com.nitro.deeperdarker.util.DDArmorMaterials;
 import com.nitro.deeperdarker.util.DDCreativeModeTab;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;

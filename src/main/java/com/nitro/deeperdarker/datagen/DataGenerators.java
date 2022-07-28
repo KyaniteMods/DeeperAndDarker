@@ -8,6 +8,8 @@ import com.nitro.deeperdarker.datagen.models.DDItemModelProvider;
 import com.nitro.deeperdarker.datagen.recipes.CraftingRecipesProvider;
 import com.nitro.deeperdarker.datagen.recipes.SmithingRecipesProvider;
 import com.nitro.deeperdarker.datagen.recipes.StonecuttingRecipesProvider;
+import com.nitro.deeperdarker.datagen.tags.DDBlockTagsProvider;
+import com.nitro.deeperdarker.datagen.tags.DDItemTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -31,5 +33,9 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new CraftingRecipesProvider(generator));
         generator.addProvider(event.includeServer(), new SmithingRecipesProvider(generator));
         generator.addProvider(event.includeServer(), new StonecuttingRecipesProvider(generator));
+
+        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(generator, fileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new DDItemTagsProvider(generator, blockTags, fileHelper));
     }
 }
