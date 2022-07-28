@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:sculk_story/obtain_phantom_membrane",
+  "parent": "deeperdarker:main/obtain_membrane",
   "criteria": {
     "ancient_city": {
       "conditions": {
@@ -21,16 +21,16 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.sculk_story.find_ancient_city.description"
+      "translate": "advancements.deeperdarker.locate_ancient_city.description"
     },
-    "frame": "task",
-    "hidden": true,
+    "frame": "goal",
+    "hidden": false,
     "icon": {
       "item": "minecraft:deepslate_tiles"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.sculk_story.find_ancient_city.title"
+      "translate": "advancements.deeperdarker.locate_ancient_city.title"
     }
   },
   "requirements": [

@@ -22,16 +22,16 @@ public class ENLanguageProvider extends LanguageProvider {
         DDBlocks.BLOCKS.getEntries().forEach(this::addBlock);
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(this::addItem);
 
-        add("advancements.sculk_story.root.title", "Sculk Story");
-        add("advancements.sculk_story.root.description", "You feel something pulling you toward the underground...");
-        add("advancements.sculk_story.obtain_phantom_membrane.title", "Sleepless Nights");
-        add("advancements.sculk_story.obtain_phantom_membrane.description", "Slay a Monster of the Night Sky");
-        add("advancements.sculk_story.find_ancient_city.title", "A Metropolis of Restless Souls");
-        add("advancements.sculk_story.find_ancient_city.description", "Find an Ancient City");
-        add("advancements.sculk_story.obtain_echo_shard.title", "Echoes of the Past");
-        add("advancements.sculk_story.obtain_echo_shard.description", "Collect some Echo Shards from the Ancient City");
-        add("advancements.sculk_story.summon_warden.title", "Ancient Guardian");
-        add("advancements.sculk_story.summon_warden.description", "Summon the Warden, then run!");
+        add("advancements.deeperdarker.root.title", "Sculk Story");
+        add("advancements.deeperdarker.root.description", "You feel something pulling you toward the underground...");
+        add("advancements.deeperdarker.obtain_membrane.title", "Sleepless Nights");
+        add("advancements.deeperdarker.obtain_membrane.description", "Slay a monster of the night sky");
+        add("advancements.deeperdarker.locate_ancient_city.title", "A Metropolis of Restless Souls");
+        add("advancements.deeperdarker.locate_ancient_city.description", "Find an Ancient City");
+        add("advancements.deeperdarker.obtain_echo_shard.title", "Echoes of the Past");
+        add("advancements.deeperdarker.obtain_echo_shard.description", "Collect some Echo Shards from an Ancient City");
+        add("advancements.deeperdarker.summon_warden.title", "Ancient Guardian");
+        add("advancements.deeperdarker.summon_warden.description", "Summon the Warden... then run!");
     }
 
     private void addBlock(RegistryObject<Block> block) {
