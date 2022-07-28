@@ -5,6 +5,9 @@ import com.nitro.deeperdarker.datagen.lang.ENLanguageProvider;
 import com.nitro.deeperdarker.datagen.loot.DDLootTableProvider;
 import com.nitro.deeperdarker.datagen.models.DDBlockStateProvider;
 import com.nitro.deeperdarker.datagen.models.DDItemModelProvider;
+import com.nitro.deeperdarker.datagen.recipes.CraftingRecipesProvider;
+import com.nitro.deeperdarker.datagen.recipes.SmithingRecipesProvider;
+import com.nitro.deeperdarker.datagen.recipes.StonecuttingRecipesProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -24,5 +27,9 @@ public class DataGenerators {
 
         generator.addProvider(event.includeClient(), new DDBlockStateProvider(generator, fileHelper));
         generator.addProvider(event.includeClient(), new DDItemModelProvider(generator, fileHelper));
+
+        generator.addProvider(event.includeServer(), new CraftingRecipesProvider(generator));
+        generator.addProvider(event.includeServer(), new SmithingRecipesProvider(generator));
+        generator.addProvider(event.includeServer(), new StonecuttingRecipesProvider(generator));
     }
 }

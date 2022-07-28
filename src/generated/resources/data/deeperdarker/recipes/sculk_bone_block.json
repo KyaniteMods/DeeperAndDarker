@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:bone_block"
+    },
+    "S": {
+      "item": "minecraft:sculk"
+    }
+  },
+  "pattern": [
+    "BS",
+    "SB"
+  ],
+  "result": {
+    "count": 2,
+    "item": "deeperdarker:sculk_bone_block"
+  }
+}
