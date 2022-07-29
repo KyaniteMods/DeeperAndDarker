@@ -52,14 +52,17 @@ public abstract class WardenMixin extends Entity {
     public void serverStep(CallbackInfo ci) {
         LivingEntity livingEntity = (LivingEntity)(Object)this;
 
-        if(livingEntity.getHealth() > 2){
+        if(livingEntity.getHealth() < 2) { // For some reason the method stops calling before he dies
+            this.bossEvent.removeAllPlayers();
+        }
+        else{
             for(ServerPlayer plr : livingEntity.getServer().getLevel(livingEntity.level.dimension()).players()) {
                 if(!this.bossEvent.getPlayers().contains(plr))
                     this.bossEvent.addPlayer(plr);
             }
 
             for(ServerPlayer plr : this.bossEvent.getPlayers()) {
-                if(plr.distanceTo(livingEntity) > 25)
+                if(plr.distanceTo(livingEntity) > 10)
                     this.bossEvent.removePlayer(plr);
             }
 
