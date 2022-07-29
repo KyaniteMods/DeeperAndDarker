@@ -12,9 +12,9 @@ public class SculkArmorRenderer extends GeoArmorRenderer<SculkArmorItem> {
         this.bodyBone = "armorBody";
         this.rightArmBone = "armorRightArm";
         this.leftArmBone = "armorLeftArm";
-        this.rightLegBone = "armorLeftLeg";
-        this.leftLegBone = "armorRightLeg";
-        this.rightBootBone = "armorLeftBoot";
-        this.leftBootBone = "armorRightBoot";
+        this.rightLegBone = "armorRightLeg";
+        this.leftLegBone = "armorLeftLeg";
+        this.rightBootBone = "armorRightBoot";
+        this.leftBootBone = "armorLeftBoot";
     }
 }
