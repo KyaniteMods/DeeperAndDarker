@@ -17,10 +17,10 @@ public class DDItems {
 
     // Warden Armor
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final RegistryObject<Item> WARDEN_HELMET = ITEMS.register("warden_helmet", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final RegistryObject<Item> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new ArmorItem(DDArmorMaterials.WARDEN_CARAPACE, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> WARDEN_HELMET = ITEMS.register("warden_helmet", () -> new ArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new ArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new ArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new ArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<Item> SCULK_HEART = ITEMS.register("sculk_heart", () -> new SculkHeartItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 }
