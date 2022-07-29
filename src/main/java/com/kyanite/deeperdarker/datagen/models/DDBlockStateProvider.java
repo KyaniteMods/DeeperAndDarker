@@ -39,6 +39,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         trapdoorBlockWithRenderType(DDBlocks.SCULK_BONE_TRAPDOOR.get(), blockLoc(DDBlocks.SCULK_BONE_TRAPDOOR), true, "translucent");
         fenceGateBlock(DDBlocks.SCULK_BONE_FENCE_GATE.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
 
+        simpleBlock(DDBlocks.SCULK_STONE.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
     }
 

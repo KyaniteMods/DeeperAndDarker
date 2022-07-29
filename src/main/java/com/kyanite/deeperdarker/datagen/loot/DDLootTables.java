@@ -29,6 +29,8 @@ public class DDLootTables extends BlockLoot {
         this.dropSelf(DDBlocks.SCULK_BONE_TRAPDOOR.get());
         this.dropSelf(DDBlocks.SCULK_BONE_FENCE_GATE.get());
 
+        this.dropSelf(DDBlocks.SCULK_STONE.get());
+
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropWhenSilkTouch(DDBlocks.SCULK_VINES.get());
         this.dropWhenSilkTouch(DDBlocks.SCULK_VINES_PLANT.get());
