@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.util;
 
-import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.sounds.Music;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.*;

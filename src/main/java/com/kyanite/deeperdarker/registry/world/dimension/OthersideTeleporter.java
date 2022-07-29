@@ -1,39 +1,39 @@
-package com.kyanite.deeperdarker.registry.world.dimension.portal;
+package com.kyanite.deeperdarker.registry.world.dimension;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.blocks.custom.DDPortalBlock;
-import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
+import com.kyanite.deeperdarker.registry.blocks.custom.OthersidePortalBlock;
 import com.kyanite.deeperdarker.util.DDPoiTypes;
 import net.minecraft.BlockUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.TicketType;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.PortalInfo;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.TicketType;
 import net.minecraftforge.common.util.ITeleporter;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class DDTeleporter implements ITeleporter {
+public class OthersideTeleporter implements ITeleporter {
     protected final ServerLevel level;
 
-    public DDTeleporter(ServerLevel worldIn) {
+    public OthersideTeleporter(ServerLevel worldIn) {
         this.level = worldIn;
     }
 
@@ -131,7 +131,7 @@ public class DDTeleporter implements ITeleporter {
             }
         }
 
-        BlockState othersidePortal = DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(DDPortalBlock.AXIS, axis);
+        BlockState othersidePortal = DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(OthersidePortalBlock.AXIS, axis);
 
         for(int i = 0; i < 2; i++) {
             for(int j = 0; j < 3; j++) {
@@ -202,7 +202,7 @@ public class DDTeleporter implements ITeleporter {
             return existingPortal;
         }
         else {
-            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(DDPortalBlock.AXIS).orElse(Direction.Axis.X);
+            Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(OthersidePortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
         }
     }

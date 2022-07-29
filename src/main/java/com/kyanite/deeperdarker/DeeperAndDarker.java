@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker;
 import com.kyanite.deeperdarker.registry.biomes.DDBiomes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.util.DDPoiTypes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,10 +16,10 @@ public class DeeperAndDarker {
     public DeeperAndDarker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        DDBlocks.register(eventBus);
-        DDItems.register(eventBus);
-        DDBiomes.register(eventBus);
-        DDPoiTypes.register(eventBus);
+        DDBlocks.BLOCKS.register(eventBus);
+        DDItems.ITEMS.register(eventBus);
+        DDBiomes.BIOMES.register(eventBus);
+        DDPoiTypes.POI.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
