@@ -24,7 +24,7 @@ public class SculkHeartItem extends Item {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = pContext.getClickedPos().relative(direction);
                     if(((OthersidePortalBlock) DDBlocks.OTHERSIDE_PORTAL.get()).spawnPortal(pContext.getLevel(), framePos)) {
-                        pContext.getLevel().playSound(pContext.getPlayer(), framePos, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        pContext.getLevel().playSound(pContext.getPlayer(), framePos, SoundEvents.WARDEN_SONIC_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
                         return InteractionResult.CONSUME;
                     }
                     else return InteractionResult.FAIL;
