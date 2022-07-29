@@ -5,6 +5,7 @@
     "minecraft:sculk_sensor",
     "minecraft:sculk_shrieker",
     "minecraft:sculk_vein",
+    "deeperdarker:sculk_gleam",
     "#deeperdarker:sculk_bone_wood"
   ]
 }

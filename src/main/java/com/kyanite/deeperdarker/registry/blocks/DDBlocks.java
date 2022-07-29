@@ -41,6 +41,9 @@ public class DDBlocks {
     public static final RegistryObject<TrapDoorBlock> SCULK_BONE_TRAPDOOR = register("sculk_bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> SCULK_BONE_FENCE_GATE = register("sculk_bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
 
+    // Additional Sculk Blocks for Otherside
+    public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel((state) -> 15)));
+
     public static final  RegistryObject<Block> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", DDPortalBlock::new);
 
     public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }

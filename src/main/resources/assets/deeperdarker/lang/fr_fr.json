@@ -1,7 +1,6 @@
 {
   "itemGroup.deeperdarker": "Deeper And Darker",
 
-  "_comment": "Blocs",
   "block.deeperdarker.bone_planks": "Planches d'os",
   "block.deeperdarker.bone_slab": "Dalle en os",
   "block.deeperdarker.bone_stairs": "Escalier en os",
@@ -23,22 +22,27 @@
   "block.deeperdarker.sculk_bone_door": "Porte en os de sculk",
   "block.deeperdarker.sculk_bone_trapdoor": "Trappe en os de sculk",
 
-  "__comment": "Éléments",
-  "item.deeperdarker.warden_carapace": "Carapace de Warden",
-  "item.deeperdarker.warden_helmet": "Casque en carapace de warden",
-  "item.deeperdarker.warden_chestplate": "Plastron en carapace de warden",
-  "item.deeperdarker.warden_leggings": "Jambières en carapace de warden",
-  "item.deeperdarker.warden_boots": "Bottes en carapace de warden",
+  "block.deeperdarker.sculk_gleam": "Lueur de sculk",
 
-  "____comment": "Avancées",
-  "advancements.sculk_story.root.title": "Histoire du sculk",
-  "advancements.sculk_story.root.description": "Tu ressens quelque chose qui t'attire vers le souterrain...",
-  "advancements.sculk_story.obtain_phantom_membrane.title": "Nuits blanches",
-  "advancements.sculk_story.obtain_phantom_membrane.description": "Tuez un Monstre du Ciel Nocturne",
-  "advancements.sculk_story.find_ancient_city.title": "Une métropole des âmes agitées",
-  "advancements.sculk_story.find_ancient_city.description": "Trouvez une ancienne ville",
-  "advancements.sculk_story.obtain_echo_shard.title": "Échos du passé",
-  "advancements.sculk_story.obtain_echo_shard.description": "Collectez des éclats d'écho dans l'ancienne ville.",
-  "advancements.sculk_story.summon_warden.title": "Ancien gardien",
-  "advancements.sculk_story.summon_warden.description": "Invoquez le Warden, puis courez !"
+  "block.deeperdarker.otherside_portal": "Portail de l'Otherside",
+
+  "item.deeperdarker.warden_carapace": "Carapace de Warden",
+  "item.deeperdarker.warden_helmet": "Casque en carapace de Warden",
+  "item.deeperdarker.warden_chestplate": "Plastron en carapace de Warden",
+  "item.deeperdarker.warden_leggings": "Jambières en carapace de Warden",
+  "item.deeperdarker.warden_boots": "Bottes en carapace de Warden",
+  "item.deeperdarker.sculk_heart": "Cœur de sculk",
+
+  "advancements.deeperdarker.root.title": "Histoire du sculk",
+  "advancements.deeperdarker.root.description": "Tu ressens quelque chose qui t'attire vers le souterrain...",
+  "advancements.deeperdarker.obtain_membrane.title": "Nuits blanches",
+  "advancements.deeperdarker.obtain_membrane.description": "Tuez un Monstre du Ciel Nocturne",
+  "advancements.deeperdarker.locate_ancient_city.title": "Une métropole des âmes agitées",
+  "advancements.deeperdarker.locate_ancient_city.description": "Trouvez une ancienne ville",
+  "advancements.deeperdarker.obtain_echo_shard.title": "Échos du passé",
+  "advancements.deeperdarker.obtain_echo_shard.description": "Collectez des éclats d'écho dans l'ancienne ville.",
+  "advancements.deeperdarker.summon_warden.title": "Ancien gardien",
+  "advancements.deeperdarker.summon_warden.description": "Invoquez le Warden, puis courez !",
+
+  "biomes.deeperdarker.otherside_lowland": "Plaines de l'Otherside"
 }

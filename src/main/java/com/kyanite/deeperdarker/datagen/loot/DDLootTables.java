@@ -28,6 +28,8 @@ public class DDLootTables extends BlockLoot {
         this.add(DDBlocks.SCULK_BONE_DOOR.get(), BlockLoot::createDoorTable);
         this.dropSelf(DDBlocks.SCULK_BONE_TRAPDOOR.get());
         this.dropSelf(DDBlocks.SCULK_BONE_FENCE_GATE.get());
+
+        this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
     }
 
     @Override

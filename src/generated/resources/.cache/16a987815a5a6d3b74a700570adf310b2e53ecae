@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-28T14:07:56.902438	Block States: deeperdarker
+// 1.19.1	2022-07-28T19:55:27.2518815	Block States: deeperdarker
 f562dc70b14bdf400dc674b2526cc7ba7bfd3344 assets/deeperdarker/blockstates/bone_button.json
 9c7e3f4cab841573abfbd8e7b705276c7a693c27 assets/deeperdarker/blockstates/bone_door.json
 5c022e3094310ad56f8ab626466c42444c5a9c0a assets/deeperdarker/blockstates/bone_fence.json
@@ -18,6 +18,7 @@ fb3e64583b101203d31f2ee54312fdf5b735ff7f assets/deeperdarker/blockstates/sculk_b
 bba94f47555761eeb27ff483eed8e8db790de5a2 assets/deeperdarker/blockstates/sculk_bone_slab.json
 19d62c59f3b6dca5b862306997e49312ff909b19 assets/deeperdarker/blockstates/sculk_bone_stairs.json
 c6e8830d1634295235e65c2c428558337e2bc91e assets/deeperdarker/blockstates/sculk_bone_trapdoor.json
+ca868477f2e49646a2df560a202f718fcfa27eff assets/deeperdarker/blockstates/sculk_gleam.json
 e4e392ec53d8dad6a57e44da95a1111dd6d0c4b2 assets/deeperdarker/models/block/bone_button.json
 43f94027e8779a2d2f222fca19f2cc8fc4632c5d assets/deeperdarker/models/block/bone_button_inventory.json
 8611a0b4a931fc18a822ed183cac3dfa4e1d0db7 assets/deeperdarker/models/block/bone_button_pressed.json
@@ -78,3 +79,4 @@ ce42dbb34d0553e7a35448ca9cb304ca05b42080 assets/deeperdarker/models/block/sculk_
 8da01dd8b2903d406c11148821d1441d6ba621ea assets/deeperdarker/models/block/sculk_bone_trapdoor_bottom.json
 4b68819505366a15334bcc6f6ba62857b64bc423 assets/deeperdarker/models/block/sculk_bone_trapdoor_open.json
 6e408e3d1c368ca2211c926c44afb7c102ab0801 assets/deeperdarker/models/block/sculk_bone_trapdoor_top.json
+e2e629dbec3aea754f099585071808b78f8c482a assets/deeperdarker/models/block/sculk_gleam.json
