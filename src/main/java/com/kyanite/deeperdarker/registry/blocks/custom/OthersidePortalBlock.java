@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
-import com.kyanite.deeperdarker.registry.world.dimension.portal.DDTeleporter;
+import com.kyanite.deeperdarker.registry.world.dimension.OthersideTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
@@ -31,13 +30,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.level.BlockEvent;
 
-public class DDPortalBlock extends Block {
+public class OthersidePortalBlock extends Block {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
     protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
-    public DDPortalBlock() {
-        super(Properties.of(Material.PORTAL).strength(-1F).noCollission().lightLevel((state) -> 1).noLootTable());
+    public OthersidePortalBlock(Properties pProperties) {
+        super(pProperties);
         registerDefaultState(stateDefinition.any().setValue(AXIS, Direction.Axis.X));
     }
 
@@ -48,7 +47,7 @@ public class DDPortalBlock extends Block {
     }
 
     public boolean spawnPortal(LevelAccessor worldIn, BlockPos pos) {
-        DDPortalBlock.Size portal = this.isPortal(worldIn, pos);
+        OthersidePortalBlock.Size portal = this.isPortal(worldIn, pos);
         if (portal != null && !trySpawningPortal(worldIn, pos)) {
             portal.placePortalBlocks();
             return true;
@@ -62,13 +61,13 @@ public class DDPortalBlock extends Block {
         return MinecraftForge.EVENT_BUS.post(new BlockEvent(world, pos, world.getBlockState(pos)));
     }
 
-    public DDPortalBlock.Size isPortal(LevelAccessor worldIn, BlockPos pos) {
-        DDPortalBlock.Size sizeX = new Size(worldIn, pos, Direction.Axis.X);
+    public OthersidePortalBlock.Size isPortal(LevelAccessor worldIn, BlockPos pos) {
+        OthersidePortalBlock.Size sizeX = new Size(worldIn, pos, Direction.Axis.X);
         if (sizeX.isValid() && sizeX.portalBlockCount == 0) {
             return sizeX;
         }
         else {
-            DDPortalBlock.Size sizeZ = new Size(worldIn, pos, Direction.Axis.Z);
+            OthersidePortalBlock.Size sizeZ = new Size(worldIn, pos, Direction.Axis.Z);
             return sizeZ.isValid() && sizeZ.portalBlockCount == 0 ? sizeZ : null;
         }
     }
@@ -100,7 +99,7 @@ public class DDPortalBlock extends Block {
                         if(destinationWorld != null && minecraftserver.isNetherEnabled() && !pEntity.isPassenger()) {
                             pEntity.level.getProfiler().push("OTHERSIDE_PORTAL");
                             pEntity.setPortalCooldown();
-                            pEntity.changeDimension(destinationWorld, new DDTeleporter(destinationWorld));
+                            pEntity.changeDimension(destinationWorld, new OthersideTeleporter(destinationWorld));
                             pEntity.level.getProfiler().pop();
                         }
                     }
@@ -277,7 +276,7 @@ public class DDPortalBlock extends Block {
                 BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i);
 
                 for(int j = 0; j < this.height; j++) {
-                    this.level.setBlock(blockpos.above(j), DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(DDPortalBlock.AXIS, this.axis), 18);
+                    this.level.setBlock(blockpos.above(j), DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(OthersidePortalBlock.AXIS, this.axis), 18);
                 }
             }
 

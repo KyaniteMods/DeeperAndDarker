@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.miscellaneous;
+package com.kyanite.deeperdarker.registry.sounds;
 
 public class DDSounds {
     // Warden Armor Equip

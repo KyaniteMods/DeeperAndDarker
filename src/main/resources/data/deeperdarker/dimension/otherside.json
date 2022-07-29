@@ -3,11 +3,11 @@
   "generator": {
     "type": "minecraft:noise",
     "settings": {
-      "sea_level": 10,
+      "sea_level": 32,
       "disable_mob_generation": false,
       "aquifers_enabled": false,
       "ore_veins_enabled": false,
-      "legacy_random_source": false,
+      "legacy_random_source": true,
       "default_block": {
         "Name": "minecraft:sculk"
       },
@@ -18,8 +18,8 @@
         }
       },
       "noise": {
-        "min_y": -64,
-        "height": 384,
+        "min_y": 0,
+        "height": 128,
         "size_horizontal": 1,
         "size_vertical": 2
       },
@@ -46,7 +46,66 @@
       "spawn_target": [],
       "surface_rule": {
         "type": "minecraft:sequence",
-        "sequence": []
+        "sequence": [
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:vertical_gradient",
+              "random_name": "minecraft:bedrock_floor",
+              "true_at_and_below": {
+                "above_bottom": 0
+              },
+              "false_at_and_above": {
+                "above_bottom": 5
+              }
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:bedrock"
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:not",
+              "invert": {
+                "type": "minecraft:vertical_gradient",
+                "random_name": "minecraft:bedrock_roof",
+                "true_at_and_below": {
+                  "below_top": 5
+                },
+                "false_at_and_above": {
+                  "below_top": 0
+                }
+              }
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:bedrock"
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:y_above",
+              "anchor": {
+                "below_top": 5
+              },
+              "surface_depth_multiplier": 0,
+              "add_stone_depth": false
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:sculk"
+              }
+            }
+          }
+        ]
       }
     },
     "biome_source": {

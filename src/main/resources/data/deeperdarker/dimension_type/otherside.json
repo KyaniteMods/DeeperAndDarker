@@ -6,7 +6,6 @@
   "has_ceiling": true,
   "has_raids": false,
   "respawn_anchor_works": false,
-  "has_skylight": false,
   "natural": true,
   "piglin_safe": true,
   "coordinate_scale": 1,
@@ -16,7 +15,7 @@
   "effects": "minecraft:the_nether",
   "infiniburn": "#minecraft:infiniburn_nether",
   "min_y": 0,
-  "height": 256,
+  "height": 128,
   "monster_spawn_light_level": 11,
-  "monster_spawn_block_light_limit": 15
+  "monster_spawn_block_light_limit": 9
 }

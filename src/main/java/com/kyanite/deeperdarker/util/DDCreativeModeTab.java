@@ -8,7 +8,7 @@ public class DDCreativeModeTab {
     public static final CreativeModeTab DD_TAB = new CreativeModeTab("deeperdarker") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(DDItems.SCULK_HEART.get());
+            return new ItemStack(DDItems.WARDEN_HELMET.get());
         }
     };
 }
