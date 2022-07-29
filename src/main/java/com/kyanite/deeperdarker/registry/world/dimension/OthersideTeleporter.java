@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.world.dimension;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.blocks.custom.OthersidePortalBlock;
+import com.kyanite.deeperdarker.registry.blocks.OthersidePortalBlock;
 import com.kyanite.deeperdarker.util.DDPoiTypes;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
