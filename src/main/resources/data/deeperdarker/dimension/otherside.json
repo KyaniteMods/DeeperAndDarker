@@ -3,11 +3,11 @@
   "generator": {
     "type": "minecraft:noise",
     "settings": {
-      "sea_level": 32,
+      "sea_level": 10,
       "disable_mob_generation": false,
       "aquifers_enabled": false,
       "ore_veins_enabled": false,
-      "legacy_random_source": true,
+      "legacy_random_source": false,
       "default_block": {
         "Name": "minecraft:sculk"
       },
@@ -24,7 +24,12 @@
         "size_vertical": 2
       },
       "noise_router": {
-        "barrier": 0,
+        "barrier": {
+          "type": "minecraft:noise",
+          "noise": "minecraft:aquifer_barrier",
+          "xz_scale": 1,
+          "y_scale": 0
+        },
         "fluid_level_floodedness": 0,
         "fluid_level_spread": 0,
         "lava": 0,
@@ -96,7 +101,7 @@
                 "below_top": 5
               },
               "surface_depth_multiplier": 0,
-              "add_stone_depth": false
+              "add_stone_depth": true
             },
             "then_run": {
               "type": "minecraft:block",

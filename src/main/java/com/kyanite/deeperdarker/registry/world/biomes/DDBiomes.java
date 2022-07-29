@@ -1,6 +1,7 @@
-package com.kyanite.deeperdarker.registry.biomes;
+package com.kyanite.deeperdarker.registry.world.biomes;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
 import net.minecraft.resources.ResourceKey;
@@ -15,12 +16,13 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 public class DDBiomes {
-    public static DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
 
-    public static RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", DDBiomes::lowland);
+    public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", DDBiomes::lowland);
 
-    public static RegistryObject<Biome> registerBiome(String biomeName, Supplier<Biome> biomeSupplier) {
-        ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, biomeName));
+
+    public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {
+        ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         return BIOMES.register(biomeResourceKey.location().getPath(), biomeSupplier);
     }
 
@@ -28,9 +30,9 @@ public class DDBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_SOUL_FIRE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDFeatures.PLACE_SCULK_GLEAM.getHolder().get());
 
-        return (new Biome.BiomeBuilder()).precipitation(Biome.Precipitation.NONE)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(2.0F)
                 .downfall(0.0F)
                 .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0x05625D)

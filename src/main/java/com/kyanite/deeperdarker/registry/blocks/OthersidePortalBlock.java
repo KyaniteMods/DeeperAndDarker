@@ -1,6 +1,5 @@
-package com.kyanite.deeperdarker.registry.blocks.custom;
+package com.kyanite.deeperdarker.registry.blocks;
 
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.dimension.OthersideTeleporter;
 import net.minecraft.core.BlockPos;
