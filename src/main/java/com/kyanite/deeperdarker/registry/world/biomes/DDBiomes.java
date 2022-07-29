@@ -1,6 +1,7 @@
-package com.kyanite.deeperdarker.registry.biomes;
+package com.kyanite.deeperdarker.registry.world.biomes;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.NetherPlacements;
 import net.minecraft.resources.ResourceKey;
@@ -19,6 +20,7 @@ public class DDBiomes {
 
     public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", DDBiomes::lowland);
 
+
     public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {
         ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         return BIOMES.register(biomeResourceKey.location().getPath(), biomeSupplier);
@@ -28,7 +30,7 @@ public class DDBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, NetherPlacements.PATCH_SOUL_FIRE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDFeatures.PLACE_SCULK_GLEAM.getHolder().get());
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(2.0F)
