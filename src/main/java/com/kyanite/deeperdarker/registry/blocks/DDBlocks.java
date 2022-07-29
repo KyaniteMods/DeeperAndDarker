@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.blocks.custom.OthersidePortalBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.sculk_vines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.sculk_vines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
