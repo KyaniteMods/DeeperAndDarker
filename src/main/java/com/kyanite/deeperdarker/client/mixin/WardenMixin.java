@@ -62,7 +62,7 @@ public abstract class WardenMixin extends Entity {
             }
 
             for(ServerPlayer plr : this.bossEvent.getPlayers()) {
-                if(plr.distanceTo(livingEntity) > 10)
+                if(plr.distanceTo(livingEntity) > 25)
                     this.bossEvent.removePlayer(plr);
             }
 
