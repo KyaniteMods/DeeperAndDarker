@@ -117,13 +117,14 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.1-42.0.0'
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.11')
     compileOnly fg.deobf("mezz.jei:jei-1.19-common-api:11.1.1.239")
     compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:11.1.1.239")
     runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:11.1.1.239")
 
     compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-6.2.0-6:api") { transitive = false }
     runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-6.2.0-6") { transitive = false }
+
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.11')
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
