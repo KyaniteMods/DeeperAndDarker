@@ -1,7 +1,9 @@
-// 1.19.1	2022-07-28T19:55:27.2498878	Tags for minecraft:block
+// 1.19.1	2022-07-29T13:17:35.5873722	Tags for minecraft:block
 8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/blocks/bone_wood.json
-ba71ae547b7c74933294e830ae267fa62b474df8 data/deeperdarker/tags/blocks/sculk_blocks.json
+d658b445f0716998070df2f0e1a77bd59bb8f052 data/deeperdarker/tags/blocks/sculk_blocks.json
 b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/blocks/sculk_bone_wood.json
+6ed921876d1a8064317c590325eef78f63e9e2c4 data/deeperdarker/tags/blocks/sculk_vines.json
+1d4e7b337609270fe7e8be0acafd0fa186873cd2 data/minecraft/tags/blocks/climbable.json
 3eac047fb4e402f795c5bd97676457e31de1e02b data/minecraft/tags/blocks/fence_gates.json
 c4c6b54365beddba19796ff335a0aaf0cdfdc3a9 data/minecraft/tags/blocks/mineable/axe.json
 9caa9ed6985ad7112c187aa8c519897bf98ae96a data/minecraft/tags/blocks/mineable/hoe.json

@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-28T19:55:27.2538766	LootTables
+// 1.19.1	2022-07-29T13:53:17.3373243	LootTables
 069a55907d243ea2e3966bd431a574ee3d6daaf7 data/deeperdarker/loot_tables/blocks/bone_button.json
 78d380341fe37bf5f7956602303a5a3b2765bf7f data/deeperdarker/loot_tables/blocks/bone_door.json
 83356279169c8801e7f7c372d992c5b70988b5e2 data/deeperdarker/loot_tables/blocks/bone_fence.json
@@ -19,3 +19,5 @@ d262b85235cfa69e9514dd40db26221dbe2c17b5 data/deeperdarker/loot_tables/blocks/sc
 e2b6f0b33873ce917c887ecc495b4aa6d9e7bbc7 data/deeperdarker/loot_tables/blocks/sculk_bone_stairs.json
 23b138f54ebda29fdefaa73763b9b8ba991a629e data/deeperdarker/loot_tables/blocks/sculk_bone_trapdoor.json
 9305aebb07cd53d3dc99750216272916a86a2c9f data/deeperdarker/loot_tables/blocks/sculk_gleam.json
+7c27f4ddd9ff75b354ba4474fdded61e4a743352 data/deeperdarker/loot_tables/blocks/sculk_vines.json
+c280cd1701612f54c76d4f2ce55acaddc68ffa1f data/deeperdarker/loot_tables/blocks/sculk_vines_plant.json

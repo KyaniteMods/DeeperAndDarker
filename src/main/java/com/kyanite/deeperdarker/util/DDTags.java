@@ -13,6 +13,7 @@ public class DDTags {
         public static final TagKey<Block> BONE_WOOD = createTag("bone_wood");
         public static final TagKey<Block> SCULK_BLOCKS = createTag("sculk_blocks");
         public static final TagKey<Block> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
+        public static final TagKey<Block> SCULK_VINES = createTag("sculk_vines");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name));

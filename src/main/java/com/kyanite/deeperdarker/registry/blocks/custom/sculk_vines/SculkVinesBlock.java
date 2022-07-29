@@ -1,0 +1,49 @@
+package com.kyanite.deeperdarker.registry.blocks.custom.sculk_vines;
+
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+public class SculkVinesBlock extends GrowingPlantHeadBlock {
+    protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+
+    public SculkVinesBlock(BlockBehaviour.Properties pProperties) {
+        super(pProperties, Direction.DOWN, SHAPE, false, 0.1);
+    }
+
+    @Override
+    public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
+        if (silkTouchLevel != 0) {
+            return 0;
+        }
+        else return 1;
+    }
+
+    @Override
+    protected Block getBodyBlock() {
+        return DDBlocks.SCULK_VINES_PLANT.get();
+    }
+
+    @Override
+    protected int getBlocksToGrowWhenBonemealed(RandomSource p_221341_) {
+        return 0;
+    }
+
+    @Override
+    protected boolean canGrowInto(BlockState pState) {
+        return false;
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+        return false;
+    }
+}
