@@ -46,10 +46,17 @@ public class DDBlocks {
 
     // Sculk Stone
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<SlabBlock> SCULK_STONE_SLAB = register("sculk_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<StairBlock> SCULK_STONE_STAIRS = register("sculk_stone_stairs", () -> new StairBlock(SCULK_STONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<WallBlock> SCULK_STONE_WALL = register("sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> POLISHED_SCULK_STONE = register("polished_sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<SlabBlock> SCULK_STONE_SLAB = register("sculk_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+    public static final RegistryObject<StairBlock> SCULK_STONE_STAIRS = register("sculk_stone_stairs", () -> new StairBlock(SCULK_STONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+    public static final RegistryObject<WallBlock> SCULK_STONE_WALL = register("sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+
+    public static final RegistryObject<Block> POLISHED_SCULK_STONE = register("polished_sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+    public static final RegistryObject<SlabBlock> POLISHED_SCULK_STONE_SLAB = register("polished_sculk_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+    public static final RegistryObject<StairBlock> POLISHED_SCULK_STONE_STAIRS = register("polished_sculk_stone_stairs", () -> new StairBlock(POLISHED_SCULK_STONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+    public static final RegistryObject<WallBlock> POLISHED_SCULK_STONE_WALL = register("polished_sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+
+    // Sculk Stone Ores
+
 
     // Misc. Otherside
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel((state) -> 15)));
