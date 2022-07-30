@@ -3,7 +3,9 @@ package com.kyanite.deeperdarker;
 import com.kyanite.deeperdarker.registry.world.biomes.DDBiomes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
+import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.kyanite.deeperdarker.util.DDPoiTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,7 +27,11 @@ public class DeeperAndDarker {
         GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
 
-        DDFeatures.register(eventBus);
+        // Features
+        DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
+        DDFeatures.FEATURES.register(eventBus);
+        DDPlacedFeatures.PLACED_FEATURES.register(eventBus);
+
         DDBlocks.BLOCKS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
         DDBiomes.BIOMES.register(eventBus);
