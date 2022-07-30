@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-29T19:56:03.4431413	Item Models: deeperdarker
+// 1.19.1	2022-07-29T20:33:15.2870393	Item Models: deeperdarker
 0a9eb1c2c8a62f347757a60acf0859ca768029de assets/deeperdarker/models/item/bone_button.json
 af6f3186763a1cec53dc982755967805d3be20bc assets/deeperdarker/models/item/bone_door.json
 aa8ff35b68e4f5648c44ab13c87fc5f7ce5394f8 assets/deeperdarker/models/item/bone_fence.json
@@ -21,6 +21,8 @@ ba97f8170b9e43af772586121d425967f5cab711 assets/deeperdarker/models/item/sculk_b
 f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
 97a6c64320d9f1aba3807465c2030717f2e339db assets/deeperdarker/models/item/sculk_heart.json
 bae76bda7430454f988da26853a4dd109381a185 assets/deeperdarker/models/item/sculk_stone.json
+2d485090438b6930e2165d94fe09720d7062dd3d assets/deeperdarker/models/item/sculk_stone_slab.json
+20cceafc01b63f13417b9dcd88a5466fea990288 assets/deeperdarker/models/item/sculk_stone_stairs.json
 43c8356885606b9d1beaecba592e38d0ee2b9b64 assets/deeperdarker/models/item/warden_boots.json
 3d17c3dc7cb5cd4507d1008365ce98a5befb5a4a assets/deeperdarker/models/item/warden_carapace.json
 f268a3ee9626f605ef6352dfd069f8ece1ab05b0 assets/deeperdarker/models/item/warden_chestplate.json

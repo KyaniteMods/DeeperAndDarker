@@ -6,8 +6,11 @@
     "minecraft:sculk_shrieker",
     "minecraft:sculk_vein",
     "deeperdarker:sculk_gleam",
-    "deeperdarker:sculk_vines",
-    "deeperdarker:sculk_vines_plant",
-    "#deeperdarker:sculk_bone_wood"
+    "deeperdarker:sculk_stone",
+    "deeperdarker:sculk_stone_slab",
+    "deeperdarker:sculk_stone_stairs",
+    "deeperdarker:sculk_stone_wall",
+    "#deeperdarker:sculk_bone_wood",
+    "#deeperdarker:sculk_vines"
   ]
 }

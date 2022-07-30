@@ -1,5 +1,5 @@
 {
-  "itemGroup.deeperdarker": "Deeper And Darker",
+  "itemGroup.deeperdarker": "Plus Profond et Plus Sombre",
 
   "block.deeperdarker.bone_planks": "Planches d'os",
   "block.deeperdarker.bone_slab": "Dalle en os",
@@ -21,6 +21,11 @@
   "block.deeperdarker.sculk_bone_pressure_plate": "Plaque de pression en os de sculk",
   "block.deeperdarker.sculk_bone_door": "Porte en os de sculk",
   "block.deeperdarker.sculk_bone_trapdoor": "Trappe en os de sculk",
+
+  "block.deeperdarker.sculk_stone": "Roche de sculk",
+  "block.deeperdarker.sculk_stone_slab": "Dalle de roche de sculk",
+  "block.deeperdarker.sculk_stone_stairs": "Escalier de roche de sculk",
+  "block.deeperdarker.sculk_stone_wall": "Muret de roche de sculk",
 
   "block.deeperdarker.sculk_gleam": "Lueur de sculk",
   "block.deeperdarker.sculk_vines": "Lianes de sculk",

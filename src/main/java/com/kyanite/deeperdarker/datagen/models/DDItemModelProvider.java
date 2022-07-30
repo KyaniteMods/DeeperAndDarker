@@ -42,8 +42,12 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_BONE_TRAPDOOR, "bottom");
         blockModel(DDBlocks.SCULK_BONE_FENCE_GATE);
 
-        blockModel(DDBlocks.SCULK_GLEAM);
         blockModel(DDBlocks.SCULK_STONE);
+        blockModel(DDBlocks.SCULK_STONE_SLAB);
+        blockModel(DDBlocks.SCULK_STONE_STAIRS);
+        blockModel(DDBlocks.SCULK_STONE_WALL, "inventory");
+
+        blockModel(DDBlocks.SCULK_GLEAM);
 
         // ITEMS
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);

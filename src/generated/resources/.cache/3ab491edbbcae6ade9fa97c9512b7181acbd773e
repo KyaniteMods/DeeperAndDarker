@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-28T14:07:56.902438	Crafting Recipes
+// 1.19.1	2022-07-29T20:33:15.2860422	Crafting Recipes
 b980acb407eb0caf595a16a226363b392b650a87 data/deeperdarker/advancements/recipes/deeperdarker/bone_button.json
 71c76a970db514ed45672e4f1a57ce5cbb596d29 data/deeperdarker/advancements/recipes/deeperdarker/bone_door.json
 35ccf12fb448363a2570cf351c79af1b1791f589 data/deeperdarker/advancements/recipes/deeperdarker/bone_fence.json
@@ -18,6 +18,9 @@ f206a35dae45c9f68a11957979d16fe3a97e3b02 data/deeperdarker/advancements/recipes/
 5fd485e2f08ebc7c6b46c2a23300f47df556d069 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_slab.json
 02fa21057801e2cad86a3ae391444c92d96b5a1a data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_stairs.json
 f2b5c5c33a6774e45391c0b47bb1700261382240 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_trapdoor.json
+54ebdb13e4529504c51f4fefc48df865c36d222f data/deeperdarker/advancements/recipes/deeperdarker/sculk_stone_slab.json
+92c401e4066e0775d2ff1daa65eb632810727216 data/deeperdarker/advancements/recipes/deeperdarker/sculk_stone_stairs.json
+15ada9c6dd0a7f7dd5210cfcb684cef320ef6296 data/deeperdarker/advancements/recipes/deeperdarker/sculk_stone_wall.json
 2a0e1c6de47aeb37805c8c57843b2d9a25e837cf data/deeperdarker/recipes/bone_button.json
 3f0ef5a6153b64415564d9605b260b85433ce6a0 data/deeperdarker/recipes/bone_door.json
 f14bc838ddf1d7b4e63006dc41315e43c1f50662 data/deeperdarker/recipes/bone_fence.json
@@ -37,3 +40,6 @@ e35934f8a02db5a4c7d4d8045c900c43da6cc7ae data/deeperdarker/recipes/sculk_bone_fe
 754a12c0fd72e8337cc8f49734bcb2d3d1a1a92d data/deeperdarker/recipes/sculk_bone_slab.json
 6165b63c472588252f6d46f1c6aa03e250e4589a data/deeperdarker/recipes/sculk_bone_stairs.json
 3ace8d5866179c7184a5bc9a67deaf650bb481df data/deeperdarker/recipes/sculk_bone_trapdoor.json
+8eaca2523fa0fd944a8900cb1f7815138336cf78 data/deeperdarker/recipes/sculk_stone_slab.json
+32dda7babe39a7364bf6badbbceb19ea21b4cd94 data/deeperdarker/recipes/sculk_stone_stairs.json
+84f8ac88494f0c9273aefea69061b0917675a987 data/deeperdarker/recipes/sculk_stone_wall.json

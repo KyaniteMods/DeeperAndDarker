@@ -1,15 +1,21 @@
-// 1.19.1	2022-07-29T19:56:03.4391423	Tags for minecraft:block
+// 1.19.1	2022-07-29T20:33:15.291029	Tags for minecraft:block
 8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/blocks/bone_wood.json
-d658b445f0716998070df2f0e1a77bd59bb8f052 data/deeperdarker/tags/blocks/sculk_blocks.json
+e6c0e384a8f15dffb4647be1da1d980515ad1027 data/deeperdarker/tags/blocks/sculk_blocks.json
 b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/blocks/sculk_bone_wood.json
 6ed921876d1a8064317c590325eef78f63e9e2c4 data/deeperdarker/tags/blocks/sculk_vines.json
 1d4e7b337609270fe7e8be0acafd0fa186873cd2 data/minecraft/tags/blocks/climbable.json
 3eac047fb4e402f795c5bd97676457e31de1e02b data/minecraft/tags/blocks/fence_gates.json
 c4c6b54365beddba19796ff335a0aaf0cdfdc3a9 data/minecraft/tags/blocks/mineable/axe.json
 88ab1ef0ba187bd98247733abce07b2a8fa3a902 data/minecraft/tags/blocks/mineable/hoe.json
+2da0393e290a6ec8aef95b5f09da2253177ac597 data/minecraft/tags/blocks/mineable/pickaxe.json
 559b853bd220d520b0dcceb6b71657f89b7fe2b3 data/minecraft/tags/blocks/non_flammable_wood.json
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/blocks/planks.json
+13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 83631a5a696490a592bffe36d730b3222f5add12 data/minecraft/tags/blocks/pressure_plates.json
+14c4f120a3a35118c3a16e3bf0681cb6c6e30c44 data/minecraft/tags/blocks/slabs.json
+9caa9ed6985ad7112c187aa8c519897bf98ae96a data/minecraft/tags/blocks/soul_speed_blocks.json
+7cb95c6ed649d98d2bf1edc877052086153e7ee0 data/minecraft/tags/blocks/stairs.json
+67c694f1e1aa3014778aa7b137753c50b85f20ae data/minecraft/tags/blocks/walls.json
 1bb566eecd4d7c3bfaeec4ba569208820c955530 data/minecraft/tags/blocks/wooden_buttons.json
 930e760175a4652e0869fd0119aa05615e86bb9f data/minecraft/tags/blocks/wooden_doors.json
 74b243f682609b01304a301d05a95151177201f3 data/minecraft/tags/blocks/wooden_fences.json

@@ -40,6 +40,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         fenceGateBlock(DDBlocks.SCULK_BONE_FENCE_GATE.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
+        slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));
+        stairsBlock(DDBlocks.SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.SCULK_STONE));
+        wallBlock(DDBlocks.SCULK_STONE_WALL.get(), blockLoc(DDBlocks.SCULK_STONE));
+
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
     }
 

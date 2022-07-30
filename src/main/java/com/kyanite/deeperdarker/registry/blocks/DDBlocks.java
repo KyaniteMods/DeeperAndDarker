@@ -44,11 +44,17 @@ public class DDBlocks {
     public static final RegistryObject<TrapDoorBlock> SCULK_BONE_TRAPDOOR = register("sculk_bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> SCULK_BONE_FENCE_GATE = register("sculk_bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
 
-    // Otherside
+    // Sculk Stone
+    public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<SlabBlock> SCULK_STONE_SLAB = register("sculk_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<StairBlock> SCULK_STONE_STAIRS = register("sculk_stone_stairs", () -> new StairBlock(SCULK_STONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<WallBlock> SCULK_STONE_WALL = register("sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
+
+
+    // Misc. Otherside
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel((state) -> 15)));
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
     public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = registerBlockWithoutItem("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
-    public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(5.5F, 6.0F).sound(SoundType.SCULK)));
     public static final  RegistryObject<Block> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).strength(-1f).noCollission().lightLevel((state) -> 5).noLootTable()));
 
     public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }
