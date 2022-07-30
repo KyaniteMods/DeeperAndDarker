@@ -6,7 +6,8 @@
   "refmap": "deeperdarker.refmap.json",
   "mixins": [
     "WardenMixin",
-    "WardenAiMixin"
+    "WardenAiMixin",
+    "PhantomMixin"
   ],
   "client": [
 
