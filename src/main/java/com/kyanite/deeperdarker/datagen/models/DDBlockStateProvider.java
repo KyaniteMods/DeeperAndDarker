@@ -47,6 +47,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         slabBlock(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
         stairsBlock(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
         wallBlock(DDBlocks.POLISHED_SCULK_STONE_WALL.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
+        simpleBlock(DDBlocks.POLISHED_SCULK_STONE_BRICKS.get());
+        slabBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_SLAB.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
+        stairsBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_STAIRS.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
+        wallBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_WALL.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
 
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_IRON_ORE.get());
