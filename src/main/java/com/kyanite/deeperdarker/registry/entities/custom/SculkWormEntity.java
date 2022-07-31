@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -11,6 +12,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
@@ -19,11 +21,21 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
@@ -43,16 +55,13 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.function.BiConsumer;
 
-public class SculkWormEntity extends Monster implements IAnimatable, VibrationListener.VibrationListenerConfig {
+public class SculkWormEntity extends Monster implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
-    private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
     private static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> ANIMATION_TIME = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> TRIGGERED = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     public SculkWormEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, (VibrationListener.ReceivingEvent)null, 0.0F, 0));
     }
 
     @Override
@@ -61,8 +70,26 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
     }
 
     @Override
-    public boolean dampensVibrations() {
-        return true;
+    protected void registerGoals() {
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 50F));
+        this.goalSelector.addGoal(4, new SculkWormAttack(this, 0, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundEvents.WARDEN_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.WARDEN_DEATH;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.WARDEN_AMBIENT;
     }
 
     @Override
@@ -75,14 +102,18 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
         return false;
     }
 
+    @Override
+    public float getSpeed() {
+        return 0;
+    }
+
     public boolean removeWhenFarAway(double p_219457_) {
         return false;
     }
 
     public boolean checkSpawnObstruction(LevelReader p_219398_) {
-        return super.checkSpawnObstruction(p_219398_) && p_219398_.noCollision(this, this.getType().getDimensions().makeBoundingBox(this.position()));
+        return false;
     }
-
     public float getWalkTargetValue(BlockPos p_219410_, LevelReader p_219411_) {
         return 0.0F;
     }
@@ -103,13 +134,8 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
 
         if(isDeadOrDying()) return;
 
-        if (level instanceof ServerLevel serverlevel) {
-            this.dynamicGameEventListener.getListener().tick(serverlevel);
-        }
-
         if(this.getState() == SculkWormState.AWAKE)
         {
-            setTriggered(0);
             if(getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
                 DeeperAndDarker.LOGGER.info(String.valueOf(getDescendTime()));
@@ -126,8 +152,8 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
             if(getAnimationTime() > 85) {
                 setAnimationTime(0);
                 setDescendTime(0);
-                setTriggered(0);
-                this.setState(SculkWormState.SLEEPING);
+                this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
+                this.remove(RemovalReason.KILLED);
             }
         }
 
@@ -138,8 +164,18 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
             if(getAnimationTime() > 85) {
                 setDescendTime(1200);
                 setAnimationTime(0);
-                setTriggered(0);
                 this.setState(SculkWormState.AWAKE);
+            }
+        }
+
+        if(this.getState() == SculkWormState.ATTACKING)
+        {
+            setAnimationTime(getAnimationTime() + 1);
+            if(getAnimationTime() > 8) {
+                setAnimationTime(0);
+                this.setState(SculkWormState.AWAKE);
+                if(this.getTarget() != null)
+                    this.doHurtTarget(this.getTarget());
             }
         }
     }
@@ -149,22 +185,19 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
         return super.isInvulnerableTo(pSource);
     }
 
-    @Override
-    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> p_216996_) {
-        Level level = this.level;
-        if (level instanceof ServerLevel serverlevel) {
-            p_216996_.accept(this.dynamicGameEventListener, serverlevel);
-        }
-    }
-
     public static AttributeSupplier attributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 12).build();
+                .add(Attributes.MAX_HEALTH, 550)
+                .add(Attributes.ATTACK_KNOCKBACK, 1.5f)
+                .add(Attributes.ATTACK_DAMAGE, 7).build();
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(this.getState().equals(SculkWormState.EMERGING)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("emerge", false));
+            return PlayState.CONTINUE;
+        }else if(this.getState().equals(SculkWormState.ATTACKING)) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("melee", false));
             return PlayState.CONTINUE;
         }else if(this.getState().equals(SculkWormState.SLEEPING)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("asleep", true));
@@ -197,41 +230,8 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
     }
 
     @Override
-    public void onSignalReceive(ServerLevel p_223865_, GameEventListener p_223866_, BlockPos p_223867_, GameEvent p_223868_, @Nullable Entity p_223869_, @Nullable Entity p_223870_, float p_223871_) {
-        if(this.getTriggered() == 7 && this.getState().equals(SculkWormState.SLEEPING)) {
-            this.setTriggered(0);
-            this.playSound(SoundEvents.SCULK_SHRIEKER_FALL, 5.0F, 1.0F);
-            this.setState(SculkWormState.EMERGING);
-        }else{
-            DeeperAndDarker.LOGGER.info(String.valueOf(this.getTriggered()));
-            this.setTriggered(this.getTriggered() + 1);
-        }
-    }
-
-    @Override
-    public TagKey<GameEvent> getListenableEvents() {
-        return GameEventTags.SHRIEKER_CAN_LISTEN;
-    }
-
-    @Override
-    public boolean canTriggerAvoidVibration() {
-        return true;
-    }
-
-    @Override
-    public boolean isValidVibration(GameEvent p_223878_, GameEvent.Context p_223879_) {
-        return true;
-    }
-
-    @Override
-    public boolean shouldListen(ServerLevel p_223872_, GameEventListener p_223873_, BlockPos p_223874_, GameEvent p_223875_, GameEvent.Context p_223876_) {
-        return true;
-    }
-
-    @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(TRIGGERED, 0);
         this.entityData.define(DESCEND_COUNTDOWN, 1200);
         this.entityData.define(STATE, SculkWormState.SLEEPING.getValue());
         this.entityData.define(ANIMATION_TIME, 0);
@@ -241,29 +241,18 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
 
-        pCompound.putInt("Triggered", this.getTriggered());
         pCompound.putInt("DescendTime", this.getDescendTime());
         pCompound.putInt("AnimationTime", this.getAnimationTime());
         pCompound.putInt("State", this.getState().getValue());
-        VibrationListener.codec(this).encodeStart(NbtOps.INSTANCE, this.dynamicGameEventListener.getListener()).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((p_219418_) -> {
-            pCompound.put("listener", p_219418_);
-        });
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
 
-        this.setTriggered(pCompound.getInt("Triggered"));
         this.setState(SculkWormState.values()[pCompound.getInt("State")]);
         this.setAnimationTime(pCompound.getInt("AnimationTime"));
         this.setDescendTime(pCompound.getInt("DescendTime"));
-
-        if (pCompound.contains("listener", 10)) {
-            VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((p_219408_) -> {
-                this.dynamicGameEventListener.updateListener(p_219408_, this.level);
-            });
-        }
     }
 
     public SculkWormState getState() {
@@ -290,19 +279,12 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
         this.entityData.set(ANIMATION_TIME, value);
     }
 
-    public int getTriggered() {
-        return this.entityData.get(TRIGGERED);
-    }
-
-    public void setTriggered(int value) {
-        this.entityData.set(TRIGGERED, value);
-    }
-
     public enum SculkWormState {
         SLEEPING(0),
         AWAKE(1),
         EMERGING(2),
-        DESCENDING(3);
+        DESCENDING(3),
+        ATTACKING(4);
 
         int value;
         SculkWormState(int x)

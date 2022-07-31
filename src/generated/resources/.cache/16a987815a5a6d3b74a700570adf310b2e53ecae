@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-30T13:34:57.8712977	Block States: deeperdarker
+// 1.19.1	2022-07-31T12:03:37.3346703	Block States: deeperdarker
 f562dc70b14bdf400dc674b2526cc7ba7bfd3344 assets/deeperdarker/blockstates/bone_button.json
 9c7e3f4cab841573abfbd8e7b705276c7a693c27 assets/deeperdarker/blockstates/bone_door.json
 5c022e3094310ad56f8ab626466c42444c5a9c0a assets/deeperdarker/blockstates/bone_fence.json
@@ -8,6 +8,7 @@ db7cad1cfca7aa3bef3cf940f588dbbda46cc52d assets/deeperdarker/blockstates/bone_pr
 58a0df1fa24c05bbc7e3f9c21a8d095cad2cb6ca assets/deeperdarker/blockstates/bone_slab.json
 92da1df990a40b9840e82b7b7da90b3cd115a65f assets/deeperdarker/blockstates/bone_stairs.json
 c1561c776f669358b6eb26e57987cd0b512b1afd assets/deeperdarker/blockstates/bone_trapdoor.json
+806ccbbbd3d24a4d7e19d23cdc4008dacf14e2e0 assets/deeperdarker/blockstates/infested_sculk.json
 f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polished_sculk_stone.json
 65ee0b17417cefc06f60fd584d5cd1092c1725e7 assets/deeperdarker/blockstates/polished_sculk_stone_slab.json
 a1292f9331c5de779bca4b9d6d6bcb1b76d9d14e assets/deeperdarker/blockstates/polished_sculk_stone_stairs.json
@@ -56,6 +57,7 @@ f6761b5022880d45634358f2ca2c47ee28fc2ffe assets/deeperdarker/models/block/bone_s
 4abbf0efb60eddfd4f5bc44786409c1f135dd87c assets/deeperdarker/models/block/bone_trapdoor_bottom.json
 f2cb9fe9b5686d2d0b209084b0a8aa55070006d1 assets/deeperdarker/models/block/bone_trapdoor_open.json
 e0227031899a92f03d674b07e1686d7bda8db93e assets/deeperdarker/models/block/bone_trapdoor_top.json
+228e188749dcf61478397d8fd2edb7df3b638393 assets/deeperdarker/models/block/infested_sculk.json
 6e39e5f243d47894fcebfef939f739ce9a07ee4b assets/deeperdarker/models/block/polished_sculk_stone.json
 590440dc0c02ec2bc2da402df1a8d28bca185596 assets/deeperdarker/models/block/polished_sculk_stone_slab.json
 0444208efd7f560442f247a2a444f0f52dd1613f assets/deeperdarker/models/block/polished_sculk_stone_slab_top.json
