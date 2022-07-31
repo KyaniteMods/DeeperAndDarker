@@ -138,7 +138,6 @@ public class SculkWormEntity extends Monster implements IAnimatable {
         {
             if(getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
-                DeeperAndDarker.LOGGER.info(String.valueOf(getDescendTime()));
             }else {
                 setDescendTime(1200);
                 this.setState(SculkWormState.DESCENDING);
