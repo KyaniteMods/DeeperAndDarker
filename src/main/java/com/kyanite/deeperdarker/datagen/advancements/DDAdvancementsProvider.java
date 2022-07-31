@@ -47,13 +47,6 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(BuiltinStructures.ANCIENT_CITY)))
                 .save(consumer, id + "locate_ancient_city");
 
-        Advancement.Builder.advancement().parent(locateAncientCity).display(Items.ECHO_SHARD,
-                Component.translatable("advancements.deeperdarker.obtain_echo_shard.title"),
-                Component.translatable("advancements.deeperdarker.obtain_echo_shard.description"),
-                null, FrameType.TASK, true, true, false)
-                .addCriterion("echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(Items.ECHO_SHARD))
-                .save(consumer, id + "obtain_echo_shard");
-
         Advancement.Builder.advancement().parent(locateAncientCity).display(Blocks.SCULK_SHRIEKER,
                 Component.translatable("advancements.deeperdarker.summon_warden.title"),
                 Component.translatable("advancements.deeperdarker.summon_warden.description"),

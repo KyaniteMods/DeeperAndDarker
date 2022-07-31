@@ -50,6 +50,19 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.POLISHED_SCULK_STONE_SLAB);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_WALL, "inventory");
+        blockModel(DDBlocks.SCULK_STONE_BRICKS);
+        blockModel(DDBlocks.SCULK_STONE_BRICK_SLAB);
+        blockModel(DDBlocks.SCULK_STONE_BRICK_STAIRS);
+        blockModel(DDBlocks.SCULK_STONE_BRICK_WALL, "inventory");
+
+        blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
+        blockModel(DDBlocks.SCULK_STONE_IRON_ORE);
+        blockModel(DDBlocks.SCULK_STONE_COPPER_ORE);
+        blockModel(DDBlocks.SCULK_STONE_GOLD_ORE);
+        blockModel(DDBlocks.SCULK_STONE_REDSTONE_ORE);
+        blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
+        blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
+        blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
 
         blockModel(DDBlocks.INFESTED_SCULK);
         blockModel(DDBlocks.SCULK_GLEAM);
@@ -60,7 +73,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
-        itemModel(DDItems.SCULK_HEART, GENERATED);
+        itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

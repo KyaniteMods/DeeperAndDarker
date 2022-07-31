@@ -19,5 +19,5 @@ public class DDItems {
     public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new SculkArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new SculkArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
-    public static final RegistryObject<Item> SCULK_HEART = ITEMS.register("sculk_heart", () -> new SculkHeartItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> HEART_OF_THE_DEEP = ITEMS.register("sculk_heart", () -> new SculkHeartItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 }

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "deeperdarker:infested_sculk"
+          "name": "deeperdarker:sculk_stone_brick_stairs"
         }
       ],
       "rolls": 1.0

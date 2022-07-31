@@ -38,10 +38,10 @@ public class DDLootTables extends BlockLoot {
         this.add(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_WALL.get());
-        this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_BRICKS.get());
-        this.add(DDBlocks.POLISHED_SCULK_STONE_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
-        this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_BRICK_STAIRS.get());
-        this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_BRICK_WALL.get());
+        this.dropSelf(DDBlocks.SCULK_STONE_BRICKS.get());
+        this.add(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
+        this.dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
 
         this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (Block) -> createOreDrop(Block, Items.COAL));
         this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (Block) -> createOreDrop(Block, Items.RAW_IRON));
