@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,16 +43,16 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE.get());
         slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));
         stairsBlock(DDBlocks.SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.SCULK_STONE));
-        wallBlock(DDBlocks.SCULK_STONE_WALL.get(), blockLoc(DDBlocks.SCULK_STONE));
+        wallBlock(DDBlocks.SCULK_STONE_WALL, blockLoc(DDBlocks.SCULK_STONE));
         simpleBlock(DDBlocks.POLISHED_SCULK_STONE.get());
         slabBlock(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
         stairsBlock(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
-        wallBlock(DDBlocks.POLISHED_SCULK_STONE_WALL.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
+        wallBlock(DDBlocks.POLISHED_SCULK_STONE_WALL, blockLoc(DDBlocks.POLISHED_SCULK_STONE));
 /*
         simpleBlock(DDBlocks.POLISHED_SCULK_STONE_BRICKS.get());
         slabBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_SLAB.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
         stairsBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_STAIRS.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
-        wallBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_WALL.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
+        wallBlock(DDBlocks.POLISHED_SCULK_STONE_BRICK_WALL, blockLoc(DDBlocks.POLISHED_SCULK_STONE_BRICKS));
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_IRON_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_COPPER_ORE.get());
@@ -64,6 +65,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
+        simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("translucent"));
+        simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("translucent"));
     }
 
     public void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
@@ -74,6 +77,11 @@ public class DDBlockStateProvider extends BlockStateProvider {
     public void buttonBlock(RegistryObject<ButtonBlock> block, ResourceLocation texture) {
         super.buttonBlock(block.get(), texture);
         models().buttonInventory(block.getId().toString() + "_inventory", texture);
+    }
+
+    public void wallBlock(RegistryObject<WallBlock> block, ResourceLocation texture) {
+        super.wallBlock(block.get(), texture);
+        models().wallInventory(block.getId().toString() + "_inventory", texture);
     }
 
     public ResourceLocation blockLoc(RegistryObject<? extends Block> block) {

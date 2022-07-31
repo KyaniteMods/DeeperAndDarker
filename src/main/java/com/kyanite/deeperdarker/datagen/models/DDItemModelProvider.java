@@ -49,9 +49,14 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.POLISHED_SCULK_STONE_SLAB);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_WALL, "inventory");
+        /*blockModel(DDBlocks.POLISHED_SCULK_STONE_BRICKS);
+        blockModel(DDBlocks.POLISHED_SCULK_STONE_BRICK_SLAB);
+        blockModel(DDBlocks.POLISHED_SCULK_STONE_BRICK_STAIRS);
+        blockModel(DDBlocks.POLISHED_SCULK_STONE_BRICK_WALL, "inventory");*/
 
         blockModel(DDBlocks.INFESTED_SCULK);
         blockModel(DDBlocks.SCULK_GLEAM);
+        getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
 
         // ITEMS
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
