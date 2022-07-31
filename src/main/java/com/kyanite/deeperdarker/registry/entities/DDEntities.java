@@ -16,6 +16,6 @@ public class DDEntities {
     public static final RegistryObject<EntityType<SculkWormEntity>> SCULK_WORM =
             ENTITY_TYPES.register("sculk_worm",
                     () -> EntityType.Builder.of(SculkWormEntity::new, MobCategory.CREATURE)
-                            .sized( 0.9F, 5)
+                            .sized(0.8F, 10)
                             .build(new ResourceLocation(DeeperAndDarker.MOD_ID, "sculk_worm").toString()));
 }

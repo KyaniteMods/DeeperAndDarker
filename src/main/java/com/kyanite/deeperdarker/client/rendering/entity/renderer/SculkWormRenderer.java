@@ -27,7 +27,7 @@ public class SculkWormRenderer extends GeoEntityRenderer<SculkWormEntity> {
 
     @Override
     public RenderType getRenderType(SculkWormEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
-        stack.scale(0.5f, 0.5f, 0.5f);
+        stack.scale(1f, 1f, 1f);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }
