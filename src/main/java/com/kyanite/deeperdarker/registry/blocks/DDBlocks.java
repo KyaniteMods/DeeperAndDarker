@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.blocks.custom.InfestedSculk;
 import com.kyanite.deeperdarker.registry.blocks.custom.OthersidePortalBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.sculk_vines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.sculk_vines.SculkVinesPlantBlock;
@@ -76,7 +77,7 @@ public class DDBlocks {
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
     public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = registerBlockWithoutItem("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
     public static final  RegistryObject<Block> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).strength(-1f).noCollission().lightLevel((state) -> 5).noLootTable()));
-
+    public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculk(BlockBehaviour.Properties.copy(Blocks.SCULK).sound(SoundType.SCULK).strength(0.2F)));
     public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);

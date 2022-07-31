@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-30T13:34:57.8732916	Tags for minecraft:block
+// 1.19.1	2022-07-31T12:03:37.3336703	Tags for minecraft:block
 8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/blocks/bone_wood.json
 b160e79e2435fb530c4e01c61f32752fd72c3e13 data/deeperdarker/tags/blocks/sculk_blocks.json
 b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/blocks/sculk_bone_wood.json
@@ -12,6 +12,8 @@ e392f878f903ccec16adc15d14a3ff7d7adf1b11 data/minecraft/tags/blocks/mineable/pic
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/pressure_plates.json
+d4e578622a4b2c7eb166dbdb1f9b87aaa946be7c data/minecraft/tags/blocks/sculk_replaceable.json
+d4e578622a4b2c7eb166dbdb1f9b87aaa946be7c data/minecraft/tags/blocks/sculk_replaceable_world_gen.json
 a72b6ba4527f2fecc9aebe68231f207236211386 data/minecraft/tags/blocks/slabs.json
 9caa9ed6985ad7112c187aa8c519897bf98ae96a data/minecraft/tags/blocks/soul_fire_base_blocks.json
 9caa9ed6985ad7112c187aa8c519897bf98ae96a data/minecraft/tags/blocks/soul_speed_blocks.json

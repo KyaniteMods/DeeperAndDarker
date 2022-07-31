@@ -20,6 +20,8 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.BONE_WOOD);
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE_BRICKS.get(), DDBlocks.POLISHED_SCULK_STONE_BRICK_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get()).addTag(DDTags.Blocks.BONE_WOOD);
         tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.SCULK_GLEAM.get()).addTag(DDTags.Blocks.SCULK_BONE_WOOD);
+        tag(BlockTags.SCULK_REPLACEABLE).add(DDBlocks.INFESTED_SCULK.get());
+        tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(DDBlocks.INFESTED_SCULK.get());
         tag(BlockTags.SOUL_SPEED_BLOCKS).addTag(DDTags.Blocks.SCULK_BLOCKS);
         tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).addTag(DDTags.Blocks.SCULK_BLOCKS);
         tag(BlockTags.FENCE_GATES).add(DDBlocks.BONE_FENCE_GATE.get(), DDBlocks.SCULK_BONE_FENCE_GATE.get());

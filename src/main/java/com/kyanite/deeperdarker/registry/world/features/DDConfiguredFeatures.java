@@ -24,7 +24,14 @@ public class DDConfiguredFeatures {
 
     public static final Supplier<List<OreConfiguration.TargetBlockState>> SCULK_STONES = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.SCULK_STONE.get().defaultBlockState())));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_STONE = CONFIGURED_FEATURES.register("sculk_stone", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(SCULK_STONES.get(), 64)));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> INFESTED_SCULKS = Suppliers.memoize(() -> List.of(
+            OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.INFESTED_SCULK.get().defaultBlockState())));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_STONE = CONFIGURED_FEATURES.register("sculk_stone",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(SCULK_STONES.get(), 64)));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> INFESTED_SCULK = CONFIGURED_FEATURES.register("infested_sculk",
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(INFESTED_SCULKS.get(), 32)));
 
 
 

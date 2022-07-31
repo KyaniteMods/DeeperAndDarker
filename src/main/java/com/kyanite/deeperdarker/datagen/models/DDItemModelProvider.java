@@ -51,6 +51,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_WALL, "inventory");
 
+        blockModel(DDBlocks.INFESTED_SCULK);
         blockModel(DDBlocks.SCULK_GLEAM);
 
         // ITEMS

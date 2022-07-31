@@ -62,6 +62,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
+        simpleBlock(DDBlocks.INFESTED_SCULK.get());
     }
 
     public void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
