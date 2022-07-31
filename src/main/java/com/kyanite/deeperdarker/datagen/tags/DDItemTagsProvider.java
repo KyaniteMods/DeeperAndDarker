@@ -30,6 +30,14 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.STAIRS, ItemTags.STAIRS);
         copy(BlockTags.WALLS, ItemTags.WALLS);
+        copy(BlockTags.COAL_ORES, ItemTags.COAL_ORES);
+        copy(BlockTags.IRON_ORES, ItemTags.IRON_ORES);
+        copy(BlockTags.COPPER_ORES, ItemTags.COPPER_ORES);
+        copy(BlockTags.GOLD_ORES, ItemTags.GOLD_ORES);
+        copy(BlockTags.REDSTONE_ORES, ItemTags.REDSTONE_ORES);
+        copy(BlockTags.EMERALD_ORES, ItemTags.EMERALD_ORES);
+        copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
+        copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
         this.tag(ItemTags.STONE_TOOL_MATERIALS).add(Item.byBlock(DDBlocks.SCULK_STONE.get()));
         this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(Item.byBlock(DDBlocks.SCULK_STONE.get()));

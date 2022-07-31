@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.datagen.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.datagen.models.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.models.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.recipes.CraftingRecipesProvider;
+import com.kyanite.deeperdarker.datagen.recipes.SmeltingBlastingCookingRecipesProvider;
 import com.kyanite.deeperdarker.datagen.recipes.SmithingRecipesProvider;
 import com.kyanite.deeperdarker.datagen.recipes.StonecuttingRecipesProvider;
 import com.kyanite.deeperdarker.datagen.tags.DDBlockTagsProvider;
@@ -34,6 +35,7 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new DDItemModelProvider(generator, fileHelper));
 
         generator.addProvider(event.includeServer(), new CraftingRecipesProvider(generator));
+        generator.addProvider(event.includeServer(), new SmeltingBlastingCookingRecipesProvider(generator));
         generator.addProvider(event.includeServer(), new SmithingRecipesProvider(generator));
         generator.addProvider(event.includeServer(), new StonecuttingRecipesProvider(generator));
 
