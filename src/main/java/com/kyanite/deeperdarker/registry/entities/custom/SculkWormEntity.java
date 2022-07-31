@@ -22,6 +22,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -35,6 +36,7 @@ import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
+import org.w3c.dom.Attr;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -162,7 +164,8 @@ public class SculkWormEntity extends Monster implements IAnimatable, VibrationLi
     }
 
     public static AttributeSupplier attributes() {
-        return Monster.createMonsterAttributes().build();
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 12).build();
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
