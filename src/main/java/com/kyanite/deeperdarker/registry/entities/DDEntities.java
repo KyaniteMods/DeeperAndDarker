@@ -14,8 +14,8 @@ public class DDEntities {
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, DeeperAndDarker.MOD_ID);
 
     public static final RegistryObject<EntityType<SculkWormEntity>> SCULK_WORM =
-            ENTITY_TYPES.register("sculk_worm",
+            ENTITY_TYPES.register("shriek_worm",
                     () -> EntityType.Builder.of(SculkWormEntity::new, MobCategory.CREATURE)
                             .sized(0.8F, 10)
-                            .build(new ResourceLocation(DeeperAndDarker.MOD_ID, "sculk_worm").toString()));
+                            .build(new ResourceLocation(DeeperAndDarker.MOD_ID, "shriek_worm").toString()));
 }
