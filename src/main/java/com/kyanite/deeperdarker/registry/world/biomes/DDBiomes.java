@@ -1,11 +1,9 @@
 package com.kyanite.deeperdarker.registry.world.biomes;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.Carvers;
-import net.minecraft.data.worldgen.placement.NetherPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Musics;
