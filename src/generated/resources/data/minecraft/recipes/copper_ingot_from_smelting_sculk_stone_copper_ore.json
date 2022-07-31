@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1.4,
+  "group": "copper_ingot",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone_copper_ore"
+  },
+  "result": "minecraft:copper_ingot"
+}

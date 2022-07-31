@@ -33,8 +33,8 @@ import java.util.function.Function;
 public class OthersideTeleporter implements ITeleporter {
     protected final ServerLevel level;
 
-    public OthersideTeleporter(ServerLevel worldIn) {
-        this.level = worldIn;
+    public OthersideTeleporter(ServerLevel level) {
+        this.level = level;
     }
 
     public Optional<BlockUtil.FoundRectangle> getExistingPortal(BlockPos pos) {

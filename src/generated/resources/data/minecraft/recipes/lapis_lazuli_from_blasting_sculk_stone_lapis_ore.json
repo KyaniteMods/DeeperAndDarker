@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.4,
+  "group": "lapis_lazuli",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone_lapis_ore"
+  },
+  "result": "minecraft:lapis_lazuli"
+}

@@ -14,6 +14,18 @@
     "deeperdarker:polished_sculk_stone_slab",
     "deeperdarker:polished_sculk_stone_stairs",
     "deeperdarker:polished_sculk_stone_wall",
+    "deeperdarker:polished_sculk_stone_bricks",
+    "deeperdarker:polished_sculk_stone_brick_slab",
+    "deeperdarker:polished_sculk_stone_brick_stairs",
+    "deeperdarker:polished_sculk_stone_brick_wall",
+    "deeperdarker:sculk_stone_coal_ore",
+    "deeperdarker:sculk_stone_iron_ore",
+    "deeperdarker:sculk_stone_copper_ore",
+    "deeperdarker:sculk_stone_gold_ore",
+    "deeperdarker:sculk_stone_redstone_ore",
+    "deeperdarker:sculk_stone_emerald_ore",
+    "deeperdarker:sculk_stone_lapis_ore",
+    "deeperdarker:sculk_stone_diamond_ore",
     "#deeperdarker:sculk_bone_wood",
     "#deeperdarker:sculk_vines"
   ]

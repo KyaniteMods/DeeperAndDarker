@@ -43,19 +43,18 @@ public class DDLootTables extends BlockLoot {
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
 
-        this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (Block) -> createOreDrop(Block, Items.COAL));
-        this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (Block) -> createOreDrop(Block, Items.RAW_IRON));
-        this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (Block) -> createCopperOreDrops(DDBlocks.SCULK_STONE_COPPER_ORE.get()));
-        this.add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (Block) -> createOreDrop(Block, Items.RAW_GOLD));
-        this.add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), (Block) -> createRedstoneOreDrops(DDBlocks.SCULK_STONE_REDSTONE_ORE.get()));
-        this.add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (Block) -> createOreDrop(Block, Items.EMERALD));
-        this.add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), (Block) -> createLapisOreDrops(DDBlocks.SCULK_STONE_LAPIS_ORE.get()));
-        this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (Block) -> createOreDrop(Block, Items.DIAMOND));
+        this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> createOreDrop(block, Items.COAL));
+        this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> createOreDrop(block, Items.RAW_IRON));
+        this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (block) -> createCopperOreDrops(DDBlocks.SCULK_STONE_COPPER_ORE.get()));
+        this.add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> createOreDrop(block, Items.RAW_GOLD));
+        this.add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), (block) -> createRedstoneOreDrops(DDBlocks.SCULK_STONE_REDSTONE_ORE.get()));
+        this.add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> createOreDrop(block, Items.EMERALD));
+        this.add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), (block) -> createLapisOreDrops(DDBlocks.SCULK_STONE_LAPIS_ORE.get()));
+        this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> createOreDrop(block, Items.DIAMOND));
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
-        this.dropSelf(DDBlocks.INFESTED_SCULK.get());
-        this.dropWhenSilkTouch(DDBlocks.SCULK_VINES.get());
-        this.dropWhenSilkTouch(DDBlocks.SCULK_VINES_PLANT.get());
+        this.add(DDBlocks.SCULK_VINES.get(), BlockLoot::createShearsOnlyDrop);
+        this.add(DDBlocks.SCULK_VINES_PLANT.get(), BlockLoot::createShearsOnlyDrop);
     }
 
     @Override

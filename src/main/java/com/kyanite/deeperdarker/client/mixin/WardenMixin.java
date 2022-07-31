@@ -1,9 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -29,11 +26,14 @@ import java.util.Optional;
 
 @Mixin(Warden.class)
 public abstract class WardenMixin extends Entity {
-    @Shadow public abstract Brain<Warden> getBrain();
+    @Shadow
+    public abstract Brain<Warden> getBrain();
 
-    @Shadow public abstract AngerLevel getAngerLevel();
+    @Shadow
+    public abstract AngerLevel getAngerLevel();
 
-    @Shadow private AngerManagement angerManagement;
+    @Shadow
+    private AngerManagement angerManagement;
 
     public WardenMixin(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -41,26 +41,25 @@ public abstract class WardenMixin extends Entity {
 
     @Inject(method = "getEntityAngryAt", at = @At("HEAD"), cancellable = true)
     public void getEntityAngryAt(CallbackInfoReturnable<Optional<LivingEntity>> cir) {
-        if(this.angerManagement.getActiveEntity().isEmpty()) return;
+        if (this.angerManagement.getActiveEntity().isEmpty()) return;
 
-        if (this.angerManagement.getActiveEntity().get() instanceof Player) {
-            Player plr = (Player) this.angerManagement.getActiveEntity().get();
+        if (this.angerManagement.getActiveEntity().get() instanceof Player plr) {
             if (plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 cir.setReturnValue(Optional.empty());
             }
         }
     }
+
     @Inject(method = "setAttackTarget", at = @At("HEAD"), cancellable = true)
-    public void setTarget(LivingEntity p_219460_, CallbackInfo ci) {
-        if(p_219460_ instanceof Player)
-        {
-            Player plr = (Player) p_219460_;
-            if(plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+    public void setTarget(LivingEntity entity, CallbackInfo ci) {
+        if (entity instanceof Player plr) {
+            if (plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
                 ci.cancel();
             }
         }
     }
+
     @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
     private static void createAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.setReturnValue(Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 350).add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 15));
