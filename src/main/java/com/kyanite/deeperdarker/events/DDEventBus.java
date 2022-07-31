@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.events;
+package com.kyanite.deeperdarker.events;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.armor.renderer.SculkArmorRenderer;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 @Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class EventBusEvents {
+public class DDEventBus {
     @SubscribeEvent
     public static void entityRender(final EntityRenderersEvent.AddLayers event) {
         GeoArmorRenderer.registerArmorRenderer(SculkArmorItem.class, new SculkArmorRenderer());
