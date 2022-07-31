@@ -1,4 +1,4 @@
-// 1.19.1	2022-07-31T15:56:32.5929579	LootTables
+// 1.19.1	2022-07-31T16:47:51.1813768	LootTables
 069a55907d243ea2e3966bd431a574ee3d6daaf7 data/deeperdarker/loot_tables/blocks/bone_button.json
 78d380341fe37bf5f7956602303a5a3b2765bf7f data/deeperdarker/loot_tables/blocks/bone_door.json
 83356279169c8801e7f7c372d992c5b70988b5e2 data/deeperdarker/loot_tables/blocks/bone_fence.json
@@ -8,7 +8,6 @@
 c98baeb4546a4f10da095d6ac50d61cb9a155886 data/deeperdarker/loot_tables/blocks/bone_slab.json
 b7253c4a2cd1dde9239b925edccc372d819811b2 data/deeperdarker/loot_tables/blocks/bone_stairs.json
 d21f4a64ad2aed1876fef978d29a48e56b8fe8d9 data/deeperdarker/loot_tables/blocks/bone_trapdoor.json
-3be2b3d15f2f326173e8c9d1c25c5a0fc97cc1e5 data/deeperdarker/loot_tables/blocks/infested_sculk.json
 097f61034d2c53785e6b5b93d1e675d1038b7e63 data/deeperdarker/loot_tables/blocks/polished_sculk_stone.json
 6e41ce336b07fcc37ebf7f517fae65e323dbda11 data/deeperdarker/loot_tables/blocks/polished_sculk_stone_bricks.json
 99d1f6ea48092ba7b0928773ad93a87bc3c833cb data/deeperdarker/loot_tables/blocks/polished_sculk_stone_brick_slab.json
@@ -40,5 +39,5 @@ f44df4ad98480c43684eeef1642620dda898878c data/deeperdarker/loot_tables/blocks/sc
 9ae83cb0864e01c5dfc44cc94c51d7be9dc932e8 data/deeperdarker/loot_tables/blocks/sculk_stone_slab.json
 05abcb6e28835f13dd558ccf92d6cf5a5bb053d2 data/deeperdarker/loot_tables/blocks/sculk_stone_stairs.json
 2efc1f157f1b1b6f8b21c24ed0a5508346dcb8ed data/deeperdarker/loot_tables/blocks/sculk_stone_wall.json
-7c27f4ddd9ff75b354ba4474fdded61e4a743352 data/deeperdarker/loot_tables/blocks/sculk_vines.json
-c280cd1701612f54c76d4f2ce55acaddc68ffa1f data/deeperdarker/loot_tables/blocks/sculk_vines_plant.json
+cdb28412389413891df205dfcee9493779a6fce3 data/deeperdarker/loot_tables/blocks/sculk_vines.json
+f91f36bd8c163e72a25d188d82b778957fd797b4 data/deeperdarker/loot_tables/blocks/sculk_vines_plant.json
