@@ -1,48 +1,29 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.GameEventTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.DynamicGameEventListener;
-import net.minecraft.world.level.gameevent.EntityPositionSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -53,13 +34,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import java.util.function.BiConsumer;
-
 public class SculkWormEntity extends Monster implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = new AnimationFactory(this);
     private static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> ANIMATION_TIME = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
+
     public SculkWormEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -107,14 +87,18 @@ public class SculkWormEntity extends Monster implements IAnimatable {
         return 0;
     }
 
-    public boolean removeWhenFarAway(double p_219457_) {
+    @Override
+    public boolean removeWhenFarAway(double pDistanceToClosestPlayer) {
         return false;
     }
 
-    public boolean checkSpawnObstruction(LevelReader p_219398_) {
+    @Override
+    public boolean checkSpawnObstruction(LevelReader pLevel) {
         return false;
     }
-    public float getWalkTargetValue(BlockPos p_219410_, LevelReader p_219411_) {
+
+    @Override
+    public float getWalkTargetValue(BlockPos pPos, LevelReader pLevel) {
         return 0.0F;
     }
 
@@ -124,7 +108,7 @@ public class SculkWormEntity extends Monster implements IAnimatable {
     }
 
     @Override
-    public void knockback(double p_147241_, double p_147242_, double p_147243_) {
+    public void knockback(double strength, double x, double z) {
 
     }
 
@@ -132,23 +116,21 @@ public class SculkWormEntity extends Monster implements IAnimatable {
     public void tick() {
         super.tick();
 
-        if(isDeadOrDying()) return;
+        if (isDeadOrDying()) return;
 
-        if(this.getState() == SculkWormState.AWAKE)
-        {
-            if(getDescendTime() != 0) {
+        if (this.getState() == SculkWormState.AWAKE) {
+            if (getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
-            }else {
+            } else {
                 setDescendTime(1200);
                 this.setState(SculkWormState.DESCENDING);
             }
         }
 
-        if(this.getState() == SculkWormState.DESCENDING)
-        {
+        if (this.getState() == SculkWormState.DESCENDING) {
             setAnimationTime(getAnimationTime() + 1);
             clientDiggingParticles();
-            if(getAnimationTime() > 85) {
+            if (getAnimationTime() > 85) {
                 setAnimationTime(0);
                 setDescendTime(0);
                 this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
@@ -156,24 +138,22 @@ public class SculkWormEntity extends Monster implements IAnimatable {
             }
         }
 
-        if(this.getState() == SculkWormState.EMERGING)
-        {
+        if (this.getState() == SculkWormState.EMERGING) {
             setAnimationTime(getAnimationTime() + 1);
             clientDiggingParticles();
-            if(getAnimationTime() > 85) {
+            if (getAnimationTime() > 85) {
                 setDescendTime(1200);
                 setAnimationTime(0);
                 this.setState(SculkWormState.AWAKE);
             }
         }
 
-        if(this.getState() == SculkWormState.ATTACKING)
-        {
+        if (this.getState() == SculkWormState.ATTACKING) {
             setAnimationTime(getAnimationTime() + 1);
-            if(getAnimationTime() > 8) {
+            if (getAnimationTime() > 8) {
                 setAnimationTime(0);
                 this.setState(SculkWormState.AWAKE);
-                if(this.getTarget() != null)
+                if (this.getTarget() != null)
                     this.doHurtTarget(this.getTarget());
             }
         }
@@ -185,23 +165,20 @@ public class SculkWormEntity extends Monster implements IAnimatable {
     }
 
     public static AttributeSupplier attributes() {
-        return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 550)
-                .add(Attributes.ATTACK_KNOCKBACK, 1.5f)
-                .add(Attributes.ATTACK_DAMAGE, 7).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 550).add(Attributes.ATTACK_KNOCKBACK, 1.5f).add(Attributes.ATTACK_DAMAGE, 7).build();
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(this.getState().equals(SculkWormState.EMERGING)) {
+        if (this.getState().equals(SculkWormState.EMERGING)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("emerge", false));
             return PlayState.CONTINUE;
-        }else if(this.getState().equals(SculkWormState.ATTACKING)) {
+        } else if (this.getState().equals(SculkWormState.ATTACKING)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("melee", false));
             return PlayState.CONTINUE;
-        }else if(this.getState().equals(SculkWormState.SLEEPING)) {
+        } else if (this.getState().equals(SculkWormState.SLEEPING)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("asleep", true));
             return PlayState.CONTINUE;
-        }else if(this.getState().equals(SculkWormState.DESCENDING)) {
+        } else if (this.getState().equals(SculkWormState.DESCENDING)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("descend", false));
             return PlayState.CONTINUE;
         }
@@ -265,15 +242,12 @@ public class SculkWormEntity extends Monster implements IAnimatable {
     public int getDescendTime() {
         return this.entityData.get(DESCEND_COUNTDOWN);
     }
-
     public void setDescendTime(int value) {
         this.entityData.set(DESCEND_COUNTDOWN, value);
     }
-
     public int getAnimationTime() {
         return this.entityData.get(ANIMATION_TIME);
     }
-
     public void setAnimationTime(int value) {
         this.entityData.set(ANIMATION_TIME, value);
     }
@@ -286,12 +260,12 @@ public class SculkWormEntity extends Monster implements IAnimatable {
         ATTACKING(4);
 
         int value;
-        SculkWormState(int x)
-        {
+
+        SculkWormState(int x) {
             this.value = x;
         }
-        public int getValue()
-        {
+
+        public int getValue() {
             return value;
         }
     }

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "deeperdarker:infested_sculk"
         }
       ],
       "rolls": 1.0

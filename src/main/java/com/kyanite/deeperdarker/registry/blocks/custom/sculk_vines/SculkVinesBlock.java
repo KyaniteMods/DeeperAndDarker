@@ -8,14 +8,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SculkVinesBlock extends GrowingPlantHeadBlock {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
-    public SculkVinesBlock(BlockBehaviour.Properties pProperties) {
+    public SculkVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.1);
     }
 
@@ -23,8 +22,7 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
         if (silkTouchLevel != 0) {
             return 0;
-        }
-        else return 1;
+        } else return 1;
     }
 
     @Override
@@ -33,7 +31,7 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(RandomSource p_221341_) {
+    protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
         return 0;
     }
 

@@ -20,20 +20,12 @@ import java.util.function.Supplier;
 public class DDConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_GLEAM = feature("sculk_gleam", DDFeatures.SCULK_GLEAM_FEATURE);
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> SCULK_STONE_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.SCULK_STONE.get().defaultBlockState())));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> INFESTED_SCULK_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.INFESTED_SCULK.get().defaultBlockState())));
 
-    public static final Supplier<List<OreConfiguration.TargetBlockState>> SCULK_STONES = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.SCULK_STONE.get().defaultBlockState())));
-
-    public static final Supplier<List<OreConfiguration.TargetBlockState>> INFESTED_SCULKS = Suppliers.memoize(() -> List.of(
-            OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.INFESTED_SCULK.get().defaultBlockState())));
-
-    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_STONE = CONFIGURED_FEATURES.register("sculk_stone",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(SCULK_STONES.get(), 64)));
-
-    public static final RegistryObject<ConfiguredFeature<?, ?>> INFESTED_SCULK = CONFIGURED_FEATURES.register("infested_sculk",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(INFESTED_SCULKS.get(), 32)));
-
-
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_SCULK_STONE = CONFIGURED_FEATURES.register("ore_sculk_stone", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(SCULK_STONE_TARGET_LIST.get(), 64)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_INFESTED_SCULK = CONFIGURED_FEATURES.register("ore_infested_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(INFESTED_SCULK_TARGET_LIST.get(), 32)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = feature("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
 
     public static <C extends FeatureConfiguration, F extends Feature<C>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, F feature, Supplier<C> config) {
         return CONFIGURED_FEATURES.register(id, () -> new ConfiguredFeature<>(feature, config.get()));
@@ -46,4 +38,9 @@ public class DDConfiguredFeatures {
     public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, Supplier<F> feature) {
         return feature(id, feature, () -> NoneFeatureConfiguration.INSTANCE);
     }
+
+    /*public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, F feature) {
+        Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
+        return CONFIGURED_FEATURES.register(id, () -> new ConfiguredFeature<>(feature, configuration.get()));
+    }*/
 }

@@ -14,11 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(WardenAi.class)
 public class WardenAiMixin {
     @Inject(method = "isTarget", at = @At("HEAD"), cancellable = true)
-    private static void isTarget(Warden p_219515_, LivingEntity p_219516_, CallbackInfoReturnable<Boolean> cir) {
-        if(p_219516_ instanceof Player)
-        {
-            Player plr = (Player) p_219516_;
-            if(plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+    private static void isTarget(Warden warden, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
+        if (entity instanceof Player plr) {
+            if (plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 cir.setReturnValue(false);
             }
         }

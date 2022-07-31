@@ -15,12 +15,12 @@ import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 @Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class EventBusEvents {
     @SubscribeEvent
-    public static void armorRenderers(final EntityRenderersEvent.AddLayers e) {
+    public static void entityRender(final EntityRenderersEvent.AddLayers event) {
         GeoArmorRenderer.registerArmorRenderer(SculkArmorItem.class, new SculkArmorRenderer());
     }
 
     @SubscribeEvent
-    public static void registerAttributes(EntityAttributeCreationEvent e) {
-        e.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
+    public static void entityAttribute(final EntityAttributeCreationEvent event) {
+        event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
     }
 }

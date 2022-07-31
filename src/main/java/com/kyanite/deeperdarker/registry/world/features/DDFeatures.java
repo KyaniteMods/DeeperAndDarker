@@ -7,14 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.function.Supplier;
-
 public class DDFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<SculkGleamFeature> SCULK_GLEAM_FEATURE = registerFeature("sculk_gleam_feature", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
-
-    private static <T extends Feature<?>> RegistryObject<T> registerFeature(final String name, final Supplier<T> sup) {
-        return FEATURES.register(name, sup);
-    }
+    public static final RegistryObject<SculkGleamFeature> SCULK_GLEAM_BLOB = FEATURES.register("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
 }
