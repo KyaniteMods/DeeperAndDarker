@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
+import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
@@ -79,16 +80,22 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateTick(EntityState entityState) {
-        if(entityState.equals(this.AWAKE)) {
+        if(entityState.equals(this.DESCEND) || entityState.equals(this.EMERGE)) {
+            DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
+        }
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(this.getCurrentState().equals(this.AWAKE)) {
+            DeeperAndDarker.LOGGER.info(String.valueOf(getDescendTime()));
             if (getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {
                 setDescendTime(1200);
                 this.setState(DESCEND);
             }
-        }
-        if(entityState.equals(this.DESCEND) || entityState.equals(this.EMERGE)) {
-            DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
     }
 
