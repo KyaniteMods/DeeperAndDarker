@@ -25,7 +25,7 @@ public class DeepHeartItem extends Item {
                     BlockPos framePos = pContext.getClickedPos().relative(direction);
                     if(((OthersidePortalBlock) DDBlocks.OTHERSIDE_PORTAL.get()).spawnPortal(pContext.getLevel(), framePos)) {
                         pContext.getLevel().playSound(pContext.getPlayer(), framePos, SoundEvents.WARDEN_SONIC_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        return InteractionResult.CONSUME;
+                        return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
                     }
                     else return InteractionResult.FAIL;
                 }
