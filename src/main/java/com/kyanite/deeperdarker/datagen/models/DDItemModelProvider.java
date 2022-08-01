@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -74,6 +75,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
+
+        spawnEgg(DDItems.SHRIEK_WORM_SPAWN_EGG, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {
@@ -86,6 +89,10 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     public void itemModel(RegistryObject<Item> item, ModelFile modelFile) {
         getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
+    }
+
+    public void spawnEgg(RegistryObject<SpawnEggItem> item, ModelFile modelFile) {
+        getBuilder(item.getId().getPath()).parent(modelFile).texture("parent", "minecraft:item/template_spawn_egg");
     }
 
     public void doorModel(RegistryObject<? extends Block> block) {

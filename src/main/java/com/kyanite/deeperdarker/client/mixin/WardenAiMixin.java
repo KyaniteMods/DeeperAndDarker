@@ -16,6 +16,8 @@ public class WardenAiMixin {
     @Inject(method = "isTarget", at = @At("HEAD"), cancellable = true)
     private static void isTarget(Warden warden, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
         if (entity instanceof Player plr) {
+            if(plr.isCreative()) return;
+
             if (plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 cir.setReturnValue(false);
             }

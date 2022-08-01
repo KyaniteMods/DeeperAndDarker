@@ -51,8 +51,6 @@ import java.util.List;
 public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
-
-    public static EntityState SLEEPING = new EntityState(true, new EntityAnimationHolder("asleep", 80, true));
     public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge",80, false));
     public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", 80, false));
@@ -87,7 +85,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public List<EntityState> createStates() {
-        return Arrays.asList(SLEEPING, AWAKE, EMERGE, DESCEND, ATTACK);
+        return Arrays.asList(AWAKE, EMERGE, DESCEND, ATTACK);
     }
 
     @Override
@@ -122,7 +120,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        setState(EMERGE);
+        if (pReason == MobSpawnType.TRIGGERED) {
+            setState(EMERGE);
+        }else{
+            setState(AWAKE);
+        }
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
