@@ -53,6 +53,7 @@ public class DDLootTables extends BlockLoot {
         this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> createOreDrop(block, Items.DIAMOND));
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
+        this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
         this.add(DDBlocks.SCULK_VINES.get(), BlockLoot::createShearsOnlyDrop);
         this.add(DDBlocks.SCULK_VINES_PLANT.get(), BlockLoot::createShearsOnlyDrop);
     }
