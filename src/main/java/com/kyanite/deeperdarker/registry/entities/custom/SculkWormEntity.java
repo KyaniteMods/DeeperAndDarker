@@ -48,11 +48,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
 
-    public static EntityState SLEEPING = new EntityState("sleeping", true, new EntityAnimationHolder("asleep", 80, true));
-    public static EntityState AWAKE = new EntityState("awake", true, new EntityAnimationHolder("idle", 80, true));
-    public static EntityState EMERGE = new EntityState("emerge", true, new EntityAnimationHolder("emerge",80, false));
-    public static EntityState DESCEND = new EntityState("descend", true, new EntityAnimationHolder("descend", 80, false));
-    public static EntityState ATTACK = new EntityState("attack", true, new EntityAnimationHolder("melee", 8, false));
+    public static EntityState SLEEPING = new EntityState(true, new EntityAnimationHolder("asleep", 80, true));
+    public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true));
+    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge",80, false));
+    public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", 80, false));
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", 8, false));
 
     public SculkWormEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
