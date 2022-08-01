@@ -23,9 +23,9 @@ public class SculkWormAttack extends MeleeAttackGoal {
     protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
         double reach = this.getAttackReachSqr(pEnemy);
         SculkWormEntity sculkWormEntity = (SculkWormEntity) this.mob;
-        if (pDistToEnemySqr <= reach && this.getTicksUntilNextAttack() <= 0 && sculkWormEntity.getState() != SculkWormEntity.SculkWormState.EMERGING && sculkWormEntity.getState() != SculkWormEntity.SculkWormState.DESCENDING) {
+        if (pDistToEnemySqr <= reach && this.getTicksUntilNextAttack() <= 0 && sculkWormEntity.getCurrentState() != SculkWormEntity.EMERGE && sculkWormEntity.getCurrentState() != SculkWormEntity.DESCEND) {
             this.resetAttackCooldown();
-            sculkWormEntity.setState(SculkWormEntity.SculkWormState.ATTACKING);
+            sculkWormEntity.setState(SculkWormEntity.ATTACK);
         }
     }
 }
