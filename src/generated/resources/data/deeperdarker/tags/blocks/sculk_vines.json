@@ -1,8 +1,6 @@
 {
   "values": [
     "deeperdarker:sculk_vines",
-    "deeperdarker:sculk_vines_plant",
-    "minecraft:sculk",
-    "deeperdarker:sculk_stone"
+    "deeperdarker:sculk_vines_plant"
   ]
 }

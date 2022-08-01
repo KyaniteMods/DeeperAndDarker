@@ -16,11 +16,11 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.item.GeoArmorItem;
 
-public class SculkArmorItem extends GeoArmorItem implements IAnimatable {
+public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public SculkArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
+    public WardenArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
     }
 

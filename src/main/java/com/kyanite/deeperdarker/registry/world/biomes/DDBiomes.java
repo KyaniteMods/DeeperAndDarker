@@ -22,7 +22,6 @@ public class DDBiomes {
 
     public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", DDBiomes::lowland);
 
-
     public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {
         ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         return BIOMES.register(biomeResourceKey.location().getPath(), biomeSupplier);

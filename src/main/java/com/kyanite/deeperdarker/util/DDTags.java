@@ -14,7 +14,7 @@ public class DDTags {
         public static final TagKey<Block> SCULK_BLOCKS = createTag("sculk_blocks");
         public static final TagKey<Block> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
         public static final TagKey<Block> SCULK_VINES = createTag("sculk_vines");
-        public static final TagKey<Block> SCULK_STONE_ORE_REPLACEABLES = createTag("sculk_vines");
+        public static final TagKey<Block> SCULK_STONE_ORE_REPLACEABLES = createTag("sculk_stone_ore_replaceables");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name));

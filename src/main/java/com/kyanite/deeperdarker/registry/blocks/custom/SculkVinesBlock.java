@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom.sculk_vines;
+package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.BlockPos;
