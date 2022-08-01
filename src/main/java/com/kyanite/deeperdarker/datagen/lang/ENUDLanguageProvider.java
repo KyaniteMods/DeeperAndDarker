@@ -26,7 +26,6 @@ public class ENUDLanguageProvider implements DataProvider {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
     private final DataGenerator generator;
     private final Map<String, String> data = new HashMap<>();
-
     public ENUDLanguageProvider(DataGenerator gen) {
         this.generator = gen;
     }
