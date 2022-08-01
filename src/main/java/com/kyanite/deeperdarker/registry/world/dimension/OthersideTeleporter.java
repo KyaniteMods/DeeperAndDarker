@@ -65,11 +65,11 @@ public class OthersideTeleporter implements ITeleporter {
         BlockPos.MutableBlockPos mutablePos = pos.mutable();
 
         for(BlockPos.MutableBlockPos mutableBlockPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
-            int x = Math.min(dimensionLogicalHeight, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, mutableBlockPos.getX(), mutableBlockPos.getZ()));
+            int min = Math.min(dimensionLogicalHeight, this.level.getHeight(Heightmap.Types.MOTION_BLOCKING, mutableBlockPos.getX(), mutableBlockPos.getZ()));
             if(worldBorder.isWithinBounds(mutableBlockPos) && worldBorder.isWithinBounds(mutableBlockPos.move(direction, 1))) {
                 mutableBlockPos.move(direction.getOpposite(), 1);
 
-                for(int i = x; i >= 0; i--) {
+                for(int i = min; i >= 0; i--) {
                     mutableBlockPos.setY(i);
                     if(this.level.isEmptyBlock(mutableBlockPos)) {
                         int y;
@@ -124,7 +124,7 @@ public class OthersideTeleporter implements ITeleporter {
 
         for(int i = -1; i < 3; i++) {
             for(int j = -1; j < 4; j++) {
-                if (i == -1 || i == 2 || j == -1 || j == 3) {
+                if(i == -1 || i == 2 || j == -1 || j == 3) {
                     mutablePos.setWithOffset(blockPos, i * direction.getStepX(), j, i * direction.getStepZ());
                     this.level.setBlock(mutablePos, Blocks.REINFORCED_DEEPSLATE.defaultBlockState(), 3);
                 }
@@ -165,8 +165,8 @@ public class OthersideTeleporter implements ITeleporter {
     @Nullable
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        boolean destinationIsUG = destWorld.dimension() == DDDimensions.OTHERSIDE_KEY;
-        if(entity.level.dimension() != DDDimensions.OTHERSIDE_KEY && !destinationIsUG) {
+        boolean destinationIsUG = destWorld.dimension() == DDDimensions.OTHERSIDE_LEVEL;
+        if(entity.level.dimension() != DDDimensions.OTHERSIDE_LEVEL && !destinationIsUG) {
             return null;
         }
         else {
@@ -184,7 +184,6 @@ public class OthersideTeleporter implements ITeleporter {
                 if(blockstate.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
                     axis = blockstate.getValue(BlockStateProperties.HORIZONTAL_AXIS);
                     BlockUtil.FoundRectangle rectangle = BlockUtil.getLargestRectangleAround(entity.portalEntrancePos, axis, 21, Direction.Axis.Y, 21, (pos) -> entity.level.getBlockState(pos) == blockstate);
-                    //vector3d = entity.getRelativePortalPosition(axis, rectangle);
                     vector3d = PortalShape.getRelativePosition(rectangle, axis, entity.position(), entity.getDimensions(entity.getPose()));
                 } else {
                     axis = Direction.Axis.X;

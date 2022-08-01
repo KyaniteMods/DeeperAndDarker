@@ -20,7 +20,7 @@ public class DeepHeartItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         if(pContext.getPlayer() != null) {
-            if(pContext.getPlayer().level.dimension() == DDDimensions.OTHERSIDE_KEY || pContext.getPlayer().level.dimension() == Level.OVERWORLD) {
+            if(pContext.getPlayer().level.dimension() == DDDimensions.OTHERSIDE_LEVEL || pContext.getPlayer().level.dimension() == Level.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = pContext.getClickedPos().relative(direction);
                     if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), framePos)) {

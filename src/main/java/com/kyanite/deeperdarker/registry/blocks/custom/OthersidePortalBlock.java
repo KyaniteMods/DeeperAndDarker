@@ -30,6 +30,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.Cancelable;
 
 public class OthersidePortalBlock extends Block {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
@@ -49,27 +50,37 @@ public class OthersidePortalBlock extends Block {
 
     public boolean spawnPortal(LevelAccessor worldIn, BlockPos pos) {
         OthersidePortalBlock.Size portal = this.isPortal(worldIn, pos);
-        if (portal != null && !trySpawningPortal(worldIn, pos)) {
+        if (portal != null && !trySpawningPortal(worldIn, pos, portal)) {
             portal.placePortalBlocks();
             return true;
+        } else return false;
+    }
+
+    public static boolean trySpawningPortal(LevelAccessor world, BlockPos pos, OthersidePortalBlock.Size portal) {
+        return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), portal));
+    }
+
+    @Cancelable
+    public static class PortalSpawnEvent extends BlockEvent {
+        private final OthersidePortalBlock.Size size;
+
+        public PortalSpawnEvent(LevelAccessor world, BlockPos pos, BlockState state, OthersidePortalBlock.Size size) {
+            super(world, pos, state);
+            this.size = size;
         }
-        else {
-            return false;
+
+        public OthersidePortalBlock.Size getPortalSize() {
+            return size;
         }
     }
 
-    public static boolean trySpawningPortal(LevelAccessor world, BlockPos pos) {
-        return MinecraftForge.EVENT_BUS.post(new BlockEvent(world, pos, world.getBlockState(pos)));
-    }
-
-    public OthersidePortalBlock.Size isPortal(LevelAccessor worldIn, BlockPos pos) {
-        OthersidePortalBlock.Size sizeX = new Size(worldIn, pos, Direction.Axis.X);
-        if (sizeX.isValid() && sizeX.portalBlockCount == 0) {
-            return sizeX;
-        }
-        else {
-            OthersidePortalBlock.Size sizeZ = new Size(worldIn, pos, Direction.Axis.Z);
-            return sizeZ.isValid() && sizeZ.portalBlockCount == 0 ? sizeZ : null;
+    public OthersidePortalBlock.Size isPortal(LevelAccessor level, BlockPos pos) {
+        OthersidePortalBlock.Size portalX = new Size(level, pos, Direction.Axis.X);
+        if (portalX.isValid() && portalX.portalBlockCount == 0) {
+            return portalX;
+        } else {
+            OthersidePortalBlock.Size portalZ = new Size(level, pos, Direction.Axis.Z);
+            return portalZ.isValid() && portalZ.portalBlockCount == 0 ? portalZ : null;
         }
     }
 
@@ -78,8 +89,7 @@ public class OthersidePortalBlock extends Block {
         Direction.Axis facingAxis = pDirection.getAxis();
         Direction.Axis axis = pState.getValue(AXIS);
         boolean flag = axis != facingAxis && facingAxis.isHorizontal();
-        return !flag && !pNeighborState.is(this) && !(new PortalShape(pLevel, pCurrentPos, axis)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
-
+        return !flag && pNeighborState.getBlock() != this && !(new Size(pLevel, pCurrentPos, axis)).validatePortal() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
     }
 
     @Override
@@ -95,7 +105,7 @@ public class OthersidePortalBlock extends Block {
                 Level entityWorld = pEntity.level;
                 if(entityWorld != null) {
                     MinecraftServer minecraftserver = entityWorld.getServer();
-                    ResourceKey<Level> destination = pEntity.level.dimension() == DDDimensions.OTHERSIDE_KEY ? Level.OVERWORLD : DDDimensions.OTHERSIDE_KEY;
+                    ResourceKey<Level> destination = pEntity.level.dimension() == DDDimensions.OTHERSIDE_LEVEL ? Level.OVERWORLD : DDDimensions.OTHERSIDE_LEVEL;
                     if(minecraftserver != null) {
                         ServerLevel destinationWorld = minecraftserver.getLevel(destination);
                         if(destinationWorld != null && minecraftserver.isNetherEnabled() && !pEntity.isPassenger()) {
