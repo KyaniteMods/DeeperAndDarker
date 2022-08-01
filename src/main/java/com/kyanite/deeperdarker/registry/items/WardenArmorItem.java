@@ -25,17 +25,17 @@ public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
-    }
-
-    @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(!level.isClientSide()) {
             if(!player.isCreative() && player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 25));
             }
         }
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
