@@ -44,6 +44,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.swing.plaf.nimbus.State;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -89,6 +90,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     }
 
     @Override
+    public EntityState getDefaultState() {
+        return EMERGE;
+    }
+
+    @Override
     public void stateTick(EntityState entityState) {
         if(entityState.equals(this.AWAKE)) {
             if (getDescendTime() != 0) {
@@ -115,17 +121,6 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
             if (this.getTarget() != null)
                 this.doHurtTarget(this.getTarget());
         }
-    }
-
-    @Nullable
-    @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        if (pReason == MobSpawnType.TRIGGERED) {
-            setState(EMERGE);
-        }else{
-            setState(AWAKE);
-        }
-        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
     @Override

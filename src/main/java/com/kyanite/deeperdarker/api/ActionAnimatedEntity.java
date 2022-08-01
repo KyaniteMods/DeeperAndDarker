@@ -30,6 +30,7 @@ public abstract class ActionAnimatedEntity extends Monster implements IAnimatabl
     protected ActionAnimatedEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.states = this.createStates();
+        this.setState(this.getDefaultState());
     }
 
     public EntityState getCurrentState() {
@@ -91,6 +92,7 @@ public abstract class ActionAnimatedEntity extends Monster implements IAnimatabl
     }
 
     public abstract List<EntityState> createStates();
+    public abstract EntityState getDefaultState();
     public abstract void stateDone(EntityState entityState);
     public abstract void stateTick(EntityState entityState);
 }
