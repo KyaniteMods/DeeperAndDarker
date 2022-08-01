@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
@@ -77,7 +78,8 @@ public class OthersidePortalBlock extends Block {
         Direction.Axis facingAxis = pDirection.getAxis();
         Direction.Axis axis = pState.getValue(AXIS);
         boolean flag = axis != facingAxis && facingAxis.isHorizontal();
-        return !flag && pNeighborState.getBlock() != this && !(new Size(pLevel, pCurrentPos, axis)).validatePortal() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return !flag && !pNeighborState.is(this) && !(new PortalShape(pLevel, pCurrentPos, axis)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+
     }
 
     @Override

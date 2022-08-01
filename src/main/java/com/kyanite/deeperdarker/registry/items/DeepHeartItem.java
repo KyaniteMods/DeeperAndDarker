@@ -23,7 +23,7 @@ public class DeepHeartItem extends Item {
             if(pContext.getPlayer().level.dimension() == DDDimensions.OTHERSIDE_KEY || pContext.getPlayer().level.dimension() == Level.OVERWORLD) {
                 for(Direction direction : Direction.Plane.VERTICAL) {
                     BlockPos framePos = pContext.getClickedPos().relative(direction);
-                    if(((OthersidePortalBlock) DDBlocks.OTHERSIDE_PORTAL.get()).spawnPortal(pContext.getLevel(), framePos)) {
+                    if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), framePos)) {
                         pContext.getLevel().playSound(pContext.getPlayer(), framePos, SoundEvents.WARDEN_SONIC_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
                         return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
                     }

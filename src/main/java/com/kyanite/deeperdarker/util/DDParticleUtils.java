@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class DDParticleUtils {
     public static void clientDiggingParticles(RandomSource randomsource, BlockState blockstate, BlockPos pos, Level level) {
         if (blockstate.getRenderShape() != RenderShape.INVISIBLE) {
-            for (int i = 0; i < 30; ++i) {
+            for (int i = 0; i < 30; i++) {
                 double d0 = pos.getX() + (double) Mth.randomBetween(randomsource, -0.7F, 0.7F);
                 double d1 = pos.getY();
                 double d2 = pos.getZ() + (double) Mth.randomBetween(randomsource, -0.7F, 0.7F);

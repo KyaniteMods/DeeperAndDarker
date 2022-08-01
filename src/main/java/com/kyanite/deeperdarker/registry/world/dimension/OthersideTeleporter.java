@@ -69,11 +69,11 @@ public class OthersideTeleporter implements ITeleporter {
             if (worldborder.isWithinBounds(mutableBlockPos) && worldborder.isWithinBounds(mutableBlockPos.move(direction, 1))) {
                 mutableBlockPos.move(direction.getOpposite(), 1);
 
-                for(int l = j; l >= 0; --l) {
+                for(int l = j; l >= 0; l--) {
                     mutableBlockPos.setY(l);
                     if (this.level.isEmptyBlock(mutableBlockPos)) {
                         int i1;
-                        for(i1 = l; l > 0 && this.level.isEmptyBlock(mutableBlockPos.move(Direction.DOWN)); --l) {
+                        for(i1 = l; l > 0 && this.level.isEmptyBlock(mutableBlockPos.move(Direction.DOWN)); l--) {
                         }
 
                         if (l + 4 <= dimensionLogicalHeight) {

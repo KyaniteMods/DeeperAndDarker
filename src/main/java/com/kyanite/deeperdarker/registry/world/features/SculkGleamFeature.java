@@ -31,7 +31,7 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
             } else {
                 worldGenLevel.setBlock(blockPos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
 
-                for (int i = 0; i < 1500; ++i) {
+                for (int i = 0; i < 1500; i++) {
                     BlockPos offset = blockPos.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
                     if (worldGenLevel.getBlockState(offset).isAir()) {
                         int j = 0;
