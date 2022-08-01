@@ -81,6 +81,7 @@ public abstract class ActionAnimatedEntity extends Monster implements IAnimatabl
         if(this.entityData.get(ANIMATION_TIME) != 0)
         {
             this.entityData.set(ANIMATION_TIME, this.entityData.get(ANIMATION_TIME) + 1);
+            stateTick(this.getCurrentState());
             if(this.entityData.get(ANIMATION_TIME) > this.getCurrentState().animationHolder.lengthInTicks) {
                 this.entityData.set(ANIMATION_TIME, 0);
             }
@@ -91,4 +92,5 @@ public abstract class ActionAnimatedEntity extends Monster implements IAnimatabl
 
     public abstract List<EntityState> createStates();
     public abstract void stateDone(EntityState entityState);
+    public abstract void stateTick(EntityState entityState);
 }

@@ -82,13 +82,13 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     }
 
     @Override
-    public void tick() {
-        super.tick();
+    public List<EntityState> createStates() {
+        return Arrays.asList(SLEEPING, AWAKE, EMERGE, DESCEND, ATTACK);
+    }
 
-        if (isDeadOrDying()) return;
-
-        DeeperAndDarker.LOGGER.info(String.valueOf(getDescendTime()));
-        if (this.AWAKE.equals(this.getCurrentState())) {
+    @Override
+    public void stateTick(EntityState entityState) {
+        if(entityState.equals(this.AWAKE)) {
             if (getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {
@@ -96,15 +96,9 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
                 this.setState(DESCEND);
             }
         }
-
-        if (this.DESCEND.equals(this.getCurrentState()) || this.EMERGE.equals(this.getCurrentState())) {
+        if(entityState.equals(this.DESCEND) || entityState.equals(this.EMERGE)) {
             DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
-    }
-
-    @Override
-    public List<EntityState> createStates() {
-        return Arrays.asList(SLEEPING, AWAKE, EMERGE, DESCEND, ATTACK);
     }
 
     @Override
