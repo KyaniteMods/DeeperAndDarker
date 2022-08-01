@@ -8,7 +8,6 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class DDItemTagsProvider extends ItemTagsProvider {
@@ -39,10 +38,10 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
-        this.tag(ItemTags.STONE_TOOL_MATERIALS).add(Item.byBlock(DDBlocks.SCULK_STONE.get()));
-        this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(Item.byBlock(DDBlocks.SCULK_STONE.get()));
-
         copy(DDTags.Blocks.BONE_WOOD, DDTags.Items.BONE_WOOD);
         copy(DDTags.Blocks.SCULK_BONE_WOOD, DDTags.Items.SCULK_BONE_WOOD);
+
+        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.SCULK_STONE.get().asItem());
+        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.SCULK_STONE.get().asItem());
     }
 }
