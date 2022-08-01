@@ -86,7 +86,7 @@ public abstract class ActionAnimatedEntity extends Monster implements IAnimatabl
     }
 
     public abstract List<EntityState> createStates();
-    
+
     public abstract EntityState getDefaultState();
 
     public abstract void stateDone(EntityState entityState);

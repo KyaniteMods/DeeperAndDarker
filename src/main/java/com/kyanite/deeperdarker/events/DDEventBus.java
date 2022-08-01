@@ -1,10 +1,10 @@
 package com.kyanite.deeperdarker.events;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.client.rendering.armor.SculkArmorRenderer;
+import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
-import com.kyanite.deeperdarker.registry.items.SculkArmorItem;
+import com.kyanite.deeperdarker.registry.items.WardenArmorItem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -16,7 +16,7 @@ import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 public class DDEventBus {
     @SubscribeEvent
     public static void entityRender(final EntityRenderersEvent.AddLayers event) {
-        GeoArmorRenderer.registerArmorRenderer(SculkArmorItem.class, new SculkArmorRenderer());
+        GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, new WardenArmorRenderer());
     }
 
     @SubscribeEvent

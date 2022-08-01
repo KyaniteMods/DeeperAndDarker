@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.client.rendering.armor;
 
-import com.kyanite.deeperdarker.registry.items.SculkArmorItem;
+import com.kyanite.deeperdarker.registry.items.WardenArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -8,9 +8,9 @@ import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 import software.bernie.geckolib3.util.GeoUtils;
 
-public class SculkArmorRenderer extends GeoArmorRenderer<SculkArmorItem> {
-    public SculkArmorRenderer() {
-        super(new SculkArmorModel());
+public class WardenArmorRenderer extends GeoArmorRenderer<WardenArmorItem> {
+    public WardenArmorRenderer() {
+        super(new WardenArmorModel());
         this.headBone = "armorHead";
         this.bodyBone = "armorBody";
         this.rightArmBone = "armorRightArm";
@@ -35,10 +35,6 @@ public class SculkArmorRenderer extends GeoArmorRenderer<SculkArmorItem> {
     public void render(float partialTicks, PoseStack stack, VertexConsumer bufferIn, int packedLightIn) {
         super.render(partialTicks, stack, bufferIn, packedLightIn);
         IBone waistBone = getAndHideBone("armorWaist");
-        if(armorSlot == EquipmentSlot.LEGS) {
-            waistBone.setHidden(false);
-        }else{
-            waistBone.setHidden(true);
-        }
+        waistBone.setHidden(armorSlot != EquipmentSlot.LEGS);
     }
 }

@@ -1,8 +1,9 @@
-// 1.19.1	2022-07-31T19:55:06.2352316	Tags for minecraft:block
+// 1.19.1	2022-07-31T20:17:06.8916221	Tags for minecraft:block
 8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/blocks/bone_wood.json
 b8dbcce0f4543fe838fa01ac6b9d09dbce01bc0c data/deeperdarker/tags/blocks/sculk_blocks.json
 b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/blocks/sculk_bone_wood.json
-b40a94f0d5c9f9e6353be85b8175c6b03f6dd4b0 data/deeperdarker/tags/blocks/sculk_vines.json
+ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/blocks/sculk_stone_ore_replaceables.json
+6ed921876d1a8064317c590325eef78f63e9e2c4 data/deeperdarker/tags/blocks/sculk_vines.json
 1d4e7b337609270fe7e8be0acafd0fa186873cd2 data/minecraft/tags/blocks/climbable.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/blocks/coal_ores.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/minecraft/tags/blocks/copper_ores.json
