@@ -2,6 +2,10 @@ package com.kyanite.deeperdarker.client.rendering.armor.renderer;
 
 import com.kyanite.deeperdarker.client.rendering.armor.model.SculkArmorModel;
 import com.kyanite.deeperdarker.registry.items.SculkArmorItem;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.world.entity.EquipmentSlot;
+import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 public class SculkArmorRenderer extends GeoArmorRenderer<SculkArmorItem> {
@@ -15,5 +19,16 @@ public class SculkArmorRenderer extends GeoArmorRenderer<SculkArmorItem> {
         this.leftLegBone = "armorLeftLeg";
         this.rightBootBone = "armorRightBoot";
         this.leftBootBone = "armorLeftBoot";
+    }
+
+    @Override
+    public void render(float partialTicks, PoseStack stack, VertexConsumer bufferIn, int packedLightIn) {
+        super.render(partialTicks, stack, bufferIn, packedLightIn);
+        IBone waistBone = getAndHideBone("armorWaist");
+        if(armorSlot == EquipmentSlot.LEGS) {
+            waistBone.setHidden(false);
+        }else{
+            waistBone.setHidden(true);
+        }
     }
 }
