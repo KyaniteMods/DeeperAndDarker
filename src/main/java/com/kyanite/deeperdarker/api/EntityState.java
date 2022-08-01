@@ -4,8 +4,8 @@ public class EntityState {
     public String name;
     public boolean doAnimate;
     public EntityAnimationHolder animationHolder;
+
     public EntityState(boolean doAnimate, EntityAnimationHolder animationHolder) {
-        this.name = name;
         this.doAnimate = doAnimate;
         this.animationHolder = animationHolder;
     }

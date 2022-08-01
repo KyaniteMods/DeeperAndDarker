@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker;
 
-import com.kyanite.deeperdarker.client.rendering.entity.renderer.SculkWormRenderer;
+import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;

@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.events;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.client.rendering.armor.renderer.SculkArmorRenderer;
+import com.kyanite.deeperdarker.client.rendering.armor.SculkArmorRenderer;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import com.kyanite.deeperdarker.registry.items.SculkArmorItem;

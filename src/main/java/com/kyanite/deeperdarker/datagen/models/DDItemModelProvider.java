@@ -4,8 +4,6 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -28,7 +26,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.BONE_FENCE, "inventory");
         blockModel(DDBlocks.BONE_BUTTON, "inventory");
         blockModel(DDBlocks.BONE_PRESSURE_PLATE);
-        doorModel(DDBlocks.BONE_DOOR);
+        itemModel(DDBlocks.BONE_DOOR, GENERATED);
         blockModel(DDBlocks.BONE_TRAPDOOR, "bottom");
         blockModel(DDBlocks.BONE_FENCE_GATE);
 
@@ -39,7 +37,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_BONE_FENCE, "inventory");
         blockModel(DDBlocks.SCULK_BONE_BUTTON, "inventory");
         blockModel(DDBlocks.SCULK_BONE_PRESSURE_PLATE);
-        doorModel(DDBlocks.SCULK_BONE_DOOR);
+        itemModel(DDBlocks.SCULK_BONE_DOOR, GENERATED);
         blockModel(DDBlocks.SCULK_BONE_TRAPDOOR, "bottom");
         blockModel(DDBlocks.SCULK_BONE_FENCE_GATE);
 
@@ -76,7 +74,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
 
-        spawnEgg(DDItems.SHRIEK_WORM_SPAWN_EGG, GENERATED);
+        withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {
@@ -87,15 +85,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 
-    public void itemModel(RegistryObject<Item> item, ModelFile modelFile) {
+    public <T> void itemModel(RegistryObject<T> item, ModelFile modelFile) {
         getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
-    }
-
-    public void spawnEgg(RegistryObject<SpawnEggItem> item, ModelFile modelFile) {
-        getBuilder(item.getId().getPath()).parent(modelFile).texture("parent", "minecraft:item/template_spawn_egg");
-    }
-
-    public void doorModel(RegistryObject<? extends Block> block) {
-        getBuilder(block.getId().getPath()).parent(GENERATED).texture("layer0", "item/" + block.getId().getPath());
     }
 }

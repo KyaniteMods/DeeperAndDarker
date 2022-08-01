@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_wall_inventory",
+  "parent": "minecraft:block/wall_inventory",
   "textures": {
     "wall": "deeperdarker:block/sculk_stone_bricks"
   }
