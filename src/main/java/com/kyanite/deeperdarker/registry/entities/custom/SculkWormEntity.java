@@ -25,6 +25,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -53,9 +54,8 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     public static AttributeSupplier attributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 550)
-                .add(Attributes.ATTACK_KNOCKBACK, 1.5f)
-                .add(Attributes.ATTACK_DAMAGE, 7)
-                .add(Attributes.MOVEMENT_SPEED, 0).build();
+                .add(Attributes.ATTACK_KNOCKBACK, 0)
+                .add(Attributes.ATTACK_DAMAGE, 7).build();
     }
 
     @Override
@@ -66,6 +66,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public boolean isPushedByFluid(FluidType type) {
         return false;
+    }
+
+    @Override
+    public void knockback(double p_147241_, double p_147242_, double p_147243_) {
+
     }
 
     @Override
@@ -83,6 +88,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
         if(entityState.equals(this.DESCEND) || entityState.equals(this.EMERGE)) {
             DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
+    }
+
+    @Override
+    public float getSpeed() {
+        return 0;
     }
 
     @Override
