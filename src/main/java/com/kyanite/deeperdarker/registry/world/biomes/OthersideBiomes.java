@@ -17,10 +17,10 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-public class DDBiomes {
+public class OthersideBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", DDBiomes::lowland);
+    public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", OthersideBiomes::lowland);
 
     public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {
         ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
@@ -31,7 +31,7 @@ public class DDBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 150, 5, 15));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 100, 4, 10));
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM.getHolder().get());
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_STONE.getHolder().get());
@@ -41,10 +41,10 @@ public class DDBiomes {
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(2.0F)
                 .downfall(0.0F)
-                .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0x05625D)
-                        .waterFogColor(0x05625D)
-                        .fogColor(0x05625D)
-                        .skyColor(0x05625D)
+                .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0x05305D)
+                        .waterFogColor(0x05285D)
+                        .fogColor(0x055474)
+                        .skyColor(0x05385C)
                         .ambientLoopSound(SoundEvents.AMBIENT_NETHER_WASTES_LOOP)
                         .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 6000, 8, 2.0D))
                         .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111D))

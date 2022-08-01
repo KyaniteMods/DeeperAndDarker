@@ -4,7 +4,7 @@ import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.registry.world.biomes.DDBiomes;
+import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
@@ -32,7 +32,7 @@ public class DeeperAndDarker {
 
         DDBlocks.BLOCKS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
-        DDBiomes.BIOMES.register(eventBus);
+        OthersideBiomes.BIOMES.register(eventBus);
         DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
         DDEntities.ENTITY_TYPES.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
