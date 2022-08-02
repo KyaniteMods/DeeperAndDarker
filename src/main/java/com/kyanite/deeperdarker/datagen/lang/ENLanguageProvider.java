@@ -30,8 +30,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.locate_ancient_city.description", "Find an Ancient City");
         add("advancements.deeperdarker.obtain_echo_shard.title", "Echoes of the Past");
         add("advancements.deeperdarker.obtain_echo_shard.description", "Collect some Echo Shards from an Ancient City");
-        add("advancements.deeperdarker.summon_warden.title", "Ancient Guardian");
-        add("advancements.deeperdarker.summon_warden.description", "Summon the Warden... then run!");
+        add("advancements.deeperdarker.kill_warden.title", "Phantom Thief");
+        add("advancements.deeperdarker.kill_warden.description", "Slay the Warden and take its heart... ew");
+        add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
+        add("advancements.deeperdarker.enter_otherside.description", "Add proper description for Enter the Otherside later");
 
         add("biomes.deeperdarker.otherside_lowland", "Otherside Lowland");
         add("entity.deeperdarker.shriek_worm", "Shriek Worm");

@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.datagen.advancements;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.*;
@@ -38,7 +40,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 Component.translatable("advancements.deeperdarker.obtain_membrane.title"),
                 Component.translatable("advancements.deeperdarker.obtain_membrane.description"),
                 null, FrameType.TASK, true, true, false)
-                .addCriterion("phantom_membrane", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
+                .addCriterion("membrane", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
                 .save(consumer, id + "obtain_membrane");
 
         Advancement locateAncientCity = Advancement.Builder.advancement().parent(obtainMembrane).display(Blocks.DEEPSLATE_TILES,
@@ -48,11 +50,18 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(BuiltinStructures.ANCIENT_CITY)))
                 .save(consumer, id + "locate_ancient_city");
 
-        Advancement.Builder.advancement().parent(locateAncientCity).display(Blocks.SCULK_SHRIEKER,
-                Component.translatable("advancements.deeperdarker.summon_warden.title"),
-                Component.translatable("advancements.deeperdarker.summon_warden.description"),
+        Advancement killWarden = Advancement.Builder.advancement().parent(locateAncientCity).display(Blocks.SCULK_SHRIEKER,
+                Component.translatable("advancements.deeperdarker.kill_warden.title"),
+                Component.translatable("advancements.deeperdarker.kill_warden.description"),
+                null, FrameType.CHALLENGE, true, true, false)
+                .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
+                .save(consumer, id + "kill_warden");
+
+        Advancement.Builder.advancement().parent(killWarden).display(DDItems.HEART_OF_THE_DEEP.get(),
+                Component.translatable("advancements.deeperdarker.enter_otherside.title"),
+                Component.translatable("advancements.deeperdarker.enter_otherside.title"),
                 null, FrameType.GOAL, true, true, false)
-                .addCriterion("summon", SummonedEntityTrigger.TriggerInstance.summonedEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
-                .save(consumer, id + "summon_warden");
+                .addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(DDDimensions.OTHERSIDE_LEVEL))
+                .save(consumer, "enter_otherside");
     }
 }

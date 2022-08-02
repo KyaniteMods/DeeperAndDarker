@@ -1,7 +1,7 @@
 {
   "parent": "deeperdarker:main/root",
   "criteria": {
-    "phantom_membrane": {
+    "membrane": {
       "conditions": {
         "items": [
           {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "phantom_membrane"
+      "membrane"
     ]
   ]
 }
