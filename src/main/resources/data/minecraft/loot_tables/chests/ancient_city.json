@@ -94,6 +94,18 @@
         {
           "type": "minecraft:item",
           "weight": 2,
+          "name": "minecraft:lead",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1,
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
           "name": "minecraft:diamond_horse_armor",
           "functions": [
             {
@@ -117,7 +129,17 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 3,
+          "weight": 2,
+          "name": "minecraft:music_disc_13"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "minecraft:music_disc_cat"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
           "name": "minecraft:diamond_leggings",
           "functions": [
             {
@@ -134,62 +156,12 @@
         {
           "type": "minecraft:item",
           "weight": 3,
-          "name": "minecraft:diamond_chestplate",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": {
-                "type": "minecraft:uniform",
-                "min": 30,
-                "max": 50
-              },
-              "treasure": true
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 3,
-          "name": "minecraft:diamond_boots",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": {
-                "type": "minecraft:uniform",
-                "min": 30,
-                "max": 50
-              },
-              "treasure": true
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 3,
-          "name": "minecraft:diamond_helmet",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": {
-                "type": "minecraft:uniform",
-                "min": 30,
-                "max": 50
-              },
-              "treasure": true
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 4,
           "name": "minecraft:book",
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
               "enchantments": [
-                "minecraft:swift_sneak",
-                "minecraft:soul_speed",
-                "minecraft:mending"
+                "minecraft:swift_sneak"
               ]
             }
           ]
@@ -287,6 +259,22 @@
                 "max": 15
               },
               "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "minecraft:iron_leggings",
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 20,
+                "max": 39
+              },
+              "treasure": true
             }
           ]
         },
@@ -402,8 +390,19 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 2,
-          "name": "minecraft:netherite_ingot"
+          "weight": 7,
+          "name": "minecraft:coal",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 6,
+                "max": 15
+              },
+              "add": false
+            }
+          ]
         },
         {
           "type": "minecraft:item",
