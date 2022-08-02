@@ -6,7 +6,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
 
-public class DDLootTables extends BlockLoot {
+public class DDBlockLoot extends BlockLoot {
     @Override
     protected void addTables() {
         this.dropSelf(DDBlocks.BONE_PLANKS.get());
