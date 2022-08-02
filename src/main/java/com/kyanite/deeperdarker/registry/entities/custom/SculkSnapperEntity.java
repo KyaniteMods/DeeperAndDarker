@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -68,6 +69,14 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     public void tick() {
         super.tick();
 
+        if(this.getTarget() != null) {
+            if(this.distanceTo(this.getTarget()) > 15 && this.getCurrentState() != DIG && this.getCurrentState() != SNIFF && this.getCurrentState() != EMERGE && this.getCurrentState() != MOUTH_OPEN)
+            {
+                Vec3 lookAngle = getTarget().getLookAngle();
+                BlockPos pos = new BlockPos(lookAngle.x * 2.5F + getTarget().getX(), lookAngle.y * 2.5F + getTarget().getY(), lookAngle.z * 2.5F + getTarget().getZ());
+                digTo(pos);
+            }
+        }
         if(this.entityData.get(SNIFF_COUNTER) > 1)
         {
             this.entityData.set(SNIFF_COUNTER, this.entityData.get(SNIFF_COUNTER) - 1);
@@ -100,11 +109,6 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     }
 
     @Override
-    public EntityState getDefaultState() {
-        return IDLE;
-    }
-
-    @Override
     public EntityState getMovingState() {
         if(this.getCurrentState() != SNIFF && this.getCurrentState() != MOUTH_OPEN && this.getCurrentState() != EMERGE && this.getCurrentState() != DIG)
             return WALK;
@@ -128,7 +132,10 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             setState(IDLE);
         }else if(entityState.equals(DIG))
         {
-            moveTo(TARGET_POS.above(), 0, 0);
+            if(TARGET_POS != null) {
+                moveTo(TARGET_POS, 0, 0);
+            }
+
             setState(EMERGE);
             TARGET_POS = null;
         }else if(entityState.equals(EMERGE))
@@ -149,25 +156,29 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         }
     }
 
-    protected void findTarget() {
-        Player player = getLevel().getNearestPlayer(this, 60);
-        if(player == null || player.isDeadOrDying())
-        {
+    public void digTo(BlockPos pos) {
+        if(pos == null) {
+            setState(IDLE);
+            return;
+        }
+        this.setState(DIG);
+        TARGET_POS = pos;
+    }
+    public void findTarget() {
+        Player player = getLevel().getNearestPlayer(this, 40);
+        if (player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
             setState(IDLE);
             return;
         }
 
         setTarget(player);
-
         Vec3 lookAngle = getTarget().getLookAngle();
-        BlockPos pos = new BlockPos(lookAngle.x * 2.5F + player.getX(), lookAngle.y * 2.5F + player.getY(), lookAngle.z * 2.5F + player.getZ());
-        if(level.getBlockState(pos).is(Blocks.AIR) || level.getBlockState(pos.above()).is(Blocks.AIR)) {
-            this.setState(DIG);
-            TARGET_POS = pos;
-        }else{
+        if(lookAngle == null || getTarget().blockPosition() == null) {
             setState(IDLE);
             return;
         }
+        BlockPos pos = new BlockPos(lookAngle.x * 2.5F + getTarget().blockPosition().getX(), lookAngle.y * 2.5F + getTarget().blockPosition().getY(), lookAngle.z * 2.5F + getTarget().blockPosition().getZ());
+        digTo(pos);
     }
 
     @Override

@@ -73,12 +73,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public List<EntityState> createStates() {
-        return Arrays.asList(AWAKE, EMERGE, DESCEND, ATTACK);
-    }
-
-    @Override
-    public EntityState getDefaultState() {
-        return EMERGE;
+        return Arrays.asList(EMERGE, AWAKE, DESCEND, ATTACK);
     }
 
     @Override
@@ -102,7 +97,6 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     public void tick() {
         super.tick();
         if(this.getCurrentState().equals(this.AWAKE)) {
-            DeeperAndDarker.LOGGER.info(String.valueOf(getDescendTime()));
             if (getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {

@@ -25,7 +25,6 @@ public abstract class ActionAnimatedEntity extends Animal implements IAnimatable
     protected ActionAnimatedEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.states = this.createStates();
-        this.setState(this.getDefaultState());
     }
 
     public EntityState getCurrentState() {
@@ -39,13 +38,18 @@ public abstract class ActionAnimatedEntity extends Animal implements IAnimatable
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 5, this::predicate));
+        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
     }
 
     private boolean wasMoving = false;
     public boolean isMoving = false;
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        if(states.indexOf(getCurrentState()) == 0)
+            event.getController().transitionLengthTicks = 0;
+        else
+            event.getController().transitionLengthTicks = 3;
+
         if(event.isMoving() && getMovingState() != null) {
             wasMoving = true;
             isMoving = event.isMoving();
@@ -107,7 +111,6 @@ public abstract class ActionAnimatedEntity extends Animal implements IAnimatable
 
     public abstract List<EntityState> createStates();
 
-    public abstract EntityState getDefaultState();
     public abstract EntityState getMovingState();
     public abstract void stateDone(EntityState entityState);
 
