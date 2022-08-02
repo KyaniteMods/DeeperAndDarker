@@ -1,12 +1,11 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
-import com.kyanite.deeperdarker.util.DDParticleUtils;
+import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -34,6 +33,7 @@ import java.util.List;
 
 public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
+
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true, false));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge",80, false, true));
@@ -97,7 +97,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     public void tick() {
         super.tick();
         if(this.getCurrentState().equals(this.AWAKE)) {
-            if (getDescendTime() != 0) {
+            if(getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {
                 setDescendTime(1200);
@@ -108,14 +108,14 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateDone(EntityState entityState) {
-        if (EMERGE.equals(entityState)) {
+        if(EMERGE.equals(entityState)) {
             setState(AWAKE);
         }else if(DESCEND.equals(entityState)) {
             this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.KILLED);
         }else if(ATTACK.equals(entityState)) {
             setState(AWAKE);
-            if (this.getTarget() != null)
+            if(this.getTarget() != null)
                 this.doHurtTarget(this.getTarget());
         }
     }

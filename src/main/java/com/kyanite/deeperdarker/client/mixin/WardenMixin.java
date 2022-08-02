@@ -41,12 +41,12 @@ public abstract class WardenMixin extends Entity {
 
     @Inject(method = "getEntityAngryAt", at = @At("HEAD"), cancellable = true)
     public void getEntityAngryAt(CallbackInfoReturnable<Optional<LivingEntity>> cir) {
-        if (this.angerManagement.getActiveEntity().isEmpty()) return;
+        if(this.angerManagement.getActiveEntity().isEmpty()) return;
 
-        if (this.angerManagement.getActiveEntity().get() instanceof Player plr) {
+        if(this.angerManagement.getActiveEntity().get() instanceof Player plr) {
             if(plr.isCreative()) return;
 
-            if (plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+            if(plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 cir.setReturnValue(Optional.empty());
             }
         }
@@ -54,9 +54,9 @@ public abstract class WardenMixin extends Entity {
 
     @Inject(method = "setAttackTarget", at = @At("HEAD"), cancellable = true)
     public void setTarget(LivingEntity entity, CallbackInfo ci) {
-        if (entity instanceof Player plr) {
+        if(entity instanceof Player plr) {
             if(plr.isCreative()) return;
-            if (plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+            if(plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
                 ci.cancel();
             }

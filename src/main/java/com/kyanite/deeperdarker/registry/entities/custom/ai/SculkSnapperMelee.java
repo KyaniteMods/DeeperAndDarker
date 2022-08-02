@@ -24,9 +24,7 @@ public class SculkSnapperMelee extends MeleeAttackGoal {
     protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
         double d0 = this.getAttackReachSqr(pEnemy);
         SculkSnapperEntity snapperEntity = (SculkSnapperEntity) this.mob;
-        if (pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0 && snapperEntity.isMoving == false
-                && snapperEntity.getCurrentState() != SculkSnapperEntity.DIG
-                && snapperEntity.getCurrentState() != SculkSnapperEntity.EMERGE) {
+        if(pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0 && !snapperEntity.isMoving && snapperEntity.getCurrentState() != SculkSnapperEntity.DIG && snapperEntity.getCurrentState() != SculkSnapperEntity.EMERGE) {
             this.resetAttackCooldown();
             snapperEntity.setState(SculkSnapperEntity.MOUTH_OPEN);
         }

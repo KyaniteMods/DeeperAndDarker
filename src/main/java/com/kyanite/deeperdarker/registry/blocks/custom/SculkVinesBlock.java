@@ -20,7 +20,7 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
 
     @Override
     public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
-        if (silkTouchLevel != 0) {
+        if(silkTouchLevel != 0) {
             return 0;
         } else return 1;
     }

@@ -4,32 +4,25 @@ import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
-import com.kyanite.deeperdarker.util.DDParticleUtils;
+import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -113,7 +106,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     @Override
     public boolean isInvulnerable() {
-        if (this.getCurrentState() == DIG || this.getCurrentState() == EMERGE) return true;
+        if(this.getCurrentState() == DIG || this.getCurrentState() == EMERGE) return true;
 
         return super.isInvulnerable();
     }
@@ -173,7 +166,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             findTarget();
         }else if(entityState.equals(MOUTH_OPEN))
         {
-            if (this.getTarget() != null)
+            if(this.getTarget() != null)
                 this.doHurtTarget(this.getTarget());
 
             setState(IDLE);
@@ -214,7 +207,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     public void findTarget() {
         if(this.isTame()) {
             Player player = (Player) getOwner();
-            if (player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
+            if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
                 setState(IDLE);
                 return;
             }
@@ -230,7 +223,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         }
 
         Player player = getLevel().getNearestPlayer(this, 40);
-        if (player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
+        if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
             setState(IDLE);
             return;
         }

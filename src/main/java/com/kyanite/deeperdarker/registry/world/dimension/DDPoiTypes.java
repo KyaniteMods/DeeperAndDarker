@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.util;
+package com.kyanite.deeperdarker.registry.world.dimension;
 
 import com.google.common.collect.ImmutableSet;
 import com.kyanite.deeperdarker.DeeperAndDarker;

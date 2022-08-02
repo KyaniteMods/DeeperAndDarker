@@ -22,26 +22,26 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
         WorldGenLevel worldGenLevel = pContext.level();
         BlockPos blockPos = pContext.origin();
         RandomSource random = pContext.random();
-        if (!worldGenLevel.isEmptyBlock(blockPos)) {
+        if(!worldGenLevel.isEmptyBlock(blockPos)) {
             return false;
         } else {
             BlockState blockstate = worldGenLevel.getBlockState(blockPos.above());
-            if (!blockstate.is(Blocks.SCULK)) {
+            if(!blockstate.is(Blocks.SCULK)) {
                 return false;
             } else {
                 worldGenLevel.setBlock(blockPos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
 
-                for (int i = 0; i < 1500; i++) {
+                for(int i = 0; i < 1500; i++) {
                     BlockPos offset = blockPos.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
-                    if (worldGenLevel.getBlockState(offset).isAir()) {
+                    if(worldGenLevel.getBlockState(offset).isAir()) {
                         int j = 0;
 
-                        for (Direction direction : Direction.values()) {
-                            if (worldGenLevel.getBlockState(offset.relative(direction)).is(DDBlocks.SCULK_GLEAM.get())) j++;
-                            if (j > 1) break;
+                        for(Direction direction : Direction.values()) {
+                            if(worldGenLevel.getBlockState(offset.relative(direction)).is(DDBlocks.SCULK_GLEAM.get())) j++;
+                            if(j > 1) break;
                         }
 
-                        if (j == 1) worldGenLevel.setBlock(offset, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
+                        if(j == 1) worldGenLevel.setBlock(offset, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
                     }
                 }
 

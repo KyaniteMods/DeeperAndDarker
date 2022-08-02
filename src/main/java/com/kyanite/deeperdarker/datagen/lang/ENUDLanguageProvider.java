@@ -31,30 +31,24 @@ public class ENUDLanguageProvider implements DataProvider {
     }
 
     protected void addTranslations() {
-
         // noinspection ConstantConditions
-
         try (final var is = new InputStreamReader(DeeperAndDarker.class.getResourceAsStream("/assets/deeperdarker/lang/en_us.json"))) {
-
             final var json = new Gson().fromJson(is, JsonObject.class);
-
             json.entrySet().forEach(entry -> data.put(entry.getKey(), toUpsideDown(entry.getValue().getAsString())));
-
         } catch (IOException e) {
-
             DeeperAndDarker.LOGGER.warn("Failed to generate en_ud translations: ", e);
-
         }
-
     }
 
     @Override
     public void run(@NotNull CachedOutput cache) throws IOException {
         addTranslations();
+
         JsonObject json = new JsonObject();
-        for (Map.Entry<String, String> pair : data.entrySet()) {
+        for(Map.Entry<String, String> pair : data.entrySet()) {
             json.addProperty(pair.getKey(), pair.getValue());
         }
+
         final var data = escape(GSON.toJson(json));
         saveStable(cache, data, generator.getOutputFolder().resolve("assets/" + DeeperAndDarker.MOD_ID + "/lang/en_ud.json"));
     }
@@ -73,7 +67,6 @@ public class ENUDLanguageProvider implements DataProvider {
     }
 
     // Automatic en_ud generation
-
     private static final String NORMAL_CHARS =
             /* lowercase */ "abcdefghijklmn\u00F1opqrstuvwxyz" +
             /* uppercase */ "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
@@ -86,18 +79,17 @@ public class ENUDLanguageProvider implements DataProvider {
             /*  numbers  */ "0\u0196\u1105\u0190\u3123\u03DB9\u312586" +
             /*  special  */ "\u203E'\u061B\u02D9\u00BF\u00A1/\\,";
 
-    @SuppressWarnings("deprecation")
     public static String escape(String data) {
         return JavaUnicodeEscaper.outsideOf(0, 0x7f).translate(data);
     }
 
     public static String toUpsideDown(@Nullable String normal) {
-        if (normal == null)
+        if(normal == null)
             return null;
         char[] ud = new char[normal.length()];
-        for (int i = 0; i < normal.length(); i++) {
+        for(int i = 0; i < normal.length(); i++) {
             char c = normal.charAt(i);
-            if (c == '%') {
+            if(c == '%') {
                 StringBuilder fmtArg = new StringBuilder();
                 while (Character.isDigit(c) || c == '%' || c == '$' || c == 's' || c == 'd') {
                     fmtArg.append(c);
@@ -105,13 +97,13 @@ public class ENUDLanguageProvider implements DataProvider {
                     c = i == normal.length() ? 0 : normal.charAt(i);
                 }
                 i--;
-                for (int j = 0; j < fmtArg.length(); j++) {
+                for(int j = 0; j < fmtArg.length(); j++) {
                     ud[normal.length() - 1 - i + j] = fmtArg.charAt(j);
                 }
                 continue;
             }
             int lookup = NORMAL_CHARS.indexOf(c);
-            if (lookup >= 0) {
+            if(lookup >= 0) {
                 c = UPSIDE_DOWN_CHARS.charAt(lookup);
             }
             ud[normal.length() - 1 - i] = c;

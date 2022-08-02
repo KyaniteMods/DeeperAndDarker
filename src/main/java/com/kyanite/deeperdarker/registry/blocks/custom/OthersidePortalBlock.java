@@ -49,7 +49,7 @@ public class OthersidePortalBlock extends Block {
 
     public boolean spawnPortal(LevelAccessor worldIn, BlockPos pos) {
         OthersidePortalBlock.Size portal = this.isPortal(worldIn, pos);
-        if (portal != null && !trySpawningPortal(worldIn, pos, portal)) {
+        if(portal != null && !trySpawningPortal(worldIn, pos, portal)) {
             portal.placePortalBlocks();
             return true;
         } else return false;
@@ -75,7 +75,7 @@ public class OthersidePortalBlock extends Block {
 
     public OthersidePortalBlock.Size isPortal(LevelAccessor level, BlockPos pos) {
         OthersidePortalBlock.Size portalX = new Size(level, pos, Direction.Axis.X);
-        if (portalX.isValid() && portalX.portalBlockCount == 0) {
+        if(portalX.isValid() && portalX.portalBlockCount == 0) {
             return portalX;
         } else {
             OthersidePortalBlock.Size portalZ = new Size(level, pos, Direction.Axis.Z);
@@ -122,7 +122,7 @@ public class OthersidePortalBlock extends Block {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pRandom.nextInt(100) == 0) {
+        if(pRandom.nextInt(100) == 0) {
             pLevel.playLocalSound((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D,
                     (double)pPos.getZ() + 0.5D, SoundEvents.PORTAL_AMBIENT,
                     SoundSource.BLOCKS, 0.5F, pRandom.nextFloat() * 0.4F + 0.8F, false);
@@ -137,7 +137,7 @@ public class OthersidePortalBlock extends Block {
             double ySpeed = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
             double zSpeed = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
             int j = pRandom.nextInt(2) * 2 - 1;
-            if (!pLevel.getBlockState(pPos.west()).is(this) && !pLevel.getBlockState(pPos.east()).is(this)) {
+            if(!pLevel.getBlockState(pPos.west()).is(this) && !pLevel.getBlockState(pPos.east()).is(this)) {
                 x = (double)pPos.getX() + 0.5D + 0.25D * (double)j;
                 xSpeed = pRandom.nextFloat() * 2.0F * (float)j;
             }
@@ -185,7 +185,7 @@ public class OthersidePortalBlock extends Block {
         public Size(LevelAccessor level, BlockPos pos, Direction.Axis axis) {
             this.level = level;
             this.axis = axis;
-            if (axis == Direction.Axis.X) {
+            if(axis == Direction.Axis.X) {
                 this.leftDir = Direction.EAST;
                 this.rightDir = Direction.WEST;
             }
@@ -195,16 +195,16 @@ public class OthersidePortalBlock extends Block {
             }
 
             int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
-            if (i >= 0) {
+            if(i >= 0) {
                 this.bottomLeft = pos.relative(this.leftDir, i);
                 this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
-                if (this.width < 2 || this.width > 21) {
+                if(this.width < 2 || this.width > 21) {
                     this.bottomLeft = null;
                     this.width = 0;
                 }
             }
 
-            if (this.bottomLeft != null) {
+            if(this.bottomLeft != null) {
                 this.height = this.calculatePortalHeight();
             }
 
@@ -230,24 +230,24 @@ public class OthersidePortalBlock extends Block {
                 for(int i = 0; i < this.width; i++) {
                     BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i).above(this.height);
                     BlockState blockstate = this.level.getBlockState(blockpos);
-                    if (!this.canConnect(blockstate)) {
+                    if(!this.canConnect(blockstate)) {
                         break calc;
                     }
 
                     Block block = blockstate.getBlock();
-                    if (block == DDBlocks.OTHERSIDE_PORTAL.get()) {
+                    if(block == DDBlocks.OTHERSIDE_PORTAL.get()) {
                         this.portalBlockCount++;
                     }
 
-                    if (i == 0) {
+                    if(i == 0) {
                         BlockPos framePos = blockpos.relative(this.leftDir);
-                        if (!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
+                        if(!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
                             break calc;
                         }
                     }
-                    else if (i == this.width - 1) {
+                    else if(i == this.width - 1) {
                         BlockPos framePos = blockpos.relative(this.rightDir);
-                        if (!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
+                        if(!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
                             break calc;
                         }
                     }
@@ -256,13 +256,13 @@ public class OthersidePortalBlock extends Block {
 
             for(int j = 0; j < this.width; j++) {
                 BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
-                if (!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
+                if(!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
                     this.height = 0;
                     break;
                 }
             }
 
-            if (this.height <= 21 && this.height >= 3) {
+            if(this.height <= 21 && this.height >= 3) {
                 return this.height;
             }
             else {
