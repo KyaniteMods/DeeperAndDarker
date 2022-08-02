@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "S": {
-      "item": "deeperdarker:sculk_stone"
+      "item": "deeperdarker:cobbled_sculk_stone"
     }
   },
   "pattern": [

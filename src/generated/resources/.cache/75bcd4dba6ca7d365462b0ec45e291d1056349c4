@@ -1,8 +1,8 @@
-// 1.19.1	2022-08-01T18:36:38.5921466	Tags for minecraft:block
+// 1.19.1	2022-08-02T17:06:28.1363295	Tags for minecraft:block
 8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/blocks/bone_wood.json
-d16b9a6e1f06e0039d2d45b5f82cf6d2b0ecbdb9 data/deeperdarker/tags/blocks/sculk_blocks.json
+0e8ec562104a9069f5b60fd5c1d50e18234f15bd data/deeperdarker/tags/blocks/sculk_blocks.json
 b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/blocks/sculk_bone_wood.json
-ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/blocks/sculk_stone_ore_replaceables.json
+86cbe5b2f34a2934a3359bafcc977bdb932c1fd1 data/deeperdarker/tags/blocks/sculk_stone_ore_replaceables.json
 6ed921876d1a8064317c590325eef78f63e9e2c4 data/deeperdarker/tags/blocks/sculk_vines.json
 1d4e7b337609270fe7e8be0acafd0fa186873cd2 data/minecraft/tags/blocks/climbable.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/blocks/coal_ores.json
@@ -15,7 +15,7 @@ fa9ddaa0b613f9e844510a09c5eb310896a58922 data/minecraft/tags/blocks/fence_gates.
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/minecraft/tags/blocks/lapis_ores.json
 562815a9d1ce227ac162eb5c011898d8dbd6d06e data/minecraft/tags/blocks/mineable/axe.json
 3b519b84fc16715a6ac17681a84cd90e44938c47 data/minecraft/tags/blocks/mineable/hoe.json
-c356d53d99f8ab53175b2837e809830e14531881 data/minecraft/tags/blocks/mineable/pickaxe.json
+2b0b73bb23b2a94c9ad4d49cd7d56059e34cac27 data/minecraft/tags/blocks/mineable/pickaxe.json
 559b853bd220d520b0dcceb6b71657f89b7fe2b3 data/minecraft/tags/blocks/non_flammable_wood.json
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json

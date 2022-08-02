@@ -41,7 +41,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(DDTags.Blocks.BONE_WOOD, DDTags.Items.BONE_WOOD);
         copy(DDTags.Blocks.SCULK_BONE_WOOD, DDTags.Items.SCULK_BONE_WOOD);
 
-        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.SCULK_STONE.get().asItem());
-        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.SCULK_STONE.get().asItem());
+        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
+        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
     }
 }

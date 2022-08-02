@@ -40,9 +40,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         signBlock(DDBlocks.SCULK_BONE_SIGN.get(), (WallSignBlock) DDBlocks.SCULK_BONE_WALL_SIGN.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
-        slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));
-        stairsBlock(DDBlocks.SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.SCULK_STONE));
-        wallBlock(DDBlocks.SCULK_STONE_WALL, blockLoc(DDBlocks.SCULK_STONE));
+        simpleBlock(DDBlocks.COBBLED_SCULK_STONE.get());
+        slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.COBBLED_SCULK_STONE), blockLoc(DDBlocks.COBBLED_SCULK_STONE));
+        stairsBlock(DDBlocks.SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.COBBLED_SCULK_STONE));
+        wallBlock(DDBlocks.SCULK_STONE_WALL, blockLoc(DDBlocks.COBBLED_SCULK_STONE));
         simpleBlock(DDBlocks.POLISHED_SCULK_STONE.get());
         slabBlock(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE), blockLoc(DDBlocks.POLISHED_SCULK_STONE));
         stairsBlock(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.POLISHED_SCULK_STONE));

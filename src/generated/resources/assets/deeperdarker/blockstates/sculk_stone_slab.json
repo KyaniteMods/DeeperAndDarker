@@ -4,7 +4,7 @@
       "model": "deeperdarker:block/sculk_stone_slab"
     },
     "type=double": {
-      "model": "deeperdarker:block/sculk_stone"
+      "model": "deeperdarker:block/cobbled_sculk_stone"
     },
     "type=top": {
       "model": "deeperdarker:block/sculk_stone_slab_top"
