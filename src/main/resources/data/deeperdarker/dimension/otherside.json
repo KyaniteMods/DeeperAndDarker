@@ -9,7 +9,7 @@
       "ore_veins_enabled": false,
       "legacy_random_source": true,
       "default_block": {
-        "Name": "minecraft:sculk"
+        "Name": "deeperdarker:sculk_stone"
       },
       "default_fluid": {
         "Name": "minecraft:water",
