@@ -1,4 +1,4 @@
-// 1.19.1	2022-08-02T17:06:28.135829	Tags for minecraft:item
+// 1.19.1	2022-08-02T17:54:48.1292084	Tags for minecraft:item
 8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/items/bone_wood.json
 b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/items/sculk_bone_wood.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/items/coal_ores.json
@@ -11,11 +11,11 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/minecraft/tags/items/emerald_ores.
 559b853bd220d520b0dcceb6b71657f89b7fe2b3 data/minecraft/tags/items/non_flammable_wood.json
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/items/planks.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/items/redstone_ores.json
-1a691295cef77d0f941398e46d89d4fa84660a6e data/minecraft/tags/items/slabs.json
-e34ec134fe81928094e07c743c36bf6d795b0f23 data/minecraft/tags/items/stairs.json
+57766086477bff34f126db345fc02e2d46a3349a data/minecraft/tags/items/slabs.json
+f5c6df186a3379fe66f381280f6e9458effbe080 data/minecraft/tags/items/stairs.json
 178c93e374c88549d2b1d5536e3f05d8157f1d91 data/minecraft/tags/items/stone_crafting_materials.json
 178c93e374c88549d2b1d5536e3f05d8157f1d91 data/minecraft/tags/items/stone_tool_materials.json
-afeb4a03502baa617f8998feebabd29debdf7166 data/minecraft/tags/items/walls.json
+934dbe538b87e9ea05da02db8c4c7b069b699cdc data/minecraft/tags/items/walls.json
 1bb566eecd4d7c3bfaeec4ba569208820c955530 data/minecraft/tags/items/wooden_buttons.json
 930e760175a4652e0869fd0119aa05615e86bb9f data/minecraft/tags/items/wooden_doors.json
 74b243f682609b01304a301d05a95151177201f3 data/minecraft/tags/items/wooden_fences.json

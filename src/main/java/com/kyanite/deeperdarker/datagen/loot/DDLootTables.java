@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.RegistryObject;
 
 public class DDLootTables extends BlockLoot {
@@ -36,14 +35,20 @@ public class DDLootTables extends BlockLoot {
         this.dropSelf(DDBlocks.SCULK_BONE_SIGN.get());
 
         this.add(DDBlocks.SCULK_STONE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
-        this.dropSelf(DDBlocks.COBBLED_SCULK_STONE.get());
         this.add(DDBlocks.SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
         this.dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_WALL.get());
+
+        this.dropSelf(DDBlocks.COBBLED_SCULK_STONE.get());
+        this.add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get());
+        this.dropSelf(DDBlocks.COBBLED_SCULK_STONE_WALL.get());
+
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE.get());
         this.add(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_WALL.get());
+
         this.dropSelf(DDBlocks.SCULK_STONE_BRICKS.get());
         this.add(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());

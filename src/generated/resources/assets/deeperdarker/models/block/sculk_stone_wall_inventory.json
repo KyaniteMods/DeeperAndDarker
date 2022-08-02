@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "wall": "deeperdarker:block/cobbled_sculk_stone"
+    "wall": "deeperdarker:block/sculk_stone"
   }
 }

@@ -1,4 +1,4 @@
-// 1.19.1	2022-08-02T17:06:28.1383643	Item Models: deeperdarker
+// 1.19.1	2022-08-02T17:54:48.1302056	Item Models: deeperdarker
 0a9eb1c2c8a62f347757a60acf0859ca768029de assets/deeperdarker/models/item/bone_button.json
 af6f3186763a1cec53dc982755967805d3be20bc assets/deeperdarker/models/item/bone_door.json
 aa8ff35b68e4f5648c44ab13c87fc5f7ce5394f8 assets/deeperdarker/models/item/bone_fence.json
@@ -10,6 +10,9 @@ e4449d903b9bf57a8415e18aee576cbd50e84422 assets/deeperdarker/models/item/bone_pl
 315a7255b440ac967c730144209ab642a7dcaee3 assets/deeperdarker/models/item/bone_stairs.json
 c8e8c59bd599542b9d6b7febbd5ea1e54b7324c4 assets/deeperdarker/models/item/bone_trapdoor.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled_sculk_stone.json
+1efdf671344a524233dc6025ce4ade7431e7e840 assets/deeperdarker/models/item/cobbled_sculk_stone_slab.json
+89328e616967e970f638a1a85dc99021c95ea9f0 assets/deeperdarker/models/item/cobbled_sculk_stone_stairs.json
+a83a97c9a52c6f16a0d4dd3fcb6f498389378b84 assets/deeperdarker/models/item/cobbled_sculk_stone_wall.json
 d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_of_the_deep.json
 e908654db1aebb4340c0613f218cf9dbf3bd0dc4 assets/deeperdarker/models/item/infested_sculk.json
 68cbbbc1053e35bd4aa6682c8894364f19eb8dfc assets/deeperdarker/models/item/polished_sculk_stone.json

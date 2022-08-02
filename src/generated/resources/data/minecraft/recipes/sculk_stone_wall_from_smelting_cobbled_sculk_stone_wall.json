@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "sculk_stone_wall",
+  "ingredient": {
+    "item": "deeperdarker:cobbled_sculk_stone_wall"
+  },
+  "result": "deeperdarker:sculk_stone_wall"
+}

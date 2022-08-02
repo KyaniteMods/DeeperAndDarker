@@ -1,10 +1,13 @@
 {
   "values": [
     "deeperdarker:sculk_stone",
-    "deeperdarker:cobbled_sculk_stone",
     "deeperdarker:sculk_stone_slab",
     "deeperdarker:sculk_stone_stairs",
     "deeperdarker:sculk_stone_wall",
+    "deeperdarker:cobbled_sculk_stone",
+    "deeperdarker:cobbled_sculk_stone_slab",
+    "deeperdarker:cobbled_sculk_stone_stairs",
+    "deeperdarker:cobbled_sculk_stone_wall",
     "deeperdarker:polished_sculk_stone",
     "deeperdarker:polished_sculk_stone_slab",
     "deeperdarker:polished_sculk_stone_stairs",

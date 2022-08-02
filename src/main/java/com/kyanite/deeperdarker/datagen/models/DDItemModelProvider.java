@@ -42,14 +42,20 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_BONE_FENCE_GATE);
 
         blockModel(DDBlocks.SCULK_STONE);
-        blockModel(DDBlocks.COBBLED_SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_SLAB);
         blockModel(DDBlocks.SCULK_STONE_STAIRS);
         blockModel(DDBlocks.SCULK_STONE_WALL, "inventory");
+
+        blockModel(DDBlocks.COBBLED_SCULK_STONE);
+        blockModel(DDBlocks.COBBLED_SCULK_STONE_SLAB);
+        blockModel(DDBlocks.COBBLED_SCULK_STONE_STAIRS);
+        blockModel(DDBlocks.COBBLED_SCULK_STONE_WALL, "inventory");
+
         blockModel(DDBlocks.POLISHED_SCULK_STONE);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_SLAB);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_WALL, "inventory");
+
         blockModel(DDBlocks.SCULK_STONE_BRICKS);
         blockModel(DDBlocks.SCULK_STONE_BRICK_SLAB);
         blockModel(DDBlocks.SCULK_STONE_BRICK_STAIRS);
