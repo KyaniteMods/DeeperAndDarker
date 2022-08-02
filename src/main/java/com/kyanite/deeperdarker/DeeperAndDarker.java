@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
@@ -39,13 +40,13 @@ public class DeeperAndDarker {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         DDBlocks.BLOCKS.register(eventBus);
-        DDItems.ITEMS.register(eventBus);
-        OthersideBiomes.BIOMES.register(eventBus);
-        DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
-        DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
-        DDEntities.ENTITY_TYPES.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
+        DDEntities.ENTITY_TYPES.register(eventBus);
+        DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
         DDPlacedFeatures.PLACED_FEATURES.register(eventBus);
+        OthersideBiomes.BIOMES.register(eventBus);
+        DDItems.ITEMS.register(eventBus);
+        DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
         DDPoiTypes.POI.register(eventBus);
 
         GeckoLibMod.DISABLE_IN_DEV = true;
