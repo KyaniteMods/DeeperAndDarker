@@ -2,10 +2,14 @@ package com.kyanite.deeperdarker.datagen.lang;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,6 +24,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("itemGroup.deeperdarker", "Deeper And Darker");
 
         DDBlocks.BLOCKS.getEntries().forEach(this::addBlock);
+        DDEntities.ENTITY_TYPES.getEntries().forEach(this::addEntity);
+        OthersideBiomes.BIOMES.getEntries().forEach(this::addBiome);
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(this::addItem);
 
         add("advancements.deeperdarker.root.title", "Sculk Story");
@@ -33,16 +39,22 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.kill_warden.title", "Phantom Thief");
         add("advancements.deeperdarker.kill_warden.description", "Slay the Warden and take its heart... ew");
         add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
-        add("advancements.deeperdarker.enter_otherside.description", "Add proper description for Enter the Otherside later");
-
-        add("biomes.deeperdarker.otherside_lowland", "Otherside Lowland");
-        add("entity.deeperdarker.shriek_worm", "Shriek Worm");
-        add("entity.deeperdarker.soul_snapper", "Soul Snapper");
+        add("advancements.deeperdarker.enter_otherside.description", "Deep below the bedrock... the darkness");
     }
 
     private void addBlock(RegistryObject<Block> block) {
         String key = block.getId().getPath();
         add("block.deeperdarker." + key, convertToName(key));
+    }
+
+    private void addEntity(RegistryObject<EntityType<?>> item) {
+        String key = item.getId().getPath();
+        add("entity.deeperdarker." + key, convertToName(key));
+    }
+
+    private void addBiome(RegistryObject<Biome> item) {
+        String key = item.getId().getPath();
+        add("biome.deeperdarker." + key, convertToName(key));
     }
 
     private void addItem(RegistryObject<Item> item) {
