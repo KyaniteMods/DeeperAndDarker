@@ -1,5 +1,6 @@
-package com.kyanite.deeperdarker.registry.entities.custom;
+package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
+import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;

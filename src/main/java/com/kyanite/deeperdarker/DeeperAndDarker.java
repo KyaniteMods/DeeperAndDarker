@@ -1,5 +1,7 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.api.EntityState;
+import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
@@ -60,6 +62,7 @@ public class DeeperAndDarker {
             WoodType.register(DDWoodTypes.SCULK_BONE);
             BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
 
+            EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
         }
 

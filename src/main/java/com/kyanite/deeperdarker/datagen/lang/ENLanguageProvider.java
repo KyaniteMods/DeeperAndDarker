@@ -35,6 +35,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("biomes.deeperdarker.otherside_lowland", "Otherside Lowland");
         add("entity.deeperdarker.shriek_worm", "Shriek Worm");
+        add("entity.deeperdarker.soul_snapper", "Soul Snapper");
     }
 
     private void addBlock(RegistryObject<Block> block) {

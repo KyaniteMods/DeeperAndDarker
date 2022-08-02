@@ -79,6 +79,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
 
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(DDItems.SOUL_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

@@ -30,4 +30,6 @@ public class DDItems {
     public static final RegistryObject<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new DeepHeartItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<SpawnEggItem> SHRIEK_WORM_SPAWN_EGG = ITEMS.register("shriek_worm_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_WORM, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
+
+    public static final RegistryObject<SpawnEggItem> SOUL_SNAPPER_SPAWN_EGG = ITEMS.register("soul_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
 }

@@ -16,9 +16,6 @@
 					},
 					"position": {
 						"vector": [0, 0, -1.5]
-					},
-					"scale": {
-						"vector": [3.348, 3.348, 3.348]
 					}
 				},
 				"FrontBottomFlap": {
@@ -178,8 +175,11 @@
 					}
 				},
 				"ShriekWorm": {
+					"position": {
+						"vector": [0, -10, 0]
+					},
 					"scale": {
-						"vector": [0.3, 0.3, 0.3]
+						"vector": [0.1, 0.1, 0.1]
 					}
 				}
 			}
@@ -472,7 +472,7 @@
 		},
 		"idle": {
 			"loop": true,
-			"animation_length": 4.04167,
+			"animation_length": 4,
 			"bones": {
 				"Segment1": {
 					"rotation": {

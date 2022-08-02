@@ -5,14 +5,17 @@ import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
 import com.kyanite.deeperdarker.util.DDParticleUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -21,8 +24,6 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -34,12 +35,12 @@ import java.util.List;
 public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
-    public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true));
-    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge",80, false));
-    public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", 80, false));
-    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", 8, false));
+    public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true, false));
+    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge",80, false, true));
+    public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", 80, false, true));
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", 8, false, true));
 
-    public SculkWormEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public SculkWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
     @Override
@@ -78,6 +79,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public EntityState getDefaultState() {
         return EMERGE;
+    }
+
+    @Override
+    public EntityState getMovingState() {
+        return null;
     }
 
     @Override
@@ -123,6 +129,12 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return null;
     }
 
     @Override
