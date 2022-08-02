@@ -4,7 +4,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -16,13 +19,13 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 
 import java.util.List;
 
-public abstract class ActionAnimatedEntity extends Animal implements IAnimatable {
+public abstract class ActionAnimatedEntity extends TamableAnimal implements IAnimatable {
     private static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(ActionAnimatedEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> ANIMATION_TIME = SynchedEntityData.defineId(ActionAnimatedEntity.class, EntityDataSerializers.INT);
     private final List<EntityState> states;
     private EntityState lastState;
 
-    protected ActionAnimatedEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    protected ActionAnimatedEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.states = this.createStates();
     }
