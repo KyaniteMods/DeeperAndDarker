@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker;
 
-import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
@@ -41,8 +40,8 @@ public class DeeperAndDarker {
 
         DDBlocks.BLOCKS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
-        DDBlockEntityTypes.register(eventBus);
         OthersideBiomes.BIOMES.register(eventBus);
+        DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
         DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
         DDEntities.ENTITY_TYPES.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);

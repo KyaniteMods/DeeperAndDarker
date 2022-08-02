@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
-import com.kyanite.deeperdarker.registry.blocks.entity.custom.DDSignBlockEntity;
+import com.kyanite.deeperdarker.registry.blocks.entity.DDSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -13,7 +13,7 @@ public class DDStandingSignBlock extends StandingSignBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new DDSignBlockEntity(pos, state);
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return new DDSignBlockEntity(pPos, pState);
     }
 }

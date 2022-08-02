@@ -62,6 +62,6 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 Component.translatable("advancements.deeperdarker.enter_otherside.title"),
                 null, FrameType.GOAL, true, true, false)
                 .addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(DDDimensions.OTHERSIDE_LEVEL))
-                .save(consumer, "enter_otherside");
+                .save(consumer, id + "enter_otherside");
     }
 }

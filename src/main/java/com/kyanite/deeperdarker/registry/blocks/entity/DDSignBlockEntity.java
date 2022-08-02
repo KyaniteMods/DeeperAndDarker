@@ -1,6 +1,5 @@
-package com.kyanite.deeperdarker.registry.blocks.entity.custom;
+package com.kyanite.deeperdarker.registry.blocks.entity;
 
-import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.SignBlockEntity;

@@ -11,7 +11,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -31,8 +30,8 @@ public class DDBlocks {
     public static final RegistryObject<DoorBlock> BONE_DOOR = register("bone_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<TrapDoorBlock> BONE_TRAPDOOR = register("bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> BONE_FENCE_GATE = register("bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> BONE_WALL_SIGN = registerBlockWithoutItem("bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()), DDWoodTypes.BONE));
-    public static final RegistryObject<Block> BONE_SIGN = registerBlockWithoutItem("bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()), DDWoodTypes.BONE));
+    public static final RegistryObject<Block> BONE_WALL_SIGN = BLOCKS.register("bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.BONE));
+    public static final RegistryObject<StandingSignBlock> BONE_SIGN = BLOCKS.register("bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.BONE));
 
     // Sculk Bone Block Wood
     public static final RegistryObject<RotatedPillarBlock> SCULK_BONE_BLOCK = register("sculk_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
@@ -45,8 +44,8 @@ public class DDBlocks {
     public static final RegistryObject<DoorBlock> SCULK_BONE_DOOR = register("sculk_bone_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<TrapDoorBlock> SCULK_BONE_TRAPDOOR = register("sculk_bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> SCULK_BONE_FENCE_GATE = register("sculk_bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SCULK_BONE_WALL_SIGN = registerBlockWithoutItem("sculk_bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()), DDWoodTypes.SCULK_BONE));
-    public static final RegistryObject<Block> SCULK_BONE_SIGN = registerBlockWithoutItem("sculk_bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()), DDWoodTypes.SCULK_BONE));
+    public static final RegistryObject<Block> SCULK_BONE_WALL_SIGN = BLOCKS.register("sculk_bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.SCULK_BONE));
+    public static final RegistryObject<StandingSignBlock> SCULK_BONE_SIGN = BLOCKS.register("sculk_bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.SCULK_BONE));
 
     // Sculk Stone
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
@@ -77,19 +76,13 @@ public class DDBlocks {
     // Misc. Otherside
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel((state) -> 15)));
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
-    public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = registerBlockWithoutItem("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
+    public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).strength(-1f).noCollission().lightLevel((state) -> 5).noLootTable()));
     public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculk(BlockBehaviour.Properties.copy(Blocks.SCULK).sound(SoundType.SCULK).strength(0.2F)));
 
-    public static void register(IEventBus eventBus) { BLOCKS.register(eventBus); }
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);
         DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
-        return block;
-    }
-
-    private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> blockProperties) {
-        RegistryObject<T> block = BLOCKS.register(name, blockProperties);
         return block;
     }
 }

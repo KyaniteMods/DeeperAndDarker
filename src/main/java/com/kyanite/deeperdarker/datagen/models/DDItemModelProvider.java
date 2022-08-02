@@ -68,9 +68,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
 
         // ITEMS
-        itemModel(DDItems.BONE_SIGN, GENERATED);
-        itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
-
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
@@ -80,6 +77,9 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SOUL_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        itemModel(DDItems.BONE_SIGN, GENERATED);
+        itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {
