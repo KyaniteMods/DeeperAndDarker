@@ -21,7 +21,7 @@ public class DDBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MOD_ID);
 
     // Bone Block Wood
-    public static final RegistryObject<Block> BONE_PLANKS = register("bone_planks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> BONE_PLANKS = register("bone_planks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK)   .strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
     public static final RegistryObject<SlabBlock> BONE_SLAB = register("bone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
     public static final RegistryObject<StairBlock> BONE_STAIRS = register("bone_stairs", () -> new StairBlock(BONE_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceBlock> BONE_FENCE = register("bone_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));

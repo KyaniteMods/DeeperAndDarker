@@ -17,6 +17,8 @@ public class DDPlacedFeatures {
     public static final RegistryObject<PlacedFeature> INFESTED_SCULK = PLACED_FEATURES.register("infested_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_INFESTED_SCULK.getHolder().get(), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static final RegistryObject<PlacedFeature> SCULK_GLEAM = PLACED_FEATURES.register("sculk_gleam", () -> new PlacedFeature(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.getHolder().get(), commonOrePlacement(25, PlacementUtils.FULL_RANGE)));
 
+    public static final RegistryObject<PlacedFeature> DIAMOND_ORE_SCULK = PLACED_FEATURES.register("ore_diamond_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_DIAMOND_SCULK.getHolder().get(), commonOrePlacement(5, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());
     }
