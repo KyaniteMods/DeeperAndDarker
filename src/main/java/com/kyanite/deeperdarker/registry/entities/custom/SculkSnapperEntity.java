@@ -1,15 +1,21 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
+import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
+import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperFindEnchantedItems;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
+import com.kyanite.deeperdarker.util.DDGenericUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,18 +29,27 @@ import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.GameData;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
@@ -52,26 +67,26 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     public SculkSnapperEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.setCanPickUpLoot(true);
+    }
+
+    @Override
+    protected void reassessTameGoals() {
+        super.reassessTameGoals();
+        this.goalSelector.removeAllGoals();
+        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 0.3F, 10.0F, 2.0F, false));
+        this.goalSelector.addGoal(3, new SculkSnapperMelee(this, 0.4F, true));
+        this.goalSelector.addGoal(4, new SculkSnapperFindEnchantedItems(this));
+        this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
     }
 
     @Override
     protected void registerGoals() {
-        if(this.isTame())
-        {
-            registerTamedGoals();
-            return;
-        }
         this.goalSelector.addGoal(9, new SculkSnapperMelee(this, 0.3F, true));
+        this.goalSelector.addGoal(4, new SculkSnapperFindEnchantedItems(this));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.3F));
-    }
-
-    protected void registerTamedGoals() {
-        this.goalSelector.removeAllGoals();
-        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 0.3F, 10.0F, 2.0F, false));
-        this.goalSelector.addGoal(3, new SculkSnapperMelee(this, 0.4F, true));
-        this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
     }
 
     public static AttributeSupplier attributes() {
@@ -80,31 +95,50 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
                 .add(Attributes.ATTACK_DAMAGE, 3).build();
     }
 
+    public boolean isPerformingAction() {
+        if(this.getCurrentState() == DIG || this.getCurrentState() == EMERGE || this.getCurrentState() == MOUTH_OPEN || this.getCurrentState() == SNIFF)
+            return true;
+        else
+            return false;
+    }
     @Override
     public void tick() {
         super.tick();
 
-        if(this.getTarget() != null) {
-            if(this.distanceTo(this.getTarget()) > 15 && this.getCurrentState() != DIG && this.getCurrentState() != SNIFF && this.getCurrentState() != EMERGE && this.getCurrentState() != MOUTH_OPEN)
-            {
-                Vec3 lookAngle = getTarget().getLookAngle();
-                BlockPos pos = new BlockPos(lookAngle.x * 2.5F + getTarget().getX(), lookAngle.y * 2.5F + getTarget().getY(), lookAngle.z * 2.5F + getTarget().getZ());
-                digTo(pos);
+        if(this.isTame()) {
+            if(this.getRandom().nextInt(0, 550) == 0) {
+                List<Enchantment> enchantments = ImmutableList.copyOf(ForgeRegistries.ENCHANTMENTS);
+                int randomIndex = this.getRandom().nextInt(enchantments.size());
+                Enchantment randomEnchantment = enchantments.get(randomIndex);
+                int level;
+
+                if(randomEnchantment.getMinLevel() != 0 && randomEnchantment.getMaxLevel() != 0)
+                    level = this.getRandom().nextInt(1, randomEnchantment.getMaxLevel());
+                else
+                    level = 1;
+
+                EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, level);
+                ItemStack randomBook = EnchantedBookItem.createForEnchantment(instance);
+                DDGenericUtils.drop(randomBook, this.blockPosition(), this.level);
             }
         }
-        if(this.entityData.get(SNIFF_COUNTER) > 1)
-        {
-            this.entityData.set(SNIFF_COUNTER, this.entityData.get(SNIFF_COUNTER) - 1);
-        }else{
-            if(this.getCurrentState() != WALK)
+
+        if(!this.isTame()) {
+            if(this.entityData.get(SNIFF_COUNTER) > 1)
             {
-                this.setState(SNIFF);
-                this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(150, 500));
+                this.entityData.set(SNIFF_COUNTER, this.entityData.get(SNIFF_COUNTER) - 1);
+            }else{
+                if(this.getCurrentState() != WALK)
+                {
+                    this.setState(SNIFF);
+                    this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(150, 500));
+                }
             }
         }
     }
 
     @Override
+    @Nullable
     public boolean isInvulnerable() {
         if(this.getCurrentState() == DIG || this.getCurrentState() == EMERGE) return true;
 
@@ -112,6 +146,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     }
 
     @Override
+    @Nullable
     public boolean isInvulnerableTo(DamageSource pSource) {
         if(this.getCurrentState() == DIG || this.getCurrentState() == EMERGE) return true;
         
@@ -124,14 +159,16 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     }
 
     @Override
+    @Nullable
     public EntityState getMovingState() {
-        if(this.getCurrentState() != SNIFF && this.getCurrentState() != MOUTH_OPEN && this.getCurrentState() != EMERGE && this.getCurrentState() != DIG)
+        if(!isPerformingAction())
             return WALK;
         else
             return null;
     }
 
     @Override
+    @Nullable
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if(isFood(itemstack) && !this.isTame()) {
@@ -139,9 +176,9 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             if(!this.level.isClientSide()) {
                 this.tame(pPlayer);
                 this.setOwnerUUID(pPlayer.getUUID());
-                registerTamedGoals();
+                setTarget(null);
                 DDParticleUtils.spawnHeartParticles(this, this.getRandom());
-                this.level.broadcastEntityEvent(this, (byte)60);
+                this.level.broadcastEntityEvent(this, (byte)244);
             }
         }
         return super.mobInteract(pPlayer, pHand);
@@ -149,7 +186,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     @Override
     public void handleEntityEvent(byte pId) {
-        if(pId == 60) {
+        if(pId == 244) {
             DDParticleUtils.spawnHeartParticles(this, this.getRandom());
         }else{
             super.handleEntityEvent(pId);
@@ -173,14 +210,13 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         }else if(entityState.equals(DIG))
         {
             if(TARGET_POS != null) {
-                moveTo(TARGET_POS, 0, 0);
+                setPosRaw(TARGET_POS.above().getX(), TARGET_POS.above().getY(), TARGET_POS.above().getZ());
             }
 
             setState(EMERGE);
             TARGET_POS = null;
         }else if(entityState.equals(EMERGE))
         {
-            this.lookControl.setLookAt(getTarget());
             setState(IDLE);
         }
     }
@@ -206,19 +242,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     }
     public void findTarget() {
         if(this.isTame()) {
-            Player player = (Player) getOwner();
-            if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
-                setState(IDLE);
-                return;
-            }
-
-            Vec3 lookAngle = player.getLookAngle();
-            if(lookAngle == null || player.blockPosition() == null) {
-                setState(IDLE);
-                return;
-            }
-            BlockPos pos = new BlockPos(lookAngle.x * 2.5F + player.blockPosition().getX(), lookAngle.y * 2.5F + player.blockPosition().getY(), lookAngle.z * 2.5F + player.blockPosition().getZ());
-            digTo(pos);
+            setState(IDLE);
             return;
         }
 
@@ -234,7 +258,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             setState(IDLE);
             return;
         }
-        BlockPos pos = new BlockPos(lookAngle.x * 2.5F + getTarget().blockPosition().getX(), lookAngle.y * 2.5F + getTarget().blockPosition().getY(), lookAngle.z * 2.5F + getTarget().blockPosition().getZ());
+        BlockPos pos = new BlockPos(lookAngle.x * 2.5F + getTarget().position().x, lookAngle.y * 2.5F + getTarget().position().y, lookAngle.z * 2.5F + getTarget().position().z);
         digTo(pos);
     }
 
@@ -264,7 +288,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return null;
+        return DDEntities.SCULK_SNAPPER.get().create(pLevel);
     }
 
     @Override
