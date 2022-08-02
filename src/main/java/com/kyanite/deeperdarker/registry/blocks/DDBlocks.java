@@ -1,12 +1,10 @@
 package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.blocks.custom.InfestedSculk;
-import com.kyanite.deeperdarker.registry.blocks.custom.OthersidePortalBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.SculkVinesBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.SculkVinesPlantBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.*;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
+import com.kyanite.deeperdarker.util.DDWoodTypes;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -33,6 +31,8 @@ public class DDBlocks {
     public static final RegistryObject<DoorBlock> BONE_DOOR = register("bone_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<TrapDoorBlock> BONE_TRAPDOOR = register("bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> BONE_FENCE_GATE = register("bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> BONE_WALL_SIGN = registerBlockWithoutItem("bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()), DDWoodTypes.BONE));
+    public static final RegistryObject<Block> BONE_SIGN = registerBlockWithoutItem("bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()), DDWoodTypes.BONE));
 
     // Sculk Bone Block Wood
     public static final RegistryObject<RotatedPillarBlock> SCULK_BONE_BLOCK = register("sculk_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
@@ -45,6 +45,8 @@ public class DDBlocks {
     public static final RegistryObject<DoorBlock> SCULK_BONE_DOOR = register("sculk_bone_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<TrapDoorBlock> SCULK_BONE_TRAPDOOR = register("sculk_bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<FenceGateBlock> SCULK_BONE_FENCE_GATE = register("sculk_bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SCULK_BONE_WALL_SIGN = registerBlockWithoutItem("sculk_bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()), DDWoodTypes.SCULK_BONE));
+    public static final RegistryObject<Block> SCULK_BONE_SIGN = registerBlockWithoutItem("sculk_bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()), DDWoodTypes.SCULK_BONE));
 
     // Sculk Stone
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(5.5F, 6.0F).sound(SoundType.SCULK).requiresCorrectToolForDrops()));

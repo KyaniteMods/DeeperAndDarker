@@ -9,6 +9,8 @@
     "deeperdarker:sculk_bone_pressure_plate",
     "deeperdarker:sculk_bone_door",
     "deeperdarker:sculk_bone_trapdoor",
-    "deeperdarker:sculk_bone_fence_gate"
+    "deeperdarker:sculk_bone_fence_gate",
+    "deeperdarker:sculk_bone_wall_sign",
+    "deeperdarker:sculk_bone_sign"
   ]
 }

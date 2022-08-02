@@ -4,10 +4,7 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -28,6 +25,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         doorBlockWithRenderType(DDBlocks.BONE_DOOR.get(), blockLoc(DDBlocks.BONE_DOOR, "bottom"), blockLoc(DDBlocks.BONE_DOOR, "top"), "translucent");
         trapdoorBlockWithRenderType(DDBlocks.BONE_TRAPDOOR.get(), blockLoc(DDBlocks.BONE_TRAPDOOR), true, "translucent");
         fenceGateBlock(DDBlocks.BONE_FENCE_GATE.get(), blockLoc(DDBlocks.BONE_PLANKS));
+        signBlock((StandingSignBlock) DDBlocks.BONE_SIGN.get(), (WallSignBlock) DDBlocks.BONE_WALL_SIGN.get(), blockLoc(DDBlocks.BONE_PLANKS));
 
         axisBlock(DDBlocks.SCULK_BONE_BLOCK.get(), blockLoc(DDBlocks.SCULK_BONE_BLOCK, "side"), blockLoc(DDBlocks.SCULK_BONE_BLOCK, "top"));
         simpleBlock(DDBlocks.SCULK_BONE_PLANKS.get());
@@ -39,6 +37,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         doorBlockWithRenderType(DDBlocks.SCULK_BONE_DOOR.get(), blockLoc(DDBlocks.SCULK_BONE_DOOR, "bottom"), blockLoc(DDBlocks.SCULK_BONE_DOOR, "top"), "translucent");
         trapdoorBlockWithRenderType(DDBlocks.SCULK_BONE_TRAPDOOR.get(), blockLoc(DDBlocks.SCULK_BONE_TRAPDOOR), true, "translucent");
         fenceGateBlock(DDBlocks.SCULK_BONE_FENCE_GATE.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
+        signBlock((StandingSignBlock) DDBlocks.SCULK_BONE_SIGN.get(), (WallSignBlock) DDBlocks.SCULK_BONE_WALL_SIGN.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
         slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));

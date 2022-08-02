@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.datagen.recipes;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -29,6 +30,7 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         doorBuilder(DDBlocks.BONE_DOOR.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
         trapdoorBuilder(DDBlocks.BONE_TRAPDOOR.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
         fenceGateBuilder(DDBlocks.BONE_FENCE_GATE.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
+        signBuilder(DDItems.BONE_SIGN.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
 
         ShapedRecipeBuilder.shaped(DDBlocks.SCULK_BONE_BLOCK.get(), 2).define('B', Blocks.BONE_BLOCK).define('S', Blocks.SCULK).pattern("BS").pattern("SB").unlockedBy("has_bone_block", has(Blocks.BONE_BLOCK)).unlockedBy("has_sculk", has(Blocks.SCULK)).save(consumer);
         ShapelessRecipeBuilder.shapeless(DDBlocks.SCULK_BONE_PLANKS.get(), 4).requires(DDBlocks.SCULK_BONE_BLOCK.get()).unlockedBy("has_sculk_bone_block", has(DDBlocks.SCULK_BONE_BLOCK.get())).save(consumer);
@@ -40,6 +42,7 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         doorBuilder(DDBlocks.SCULK_BONE_DOOR.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
         trapdoorBuilder(DDBlocks.SCULK_BONE_TRAPDOOR.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
         fenceGateBuilder(DDBlocks.SCULK_BONE_FENCE_GATE.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
+        signBuilder(DDItems.SCULK_BONE_SIGN.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
 
         slabBuilder(DDBlocks.SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);

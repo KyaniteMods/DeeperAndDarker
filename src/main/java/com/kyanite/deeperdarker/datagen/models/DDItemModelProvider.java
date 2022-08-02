@@ -68,6 +68,9 @@ public class DDItemModelProvider extends ItemModelProvider {
         getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
 
         // ITEMS
+        itemModel(DDItems.BONE_SIGN, GENERATED);
+        itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
+
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);

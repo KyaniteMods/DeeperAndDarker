@@ -1,12 +1,14 @@
 package com.kyanite.deeperdarker.registry.items;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SignItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,6 +17,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class DDItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MOD_ID);
+
+    public static final RegistryObject<Item> BONE_SIGN = ITEMS.register("bone_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB), DDBlocks.BONE_SIGN.get(), DDBlocks.BONE_WALL_SIGN.get()));
+    public static final RegistryObject<Item> SCULK_BONE_SIGN = ITEMS.register("sculk_bone_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB), DDBlocks.SCULK_BONE_SIGN.get(), DDBlocks.SCULK_BONE_WALL_SIGN.get()));
 
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> WARDEN_HELMET = ITEMS.register("warden_helmet", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));

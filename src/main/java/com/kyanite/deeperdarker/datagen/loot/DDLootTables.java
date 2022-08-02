@@ -18,6 +18,8 @@ public class DDLootTables extends BlockLoot {
         this.add(DDBlocks.BONE_DOOR.get(), BlockLoot::createDoorTable);
         this.dropSelf(DDBlocks.BONE_TRAPDOOR.get());
         this.dropSelf(DDBlocks.BONE_FENCE_GATE.get());
+        this.dropSelf(DDBlocks.BONE_WALL_SIGN.get());
+        this.dropSelf(DDBlocks.BONE_SIGN.get());
 
         this.dropSelf(DDBlocks.SCULK_BONE_BLOCK.get());
         this.dropSelf(DDBlocks.SCULK_BONE_PLANKS.get());
@@ -29,6 +31,8 @@ public class DDLootTables extends BlockLoot {
         this.add(DDBlocks.SCULK_BONE_DOOR.get(), BlockLoot::createDoorTable);
         this.dropSelf(DDBlocks.SCULK_BONE_TRAPDOOR.get());
         this.dropSelf(DDBlocks.SCULK_BONE_FENCE_GATE.get());
+        this.dropSelf(DDBlocks.SCULK_BONE_WALL_SIGN.get());
+        this.dropSelf(DDBlocks.SCULK_BONE_SIGN.get());
 
         this.dropSelf(DDBlocks.SCULK_STONE.get());
         this.add(DDBlocks.SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
