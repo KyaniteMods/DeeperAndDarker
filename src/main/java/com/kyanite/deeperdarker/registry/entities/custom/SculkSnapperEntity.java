@@ -5,7 +5,6 @@ import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperFindEnchantedItems;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
@@ -16,7 +15,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,6 +26,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -72,17 +72,18 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         this.goalSelector.removeAllGoals();
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 0.3F, 10.0F, 2.0F, false));
         this.goalSelector.addGoal(3, new SculkSnapperMelee(this, 0.4F, true));
-        this.goalSelector.addGoal(4, new SculkSnapperFindEnchantedItems(this));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(9, new SculkSnapperMelee(this, 0.3F, true));
-        this.goalSelector.addGoal(4, new SculkSnapperFindEnchantedItems(this));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.3F));
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
     }
 
     public static AttributeSupplier attributes() {
@@ -101,12 +102,6 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     @Nullable
     @Override
-    protected SoundEvent getDeathSound() {
-        return DDSoundEvents.SCULK_SNAPPER_DEATH.get();
-    }
-
-    @Nullable
-    @Override
     protected SoundEvent getAmbientSound() {
         return DDSoundEvents.SCULK_SNAPPER_AMBIENT.get();
     }
@@ -120,12 +115,13 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
                 List<Enchantment> enchantments = ImmutableList.copyOf(ForgeRegistries.ENCHANTMENTS);
                 int randomIndex = this.getRandom().nextInt(enchantments.size());
                 Enchantment randomEnchantment = enchantments.get(randomIndex);
-                int level;
+                int level = 1;
 
-                if(randomEnchantment.getMinLevel() != 0 && randomEnchantment.getMaxLevel() != 0)
-                    level = this.getRandom().nextInt(1, randomEnchantment.getMaxLevel());
-                else
-                    level = 1;
+                if(randomEnchantment.getMaxLevel() == 2 && this.getRandom().nextInt(0, 25) == 0) {
+                    level = 2;
+                }else if(randomEnchantment.getMaxLevel() == 3 && this.getRandom().nextInt(0, 75) == 0) {
+                    level = 3;
+                }
 
                 EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, level);
                 ItemStack randomBook = EnchantedBookItem.createForEnchantment(instance);
@@ -195,6 +191,15 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
                 this.level.broadcastEntityEvent(this, (byte)244);
             }
         }
+
+        if(!itemstack.getAllEnchantments().isEmpty() && isTame() && this.getHealth() != this.getMaxHealth()) {
+            this.usePlayerItem(pPlayer, pHand, itemstack);
+            if(!this.level.isClientSide()) {
+                this.heal(getMaxHealth());
+                DDParticleUtils.spawnHeartParticles(this, this.getRandom());
+                this.level.broadcastEntityEvent(this, (byte)244);
+            }
+        }
         return super.mobInteract(pPlayer, pHand);
     }
 
@@ -219,6 +224,8 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         {
             if(this.getTarget() != null)
                 this.doHurtTarget(this.getTarget());
+
+            this.playSound(DDSoundEvents.SCULK_SNAPPER_BITE.get(), 0.6F, 0.8f);
 
             setState(IDLE);
         }else if(entityState.equals(DIG))

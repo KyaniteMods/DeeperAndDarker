@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
+import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
@@ -12,12 +13,12 @@ public class SculkSnapperMelee extends MeleeAttackGoal {
 
     @Override
     protected int getAttackInterval() {
-        return this.adjustedTickDelay(16);
+        return this.adjustedTickDelay(12);
     }
 
     @Override
     protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-        return 30;
+        return 15;
     }
 
     @Override

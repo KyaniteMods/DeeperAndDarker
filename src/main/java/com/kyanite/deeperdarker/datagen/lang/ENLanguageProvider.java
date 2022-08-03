@@ -44,7 +44,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.deeperdarker.snapper_sniff", "Sculk snapper sniffs");
         add("subtitles.deeperdarker.snapper_ambient", "Sculk snapper breathes");
         add("subtitles.deeperdarker.snapper_hurt", "Sculk snapper hurting");
-        add("subtitles.deeperdarker.snapper_death", "Sculk snapper dies");
+        add("subtitles.deeperdarker.snapper_bite", "Sculk snapper bites");
     }
 
     private void addBlock(RegistryObject<Block> block) {
