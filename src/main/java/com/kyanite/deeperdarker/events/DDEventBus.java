@@ -5,7 +5,7 @@ import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
-import com.kyanite.deeperdarker.registry.items.WardenArmorItem;
+import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;

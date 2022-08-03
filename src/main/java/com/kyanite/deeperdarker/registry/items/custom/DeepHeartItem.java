@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.items;
+package com.kyanite.deeperdarker.registry.items.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;

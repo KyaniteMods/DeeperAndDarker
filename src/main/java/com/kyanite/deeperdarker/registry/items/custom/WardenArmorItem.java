@@ -1,5 +1,6 @@
-package com.kyanite.deeperdarker.registry.items;
+package com.kyanite.deeperdarker.registry.items.custom;
 
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;

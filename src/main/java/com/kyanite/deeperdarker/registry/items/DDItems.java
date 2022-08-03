@@ -3,6 +3,8 @@ package com.kyanite.deeperdarker.registry.items;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
+import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
 import net.minecraft.world.entity.EquipmentSlot;

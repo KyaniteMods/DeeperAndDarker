@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.client.rendering.armor;
 
-import com.kyanite.deeperdarker.registry.items.WardenArmorItem;
+import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.world.entity.EquipmentSlot;

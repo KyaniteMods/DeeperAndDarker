@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.client.rendering.armor;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.items.WardenArmorItem;
+import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
