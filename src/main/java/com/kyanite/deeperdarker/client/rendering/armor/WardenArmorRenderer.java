@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.world.entity.EquipmentSlot;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
+import software.bernie.geckolib3.renderers.texture.AutoGlowingTexture;
 import software.bernie.geckolib3.util.GeoUtils;
 
 public class WardenArmorRenderer extends GeoArmorRenderer<WardenArmorItem> {
