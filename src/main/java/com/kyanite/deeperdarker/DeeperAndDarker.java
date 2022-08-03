@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDPoiTypes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
@@ -47,6 +48,7 @@ public class DeeperAndDarker {
         DDItems.ITEMS.register(eventBus);
         DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
         DDPoiTypes.POI.register(eventBus);
+        DDSounds.SOUND_EVENTS.register(eventBus);
 
         GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();

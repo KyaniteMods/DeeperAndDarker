@@ -1,0 +1,32 @@
+{
+  "sculk_stone_break": {
+    "subtitle": "sounds.deeperdarker.sculk_stone_break",
+    "sounds": [
+      "deeperdarker:sculk_stone_break"
+    ]
+  },
+  "sculk_stone_step": {
+    "subtitle": "sounds.deeperdarker.sculk_stone_step",
+    "sounds": [
+      "deeperdarker:sculk_stone_break"
+    ]
+  },
+  "sculk_stone_place": {
+    "subtitle": "sounds.deeperdarker.sculk_stone_place",
+    "sounds": [
+      "deeperdarker:sculk_stone_break"
+    ]
+  },
+  "sculk_stone_hit": {
+    "subtitle": "sounds.deeperdarker.sculk_stone_hit",
+    "sounds": [
+      "deeperdarker:sculk_stone_break"
+    ]
+  },
+  "sculk_stone_fall": {
+    "subtitle": "sounds.deeperdarker.sculk_stone_fall",
+    "sounds": [
+      "deeperdarker:sculk_stone_break"
+    ]
+  }
+}
