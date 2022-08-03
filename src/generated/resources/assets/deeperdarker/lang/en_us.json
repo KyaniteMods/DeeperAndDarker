@@ -1,5 +1,5 @@
 {
-  "advancements.deeperdarker.enter_otherside.description": "Deep below the bedrock... the darkness",
+  "advancements.deeperdarker.enter_otherside.description": "Deep below the Bedrock... the darkness",
   "advancements.deeperdarker.enter_otherside.title": "Enter the Otherside",
   "advancements.deeperdarker.kill_warden.description": "Slay the Warden and take its heart... ew",
   "advancements.deeperdarker.kill_warden.title": "Phantom Thief",
@@ -75,8 +75,8 @@
   "item.deeperdarker.warden_helmet": "Warden Helmet",
   "item.deeperdarker.warden_leggings": "Warden Leggings",
   "itemGroup.deeperdarker": "Deeper And Darker",
-  "subtitles.deeperdarker.snapper_ambient": "Sculk snapper breathes",
-  "subtitles.deeperdarker.snapper_bite": "Sculk snapper bites",
-  "subtitles.deeperdarker.snapper_hurt": "Sculk snapper hurting",
-  "subtitles.deeperdarker.snapper_sniff": "Sculk snapper sniffs"
+  "subtitles.deeperdarker.snapper_ambient": "Sculk Snapper breathes",
+  "subtitles.deeperdarker.snapper_bite": "Sculk Snapper bites",
+  "subtitles.deeperdarker.snapper_hurt": "Sculk Snapper hurts",
+  "subtitles.deeperdarker.snapper_sniff": "Sculk Snapper sniffs"
 }
