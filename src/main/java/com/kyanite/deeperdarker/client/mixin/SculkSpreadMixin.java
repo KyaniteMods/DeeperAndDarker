@@ -29,6 +29,51 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
     }
     @Shadow public abstract void onDischarged(LevelAccessor p_222359_, BlockState p_222360_, BlockPos p_222361_, RandomSource p_222362_);
 
+    public BlockState getBlockState(BlockState blockstate1) {
+        BlockState blockstate2 = Blocks.SCULK.defaultBlockState();
+        if(blockstate1.is(DDTags.Blocks.SCULK_STONE_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_STAIRS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_STAIRS.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_SLABS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_SLAB.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_WALLS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_WALL.get().defaultBlockState();
+        }
+
+        else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_BRICKS.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_SLABS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_BRICK_SLAB.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_STAIRS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_BRICK_STAIRS.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_WALLS_REPLACE)) {
+            blockstate2 = DDBlocks.SCULK_STONE_BRICK_WALL.get().defaultBlockState();
+        }
+
+        else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE)) {
+            blockstate2 = DDBlocks.COBBLED_SCULK_STONE.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_SLABS_REPLACE)) {
+            blockstate2 = DDBlocks.COBBLED_SCULK_STONE_SLAB.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_STAIRS_REPLACE)) {
+            blockstate2 = DDBlocks.COBBLED_SCULK_STONE_STAIRS.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_WALLS_REPLACE)) {
+            blockstate2 = DDBlocks.COBBLED_SCULK_STONE_WALL.get().defaultBlockState();
+        }
+
+        else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE)) {
+            blockstate2 = DDBlocks.POLISHED_SCULK_STONE.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_STAIRS_REPLACE)) {
+            blockstate2 = DDBlocks.POLISHED_SCULK_STONE_STAIRS.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_SLABS_REPLACE)) {
+            blockstate2 = DDBlocks.POLISHED_SCULK_STONE_SLAB.get().defaultBlockState();
+        }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_WALLS_REPLACE)) {
+            blockstate2 = DDBlocks.POLISHED_SCULK_STONE_WALL.get().defaultBlockState();
+        }
+
+
+        return blockstate2;
+    }
     @Inject(method = "attemptPlaceSculk", cancellable = true, at = @At("HEAD"))
     public void attemptSculk(SculkSpreader p_222376_, LevelAccessor p_222377_, BlockPos p_222378_, RandomSource p_222379_, CallbackInfoReturnable<Boolean> cir) {
         cir.cancel();
@@ -40,17 +85,7 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
                 BlockPos blockpos = p_222378_.relative(direction);
                 BlockState blockstate1 = p_222377_.getBlockState(blockpos);
                 if (blockstate1.is(tagkey)) {
-                    BlockState blockstate2 = Blocks.SCULK.defaultBlockState();
-                    if(blockstate1.is(DDTags.Blocks.SCULK_STONE_REPLACE)) {
-                        blockstate2 = DDBlocks.SCULK_STONE.get().defaultBlockState();
-                    }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE)) {
-                        blockstate2 = DDBlocks.SCULK_STONE_BRICKS.get().defaultBlockState();
-                    }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE)) {
-                        blockstate2 = DDBlocks.COBBLED_SCULK_STONE.get().defaultBlockState();
-                    }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE)) {
-                        blockstate2 = DDBlocks.POLISHED_SCULK_STONE.get().defaultBlockState();
-                    }
-
+                    BlockState blockstate2 = getBlockState(blockstate1);
                     p_222377_.setBlock(blockpos, blockstate2, 3);
                     Block.pushEntitiesUp(blockstate1, blockstate2, p_222377_, blockpos);
                     p_222377_.playSound((Player)null, blockpos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
