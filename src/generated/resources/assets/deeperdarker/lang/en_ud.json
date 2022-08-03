@@ -29,14 +29,13 @@
   "block.deeperdarker.polished_sculk_stone_wall": "\u05DF\u05DF\u0250M \u01DDuo\u0287S \u029E\u05DFn\u0254S p\u01DD\u0265s\u0131\u05DFo\u0500",
   "block.deeperdarker.sculk_stone_copper_ore": "\u01DD\u0279O \u0279\u01DDddo\u0186 \u01DDuo\u0287S \u029E\u05DFn\u0254S",
   "block.deeperdarker.sculk_bone_trapdoor": "\u0279oopd\u0250\u0279\u27D8 \u01DDuo\u15FA \u029E\u05DFn\u0254S",
+  "entity.deeperdarker.sculk_snapper": "\u0279\u01DDdd\u0250uS \u029E\u05DFn\u0254S",
   "block.deeperdarker.cobbled_sculk_stone": "\u01DDuo\u0287S \u029E\u05DFn\u0254S p\u01DD\u05DFqqo\u0186",
   "block.deeperdarker.sculk_stone_brick_slab": "q\u0250\u05DFS \u029E\u0254\u0131\u0279\u15FA \u01DDuo\u0287S \u029E\u05DFn\u0254S",
   "advancements.deeperdarker.root.description": "\u02D9\u02D9\u02D9puno\u0279b\u0279\u01DDpun \u01DD\u0265\u0287 p\u0279\u0250\u028Do\u0287 no\u028E bu\u0131\u05DF\u05DFnd bu\u0131\u0265\u0287\u01DD\u026Fos \u05DF\u01DD\u01DD\u025F no\u028E",
   "block.deeperdarker.cobbled_sculk_stone_wall": "\u05DF\u05DF\u0250M \u01DDuo\u0287S \u029E\u05DFn\u0254S p\u01DD\u05DFqqo\u0186",
   "block.deeperdarker.bone_fence_gate": "\u01DD\u0287\u0250\u2141 \u01DD\u0254u\u01DD\u2132 \u01DDuo\u15FA",
-  "entity.deeperdarker.soul_snapper": "\u0279\u01DDdd\u0250uS \u05DFnoS",
   "block.deeperdarker.polished_sculk_stone_stairs": "s\u0279\u0131\u0250\u0287S \u01DDuo\u0287S \u029E\u05DFn\u0254S p\u01DD\u0265s\u0131\u05DFo\u0500",
-  "item.deeperdarker.soul_snapper_spawn_egg": "bb\u018E u\u028D\u0250dS \u0279\u01DDdd\u0250uS \u05DFnoS",
   "block.deeperdarker.sculk_bone_door": "\u0279oo\u15E1 \u01DDuo\u15FA \u029E\u05DFn\u0254S",
   "block.deeperdarker.polished_sculk_stone_slab": "q\u0250\u05DFS \u01DDuo\u0287S \u029E\u05DFn\u0254S p\u01DD\u0265s\u0131\u05DFo\u0500",
   "advancements.deeperdarker.kill_warden.description": "\u028D\u01DD \u02D9\u02D9\u02D9\u0287\u0279\u0250\u01DD\u0265 s\u0287\u0131 \u01DD\u029E\u0250\u0287 pu\u0250 u\u01DDp\u0279\u0250M \u01DD\u0265\u0287 \u028E\u0250\u05DFS",
@@ -74,5 +73,6 @@
   "block.deeperdarker.bone_door": "\u0279oo\u15E1 \u01DDuo\u15FA",
   "block.deeperdarker.sculk_stone_coal_ore": "\u01DD\u0279O \u05DF\u0250o\u0186 \u01DDuo\u0287S \u029E\u05DFn\u0254S",
   "block.deeperdarker.sculk_stone_emerald_ore": "\u01DD\u0279O p\u05DF\u0250\u0279\u01DD\u026F\u018E \u01DDuo\u0287S \u029E\u05DFn\u0254S",
+  "item.deeperdarker.sculk_snapper_spawn_egg": "bb\u018E u\u028D\u0250dS \u0279\u01DDdd\u0250uS \u029E\u05DFn\u0254S",
   "block.deeperdarker.bone_stairs": "s\u0279\u0131\u0250\u0287S \u01DDuo\u15FA"
 }

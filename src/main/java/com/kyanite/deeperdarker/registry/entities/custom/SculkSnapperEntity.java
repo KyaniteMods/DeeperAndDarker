@@ -83,16 +83,11 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     }
 
     public static AttributeSupplier attributes() {
-        return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
-                .add(Attributes.ATTACK_DAMAGE, 3).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 20).add(Attributes.ATTACK_DAMAGE, 3).build();
     }
 
     public boolean isPerformingAction() {
-        if(this.getCurrentState() == DIG || this.getCurrentState() == EMERGE || this.getCurrentState() == MOUTH_OPEN || this.getCurrentState() == SNIFF)
-            return true;
-        else
-            return false;
+        return this.getCurrentState() == DIG || this.getCurrentState() == EMERGE || this.getCurrentState() == MOUTH_OPEN || this.getCurrentState() == SNIFF;
     }
     @Override
     public void tick() {

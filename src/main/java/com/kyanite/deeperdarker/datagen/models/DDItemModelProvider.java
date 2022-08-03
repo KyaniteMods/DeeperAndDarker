@@ -83,7 +83,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
 
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
-        withExistingParent(DDItems.SOUL_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(DDItems.SCULK_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
         itemModel(DDItems.BONE_SIGN, GENERATED);
         itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
