@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 
 public class DeepHeartItem extends Item {
     public DeepHeartItem() {
@@ -22,16 +23,28 @@ public class DeepHeartItem extends Item {
     public InteractionResult useOn(UseOnContext pContext) {
         if(pContext.getPlayer() != null) {
             if(pContext.getPlayer().level.dimension() == DDDimensions.OTHERSIDE_LEVEL || pContext.getPlayer().level.dimension() == Level.OVERWORLD) {
-                for(Direction direction : Direction.Plane.VERTICAL) {
-                    BlockPos framePos = pContext.getClickedPos().relative(direction);
-                    if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), framePos)) {
-                        pContext.getLevel().playSound(pContext.getPlayer(), framePos, SoundEvents.WARDEN_SONIC_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        return InteractionResult.CONSUME;
-                    }
-                    else return InteractionResult.FAIL;
-                }
+                /*
+                    What's going on here?
+
+                    clickedFace is a direction, so it's either DOWN, UP, NORTH, SOUTH, WEST, EAST
+                    clickedPos is the BlockPos of the block in the direction of clickedFace
+
+                    the if statement only results in true when clickedFace is UP in clickedPos; any other direction, it's a failed InteractionResult
+                 */
+
+                Direction clickedFace = pContext.getClickedFace();
+                BlockPos clickedPos = pContext.getClickedPos().relative(clickedFace);
+//                BlockPos test = clickedPos.relative(clickedFace, 1);
+                System.out.println("clicked in: " + clickedPos + "\non face: " + clickedFace);
+
+                if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
+                    System.out.println("creating portal");
+                    pContext.getLevel().playSound(pContext.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
+                    return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
+                } else return InteractionResult.FAIL;
             }
         }
+
         return InteractionResult.FAIL;
     }
 }
