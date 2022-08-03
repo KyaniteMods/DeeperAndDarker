@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -49,7 +48,6 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.EMERALD_ORES).add(DDBlocks.SCULK_STONE_EMERALD_ORE.get());
         tag(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         tag(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
-        tag(BlockTags.SCULK_REPLACEABLE).addTag(DDTags.Blocks.BONE_WOOD);
 
         tag(Tags.Blocks.ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
@@ -59,11 +57,12 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         spreadingReplaceTags();
     }
 
+    @SuppressWarnings("unchecked")
     public void spreadingReplaceTags() {
         tag(DDTags.Blocks.SCULK_STONE_REPLACE).add(Blocks.STONE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE, Blocks.CALCITE, Blocks.TUFF, Blocks.DEEPSLATE, Blocks.NETHERRACK, Blocks.BLACKSTONE);
         tag(DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE).add(Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE, Blocks.COBBLED_DEEPSLATE);
         tag(DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE).add(Blocks.SMOOTH_STONE, Blocks.POLISHED_GRANITE, Blocks.POLISHED_ANDESITE, Blocks.POLISHED_DIORITE, Blocks.POLISHED_DEEPSLATE, Blocks.POLISHED_BLACKSTONE);
         tag(DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE).add(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Blocks.DEEPSLATE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICKS);
-        tag(BlockTags.SCULK_REPLACEABLE).addTags(DDTags.Blocks.SCULK_STONE_REPLACE, DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE, DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE, DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE);
+        tag(BlockTags.SCULK_REPLACEABLE).addTags(DDTags.Blocks.BONE_WOOD, DDTags.Blocks.SCULK_STONE_REPLACE, DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE, DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE, DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE);
     }
 }

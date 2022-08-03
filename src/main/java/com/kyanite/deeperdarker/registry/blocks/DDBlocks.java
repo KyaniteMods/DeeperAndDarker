@@ -85,7 +85,6 @@ public class DDBlocks {
     public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
     public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculk(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.2F)));
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel((state) -> 5).noLootTable()));
-
     public static final RegistryObject<Block> GLOOM_GRASS = register("gloom_grass", () -> new GloomGrass(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).sound(SoundType.GRASS).lightLevel((state) -> 0).strength(0.2F)));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
