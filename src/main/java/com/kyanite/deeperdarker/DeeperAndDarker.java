@@ -67,8 +67,6 @@ public class DeeperAndDarker {
 
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
-
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.VASE.get(), RenderType.translucent());
         }
 
         @SubscribeEvent

@@ -1,5 +1,5 @@
 {
-	"credit": "Made with Blockbench",
+	"render-type": "transparent",
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "deeperdarker:block/vase",
