@@ -28,7 +28,7 @@ public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(!level.isClientSide()) {
-            if(!player.isCreative() && player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+            if(!player.isCreative() && !player.isSpectator() && player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 25));
             }
         }
