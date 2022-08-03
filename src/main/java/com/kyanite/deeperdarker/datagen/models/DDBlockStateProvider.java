@@ -69,6 +69,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
+        simpleBlock(DDBlocks.GLOOM_GRASS.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("translucent"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("translucent"));

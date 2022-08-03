@@ -149,6 +149,36 @@
                 "Name": "minecraft:bedrock"
               }
             }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "deeperdarker:gloomy_grasslands"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:stone_depth",
+                    "offset": 0,
+                    "surface_type": "floor",
+                    "add_surface_depth": true,
+                    "secondary_depth_range": 0
+                  },
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "deeperdarker:gloom_grass"
+                    }
+                  }
+                }
+              ]
+            }
           }
         ]
       }
@@ -166,6 +196,18 @@
             "weirdness": 0,
             "depth": 0,
             "offset": 0
+          }
+        },
+        {
+          "biome": "deeperdarker:gloomy_grasslands",
+          "parameters": {
+            "temperature": -0.5,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0.175
           }
         }
       ]

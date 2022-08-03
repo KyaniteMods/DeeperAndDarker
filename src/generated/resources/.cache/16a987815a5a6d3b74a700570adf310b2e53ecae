@@ -1,4 +1,4 @@
-// 1.19.1	2022-08-02T17:54:48.1092616	Block States: deeperdarker
+// 1.19.1	2022-08-03T12:18:56.6284288	Block States: deeperdarker
 f562dc70b14bdf400dc674b2526cc7ba7bfd3344 assets/deeperdarker/blockstates/bone_button.json
 9c7e3f4cab841573abfbd8e7b705276c7a693c27 assets/deeperdarker/blockstates/bone_door.json
 5c022e3094310ad56f8ab626466c42444c5a9c0a assets/deeperdarker/blockstates/bone_fence.json
@@ -14,6 +14,7 @@ b31644c7444246162f0385567889d97f23f280f2 assets/deeperdarker/blockstates/bone_wa
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
 d4f6eb2945fc34ef732d828c5c8a5a13c50ca8ee assets/deeperdarker/blockstates/cobbled_sculk_stone_stairs.json
 550c66f834066e6109309c2af4d9d5836575a0d6 assets/deeperdarker/blockstates/cobbled_sculk_stone_wall.json
+83179990889824fcd342e922259f1c7d604c8fe6 assets/deeperdarker/blockstates/gloom_grass.json
 806ccbbbd3d24a4d7e19d23cdc4008dacf14e2e0 assets/deeperdarker/blockstates/infested_sculk.json
 f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polished_sculk_stone.json
 65ee0b17417cefc06f60fd584d5cd1092c1725e7 assets/deeperdarker/blockstates/polished_sculk_stone_slab.json
@@ -90,6 +91,7 @@ dbd3b0420bc1b29a977a16ee677c530f990a37d3 assets/deeperdarker/models/block/cobble
 bd153f243db3a88e19af4e75d2f7acd1b98e54bd assets/deeperdarker/models/block/cobbled_sculk_stone_wall_post.json
 fd49b741f908f4c2c2046384ce4f595f91a1414d assets/deeperdarker/models/block/cobbled_sculk_stone_wall_side.json
 71337c54b24c5824dee089e1ca19fc17ce215399 assets/deeperdarker/models/block/cobbled_sculk_stone_wall_side_tall.json
+6fd16af6aca42fa65266d7a7c03e238b1517e4a4 assets/deeperdarker/models/block/gloom_grass.json
 228e188749dcf61478397d8fd2edb7df3b638393 assets/deeperdarker/models/block/infested_sculk.json
 6e39e5f243d47894fcebfef939f739ce9a07ee4b assets/deeperdarker/models/block/polished_sculk_stone.json
 590440dc0c02ec2bc2da402df1a8d28bca185596 assets/deeperdarker/models/block/polished_sculk_stone_slab.json

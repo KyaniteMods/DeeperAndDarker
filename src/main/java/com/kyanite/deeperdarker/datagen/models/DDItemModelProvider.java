@@ -69,6 +69,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockModel(DDBlocks.GLOOM_GRASS);
 
         blockModel(DDBlocks.INFESTED_SCULK);
         blockModel(DDBlocks.SCULK_GLEAM);
