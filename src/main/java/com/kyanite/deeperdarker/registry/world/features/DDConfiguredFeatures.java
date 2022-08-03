@@ -43,6 +43,7 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_DIAMOND_SCULK = CONFIGURED_FEATURES.register("ore_diamond_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_DIAMOND_TARGET_LIST.get(), 5, 0.7f)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = feature("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_VINES = feature("sculk_vines", DDFeatures.SCULK_VINES);
 
     public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;

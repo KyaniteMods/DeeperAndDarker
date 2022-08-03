@@ -13,7 +13,7 @@ import java.util.List;
 public class DDPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<PlacedFeature> SCULK = PLACED_FEATURES.register("sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK.getHolder().get(), commonOrePlacement(34, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> SCULK = PLACED_FEATURES.register("sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK.getHolder().get(), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static final RegistryObject<PlacedFeature> INFESTED_SCULK = PLACED_FEATURES.register("infested_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_INFESTED_SCULK.getHolder().get(), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 
     public static final RegistryObject<PlacedFeature> SCULK_COAL_ORE = PLACED_FEATURES.register("sculk_coal_ore", () -> new PlacedFeature(DDConfiguredFeatures.ORE_COAL_SCULK.getHolder().get(), commonOrePlacement(5, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.top()))));
@@ -26,6 +26,8 @@ public class DDPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SCULK_DIAMOND_ORE = PLACED_FEATURES.register("sculk_diamond_ore", () -> new PlacedFeature(DDConfiguredFeatures.ORE_DIAMOND_SCULK.getHolder().get(), rareOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32)))));
 
     public static final RegistryObject<PlacedFeature> SCULK_GLEAM = PLACED_FEATURES.register("sculk_gleam", () -> new PlacedFeature(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.getHolder().get(), commonOrePlacement(25, PlacementUtils.FULL_RANGE)));
+
+    public static final RegistryObject<PlacedFeature> SCULK_VINES = PLACED_FEATURES.register("sculk_vines", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_VINES.getHolder().get(), commonOrePlacement(25, PlacementUtils.FULL_RANGE)));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());

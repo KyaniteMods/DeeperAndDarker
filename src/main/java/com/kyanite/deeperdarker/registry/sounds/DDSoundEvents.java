@@ -13,6 +13,11 @@ public class DDSoundEvents {
 
     public static final RegistryObject<SoundEvent> SCULK_STONE_BREAK = register("block.sculk_stone.break");
     public static final RegistryObject<SoundEvent> SCULK_STONE_FALL = register("block.sculk_stone.fall");
+
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper_sniff");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper_ambient");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper_hurt");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_DEATH = register("entity.snapper_death");
     public static final RegistryObject<SoundEvent> SCULK_STONE_HIT = register("block.sculk_stone.hit");
     public static final RegistryObject<SoundEvent> SCULK_STONE_PLACE = register("block.sculk_stone.place");
     public static final RegistryObject<SoundEvent> SCULK_STONE_STEP = register("block.sculk_stone.step");

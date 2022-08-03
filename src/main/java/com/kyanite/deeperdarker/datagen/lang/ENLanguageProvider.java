@@ -40,6 +40,11 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.kill_warden.description", "Slay the Warden and take its heart... ew");
         add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the bedrock... the darkness");
+
+        add("subtitles.deeperdarker.snapper_sniff", "Sculk snapper sniffs");
+        add("subtitles.deeperdarker.snapper_ambient", "Sculk snapper breathes");
+        add("subtitles.deeperdarker.snapper_hurt", "Sculk snapper hurting");
+        add("subtitles.deeperdarker.snapper_death", "Sculk snapper dies");
     }
 
     private void addBlock(RegistryObject<Block> block) {

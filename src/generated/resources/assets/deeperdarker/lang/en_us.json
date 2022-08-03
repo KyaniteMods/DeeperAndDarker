@@ -74,5 +74,9 @@
   "item.deeperdarker.warden_chestplate": "Warden Chestplate",
   "item.deeperdarker.warden_helmet": "Warden Helmet",
   "item.deeperdarker.warden_leggings": "Warden Leggings",
-  "itemGroup.deeperdarker": "Deeper And Darker"
+  "itemGroup.deeperdarker": "Deeper And Darker",
+  "subtitles.deeperdarker.snapper_ambient": "Sculk snapper breathes",
+  "subtitles.deeperdarker.snapper_death": "Sculk snapper dies",
+  "subtitles.deeperdarker.snapper_hurt": "Sculk snapper hurting",
+  "subtitles.deeperdarker.snapper_sniff": "Sculk snapper sniffs"
 }

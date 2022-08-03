@@ -1,4 +1,28 @@
 {
+  "entity.snapper_sniff": {
+    "subtitle": "subtitles.deeperdarker.snapper_sniff",
+    "sounds": [
+      "deeperdarker:entity/snapper_sniff"
+    ]
+  },
+  "entity.snapper_ambient": {
+    "subtitle": "subtitles.deeperdarker.snapper_ambient",
+    "sounds": [
+      "deeperdarker:entity/snapper_ambient"
+    ]
+  },
+  "entity.snapper_hurt": {
+    "subtitle": "subtitles.deeperdarker.snapper_hurt",
+    "sounds": [
+      "deeperdarker:entity/snapper_hurt"
+    ]
+  },
+  "entity.snapper_death": {
+    "subtitle": "subtitles.deeperdarker.snapper_death",
+    "sounds": [
+      "deeperdarker:entity/snapper_death"
+    ]
+  },
   "block.sculk_stone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [

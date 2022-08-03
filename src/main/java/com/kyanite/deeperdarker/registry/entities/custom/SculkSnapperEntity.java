@@ -8,12 +8,15 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperFindEnchantedItems;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
+import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -89,6 +92,25 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     public boolean isPerformingAction() {
         return this.getCurrentState() == DIG || this.getCurrentState() == EMERGE || this.getCurrentState() == MOUTH_OPEN || this.getCurrentState() == SNIFF;
     }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return DDSoundEvents.SCULK_SNAPPER_HURT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return DDSoundEvents.SCULK_SNAPPER_DEATH.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return DDSoundEvents.SCULK_SNAPPER_AMBIENT.get();
+    }
+
     @Override
     public void tick() {
         super.tick();
@@ -121,6 +143,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             }else{
                 if(this.getCurrentState() != WALK)
                 {
+                    this.playSound(DDSoundEvents.SCULK_SNAPPER_SNIFF.get(), 0.5f, 0.75F);
                     this.setState(SNIFF);
                     this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(150, 500));
                 }
