@@ -22,7 +22,6 @@ public class OthersideBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
 
     public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", OthersideBiomes::lowland);
-
     public static final RegistryObject<Biome> GLOOMY_GRASSLANDS = registerBiome("gloomy_grasslands", OthersideBiomes::grasslands);
 
     public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {

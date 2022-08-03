@@ -14,17 +14,16 @@ public class DDSoundEvents {
     // Sculk Stone
     public static final RegistryObject<SoundEvent> SCULK_STONE_BREAK = register("block.sculk_stone.break");
     public static final RegistryObject<SoundEvent> SCULK_STONE_FALL = register("block.sculk_stone.fall");
-
     public static final RegistryObject<SoundEvent> SCULK_STONE_HIT = register("block.sculk_stone.hit");
     public static final RegistryObject<SoundEvent> SCULK_STONE_PLACE = register("block.sculk_stone.place");
     public static final RegistryObject<SoundEvent> SCULK_STONE_STEP = register("block.sculk_stone.step");
     public static final ForgeSoundType SCULK_STONE = new ForgeSoundType(1, 1, SCULK_STONE_BREAK, SCULK_STONE_STEP, SCULK_STONE_PLACE, SCULK_STONE_HIT, SCULK_STONE_FALL);
 
     // Sculk Snapper
-    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper_sniff");
-    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper_ambient");
-    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper_hurt");
-    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_BITE = register("entity.snapper_bite");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_BITE = register("entity.snapper.bite");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
+    public static final RegistryObject<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
 
 
     private static RegistryObject<SoundEvent> register(String name) {

@@ -41,10 +41,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the Bedrock... the darkness");
 
-        add("subtitles.deeperdarker.snapper_sniff", "Sculk Snapper sniffs");
-        add("subtitles.deeperdarker.snapper_ambient", "Sculk Snapper breathes");
-        add("subtitles.deeperdarker.snapper_hurt", "Sculk Snapper hurts");
-        add("subtitles.deeperdarker.snapper_bite", "Sculk Snapper bites");
+        add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
+        add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
+        add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
+        add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
     }
 
     private void addBlock(RegistryObject<Block> block) {

@@ -77,8 +77,8 @@
   "item.deeperdarker.warden_helmet": "Warden Helmet",
   "item.deeperdarker.warden_leggings": "Warden Leggings",
   "itemGroup.deeperdarker": "Deeper And Darker",
-  "subtitles.deeperdarker.snapper_ambient": "Sculk Snapper breathes",
-  "subtitles.deeperdarker.snapper_bite": "Sculk Snapper bites",
-  "subtitles.deeperdarker.snapper_hurt": "Sculk Snapper hurts",
-  "subtitles.deeperdarker.snapper_sniff": "Sculk Snapper sniffs"
+  "subtitles.entity.snapper.ambient": "Sculk Snapper breathes",
+  "subtitles.entity.snapper.bite": "Sculk Snapper bites",
+  "subtitles.entity.snapper.hurt": "Sculk Snapper hurts",
+  "subtitles.entity.snapper.sniff": "Sculk Snapper sniffs"
 }

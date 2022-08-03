@@ -1,28 +1,4 @@
 {
-  "entity.snapper_sniff": {
-    "subtitle": "subtitles.deeperdarker.snapper_sniff",
-    "sounds": [
-      "deeperdarker:entity/snapper_sniff"
-    ]
-  },
-  "entity.snapper_ambient": {
-    "subtitle": "subtitles.deeperdarker.snapper_ambient",
-    "sounds": [
-      "deeperdarker:entity/snapper_ambient"
-    ]
-  },
-  "entity.snapper_hurt": {
-    "subtitle": "subtitles.deeperdarker.snapper_hurt",
-    "sounds": [
-      "deeperdarker:entity/snapper_hurt"
-    ]
-  },
-  "entity.snapper_bite": {
-    "subtitle": "subtitles.deeperdarker.snapper_bite",
-    "sounds": [
-      "deeperdarker:entity/snapper_bite"
-    ]
-  },
   "block.sculk_stone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -75,6 +51,30 @@
       "deeperdarker:block/sculk_stone/step4",
       "deeperdarker:block/sculk_stone/step5",
       "deeperdarker:block/sculk_stone/step6"
+    ]
+  },
+  "entity.snapper.ambient": {
+    "subtitle": "subtitles.entity.snapper.ambient",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/ambient"
+    ]
+  },
+  "entity.snapper.bite": {
+    "subtitle": "subtitles.entity.snapper.bite",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/bite"
+    ]
+  },
+  "entity.snapper.hurt": {
+    "subtitle": "subtitles.entity.snapper.hurt",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/hurt"
+    ]
+  },
+  "entity.snapper.sniff": {
+    "subtitle": "subtitles.entity.snapper.sniff",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/sniff"
     ]
   }
 }
