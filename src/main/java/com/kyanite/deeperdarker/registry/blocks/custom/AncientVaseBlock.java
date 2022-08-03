@@ -17,9 +17,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public class VaseBlock extends Block {
+public class AncientVaseBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public VaseBlock(Properties pProperties) {
+
+    public AncientVaseBlock(Properties pProperties) {
         super(pProperties);
     }
 

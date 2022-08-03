@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "facing=north": { "model": "deeperdarker:block/vase" },
-    "facing=east": { "model": "deeperdarker:block/vase", "y": 90 },
-    "facing=south": { "model": "deeperdarker:block/vase", "y": 180 },
-    "facing=west": { "model": "deeperdarker:block/vase", "y": 270 }
-  }
-}

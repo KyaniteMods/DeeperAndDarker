@@ -73,6 +73,7 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         blockModel(DDBlocks.INFESTED_SCULK);
         blockModel(DDBlocks.SCULK_GLEAM);
+        blockModel(DDBlocks.ANCIENT_VASE);
         getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
 
         // ITEMS
@@ -88,8 +89,6 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         itemModel(DDItems.BONE_SIGN, GENERATED);
         itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
-
-        blockModel(DDBlocks.VASE);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

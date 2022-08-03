@@ -2,8 +2,8 @@
 	"render-type": "transparent",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "deeperdarker:block/vase",
-		"particle": "deeperdarker:block/vase"
+		"0": "deeperdarker:block/ancient_vase",
+		"particle": "deeperdarker:block/ancient_vase"
 	},
 	"elements": [
 		{
