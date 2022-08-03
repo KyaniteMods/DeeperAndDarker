@@ -1,5 +1,7 @@
 {
   "values": [
-    "minecraft:cobblestone_slab"
+    "minecraft:cobblestone_slab",
+    "minecraft:mossy_cobblestone_slab",
+    "minecraft:cobbled_deepslate_slab"
   ]
 }

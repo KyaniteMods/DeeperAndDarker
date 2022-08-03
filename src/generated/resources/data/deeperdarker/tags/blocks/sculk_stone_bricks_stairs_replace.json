@@ -1,5 +1,9 @@
 {
   "values": [
-    "minecraft:brick_stairs"
+    "minecraft:stone_brick_stairs",
+    "minecraft:mossy_stone_brick_stairs",
+    "minecraft:mud_brick_stairs",
+    "minecraft:deepslate_brick_stairs",
+    "minecraft:polished_blackstone_brick_stairs"
   ]
 }

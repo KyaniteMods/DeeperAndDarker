@@ -1,5 +1,9 @@
 {
   "values": [
-    "minecraft:brick_wall"
+    "minecraft:stone_brick_wall",
+    "minecraft:mossy_stone_brick_wall",
+    "minecraft:mud_brick_wall",
+    "minecraft:deepslate_brick_wall",
+    "minecraft:polished_blackstone_brick_wall"
   ]
 }

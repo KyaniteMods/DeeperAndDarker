@@ -1,5 +1,8 @@
 {
   "values": [
-    "minecraft:stone_brick_wall"
+    "minecraft:granite_wall",
+    "minecraft:diorite_wall",
+    "minecraft:andesite_wall",
+    "minecraft:blackstone_wall"
   ]
 }
