@@ -13,6 +13,13 @@ public class DDTags {
         public static final TagKey<Block> BONE_WOOD = createTag("bone_wood");
         public static final TagKey<Block> SCULK_BONE_WOOD = createTag("sculk_bone_wood");
 
+        public static final TagKey<Block> SCULK_STONE_REPLACE = createTag("sculk_stone_replace");
+
+        public static final TagKey<Block> COBBLED_SCULK_STONE_REPLACE = createTag("cobbled_sculk_stone_replace");
+
+        public static final TagKey<Block> POLISHED_SCULK_STONE_REPLACE = createTag("polished_sculk_stone_replace");
+
+        public static final TagKey<Block> SCULK_STONE_BRICKS_REPLACE = createTag("sculk_stone_bricks_replace");
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         }

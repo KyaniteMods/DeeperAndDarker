@@ -1,6 +1,10 @@
 {
   "values": [
     "deeperdarker:infested_sculk",
-    "#deeperdarker:bone_wood"
+    "#deeperdarker:bone_wood",
+    "#deeperdarker:sculk_stone_replace",
+    "#deeperdarker:cobbled_sculk_stone_replace",
+    "#deeperdarker:polished_sculk_stone_replace",
+    "#deeperdarker:sculk_stone_bricks_replace"
   ]
 }

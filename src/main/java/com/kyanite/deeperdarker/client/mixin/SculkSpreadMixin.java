@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.client.mixin;
 
+import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -39,12 +41,15 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
                 BlockState blockstate1 = p_222377_.getBlockState(blockpos);
                 if (blockstate1.is(tagkey)) {
                     BlockState blockstate2 = Blocks.SCULK.defaultBlockState();
-                    if(blockstate1.is(Blocks.COBBLESTONE))
-                        blockstate2 = DDBlocks.COBBLED_SCULK_STONE.get().defaultBlockState();
-                    else if(blockstate2.is(Blocks.DEEPSLATE) || blockstate1.is(Blocks.STONE))
+                    if(blockstate1.is(DDTags.Blocks.SCULK_STONE_REPLACE)) {
                         blockstate2 = DDBlocks.SCULK_STONE.get().defaultBlockState();
-                    else if(blockstate2.is(Blocks.BONE_BLOCK))
-                        blockstate2 = DDBlocks.SCULK_BONE_BLOCK.get().defaultBlockState();
+                    }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE)) {
+                        blockstate2 = DDBlocks.SCULK_STONE_BRICKS.get().defaultBlockState();
+                    }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE)) {
+                        blockstate2 = DDBlocks.COBBLED_SCULK_STONE.get().defaultBlockState();
+                    }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE)) {
+                        blockstate2 = DDBlocks.POLISHED_SCULK_STONE.get().defaultBlockState();
+                    }
 
                     p_222377_.setBlock(blockpos, blockstate2, 3);
                     Block.pushEntitiesUp(blockstate1, blockstate2, p_222377_, blockpos);

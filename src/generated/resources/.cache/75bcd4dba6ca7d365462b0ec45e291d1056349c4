@@ -1,6 +1,10 @@
-// 1.19.1	2022-08-03T11:39:49.5651117	Tags for minecraft:block
+// 1.19.1	2022-08-03T13:54:25.6059449	Tags for minecraft:block
 72a274a4783e867b1734a958a55ae408f89ef30f data/deeperdarker/tags/blocks/bone_wood.json
+b19fe50c32a3e60ae3d96047e66a79cd2563840d data/deeperdarker/tags/blocks/cobbled_sculk_stone_replace.json
+0d745cf7a0d9dd8c0087ee4f9451b4bc65361453 data/deeperdarker/tags/blocks/polished_sculk_stone_replace.json
 c638ec7f47bfb7ad42bcb925565b54cd93a30ce7 data/deeperdarker/tags/blocks/sculk_bone_wood.json
+617ff764fbb50cadfc386bcfb7c3ecc7519ee9df data/deeperdarker/tags/blocks/sculk_stone_bricks_replace.json
+c46c889c7a6980bedb607ccd7df04b2496dd233b data/deeperdarker/tags/blocks/sculk_stone_replace.json
 a3fa09193d87bb76c9e732a23e82c805935e12dd data/forge/tags/blocks/ores.json
 6ed921876d1a8064317c590325eef78f63e9e2c4 data/minecraft/tags/blocks/climbable.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/blocks/coal_ores.json
@@ -18,7 +22,7 @@ c9240680b1bfac1d0d490c837338f33909b080dd data/minecraft/tags/blocks/mineable/pic
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/blocks/redstone_ores.json
-0d60e6008e474f7f6f7cb2c09c2ba84b70651749 data/minecraft/tags/blocks/sculk_replaceable.json
+7bf3854a7ccea6d2a8b5dd78894226e34670ae74 data/minecraft/tags/blocks/sculk_replaceable.json
 d4e578622a4b2c7eb166dbdb1f9b87aaa946be7c data/minecraft/tags/blocks/sculk_replaceable_world_gen.json
 57766086477bff34f126db345fc02e2d46a3349a data/minecraft/tags/blocks/slabs.json
 f5c6df186a3379fe66f381280f6e9458effbe080 data/minecraft/tags/blocks/stairs.json

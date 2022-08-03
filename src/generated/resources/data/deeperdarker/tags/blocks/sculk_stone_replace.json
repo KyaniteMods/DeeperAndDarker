@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:stone",
+    "minecraft:granite",
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:calcite",
+    "minecraft:tuff",
+    "minecraft:deepslate",
+    "minecraft:netherrack",
+    "minecraft:blackstone"
+  ]
+}
