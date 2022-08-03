@@ -1,10 +1,8 @@
-// 1.19.1	2022-08-02T17:54:48.1192399	Tags for minecraft:block
-8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/blocks/bone_wood.json
-953456f627d0e7835bdae94c066638d2519c6d5d data/deeperdarker/tags/blocks/sculk_blocks.json
-b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/blocks/sculk_bone_wood.json
-ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/blocks/sculk_stone_ore_replaceables.json
-6ed921876d1a8064317c590325eef78f63e9e2c4 data/deeperdarker/tags/blocks/sculk_vines.json
-1d4e7b337609270fe7e8be0acafd0fa186873cd2 data/minecraft/tags/blocks/climbable.json
+// 1.19.1	2022-08-03T00:32:32.6615654	Tags for minecraft:block
+154aa82843960c8c1d5429ac6369074795e101cc data/deeperdarker/tags/blocks/bone_wood.json
+c638ec7f47bfb7ad42bcb925565b54cd93a30ce7 data/deeperdarker/tags/blocks/sculk_bone_wood.json
+a3fa09193d87bb76c9e732a23e82c805935e12dd data/forge/tags/blocks/ores.json
+6ed921876d1a8064317c590325eef78f63e9e2c4 data/minecraft/tags/blocks/climbable.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/blocks/coal_ores.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/minecraft/tags/blocks/copper_ores.json
 4624747c37a3e46a38723740815f2a4b2b5200c6 data/minecraft/tags/blocks/diamond_ores.json
@@ -13,18 +11,16 @@ fa9ddaa0b613f9e844510a09c5eb310896a58922 data/minecraft/tags/blocks/fence_gates.
 09f2c36f34dcd8a486f28c8131e1eb943aa10037 data/minecraft/tags/blocks/gold_ores.json
 0117d79b5b204352a7d9f3d7e65b5e653ea0f6b6 data/minecraft/tags/blocks/iron_ores.json
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/minecraft/tags/blocks/lapis_ores.json
-562815a9d1ce227ac162eb5c011898d8dbd6d06e data/minecraft/tags/blocks/mineable/axe.json
-3b519b84fc16715a6ac17681a84cd90e44938c47 data/minecraft/tags/blocks/mineable/hoe.json
+765a2ed232f2a9ff2ba0891b47bf5f60b323e2df data/minecraft/tags/blocks/mineable/axe.json
+a2006b5e1978aad97d8639e1c277ae3ba2b48ea7 data/minecraft/tags/blocks/mineable/hoe.json
 c9240680b1bfac1d0d490c837338f33909b080dd data/minecraft/tags/blocks/mineable/pickaxe.json
-559b853bd220d520b0dcceb6b71657f89b7fe2b3 data/minecraft/tags/blocks/non_flammable_wood.json
+6d193d24464b5dab88e3f14dbb55739f42467f43 data/minecraft/tags/blocks/non_flammable_wood.json
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/blocks/redstone_ores.json
 d4e578622a4b2c7eb166dbdb1f9b87aaa946be7c data/minecraft/tags/blocks/sculk_replaceable.json
 d4e578622a4b2c7eb166dbdb1f9b87aaa946be7c data/minecraft/tags/blocks/sculk_replaceable_world_gen.json
 57766086477bff34f126db345fc02e2d46a3349a data/minecraft/tags/blocks/slabs.json
-9caa9ed6985ad7112c187aa8c519897bf98ae96a data/minecraft/tags/blocks/soul_fire_base_blocks.json
-9caa9ed6985ad7112c187aa8c519897bf98ae96a data/minecraft/tags/blocks/soul_speed_blocks.json
 f5c6df186a3379fe66f381280f6e9458effbe080 data/minecraft/tags/blocks/stairs.json
 dd91c7248c947ea0aa6616bcad6c72c95f15951f data/minecraft/tags/blocks/standing_signs.json
 934dbe538b87e9ea05da02db8c4c7b069b699cdc data/minecraft/tags/blocks/walls.json

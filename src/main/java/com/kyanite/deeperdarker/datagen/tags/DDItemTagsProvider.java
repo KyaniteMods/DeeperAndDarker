@@ -8,6 +8,7 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class DDItemTagsProvider extends ItemTagsProvider {
@@ -15,9 +16,9 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         super(pGenerator, pBlockTagsProvider, DeeperAndDarker.MOD_ID, existingFileHelper);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags() {
-        copy(BlockTags.NON_FLAMMABLE_WOOD, ItemTags.NON_FLAMMABLE_WOOD);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
@@ -38,8 +39,12 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
+        copy(Tags.Blocks.ORES, Tags.Items.ORES);
+
         copy(DDTags.Blocks.BONE_WOOD, DDTags.Items.BONE_WOOD);
         copy(DDTags.Blocks.SCULK_BONE_WOOD, DDTags.Items.SCULK_BONE_WOOD);
+
+        tag(ItemTags.NON_FLAMMABLE_WOOD).addTags(DDTags.Items.BONE_WOOD, DDTags.Items.SCULK_BONE_WOOD);
 
         tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());

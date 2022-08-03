@@ -8,7 +8,6 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperFindEnchantedItems;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
-import com.kyanite.deeperdarker.util.DDGenericUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -27,6 +26,7 @@ import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.EnchantedBookItem;
@@ -107,7 +107,10 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
                 EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, level);
                 ItemStack randomBook = EnchantedBookItem.createForEnchantment(instance);
-                DDGenericUtils.drop(randomBook, this.blockPosition(), this.level);
+                if (!randomBook.isEmpty()) {
+                    ItemEntity itementity = new ItemEntity(this.level, this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), randomBook);
+                    this.level.addFreshEntity(itementity);
+                }
             }
         }
 

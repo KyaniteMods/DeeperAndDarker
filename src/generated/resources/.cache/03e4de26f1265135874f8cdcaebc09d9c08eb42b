@@ -1,6 +1,7 @@
-// 1.19.1	2022-08-02T17:54:48.1292084	Tags for minecraft:item
-8fe56b1550e8bb357c9d1522c0273646a1d8262f data/deeperdarker/tags/items/bone_wood.json
-b58f9fb09b93d229bdaa612d2293347346614b0a data/deeperdarker/tags/items/sculk_bone_wood.json
+// 1.19.1	2022-08-03T00:32:32.6635654	Tags for minecraft:item
+154aa82843960c8c1d5429ac6369074795e101cc data/deeperdarker/tags/items/bone_wood.json
+c638ec7f47bfb7ad42bcb925565b54cd93a30ce7 data/deeperdarker/tags/items/sculk_bone_wood.json
+a3fa09193d87bb76c9e732a23e82c805935e12dd data/forge/tags/items/ores.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/items/coal_ores.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/minecraft/tags/items/copper_ores.json
 4624747c37a3e46a38723740815f2a4b2b5200c6 data/minecraft/tags/items/diamond_ores.json
