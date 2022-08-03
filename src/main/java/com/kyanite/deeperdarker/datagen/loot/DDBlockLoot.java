@@ -66,6 +66,7 @@ public class DDBlockLoot extends BlockLoot {
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
+        this.dropWhenSilkTouch(DDBlocks.VASE.get());
         this.add(DDBlocks.SCULK_VINES.get(), BlockLoot::createShearsOnlyDrop);
         this.add(DDBlocks.SCULK_VINES_PLANT.get(), BlockLoot::createShearsOnlyDrop);
     }

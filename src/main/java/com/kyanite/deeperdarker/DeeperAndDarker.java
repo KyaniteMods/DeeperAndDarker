@@ -14,6 +14,8 @@ import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.kyanite.deeperdarker.util.DDWoodTypes;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
@@ -65,6 +67,8 @@ public class DeeperAndDarker {
 
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
+
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.VASE.get(), RenderType.translucent());
         }
 
         @SubscribeEvent

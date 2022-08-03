@@ -88,6 +88,8 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         itemModel(DDItems.BONE_SIGN, GENERATED);
         itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
+
+        blockModel(DDBlocks.VASE);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {
