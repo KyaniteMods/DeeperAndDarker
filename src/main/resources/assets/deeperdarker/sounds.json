@@ -1,32 +1,56 @@
 {
-  "sculk_stone_break": {
-    "subtitle": "sounds.deeperdarker.sculk_stone_break",
+  "block.sculk_stone.break": {
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "deeperdarker:sculk_stone_break"
+      "deeperdarker:block/sculk_stone/break1",
+      "deeperdarker:block/sculk_stone/break2",
+      "deeperdarker:block/sculk_stone/break3",
+      "deeperdarker:block/sculk_stone/break4",
+      "deeperdarker:block/sculk_stone/break5",
+      "deeperdarker:block/sculk_stone/break6",
+      "deeperdarker:block/sculk_stone/break7"
     ]
   },
-  "sculk_stone_step": {
-    "subtitle": "sounds.deeperdarker.sculk_stone_step",
+  "block.sculk_stone.fall": {
     "sounds": [
-      "deeperdarker:sculk_stone_break"
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
     ]
   },
-  "sculk_stone_place": {
-    "subtitle": "sounds.deeperdarker.sculk_stone_place",
+  "block.sculk_stone.hit": {
+    "subtitle": "subtitles.block.generic.hit",
     "sounds": [
-      "deeperdarker:sculk_stone_break"
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
     ]
   },
-  "sculk_stone_hit": {
-    "subtitle": "sounds.deeperdarker.sculk_stone_hit",
+  "block.sculk_stone.place": {
+    "subtitle": "subtitles.block.generic.place",
     "sounds": [
-      "deeperdarker:sculk_stone_break"
+      "deeperdarker:block/sculk_stone/place1",
+      "deeperdarker:block/sculk_stone/place2",
+      "deeperdarker:block/sculk_stone/place3",
+      "deeperdarker:block/sculk_stone/place4",
+      "deeperdarker:block/sculk_stone/place5"
     ]
   },
-  "sculk_stone_fall": {
-    "subtitle": "sounds.deeperdarker.sculk_stone_fall",
+  "block.sculk_stone.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "deeperdarker:sculk_stone_break"
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
     ]
   }
 }
