@@ -1,11 +1,9 @@
 package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
-import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.item.ItemEntity;
 
-import java.util.EnumSet;
 import java.util.List;
 
 public class SculkSnapperFindEnchantedItems extends Goal {
