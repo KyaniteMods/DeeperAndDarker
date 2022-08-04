@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.dimension.OthersideTeleporter;
 import net.minecraft.core.BlockPos;
@@ -8,6 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -118,18 +120,17 @@ public class OthersidePortalBlock extends Block {
             }
         }
     }
-
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(pRandom.nextInt(100) == 0) {
+        if(pRandom.nextInt(350) == 0) {
             pLevel.playLocalSound((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D,
-                    (double)pPos.getZ() + 0.5D, SoundEvents.PORTAL_AMBIENT,
+                    (double)pPos.getZ() + 0.5D, DDSoundEvents.PORTAL_GROAN.get(),
                     SoundSource.BLOCKS, 0.5F, pRandom.nextFloat() * 0.4F + 0.8F, false);
         }
 
         // TODO: for loop with particles
-        /*for(int i = 0; i < 4; i++) {
+        /*=for(int i = 0; i < 4; i++) {
             double x = (double)pPos.getX() + pRandom.nextDouble();
             double y = (double)pPos.getY() + pRandom.nextDouble();
             double z = (double)pPos.getZ() + pRandom.nextDouble();

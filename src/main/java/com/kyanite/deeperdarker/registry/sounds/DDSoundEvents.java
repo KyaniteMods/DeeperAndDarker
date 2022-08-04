@@ -25,6 +25,8 @@ public class DDSoundEvents {
     public static final RegistryObject<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
     public static final RegistryObject<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
 
+    // Portal
+    public static final RegistryObject<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));

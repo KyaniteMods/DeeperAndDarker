@@ -1,10 +1,8 @@
 package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import com.kyanite.deeperdarker.util.DDMobTypes;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -25,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Optional;
 
 @Mixin(Warden.class)
-public abstract class WardenMixin extends Entity {
+public abstract class WardenMixin extends Monster {
     @Shadow
     public abstract Brain<Warden> getBrain();
 
@@ -35,7 +33,7 @@ public abstract class WardenMixin extends Entity {
     @Shadow
     private AngerManagement angerManagement;
 
-    public WardenMixin(EntityType<?> pEntityType, Level pLevel) {
+    public WardenMixin(EntityType<Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -50,6 +48,11 @@ public abstract class WardenMixin extends Entity {
                 cir.setReturnValue(Optional.empty());
             }
         }
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobTypes.SCULK;
     }
 
     @Inject(method = "setAttackTarget", at = @At("HEAD"), cancellable = true)

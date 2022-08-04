@@ -1,4 +1,4 @@
-// 1.19.1	2022-08-03T11:39:49.5611224	Tags for minecraft:item
+// 1.19.1	2022-08-04T11:30:06.132335	Tags for minecraft:item
 72a274a4783e867b1734a958a55ae408f89ef30f data/deeperdarker/tags/items/bone_wood.json
 c638ec7f47bfb7ad42bcb925565b54cd93a30ce7 data/deeperdarker/tags/items/sculk_bone_wood.json
 a3fa09193d87bb76c9e732a23e82c805935e12dd data/forge/tags/items/ores.json
@@ -6,6 +6,7 @@ a3fa09193d87bb76c9e732a23e82c805935e12dd data/forge/tags/items/ores.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/minecraft/tags/items/copper_ores.json
 4624747c37a3e46a38723740815f2a4b2b5200c6 data/minecraft/tags/items/diamond_ores.json
 f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/minecraft/tags/items/emerald_ores.json
+a6e8684ecf1050e4637b34eb8bd1a0bfb6b1519e data/minecraft/tags/items/fox_food.json
 09f2c36f34dcd8a486f28c8131e1eb943aa10037 data/minecraft/tags/items/gold_ores.json
 0117d79b5b204352a7d9f3d7e65b5e653ea0f6b6 data/minecraft/tags/items/iron_ores.json
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/minecraft/tags/items/lapis_ores.json

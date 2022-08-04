@@ -53,6 +53,15 @@
       "deeperdarker:block/sculk_stone/step6"
     ]
   },
+  "ambience.portal.groan": {
+    "subtitle": "subtitles.ambience.portal.groan",
+    "sounds": [
+      "deeperdarker:ambience/portal/portal_groan1",
+      "deeperdarker:ambience/portal/portal_groan2",
+      "deeperdarker:ambience/portal/portal_groan3",
+      "deeperdarker:ambience/portal/portal_groan4"
+    ]
+  },
   "entity.snapper.ambient": {
     "subtitle": "subtitles.entity.snapper.ambient",
     "sounds": [

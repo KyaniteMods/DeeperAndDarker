@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
+import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
@@ -50,6 +51,7 @@ public class DeeperAndDarker {
         DDItems.ITEMS.register(eventBus);
         DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
         DDPoiTypes.POI.register(eventBus);
+        DDEnchantments.ENCHANTMENTS.register(eventBus);
 
         GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();

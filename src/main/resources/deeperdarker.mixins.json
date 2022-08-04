@@ -7,8 +7,9 @@
   "mixins": [
     "WardenMixin",
     "WardenAiMixin",
-    "PhantomMixin",
-    "SculkSpreadMixin"
+    "PhantomRendererMixin",
+    "SculkSpreadMixin",
+    "PhantomMixin"
   ],
   "client": [
 

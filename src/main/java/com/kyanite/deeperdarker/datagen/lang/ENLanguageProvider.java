@@ -45,6 +45,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
+
+        add("subtitles.ambience.portal.groan", "Groaning sounds");
+
+        add("enchantment.deeperdarker.sculk_smiter", "Sculk Smiter");
     }
 
     private void addBlock(RegistryObject<Block> block) {

@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
+import com.kyanite.deeperdarker.util.DDMobTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,6 +21,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -84,6 +86,11 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.3F));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobTypes.SCULK;
     }
 
     public static AttributeSupplier attributes() {

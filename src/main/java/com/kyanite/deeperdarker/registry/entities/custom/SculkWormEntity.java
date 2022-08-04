@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
+import com.kyanite.deeperdarker.util.DDMobTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -16,6 +17,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -59,6 +61,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public boolean isPushable() {
         return false;
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobTypes.SCULK;
     }
 
     @Override
