@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.events;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.entities.custom.SculkLeachEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
@@ -24,5 +25,6 @@ public class DDEventBus {
     public static void entityAttribute(final EntityAttributeCreationEvent event) {
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
         event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
+        event.put(DDEntities.SCULK_LEACH.get(), SculkLeachEntity.attributes());
     }
 }

@@ -1,4 +1,4 @@
-// 1.19.1	2022-08-03T15:41:13.3362105	Item Models: deeperdarker
+// 1.19.1	2022-08-04T12:35:30.4485331	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 0a9eb1c2c8a62f347757a60acf0859ca768029de assets/deeperdarker/models/item/bone_button.json
 af6f3186763a1cec53dc982755967805d3be20bc assets/deeperdarker/models/item/bone_door.json
@@ -33,6 +33,7 @@ ba97f8170b9e43af772586121d425967f5cab711 assets/deeperdarker/models/item/sculk_b
 202f4e646ffb1d0fd4ef7272957f3daa276186a9 assets/deeperdarker/models/item/sculk_bone_stairs.json
 129e5ea435e3c8d67e7aa47958ebada3661d6826 assets/deeperdarker/models/item/sculk_bone_trapdoor.json
 f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sculk_leach_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sculk_snapper_spawn_egg.json
 bae76bda7430454f988da26853a4dd109381a185 assets/deeperdarker/models/item/sculk_stone.json
 2ee15e6af8223dc253ebd97c4daac6c7846bafd3 assets/deeperdarker/models/item/sculk_stone_bricks.json

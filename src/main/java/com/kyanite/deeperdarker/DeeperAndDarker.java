@@ -1,11 +1,13 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.client.rendering.entity.SculkLeachRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.entities.custom.SculkLeachEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
@@ -68,6 +70,7 @@ public class DeeperAndDarker {
 
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_LEACH.get(), SculkLeachRenderer::new);
         }
 
         @SubscribeEvent
