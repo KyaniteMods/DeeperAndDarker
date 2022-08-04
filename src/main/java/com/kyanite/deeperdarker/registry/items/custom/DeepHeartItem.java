@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 
 public class DeepHeartItem extends Item {
     public DeepHeartItem() {
-        super(new Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC));
+        super(new Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     }
 
     @Override
