@@ -64,10 +64,10 @@ public class SculkLeechEntity extends Monster implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sculkleech.move", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sculkleach.move", true));
             return PlayState.CONTINUE;
         }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sculkleech.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sculkleach.idle", true));
         return PlayState.CONTINUE;
     }
 
