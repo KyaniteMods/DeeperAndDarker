@@ -111,15 +111,15 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         super.tick();
 
         if(this.isTame()) {
-            if(this.getRandom().nextInt(0, 550) == 0) {
+            if(this.getRandom().nextInt(0, 875) == 0) {
                 List<Enchantment> enchantments = ImmutableList.copyOf(ForgeRegistries.ENCHANTMENTS);
                 int randomIndex = this.getRandom().nextInt(enchantments.size());
                 Enchantment randomEnchantment = enchantments.get(randomIndex);
                 int level = 1;
 
-                if(randomEnchantment.getMaxLevel() == 2 && this.getRandom().nextInt(0, 25) == 0) {
+                if(randomEnchantment.getMaxLevel() == 2 || randomEnchantment.getMaxLevel() == 3 && this.getRandom().nextInt(0, 8) == 0) {
                     level = 2;
-                }else if(randomEnchantment.getMaxLevel() == 3 && this.getRandom().nextInt(0, 75) == 0) {
+                }else if(randomEnchantment.getMaxLevel() == 2 || randomEnchantment.getMaxLevel() == 3 && this.getRandom().nextInt(0, 25) == 0) {
                     level = 3;
                 }
 
@@ -309,7 +309,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return DDEntities.SCULK_SNAPPER.get().create(pLevel);
+        return null;
     }
 
     @Override
