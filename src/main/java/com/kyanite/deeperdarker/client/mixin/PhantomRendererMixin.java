@@ -10,10 +10,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Objects;
+
 @Mixin(PhantomRenderer.class)
 public class PhantomRendererMixin {
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/monster/Phantom;)Lnet/minecraft/resources/ResourceLocation;", at = @At("HEAD"), cancellable = true)
     public void getTextureLocation(Phantom pEntity, CallbackInfoReturnable<ResourceLocation> cir) {
-        if(pEntity.level.getBiome(pEntity.blockPosition()).is(OthersideBiomes.OTHERSIDE_LOWLAND.getKey())) cir.setReturnValue(new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/sculk_phantom.png"));
+        if(pEntity.level.getBiome(pEntity.blockPosition()).is(Objects.requireNonNull(OthersideBiomes.OTHERSIDE_LOWLAND.getKey()))) cir.setReturnValue(new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/sculk_phantom.png"));
     }
 }

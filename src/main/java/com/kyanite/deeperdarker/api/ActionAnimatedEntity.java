@@ -96,7 +96,7 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
         super.tick();
         if(isDeadOrDying()) return;
 
-        if(this.getCurrentState().animationHolder.countTicks == false) return;
+        if(!this.getCurrentState().animationHolder.countTicks) return;
 
         if(this.entityData.get(ANIMATION_TIME) != 0) {
             this.entityData.set(ANIMATION_TIME, this.entityData.get(ANIMATION_TIME) + 1);

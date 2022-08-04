@@ -24,7 +24,7 @@ public class GloomVinesBlock extends GrowingPlantHeadBlock implements GloomVines
 
     public GloomVinesBlock(BlockBehaviour.Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false, 0.1D);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(BERRIES, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(BERRIES, Boolean.FALSE));
     }
 
     protected boolean canGrowInto(BlockState state) {
@@ -40,7 +40,7 @@ public class GloomVinesBlock extends GrowingPlantHeadBlock implements GloomVines
     }
 
     protected BlockState getGrowIntoState(BlockState p_220935_, RandomSource p_220936_) {
-        return super.getGrowIntoState(p_220935_, p_220936_).setValue(BERRIES, Boolean.valueOf(p_220936_.nextFloat() < 0.11F));
+        return super.getGrowIntoState(p_220935_, p_220936_).setValue(BERRIES, p_220936_.nextFloat() < 0.11F);
     }
 
     public ItemStack getCloneItemStack(BlockGetter p_152966_, BlockPos p_152967_, BlockState p_152968_) {

@@ -8,10 +8,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -97,7 +97,7 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
                     BlockState blockstate2 = getBlockState(blockstate1);
                     p_222377_.setBlock(blockpos, blockstate2, 3);
                     Block.pushEntitiesUp(blockstate1, blockstate2, p_222377_, blockpos);
-                    p_222377_.playSound((Player)null, blockpos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    p_222377_.playSound(null, blockpos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
                     this.veinSpreader.spreadAll(blockstate2, p_222377_, blockpos, p_222376_.isWorldGeneration());
                     Direction direction1 = direction.getOpposite();
 
@@ -120,7 +120,7 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
     }
 
     @Override
-    public MultifaceSpreader getSpreader() {
+    public @NotNull MultifaceSpreader getSpreader() {
         return veinSpreader;
     }
 }

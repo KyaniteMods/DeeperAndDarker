@@ -13,7 +13,7 @@ import software.bernie.geckolib3.renderers.geo.layer.LayerGlowingAreasGeo;
 
 public class SculkLeechRenderer extends GeoEntityRenderer<SculkLeechEntity> {
     public SculkLeechRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new SculkLeachModel());
+        super(renderManager, new SculkLeechModel());
         this.addLayer(new LayerGlowingAreasGeo<>(this, getGeoModelProvider()::getTextureResource, getGeoModelProvider()::getModelResource, RenderType::entityTranslucentEmissive));
     }
 

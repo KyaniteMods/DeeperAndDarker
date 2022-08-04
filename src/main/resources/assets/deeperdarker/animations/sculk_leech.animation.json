@@ -1,11 +1,11 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.sculkleach.idle": {
+		"animation.sculkleech.idle": {
 			"loop": true,
 			"animation_length": 4
 		},
-		"animation.sculkleach.move": {
+		"animation.sculkleech.move": {
 			"loop": true,
 			"animation_length": 0.66667,
 			"bones": {
