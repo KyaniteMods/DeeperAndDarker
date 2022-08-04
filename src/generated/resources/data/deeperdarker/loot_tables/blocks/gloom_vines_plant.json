@@ -5,7 +5,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "deeperdarker:gloom_wines_plant",
+          "block": "deeperdarker:gloom_vines_plant",
           "condition": "minecraft:block_state_property",
           "properties": {
             "berries": "true"
