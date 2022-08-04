@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.client.mixin;
 
-import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
@@ -70,6 +69,14 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
         }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_WALLS_REPLACE)) {
             blockstate2 = DDBlocks.POLISHED_SCULK_STONE_WALL.get().defaultBlockState();
         }
+
+        else if(blockstate1 == Blocks.WEEPING_VINES.defaultBlockState()) {
+            blockstate2 = DDBlocks.SCULK_VINES.get().defaultBlockState();
+        }else if(blockstate1 == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
+            blockstate2 = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
+        }
+
+
 
 
         return blockstate2;

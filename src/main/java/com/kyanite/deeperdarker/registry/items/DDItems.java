@@ -8,10 +8,8 @@ import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -30,6 +28,8 @@ public class DDItems {
     public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", DeepHeartItem::new);
+
+    public static final RegistryObject<Item> GLOOM_BERRIES = ITEMS.register("gloom_berries", () -> new ItemNameBlockItem(DDBlocks.GLOOM_VINES.get(), (new Item.Properties()).food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<SpawnEggItem> SHRIEK_WORM_SPAWN_EGG = ITEMS.register("shriek_worm_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_WORM, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));

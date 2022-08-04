@@ -1,9 +1,16 @@
 package com.kyanite.deeperdarker.datagen.loot;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.blocks.custom.gloomvines.GloomVines;
+import com.kyanite.deeperdarker.registry.items.DDItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.registries.RegistryObject;
 
 public class DDBlockLoot extends BlockLoot {
@@ -69,10 +76,16 @@ public class DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.ANCIENT_VASE.get());
         this.add(DDBlocks.SCULK_VINES.get(), BlockLoot::createShearsOnlyDrop);
         this.add(DDBlocks.SCULK_VINES_PLANT.get(), BlockLoot::createShearsOnlyDrop);
+        this.add(DDBlocks.GLOOM_VINES.get(), DDBlockLoot::createGloomVinesDrop);
+        this.add(DDBlocks.GLOOM_VINES_PLANT.get(), DDBlockLoot::createGloomVinesDrop);
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return DDBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    }
+
+    protected static LootTable.Builder createGloomVinesDrop(Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(DDItems.GLOOM_BERRIES.get())).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GloomVines.BERRIES, true))));
     }
 }

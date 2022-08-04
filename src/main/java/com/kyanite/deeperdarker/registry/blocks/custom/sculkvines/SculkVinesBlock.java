@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom;
+package com.kyanite.deeperdarker.registry.blocks.custom.sculkvines;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.BlockPos;

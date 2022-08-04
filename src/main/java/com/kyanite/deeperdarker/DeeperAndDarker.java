@@ -14,12 +14,11 @@ import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.kyanite.deeperdarker.util.DDWoodTypes;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -75,6 +74,8 @@ public class DeeperAndDarker {
                 Sheets.addWoodType(DDWoodTypes.BONE);
                 Sheets.addWoodType(DDWoodTypes.SCULK_BONE);
             });
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOM_GRASS.get().asItem(), 0.65F);
+            ComposterBlock.COMPOSTABLES.put(DDItems.GLOOM_BERRIES.get(), 0.3F);
         }
     }
 }

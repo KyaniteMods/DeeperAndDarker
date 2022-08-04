@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.tags;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -48,5 +49,6 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
+        tag(ItemTags.FOX_FOOD).add(DDItems.GLOOM_BERRIES.get());
     }
 }

@@ -6,7 +6,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -74,6 +73,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("translucent"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("translucent"));
+        simpleBlock(DDBlocks.GLOOM_VINES.get(), models().cross(DDBlocks.GLOOM_VINES.getId().getPath(), blockLoc(DDBlocks.GLOOM_VINES)).renderType("translucent"));
+        simpleBlock(DDBlocks.GLOOM_VINES_PLANT.get(), models().cross(DDBlocks.GLOOM_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOOM_VINES_PLANT)).renderType("translucent"));
     }
 
     public void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {

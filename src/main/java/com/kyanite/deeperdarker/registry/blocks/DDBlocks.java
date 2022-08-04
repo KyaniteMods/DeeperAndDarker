@@ -2,6 +2,10 @@ package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
+import com.kyanite.deeperdarker.registry.blocks.custom.gloomvines.GloomVinesBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.gloomvines.GloomVinesPlantBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.sculkvines.SculkVinesBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.sculkvines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
@@ -79,14 +83,18 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_STONE_LAPIS_ORE = register("sculk_stone_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(4, 10)));
     public static final RegistryObject<Block> SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(6, 14)));
 
-    // Misc. Otherside
+    // Misc. Otherside and Sculk
+    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).noOcclusion()));
+    public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculk(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.2F)));
+    public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel((state) -> 5).noLootTable()));
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel((state) -> 15)));
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.SCULK).noCollission().instabreak().sound(SoundType.SCULK)));
     public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
-    public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculk(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.2F)));
-    public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel((state) -> 5).noLootTable()));
+    public static final RegistryObject<GloomVinesBlock> GLOOM_VINES = BLOCKS.register("gloom_vines", () -> new GloomVinesBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
+    public static final RegistryObject<GloomVinesPlantBlock> GLOOM_VINES_PLANT = BLOCKS.register("gloom_wines_plant", () -> new GloomVinesPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
     public static final RegistryObject<Block> GLOOM_GRASS = register("gloom_grass", () -> new GloomGrass(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).sound(SoundType.GRASS).lightLevel((state) -> 0).strength(0.2F)));
-    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).noOcclusion()));
+
+
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);

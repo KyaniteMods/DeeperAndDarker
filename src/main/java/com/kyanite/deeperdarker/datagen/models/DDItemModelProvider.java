@@ -29,6 +29,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDBlocks.BONE_DOOR, GENERATED);
         blockModel(DDBlocks.BONE_TRAPDOOR, "bottom");
         blockModel(DDBlocks.BONE_FENCE_GATE);
+        itemModel(DDItems.BONE_SIGN, GENERATED);
 
         blockModel(DDBlocks.SCULK_BONE_BLOCK);
         blockModel(DDBlocks.SCULK_BONE_PLANKS);
@@ -40,6 +41,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDBlocks.SCULK_BONE_DOOR, GENERATED);
         blockModel(DDBlocks.SCULK_BONE_TRAPDOOR, "bottom");
         blockModel(DDBlocks.SCULK_BONE_FENCE_GATE);
+        itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
 
         blockModel(DDBlocks.SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_SLAB);
@@ -84,11 +86,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
 
+        itemModel(DDItems.GLOOM_BERRIES, GENERATED);
+
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SCULK_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
-
-        itemModel(DDItems.BONE_SIGN, GENERATED);
-        itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {
