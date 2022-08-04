@@ -11,10 +11,12 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.layer.LayerGlowingAreasGeo;
 
 public class ShatteredRenderer extends GeoEntityRenderer<ShatteredEntity> {
     public ShatteredRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ShatteredModel());
+        this.addLayer(new LayerGlowingAreasGeo<>(this, getGeoModelProvider()::getTextureResource, getGeoModelProvider()::getModelResource, RenderType::entityTranslucentEmissive));
     }
 
     @Override

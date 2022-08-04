@@ -84,6 +84,8 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     @Override
     public void tick() {
         super.tick();
+        if(isDeadOrDying()) return;
+
         Level level = this.level;
         if (level instanceof ServerLevel serverlevel) {
             this.dynamicGameEventListener.getListener().tick(serverlevel);
@@ -152,6 +154,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     @Override
     public boolean shouldListen(ServerLevel p_223872_, GameEventListener p_223873_, BlockPos p_223874_, GameEvent p_223875_, GameEvent.Context p_223876_) {
+        if(isDeadOrDying()) return false;
         return true;
     }
 
@@ -167,7 +170,9 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     @Override
     public void onSignalReceive(ServerLevel p_223865_, GameEventListener p_223866_, BlockPos p_223867_, GameEvent p_223868_, @Nullable Entity p_223869_, @Nullable Entity p_223870_, float p_223871_) {
-        this.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2.0F, 1);
+        if(isDeadOrDying()) return;
+
+        this.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
 
         if(p_223869_ != null) {
             if(canTargetEntity(p_223869_))
@@ -180,6 +185,9 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
                 return;
             }
         }
+
+        if(this.getTarget() != null)
+            this.setTarget(null);
 
         this.disturbanceLocation = p_223867_;
     }
