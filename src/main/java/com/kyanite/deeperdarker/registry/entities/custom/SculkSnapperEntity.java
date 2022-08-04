@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
-import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;

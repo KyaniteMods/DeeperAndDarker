@@ -2,7 +2,10 @@ package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.util.DDMobTypes;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -41,10 +44,10 @@ public abstract class WardenMixin extends Monster {
     public void getEntityAngryAt(CallbackInfoReturnable<Optional<LivingEntity>> cir) {
         if(this.angerManagement.getActiveEntity().isEmpty()) return;
 
-        if(this.angerManagement.getActiveEntity().get() instanceof Player plr) {
-            if(plr.isCreative() || plr.isSpectator()) return;
+        if(this.angerManagement.getActiveEntity().get() instanceof Player player) {
+            if(player.isCreative() || player.isSpectator()) return;
 
-            if(plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 cir.setReturnValue(Optional.empty());
             }
         }
@@ -57,9 +60,9 @@ public abstract class WardenMixin extends Monster {
 
     @Inject(method = "setAttackTarget", at = @At("HEAD"), cancellable = true)
     public void setTarget(LivingEntity entity, CallbackInfo ci) {
-        if(entity instanceof Player plr) {
-            if(plr.isCreative() || plr.isSpectator()) return;
-            if(plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+        if(entity instanceof Player player) {
+            if(player.isCreative() || player.isSpectator()) return;
+            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
                 this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
                 ci.cancel();
             }

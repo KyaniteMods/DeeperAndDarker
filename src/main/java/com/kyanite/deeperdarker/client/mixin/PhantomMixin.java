@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.util.DDMobTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;

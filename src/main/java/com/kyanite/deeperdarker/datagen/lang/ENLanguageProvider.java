@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.lang;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
@@ -9,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -27,6 +29,7 @@ public class ENLanguageProvider extends LanguageProvider {
         DDEntities.ENTITY_TYPES.getEntries().forEach(this::addEntity);
         OthersideBiomes.BIOMES.getEntries().forEach(this::addBiome);
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(this::addItem);
+        DDEnchantments.ENCHANTMENTS.getEntries().forEach(this::addEnchantment);
 
         add("advancements.deeperdarker.root.title", "Sculk Story");
         add("advancements.deeperdarker.root.description", "You feel something pulling you toward the underground...");
@@ -41,14 +44,11 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the Bedrock... the darkness");
 
+        add("subtitles.ambience.portal.groan", "Groaning sounds");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
-
-        add("subtitles.ambience.portal.groan", "Groaning sounds");
-
-        add("enchantment.deeperdarker.sculk_smiter", "Sculk Smiter");
     }
 
     private void addBlock(RegistryObject<Block> block) {
@@ -69,6 +69,11 @@ public class ENLanguageProvider extends LanguageProvider {
     private void addItem(RegistryObject<Item> item) {
         String key = item.getId().getPath();
         add("item.deeperdarker." + key, convertToName(key));
+    }
+
+    private void addEnchantment(RegistryObject<Enchantment> item) {
+        String key = item.getId().getPath();
+        add("enchantment.deeperdarker." + key, convertToName(key));
     }
 
     private String convertToName(String key) {

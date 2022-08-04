@@ -21,8 +21,8 @@ public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public WardenArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-        super(materialIn, slot, builder);
+    public WardenArmorItem(ArmorMaterial pMaterial, EquipmentSlot pSlot, Properties pProperties) {
+        super(pMaterial, pSlot, pProperties);
     }
 
     @Override

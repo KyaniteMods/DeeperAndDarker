@@ -1,4 +1,13 @@
 {
+  "ambience.portal.groan": {
+    "subtitle": "subtitles.ambience.portal.groan",
+    "sounds": [
+      "deeperdarker:ambience/portal/groan1",
+      "deeperdarker:ambience/portal/groan2",
+      "deeperdarker:ambience/portal/groan3",
+      "deeperdarker:ambience/portal/groan4"
+    ]
+  },
   "block.sculk_stone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
@@ -51,15 +60,6 @@
       "deeperdarker:block/sculk_stone/step4",
       "deeperdarker:block/sculk_stone/step5",
       "deeperdarker:block/sculk_stone/step6"
-    ]
-  },
-  "ambience.portal.groan": {
-    "subtitle": "subtitles.ambience.portal.groan",
-    "sounds": [
-      "deeperdarker:ambience/portal/portal_groan1",
-      "deeperdarker:ambience/portal/portal_groan2",
-      "deeperdarker:ambience/portal/portal_groan3",
-      "deeperdarker:ambience/portal/portal_groan4"
     ]
   },
   "entity.snapper.ambient": {
