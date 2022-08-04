@@ -6,8 +6,8 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.player.Player;
 
-public class SculkLeachMelee extends MeleeAttackGoal {
-    public SculkLeachMelee(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
+public class SculkLeechMelee extends MeleeAttackGoal {
+    public SculkLeechMelee(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
     }
 
@@ -18,8 +18,7 @@ public class SculkLeachMelee extends MeleeAttackGoal {
             this.resetAttackCooldown();
             this.mob.swing(InteractionHand.MAIN_HAND);
             this.mob.doHurtTarget(pEnemy);
-            if(pEnemy instanceof Player) {
-                Player plr = (Player) pEnemy;
+            if(pEnemy instanceof Player plr) {
                 plr.giveExperiencePoints(-1);
             }
         }

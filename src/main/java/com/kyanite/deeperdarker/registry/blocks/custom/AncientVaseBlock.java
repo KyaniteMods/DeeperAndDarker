@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkLeachEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
@@ -35,9 +35,9 @@ public class AncientVaseBlock extends Block {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
         if(randomSource.nextInt(0, 4) == 0) {
             for(int i = 0; i < randomSource.nextInt(1, 10); i++) {
-                SculkLeachEntity sculkLeachEntity = DDEntities.SCULK_LEACH.get().create(pLevel);
-                sculkLeachEntity.moveTo(pPos.getX(), pPos.getY(), pPos.getZ(), 0, 0);
-                pLevel.addFreshEntity(sculkLeachEntity);
+                SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(pLevel);
+                sculkLeechEntity.moveTo(pPos.getX(), pPos.getY(), pPos.getZ(), 0, 0);
+                pLevel.addFreshEntity(sculkLeechEntity);
             }
         }
     }

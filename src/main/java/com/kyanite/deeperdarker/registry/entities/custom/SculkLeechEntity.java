@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
-import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkLeachMelee;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkLeechMelee;
 import com.kyanite.deeperdarker.util.DDMobTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobType;
@@ -20,10 +20,10 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class SculkLeachEntity extends Monster implements IAnimatable {
+public class SculkLeechEntity extends Monster implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public SculkLeachEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public SculkLeechEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -39,7 +39,7 @@ public class SculkLeachEntity extends Monster implements IAnimatable {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(4, new SculkLeachMelee(this, 1.0D, false));
+        this.goalSelector.addGoal(4, new SculkLeechMelee(this, 1.0D, false));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
