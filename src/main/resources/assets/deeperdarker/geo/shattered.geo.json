@@ -1,0 +1,90 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Shattered",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "Body",
+					"parent": "Shattered",
+					"pivot": [0, 13, 0],
+					"cubes": [
+						{"origin": [-4, 13, -2], "size": [8, 13, 4], "uv": [0, 16]},
+						{"origin": [0, 13, 2], "size": [0, 2, 2], "uv": [4, 2]},
+						{"origin": [-0.5, 15, 2], "size": [1, 2, 2], "uv": [0, 0]},
+						{"origin": [0, 17, 2], "size": [0, 2, 2], "uv": [0, 16]},
+						{"origin": [-0.5, 19, 2], "size": [1, 2, 2], "uv": [0, 4]},
+						{"origin": [0, 21, 2], "size": [0, 2, 2], "uv": [0, 14]},
+						{"origin": [-0.5, 23, 2], "size": [1, 2, 2], "uv": [20, 16]},
+						{"origin": [0, 25, 2], "size": [0, 1, 2], "uv": [24, 14]}
+					]
+				},
+				{
+					"name": "Head",
+					"parent": "Body",
+					"pivot": [0, 26, 0],
+					"cubes": [
+						{"origin": [-4, 26, -4], "size": [8, 8, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Tendril",
+					"parent": "Head",
+					"pivot": [-4, 30.5, 0],
+					"cubes": [
+						{"origin": [-12, 28, 0], "size": [8, 8, 0], "uv": [24, 0]}
+					]
+				},
+				{
+					"name": "LeftArm",
+					"parent": "Body",
+					"pivot": [4, 25, 0],
+					"cubes": [
+						{"origin": [4, 13, -2], "size": [4, 13, 4], "uv": [24, 16]},
+						{"origin": [4, 11, -2], "size": [1, 2, 0], "uv": [4, 0]},
+						{"origin": [6, 11, -2], "size": [1, 2, 0], "uv": [0, 0]},
+						{"origin": [8, 11, -2], "size": [0, 2, 1], "uv": [0, 3]}
+					]
+				},
+				{
+					"name": "RightArm",
+					"parent": "Body",
+					"pivot": [-4, 25, 0],
+					"cubes": [
+						{"origin": [-8, 13, -2], "size": [4, 13, 4], "uv": [0, 33]},
+						{"origin": [-5, 11, -2], "size": [1, 2, 0], "uv": [4, 0], "mirror": true},
+						{"origin": [-7, 11, -2], "size": [1, 2, 0], "uv": [0, 0], "mirror": true},
+						{"origin": [-8, 11, -2], "size": [0, 2, 1], "uv": [0, 3], "mirror": true}
+					]
+				},
+				{
+					"name": "LeftLeg",
+					"parent": "Shattered",
+					"pivot": [2, 13, 0],
+					"cubes": [
+						{"origin": [0, 0, -2], "size": [4, 13, 4], "uv": [16, 33]}
+					]
+				},
+				{
+					"name": "RightLeg",
+					"parent": "Shattered",
+					"pivot": [-2, 13, 0],
+					"cubes": [
+						{"origin": [-4, 0, -2], "size": [4, 13, 4], "uv": [32, 33]}
+					]
+				}
+			]
+		}
+	]
+}

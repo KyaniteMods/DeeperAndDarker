@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkLeechRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
+import com.kyanite.deeperdarker.client.rendering.entity.ShatteredRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
@@ -11,6 +12,7 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
@@ -78,6 +80,7 @@ public class DeeperAndDarker {
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
+            EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
         }
 
         @SubscribeEvent
@@ -101,6 +104,7 @@ public class DeeperAndDarker {
             event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
             event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
             event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
+            event.put(DDEntities.SHATTERED.get(), ShatteredEntity.attributes());
         }
     }
 }

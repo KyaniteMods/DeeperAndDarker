@@ -34,4 +34,5 @@ public class DDItems {
     public static final RegistryObject<SpawnEggItem> SHRIEK_WORM_SPAWN_EGG = ITEMS.register("shriek_worm_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_WORM, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_LEECH, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<SpawnEggItem> SHATTERED_SPAWN_EGG = ITEMS.register("shattered_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SHATTERED, 1001033, 3790560, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
 }
