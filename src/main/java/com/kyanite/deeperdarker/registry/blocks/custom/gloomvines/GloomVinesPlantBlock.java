@@ -23,7 +23,7 @@ public class GloomVinesPlantBlock extends GrowingPlantBodyBlock implements Gloom
 
     public GloomVinesPlantBlock(BlockBehaviour.Properties p_153000_) {
         super(p_153000_, Direction.DOWN, SHAPE, false);
-        this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, Boolean.FALSE));
     }
 
     protected GrowingPlantHeadBlock getHeadBlock() {

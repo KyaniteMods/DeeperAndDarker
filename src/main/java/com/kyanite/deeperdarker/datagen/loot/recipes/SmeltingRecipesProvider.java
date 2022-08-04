@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.datagen.recipes;
+package com.kyanite.deeperdarker.datagen.loot.recipes;
 
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;

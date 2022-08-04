@@ -7,8 +7,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class SculkSmiteEnchant extends Enchantment {
-    public SculkSmiteEnchant(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
+public class SculkDamageEnchantment extends Enchantment {
+    public SculkDamageEnchantment(Rarity pRarity, EnchantmentCategory pCategory, EquipmentSlot[] pApplicableSlots) {
         super(pRarity, pCategory, pApplicableSlots);
     }
 

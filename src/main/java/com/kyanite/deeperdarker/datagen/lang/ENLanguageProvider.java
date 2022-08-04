@@ -44,7 +44,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the Bedrock... the darkness");
 
-        add("subtitles.ambience.portal.groan", "Groaning sounds");
+        add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");

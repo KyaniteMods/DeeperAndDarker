@@ -72,7 +72,9 @@ public class OthersideTeleporter implements ITeleporter {
                     mutableBlockPos.setY(i);
                     if(this.level.isEmptyBlock(mutableBlockPos)) {
                         int y;
-                        for(y = i; i > 0 && this.level.isEmptyBlock(mutableBlockPos.move(Direction.DOWN)); i--) {
+                        y = i;
+                        while (i > 0 && this.level.isEmptyBlock(mutableBlockPos.move(Direction.DOWN))) {
+                            i--;
                         }
 
                         if(i + 4 <= dimensionLogicalHeight) {

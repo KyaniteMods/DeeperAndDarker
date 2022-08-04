@@ -321,8 +321,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Override
     public boolean isFood(ItemStack pStack) {
         if(pStack.is(Items.DIAMOND_CHESTPLATE)) {
-            if(!pStack.getAllEnchantments().isEmpty())
-                return true;
+            return !pStack.getAllEnchantments().isEmpty();
         }
         return false;
     }
