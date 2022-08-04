@@ -10,7 +10,6 @@ import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkLeachEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;

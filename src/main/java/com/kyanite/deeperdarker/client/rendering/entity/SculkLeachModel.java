@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkLeachEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
