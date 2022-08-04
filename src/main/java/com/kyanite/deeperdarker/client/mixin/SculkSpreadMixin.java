@@ -70,7 +70,9 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
             blockstate2 = DDBlocks.POLISHED_SCULK_STONE_WALL.get().defaultBlockState();
         }
 
-        else if(blockstate1 == Blocks.WEEPING_VINES.defaultBlockState()) {
+        else if(blockstate1 == Blocks.SHROOMLIGHT.defaultBlockState()) {
+            blockstate2 = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
+        }else if(blockstate1 == Blocks.WEEPING_VINES.defaultBlockState()) {
             blockstate2 = DDBlocks.SCULK_VINES.get().defaultBlockState();
         }else if(blockstate1 == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
             blockstate2 = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
