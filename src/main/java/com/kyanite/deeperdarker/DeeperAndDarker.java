@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
@@ -99,6 +100,7 @@ public class DeeperAndDarker {
         public static void entityAttribute(final EntityAttributeCreationEvent event) {
             event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
             event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
+            event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
         }
     }
 }
