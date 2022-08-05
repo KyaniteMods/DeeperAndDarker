@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:main/locate_ancient_city",
+  "criteria": {
+    "reinforced_echo_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:reinforced_echo_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.get_reinforced_shard.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:reinforced_echo_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.get_reinforced_shard.title"
+    }
+  },
+  "requirements": [
+    [
+      "reinforced_echo_shard"
+    ]
+  ]
+}

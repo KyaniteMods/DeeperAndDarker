@@ -7,6 +7,8 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -61,6 +63,16 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         slabBuilder(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
         stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
         wallBuilder(DDBlocks.SCULK_STONE_BRICK_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
+
+        ShapedRecipeBuilder.shaped(DDItems.REINFORCED_ECHO_SHARD.get(), 1)
+                .define('P', Items.PHANTOM_MEMBRANE)
+                .define('E', Items.ECHO_SHARD)
+                .define('C', DDItems.WARDEN_CARAPACE.get())
+                .pattern("PEP")
+                .pattern("ECE")
+                .pattern("PEP")
+                .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get()))
+                .save(consumer);
     }
 
     @NotNull

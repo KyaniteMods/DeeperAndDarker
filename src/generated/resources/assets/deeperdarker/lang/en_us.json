@@ -1,6 +1,8 @@
 {
   "advancements.deeperdarker.enter_otherside.description": "Deep below the bedrock... the darkness awaits",
   "advancements.deeperdarker.enter_otherside.title": "Below the Bedrock",
+  "advancements.deeperdarker.get_reinforced_shard.description": "Reinforce an Echo Shard",
+  "advancements.deeperdarker.get_reinforced_shard.title": "Sculk engineer?",
   "advancements.deeperdarker.kill_warden.description": "Slay the Warden and take its heart... ew",
   "advancements.deeperdarker.kill_warden.title": "Phantom Thief",
   "advancements.deeperdarker.locate_ancient_city.description": "Find an Ancient City",
@@ -73,6 +75,7 @@
   "entity.deeperdarker.shriek_worm": "Shriek Worm",
   "item.deeperdarker.gloom_berries": "Gloom Berries",
   "item.deeperdarker.heart_of_the_deep": "Heart Of The Deep",
+  "item.deeperdarker.reinforced_echo_shard": "Reinforced Echo Shard",
   "item.deeperdarker.sculk_leech_spawn_egg": "Sculk Leech Spawn Egg",
   "item.deeperdarker.sculk_snapper_spawn_egg": "Sculk Snapper Spawn Egg",
   "item.deeperdarker.shattered_spawn_egg": "Shattered Spawn Egg",

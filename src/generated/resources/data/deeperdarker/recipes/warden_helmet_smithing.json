@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing",
   "addition": {
-    "item": "deeperdarker:warden_carapace"
+    "item": "deeperdarker:reinforced_echo_shard"
   },
   "base": {
     "item": "minecraft:netherite_helmet"

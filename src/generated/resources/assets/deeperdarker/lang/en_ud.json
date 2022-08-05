@@ -1,6 +1,8 @@
 {
   "advancements.deeperdarker.enter_otherside.description": "sʇıɐʍɐ ssǝuʞɹɐp ǝɥʇ ˙˙˙ʞɔoɹpǝq ǝɥʇ ʍoןǝq dǝǝᗡ",
   "advancements.deeperdarker.enter_otherside.title": "ʞɔoɹpǝᗺ ǝɥʇ ʍoןǝᗺ",
+  "advancements.deeperdarker.get_reinforced_shard.description": "pɹɐɥS oɥɔƎ uɐ ǝɔɹoɟuıǝᴚ",
+  "advancements.deeperdarker.get_reinforced_shard.title": "¿ɹǝǝuıbuǝ ʞןnɔS",
   "advancements.deeperdarker.kill_warden.description": "ʍǝ ˙˙˙ʇɹɐǝɥ sʇı ǝʞɐʇ puɐ uǝpɹɐM ǝɥʇ ʎɐןS",
   "advancements.deeperdarker.kill_warden.title": "ɟǝıɥ⟘ ɯoʇuɐɥԀ",
   "advancements.deeperdarker.locate_ancient_city.description": "ʎʇıƆ ʇuǝıɔuⱯ uɐ puıℲ",
@@ -73,6 +75,7 @@
   "entity.deeperdarker.shriek_worm": "Sɥɹıǝʞ Woɹɯ",
   "item.deeperdarker.gloom_berries": "⅁ןooɯ ᗺǝɹɹıǝs",
   "item.deeperdarker.heart_of_the_deep": "Hǝɐɹʇ Oɟ ⟘ɥǝ ᗡǝǝp",
+  "item.deeperdarker.reinforced_echo_shard": "ᴚǝınɟoɹɔǝd Ǝɔɥo Sɥɐɹd",
   "item.deeperdarker.sculk_leech_spawn_egg": "Sɔuןʞ Ꞁǝǝɔɥ Spɐʍn Ǝqq",
   "item.deeperdarker.sculk_snapper_spawn_egg": "Sɔuןʞ Snɐppǝɹ Spɐʍn Ǝqq",
   "item.deeperdarker.shattered_spawn_egg": "Sɥɐʇʇǝɹǝd Spɐʍn Ǝqq",

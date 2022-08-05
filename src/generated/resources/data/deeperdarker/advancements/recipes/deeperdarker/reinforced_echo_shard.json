@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:reinforced_echo_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warden_carapace": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:warden_carapace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_warden_carapace",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:reinforced_echo_shard"
+    ]
+  }
+}
