@@ -15,7 +15,7 @@ import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
-import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDPoiTypes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
@@ -52,7 +52,7 @@ public class DeeperAndDarker {
     public DeeperAndDarker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        DDSoundEvents.SOUND_EVENTS.register(eventBus);
+        DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
         DDEntities.ENTITY_TYPES.register(eventBus);

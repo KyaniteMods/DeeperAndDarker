@@ -62,6 +62,48 @@
       "deeperdarker:block/sculk_stone/step6"
     ]
   },
+  "block.vase.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "deeperdarker:block/vase/break1",
+      "deeperdarker:block/vase/break2",
+      "deeperdarker:block/vase/break3",
+      "deeperdarker:block/vase/break4",
+      "deeperdarker:block/vase/break5"
+    ]
+  },
+  "block.vase.fall": {
+    "sounds": [
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
+    ]
+  },
+  "block.vase.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
+    ]
+  },
+  "block.vase.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "deeperdarker:block/vase/place1",
+      "deeperdarker:block/vase/place2",
+      "deeperdarker:block/vase/place3",
+      "deeperdarker:block/vase/place4"
+    ]
+  },
+  "block.vase.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
+    ]
+  },
   "entity.snapper.ambient": {
     "subtitle": "subtitles.entity.snapper.ambient",
     "sounds": [

@@ -7,7 +7,7 @@ import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
-import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.util.DDMobTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -106,13 +106,13 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return DDSoundEvents.SCULK_SNAPPER_HURT.get();
+        return DDSounds.SCULK_SNAPPER_HURT.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return DDSoundEvents.SCULK_SNAPPER_AMBIENT.get();
+        return DDSounds.SCULK_SNAPPER_AMBIENT.get();
     }
 
     @Override
@@ -148,7 +148,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             }else{
                 if(this.getCurrentState() != WALK)
                 {
-                    this.playSound(DDSoundEvents.SCULK_SNAPPER_SNIFF.get(), 0.5f, 0.75F);
+                    this.playSound(DDSounds.SCULK_SNAPPER_SNIFF.get(), 0.5f, 0.75F);
                     this.setState(SNIFF);
                     this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(150, 500));
                 }
@@ -234,7 +234,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             if(this.getTarget() != null)
                 this.doHurtTarget(this.getTarget());
 
-            this.playSound(DDSoundEvents.SCULK_SNAPPER_BITE.get(), 0.6F, 0.8f);
+            this.playSound(DDSounds.SCULK_SNAPPER_BITE.get(), 0.6F, 0.8f);
 
             setState(IDLE);
         }else if(entityState.equals(DIG))

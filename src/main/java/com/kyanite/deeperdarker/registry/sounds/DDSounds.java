@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class DDSoundEvents {
+public class DDSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, DeeperAndDarker.MOD_ID);
 
     // Sculk Stone
@@ -18,6 +18,14 @@ public class DDSoundEvents {
     public static final RegistryObject<SoundEvent> SCULK_STONE_PLACE = register("block.sculk_stone.place");
     public static final RegistryObject<SoundEvent> SCULK_STONE_STEP = register("block.sculk_stone.step");
     public static final ForgeSoundType SCULK_STONE = new ForgeSoundType(1, 1, SCULK_STONE_BREAK, SCULK_STONE_STEP, SCULK_STONE_PLACE, SCULK_STONE_HIT, SCULK_STONE_FALL);
+
+    // Vase
+    public static final RegistryObject<SoundEvent> VASE_BREAK = register("block.vase.break");
+    public static final RegistryObject<SoundEvent> VASE_FALL = register("block.vase.fall");
+    public static final RegistryObject<SoundEvent> VASE_HIT = register("block.vase.hit");
+    public static final RegistryObject<SoundEvent> VASE_PLACE = register("block.vase.place");
+    public static final RegistryObject<SoundEvent> VASE_STEP = register("block.vase.step");
+    public static final ForgeSoundType VASE = new ForgeSoundType(1, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
 
     // Sculk Snapper
     public static final RegistryObject<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");

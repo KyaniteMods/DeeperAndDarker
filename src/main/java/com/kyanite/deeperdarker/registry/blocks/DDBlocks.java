@@ -7,7 +7,7 @@ import com.kyanite.deeperdarker.registry.blocks.custom.gloomvines.GloomVinesPlan
 import com.kyanite.deeperdarker.registry.blocks.custom.sculkvines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.sculkvines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
 import com.kyanite.deeperdarker.util.DDWoodTypes;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -53,7 +53,7 @@ public class DDBlocks {
     public static final RegistryObject<StandingSignBlock> SCULK_BONE_SIGN = BLOCKS.register("sculk_bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.SCULK_BONE));
 
     // Sculk Stone
-    public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(4.5f, 5.5f).sound(DDSoundEvents.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(4.5f, 5.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final RegistryObject<SlabBlock> SCULK_STONE_SLAB = register("sculk_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
     public static final RegistryObject<StairBlock> SCULK_STONE_STAIRS = register("sculk_stone_stairs", () -> new StairBlock(SCULK_STONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(SCULK_STONE.get())));
     public static final RegistryObject<WallBlock> SCULK_STONE_WALL = register("sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
@@ -84,7 +84,7 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(6, 14)));
 
     // Misc. Otherside and Sculk
-    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).noOcclusion()));
+    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(DDSounds.VASE).noOcclusion()));
     public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculk(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.2F)));
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel((state) -> 5).noLootTable()));
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel((state) -> 15)));

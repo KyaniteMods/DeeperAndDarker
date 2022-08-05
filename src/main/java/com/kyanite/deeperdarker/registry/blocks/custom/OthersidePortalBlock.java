@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.dimension.OthersideTeleporter;
 import net.minecraft.core.BlockPos;
@@ -123,7 +123,7 @@ public class OthersidePortalBlock extends Block {
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if(pRandom.nextInt(350) == 0) {
             pLevel.playLocalSound((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D,
-                    (double)pPos.getZ() + 0.5D, DDSoundEvents.PORTAL_GROAN.get(),
+                    (double)pPos.getZ() + 0.5D, DDSounds.PORTAL_GROAN.get(),
                     SoundSource.BLOCKS, 0.5F, pRandom.nextFloat() * 0.4F + 0.8F, false);
         }
 
