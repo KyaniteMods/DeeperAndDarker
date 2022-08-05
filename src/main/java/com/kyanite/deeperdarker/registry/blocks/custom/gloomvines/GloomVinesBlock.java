@@ -27,37 +27,44 @@ public class GloomVinesBlock extends GrowingPlantHeadBlock implements GloomVines
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(BERRIES, Boolean.FALSE));
     }
 
+    @Override
     protected boolean canGrowInto(BlockState state) {
         return state.isAir();
     }
 
+    @Override
     protected Block getBodyBlock() {
         return DDBlocks.GLOOM_VINES_PLANT.get();
     }
 
+    @Override
     protected BlockState updateBodyAfterConvertedFromHead(BlockState state1, BlockState state2) {
         return state2.setValue(BERRIES, state1.getValue(BERRIES));
     }
 
-    protected BlockState getGrowIntoState(BlockState p_220935_, RandomSource p_220936_) {
-        return super.getGrowIntoState(p_220935_, p_220936_).setValue(BERRIES, p_220936_.nextFloat() < 0.11F);
-    }
-
-    public ItemStack getCloneItemStack(BlockGetter p_152966_, BlockPos p_152967_, BlockState p_152968_) {
-        return new ItemStack(DDItems.GLOOM_BERRIES.get());
-    }
-
-    public InteractionResult use(BlockState p_152980_, Level p_152981_, BlockPos p_152982_, Player p_152983_, InteractionHand p_152984_, BlockHitResult p_152985_) {
-        return CaveVines.use(p_152980_, p_152981_, p_152982_);
-    }
-
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_152993_) {
-        super.createBlockStateDefinition(p_152993_);
-        p_152993_.add(BERRIES);
+    @Override
+    protected BlockState getGrowIntoState(BlockState pState, RandomSource pRandomSource) {
+        return super.getGrowIntoState(pState, pRandomSource).setValue(BERRIES, pRandomSource.nextFloat() < 0.11F);
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(RandomSource p_221341_) {
+    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+        return new ItemStack(DDItems.GLOOM_BERRIES.get());
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        return CaveVines.use(pState, pLevel, pPos);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        super.createBlockStateDefinition(pBuilder);
+        pBuilder.add(BERRIES);
+    }
+
+    @Override
+    protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
         return 0;
     }
 

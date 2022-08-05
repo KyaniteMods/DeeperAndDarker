@@ -23,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mixin(Warden.class)
 public abstract class WardenMixin extends Monster {
@@ -40,7 +39,7 @@ public abstract class WardenMixin extends Monster {
 
     @Shadow public abstract AngerManagement getAngerManagement();
 
-    @Shadow public abstract boolean canTargetEntity(@Nullable Entity p_219386_);
+    @Shadow public abstract boolean canTargetEntity(@Nullable Entity entity);
 
     @Shadow protected abstract void playListeningSound();
 
@@ -51,10 +50,10 @@ public abstract class WardenMixin extends Monster {
     }
 
     @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)
-    public void canTarget(Entity p_219386_, CallbackInfoReturnable<Boolean> cir) {
-        if(p_219386_ instanceof Player) {
-            Player plr = (Player) p_219386_;
-            if(plr.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
+    public void canTarget(Entity entity, CallbackInfoReturnable<Boolean> cir) {
+        if(entity instanceof Player) {
+            Player player = (Player) entity;
+            if(player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
                 if(getActiveAnger() != 0) return;
 
                 cir.setReturnValue(false);
@@ -62,19 +61,17 @@ public abstract class WardenMixin extends Monster {
         }
     }
     @Inject(method = "increaseAngerAt(Lnet/minecraft/world/entity/Entity;IZ)V",  at = @At("HEAD"), cancellable = true)
-    public void increaseAngerAt(Entity p_219388_, int p_219389_, boolean p_219390_, CallbackInfo ci) {
+    public void increaseAngerAt(Entity entity, int anger, boolean listening, CallbackInfo ci) {
         ci.cancel();
-        if (!this.isNoAi()) {
+        if(!this.isNoAi()) {
             WardenAi.setDigCooldown(this);
             boolean flag = !(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse((LivingEntity)null) instanceof Player);
-            int i = this.angerManagement.increaseAnger(p_219388_, p_219389_);
-            if (p_219388_ instanceof Player && flag && AngerLevel.byAnger(i).isAngry()) {
+            int i = this.angerManagement.increaseAnger(entity, anger);
+            if(entity instanceof Player && flag && AngerLevel.byAnger(i).isAngry()) {
                 this.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
             }
 
-            if (p_219390_) {
-                this.playListeningSound();
-            }
+            if(listening) this.playListeningSound();
         }
     }
     @Override

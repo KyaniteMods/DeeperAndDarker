@@ -86,16 +86,16 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
         if(isDeadOrDying()) return;
 
         Level level = this.level;
-        if (level instanceof ServerLevel serverlevel) {
+        if(level instanceof ServerLevel serverlevel) {
             this.dynamicGameEventListener.getListener().tick(serverlevel);
         }
     }
 
     @Override
-    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> p_219413_) {
+    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> consumer) {
         Level level = this.level;
-        if (level instanceof ServerLevel serverlevel) {
-            p_219413_.accept(this.dynamicGameEventListener, serverlevel);
+        if(level instanceof ServerLevel serverlevel) {
+            consumer.accept(this.dynamicGameEventListener, serverlevel);
         }
 
     }
@@ -113,14 +113,14 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        VibrationListener.codec(this).encodeStart(NbtOps.INSTANCE, this.dynamicGameEventListener.getListener()).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((p_219418_) -> pCompound.put("listener", p_219418_));
+        VibrationListener.codec(this).encodeStart(NbtOps.INSTANCE, this.dynamicGameEventListener.getListener()).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((tag) -> pCompound.put("listener", tag));
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        if (pCompound.contains("listener", 10)) {
-            VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((p_219408_) -> this.dynamicGameEventListener.updateListener(p_219408_, this.level));
+        if(pCompound.contains("listener", 10)) {
+            VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((vibrationListener) -> this.dynamicGameEventListener.updateListener(vibrationListener, this.level));
         }
     }
 
@@ -148,36 +148,36 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     }
 
     @Override
-    public boolean shouldListen(ServerLevel p_223872_, GameEventListener p_223873_, BlockPos p_223874_, GameEvent p_223875_, GameEvent.Context p_223876_) {
+    public boolean shouldListen(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, GameEvent.Context context) {
         return !isDeadOrDying();
     }
 
-    public boolean canTargetEntity(@javax.annotation.Nullable Entity p_219386_) {
-        if(p_219386_ instanceof Player player) {
+    public boolean canTargetEntity(Entity entity) {
+        if(entity instanceof Player player) {
             if(player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get()))
                 return false;
         }
 
-        if (p_219386_ instanceof LivingEntity livingentity) {
-            return this.level == p_219386_.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(p_219386_) && !this.isAlliedTo(p_219386_) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDMobTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
+        if(entity instanceof LivingEntity livingentity) {
+            return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDMobTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }
 
         return false;
     }
 
     @Override
-    public void onSignalReceive(ServerLevel p_223865_, GameEventListener p_223866_, BlockPos p_223867_, GameEvent p_223868_, @Nullable Entity p_223869_, @Nullable Entity p_223870_, float p_223871_) {
+    public void onSignalReceive(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, @Nullable Entity entity1, @Nullable Entity entity2, float f) {
         if(isDeadOrDying()) return;
 
         this.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
 
-        if(p_223869_ != null) {
-            if(canTargetEntity(p_223869_))
+        if(entity1 != null) {
+            if(canTargetEntity(entity1))
             {
-                if(p_223869_ instanceof Monster && ((Monster)p_223869_).getMobType() != DDMobTypes.SCULK)
-                    this.setTarget((LivingEntity) p_223869_);
-                if(p_223869_ instanceof Player)
-                    this.setTarget((LivingEntity) p_223869_);
+                if(entity1 instanceof Monster && ((Monster)entity1).getMobType() != DDMobTypes.SCULK)
+                    this.setTarget((LivingEntity) entity1);
+                if(entity1 instanceof Player)
+                    this.setTarget((LivingEntity) entity1);
 
                 return;
             }
@@ -186,18 +186,18 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
         if(this.getTarget() != null)
             this.setTarget(null);
 
-        this.disturbanceLocation = p_223867_;
+        this.disturbanceLocation = pos;
     }
 
     @Override
-    public PathNavigation createNavigation(Level p_219396_) {
-        return new GroundPathNavigation(this, p_219396_) {
-            protected PathFinder createPathFinder(int p_219479_) {
+    public PathNavigation createNavigation(Level pLevel) {
+        return new GroundPathNavigation(this, pLevel) {
+            protected PathFinder createPathFinder(int pMaxVisitedNodes) {
                 this.nodeEvaluator = new WalkNodeEvaluator();
                 this.nodeEvaluator.setCanPassDoors(true);
-                return new PathFinder(this.nodeEvaluator, p_219479_) {
-                    protected float distance(Node p_219486_, Node p_219487_) {
-                        return p_219486_.distanceToXZ(p_219487_);
+                return new PathFinder(this.nodeEvaluator, pMaxVisitedNodes) {
+                    protected float distance(Node node1, Node node2) {
+                        return node1.distanceToXZ(node2);
                     }
                 };
             }

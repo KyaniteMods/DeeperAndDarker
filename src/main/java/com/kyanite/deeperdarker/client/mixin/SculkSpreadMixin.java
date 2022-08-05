@@ -26,87 +26,87 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
     public SculkSpreadMixin(Properties pProperties) {
         super(pProperties);
     }
-    @Shadow public abstract void onDischarged(LevelAccessor p_222359_, BlockState p_222360_, BlockPos p_222361_, RandomSource p_222362_);
+    @Shadow public abstract void onDischarged(LevelAccessor levelAccessor, BlockState state, BlockPos pos, RandomSource randomSource);
 
-    public BlockState getBlockState(BlockState blockstate1) {
-        BlockState blockstate2 = Blocks.SCULK.defaultBlockState();
-        if(blockstate1.is(DDTags.Blocks.SCULK_STONE_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_STAIRS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_STAIRS.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_SLABS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_SLAB.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_WALLS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_WALL.get().defaultBlockState();
+    public BlockState getBlockState(BlockState state) {
+        BlockState replaceState = Blocks.SCULK.defaultBlockState();
+        if(state.is(DDTags.Blocks.SCULK_STONE_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.SCULK_STONE_STAIRS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_STAIRS.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.SCULK_STONE_SLABS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_SLAB.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.SCULK_STONE_WALLS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_WALL.get().defaultBlockState();
         }
 
-        else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_BRICKS.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_SLABS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_BRICK_SLAB.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_STAIRS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_BRICK_STAIRS.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.SCULK_STONE_BRICKS_WALLS_REPLACE)) {
-            blockstate2 = DDBlocks.SCULK_STONE_BRICK_WALL.get().defaultBlockState();
+        else if(state.is(DDTags.Blocks.SCULK_STONE_BRICKS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_BRICKS.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.SCULK_STONE_BRICKS_SLABS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_BRICK_SLAB.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.SCULK_STONE_BRICKS_STAIRS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_BRICK_STAIRS.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.SCULK_STONE_BRICKS_WALLS_REPLACE)) {
+            replaceState = DDBlocks.SCULK_STONE_BRICK_WALL.get().defaultBlockState();
         }
 
-        else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE)) {
-            blockstate2 = DDBlocks.COBBLED_SCULK_STONE.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_SLABS_REPLACE)) {
-            blockstate2 = DDBlocks.COBBLED_SCULK_STONE_SLAB.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_STAIRS_REPLACE)) {
-            blockstate2 = DDBlocks.COBBLED_SCULK_STONE_STAIRS.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.COBBLED_SCULK_STONE_WALLS_REPLACE)) {
-            blockstate2 = DDBlocks.COBBLED_SCULK_STONE_WALL.get().defaultBlockState();
+        else if(state.is(DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE)) {
+            replaceState = DDBlocks.COBBLED_SCULK_STONE.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.COBBLED_SCULK_STONE_SLABS_REPLACE)) {
+            replaceState = DDBlocks.COBBLED_SCULK_STONE_SLAB.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.COBBLED_SCULK_STONE_STAIRS_REPLACE)) {
+            replaceState = DDBlocks.COBBLED_SCULK_STONE_STAIRS.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.COBBLED_SCULK_STONE_WALLS_REPLACE)) {
+            replaceState = DDBlocks.COBBLED_SCULK_STONE_WALL.get().defaultBlockState();
         }
 
-        else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE)) {
-            blockstate2 = DDBlocks.POLISHED_SCULK_STONE.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_STAIRS_REPLACE)) {
-            blockstate2 = DDBlocks.POLISHED_SCULK_STONE_STAIRS.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_SLABS_REPLACE)) {
-            blockstate2 = DDBlocks.POLISHED_SCULK_STONE_SLAB.get().defaultBlockState();
-        }else if(blockstate1.is(DDTags.Blocks.POLISHED_SCULK_STONE_WALLS_REPLACE)) {
-            blockstate2 = DDBlocks.POLISHED_SCULK_STONE_WALL.get().defaultBlockState();
+        else if(state.is(DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE)) {
+            replaceState = DDBlocks.POLISHED_SCULK_STONE.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.POLISHED_SCULK_STONE_STAIRS_REPLACE)) {
+            replaceState = DDBlocks.POLISHED_SCULK_STONE_STAIRS.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.POLISHED_SCULK_STONE_SLABS_REPLACE)) {
+            replaceState = DDBlocks.POLISHED_SCULK_STONE_SLAB.get().defaultBlockState();
+        }else if(state.is(DDTags.Blocks.POLISHED_SCULK_STONE_WALLS_REPLACE)) {
+            replaceState = DDBlocks.POLISHED_SCULK_STONE_WALL.get().defaultBlockState();
         }
 
-        else if(blockstate1 == Blocks.SHROOMLIGHT.defaultBlockState()) {
-            blockstate2 = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
-        }else if(blockstate1 == Blocks.WEEPING_VINES.defaultBlockState()) {
-            blockstate2 = DDBlocks.SCULK_VINES.get().defaultBlockState();
-        }else if(blockstate1 == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
-            blockstate2 = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
+        else if(state == Blocks.SHROOMLIGHT.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
+        }else if(state == Blocks.WEEPING_VINES.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_VINES.get().defaultBlockState();
+        }else if(state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
         }
 
 
 
 
-        return blockstate2;
+        return replaceState;
     }
     @Inject(method = "attemptPlaceSculk", cancellable = true, at = @At("HEAD"))
-    public void attemptSculk(SculkSpreader p_222376_, LevelAccessor p_222377_, BlockPos p_222378_, RandomSource p_222379_, CallbackInfoReturnable<Boolean> cir) {
+    public void attemptSculk(SculkSpreader sculkSpreader, LevelAccessor levelAccessor, BlockPos pos, RandomSource randomSource, CallbackInfoReturnable<Boolean> cir) {
         cir.cancel();
-        BlockState blockstate = p_222377_.getBlockState(p_222378_);
-        TagKey<Block> tagkey = p_222376_.replaceableBlocks();
+        BlockState state = levelAccessor.getBlockState(pos);
+        TagKey<Block> replaceable = sculkSpreader.replaceableBlocks();
 
-        for(Direction direction : Direction.allShuffled(p_222379_)) {
-            if (hasFace(blockstate, direction)) {
-                BlockPos blockpos = p_222378_.relative(direction);
-                BlockState blockstate1 = p_222377_.getBlockState(blockpos);
-                if (blockstate1.is(tagkey)) {
-                    BlockState blockstate2 = getBlockState(blockstate1);
-                    p_222377_.setBlock(blockpos, blockstate2, 3);
-                    Block.pushEntitiesUp(blockstate1, blockstate2, p_222377_, blockpos);
-                    p_222377_.playSound(null, blockpos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
-                    this.veinSpreader.spreadAll(blockstate2, p_222377_, blockpos, p_222376_.isWorldGeneration());
+        for(Direction direction : Direction.allShuffled(randomSource)) {
+            if(hasFace(state, direction)) {
+                BlockPos relativePos = pos.relative(direction);
+                BlockState relativeState = levelAccessor.getBlockState(relativePos);
+                if(relativeState.is(replaceable)) {
+                    BlockState blockState = getBlockState(relativeState);
+                    levelAccessor.setBlock(relativePos, blockState, 3);
+                    Block.pushEntitiesUp(relativeState, blockState, levelAccessor, relativePos);
+                    levelAccessor.playSound(null, relativePos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    this.veinSpreader.spreadAll(blockState, levelAccessor, relativePos, sculkSpreader.isWorldGeneration());
                     Direction direction1 = direction.getOpposite();
 
                     for(Direction direction2 : DIRECTIONS) {
-                        if (direction2 != direction1) {
-                            BlockPos blockpos1 = blockpos.relative(direction2);
-                            BlockState blockstate3 = p_222377_.getBlockState(blockpos1);
-                            if (blockstate3.is(this)) {
-                                this.onDischarged(p_222377_, blockstate3, blockpos1, p_222379_);
+                        if(direction2 != direction1) {
+                            BlockPos blockPos = relativePos.relative(direction2);
+                            BlockState checkState = levelAccessor.getBlockState(blockPos);
+                            if(checkState.is(this)) {
+                                this.onDischarged(levelAccessor, checkState, blockPos, randomSource);
                             }
                         }
                     }

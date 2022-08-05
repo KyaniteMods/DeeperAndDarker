@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import com.kyanite.deeperdarker.util.DDGenericUtils;

@@ -14,12 +14,12 @@ public class SculkLeechMelee extends MeleeAttackGoal {
     @Override
     protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
         double d0 = this.getAttackReachSqr(pEnemy);
-        if (pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0) {
+        if(pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0) {
             this.resetAttackCooldown();
             this.mob.swing(InteractionHand.MAIN_HAND);
             this.mob.doHurtTarget(pEnemy);
-            if(pEnemy instanceof Player plr) {
-                plr.giveExperiencePoints(-1);
+            if(pEnemy instanceof Player player) {
+                player.giveExperiencePoints(-1);
             }
         }
     }

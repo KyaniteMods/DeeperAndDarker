@@ -54,11 +54,11 @@ public class ENUDLanguageProvider implements DataProvider {
     }
 
     @SuppressWarnings({"UnstableApiUsage", "deprecation"})
-    private static void saveStable(CachedOutput p_236073_, String p_236074_, Path p_236075_) throws IOException {
+    private static void saveStable(CachedOutput output, String str, Path path) throws IOException {
         ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
         HashingOutputStream hashingoutputstream = new HashingOutputStream(Hashing.sha1(), bytearrayoutputstream);
-        hashingoutputstream.write(p_236074_.getBytes(StandardCharsets.UTF_8));
-        p_236073_.writeIfNeeded(p_236075_, bytearrayoutputstream.toByteArray(), hashingoutputstream.hash());
+        hashingoutputstream.write(str.getBytes(StandardCharsets.UTF_8));
+        output.writeIfNeeded(path, bytearrayoutputstream.toByteArray(), hashingoutputstream.hash());
     }
 
     @Override

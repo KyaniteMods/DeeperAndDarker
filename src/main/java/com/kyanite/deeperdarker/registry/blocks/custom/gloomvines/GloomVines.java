@@ -21,7 +21,7 @@ public interface GloomVines {
     BooleanProperty BERRIES = BlockStateProperties.BERRIES;
 
     static InteractionResult use(BlockState state, Level level, BlockPos pPos) {
-        if (state.getValue(BERRIES)) {
+        if(state.getValue(BERRIES)) {
             Block.popResource(level, pPos, new ItemStack(DDItems.GLOOM_BERRIES.get(), 1));
             float f = Mth.randomBetween(level.random, 0.8F, 1.2F);
             level.playSound(null, pPos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, f);
@@ -36,7 +36,7 @@ public interface GloomVines {
         return pState.hasProperty(BERRIES) && pState.getValue(BERRIES);
     }
 
-    static ToIntFunction<BlockState> emission(int p_181218_) {
-        return (p_181216_) -> p_181216_.getValue(BlockStateProperties.BERRIES) ? p_181218_ : 0;
+    static ToIntFunction<BlockState> emission(int emit) {
+        return (state) -> state.getValue(BlockStateProperties.BERRIES) ? emit : 0;
     }
 }

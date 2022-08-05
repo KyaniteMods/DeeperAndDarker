@@ -134,7 +134,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
                 EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, level);
                 ItemStack randomBook = EnchantedBookItem.createForEnchantment(instance);
-                if (!randomBook.isEmpty()) {
+                if(!randomBook.isEmpty()) {
                     ItemEntity itementity = new ItemEntity(this.level, this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), randomBook);
                     this.level.addFreshEntity(itementity);
                 }
