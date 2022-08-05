@@ -17,8 +17,17 @@ import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ENLanguageProvider extends LanguageProvider {
-    public ENLanguageProvider(DataGenerator pGenerator) {
-        super(pGenerator, DeeperAndDarker.MOD_ID, "en_us");
+    private static final String NORMAL_CHARS = "abcdefghijklmn\u00F1opqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "_,;.?!/\\'";
+    private static final String UPSIDE_DOWN_CHARS =
+            "\u0250q\u0254p\u01DD\u025Fb\u0265\u0131\u0638\u029E\u05DF\u026Fuuodb\u0279s\u0287n\u028C\u028Dx\u028Ez" +
+            "\u2C6F\u15FA\u0186\u15E1\u018E\u2132\u2141HI\u017F\u029E\uA780WNO\u0500\u1F49\u1D1AS\u27D8\u2229\u039BMX\u028EZ" +
+            "0\u0196\u1105\u0190\u3123\u03DB9\u312586" + "\u203E'\u061B\u02D9\u00BF\u00A1/\\,";
+
+    boolean upsideDown;
+
+    public ENLanguageProvider(DataGenerator pGenerator, String locale, boolean upsideDown) {
+        super(pGenerator, DeeperAndDarker.MOD_ID, locale);
+        this.upsideDown = upsideDown;
     }
 
     @Override
@@ -47,6 +56,12 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
+    }
+
+    @Override
+    public void add(String key, String value) {
+        if(upsideDown) super.add(key, toUpsideDown(value));
+        else super.add(key, value);
     }
 
     private void addBlock(RegistryObject<Block> block) {
@@ -83,6 +98,32 @@ public class ENLanguageProvider extends LanguageProvider {
             }
         }
 
-        return builder.toString();
+        return upsideDown ? toUpsideDown(builder.toString()) : builder.toString();
+    }
+
+    private static String toUpsideDown(String normal) {
+        char[] ud = new char[normal.length()];
+        for(int i = 0; i < normal.length(); i++) {
+            char c = normal.charAt(i);
+            if(c == '%') {
+                StringBuilder fmtArg = new StringBuilder();
+                while (Character.isDigit(c) || c == '%' || c == '$' || c == 's' || c == 'd') {
+                    fmtArg.append(c);
+                    i++;
+                    c = i == normal.length() ? 0 : normal.charAt(i);
+                }
+                i--;
+                for(int j = 0; j < fmtArg.length(); j++) {
+                    ud[normal.length() - 1 - i + j] = fmtArg.charAt(j);
+                }
+                continue;
+            }
+            int lookup = NORMAL_CHARS.indexOf(c);
+            if(lookup >= 0) {
+                c = UPSIDE_DOWN_CHARS.charAt(lookup);
+            }
+            ud[normal.length() - 1 - i] = c;
+        }
+        return new String(ud);
     }
 }

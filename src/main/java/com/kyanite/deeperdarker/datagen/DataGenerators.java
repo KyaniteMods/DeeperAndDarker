@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.datagen;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.datagen.advancements.DDAdvancementsProvider;
 import com.kyanite.deeperdarker.datagen.lang.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.lang.ENUDLanguageProvider;
 import com.kyanite.deeperdarker.datagen.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.datagen.models.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.models.DDItemModelProvider;
@@ -28,8 +27,8 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new DDAdvancementsProvider(generator, fileHelper));
 
-        generator.addProvider(event.includeClient(), new ENLanguageProvider(generator));
-        generator.addProvider(event.includeClient(), new ENUDLanguageProvider(generator));
+        generator.addProvider(event.includeClient(), new ENLanguageProvider(generator, "en_us", false));
+        generator.addProvider(event.includeClient(), new ENLanguageProvider(generator, "en_ud", true));
 
         generator.addProvider(event.includeServer(), new DDLootTableProvider(generator));
 
