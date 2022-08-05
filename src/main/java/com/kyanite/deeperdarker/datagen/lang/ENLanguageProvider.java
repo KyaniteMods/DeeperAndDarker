@@ -50,8 +50,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.kill_warden.description", "Slay the Warden and take its heart... ew");
         add("advancements.deeperdarker.enter_otherside.title", "Below the Bedrock");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the bedrock... the darkness awaits");
-        add("advancements.deeperdarker.get_reinforced_shard.title", "Sculk engineer?");
-        add("advancements.deeperdarker.get_reinforced_shard.description", "Reinforce an Echo Shard");
+        add("advancements.deeperdarker.reinforce_shard.title", "Sculk engineer?");
+        add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
@@ -102,29 +102,34 @@ public class ENLanguageProvider extends LanguageProvider {
         return upsideDown ? toUpsideDown(builder.toString()) : builder.toString();
     }
 
-    private static String toUpsideDown(String normal) {
-        char[] ud = new char[normal.length()];
-        for(int i = 0; i < normal.length(); i++) {
-            char c = normal.charAt(i);
+    private static String toUpsideDown(String value) {
+        char[] valueUD = new char[value.length()];
+
+        for(int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
             if(c == '%') {
-                StringBuilder fmtArg = new StringBuilder();
+                StringBuilder builder = new StringBuilder();
                 while (Character.isDigit(c) || c == '%' || c == '$' || c == 's' || c == 'd') {
-                    fmtArg.append(c);
+                    builder.append(c);
                     i++;
-                    c = i == normal.length() ? 0 : normal.charAt(i);
+                    c = i == value.length() ? 0 : value.charAt(i);
                 }
                 i--;
-                for(int j = 0; j < fmtArg.length(); j++) {
-                    ud[normal.length() - 1 - i + j] = fmtArg.charAt(j);
+
+                for(int j = 0; j < builder.length(); j++) {
+                    valueUD[value.length() - 1 - i + j] = builder.charAt(j);
                 }
+
                 continue;
             }
+
             int lookup = NORMAL_CHARS.indexOf(c);
             if(lookup >= 0) {
                 c = UPSIDE_DOWN_CHARS.charAt(lookup);
             }
-            ud[normal.length() - 1 - i] = c;
+
+            valueUD[value.length() - 1 - i] = c;
         }
-        return new String(ud);
+        return new String(valueUD);
     }
 }
