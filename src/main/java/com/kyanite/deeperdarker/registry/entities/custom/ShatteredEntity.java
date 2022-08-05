@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.ShatteredGoToDisturbanceGoal;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.util.DDMobTypes;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
@@ -152,6 +153,11 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     }
 
     public boolean canTargetEntity(@javax.annotation.Nullable Entity p_219386_) {
+        if(p_219386_ instanceof Player player) {
+            if(player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get()))
+                return false;
+        }
+
         if (p_219386_ instanceof LivingEntity livingentity) {
             return this.level == p_219386_.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(p_219386_) && !this.isAlliedTo(p_219386_) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDMobTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }

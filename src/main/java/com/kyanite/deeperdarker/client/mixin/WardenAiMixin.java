@@ -11,14 +11,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(WardenAi.class)
 public class WardenAiMixin {
-    @Inject(method = "isTarget", at = @At("HEAD"), cancellable = true)
+    //@Inject(method = "isTarget", at = @At("HEAD"), cancellable = true)
     private static void isTarget(Warden warden, LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
         if(entity instanceof Player player) {
             if(player.isCreative()) return;
 
-            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+            if(player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
                 cir.setReturnValue(false);
             }
         }

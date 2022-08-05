@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
@@ -28,8 +29,12 @@ public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(!level.isClientSide()) {
-            if(!player.isCreative() && !player.isSpectator() && player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
-                player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 25));
+            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+                if(player.hasEffect(MobEffects.BLINDNESS))
+                    player.removeEffect(MobEffects.BLINDNESS);
+
+                if(player.hasEffect(MobEffects.DARKNESS))
+                    player.removeEffect(MobEffects.DARKNESS);
             }
         }
     }

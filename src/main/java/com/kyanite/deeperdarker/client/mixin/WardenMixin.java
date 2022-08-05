@@ -2,10 +2,7 @@ package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.util.DDMobTypes;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -14,8 +11,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.warden.AngerLevel;
 import net.minecraft.world.entity.monster.warden.AngerManagement;
 import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.entity.monster.warden.WardenAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mixin(Warden.class)
 public abstract class WardenMixin extends Monster {
@@ -36,37 +36,50 @@ public abstract class WardenMixin extends Monster {
     @Shadow
     private AngerManagement angerManagement;
 
+    @Shadow public abstract Optional<LivingEntity> getEntityAngryAt();
+
+    @Shadow public abstract AngerManagement getAngerManagement();
+
+    @Shadow public abstract boolean canTargetEntity(@Nullable Entity p_219386_);
+
+    @Shadow protected abstract void playListeningSound();
+
+    @Shadow protected abstract int getActiveAnger();
+
     public WardenMixin(EntityType<Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    @Inject(method = "getEntityAngryAt", at = @At("HEAD"), cancellable = true)
-    public void getEntityAngryAt(CallbackInfoReturnable<Optional<LivingEntity>> cir) {
-        if(this.angerManagement.getActiveEntity().isEmpty()) return;
+    @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)
+    public void canTarget(Entity p_219386_, CallbackInfoReturnable<Boolean> cir) {
+        if(p_219386_ instanceof Player) {
+            Player plr = (Player) p_219386_;
+            if(plr.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
+                if(getActiveAnger() != 0) return;
 
-        if(this.angerManagement.getActiveEntity().get() instanceof Player player) {
-            if(player.isCreative() || player.isSpectator()) return;
-
-            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
-                cir.setReturnValue(Optional.empty());
+                cir.setReturnValue(false);
             }
         }
     }
+    @Inject(method = "increaseAngerAt(Lnet/minecraft/world/entity/Entity;IZ)V",  at = @At("HEAD"), cancellable = true)
+    public void increaseAngerAt(Entity p_219388_, int p_219389_, boolean p_219390_, CallbackInfo ci) {
+        ci.cancel();
+        if (!this.isNoAi()) {
+            WardenAi.setDigCooldown(this);
+            boolean flag = !(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse((LivingEntity)null) instanceof Player);
+            int i = this.angerManagement.increaseAnger(p_219388_, p_219389_);
+            if (p_219388_ instanceof Player && flag && AngerLevel.byAnger(i).isAngry()) {
+                this.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
+            }
 
+            if (p_219390_) {
+                this.playListeningSound();
+            }
+        }
+    }
     @Override
     public MobType getMobType() {
         return DDMobTypes.SCULK;
-    }
-
-    @Inject(method = "setAttackTarget", at = @At("HEAD"), cancellable = true)
-    public void setTarget(LivingEntity entity, CallbackInfo ci) {
-        if(entity instanceof Player player) {
-            if(player.isCreative() || player.isSpectator()) return;
-            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
-                this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
-                ci.cancel();
-            }
-        }
     }
 
     @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)

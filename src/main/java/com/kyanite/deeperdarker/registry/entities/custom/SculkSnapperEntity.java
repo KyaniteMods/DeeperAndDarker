@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.api.EntityAnimationHolder;
 import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSoundEvents;
 import com.kyanite.deeperdarker.util.DDMobTypes;
@@ -18,10 +19,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
@@ -85,6 +83,11 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.3F));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+    }
+
+    @Override
+    public float getSpeed() {
+        return isPerformingAction() ? 0 : super.getSpeed();
     }
 
     @Override
@@ -274,7 +277,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         }
 
         Player player = getLevel().getNearestPlayer(this, 40);
-        if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
+        if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null || player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
             setState(IDLE);
             return;
         }

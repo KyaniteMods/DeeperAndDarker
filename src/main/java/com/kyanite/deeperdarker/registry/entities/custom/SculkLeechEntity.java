@@ -47,6 +47,7 @@ public class SculkLeechEntity extends Monster implements IAnimatable {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
+
     @Override
     public MobType getMobType() {
         return DDMobTypes.SCULK;
