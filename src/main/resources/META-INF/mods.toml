@@ -9,7 +9,7 @@ issueTrackerURL = "https://github.com/KyaniteMods/DeeperAndDarker/issues"
     displayName = "Deeper And Darker"
     displayURL = "https://github.com/KyaniteMods/DeeperAndDarker"
     #logoFile = "deeperdarker.png"
-    credits = '''Kyanite Team for models, textures, and programming.'''
+#    credits = '''Kyanite Team for models, textures, and programming.'''
     authors = "Kyanite Mods"
     description = '''A Minecraft 1.19 mod which features more blocks, items, armors, and hidden mysteries to complement the new Deep Dark biome.'''
 
