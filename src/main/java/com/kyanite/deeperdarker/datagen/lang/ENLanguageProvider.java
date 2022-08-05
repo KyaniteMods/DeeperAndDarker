@@ -37,12 +37,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_membrane.description", "Slay a monster of the night sky");
         add("advancements.deeperdarker.locate_ancient_city.title", "A Metropolis of Restless Souls");
         add("advancements.deeperdarker.locate_ancient_city.description", "Find an Ancient City");
-        add("advancements.deeperdarker.obtain_echo_shard.title", "Echoes of the Past");
-        add("advancements.deeperdarker.obtain_echo_shard.description", "Collect some Echo Shards from an Ancient City");
         add("advancements.deeperdarker.kill_warden.title", "Phantom Thief");
         add("advancements.deeperdarker.kill_warden.description", "Slay the Warden and take its heart... ew");
-        add("advancements.deeperdarker.enter_otherside.title", "Enter the Otherside");
-        add("advancements.deeperdarker.enter_otherside.description", "Deep below the Bedrock... the darkness");
+        add("advancements.deeperdarker.enter_otherside.title", "Below the Bedrock");
+        add("advancements.deeperdarker.enter_otherside.description", "Deep below the bedrock... the darkness awaits");
 
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
