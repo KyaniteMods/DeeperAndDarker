@@ -64,7 +64,7 @@ public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
         for(int i = 0; i <= a; i++) {
             if(levelAccessor.isEmptyBlock(blockPos)) {
                 if(i == a || !levelAccessor.isEmptyBlock(blockPos.below())) {
-                    levelAccessor.setBlock(blockPos, DDBlocks.SCULK_VINES.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Integer.valueOf(Mth.nextInt(randomSource, b, c))), 2);
+                    levelAccessor.setBlock(blockPos, DDBlocks.SCULK_VINES.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(randomSource, b, c)), 2);
                     break;
                 }
 

@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/locate_ancient_city",
+  "parent": "deeperdarker:main/kill_warden",
   "criteria": {
     "reinforced_echo_shard": {
       "conditions": {

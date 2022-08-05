@@ -21,10 +21,10 @@ public class SmithingRecipesProvider extends RecipeProvider implements IConditio
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
-        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_HELMET), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_HELMET.get()).unlocks("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_helmet_smithing"));
-        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_CHESTPLATE), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_CHESTPLATE.get()).unlocks("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_chestplate_smithing"));
-        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_LEGGINGS), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_LEGGINGS.get()).unlocks("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_leggings_smithing"));
-        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_BOOTS), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_BOOTS.get()).unlocks("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_boots_smithing"));
+        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_HELMET), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_HELMET.get()).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_helmet_smithing"));
+        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_CHESTPLATE), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_CHESTPLATE.get()).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_chestplate_smithing"));
+        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_LEGGINGS), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_LEGGINGS.get()).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_leggings_smithing"));
+        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_BOOTS), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), DDItems.WARDEN_BOOTS.get()).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(consumer, new ResourceLocation(DeeperAndDarker.MOD_ID, "warden_boots_smithing"));
     }
 
     @NotNull

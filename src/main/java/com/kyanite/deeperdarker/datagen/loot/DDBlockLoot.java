@@ -6,10 +6,12 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -74,10 +76,9 @@ public class DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
         this.dropWhenSilkTouch(DDBlocks.ANCIENT_VASE.get());
-        this.add(DDBlocks.SCULK_VINES.get(), BlockLoot::createShearsOnlyDrop);
-        this.add(DDBlocks.SCULK_VINES_PLANT.get(), BlockLoot::createShearsOnlyDrop);
-        this.add(DDBlocks.GLOOM_VINES.get(), DDBlockLoot::createGloomVinesDrop);
-        this.add(DDBlocks.GLOOM_VINES_PLANT.get(), DDBlockLoot::createGloomVinesDrop);
+        this.addSculkVinesDropTable(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
+        this.add(DDBlocks.GLOOM_VINES.get(), DDBlockLoot::createGloomVinesDropTable);
+        this.add(DDBlocks.GLOOM_VINES_PLANT.get(), DDBlockLoot::createGloomVinesDropTable);
     }
 
     @Override
@@ -85,7 +86,13 @@ public class DDBlockLoot extends BlockLoot {
         return DDBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
-    protected static LootTable.Builder createGloomVinesDrop(Block block) {
+    protected static LootTable.Builder createGloomVinesDropTable(Block block) {
         return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(DDItems.GLOOM_BERRIES.get())).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GloomVines.BERRIES, true))));
+    }
+
+    private void addSculkVinesDropTable(Block pVines, Block pPlant) {
+        LootTable.Builder loottable$builder = createSilkTouchOrShearsDispatchTable(pVines, LootItem.lootTableItem(pVines).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33F, 0.55F, 0.77F, 1.0F)));
+        this.add(pVines, loottable$builder);
+        this.add(pPlant, loottable$builder);
     }
 }

@@ -7,13 +7,7 @@ import net.minecraft.world.level.block.Blocks;
 
 public class DDGenericUtils {
     public static boolean isBlockBeside(BlockGetter level, Block targetBlock, BlockPos origin) {
-        if(level.getBlockState(origin.north()).is(targetBlock) ||
-                level.getBlockState(origin.east()).is(targetBlock) ||
-                level.getBlockState(origin.south()).is(targetBlock) ||
-                level.getBlockState(origin.west()).is(targetBlock))
-            return true;
-
-        return false;
+        return level.getBlockState(origin.north()).is(targetBlock) || level.getBlockState(origin.east()).is(targetBlock) || level.getBlockState(origin.south()).is(targetBlock) || level.getBlockState(origin.west()).is(targetBlock);
     }
 
     public static boolean noSpace(BlockGetter getter, BlockPos origin, int distance) {
@@ -22,7 +16,6 @@ public class DDGenericUtils {
                 return true;
             }
         }
-
         return false;
     }
 }

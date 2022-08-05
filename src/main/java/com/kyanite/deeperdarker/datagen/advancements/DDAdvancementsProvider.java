@@ -58,12 +58,12 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
                 .save(consumer, path + "kill_warden");
 
-        Advancement.Builder.advancement().parent(locateAncientCity).display(DDItems.REINFORCED_ECHO_SHARD.get(),
+        Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(),
                 Component.translatable(id + "get_reinforced_shard.title"),
                 Component.translatable(id + "get_reinforced_shard.description"),
                 null, FrameType.TASK, true, true, false)
-                        .addCriterion("reinforced_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD.get()))
-                                .save(consumer, path + "get_reinforced_shard");
+                .addCriterion("reinforced_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD.get()))
+                .save(consumer, path + "get_reinforced_shard");
 
         Advancement.Builder.advancement().parent(killWarden).display(DDItems.HEART_OF_THE_DEEP.get(),
                 Component.translatable(id + "enter_otherside.title"),
