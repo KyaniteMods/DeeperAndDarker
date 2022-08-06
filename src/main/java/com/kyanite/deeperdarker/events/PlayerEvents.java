@@ -14,17 +14,17 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID)
 public class PlayerEvents {
     @SubscribeEvent
-    public static void playerTick(TickEvent.PlayerTickEvent e) {
-        if(e.side != LogicalSide.SERVER) return;
-
-        if(e.player.getLevel().dimension() == DDDimensions.OTHERSIDE_LEVEL) {
-            if(!e.player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get()) && !e.player.isCreative() && !e.player.isSpectator()) {
-                e.player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 25));
+    public static void playerTick(TickEvent.PlayerTickEvent event) {
+        if(event.side.isServer()) {
+            if (event.player.getLevel().dimension() == DDDimensions.OTHERSIDE_LEVEL) {
+                if (!event.player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get()) && !event.player.isCreative() && !event.player.isSpectator()) {
+                    event.player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 25));
+                }
             }
-        }
 
-        if(e.player.getInventory().getArmor(EquipmentSlot.LEGS.getIndex()).is(DDItems.WARDEN_LEGGINGS.get())) {
-                e.player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, 1));
+            if (event.player.getInventory().getArmor(EquipmentSlot.LEGS.getIndex()).is(DDItems.WARDEN_LEGGINGS.get())) {
+                event.player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, 1));
+            }
         }
     }
 }
