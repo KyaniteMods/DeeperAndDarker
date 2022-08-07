@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -27,12 +28,16 @@ public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(!level.isClientSide()) {
-            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
-                if(player.hasEffect(MobEffects.BLINDNESS))
-                    player.removeEffect(MobEffects.BLINDNESS);
+            if(player.getInventory().getArmor(EquipmentSlot.LEGS.getIndex()).is(DDItems.WARDEN_LEGGINGS.get())) {
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 25, 0, true, false));
+            }
 
-                if(player.hasEffect(MobEffects.DARKNESS))
-                    player.removeEffect(MobEffects.DARKNESS);
+            if(player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get())) {
+                if(player.hasEffect(MobEffects.BLINDNESS)) player.removeEffect(MobEffects.BLINDNESS);
+
+                if(player.level.dimension() == Level.OVERWORLD) {
+                    if(player.hasEffect(MobEffects.DARKNESS)) player.removeEffect(MobEffects.DARKNESS);
+                }
             }
         }
     }
