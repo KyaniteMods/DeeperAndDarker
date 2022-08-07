@@ -17,7 +17,7 @@ public class SculkSnapperMelee extends MeleeAttackGoal {
 
     @Override
     protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-        return 15;
+        return 4 + pAttackTarget.getBbWidth();
     }
 
     @Override
