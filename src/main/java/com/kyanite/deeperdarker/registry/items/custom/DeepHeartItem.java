@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
+import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
@@ -12,6 +13,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.portal.PortalShape;
+
+import java.util.Optional;
 
 public class DeepHeartItem extends Item {
     public DeepHeartItem() {
@@ -28,19 +32,26 @@ public class DeepHeartItem extends Item {
                     clickedFace is a direction, so it's either DOWN, UP, NORTH, SOUTH, WEST, EAST
                     clickedPos is the BlockPos of the block in the direction of clickedFace
 
-                    the if statement only results in true when clickedFace is UP in clickedPos; any other direction, it's a failed InteractionResult
+                    the method in the if statement, OthersidePortalBlock#spawnPortal, only returns true when clickedFace is UP in clickedPos
                  */
 
                 Direction clickedFace = pContext.getClickedFace();
                 BlockPos clickedPos = pContext.getClickedPos().relative(clickedFace);
-//                BlockPos test = clickedPos.relative(clickedFace, 1);
-                System.out.println("clicked in: " + clickedPos + "\non face: " + clickedFace);
+                if(!pContext.getPlayer().level.isClientSide) System.out.println(clickedPos + " on face " + clickedFace);
 
-                if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
-                    System.out.println("creating portal");
+                Optional<PortalShape> optional = PortalShape.findEmptyPortalShape(pContext.getLevel(), clickedPos, Direction.Axis.X);
+                optional = net.minecraftforge.event.ForgeEventFactory.onTrySpawnPortal(pContext.getLevel(), clickedPos, optional);
+                if (optional.isPresent()) {
+                    optional.get().createPortalBlocks();
+                    return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
+                }
+
+
+                /*if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
+                    if(!pContext.getPlayer().level.isClientSide) System.out.println("creating portal");
                     pContext.getLevel().playSound(pContext.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
                     return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
-                } else return InteractionResult.FAIL;
+                } else return InteractionResult.FAIL;*/
             }
         }
 
