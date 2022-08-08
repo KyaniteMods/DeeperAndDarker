@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
+import com.kyanite.deeperdarker.registry.items.custom.SculkShardItem;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
@@ -35,4 +36,6 @@ public class DDItems {
     public static final RegistryObject<SpawnEggItem> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xD1D6B6, 0x1D726F, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_LEECH, 0x152B38, 0x00FAFF, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SHATTERED_SPAWN_EGG = ITEMS.register("shattered_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SHATTERED, 0x0d1217, 0xD1D6B6, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
+
+    public static final RegistryObject<Item> SCULK_SHARD = ITEMS.register("sculk_shard", () -> new SculkShardItem(new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 }

@@ -1,8 +1,6 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
-import com.kyanite.deeperdarker.api.EntityAnimationHolder;
-import com.kyanite.deeperdarker.api.EntityState;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;

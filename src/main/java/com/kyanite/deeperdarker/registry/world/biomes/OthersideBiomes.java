@@ -50,6 +50,7 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM.getHolder().get());
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_VINES.getHolder().get());
 
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.NETHER_CAVE);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)

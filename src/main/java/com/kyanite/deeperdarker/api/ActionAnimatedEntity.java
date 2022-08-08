@@ -115,4 +115,29 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     public abstract void stateDone(EntityState entityState);
 
     public abstract void stateTick(EntityState entityState);
+
+    public static class EntityAnimationHolder {
+        public String animationId;
+        public int lengthInTicks;
+        public boolean loop;
+        public boolean countTicks;
+
+        public EntityAnimationHolder(String animationId, int lengthInTicks, boolean loop, boolean countTicks) {
+            this.animationId = animationId;
+            this.lengthInTicks = lengthInTicks;
+            this.loop = loop;
+            this.countTicks = countTicks;
+        }
+    }
+
+    public static class EntityState {
+        public String name;
+        public boolean doAnimate;
+        public EntityAnimationHolder animationHolder;
+
+        public EntityState(boolean doAnimate, EntityAnimationHolder animationHolder) {
+            this.doAnimate = doAnimate;
+            this.animationHolder = animationHolder;
+        }
+    }
 }

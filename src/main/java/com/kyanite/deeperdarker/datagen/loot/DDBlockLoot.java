@@ -79,6 +79,8 @@ public class DDBlockLoot extends BlockLoot {
         this.addSculkVinesDropTable(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
         this.add(DDBlocks.GLOOM_VINES.get(), DDBlockLoot::createGloomVinesDropTable);
         this.add(DDBlocks.GLOOM_VINES_PLANT.get(), DDBlockLoot::createGloomVinesDropTable);
+
+        this.dropSelf(DDBlocks.SCULK_TRANSMITTER.get());
     }
 
     @Override

@@ -94,6 +94,7 @@ public class DDBlocks {
     public static final RegistryObject<GloomVinesBlock> GLOOM_VINES = BLOCKS.register("gloom_vines", () -> new GloomVinesBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
     public static final RegistryObject<GloomVinesPlantBlock> GLOOM_VINES_PLANT = BLOCKS.register("gloom_vines_plant", () -> new GloomVinesPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
 
+    public static final RegistryObject<Block> SCULK_TRANSMITTER = register("sculk_transmitter", () -> new SculkTransmitter(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.2F)));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);
