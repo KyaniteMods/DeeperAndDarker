@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.MobType;

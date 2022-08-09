@@ -1,12 +1,12 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.google.common.collect.ImmutableList;
-import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
+import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;

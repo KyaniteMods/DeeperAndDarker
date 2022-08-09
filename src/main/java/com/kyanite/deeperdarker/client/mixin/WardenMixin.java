@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;

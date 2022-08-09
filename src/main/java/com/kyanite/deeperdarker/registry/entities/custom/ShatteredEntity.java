@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.ShatteredGoToDisturbanceGoal;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

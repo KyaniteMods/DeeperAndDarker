@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.registry.enchantments;
 
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
