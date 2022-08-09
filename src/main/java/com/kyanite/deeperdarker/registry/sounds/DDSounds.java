@@ -25,7 +25,7 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> VASE_HIT = register("block.vase.hit");
     public static final RegistryObject<SoundEvent> VASE_PLACE = register("block.vase.place");
     public static final RegistryObject<SoundEvent> VASE_STEP = register("block.vase.step");
-    public static final ForgeSoundType VASE = new ForgeSoundType(3, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
+    public static final ForgeSoundType VASE = new ForgeSoundType(5, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
 
     // Sculk Snapper
     public static final RegistryObject<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");
