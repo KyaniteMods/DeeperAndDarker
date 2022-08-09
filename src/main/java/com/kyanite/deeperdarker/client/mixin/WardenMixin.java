@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.client.mixin;
 
-import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -51,8 +51,7 @@ public abstract class WardenMixin extends Monster {
 
     @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)
     public void canTarget(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if(entity instanceof Player) {
-            Player player = (Player) entity;
+        if(entity instanceof Player player) {
             if(player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
                 if(getActiveAnger() != 0) return;
 
@@ -65,7 +64,7 @@ public abstract class WardenMixin extends Monster {
         ci.cancel();
         if(!this.isNoAi()) {
             WardenAi.setDigCooldown(this);
-            boolean flag = !(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse((LivingEntity)null) instanceof Player);
+            boolean flag = !(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null) instanceof Player);
             int i = this.angerManagement.increaseAnger(entity, anger);
             if(entity instanceof Player && flag && AngerLevel.byAnger(i).isAngry()) {
                 this.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);

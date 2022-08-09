@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.client.rendering.entity.SculkLeechRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.ShatteredRenderer;
+import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
@@ -21,7 +22,6 @@ import com.kyanite.deeperdarker.registry.world.dimension.DDPoiTypes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
-import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -100,7 +100,7 @@ public class DeeperAndDarker {
 
         @SubscribeEvent
         public static void entityRender(final EntityRenderersEvent.AddLayers event) {
-            GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, new WardenArmorRenderer());
+            GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
         }
 
         @SubscribeEvent

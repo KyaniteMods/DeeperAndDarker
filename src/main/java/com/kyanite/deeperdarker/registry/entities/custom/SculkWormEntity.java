@@ -1,10 +1,10 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
+import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -88,7 +88,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateTick(EntityState entityState) {
-        if(entityState.equals(this.DESCEND) || entityState.equals(this.EMERGE)) {
+        if(entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
             DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
     }
@@ -101,7 +101,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void tick() {
         super.tick();
-        if(this.getCurrentState().equals(this.AWAKE)) {
+        if(this.getCurrentState().equals(AWAKE)) {
             if(getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {

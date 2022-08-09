@@ -40,7 +40,7 @@ public class SculkTransmitter extends Block {
     public void animateTick(BlockState p_220827_, Level level, BlockPos pos, RandomSource p_220830_) {
         super.animateTick(p_220827_, level, pos, p_220830_);
 
-        for (int i = 0; i < 5; i++) {
+        for(int i = 0; i < 5; i++) {
             level.addParticle(ParticleTypes.SCULK_SOUL, pos.getX() + randomSource.nextDouble(),
                     pos.getY() + 0.5D, pos.getZ() + randomSource.nextDouble(),
                     0.0D, 0.05D, 0.0D);
@@ -60,7 +60,7 @@ public class SculkTransmitter extends Block {
             Player player = pLevel.getNearestPlayer(pPos.getX(), pPos.getY(), pPos.getZ(), 50, true);
             if(player == null) return;
             teleportEntity(player, pPos, pLevel);
-            pLevel.playSound((Player)null, pPos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1  , 1);
+            pLevel.playSound(null, pPos, SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1  , 1);
         }
     }
 }

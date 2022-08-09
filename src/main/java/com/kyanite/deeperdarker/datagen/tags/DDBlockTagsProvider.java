@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.datagen.tags;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.miscellaneous.DDTags;
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;

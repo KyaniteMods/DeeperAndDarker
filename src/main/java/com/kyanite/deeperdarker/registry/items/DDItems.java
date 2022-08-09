@@ -1,13 +1,13 @@
 package com.kyanite.deeperdarker.registry.items;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.miscellaneous.DDArmorMaterials;
+import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
 import com.kyanite.deeperdarker.registry.items.custom.SculkShardItem;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
-import com.kyanite.deeperdarker.miscellaneous.DDArmorMaterials;
-import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;

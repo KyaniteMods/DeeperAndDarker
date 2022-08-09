@@ -168,13 +168,13 @@ public class OthersidePortalBlock extends Block {
             this.rightDir = pAxis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
             this.bottomLeft = this.calculateBottomLeft(pBottomLeft);
 
-            if (this.bottomLeft == null) {
+            if(this.bottomLeft == null) {
                 this.bottomLeft = pBottomLeft;
                 this.width = 1;
                 this.height = 1;
             } else {
                 this.width = this.calculateWidth();
-                if (this.width > 0) {
+                if(this.width > 0) {
                     this.height = this.calculateHeight();
                 }
             }
@@ -202,17 +202,17 @@ public class OthersidePortalBlock extends Block {
         private int getFrameHeight(BlockPos.MutableBlockPos pPos) {
             for(int i = 0; i < MAX_HEIGHT; i++) {
                 pPos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, -1);
-                if (!this.level.getBlockState(pPos).is(Blocks.REINFORCED_DEEPSLATE)) return i;
+                if(!this.level.getBlockState(pPos).is(Blocks.REINFORCED_DEEPSLATE)) return i;
 
                 pPos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, this.width);
-                if (!this.level.getBlockState(pPos).is(Blocks.REINFORCED_DEEPSLATE)) return i;
+                if(!this.level.getBlockState(pPos).is(Blocks.REINFORCED_DEEPSLATE)) return i;
 
                 for(int j = 0; j < this.width; j++) {
                     pPos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, j);
                     BlockState blockState = this.level.getBlockState(pPos);
-                    if (!isEmpty(blockState)) return i;
+                    if(!isEmpty(blockState)) return i;
 
-                    if (blockState.is(DDBlocks.OTHERSIDE_PORTAL.get())) this.numPortalBlocks++;
+                    if(blockState.is(DDBlocks.OTHERSIDE_PORTAL.get())) this.numPortalBlocks++;
                 }
             }
 
@@ -222,25 +222,25 @@ public class OthersidePortalBlock extends Block {
         private int getFrameWidth(BlockPos pPos, Direction pDirection) {
             BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
-            for(int i = 0; i <= MAX_HEIGHT; ++i) {
+            for(int i = 0; i <= MAX_HEIGHT; i++) {
                 blockPos.set(pPos).move(pDirection, i);
                 BlockState blockState = this.level.getBlockState(blockPos);
-                if (!isEmpty(blockState)) {
-                    if (blockState.is(Blocks.REINFORCED_DEEPSLATE)) return i;
+                if(!isEmpty(blockState)) {
+                    if(blockState.is(Blocks.REINFORCED_DEEPSLATE)) return i;
                     break;
                 }
 
                 BlockState blockStateDown = this.level.getBlockState(blockPos.move(Direction.DOWN));
-                if (!blockStateDown.is(Blocks.REINFORCED_DEEPSLATE)) break;
+                if(!blockStateDown.is(Blocks.REINFORCED_DEEPSLATE)) break;
             }
 
             return 0;
         }
 
         private boolean hasTopFrame(BlockPos.MutableBlockPos pPos, int pN) {
-            for(int i = 0; i < this.width; ++i) {
+            for(int i = 0; i < this.width; i++) {
                 BlockPos.MutableBlockPos blockPos = pPos.set(this.bottomLeft).move(Direction.UP, pN).move(this.rightDir, i);
-                if (!this.level.getBlockState(blockPos).is(Blocks.REINFORCED_DEEPSLATE)) {
+                if(!this.level.getBlockState(blockPos).is(Blocks.REINFORCED_DEEPSLATE)) {
                     return false;
                 }
             }
