@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.common.DDMobTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;

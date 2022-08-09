@@ -4,7 +4,7 @@ import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
-import com.kyanite.deeperdarker.util.DDMobTypes;
+import com.kyanite.deeperdarker.common.DDMobTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;

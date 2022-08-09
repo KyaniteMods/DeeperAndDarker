@@ -8,8 +8,8 @@ import com.kyanite.deeperdarker.registry.blocks.custom.sculkvines.SculkVinesBloc
 import com.kyanite.deeperdarker.registry.blocks.custom.sculkvines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
-import com.kyanite.deeperdarker.util.DDCreativeModeTab;
-import com.kyanite.deeperdarker.util.DDWoodTypes;
+import com.kyanite.deeperdarker.common.DDCreativeModeTab;
+import com.kyanite.deeperdarker.common.DDWoodTypes;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

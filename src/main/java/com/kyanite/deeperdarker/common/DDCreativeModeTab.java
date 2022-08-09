@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.util;
+package com.kyanite.deeperdarker.common;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.item.CreativeModeTab;
