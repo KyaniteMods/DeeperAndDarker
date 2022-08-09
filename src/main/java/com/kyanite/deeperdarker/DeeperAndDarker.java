@@ -21,7 +21,7 @@ import com.kyanite.deeperdarker.registry.world.dimension.DDPoiTypes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
-import com.kyanite.deeperdarker.common.DDWoodTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;

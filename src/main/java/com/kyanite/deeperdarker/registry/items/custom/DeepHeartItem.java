@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.registry.items.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
-import com.kyanite.deeperdarker.common.DDCreativeModeTab;
+import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;

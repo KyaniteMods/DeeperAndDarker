@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.common.DDTags;
+import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;

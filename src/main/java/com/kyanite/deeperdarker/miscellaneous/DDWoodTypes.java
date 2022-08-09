@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.common;
+package com.kyanite.deeperdarker.miscellaneous;
 
 import net.minecraft.world.level.block.state.properties.WoodType;
 
