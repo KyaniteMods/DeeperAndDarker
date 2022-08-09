@@ -25,16 +25,14 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
 
 public class OthersidePortalBlock extends Block {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-    protected static final VoxelShape X_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
-    protected static final VoxelShape Z_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
+    protected static final VoxelShape X_AXIS_AABB = Block.box(0.0D, 0.0D, 6.0D, 16.0D, 16.0D, 10.0D);
+    protected static final VoxelShape Z_AXIS_AABB = Block.box(6.0D, 0.0D, 0.0D, 10.0D, 16.0D, 16.0D);
 
     public OthersidePortalBlock(Properties pProperties) {
         super(pProperties);
@@ -43,44 +41,8 @@ public class OthersidePortalBlock extends Block {
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        if(pState.getValue(AXIS) == Direction.Axis.X) return X_AABB;
-        return Z_AABB;
-    }
-
-    public boolean spawnPortal(LevelAccessor worldIn, BlockPos pos) {
-        OthersidePortalBlock.Size portal = this.isPortal(worldIn, pos);
-        if(portal != null && !trySpawningPortal(worldIn, pos, portal)) {
-            portal.placePortalBlocks();
-            return true;
-        } else return false;
-    }
-
-    public static boolean trySpawningPortal(LevelAccessor world, BlockPos pos, OthersidePortalBlock.Size portal) {
-        return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), portal));
-    }
-
-    @Cancelable
-    public static class PortalSpawnEvent extends BlockEvent {
-        private final OthersidePortalBlock.Size size;
-
-        public PortalSpawnEvent(LevelAccessor world, BlockPos pos, BlockState state, OthersidePortalBlock.Size size) {
-            super(world, pos, state);
-            this.size = size;
-        }
-
-        public OthersidePortalBlock.Size getPortalSize() {
-            return size;
-        }
-    }
-
-    public OthersidePortalBlock.Size isPortal(LevelAccessor level, BlockPos pos) {
-        OthersidePortalBlock.Size portalX = new Size(level, pos, Direction.Axis.X);
-        if(portalX.isValid() && portalX.portalBlockCount == 0) {
-            return portalX;
-        } else {
-            OthersidePortalBlock.Size portalZ = new Size(level, pos, Direction.Axis.Z);
-            return portalZ.isValid() && portalZ.portalBlockCount == 0 ? portalZ : null;
-        }
+        if(pState.getValue(AXIS) == Direction.Axis.X) return X_AXIS_AABB;
+        return Z_AXIS_AABB;
     }
 
     @Override
@@ -88,7 +50,7 @@ public class OthersidePortalBlock extends Block {
         Direction.Axis facingAxis = pDirection.getAxis();
         Direction.Axis axis = pState.getValue(AXIS);
         boolean flag = axis != facingAxis && facingAxis.isHorizontal();
-        return !flag && pNeighborState.getBlock() != this && !(new Size(pLevel, pCurrentPos, axis)).validatePortal() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return !flag && !pNeighborState.is(this) && !(new OthersidePortalShape(pLevel, pCurrentPos, axis)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
     }
 
     @Override
@@ -96,15 +58,14 @@ public class OthersidePortalBlock extends Block {
         if(!pEntity.isPassenger() && !pEntity.isVehicle() && pEntity.canChangeDimensions()) {
             if(pEntity.isOnPortalCooldown()) {
                 pEntity.setPortalCooldown();
-            }
-            else {
-                if(!pEntity.level.isClientSide && !pPos.equals(pEntity.portalEntrancePos)) {
-                    pEntity.portalEntrancePos = pPos.immutable();
-                }
+            } else {
+                if(!pEntity.level.isClientSide && !pPos.equals(pEntity.portalEntrancePos)) pEntity.portalEntrancePos = pPos.immutable();
+
                 Level entityWorld = pEntity.level;
                 if(entityWorld != null) {
                     MinecraftServer minecraftserver = entityWorld.getServer();
                     ResourceKey<Level> destination = pEntity.level.dimension() == DDDimensions.OTHERSIDE_LEVEL ? Level.OVERWORLD : DDDimensions.OTHERSIDE_LEVEL;
+
                     if(minecraftserver != null) {
                         ServerLevel destinationWorld = minecraftserver.getLevel(destination);
                         if(destinationWorld != null && minecraftserver.isNetherEnabled() && !pEntity.isPassenger()) {
@@ -118,35 +79,12 @@ public class OthersidePortalBlock extends Block {
             }
         }
     }
-    @OnlyIn(Dist.CLIENT)
+
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(pRandom.nextInt(350) == 0) {
-            pLevel.playLocalSound((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D,
-                    (double)pPos.getZ() + 0.5D, DDSounds.PORTAL_GROAN.get(),
-                    SoundSource.BLOCKS, 0.5F, pRandom.nextFloat() * 0.4F + 0.8F, false);
+        if(pRandom.nextFloat() < 0.0007) {
+            pLevel.playLocalSound(pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, DDSounds.PORTAL_GROAN.get(), SoundSource.BLOCKS, 0.2f, pRandom.nextFloat() * 0.2f + 0.9f, false);
         }
-
-        // TODO: for loop with particles
-        /*=for(int i = 0; i < 4; i++) {
-            double x = (double)pPos.getX() + pRandom.nextDouble();
-            double y = (double)pPos.getY() + pRandom.nextDouble();
-            double z = (double)pPos.getZ() + pRandom.nextDouble();
-            double xSpeed = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
-            double ySpeed = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
-            double zSpeed = ((double)pRandom.nextFloat() - 0.5D) * 0.5D;
-            int j = pRandom.nextInt(2) * 2 - 1;
-            if(!pLevel.getBlockState(pPos.west()).is(this) && !pLevel.getBlockState(pPos.east()).is(this)) {
-                x = (double)pPos.getX() + 0.5D + 0.25D * (double)j;
-                xSpeed = pRandom.nextFloat() * 2.0F * (float)j;
-            }
-            else {
-                z = (double)pPos.getZ() + 0.5D + 0.25D * (double)j;
-                zSpeed = pRandom.nextFloat() * 2.0F * (float)j;
-            }
-
-            pLevel.addParticle(PARTICLE_TYPE, x, y, z, xSpeed, ySpeed, zSpeed);
-        }*/
     }
 
     @Override
@@ -171,129 +109,160 @@ public class OthersidePortalBlock extends Block {
         pBuilder.add(AXIS);
     }
 
-    public static class Size {
+    public boolean spawnPortal(LevelAccessor worldIn, BlockPos pos) {
+        OthersidePortalShape portal = this.isPortal(worldIn, pos);
+        if(portal != null && !trySpawningPortal(worldIn, pos, portal)) {
+            portal.createPortalBlocks();
+            return true;
+        } else return false;
+    }
+
+    public static boolean trySpawningPortal(LevelAccessor world, BlockPos pos, OthersidePortalShape portal) {
+        return MinecraftForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), portal));
+    }
+
+    public OthersidePortalShape isPortal(LevelAccessor level, BlockPos pos) {
+        OthersidePortalShape portalX = new OthersidePortalShape(level, pos, Direction.Axis.X);
+        if(portalX.isValid() && portalX.numPortalBlocks == 0) {
+            return portalX;
+        } else {
+            OthersidePortalShape portalZ = new OthersidePortalShape(level, pos, Direction.Axis.Z);
+            return portalZ.isValid() && portalZ.numPortalBlocks == 0 ? portalZ : null;
+        }
+    }
+
+    @Cancelable
+    public static class PortalSpawnEvent extends BlockEvent {
+        private final OthersidePortalShape size;
+
+        public PortalSpawnEvent(LevelAccessor world, BlockPos pos, BlockState state, OthersidePortalShape size) {
+            super(world, pos, state);
+            this.size = size;
+        }
+
+        public OthersidePortalShape getPortalSize() {
+            return size;
+        }
+    }
+
+    /**
+     * because PortalShape hard-codes nether portal stuff
+     */
+    public static class OthersidePortalShape {
+        public static final int MIN_WIDTH = 2;
+        public static final int MIN_HEIGHT = 2;
+        public static final int MAX_WIDTH = 21;
+        public static final int MAX_HEIGHT = 21;
+
         private final LevelAccessor level;
         private final Direction.Axis axis;
         private final Direction rightDir;
-        private final Direction leftDir;
-        private int portalBlockCount;
         private BlockPos bottomLeft;
+        private int numPortalBlocks;
         private int height;
-        private int width;
+        private final int width;
 
-        public Size(LevelAccessor level, BlockPos pos, Direction.Axis axis) {
-            this.level = level;
-            this.axis = axis;
-            if(axis == Direction.Axis.X) {
-                this.leftDir = Direction.EAST;
-                this.rightDir = Direction.WEST;
-            }
-            else {
-                this.leftDir = Direction.NORTH;
-                this.rightDir = Direction.SOUTH;
-            }
+        public OthersidePortalShape(LevelAccessor pLevel, BlockPos pBottomLeft, Direction.Axis pAxis) {
+            this.level = pLevel;
+            this.axis = pAxis;
+            this.rightDir = pAxis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
+            this.bottomLeft = this.calculateBottomLeft(pBottomLeft);
 
-            int i = this.getDistanceUntilEdge(pos, this.leftDir) - 1;
-            if(i >= 0) {
-                this.bottomLeft = pos.relative(this.leftDir, i);
-                this.width = this.getDistanceUntilEdge(this.bottomLeft, this.rightDir);
-                if(this.width < 2 || this.width > 21) {
-                    this.bottomLeft = null;
-                    this.width = 0;
+            if (this.bottomLeft == null) {
+                this.bottomLeft = pBottomLeft;
+                this.width = 1;
+                this.height = 1;
+            } else {
+                this.width = this.calculateWidth();
+                if (this.width > 0) {
+                    this.height = this.calculateHeight();
+                }
+            }
+        }
+
+        private BlockPos calculateBottomLeft(BlockPos pos) {
+            for(int i = Math.max(this.level.getMinBuildHeight(), pos.getY() - 21); pos.getY() > i && isEmpty(this.level.getBlockState(pos.below())); pos = pos.below()) { }
+
+            Direction direction = this.rightDir.getOpposite();
+            int j = this.getFrameWidth(pos, direction) - 1;
+            return j < 0 ? null : pos.relative(direction, j);
+        }
+
+        private int calculateHeight() {
+            BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
+            int i = this.getFrameHeight(blockPos);
+            return i >= MIN_HEIGHT && i <= MAX_HEIGHT && this.hasTopFrame(blockPos, i) ? i : 0;
+        }
+
+        private int calculateWidth() {
+            int i = this.getFrameWidth(this.bottomLeft, this.rightDir);
+            return i >= MIN_WIDTH && i <= MAX_WIDTH ? i : 0;
+        }
+
+        private int getFrameHeight(BlockPos.MutableBlockPos pPos) {
+            for(int i = 0; i < MAX_HEIGHT; i++) {
+                pPos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, -1);
+                if (!this.level.getBlockState(pPos).is(Blocks.REINFORCED_DEEPSLATE)) return i;
+
+                pPos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, this.width);
+                if (!this.level.getBlockState(pPos).is(Blocks.REINFORCED_DEEPSLATE)) return i;
+
+                for(int j = 0; j < this.width; j++) {
+                    pPos.set(this.bottomLeft).move(Direction.UP, i).move(this.rightDir, j);
+                    BlockState blockState = this.level.getBlockState(pPos);
+                    if (!isEmpty(blockState)) return i;
+
+                    if (blockState.is(DDBlocks.OTHERSIDE_PORTAL.get())) this.numPortalBlocks++;
                 }
             }
 
-            if(this.bottomLeft != null) {
-                this.height = this.calculatePortalHeight();
-            }
-
+            return MAX_HEIGHT;
         }
 
-        public int getDistanceUntilEdge(BlockPos pos, Direction directionIn) {
-            int i;
-            for(i = 0; i < 22; i++) {
-                BlockPos blockpos = pos.relative(directionIn, i);
-                if(!this.canConnect(this.level.getBlockState(blockpos)) ||
-                        !(this.level.getBlockState(blockpos.below()).is(Blocks.REINFORCED_DEEPSLATE))) {
+        private int getFrameWidth(BlockPos pPos, Direction pDirection) {
+            BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
+
+            for(int i = 0; i <= MAX_HEIGHT; ++i) {
+                blockPos.set(pPos).move(pDirection, i);
+                BlockState blockState = this.level.getBlockState(blockPos);
+                if (!isEmpty(blockState)) {
+                    if (blockState.is(Blocks.REINFORCED_DEEPSLATE)) return i;
                     break;
                 }
+
+                BlockState blockStateDown = this.level.getBlockState(blockPos.move(Direction.DOWN));
+                if (!blockStateDown.is(Blocks.REINFORCED_DEEPSLATE)) break;
             }
 
-            BlockPos framePos = pos.relative(directionIn, i);
-            return this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE) ? i : 0;
+            return 0;
         }
 
-        public int calculatePortalHeight() {
-            calc:
-            for(this.height = 0; this.height < 21; this.height++) {
-                for(int i = 0; i < this.width; i++) {
-                    BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i).above(this.height);
-                    BlockState blockstate = this.level.getBlockState(blockpos);
-                    if(!this.canConnect(blockstate)) {
-                        break calc;
-                    }
-
-                    Block block = blockstate.getBlock();
-                    if(block == DDBlocks.OTHERSIDE_PORTAL.get()) {
-                        this.portalBlockCount++;
-                    }
-
-                    if(i == 0) {
-                        BlockPos framePos = blockpos.relative(this.leftDir);
-                        if(!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
-                            break calc;
-                        }
-                    }
-                    else if(i == this.width - 1) {
-                        BlockPos framePos = blockpos.relative(this.rightDir);
-                        if(!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
-                            break calc;
-                        }
-                    }
+        private boolean hasTopFrame(BlockPos.MutableBlockPos pPos, int pN) {
+            for(int i = 0; i < this.width; ++i) {
+                BlockPos.MutableBlockPos blockPos = pPos.set(this.bottomLeft).move(Direction.UP, pN).move(this.rightDir, i);
+                if (!this.level.getBlockState(blockPos).is(Blocks.REINFORCED_DEEPSLATE)) {
+                    return false;
                 }
             }
 
-            for(int j = 0; j < this.width; j++) {
-                BlockPos framePos = this.bottomLeft.relative(this.rightDir, j).above(this.height);
-                if(!(this.level.getBlockState(framePos).is(Blocks.REINFORCED_DEEPSLATE))) {
-                    this.height = 0;
-                    break;
-                }
-            }
-
-            if(this.height <= 21 && this.height >= 3) {
-                return this.height;
-            }
-            else {
-                this.bottomLeft = null;
-                this.width = 0;
-                this.height = 0;
-                return 0;
-            }
+            return true;
         }
 
-        public boolean canConnect(BlockState pos) {
-            Block block = pos.getBlock();
-            return pos.isAir() || block == DDBlocks.OTHERSIDE_PORTAL.get();
+        public void createPortalBlocks() {
+            BlockState blockstate = DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(OthersidePortalBlock.AXIS, this.axis);
+            BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)).forEach((blockPos) -> this.level.setBlock(blockPos, blockstate, 18));
+        }
+
+        public boolean isComplete() {
+            return this.isValid() && this.numPortalBlocks == this.width * this.height;
         }
 
         public boolean isValid() {
-            return this.bottomLeft != null && this.width >= 2 && this.width <= 21 && this.height >= 3 && this.height <= 21;
+            return this.bottomLeft != null && this.width >= MIN_WIDTH && this.width <= MAX_WIDTH && this.height >= MIN_HEIGHT && this.height <= MAX_HEIGHT;
         }
 
-        public void placePortalBlocks() {
-            for(int i = 0; i < this.width; i++) {
-                BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i);
-
-                for(int j = 0; j < this.height; j++) {
-                    this.level.setBlock(blockpos.above(j), DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(OthersidePortalBlock.AXIS, this.axis), 18);
-                }
-            }
-
-        }
-
-        public boolean validatePortal() {
-            return this.isValid() && this.portalBlockCount >= this.width * this.height;
+        private static boolean isEmpty(BlockState pState) {
+            return pState.isAir() || pState.is(DDBlocks.OTHERSIDE_PORTAL.get());
         }
     }
 }
