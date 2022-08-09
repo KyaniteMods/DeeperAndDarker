@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-08T09:17:00.9831338	Tags for minecraft:block
+// 1.19.2	2022-08-09T12:24:22.4960308	Tags for minecraft:block
 72a274a4783e867b1734a958a55ae408f89ef30f data/deeperdarker/tags/blocks/bone_wood.json
 b19fe50c32a3e60ae3d96047e66a79cd2563840d data/deeperdarker/tags/blocks/cobbled_sculk_stone_replace.json
 96ec11b7de6b01f9b6f320663feeff5b405e4648 data/deeperdarker/tags/blocks/cobbled_sculk_stone_slabs_replace.json
@@ -29,7 +29,7 @@ fa9ddaa0b613f9e844510a09c5eb310896a58922 data/minecraft/tags/blocks/fence_gates.
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/minecraft/tags/blocks/lapis_ores.json
 765a2ed232f2a9ff2ba0891b47bf5f60b323e2df data/minecraft/tags/blocks/mineable/axe.json
 a2006b5e1978aad97d8639e1c277ae3ba2b48ea7 data/minecraft/tags/blocks/mineable/hoe.json
-c9240680b1bfac1d0d490c837338f33909b080dd data/minecraft/tags/blocks/mineable/pickaxe.json
+bba50d9b8e174ed15c6e028b5e5040a99f46ac06 data/minecraft/tags/blocks/mineable/pickaxe.json
 6d193d24464b5dab88e3f14dbb55739f42467f43 data/minecraft/tags/blocks/non_flammable_wood.json
 58670316847cffade785f89e7f32754e9460d310 data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
