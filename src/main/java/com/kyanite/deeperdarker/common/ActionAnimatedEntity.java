@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.api;
+package com.kyanite.deeperdarker.common;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;

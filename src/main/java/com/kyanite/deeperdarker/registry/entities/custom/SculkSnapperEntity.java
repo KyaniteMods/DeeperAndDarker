@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.google.common.collect.ImmutableList;
-import com.kyanite.deeperdarker.api.ActionAnimatedEntity;
+import com.kyanite.deeperdarker.common.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
