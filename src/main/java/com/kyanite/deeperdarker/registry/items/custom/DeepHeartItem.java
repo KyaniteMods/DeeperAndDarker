@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.util.DDCreativeModeTab;
@@ -13,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.portal.PortalShape;
 
 import java.util.Optional;
 
@@ -39,19 +37,11 @@ public class DeepHeartItem extends Item {
                 BlockPos clickedPos = pContext.getClickedPos().relative(clickedFace);
                 if(!pContext.getPlayer().level.isClientSide) System.out.println(clickedPos + " on face " + clickedFace);
 
-                Optional<PortalShape> optional = PortalShape.findEmptyPortalShape(pContext.getLevel(), clickedPos, Direction.Axis.X);
-                optional = net.minecraftforge.event.ForgeEventFactory.onTrySpawnPortal(pContext.getLevel(), clickedPos, optional);
-                if (optional.isPresent()) {
-                    optional.get().createPortalBlocks();
-                    return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
-                }
-
-
-                /*if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
+                if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
                     if(!pContext.getPlayer().level.isClientSide) System.out.println("creating portal");
                     pContext.getLevel().playSound(pContext.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
                     return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
-                } else return InteractionResult.FAIL;*/
+                } else return InteractionResult.FAIL;
             }
         }
 
