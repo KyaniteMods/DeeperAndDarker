@@ -16,8 +16,6 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
-    private static final Direction[] DIRECTIONS = Direction.values();
-
     public SculkVinesFeature(Codec<NoneFeatureConfiguration> pCodec) {
         super(pCodec);
     }
@@ -73,6 +71,5 @@ public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
 
             blockPos.move(Direction.DOWN);
         }
-
     }
 }

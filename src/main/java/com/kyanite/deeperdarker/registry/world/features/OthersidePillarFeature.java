@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.registry.world.features;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -27,17 +26,14 @@ public class OthersidePillarFeature extends Feature<NoneFeatureConfiguration> {
         int y = pContext.origin().getY();
         int pillarHeight = pContext.random().nextInt(13, 35);
 
-        if(noSpace(pContext.level(), pContext.origin(), (int) (pillarHeight)))
-            return false;
-
-        if(!pContext.level().getBlockState(pContext.origin().below()).is(DDBlocks.SCULK_STONE.get())
-                && !pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK))
-            return false;
+        if(noSpace(pContext.level(), pContext.origin(), (int) (pillarHeight))) return false;
+        if(!pContext.level().getBlockState(pContext.origin().below()).is(DDBlocks.SCULK_STONE.get()) && !pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK)) return false;
 
         for(int i = 0; i < pillarHeight; i++) {
             int newY = y + i;
             placeSingle(pContext.level(), new BlockPos(pContext.origin().getX(), newY, pContext.origin().getZ()), i, pillarHeight);
         }
+
         return true;
     }
 
@@ -54,12 +50,12 @@ public class OthersidePillarFeature extends Feature<NoneFeatureConfiguration> {
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             level.setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
-        }else if(i < height / 1.3f){
+        } else if(i < height / 1.3f){
             level.setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             level.setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             level.setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
-        }else {
+        } else {
             level.setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ()), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
         }
     }

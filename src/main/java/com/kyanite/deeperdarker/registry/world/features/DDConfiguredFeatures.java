@@ -33,8 +33,8 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_SCULK = CONFIGURED_FEATURES.register("ore_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(SCULK_TARGET_LIST.get(), 64)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_INFESTED_SCULK = CONFIGURED_FEATURES.register("ore_infested_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(INFESTED_SCULK_TARGET_LIST.get(), 3)));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_COAL_SCULK = CONFIGURED_FEATURES.register("ore_coal_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_COAL_TARGET_LIST.get(), 9, 0.1f)));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_IRON_SCULK = CONFIGURED_FEATURES.register("ore_iron_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_IRON_TARGET_LIST.get(), 8)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_COAL_SCULK = CONFIGURED_FEATURES.register("ore_coal_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_COAL_TARGET_LIST.get(), 8, 0.1f)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_IRON_SCULK = CONFIGURED_FEATURES.register("ore_iron_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_IRON_TARGET_LIST.get(), 7)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_COPPER_SCULK = CONFIGURED_FEATURES.register("ore_copper_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_COPPER_TARGET_LIST.get(), 6, 0.2f)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_GOLD_SCULK = CONFIGURED_FEATURES.register("ore_gold_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_GOLD_TARGET_LIST.get(), 6, 0.2f)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_REDSTONE_SCULK = CONFIGURED_FEATURES.register("ore_redstone_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_REDSTONE_TARGET_LIST.get(), 6, 0.1f)));
