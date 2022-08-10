@@ -6,7 +6,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -22,7 +21,6 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
-        ShapelessRecipeBuilder.shapeless(DDBlocks.BONE_PLANKS.get(), 4).requires(Blocks.BONE_BLOCK).unlockedBy("has_bone_block", has(Blocks.BONE_BLOCK)).save(consumer);
         slabBuilder(DDBlocks.BONE_SLAB.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
         stairBuilder(DDBlocks.BONE_STAIRS.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
         fenceBuilder(DDBlocks.BONE_FENCE.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
@@ -34,7 +32,6 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         signBuilder(DDItems.BONE_SIGN.get(), Ingredient.of(DDBlocks.BONE_PLANKS.get())).unlockedBy("has_bone_planks", has(DDBlocks.BONE_PLANKS.get())).save(consumer);
 
         ShapedRecipeBuilder.shaped(DDBlocks.SCULK_BONE_BLOCK.get(), 2).define('B', Blocks.BONE_BLOCK).define('S', Blocks.SCULK).pattern("BS").pattern("SB").unlockedBy("has_bone_block", has(Blocks.BONE_BLOCK)).unlockedBy("has_sculk", has(Blocks.SCULK)).save(consumer);
-        ShapelessRecipeBuilder.shapeless(DDBlocks.SCULK_BONE_PLANKS.get(), 4).requires(DDBlocks.SCULK_BONE_BLOCK.get()).unlockedBy("has_sculk_bone_block", has(DDBlocks.SCULK_BONE_BLOCK.get())).save(consumer);
         slabBuilder(DDBlocks.SCULK_BONE_SLAB.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
         stairBuilder(DDBlocks.SCULK_BONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
         fenceBuilder(DDBlocks.SCULK_BONE_FENCE.get(), Ingredient.of(DDBlocks.SCULK_BONE_PLANKS.get())).unlockedBy("has_sculk_bone_planks", has(DDBlocks.SCULK_BONE_PLANKS.get())).save(consumer);
