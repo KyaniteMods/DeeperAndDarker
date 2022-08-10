@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-09T23:25:10.0535496	Crafting Recipes
+// 1.19.2	2022-08-10T17:31:23.3077625	Crafting Recipes
 b980acb407eb0caf595a16a226363b392b650a87 data/deeperdarker/advancements/recipes/deeperdarker/bone_button.json
 71c76a970db514ed45672e4f1a57ce5cbb596d29 data/deeperdarker/advancements/recipes/deeperdarker/bone_door.json
 35ccf12fb448363a2570cf351c79af1b1791f589 data/deeperdarker/advancements/recipes/deeperdarker/bone_fence.json
@@ -21,6 +21,7 @@ ff8bb66b36cf5de72b3b53a5774e6dd8ca642081 data/deeperdarker/advancements/recipes/
 e4363adf6a9ae0de3f9c8d59e90cdb051f85034f data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_door.json
 99ab255ac54f4d29e460464f8512ea9a5854619e data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_fence.json
 f206a35dae45c9f68a11957979d16fe3a97e3b02 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_fence_gate.json
+2000be042a32bc9fec555e7525fd131f67379108 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_planks.json
 84b7d562818b10aa75b34d2aa5fd9562ead01ce0 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_pressure_plate.json
 922ca21aa891829a745efe260c2578a24f4a9624 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_sign.json
 5fd485e2f08ebc7c6b46c2a23300f47df556d069 data/deeperdarker/advancements/recipes/deeperdarker/sculk_bone_slab.json
@@ -55,6 +56,7 @@ b2da4d6e60f7951cf78d8fd975c3fef6ee5fc898 data/deeperdarker/recipes/sculk_bone_bl
 1dfa569f725cc5c959abc63fee3aab2fc5a7f33b data/deeperdarker/recipes/sculk_bone_door.json
 c4e48b0f42ec0217afec88a26a8244cd3f532fa0 data/deeperdarker/recipes/sculk_bone_fence.json
 e35934f8a02db5a4c7d4d8045c900c43da6cc7ae data/deeperdarker/recipes/sculk_bone_fence_gate.json
+3eaedf5d981b2a37f019ec64909c7f7816fe1525 data/deeperdarker/recipes/sculk_bone_planks.json
 214a66f44a72cc3cde54218ab21d826750f9c3a7 data/deeperdarker/recipes/sculk_bone_pressure_plate.json
 d18f1aa956332cea447116a1e77ab1443985a809 data/deeperdarker/recipes/sculk_bone_sign.json
 754a12c0fd72e8337cc8f49734bcb2d3d1a1a92d data/deeperdarker/recipes/sculk_bone_slab.json
