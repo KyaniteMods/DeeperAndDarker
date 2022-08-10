@@ -45,6 +45,8 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = feature("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
     public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_VINES = feature("sculk_vines", DDFeatures.SCULK_VINES);
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> OTHERSIDE_PILLAR = feature("otherside_pillar", DDFeatures.OTHERSIDE_PILLAR);
+
     public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
         return CONFIGURED_FEATURES.register(id, () -> new ConfiguredFeature<>(feature.get(), configuration.get()));

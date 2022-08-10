@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.registry.blocks.custom.gloomvines.GloomVines;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
@@ -70,14 +72,14 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
 
-        this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> createOreDrop(block, Items.COAL));
-        this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> createOreDrop(block, Items.RAW_IRON));
-        this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (block) -> createCopperOreDrops(DDBlocks.SCULK_STONE_COPPER_ORE.get()));
-        this.add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> createOreDrop(block, Items.RAW_GOLD));
-        this.add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), (block) -> createRedstoneOreDrops(DDBlocks.SCULK_STONE_REDSTONE_ORE.get()));
-        this.add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> createOreDrop(block, Items.EMERALD));
-        this.add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), (block) -> createLapisOreDrops(DDBlocks.SCULK_STONE_LAPIS_ORE.get()));
-        this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> createOreDrop(block, Items.DIAMOND));
+        this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> sculkOreDrop(block, Items.COAL));
+        this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_IRON));
+        this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_COPPER));
+        this.add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_GOLD));
+        this.add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), (block) -> sculkOreDrop(block, Items.REDSTONE));
+        this.add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> sculkOreDrop(block, Items.EMERALD));
+        this.add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), (block) -> sculkOreDrop(block, Items.LAPIS_LAZULI));
+        this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> sculkOreDrop(block, Items.DIAMOND));
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
@@ -98,6 +100,10 @@ public class DDBlockLoot extends BlockLoot {
         LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vines, LootItem.lootTableItem(vines).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33F, 0.55F, 0.77F, 1.0F)));
         this.add(vines, builder);
         this.add(plant, builder);
+    }
+
+    private static LootTable.Builder sculkOreDrop(Block pBlock, Item pItem) {
+        return createSilkTouchDispatchTable(pBlock, applyExplosionDecay(pBlock, LootItem.lootTableItem(pItem).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 
     private static LootTable.Builder addAncientVaseDropTable(Block block) {
