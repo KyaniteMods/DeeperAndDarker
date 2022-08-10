@@ -12,6 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
+    private final ModelFile HANDHELD = getExistingFile(mcLoc("item/handheld"));
 
     public DDItemModelProvider(DataGenerator pGenerator, ExistingFileHelper pExistingFileHelper) {
         super(pGenerator, DeeperAndDarker.MOD_ID, pExistingFileHelper);
@@ -85,6 +86,11 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
+        itemModel(DDItems.WARDEN_SWORD, HANDHELD);
+        itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
+        itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
+        itemModel(DDItems.WARDEN_AXE, HANDHELD);
+        itemModel(DDItems.WARDEN_HOE, HANDHELD);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.GLOOM_BERRIES, GENERATED);

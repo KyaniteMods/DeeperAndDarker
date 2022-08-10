@@ -46,9 +46,17 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(DDTags.Blocks.SCULK_BONE_WOOD, DDTags.Items.SCULK_BONE_WOOD);
 
         tag(ItemTags.NON_FLAMMABLE_WOOD).addTags(DDTags.Items.BONE_WOOD, DDTags.Items.SCULK_BONE_WOOD);
-
         tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.FOX_FOOD).add(DDItems.GLOOM_BERRIES.get());
+        tag(Tags.Items.TOOLS_SWORDS).add(DDItems.WARDEN_SWORD.get());
+        tag(Tags.Items.TOOLS_SHOVELS).add(DDItems.WARDEN_SHOVEL.get());
+        tag(Tags.Items.TOOLS_PICKAXES).add(DDItems.WARDEN_PICKAXE.get());
+        tag(Tags.Items.TOOLS_AXES).add(DDItems.WARDEN_AXE.get());
+        tag(Tags.Items.TOOLS_HOES).add(DDItems.WARDEN_HOE.get());
+        tag(Tags.Items.ARMORS_HELMETS).add(DDItems.WARDEN_HELMET.get());
+        tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
+        tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
+        tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
     }
 }
