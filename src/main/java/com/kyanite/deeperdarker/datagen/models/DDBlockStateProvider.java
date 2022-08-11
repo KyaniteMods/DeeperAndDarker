@@ -16,28 +16,16 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(DDBlocks.BONE_PLANKS.get());
-        slabBlock(DDBlocks.BONE_SLAB.get(), blockLoc(DDBlocks.BONE_PLANKS), blockLoc(DDBlocks.BONE_PLANKS));
-        stairsBlock(DDBlocks.BONE_STAIRS.get(), blockLoc(DDBlocks.BONE_PLANKS));
-        fenceBlock(DDBlocks.BONE_FENCE, blockLoc(DDBlocks.BONE_PLANKS));
-        buttonBlock(DDBlocks.BONE_BUTTON, blockLoc(DDBlocks.BONE_PLANKS));
-        pressurePlateBlock(DDBlocks.BONE_PRESSURE_PLATE.get(), blockLoc(DDBlocks.BONE_PLANKS));
-        doorBlockWithRenderType(DDBlocks.BONE_DOOR.get(), blockLoc(DDBlocks.BONE_DOOR, "bottom"), blockLoc(DDBlocks.BONE_DOOR, "top"), "translucent");
-        trapdoorBlockWithRenderType(DDBlocks.BONE_TRAPDOOR.get(), blockLoc(DDBlocks.BONE_TRAPDOOR), true, "translucent");
-        fenceGateBlock(DDBlocks.BONE_FENCE_GATE.get(), blockLoc(DDBlocks.BONE_PLANKS));
-        signBlock(DDBlocks.BONE_SIGN.get(), (WallSignBlock) DDBlocks.BONE_WALL_SIGN.get(), blockLoc(DDBlocks.BONE_PLANKS));
-
-        axisBlock(DDBlocks.SCULK_BONE_BLOCK.get(), blockLoc(DDBlocks.SCULK_BONE_BLOCK, "side"), blockLoc(DDBlocks.SCULK_BONE_BLOCK, "top"));
-        simpleBlock(DDBlocks.SCULK_BONE_PLANKS.get());
-        slabBlock(DDBlocks.SCULK_BONE_SLAB.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
-        stairsBlock(DDBlocks.SCULK_BONE_STAIRS.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
-        fenceBlock(DDBlocks.SCULK_BONE_FENCE, blockLoc(DDBlocks.SCULK_BONE_PLANKS));
-        buttonBlock(DDBlocks.SCULK_BONE_BUTTON, blockLoc(DDBlocks.SCULK_BONE_PLANKS));
-        pressurePlateBlock(DDBlocks.SCULK_BONE_PRESSURE_PLATE.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
-        doorBlockWithRenderType(DDBlocks.SCULK_BONE_DOOR.get(), blockLoc(DDBlocks.SCULK_BONE_DOOR, "bottom"), blockLoc(DDBlocks.SCULK_BONE_DOOR, "top"), "translucent");
-        trapdoorBlockWithRenderType(DDBlocks.SCULK_BONE_TRAPDOOR.get(), blockLoc(DDBlocks.SCULK_BONE_TRAPDOOR), true, "translucent");
-        fenceGateBlock(DDBlocks.SCULK_BONE_FENCE_GATE.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
-        signBlock(DDBlocks.SCULK_BONE_SIGN.get(), (WallSignBlock) DDBlocks.SCULK_BONE_WALL_SIGN.get(), blockLoc(DDBlocks.SCULK_BONE_PLANKS));
+        simpleBlock(DDBlocks.ECHO_PLANKS.get());
+        slabBlock(DDBlocks.ECHO_SLAB.get(), blockLoc(DDBlocks.ECHO_PLANKS), blockLoc(DDBlocks.ECHO_PLANKS));
+        stairsBlock(DDBlocks.ECHO_STAIRS.get(), blockLoc(DDBlocks.ECHO_PLANKS));
+        fenceBlock(DDBlocks.ECHO_FENCE, blockLoc(DDBlocks.ECHO_PLANKS));
+        buttonBlock(DDBlocks.ECHO_BUTTON, blockLoc(DDBlocks.ECHO_PLANKS));
+        pressurePlateBlock(DDBlocks.ECHO_PRESSURE_PLATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
+        doorBlockWithRenderType(DDBlocks.ECHO_DOOR.get(), blockLoc(DDBlocks.ECHO_DOOR, "bottom"), blockLoc(DDBlocks.ECHO_DOOR, "top"), "translucent");
+        trapdoorBlockWithRenderType(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true, "translucent");
+        fenceGateBlock(DDBlocks.ECHO_FENCE_GATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
+        signBlock(DDBlocks.ECHO_SIGN.get(), (WallSignBlock) DDBlocks.ECHO_WALL_SIGN.get(), blockLoc(DDBlocks.ECHO_PLANKS));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
         slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));

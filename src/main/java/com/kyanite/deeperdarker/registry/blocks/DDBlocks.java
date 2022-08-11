@@ -25,32 +25,22 @@ import java.util.function.Supplier;
 public class DDBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MOD_ID);
 
-    // Bone Block Wood
-    public static final RegistryObject<Block> BONE_PLANKS = register("bone_planks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BONE_BLOCK).strength(2f, 6f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<SlabBlock> BONE_SLAB = register("bone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get())));
-    public static final RegistryObject<StairBlock> BONE_STAIRS = register("bone_stairs", () -> new StairBlock(BONE_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(BONE_PLANKS.get())));
-    public static final RegistryObject<FenceBlock> BONE_FENCE = register("bone_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get())));
-    public static final RegistryObject<ButtonBlock> BONE_BUTTON = register("bone_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).strength(0.5f).sound(SoundType.BONE_BLOCK).noCollission().requiresCorrectToolForDrops()));
-    public static final RegistryObject<PressurePlateBlock> BONE_PRESSURE_PLATE = register("bone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).strength(0.5f).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<DoorBlock> BONE_DOOR = register("bone_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<TrapDoorBlock> BONE_TRAPDOOR = register("bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceGateBlock> BONE_FENCE_GATE = register("bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get())));
-    public static final RegistryObject<Block> BONE_WALL_SIGN = BLOCKS.register("bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.BONE));
-    public static final RegistryObject<StandingSignBlock> BONE_SIGN = BLOCKS.register("bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.BONE));
-
-    // Sculk Bone Block Wood
-    public static final RegistryObject<RotatedPillarBlock> SCULK_BONE_BLOCK = register("sculk_bone_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(2f, 3f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SCULK_BONE_PLANKS = register("sculk_bone_planks", () -> new Block(BlockBehaviour.Properties.copy(SCULK_BONE_BLOCK.get())));
-    public static final RegistryObject<SlabBlock> SCULK_BONE_SLAB = register("sculk_bone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_BONE_BLOCK.get())));
-    public static final RegistryObject<StairBlock> SCULK_BONE_STAIRS = register("sculk_bone_stairs", () -> new StairBlock(SCULK_BONE_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(SCULK_BONE_BLOCK.get())));
-    public static final RegistryObject<FenceBlock> SCULK_BONE_FENCE = register("sculk_bone_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get())));
-    public static final RegistryObject<ButtonBlock> SCULK_BONE_BUTTON = register("sculk_bone_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).strength(0.5f).sound(SoundType.SCULK).noCollission().requiresCorrectToolForDrops()));
-    public static final RegistryObject<PressurePlateBlock> SCULK_BONE_PRESSURE_PLATE = register("sculk_bone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).strength(0.5f).sound(SoundType.SCULK).requiresCorrectToolForDrops()));
-    public static final RegistryObject<DoorBlock> SCULK_BONE_DOOR = register("sculk_bone_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get())));
-    public static final RegistryObject<TrapDoorBlock> SCULK_BONE_TRAPDOOR = register("sculk_bone_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).noOcclusion()));
-    public static final RegistryObject<FenceGateBlock> SCULK_BONE_FENCE_GATE = register("sculk_bone_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get())));
-    public static final RegistryObject<Block> SCULK_BONE_WALL_SIGN = BLOCKS.register("sculk_bone_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.SCULK_BONE));
-    public static final RegistryObject<StandingSignBlock> SCULK_BONE_SIGN = BLOCKS.register("sculk_bone_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(SCULK_BONE_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.SCULK_BONE));
+    // Echo Wood
+    public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new DDFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(2f).sound(SoundType.SCULK)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new DDFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(ECHO_LOG.get())));
+    public static final RegistryObject<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new DDFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(ECHO_LOG.get())));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new DDFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(ECHO_LOG.get())));
+    public static final RegistryObject<Block> ECHO_PLANKS = register("echo_planks", () -> new Block(BlockBehaviour.Properties.copy(ECHO_LOG.get())));
+    public static final RegistryObject<SlabBlock> ECHO_SLAB = register("echo_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(ECHO_LOG.get())));
+    public static final RegistryObject<StairBlock> ECHO_STAIRS = register("echo_stairs", () -> new StairBlock(ECHO_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(ECHO_LOG.get())));
+    public static final RegistryObject<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
+    public static final RegistryObject<ButtonBlock> ECHO_BUTTON = register("echo_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f).noCollission()));
+    public static final RegistryObject<PressurePlateBlock> ECHO_PRESSURE_PLATE = register("echo_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
+    public static final RegistryObject<DoorBlock> ECHO_DOOR = register("echo_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
+    public static final RegistryObject<TrapDoorBlock> ECHO_TRAPDOOR = register("echo_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get()).noOcclusion()));
+    public static final RegistryObject<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
+    public static final RegistryObject<Block> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.ECHO));
+    public static final RegistryObject<StandingSignBlock> ECHO_SIGN = BLOCKS.register("echo_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get()).strength(1f).noCollission(), DDWoodTypes.ECHO));
 
     // Sculk Stone
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(4.5f, 5.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));

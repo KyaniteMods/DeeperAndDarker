@@ -10,5 +10,5 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDBlockEntityTypes {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<BlockEntityType<DDSignBlockEntity>> SIGN_BLOCK_ENTITIES = BLOCK_ENTITY_TYPES.register("sign_block_entities", ()-> BlockEntityType.Builder.of(DDSignBlockEntity::new, DDBlocks.BONE_WALL_SIGN.get(), DDBlocks.BONE_SIGN.get(), DDBlocks.SCULK_BONE_WALL_SIGN.get(), DDBlocks.SCULK_BONE_SIGN.get()).build(null));
+    public static final RegistryObject<BlockEntityType<DDSignBlockEntity>> SIGN_BLOCK_ENTITIES = BLOCK_ENTITY_TYPES.register("sign_block_entities", ()-> BlockEntityType.Builder.of(DDSignBlockEntity::new, DDBlocks.ECHO_WALL_SIGN.get(), DDBlocks.ECHO_SIGN.get()).build(null));
 }

@@ -26,31 +26,21 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDBlockLoot extends BlockLoot {
     @Override
     protected void addTables() {
-        this.dropSelf(DDBlocks.BONE_PLANKS.get());
-        this.add(DDBlocks.BONE_SLAB.get(), BlockLoot::createSlabItemTable);
-        this.dropSelf(DDBlocks.BONE_STAIRS.get());
-        this.dropSelf(DDBlocks.BONE_FENCE.get());
-        this.dropSelf(DDBlocks.BONE_BUTTON.get());
-        this.dropSelf(DDBlocks.BONE_PRESSURE_PLATE.get());
-        this.add(DDBlocks.BONE_DOOR.get(), BlockLoot::createDoorTable);
-        this.dropSelf(DDBlocks.BONE_TRAPDOOR.get());
-        this.dropSelf(DDBlocks.BONE_FENCE_GATE.get());
-        this.dropSelf(DDBlocks.BONE_WALL_SIGN.get());
-        this.dropSelf(DDBlocks.BONE_SIGN.get());
-        this.dropWhenSilkTouch(DDBlocks.GLOOM_GRASS.get());
-
-        this.dropSelf(DDBlocks.SCULK_BONE_BLOCK.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_PLANKS.get());
-        this.add(DDBlocks.SCULK_BONE_SLAB.get(), BlockLoot::createSlabItemTable);
-        this.dropSelf(DDBlocks.SCULK_BONE_STAIRS.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_FENCE.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_BUTTON.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_PRESSURE_PLATE.get());
-        this.add(DDBlocks.SCULK_BONE_DOOR.get(), BlockLoot::createDoorTable);
-        this.dropSelf(DDBlocks.SCULK_BONE_TRAPDOOR.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_FENCE_GATE.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_WALL_SIGN.get());
-        this.dropSelf(DDBlocks.SCULK_BONE_SIGN.get());
+        this.dropSelf(DDBlocks.ECHO_LOG.get());
+        this.dropSelf(DDBlocks.STRIPPED_ECHO_LOG.get());
+        this.dropSelf(DDBlocks.ECHO_WOOD.get());
+        this.dropSelf(DDBlocks.STRIPPED_ECHO_WOOD.get());
+        this.dropSelf(DDBlocks.ECHO_PLANKS.get());
+        this.add(DDBlocks.ECHO_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.ECHO_STAIRS.get());
+        this.dropSelf(DDBlocks.ECHO_FENCE.get());
+        this.dropSelf(DDBlocks.ECHO_BUTTON.get());
+        this.dropSelf(DDBlocks.ECHO_PRESSURE_PLATE.get());
+        this.add(DDBlocks.ECHO_DOOR.get(), BlockLoot::createDoorTable);
+        this.dropSelf(DDBlocks.ECHO_TRAPDOOR.get());
+        this.dropSelf(DDBlocks.ECHO_FENCE_GATE.get());
+        this.dropSelf(DDBlocks.ECHO_WALL_SIGN.get());
+        this.dropSelf(DDBlocks.ECHO_SIGN.get());
 
         this.add(DDBlocks.SCULK_STONE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
         this.add(DDBlocks.SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);

@@ -21,28 +21,20 @@ public class DDItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // BLOCKS
-        blockModel(DDBlocks.BONE_PLANKS);
-        blockModel(DDBlocks.BONE_SLAB);
-        blockModel(DDBlocks.BONE_STAIRS);
-        blockModel(DDBlocks.BONE_FENCE, "inventory");
-        blockModel(DDBlocks.BONE_BUTTON, "inventory");
-        blockModel(DDBlocks.BONE_PRESSURE_PLATE);
-        itemModel(DDBlocks.BONE_DOOR, GENERATED);
-        blockModel(DDBlocks.BONE_TRAPDOOR, "bottom");
-        blockModel(DDBlocks.BONE_FENCE_GATE);
-        itemModel(DDItems.BONE_SIGN, GENERATED);
-
-        blockModel(DDBlocks.SCULK_BONE_BLOCK);
-        blockModel(DDBlocks.SCULK_BONE_PLANKS);
-        blockModel(DDBlocks.SCULK_BONE_SLAB);
-        blockModel(DDBlocks.SCULK_BONE_STAIRS);
-        blockModel(DDBlocks.SCULK_BONE_FENCE, "inventory");
-        blockModel(DDBlocks.SCULK_BONE_BUTTON, "inventory");
-        blockModel(DDBlocks.SCULK_BONE_PRESSURE_PLATE);
-        itemModel(DDBlocks.SCULK_BONE_DOOR, GENERATED);
-        blockModel(DDBlocks.SCULK_BONE_TRAPDOOR, "bottom");
-        blockModel(DDBlocks.SCULK_BONE_FENCE_GATE);
-        itemModel(DDItems.SCULK_BONE_SIGN, GENERATED);
+        blockModel(DDBlocks.ECHO_LOG);
+        blockModel(DDBlocks.STRIPPED_ECHO_LOG);
+        blockModel(DDBlocks.ECHO_WOOD);
+        blockModel(DDBlocks.STRIPPED_ECHO_WOOD);
+        blockModel(DDBlocks.ECHO_PLANKS);
+        blockModel(DDBlocks.ECHO_SLAB);
+        blockModel(DDBlocks.ECHO_STAIRS);
+        blockModel(DDBlocks.ECHO_FENCE, "inventory");
+        blockModel(DDBlocks.ECHO_BUTTON, "inventory");
+        blockModel(DDBlocks.ECHO_PRESSURE_PLATE);
+        itemModel(DDBlocks.ECHO_DOOR, GENERATED);
+        blockModel(DDBlocks.ECHO_TRAPDOOR, "bottom");
+        blockModel(DDBlocks.ECHO_FENCE_GATE);
+        itemModel(DDItems.ECHO_SIGN, GENERATED);
 
         blockModel(DDBlocks.SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_SLAB);
