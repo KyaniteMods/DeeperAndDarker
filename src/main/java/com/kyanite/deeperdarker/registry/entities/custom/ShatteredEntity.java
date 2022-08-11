@@ -15,6 +15,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -64,6 +65,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
         this.goalSelector.addGoal(8, new ShatteredGoToDisturbanceGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1.0D));
