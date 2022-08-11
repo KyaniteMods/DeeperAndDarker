@@ -20,6 +20,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -67,6 +68,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     protected void reassessTameGoals() {
         super.reassessTameGoals();
         this.goalSelector.removeAllGoals();
+        this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 0.3F, 10.0F, 2.0F, false));
         this.goalSelector.addGoal(3, new SculkSnapperMelee(this, 0.4F, true));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
