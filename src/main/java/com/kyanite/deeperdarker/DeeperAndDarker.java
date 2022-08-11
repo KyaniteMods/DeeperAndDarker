@@ -73,8 +73,7 @@ public class DeeperAndDarker {
     public static class DeeperAndDarkerClient {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
-            WoodType.register(DDWoodTypes.BONE);
-            WoodType.register(DDWoodTypes.SCULK_BONE);
+            WoodType.register(DDWoodTypes.ECHO);
             BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
 
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
@@ -85,10 +84,7 @@ public class DeeperAndDarker {
 
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
-            event.enqueueWork(() -> {
-                Sheets.addWoodType(DDWoodTypes.BONE);
-                Sheets.addWoodType(DDWoodTypes.SCULK_BONE);
-            });
+            event.enqueueWork(() -> Sheets.addWoodType(DDWoodTypes.ECHO));
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65F);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5F);

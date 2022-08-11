@@ -1,9 +1,8 @@
 {
   "values": [
-    "deeperdarker:sculk_bone_wall_sign",
     "deeperdarker:sculk_gleam",
+    "deeperdarker:gloom_grass",
     "deeperdarker:sculk_transmitter",
-    "deeperdarker:infested_sculk",
-    "#deeperdarker:sculk_bone_wood"
+    "deeperdarker:infested_sculk"
   ]
 }

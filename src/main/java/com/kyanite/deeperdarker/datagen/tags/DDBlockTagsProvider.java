@@ -18,13 +18,13 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags() {
-        tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.ECHO_WALL_SIGN.get()).addTag(DDTags.Blocks.ECHO_WOOD);
+        tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.ECHO_WALL_SIGN.get()).addTag(DDTags.Blocks.ECHO_LOGS);
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.ANCIENT_VASE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
-        tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.SCULK_GLEAM.get(), DDBlocks.SCULK_TRANSMITTER.get(), DDBlocks.INFESTED_SCULK.get());
+        tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.SCULK_GLEAM.get(), DDBlocks.GLOOM_GRASS.get(), DDBlocks.SCULK_TRANSMITTER.get(), DDBlocks.INFESTED_SCULK.get());
         tag(BlockTags.SCULK_REPLACEABLE).add(DDBlocks.INFESTED_SCULK.get());
         tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(DDBlocks.INFESTED_SCULK.get());
         tag(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE.get());
-        tag(BlockTags.NON_FLAMMABLE_WOOD).add(DDBlocks.ECHO_WALL_SIGN.get()).addTags(DDTags.Blocks.ECHO_WOOD);
+        tag(BlockTags.NON_FLAMMABLE_WOOD).add(DDBlocks.ECHO_WALL_SIGN.get(), DDBlocks.ECHO_SIGN.get()).addTags(DDTags.Blocks.ECHO_LOGS);
         tag(BlockTags.LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
         tag(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS.get());
         tag(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON.get());
@@ -49,12 +49,14 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.EMERALD_ORES).add(DDBlocks.SCULK_STONE_EMERALD_ORE.get());
         tag(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         tag(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
+        tag(BlockTags.NON_FLAMMABLE_WOOD).addTags(DDTags.Blocks.ECHO_LOGS);
+
 
         tag(Tags.Blocks.ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
         tag(Tags.Blocks.FENCE_GATES_WOODEN).add(DDBlocks.ECHO_FENCE_GATE.get());
         tag(Tags.Blocks.FENCES_WOODEN).add(DDBlocks.ECHO_FENCE.get());
 
-        tag(DDTags.Blocks.ECHO_WOOD).add(DDBlocks.ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_WOOD.get(), DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_BUTTON.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_SIGN.get());
+        tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_WOOD.get(), DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_BUTTON.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_SIGN.get());
 
         spreadingReplaceTags();
     }

@@ -39,12 +39,10 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.EMERALD_ORES, ItemTags.EMERALD_ORES);
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
-
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
+        copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
+        tag(ItemTags.NON_FLAMMABLE_WOOD).add(DDItems.ECHO_SIGN.get()).addTags(DDTags.Items.ECHO_LOGS);
 
-        copy(DDTags.Blocks.ECHO_WOOD, DDTags.Items.ECHO_WOOD);
-
-        tag(ItemTags.NON_FLAMMABLE_WOOD).addTags(DDTags.Items.ECHO_WOOD);
         tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.FOX_FOOD).add(DDItems.GLOOM_BERRIES.get());

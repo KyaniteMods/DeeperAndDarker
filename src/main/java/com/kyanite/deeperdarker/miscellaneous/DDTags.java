@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 
 public class DDTags {
     public static class Blocks {
-        public static final TagKey<Block> ECHO_WOOD = createTag("echo_wood");
+        public static final TagKey<Block> ECHO_LOGS = createTag("echo_logs");
 
         public static final TagKey<Block> SCULK_STONE_REPLACE = createTag("sculk_stone_replace");
         public static final TagKey<Block> COBBLED_SCULK_STONE_REPLACE = createTag("cobbled_sculk_stone_replace");
@@ -36,7 +36,7 @@ public class DDTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> ECHO_WOOD = createTag("echo_wood");
+        public static final TagKey<Item> ECHO_LOGS = createTag("echo_logs");
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name));

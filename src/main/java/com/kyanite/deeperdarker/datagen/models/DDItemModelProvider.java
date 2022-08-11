@@ -21,10 +21,10 @@ public class DDItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // BLOCKS
-        blockModel(DDBlocks.ECHO_LOG);
-        blockModel(DDBlocks.STRIPPED_ECHO_LOG);
-        blockModel(DDBlocks.ECHO_WOOD);
-        blockModel(DDBlocks.STRIPPED_ECHO_WOOD);
+        //blockModel(DDBlocks.ECHO_LOG);
+        //blockModel(DDBlocks.STRIPPED_ECHO_LOG);
+        //blockModel(DDBlocks.ECHO_WOOD);
+        //blockModel(DDBlocks.STRIPPED_ECHO_WOOD);
         blockModel(DDBlocks.ECHO_PLANKS);
         blockModel(DDBlocks.ECHO_SLAB);
         blockModel(DDBlocks.ECHO_STAIRS);

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/fence_post",
-  "textures": {
-    "texture": "deeperdarker:block/sculk_bone_planks"
-  }
-}
