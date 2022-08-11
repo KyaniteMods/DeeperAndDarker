@@ -17,9 +17,13 @@ public class DDBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(DDBlocks.ECHO_PLANKS.get());
+        axisBlock(DDBlocks.ECHO_LOG.get(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG, "top"));
+//        axisBlock(DDBlocks.STRIPPED_ECHO_LOG.get(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG, "top"));
+//        simpleBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeAll(DDBlocks.STRIPPED_ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
+        simpleBlock(DDBlocks.ECHO_WOOD.get(), models().cubeColumn(DDBlocks.ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)));
         slabBlock(DDBlocks.ECHO_SLAB.get(), blockLoc(DDBlocks.ECHO_PLANKS), blockLoc(DDBlocks.ECHO_PLANKS));
-        stairsBlock(DDBlocks.ECHO_STAIRS.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         fenceBlock(DDBlocks.ECHO_FENCE, blockLoc(DDBlocks.ECHO_PLANKS));
+        stairsBlock(DDBlocks.ECHO_STAIRS.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         buttonBlock(DDBlocks.ECHO_BUTTON, blockLoc(DDBlocks.ECHO_PLANKS));
         pressurePlateBlock(DDBlocks.ECHO_PRESSURE_PLATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         doorBlockWithRenderType(DDBlocks.ECHO_DOOR.get(), blockLoc(DDBlocks.ECHO_DOOR, "bottom"), blockLoc(DDBlocks.ECHO_DOOR, "top"), "translucent");
@@ -55,13 +59,14 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_EMERALD_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
-
-        simpleBlock(DDBlocks.SCULK_GLEAM.get());
-        simpleBlock(DDBlocks.GLOOM_GRASS.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
+
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("translucent"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("translucent"));
+        simpleBlock(DDBlocks.GLOOM_GRASS.get());
         //this.createGloomVines();
+
+        simpleBlock(DDBlocks.SCULK_GLEAM.get());
     }
 
     public void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
