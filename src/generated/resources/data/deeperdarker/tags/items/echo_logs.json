@@ -1,18 +1,8 @@
 {
   "values": [
     "deeperdarker:echo_log",
-    "deeperdarker:stripped_echo_log",
     "deeperdarker:echo_wood",
-    "deeperdarker:stripped_echo_wood",
-    "deeperdarker:echo_planks",
-    "deeperdarker:echo_slab",
-    "deeperdarker:echo_stairs",
-    "deeperdarker:echo_fence",
-    "deeperdarker:echo_button",
-    "deeperdarker:echo_pressure_plate",
-    "deeperdarker:echo_door",
-    "deeperdarker:echo_trapdoor",
-    "deeperdarker:echo_fence_gate",
-    "deeperdarker:echo_sign"
+    "deeperdarker:stripped_echo_log",
+    "deeperdarker:stripped_echo_wood"
   ]
 }

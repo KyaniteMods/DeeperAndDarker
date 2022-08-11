@@ -1,24 +1,5 @@
 {
   "values": [
-    "deeperdarker:infested_sculk",
-    "minecraft:shroomlight",
-    "minecraft:weeping_vines",
-    "minecraft:weeping_vines_plant",
-    "#deeperdarker:sculk_stone_replace",
-    "#deeperdarker:sculk_stone_stairs_replace",
-    "#deeperdarker:sculk_stone_slabs_replace",
-    "#deeperdarker:sculk_stone_walls_replace",
-    "#deeperdarker:cobbled_sculk_stone_replace",
-    "#deeperdarker:cobbled_sculk_stone_stairs_replace",
-    "#deeperdarker:cobbled_sculk_stone_slabs_replace",
-    "#deeperdarker:cobbled_sculk_stone_walls_replace",
-    "#deeperdarker:polished_sculk_stone_replace",
-    "#deeperdarker:polished_sculk_stone_stairs_replace",
-    "#deeperdarker:polished_sculk_stone_slabs_replace",
-    "#deeperdarker:polished_sculk_stone_walls_replace",
-    "#deeperdarker:sculk_stone_bricks_replace",
-    "#deeperdarker:sculk_stone_bricks_stairs_replace",
-    "#deeperdarker:sculk_stone_bricks_slabs_replace",
-    "#deeperdarker:sculk_stone_bricks_walls_replace"
+    "deeperdarker:infested_sculk"
   ]
 }

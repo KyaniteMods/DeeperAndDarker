@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-10T22:39:23.8924419	Item Models: deeperdarker
+// 1.19.2	2022-08-11T18:01:08.5123282	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled_sculk_stone.json
 1efdf671344a524233dc6025ce4ade7431e7e840 assets/deeperdarker/models/item/cobbled_sculk_stone_slab.json
@@ -8,12 +8,14 @@ a83a97c9a52c6f16a0d4dd3fcb6f498389378b84 assets/deeperdarker/models/item/cobbled
 1482614d3ee56429560cc8b3e553b25970a7b5aa assets/deeperdarker/models/item/echo_door.json
 a46ca51f8fd8ac75d94138f3c3c63e4e6638fd11 assets/deeperdarker/models/item/echo_fence.json
 edfe59a1047cb324a9ad3141f6d28df768b17d4d assets/deeperdarker/models/item/echo_fence_gate.json
+b5a9cdf24751c70817ae24a894270341e5e54793 assets/deeperdarker/models/item/echo_log.json
 4f146afd7e15e53a7f3987453d0acad4b2c85535 assets/deeperdarker/models/item/echo_planks.json
 25d9a9afcec3a82548c0734b9370b7f79ccc5318 assets/deeperdarker/models/item/echo_pressure_plate.json
 65ba8802b86a620bed2ced03f007f9abe41f17f9 assets/deeperdarker/models/item/echo_sign.json
 9df9bbce4f954b4e9711893c0f9bb3412e44517d assets/deeperdarker/models/item/echo_slab.json
 4a0495ac03c5006d065137d377a1c839d0036835 assets/deeperdarker/models/item/echo_stairs.json
 a3fe9f11354ab143f3d9469ff16446bf71f5062a assets/deeperdarker/models/item/echo_trapdoor.json
+8b8f911e14802b02812178623d0873681db5a26b assets/deeperdarker/models/item/echo_wood.json
 3d7aec020830e8ff0093ed57ee911339b6011150 assets/deeperdarker/models/item/gloom_berries.json
 dc04592cb8e6d7fc5d598923e53835485448d929 assets/deeperdarker/models/item/gloom_grass.json
 d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_of_the_deep.json
@@ -46,6 +48,8 @@ d0b5617cda0a55e3883f13741ce1815ccfd75377 assets/deeperdarker/models/item/sculk_t
 826d5e09ad2e18070d74add221ff22017abadb39 assets/deeperdarker/models/item/sculk_vines.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shattered_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shriek_worm_spawn_egg.json
+04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets/deeperdarker/models/item/stripped_echo_log.json
+aeff20ceb06371eb7973f8f39caa5eb4dd38e201 assets/deeperdarker/models/item/stripped_echo_wood.json
 290e9b82b23fb5bd4019f6db897d0fa01e144397 assets/deeperdarker/models/item/warden_axe.json
 43c8356885606b9d1beaecba592e38d0ee2b9b64 assets/deeperdarker/models/item/warden_boots.json
 3d17c3dc7cb5cd4507d1008365ce98a5befb5a4a assets/deeperdarker/models/item/warden_carapace.json

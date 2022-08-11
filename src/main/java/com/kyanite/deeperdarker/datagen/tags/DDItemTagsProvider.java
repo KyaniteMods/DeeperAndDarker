@@ -17,10 +17,11 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         super(pGenerator, pBlockTagsProvider, DeeperAndDarker.MOD_ID, existingFileHelper);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void addTags() {
+        copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
+        copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
         copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
@@ -28,9 +29,11 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
+
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.STAIRS, ItemTags.STAIRS);
         copy(BlockTags.WALLS, ItemTags.WALLS);
+
         copy(BlockTags.COAL_ORES, ItemTags.COAL_ORES);
         copy(BlockTags.IRON_ORES, ItemTags.IRON_ORES);
         copy(BlockTags.COPPER_ORES, ItemTags.COPPER_ORES);
@@ -39,13 +42,24 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.EMERALD_ORES, ItemTags.EMERALD_ORES);
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
-        copy(Tags.Blocks.ORES, Tags.Items.ORES);
-        copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
-        tag(ItemTags.NON_FLAMMABLE_WOOD).add(DDItems.ECHO_SIGN.get()).addTags(DDTags.Items.ECHO_LOGS);
 
-        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
+        copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
+        copy(Tags.Blocks.FENCES_WOODEN, Tags.Items.FENCES_WOODEN);
+        copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
+        copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
+        copy(Tags.Blocks.ORES_COPPER, Tags.Items.ORES_COPPER);
+        copy(Tags.Blocks.ORES_GOLD, Tags.Items.ORES_GOLD);
+        copy(Tags.Blocks.ORES_REDSTONE, Tags.Items.ORES_REDSTONE);
+        copy(Tags.Blocks.ORES_EMERALD, Tags.Items.ORES_EMERALD);
+        copy(Tags.Blocks.ORES_LAPIS, Tags.Items.ORES_LAPIS);
+        copy(Tags.Blocks.ORES_DIAMOND, Tags.Items.ORES_DIAMOND);
+
+        copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
+
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
+        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.FOX_FOOD).add(DDItems.GLOOM_BERRIES.get());
+
         tag(Tags.Items.TOOLS_SWORDS).add(DDItems.WARDEN_SWORD.get());
         tag(Tags.Items.TOOLS_SHOVELS).add(DDItems.WARDEN_SHOVEL.get());
         tag(Tags.Items.TOOLS_PICKAXES).add(DDItems.WARDEN_PICKAXE.get());

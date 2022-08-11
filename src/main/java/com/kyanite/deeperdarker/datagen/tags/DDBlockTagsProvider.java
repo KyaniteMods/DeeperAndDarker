@@ -15,18 +15,17 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         super(pGenerator, DeeperAndDarker.MOD_ID, pExistingFileHelper);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void addTags() {
-        tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.ECHO_WALL_SIGN.get()).addTag(DDTags.Blocks.ECHO_LOGS);
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.ANCIENT_VASE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.GLOOM_GRASS.get(), DDBlocks.GLOOM_VINES_PLANT.get(), DDBlocks.GLOOM_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.SCULK_VINES.get());
         tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.SCULK_GLEAM.get(), DDBlocks.GLOOM_GRASS.get(), DDBlocks.SCULK_TRANSMITTER.get(), DDBlocks.INFESTED_SCULK.get());
-        tag(BlockTags.SCULK_REPLACEABLE).add(DDBlocks.INFESTED_SCULK.get());
-        tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(DDBlocks.INFESTED_SCULK.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.ANCIENT_VASE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
+
         tag(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE.get());
-        tag(BlockTags.NON_FLAMMABLE_WOOD).add(DDBlocks.ECHO_WALL_SIGN.get(), DDBlocks.ECHO_SIGN.get()).addTags(DDTags.Blocks.ECHO_LOGS);
-        tag(BlockTags.LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
+        tag(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS);
         tag(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS.get());
+        tag(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN.get());
+        tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get());
         tag(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON.get());
         tag(BlockTags.WOODEN_DOORS).add(DDBlocks.ECHO_DOOR.get());
         tag(BlockTags.WOODEN_FENCES).add(DDBlocks.ECHO_FENCE.get());
@@ -34,13 +33,13 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB.get());
         tag(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS.get());
         tag(BlockTags.WOODEN_TRAPDOORS).add(DDBlocks.ECHO_TRAPDOOR.get());
-        tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get());
-        tag(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN.get());
+
         tag(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
         tag(BlockTags.SLABS).add(DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get());
         tag(BlockTags.STAIRS).add(DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         tag(BlockTags.WALLS).add(DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
         tag(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL.get());
+
         tag(BlockTags.COAL_ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get());
         tag(BlockTags.IRON_ORES).add(DDBlocks.SCULK_STONE_IRON_ORE.get());
         tag(BlockTags.COPPER_ORES).add(DDBlocks.SCULK_STONE_COPPER_ORE.get());
@@ -49,14 +48,19 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.EMERALD_ORES).add(DDBlocks.SCULK_STONE_EMERALD_ORE.get());
         tag(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         tag(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
-        tag(BlockTags.NON_FLAMMABLE_WOOD).addTags(DDTags.Blocks.ECHO_LOGS);
 
-
-        tag(Tags.Blocks.ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
         tag(Tags.Blocks.FENCE_GATES_WOODEN).add(DDBlocks.ECHO_FENCE_GATE.get());
         tag(Tags.Blocks.FENCES_WOODEN).add(DDBlocks.ECHO_FENCE.get());
+        tag(Tags.Blocks.ORES_COAL).add(DDBlocks.SCULK_STONE_COAL_ORE.get());
+        tag(Tags.Blocks.ORES_IRON).add(DDBlocks.SCULK_STONE_IRON_ORE.get());
+        tag(Tags.Blocks.ORES_COPPER).add(DDBlocks.SCULK_STONE_COPPER_ORE.get());
+        tag(Tags.Blocks.ORES_GOLD).add(DDBlocks.SCULK_STONE_GOLD_ORE.get());
+        tag(Tags.Blocks.ORES_REDSTONE).add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get());
+        tag(Tags.Blocks.ORES_EMERALD).add(DDBlocks.SCULK_STONE_EMERALD_ORE.get());
+        tag(Tags.Blocks.ORES_LAPIS).add(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
+        tag(Tags.Blocks.ORES_DIAMOND).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
-        tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_WOOD.get(), DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_BUTTON.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_SIGN.get());
+        tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
 
         spreadingReplaceTags();
     }
@@ -83,8 +87,9 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.SCULK_STONE_BRICKS_SLABS_REPLACE).add(Blocks.STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_SLAB, Blocks.MUD_BRICK_SLAB, Blocks.DEEPSLATE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
         tag(DDTags.Blocks.SCULK_STONE_BRICKS_WALLS_REPLACE).add(Blocks.STONE_BRICK_WALL, Blocks.MOSSY_STONE_BRICK_WALL, Blocks.MUD_BRICK_WALL, Blocks.DEEPSLATE_BRICK_WALL, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
 
-        tag(BlockTags.SCULK_REPLACEABLE)
-                .add(Blocks.SHROOMLIGHT, Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT)
+        tag(BlockTags.SCULK_REPLACEABLE).add(DDBlocks.INFESTED_SCULK.get());
+        tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN)
+                .add(Blocks.SHROOMLIGHT, Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, DDBlocks.INFESTED_SCULK.get())
                 .addTags(DDTags.Blocks.SCULK_STONE_REPLACE, DDTags.Blocks.SCULK_STONE_STAIRS_REPLACE, DDTags.Blocks.SCULK_STONE_SLABS_REPLACE, DDTags.Blocks.SCULK_STONE_WALLS_REPLACE,
                 DDTags.Blocks.COBBLED_SCULK_STONE_REPLACE, DDTags.Blocks.COBBLED_SCULK_STONE_STAIRS_REPLACE, DDTags.Blocks.COBBLED_SCULK_STONE_SLABS_REPLACE, DDTags.Blocks.COBBLED_SCULK_STONE_WALLS_REPLACE,
                 DDTags.Blocks.POLISHED_SCULK_STONE_REPLACE, DDTags.Blocks.POLISHED_SCULK_STONE_STAIRS_REPLACE, DDTags.Blocks.POLISHED_SCULK_STONE_SLABS_REPLACE, DDTags.Blocks.POLISHED_SCULK_STONE_WALLS_REPLACE,

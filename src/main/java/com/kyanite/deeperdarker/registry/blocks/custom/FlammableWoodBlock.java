@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
 
-public class DDFlammableRotatedPillarBlock extends RotatedPillarBlock {
-    public DDFlammableRotatedPillarBlock(Properties properties) {
+public class FlammableWoodBlock extends RotatedPillarBlock {
+    public FlammableWoodBlock(Properties properties) {
         super(properties);
     }
 

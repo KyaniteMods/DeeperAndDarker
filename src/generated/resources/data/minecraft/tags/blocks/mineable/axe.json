@@ -1,6 +1,9 @@
 {
   "values": [
-    "deeperdarker:echo_wall_sign",
-    "#deeperdarker:echo_logs"
+    "deeperdarker:gloom_grass",
+    "deeperdarker:gloom_vines_plant",
+    "deeperdarker:gloom_vines",
+    "deeperdarker:sculk_vines_plant",
+    "deeperdarker:sculk_vines"
   ]
 }

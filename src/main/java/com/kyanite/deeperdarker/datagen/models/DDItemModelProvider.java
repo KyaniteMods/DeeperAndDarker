@@ -21,14 +21,14 @@ public class DDItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // BLOCKS
-        //blockModel(DDBlocks.ECHO_LOG);
-        //blockModel(DDBlocks.STRIPPED_ECHO_LOG);
-        //blockModel(DDBlocks.ECHO_WOOD);
-        //blockModel(DDBlocks.STRIPPED_ECHO_WOOD);
         blockModel(DDBlocks.ECHO_PLANKS);
+        blockModel(DDBlocks.ECHO_LOG);
+        blockModel(DDBlocks.STRIPPED_ECHO_LOG);
+        blockModel(DDBlocks.STRIPPED_ECHO_WOOD);
+        blockModel(DDBlocks.ECHO_WOOD);
         blockModel(DDBlocks.ECHO_SLAB);
-        blockModel(DDBlocks.ECHO_STAIRS);
         blockModel(DDBlocks.ECHO_FENCE, "inventory");
+        blockModel(DDBlocks.ECHO_STAIRS);
         blockModel(DDBlocks.ECHO_BUTTON, "inventory");
         blockModel(DDBlocks.ECHO_PRESSURE_PLATE);
         itemModel(DDBlocks.ECHO_DOOR, GENERATED);
@@ -64,33 +64,36 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
-        blockModel(DDBlocks.GLOOM_GRASS);
-        blockModel(DDBlocks.SCULK_TRANSMITTER);
-
         blockModel(DDBlocks.INFESTED_SCULK);
+
+        getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
+        blockModel(DDBlocks.GLOOM_GRASS);
+
         blockModel(DDBlocks.SCULK_GLEAM);
         blockModel(DDBlocks.ANCIENT_VASE);
-        getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
+        blockModel(DDBlocks.SCULK_TRANSMITTER);
 
         // ITEMS
+        itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
+        itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
+
+        itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
-        itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
-        itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
-        itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
+
         itemModel(DDItems.GLOOM_BERRIES, GENERATED);
 
-        withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SCULK_LEECH_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SCULK_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SHATTERED_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

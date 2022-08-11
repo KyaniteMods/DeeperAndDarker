@@ -74,8 +74,6 @@ public class DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
 
         this.addSculkVinesDropTable(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
-
-        this.dropSelf(DDBlocks.GLOOM_GRASS.get());
         this.add(DDBlocks.GLOOM_VINES.get(), DDBlockLoot::createGloomVinesDropTable);
         this.add(DDBlocks.GLOOM_VINES_PLANT.get(), DDBlockLoot::createGloomVinesDropTable);
 
