@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -51,6 +52,8 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM.getHolder().get());
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_VINES.getHolder().get());
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.OTHERSIDE_PILLAR.getHolder().get());
+
+        BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
