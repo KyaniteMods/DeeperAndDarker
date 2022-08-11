@@ -21,6 +21,8 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+        woodFromLogs(consumer, DDBlocks.ECHO_WOOD.get(), DDBlocks.ECHO_LOG.get());
+        woodFromLogs(consumer, DDBlocks.STRIPPED_ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get());
         planksFromLogs(consumer, DDBlocks.ECHO_PLANKS.get(), DDTags.Items.ECHO_LOGS);
         slabBuilder(DDBlocks.ECHO_SLAB.get(), Ingredient.of(DDBlocks.ECHO_PLANKS.get())).unlockedBy("has_echo_planks", has(DDBlocks.ECHO_PLANKS.get())).save(consumer);
         stairBuilder(DDBlocks.ECHO_STAIRS.get(), Ingredient.of(DDBlocks.ECHO_PLANKS.get())).unlockedBy("has_echo_planks", has(DDBlocks.ECHO_PLANKS.get())).save(consumer);
