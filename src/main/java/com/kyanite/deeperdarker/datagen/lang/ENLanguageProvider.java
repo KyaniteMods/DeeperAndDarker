@@ -50,7 +50,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.kill_warden.description", "Slay the Warden and take its heart... ew");
         add("advancements.deeperdarker.enter_otherside.title", "Below the Bedrock");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the bedrock... the darkness awaits");
-        add("advancements.deeperdarker.reinforce_shard.title", "Sculk engineer?");
+        add("advancements.deeperdarker.reinforce_shard.title", "Sculk Engineer");
         add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
