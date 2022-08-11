@@ -25,7 +25,7 @@ public class OthersidePillarFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
         int y = pContext.origin().getY();
         int pillarHeight = pContext.random().nextInt(13, 35);
-
+        
         if(!pContext.level().getBlockState(pContext.origin().below()).is(DDBlocks.SCULK_STONE.get()) && !pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK)) return false;
 
         for(int i = 0; i < pillarHeight; i++) {
