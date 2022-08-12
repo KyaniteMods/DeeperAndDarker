@@ -94,8 +94,7 @@ public class DeeperAndDarker {
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDWoodTypes.ECHO);
 
-                BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.INVISIBILITY,
-                        DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY_POTION.get()));
+                BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY.get()));
             });
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65F);
