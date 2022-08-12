@@ -115,10 +115,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.0.7'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.0.8'
 
-    compileOnly fg.deobf("mezz.jei:jei-1.19.1-common-api:11.2.0.243")
-    compileOnly fg.deobf("mezz.jei:jei-1.19.1-forge-api:11.2.0.243")
+    compileOnly fg.deobf("mezz.jei:jei-1.19.1-common-api:11.2.0.244")
+    compileOnly fg.deobf("mezz.jei:jei-1.19.1-forge-api:11.2.0.244")
     runtimeOnly fg.deobf("mezz.jei:jei-1.19.1-forge:11.2.0.243")
 
     compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-6.2.0-6:api") { transitive = false }
