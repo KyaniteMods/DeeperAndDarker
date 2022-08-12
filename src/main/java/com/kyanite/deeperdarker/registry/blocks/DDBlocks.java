@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,19 +27,19 @@ public class DDBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MOD_ID);
 
     // Echo Wood
-    public static final RegistryObject<Block> ECHO_PLANKS = register("echo_planks", () -> new FlammablePlanksBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
-    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
-    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
-    public static final RegistryObject<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.SCULK).color(MaterialColor.COLOR_BLACK)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).sound(SoundType.SCULK).color(MaterialColor.COLOR_BLACK)));
+    public static final RegistryObject<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).sound(SoundType.SCULK).color(MaterialColor.COLOR_BLACK)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).sound(SoundType.SCULK).color(MaterialColor.COLOR_BLACK)));
+    public static final RegistryObject<Block> ECHO_PLANKS = register("echo_planks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.SCULK).color(MaterialColor.COLOR_BLACK)));
     public static final RegistryObject<SlabBlock> ECHO_SLAB = register("echo_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
-    public static final RegistryObject<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final RegistryObject<StairBlock> ECHO_STAIRS = register("echo_stairs", () -> new StairBlock(ECHO_PLANKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
+    public static final RegistryObject<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
+    public static final RegistryObject<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final RegistryObject<ButtonBlock> ECHO_BUTTON = register("echo_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<PressurePlateBlock> ECHO_PRESSURE_PLATE = register("echo_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE)));
     public static final RegistryObject<DoorBlock> ECHO_DOOR = register("echo_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR)));
     public static final RegistryObject<TrapDoorBlock> ECHO_TRAPDOOR = register("echo_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
-    public static final RegistryObject<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final RegistryObject<StandingSignBlock> ECHO_SIGN = BLOCKS.register("echo_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final RegistryObject<Block> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).lootFrom(ECHO_SIGN), DDWoodTypes.ECHO));
 
@@ -85,6 +86,8 @@ public class DDBlocks {
     public static final RegistryObject<GloomVinesPlantBlock> GLOOM_VINES_PLANT = BLOCKS.register("gloom_vines_plant", () -> new GloomVinesPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES_PLANT.get()).lightLevel(state -> 3)));
 
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
+
+    // Miscellaneous
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
     public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(DDSounds.VASE).noOcclusion()));
     public static final RegistryObject<Block> SCULK_TRANSMITTER = register("sculk_transmitter", () -> new SculkTransmitter(BlockBehaviour.Properties.copy(Blocks.SCULK)));
