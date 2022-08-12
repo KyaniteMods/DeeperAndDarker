@@ -10,7 +10,5 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<MobEffect> SCULK_AFFINITY = MOB_EFFECTS.register("sculk_affinity",
-            () -> new SculkAffinity(MobEffectCategory.BENEFICIAL, 0x38DBE1));
-
+    public static final RegistryObject<MobEffect> SCULK_AFFINITY = MOB_EFFECTS.register("sculk_affinity", () -> new SculkAffinity(MobEffectCategory.BENEFICIAL, 0x38DBE1));
 }
