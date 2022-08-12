@@ -88,6 +88,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
 
+        itemModel(DDItems.SOUL_DUST, GENERATED);
         itemModel(DDItems.GLOOM_BERRIES, GENERATED);
 
         withExistingParent(DDItems.SCULK_LEECH_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));

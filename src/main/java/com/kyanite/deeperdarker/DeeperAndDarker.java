@@ -5,9 +5,11 @@ import com.kyanite.deeperdarker.client.rendering.entity.SculkLeechRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.ShatteredRenderer;
+import com.kyanite.deeperdarker.miscellaneous.BetterBrewingRecipe;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
+import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
@@ -16,6 +18,7 @@ import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
+import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDPoiTypes;
@@ -27,11 +30,13 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -62,6 +67,8 @@ public class DeeperAndDarker {
         DDItems.ITEMS.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
+        DDEffects.MOB_EFFECTS.register(eventBus);
+        DDPotions.POTIONS.register(eventBus);
         DDPoiTypes.POI.register(eventBus);
 
         GeckoLibMod.DISABLE_IN_DEV = true;
@@ -84,7 +91,12 @@ public class DeeperAndDarker {
 
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
-            event.enqueueWork(() -> Sheets.addWoodType(DDWoodTypes.ECHO));
+            event.enqueueWork(() -> {
+                Sheets.addWoodType(DDWoodTypes.ECHO);
+
+                BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.INVISIBILITY,
+                        DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY_POTION.get()));
+            });
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65F);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5F);

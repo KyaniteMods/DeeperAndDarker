@@ -9,7 +9,8 @@
     "PhantomRendererMixin",
     "SculkSpreadMixin",
     "PhantomMixin",
-    "SculkSensorMixin"
+    "SculkSensorMixin",
+    "VibrationListenerMixin"
   ],
   "client": [
 
