@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -37,6 +38,10 @@ public class WardenArmorItem extends GeoArmorItem implements IAnimatable {
 
                 if(player.level.dimension() == Level.OVERWORLD) {
                     if(player.hasEffect(MobEffects.DARKNESS)) player.removeEffect(MobEffects.DARKNESS);
+                }
+
+                if(player.level.dimension() == DDDimensions.OTHERSIDE_LEVEL) {
+                    player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 25, 0, true, false));
                 }
             }
         }
