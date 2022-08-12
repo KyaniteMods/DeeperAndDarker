@@ -3,12 +3,18 @@ package com.kyanite.deeperdarker.registry.world.features;
 import com.google.common.base.Suppliers;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -46,6 +52,15 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_VINES = feature("sculk_vines", DDFeatures.SCULK_VINES);
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> OTHERSIDE_PILLAR = feature("otherside_pillar", DDFeatures.OTHERSIDE_PILLAR);
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ECHO_TREE = feature("echo_tree", DDFeatures.ECHO_TREE);
+
+    public static final Holder<PlacedFeature> ECHO_TREE_CHECKED = PlacementUtils.register("echo_tree_checked", ECHO_TREE.getHolder().get());
+
+    public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> ECHO_TREE_SPAWN =
+            FeatureUtils.register("echo_tree_spawn", Feature.RANDOM_SELECTOR,
+                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ECHO_TREE_CHECKED,
+                            0.5F)), ECHO_TREE_CHECKED));
 
     public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;

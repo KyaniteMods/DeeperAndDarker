@@ -1,9 +1,12 @@
 package com.kyanite.deeperdarker.registry.world.features;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -28,7 +31,11 @@ public class DDPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SCULK_GLEAM = PLACED_FEATURES.register("sculk_gleam", () -> new PlacedFeature(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.getHolder().get(), commonOrePlacement(26, PlacementUtils.FULL_RANGE)));
     public static final RegistryObject<PlacedFeature> SCULK_VINES = PLACED_FEATURES.register("sculk_vines", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_VINES.getHolder().get(), commonOrePlacement(32, PlacementUtils.FULL_RANGE)));
 
-    public static final RegistryObject<PlacedFeature> OTHERSIDE_PILLAR = PLACED_FEATURES.register("otherside_pillar", () -> new PlacedFeature(DDConfiguredFeatures.OTHERSIDE_PILLAR.getHolder().get(), commonOrePlacement(17, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> OTHERSIDE_PILLAR = PLACED_FEATURES.register("otherside_pillar", () -> new PlacedFeature(DDConfiguredFeatures.OTHERSIDE_PILLAR.getHolder().get(), commonOrePlacement(30, PlacementUtils.FULL_RANGE)));
+
+    public static final RegistryObject<PlacedFeature> ECHO_TREE_PLACED = PLACED_FEATURES.register("echo_tree_placed",
+            () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
+                    DDConfiguredFeatures.ECHO_TREE_SPAWN, commonOrePlacement(45, PlacementUtils.FULL_RANGE)));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());

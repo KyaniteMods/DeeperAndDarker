@@ -11,7 +11,7 @@ public class DDFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, DeeperAndDarker.MOD_ID);
 
     public static final RegistryObject<OthersidePillarFeature> OTHERSIDE_PILLAR = FEATURES.register("otherside_pillar", () -> new OthersidePillarFeature(NoneFeatureConfiguration.CODEC));
-
+    public static final RegistryObject<EchoTreeFeature> ECHO_TREE = FEATURES.register("echo_tree", () -> new EchoTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<SculkGleamFeature> SCULK_GLEAM_BLOB = FEATURES.register("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<SculkVinesFeature> SCULK_VINES = FEATURES.register("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
 }
