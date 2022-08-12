@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
@@ -48,7 +49,7 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
             replaceState = DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState();
         }
 
-        else if(state == Blocks.SHROOMLIGHT.defaultBlockState()) {
+        else if(state.is(BlockTags.LEAVES) || state == Blocks.SHROOMLIGHT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
         }
 
