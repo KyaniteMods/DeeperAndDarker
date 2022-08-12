@@ -28,6 +28,7 @@ public class DDDataGenerators {
         generator.addProvider(event.includeServer(), new DDAdvancementsProvider(generator, fileHelper));
 
         generator.addProvider(event.includeClient(), new ENLanguageProvider(generator, "en_us", false));
+        generator.addProvider(event.includeClient(), new ENLanguageProvider(generator, "en_CA", false));
         generator.addProvider(event.includeClient(), new ENLanguageProvider(generator, "en_ud", true));
 
         generator.addProvider(event.includeServer(), new DDLootTableProvider(generator));
