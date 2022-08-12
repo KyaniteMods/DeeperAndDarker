@@ -10,6 +10,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -61,7 +63,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.minecraft.splash_potion.effect.sculk_affinity_potion", "Splash Potion of Sculk Affinity");
         add("item.minecraft.lingering_potion.effect.sculk_affinity_potion", "Lingering Potion of Sculk Affinity");
         add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
-        add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
+        add("item.minecraft.tipped_arrow.effect.sculk_affinity_potion", "Arrow of Sculk Affinity");
     }
 
     @Override
