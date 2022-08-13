@@ -11,7 +11,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.enter_otherside.title"
+      "translate": "advancements.deeperdarker.enter_otherside.description"
     },
     "frame": "goal",
     "hidden": false,

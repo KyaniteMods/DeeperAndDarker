@@ -60,7 +60,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
 
         Advancement.Builder.advancement().parent(killWarden).display(DDItems.HEART_OF_THE_DEEP.get(),
                         Component.translatable(id + "enter_otherside.title"),
-                        Component.translatable(id + "enter_otherside.title"),
+                        Component.translatable(id + "enter_otherside.description"),
                         null, FrameType.GOAL, true, true, false)
                 .addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(DDDimensions.OTHERSIDE_LEVEL))
                 .save(consumer, path + "enter_otherside");

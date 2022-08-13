@@ -76,6 +76,7 @@ public class DeeperAndDarker {
 
         MinecraftForge.EVENT_BUS.register(this);
     }
+
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class DeeperAndDarkerClient {
         @SubscribeEvent
