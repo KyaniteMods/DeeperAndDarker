@@ -16,17 +16,17 @@ public class DDParticleUtils {
             double d0 = pos.getX() + (double) Mth.randomBetween(randomSource, -0.7F, 0.7F);
             double d1 = pos.getY();
             double d2 = pos.getZ() + (double) Mth.randomBetween(randomSource, -0.7F, 0.7F);
-            level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state), d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state), d0, d1, d2, 0, 0, 0);
         }
     }
 
     public static void spawnHeartParticles(Entity entity, RandomSource randomSource) {
-        ParticleOptions particleoptions = ParticleTypes.HEART;
+        ParticleOptions particle = ParticleTypes.HEART;
         for(int i = 0; i < 7; i++) {
             double x = randomSource.nextGaussian() * 0.02D;
             double y = randomSource.nextGaussian() * 0.02D;
             double z = randomSource.nextGaussian() * 0.02D;
-            entity.level.addParticle(particleoptions, entity.getRandomX(1.0D), entity.getRandomY() + 0.5D, entity.getRandomZ(1.0D), x, y, z);
+            entity.level.addParticle(particle, entity.getRandomX(1.0D), entity.getRandomY() + 0.5D, entity.getRandomZ(1), x, y, z);
         }
     }
 }

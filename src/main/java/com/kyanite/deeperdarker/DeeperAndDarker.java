@@ -59,6 +59,7 @@ public class DeeperAndDarker {
 
         DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
+        DDEffects.MOB_EFFECTS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
         DDEntities.ENTITY_TYPES.register(eventBus);
         DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
@@ -66,9 +67,8 @@ public class DeeperAndDarker {
         OthersideBiomes.BIOMES.register(eventBus);
         DDItems.ITEMS.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
-        DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
-        DDEffects.MOB_EFFECTS.register(eventBus);
         DDPotions.POTIONS.register(eventBus);
+        DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
         DDPoiTypes.POI.register(eventBus);
 
         GeckoLibMod.DISABLE_IN_DEV = true;

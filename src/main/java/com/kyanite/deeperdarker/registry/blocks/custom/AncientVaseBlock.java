@@ -33,7 +33,7 @@ public class AncientVaseBlock extends Block {
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        if(randomSource.nextInt(0, 4) == 0) {
+        if(randomSource.nextInt(0, 6) == 0) {
             for(int i = 0; i < randomSource.nextInt(0, 4); i++) {
                 SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(pLevel);
                 sculkLeechEntity.moveTo(pPos.getX(), pPos.getY(), pPos.getZ(), 0, 0);
