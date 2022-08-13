@@ -11,5 +11,5 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDPotions {
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<Potion> SCULK_AFFINITY = POTIONS.register("sculk_affinity", () -> new Potion(new MobEffectInstance(DDEffects.SCULK_AFFINITY.get(), 250, 0)));
+    public static final RegistryObject<Potion> SCULK_AFFINITY = POTIONS.register("sculk_affinity", () -> new Potion(new MobEffectInstance(DDEffects.SCULK_AFFINITY.get(), 3600, 0)));
 }
