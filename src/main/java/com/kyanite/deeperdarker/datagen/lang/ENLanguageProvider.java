@@ -104,7 +104,10 @@ public class ENLanguageProvider extends LanguageProvider {
             }
         }
 
-        return upsideDown ? toUpsideDown(builder.toString()) : builder.toString();
+        String name = builder.toString();
+        if(name.equals("Heart Of The Deep")) name = "Heart of the Deep";
+
+        return upsideDown ? toUpsideDown(name) : name;
     }
 
     private static String toUpsideDown(String value) {
