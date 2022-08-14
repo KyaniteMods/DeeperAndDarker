@@ -107,6 +107,8 @@ public class ENLanguageProvider extends LanguageProvider {
         }
 
         String name = builder.toString();
+        if(name.equals("Chest Boat")) name = "Boat with Chest";
+        if(name.equals("Echo Chest Boat")) name = "Echo Boat with Chest";
         if(name.equals("Heart Of The Deep")) name = "Heart of the Deep";
 
         return upsideDown ? toUpsideDown(name) : name;

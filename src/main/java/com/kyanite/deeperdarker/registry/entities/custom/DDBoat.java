@@ -42,6 +42,7 @@ public class DDBoat extends Boat {
         this.entityData.define(WOOD_TYPE, 0);
     }
 
+
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
         if (pCompound.contains("Type", 8)) {
