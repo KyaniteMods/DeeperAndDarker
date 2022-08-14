@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.registry.enchantments;
 
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +14,7 @@ public class SculkDamageEnchantment extends Enchantment {
 
     @Override
     public float getDamageBonus(int level, MobType mobType, ItemStack enchantedItem) {
-        return mobType == DDMobTypes.SCULK ? 10F : 0.0F;
+        return mobType == DDTypes.SCULK ? 10F : 0.0F;
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
@@ -92,7 +92,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     @Override
     public MobType getMobType() {
-        return DDMobTypes.SCULK;
+        return DDTypes.SCULK;
     }
 
     public static AttributeSupplier attributes() {

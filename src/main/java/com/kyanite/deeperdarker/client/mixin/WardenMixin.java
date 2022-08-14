@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
@@ -75,7 +75,7 @@ public abstract class WardenMixin extends Monster {
     }
     @Override
     public MobType getMobType() {
-        return DDMobTypes.SCULK;
+        return DDTypes.SCULK;
     }
 
     @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)

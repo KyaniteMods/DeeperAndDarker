@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
@@ -63,7 +63,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public MobType getMobType() {
-        return DDMobTypes.SCULK;
+        return DDTypes.SCULK;
     }
 
     @Override

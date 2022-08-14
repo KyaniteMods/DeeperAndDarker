@@ -76,6 +76,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_SAND);
 
         // ITEMS
+        itemModel(DDItems.ECHO_BOAT, GENERATED);
+        itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);

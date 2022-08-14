@@ -1,10 +1,12 @@
-// 1.19.2	2022-08-14T14:29:00.0593012	Item Models: deeperdarker
+// 1.19.2	2022-08-14T17:51:30.7895097	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled_sculk_stone.json
 1efdf671344a524233dc6025ce4ade7431e7e840 assets/deeperdarker/models/item/cobbled_sculk_stone_slab.json
 89328e616967e970f638a1a85dc99021c95ea9f0 assets/deeperdarker/models/item/cobbled_sculk_stone_stairs.json
 a83a97c9a52c6f16a0d4dd3fcb6f498389378b84 assets/deeperdarker/models/item/cobbled_sculk_stone_wall.json
+2db46486bbd5bf4a2e740f0703b2bd1c8aff71c8 assets/deeperdarker/models/item/echo_boat.json
 96fbd67c89349be725a88605d80364cf607a947a assets/deeperdarker/models/item/echo_button.json
+64a40aaf74fd1cbe7a136a75e56292668deb1ee9 assets/deeperdarker/models/item/echo_chest_boat.json
 1482614d3ee56429560cc8b3e553b25970a7b5aa assets/deeperdarker/models/item/echo_door.json
 a46ca51f8fd8ac75d94138f3c3c63e4e6638fd11 assets/deeperdarker/models/item/echo_fence.json
 edfe59a1047cb324a9ad3141f6d28df768b17d4d assets/deeperdarker/models/item/echo_fence_gate.json

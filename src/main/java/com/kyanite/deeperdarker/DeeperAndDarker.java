@@ -1,10 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
-import com.kyanite.deeperdarker.client.rendering.entity.SculkLeechRenderer;
-import com.kyanite.deeperdarker.client.rendering.entity.SculkSnapperRenderer;
-import com.kyanite.deeperdarker.client.rendering.entity.SculkWormRenderer;
-import com.kyanite.deeperdarker.client.rendering.entity.ShatteredRenderer;
+import com.kyanite.deeperdarker.client.rendering.entity.*;
 import com.kyanite.deeperdarker.miscellaneous.BetterBrewingRecipe;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
@@ -12,10 +9,7 @@ import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.*;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
@@ -26,10 +20,15 @@ import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
@@ -38,6 +37,7 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -95,6 +95,12 @@ public class DeeperAndDarker {
         }
 
         @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
+            event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
+        }
+
+        @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDWoodTypes.ECHO);
@@ -104,12 +110,12 @@ public class DeeperAndDarker {
                 SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(),
                         SpawnPlacements.Type.ON_GROUND,
                         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                        Animal::checkAnimalSpawnRules);
+                        Mob::checkMobSpawnRules);
 
                 SpawnPlacements.register(DDEntities.SHATTERED.get(),
                         SpawnPlacements.Type.ON_GROUND,
                         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                        Monster::checkMonsterSpawnRules);
+                        Mob::checkMobSpawnRules);
             });
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65F);

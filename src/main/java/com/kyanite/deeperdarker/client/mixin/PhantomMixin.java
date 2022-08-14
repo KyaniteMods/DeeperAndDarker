@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.MobType;
@@ -17,6 +17,6 @@ public class PhantomMixin extends FlyingMob {
 
     @Override
     public MobType getMobType() {
-        return DDMobTypes.SCULK;
+        return DDTypes.SCULK;
     }
 }

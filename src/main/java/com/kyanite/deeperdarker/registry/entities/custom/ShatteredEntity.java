@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.miscellaneous.DDMobTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.ShatteredGoToDisturbanceGoal;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
@@ -131,7 +131,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     @Override
     public MobType getMobType() {
-        return DDMobTypes.SCULK;
+        return DDTypes.SCULK;
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -167,7 +167,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     public boolean canTargetEntity(Entity entity) {
         if (entity instanceof LivingEntity livingentity) {
-            if (this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDMobTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox())) {
+            if (this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox())) {
                 return true;
             }
         }
@@ -184,7 +184,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
         if(entity1 != null) {
             if(canTargetEntity(entity1))
             {
-                if(entity1 instanceof Monster && ((Monster)entity1).getMobType() != DDMobTypes.SCULK)
+                if(entity1 instanceof Monster && ((Monster)entity1).getMobType() != DDTypes.SCULK)
                     this.setTarget((LivingEntity) entity1);
                 if(entity1 instanceof Player)
                     this.setTarget((LivingEntity) entity1);
