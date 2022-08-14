@@ -1,9 +1,11 @@
 package com.kyanite.deeperdarker.registry.world.features;
 
+import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -34,10 +36,18 @@ public class DDPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> ECHO_TREE_PLACED = PLACED_FEATURES.register("echo_tree_placed",
             () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)
-                    DDConfiguredFeatures.ECHO_TREE_SPAWN, commonOrePlacement(45, PlacementUtils.FULL_RANGE)));
+                    DDConfiguredFeatures.ECHO_TREE_SPAWN, echoTreePlacement()));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());
+    }
+
+    public static List<PlacementModifier> echoTreePlacement() {
+        ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
+        builder.add(InSquarePlacement.spread());
+        builder.add(CountOnEveryLayerPlacement.of(8));
+        builder.add(BiomeFilter.biome());
+        return builder.build();
     }
 
     public static List<PlacementModifier> commonOrePlacement(int attempts, PlacementModifier range) {
