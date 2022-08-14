@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-11T17:52:50.566669	Block States: deeperdarker
+// 1.19.2	2022-08-13T21:04:57.0690883	Block States: deeperdarker
 63b29abf80d480459ac97153a9839072673f5082 assets/deeperdarker/blockstates/cobbled_sculk_stone.json
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
 d4f6eb2945fc34ef732d828c5c8a5a13c50ca8ee assets/deeperdarker/blockstates/cobbled_sculk_stone_stairs.json
@@ -7,6 +7,7 @@ e4e036df993d1fd126e18bdee151a362062b67ba assets/deeperdarker/blockstates/echo_bu
 f9f89777fc9470754566ce97c57e498ede217b9d assets/deeperdarker/blockstates/echo_door.json
 614f89c281ee92444a71d801bbf6031fda49b921 assets/deeperdarker/blockstates/echo_fence.json
 5fbd195c2debbaaea3a4f974725d073d4304d812 assets/deeperdarker/blockstates/echo_fence_gate.json
+42b97f234094523a222a2242421791cfc5f95480 assets/deeperdarker/blockstates/echo_leaves.json
 d41c82879017b33efb705608546c3a8a524c4e9a assets/deeperdarker/blockstates/echo_log.json
 b7e85e44f04a58facac77c5d1f859fd0f87bf5a1 assets/deeperdarker/blockstates/echo_planks.json
 25f46d593c3988a750078ac8aef64f6c71005bf4 assets/deeperdarker/blockstates/echo_pressure_plate.json
@@ -71,6 +72,7 @@ e386bf2674bac9a7f768cc3fea2bbe0b97b8cbfd assets/deeperdarker/models/block/echo_f
 d071d6262539742640a24eb909dc58d1ea4574fa assets/deeperdarker/models/block/echo_fence_inventory.json
 00275c355b833d8e2bcfdcd431d97f381cc5ea81 assets/deeperdarker/models/block/echo_fence_post.json
 b3c385050533c48dc8e34e4157adacb54374378d assets/deeperdarker/models/block/echo_fence_side.json
+aaabde15374205c551540811ecffc2e00da76029 assets/deeperdarker/models/block/echo_leaves.json
 8f1ad42651a0862e13a9c8c04fc7fe53931f0aa2 assets/deeperdarker/models/block/echo_log.json
 878b33b87aaf8ccd710b098477480bcd02df8a27 assets/deeperdarker/models/block/echo_log_horizontal.json
 c423df58d4e94cb49f50fcbc3d89223dd68d4028 assets/deeperdarker/models/block/echo_planks.json

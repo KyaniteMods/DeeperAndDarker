@@ -21,6 +21,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         axisBlock(DDBlocks.STRIPPED_ECHO_LOG.get(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeColumn(DDBlocks.STRIPPED_ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)), models().cubeColumn(DDBlocks.STRIPPED_ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
         axisBlock(DDBlocks.ECHO_WOOD.get(), models().cubeColumn(DDBlocks.ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)), models().cubeColumn(DDBlocks.ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)));
+        simpleBlock(DDBlocks.ECHO_LEAVES.get());
         slabBlock(DDBlocks.ECHO_SLAB.get(), blockLoc(DDBlocks.ECHO_PLANKS), blockLoc(DDBlocks.ECHO_PLANKS));
         fenceBlock(DDBlocks.ECHO_FENCE, blockLoc(DDBlocks.ECHO_PLANKS));
         stairsBlock(DDBlocks.ECHO_STAIRS.get(), blockLoc(DDBlocks.ECHO_PLANKS));

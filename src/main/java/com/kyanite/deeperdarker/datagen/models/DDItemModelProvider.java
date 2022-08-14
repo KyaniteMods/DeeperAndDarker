@@ -26,6 +26,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.STRIPPED_ECHO_LOG);
         blockModel(DDBlocks.STRIPPED_ECHO_WOOD);
         blockModel(DDBlocks.ECHO_WOOD);
+        blockModel(DDBlocks.ECHO_LEAVES);
         blockModel(DDBlocks.ECHO_SLAB);
         blockModel(DDBlocks.ECHO_FENCE, "inventory");
         blockModel(DDBlocks.ECHO_STAIRS);
