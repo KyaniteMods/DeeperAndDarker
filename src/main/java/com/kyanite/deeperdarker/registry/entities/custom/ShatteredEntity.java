@@ -150,7 +150,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     @Override
     public boolean shouldListen(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, GameEvent.Context context) {
-        if (!this.isNoAi() && !this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
+        if (!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
             Entity entity = context.sourceEntity();
             if (entity instanceof LivingEntity) {
                 LivingEntity livingentity = (LivingEntity)entity;
@@ -167,7 +167,7 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     public boolean canTargetEntity(Entity entity) {
         if (entity instanceof LivingEntity livingentity) {
-            if (this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() == DDMobTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox())) {
+            if (this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDMobTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox())) {
                 return true;
             }
         }
