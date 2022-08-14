@@ -18,6 +18,7 @@ public class DDPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
 
     public static final RegistryObject<PlacedFeature> SCULK = PLACED_FEATURES.register("sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK.getHolder().get(), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> ECHO_SAND = PLACED_FEATURES.register("echo_sand", () -> new PlacedFeature(DDConfiguredFeatures.ORE_ECHO_SAND.getHolder().get(), commonOrePlacement(35, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static final RegistryObject<PlacedFeature> INFESTED_SCULK = PLACED_FEATURES.register("infested_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_INFESTED_SCULK.getHolder().get(), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 
     public static final RegistryObject<PlacedFeature> SCULK_COAL_ORE = PLACED_FEATURES.register("sculk_coal_ore", () -> new PlacedFeature(DDConfiguredFeatures.ORE_COAL_SCULK.getHolder().get(), commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.top()))));
@@ -32,7 +33,7 @@ public class DDPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SCULK_GLEAM = PLACED_FEATURES.register("sculk_gleam", () -> new PlacedFeature(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.getHolder().get(), commonOrePlacement(26, PlacementUtils.FULL_RANGE)));
     public static final RegistryObject<PlacedFeature> SCULK_VINES = PLACED_FEATURES.register("sculk_vines", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_VINES.getHolder().get(), commonOrePlacement(32, PlacementUtils.FULL_RANGE)));
 
-    public static final RegistryObject<PlacedFeature> OTHERSIDE_PILLAR = PLACED_FEATURES.register("otherside_pillar", () -> new PlacedFeature(DDConfiguredFeatures.OTHERSIDE_PILLAR.getHolder().get(), commonOrePlacement(30, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> OTHERSIDE_PILLAR = PLACED_FEATURES.register("otherside_pillar", () -> new PlacedFeature(DDConfiguredFeatures.OTHERSIDE_PILLAR.getHolder().get(), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
 
     public static final RegistryObject<PlacedFeature> ECHO_TREE_PLACED = PLACED_FEATURES.register("echo_tree_placed",
             () -> new PlacedFeature((Holder<ConfiguredFeature<?,?>>)(Holder<? extends ConfiguredFeature<?,?>>)

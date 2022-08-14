@@ -30,11 +30,11 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        int height = pContext.random().nextInt(6, 9);
+        int height = pContext.random().nextInt(6, 8);
 
         if(pContext.random().nextInt(0, 2) == 0) return false;
         if(!pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK)) return false;
-        if(noSpace(pContext.level(), pContext.origin(), height + 2)) return false;
+        if(noSpace(pContext.level(), pContext.origin(), height + 3)) return false;
 
         int logs;
         for(logs = 0; logs < height; logs++) {
@@ -61,23 +61,42 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int z = origin.getZ();
         int x1 = 0;
         int z1 = 0;
+        int topLengthX = randomSources.nextInt(3, 4);
+        int topLengthZ = randomSources.nextInt(3, 4);
 
-        for(x1 = 0; x1 < randomSources.nextInt(4, 5); x1++) {
+        for(x1 = 0; x1 < topLengthX; x1++) {
             tryPlaceLeaf(level, new BlockPos(x + x1, y, z));
             tryPlaceLeaf(level, new BlockPos(x - x1, y, z));
-            for(z1 = 0; z1 < randomSources.nextInt(4, 5); z1++) {
+            if(x1 < topLengthX / 1.2f) {
+                tryPlaceLeaf(level, new BlockPos(x + x1, y + 1, z));
+                tryPlaceLeaf(level, new BlockPos(x - x1, y + 1, z));
+            }
+            for(z1 = 0; z1 < topLengthZ; z1++) {
                 tryPlaceLeaf(level, new BlockPos(x, y, z + z1));
                 tryPlaceLeaf(level, new BlockPos(x, y, z - z1));
+                if(z1 < topLengthZ / 1.2f)
+                {
+                    tryPlaceLeaf(level, new BlockPos(x, y + 1, z + z1));
+                    tryPlaceLeaf(level, new BlockPos(x, y + 1, z - z1));
+                }
             }
         }
 
         int x2 = 0;
+        int spiderTopLength = randomSources.nextInt(3, 4);
 
-        for(x2 = 0; x2 < randomSources.nextInt(3, 5); x2++) {
+        for(x2 = 0; x2 < spiderTopLength; x2++) {
             tryPlaceLeaf(level, new BlockPos(x - x2, y, z - x2));
             tryPlaceLeaf(level, new BlockPos(x + x2, y, z + x2));
             tryPlaceLeaf(level, new BlockPos(x - x2, y, z + x2));
             tryPlaceLeaf(level, new BlockPos(x + x2, y, z - x2));
+
+            if(x2 < spiderTopLength / 1.2f){
+                tryPlaceLeaf(level, new BlockPos(x - x2, y + 1, z - x2));
+                tryPlaceLeaf(level, new BlockPos(x + x2, y + 1, z + x2));
+                tryPlaceLeaf(level, new BlockPos(x - x2, y + 1, z + x2));
+                tryPlaceLeaf(level, new BlockPos(x + x2, y + 1, z - x2));
+            }
         }
 
         placeHanging(randomSources, level, new BlockPos(x + x1, y, z));
@@ -90,8 +109,6 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         placeHanging(randomSources, level, new BlockPos(x + x2, y, z + x2));
         placeHanging(randomSources, level, new BlockPos(x - x2, y, z - x2));
 
-        tryPlaceLeaf(level, new BlockPos(origin.getX(), origin.getY() + 1, origin.getZ()));
-
         tryPlaceLeaf(level, new BlockPos(origin.getX() - 1, origin.getY() - 1, origin.getZ()));
         tryPlaceLeaf(level, new BlockPos(origin.getX() + 1, origin.getY() - 1, origin.getZ()));
         tryPlaceLeaf(level, new BlockPos(origin.getX(), origin.getY() - 1, origin.getZ() - 1));
@@ -103,7 +120,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public void placeHanging(RandomSource source, WorldGenLevel level, BlockPos pos) {
-        for(int dripAmount = 0; dripAmount < source.nextInt(2, 5    ); dripAmount++) {
+        for(int dripAmount = 0; dripAmount < source.nextInt(2, 5); dripAmount++) {
             tryPlaceLeaf(level, new BlockPos(pos.getX(), pos.getY() - dripAmount, pos.getZ()));
         }
     }
@@ -113,25 +130,22 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int z = origin.getZ();
 
         level.setBlock(new BlockPos(x - 1, y, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x - 2, y, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x - 1, y + 1, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-
+        level.setBlock(new BlockPos(x - 1, y - 1, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
         level.setBlock(new BlockPos(x + 1, y, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x + 2, y, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x + 1, y + 1, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x + 1, y - 1, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
 
         level.setBlock(new BlockPos(x, y, z - 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x, y, z - 2), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y - 1, z - 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
         level.setBlock(new BlockPos(x, y + 1, z - 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
 
         level.setBlock(new BlockPos(x, y, z + 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x, y, z + 2), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y - 1, z + 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
         level.setBlock(new BlockPos(x, y + 1, z + 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
     }
 
     public void tryPlaceLeaf(WorldGenLevel level, BlockPos pos) {
         if (TreeFeature.validTreePos(level, pos)) {
-            if(level.getRandom().nextInt(0, 12) == 0)
+            if(level.getRandom().nextInt(0, 20) == 0)
                 setBlock(level, pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState());
             else
                 setBlock(level, pos, DDBlocks.ECHO_LEAVES.get().defaultBlockState());

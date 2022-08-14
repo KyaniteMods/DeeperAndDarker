@@ -25,6 +25,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES.get());
         tag(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS);
         tag(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS.get());
+        tag(BlockTags.SAND).add(DDBlocks.ECHO_SAND.get());
         tag(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN.get());
         tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get());
         tag(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON.get());

@@ -1,0 +1,41 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "echoing_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:echoing_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.locate_echoing_forest.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:echo_log"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.locate_echoing_forest.title"
+    }
+  },
+  "requirements": [
+    [
+      "echoing_forest"
+    ]
+  ]
+}

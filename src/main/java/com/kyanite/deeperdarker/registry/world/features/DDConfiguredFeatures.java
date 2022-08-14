@@ -26,6 +26,7 @@ public class DDConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
 
     public static final Supplier<List<OreConfiguration.TargetBlockState>> SCULK_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_STONE.get()), Blocks.SCULK.defaultBlockState())));
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> ECHO_SAND_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.ECHO_SAND.get().defaultBlockState())));
     public static final Supplier<List<OreConfiguration.TargetBlockState>> INFESTED_SCULK_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.INFESTED_SCULK.get().defaultBlockState())));
     public static final Supplier<List<OreConfiguration.TargetBlockState>> ORE_COAL_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_STONE.get()), DDBlocks.SCULK_STONE_COAL_ORE.get().defaultBlockState())));
     public static final Supplier<List<OreConfiguration.TargetBlockState>> ORE_IRON_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_STONE.get()), DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState())));
@@ -37,6 +38,7 @@ public class DDConfiguredFeatures {
     public static final Supplier<List<OreConfiguration.TargetBlockState>> ORE_DIAMOND_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_STONE.get()), DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState())));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_SCULK = CONFIGURED_FEATURES.register("ore_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(SCULK_TARGET_LIST.get(), 64)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_ECHO_SAND = CONFIGURED_FEATURES.register("ore_echo_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ECHO_SAND_TARGET_LIST.get(), 32)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_INFESTED_SCULK = CONFIGURED_FEATURES.register("ore_infested_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(INFESTED_SCULK_TARGET_LIST.get(), 3)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_COAL_SCULK = CONFIGURED_FEATURES.register("ore_coal_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_COAL_TARGET_LIST.get(), 8, 0.1f)));

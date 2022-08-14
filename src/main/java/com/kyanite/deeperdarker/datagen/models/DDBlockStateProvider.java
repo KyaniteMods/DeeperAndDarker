@@ -67,6 +67,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOM_GRASS.get());
         //this.createGloomVines();
 
+        simpleBlock(DDBlocks.ECHO_SAND.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
     }
 

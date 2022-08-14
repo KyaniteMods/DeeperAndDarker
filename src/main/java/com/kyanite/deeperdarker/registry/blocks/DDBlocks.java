@@ -35,6 +35,8 @@ public class DDBlocks {
         public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 20; }
         public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 5; }
     });
+
+    public static final RegistryObject<Block> ECHO_SAND = register("echo_sand", () -> new SandBlock(0x61519c, BlockBehaviour.Properties.copy(Blocks.SAND)));
     public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));

@@ -73,6 +73,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_GLEAM);
         blockModel(DDBlocks.ANCIENT_VASE);
         blockModel(DDBlocks.SCULK_TRANSMITTER);
+        blockModel(DDBlocks.ECHO_SAND);
 
         // ITEMS
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
