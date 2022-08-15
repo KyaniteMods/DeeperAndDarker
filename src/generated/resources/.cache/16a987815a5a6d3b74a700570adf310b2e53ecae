@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-14T14:29:00.0613025	Block States: deeperdarker
+// 1.19.2	2022-08-14T18:48:50.6334718	Block States: deeperdarker
 63b29abf80d480459ac97153a9839072673f5082 assets/deeperdarker/blockstates/cobbled_sculk_stone.json
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
 d4f6eb2945fc34ef732d828c5c8a5a13c50ca8ee assets/deeperdarker/blockstates/cobbled_sculk_stone_stairs.json
@@ -18,7 +18,6 @@ b7e85e44f04a58facac77c5d1f859fd0f87bf5a1 assets/deeperdarker/blockstates/echo_pl
 22c2cba0e97082a3226c511ede5dc96730afaca6 assets/deeperdarker/blockstates/echo_trapdoor.json
 55cc3ec07db6ec529cdbb67e5e47794befbcdcd1 assets/deeperdarker/blockstates/echo_wall_sign.json
 1fc3880ebaa4661ad4173947733665f1a83534fa assets/deeperdarker/blockstates/echo_wood.json
-83179990889824fcd342e922259f1c7d604c8fe6 assets/deeperdarker/blockstates/gloom_grass.json
 806ccbbbd3d24a4d7e19d23cdc4008dacf14e2e0 assets/deeperdarker/blockstates/infested_sculk.json
 f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polished_sculk_stone.json
 65ee0b17417cefc06f60fd584d5cd1092c1725e7 assets/deeperdarker/blockstates/polished_sculk_stone_slab.json
@@ -90,7 +89,6 @@ c918d7bf217d133d61f6b85200ee8ed06e93f804 assets/deeperdarker/models/block/echo_s
 0d5359ead6b1d46b5887e3b33a0a9750c62da638 assets/deeperdarker/models/block/echo_trapdoor_open.json
 6eb31cf04436cf691700d9761870f574d977582e assets/deeperdarker/models/block/echo_trapdoor_top.json
 30e9f92d08cf88d0a24486300ee6f7e45517b6d7 assets/deeperdarker/models/block/echo_wood.json
-6fd16af6aca42fa65266d7a7c03e238b1517e4a4 assets/deeperdarker/models/block/gloom_grass.json
 228e188749dcf61478397d8fd2edb7df3b638393 assets/deeperdarker/models/block/infested_sculk.json
 6e39e5f243d47894fcebfef939f739ce9a07ee4b assets/deeperdarker/models/block/polished_sculk_stone.json
 590440dc0c02ec2bc2da402df1a8d28bca185596 assets/deeperdarker/models/block/polished_sculk_stone_slab.json
