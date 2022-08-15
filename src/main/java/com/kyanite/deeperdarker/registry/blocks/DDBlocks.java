@@ -102,7 +102,7 @@ public class DDBlocks {
 
     // Miscellaneous
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
-    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(DDSounds.VASE).noOcclusion()));
+    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(DDSounds.VASE).instabreak().noOcclusion()));
   //  public static final RegistryObject<Block> SCULK_TRANSMITTER = register("sculk_transmitter", () -> new SculkTransmitter(BlockBehaviour.Properties.copy(Blocks.SCULK)));
 
     public static final RegistryObject<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJaw(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
