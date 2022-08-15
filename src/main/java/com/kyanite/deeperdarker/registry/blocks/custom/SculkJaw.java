@@ -1,23 +1,23 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -34,7 +34,7 @@ public class SculkJaw extends Block {
     @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(!pState.is(DDBlocks.SCULK_JAW.get())) return;
-        if(pState.getValue(ACTIVATED) == true) return;
+        if(pState.getValue(ACTIVATED)) return;
 
         if(pEntity instanceof Player plr) {
             if(plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
@@ -46,7 +46,7 @@ public class SculkJaw extends Block {
             mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1));
         }
 
-        pEntity.hurt(damageSource, 4); // they take damage even if they dont fall in
+        pEntity.hurt(damageSource, 4); // They take damage even if they don't fall in
         pEntity.setDeltaMovement(Vec3.ZERO);
         pLevel.setBlock(pPos, DDBlocks.SCULK_JAW.get().defaultBlockState().setValue(ACTIVATED, true), 3);
     }
@@ -71,7 +71,7 @@ public class SculkJaw extends Block {
     @Override
     public void randomTick(BlockState p_222954_, ServerLevel p_222955_, BlockPos p_222956_, RandomSource p_222957_) {
         if(!p_222954_.is(DDBlocks.SCULK_JAW.get())) return;
-        if(p_222954_.getValue(ACTIVATED) == false) return;
+        if(!p_222954_.getValue(ACTIVATED)) return;
 
         if(p_222957_.nextInt(0, 30) == 0) {
             p_222955_.setBlock(p_222956_, p_222954_.setValue(ACTIVATED, false), 3);
@@ -87,7 +87,7 @@ public class SculkJaw extends Block {
     public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         if(!pState.is(DDBlocks.SCULK_JAW.get())) return super.getCollisionShape(pState, pLevel, pPos, pContext);
 
-        if(pState.getValue(ACTIVATED) == true)
+        if(pState.getValue(ACTIVATED))
             return Block.box(0, 0, 0, 0, 0, 0);
 
         return super.getCollisionShape(pState, pLevel, pPos, pContext);

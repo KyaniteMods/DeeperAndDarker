@@ -36,7 +36,6 @@ public class DDBlocks {
         public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 5; }
     });
 
-    public static final RegistryObject<Block> ECHO_SAND = register("echo_sand", () -> new SandBlock(0x61519c, BlockBehaviour.Properties.copy(Blocks.SAND)));
     public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
@@ -56,6 +55,8 @@ public class DDBlocks {
     public static final RegistryObject<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final RegistryObject<StandingSignBlock> ECHO_SIGN = BLOCKS.register("echo_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final RegistryObject<Block> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).lootFrom(ECHO_SIGN), DDWoodTypes.ECHO));
+
+    public static final RegistryObject<Block> ECHO_SAND = register("echo_sand", () -> new SandBlock(0x61519c, BlockBehaviour.Properties.copy(Blocks.SAND)));
 
     // Sculk Stone
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(4.5f, 5.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));

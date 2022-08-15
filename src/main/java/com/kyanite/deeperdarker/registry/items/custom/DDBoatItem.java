@@ -8,7 +8,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.BoatItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
@@ -46,7 +45,7 @@ public class DDBoatItem extends BoatItem {
                 Vec3 vec31 = pPlayer.getEyePosition();
 
                 for(Entity entity : list) {
-                    AABB aabb = entity.getBoundingBox().inflate((double)entity.getPickRadius());
+                    AABB aabb = entity.getBoundingBox().inflate(entity.getPickRadius());
                     if (aabb.contains(vec31)) {
                         return InteractionResultHolder.pass(itemstack);
                     }

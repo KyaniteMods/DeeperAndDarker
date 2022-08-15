@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.client.rendering.entity;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import cpw.mods.modlauncher.api.IModuleLayerManager;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -14,7 +13,6 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;

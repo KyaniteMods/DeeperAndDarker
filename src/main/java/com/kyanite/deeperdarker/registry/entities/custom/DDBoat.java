@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.nbt.CompoundTag;
@@ -9,8 +8,6 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
@@ -75,7 +72,7 @@ public class DDBoat extends Boat {
     }
 
     public enum Type {
-        ECHO("echo", () -> DDItems.ECHO_BOAT.get(), () -> DDItems.ECHO_CHEST_BOAT.get());
+        ECHO("echo", DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
 
         private final String name;
         private final Supplier<Item> item;
@@ -111,9 +108,9 @@ public class DDBoat extends Boat {
         public static Type byName(String name) {
             Type[] values = values();
 
-            for(int i = 0; i < values.length; ++i) {
-                if (values[i].getName().equals(name)) {
-                    return values[i];
+            for (Type value : values) {
+                if (value.getName().equals(name)) {
+                    return value;
                 }
             }
 

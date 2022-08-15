@@ -7,8 +7,10 @@ import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.client.animation.definitions.WardenAnimation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
+import org.spongepowered.asm.mixin.Shadow;
 
 
 @OnlyIn(Dist.CLIENT)
