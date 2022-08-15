@@ -14,7 +14,7 @@
     "SculkBlockMixin"
   ],
   "client": [
-
+    "WardenAnimations"
   ],
   "injectors": {
     "defaultRequire": 1
