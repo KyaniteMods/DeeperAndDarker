@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
+import org.lwjgl.opengl.GL11;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 import software.bernie.geckolib3.renderers.geo.layer.LayerGlowingAreasGeo;
 
@@ -15,11 +16,14 @@ public class ShatteredRenderer extends GeoEntityRenderer<ShatteredEntity> {
     public ShatteredRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ShatteredModel());
         this.addLayer(new LayerGlowingAreasGeo<>(this, getGeoModelProvider()::getTextureResource, getGeoModelProvider()::getModelResource, RenderType::entityTranslucentEmissive));
+
+        GL11.glDisable(GL11.GL_CULL_FACE);
     }
 
     @Override
     public RenderType getRenderType(ShatteredEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
         stack.scale(1f, 1f, 1f);
+        GL11.glDisable(GL11.GL_CULL_FACE);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }

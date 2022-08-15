@@ -43,7 +43,16 @@
 					"parent": "Head",
 					"pivot": [-4, 30.5, 0],
 					"cubes": [
-						{"origin": [-12, 28, 0], "size": [8, 8, 0], "uv": [24, 0]}
+						{"origin": [-12, 28, 0], "size": [8, 8, 0.0801], "uv": [24, 0]}
+					]
+				},
+				{
+					"name": "Tendril2",
+					"parent": "Head",
+					"pivot": [4, 30.5, 0],
+					"rotation": [0, 180, 0],
+					"cubes": [
+						{"origin": [-4, 28, 0], "size": [8, 8, 0.0801], "uv": [45, 0]}
 					]
 				},
 				{

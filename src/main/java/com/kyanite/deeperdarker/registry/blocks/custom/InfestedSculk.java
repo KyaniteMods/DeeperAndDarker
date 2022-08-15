@@ -20,11 +20,6 @@ public class InfestedSculk extends SculkBlock {
     }
 
     @Override
-    public float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return 20;
-    }
-
-    @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof Player player) {
             pLevel.setBlock(pPos, Blocks.SCULK.defaultBlockState(), 3);

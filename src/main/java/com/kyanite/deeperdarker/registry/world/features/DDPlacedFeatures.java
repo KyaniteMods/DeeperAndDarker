@@ -19,7 +19,9 @@ public class DDPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> SCULK = PLACED_FEATURES.register("sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK.getHolder().get(), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static final RegistryObject<PlacedFeature> ECHO_SAND = PLACED_FEATURES.register("echo_sand", () -> new PlacedFeature(DDConfiguredFeatures.ORE_ECHO_SAND.getHolder().get(), commonOrePlacement(35, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
-    public static final RegistryObject<PlacedFeature> INFESTED_SCULK = PLACED_FEATURES.register("infested_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_INFESTED_SCULK.getHolder().get(), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> INFESTED_SCULK = PLACED_FEATURES.register("infested_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_INFESTED_SCULK.getHolder().get(), commonOrePlacement(200, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
+    public static final RegistryObject<PlacedFeature> SCULK_JAW = PLACED_FEATURES.register("sculk_jaw", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_JAW.getHolder().get(), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 
     public static final RegistryObject<PlacedFeature> SCULK_COAL_ORE = PLACED_FEATURES.register("sculk_coal_ore", () -> new PlacedFeature(DDConfiguredFeatures.ORE_COAL_SCULK.getHolder().get(), commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.top()))));
     public static final RegistryObject<PlacedFeature> SCULK_IRON_ORE = PLACED_FEATURES.register("sculk_iron_ore", () -> new PlacedFeature(DDConfiguredFeatures.ORE_IRON_SCULK.getHolder().get(), commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128)))));

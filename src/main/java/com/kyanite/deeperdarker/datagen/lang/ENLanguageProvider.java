@@ -64,6 +64,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
         add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
+        add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
     }
 
     @Override

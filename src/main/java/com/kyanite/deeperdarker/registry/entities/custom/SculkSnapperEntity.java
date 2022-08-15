@@ -277,7 +277,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         }
 
         Player player = getLevel().getNearestPlayer(this, 40);
-        if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null || player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
+        if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
             setState(IDLE);
             return;
         }

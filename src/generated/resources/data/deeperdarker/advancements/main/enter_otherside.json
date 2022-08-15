@@ -16,7 +16,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "deeperdarker:heart_of_the_deep"
+      "item": "minecraft:air"
     },
     "show_toast": true,
     "title": {
