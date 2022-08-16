@@ -34,6 +34,7 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -77,9 +78,10 @@ public class DeeperAndDarker {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class DeeperAndDarkerClient {
         @SubscribeEvent
+        @OnlyIn(Dist.CLIENT)
         public static void clientSetup(final FMLClientSetupEvent event) {
             WoodType.register(DDWoodTypes.ECHO);
             BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
@@ -91,6 +93,7 @@ public class DeeperAndDarker {
         }
 
         @SubscribeEvent
+        @OnlyIn(Dist.CLIENT)
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
             event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
@@ -121,6 +124,7 @@ public class DeeperAndDarker {
         }
 
         @SubscribeEvent
+        @OnlyIn(Dist.CLIENT)
         public static void entityRender(final EntityRenderersEvent.AddLayers event) {
             GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
         }
