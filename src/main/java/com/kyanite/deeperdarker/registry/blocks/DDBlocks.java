@@ -40,7 +40,7 @@ public class DDBlocks {
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
-    public static final RegistryObject<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new NonDecayingLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), 24) {
+    public static final RegistryObject<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
         public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return true; }
         public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 60; }
         public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 30; }
@@ -103,10 +103,11 @@ public class DDBlocks {
 
     // Miscellaneous
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
-    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(DDSounds.VASE).instabreak().noOcclusion()));
+    public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
   //  public static final RegistryObject<Block> SCULK_TRANSMITTER = register("sculk_transmitter", () -> new SculkTransmitter(BlockBehaviour.Properties.copy(Blocks.SCULK)));
 
     public static final RegistryObject<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJaw(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
+
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);
         DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));

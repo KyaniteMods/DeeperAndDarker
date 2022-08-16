@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-13T21:04:57.0650886	Tags for minecraft:item
+// 1.19.2	2022-08-15T19:30:31.7980418	Tags for minecraft:item
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/forge/tags/items/armors/boots.json
 cd0c284256799e44917e495727d6befdd3b4515c data/forge/tags/items/armors/chestplates.json
@@ -27,7 +27,6 @@ a6e8684ecf1050e4637b34eb8bd1a0bfb6b1519e data/minecraft/tags/items/fox_food.json
 09f2c36f34dcd8a486f28c8131e1eb943aa10037 data/minecraft/tags/items/gold_ores.json
 0117d79b5b204352a7d9f3d7e65b5e653ea0f6b6 data/minecraft/tags/items/iron_ores.json
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/minecraft/tags/items/lapis_ores.json
-65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/items/leaves.json
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/items/logs_that_burn.json
 a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/items/planks.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/items/redstone_ores.json

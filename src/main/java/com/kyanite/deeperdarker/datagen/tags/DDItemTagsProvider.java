@@ -19,7 +19,6 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
-        copy(BlockTags.LEAVES, ItemTags.LEAVES);
         copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
