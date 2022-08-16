@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#deeperdarker:has_structure/ancient_temple",
+  "step": "underground_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_box",
+  "start_pool": "deeperdarker:ancient_temple",
+  "size": 1,
+  "start_height": {
+    "type": "minecraft:very_biased_to_bottom",
+    "min_inclusive": {
+      "absolute": 0
+    },
+    "max_inclusive": {
+      "absolute": 64
+    }
+  },
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}
