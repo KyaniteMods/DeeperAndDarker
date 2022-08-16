@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -42,6 +43,8 @@ public class SculkJaw extends Block {
 
         if(pEntity instanceof LivingEntity mob)
         {
+            if(mob.getMobType().equals(DDTypes.SCULK)) return;
+
             mob.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80));
             mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1));
         }

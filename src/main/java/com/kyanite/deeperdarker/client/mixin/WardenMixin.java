@@ -26,52 +26,8 @@ import java.util.Optional;
 
 @Mixin(Warden.class)
 public abstract class WardenMixin extends Monster {
-    @Shadow
-    public abstract Brain<Warden> getBrain();
-
-    @Shadow
-    public abstract AngerLevel getAngerLevel();
-
-    @Shadow
-    private AngerManagement angerManagement;
-
-    @Shadow public abstract Optional<LivingEntity> getEntityAngryAt();
-
-    @Shadow public abstract AngerManagement getAngerManagement();
-
-    @Shadow public abstract boolean canTargetEntity(@Nullable Entity entity);
-
-    @Shadow protected abstract void playListeningSound();
-
-    @Shadow protected abstract int getActiveAnger();
-
     public WardenMixin(EntityType<Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-    }
-
-    @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)
-    public void canTarget(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if(entity instanceof Player player) {
-            if(player.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()).is(DDItems.WARDEN_CHESTPLATE.get())) {
-                if(getActiveAnger() != 0) return;
-
-                cir.setReturnValue(false);
-            }
-        }
-    }
-    @Inject(method = "increaseAngerAt(Lnet/minecraft/world/entity/Entity;IZ)V",  at = @At("HEAD"), cancellable = true)
-    public void increaseAngerAt(Entity entity, int anger, boolean listening, CallbackInfo ci) {
-        ci.cancel();
-        if(!this.isNoAi()) {
-            WardenAi.setDigCooldown(this);
-            boolean flag = !(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null) instanceof Player);
-            int i = this.angerManagement.increaseAnger(entity, anger);
-            if(entity instanceof Player && flag && AngerLevel.byAnger(i).isAngry()) {
-                this.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-            }
-
-            if(listening) this.playListeningSound();
-        }
     }
     @Override
     public MobType getMobType() {
