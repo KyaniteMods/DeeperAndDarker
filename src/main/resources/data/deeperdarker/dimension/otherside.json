@@ -157,26 +157,26 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "deeperdarker:otherside_lowland",
+          "biome": "deeperdarker:echoing_forest",
           "parameters": {
-            "temperature": 0,
-            "humidity": 0,
+            "temperature": 0.3,
+            "humidity": 0.4,
             "continentalness": 0,
-            "erosion": 0,
+            "erosion": 0.2,
             "weirdness": 0,
-            "depth": 0,
+            "depth": 0.2,
             "offset": 0
           }
         },
         {
-          "biome": "deeperdarker:echoing_forest",
+          "biome": "deeperdarker:otherside_lowland",
           "parameters": {
-            "temperature": 0.3,
-            "humidity": 0,
-            "continentalness": 0,
-            "erosion": 0,
+            "temperature": 0,
+            "humidity": 0.2,
+            "continentalness": 0.1,
+            "erosion": 0.6,
             "weirdness": 0,
-            "depth": 0.2,
+            "depth": 0,
             "offset": 0
           }
         }

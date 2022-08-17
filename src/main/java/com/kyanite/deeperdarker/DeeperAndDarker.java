@@ -100,6 +100,12 @@ public class DeeperAndDarker {
         }
 
         @SubscribeEvent
+        @OnlyIn(Dist.CLIENT)
+        public static void entityRenderers(final EntityRenderersEvent.AddLayers event) {
+            GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
+        }
+
+        @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDWoodTypes.ECHO);
@@ -124,13 +130,7 @@ public class DeeperAndDarker {
         }
 
         @SubscribeEvent
-        @OnlyIn(Dist.CLIENT)
-        public static void entityRender(final EntityRenderersEvent.AddLayers event) {
-            GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
-        }
-
-        @SubscribeEvent
-        public static void entityAttribute(final EntityAttributeCreationEvent event) {
+        public static void entityAttributes(final EntityAttributeCreationEvent event) {
             event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
             event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
             event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());

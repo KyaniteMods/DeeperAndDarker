@@ -54,17 +54,17 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.locate_echoing_forest.description", "Enter an Echoing Forest");
         add("advancements.deeperdarker.reinforce_shard.title", "Sculk Engineer");
         add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
-        add("subtitles.ambience.portal.groan", "The Otherside forebodes");
-        add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
-        add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
-        add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
-        add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
+        add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
         add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
-        add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
+        add("subtitles.ambience.portal.groan", "The Otherside forebodes");
+        add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
+        add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
+        add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
+        add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
     }
 
     @Override
@@ -80,6 +80,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
     private void addEntity(RegistryObject<EntityType<?>> item) {
         String key = item.getId().getPath();
+        if(key.contains("boat")) return;
         add("entity.deeperdarker." + key, convertToName(key));
     }
 
