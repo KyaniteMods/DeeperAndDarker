@@ -9,6 +9,7 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
 import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
+import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitter;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.Foods;
@@ -26,6 +27,8 @@ public class DDItems {
     public static final RegistryObject<Item> REINFORCED_ECHO_SHARD = ITEMS.register("reinforced_echo_shard", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> SOUL_DUST = ITEMS.register("soul_dust", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE).tab(DDCreativeModeTab.DD_TAB)));
+
+    public static final RegistryObject<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitter(new Item.Properties().fireResistant().rarity(Rarity.RARE).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<Item> WARDEN_SWORD = ITEMS.register("warden_sword", () -> new SwordItem(DDTiers.WARDEN, 3, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> WARDEN_SHOVEL = ITEMS.register("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, 1.5F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
