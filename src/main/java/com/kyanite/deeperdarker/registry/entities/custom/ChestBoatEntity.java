@@ -26,19 +26,19 @@ import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 
-public class DDChestBoat extends DDBoat implements HasCustomInventoryScreen, ContainerEntity {
+public class ChestBoatEntity extends BoatEntity implements HasCustomInventoryScreen, ContainerEntity {
     private static final int CONTAINER_SIZE = 27;
     private NonNullList<ItemStack> itemStacks = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
     @Nullable
     private ResourceLocation lootTable;
     private long lootTableSeed;
 
-    public DDChestBoat(EntityType<? extends Boat> entityType, Level level) {
+    public ChestBoatEntity(EntityType<? extends Boat> entityType, Level level) {
         super(entityType, level);
     }
 
-    public static DDChestBoat create(Level level, double x, double y, double z) {
-        DDChestBoat boat = DDEntities.CHEST_BOAT.get().create(level);
+    public static ChestBoatEntity create(Level level, double x, double y, double z) {
+        ChestBoatEntity boat = DDEntities.CHEST_BOAT.get().create(level);
         boat.setPos(x, y, z);
         boat.setDeltaMovement(Vec3.ZERO);
         boat.xo = x;

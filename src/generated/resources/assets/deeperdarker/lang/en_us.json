@@ -68,6 +68,8 @@
   "death.attack.jaw": "%1$s was devoured by a Sculk Jaw",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "enchantment.deeperdarker.sculk_smite": "Sculk Smite",
+  "entity.deeperdarker.boat": "Boat",
+  "entity.deeperdarker.chest_boat": "Boat with Chest",
   "entity.deeperdarker.sculk_leech": "Sculk Leech",
   "entity.deeperdarker.sculk_snapper": "Sculk Snapper",
   "entity.deeperdarker.shattered": "Shattered",

@@ -80,7 +80,6 @@ public class ENLanguageProvider extends LanguageProvider {
 
     private void addEntity(RegistryObject<EntityType<?>> item) {
         String key = item.getId().getPath();
-        if(key.contains("boat")) return;
         add("entity.deeperdarker." + key, convertToName(key));
     }
 
@@ -109,8 +108,7 @@ public class ENLanguageProvider extends LanguageProvider {
         }
 
         String name = builder.toString();
-        if(name.equals("Chest Boat")) name = "Boat with Chest";
-        if(name.equals("Echo Chest Boat")) name = "Echo Boat with Chest";
+        if(name.contains("Chest Boat")) name = name.substring(0, name.indexOf("Chest")) + "Boat with Chest";
         if(name.equals("Heart Of The Deep")) name = "Heart of the Deep";
 
         return upsideDown ? toUpsideDown(name) : name;

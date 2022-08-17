@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.google.common.collect.Maps;
 import com.ibm.icu.impl.Pair;
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
+import com.kyanite.deeperdarker.registry.entities.custom.BoatEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Quaternion;
@@ -19,12 +19,12 @@ import net.minecraft.util.Mth;
 
 import java.util.Map;
 
-public class DDBoatRenderer<T extends DDBoat> extends EntityRenderer<T> {
-    private final Map<DDBoat.Type, Pair<ResourceLocation, BoatModel>> boatResources = Maps.newHashMap();
+public class DDBoatRenderer<T extends BoatEntity> extends EntityRenderer<T> {
+    private final Map<BoatEntity.Type, Pair<ResourceLocation, BoatModel>> boatResources = Maps.newHashMap();
 
     public DDBoatRenderer(EntityRendererProvider.Context pContext, boolean hasChest) {
         super(pContext);
-        for(DDBoat.Type type : DDBoat.Type.values()) {
+        for(BoatEntity.Type type : BoatEntity.Type.values()) {
             String folder = hasChest ? "chest_boat" : "boat";
             ResourceLocation texture = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/" + folder + "/" + type.getName() + ".png");
             BoatModel model = new BoatModel(pContext.bakeLayer(hasChest ? DDBoatModels.boat_chest : DDBoatModels.boat), hasChest);
@@ -67,7 +67,7 @@ public class DDBoatRenderer<T extends DDBoat> extends EntityRenderer<T> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(DDBoat boat) {
+    public ResourceLocation getTextureLocation(BoatEntity boat) {
         return boatResources.get(boat.getWoodType()).first;
     }
 }

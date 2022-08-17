@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
+import com.kyanite.deeperdarker.registry.entities.custom.BoatEntity;
 import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
 import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitter;
@@ -48,6 +48,6 @@ public class DDItems {
     public static final RegistryObject<SpawnEggItem> SHRIEK_WORM_SPAWN_EGG = ITEMS.register("shriek_worm_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_WORM, 0x204C61, 0xF1F7D0, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<Item> ECHO_SIGN = ITEMS.register("echo_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB), DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get()));
-    public static final RegistryObject<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().stacksTo(1).fireResistant().tab(DDCreativeModeTab.DD_TAB)));
-    public static final RegistryObject<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().stacksTo(1).fireResistant().tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, BoatEntity.Type.ECHO, new Item.Properties().stacksTo(1).fireResistant().tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, BoatEntity.Type.ECHO, new Item.Properties().stacksTo(1).fireResistant().tab(DDCreativeModeTab.DD_TAB)));
 }
