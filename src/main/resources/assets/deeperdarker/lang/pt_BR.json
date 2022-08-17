@@ -104,5 +104,7 @@
   "subtitles.entity.snapper.ambient": "Agarrador de sculk respira",
   "subtitles.entity.snapper.bite": "Agarrador de sculk morde",
   "subtitles.entity.snapper.hurt": "Agarrador de sculk ferido",
-  "subtitles.entity.snapper.sniff": "Agarrador de sculk fareja"
+  "subtitles.entity.snapper.sniff": "Agarrador de sculk fareja",
+  "subtitles.item.transmitter.link": "Transmissor conecta",
+  "subtitles.item.transmitter.transmit": "Transmissor transmite"
 }
