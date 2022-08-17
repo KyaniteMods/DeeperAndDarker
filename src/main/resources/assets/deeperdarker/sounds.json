@@ -128,16 +128,16 @@
       "deeperdarker:entity/sculk_snapper/sniff"
     ]
   },
-  "item.transmitter.sculk_transmit": {
-    "subtitle": "subtitles.item.transmitter.sculk_transmit",
+  "item.transmitter.link": {
+    "subtitle": "subtitles.item.transmitter.link",
     "sounds": [
-      "deeperdarker:item/transmitter/sculk_transmit"
+      "deeperdarker:item/transmitter/link"
     ]
   },
-  "item.transmitter.sculk_link": {
-    "subtitle": "subtitles.item.transmitter.sculk_link",
+  "item.transmitter.transmit": {
+    "subtitle": "subtitles.item.transmitter.transmit",
     "sounds": [
-      "deeperdarker:item/transmitter/sculk_link"
+      "deeperdarker:item/transmitter/transmit"
     ]
   }
 }

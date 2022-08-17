@@ -37,8 +37,8 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 
     // Item
-    public static final RegistryObject<SoundEvent> SCULK_TRANSMIT = register("item.transmitter.sculk_transmit");
-    public static final RegistryObject<SoundEvent> SCULK_LINK = register("item.transmitter.sculk_link");
+    public static final RegistryObject<SoundEvent> SCULK_LINK = register("item.transmitter.link");
+    public static final RegistryObject<SoundEvent> SCULK_TRANSMIT = register("item.transmitter.transmit");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));

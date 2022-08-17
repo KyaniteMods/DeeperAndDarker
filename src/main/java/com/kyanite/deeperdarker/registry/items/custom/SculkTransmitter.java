@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -31,16 +30,14 @@ public class SculkTransmitter extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) != null) {
-            if(pPlayer.isCrouching())
-            {
+            if(pPlayer.isCrouching()) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return super.use(pLevel, pPlayer, pUsedHand);
             }
+
+            if(pPlayer.totalExperience < 1) return super.use(pLevel, pPlayer, pUsedHand);
+            
             BlockState state = pLevel.getBlockState(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
-
-            if(pPlayer.totalExperience < 1)
-                return super.use(pLevel, pPlayer, pUsedHand);
-
             if(state == null || getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return super.use(pLevel, pPlayer, pUsedHand);
@@ -49,53 +46,53 @@ public class SculkTransmitter extends Item {
             pPlayer.playSound(DDSounds.SCULK_TRANSMIT.get(), 0.5f, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
             if(pLevel.isClientSide) return super.use(pLevel, pPlayer, pUsedHand);
 
-            if(!pPlayer.isCreative())
-                    pPlayer.giveExperiencePoints(-1);
+            if(!pPlayer.isCreative()) pPlayer.giveExperiencePoints(-1);
 
             pLevel.gameEvent(GameEvent.ENTITY_INTERACT, pPlayer.blockPosition(), GameEvent.Context.of(pPlayer));
 
             MenuProvider menuProvider = state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
             if(menuProvider != null) {
-                ServerPlayer serverPlayer = (ServerPlayer)pPlayer;
+                ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
                 serverPlayer.openMenu(state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand))));
             }
         }
+
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
-            pContext.getPlayer().displayClientMessage(Component.translatable("This block cannot be transmitted!"), true);
+            pContext.getPlayer().displayClientMessage(Component.literal("This block cannot be transmitted!"), true);
             return InteractionResult.FAIL;
         }
 
-        if(pContext.getItemInHand().hasTag())
-        {
+        if(pContext.getItemInHand().hasTag()) {
             if(!pContext.getItemInHand().getTag().contains("linked")) {
                 pContext.getPlayer().playSound(DDSounds.SCULK_LINK.get(), 0.5f, pContext.getLevel().getRandom().nextFloat() * 0.4F + 0.8F);
-                setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos()); // Set block pos
+                setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
                 return InteractionResult.SUCCESS;
             }
-        }else{
+        } else {
             pContext.getPlayer().playSound(DDSounds.SCULK_LINK.get(), 0.5f, pContext.getLevel().getRandom().nextFloat() * 0.4F + 0.8F);
-            setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos()); // Set block pos
+            setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
             return InteractionResult.SUCCESS;
         }
+
         return super.useOn(pContext);
     }
 
     @Nullable
     public BlockPos getLinkedBlockPos(ItemStack itemStack) {
         if(!itemStack.hasTag()) return null;
-        if(itemStack.getTag().contains("linked"))
-        {
+        if(itemStack.getTag().contains("linked")) {
             return new BlockPos(
                     itemStack.getTag().getIntArray("linked")[0],
                     itemStack.getTag().getIntArray("linked")[1],
                     itemStack.getTag().getIntArray("linked")[2]
             );
         }
+
         return null;
     }
 
@@ -104,34 +101,28 @@ public class SculkTransmitter extends Item {
         tag.putInt("CustomModelData", data);
         plr.getItemInHand(hand).setTag(tag);
     }
-    public void setBlock(ItemStack itemStack, Player plr, InteractionHand hand, BlockPos blockPos) {
+
+    public void setBlock(ItemStack itemStack, Player player, InteractionHand hand, BlockPos pos) {
         CompoundTag tag = itemStack.getOrCreateTag();
-         if(blockPos == null) {
-             setModelData(itemStack, plr, hand, 0);
-             tag.remove("linked");
-             plr.getItemInHand(hand).setTag(tag);
-             return;
-         }
+        if(pos == null) {
+            setModelData(itemStack, player, hand, 0);
+            tag.remove("linked");
+            player.getItemInHand(hand).setTag(tag);
+            return;
+        }
 
-        tag.putIntArray("linked", new int[]{
-                blockPos.getX(),
-                blockPos.getY(),
-                blockPos.getZ()
-        });
-        setModelData(itemStack, plr, hand, 1);
+        tag.putIntArray("linked", new int[]{ pos.getX(), pos.getY(), pos.getZ() });
+        setModelData(itemStack, player, hand, 1);
 
-        plr.getItemInHand(hand).setTag(tag);
+        player.getItemInHand(hand).setTag(tag);
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if(pStack.hasTag()) {
-            if(getLinkedBlockPos(pStack) != null)
-                pTooltipComponents.add(Component.translatable("Linked"));
-            else
-                pTooltipComponents.add(Component.translatable("Not Linked"));
-        }else
-            pTooltipComponents.add(Component.translatable("Not Linked"));
+            if(getLinkedBlockPos(pStack) != null) pTooltipComponents.add(Component.literal("§bLinked"));
+            else pTooltipComponents.add(Component.literal("Not Linked"));
+        } else pTooltipComponents.add(Component.literal("Not Linked"));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
