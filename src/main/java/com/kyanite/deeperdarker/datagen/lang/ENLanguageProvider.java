@@ -61,12 +61,12 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
         add("subtitles.item.transmitter.sculk_transmit", "Sculk Transmitter transmits");
         add("subtitles.item.transmitter.sculk_link", "Sculk Transmitter links");
+        add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
         add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
-        add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
     }
 
     @Override
@@ -110,8 +110,7 @@ public class ENLanguageProvider extends LanguageProvider {
         }
 
         String name = builder.toString();
-        if(name.equals("Chest Boat")) name = "Boat with Chest";
-        if(name.equals("Echo Chest Boat")) name = "Echo Boat with Chest";
+        if(name.contains("Chest Boat")) name = name.substring(0, name.indexOf("Chest")) + "Boat with Chest";
         if(name.equals("Heart Of The Deep")) name = "Heart of the Deep";
 
         return upsideDown ? toUpsideDown(name) : name;

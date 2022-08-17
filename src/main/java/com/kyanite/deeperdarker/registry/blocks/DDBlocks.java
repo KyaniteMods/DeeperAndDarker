@@ -23,6 +23,7 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -35,7 +36,6 @@ public class DDBlocks {
         public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 20; }
         public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 5; }
     });
-
     public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new FlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
@@ -44,6 +44,7 @@ public class DDBlocks {
         public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return true; }
         public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 60; }
         public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 30; }
+        protected boolean decaying(@NotNull BlockState state) { return state.getValue(DISTANCE) == 16; }
     });
     public static final RegistryObject<SlabBlock> ECHO_SLAB = register("echo_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final RegistryObject<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));

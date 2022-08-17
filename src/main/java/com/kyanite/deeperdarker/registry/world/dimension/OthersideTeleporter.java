@@ -112,8 +112,8 @@ public class OthersideTeleporter implements ITeleporter {
                 return Optional.empty();
             }
 
-            for(int i = -1; i < 2; i++) {
-                for(int j = 0; j < 2; j++) {
+            for(int i = -1; i < 6; i++) {
+                for(int j = 0; j < 6; j++) {
                     for(int k = -1; k < 3; k++) {
                         BlockState blockstate1 = k < 0 ? Blocks.REINFORCED_DEEPSLATE.defaultBlockState() : Blocks.AIR.defaultBlockState();
                         mutablePos.setWithOffset(blockPos, j * direction.getStepX() + i * direction1.getStepX(), k, j * direction.getStepZ() + i * direction1.getStepZ());
@@ -123,9 +123,9 @@ public class OthersideTeleporter implements ITeleporter {
             }
         }
 
-        for(int i = -1; i < 3; i++) {
+        for(int i = -1; i < 7; i++) {
             for(int j = -1; j < 4; j++) {
-                if(i == -1 || i == 2 || j == -1 || j == 3) {
+                if(i == -1 || i == 6 || j == -1 || j == 3) {
                     mutablePos.setWithOffset(blockPos, i * direction.getStepX(), j, i * direction.getStepZ());
                     this.level.setBlock(mutablePos, Blocks.REINFORCED_DEEPSLATE.defaultBlockState(), 3);
                 }
@@ -134,7 +134,7 @@ public class OthersideTeleporter implements ITeleporter {
 
         BlockState othersidePortal = DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(OthersidePortalBlock.AXIS, axis);
 
-        for(int i = 0; i < 2; i++) {
+        for(int i = 0; i < 6; i++) {
             for(int j = 0; j < 3; j++) {
                 mutablePos.setWithOffset(blockPos, i * direction.getStepX(), j, i * direction.getStepZ());
                 this.level.setBlock(mutablePos, othersidePortal, 18);

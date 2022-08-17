@@ -26,7 +26,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "minecraft:air"
+      "item": "deeperdarker:echo_log"
     },
     "show_toast": true,
     "title": {

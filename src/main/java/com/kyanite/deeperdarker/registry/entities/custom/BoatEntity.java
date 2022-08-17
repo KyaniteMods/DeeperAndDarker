@@ -16,15 +16,15 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.function.Supplier;
 
-public class DDBoat extends Boat {
-    private static final EntityDataAccessor<Integer> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.INT);
+public class BoatEntity extends Boat {
+    private static final EntityDataAccessor<Integer> WOOD_TYPE = SynchedEntityData.defineId(BoatEntity.class, EntityDataSerializers.INT);
 
-    public DDBoat(EntityType<? extends Boat> entityType, Level worldIn) {
+    public BoatEntity(EntityType<? extends Boat> entityType, Level worldIn) {
         super(entityType, worldIn);
     }
 
-    public static DDBoat create(Level level, double x, double y, double z) {
-        DDBoat boat = DDEntities.BOAT.get().create(level);
+    public static BoatEntity create(Level level, double x, double y, double z) {
+        BoatEntity boat = DDEntities.BOAT.get().create(level);
         boat.setPos(x, y, z);
         boat.setDeltaMovement(Vec3.ZERO);
         boat.xo = x;

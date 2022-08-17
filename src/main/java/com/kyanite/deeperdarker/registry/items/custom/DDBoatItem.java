@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
-import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
-import com.kyanite.deeperdarker.registry.entities.custom.DDChestBoat;
+import com.kyanite.deeperdarker.registry.entities.custom.BoatEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.ChestBoatEntity;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -22,10 +22,10 @@ import java.util.function.Predicate;
 
 public class DDBoatItem extends BoatItem {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final DDBoat.Type type;
+    private final BoatEntity.Type type;
     private final boolean hasChest;
 
-    public DDBoatItem(boolean hasChest, DDBoat.Type boatType, Properties prop) {
+    public DDBoatItem(boolean hasChest, BoatEntity.Type boatType, Properties prop) {
         super(hasChest, null, prop);
         this.hasChest = hasChest;
         this.type = boatType;
@@ -39,7 +39,6 @@ public class DDBoatItem extends BoatItem {
             return InteractionResultHolder.pass(itemstack);
         } else {
             Vec3 vec3 = pPlayer.getViewVector(1.0F);
-            double d0 = 5.0D;
             List<Entity> list = pLevel.getEntities(pPlayer, pPlayer.getBoundingBox().expandTowards(vec3.scale(5.0D)).inflate(1.0D), ENTITY_PREDICATE);
             if (!list.isEmpty()) {
                 Vec3 vec31 = pPlayer.getEyePosition();
@@ -53,7 +52,7 @@ public class DDBoatItem extends BoatItem {
             }
 
             if (hitresult.getType() == HitResult.Type.BLOCK) {
-                DDBoat boat = this.getBoat(pLevel, hitresult);
+                BoatEntity boat = this.getBoat(pLevel, hitresult);
                 boat.setWoodType(this.type);
                 boat.setYRot(pPlayer.getYRot());
                 if (!pLevel.noCollision(boat, boat.getBoundingBox())) {
@@ -76,7 +75,7 @@ public class DDBoatItem extends BoatItem {
         }
     }
 
-    private DDBoat getBoat(Level level, HitResult hitResult) {
-        return this.hasChest ? DDChestBoat.create(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : DDBoat.create(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
+    private BoatEntity getBoat(Level level, HitResult hitResult) {
+        return this.hasChest ? ChestBoatEntity.create(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : BoatEntity.create(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
     }
 }
