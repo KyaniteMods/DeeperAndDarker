@@ -127,5 +127,17 @@
     "sounds": [
       "deeperdarker:entity/sculk_snapper/sniff"
     ]
+  },
+  "item.transmitter.sculk_transmit": {
+    "subtitle": "subtitles.item.transmitter.sculk_transmit",
+    "sounds": [
+      "deeperdarker:item/transmitter/sculk_transmit"
+    ]
+  },
+  "item.transmitter.sculk_link": {
+    "subtitle": "subtitles.item.transmitter.sculk_link",
+    "sounds": [
+      "deeperdarker:item/transmitter/sculk_link"
+    ]
   }
 }

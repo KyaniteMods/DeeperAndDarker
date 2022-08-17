@@ -1,11 +1,12 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
 import com.kyanite.deeperdarker.miscellaneous.DDTags;
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -16,8 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -30,16 +31,33 @@ public class SculkTransmitter extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) != null) {
+            if(pPlayer.isCrouching())
+            {
+                setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
+                return super.use(pLevel, pPlayer, pUsedHand);
+            }
             BlockState state = pLevel.getBlockState(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
+
+            if(pPlayer.totalExperience < 1)
+                return super.use(pLevel, pPlayer, pUsedHand);
+
             if(state == null || getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return super.use(pLevel, pPlayer, pUsedHand);
             }
+
+            pPlayer.playSound(DDSounds.SCULK_TRANSMIT.get(), 0.5f, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
+            if(pLevel.isClientSide) return super.use(pLevel, pPlayer, pUsedHand);
+
+            if(!pPlayer.isCreative())
+                    pPlayer.giveExperiencePoints(-1);
+
+            pLevel.gameEvent(GameEvent.ENTITY_INTERACT, pPlayer.blockPosition(), GameEvent.Context.of(pPlayer));
+
             MenuProvider menuProvider = state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
             if(menuProvider != null) {
-                pPlayer.openMenu(menuProvider);
-            }else{
-                setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
+                ServerPlayer serverPlayer = (ServerPlayer)pPlayer;
+                serverPlayer.openMenu(state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand))));
             }
         }
         return super.use(pLevel, pPlayer, pUsedHand);
@@ -52,8 +70,15 @@ public class SculkTransmitter extends Item {
             return InteractionResult.FAIL;
         }
 
-        if(!pContext.getItemInHand().hasTag()) // If the transmitter has no tag (which means no data has been added meaning no blockpos)
+        if(pContext.getItemInHand().hasTag())
         {
+            if(!pContext.getItemInHand().getTag().contains("linked")) {
+                pContext.getPlayer().playSound(DDSounds.SCULK_LINK.get(), 0.5f, pContext.getLevel().getRandom().nextFloat() * 0.4F + 0.8F);
+                setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos()); // Set block pos
+                return InteractionResult.SUCCESS;
+            }
+        }else{
+            pContext.getPlayer().playSound(DDSounds.SCULK_LINK.get(), 0.5f, pContext.getLevel().getRandom().nextFloat() * 0.4F + 0.8F);
             setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos()); // Set block pos
             return InteractionResult.SUCCESS;
         }
@@ -74,13 +99,27 @@ public class SculkTransmitter extends Item {
         return null;
     }
 
+    public void setModelData(ItemStack itemStack, Player plr, InteractionHand hand, int data) {
+        CompoundTag tag = itemStack.getOrCreateTag();
+        tag.putInt("CustomModelData", data);
+        plr.getItemInHand(hand).setTag(tag);
+    }
     public void setBlock(ItemStack itemStack, Player plr, InteractionHand hand, BlockPos blockPos) {
         CompoundTag tag = itemStack.getOrCreateTag();
+         if(blockPos == null) {
+             setModelData(itemStack, plr, hand, 0);
+             tag.remove("linked");
+             plr.getItemInHand(hand).setTag(tag);
+             return;
+         }
+
         tag.putIntArray("linked", new int[]{
                 blockPos.getX(),
                 blockPos.getY(),
                 blockPos.getZ()
         });
+        setModelData(itemStack, plr, hand, 1);
+
         plr.getItemInHand(hand).setTag(tag);
     }
 
@@ -89,6 +128,8 @@ public class SculkTransmitter extends Item {
         if(pStack.hasTag()) {
             if(getLinkedBlockPos(pStack) != null)
                 pTooltipComponents.add(Component.translatable("Linked"));
+            else
+                pTooltipComponents.add(Component.translatable("Not Linked"));
         }else
             pTooltipComponents.add(Component.translatable("Not Linked"));
 

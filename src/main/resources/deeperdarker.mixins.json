@@ -11,7 +11,8 @@
     "PhantomMixin",
     "SculkSensorMixin",
     "VibrationListenerMixin",
-    "SculkBlockMixin"
+    "SculkBlockMixin",
+    "ContainerMixin"
   ],
   "client": [
     "WardenAnimations"

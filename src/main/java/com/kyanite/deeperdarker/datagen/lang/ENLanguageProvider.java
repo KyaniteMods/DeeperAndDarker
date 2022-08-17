@@ -59,6 +59,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
+        add("subtitles.item.transmitter.sculk_transmit", "Sculk Transmitter transmits");
+        add("subtitles.item.transmitter.sculk_link", "Sculk Transmitter links");
         add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");

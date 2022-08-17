@@ -104,5 +104,7 @@
   "subtitles.entity.snapper.ambient": "Sculk Snapper breathes",
   "subtitles.entity.snapper.bite": "Sculk Snapper bites",
   "subtitles.entity.snapper.hurt": "Sculk Snapper hurts",
-  "subtitles.entity.snapper.sniff": "Sculk Snapper sniffs"
+  "subtitles.entity.snapper.sniff": "Sculk Snapper sniffs",
+  "subtitles.item.transmitter.sculk_link": "Sculk Transmitter links",
+  "subtitles.item.transmitter.sculk_transmit": "Sculk Transmitter transmits"
 }
