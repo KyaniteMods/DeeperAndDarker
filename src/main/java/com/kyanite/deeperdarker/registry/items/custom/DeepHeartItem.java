@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
@@ -23,6 +24,7 @@ public class DeepHeartItem extends Item {
 
                 if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
                     pContext.getLevel().playSound(pContext.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
+                    if(!pContext.getPlayer().isCreative()) pContext.getPlayer().setItemInHand(pContext.getHand(), ItemStack.EMPTY);
                     return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
                 } else return InteractionResult.FAIL;
             }

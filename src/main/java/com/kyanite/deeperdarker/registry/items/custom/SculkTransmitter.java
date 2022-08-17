@@ -15,7 +15,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -28,66 +27,60 @@ public class SculkTransmitter extends Item {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) != null) {
             BlockState state = pLevel.getBlockState(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
-            if(state == null || getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null) {
+            if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return super.use(pLevel, pPlayer, pUsedHand);
             }
-            MenuProvider menuProvider = state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
-            if(menuProvider != null) {
-                pPlayer.openMenu(menuProvider);
-            }else{
-                setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
-            }
+
+            MenuProvider menu = state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
+            if(menu != null) pPlayer.openMenu(menu);
+            else setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
         }
+
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
-        if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
-            pContext.getPlayer().displayClientMessage(Component.translatable("This block cannot be transmitted!"), true);
+        if (!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
+            pContext.getPlayer().displayClientMessage(Component.literal("This block cannot be transmitted!"), true);
             return InteractionResult.FAIL;
         }
 
-        if(!pContext.getItemInHand().hasTag()) // If the transmitter has no tag (which means no data has been added meaning no blockpos)
-        {
-            setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos()); // Set block pos
+        if (!pContext.getItemInHand().hasTag()) { // If the transmitter has no tag (which means no data has been added meaning no block pos)
+            setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
             return InteractionResult.SUCCESS;
         }
+
         return super.useOn(pContext);
     }
 
-    @Nullable
-    public BlockPos getLinkedBlockPos(ItemStack itemStack) {
-        if(!itemStack.hasTag()) return null;
-        if(itemStack.getTag().contains("linked"))
-        {
+    public BlockPos getLinkedBlockPos(ItemStack stack) {
+        if(!stack.hasTag()) return null;
+        if(stack.getTag().contains("linked")) {
             return new BlockPos(
-                    itemStack.getTag().getIntArray("linked")[0],
-                    itemStack.getTag().getIntArray("linked")[1],
-                    itemStack.getTag().getIntArray("linked")[2]
+                    stack.getTag().getIntArray("linked")[0],
+                    stack.getTag().getIntArray("linked")[1],
+                    stack.getTag().getIntArray("linked")[2]
             );
         }
+
         return null;
     }
 
-    public void setBlock(ItemStack itemStack, Player plr, InteractionHand hand, BlockPos blockPos) {
+    public void setBlock(ItemStack itemStack, Player player, InteractionHand hand, BlockPos pos) {
         CompoundTag tag = itemStack.getOrCreateTag();
-        tag.putIntArray("linked", new int[]{
-                blockPos.getX(),
-                blockPos.getY(),
-                blockPos.getZ()
-        });
-        plr.getItemInHand(hand).setTag(tag);
+        tag.putIntArray("linked", new int[]{ pos.getX(), pos.getY(), pos.getZ() });
+        player.getItemInHand(hand).setTag(tag);
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if(pStack.hasTag()) {
-            if(getLinkedBlockPos(pStack) != null)
-                pTooltipComponents.add(Component.translatable("Linked"));
-        }else
-            pTooltipComponents.add(Component.translatable("Not Linked"));
+            if(getLinkedBlockPos(pStack) != null) {
+                pTooltipComponents.add(Component.literal("§bLinked"));
+            }
+        } else pTooltipComponents.add(Component.literal("Not Linked"));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }

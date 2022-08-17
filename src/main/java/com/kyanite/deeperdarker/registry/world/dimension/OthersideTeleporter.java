@@ -112,7 +112,7 @@ public class OthersideTeleporter implements ITeleporter {
                 return Optional.empty();
             }
 
-            for(int i = -1; i < 6; i++) {
+            for(int i = -2; i < 3; i++) {
                 for(int j = 0; j < 6; j++) {
                     for(int k = -1; k < 3; k++) {
                         BlockState blockstate1 = k < 0 ? Blocks.REINFORCED_DEEPSLATE.defaultBlockState() : Blocks.AIR.defaultBlockState();
