@@ -17,7 +17,7 @@ public class SculkWormAttack extends MeleeAttackGoal {
 
     @Override
     protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-        return 70;
+        return 55;
     }
 
     @Override

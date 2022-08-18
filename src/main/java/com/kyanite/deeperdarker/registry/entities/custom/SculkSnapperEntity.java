@@ -63,7 +63,6 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     public SculkSnapperEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.setCanPickUpLoot(true);
     }
 
     @Override
@@ -121,20 +120,12 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     public void tick() {
         super.tick();
 
-        if(this.isTame()) {
-            if(this.getRandom().nextInt(0, 875) == 0) {
+        if(this.isTame() && this.getOwner().distanceTo(this) < 13) {
+            if(this.getRandom().nextInt(0, 1100) == 0) {
                 List<Enchantment> enchantments = ImmutableList.copyOf(ForgeRegistries.ENCHANTMENTS);
                 int randomIndex = this.getRandom().nextInt(enchantments.size());
                 Enchantment randomEnchantment = enchantments.get(randomIndex);
-                int level = 1;
-
-                if(randomEnchantment.getMaxLevel() == 2 || randomEnchantment.getMaxLevel() == 3 && this.getRandom().nextInt(0, 8) == 0) {
-                    level = 2;
-                }else if(randomEnchantment.getMaxLevel() == 2 || randomEnchantment.getMaxLevel() == 3 && this.getRandom().nextInt(0, 25) == 0) {
-                    level = 3;
-                }
-
-                EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, level);
+                EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, 1);
                 ItemStack randomBook = EnchantedBookItem.createForEnchantment(instance);
                 if(!randomBook.isEmpty()) {
                     ItemEntity itementity = new ItemEntity(this.level, this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), randomBook);

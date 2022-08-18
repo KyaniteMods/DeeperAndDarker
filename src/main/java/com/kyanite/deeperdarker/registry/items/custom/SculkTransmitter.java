@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -27,34 +28,41 @@ public class SculkTransmitter extends Item {
         super(pProperties);
     }
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public InteractionResult transmit(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) != null) {
-            if(pPlayer.isCrouching()) {
-                setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
-                return super.use(pLevel, pPlayer, pUsedHand);
-            }
+            if(pPlayer.totalExperience < 1) return InteractionResult.FAIL;
 
-            if(pPlayer.totalExperience < 1) return super.use(pLevel, pPlayer, pUsedHand);
-            
             BlockState state = pLevel.getBlockState(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
-            if(state == null || getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null) {
+            if(state == null || getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null || pPlayer.isCrouching()) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
-                return super.use(pLevel, pPlayer, pUsedHand);
+                return InteractionResult.FAIL;
             }
 
             pPlayer.playSound(DDSounds.SCULK_TRANSMIT.get(), 0.5f, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
-            if(pLevel.isClientSide) return super.use(pLevel, pPlayer, pUsedHand);
+            if(pLevel.isClientSide) return InteractionResult.sidedSuccess(true);
 
             if(!pPlayer.isCreative()) pPlayer.giveExperiencePoints(-1);
-
             pLevel.gameEvent(GameEvent.ENTITY_INTERACT, pPlayer.blockPosition(), GameEvent.Context.of(pPlayer));
 
             MenuProvider menuProvider = state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
             if(menuProvider != null) {
-                ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
-                serverPlayer.openMenu(state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand))));
+                pPlayer.openMenu(menuProvider);
+
+                if(pLevel.getBlockEntity(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand))) instanceof ChestBlockEntity chestBlockEntity) {
+                    chestBlockEntity.startOpen(pPlayer);
+                }
             }
+        }else{
+            setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+        if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) != null) {
+            transmit(pLevel, pPlayer, pUsedHand);
         }
 
         return super.use(pLevel, pPlayer, pUsedHand);
@@ -62,6 +70,10 @@ public class SculkTransmitter extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
+        if(getLinkedBlockPos(pContext.getPlayer().getItemInHand(pContext.getHand())) != null) {
+            return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand());
+        }
+
         if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
             pContext.getPlayer().displayClientMessage(Component.literal("This block cannot be transmitted!"), true);
             return InteractionResult.FAIL;
