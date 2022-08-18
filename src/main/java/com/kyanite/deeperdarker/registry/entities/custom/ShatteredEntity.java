@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -69,6 +70,11 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
         this.goalSelector.addGoal(8, new ShatteredGoToDisturbanceGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
+    }
+
+    @Override
+    public void swing(InteractionHand pHand) {
+        super.swing(pHand);
     }
 
     @Override

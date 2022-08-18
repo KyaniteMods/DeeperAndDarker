@@ -18,12 +18,6 @@ public class SculkSnapperRenderer extends GeoEntityRenderer<SculkSnapperEntity> 
         this.addLayer(new LayerGlowingAreasGeo<>(this, getGeoModelProvider()::getTextureResource, getGeoModelProvider()::getModelResource, RenderType::entityTranslucentEmissive));
     }
 
-    @NotNull
-    @Override
-    public ResourceLocation getTextureLocation(@NotNull SculkSnapperEntity instance) {
-        return new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/sculk_snapper.png");
-    }
-
     @Override
     public RenderType getRenderType(SculkSnapperEntity animatable, float partialTicks, PoseStack stack, MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
         stack.scale(1.5F, 1.5F, 1.5F);

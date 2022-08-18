@@ -10,15 +10,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.layer.LayerGlowingAreasGeo;
 
 public class SculkWormRenderer extends GeoEntityRenderer<SculkWormEntity> {
     public SculkWormRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new SculkWormModel());
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(SculkWormEntity instance) {
-        return new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/sculk_worm.png");
+        this.addLayer(new LayerGlowingAreasGeo<>(this, getGeoModelProvider()::getTextureResource, getGeoModelProvider()::getModelResource, RenderType::entityTranslucentEmissive));
     }
 
     @Override
