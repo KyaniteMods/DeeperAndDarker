@@ -104,5 +104,7 @@
   "subtitles.entity.snapper.ambient": "Souffle de mordeur de sculk",
   "subtitles.entity.snapper.bite": "Mordeur de sculk qui mord",
   "subtitles.entity.snapper.hurt": "Mordeur de sculk blessé",
-  "subtitles.entity.snapper.sniff": "Mordeur de sculk qui renifle"
+  "subtitles.entity.snapper.sniff": "Mordeur de sculk qui renifle",
+  "subtitles.item.transmitter.link": "Émetteur relie",
+  "subtitles.item.transmitter.transmit": "Émetteur transmet"
 }
