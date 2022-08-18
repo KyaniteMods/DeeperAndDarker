@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkWormAttack;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -46,7 +46,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 50F));
-        this.goalSelector.addGoal(4, new SculkWormAttack(this, 0, true));
+        this.goalSelector.addGoal(4, new CustomAttackAnimMelee(this, 0, true, 16, 55, ATTACK));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
@@ -78,7 +78,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public List<EntityState> createStates() {
-        return Arrays.asList(EMERGE, AWAKE, DESCEND, ATTACK);
+        return Arrays.asList(AWAKE, EMERGE, DESCEND, ATTACK);
     }
 
     @Override
@@ -91,6 +91,11 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
         if(entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
             DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
+    }
+
+    @Override
+    public int getTransitionTick(EntityState entityState) {
+        return 0;
     }
 
     @Override
@@ -120,8 +125,14 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
             this.remove(RemovalReason.KILLED);
         }else if(ATTACK.equals(entityState)) {
             setState(AWAKE);
-            if(this.getTarget() != null)
+            if(this.getTarget() != null) {
                 this.doHurtTarget(this.getTarget());
+                if(this.getTarget() instanceof Player plr)
+                    if(plr.totalExperience > 2)
+                        plr.giveExperiencePoints(-2);
+                else
+                    plr.kill();
+            }
         }
     }
 

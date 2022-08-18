@@ -45,10 +45,7 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     public boolean isMoving = false;
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(states.indexOf(getCurrentState()) == 0)
-            event.getController().transitionLengthTicks = 0;
-        else
-            event.getController().transitionLengthTicks = 3;
+        event.getController().transitionLengthTicks = this.getTransitionTick(this.getCurrentState());
 
         if(event.isMoving() && getMovingState() != null) {
             wasMoving = true;
@@ -115,6 +112,8 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     public abstract void stateDone(EntityState entityState);
 
     public abstract void stateTick(EntityState entityState);
+
+    public abstract int getTransitionTick(EntityState entityState);
 
     public static class EntityAnimationHolder {
         public String animationId;

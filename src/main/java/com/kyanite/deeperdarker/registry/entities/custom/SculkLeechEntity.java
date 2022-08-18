@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
+import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkLeechMelee;
 import net.minecraft.world.entity.EntityType;
@@ -46,7 +47,6 @@ public class SculkLeechEntity extends Monster implements IAnimatable {
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
-
 
     @Override
     public MobType getMobType() {

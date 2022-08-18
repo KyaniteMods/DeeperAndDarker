@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.ShatteredGoToDisturbanceGoal;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
@@ -42,16 +44,22 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 
-public class ShatteredEntity extends Monster implements IAnimatable, VibrationListener.VibrationListenerConfig {
+public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig {
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
 
+    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.shattered.idle", 60, true, false));
+    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.shattered.walk", 20, true, false));
+
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.shattered.attack", 20, false, true));
+
     public BlockPos disturbanceLocation = null;
 
-    public ShatteredEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public ShatteredEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, null, 0.0F, 0));
         this.getNavigation().setCanFloat(true);
@@ -66,20 +74,10 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.4F, true, 14, 7, ATTACK));
         this.goalSelector.addGoal(8, new ShatteredGoToDisturbanceGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
-    }
-
-    @Override
-    public void swing(InteractionHand pHand) {
-        super.swing(pHand);
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 3, this::predicate));
     }
 
     @Override
@@ -99,6 +97,48 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     }
 
     @Override
+    public List<EntityState> createStates() {
+        return List.of(IDLE, WALK, ATTACK);
+    }
+
+    @Override
+    public EntityState getMovingState() {
+        return WALK;
+    }
+
+    @Override
+    public float getSpeed() {
+        if(ATTACK.equals(getCurrentState())) {
+            return 0;
+        }
+
+        return super.getSpeed();
+    }
+
+    @Override
+    public void stateDone(EntityState entityState) {
+        if (IDLE.equals(entityState)) {
+        }else if(WALK.equals(entityState)) {
+            setState(IDLE);
+        }else if(ATTACK.equals(entityState)) {
+            if(this.getTarget() != null)
+                this.doHurtTarget(this.getTarget());
+
+            setState(IDLE);
+        }
+    }
+
+    @Override
+    public void stateTick(EntityState entityState) {
+
+    }
+
+    @Override
+    public int getTransitionTick(EntityState entityState) {
+        return 4;
+    }
+
+    @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> consumer) {
         Level level = this.level;
         if(level instanceof ServerLevel serverlevel) {
@@ -115,6 +155,12 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     @Override
     public boolean canTriggerAvoidVibration() {
         return true;
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return null;
     }
 
     @Override
@@ -139,16 +185,6 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
     public MobType getMobType() {
         return DDTypes.SCULK;
     }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shattered.walk", true));
-            return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shattered.idle", true));
-        return PlayState.CONTINUE;
-    }
-
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
@@ -156,6 +192,8 @@ public class ShatteredEntity extends Monster implements IAnimatable, VibrationLi
 
     @Override
     public boolean shouldListen(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, GameEvent.Context context) {
+        if(event.equals(GameEvent.STEP)) return false;
+
         if (!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
             Entity entity = context.sourceEntity();
             if (entity instanceof LivingEntity livingentity) {

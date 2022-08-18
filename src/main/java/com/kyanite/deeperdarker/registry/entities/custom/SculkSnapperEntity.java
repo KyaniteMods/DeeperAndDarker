@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
-import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkSnapperMelee;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
@@ -71,7 +71,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         this.goalSelector.removeAllGoals();
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 0.3F, 10.0F, 2.0F, false));
-        this.goalSelector.addGoal(3, new SculkSnapperMelee(this, 0.4F, true));
+        this.goalSelector.addGoal(3, new CustomAttackAnimMelee(this, 0.4F, true, 12, 4, MOUTH_OPEN));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
@@ -80,7 +80,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(9, new SculkSnapperMelee(this, 0.3F, true));
+        this.goalSelector.addGoal(9, new CustomAttackAnimMelee(this, 0.4F, true, 12, 4, MOUTH_OPEN));
         this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.3F));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
@@ -163,6 +163,11 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         if(this.getCurrentState() == DIG || this.getCurrentState() == EMERGE) return true;
         
         return super.isInvulnerableTo(pSource);
+    }
+
+    @Override
+    public int getTransitionTick(EntityState entityState) {
+        return 4;
     }
 
     @Override
