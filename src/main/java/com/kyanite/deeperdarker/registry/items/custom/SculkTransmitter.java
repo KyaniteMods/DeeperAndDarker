@@ -29,11 +29,12 @@ public class SculkTransmitter extends Item {
     }
 
     public InteractionResult transmit(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) != null) {
+        BlockPos linked = getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand));
+        if(linked != null) {
             if(pPlayer.totalExperience < 1) return InteractionResult.FAIL;
 
-            BlockState state = pLevel.getBlockState(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
-            if(state == null || getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)) == null || pPlayer.isCrouching()) {
+            BlockState state = pLevel.getBlockState(linked);
+            if(state == null || pPlayer.isCrouching()) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return InteractionResult.FAIL;
             }
@@ -44,11 +45,11 @@ public class SculkTransmitter extends Item {
             if(!pPlayer.isCreative()) pPlayer.giveExperiencePoints(-1);
             pLevel.gameEvent(GameEvent.ENTITY_INTERACT, pPlayer.blockPosition(), GameEvent.Context.of(pPlayer));
 
-            MenuProvider menuProvider = state.getMenuProvider(pLevel, getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand)));
+            MenuProvider menuProvider = state.getMenuProvider(pLevel, linked);
             if(menuProvider != null) {
                 pPlayer.openMenu(menuProvider);
 
-                if(pLevel.getBlockEntity(getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand))) instanceof ChestBlockEntity chestBlockEntity) {
+                if(pLevel.getBlockEntity(linked) instanceof ChestBlockEntity chestBlockEntity) {
                     chestBlockEntity.startOpen(pPlayer);
                 }
             }
@@ -130,7 +131,8 @@ public class SculkTransmitter extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
+    {
         if(pStack.hasTag()) {
             if(getLinkedBlockPos(pStack) != null) pTooltipComponents.add(Component.literal("§bLinked"));
             else pTooltipComponents.add(Component.literal("Not Linked"));
