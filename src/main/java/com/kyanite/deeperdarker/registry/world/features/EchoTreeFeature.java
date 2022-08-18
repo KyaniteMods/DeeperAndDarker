@@ -27,7 +27,9 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int logs;
         for(logs = 0; logs < height; logs++) {
             BlockPos logPos = new BlockPos(pContext.origin().getX(), pContext.origin().above(logs).getY(), pContext.origin().getZ());
-            pContext.level().setBlock(logPos, DDBlocks.ECHO_LOG.get().defaultBlockState(), 3);
+            if (TreeFeature.validTreePos(pContext.level(), logPos)) {
+                pContext.level().setBlock(logPos, DDBlocks.ECHO_LOG.get().defaultBlockState(), 3);
+            }
         }
 
         placeStems(pContext.level(), pContext.origin());

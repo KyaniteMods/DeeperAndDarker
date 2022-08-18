@@ -76,7 +76,7 @@ public class SculkTransmitter extends Item {
         }
 
         if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
-            pContext.getPlayer().displayClientMessage(Component.literal("This block cannot be transmitted!"), true);
+            pContext.getPlayer().displayClientMessage(Component.translatable("item.deeperdarker.sculk_transmitter.untransmittable"), true);
             return InteractionResult.FAIL;
         }
 
@@ -134,9 +134,9 @@ public class SculkTransmitter extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
     {
         if(pStack.hasTag()) {
-            if(getLinkedBlockPos(pStack) != null) pTooltipComponents.add(Component.literal("§bLinked"));
-            else pTooltipComponents.add(Component.literal("Not Linked"));
-        } else pTooltipComponents.add(Component.literal("Not Linked"));
+            if(getLinkedBlockPos(pStack) != null) pTooltipComponents.add(Component.translatable("item.deeperdarker.sculk_transmitter.linked"));
+            else pTooltipComponents.add(Component.translatable("item.deeperdarker.sculk_transmitter.not_linked"));
+        } else pTooltipComponents.add(Component.translatable("item.deeperdarker.sculk_transmitter.not_linked"));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
