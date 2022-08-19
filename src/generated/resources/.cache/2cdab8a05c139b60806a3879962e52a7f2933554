@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-16T21:49:00.1754366	Item Models: deeperdarker
+// 1.19.2	2022-08-19T11:16:04.9102339	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled_sculk_stone.json
 1efdf671344a524233dc6025ce4ade7431e7e840 assets/deeperdarker/models/item/cobbled_sculk_stone_slab.json
@@ -20,7 +20,6 @@ b5a9cdf24751c70817ae24a894270341e5e54793 assets/deeperdarker/models/item/echo_lo
 4a0495ac03c5006d065137d377a1c839d0036835 assets/deeperdarker/models/item/echo_stairs.json
 a3fe9f11354ab143f3d9469ff16446bf71f5062a assets/deeperdarker/models/item/echo_trapdoor.json
 8b8f911e14802b02812178623d0873681db5a26b assets/deeperdarker/models/item/echo_wood.json
-3d7aec020830e8ff0093ed57ee911339b6011150 assets/deeperdarker/models/item/gloom_berries.json
 d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_of_the_deep.json
 e908654db1aebb4340c0613f218cf9dbf3bd0dc4 assets/deeperdarker/models/item/infested_sculk.json
 68cbbbc1053e35bd4aa6682c8894364f19eb8dfc assets/deeperdarker/models/item/polished_sculk_stone.json
