@@ -98,6 +98,8 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private void addItem(RegistryObject<Item> item) {
+        if(item.get() instanceof BlockItem) return;
+
         String key = item.getId().getPath();
         add("item.deeperdarker." + key, convertToName(key));
     }
