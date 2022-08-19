@@ -16,10 +16,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ForcedChunksSavedData;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.common.world.ForgeChunkManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -53,6 +56,11 @@ public class SculkTransmitter extends Item {
             MenuProvider menuProvider = state.getMenuProvider(pLevel, linked);
             if(menuProvider != null) {
                 pPlayer.openMenu(menuProvider);
+
+                BlockEntity blockEntity = pLevel.getBlockEntity(linked);
+                if(blockEntity instanceof ChestBlockEntity chestBlockEntity) {
+                    chestBlockEntity.startOpen(pPlayer);
+                }
             }
         } else{
             setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
@@ -126,7 +134,6 @@ public class SculkTransmitter extends Item {
 
         tag.putIntArray("linked", new int[]{ pos.getX(), pos.getY(), pos.getZ() });
         setModelData(itemStack, player, hand, 1);
-
         player.getItemInHand(hand).setTag(tag);
     }
 

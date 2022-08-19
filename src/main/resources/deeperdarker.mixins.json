@@ -12,7 +12,8 @@
     "SculkSensorMixin",
     "VibrationListenerMixin",
     "ContainerMixin",
-    "StonecutterMixin"
+    "StonecutterMixin",
+    "ChestEntityMixin"
   ],
   "client": [
     "WardenAnimations"
