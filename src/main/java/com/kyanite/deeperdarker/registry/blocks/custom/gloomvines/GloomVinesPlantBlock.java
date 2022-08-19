@@ -1,13 +1,10 @@
 package com.kyanite.deeperdarker.registry.blocks.custom.gloomvines;
 
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -27,7 +24,8 @@ public class GloomVinesPlantBlock extends GrowingPlantBodyBlock implements Gloom
 
     @Override
     protected GrowingPlantHeadBlock getHeadBlock() {
-        return DDBlocks.GLOOM_VINES.get();
+        return null;
+//        return DDBlocks.GLOOM_VINES.get();
     }
 
     @Override

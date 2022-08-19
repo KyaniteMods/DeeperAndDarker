@@ -80,6 +80,9 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
+        itemModel(DDItems.SOUL_DUST, GENERATED);
+
+        getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
@@ -91,12 +94,11 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
 
-        itemModel(DDItems.SOUL_DUST, GENERATED);
-
         withExistingParent(DDItems.SCULK_LEECH_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SCULK_SNAPPER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SHATTERED_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-19T11:16:04.9122326	Tags for minecraft:item
+// 1.19.2	2022-08-19T16:52:01.5616436	Tags for minecraft:item
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/forge/tags/items/armors/boots.json
 cd0c284256799e44917e495727d6befdd3b4515c data/forge/tags/items/armors/chestplates.json
@@ -19,6 +19,8 @@ fdb484f4a210e2dd05f467df98f15fd1f3a73196 data/forge/tags/items/tools/axes.json
 11f14987f1510c7fba24ae72c2eeae6ec44275bf data/forge/tags/items/tools/pickaxes.json
 dff5da60a5f06c5c4f35c4f271b7c50221dd704d data/forge/tags/items/tools/shovels.json
 7a7e3ff463f91e4438ef607af19ff3fcc34f183d data/forge/tags/items/tools/swords.json
+46a970866e0f7a97eb38ae9eb6b564804fd8bf61 data/minecraft/tags/items/boats.json
+fed577a93949a2c8794141b01cf67a4303f6b5d0 data/minecraft/tags/items/chest_boats.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/items/coal_ores.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/minecraft/tags/items/copper_ores.json
 4624747c37a3e46a38723740815f2a4b2b5200c6 data/minecraft/tags/items/diamond_ores.json

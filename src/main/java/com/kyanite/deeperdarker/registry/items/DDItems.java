@@ -12,7 +12,6 @@ import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
 import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitter;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;

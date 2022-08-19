@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-18T09:59:41.4581053	Tags for minecraft:block
+// 1.19.2	2022-08-19T16:21:04.4387225	Tags for minecraft:block
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 feadca2155727558c4448afb52e1d0fb779634dd data/deeperdarker/tags/blocks/logs.json
 e5dd2665fa83063a4161b3d4169e6e544b7a0da4 data/deeperdarker/tags/blocks/stripped_logs.json
@@ -25,7 +25,7 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/minecraft/tags/blocks/emerald_ores
 0117d79b5b204352a7d9f3d7e65b5e653ea0f6b6 data/minecraft/tags/blocks/iron_ores.json
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/minecraft/tags/blocks/lapis_ores.json
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/blocks/logs_that_burn.json
-23dc345d431b8c893c7fc1b380796195f81f47fc data/minecraft/tags/blocks/mineable/axe.json
+4e1378dd9fc9185ae7b3e37c659ef1229e291e47 data/minecraft/tags/blocks/mineable/axe.json
 26ab27bc5eab180f8f5e4142ef96515d80361f3c data/minecraft/tags/blocks/mineable/hoe.json
 9a57100d5fe4733f8f863f039c58dcf816b730e6 data/minecraft/tags/blocks/mineable/pickaxe.json
 ae1407352fab6bee9cc0e422580755356ccd9a7f data/minecraft/tags/blocks/mineable/shovel.json

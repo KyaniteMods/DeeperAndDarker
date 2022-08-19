@@ -59,6 +59,9 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
         tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
 
+        tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get());
+        tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get());
+
         tag(Tags.Items.TOOLS_SWORDS).add(DDItems.WARDEN_SWORD.get());
         tag(Tags.Items.TOOLS_SHOVELS).add(DDItems.WARDEN_SHOVEL.get());
         tag(Tags.Items.TOOLS_PICKAXES).add(DDItems.WARDEN_PICKAXE.get());

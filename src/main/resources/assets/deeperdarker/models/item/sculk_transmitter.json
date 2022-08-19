@@ -3,8 +3,12 @@
   "textures": {
     "layer0": "deeperdarker:item/sculk_transmitter"
   },
-
   "overrides": [
-    {"predicate": {"custom_model_data":1}, "model": "deeperdarker:item/sculk_transmitter_on"}
+    {
+      "predicate": {
+        "linked_data": 1
+      },
+      "model": "deeperdarker:item/sculk_transmitter_on"
+    }
   ]
 }

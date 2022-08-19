@@ -14,14 +14,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ForcedChunksSavedData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.common.world.ForgeChunkManager;
-import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
@@ -121,7 +116,7 @@ public class SculkTransmitter extends Item {
 
     public void setModelData(ItemStack stack, Player player, InteractionHand hand, int data) {
         CompoundTag tag = stack.getOrCreateTag();
-        tag.putInt("CustomModelData", data);
+        tag.putInt("LinkedData", data);
         player.getItemInHand(hand).setTag(tag);
     }
 
