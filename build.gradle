@@ -115,7 +115,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.0.19'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.1'
 
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-common-api:11.2.0.247")
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-forge-api:11.2.0.247")
