@@ -2,10 +2,7 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class ShatteredModel extends AnimatedGeoModel<ShatteredEntity> {
