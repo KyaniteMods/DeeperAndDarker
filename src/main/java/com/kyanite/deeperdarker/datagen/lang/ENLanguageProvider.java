@@ -70,6 +70,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.deeperdarker.sculk_transmitter.untransmittable", "This block cannot be transmitted!");
         add("item.deeperdarker.sculk_transmitter.linked", "Linked");
         add("item.deeperdarker.sculk_transmitter.not_linked", "Not Linked");
+        add("item.deeperdarker.sculk_transmitter.not_found", "The linked block is missing or obstructed");
     }
 
     @Override
