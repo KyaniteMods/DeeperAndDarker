@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.StonecutterMenu;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;

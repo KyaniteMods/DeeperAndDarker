@@ -1,12 +1,9 @@
 package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-
-import javax.swing.*;
 
 public class CustomAttackAnimMelee extends MeleeAttackGoal {
     public int attackInterval;

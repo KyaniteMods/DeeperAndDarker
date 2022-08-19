@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
