@@ -22,7 +22,6 @@ public interface GloomVines {
 
     static InteractionResult use(BlockState state, Level level, BlockPos pPos) {
         if(state.getValue(BERRIES)) {
-            Block.popResource(level, pPos, new ItemStack(DDItems.GLOOM_BERRIES.get(), 1));
             float f = Mth.randomBetween(level.random, 0.8F, 1.2F);
             level.playSound(null, pPos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, f);
             level.setBlock(pPos, state.setValue(BERRIES, Boolean.FALSE), 2);

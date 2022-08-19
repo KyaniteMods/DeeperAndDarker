@@ -125,8 +125,6 @@ public class DeeperAndDarker {
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65F);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5F);
-
-            ComposterBlock.COMPOSTABLES.put(DDItems.GLOOM_BERRIES.get(), 0.3F);
         }
 
         @SubscribeEvent

@@ -12,6 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -30,6 +31,11 @@ public class SculkJaw extends Block {
     public SculkJaw(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(ACTIVATED, false));
+    }
+
+    @Override
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        super.tick(pState, pLevel, pPos, pRandom);
     }
 
     @Override
@@ -58,6 +64,15 @@ public class SculkJaw extends Block {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if(!pState.is(DDBlocks.SCULK_JAW.get())) return;
 
+        if(pEntity instanceof ItemEntity itemEntity) {
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            return;
+        }
+
+        if(pEntity instanceof Player plr) {
+            plr.giveExperiencePoints(-1);
+        }
+
         pEntity.hurt(damageSource, 3);
     }
 
@@ -76,9 +91,7 @@ public class SculkJaw extends Block {
         if(!p_222954_.is(DDBlocks.SCULK_JAW.get())) return;
         if(p_222954_.getValue(ACTIVATED) == false) return;
 
-        if(p_222957_.nextInt(0, 30) == 0) {
-            p_222955_.setBlock(p_222956_, p_222954_.setValue(ACTIVATED, false), 3);
-        }
+        p_222955_.setBlock(p_222956_, p_222954_.setValue(ACTIVATED, false), 3);
     }
 
     @Override

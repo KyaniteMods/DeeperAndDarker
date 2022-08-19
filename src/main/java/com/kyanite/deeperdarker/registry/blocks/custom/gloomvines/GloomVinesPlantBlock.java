@@ -36,11 +36,6 @@ public class GloomVinesPlantBlock extends GrowingPlantBodyBlock implements Gloom
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
-        return new ItemStack(DDItems.GLOOM_BERRIES.get());
-    }
-
-    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         return CaveVines.use(pState, pLevel, pPos);
     }

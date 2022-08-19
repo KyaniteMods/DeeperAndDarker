@@ -40,7 +40,7 @@ public class DDItems {
     public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
-    public static final RegistryObject<Item> GLOOM_BERRIES = ITEMS.register("gloom_berries", () -> new ItemNameBlockItem(DDBlocks.GLOOM_VINES.get(), (new Item.Properties()).food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
+ //   public static final RegistryObject<Item> GLOOM_BERRIES = ITEMS.register("gloom_berries", () -> new ItemNameBlockItem(DDBlocks.GLOOM_VINES.get(), (new Item.Properties()).food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<SpawnEggItem> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_LEECH, 0x152B38, 0x00FAFF, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xD1D6B6, 0x1D726F, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
