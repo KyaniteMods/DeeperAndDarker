@@ -116,7 +116,7 @@ public class SculkTransmitter extends Item {
 
     public void setModelData(ItemStack stack, Player player, InteractionHand hand, int data) {
         CompoundTag tag = stack.getOrCreateTag();
-        tag.putInt("LinkedData", data);
+        tag.putInt("CustomModelData", data);
         player.getItemInHand(hand).setTag(tag);
     }
 
