@@ -82,7 +82,7 @@
   "item.deeperdarker.sculk_snapper_spawn_egg": "Sculk Snapper Spawn Egg",
   "item.deeperdarker.sculk_transmitter": "Sculk Transmitter",
   "item.deeperdarker.sculk_transmitter.linked": "Linked",
-  "item.deeperdarker.sculk_transmitter.not_container": "This block cannot be transmitted",
+  "item.deeperdarker.sculk_transmitter.not_container": "Cannot link to block",
   "item.deeperdarker.sculk_transmitter.not_found": "The linked block is missing or obstructed",
   "item.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
   "item.deeperdarker.shattered_spawn_egg": "Shattered Spawn Egg",

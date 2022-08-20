@@ -63,7 +63,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         add("item.deeperdarker.sculk_transmitter.linked", "Linked");
-        add("item.deeperdarker.sculk_transmitter.not_container", "This block cannot be transmitted");
+        add("item.deeperdarker.sculk_transmitter.not_container", "Cannot link to block");
         add("item.deeperdarker.sculk_transmitter.not_found", "The linked block is missing or obstructed");
         add("item.deeperdarker.sculk_transmitter.not_linked", "Unlinked");
         add("itemGroup.deeperdarker", "Deeper And Darker");
