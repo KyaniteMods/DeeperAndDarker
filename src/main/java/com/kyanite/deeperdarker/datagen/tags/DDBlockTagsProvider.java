@@ -9,12 +9,15 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 
 public class DDBlockTagsProvider extends BlockTagsProvider {
     public DDBlockTagsProvider(DataGenerator pGenerator, ExistingFileHelper pExistingFileHelper) {
         super(pGenerator, DeeperAndDarker.MOD_ID, pExistingFileHelper);
     }
 
+
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags() {
         tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.SCULK_VINES.get());
@@ -72,5 +75,11 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.WOOD).add(Blocks.OAK_WOOD, Blocks.SPRUCE_WOOD, Blocks.BIRCH_WOOD, Blocks.JUNGLE_WOOD, Blocks.ACACIA_WOOD, Blocks.DARK_OAK_WOOD, Blocks.CRIMSON_HYPHAE, Blocks.WARPED_HYPHAE);
         tag(DDTags.Blocks.STRIPPED_WOOD).add(Blocks.STRIPPED_OAK_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, Blocks.STRIPPED_BIRCH_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, Blocks.STRIPPED_ACACIA_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, Blocks.STRIPPED_CRIMSON_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE);
         tag(DDTags.Blocks.TRANSMITTABLE).add(Blocks.CHEST, Blocks.FURNACE, Blocks.BLAST_FURNACE, Blocks.BARREL, Blocks.SMOKER, Blocks.STONECUTTER);
+    }
+
+    @NotNull
+    @Override
+    public String getName() {
+        return "Block Tags";
     }
 }
