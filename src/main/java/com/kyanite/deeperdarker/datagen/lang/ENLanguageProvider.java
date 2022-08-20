@@ -51,6 +51,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.locate_echoing_forest.description", "Enter an Echoing Forest");
         add("advancements.deeperdarker.reinforce_shard.title", "Sculk Engineer");
         add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
+        add("get_transmitter.title", "Ancient Technology");
+        add("get_transmitter.description", "Acquire a Sculk Transmitter");
 
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
 

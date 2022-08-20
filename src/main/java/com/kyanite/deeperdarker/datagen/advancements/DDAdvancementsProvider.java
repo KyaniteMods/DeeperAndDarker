@@ -74,6 +74,13 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST.getKey())))
                 .save(consumer, path + "locate_echoing_forest");
 
+        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SCULK_TRANSMITTER.get(),
+                        Component.translatable(id + "get_transmitter.title"),
+                        Component.translatable(id + "get_transmitter.description"),
+                        null, FrameType.TASK, true, true, false)
+                .addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER.get()))
+                .save(consumer, path + "get_transmitter");
+
         Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(),
                 Component.translatable(id + "reinforce_shard.title"),
                 Component.translatable(id + "reinforce_shard.description"),

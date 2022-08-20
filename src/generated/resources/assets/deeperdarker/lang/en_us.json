@@ -72,6 +72,8 @@
   "entity.deeperdarker.sculk_snapper": "Sculk Snapper",
   "entity.deeperdarker.shattered": "Shattered",
   "entity.deeperdarker.shriek_worm": "Shriek Worm",
+  "get_transmitter.description": "Acquire a Sculk Transmitter",
+  "get_transmitter.title": "Ancient Technology",
   "item.deeperdarker.echo_boat": "Echo Boat",
   "item.deeperdarker.echo_chest_boat": "Echo Boat with Chest",
   "item.deeperdarker.heart_of_the_deep": "Heart of the Deep",

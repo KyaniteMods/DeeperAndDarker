@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "sculk_transmitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:sculk_transmitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.get_transmitter.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:sculk_transmitter"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.get_transmitter.title"
+    }
+  },
+  "requirements": [
+    [
+      "sculk_transmitter"
+    ]
+  ]
+}
