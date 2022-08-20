@@ -35,31 +35,33 @@ public class DDAdvancementsProvider extends AdvancementProvider {
         String id = "advancements.deeperdarker.";
 
         Advancement root = Advancement.Builder.advancement().display(Blocks.SCULK,
-                Component.translatable(id + "root.title"),
-                Component.translatable(id + "root.description"),
-                new ResourceLocation("textures/block/sculk.png"),
-                FrameType.TASK, false, false, false)
+                        Component.translatable(id + "root.title"),
+                        Component.translatable(id + "root.description"),
+                        new ResourceLocation("textures/block/sculk.png"),
+                        FrameType.TASK, false, false, false)
                 .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
                 .save(consumer, path + "root");
 
         Advancement obtainMembrane = Advancement.Builder.advancement().parent(root).display(Items.PHANTOM_MEMBRANE,
-                Component.translatable(id + "obtain_membrane.title"),
-                Component.translatable(id + "obtain_membrane.description"),
-                null, FrameType.TASK, true, true, false)
+                        Component.translatable(id + "obtain_membrane.title"),
+                        Component.translatable(id + "obtain_membrane.description"),
+                        null, FrameType.TASK, true, true, false)
                 .addCriterion("membrane", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
                 .save(consumer, path + "obtain_membrane");
 
         Advancement locateAncientCity = Advancement.Builder.advancement().parent(obtainMembrane).display(Blocks.DEEPSLATE_TILES,
-                Component.translatable(id + "locate_ancient_city.title"),
-                Component.translatable(id + "locate_ancient_city.description"),
-                null, FrameType.GOAL, true, true, false)
+                        Component.translatable(id + "locate_ancient_city.title"),
+                        Component.translatable(id + "locate_ancient_city.description"),
+                        null, FrameType.GOAL, true, true, false)
+                .rewards(AdvancementRewards.Builder.experience(50))
                 .addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(BuiltinStructures.ANCIENT_CITY)))
                 .save(consumer, path + "locate_ancient_city");
 
         Advancement killWarden = Advancement.Builder.advancement().parent(locateAncientCity).display(Blocks.SCULK_SHRIEKER,
-                Component.translatable(id + "kill_warden.title"),
-                Component.translatable(id + "kill_warden.description"),
-                null, FrameType.CHALLENGE, true, true, false)
+                        Component.translatable(id + "kill_warden.title"),
+                        Component.translatable(id + "kill_warden.description"),
+                        null, FrameType.CHALLENGE, true, true, false)
+                .rewards(AdvancementRewards.Builder.experience(500))
                 .addCriterion("warden", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.HEART_OF_THE_DEEP.get()))
                 .save(consumer, path + "kill_warden");
 
@@ -80,9 +82,9 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .requirements(RequirementsStrategy.AND).save(consumer, path + "explore_otherside");
 
         Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(),
-                Component.translatable(id + "reinforce_shard.title"),
-                Component.translatable(id + "reinforce_shard.description"),
-                null, FrameType.TASK, true, true, false)
+                        Component.translatable(id + "reinforce_shard.title"),
+                        Component.translatable(id + "reinforce_shard.description"),
+                        null, FrameType.TASK, true, true, false)
                 .addCriterion("reinforced_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD.get()))
                 .save(consumer, path + "reinforce_shard");
 
