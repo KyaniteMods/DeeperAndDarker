@@ -123,9 +123,9 @@ public class DeeperAndDarker {
                         Mob::checkMobSpawnRules);
             });
 
-            ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), .3F);
-            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), .65F);
-            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), .5F);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);
         }
 
         @SubscribeEvent
