@@ -67,6 +67,7 @@
   "block.deeperdarker.stripped_echo_wood": "Stripped Echo Wood",
   "death.attack.jaw": "%1$s was devoured by a Sculk Jaw",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
+  "effect.deeperdarker.sculk_affinity.description": "Prevents the player from causing any vibrations.",
   "enchantment.deeperdarker.sculk_smite": "Sculk Smite",
   "entity.deeperdarker.boat": "Boat",
   "entity.deeperdarker.chest_boat": "Boat with Chest",

@@ -57,6 +57,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
 
         add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
+        add("effect.deeperdarker.sculk_affinity.description", "Prevents the player from causing any vibrations.");
 
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
