@@ -11,6 +11,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 
 public class DDItemTagsProvider extends ItemTagsProvider {
     public DDItemTagsProvider(DataGenerator pGenerator, BlockTagsProvider pBlockTagsProvider, ExistingFileHelper existingFileHelper) {
@@ -71,5 +72,11 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
         tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
         tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
+    }
+
+    @NotNull
+    @Override
+    public String getName() {
+        return "Item Tags";
     }
 }
