@@ -159,8 +159,8 @@
         {
           "biome": "deeperdarker:echoing_forest",
           "parameters": {
-            "temperature": 0.3,
-            "humidity": 0.4,
+            "temperature": 0.4,
+            "humidity": 0.5,
             "continentalness": 0,
             "erosion": 0.2,
             "weirdness": 0,
@@ -169,13 +169,13 @@
           }
         },
         {
-          "biome": "deeperdarker:otherside_lowland",
+          "biome": "deeperdarker:otherside_deeplands",
           "parameters": {
             "temperature": 0,
             "humidity": 0.2,
-            "continentalness": 0.1,
+            "continentalness": 0.2,
             "erosion": 0.6,
-            "weirdness": 0,
+            "weirdness": 0.1,
             "depth": 0,
             "offset": 0
           }

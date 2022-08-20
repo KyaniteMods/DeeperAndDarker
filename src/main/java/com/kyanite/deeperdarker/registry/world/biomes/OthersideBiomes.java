@@ -23,9 +23,8 @@ import java.util.function.Supplier;
 public class OthersideBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<Biome> OTHERSIDE_LOWLAND = registerBiome("otherside_lowland", OthersideBiomes::lowland);
-
     public static final RegistryObject<Biome> ECHOING_FOREST = registerBiome("echoing_forest", OthersideBiomes::forest);
+    public static final RegistryObject<Biome> OTHERSIDE_DEEPLANDS = registerBiome("otherside_deeplands", OthersideBiomes::deepland);
 
     public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {
         ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
@@ -67,7 +66,7 @@ public class OthersideBiomes {
                 .build();
     }
 
-    public static Biome lowland() {
+    public static Biome deepland() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 50, 6,9));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 12, 0, 2));
