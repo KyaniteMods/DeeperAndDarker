@@ -25,3 +25,10 @@ issueTrackerURL = "https://github.com/KyaniteMods/DeeperAndDarker/issues"
     versionRange = "[42,)"
     ordering = "NONE"
     side = "BOTH"
+
+[[dependencies.deeperdarker]]
+    modId = "geckolib3"
+    mandatory = true
+    versionRange = "[3.1.16,)"
+    ordering = "NONE"
+    side = "BOTH"
