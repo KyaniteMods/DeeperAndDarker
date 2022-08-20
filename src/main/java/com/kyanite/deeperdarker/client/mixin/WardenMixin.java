@@ -18,6 +18,7 @@ public abstract class WardenMixin extends Monster {
     public WardenMixin(EntityType<Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
     @Override
     public MobType getMobType() {
         return DDTypes.SCULK;

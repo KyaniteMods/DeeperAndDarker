@@ -18,12 +18,11 @@ public class VibrationListenerMixin {
     @Shadow @Nullable protected VibrationListener.ReceivingEvent receivingEvent;
 
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
-    public void handle(ServerLevel p_223767_, GameEvent.Message p_223768_, CallbackInfoReturnable<Boolean> cir) {
-        if (this.receivingEvent != null || p_223768_.context().sourceEntity() == null || p_223768_.context() == null) return;
+    public void handle(ServerLevel level, GameEvent.Message message, CallbackInfoReturnable<Boolean> cir) {
+        if (this.receivingEvent != null || message.context().sourceEntity() == null || message.context() == null) return;
 
-        if(p_223768_.context().sourceEntity() instanceof Player plr) {
-            if(plr.hasEffect(DDEffects.SCULK_AFFINITY.get()))
-                cir.setReturnValue(false);
+        if(message.context().sourceEntity() instanceof Player plr) {
+            if(plr.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
         }
     }
 }

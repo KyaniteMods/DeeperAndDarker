@@ -93,7 +93,7 @@ public class DeeperAndDarker {
 
         @SubscribeEvent
         @OnlyIn(Dist.CLIENT)
-        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
             event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
         }

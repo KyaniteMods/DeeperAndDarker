@@ -11,7 +11,6 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -37,6 +36,8 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         trapdoorBuilder(DDBlocks.ECHO_TRAPDOOR.get(), Ingredient.of(DDBlocks.ECHO_PLANKS.get())).unlockedBy("has_echo_planks", has(DDBlocks.ECHO_PLANKS.get())).save(consumer);
         fenceGateBuilder(DDBlocks.ECHO_FENCE_GATE.get(), Ingredient.of(DDBlocks.ECHO_PLANKS.get())).unlockedBy("has_echo_planks", has(DDBlocks.ECHO_PLANKS.get())).save(consumer);
         signBuilder(DDItems.ECHO_SIGN.get(), Ingredient.of(DDBlocks.ECHO_PLANKS.get())).unlockedBy("has_echo_planks", has(DDBlocks.ECHO_PLANKS.get())).save(consumer);
+        woodenBoat(consumer, DDItems.ECHO_BOAT.get(), DDBlocks.ECHO_PLANKS.get());
+        ShapelessRecipeBuilder.shapeless(DDItems.ECHO_CHEST_BOAT.get()).requires(Blocks.CHEST).requires(DDItems.ECHO_BOAT.get()).group("chest_boat").unlockedBy("has_boat", has(ItemTags.BOATS)).save(consumer);
 
         slabBuilder(DDBlocks.SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
@@ -56,9 +57,6 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
         wallBuilder(DDBlocks.SCULK_STONE_BRICK_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
 
-        woodenBoat(consumer, DDItems.ECHO_BOAT.get(), DDBlocks.ECHO_PLANKS.get());
-        chestBoat(consumer, DDItems.ECHO_CHEST_BOAT.get(), DDItems.ECHO_BOAT.get());
-
         ShapedRecipeBuilder.shaped(DDItems.REINFORCED_ECHO_SHARD.get(), 1)
                 .define('P', Items.PHANTOM_MEMBRANE)
                 .define('E', Items.ECHO_SHARD)
@@ -66,12 +64,7 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
                 .pattern("PEP")
                 .pattern("ECE")
                 .pattern("PEP")
-                .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get()))
-                .save(consumer);
-    }
-
-    private static void chestBoat(Consumer<FinishedRecipe> p_236372_, ItemLike p_236373_, ItemLike p_236374_) {
-        ShapelessRecipeBuilder.shapeless(p_236373_).requires(Blocks.CHEST).requires(p_236374_).group("chest_boat").unlockedBy("has_boat", has(ItemTags.BOATS)).save(p_236372_);
+                .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(consumer);
     }
 
     @NotNull

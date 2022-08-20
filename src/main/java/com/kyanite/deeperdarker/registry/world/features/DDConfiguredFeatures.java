@@ -58,13 +58,8 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> OTHERSIDE_PILLAR = feature("otherside_pillar", DDFeatures.OTHERSIDE_PILLAR);
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ECHO_TREE = feature("echo_tree", DDFeatures.ECHO_TREE);
-
     public static final Holder<PlacedFeature> ECHO_TREE_CHECKED = PlacementUtils.register("echo_tree_checked", ECHO_TREE.getHolder().get());
-
-    public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> ECHO_TREE_SPAWN =
-            FeatureUtils.register("echo_tree_spawn", Feature.RANDOM_SELECTOR,
-                    new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ECHO_TREE_CHECKED,
-                            0.5F)), ECHO_TREE_CHECKED));
+    public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> ECHO_TREE_SPAWN = FeatureUtils.register("echo_tree_spawn", Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ECHO_TREE_CHECKED, 0.5f)), ECHO_TREE_CHECKED));
 
     public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;

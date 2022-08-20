@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.state.BlockState;
@@ -38,10 +37,10 @@ public abstract class ChestEntityMixin  {
             boolean flag1 = j != 0;
             if (flag && !flag1) {
                 this.onOpen(pLevel, pPos, pState);
-                pLevel.gameEvent((Entity)null, GameEvent.CONTAINER_OPEN, pPos);
+                pLevel.gameEvent(null, GameEvent.CONTAINER_OPEN, pPos);
             } else if (!flag) {
                 this.onClose(pLevel, pPos, pState);
-                pLevel.gameEvent((Entity)null, GameEvent.CONTAINER_CLOSE, pPos);
+                pLevel.gameEvent(null, GameEvent.CONTAINER_CLOSE, pPos);
             }
 
             this.openCount = i;

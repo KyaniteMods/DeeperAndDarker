@@ -8,7 +8,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 public class DDTypes {
     public static final MobType SCULK = new MobType();
+
     public static final TagKey<GameEvent> SHATTERED_CAN_LISTEN = createEventTag("shattered_can_listen");
+
     private static TagKey<GameEvent> createEventTag(String pName) {
         return TagKey.create(Registry.GAME_EVENT_REGISTRY, new ResourceLocation(pName));
     }
