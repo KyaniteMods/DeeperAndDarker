@@ -6,10 +6,13 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.FrameType;
+import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.data.advancements.AdventureAdvancements;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -68,11 +71,13 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .save(consumer, path + "enter_otherside");
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDBlocks.ECHO_LOG.get(),
-                        Component.translatable(id + "locate_echoing_forest.title"),
-                        Component.translatable(id + "locate_echoing_forest.description"),
+                        Component.translatable(id + "explore_otherside.title"),
+                        Component.translatable(id + "explore_otherside.description"),
                         null, FrameType.GOAL, true, true, false)
+                .rewards(AdvancementRewards.Builder.experience(200))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST.getKey())))
-                .save(consumer, path + "locate_echoing_forest");
+                .addCriterion("otherside_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OTHERSIDE_DEEPLANDS.getKey())))
+                .requirements(RequirementsStrategy.AND).save(consumer, path + "explore_otherside");
 
         Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(),
                 Component.translatable(id + "reinforce_shard.title"),

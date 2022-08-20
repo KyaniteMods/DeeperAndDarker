@@ -16,12 +16,28 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "otherside_deeplands": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:otherside_deeplands"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.locate_echoing_forest.description"
+      "translate": "advancements.deeperdarker.explore_otherside.description"
     },
     "frame": "goal",
     "hidden": false,
@@ -30,12 +46,18 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.locate_echoing_forest.title"
+      "translate": "advancements.deeperdarker.explore_otherside.title"
     }
   },
   "requirements": [
     [
       "echoing_forest"
+    ],
+    [
+      "otherside_deeplands"
     ]
-  ]
+  ],
+  "rewards": {
+    "experience": 200
+  }
 }
