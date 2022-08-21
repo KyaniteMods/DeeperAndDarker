@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SculkBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class InfestedSculk extends SculkBlock {
-    public InfestedSculk(Properties pProperties) {
+public class InfestedSculkBlock extends SculkBlock {
+    public InfestedSculkBlock(Properties pProperties) {
         super(pProperties);
     }
 

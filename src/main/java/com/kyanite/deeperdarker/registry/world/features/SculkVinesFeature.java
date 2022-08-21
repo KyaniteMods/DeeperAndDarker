@@ -49,8 +49,6 @@ public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
                     if(randomSource.nextInt(6) == 0) j *= 2;
                     if(randomSource.nextInt(5) == 0) j = 1;
 
-                    int k = 17;
-                    int l = 25;
                     placeVinesColumn(levelAccessor, randomSource, mutableBlockPos, j, 17, 25);
                 }
             }

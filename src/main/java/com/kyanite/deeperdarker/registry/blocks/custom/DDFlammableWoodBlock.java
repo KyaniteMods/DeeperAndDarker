@@ -15,8 +15,8 @@ import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
-public class FlammableWoodBlock extends RotatedPillarBlock {
-    public FlammableWoodBlock(Properties properties) {
+public class DDFlammableWoodBlock extends RotatedPillarBlock {
+    public DDFlammableWoodBlock(Properties properties) {
         super(properties);
     }
 

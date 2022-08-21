@@ -24,11 +24,11 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SculkJaw extends Block {
+public class SculkJawBlock extends Block {
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
     public DamageSource damageSource = new DamageSource("jaw");
 
-    public SculkJaw(Properties pProperties) {
+    public SculkJawBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(ACTIVATED, false));
     }
@@ -89,7 +89,7 @@ public class SculkJaw extends Block {
     @Override
     public void randomTick(BlockState p_222954_, ServerLevel p_222955_, BlockPos p_222956_, RandomSource p_222957_) {
         if(!p_222954_.is(DDBlocks.SCULK_JAW.get())) return;
-        if(p_222954_.getValue(ACTIVATED) == false) return;
+        if(!p_222954_.getValue(ACTIVATED)) return;
 
         p_222955_.setBlock(p_222956_, p_222954_.setValue(ACTIVATED, false), 3);
     }

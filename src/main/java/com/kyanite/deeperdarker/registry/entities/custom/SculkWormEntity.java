@@ -130,8 +130,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
                 if(this.getTarget() instanceof Player plr)
                     if(plr.totalExperience > 2)
                         plr.giveExperiencePoints(-2);
-                else
-                    plr.kill();
+                else plr.kill();
             }
         }
     }

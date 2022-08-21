@@ -22,8 +22,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.List;
 
-public class SculkTransmitter extends Item {
-    public SculkTransmitter(Properties pProperties) {
+public class SculkTransmitterItem extends Item {
+    public SculkTransmitterItem(Properties pProperties) {
         super(pProperties);
     }
 
