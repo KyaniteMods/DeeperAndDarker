@@ -51,8 +51,7 @@
               "treasure": true
             }
           ],
-          "name": "minecraft:diamond_leggings",
-          "weight": 2
+          "name": "minecraft:diamond_leggings"
         },
         {
           "type": "minecraft:item",
@@ -97,7 +96,7 @@
             }
           ],
           "name": "minecraft:potion",
-          "weight": 5
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -110,7 +109,7 @@
             }
           ],
           "name": "minecraft:book",
-          "weight": 3
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -120,7 +119,7 @@
             }
           ],
           "name": "minecraft:book",
-          "weight": 5
+          "weight": 6
         },
         {
           "type": "minecraft:item",
@@ -136,7 +135,7 @@
             }
           ],
           "name": "minecraft:amethyst_shard",
-          "weight": 3
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -152,7 +151,7 @@
             }
           ],
           "name": "minecraft:book",
-          "weight": 5
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -215,8 +214,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:compass",
-          "weight": 2
+          "name": "minecraft:compass"
         },
         {
           "type": "minecraft:item",
@@ -232,7 +230,7 @@
             }
           ],
           "name": "minecraft:disc_fragment_5",
-          "weight": 4
+          "weight": 3
         },
         {
           "type": "minecraft:item",
@@ -295,7 +293,7 @@
             }
           ],
           "name": "minecraft:glow_berries",
-          "weight": 3
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -311,7 +309,7 @@
             }
           ],
           "name": "minecraft:sculk",
-          "weight": 3
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -343,7 +341,7 @@
             }
           ],
           "name": "minecraft:sculk_sensor",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "minecraft:item",
@@ -359,7 +357,7 @@
             }
           ],
           "name": "minecraft:soul_torch",
-          "weight": 5
+          "weight": 6
         },
         {
           "type": "minecraft:item",
@@ -373,13 +371,11 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:music_disc_13",
-          "weight": 2
+          "name": "minecraft:music_disc_13"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:music_disc_cat",
-          "weight": 2
+          "name": "minecraft:music_disc_cat"
         },
         {
           "type": "minecraft:item",
@@ -388,12 +384,12 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:name_tag",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:saddle",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",

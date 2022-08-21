@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-20T18:26:28.546742	LootTables
+// 1.19.2	2022-08-20T19:06:31.6750991	LootTables
 cc6fd32419ba2f0e64458dd76908e4c65706d727 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 ed7a358314bb8fb063323fe18ee1f2ce5f34211b data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone.json
 d6fc68aea3859c9397b937ac5f2a937216f01f3d data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_slab.json
@@ -45,7 +45,7 @@ c949bc77f721d42380097cdd79fde8a1f2d7d706 data/deeperdarker/loot_tables/blocks/sc
 221f7ea6897c149f64a7ddf3f2c79984a5e51602 data/deeperdarker/loot_tables/blocks/sculk_vines_plant.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
 6115e8b203c1264cd57d973c8b47fb6065d2b7b5 data/deeperdarker/loot_tables/blocks/stripped_echo_wood.json
-380971dbc5d01a68cfaf52fc51e4885c5470c931 data/deeperdarker/loot_tables/chests/ancient_temple.json
+48487d1781f3c1728c8b2171112d95dbac91cac3 data/deeperdarker/loot_tables/chests/ancient_temple.json
 759f395117890507e5cd789ce8ee87c48072264d data/deeperdarker/loot_tables/chests/ancient_temple_portal.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_tables/entities/sculk_leech.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_tables/entities/sculk_snapper.json

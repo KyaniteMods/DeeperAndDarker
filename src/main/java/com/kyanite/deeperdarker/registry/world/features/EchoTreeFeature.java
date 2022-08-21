@@ -49,7 +49,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int x = origin.getX();
         int y = origin.getY();
         int z = origin.getZ();
-        int x1 = 0;
+        int x1;
         int z1 = 0;
         int topLengthX = randomSources.nextInt(3, 4);
         int topLengthZ = randomSources.nextInt(3, 4);
@@ -72,7 +72,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
             }
         }
 
-        int x2 = 0;
+        int x2;
         int spiderTopLength = randomSources.nextInt(3, 4);
 
         for(x2 = 0; x2 < spiderTopLength; x2++) {
@@ -135,10 +135,8 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     public void tryPlaceLeaf(WorldGenLevel level, BlockPos pos) {
         if (TreeFeature.validTreePos(level, pos)) {
-            if(level.getRandom().nextInt(0, 20) == 0)
-                setBlock(level, pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState());
-            else
-                setBlock(level, pos, DDBlocks.ECHO_LEAVES.get().defaultBlockState());
+            if(level.getRandom().nextInt(0, 20) == 0) setBlock(level, pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState());
+            else setBlock(level, pos, DDBlocks.ECHO_LEAVES.get().defaultBlockState());
         }
     }
 }
