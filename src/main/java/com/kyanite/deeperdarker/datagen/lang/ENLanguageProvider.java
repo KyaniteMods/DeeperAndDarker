@@ -48,7 +48,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.enter_otherside.title", "Below the Bedrock");
         add("advancements.deeperdarker.enter_otherside.description", "Deep below the bedrock... the darkness awaits");
         add("advancements.deeperdarker.explore_otherside.title", "Echolocation");
-        add("advancements.deeperdarker.explore_otherside.description", "Discover all Otherside biomes");
+        add("advancements.deeperdarker.explore_otherside.description", "Explore all Otherside biomes");
         add("advancements.deeperdarker.reinforce_shard.title", "Sculk Engineer");
         add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
         add("advancements.deeperdarker.obtain_transmitter.title", "Remote Storage");
