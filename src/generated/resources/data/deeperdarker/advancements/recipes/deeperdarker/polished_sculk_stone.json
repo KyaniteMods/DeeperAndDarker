@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sculk_stone": {
+    "has_cobbled_sculk": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_sculk_stone",
+      "has_cobbled_sculk",
       "has_the_recipe"
     ]
   ],

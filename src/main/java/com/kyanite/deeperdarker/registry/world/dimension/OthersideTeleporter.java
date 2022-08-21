@@ -200,8 +200,7 @@ public class OthersideTeleporter implements ITeleporter {
         Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
         if(existingPortal.isPresent()) {
             return existingPortal;
-        }
-        else {
+        } else {
             Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(OthersidePortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
         }

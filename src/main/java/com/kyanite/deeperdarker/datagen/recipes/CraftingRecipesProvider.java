@@ -43,19 +43,19 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
         wallBuilder(DDBlocks.SCULK_STONE_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
 
-        slabBuilder(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk_stone", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(consumer);
-        stairBuilder(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk_stone", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(consumer);
-        wallBuilder(DDBlocks.COBBLED_SCULK_STONE_WALL.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk_stone", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(consumer);
+        slabBuilder(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(consumer);
+        stairBuilder(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(consumer);
+        wallBuilder(DDBlocks.COBBLED_SCULK_STONE_WALL.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(consumer);
 
-        polishedBuilder(DDBlocks.POLISHED_SCULK_STONE.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
-        slabBuilder(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk_stone", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
-        stairBuilder(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk_stone", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
-        wallBuilder(DDBlocks.POLISHED_SCULK_STONE_WALL.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk_stone", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
+        polishedBuilder(DDBlocks.POLISHED_SCULK_STONE.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk", has(DDBlocks.SCULK_STONE.get())).save(consumer);
+        slabBuilder(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
+        stairBuilder(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
+        wallBuilder(DDBlocks.POLISHED_SCULK_STONE_WALL.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
 
-        polishedBuilder(DDBlocks.SCULK_STONE_BRICKS.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk_stone", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
-        slabBuilder(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
-        stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
-        wallBuilder(DDBlocks.SCULK_STONE_BRICK_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
+        polishedBuilder(DDBlocks.SCULK_STONE_BRICKS.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk ", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(consumer);
+        slabBuilder(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
+        stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
+        wallBuilder(DDBlocks.SCULK_STONE_BRICK_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
 
         ShapedRecipeBuilder.shaped(DDItems.REINFORCED_ECHO_SHARD.get(), 1)
                 .define('P', Items.PHANTOM_MEMBRANE)

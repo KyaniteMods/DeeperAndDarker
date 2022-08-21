@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_polished_sculk ": {
+    "has_polished_sculk_stone": {
       "conditions": {
         "items": [
           {
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:sculk_stone_bricks"
+        "recipe": "minecraft:cobbled_sculk_stone_from_polished_sculk_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_polished_sculk ",
+      "has_polished_sculk_stone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:sculk_stone_bricks"
+      "minecraft:cobbled_sculk_stone_from_polished_sculk_stone_stonecutting"
     ]
   }
 }
