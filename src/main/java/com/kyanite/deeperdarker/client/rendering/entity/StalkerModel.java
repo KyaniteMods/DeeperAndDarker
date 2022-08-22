@@ -29,6 +29,10 @@ public class StalkerModel extends AnimatedGeoModel<StalkerEntity> {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         if(!entity.getCurrentState().equals(StalkerEntity.HIDDEN)) {
             getBone("FakeVase").setHidden(true);
+            getBone("Waist").setHidden(false);
+        }else{
+            getBone("Waist").setHidden(true);
+            getBone("FakeVase").setHidden(false);
         }
     }
 }
