@@ -45,6 +45,7 @@ public class DDItems {
     public static final RegistryObject<SpawnEggItem> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xD1D6B6, 0x1D726F, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SHATTERED_SPAWN_EGG = ITEMS.register("shattered_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SHATTERED, 0x0d1217, 0xD1D6B6, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SHRIEK_WORM_SPAWN_EGG = ITEMS.register("shriek_worm_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_WORM, 0x204C61, 0xF1F7D0, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<SpawnEggItem> STALKER_SPAWN_EGG = ITEMS.register("stalker_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.STALKER, 0x0d1217, 0xD1D6B6, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<Item> ECHO_SIGN = ITEMS.register("echo_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB), DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get()));
     public static final RegistryObject<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, BoatEntity.Type.ECHO, new Item.Properties().stacksTo(1).fireResistant().tab(DDCreativeModeTab.DD_TAB)));

@@ -8,10 +8,7 @@ import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.*;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
@@ -26,6 +23,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.alchemy.PotionBrewing;
@@ -89,6 +87,7 @@ public class DeeperAndDarker {
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+            EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
         }
 
         @SubscribeEvent
@@ -126,6 +125,7 @@ public class DeeperAndDarker {
             event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
             event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
             event.put(DDEntities.SHATTERED.get(), ShatteredEntity.attributes());
+            event.put(DDEntities.STALKER.get(), StalkerEntity.attributes());
         }
     }
 }
