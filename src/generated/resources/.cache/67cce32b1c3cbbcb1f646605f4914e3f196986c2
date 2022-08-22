@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-21T09:19:40.8020946	LootTables
+// 1.19.2	2022-08-22T16:49:02.5485472	LootTables
 cc6fd32419ba2f0e64458dd76908e4c65706d727 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 ed7a358314bb8fb063323fe18ee1f2ce5f34211b data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone.json
 d6fc68aea3859c9397b937ac5f2a937216f01f3d data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_slab.json
@@ -51,3 +51,4 @@ ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_tables/entities/
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_tables/entities/sculk_snapper.json
 0a1fb763f51e14446b1e923230bb0ba54ceac6d0 data/deeperdarker/loot_tables/entities/shattered.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_tables/entities/shriek_worm.json
+ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_tables/entities/stalker.json
