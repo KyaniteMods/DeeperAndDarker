@@ -72,17 +72,10 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
 
-    private static final EntityDataAccessor<Boolean> CROUCHED = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.BOOLEAN);
-
-    private static final EntityDataAccessor<Integer> CROUCH_TIME = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.INT);
-
     public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.stalker.idle", DDUtils.secondsToTicks(3), true, false));
     public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.stalker.walk", DDUtils.secondsToTicks(2), true, false));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("animation.stalker.emerge", DDUtils.secondsToTicks(3.5f), false, true));
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.stalker.attack", DDUtils.secondsToTicks(1), false, true));
-
-    public static EntityState CROUCH_IDLE = new EntityState(true, new EntityAnimationHolder("animation.stalker.crouched_idle", DDUtils.secondsToTicks(4), true, false));
-    public static EntityState CROUCH_WALK = new EntityState(true, new EntityAnimationHolder("animation.stalker.crouched_walk", DDUtils.secondsToTicks(1), true, false));
 
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
 
@@ -111,60 +104,6 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(CROUCHED, false);
-        this.entityData.define(CROUCH_TIME, getRandom().nextInt(100, 600));
-    }
-
-    public boolean isCrouched() {
-        return this.entityData.get(CROUCHED);
-    }
-
-    public int getCrouchTimer() {
-        return this.entityData.get(CROUCH_TIME);
-    }
-
-    public void setCrouchTimer(int time) {
-        this.entityData.set(CROUCH_TIME, time);
-    }
-    public void setCrouching(boolean value) {
-        this.entityData.set(CROUCHED, value);
-    }
-
-    public boolean noSpace(Level getter, BlockPos origin, int distance) {
-        for(int i = 0; i < distance; i++) {
-            if(!getter.getBlockState(origin.above(i)).is(Blocks.AIR)) return true;
-        }
-        return false;
-    }
-
-    public boolean shouldUncrouch() {
-        if(noSpace(level, blockPosition(), 4))
-            return false;
-        else
-            return true;
-    }
-    @Override
-    public void addAdditionalSaveData(CompoundTag pCompound) {
-        super.addAdditionalSaveData(pCompound);
-        pCompound.putBoolean("Crouched", isCrouched());
-        pCompound.putInt("CrouchTime", getCrouchTimer());
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-        setCrouching(pCompound.getBoolean("Crouched"));
-        setCrouchTimer(pCompound.getInt("CrouchTime"));
-    }
-
-    @Override
-    protected AABB makeBoundingBox() {
-        return isCrouched() ? EntityDimensions.scalable(0.9f, 1.2f).makeBoundingBox(position()) : EntityDimensions.scalable(0.85f, 4.2f).makeBoundingBox(position());
-    }
-
-    @Override
     public void tick() {
         super.tick();
         if(isDeadOrDying()) return;
@@ -173,28 +112,6 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         if(level instanceof ServerLevel serverlevel) {
             this.dynamicGameEventListener.getListener().tick(serverlevel);
             this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-
-            if(getTarget() != null) {
-                if(this.distanceToSqr(this.getTarget()) > 10 && !this.isCrouched()) {
-                    setCrouching(true);
-                    setState(isCrouched() ? CROUCH_IDLE : IDLE);
-                    this.refreshDimensions();
-                }
-            }
-
-            if(getCrouchTimer() > 0) {
-                setCrouchTimer(getCrouchTimer() - 1);
-            }else{
-                if(isCrouched() && shouldUncrouch())
-                    setCrouching(false);
-                else if(!isCrouched())
-                    setCrouching(true);
-
-                setState(isCrouched() ? CROUCH_IDLE : IDLE);
-                this.refreshDimensions();
-
-                setCrouchTimer(getRandom().nextInt(100, 450));
-            }
 
             if(getCurrentState() != EMERGE) {
                 for(Player player : level.getNearbyPlayers(TARGETING_CONDITIONS, this, this.getBoundingBox().inflate(20.0D, 8.0D, 20.0D))) {
@@ -224,7 +141,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public List<EntityState> createStates() {
-        return List.of(IDLE, CROUCH_IDLE, EMERGE, WALK, CROUCH_WALK, ATTACK);
+        return List.of(IDLE, EMERGE, WALK, ATTACK);
     }
 
 
@@ -250,21 +167,21 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public EntityState getMovingState() {
-        return this.isCrouched() ? CROUCH_WALK : WALK;
+        return WALK;
     }
 
     @Override
     public void stateDone(EntityState entityState) {
-        if(WALK.equals(entityState) || CROUCH_WALK.equals(entityState))
-            setState(this.isCrouched() ? CROUCH_IDLE : IDLE);
+        if(WALK.equals(entityState) )
+            setState(IDLE);
         else if(EMERGE.equals(entityState)) {
-            setState(this.isCrouched() ? CROUCH_IDLE : IDLE);
+            setState(IDLE);
             setNoAi(false);
         }else if(ATTACK.equals(entityState)) {
             if(this.getTarget() != null)
                 this.doHurtTarget(this.getTarget());
 
-            setState(this.isCrouched() ? CROUCH_IDLE : IDLE);
+            setState(IDLE);
         }
     }
 
@@ -297,12 +214,12 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
-    protected float nextStep() {return isCrouched() ? super.nextStep() : this.moveDist + 0.3f;}
+    protected float nextStep() {return this.moveDist + 0.3f;}
 
     @Override
     public float getSpeed() {
         if(getCurrentState() == ATTACK) return 0;
-        return isCrouched() ? super.getSpeed() * 3f : super.getSpeed();
+        return super.getSpeed();
     }
 
     @Override
