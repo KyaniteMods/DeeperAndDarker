@@ -67,7 +67,14 @@
 								"up": {"uv": [7, 0], "uv_size": [6, 6]},
 								"down": {"uv": [14, 6], "uv_size": [6, -6]}
 							}
-						},
+						}
+					]
+				},
+				{
+					"name": "EarRight",
+					"parent": "Head",
+					"pivot": [-5.02, 65.5, 0.5],
+					"cubes": [
 						{
 							"origin": [-10, 63, -1.5],
 							"size": [5, 5, 4],
@@ -79,7 +86,14 @@
 								"up": {"uv": [34, 2], "uv_size": [5, 4]},
 								"down": {"uv": [40, 6], "uv_size": [5, -4]}
 							}
-						},
+						}
+					]
+				},
+				{
+					"name": "EarLeft",
+					"parent": "Head",
+					"pivot": [1.02, 63.5, 0.5],
+					"cubes": [
 						{
 							"origin": [1, 61, -1],
 							"size": [5, 5, 3],

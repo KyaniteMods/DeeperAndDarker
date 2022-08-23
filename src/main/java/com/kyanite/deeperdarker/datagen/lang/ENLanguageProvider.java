@@ -76,6 +76,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.transmit", "Transmitter transmits");
+
+        add("subtitles.entity.stalker.ring", "Stalker emits high pitched ringing");
     }
 
     @Override

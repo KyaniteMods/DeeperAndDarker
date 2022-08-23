@@ -33,6 +33,9 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
     public static final RegistryObject<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
 
+    // Stalker
+    public static final RegistryObject<SoundEvent> STALKER_RING = register("entity.stalker.ring");
+
     // Portal
     public static final RegistryObject<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 

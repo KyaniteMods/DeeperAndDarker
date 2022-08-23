@@ -21,6 +21,7 @@ import software.bernie.geckolib3.renderers.geo.layer.LayerGlowingAreasGeo;
 public class StalkerRenderer extends GeoEntityRenderer<StalkerEntity> {
     public StalkerRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new StalkerModel());
+        this.addLayer(new LayerGlowingAreasGeo<>(this, getGeoModelProvider()::getTextureResource, getGeoModelProvider()::getModelResource, RenderType::entityTranslucentEmissive));
     }
 
     @Override

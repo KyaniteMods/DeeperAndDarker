@@ -122,6 +122,12 @@
       "deeperdarker:entity/sculk_snapper/hurt"
     ]
   },
+  "entity.stalker.ring": {
+    "subtitle": "subtitles.entity.stalker.ring",
+    "sounds": [
+      "deeperdarker:entity/stalker/ring"
+    ]
+  },
   "entity.snapper.sniff": {
     "subtitle": "subtitles.entity.snapper.sniff",
     "sounds": [

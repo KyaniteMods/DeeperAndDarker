@@ -5,7 +5,8 @@ import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
-import com.kyanite.deeperdarker.registry.entities.custom.ai.ShatteredGoToDisturbanceGoal;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.GoToDisturbanceGoal;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.IDisturbanceListener;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -41,7 +42,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig {
+public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig, IDisturbanceListener {
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
@@ -68,7 +69,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.4F, true, 14, 7, ATTACK));
-        this.goalSelector.addGoal(8, new ShatteredGoToDisturbanceGoal(this));
+        this.goalSelector.addGoal(8, new GoToDisturbanceGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
     }
@@ -244,5 +245,15 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
                 };
             }
         };
+    }
+
+    @Override
+    public BlockPos getDisturbanceLocation() {
+        return this.disturbanceLocation;
+    }
+
+    @Override
+    public @Nullable void setDisturbanceLocation(BlockPos disturbanceLocation) {
+        this.disturbanceLocation = disturbanceLocation;
     }
 }
