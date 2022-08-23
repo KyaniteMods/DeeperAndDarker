@@ -445,7 +445,6 @@
 				},
 				{
 					"name": "FakeVase",
-					"parent": "Stalker",
 					"pivot": [0, 7, 0],
 					"cubes": [
 						{

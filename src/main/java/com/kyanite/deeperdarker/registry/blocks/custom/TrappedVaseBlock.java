@@ -14,8 +14,6 @@ public class TrappedVaseBlock extends AncientVaseBlock {
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        StalkerEntity stalkerEntity = DDEntities.STALKER.get().create(pLevel);
-        stalkerEntity.moveTo(pPos.getX(), pPos.getY(), pPos.getZ(), 0, 0);
-        pLevel.addFreshEntity(stalkerEntity);
+        StalkerEntity.emergeFromVase(pPos, pLevel);
     }
 }

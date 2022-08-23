@@ -1363,19 +1363,6 @@
 				}
 			}
 		},
-		"animation.stalker.in_ground": {
-			"loop": true,
-			"bones": {
-				"Waist": {
-					"position": {
-						"vector": [0, -22, 0]
-					},
-					"scale": {
-						"vector": [0, 0, 0]
-					}
-				}
-			}
-		},
 		"animation.stalker.emerge": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 3.5,
@@ -1420,7 +1407,7 @@
 							"vector": [0, -4.15, -2]
 						},
 						"3.2083": {
-							"vector": [0, 0.04, -2]
+							"vector": [0, 0, 0]
 						},
 						"3.5": {
 							"vector": [0, 0, 0]
