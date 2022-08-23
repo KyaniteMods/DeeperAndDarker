@@ -2,7 +2,9 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import net.minecraft.nbt.CompoundTag;
@@ -35,10 +37,10 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
-    public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true, false));
-    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge",80, false, true));
-    public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", 80, false, true));
-    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", 8, false, true));
+    public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", DDUtils.secondsToTicks(4), true, false));
+    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(4), false, true));
+    public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", DDUtils.secondsToTicks(4), false, true));
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", DDUtils.secondsToTicks(1), false, true));
 
     public SculkWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

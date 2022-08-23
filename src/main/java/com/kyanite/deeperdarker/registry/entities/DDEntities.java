@@ -19,5 +19,5 @@ public class DDEntities {
     public static final RegistryObject<EntityType<SculkWormEntity>> SCULK_WORM = ENTITY_TYPES.register("shriek_worm", () -> EntityType.Builder.of(SculkWormEntity::new, MobCategory.MONSTER).sized(1.5f, 5f).clientTrackingRange(10).build(new ResourceLocation(DeeperAndDarker.MOD_ID, "shriek_worm").toString()));
     public static final RegistryObject<EntityType<ShatteredEntity>> SHATTERED = ENTITY_TYPES.register("shattered", () -> EntityType.Builder.of(ShatteredEntity::new, MobCategory.MONSTER).sized(0.85f, 2.1f).build(new ResourceLocation(DeeperAndDarker.MOD_ID, "shattered").toString()));
 
-    public static final RegistryObject<EntityType<StalkerEntity>> STALKER = ENTITY_TYPES.register("stalker", () -> EntityType.Builder.of(StalkerEntity::new, MobCategory.MONSTER).sized(0.85f, 2.1f).build(new ResourceLocation(DeeperAndDarker.MOD_ID, "stalker").toString()));
+    public static final RegistryObject<EntityType<StalkerEntity>> STALKER = ENTITY_TYPES.register("stalker", () -> EntityType.Builder.of(StalkerEntity::new, MobCategory.MONSTER).sized(0.85f, 4.2f).build(new ResourceLocation(DeeperAndDarker.MOD_ID, "stalker").toString()));
 }
