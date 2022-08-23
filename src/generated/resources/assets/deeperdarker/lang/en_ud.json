@@ -67,6 +67,7 @@
   "block.deeperdarker.stripped_echo_wood": "Sʇɹıppǝd Ǝɔɥo Wood",
   "block.deeperdarker.trapped_vase": "⟘ɹɐppǝd Λɐsǝ",
   "death.attack.jaw": "ʍɐſ ʞןnɔS ɐ ʎq pǝɹnoʌǝp sɐʍ %1$s",
+  "death.attack.ring": "buıɹ s,ɹǝʞןɐʇS ǝɥʇ ǝןpuɐɥ ʇ,upןnoɔ %1$s",
   "effect.deeperdarker.sculk_affinity": "ʎʇıuıɟɟⱯ ʞןnɔS",
   "effect.deeperdarker.sculk_affinity.description": "˙suoıʇɐɹqıʌ ʎuɐ buısnɐɔ ɯoɹɟ ɹǝʎɐןd ǝɥʇ sʇuǝʌǝɹԀ",
   "enchantment.deeperdarker.sculk_smite": "Sɔuןʞ Sɯıʇǝ",
@@ -112,7 +113,7 @@
   "subtitles.entity.snapper.bite": "sǝʇıq ɹǝddɐuS ʞןnɔS",
   "subtitles.entity.snapper.hurt": "sʇɹnɥ ɹǝddɐuS ʞןnɔS",
   "subtitles.entity.snapper.sniff": "sɟɟıus ɹǝddɐuS ʞןnɔS",
-  "subtitles.entity.stalker.ring": "buıbuıɹ pǝɥɔʇıd ɥbıɥ sʇıɯǝ ɹǝʞןɐʇS",
+  "subtitles.entity.stalker.ring": "sbuıɹ ɹǝʞןɐʇS",
   "subtitles.item.transmitter.link": "sʞuıן ɹǝʇʇıɯsuɐɹ⟘",
   "subtitles.item.transmitter.transmit": "sʇıɯsuɐɹʇ ɹǝʇʇıɯsuɐɹ⟘"
 }

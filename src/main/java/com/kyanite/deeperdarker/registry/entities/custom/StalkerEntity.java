@@ -60,6 +60,8 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private static final EntityDataAccessor<Integer> RING_COOLDOWN = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Boolean> HAS_VASE = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.BOOLEAN);
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
 
     public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.stalker.idle", DDUtils.secondsToTicks(3), true, false));
@@ -76,6 +78,8 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D).selector(LIVING_ENTITY_SELECTOR);
 
     public BlockPos disturbanceLocation = null;
+
+    public DamageSource damageSource = new DamageSource("ring");
 
     public StalkerEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -98,14 +102,37 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.75D, true, 17, 20, ATTACK));
+        this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.75D, true, 17, 16, ATTACK));
         this.goalSelector.addGoal(8, new GoToDisturbanceGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.75D));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
     }
 
     public static AttributeSupplier attributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250).add(Attributes.MOVEMENT_SPEED, (double)0.2F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 30.0D).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250).add(Attributes.MOVEMENT_SPEED, (double)0.2F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 17.0D).build();
+    }
+
+    public boolean isPerformingAction() {
+        if(getCurrentState() == EMERGE || getCurrentState() == RING || getCurrentState() == ATTACK) return true;
+        return false;
+    }
+
+    public boolean hasVase() {
+        return this.entityData.get(HAS_VASE);
+    }
+
+    @Override
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        if(getHealth() < getMaxHealth() / 2 && this.entityData.get(HAS_VASE) == true) {
+            this.entityData.set(HAS_VASE, false);
+            playSound(DDSounds.VASE_BREAK.get(), 4, 1);
+            for(int i = 0; i < getRandom().nextInt(5, 8); i++) {
+                SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(level);
+                sculkLeechEntity.moveTo(position());
+                level.addFreshEntity(sculkLeechEntity);
+            }
+        }
+        return super.hurt(pSource, pAmount);
     }
 
     @Override
@@ -115,12 +142,11 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
         if(this.entityData.get(RING_COOLDOWN) > 0) {
             this.entityData.set(RING_COOLDOWN, this.entityData.get(RING_COOLDOWN) - 1);
-            DeeperAndDarker.LOGGER.info(String.valueOf(this.entityData.get(RING_COOLDOWN)));
         }else{
-            if(getCurrentState() != RING && !isMoving)
+            if(getCurrentState() != RING && !isMoving) {
                 setState(RING);
-
-            playSound(DDSounds.STALKER_RING.get(), 0.1f, 0.5f);
+                playSound(DDSounds.STALKER_RING.get(), 0.1f, 0.5f);
+            }
         }
 
         Level level = this.level;
@@ -129,12 +155,20 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
             this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
 
             if(getCurrentState() != EMERGE) {
+                if(this.entityData.get(HAS_VASE) == true) {
+                    if(this.getRandom().nextInt(0, 85) == 0) {
+                        SculkLeechEntity entity = DDEntities.SCULK_LEECH.get().create(level);
+                        entity.moveTo(position());
+                        level.addFreshEntity(entity);
+                    }
+                }
+
                 for(Player player : level.getNearbyPlayers(TARGETING_CONDITIONS, this, this.getBoundingBox().inflate(20.0D, 8.0D, 20.0D))) {
                     if(!player.isDeadOrDying()) {
                         this.bossEvent.addPlayer((ServerPlayer) player);
                         if(getCurrentState() == RING) {
-                            player.hurt(DamageSource.GENERIC, 1.2f);
-                            player.knockback(0.2f, 0.4, 0.4);
+                            player.hurt(damageSource, 1.4f);
+                            player.knockback(0.2f, -0.4f, -0.4f);
                         }
                     }
                 }
@@ -166,7 +200,8 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(RING_COOLDOWN, getRandom().nextInt(100, 800));
+        this.entityData.define(RING_COOLDOWN, getRandom().nextInt(350, 800));
+        this.entityData.define(HAS_VASE, true);
     }
 
     @Override
@@ -176,12 +211,12 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public boolean isPushable() {
-        return getCurrentState() == EMERGE ? false : super.isPushable();
+        return isPerformingAction() ? false : super.isPushable();
     }
 
     @Override
     public EntityState getMovingState() {
-        return getCurrentState() == RING ? RING : WALK;
+        return isPerformingAction() ? null : WALK;
     }
 
     @Override
@@ -197,7 +232,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                 this.doHurtTarget(this.getTarget());
             setState(IDLE);
         }else if(RING.equals(entityState)) {
-            this.entityData.set(RING_COOLDOWN, getRandom().nextInt(100, 800));
+            this.entityData.set(RING_COOLDOWN, getRandom().nextInt(350, 800));
             setState(IDLE);
         }
     }
@@ -214,8 +249,15 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
+    public float getSpeed() {
+        if(isPerformingAction()) return 0;
+        return this.entityData.get(HAS_VASE) == false ? 0.6f : super.getSpeed();
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
+        pCompound.putBoolean("HasVase", this.entityData.get(HAS_VASE));
         pCompound.putInt("RingDelay", this.entityData.get(RING_COOLDOWN));
         VibrationListener.codec(this).encodeStart(NbtOps.INSTANCE, this.dynamicGameEventListener.getListener()).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((tag) -> pCompound.put("listener", tag));
     }
@@ -223,6 +265,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        this.entityData.set(HAS_VASE, pCompound.getBoolean("HasVase"));
         this.entityData.set(RING_COOLDOWN, pCompound.getInt("RingDelay"));
         if(pCompound.contains("listener", 10)) {
             VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((vibrationListener) -> this.dynamicGameEventListener.updateListener(vibrationListener, this.level));

@@ -67,6 +67,7 @@
   "block.deeperdarker.stripped_echo_wood": "Stripped Echo Wood",
   "block.deeperdarker.trapped_vase": "Trapped Vase",
   "death.attack.jaw": "%1$s was devoured by a Sculk Jaw",
+  "death.attack.ring": "%1$s couldn't handle the Stalker's ring",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "effect.deeperdarker.sculk_affinity.description": "Prevents the player from causing any vibrations.",
   "enchantment.deeperdarker.sculk_smite": "Sculk Smite",
@@ -112,7 +113,7 @@
   "subtitles.entity.snapper.bite": "Sculk Snapper bites",
   "subtitles.entity.snapper.hurt": "Sculk Snapper hurts",
   "subtitles.entity.snapper.sniff": "Sculk Snapper sniffs",
-  "subtitles.entity.stalker.ring": "Stalker emits high pitched ringing",
+  "subtitles.entity.stalker.ring": "Stalker rings",
   "subtitles.item.transmitter.link": "Transmitter links",
   "subtitles.item.transmitter.transmit": "Transmitter transmits"
 }

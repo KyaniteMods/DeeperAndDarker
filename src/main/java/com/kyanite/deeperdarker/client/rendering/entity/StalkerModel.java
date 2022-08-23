@@ -30,8 +30,10 @@ public class StalkerModel extends AnimatedGeoModel<StalkerEntity> {
     public void setLivingAnimations(StalkerEntity entity, Integer uniqueID, @Nullable AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         this.getBone("FakeVase").setHidden(entity.getCurrentState() == StalkerEntity.EMERGE ? false : true);
-        if(entity.getTarget() != null) {
-            this.getBone("Head").setRotationX(entity.getRandom().nextInt(0, 365));
-        }
+
+        if(!entity.hasVase())
+            this.getBone("Vase").setHidden(true);
+        else
+            this.getBone("Vase").setHidden(false);
     }
 }

@@ -55,6 +55,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
 
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
+        add("death.attack.ring", "%1$s couldn't handle the Stalker's ring");
 
         add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         add("effect.deeperdarker.sculk_affinity.description", "Prevents the player from causing any vibrations.");
@@ -77,7 +78,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.transmit", "Transmitter transmits");
 
-        add("subtitles.entity.stalker.ring", "Stalker emits high pitched ringing");
+        add("subtitles.entity.stalker.ring", "Stalker rings");
     }
 
     @Override
