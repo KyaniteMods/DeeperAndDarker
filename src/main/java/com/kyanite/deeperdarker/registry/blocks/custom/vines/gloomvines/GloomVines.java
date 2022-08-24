@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom.gloomvines;
+package com.kyanite.deeperdarker.registry.blocks.custom.vines.gloomvines;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
