@@ -35,7 +35,9 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -48,6 +50,8 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
@@ -73,9 +77,10 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
 
     private static final Predicate<LivingEntity> LIVING_ENTITY_SELECTOR = (entity) -> {
-        return entity.getMobType() != MobType.UNDEAD && entity.getMobType() != DDTypes.SCULK;
+        return entity.getMobType() != DDTypes.SCULK;
     };
     private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D).selector(LIVING_ENTITY_SELECTOR);
+    private static final TargetingConditions ITEM_TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D);
 
     public BlockPos disturbanceLocation = null;
 
@@ -163,6 +168,19 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                     }
                 }
 
+                Warden.applyDarknessAround(serverlevel, position(), this, 20);
+
+                for(LivingEntity livingEntity : level.getEntitiesOfClass(LivingEntity.class, new AABB(blockPosition()).inflate(20, 8, 20))) {
+                    if(!livingEntity.isDeadOrDying() && livingEntity.getMobType() != DDTypes.SCULK) {
+                        if(livingEntity instanceof Player player)
+                            this.bossEvent.addPlayer((ServerPlayer) player);
+
+                        if(getCurrentState() == RING) {
+                            livingEntity.hurt(damageSource, 1.4f);
+                            livingEntity.knockback(0.2f, 1, 1);
+                        }
+                    }
+                }
                 for(Player player : level.getNearbyPlayers(TARGETING_CONDITIONS, this, this.getBoundingBox().inflate(20.0D, 8.0D, 20.0D))) {
                     if(!player.isDeadOrDying()) {
                         this.bossEvent.addPlayer((ServerPlayer) player);

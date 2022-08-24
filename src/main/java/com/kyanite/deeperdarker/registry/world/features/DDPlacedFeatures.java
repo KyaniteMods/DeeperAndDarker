@@ -33,6 +33,7 @@ public class DDPlacedFeatures {
 
     public static final RegistryObject<PlacedFeature> SCULK_GLEAM = PLACED_FEATURES.register("sculk_gleam", () -> new PlacedFeature(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.getHolder().get(), commonOrePlacement(26, PlacementUtils.FULL_RANGE)));
     public static final RegistryObject<PlacedFeature> SCULK_VINES = PLACED_FEATURES.register("sculk_vines", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_VINES.getHolder().get(), commonOrePlacement(32, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SCULK_TENDRILS = PLACED_FEATURES.register("sculk_tendrils", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_TENDRILS.getHolder().get(), commonOrePlacement(55, PlacementUtils.FULL_RANGE)));
 
     public static final RegistryObject<PlacedFeature> OTHERSIDE_PILLAR = PLACED_FEATURES.register("otherside_pillar", () -> new PlacedFeature(DDConfiguredFeatures.OTHERSIDE_PILLAR.getHolder().get(), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
 

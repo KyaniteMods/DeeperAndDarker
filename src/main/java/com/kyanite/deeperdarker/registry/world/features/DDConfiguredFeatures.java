@@ -54,6 +54,7 @@ public class DDConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = feature("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
     public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_VINES = feature("sculk_vines", DDFeatures.SCULK_VINES);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_TENDRILS = feature("sculk_tendrils", DDFeatures.SCULK_TENDRILS);
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> OTHERSIDE_PILLAR = feature("otherside_pillar", DDFeatures.OTHERSIDE_PILLAR);
 

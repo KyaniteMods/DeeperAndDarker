@@ -13,5 +13,8 @@ public class DDFeatures {
     public static final RegistryObject<OthersidePillarFeature> OTHERSIDE_PILLAR = FEATURES.register("otherside_pillar", () -> new OthersidePillarFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<EchoTreeFeature> ECHO_TREE = FEATURES.register("echo_tree", () -> new EchoTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<SculkGleamFeature> SCULK_GLEAM_BLOB = FEATURES.register("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
+
     public static final RegistryObject<SculkVinesFeature> SCULK_VINES = FEATURES.register("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<SculkTendrilFeature> SCULK_TENDRILS = FEATURES.register("sculk_tendrils", () -> new SculkTendrilFeature(NoneFeatureConfiguration.CODEC));
 }

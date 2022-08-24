@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.integration.DDIntegrations;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
@@ -13,6 +14,7 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
+import com.kyanite.deeperdarker.registry.world.biomemodifiers.DDBiomeModifiers;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDPoiTypes;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
@@ -54,6 +56,7 @@ public class DeeperAndDarker {
     public DeeperAndDarker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        DDBiomeModifiers.BIOME_MODIFIERS.register(eventBus);
         DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
         DDEffects.MOB_EFFECTS.register(eventBus);
@@ -70,6 +73,8 @@ public class DeeperAndDarker {
 
         GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
+
+        eventBus.addListener(DDIntegrations::sendIMCs);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -110,6 +115,8 @@ public class DeeperAndDarker {
                 SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
                 SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
             });
+
+            DDIntegrations.commonSetup();
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65f);
