@@ -17,12 +17,9 @@ import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ENLanguageProvider extends LanguageProvider {
-    private static final String NORMAL_CHARS = "abcdefghijklmn\u00F1opqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "_,;.?!/\\'";
-    private static final String UPSIDE_DOWN_CHARS = "\u0250q\u0254p\u01DD\u025Fb\u0265\u0131\u0638\u029E\u05DF\u026Fuuodb\u0279s\u0287n\u028C\u028Dx\u028Ez" +
-            "\u2C6F\u15FA\u0186\u15E1\u018E\u2132\u2141HI\u017F\u029E\uA780WNO\u0500\u1F49\u1D1AS\u27D8\u2229\u039BMX\u028EZ" +
-            "0\u0196\u1105\u0190\u3123\u03DB9\u312586" + "\u203E'\u061B\u02D9\u00BF\u00A1/\\,";
-
-    boolean upsideDown;
+    private static final String NORMAL_CHARS = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,;.?!/\\'";
+    private static final String UPSIDE_DOWN_CHARS = " ɐqɔpǝɟbɥıظʞןɯuodbɹsʇnʌʍxʎzⱯᗺƆᗡƎℲ⅁HIſʞꞀWNOԀὉᴚS⟘∩ΛMXʎZ0ƖᄅƐㄣϛ9ㄥ86‾'؛˙¿¡/\\,";
+    private final boolean upsideDown;
 
     public ENLanguageProvider(DataGenerator pGenerator, String locale, boolean upsideDown) {
         super(pGenerator, DeeperAndDarker.MOD_ID, locale);

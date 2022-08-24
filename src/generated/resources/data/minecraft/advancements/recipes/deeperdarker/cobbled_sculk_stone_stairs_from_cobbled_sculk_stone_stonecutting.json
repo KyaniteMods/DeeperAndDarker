@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:cobbled_sculk_stone_wall_from_cobbled_sculk_stone_stonecutting"
+        "recipe": "minecraft:cobbled_sculk_stone_stairs_from_cobbled_sculk_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:cobbled_sculk_stone_wall_from_cobbled_sculk_stone_stonecutting"
+      "minecraft:cobbled_sculk_stone_stairs_from_cobbled_sculk_stone_stonecutting"
     ]
   }
 }
