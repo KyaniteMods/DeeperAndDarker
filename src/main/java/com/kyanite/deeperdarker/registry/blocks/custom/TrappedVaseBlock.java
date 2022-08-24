@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.custom.StalkerEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -14,6 +15,8 @@ public class TrappedVaseBlock extends AncientVaseBlock implements SimpleWaterlog
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        StalkerEntity.emergeFromVase(pPos, pLevel);
+
+        if(!pNewState.is(DDBlocks.TRAPPED_VASE.get()))
+            StalkerEntity.emergeFromVase(pPos, pLevel);
     }
 }
