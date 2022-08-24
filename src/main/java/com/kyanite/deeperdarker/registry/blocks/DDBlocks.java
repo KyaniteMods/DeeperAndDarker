@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
+import com.kyanite.deeperdarker.registry.blocks.custom.vines.sculktendrils.SculkTendrilsBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vines.sculktendrils.SculkTendrilsPlantBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vines.sculkvines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vines.sculkvines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
@@ -37,8 +39,8 @@ public class DDBlocks {
     });
     public static final RegistryObject<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new DDFlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new DDFlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
-    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new DDFlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new DDFlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new DDFlammableWoodBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
         public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return true; }
         public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) { return 60; }
@@ -95,8 +97,8 @@ public class DDBlocks {
     // Vegetation
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
     public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak()));
-//    public static final RegistryObject<GloomVinesBlock> GLOOM_VINES = BLOCKS.register("gloom_vines", () -> new GloomVinesBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get()).noLootTable().lightLevel(state -> 3)));
-//    public static final RegistryObject<GloomVinesPlantBlock> GLOOM_VINES_PLANT = BLOCKS.register("gloom_vines_plant", () -> new GloomVinesPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES_PLANT.get()).noLootTable().lightLevel(state -> 3)));
+    public static final RegistryObject<SculkTendrilsBlock> SCULK_TENDRILS = BLOCKS.register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
+    public static final RegistryObject<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = BLOCKS.register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES_PLANT.get())));
 
     public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
 

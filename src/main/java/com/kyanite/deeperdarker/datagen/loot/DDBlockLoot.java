@@ -72,6 +72,7 @@ public class DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
 
         this.addSculkVinesDropTable(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
+        this.addSculkTendrilsDropTable(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropSelf(DDBlocks.ECHO_SOIL.get());
@@ -85,6 +86,12 @@ public class DDBlockLoot extends BlockLoot {
     }
 
     private void addSculkVinesDropTable(Block vines, Block plant) {
+        LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vines, LootItem.lootTableItem(vines).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33F, 0.55F, 0.77F, 1.0F)));
+        this.add(vines, builder);
+        this.add(plant, builder);
+    }
+
+    private void addSculkTendrilsDropTable(Block vines, Block plant) {
         LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vines, LootItem.lootTableItem(vines).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33F, 0.55F, 0.77F, 1.0F)));
         this.add(vines, builder);
         this.add(plant, builder);

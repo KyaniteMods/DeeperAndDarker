@@ -36,7 +36,7 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
             replaceState = DDBlocks.SCULK_STONE.get().defaultBlockState();
         }
 
-        else if(state.is(DDTags.Blocks.LOGS)) {
+        else if(state.is(BlockTags.LOGS)) {
             replaceState = DDBlocks.ECHO_LOG.get().defaultBlockState();
         }
         else if(state.is(DDTags.Blocks.STRIPPED_LOGS)) {
@@ -48,8 +48,11 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
         else if(state.is(DDTags.Blocks.STRIPPED_WOOD)) {
             replaceState = DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState();
         }
+        else if(state.is(BlockTags.LEAVES)) {
+            replaceState = DDBlocks.ECHO_LEAVES.get().defaultBlockState();
+        }
 
-        else if(state.is(BlockTags.LEAVES) || state == Blocks.SHROOMLIGHT.defaultBlockState()) {
+        else if(state == Blocks.SHROOMLIGHT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
         }
 
@@ -58,6 +61,12 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
         }
         else if(state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
+        }
+        else if(state == Blocks.TWISTING_VINES.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_TENDRILS.get().defaultBlockState();
+        }
+        else if(state == Blocks.TWISTING_VINES_PLANT.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_TENDRILS_PLANT.get().defaultBlockState();
         }
 
         return replaceState;
