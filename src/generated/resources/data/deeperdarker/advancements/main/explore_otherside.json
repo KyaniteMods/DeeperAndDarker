@@ -39,7 +39,7 @@
     "description": {
       "translate": "advancements.deeperdarker.explore_otherside.description"
     },
-    "frame": "goal",
+    "frame": "challenge",
     "hidden": false,
     "icon": {
       "item": "deeperdarker:echo_log"

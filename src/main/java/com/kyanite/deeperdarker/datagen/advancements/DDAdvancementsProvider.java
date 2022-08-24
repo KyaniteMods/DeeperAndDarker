@@ -74,7 +74,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
         Advancement.Builder.advancement().parent(enterOtherside).display(DDBlocks.ECHO_LOG.get(),
                         Component.translatable(id + "explore_otherside.title"),
                         Component.translatable(id + "explore_otherside.description"),
-                        null, FrameType.GOAL, true, true, false)
+                        null, FrameType.CHALLENGE, true, true, false)
                 .rewards(AdvancementRewards.Builder.experience(200))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST.getKey())))
                 .addCriterion("otherside_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OTHERSIDE_DEEPLANDS.getKey())))
