@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.client.mixin;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
+import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import net.minecraft.client.renderer.entity.PhantomRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Phantom;
@@ -16,6 +17,6 @@ import java.util.Objects;
 public class PhantomRendererMixin {
     @Inject(method = "getTextureLocation(Lnet/minecraft/world/entity/monster/Phantom;)Lnet/minecraft/resources/ResourceLocation;", at = @At("HEAD"), cancellable = true)
     public void getTextureLocation(Phantom pEntity, CallbackInfoReturnable<ResourceLocation> cir) {
-        if(pEntity.level.getBiome(pEntity.blockPosition()).is(Objects.requireNonNull(OthersideBiomes.OTHERSIDE_DEEPLANDS.getKey()))) cir.setReturnValue(new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/sculk_phantom.png"));
+        if(pEntity.level.dimension() == DDDimensions.OTHERSIDE_LEVEL) cir.setReturnValue(new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/sculk_phantom.png");
     }
 }
