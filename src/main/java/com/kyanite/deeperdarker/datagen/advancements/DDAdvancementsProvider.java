@@ -36,7 +36,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
         Advancement root = Advancement.Builder.advancement().display(Blocks.SCULK,
                         Component.translatable(id + "root.title"),
                         Component.translatable(id + "root.description"),
-                        new ResourceLocation("textures/block/sculk.png"),
+                        new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/gui/advancements/root.png"),
                         FrameType.TASK, false, false, false)
                 .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
                 .save(consumer, path + "root");
@@ -56,7 +56,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(BuiltinStructures.ANCIENT_CITY)))
                 .save(consumer, path + "locate_ancient_city");
 
-        Advancement killWarden = Advancement.Builder.advancement().parent(locateAncientCity).display(Blocks.SCULK_SHRIEKER,
+        Advancement killWarden = Advancement.Builder.advancement().parent(locateAncientCity).display(DDItems.HEART_OF_THE_DEEP.get(),
                         Component.translatable(id + "kill_warden.title"),
                         Component.translatable(id + "kill_warden.description"),
                         null, FrameType.CHALLENGE, true, true, false)
@@ -64,7 +64,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .addCriterion("warden", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.HEART_OF_THE_DEEP.get()))
                 .save(consumer, path + "kill_warden");
 
-        Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(DDItems.HEART_OF_THE_DEEP.get(),
+        Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(Blocks.REINFORCED_DEEPSLATE,
                         Component.translatable(id + "enter_otherside.title"),
                         Component.translatable(id + "enter_otherside.description"),
                         null, FrameType.GOAL, true, true, false)

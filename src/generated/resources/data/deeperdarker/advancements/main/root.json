@@ -17,7 +17,7 @@
   },
   "display": {
     "announce_to_chat": false,
-    "background": "minecraft:textures/block/sculk.png",
+    "background": "deeperdarker:textures/gui/advancements/root.png",
     "description": {
       "translate": "advancements.deeperdarker.root.description"
     },

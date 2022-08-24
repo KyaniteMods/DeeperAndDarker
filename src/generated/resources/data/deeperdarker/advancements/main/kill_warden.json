@@ -22,7 +22,7 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "minecraft:sculk_shrieker"
+      "item": "deeperdarker:heart_of_the_deep"
     },
     "show_toast": true,
     "title": {
