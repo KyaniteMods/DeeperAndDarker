@@ -25,6 +25,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.ECHO_SOIL.get());
 
         tag(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE.get());
+        tag(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES.get());
         tag(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS);
         tag(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS.get());
         tag(BlockTags.SAND).add(DDBlocks.ECHO_SOIL.get());

@@ -29,7 +29,7 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.STRIPPED_ECHO_LOG.get());
         this.dropSelf(DDBlocks.STRIPPED_ECHO_WOOD.get());
         this.dropSelf(DDBlocks.ECHO_WOOD.get());
-        this.dropSelf(DDBlocks.ECHO_LEAVES.get());
+        this.add(DDBlocks.ECHO_LEAVES.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK)).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.5f))));
         this.add(DDBlocks.ECHO_SLAB.get(), BlockLoot::createSlabItemTable);
         this.dropSelf(DDBlocks.ECHO_FENCE.get());
         this.dropSelf(DDBlocks.ECHO_STAIRS.get());
