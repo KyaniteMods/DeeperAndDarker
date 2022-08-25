@@ -16,8 +16,7 @@ public class DDIntegrations {
 
     public static void sendIMCs(final InterModEnqueueEvent event) {
         if (TOPLoaded) {
-            InterModComms.sendTo(TOP_MOD_ID, "getTheOneProbe",
-                    DDOneProbe::new);
+            InterModComms.sendTo(TOP_MOD_ID, "getTheOneProbe", DDOneProbe::new);
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.pathfinder.Path;
 

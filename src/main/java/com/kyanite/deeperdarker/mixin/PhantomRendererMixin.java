@@ -1,7 +1,6 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import net.minecraft.client.renderer.entity.PhantomRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -10,8 +9,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Objects;
 
 @Mixin(PhantomRenderer.class)
 public class PhantomRendererMixin {

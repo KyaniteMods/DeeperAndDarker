@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TwistingVinesConfig;
 
 public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
     public SculkTendrilFeature(Codec<NoneFeatureConfiguration> pCodec) {

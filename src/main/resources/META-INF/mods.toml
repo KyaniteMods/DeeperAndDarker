@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[42,)"
+loaderVersion = "[43,)"
 license = "MIT"
 issueTrackerURL = "https://github.com/KyaniteMods/DeeperAndDarker/issues"
 
@@ -15,14 +15,14 @@ issueTrackerURL = "https://github.com/KyaniteMods/DeeperAndDarker/issues"
 [[dependencies.deeperdarker]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.19, 1.20)"
+    versionRange = "[1.19.2, 1.20)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.deeperdarker]]
     modId = "forge"
     mandatory = true
-    versionRange = "[42,)"
+    versionRange = "[43,)"
     ordering = "NONE"
     side = "BOTH"
 

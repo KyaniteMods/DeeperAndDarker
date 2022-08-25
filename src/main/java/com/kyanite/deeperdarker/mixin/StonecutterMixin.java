@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.StonecutterMenu;

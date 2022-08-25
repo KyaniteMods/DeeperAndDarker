@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

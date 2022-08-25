@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import net.minecraft.nbt.CompoundTag;
