@@ -1,0 +1,11 @@
+{
+  "name": "Warden Armor",
+  "icon": "deeperdarker:warden_chestplate",
+  "category": "deeperdarker:combat",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Warden Helmet, Chestplate, Leggings, and Boots."
+    }
+  ]
+}

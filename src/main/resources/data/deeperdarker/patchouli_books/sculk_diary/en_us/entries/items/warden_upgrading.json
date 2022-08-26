@@ -1,0 +1,11 @@
+{
+  "name": "Warden Upgrading",
+  "icon": "minecraft:phantom_membrane",
+  "category": "deeperdarker:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Warden Carapace and Reinforced Echo Shard."
+    }
+  ]
+}

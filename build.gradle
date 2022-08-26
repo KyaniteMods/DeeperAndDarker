@@ -110,6 +110,11 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven {
+        name = 'BlameJared maven'
+        url = "https://maven.blamejared.com"
+    }
+    maven {
+        name = "GeckoLib maven"
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
 }
@@ -123,6 +128,9 @@ dependencies {
 
     compileOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-${top_version}:api") { transitive = false }
     runtimeOnly fg.deobf("mcjty.theoneprobe:theoneprobe:1.19-${top_version}") { transitive = false }
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.16')
 
