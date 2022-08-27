@@ -52,17 +52,17 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_LAPIS_SCULK = CONFIGURED_FEATURES.register("ore_lapis_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_LAPIS_TARGET_LIST.get(), 7)));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ORE_DIAMOND_SCULK = CONFIGURED_FEATURES.register("ore_diamond_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ORE_DIAMOND_TARGET_LIST.get(), 5, 0.7f)));
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = feature("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
-    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_VINES = feature("sculk_vines", DDFeatures.SCULK_VINES);
-    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_TENDRILS = feature("sculk_tendrils", DDFeatures.SCULK_TENDRILS);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = register("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_VINES = register("sculk_vines", DDFeatures.SCULK_VINES);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SCULK_TENDRILS = register("sculk_tendrils", DDFeatures.SCULK_TENDRILS);
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> OTHERSIDE_PILLAR = feature("otherside_pillar", DDFeatures.OTHERSIDE_PILLAR);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> OTHERSIDE_PILLAR = register("otherside_pillar", DDFeatures.OTHERSIDE_PILLAR);
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> ECHO_TREE = feature("echo_tree", DDFeatures.ECHO_TREE);
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ECHO_TREE = register("echo_tree", DDFeatures.ECHO_TREE);
     public static final Holder<PlacedFeature> ECHO_TREE_CHECKED = PlacementUtils.register("echo_tree_checked", ECHO_TREE.getHolder().get());
     public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> ECHO_TREE_SPAWN = FeatureUtils.register("echo_tree_spawn", Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ECHO_TREE_CHECKED, 0.5f)), ECHO_TREE_CHECKED));
 
-    public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> feature(String id, Supplier<F> feature) {
+    public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> register(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
         return CONFIGURED_FEATURES.register(id, () -> new ConfiguredFeature<>(feature.get(), configuration.get()));
     }
