@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-23T22:14:30.4072269	Block States: deeperdarker
+// 1.19.2	2022-08-26T19:35:32.8953779	Block States: deeperdarker
 63b29abf80d480459ac97153a9839072673f5082 assets/deeperdarker/blockstates/cobbled_sculk_stone.json
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
 d4f6eb2945fc34ef732d828c5c8a5a13c50ca8ee assets/deeperdarker/blockstates/cobbled_sculk_stone_stairs.json
@@ -131,10 +131,10 @@ b9d3d9cb31f61ce61a5c47324ae115006f4190f3 assets/deeperdarker/models/block/sculk_
 a0367e82d5dcd6e5d2a102c43d5299397442196e assets/deeperdarker/models/block/sculk_stone_wall_post.json
 05a2ac0b26c961559425ace1c48ae5986fd8be01 assets/deeperdarker/models/block/sculk_stone_wall_side.json
 bc606473c7f48da3f881423989827036f032d9a1 assets/deeperdarker/models/block/sculk_stone_wall_side_tall.json
-7498eb54aef2af9d3eb61722e9fd95e2a5698535 assets/deeperdarker/models/block/sculk_tendrils.json
-f85983a2b0b7e87ea0ee4d5bb5e3d823dbf3bf25 assets/deeperdarker/models/block/sculk_tendrils_plant.json
-6c1e76c97446199c207cecd52fbd80f8dcd75287 assets/deeperdarker/models/block/sculk_vines.json
-1f700502a59d9bbe267479b4d66643412e8edf1b assets/deeperdarker/models/block/sculk_vines_plant.json
+36b2d2a53bfacb247d2d74d096b7d35d23c7313b assets/deeperdarker/models/block/sculk_tendrils.json
+8c7d9b65458e7edd939e693d5d68b4d5650105eb assets/deeperdarker/models/block/sculk_tendrils_plant.json
+6557fec6b7b58c23d73fc7b488746afc74dc1286 assets/deeperdarker/models/block/sculk_vines.json
+54b48d5f0c2ea68f221155de3046e76dba21df65 assets/deeperdarker/models/block/sculk_vines_plant.json
 eb88f94cf14a1fab1245af655386edfbee5445b6 assets/deeperdarker/models/block/stripped_echo_log.json
 6ef3c803f009684d61f103155981db2fb837cabb assets/deeperdarker/models/block/stripped_echo_log_horizontal.json
 cccf197b137f14396bbcd7fa0cf4bf57e66f8112 assets/deeperdarker/models/block/stripped_echo_wood.json
