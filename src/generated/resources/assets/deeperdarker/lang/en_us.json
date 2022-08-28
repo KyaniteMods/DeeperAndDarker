@@ -118,6 +118,7 @@
   "sculk_diary.category.mobs.name": "Mobs",
   "sculk_diary.entry.blocks.echo_wood.description": "Echo Wood Description",
   "sculk_diary.entry.blocks.sculk_stone.description": "Sculk Stone Description",
+  "sculk_diary.entry.items.sculk_transmitter.description": "Sculk Transmitter Description",
   "sculk_diary.entry.items.warden_upgrading.description": "Warden Upgrading Description",
   "sculk_diary.entry.items.warden_upgrading.name": "Warden Upgrading",
   "sculk_diary.entry.mobs.sculk_leech.description": "Sculk Leech Description",

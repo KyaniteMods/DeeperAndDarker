@@ -66,6 +66,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("sculk_diary.entry.items.warden_upgrading.name", "Warden Upgrading");
         add("sculk_diary.entry.items.warden_upgrading.description", "Warden Upgrading Description");
+        add("sculk_diary.entry.items.sculk_transmitter.description", "Sculk Transmitter Description");
 
         add("sculk_diary.entry.mobs.sculk_leech.description", "Sculk Leech Description");
         add("sculk_diary.entry.mobs.sculk_snapper.description", "Sculk Snapper Description");
