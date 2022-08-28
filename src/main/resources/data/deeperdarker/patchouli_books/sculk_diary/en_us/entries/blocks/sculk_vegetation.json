@@ -1,11 +1,11 @@
 {
-  "name": "block.deeperdarker.echo_wood",
-  "icon": "deeperdarker:echo_log",
+  "name": "Sculk Vegetation",
+  "icon": "deeperdarker:echo_leaves",
   "category": "deeperdarker:blocks",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "sculk_diary.entry.blocks.echo_wood.description"
+      "text": "deeperdarker.sculk_diary.blocks.echo_wood.description"
     }
   ]
 }

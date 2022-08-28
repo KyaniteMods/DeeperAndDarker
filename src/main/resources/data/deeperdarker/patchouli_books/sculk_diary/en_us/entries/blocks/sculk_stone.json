@@ -1,11 +1,11 @@
 {
-  "name": "block.deeperdarker.sculk_stone",
+  "name": "Sculk Stone",
   "icon": "deeperdarker:sculk_stone",
   "category": "deeperdarker:blocks",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "sculk_diary.entry.blocks.sculk_stone.description"
+      "text": "deeperdarker.sculk_diary.blocks.sculk_stone.description"
     }
   ]
 }

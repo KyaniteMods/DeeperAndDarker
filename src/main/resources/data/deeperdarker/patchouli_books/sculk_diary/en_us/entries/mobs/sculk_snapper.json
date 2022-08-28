@@ -1,12 +1,12 @@
 {
-  "name": "entity.deeperdarker.sculk_snapper",
-  "icon": "minecraft:bone",
-  "category": "deeperdarker:combat",
+  "name": "Sculk Snapper",
+  "icon": "minecraft:sculk_snapper_spawn_egg",
+  "category": "deeperdarker:mobs",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "DDMonsters",
-      "text": "sculk_diary.entry.mobs.sculk_snapper.description"
+      "text": "deeperdarker.sculk_diary.mobs.sculk_snapper.description"
     }
   ]
 }

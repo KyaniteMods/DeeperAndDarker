@@ -1,11 +1,11 @@
 {
-  "name": "item.deeperdarker.sculk_transmitter",
+  "name": "Sculk Transmitter",
   "icon": "deeperdarker:sculk_transmitter",
   "category": "deeperdarker:items",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "sculk_diary.entry.items.sculk_transmitter.description"
+      "text": "deeperdarker.sculk_diary.items.sculk_transmitter.description"
     }
   ]
 }

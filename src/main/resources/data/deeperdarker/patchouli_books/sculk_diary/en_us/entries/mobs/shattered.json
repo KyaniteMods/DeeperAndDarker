@@ -1,12 +1,12 @@
 {
-  "name": "entity.deeperdarker.shattered",
-  "icon": "minecraft:bone",
-  "category": "deeperdarker:combat",
+  "name": "The Shattered",
+  "icon": "minecraft:shattered_spawn_egg",
+  "category": "deeperdarker:mobs",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "DDMonsters",
-      "text": "sculk_diary.entry.mobs.shattered.description"
+      "text": "deeperdarker.sculk_diary.mobs.shattered.description"
     }
   ]
 }

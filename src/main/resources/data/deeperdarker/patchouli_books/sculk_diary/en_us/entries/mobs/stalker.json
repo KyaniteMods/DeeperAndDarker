@@ -1,12 +1,12 @@
 {
-  "name": "entity.deeperdarker.stalker",
-  "icon": "minecraft:bone",
-  "category": "deeperdarker:combat",
+  "name": "The Stalker",
+  "icon": "minecraft:stalker_spawn_egg",
+  "category": "deeperdarker:mobs",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "DDMonsters",
-      "text": "sculk_diary.entry.mobs.stalker.description"
+      "text": "deeperdarker.sculk_diary.mobs.stalker.description"
     }
   ]
 }

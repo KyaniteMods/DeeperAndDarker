@@ -1,11 +1,11 @@
 {
-  "name": "sculk_diary.entry.items.warden_upgrading.name",
+  "name": "deeperdarker.sculk_diary.items.warden_upgrading.name",
   "icon": "deeperdarker:reinforced_echo_shard",
   "category": "deeperdarker:items",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "sculk_diary.entry.items.warden_upgrading.description"
+      "text": "deeperdarker.sculk_diary.items.warden_upgrading.description"
     }
   ]
 }

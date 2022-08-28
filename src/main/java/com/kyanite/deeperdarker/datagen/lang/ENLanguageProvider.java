@@ -51,25 +51,25 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_transmitter.title", "Remote Storage");
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
 
-        add("sculk_diary.name", "Sculk Diary");
-        add("sculk_diary.landing_text", "May this guide serve you well in the depths of the Otherside");
+        add("deeperdarker.sculk_diary.name", "Sculk Diary");
+        add("deeperdarker.sculk_diary.landing_text", "May this guide serve you well in the depths of the Otherside");
 
-        add("sculk_diary.category.blocks.description", "Blocks Description");
-        add("sculk_diary.category.items.description", "Items Description");
-        add("sculk_diary.category.mobs.description", "Mobs Description");
+        add("deeperdarker.sculk_diary.category.blocks.description", "Blocks Description");
+        add("deeperdarker.sculk_diary.category.items.description", "Items Description");
+        add("deeperdarker.sculk_diary.category.mobs.description", "Mobs Description");
 
-        add("sculk_diary.entry.blocks.echo_wood.description", "Echo Wood Description");
-        add("sculk_diary.entry.blocks.sculk_stone.description", "Sculk Stone Description");
+        add("deeperdarker.sculk_diary.blocks.echo_wood.description", "Echo Wood Description");
+        add("deeperdarker.sculk_diary.blocks.sculk_stone.description", "Sculk Stone Description");
 
-        add("sculk_diary.entry.items.warden_upgrading.name", "Warden Upgrading");
-        add("sculk_diary.entry.items.warden_upgrading.description", "Warden Upgrading Description");
-        add("sculk_diary.entry.items.sculk_transmitter.description", "Sculk Transmitter Description");
+        add("deeperdarker.sculk_diary.items.sculk_transmitter.description", "Sculk Transmitter Description");
+        add("deeperdarker.sculk_diary.items.warden_upgrading.name", "Warden Upgrading");
+        add("deeperdarker.sculk_diary.items.warden_upgrading.description", "Warden Upgrading Description");
 
-        add("sculk_diary.entry.mobs.sculk_leech.description", "Sculk Leech Description");
-        add("sculk_diary.entry.mobs.sculk_snapper.description", "Sculk Snapper Description");
-        add("sculk_diary.entry.mobs.shattered.description", "Shattered Description");
-        add("sculk_diary.entry.mobs.shriek_worm.description", "Shriek Worm Description");
-        add("sculk_diary.entry.mobs.stalker.description", "Stalker Description");
+        add("deeperdarker.sculk_diary.mobs.sculk_leech.description", "Sculk Leech Description");
+        add("deeperdarker.sculk_diary.mobs.sculk_snapper.description", "Sculk Snapper Description");
+        add("deeperdarker.sculk_diary.mobs.shattered.description", "Shattered Description");
+        add("deeperdarker.sculk_diary.mobs.shriek_worm.description", "Shriek Worm Description");
+        add("deeperdarker.sculk_diary.mobs.stalker.description", "Stalker Description");
 
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");

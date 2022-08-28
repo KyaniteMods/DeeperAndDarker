@@ -1,12 +1,12 @@
 {
-  "name": "entity.deeperdarker.shriek_worm",
-  "icon": "minecraft:bone",
-  "category": "deeperdarker:combat",
+  "name": "Shriek Worm",
+  "icon": "minecraft:shriek_worm_spawn_egg",
+  "category": "deeperdarker:mobs",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "DDMonsters",
-      "text": "sculk_diary.entry.mobs.shriek_worm.description"
+      "text": "deeperdarker.sculk_diary.mobs.shriek_worm.description"
     }
   ]
 }
