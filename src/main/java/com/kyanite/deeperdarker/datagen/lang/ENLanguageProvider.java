@@ -54,11 +54,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("sculk_diary.name", "Sculk Diary");
         add("sculk_diary.landing_text", "May this guide serve you well in the depths of the Otherside");
 
-        add("sculk_diary.category.blocks.name", "Blocks");
         add("sculk_diary.category.blocks.description", "Blocks Description");
-        add("sculk_diary.category.items.name", "Items");
         add("sculk_diary.category.items.description", "Items Description");
-        add("sculk_diary.category.mobs.name", "Mobs");
         add("sculk_diary.category.mobs.description", "Mobs Description");
 
         add("sculk_diary.entry.blocks.echo_wood.description", "Echo Wood Description");

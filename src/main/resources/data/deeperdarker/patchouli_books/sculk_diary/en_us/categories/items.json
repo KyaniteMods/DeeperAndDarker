@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.category.items.name",
+  "name": "stat.itemsButton",
   "description": "sculk_diary.category.items.description",
   "icon": "deeperdarker:warden_carapace"
 }
