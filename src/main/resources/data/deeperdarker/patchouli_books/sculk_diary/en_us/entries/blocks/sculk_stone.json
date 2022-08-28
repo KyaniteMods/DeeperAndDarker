@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.entry.blocks.sculk_stone.name",
+  "name": "block.deeperdarker.sculk_stone",
   "icon": "deeperdarker:sculk_stone",
   "category": "deeperdarker:blocks",
   "pages": [

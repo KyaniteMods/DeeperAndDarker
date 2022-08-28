@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.entry.mobs.sculk_snapper.name",
+  "name": "entity.deeperdarker.sculk_snapper",
   "icon": "minecraft:bone",
   "category": "deeperdarker:combat",
   "pages": [

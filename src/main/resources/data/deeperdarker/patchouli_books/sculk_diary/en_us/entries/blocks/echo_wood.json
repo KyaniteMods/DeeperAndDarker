@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.entry.blocks.echo_wood.name",
+  "name": "block.deeperdarker.echo_wood",
   "icon": "deeperdarker:echo_log",
   "category": "deeperdarker:blocks",
   "pages": [

@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.entry.mobs.shattered.name",
+  "name": "entity.deeperdarker.shattered",
   "icon": "minecraft:bone",
   "category": "deeperdarker:combat",
   "pages": [

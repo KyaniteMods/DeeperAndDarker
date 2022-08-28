@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.entry.mobs.shriek_worm.name",
+  "name": "entity.deeperdarker.shriek_worm",
   "icon": "minecraft:bone",
   "category": "deeperdarker:combat",
   "pages": [

@@ -1,5 +1,5 @@
 {
-  "name": "sculk_diary.entry.mobs.sculk_leech.name",
+  "name": "entity.deeperdarker.sculk_leech",
   "icon": "minecraft:bone",
   "category": "deeperdarker:combat",
   "pages": [
