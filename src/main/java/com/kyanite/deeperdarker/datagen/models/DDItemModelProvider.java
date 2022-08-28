@@ -75,6 +75,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ANCIENT_VASE);
         blockModel(DDBlocks.TRAPPED_VASE);
         blockModel(DDBlocks.ECHO_SOIL);
+        blockModel(DDBlocks.BLOOMING_SCULK);
 
         // ITEMS
         itemModel(DDItems.ECHO_BOAT, GENERATED);

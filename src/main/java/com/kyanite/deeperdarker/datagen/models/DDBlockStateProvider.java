@@ -69,6 +69,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
+        simpleBlock(DDBlocks.BLOOMING_SCULK.get());
     }
 
     public void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
