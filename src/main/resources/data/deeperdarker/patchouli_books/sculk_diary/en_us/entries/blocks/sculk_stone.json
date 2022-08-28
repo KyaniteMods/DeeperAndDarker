@@ -1,11 +1,11 @@
 {
-  "name": "Sculk Stones",
+  "name": "sculk_diary.entry.blocks.sculk_stone.name",
   "icon": "deeperdarker:sculk_stone",
   "category": "deeperdarker:blocks",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Deeper And Darker features many sculk-related blocks including Sculk Stone, Cobbled Sculk Stone, Polished Sculk Stone, and Sculk Stone Bricks."
+      "text": "sculk_diary.entry.blocks.sculk_stone.description"
     }
   ]
 }

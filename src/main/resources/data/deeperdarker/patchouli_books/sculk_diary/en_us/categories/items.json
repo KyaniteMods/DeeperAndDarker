@@ -1,5 +1,5 @@
 {
-  "name": "Items",
-  "description": "Items within Deeper And Darker",
+  "name": "sculk_diary.category.items.name",
+  "description": "sculk_diary.category.items.description",
   "icon": "deeperdarker:warden_carapace"
 }

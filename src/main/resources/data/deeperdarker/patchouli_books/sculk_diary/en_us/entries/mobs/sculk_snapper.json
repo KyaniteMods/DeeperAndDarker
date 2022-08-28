@@ -1,12 +1,12 @@
 {
-  "name": "Mobs and Enemies",
+  "name": "sculk_diary.entry.mobs.sculk_snapper.name",
   "icon": "minecraft:bone",
   "category": "deeperdarker:combat",
   "pages": [
     {
       "type": "patchouli:text",
       "title": "DDMonsters",
-      "text": "Sculk Leech, Sculk Snapper, Shattered, Shriek Worm, and Stalker."
+      "text": "sculk_diary.entry.mobs.sculk_snapper.description"
     }
   ]
 }

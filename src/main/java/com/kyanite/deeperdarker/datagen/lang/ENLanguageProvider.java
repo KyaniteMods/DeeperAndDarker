@@ -51,6 +51,35 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_transmitter.title", "Remote Storage");
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
 
+        add("sculk_diary.name", "Sculk Diary");
+        add("sculk_diary.landing_text", "May this guide serve you well in the depths of the Otherside");
+
+        add("sculk_diary.category.blocks.name", "Blocks Category");
+        add("sculk_diary.category.blocks.description", "Blocks Category Description");
+        add("sculk_diary.category.items.name", "Items Category");
+        add("sculk_diary.category.items.description", "Items Category Description");
+        add("sculk_diary.category.mobs.name", "Mobs Category");
+        add("sculk_diary.category.mobs.description", "Mobs Category Description");
+
+        add("sculk_diary.entry.blocks.echo_wood.name", "Echo Wood");
+        add("sculk_diary.entry.blocks.echo_wood.description", "Echo Wood Description");
+        add("sculk_diary.entry.blocks.sculk_stone.name", "Sculk Stone");
+        add("sculk_diary.entry.blocks.sculk_stone.description", "Sculk Stone Description");
+
+        add("sculk_diary.entry.items.warden_upgrading.name", "Warden Upgrading");
+        add("sculk_diary.entry.items.warden_upgrading.description", "Warden Upgrading Description");
+
+        add("sculk_diary.entry.mobs.sculk_leech.name", "Sculk Leech");
+        add("sculk_diary.entry.mobs.sculk_leech.description", "Sculk Leech Description");
+        add("sculk_diary.entry.mobs.sculk_snapper.name", "Sculk Snapper");
+        add("sculk_diary.entry.mobs.sculk_snapper.description", "Sculk Snapper Description");
+        add("sculk_diary.entry.mobs.shattered.name", "Shattered");
+        add("sculk_diary.entry.mobs.shattered.description", "Shattered Description");
+        add("sculk_diary.entry.mobs.shriek_worm.name", "Shriek Worm");
+        add("sculk_diary.entry.mobs.shriek_worm.description", "Shriek Worm Description");
+        add("sculk_diary.entry.mobs.stalker.name", "Stalker");
+        add("sculk_diary.entry.mobs.stalker.description", "Stalker Description");
+
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");
 

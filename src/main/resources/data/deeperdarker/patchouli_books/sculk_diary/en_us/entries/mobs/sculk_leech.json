@@ -1,0 +1,12 @@
+{
+  "name": "sculk_diary.entry.mobs.sculk_leech.name",
+  "icon": "minecraft:bone",
+  "category": "deeperdarker:combat",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "DDMonsters",
+      "text": "sculk_diary.entry.mobs.sculk_leech.description"
+    }
+  ]
+}

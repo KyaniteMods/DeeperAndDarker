@@ -1,11 +1,11 @@
 {
-  "name": "Echo Wood",
+  "name": "sculk_diary.entry.blocks.echo_wood.name",
   "icon": "deeperdarker:echo_log",
   "category": "deeperdarker:blocks",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Deeper And Darker introduces a new wood type called Echo Wood."
+      "text": "sculk_diary.entry.blocks.echo_wood.description"
     }
   ]
 }
