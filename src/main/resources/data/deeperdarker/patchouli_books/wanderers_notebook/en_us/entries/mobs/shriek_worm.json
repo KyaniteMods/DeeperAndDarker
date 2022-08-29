@@ -5,8 +5,8 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "title": "DDMonsters",
-      "text": "deeperdarker.wanderers_notebook.mobs.shriek_worm.description"
+      "title": "Otherside Monsters",
+      "text": "Description"
     }
   ]
 }
