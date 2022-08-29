@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "echo_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:warden_carapace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.deeperdarker.obtain_warden_carapace.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "deeperdarker:warden_carapace"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.deeperdarker.obtain_warden_carapace.title"
+    }
+  },
+  "requirements": [
+    [
+      "echo_log"
+    ]
+  ]
+}
