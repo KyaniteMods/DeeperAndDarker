@@ -6,7 +6,7 @@
     {
       "type": "patchouli:text",
       "title": "DDMonsters",
-      "text": "deeperdarker.sculk_diary.mobs.shattered.description"
+      "text": "deeperdarker.wanderers_notebook.mobs.shattered.description"
     }
   ]
 }

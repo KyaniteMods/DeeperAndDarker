@@ -103,7 +103,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.STALKER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
-        getBuilder("sculk_diary").parent(GENERATED).texture("layer0", "item/sculk_diary");
+        getBuilder("wanderers_notebook").parent(GENERATED).texture("layer0", "item/wanderers_notebook");
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "deeperdarker.sculk_diary.items.sculk_transmitter.description"
+      "text": "deeperdarker.wanderers_notebook.items.sculk_transmitter.description"
     }
   ]
 }

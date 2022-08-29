@@ -1,0 +1,11 @@
+{
+  "name": "deeperdarker.wanderers_notebook.items.warden_upgrading.name",
+  "icon": "deeperdarker:reinforced_echo_shard",
+  "category": "deeperdarker:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "deeperdarker.wanderers_notebook.items.warden_upgrading.description"
+    }
+  ]
+}

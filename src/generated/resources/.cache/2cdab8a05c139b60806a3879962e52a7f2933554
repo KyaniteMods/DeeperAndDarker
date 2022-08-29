@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-28T16:12:52.3925239	Item Models: deeperdarker
+// 1.19.2	2022-08-29T15:09:16.3296626	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 2072c85056b9991df1889bc23b0e49f44e63bb56 assets/deeperdarker/models/item/blooming_sculk.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled_sculk_stone.json
@@ -28,7 +28,6 @@ ceca42e3aadb0cadd907d918dfa0d3a88944f465 assets/deeperdarker/models/item/polishe
 b3a17670ce04497d99b6b8ee3dda60ed1e330885 assets/deeperdarker/models/item/polished_sculk_stone_stairs.json
 bdc3ad08e38c745a346717a9719044e0db544588 assets/deeperdarker/models/item/polished_sculk_stone_wall.json
 8864938ba857d68c957e39e40fe9f7117f72e31e assets/deeperdarker/models/item/reinforced_echo_shard.json
-ebd3751c729d930cbd217236562815b03b60876a assets/deeperdarker/models/item/sculk_diary.json
 f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
 46b253332b292cec6f8674c7d3ceca1453d0b0c0 assets/deeperdarker/models/item/sculk_jaw.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sculk_leech_spawn_egg.json
@@ -59,6 +58,7 @@ dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_du
 04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets/deeperdarker/models/item/stripped_echo_log.json
 aeff20ceb06371eb7973f8f39caa5eb4dd38e201 assets/deeperdarker/models/item/stripped_echo_wood.json
 b4020d43cc5b274e667fa4a547036ebb826d762c assets/deeperdarker/models/item/trapped_vase.json
+abe10209df79b4a796f9d29f2ae398cb17c50e77 assets/deeperdarker/models/item/wanderers_notebook.json
 290e9b82b23fb5bd4019f6db897d0fa01e144397 assets/deeperdarker/models/item/warden_axe.json
 43c8356885606b9d1beaecba592e38d0ee2b9b64 assets/deeperdarker/models/item/warden_boots.json
 3d17c3dc7cb5cd4507d1008365ce98a5befb5a4a assets/deeperdarker/models/item/warden_carapace.json
