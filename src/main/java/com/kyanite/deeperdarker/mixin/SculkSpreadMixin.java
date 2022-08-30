@@ -68,6 +68,9 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
         else if(state == Blocks.TWISTING_VINES_PLANT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_TENDRILS_PLANT.get().defaultBlockState();
         }
+        else if (state == Blocks.MOSS_BLOCK.defaultBlockState()) {
+            replaceState = DDBlocks.BLOOMING_SCULK.get().defaultBlockState();
+        }
 
         return replaceState;
     }

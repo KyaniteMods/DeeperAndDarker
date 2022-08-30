@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-24T19:38:14.7408126	Block Tags
+// 1.19.2	2022-08-29T23:38:11.8920682	Block Tags
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 e5dd2665fa83063a4161b3d4169e6e544b7a0da4 data/deeperdarker/tags/blocks/stripped_logs.json
 62231ed2c1caa16e3d8576eb918eaaf111d13c4a data/deeperdarker/tags/blocks/stripped_wood.json
@@ -32,7 +32,7 @@ a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/blocks/redstone_ores.json
 8d4fc60d51b38e0f75bf42a6303a9fa66db96c83 data/minecraft/tags/blocks/sand.json
-22f0a6167b39305896228b587433ea08c69f8e8c data/minecraft/tags/blocks/sculk_replaceable.json
+39ad5cf2c41bef4291b3e1698d6f223ef7abb733 data/minecraft/tags/blocks/sculk_replaceable.json
 366d23a75881fddc68c7afce727cc9bd8d8a6373 data/minecraft/tags/blocks/sculk_replaceable_world_gen.json
 57766086477bff34f126db345fc02e2d46a3349a data/minecraft/tags/blocks/slabs.json
 f5c6df186a3379fe66f381280f6e9458effbe080 data/minecraft/tags/blocks/stairs.json
