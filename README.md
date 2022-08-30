@@ -8,4 +8,5 @@ Deeper And Darker is in beta production currently; therefore, there will be bugs
 Contributions
 -
 If you would like to help translate Deeper And Darker, head over to our [Crowdin](https://crowdin.com/project/deeper-and-darker) page. If there is a language not on the page which you would like to add translations for, start a discussion on Crowdin or join our [Discord](https://discord.gg/GDNRd5yvxa)! We'd love to make our mod even more accessible.
+
 [![Crowdin](https://badges.crowdin.net/deeper-and-darker/localized.svg)](https://crowdin.com/project/deeper-and-darker)
