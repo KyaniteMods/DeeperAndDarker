@@ -60,7 +60,6 @@ public class DeeperAndDarker {
     public DeeperAndDarker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        DDBiomeModifiers.BIOME_MODIFIERS.register(eventBus);
         DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
         DDEffects.MOB_EFFECTS.register(eventBus);
@@ -74,6 +73,7 @@ public class DeeperAndDarker {
         DDPotions.POTIONS.register(eventBus);
         DDBlockEntityTypes.BLOCK_ENTITY_TYPES.register(eventBus);
         DDPoiTypes.POI.register(eventBus);
+        DDBiomeModifiers.BIOME_MODIFIERS.register(eventBus);
 
         GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();

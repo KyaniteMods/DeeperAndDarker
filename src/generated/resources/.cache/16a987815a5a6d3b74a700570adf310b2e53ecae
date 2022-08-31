@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-28T16:12:52.4044911	Block States: deeperdarker
+// 1.19.2	2022-08-30T20:26:50.185911	Block States: deeperdarker
 498227afd0f8c9b0fa72dfef97bf22b886a9069f assets/deeperdarker/blockstates/blooming_sculk.json
 63b29abf80d480459ac97153a9839072673f5082 assets/deeperdarker/blockstates/cobbled_sculk_stone.json
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
@@ -25,6 +25,7 @@ f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polishe
 a1292f9331c5de779bca4b9d6d6bcb1b76d9d14e assets/deeperdarker/blockstates/polished_sculk_stone_stairs.json
 754419158ebf6f0643ad68f8106ba1013f62536e assets/deeperdarker/blockstates/polished_sculk_stone_wall.json
 ca868477f2e49646a2df560a202f718fcfa27eff assets/deeperdarker/blockstates/sculk_gleam.json
+182e99727ee034520d0f4063034e430415d9fdc3 assets/deeperdarker/blockstates/sculk_jaw.json
 25190350bdadb1dd0d811d00d703a51761bc5fb6 assets/deeperdarker/blockstates/sculk_stone.json
 0c293840b6bf706bc4ba13b8342faa66bb6b8bfc assets/deeperdarker/blockstates/sculk_stone_bricks.json
 e20093e2c13137654d77d35dfc4d209c6dccd9a3 assets/deeperdarker/blockstates/sculk_stone_brick_slab.json
@@ -105,6 +106,8 @@ c918d7bf217d133d61f6b85200ee8ed06e93f804 assets/deeperdarker/models/block/echo_s
 ef3f2ab8e3363b5ee55f8996ebe43b4ea697600d assets/deeperdarker/models/block/polished_sculk_stone_wall_side.json
 ff0ad82277459bbd5d5be49a64a5b28c44e020c3 assets/deeperdarker/models/block/polished_sculk_stone_wall_side_tall.json
 e2e629dbec3aea754f099585071808b78f8c482a assets/deeperdarker/models/block/sculk_gleam.json
+cf5fb4d2f53592a14b1c0c1fe0653f1bf0035162 assets/deeperdarker/models/block/sculk_jaw.json
+b131df92662c18600b319824e622d5ec7efd024c assets/deeperdarker/models/block/sculk_jaw_activated.json
 c924979fe79edade8ba1a06fb6f198608c19cc2b assets/deeperdarker/models/block/sculk_stone.json
 50849624b83a0e9a6e258fc8e652f56800d028b6 assets/deeperdarker/models/block/sculk_stone_bricks.json
 a487c48c254f8956932183c98d5eb3f04f39c5c1 assets/deeperdarker/models/block/sculk_stone_brick_slab.json

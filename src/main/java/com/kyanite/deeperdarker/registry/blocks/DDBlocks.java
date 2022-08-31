@@ -58,8 +58,6 @@ public class DDBlocks {
     public static final RegistryObject<StandingSignBlock> ECHO_SIGN = BLOCKS.register("echo_sign", () -> new DDStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final RegistryObject<Block> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new DDWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).lootFrom(ECHO_SIGN), DDWoodTypes.ECHO));
 
-    public static final RegistryObject<Block> ECHO_SOIL = register("echo_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
-
     // Sculk Stone
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(4.5f, 5.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final RegistryObject<SlabBlock> SCULK_STONE_SLAB = register("sculk_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
@@ -94,8 +92,13 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_STONE_LAPIS_ORE = register("sculk_stone_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(4, 10)));
     public static final RegistryObject<Block> SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(6, 14)));
 
-    // Blooming Sculk
+    // Otherside
+    public static final RegistryObject<Block> ECHO_SOIL = register("echo_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
     public static final RegistryObject<BloomingSculkBlock> BLOOMING_SCULK = register("blooming_sculk", () -> new BloomingSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
+    public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
+    public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+    public static final RegistryObject<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
+    public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
 
     // Vegetation
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
@@ -103,14 +106,10 @@ public class DDBlocks {
     public static final RegistryObject<SculkTendrilsBlock> SCULK_TENDRILS = register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.copy(SCULK_VINES.get())));
     public static final RegistryObject<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = BLOCKS.register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.copy(SCULK_VINES_PLANT.get())));
 
-    public static final RegistryObject<DropExperienceBlock> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
 
     // Miscellaneous
-    public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
     public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
     public static final RegistryObject<Block> TRAPPED_VASE = register("trapped_vase", () -> new TrappedVaseBlock(BlockBehaviour.Properties.copy(ANCIENT_VASE.get()).noLootTable()));
-    public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
-    public static final RegistryObject<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);
