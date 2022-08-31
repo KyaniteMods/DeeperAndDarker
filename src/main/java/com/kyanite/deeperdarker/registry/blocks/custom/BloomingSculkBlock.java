@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
+import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.server.level.ServerLevel;
@@ -12,14 +13,13 @@ import net.minecraft.world.level.block.SculkBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BloomingSculkBlock extends SculkBlock implements BonemealableBlock, SculkBehaviour {
-
     public BloomingSculkBlock(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
     public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
-        return true;
+        return pLevel.getBlockState(pPos.above()).isAir();
     }
 
     @Override
@@ -29,6 +29,6 @@ public class BloomingSculkBlock extends SculkBlock implements BonemealableBlock,
 
     @Override
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-        CaveFeatures.MOSS_PATCH_BONEMEAL.value().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
+        DDConfiguredFeatures.BLOOMING_SCULK_BONEMEAL.get().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
     }
 }

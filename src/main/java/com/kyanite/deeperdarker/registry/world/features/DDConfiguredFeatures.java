@@ -2,18 +2,25 @@ package com.kyanite.deeperdarker.registry.world.features;
 
 import com.google.common.base.Suppliers;
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraftforge.registries.DeferredRegister;
@@ -61,6 +68,10 @@ public class DDConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> ECHO_TREE = register("echo_tree", DDFeatures.ECHO_TREE);
     public static final Holder<PlacedFeature> ECHO_TREE_CHECKED = PlacementUtils.register("echo_tree_checked", ECHO_TREE.getHolder().get());
     public static final Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> ECHO_TREE_SPAWN = FeatureUtils.register("echo_tree_spawn", Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ECHO_TREE_CHECKED, 0.5f)), ECHO_TREE_CHECKED));
+
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BLOOMING_SCULK_VEGETATION = CONFIGURED_FEATURES.register("blooming_sculk_vegetation", () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.SCULK_TENDRILS.get().defaultBlockState(), 3)))));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> BLOOMING_SCULK_BONEMEAL = CONFIGURED_FEATURES.register("blooming_sculk_bonemeal", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.BLOOMING_SCULK_REPLACEABLE, BlockStateProvider.simple(DDBlocks.BLOOMING_SCULK.get()), PlacementUtils.inlinePlaced(BLOOMING_SCULK_VEGETATION.getHolder().get()), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.8f, UniformInt.of(1, 2), 0.7f)));
 
     public static <F extends Feature<NoneFeatureConfiguration>> RegistryObject<ConfiguredFeature<?, ?>> register(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;

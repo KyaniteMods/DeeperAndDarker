@@ -12,8 +12,10 @@ public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = createTag("echo_logs");
         public static final TagKey<Block> STRIPPED_LOGS = createTag("stripped_logs");
-        public static final TagKey<Block> WOOD = createTag("wood");
         public static final TagKey<Block> STRIPPED_WOOD = createTag("stripped_wood");
+        public static final TagKey<Block> WOOD = createTag("wood");
+
+        public static final TagKey<Block> BLOOMING_SCULK_REPLACEABLE = createTag("blooming_sculk_replaceable");
         public static final TagKey<Block> TRANSMITTABLE = createTag("transmittable");
 
         private static TagKey<Block> createTag(String name) {
