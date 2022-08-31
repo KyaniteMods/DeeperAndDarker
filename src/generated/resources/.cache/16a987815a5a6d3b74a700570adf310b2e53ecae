@@ -1,4 +1,5 @@
-// 1.19.2	2022-08-30T20:26:50.185911	Block States: deeperdarker
+// 1.19.2	2022-08-30T21:35:14.313488	Block States: deeperdarker
+4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 498227afd0f8c9b0fa72dfef97bf22b886a9069f assets/deeperdarker/blockstates/blooming_sculk.json
 63b29abf80d480459ac97153a9839072673f5082 assets/deeperdarker/blockstates/cobbled_sculk_stone.json
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
@@ -48,6 +49,8 @@ d6ec4b1c52f5abd403613b914784bd6ad9f9effd assets/deeperdarker/blockstates/sculk_t
 8ed6f91aaeba9ceb6a04e16f82d4bfdadc35678c assets/deeperdarker/blockstates/sculk_vines_plant.json
 e94fc45e791c65302fcc908ab5d32adc564c5e88 assets/deeperdarker/blockstates/stripped_echo_log.json
 898398acdbab63db6ae71334597e7db0c381ea63 assets/deeperdarker/blockstates/stripped_echo_wood.json
+8ae00d95942937c3b60a133a5ef06b3158eb94f9 assets/deeperdarker/blockstates/trapped_vase.json
+690d24d273d0514954cb5395b0a6220314038cfd assets/deeperdarker/models/block/ancient_vase.json
 ebc11ee39e63b898f938cb7b3f06fe870706e41a assets/deeperdarker/models/block/blooming_sculk.json
 4ca12f9d03b4457ce40d531c820280b8a8e62d94 assets/deeperdarker/models/block/cobbled_sculk_stone.json
 dcc743140d07030b35a2242af0a41235f34694e7 assets/deeperdarker/models/block/cobbled_sculk_stone_slab.json
@@ -143,3 +146,4 @@ bc606473c7f48da3f881423989827036f032d9a1 assets/deeperdarker/models/block/sculk_
 eb88f94cf14a1fab1245af655386edfbee5445b6 assets/deeperdarker/models/block/stripped_echo_log.json
 6ef3c803f009684d61f103155981db2fb837cabb assets/deeperdarker/models/block/stripped_echo_log_horizontal.json
 cccf197b137f14396bbcd7fa0cf4bf57e66f8112 assets/deeperdarker/models/block/stripped_echo_wood.json
+690d24d273d0514954cb5395b0a6220314038cfd assets/deeperdarker/models/block/trapped_vase.json
