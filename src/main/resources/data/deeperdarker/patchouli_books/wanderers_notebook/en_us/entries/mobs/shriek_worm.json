@@ -1,6 +1,6 @@
 {
   "name": "Shriek Worm",
-  "icon": "minecraft:shriek_worm_spawn_egg",
+  "icon": "deeperdarker:shriek_worm_spawn_egg",
   "category": "deeperdarker:mobs",
   "pages": [
     {

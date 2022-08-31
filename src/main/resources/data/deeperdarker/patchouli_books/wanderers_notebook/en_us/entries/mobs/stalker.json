@@ -1,6 +1,6 @@
 {
   "name": "The Stalker",
-  "icon": "minecraft:stalker_spawn_egg",
+  "icon": "deeperdarker:stalker_spawn_egg",
   "category": "deeperdarker:mobs",
   "pages": [
     {
