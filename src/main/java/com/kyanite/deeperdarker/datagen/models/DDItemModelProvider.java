@@ -85,7 +85,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
 
-        getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(HANDHELD).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
+        getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
