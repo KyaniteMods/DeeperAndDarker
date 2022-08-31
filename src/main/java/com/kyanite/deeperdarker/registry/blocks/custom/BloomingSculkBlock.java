@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
-import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;

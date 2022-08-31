@@ -54,23 +54,6 @@ public class ENLanguageProvider extends LanguageProvider {
         add("deeperdarker.wanderers_notebook.name", "Wanderer's Notebook");
         add("deeperdarker.wanderers_notebook.landing_text", "May this guide serve you well in the depths of the Otherside");
 
-        add("deeperdarker.wanderers_notebook.category.blocks.description", "Blocks Description");
-        add("deeperdarker.wanderers_notebook.category.items.description", "Items Description");
-        add("deeperdarker.wanderers_notebook.category.mobs.description", "Mobs Description");
-
-        add("deeperdarker.wanderers_notebook.blocks.echo_wood.description", "Echo Wood Description");
-        add("deeperdarker.wanderers_notebook.blocks.sculk_stone.description", "Sculk Stone Description");
-
-        add("deeperdarker.wanderers_notebook.items.sculk_transmitter.description", "Sculk Transmitter Description");
-        add("deeperdarker.wanderers_notebook.items.warden_upgrading.name", "Warden Upgrading");
-        add("deeperdarker.wanderers_notebook.items.warden_upgrading.description", "Warden Upgrading Description");
-
-        add("deeperdarker.wanderers_notebook.mobs.sculk_leech.description", "Sculk Leech Description");
-        add("deeperdarker.wanderers_notebook.mobs.sculk_snapper.description", "Sculk Snapper Description");
-        add("deeperdarker.wanderers_notebook.mobs.shattered.description", "Shattered Description");
-        add("deeperdarker.wanderers_notebook.mobs.shriek_worm.description", "Shriek Worm Description");
-        add("deeperdarker.wanderers_notebook.mobs.stalker.description", "Stalker Description");
-
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");
 
