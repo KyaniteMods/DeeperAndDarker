@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.StalkerEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -60,11 +61,15 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        if(randomSource.nextInt(0, 6) == 0) {
-            for(int i = 0; i < randomSource.nextInt(0, 4); i++) {
-                SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(pLevel);
-                sculkLeechEntity.moveTo(pPos.getX(), pPos.getY(), pPos.getZ(), 0, 0);
-                pLevel.addFreshEntity(sculkLeechEntity);
+        if(randomSource.nextFloat() < 0.125) {
+            if(randomSource.nextFloat() < 0.6) {
+                for(int i = 0; i < randomSource.nextInt(1, 4); i++) {
+                    SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(pLevel);
+                    sculkLeechEntity.moveTo(pPos.getX() + randomSource.nextFloat(), pPos.getY() + randomSource.nextFloat(), pPos.getZ(), 0, 0);
+                    pLevel.addFreshEntity(sculkLeechEntity);
+                }
+            } else {
+                StalkerEntity.emergeFromVase(pPos, pLevel);
             }
         }
     }

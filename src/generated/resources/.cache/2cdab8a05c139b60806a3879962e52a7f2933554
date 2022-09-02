@@ -1,4 +1,4 @@
-// 1.19.2	2022-08-30T19:44:31.8998623	Item Models: deeperdarker
+// 1.19.2	2022-09-01T18:57:39.5729053	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 2072c85056b9991df1889bc23b0e49f44e63bb56 assets/deeperdarker/models/item/blooming_sculk.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled_sculk_stone.json
@@ -57,7 +57,6 @@ dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_du
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/stalker_spawn_egg.json
 04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets/deeperdarker/models/item/stripped_echo_log.json
 aeff20ceb06371eb7973f8f39caa5eb4dd38e201 assets/deeperdarker/models/item/stripped_echo_wood.json
-b4020d43cc5b274e667fa4a547036ebb826d762c assets/deeperdarker/models/item/trapped_vase.json
 abe10209df79b4a796f9d29f2ae398cb17c50e77 assets/deeperdarker/models/item/wanderers_notebook.json
 290e9b82b23fb5bd4019f6db897d0fa01e144397 assets/deeperdarker/models/item/warden_axe.json
 43c8356885606b9d1beaecba592e38d0ee2b9b64 assets/deeperdarker/models/item/warden_boots.json

@@ -73,7 +73,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_JAW);
         blockModel(DDBlocks.SCULK_GLEAM);
         blockModel(DDBlocks.ANCIENT_VASE);
-        blockModel(DDBlocks.TRAPPED_VASE);
         blockModel(DDBlocks.ECHO_SOIL);
         blockModel(DDBlocks.BLOOMING_SCULK);
 

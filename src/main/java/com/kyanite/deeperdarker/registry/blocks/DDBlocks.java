@@ -109,7 +109,6 @@ public class DDBlocks {
 
     // Miscellaneous
     public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
-    public static final RegistryObject<Block> TRAPPED_VASE = register("trapped_vase", () -> new TrappedVaseBlock(BlockBehaviour.Properties.copy(ANCIENT_VASE.get()).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockProperties) {
         RegistryObject<T> block = BLOCKS.register(name, blockProperties);

@@ -77,7 +77,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.ACTIVATED, true).setModels(sculkJawModels[0]).partialState().with(SculkJawBlock.ACTIVATED, false).setModels(sculkJawModels[1]);
 
         simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
-        simpleBlock(DDBlocks.TRAPPED_VASE.get(), models().withExistingParent(DDBlocks.TRAPPED_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
     }
 
     public void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
