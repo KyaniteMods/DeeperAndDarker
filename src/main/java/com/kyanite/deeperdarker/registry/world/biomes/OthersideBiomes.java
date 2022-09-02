@@ -40,7 +40,7 @@ public class OthersideBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.ECHO_SAND.getHolder().get());
-        addSculkDeco(biomeBuilder);
+        addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_TENDRILS.getHolder().get());
@@ -73,7 +73,7 @@ public class OthersideBiomes {
 
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
-        addSculkDeco(biomeBuilder);
+        addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_TENDRILS.getHolder().get());
@@ -109,7 +109,7 @@ public class OthersideBiomes {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DDPlacedFeatures.SCULK_DIAMOND_ORE.getHolder().get());
     }
 
-    public static void addSculkDeco(BiomeGenerationSettings.Builder builder) {
+    public static void addSculkDecoration(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK.getHolder().get());
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.INFESTED_SCULK.getHolder().get());
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_JAW.getHolder().get());

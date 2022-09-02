@@ -52,7 +52,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         Component.translatable(id + "locate_ancient_city.title"),
                         Component.translatable(id + "locate_ancient_city.description"),
                         null, FrameType.GOAL, true, true, false)
-                .rewards(AdvancementRewards.Builder.experience(50))
+                .rewards(AdvancementRewards.Builder.experience(40))
                 .addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(BuiltinStructures.ANCIENT_CITY)))
                 .save(consumer, path + "locate_ancient_city");
 
@@ -60,7 +60,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         Component.translatable(id + "kill_warden.title"),
                         Component.translatable(id + "kill_warden.description"),
                         null, FrameType.CHALLENGE, true, true, false)
-                .rewards(AdvancementRewards.Builder.experience(500))
+                .rewards(AdvancementRewards.Builder.experience(100))
                 .addCriterion("warden", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.HEART_OF_THE_DEEP.get()))
                 .save(consumer, path + "kill_warden");
 
@@ -75,7 +75,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         Component.translatable(id + "explore_otherside.title"),
                         Component.translatable(id + "explore_otherside.description"),
                         null, FrameType.CHALLENGE, true, true, false)
-                .rewards(AdvancementRewards.Builder.experience(200))
+                .rewards(AdvancementRewards.Builder.experience(120))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST.getKey())))
                 .addCriterion("otherside_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OTHERSIDE_DEEPLANDS.getKey())))
                 .requirements(RequirementsStrategy.AND).save(consumer, path + "explore_otherside");

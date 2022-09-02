@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.world.biomemodifiers;
+package com.kyanite.deeperdarker.registry.world.biomes;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
@@ -12,7 +12,7 @@ import net.minecraftforge.common.world.ModifiableBiomeInfo;
 public record DDVegetalModifier(HolderSet<Biome> biomes, Holder<PlacedFeature> feature) implements BiomeModifier {
     @Override
     public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
-        if (phase == Phase.ADD && biomes.contains(biome)) {
+        if(phase == Phase.ADD && biomes.contains(biome)) {
             builder.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, feature);
         }
     }

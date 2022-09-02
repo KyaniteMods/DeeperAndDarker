@@ -22,32 +22,30 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel worldgenlevel = pContext.level();
-        BlockPos blockpos = pContext.origin();
-        if (isInvalidPlacementLocation(worldgenlevel, blockpos)) {
+        WorldGenLevel level = pContext.level();
+        BlockPos pos = pContext.origin();
+        if(isInvalidPlacementLocation(level, pos)) {
             return false;
         } else {
             RandomSource randomsource = pContext.random();
             int i = 8;
             int j = 4;
             int k = 8;
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+            BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
             for(int l = 0; l < i * i; ++l) {
-                blockpos$mutableblockpos.set(blockpos).move(Mth.nextInt(randomsource, -i, i), Mth.nextInt(randomsource, -j, j), Mth.nextInt(randomsource, -i, i));
-                if (findFirstAirBlockAboveGround(worldgenlevel, blockpos$mutableblockpos) && !isInvalidPlacementLocation(worldgenlevel, blockpos$mutableblockpos)) {
+                blockPos.set(pos).move(Mth.nextInt(randomsource, -i, i), Mth.nextInt(randomsource, -j, j), Mth.nextInt(randomsource, -i, i));
+                if(findFirstAirBlockAboveGround(level, blockPos) && !isInvalidPlacementLocation(level, blockPos)) {
                     int i1 = Mth.nextInt(randomsource, 1, k);
-                    if (randomsource.nextInt(6) == 0) {
+                    if(randomsource.nextInt(6) == 0) {
                         i1 *= 2;
                     }
 
-                    if (randomsource.nextInt(5) == 0) {
+                    if(randomsource.nextInt(5) == 0) {
                         i1 = 1;
                     }
 
-                    int j1 = 17;
-                    int k1 = 25;
-                    placeWeepingVinesColumn(worldgenlevel, randomsource, blockpos$mutableblockpos, i1, 17, 25);
+                    placeWeepingVinesColumn(level, randomsource, blockPos, i1, 17, 25);
                 }
             }
 
@@ -58,7 +56,7 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
     private static boolean findFirstAirBlockAboveGround(LevelAccessor pLevel, BlockPos.MutableBlockPos pPos) {
         do {
             pPos.move(0, -1, 0);
-            if (pLevel.isOutsideBuildHeight(pPos)) {
+            if(pLevel.isOutsideBuildHeight(pPos)) {
                 return false;
             }
         } while(pLevel.getBlockState(pPos).isAir());
@@ -69,8 +67,8 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
 
     public static void placeWeepingVinesColumn(LevelAccessor pLevel, RandomSource pRandom, BlockPos.MutableBlockPos pPos, int pLength, int pMinAge, int pMaxAge) {
         for(int i = 1; i <= pLength; ++i) {
-            if (pLevel.isEmptyBlock(pPos)) {
-                if (i == pLength || !pLevel.isEmptyBlock(pPos.above())) {
+            if(pLevel.isEmptyBlock(pPos)) {
+                if(i == pLength || !pLevel.isEmptyBlock(pPos.above())) {
                     pLevel.setBlock(pPos, DDBlocks.SCULK_TENDRILS.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Integer.valueOf(Mth.nextInt(pRandom, pMinAge, pMaxAge))), 2);
                     break;
                 }
@@ -84,7 +82,7 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private static boolean isInvalidPlacementLocation(LevelAccessor pLevel, BlockPos pPos) {
-        if (!pLevel.isEmptyBlock(pPos)) {
+        if(!pLevel.isEmptyBlock(pPos)) {
             return true;
         } else {
             BlockState blockstate = pLevel.getBlockState(pPos.below());

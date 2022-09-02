@@ -32,13 +32,13 @@ public abstract class ChestEntityMixin  {
         ci.cancel();
         int i = this.getOpenCount(pLevel, pPos);
         int j = this.openCount;
-        if (j != i) {
+        if(j != i) {
             boolean flag = i != 0;
             boolean flag1 = j != 0;
-            if (flag && !flag1) {
+            if(flag && !flag1) {
                 this.onOpen(pLevel, pPos, pState);
                 pLevel.gameEvent(null, GameEvent.CONTAINER_OPEN, pPos);
-            } else if (!flag) {
+            } else if(!flag) {
                 this.onClose(pLevel, pPos, pState);
                 pLevel.gameEvent(null, GameEvent.CONTAINER_CLOSE, pPos);
             }

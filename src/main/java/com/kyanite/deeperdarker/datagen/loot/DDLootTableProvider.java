@@ -32,7 +32,7 @@ public class DDLootTableProvider extends LootTableProvider {
     }
 
     @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, @NotNull ValidationContext validationtracker) {
-        map.forEach((location, lootTable) -> LootTables.validate(validationtracker, location, lootTable));
+    protected void validate(Map<ResourceLocation, LootTable> map, @NotNull ValidationContext context) {
+        map.forEach((location, lootTable) -> LootTables.validate(context, location, lootTable));
     }
 }

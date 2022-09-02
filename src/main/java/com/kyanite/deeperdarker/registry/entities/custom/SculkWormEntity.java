@@ -52,9 +52,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     }
 
     public static AttributeSupplier attributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 550)
-                .add(Attributes.ATTACK_KNOCKBACK, 0)
-                .add(Attributes.ATTACK_DAMAGE, 7).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 550).add(Attributes.ATTACK_KNOCKBACK, 0).add(Attributes.ATTACK_DAMAGE, 7).build();
     }
 
     @Override
@@ -121,17 +119,17 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     public void stateDone(EntityState entityState) {
         if(EMERGE.equals(entityState)) {
             setState(AWAKE);
-        }else if(DESCEND.equals(entityState)) {
+        } else if(DESCEND.equals(entityState)) {
             this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.KILLED);
-        }else if(ATTACK.equals(entityState)) {
+        } else if(ATTACK.equals(entityState)) {
             setState(AWAKE);
             if(this.getTarget() != null) {
                 this.doHurtTarget(this.getTarget());
                 if(this.getTarget() instanceof Player plr)
                     if(plr.totalExperience > 2)
                         plr.giveExperiencePoints(-2);
-                else plr.kill();
+                    else plr.kill();
             }
         }
     }

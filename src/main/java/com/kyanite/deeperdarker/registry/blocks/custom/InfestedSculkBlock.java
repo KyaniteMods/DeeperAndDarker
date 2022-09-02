@@ -25,10 +25,9 @@ public class InfestedSculkBlock extends SculkBlock {
             pLevel.setBlock(pPos, Blocks.SCULK.defaultBlockState(), 3);
             player.knockback(1.5, 1.5, 1.5);
             SculkWormEntity entity = DDEntities.SCULK_WORM.get().create(pLevel);
-            SculkWormEntity sculkWormEntity = entity;
-            sculkWormEntity.setState(SculkWormEntity.EMERGE);
-            pLevel.addFreshEntity(sculkWormEntity);
-            sculkWormEntity.moveTo(pPos.above(), 0, 0);
+            entity.setState(SculkWormEntity.EMERGE);
+            pLevel.addFreshEntity(entity);
+            entity.moveTo(pPos.above(), 0, 0);
         }
 
         super.stepOn(pLevel, pPos, pState, pEntity);

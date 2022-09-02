@@ -19,29 +19,29 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel worldGenLevel = pContext.level();
-        BlockPos blockPos = pContext.origin();
+        WorldGenLevel level = pContext.level();
+        BlockPos pos = pContext.origin();
         RandomSource random = pContext.random();
-        if(!worldGenLevel.isEmptyBlock(blockPos)) {
+        if(!level.isEmptyBlock(pos)) {
             return false;
         } else {
-            BlockState blockstate = worldGenLevel.getBlockState(blockPos.above());
-            if(!blockstate.is(Blocks.SCULK)) {
+            BlockState blockState = level.getBlockState(pos.above());
+            if(!blockState.is(Blocks.SCULK)) {
                 return false;
             } else {
-                worldGenLevel.setBlock(blockPos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
+                level.setBlock(pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
 
                 for(int i = 0; i < 1500; i++) {
-                    BlockPos offset = blockPos.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
-                    if(worldGenLevel.getBlockState(offset).isAir()) {
+                    BlockPos offset = pos.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
+                    if(level.getBlockState(offset).isAir()) {
                         int j = 0;
 
                         for(Direction direction : Direction.values()) {
-                            if(worldGenLevel.getBlockState(offset.relative(direction)).is(DDBlocks.SCULK_GLEAM.get())) j++;
+                            if(level.getBlockState(offset.relative(direction)).is(DDBlocks.SCULK_GLEAM.get())) j++;
                             if(j > 1) break;
                         }
 
-                        if(j == 1) worldGenLevel.setBlock(offset, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
+                        if(j == 1) level.setBlock(offset, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
                     }
                 }
 

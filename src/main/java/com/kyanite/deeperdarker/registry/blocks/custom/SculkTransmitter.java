@@ -37,13 +37,11 @@ public class SculkTransmitter extends Block {
     }
 
     @Override
-    public void animateTick(BlockState p_220827_, Level level, BlockPos pos, RandomSource p_220830_) {
-        super.animateTick(p_220827_, level, pos, p_220830_);
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        super.animateTick(pState, pLevel, pPos, pRandom);
 
         for(int i = 0; i < 5; i++) {
-            level.addParticle(ParticleTypes.SCULK_SOUL, pos.getX() + randomSource.nextDouble(),
-                    pos.getY() + 0.5D, pos.getZ() + randomSource.nextDouble(),
-                    0.0D, 0.05D, 0.0D);
+            pLevel.addParticle(ParticleTypes.SCULK_SOUL, pPos.getX() + randomSource.nextDouble(), pPos.getY() + 0.5D, pPos.getZ() + randomSource.nextDouble(), 0.0D, 0.05D, 0.0D);
         }
     }
 

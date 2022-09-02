@@ -27,7 +27,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int logs;
         for(logs = 0; logs < height; logs++) {
             BlockPos logPos = new BlockPos(pContext.origin().getX(), pContext.origin().above(logs).getY(), pContext.origin().getZ());
-            if (TreeFeature.validTreePos(pContext.level(), logPos)) {
+            if(TreeFeature.validTreePos(pContext.level(), logPos)) {
                 pContext.level().setBlock(logPos, DDBlocks.ECHO_LOG.get().defaultBlockState(), 3);
             }
         }
@@ -134,7 +134,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public void tryPlaceLeaf(WorldGenLevel level, BlockPos pos) {
-        if (TreeFeature.validTreePos(level, pos)) {
+        if(TreeFeature.validTreePos(level, pos)) {
             if(level.getRandom().nextInt(0, 20) == 0) setBlock(level, pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState());
             else setBlock(level, pos, DDBlocks.ECHO_LEAVES.get().defaultBlockState());
         }

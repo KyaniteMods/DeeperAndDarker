@@ -8,14 +8,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
     public static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 15.0D, 12.0D);
 
-    public SculkTendrilsBlock(BlockBehaviour.Properties properties) {
+    public SculkTendrilsBlock(Properties properties) {
         super(properties, Direction.UP, SHAPE, false, 0.1D);
     }
 

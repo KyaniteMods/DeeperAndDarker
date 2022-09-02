@@ -19,7 +19,7 @@ public class VibrationListenerMixin {
 
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
     public void handle(ServerLevel level, GameEvent.Message message, CallbackInfoReturnable<Boolean> cir) {
-        if (this.receivingEvent != null || message.context().sourceEntity() == null || message.context() == null) return;
+        if(this.receivingEvent != null || message.context().sourceEntity() == null || message.context() == null) return;
 
         if(message.context().sourceEntity() instanceof Player plr) {
             if(plr.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);

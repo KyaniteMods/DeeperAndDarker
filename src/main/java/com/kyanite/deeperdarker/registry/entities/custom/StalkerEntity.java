@@ -114,8 +114,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     public boolean isPerformingAction() {
-        if(getCurrentState() == EMERGE || getCurrentState() == RING || getCurrentState() == ATTACK) return true;
-        return false;
+        return getCurrentState() == EMERGE || getCurrentState() == RING || getCurrentState() == ATTACK;
     }
 
     public boolean hasVase() {
@@ -143,7 +142,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
         if(this.entityData.get(RING_COOLDOWN) > 0) {
             this.entityData.set(RING_COOLDOWN, this.entityData.get(RING_COOLDOWN) - 1);
-        }else{
+        } else {
             if(getCurrentState() != RING && !isMoving) {
                 setState(RING);
                 playSound(DDSounds.STALKER_RING.get(), 0.1f, 0.5f);
@@ -156,7 +155,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
             this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
 
             if(getCurrentState() != EMERGE) {
-                if(this.entityData.get(HAS_VASE) == true) {
+                if(this.entityData.get(HAS_VASE)) {
                     if(this.getRandom().nextInt(0, 85) == 0) {
                         SculkLeechEntity entity = DDEntities.SCULK_LEECH.get().create(level);
                         entity.moveTo(position());
@@ -220,7 +219,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public boolean isInvulnerableTo(DamageSource pSource) {
-        return getCurrentState() == EMERGE ? true : super.isInvulnerableTo(pSource);
+        return getCurrentState() == EMERGE || super.isInvulnerableTo(pSource);
     }
 
     @Override
@@ -235,17 +234,17 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public void stateDone(EntityState entityState) {
-        if (IDLE.equals(entityState)) {}
-        else if(WALK.equals(entityState) )
+        if(IDLE.equals(entityState)) {
+            // nothing
+        } else if(WALK.equals(entityState)) {
             setState(IDLE);
-        else if(EMERGE.equals(entityState)) {
+        } else if(EMERGE.equals(entityState)) {
             setState(IDLE);
             setNoAi(false);
-        }else if(ATTACK.equals(entityState)) {
-            if(this.getTarget() != null)
-                this.doHurtTarget(this.getTarget());
+        } else if(ATTACK.equals(entityState)) {
+            if(this.getTarget() != null) this.doHurtTarget(this.getTarget());
             setState(IDLE);
-        }else if(RING.equals(entityState)) {
+        } else if(RING.equals(entityState)) {
             this.entityData.set(RING_COOLDOWN, getRandom().nextInt(350, 800));
             setState(IDLE);
         }
@@ -254,8 +253,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     public void stateTick(EntityState entityState) {
         if(entityState == EMERGE) {
-            if(this.getAnimationTime() < 25 && this.getAnimationTime() > 5)
-            {
+            if(this.getAnimationTime() < 25 && this.getAnimationTime() > 5) {
                 playSound(this.getBlockStateOn().getSoundType().getHitSound());
                 DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
             }
@@ -265,7 +263,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     public float getSpeed() {
         if(isPerformingAction()) return 0;
-        return this.entityData.get(HAS_VASE) == false ? 0.6f : super.getSpeed();
+        return !this.entityData.get(HAS_VASE) ? 0.6f : super.getSpeed();
     }
 
     @Override
@@ -300,9 +298,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public boolean shouldListen(ServerLevel pLevel, GameEventListener pListener, BlockPos pPos, GameEvent pEvent, GameEvent.Context pContext) {
-        if (!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pPos) && !this.isRemoved() && this.level == level) {
+        if(!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pPos) && !this.isRemoved() && this.level == level) {
             Entity entity = pContext.sourceEntity();
-            if (entity instanceof LivingEntity livingentity) {
+            if(entity instanceof LivingEntity livingentity) {
                 return this.canTargetEntity(livingentity);
             }
 
@@ -313,7 +311,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     public boolean canTargetEntity(Entity entity) {
-        if (entity instanceof LivingEntity livingentity) {
+        if(entity instanceof LivingEntity livingentity) {
             return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }
 
@@ -326,7 +324,6 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         if(level instanceof ServerLevel serverlevel) {
             consumer.accept(this.dynamicGameEventListener, serverlevel);
         }
-
     }
 
     @Override
@@ -341,12 +338,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         this.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
 
         if(entity1 != null) {
-            if(canTargetEntity(entity1))
-            {
-                if(entity1 instanceof Monster && ((Monster)entity1).getMobType() != DDTypes.SCULK)
-                    this.setTarget((LivingEntity) entity1);
-                if(entity1 instanceof Player)
-                    this.setTarget((LivingEntity) entity1);
+            if(canTargetEntity(entity1)) {
+                if(entity1 instanceof Monster && ((Monster) entity1).getMobType() != DDTypes.SCULK) this.setTarget((LivingEntity) entity1);
+                if(entity1 instanceof Player) this.setTarget((LivingEntity) entity1);
 
                 return;
             }
@@ -359,7 +353,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
-    protected float nextStep() {return this.moveDist + 0.3f;}
+    protected float nextStep() {
+        return this.moveDist + 0.3f;
+    }
 
     @Override
     public TagKey<GameEvent> getListenableEvents() {
@@ -372,12 +368,12 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     public PathNavigation createNavigation(Level pLevel) {
         return new GroundPathNavigation(this, pLevel) {
-            protected PathFinder createPathFinder(int p_219479_) {
+            protected PathFinder createPathFinder(int pMaxVisitedNodes) {
                 this.nodeEvaluator = new WalkNodeEvaluator();
                 this.nodeEvaluator.setCanPassDoors(true);
-                return new PathFinder(this.nodeEvaluator, p_219479_) {
-                    protected float distance(Node p_219486_, Node p_219487_) {
-                        return p_219486_.distanceToXZ(p_219487_);
+                return new PathFinder(this.nodeEvaluator, pMaxVisitedNodes) {
+                    protected float distance(Node pFirst, Node pSecond) {
+                        return pFirst.distanceToXZ(pSecond);
                     }
                 };
             }

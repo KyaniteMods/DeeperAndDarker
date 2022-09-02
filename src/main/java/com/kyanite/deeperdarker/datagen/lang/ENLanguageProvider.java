@@ -51,9 +51,6 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_transmitter.title", "Remote Storage");
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
 
-        add("deeperdarker.wanderers_notebook.name", "Wanderer's Notebook");
-        add("deeperdarker.wanderers_notebook.landing_text", "May this guide serve you well in the depths of the Otherside");
-
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");
 

@@ -47,8 +47,7 @@ public class SculkJawBlock extends Block {
             if(plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
         }
 
-        if(pEntity instanceof LivingEntity mob)
-        {
+        if(pEntity instanceof LivingEntity mob) {
             if(mob.getMobType().equals(DDTypes.SCULK)) return;
 
             mob.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80));
@@ -87,11 +86,11 @@ public class SculkJawBlock extends Block {
     }
 
     @Override
-    public void randomTick(BlockState p_222954_, ServerLevel p_222955_, BlockPos p_222956_, RandomSource p_222957_) {
-        if(!p_222954_.is(DDBlocks.SCULK_JAW.get())) return;
-        if(!p_222954_.getValue(ACTIVATED)) return;
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if(!pState.is(DDBlocks.SCULK_JAW.get())) return;
+        if(!pState.getValue(ACTIVATED)) return;
 
-        p_222955_.setBlock(p_222956_, p_222954_.setValue(ACTIVATED, false), 3);
+        pLevel.setBlock(pPos, pState.setValue(ACTIVATED, false), 3);
     }
 
     @Override
@@ -103,8 +102,7 @@ public class SculkJawBlock extends Block {
     public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         if(!pState.is(DDBlocks.SCULK_JAW.get())) return super.getCollisionShape(pState, pLevel, pPos, pContext);
 
-        if(pState.getValue(ACTIVATED))
-            return Block.box(0, 0, 0, 0, 0, 0);
+        if(pState.getValue(ACTIVATED)) return Block.box(0, 0, 0, 0, 0, 0);
 
         return super.getCollisionShape(pState, pLevel, pPos, pContext);
     }

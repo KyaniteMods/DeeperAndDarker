@@ -1,6 +1,6 @@
 {
-  "name": "deeperdarker.wanderers_notebook.name",
-  "landing_text": "deeperdarker.wanderers_notebook.landing_text",
+  "name": "Wanderer's Notebook",
+  "landing_text": "May this guide serve you well in the depths of the Otherside",
   "model": "deeperdarker:wanderers_notebook",
   "show_progress": false,
   "version": 1,

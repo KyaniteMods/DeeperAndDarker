@@ -24,7 +24,7 @@ public class DDBoatModels {
     public static final Map<ModelLayerLocation, Supplier<LayerDefinition>> layerDefinitions = new HashMap<>();
 
     public static ModelLayerLocation boat;
-    public static ModelLayerLocation boat_chest;
+    public static ModelLayerLocation boatChest;
 
     private static boolean isInitialized = false;
 
@@ -33,7 +33,7 @@ public class DDBoatModels {
         isInitialized = true;
 
         boat = addModel("boat", () -> BoatModel.createBodyModel(false), r -> new BoatModel(r, false));
-        boat_chest = addModel("boat_chest", () -> BoatModel.createBodyModel(true), r -> new BoatModel(r, true));
+        boatChest = addModel("boat_chest", () -> BoatModel.createBodyModel(true), r -> new BoatModel(r, true));
     }
 
     private static ModelLayerLocation addModel(String name, Supplier<LayerDefinition> supplier, Function<ModelPart, EntityModel<?>> modelConstructor) {
@@ -41,9 +41,9 @@ public class DDBoatModels {
     }
 
     private static ModelLayerLocation addLayer(String name, Supplier<LayerDefinition> supplier) {
-        ModelLayerLocation loc = new ModelLayerLocation(new ResourceLocation(DeeperAndDarker.MOD_ID, name), "main");
-        layerDefinitions.put(loc, supplier);
-        return loc;
+        ModelLayerLocation location = new ModelLayerLocation(new ResourceLocation(DeeperAndDarker.MOD_ID, name), "main");
+        layerDefinitions.put(location, supplier);
+        return location;
     }
 
     @SubscribeEvent

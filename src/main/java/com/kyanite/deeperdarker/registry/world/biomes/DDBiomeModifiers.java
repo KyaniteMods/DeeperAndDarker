@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.world.biomemodifiers;
+package com.kyanite.deeperdarker.registry.world.biomes;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.mojang.serialization.Codec;

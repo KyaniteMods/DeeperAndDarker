@@ -58,34 +58,34 @@ public class SculkTransmitterItem extends Item {
 
     public InteractionResult transmit(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         BlockPos linked = getLinkedBlockPos(pPlayer.getItemInHand(pUsedHand));
-        if (isLinked(pPlayer.getItemInHand(pUsedHand))) {
+        if(isLinked(pPlayer.getItemInHand(pUsedHand))) {
             BlockState state = pLevel.getBlockState(linked);
 
-            if (state == null || linked == null || pPlayer.isCrouching()) {
+            if(state == null || linked == null || pPlayer.isCrouching()) {
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return InteractionResult.FAIL;
             }
 
-            if (!pLevel.getBlockState(linked).is(DDTags.Blocks.TRANSMITTABLE)) {
+            if(!pLevel.getBlockState(linked).is(DDTags.Blocks.TRANSMITTABLE)) {
                 pPlayer.displayClientMessage(Component.translatable("item.deeperdarker.sculk_transmitter.not_found"), true);
                 setBlock(pPlayer.getItemInHand(pUsedHand), pPlayer, pUsedHand, null);
                 return InteractionResult.FAIL;
             }
 
             pPlayer.playSound(DDSounds.SCULK_TRANSMIT.get(), 0.5f, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
-            if (!pPlayer.isCreative()) {
-                if (pPlayer.totalExperience > 1) pPlayer.giveExperiencePoints(-1);
+            if(!pPlayer.isCreative()) {
+                if(pPlayer.totalExperience > 1) pPlayer.giveExperiencePoints(-1);
             }
 
             pLevel.gameEvent(GameEvent.ENTITY_INTERACT, pPlayer.blockPosition(), GameEvent.Context.of(pPlayer));
 
             MenuProvider menuProvider = state.getMenuProvider(pLevel, linked);
 
-            if (menuProvider != null) {
+            if(menuProvider != null) {
                 pPlayer.openMenu(menuProvider);
 
                 BlockEntity blockEntity = pLevel.getBlockEntity(linked);
-                if (blockEntity instanceof ChestBlockEntity chestBlockEntity) {
+                if(blockEntity instanceof ChestBlockEntity chestBlockEntity) {
                     chestBlockEntity.startOpen(pPlayer);
                 }
             }

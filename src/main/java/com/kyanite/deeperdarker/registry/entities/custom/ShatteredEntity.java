@@ -111,21 +111,18 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateDone(EntityState entityState) {
-        if (IDLE.equals(entityState)) {
-        }else if(WALK.equals(entityState)) {
+        if(IDLE.equals(entityState)) {
+        } else if(WALK.equals(entityState)) {
             setState(IDLE);
-        }else if(ATTACK.equals(entityState)) {
-            if(this.getTarget() != null)
-                this.doHurtTarget(this.getTarget());
+        } else if(ATTACK.equals(entityState)) {
+            if(this.getTarget() != null) this.doHurtTarget(this.getTarget());
 
             setState(IDLE);
         }
     }
 
     @Override
-    public void stateTick(EntityState entityState) {
-
-    }
+    public void stateTick(EntityState entityState) { }
 
     @Override
     public int getTransitionTick(EntityState entityState) {
@@ -138,7 +135,6 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
         if(level instanceof ServerLevel serverlevel) {
             consumer.accept(this.dynamicGameEventListener, serverlevel);
         }
-
     }
 
     @Override
@@ -188,9 +184,9 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     public boolean shouldListen(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, GameEvent.Context context) {
         if(event.equals(GameEvent.STEP)) return false;
 
-        if (!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
+        if(!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
             Entity entity = context.sourceEntity();
-            if (entity instanceof LivingEntity livingentity) {
+            if(entity instanceof LivingEntity livingentity) {
                 return this.canTargetEntity(livingentity);
             }
 
@@ -201,7 +197,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     }
 
     public boolean canTargetEntity(Entity entity) {
-        if (entity instanceof LivingEntity livingentity) {
+        if(entity instanceof LivingEntity livingentity) {
             return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }
 

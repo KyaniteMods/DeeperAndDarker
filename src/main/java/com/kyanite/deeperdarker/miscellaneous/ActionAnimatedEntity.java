@@ -55,11 +55,11 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
             return PlayState.CONTINUE;
         }
 
-        if(wasMoving != event.isMoving() && getMovingState() != null)
-        {
+        if(wasMoving != event.isMoving() && getMovingState() != null) {
             stateDone(getMovingState());
             wasMoving = event.isMoving();
         }
+
         event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, getCurrentState().animationHolder.loop));
         return PlayState.CONTINUE;
     }
@@ -88,27 +88,30 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     public int getAnimationTime() {
         return this.entityData.get(ANIMATION_TIME);
     }
+
     @Override
     public void tick() {
         super.tick();
-        if(isDeadOrDying()) return;
 
+        if(isDeadOrDying()) return;
         if(!this.getCurrentState().animationHolder.countTicks) return;
 
         if(this.entityData.get(ANIMATION_TIME) != 0) {
             this.entityData.set(ANIMATION_TIME, this.entityData.get(ANIMATION_TIME) + 1);
             stateTick(this.getCurrentState());
+
             if(this.entityData.get(ANIMATION_TIME) > this.getCurrentState().animationHolder.lengthInTicks) {
                 this.entityData.set(ANIMATION_TIME, 0);
             }
         }
-        if(this.entityData.get(ANIMATION_TIME) == 0)
-            stateDone(getCurrentState());
+
+        if(this.entityData.get(ANIMATION_TIME) == 0) stateDone(getCurrentState());
     }
 
     public abstract List<EntityState> createStates();
 
     public abstract EntityState getMovingState();
+
     public abstract void stateDone(EntityState entityState);
 
     public abstract void stateTick(EntityState entityState);

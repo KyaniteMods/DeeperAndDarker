@@ -26,11 +26,7 @@ public class StalkerModel extends AnimatedGeoModel<StalkerEntity> {
     @Override
     public void setLivingAnimations(StalkerEntity entity, Integer uniqueID, @Nullable AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
-        this.getBone("FakeVase").setHidden(entity.getCurrentState() == StalkerEntity.EMERGE ? false : true);
-
-        if(!entity.hasVase())
-            this.getBone("Vase").setHidden(true);
-        else
-            this.getBone("Vase").setHidden(false);
+        this.getBone("FakeVase").setHidden(entity.getCurrentState() != StalkerEntity.EMERGE);
+        this.getBone("Vase").setHidden(!entity.hasVase());
     }
 }

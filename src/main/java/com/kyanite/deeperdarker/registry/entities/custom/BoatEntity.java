@@ -42,7 +42,7 @@ public class BoatEntity extends Boat {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
-        if (pCompound.contains("Type", 8)) {
+        if(pCompound.contains("Type", 8)) {
             this.setWoodType(Type.byName(pCompound.getString("Type")));
         }
     }
@@ -98,7 +98,7 @@ public class BoatEntity extends Boat {
 
         public static Type byId(int id) {
             Type[] values = values();
-            if (id < 0 || id >= values.length) {
+            if(id < 0 || id >= values.length) {
                 id = 0;
             }
 
@@ -108,8 +108,8 @@ public class BoatEntity extends Boat {
         public static Type byName(String name) {
             Type[] values = values();
 
-            for (Type value : values) {
-                if (value.getName().equals(name)) {
+            for(Type value : values) {
+                if(value.getName().equals(name)) {
                     return value;
                 }
             }
