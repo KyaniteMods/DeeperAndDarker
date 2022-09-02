@@ -37,9 +37,8 @@ public class OthersideBiomes {
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
-
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.ECHO_SAND.getHolder().get());
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_JAW.getHolder().get());
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
 
@@ -49,8 +48,8 @@ public class OthersideBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
-                .temperature(1f)
-                .downfall(0.4f)
+                .temperature(1.2f)
+                .downfall(0.5f)
                 .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0x1e055d)
                         .waterFogColor(0x1d1352)
                         .fogColor(0x61519c)
@@ -73,6 +72,7 @@ public class OthersideBiomes {
 
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_JAW.getHolder().get());
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
 
@@ -112,6 +112,5 @@ public class OthersideBiomes {
     public static void addSculkDecoration(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK.getHolder().get());
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.INFESTED_SCULK.getHolder().get());
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_JAW.getHolder().get());
     }
 }

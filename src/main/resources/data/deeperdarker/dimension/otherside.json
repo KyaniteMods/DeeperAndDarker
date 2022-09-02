@@ -159,7 +159,7 @@
         {
           "biome": "deeperdarker:echoing_forest",
           "parameters": {
-            "temperature": 0.4,
+            "temperature": 0.6,
             "humidity": 0.5,
             "continentalness": 0,
             "erosion": 0.2,
