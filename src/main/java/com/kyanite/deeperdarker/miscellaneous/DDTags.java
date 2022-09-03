@@ -15,7 +15,7 @@ public class DDTags {
         public static final TagKey<Block> STRIPPED_WOOD = createTag("stripped_wood");
         public static final TagKey<Block> WOOD = createTag("wood");
 
-        public static final TagKey<Block> BLOOMING_SCULK_REPLACEABLE = createTag("blooming_sculk_replaceable");
+        public static final TagKey<Block> GLOOM_SCULK_REPLACEABLE = createTag("gloom_sculk_replaceable");
         public static final TagKey<Block> TRANSMITTABLE = createTag("transmittable");
 
         private static TagKey<Block> createTag(String name) {

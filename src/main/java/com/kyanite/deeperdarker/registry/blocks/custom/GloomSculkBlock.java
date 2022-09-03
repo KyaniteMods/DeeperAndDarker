@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.SculkBehaviour;
 import net.minecraft.world.level.block.SculkBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BloomingSculkBlock extends SculkBlock implements BonemealableBlock, SculkBehaviour {
-    public BloomingSculkBlock(Properties pProperties) {
+public class GloomSculkBlock extends SculkBlock implements BonemealableBlock, SculkBehaviour {
+    public GloomSculkBlock(Properties pProperties) {
         super(pProperties);
     }
 
@@ -28,6 +28,6 @@ public class BloomingSculkBlock extends SculkBlock implements BonemealableBlock,
 
     @Override
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-        DDConfiguredFeatures.BLOOMING_SCULK_BONEMEAL.get().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
+        DDConfiguredFeatures.GLOOM_SCULK_BONEMEAL.get().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
     }
 }

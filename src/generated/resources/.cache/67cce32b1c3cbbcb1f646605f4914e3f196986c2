@@ -1,6 +1,5 @@
-// 1.19.2	2022-08-28T16:12:52.3995041	LootTables
+// 1.19.2	2022-09-02T20:34:06.6531924	LootTables
 cc6fd32419ba2f0e64458dd76908e4c65706d727 data/deeperdarker/loot_tables/blocks/ancient_vase.json
-29cea688c8f3c03fb7a636236d83003b521cf0e1 data/deeperdarker/loot_tables/blocks/blooming_sculk.json
 ed7a358314bb8fb063323fe18ee1f2ce5f34211b data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone.json
 d6fc68aea3859c9397b937ac5f2a937216f01f3d data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_slab.json
 08db9117226dcf5e1df78235919cbe39446bd660 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_stairs.json
@@ -19,6 +18,7 @@ b05444f6c1708217e7d5af8b8a7af0ba4f3506c6 data/deeperdarker/loot_tables/blocks/ec
 06596f783c20abfbdcba619f2176513254a035b6 data/deeperdarker/loot_tables/blocks/echo_stairs.json
 8f9f175e4d806246025f39c8a60a65e1bed4b592 data/deeperdarker/loot_tables/blocks/echo_trapdoor.json
 e3157eea1f415865e488673a6289a3a5755eaff9 data/deeperdarker/loot_tables/blocks/echo_wood.json
+0c7f5d6ebe47f6f46373c2dd07106c2c0d0aaac1 data/deeperdarker/loot_tables/blocks/gloom_sculk.json
 5ba18eadd2a7ee2b14dacbc9f39b81f6d8a64e79 data/deeperdarker/loot_tables/blocks/infested_sculk.json
 097f61034d2c53785e6b5b93d1e675d1038b7e63 data/deeperdarker/loot_tables/blocks/polished_sculk_stone.json
 41ad9f77a706273537a79523d1368994971728de data/deeperdarker/loot_tables/blocks/polished_sculk_stone_slab.json

@@ -65,7 +65,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.ORES_LAPIS).add(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         tag(Tags.Blocks.ORES_DIAMOND).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
-        tag(BlockTags.SCULK_REPLACEABLE).add(DDBlocks.INFESTED_SCULK.get()).add(DDBlocks.SCULK_JAW.get()).add(Blocks.MOSS_BLOCK).addTags(BlockTags.LEAVES);
+        tag(BlockTags.SCULK_REPLACEABLE).add(Blocks.MOSS_BLOCK, DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get()).addTags(BlockTags.LEAVES);
         tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(Blocks.SHROOMLIGHT, Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
 
         tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
@@ -73,7 +73,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.STRIPPED_WOOD).add(Blocks.STRIPPED_OAK_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, Blocks.STRIPPED_BIRCH_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, Blocks.STRIPPED_ACACIA_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, Blocks.STRIPPED_CRIMSON_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE);
         tag(DDTags.Blocks.WOOD).add(Blocks.OAK_WOOD, Blocks.SPRUCE_WOOD, Blocks.BIRCH_WOOD, Blocks.JUNGLE_WOOD, Blocks.ACACIA_WOOD, Blocks.DARK_OAK_WOOD, Blocks.CRIMSON_HYPHAE, Blocks.WARPED_HYPHAE);
 
-        tag(DDTags.Blocks.BLOOMING_SCULK_REPLACEABLE).add(DDBlocks.BLOOMING_SCULK.get(), DDBlocks.SCULK_STONE.get(), Blocks.SCULK, Blocks.DEEPSLATE);
+        tag(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE).add(Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE.get());
         tag(DDTags.Blocks.TRANSMITTABLE).add(Blocks.CHEST, Blocks.FURNACE, Blocks.BLAST_FURNACE, Blocks.BARREL, Blocks.SMOKER, Blocks.STONECUTTER);
     }
 

@@ -69,7 +69,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());
-        simpleBlock(DDBlocks.BLOOMING_SCULK.get());
+        simpleBlock(DDBlocks.GLOOM_SCULK.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 

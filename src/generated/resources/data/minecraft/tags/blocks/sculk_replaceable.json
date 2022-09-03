@@ -1,8 +1,8 @@
 {
   "values": [
+    "minecraft:moss_block",
     "deeperdarker:infested_sculk",
     "deeperdarker:sculk_jaw",
-    "minecraft:moss_block",
     "#minecraft:leaves"
   ]
 }
