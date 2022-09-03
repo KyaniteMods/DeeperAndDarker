@@ -32,6 +32,22 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "overcast_columns": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:overcast_columns"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -50,6 +66,9 @@
     }
   },
   "requirements": [
+    [
+      "overcast_columns"
+    ],
     [
       "echoing_forest"
     ],

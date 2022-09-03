@@ -23,12 +23,39 @@ import java.util.function.Supplier;
 public class OthersideBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
 
+    public static final RegistryObject<Biome> OVERCAST_COLUMNS = registerBiome("overcast_columns", OthersideBiomes::columns);
     public static final RegistryObject<Biome> ECHOING_FOREST = registerBiome("echoing_forest", OthersideBiomes::forest);
     public static final RegistryObject<Biome> OTHERSIDE_DEEPLANDS = registerBiome("otherside_deeplands", OthersideBiomes::deeplands);
 
     public static RegistryObject<Biome> registerBiome(String name, Supplier<Biome> biomeSupplier) {
-        ResourceKey<Biome> biomeResourceKey = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
-        return BIOMES.register(biomeResourceKey.location().getPath(), biomeSupplier);
+        ResourceKey<Biome> biome = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
+        return BIOMES.register(biome.location().getPath(), biomeSupplier);
+    }
+
+    public static Biome columns() {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 5, 1, 2));
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
+
+        addSculkDecoration(biomeBuilder);
+        addSculkOres(biomeBuilder);
+
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
+                .temperature(0.7f)
+                .downfall(0.2f)
+                .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0xf5ba3d)
+                        .waterFogColor(0xcc9b33)
+                        .fogColor(0xd19f4f)
+                        .skyColor(0x8f6014)
+                        .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
+                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
+                        .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)).build())
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(biomeBuilder.build()).build();
     }
 
     public static Biome forest() {
@@ -84,7 +111,7 @@ public class OthersideBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
-                .temperature(0.7f)
+                .temperature(0.3f)
                 .downfall(0f)
                 .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0x05305d)
                         .waterFogColor(0x0c2a57)
