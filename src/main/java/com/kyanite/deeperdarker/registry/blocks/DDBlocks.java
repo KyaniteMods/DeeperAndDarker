@@ -101,6 +101,7 @@ public class DDBlocks {
 
     // Gloom Biome
     public static final RegistryObject<GloomSculkBlock> GLOOM_SCULK = register("gloom_sculk", () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
+    public static final RegistryObject<GeyserBlock> GEYSER = register("geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 8)));
 
     // Vegetation
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));

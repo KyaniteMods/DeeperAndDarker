@@ -76,11 +76,12 @@ public class DDBlockLoot extends BlockLoot {
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropSelf(DDBlocks.ECHO_SOIL.get());
-
         this.dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
-        this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
+        this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
+
+        this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
     }
 
     private static LootTable.Builder sculkOreDrop(Block block, Item item) {
