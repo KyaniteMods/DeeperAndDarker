@@ -76,6 +76,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_SOIL);
 
         blockModel(DDBlocks.GLOOM_SCULK);
+        blockModel(DDBlocks.CRYSTALLIZED_AMBER);
+        blockModel(DDBlocks.GLOOM_CACTUS);
         blockModel(DDBlocks.GEYSER);
 
         // ITEMS

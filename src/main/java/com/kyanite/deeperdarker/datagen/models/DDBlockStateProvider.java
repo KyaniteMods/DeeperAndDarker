@@ -73,6 +73,16 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
+
+        simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(),
+                models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block"))
+                        .texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner"))
+                        .texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer"))
+                        .texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner"))
+                        .texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner"))
+                        .renderType("transparent"));
+
+        simpleBlock(DDBlocks.GLOOM_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOM_CACTUS.getId().getPath(), mcLoc("block/cactus")).texture("particle", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).texture("bottom", blockLoc(DDBlocks.GLOOM_CACTUS, "bottom")).texture("top", blockLoc(DDBlocks.GLOOM_CACTUS, "top")).texture("side", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).renderType("cutout"));
         simpleBlock(DDBlocks.GEYSER.get(), models().cubeTop(DDBlocks.GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOM_SCULK), blockLoc(DDBlocks.GEYSER)));
 
         ConfiguredModel[] sculkJawModels = { new ConfiguredModel(models().cubeAll(DDBlocks.SCULK_JAW.getId().getPath() + "_activated", blockLoc(DDBlocks.SCULK_JAW, "activated"))), new ConfiguredModel(models().cubeAll(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW))) };
