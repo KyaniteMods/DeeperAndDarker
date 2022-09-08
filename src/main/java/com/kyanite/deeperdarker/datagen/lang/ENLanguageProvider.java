@@ -85,27 +85,27 @@ public class ENLanguageProvider extends LanguageProvider {
 
     private void addBlock(RegistryObject<Block> block) {
         String key = block.getId().getPath();
-        add("block.deeperdarker." + key, convertToName(key));
+        super.add("block.deeperdarker." + key, convertToName(key));
     }
 
     private void addEntity(RegistryObject<EntityType<?>> item) {
         String key = item.getId().getPath();
-        add("entity.deeperdarker." + key, convertToName(key));
+        super.add("entity.deeperdarker." + key, convertToName(key));
     }
 
     private void addBiome(RegistryObject<Biome> item) {
         String key = item.getId().getPath();
-        add("biome.deeperdarker." + key, convertToName(key));
+        super.add("biome.deeperdarker." + key, convertToName(key));
     }
 
     private void addItem(RegistryObject<Item> item) {
         String key = item.getId().getPath();
-        add("item.deeperdarker." + key, convertToName(key));
+        super.add("item.deeperdarker." + key, convertToName(key));
     }
 
     private void addEnchantment(RegistryObject<Enchantment> item) {
         String key = item.getId().getPath();
-        add("enchantment.deeperdarker." + key, convertToName(key));
+        super.add("enchantment.deeperdarker." + key, convertToName(key));
     }
 
     private String convertToName(String key) {
@@ -124,34 +124,20 @@ public class ENLanguageProvider extends LanguageProvider {
         return upsideDown ? toUpsideDown(name) : name;
     }
 
-    private static String toUpsideDown(String value) {
-        char[] valueUD = new char[value.length()];
+    private static String toUpsideDown(String name) {
+        StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i < value.length(); i++) {
-            char c = value.charAt(i);
-            if(c == '%') {
-                StringBuilder builder = new StringBuilder();
-                while (Character.isDigit(c) || c == '%' || c == '$' || c == 's' || c == 'd') {
-                    builder.append(c);
-                    i++;
-                    c = i == value.length() ? 0 : value.charAt(i);
-                }
-                i--;
-
-                for(int j = 0; j < builder.length(); j++) {
-                    valueUD[value.length() - 1 - i + j] = builder.charAt(j);
-                }
-
+        for(int i = name.length() - 1; i >= 0; i--) {
+            if(i > 2 && name.substring(i - 3, i + 1).equals("%1$s")) {
+                builder.append(name, i - 3, i + 1);
+                i -= 4;
                 continue;
             }
 
-            int lookup = NORMAL_CHARS.indexOf(c);
-            if(lookup >= 0) {
-                c = UPSIDE_DOWN_CHARS.charAt(lookup);
-            }
-
-            valueUD[value.length() - 1 - i] = c;
+            char upsideDown = UPSIDE_DOWN_CHARS.charAt(NORMAL_CHARS.indexOf(name.charAt(i)));
+            builder.append(upsideDown);
         }
-        return new String(valueUD);
+
+        return builder.toString();
     }
 }
