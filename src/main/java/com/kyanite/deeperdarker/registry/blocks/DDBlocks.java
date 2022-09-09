@@ -16,11 +16,13 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -102,7 +104,13 @@ public class DDBlocks {
     // Gloom Biome
     public static final RegistryObject<GloomSculkBlock> GLOOM_SCULK = register("gloom_sculk", () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final RegistryObject<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new Block(BlockBehaviour.Properties.of(Material.SCULK).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
-    public static final RegistryObject<Block> GLOOM_CACTUS = register("gloom_cactus", () -> new CactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).randomTicks().lightLevel(state -> 5).sound(SoundType.WOOL)));
+    public static final RegistryObject<Block> GLOOM_CACTUS = register("gloom_cactus", () -> new CactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).randomTicks().lightLevel(state -> 5).sound(SoundType.WOOL)) {
+        @Override
+        public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+            BlockState stateBelow = pLevel.getBlockState(pPos.below());
+            return stateBelow.is(DDBlocks.GLOOM_SCULK.get()) || stateBelow.is(DDBlocks.GLOOM_CACTUS.get());
+        }
+    });
     public static final RegistryObject<GeyserBlock> GEYSER = register("geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 8)));
 
     // Vegetation
