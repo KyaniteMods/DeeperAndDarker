@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.models;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
@@ -29,8 +30,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         stairsBlock(DDBlocks.ECHO_STAIRS.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         buttonBlock(DDBlocks.ECHO_BUTTON, blockLoc(DDBlocks.ECHO_PLANKS));
         pressurePlateBlock(DDBlocks.ECHO_PRESSURE_PLATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
-        doorBlockWithRenderType(DDBlocks.ECHO_DOOR.get(), blockLoc(DDBlocks.ECHO_DOOR, "bottom"), blockLoc(DDBlocks.ECHO_DOOR, "top"), "translucent");
-        trapdoorBlockWithRenderType(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true, "translucent");
+        doorBlockWithRenderType(DDBlocks.ECHO_DOOR.get(), blockLoc(DDBlocks.ECHO_DOOR, "bottom"), blockLoc(DDBlocks.ECHO_DOOR, "top"), "cutout");
+        trapdoorBlockWithRenderType(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true, "cutout");
         fenceGateBlock(DDBlocks.ECHO_FENCE_GATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         signBlock(DDBlocks.ECHO_SIGN.get(), (WallSignBlock) DDBlocks.ECHO_WALL_SIGN.get(), blockLoc(DDBlocks.ECHO_PLANKS));
 
@@ -73,15 +74,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
-
-        simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(),
-                models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block"))
-                        .texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner"))
-                        .texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer"))
-                        .texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner"))
-                        .texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner"))
-                        .renderType("transparent"));
-
+        simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("transparent"));
         simpleBlock(DDBlocks.GLOOM_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOM_CACTUS.getId().getPath(), mcLoc("block/cactus")).texture("particle", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).texture("bottom", blockLoc(DDBlocks.GLOOM_CACTUS, "bottom")).texture("top", blockLoc(DDBlocks.GLOOM_CACTUS, "top")).texture("side", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).renderType("cutout"));
         simpleBlock(DDBlocks.GEYSER.get(), models().cubeTop(DDBlocks.GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOM_SCULK), blockLoc(DDBlocks.GEYSER)));
 

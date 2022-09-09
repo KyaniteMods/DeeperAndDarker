@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
-import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.entity.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
@@ -84,7 +84,7 @@ public class DeeperAndDarker {
     public static class DeeperDarkerClient {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
-            WoodType.register(DDWoodTypes.ECHO);
+            WoodType.register(DDTypes.ECHO);
             BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
 
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
@@ -111,7 +111,7 @@ public class DeeperAndDarker {
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
             event.enqueueWork(() -> {
-                Sheets.addWoodType(DDWoodTypes.ECHO);
+                Sheets.addWoodType(DDTypes.ECHO);
 
                 SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
                 SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);

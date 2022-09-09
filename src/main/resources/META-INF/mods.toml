@@ -5,7 +5,7 @@ issueTrackerURL = "https://github.com/KyaniteMods/DeeperAndDarker/issues"
 
 [[mods]]
     modId = "deeperdarker"
-    version = "1.1.0-beta"
+    version = "1.1.0b-forge"
     displayName = "Deeper And Darker"
     displayURL = "https://github.com/KyaniteMods/DeeperAndDarker"
     logoFile = "banner.png"

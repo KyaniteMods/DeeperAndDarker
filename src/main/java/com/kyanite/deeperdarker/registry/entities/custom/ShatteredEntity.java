@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
-import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.GoToDisturbanceGoal;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.IDisturbanceListener;
@@ -47,9 +46,9 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
 
-    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.shattered.idle", DDUtils.secondsToTicks(3), true, false));
-    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.shattered.walk", DDUtils.secondsToTicks(1), true, false));
-    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.shattered.attack", DDUtils.secondsToTicks(1), false, true));
+    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.shattered.idle", 60, true, false));
+    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.shattered.walk", 20, true, false));
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.shattered.attack", 20, false, true));
 
     public BlockPos disturbanceLocation = null;
 

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/door_top_left_open",
-  "render_type": "minecraft:translucent",
+  "render_type": "minecraft:cutout",
   "textures": {
     "bottom": "deeperdarker:block/echo_door_bottom",
     "top": "deeperdarker:block/echo_door_top"

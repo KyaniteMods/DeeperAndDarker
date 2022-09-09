@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
-import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.GoToDisturbanceGoal;
@@ -64,11 +63,11 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     private static final EntityDataAccessor<Boolean> HAS_VASE = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.BOOLEAN);
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
 
-    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.stalker.idle", DDUtils.secondsToTicks(3), true, false));
-    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.stalker.walk", DDUtils.secondsToTicks(2), true, false));
-    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("animation.stalker.emerge", DDUtils.secondsToTicks(3.5f), false, true));
-    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.stalker.attack", DDUtils.secondsToTicks(0.5f), false, true));
-    public static EntityState RING = new EntityState(true, new EntityAnimationHolder("animation.stalker.ring", DDUtils.secondsToTicks(3), false, true));
+    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.stalker.idle", 60, true, false));
+    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.stalker.walk", 40, true, false));
+    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("animation.stalker.emerge", 70, false, true));
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.stalker.attack", 10, false, true));
+    public static EntityState RING = new EntityState(true, new EntityAnimationHolder("animation.stalker.ring", 60, false, true));
 
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
 

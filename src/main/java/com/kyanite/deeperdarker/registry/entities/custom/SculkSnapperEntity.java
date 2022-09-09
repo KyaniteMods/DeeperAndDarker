@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
-import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
@@ -51,13 +50,13 @@ import java.util.List;
 public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("idle", DDUtils.secondsToTicks(4), true, false));
-    public static EntityState MOUTH_OPEN = new EntityState(true, new EntityAnimationHolder("openmouth", DDUtils.secondsToTicks(0.5f), false, true));
-    public static EntityState SNIFF = new EntityState(true, new EntityAnimationHolder("sniff", DDUtils.secondsToTicks(1.5f), false, true));
-    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("walk", DDUtils.secondsToTicks(1), true, false));
+    public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("idle", 80, true, false));
+    public static EntityState MOUTH_OPEN = new EntityState(true, new EntityAnimationHolder("openmouth", 10, false, true));
+    public static EntityState SNIFF = new EntityState(true, new EntityAnimationHolder("sniff", 30, false, true));
+    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("walk", 20, true, false));
 
-    public static EntityState DIG = new EntityState(true, new EntityAnimationHolder("dig", DDUtils.secondsToTicks(3), false, true));
-    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(0.8f), false, true));
+    public static EntityState DIG = new EntityState(true, new EntityAnimationHolder("dig", 60, false, true));
+    public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", 16, false, true));
 
     private static final EntityDataAccessor<Integer> SNIFF_COUNTER = SynchedEntityData.defineId(SculkSnapperEntity.class, EntityDataSerializers.INT);
     private BlockPos TARGET_POS = null;

@@ -23,15 +23,15 @@ public enum DDArmorMaterials implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredient;
 
-    DDArmorMaterials(String name, int durability, int[] protection, int enchantment, SoundEvent event, float tough, float knockback, Supplier<Ingredient> ingredient) {
+        DDArmorMaterials(String name, int durabilityMultiplier, int[] slotProtections, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
         this.name = name;
-        this.durabilityMultiplier = durability;
-        this.slotProtections = protection;
-        this.enchantmentValue = enchantment;
-        this.sound = event;
-        this.toughness = tough;
-        this.knockbackResistance = knockback;
-        this.repairIngredient = ingredient;
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.slotProtections = slotProtections;
+        this.enchantmentValue = enchantmentValue;
+        this.sound = sound;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
+        this.repairIngredient = repairIngredient;
     }
 
     public int getDurabilityForSlot(EquipmentSlot pSlot) {
