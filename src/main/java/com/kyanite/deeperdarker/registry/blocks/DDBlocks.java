@@ -101,6 +101,7 @@ public class DDBlocks {
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
 
     // Gloom Biome
+    public static final RegistryObject<Block> GLOOM_STONE = register("gloom_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(4.5f, 5.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final RegistryObject<GloomSculkBlock> GLOOM_SCULK = register("gloom_sculk", () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final RegistryObject<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new Block(BlockBehaviour.Properties.of(Material.SCULK).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
     public static final RegistryObject<Block> GLOOM_CACTUS = register("gloom_cactus", () -> new CactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).randomTicks().lightLevel(state -> 5).sound(SoundType.WOOL)) {

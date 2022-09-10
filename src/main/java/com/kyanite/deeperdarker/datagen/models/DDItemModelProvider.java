@@ -79,6 +79,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
         blockModel(DDBlocks.GLOOM_CACTUS);
         blockModel(DDBlocks.GEYSER);
+        blockModel(DDBlocks.GLOOM_STONE);
 
         // ITEMS
         itemModel(DDItems.ECHO_BOAT, GENERATED);

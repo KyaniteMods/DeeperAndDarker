@@ -38,9 +38,6 @@ public class OthersideBiomes {
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        addSculkDecoration(biomeBuilder);
-        addSculkOres(biomeBuilder);
-
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
