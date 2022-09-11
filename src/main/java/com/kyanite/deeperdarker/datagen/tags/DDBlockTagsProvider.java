@@ -20,6 +20,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags() {
+        tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.GLOOMY_GRASS.get());
         tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.ANCIENT_VASE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOM_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.ECHO_SOIL.get());
@@ -73,7 +74,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.STRIPPED_WOOD).add(Blocks.STRIPPED_OAK_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, Blocks.STRIPPED_BIRCH_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, Blocks.STRIPPED_ACACIA_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, Blocks.STRIPPED_CRIMSON_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE);
         tag(DDTags.Blocks.WOOD).add(Blocks.OAK_WOOD, Blocks.SPRUCE_WOOD, Blocks.BIRCH_WOOD, Blocks.JUNGLE_WOOD, Blocks.ACACIA_WOOD, Blocks.DARK_OAK_WOOD, Blocks.CRIMSON_HYPHAE, Blocks.WARPED_HYPHAE);
 
-        tag(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE).add(Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE.get());
+        tag(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE).add(DDBlocks.GLOOM_SCULK.get(), DDBlocks.GLOOM_STONE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.ECHO_SOIL.get(), Blocks.STONE, Blocks.DEEPSLATE, Blocks.SCULK);
         tag(DDTags.Blocks.TRANSMITTABLE).add(Blocks.CHEST, Blocks.FURNACE, Blocks.BLAST_FURNACE, Blocks.BARREL, Blocks.SMOKER, Blocks.STONECUTTER);
     }
 

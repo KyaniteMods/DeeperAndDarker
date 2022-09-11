@@ -79,12 +79,13 @@ public class DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
+        this.dropSelf(DDBlocks.GLOOM_STONE.get());
+        this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
         this.dropSelf(DDBlocks.CRYSTALLIZED_AMBER.get());
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());
-        this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
+        this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLoot::createShearsOnlyDrop);
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
-        this.dropSelf(DDBlocks.GLOOM_STONE.get());
     }
 
     private static LootTable.Builder sculkOreDrop(Block block, Item item) {

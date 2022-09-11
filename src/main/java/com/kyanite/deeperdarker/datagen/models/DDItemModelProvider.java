@@ -76,10 +76,11 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_SOIL);
 
         blockModel(DDBlocks.GLOOM_SCULK);
+        blockModel(DDBlocks.GLOOM_STONE);
+        blockModel(DDBlocks.GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
         blockModel(DDBlocks.GLOOM_CACTUS);
-        blockModel(DDBlocks.GEYSER);
-        blockModel(DDBlocks.GLOOM_STONE);
+        getBuilder(DDBlocks.GLOOMY_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.GLOOMY_GRASS.getId().getPath());
 
         // ITEMS
         itemModel(DDItems.ECHO_BOAT, GENERATED);
@@ -118,7 +119,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 
-    public <T> void itemModel(RegistryObject<T> item, ModelFile modelFile) {
+    public void itemModel(RegistryObject<?> item, ModelFile modelFile) {
         getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
     }
 }

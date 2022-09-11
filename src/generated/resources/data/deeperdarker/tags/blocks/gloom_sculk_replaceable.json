@@ -1,7 +1,12 @@
 {
   "values": [
+    "deeperdarker:gloom_sculk",
+    "deeperdarker:gloom_stone",
+    "deeperdarker:sculk_stone",
+    "deeperdarker:infested_sculk",
+    "deeperdarker:echo_soil",
+    "minecraft:stone",
     "minecraft:deepslate",
-    "minecraft:sculk",
-    "deeperdarker:sculk_stone"
+    "minecraft:sculk"
   ]
 }

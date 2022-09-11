@@ -103,6 +103,7 @@ public class DDBlocks {
     // Gloom Biome
     public static final RegistryObject<GloomSculkBlock> GLOOM_SCULK = register("gloom_sculk", () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final RegistryObject<Block> GLOOM_STONE = register("gloom_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final RegistryObject<GeyserBlock> GEYSER = register("geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 8)));
     public static final RegistryObject<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new Block(BlockBehaviour.Properties.of(Material.SCULK).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
     public static final RegistryObject<Block> GLOOM_CACTUS = register("gloom_cactus", () -> new CactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 5).sound(SoundType.WOOL)) {
         @Override
@@ -111,7 +112,7 @@ public class DDBlocks {
             return stateBelow.is(DDBlocks.GLOOM_SCULK.get());
         }
     });
-    public static final RegistryObject<GeyserBlock> GEYSER = register("geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 8)));
+    public static final RegistryObject<Block> GLOOMY_GRASS = register("gloomy_grass", () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)));
 
     // Vegetation
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
