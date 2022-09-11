@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SculkVinesBlock extends GrowingPlantHeadBlock {
-    protected static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    public static final VoxelShape SHAPE = Block.box(4.0D, 9.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 
     public SculkVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.1);
@@ -26,22 +26,17 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
+    protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
+        return randomSource.nextIntBetweenInclusive(1, 2);
+    }
+
+    @Override
     protected Block getBodyBlock() {
         return DDBlocks.SCULK_VINES_PLANT.get();
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {
-        return 0;
-    }
-
-    @Override
     protected boolean canGrowInto(BlockState pState) {
-        return false;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
-        return false;
+        return pState.isAir();
     }
 }
