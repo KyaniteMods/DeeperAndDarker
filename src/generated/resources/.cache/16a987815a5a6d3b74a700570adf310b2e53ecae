@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-09T16:59:56.0312513	Block States: deeperdarker
+// 1.19.2	2022-09-10T12:19:53.1017411	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 63b29abf80d480459ac97153a9839072673f5082 assets/deeperdarker/blockstates/cobbled_sculk_stone.json
 0c778fbc18a0e1d7e031fc2e3d43f18b5ce50303 assets/deeperdarker/blockstates/cobbled_sculk_stone_slab.json
@@ -23,6 +23,7 @@ f02bb4fd5a5c7ee06dee2f869c347cb634e8c968 assets/deeperdarker/blockstates/echo_so
 bcfd9c753801fbe405d5985e67cfec4290b84ed1 assets/deeperdarker/blockstates/geyser.json
 cd67b07e3fb51b4f984abbe73e2634152ec2e64d assets/deeperdarker/blockstates/gloom_cactus.json
 9c71347697b92c2a778b142dd0a8dde8506eff3e assets/deeperdarker/blockstates/gloom_sculk.json
+68af0631f4bd65ca7fa5c67ab1b46428abd3365a assets/deeperdarker/blockstates/gloom_stone.json
 806ccbbbd3d24a4d7e19d23cdc4008dacf14e2e0 assets/deeperdarker/blockstates/infested_sculk.json
 f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polished_sculk_stone.json
 65ee0b17417cefc06f60fd584d5cd1092c1725e7 assets/deeperdarker/blockstates/polished_sculk_stone_slab.json
@@ -102,6 +103,7 @@ cb200837b466532c723eabc29c70240290f1031c assets/deeperdarker/models/block/echo_t
 7fef80d1820d9e1b0c568b506e5210a8cee32c6e assets/deeperdarker/models/block/geyser.json
 19cce1c30f691e750f72f0591b319a6c4424b996 assets/deeperdarker/models/block/gloom_cactus.json
 f6e2f0d7c18545cf6f22102624baff5b59bdea23 assets/deeperdarker/models/block/gloom_sculk.json
+9b1740ef0fd5bca05819a291dde57a2adbd741a5 assets/deeperdarker/models/block/gloom_stone.json
 228e188749dcf61478397d8fd2edb7df3b638393 assets/deeperdarker/models/block/infested_sculk.json
 6e39e5f243d47894fcebfef939f739ce9a07ee4b assets/deeperdarker/models/block/polished_sculk_stone.json
 590440dc0c02ec2bc2da402df1a8d28bca185596 assets/deeperdarker/models/block/polished_sculk_stone_slab.json
