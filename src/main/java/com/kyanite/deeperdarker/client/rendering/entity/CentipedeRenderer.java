@@ -20,7 +20,7 @@ public class CentipedeRenderer extends GeoEntityRenderer<SculkCentipedeEntity> {
 
     @Override
     public RenderType getRenderType(SculkCentipedeEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
-        stack.scale(1.5f, 1.5f, 1.5f);
+        stack.scale(1.4f, 1.4f, 1.4f);
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }
