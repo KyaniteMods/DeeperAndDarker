@@ -6,6 +6,8 @@ import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -72,6 +74,11 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
+
+        simpleBlock(DDBlocks.BLOOMING_GRASS_BLOCK.get());
+        simpleBlock(DDBlocks.BLOOMING_GRASS.get(), models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath(), blockLoc(DDBlocks.BLOOMING_GRASS)).renderType("cutout"));
+        ConfiguredModel[] bloomGrassModels = { new ConfiguredModel(models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath() + "_bottom", blockLoc(DDBlocks.BLOOMING_GRASS, "bottom")).renderType("cutout")), new ConfiguredModel(models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath() + "_top", blockLoc(DDBlocks.BLOOMING_GRASS, "top")).renderType("cutout")) };
+        getVariantBuilder(DDBlocks.TALL_BLOOMING_GRASS.get()).partialState().with(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER).setModels(bloomGrassModels[0]).partialState().with(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER).setModels(bloomGrassModels[1]);
 
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
         simpleBlock(DDBlocks.GLOOM_STONE.get());

@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkLeechMelee;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -10,17 +9,15 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.WallClimberNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.PathFinder;
-import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -62,7 +59,7 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
 
     public void setClimbing(boolean pClimbing) {
         byte b0 = this.entityData.get(DATA_FLAGS_ID);
-        if (pClimbing) {
+        if(pClimbing) {
             b0 = (byte)(b0 | 1);
         } else {
             b0 = (byte)(b0 & -2);
@@ -89,7 +86,7 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level.isClientSide) {
+        if(!this.level.isClientSide) {
             this.setClimbing(this.horizontalCollision);
         }
     }

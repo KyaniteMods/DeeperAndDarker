@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.client.rendering.entity;
 
 import com.kyanite.deeperdarker.registry.entities.custom.SculkCentipedeEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;

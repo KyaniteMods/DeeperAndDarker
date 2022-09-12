@@ -12,6 +12,7 @@ import com.kyanite.deeperdarker.registry.items.custom.DeepHeartItem;
 import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitterItem;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,12 +22,11 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MOD_ID);
 
-
+    public static final RegistryObject<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new Item(new Item.Properties().food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new DeepHeartItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
     public static final RegistryObject<Item> REINFORCED_ECHO_SHARD = ITEMS.register("reinforced_echo_shard", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> SOUL_DUST = ITEMS.register("soul_dust", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE).tab(DDCreativeModeTab.DD_TAB)));
-
     public static final RegistryObject<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().fireResistant().rarity(Rarity.RARE).stacksTo(1).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<Item> WARDEN_SWORD = ITEMS.register("warden_sword", () -> new SwordItem(DDTiers.WARDEN, 3, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
@@ -38,8 +38,6 @@ public class DDItems {
     public static final RegistryObject<Item> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-
- //   public static final RegistryObject<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new Item(new Item.Properties().food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
 
     public static final RegistryObject<SpawnEggItem> CENTIPEDE_SPAWN_EGG = ITEMS.register("sculk_centipede_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.CENTIPEDE, 0x1a2340, 0xded697, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<SpawnEggItem> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_LEECH, 0x152B38, 0x00FAFF, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));

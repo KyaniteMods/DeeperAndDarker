@@ -33,7 +33,7 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
             int k = 8;
             BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
-            for(int l = 0; l < i * i; ++l) {
+            for(int l = 0; l < i * i; l++) {
                 blockPos.set(pos).move(Mth.nextInt(randomsource, -i, i), Mth.nextInt(randomsource, -j, j), Mth.nextInt(randomsource, -i, i));
                 if(findFirstAirBlockAboveGround(level, blockPos) && !isInvalidPlacementLocation(level, blockPos)) {
                     int i1 = Mth.nextInt(randomsource, 1, k);
@@ -66,7 +66,7 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public static void placeWeepingVinesColumn(LevelAccessor pLevel, RandomSource pRandom, BlockPos.MutableBlockPos pPos, int pLength, int pMinAge, int pMaxAge) {
-        for(int i = 1; i <= pLength; ++i) {
+        for(int i = 1; i <= pLength; i++) {
             if(pLevel.isEmptyBlock(pPos)) {
                 if(i == pLength || !pLevel.isEmptyBlock(pPos.above())) {
                     pLevel.setBlock(pPos, DDBlocks.SCULK_TENDRILS.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Integer.valueOf(Mth.nextInt(pRandom, pMinAge, pMaxAge))), 2);

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "deeperdarker:block/blooming_grass_bottom"
+    },
+    "half=upper": {
+      "model": "deeperdarker:block/blooming_grass_top"
+    }
+  }
+}
