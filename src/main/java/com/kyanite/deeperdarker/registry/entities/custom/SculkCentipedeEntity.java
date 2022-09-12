@@ -38,7 +38,7 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
     }
 
     public static AttributeSupplier attributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 30).add(Attributes.MOVEMENT_SPEED, 0.35D).add(Attributes.ATTACK_DAMAGE, 2.5D).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 25.0D).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 2.5D).build();
     }
 
     @Override
