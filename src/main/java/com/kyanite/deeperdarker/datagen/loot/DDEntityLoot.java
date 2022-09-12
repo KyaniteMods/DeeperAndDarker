@@ -21,7 +21,7 @@ public class DDEntityLoot extends EntityLoot {
         add(DDEntities.CENTIPEDE.get(), LootTable.lootTable());
         add(DDEntities.SCULK_LEECH.get(), LootTable.lootTable());
         add(DDEntities.SCULK_SNAPPER.get(), LootTable.lootTable());
-        add(DDEntities.SCULK_WORM.get(), LootTable.lootTable());
+        add(DDEntities.SHRIEK_WORM.get(), LootTable.lootTable());
         add(DDEntities.STALKER.get(), LootTable.lootTable());
         add(DDEntities.SHATTERED.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_DUST.get())).when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.25f, 0.0375f))));
     }
