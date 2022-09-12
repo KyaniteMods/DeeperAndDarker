@@ -3,10 +3,11 @@ package com.kyanite.deeperdarker.datagen.models;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -20,6 +21,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(DDBlocks.ECHO_PLANKS.get());
+
         axisBlock(DDBlocks.ECHO_LOG.get(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_LOG.get(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeColumn(DDBlocks.STRIPPED_ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)), models().cubeColumn(DDBlocks.STRIPPED_ECHO_WOOD.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
@@ -73,10 +75,17 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 
+        simpleBlock(DDBlocks.BLOOMING_GRASS_BLOCK.get());
+        simpleBlock(DDBlocks.BLOOMING_GRASS.get(), models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath(), blockLoc(DDBlocks.BLOOMING_GRASS)).renderType("cutout"));
+        ConfiguredModel[] bloomGrassModels = { new ConfiguredModel(models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath() + "_bottom", blockLoc(DDBlocks.BLOOMING_GRASS, "bottom")).renderType("cutout")), new ConfiguredModel(models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath() + "_top", blockLoc(DDBlocks.BLOOMING_GRASS, "top")).renderType("cutout")) };
+        getVariantBuilder(DDBlocks.TALL_BLOOMING_GRASS.get()).partialState().with(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER).setModels(bloomGrassModels[0]).partialState().with(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER).setModels(bloomGrassModels[1]);
+
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
+        simpleBlock(DDBlocks.GLOOM_STONE.get());
+        simpleBlock(DDBlocks.GEYSER.get(), models().cubeTop(DDBlocks.GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOM_SCULK), blockLoc(DDBlocks.GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("transparent"));
         simpleBlock(DDBlocks.GLOOM_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOM_CACTUS.getId().getPath(), mcLoc("block/cactus")).texture("particle", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).texture("bottom", blockLoc(DDBlocks.GLOOM_CACTUS, "bottom")).texture("top", blockLoc(DDBlocks.GLOOM_CACTUS, "top")).texture("side", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).renderType("cutout"));
-        simpleBlock(DDBlocks.GEYSER.get(), models().cubeTop(DDBlocks.GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOM_SCULK), blockLoc(DDBlocks.GEYSER)));
+        simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
 
         ConfiguredModel[] sculkJawModels = { new ConfiguredModel(models().cubeAll(DDBlocks.SCULK_JAW.getId().getPath() + "_activated", blockLoc(DDBlocks.SCULK_JAW, "activated"))), new ConfiguredModel(models().cubeAll(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW))) };
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.ACTIVATED, true).setModels(sculkJawModels[0]).partialState().with(SculkJawBlock.ACTIVATED, false).setModels(sculkJawModels[1]);

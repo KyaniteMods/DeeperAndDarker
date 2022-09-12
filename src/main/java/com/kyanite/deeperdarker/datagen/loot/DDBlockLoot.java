@@ -78,10 +78,16 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.ECHO_SOIL.get());
         this.dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
 
+        this.dropSelf(DDBlocks.BLOOMING_GRASS_BLOCK.get());
+        this.add(DDBlocks.BLOOMING_GRASS.get(), BlockLoot::createShearsOnlyDrop);
+        this.add(DDBlocks.TALL_BLOOMING_GRASS.get(), BlockLoot::createShearsOnlyDrop);
+
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
+        this.dropSelf(DDBlocks.GLOOM_STONE.get());
+        this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
         this.dropSelf(DDBlocks.CRYSTALLIZED_AMBER.get());
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());
-        this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
+        this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLoot::createShearsOnlyDrop);
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
     }

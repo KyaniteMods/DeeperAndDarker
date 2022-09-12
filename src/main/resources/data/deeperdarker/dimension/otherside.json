@@ -230,6 +230,30 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
+          "biome": "deeperdarker:otherside_deeplands",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0.2,
+            "continentalness": 0.5,
+            "erosion": 0.6,
+            "weirdness": 0.1,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "deeperdarker:blooming_caverns",
+          "parameters": {
+            "temperature": 0.6,
+            "humidity": 0.5,
+            "continentalness": 0,
+            "erosion": 0.3,
+            "weirdness": 0.1,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "deeperdarker:overcast_columns",
           "parameters": {
             "temperature": 0.4,
@@ -244,24 +268,12 @@
         {
           "biome": "deeperdarker:echoing_forest",
           "parameters": {
-            "temperature": 0.6,
-            "humidity": 0.5,
+            "temperature": 0.7,
+            "humidity": 0.6,
             "continentalness": 0,
             "erosion": 0.2,
             "weirdness": 0,
             "depth": 0.2,
-            "offset": 0
-          }
-        },
-        {
-          "biome": "deeperdarker:otherside_deeplands",
-          "parameters": {
-            "temperature": 0,
-            "humidity": 0.2,
-            "continentalness": 0.5,
-            "erosion": 0.6,
-            "weirdness": 0.1,
-            "depth": 0,
             "offset": 0
           }
         }

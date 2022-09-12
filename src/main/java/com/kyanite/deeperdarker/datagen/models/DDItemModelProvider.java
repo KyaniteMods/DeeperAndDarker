@@ -75,19 +75,23 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ANCIENT_VASE);
         blockModel(DDBlocks.ECHO_SOIL);
 
+        blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
+        getBuilder(DDBlocks.BLOOMING_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.BLOOMING_GRASS.getId().getPath());
+        getBuilder(DDBlocks.TALL_BLOOMING_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.BLOOMING_GRASS.getId().getPath() + "_top");
+
         blockModel(DDBlocks.GLOOM_SCULK);
+        blockModel(DDBlocks.GLOOM_STONE);
+        blockModel(DDBlocks.GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
         blockModel(DDBlocks.GLOOM_CACTUS);
-        blockModel(DDBlocks.GEYSER);
+        getBuilder(DDBlocks.GLOOMY_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.GLOOMY_GRASS.getId().getPath());
 
         // ITEMS
-        itemModel(DDItems.ECHO_BOAT, GENERATED);
-        itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
+        itemModel(DDItems.BLOOM_BERRIES, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
-
         getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
@@ -105,6 +109,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(DDItems.SHATTERED_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.STALKER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(DDItems.CENTIPEDE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        itemModel(DDItems.ECHO_BOAT, GENERATED);
+        itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
 
         getBuilder("wanderers_notebook").parent(GENERATED).texture("layer0", "item/wanderers_notebook");
     }
@@ -117,7 +125,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 
-    public <T> void itemModel(RegistryObject<T> item, ModelFile modelFile) {
+    public void itemModel(RegistryObject<?> item, ModelFile modelFile) {
         getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
     }
 }

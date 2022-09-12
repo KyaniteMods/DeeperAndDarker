@@ -87,10 +87,11 @@ public class DeeperAndDarker {
             WoodType.register(DDTypes.ECHO);
             BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
 
-            EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
-            EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
+            EntityRenderers.register(DDEntities.CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+            EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
         }
 
@@ -113,6 +114,7 @@ public class DeeperAndDarker {
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDTypes.ECHO);
 
+                SpawnPlacements.register(DDEntities.CENTIPEDE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
                 SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
                 SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
             });
@@ -128,9 +130,10 @@ public class DeeperAndDarker {
         @SubscribeEvent
         public static void entityAttributes(final EntityAttributeCreationEvent event) {
             event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
-            event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
+            event.put(DDEntities.SHRIEK_WORM.get(), SculkWormEntity.attributes());
             event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
             event.put(DDEntities.SHATTERED.get(), ShatteredEntity.attributes());
+            event.put(DDEntities.CENTIPEDE.get(), SculkCentipedeEntity.attributes());
             event.put(DDEntities.STALKER.get(), StalkerEntity.attributes());
         }
     }
