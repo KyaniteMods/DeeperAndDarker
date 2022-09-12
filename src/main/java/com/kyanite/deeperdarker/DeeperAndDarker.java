@@ -27,6 +27,7 @@ import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -92,6 +93,7 @@ public class DeeperAndDarker {
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+            EntityRenderers.register(DDEntities.CENTIPEDE.get(), CentipedeRenderer::new);
         }
 
         @SubscribeEvent
@@ -131,6 +133,7 @@ public class DeeperAndDarker {
             event.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
             event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
             event.put(DDEntities.SHATTERED.get(), ShatteredEntity.attributes());
+            event.put(DDEntities.CENTIPEDE.get(), SculkCentipedeEntity.attributes());
             event.put(DDEntities.STALKER.get(), StalkerEntity.attributes());
         }
     }

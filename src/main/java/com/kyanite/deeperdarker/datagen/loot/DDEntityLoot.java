@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 public class DDEntityLoot extends EntityLoot {
     @Override
     protected void addTables() {
+        add(DDEntities.CENTIPEDE.get(), LootTable.lootTable());
         add(DDEntities.SCULK_LEECH.get(), LootTable.lootTable());
         add(DDEntities.SCULK_SNAPPER.get(), LootTable.lootTable());
         add(DDEntities.SCULK_WORM.get(), LootTable.lootTable());

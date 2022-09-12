@@ -107,6 +107,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(DDItems.SHATTERED_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(DDItems.STALKER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(DDItems.CENTIPEDE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
         getBuilder("wanderers_notebook").parent(GENERATED).texture("layer0", "item/wanderers_notebook");
     }
