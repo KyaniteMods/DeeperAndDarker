@@ -222,6 +222,79 @@
                 }
               ]
             }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 0,
+              "surface_type": "floor",
+              "add_surface_depth": false,
+              "secondary_depth_range": 0
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:biome",
+                    "biome_is": [
+                      "deeperdarker:blooming_caverns"
+                    ]
+                  },
+                  "then_run": {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:not",
+                      "invert": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:netherrack",
+                        "min_threshold": 0.54,
+                        "max_threshold": 2
+                      }
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:y_above",
+                        "anchor": {
+                          "absolute": 20
+                        },
+                        "surface_depth_multiplier": 0,
+                        "add_stone_depth": false
+                      },
+                      "then_run": {
+                        "type": "minecraft:sequence",
+                        "sequence": [
+                          {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                              "type": "minecraft:noise_threshold",
+                              "noise": "minecraft:nether_wart",
+                              "min_threshold": 1.17,
+                              "max_threshold": 1.7976931348623157e+308
+                            },
+                            "then_run": {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "minecraft:red_wool"
+                              }
+                            }
+                          },
+                          {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "deeperdarker:blooming_grass_block"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
           }
         ]
       }

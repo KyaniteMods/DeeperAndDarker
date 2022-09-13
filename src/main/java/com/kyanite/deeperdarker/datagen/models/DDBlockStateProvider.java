@@ -75,7 +75,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 
-        simpleBlock(DDBlocks.BLOOMING_GRASS_BLOCK.get());
+        horizontalBlock(DDBlocks.BLOOMING_GRASS_BLOCK.get(), new ResourceLocation(DeeperAndDarker.MOD_ID, "block/blooming_grass_block"),new ResourceLocation(DeeperAndDarker.MOD_ID, "block/blooming_grass_block"), new ResourceLocation(DeeperAndDarker.MOD_ID, "block/blooming_grass_block_top"));
         simpleBlock(DDBlocks.BLOOMING_GRASS.get(), models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath(), blockLoc(DDBlocks.BLOOMING_GRASS)).renderType("cutout"));
         ConfiguredModel[] bloomGrassModels = { new ConfiguredModel(models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath() + "_bottom", blockLoc(DDBlocks.BLOOMING_GRASS, "bottom")).renderType("cutout")), new ConfiguredModel(models().cross(DDBlocks.BLOOMING_GRASS.getId().getPath() + "_top", blockLoc(DDBlocks.BLOOMING_GRASS, "top")).renderType("cutout")) };
         getVariantBuilder(DDBlocks.TALL_BLOOMING_GRASS.get()).partialState().with(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER).setModels(bloomGrassModels[0]).partialState().with(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER).setModels(bloomGrassModels[1]);
