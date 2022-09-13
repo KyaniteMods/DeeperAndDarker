@@ -72,8 +72,7 @@ public class OthersideBiomes {
     public static Biome caverns() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK.getHolder().get());
+        addSculkOres(biomeBuilder);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)

@@ -36,8 +36,7 @@ public class DDPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SCULK_TENDRILS = PLACED_FEATURES.register("sculk_tendrils", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_TENDRILS.getHolder().get(), commonOrePlacement(55, PlacementUtils.FULL_RANGE)));
 
     public static final RegistryObject<PlacedFeature> OTHERSIDE_PILLAR = PLACED_FEATURES.register("otherside_pillar", () -> new PlacedFeature(DDConfiguredFeatures.OTHERSIDE_PILLAR.getHolder().get(), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
-
-    public static final RegistryObject<PlacedFeature> ECHO_TREE_PLACED = PLACED_FEATURES.register("echo_tree_placed", () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) (Holder<? extends ConfiguredFeature<?, ?>>) DDConfiguredFeatures.ECHO_TREE_SPAWN, echoTreePlacement()));
+    public static final RegistryObject<PlacedFeature> ECHO_TREE_PLACED = PLACED_FEATURES.register("echo_tree_placed", () -> new PlacedFeature(DDConfiguredFeatures.ECHO_TREE_SPAWN.getHolder().get(), echoTreePlacement()));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());
