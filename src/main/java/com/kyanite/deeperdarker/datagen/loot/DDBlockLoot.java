@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.datagen.loot;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.blocks.custom.BloomBerryBushBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -16,6 +18,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -81,6 +84,7 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.BLOOMING_GRASS_BLOCK.get());
         this.add(DDBlocks.BLOOMING_GRASS.get(), BlockLoot::createShearsOnlyDrop);
         this.add(DDBlocks.TALL_BLOOMING_GRASS.get(), BlockLoot::createShearsOnlyDrop);
+        this.add(DDBlocks.BLOOM_BERRY_BUSH.get(), block -> applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.BLOOM_BERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BloomBerryBushBlock.AGE, 3))).add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.BLOOM_BERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BloomBerryBushBlock.AGE, 2))).add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))));
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
         this.dropSelf(DDBlocks.GLOOM_STONE.get());

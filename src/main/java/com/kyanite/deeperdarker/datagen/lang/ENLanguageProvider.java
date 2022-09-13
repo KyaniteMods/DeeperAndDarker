@@ -31,7 +31,7 @@ public class ENLanguageProvider extends LanguageProvider {
         DDBlocks.BLOCKS.getEntries().forEach(this::addBlock);
         DDEntities.ENTITY_TYPES.getEntries().forEach(this::addEntity);
         OthersideBiomes.BIOMES.getEntries().forEach(this::addBiome);
-        DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(this::addItem);
+        DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem) || item == DDItems.BLOOM_BERRIES).forEach(this::addItem);
         DDEnchantments.ENCHANTMENTS.getEntries().forEach(this::addEnchantment);
 
         add("advancements.deeperdarker.root.title", "Sculk Story");
