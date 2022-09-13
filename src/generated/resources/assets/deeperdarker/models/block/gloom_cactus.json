@@ -1,9 +1,6 @@
 {
-  "parent": "minecraft:block/cactus",
-  "render_type": "minecraft:cutout",
+  "parent": "deeperdarker:block/cube_cactus",
   "textures": {
-    "bottom": "deeperdarker:block/gloom_cactus_bottom",
-    "particle": "deeperdarker:block/gloom_cactus_side",
     "side": "deeperdarker:block/gloom_cactus_side",
     "top": "deeperdarker:block/gloom_cactus_top"
   }

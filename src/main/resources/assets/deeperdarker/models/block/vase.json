@@ -1,5 +1,5 @@
 {
-	"render-type": "transparent",
+	"render_type": "cutout",
 	"texture_size": [48, 48],
 	"textures": {
 		"particle": "#vase"
