@@ -22,7 +22,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MOD_ID);
 
-    public static final RegistryObject<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new Item(new Item.Properties().food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
+    public static final RegistryObject<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new ItemNameBlockItem(DDBlocks.BLOOM_BERRY_BUSH.get(), new Item.Properties().food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
     public static final RegistryObject<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new DeepHeartItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
     public static final RegistryObject<Item> REINFORCED_ECHO_SHARD = ITEMS.register("reinforced_echo_shard", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE).tab(DDCreativeModeTab.DD_TAB)));

@@ -1,0 +1,1 @@
+All assets in the `resources` folder are copyrighted by Kyanite Mods. All rights reserved.
