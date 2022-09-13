@@ -12,9 +12,9 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
@@ -28,12 +28,11 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
-import org.jetbrains.annotations.Nullable;
 
 public class BloomBerryBushBlock extends BushBlock implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-    private static final VoxelShape SAPLING_SHAPE = Block.box(3, 0, 3, 12, 12, 12);
-    private static final VoxelShape GROWN_SHAPE = Block.box(1, 0, 1, 15, 13, 15);
+    private static final VoxelShape SAPLING_SHAPE = Block.box(3, 0, 3, 13, 13, 13);
+    private static final VoxelShape GROWN_SHAPE = Block.box(1, 0, 1, 15, 14, 15);
 
     public BloomBerryBushBlock(Properties pProperties) {
         super(pProperties);
@@ -104,5 +103,16 @@ public class BloomBerryBushBlock extends BushBlock implements BonemealableBlock 
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
         int i = Math.min(3, pState.getValue(AGE) + 1);
         pLevel.setBlock(pPos, pState.setValue(AGE, i), 2);
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return pState.is(DDBlocks.BLOOMING_GRASS_BLOCK.get());
+    }
+
+    @Override
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockState state = pLevel.getBlockState(pPos.below());
+        return state.is(DDBlocks.BLOOMING_GRASS_BLOCK.get());
     }
 }

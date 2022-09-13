@@ -76,8 +76,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_SOIL);
 
         blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
-        getBuilder(DDBlocks.BLOOMING_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.BLOOMING_GRASS.getId().getPath());
-        getBuilder(DDBlocks.TALL_BLOOMING_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.BLOOMING_GRASS.getId().getPath() + "_top");
+        getBuilder(DDBlocks.BLOOMING_SHRUB.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.BLOOMING_SHRUB.getId().getPath());
 
         blockModel(DDBlocks.GLOOM_SCULK);
         blockModel(DDBlocks.GLOOM_STONE);

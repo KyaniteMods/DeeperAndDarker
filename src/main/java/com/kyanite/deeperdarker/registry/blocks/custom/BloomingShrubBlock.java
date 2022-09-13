@@ -11,10 +11,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
 
-public class GloomyGrassBlock extends BushBlock implements IForgeShearable {
-    protected static final VoxelShape SHAPE = Block.box(1, 0, 1, 14, 12, 14);
+public class BloomingShrubBlock extends BushBlock implements IForgeShearable {
+    public static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 12, 13);
 
-    public GloomyGrassBlock(Properties pProperties) {
+    public BloomingShrubBlock(Properties pProperties) {
         super(pProperties);
     }
 
@@ -25,12 +25,12 @@ public class GloomyGrassBlock extends BushBlock implements IForgeShearable {
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(DDBlocks.GLOOM_SCULK.get());
+        return pState.is(DDBlocks.BLOOMING_GRASS_BLOCK.get());
     }
 
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockState state = pLevel.getBlockState(pPos.below());
-        return state.is(DDBlocks.GLOOM_SCULK.get());
+        return state.is(DDBlocks.BLOOMING_GRASS_BLOCK.get());
     }
 }
