@@ -79,7 +79,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         getBuilder(DDBlocks.BLOOMING_SHRUB.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.BLOOMING_SHRUB.getId().getPath());
 
         blockModel(DDBlocks.GLOOM_SCULK);
-        blockModel(DDBlocks.GLOOM_STONE);
+        blockModel(DDBlocks.GLOOMSLATE);
+        blockModel(DDBlocks.GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
         blockModel(DDBlocks.GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
         blockModel(DDBlocks.GLOOM_CACTUS);

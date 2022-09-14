@@ -43,6 +43,10 @@ public class StonecuttingRecipesProvider extends RecipeProvider implements ICond
         stonecutterResultFromBase(consumer, DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICKS.get(), 2);
         stonecutterResultFromBase(consumer, DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_BRICKS.get());
         stonecutterResultFromBase(consumer, DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get());
+
+        stonecutterResultFromBase(consumer, DDBlocks.GLOOMSLATE_SLAB.get(), DDBlocks.GLOOMSLATE.get(), 2);
+        stonecutterResultFromBase(consumer, DDBlocks.GLOOMSLATE_STAIRS.get(), DDBlocks.GLOOMSLATE.get());
+        stonecutterResultFromBase(consumer, DDBlocks.GLOOMSLATE_WALL.get(), DDBlocks.GLOOMSLATE.get());
     }
 
     @NotNull

@@ -86,7 +86,10 @@ public class DDBlockLoot extends BlockLoot {
         this.add(DDBlocks.BLOOM_BERRY_BUSH.get(), block -> applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.BLOOM_BERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BloomBerryBushBlock.AGE, 3))).add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.BLOOM_BERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BloomBerryBushBlock.AGE, 2))).add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))));
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
-        this.dropSelf(DDBlocks.GLOOM_STONE.get());
+        this.dropSelf(DDBlocks.GLOOMSLATE.get());
+        this.add(DDBlocks.GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
+        this.dropSelf(DDBlocks.GLOOMSLATE_WALL.get());
         this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
         this.dropSelf(DDBlocks.CRYSTALLIZED_AMBER.get());
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());

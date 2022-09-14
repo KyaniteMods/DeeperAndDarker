@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-12T21:46:24.1655198	Item Models: deeperdarker
+// 1.19.2	2022-09-13T22:14:50.076464	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 8385341af182aae76e3a325a545a8c3dd1076db7 assets/deeperdarker/models/item/blooming_grass_block.json
 ee2aa2a7ef04b889ac24e5ed7c92d6638e0ff832 assets/deeperdarker/models/item/blooming_shrub.json
@@ -25,10 +25,13 @@ b5a9cdf24751c70817ae24a894270341e5e54793 assets/deeperdarker/models/item/echo_lo
 a3fe9f11354ab143f3d9469ff16446bf71f5062a assets/deeperdarker/models/item/echo_trapdoor.json
 8b8f911e14802b02812178623d0873681db5a26b assets/deeperdarker/models/item/echo_wood.json
 634bdff68e5020b13fb60ffee9cdbdf4b0dc4839 assets/deeperdarker/models/item/geyser.json
+f584b7594997a162416c8df4cfbe071fab3fe7a1 assets/deeperdarker/models/item/gloomslate.json
+67ac5b49ce349fd56af9d716b1b519568a3f4284 assets/deeperdarker/models/item/gloomslate_slab.json
+917e5b5e708a373b6d7bb96460c52ebc80e67be2 assets/deeperdarker/models/item/gloomslate_stairs.json
+37d518589dbd88b02108496038c0fafedc513543 assets/deeperdarker/models/item/gloomslate_wall.json
 181b6c50c80d78392abf4d0bfeba5ef09d0664a4 assets/deeperdarker/models/item/gloomy_grass.json
 d9ec732fc515fe1225fe101b98f8c50ee0df5562 assets/deeperdarker/models/item/gloom_cactus.json
 6461544b878260c051b802bf24f757c13ba194fe assets/deeperdarker/models/item/gloom_sculk.json
-42caa651c5c9b0609df7566832e99095954fcd0e assets/deeperdarker/models/item/gloom_stone.json
 d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_of_the_deep.json
 e908654db1aebb4340c0613f218cf9dbf3bd0dc4 assets/deeperdarker/models/item/infested_sculk.json
 68cbbbc1053e35bd4aa6682c8894364f19eb8dfc assets/deeperdarker/models/item/polished_sculk_stone.json
