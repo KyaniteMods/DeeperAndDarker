@@ -6,8 +6,8 @@ assignees: ''
 
 ---
 
-**Description**
+**Description**:
 What feature do you think would make Deeper and Darker better? Provide examples of how to obtain it and its uses.
 
-**Additional context**
+**Additional context**:
 Add any other context about the feature here.
