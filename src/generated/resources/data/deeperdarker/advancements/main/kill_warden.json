@@ -3,15 +3,17 @@
   "criteria": {
     "warden": {
       "conditions": {
-        "items": [
+        "entity": [
           {
-            "items": [
-              "deeperdarker:heart_of_the_deep"
-            ]
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:warden"
+            }
           }
         ]
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:player_killed_entity"
     }
   },
   "display": {

@@ -61,7 +61,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         Component.translatable(id + "kill_warden.description"),
                         null, FrameType.CHALLENGE, true, true, false)
                 .rewards(AdvancementRewards.Builder.experience(100))
-                .addCriterion("warden", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.HEART_OF_THE_DEEP.get()))
+                .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
                 .save(consumer, path + "kill_warden");
 
         Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(Blocks.REINFORCED_DEEPSLATE,
