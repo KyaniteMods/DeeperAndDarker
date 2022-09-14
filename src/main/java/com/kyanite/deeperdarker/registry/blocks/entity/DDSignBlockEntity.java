@@ -12,6 +12,6 @@ public class DDSignBlockEntity extends SignBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get();
+        return DDBlockEntityTypes.SIGN_BLOCK_ENTITY.get();
     }
 }

@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.datagen.loot;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.blocks.custom.BloomBerryBushBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.BloomBerryBushBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;

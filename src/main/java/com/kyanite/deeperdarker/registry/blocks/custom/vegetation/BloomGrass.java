@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom;
+package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;

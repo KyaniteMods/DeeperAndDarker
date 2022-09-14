@@ -85,13 +85,13 @@ public class DeeperAndDarker {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
             WoodType.register(DDTypes.ECHO);
-            BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITIES.get(), SignRenderer::new);
+            BlockEntityRenderers.register(DDBlockEntityTypes.SIGN_BLOCK_ENTITY.get(), SignRenderer::new);
 
             EntityRenderers.register(DDEntities.CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
-            EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), SculkWormRenderer::new);
+            EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
         }
 
@@ -120,9 +120,10 @@ public class DeeperAndDarker {
             });
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
-            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.5f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_TENDRILS.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDItems.BLOOM_BERRIES.get(), 0.3f);
 
             PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY.get());
         }
@@ -130,7 +131,7 @@ public class DeeperAndDarker {
         @SubscribeEvent
         public static void entityAttributes(final EntityAttributeCreationEvent event) {
             event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
-            event.put(DDEntities.SHRIEK_WORM.get(), SculkWormEntity.attributes());
+            event.put(DDEntities.SHRIEK_WORM.get(), ShriekWormEntity.attributes());
             event.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
             event.put(DDEntities.SHATTERED.get(), ShatteredEntity.attributes());
             event.put(DDEntities.CENTIPEDE.get(), SculkCentipedeEntity.attributes());

@@ -31,16 +31,16 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.Arrays;
 import java.util.List;
 
-public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable {
+public class ShriekWormEntity extends ActionAnimatedEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(ShriekWormEntity.class, EntityDataSerializers.INT);
     public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", 80, true, false));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", 80, false, true));
     public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", 80, false, true));
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", 20, false, true));
 
-    public SculkWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
+    public ShriekWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
     @Override

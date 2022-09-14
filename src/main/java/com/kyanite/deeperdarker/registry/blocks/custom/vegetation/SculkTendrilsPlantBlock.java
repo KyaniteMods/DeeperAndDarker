@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom.vines.sculktendrils;
+package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.Direction;
@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SculkTendrilsPlantBlock extends GrowingPlantBodyBlock {
-    public static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 16, 12);
 
     public SculkTendrilsPlantBlock(Properties pProperties) {
         super(pProperties, Direction.UP, SHAPE, false);

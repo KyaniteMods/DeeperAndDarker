@@ -93,7 +93,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         Component.translatable(id + "obtain_transmitter.title"),
                         Component.translatable(id + "obtain_transmitter.description"),
                         null, FrameType.TASK, true, true, false)
-                .addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER.get()))
+                .addCriterion("transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER.get()))
                 .save(consumer, path + "obtain_transmitter");
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDBlocks.SCULK_STONE.get(),
@@ -107,7 +107,7 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         Component.translatable(id + "obtain_warden_carapace.title"),
                         Component.translatable(id + "obtain_warden_carapace.description"),
                         null, FrameType.TASK, false, false, true)
-                .addCriterion("echo_log", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.WARDEN_CARAPACE.get()))
+                .addCriterion("carapace", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.WARDEN_CARAPACE.get()))
                 .save(consumer, path + "obtain_warden_carapace");
 
 

@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom;
+package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;

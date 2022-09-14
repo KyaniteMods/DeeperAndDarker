@@ -2,11 +2,13 @@ package com.kyanite.deeperdarker.datagen.lang;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -29,6 +31,7 @@ public class ENLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         DDBlocks.BLOCKS.getEntries().forEach(this::addBlock);
+        DDEffects.MOB_EFFECTS.getEntries().forEach(this::addEffect);
         DDEntities.ENTITY_TYPES.getEntries().forEach(this::addEntity);
         OthersideBiomes.BIOMES.getEntries().forEach(this::addBiome);
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem) || item == DDItems.BLOOM_BERRIES).forEach(this::addItem);
@@ -53,9 +56,6 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");
-
-        add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
-        add("effect.deeperdarker.sculk_affinity.description", "Prevents the player from causing any vibrations.");
 
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
@@ -86,6 +86,11 @@ public class ENLanguageProvider extends LanguageProvider {
     private void addBlock(RegistryObject<Block> block) {
         String key = block.getId().getPath();
         super.add("block.deeperdarker." + key, convertToName(key));
+    }
+
+    private void addEffect(RegistryObject<MobEffect> effect) {
+        String key = effect.getId().getPath();
+        super.add("effect.deeperdarker." + key, convertToName(key));
     }
 
     private void addEntity(RegistryObject<EntityType<?>> item) {

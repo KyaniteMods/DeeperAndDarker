@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom.vines.sculktendrils;
+package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.BlockPos;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
-    public static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 15.0D, 12.0D);
+    public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 15, 12);
 
     public SculkTendrilsBlock(Properties properties) {
         super(properties, Direction.UP, SHAPE, false, 0.1);
@@ -19,9 +19,7 @@ public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
 
     @Override
     public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
-        if(silkTouchLevel != 0) {
-            return 0;
-        } else return 1;
+        return silkTouchLevel != 0 ? 0 : 1;
     }
 
     @Override

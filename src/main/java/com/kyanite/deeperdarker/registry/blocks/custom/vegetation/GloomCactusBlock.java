@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom;
+package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.BlockPos;
@@ -11,8 +11,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class GloomCactusBlock extends CactusBlock {
-    protected static final VoxelShape COLLISION_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 13.0D, 15.0D);
-    protected static final VoxelShape OUTLINE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 14.0D, 15.0D);
+    protected static final VoxelShape COLLISION_SHAPE = Block.box(1, 0, 1, 15, 13, 15);
+    protected static final VoxelShape OUTLINE_SHAPE = Block.box(1, 0, 1, 15, 14, 15);
 
     public GloomCactusBlock(Properties pProperties) {
         super(pProperties);

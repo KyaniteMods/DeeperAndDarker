@@ -2,8 +2,8 @@ package com.kyanite.deeperdarker.datagen.models;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.blocks.custom.BloomBerryBushBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.BloomBerryBushBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;

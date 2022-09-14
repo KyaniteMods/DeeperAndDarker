@@ -1,7 +1,7 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
-    "sculk_transmitter": {
+    "transmitter": {
       "conditions": {
         "items": [
           {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "sculk_transmitter"
+      "transmitter"
     ]
   ]
 }

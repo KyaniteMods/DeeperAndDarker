@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.ShriekWormEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -23,9 +23,9 @@ public class InfestedSculkBlock extends SculkBlock {
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof Player player) {
             pLevel.setBlock(pPos, Blocks.SCULK.defaultBlockState(), 3);
-            player.knockback(1.5, 1.5, 1.5);
-            SculkWormEntity entity = DDEntities.SHRIEK_WORM.get().create(pLevel);
-            entity.setState(SculkWormEntity.EMERGE);
+            player.knockback(1, 1, 1);
+            ShriekWormEntity entity = DDEntities.SHRIEK_WORM.get().create(pLevel);
+            entity.setState(ShriekWormEntity.EMERGE);
             pLevel.addFreshEntity(entity);
             entity.moveTo(pPos.above(), 0, 0);
         }

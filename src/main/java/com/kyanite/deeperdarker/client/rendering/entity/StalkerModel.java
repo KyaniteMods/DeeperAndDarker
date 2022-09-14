@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.StalkerEntity;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
@@ -24,7 +23,7 @@ public class StalkerModel extends AnimatedGeoModel<StalkerEntity> {
     }
 
     @Override
-    public void setLivingAnimations(StalkerEntity entity, Integer uniqueID, @Nullable AnimationEvent customPredicate) {
+    public void setLivingAnimations(StalkerEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
         this.getBone("FakeVase").setHidden(entity.getCurrentState() != StalkerEntity.EMERGE);
         this.getBone("Vase").setHidden(!entity.hasVase());
