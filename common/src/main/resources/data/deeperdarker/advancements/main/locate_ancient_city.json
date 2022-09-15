@@ -1,0 +1,44 @@
+{
+  "parent": "deeperdarker:main/obtain_membrane",
+  "criteria": {
+    "ancient_city": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "minecraft:ancient_city"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.locate_ancient_city.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:deepslate_tiles"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.locate_ancient_city.title"
+    }
+  },
+  "requirements": [
+    [
+      "ancient_city"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

@@ -1,0 +1,28 @@
+dependencies {
+    // Fabric
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+
+    // GeckoLib
+    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:3.1.18"
+
+    // Portal API
+    include modImplementation ('net.kyrptonaught:customportalapi:0.0.1-beta52-1.19')
+}
+
+architectury {
+    common()
+}
+
+publishing {
+    publications {
+        mavenCommon(MavenPublication) {
+            artifactId = rootProject.archives_base_name
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        // Add repositories to publish to here.
+    }
+}

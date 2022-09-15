@@ -1,0 +1,143 @@
+{
+  "ambience.portal.groan": {
+    "subtitle": "subtitles.ambience.portal.groan",
+    "sounds": [
+      "deeperdarker:ambience/portal/groan1",
+      "deeperdarker:ambience/portal/groan2",
+      "deeperdarker:ambience/portal/groan3",
+      "deeperdarker:ambience/portal/groan4"
+    ]
+  },
+  "block.sculk_stone.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "deeperdarker:block/sculk_stone/break1",
+      "deeperdarker:block/sculk_stone/break2",
+      "deeperdarker:block/sculk_stone/break3",
+      "deeperdarker:block/sculk_stone/break4",
+      "deeperdarker:block/sculk_stone/break5",
+      "deeperdarker:block/sculk_stone/break6",
+      "deeperdarker:block/sculk_stone/break7"
+    ]
+  },
+  "block.sculk_stone.fall": {
+    "sounds": [
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
+    ]
+  },
+  "block.sculk_stone.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
+    ]
+  },
+  "block.sculk_stone.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "deeperdarker:block/sculk_stone/place1",
+      "deeperdarker:block/sculk_stone/place2",
+      "deeperdarker:block/sculk_stone/place3",
+      "deeperdarker:block/sculk_stone/place4",
+      "deeperdarker:block/sculk_stone/place5"
+    ]
+  },
+  "block.sculk_stone.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
+    ]
+  },
+  "block.vase.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "deeperdarker:block/vase/break1",
+      "deeperdarker:block/vase/break2",
+      "deeperdarker:block/vase/break3",
+      "deeperdarker:block/vase/break4",
+      "deeperdarker:block/vase/break5"
+    ]
+  },
+  "block.vase.fall": {
+    "sounds": [
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
+    ]
+  },
+  "block.vase.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
+    ]
+  },
+  "block.vase.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "deeperdarker:block/vase/place1",
+      "deeperdarker:block/vase/place2",
+      "deeperdarker:block/vase/place3",
+      "deeperdarker:block/vase/place4"
+    ]
+  },
+  "block.vase.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
+    ]
+  },
+  "entity.snapper.ambient": {
+    "subtitle": "subtitles.entity.snapper.ambient",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/ambient"
+    ]
+  },
+  "entity.snapper.bite": {
+    "subtitle": "subtitles.entity.snapper.bite",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/bite"
+    ]
+  },
+  "entity.snapper.hurt": {
+    "subtitle": "subtitles.entity.snapper.hurt",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/hurt"
+    ]
+  },
+  "entity.snapper.sniff": {
+    "subtitle": "subtitles.entity.snapper.sniff",
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/sniff"
+    ]
+  },
+  "item.transmitter.link": {
+    "subtitle": "subtitles.item.transmitter.link",
+    "sounds": [
+      "deeperdarker:item/transmitter/link"
+    ]
+  },
+  "item.transmitter.transmit": {
+    "subtitle": "subtitles.item.transmitter.transmit",
+    "sounds": [
+      "deeperdarker:item/transmitter/transmit"
+    ]
+  }
+}

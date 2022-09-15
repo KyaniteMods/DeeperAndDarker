@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "deeperdarker",
+  "version": "${version}",
+  "name": "DeeperAndDarker",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.kyanite.deeperdarker.fabric.DeeperAndDarkerFabric"
+    ],
+    "client": [
+      "com.kyanite.deeperdarker.fabric.DeeperAndDarkerFabricClient"
+    ]
+  },
+  "mixins": [
+    "deeperdarker.mixins.json",
+    "deeperdarker-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "minecraft": ">=1.19.2"
+  }
+}
