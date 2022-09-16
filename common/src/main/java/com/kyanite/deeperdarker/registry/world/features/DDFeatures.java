@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.registry.world.features;
 
-import com.google.common.base.Supplier;
+import java.util.function.Supplier;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.PlatformHelper;
 import net.minecraft.core.Registry;

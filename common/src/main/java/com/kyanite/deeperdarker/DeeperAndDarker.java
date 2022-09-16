@@ -35,6 +35,7 @@ import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
 import software.bernie.example.GeckoLibMod;
@@ -52,13 +53,13 @@ public class DeeperAndDarker {
         //GeckoLib.initialize();
        // GeckoLibMod.DISABLE_IN_DEV = true;
 
-        DDEffects.registerEffects();
-        DDPotions.registerPotions();
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
         DDItems.registerItems();
         DDSounds.registerSounds();
         DDEnchantments.registerEnchantments();
+        DDEffects.registerEffects();
+        DDPotions.registerPotions();
 
         DDFeatures.registerFeatures();
         DDConfiguredFeatures.registerConfiguredFeatures();
@@ -68,8 +69,7 @@ public class DeeperAndDarker {
         OthersideBiomes.createBiomes();
 
         GeckoLib.initialize();
-
-      //  CustomPortalBuilder.beginPortal()
+        //  CustomPortalBuilder.beginPortal()
         //        .frameBlock(Blocks.REINFORCED_DEEPSLATE)
           //      .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
             //    .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))

@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.platform;
 
-import com.google.common.base.Supplier;
+import java.util.function.Supplier;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;

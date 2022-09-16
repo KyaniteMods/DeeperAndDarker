@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.sounds;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.miscellaneous.DDSoundType;
 import com.kyanite.deeperdarker.platform.PlatformHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -16,7 +17,7 @@ public class DDSounds {
     public static final Supplier<SoundEvent> SCULK_STONE_PLACE = register("block.sculk_stone.place");
     public static final Supplier<SoundEvent> SCULK_STONE_STEP = register("block.sculk_stone.step");
 
-    public static final SoundType SCULK_STONE = new SoundType(5, 1, SCULK_STONE_BREAK.get(), SCULK_STONE_STEP.get(), SCULK_STONE_PLACE.get(), SCULK_STONE_HIT.get(), SCULK_STONE_FALL.get());
+    public static final SoundType SCULK_STONE = new DDSoundType(5, 1, SCULK_STONE_BREAK, SCULK_STONE_STEP, SCULK_STONE_PLACE, SCULK_STONE_HIT, SCULK_STONE_FALL);
 
     // Vase
     public static final Supplier<SoundEvent> VASE_BREAK = register("block.vase.break");
@@ -24,7 +25,7 @@ public class DDSounds {
     public static final Supplier<SoundEvent> VASE_HIT = register("block.vase.hit");
     public static final Supplier<SoundEvent> VASE_PLACE = register("block.vase.place");
     public static final Supplier<SoundEvent> VASE_STEP = register("block.vase.step");
-    public static final SoundType VASE = new SoundType(5, 1, VASE_BREAK.get(), VASE_STEP.get(), VASE_PLACE.get(), VASE_HIT.get(), VASE_FALL.get());
+    public static final SoundType VASE = new DDSoundType(5, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
 
     // Sculk Snapper
     public static final Supplier<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");

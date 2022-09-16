@@ -37,14 +37,15 @@ public class DeeperAndDarkerForge {
         DeeperAndDarker.init();
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        PlatformHelperImpl.FEATURES.register(bus);
-        PlatformHelperImpl.BLOCKS.register(bus);
+
+        PlatformHelperImpl.SOUND_EVENTS.register(bus);
         PlatformHelperImpl.ITEMS.register(bus);
+        PlatformHelperImpl.BLOCKS.register(bus);
         PlatformHelperImpl.ENCHANTMENTS.register(bus);
         PlatformHelperImpl.MOB_EFFECTS.register(bus);
-        PlatformHelperImpl.SOUND_EVENTS.register(bus);
         PlatformHelperImpl.POTIONS.register(bus);
         PlatformHelperImpl.ENTITY_TYPES.register(bus);
+        PlatformHelperImpl.FEATURES.register(bus);
         PlatformHelperImpl.CONFIGURED_FEATURES.register(bus);
         PlatformHelperImpl.PLACED_FEATURES.register(bus);
         PlatformHelperImpl.BIOMES.register(bus);
