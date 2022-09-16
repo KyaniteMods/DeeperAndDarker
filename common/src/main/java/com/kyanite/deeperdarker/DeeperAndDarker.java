@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
+import com.kyanite.deeperdarker.miscellaneous.DeeperAndDarkerInitCallback;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
@@ -38,8 +39,7 @@ public class DeeperAndDarker {
     public static final String MOD_ID = "deeperdarker";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static void init() {
-
+    public static void init(DeeperAndDarkerInitCallback callback) {
         GeckoLib.initialize();
         GeckoLibMod.DISABLE_IN_DEV = true;
 
@@ -66,6 +66,7 @@ public class DeeperAndDarker {
                 //.forcedSize(20, 6)
                 //.registerPortal();
 
+        callback.callback();
     }
 
     public static void commonInit() {

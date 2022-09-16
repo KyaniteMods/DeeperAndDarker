@@ -5,7 +5,9 @@ import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -60,7 +62,7 @@ public class RegistryHelper {
     @ExpectPlatform
     public static <T extends PlacedFeature> Supplier<T>  registerPlacedFeature(String name, Supplier<T> placedFeature) { throw new AssertionError(); }
     @ExpectPlatform
-    public static <T extends EntityType<?>> Supplier<T> registerEntity(String name, Supplier<T> entity) {throw new AssertionError();}
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, EntityType.EntityFactory<T> entityFactory, MobCategory category, float width, float height, int clientTrackingRange) {throw new AssertionError();}
 
     @ExpectPlatform
     public static <T extends Biome> Supplier<T>  registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {throw new AssertionError();}

@@ -28,7 +28,9 @@ import java.util.Map;
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
     public DeeperAndDarkerForge() {
-        DeeperAndDarker.init();
+        DeeperAndDarker.init(() -> {
+
+        });
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
