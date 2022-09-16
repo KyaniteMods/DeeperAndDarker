@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.platform.forge;
 
-import com.google.common.base.Supplier;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
@@ -23,9 +22,13 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.Supplier;
+
+@Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlatformHelperImpl {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperAndDarker.MOD_ID);
@@ -61,20 +64,20 @@ public class PlatformHelperImpl {
         return POTIONS.register(name, () -> potion).get();
     }
 
-    public static ConfiguredFeature registerConfiguredFeature(String name, ConfiguredFeature feature) {
-        return CONFIGURED_FEATURES.register(name, () -> feature).get();
+    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
+        return CONFIGURED_FEATURES.register(name, feature);
     }
 
-    public static Feature registerFeature(String name, Feature feature) {
-        return FEATURES.register(name, () -> feature).get();
+    public static <T extends Feature<?>> Supplier<T> registerFeature(String name, Supplier<T> feature) {
+        return FEATURES.register(name, feature);
     }
 
     public static MobEffect registerEffect(String name, MobEffect effect) {
         return MOB_EFFECTS.register(name, () -> effect).get();
     }
 
-    public static PlacedFeature registerPlacedFeature(String name, PlacedFeature placedFeature) {
-        return PLACED_FEATURES.register(name, () -> placedFeature).get();
+    public static <T extends PlacedFeature> Supplier<T> registerPlacedFeature(String name, Supplier<T> placedFeature) {
+        return PLACED_FEATURES.register(name, placedFeature);
     }
 
     public static CreativeModeTab registerCreativeModeTab(String name, Supplier<ItemStack> icon) {

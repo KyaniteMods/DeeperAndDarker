@@ -37,6 +37,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
+import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
@@ -47,7 +48,10 @@ public class DeeperAndDarker {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static void init() {
-        GeckoLib.initialize();
+
+        //GeckoLib.initialize();
+       // GeckoLibMod.DISABLE_IN_DEV = true;
+
         DDFeatures.registerFeatures();
         DDConfiguredFeatures.registerConfiguredFeatures();
         DDPlacedFeatures.registerPlacedFeatures();
@@ -62,22 +66,23 @@ public class DeeperAndDarker {
         DDSounds.registerSounds();
         DDEnchantments.registerEnchantments();
 
-        CustomPortalBuilder.beginPortal()
-                .frameBlock(Blocks.REINFORCED_DEEPSLATE)
-                .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-                .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
-                .tintColor(5, 98, 93)
-                .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-                .forcedSize(20, 6)
-                .registerPortal();
+      //  CustomPortalBuilder.beginPortal()
+        //        .frameBlock(Blocks.REINFORCED_DEEPSLATE)
+          //      .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
+            //    .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
+              //  .tintColor(5, 98, 93)
+               // .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+                //.forcedSize(20, 6)
+                //.registerPortal();
 
+    }
 
+    public static void commonInit() {
         ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.asItem(), 0.3f);
         ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.asItem(), 0.65f);
         ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.asItem(), 0.5f);
 
         PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST, DDPotions.SCULK_AFFINITY);
-        // Spawn placements
         SpawnPlacements.register(DDEntities.SCULK_SNAPPER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.SHATTERED, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }

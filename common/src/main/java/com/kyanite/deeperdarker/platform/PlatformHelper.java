@@ -53,12 +53,12 @@ public class PlatformHelper {
     }
 
     @ExpectPlatform
-    public static ConfiguredFeature registerConfiguredFeature(String name, ConfiguredFeature feature) { throw new AssertionError(); }
+    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, java.util.function.Supplier<T> feature) { throw new AssertionError(); }
 
     @ExpectPlatform
-    public static Feature registerFeature(String name, Feature feature) { throw new AssertionError(); }
+    public static <T extends Feature<?>> Supplier<T> registerFeature(String name, Supplier<T> feature) { throw new AssertionError(); }
     @ExpectPlatform
-    public static PlacedFeature registerPlacedFeature(String name, PlacedFeature placedFeature) { throw new AssertionError(); }
+    public static <T extends PlacedFeature> Supplier<T>  registerPlacedFeature(String name, Supplier<T> placedFeature) { throw new AssertionError(); }
     @ExpectPlatform
     public static EntityType registerEntity(String name, EntityType<?> entity) {throw new AssertionError();}
 

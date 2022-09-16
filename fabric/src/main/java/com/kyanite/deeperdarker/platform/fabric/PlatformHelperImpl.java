@@ -48,9 +48,9 @@ public class PlatformHelperImpl {
                 new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature);
     }
 
-    public static Feature registerFeature(String name, Feature feature) {
-        return Registry.register(Registry.FEATURE,
-                new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature);
+    public static <T extends Feature<?>> java.util.function.Supplier<T> registerFeature(String name, java.util.function.Supplier<T> feature) {
+        return () -> Registry.register(Registry.FEATURE,
+                new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature.get());
     }
 
     public static MobEffect registerEffect(String name, MobEffect effect) {
