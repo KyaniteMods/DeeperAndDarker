@@ -28,6 +28,7 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
+import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
@@ -39,8 +40,8 @@ public class DeeperAndDarker {
 
     public static void init() {
 
-        //GeckoLib.initialize();
-       // GeckoLibMod.DISABLE_IN_DEV = true;
+        GeckoLib.initialize();
+        GeckoLibMod.DISABLE_IN_DEV = true;
 
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
@@ -56,8 +57,6 @@ public class DeeperAndDarker {
 
         DDDimensions.dimension();
         OthersideBiomes.createBiomes();
-
-        GeckoLib.initialize();
         //  CustomPortalBuilder.beginPortal()
         //        .frameBlock(Blocks.REINFORCED_DEEPSLATE)
           //      .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
@@ -70,13 +69,6 @@ public class DeeperAndDarker {
     }
 
     public static void commonInit() {
-        ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);
-
-        PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY.get());
-        SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }
 
     public static void attributes(Map<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> attributes) {

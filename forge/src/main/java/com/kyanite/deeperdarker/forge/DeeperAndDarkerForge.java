@@ -59,6 +59,7 @@ public class DeeperAndDarkerForge {
     private void common(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             DeeperAndDarker.commonInit();
+
         });
     }
 
