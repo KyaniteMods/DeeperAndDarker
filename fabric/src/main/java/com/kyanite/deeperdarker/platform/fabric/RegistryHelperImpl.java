@@ -22,7 +22,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-public class PlatformHelperImpl {
+public class RegistryHelperImpl {
     public static Block registerBlock(String name, Block block) {
         return Registry.register(Registry.BLOCK, new ResourceLocation(DeeperAndDarker.MOD_ID, name), block);
     }

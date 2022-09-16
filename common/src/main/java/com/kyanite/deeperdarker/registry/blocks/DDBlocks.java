@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.platform.PlatformHelper;
+import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
@@ -108,16 +108,16 @@ public class DDBlocks {
     public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
 
     public static <T extends Block> Supplier<Block> registerBlock(String name, boolean createBlockItem, Supplier<Block> block) {
-        Supplier<Block> result = PlatformHelper.registerBlock(name, block);
-        if(createBlockItem) PlatformHelper.registerItem(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get())));
+        Supplier<Block> result = RegistryHelper.registerBlock(name, block);
+        if(createBlockItem) RegistryHelper.registerItem(name, () -> new BlockItem(block.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get())));
         BLOCKS.put(name, result);
         return result;
     }
 
     private static <T extends Block> Supplier<Block> registerSign(String name, Supplier<Block> block, Supplier<Block> wallBlock, Supplier<Item> item) {
-        Supplier<Block> standing = PlatformHelper.registerBlock(name, block);
+        Supplier<Block> standing = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, standing);
-        item = PlatformHelper.registerItem(name, () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB.get()), standing.get(), wallBlock.get()));
+        item = RegistryHelper.registerItem(name, () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB.get()), standing.get(), wallBlock.get()));
         return standing;
     }
 

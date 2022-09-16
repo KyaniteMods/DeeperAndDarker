@@ -4,20 +4,15 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDArmorMaterials;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
-import com.kyanite.deeperdarker.miscellaneous.DDTypes;
-import com.kyanite.deeperdarker.platform.PlatformHelper;
+import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
 import com.kyanite.deeperdarker.registry.items.custom.CustomHoeItem;
 import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitterItem;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +43,7 @@ public class DDItems {
     public static final Supplier<Item> WARDEN_HOE = registerItem("warden_hoe",  () -> new CustomHoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB.get())));
 
     private static <T extends Item> Supplier<Item>  registerItem(String name, Supplier<Item> item) {
-        Supplier<Item> result = PlatformHelper.registerItem(name, item);
+        Supplier<Item> result = RegistryHelper.registerItem(name, item);
         REGISTERED_ITEMS.put(name, result);
         return result;
     }

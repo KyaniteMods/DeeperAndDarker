@@ -2,15 +2,10 @@ package com.kyanite.deeperdarker.registry.world.features;
 
 import java.util.function.Supplier;
 import com.google.common.collect.ImmutableList;
-import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.platform.PlatformHelper;
+import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
@@ -59,7 +54,7 @@ public class DDPlacedFeatures {
     }
 
     public static Supplier<PlacedFeature> registerPlacedFeature(String id, Supplier<PlacedFeature> placedFeature) {
-        return PlatformHelper.registerPlacedFeature(id, placedFeature);
+        return RegistryHelper.registerPlacedFeature(id, placedFeature);
     }
 
     public static void registerPlacedFeatures() {

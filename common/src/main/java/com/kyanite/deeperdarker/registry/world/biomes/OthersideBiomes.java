@@ -1,13 +1,12 @@
 package com.kyanite.deeperdarker.registry.world.biomes;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.platform.PlatformHelper;
+import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.ResourceKey;
@@ -19,15 +18,13 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
-import java.util.function.Supplier;
-
 public class OthersideBiomes {
     public static final ResourceKey<Biome> OTHERSIDE_DEEPLANDS  = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside_deeplands"));
     public static final ResourceKey<Biome> ECHOING_FOREST  = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "echoing_forest"));
 
     public static void createBiomes() {
-        PlatformHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), () -> deeplands());
-        PlatformHelper.registerBiome(ECHOING_FOREST.location(), () -> forest());
+        RegistryHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), () -> deeplands());
+        RegistryHelper.registerBiome(ECHOING_FOREST.location(), () -> forest());
     }
 
     public static Biome forest() {

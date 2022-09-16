@@ -2,8 +2,7 @@ package com.kyanite.deeperdarker.registry.sounds;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDSoundType;
-import com.kyanite.deeperdarker.platform.PlatformHelper;
-import net.minecraft.core.Registry;
+import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.SoundType;
@@ -45,6 +44,6 @@ public class DDSounds {
     }
 
     private static Supplier<SoundEvent> register(String name) {
-        return PlatformHelper.registerSound(name, () -> new SoundEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));
+        return RegistryHelper.registerSound(name, () -> new SoundEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));
     }
 }
