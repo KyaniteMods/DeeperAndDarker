@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-15T19:15:22.8421375	Block Tags
+// 1.19.2	2022-09-15T22:50:50.3071169	Block Tags
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 6b3b5870589ca3d213b907fcbaa1952546fe1a7e data/deeperdarker/tags/blocks/gloom_sculk_replaceable.json
 e5dd2665fa83063a4161b3d4169e6e544b7a0da4 data/deeperdarker/tags/blocks/stripped_logs.json
@@ -30,6 +30,8 @@ b955a6a329b92c8c98beeae2970ddd2b019d2b28 data/minecraft/tags/blocks/mineable/axe
 b56822f87d1b0e7721c8fd1d66c04bb187e3fd9b data/minecraft/tags/blocks/mineable/hoe.json
 14cefc2df5b7232526db4354e4aec21bf39b251f data/minecraft/tags/blocks/mineable/pickaxe.json
 ddc8d2b2f5d8b9a783a7eb8cba770f0280660a4d data/minecraft/tags/blocks/mineable/shovel.json
+92b310730e3db819c9256a99e8b4392af463dbba data/minecraft/tags/blocks/needs_iron_tool.json
+1fa2d276aa6597c3029dcd8d489c448fa7aadac8 data/minecraft/tags/blocks/needs_stone_tool.json
 a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/blocks/redstone_ores.json
