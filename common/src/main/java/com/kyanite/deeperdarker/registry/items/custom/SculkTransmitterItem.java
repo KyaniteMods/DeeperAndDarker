@@ -48,7 +48,7 @@ public class SculkTransmitterItem extends Item {
         }
 
         if(!isLinked(pContext.getItemInHand())) {
-            pContext.getPlayer().playSound(DDSounds.SCULK_LINK, 0.5f, pContext.getLevel().getRandom().nextFloat() * 0.4F + 0.8F);
+            pContext.getPlayer().playSound(DDSounds.SCULK_LINK.get(), 0.5f, pContext.getLevel().getRandom().nextFloat() * 0.4F + 0.8F);
             setBlock(pContext.getItemInHand(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
             return InteractionResult.SUCCESS;
         }
@@ -72,7 +72,7 @@ public class SculkTransmitterItem extends Item {
                 return InteractionResult.FAIL;
             }
 
-            pPlayer.playSound(DDSounds.SCULK_TRANSMIT, 0.5f, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
+            pPlayer.playSound(DDSounds.SCULK_TRANSMIT.get(), 0.5f, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
             if (!pPlayer.isCreative()) {
                 if (pPlayer.totalExperience > 1) pPlayer.giveExperiencePoints(-1);
             }

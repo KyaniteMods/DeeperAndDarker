@@ -46,8 +46,7 @@ public class DDConfiguredFeatures {
 
     public static <F extends Feature<NoneFeatureConfiguration>> Supplier<ConfiguredFeature> register(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
-        ConfiguredFeature configuredFeature = new ConfiguredFeature<>(feature.get(), configuration.get());
-        return PlatformHelper.registerConfiguredFeature(id, () -> configuredFeature);
+        return PlatformHelper.registerConfiguredFeature(id, () -> new ConfiguredFeature<>(feature.get(), configuration.get()));
     }
 
     public static void registerConfiguredFeatures() {

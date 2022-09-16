@@ -107,13 +107,13 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return DDSounds.SCULK_SNAPPER_HURT;
+        return DDSounds.SCULK_SNAPPER_HURT.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return DDSounds.SCULK_SNAPPER_AMBIENT;
+        return DDSounds.SCULK_SNAPPER_AMBIENT.get();
     }
 
     @Override
@@ -139,7 +139,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
                 this.entityData.set(SNIFF_COUNTER, this.entityData.get(SNIFF_COUNTER) - 1);
             } else {
                 if(this.getCurrentState() != WALK) {
-                    this.playSound(DDSounds.SCULK_SNAPPER_SNIFF, 0.5f, 0.75F);
+                    this.playSound(DDSounds.SCULK_SNAPPER_SNIFF.get(), 0.5f, 0.75F);
                     this.setState(SNIFF);
                     this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(150, 500));
                 }
@@ -224,7 +224,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         } else if(entityState.equals(MOUTH_OPEN)) {
             if(this.getTarget() != null) this.doHurtTarget(this.getTarget());
 
-            this.playSound(DDSounds.SCULK_SNAPPER_BITE, 0.6F, 0.8f);
+            this.playSound(DDSounds.SCULK_SNAPPER_BITE.get(), 0.6F, 0.8f);
 
             setState(IDLE);
         } else if(entityState.equals(DIG)) {

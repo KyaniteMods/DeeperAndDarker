@@ -18,20 +18,20 @@ import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 public class DeeperAndDarkerFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES, RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES_PLANT, RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_DOOR, RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_TRAPDOOR, RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES_PLANT.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_DOOR.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
 
-        EntityRendererRegistry.register(DDEntities.SHATTERED, ShatteredRenderer::new);
-        EntityRendererRegistry.register(DDEntities.SCULK_LEECH, SculkLeechRenderer::new);
-        EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
-        EntityRendererRegistry.register(DDEntities.SCULK_WORM, SculkWormRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
 
         DDBoatModels.registerLayers();
 
-        EntityRendererRegistry.register(DDEntities.BOAT, context -> new DDBoatRenderer<>(context, false));
-        EntityRendererRegistry.register(DDEntities.CHEST_BOAT, context -> new DDBoatRenderer<>(context, true));
+        EntityRendererRegistry.register(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
+        EntityRendererRegistry.register(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
 
         DeeperAndDarker.registerArmor();
     }

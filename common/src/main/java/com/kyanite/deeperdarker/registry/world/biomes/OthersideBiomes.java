@@ -26,13 +26,13 @@ public class OthersideBiomes {
     public static final ResourceKey<Biome> ECHOING_FOREST  = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "echoing_forest"));
 
     public static void createBiomes() {
-        PlatformHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), deeplands());
-        PlatformHelper.registerBiome(ECHOING_FOREST.location(), forest());
+        PlatformHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), () -> deeplands());
+        PlatformHelper.registerBiome(ECHOING_FOREST.location(), () -> forest());
     }
 
     public static Biome forest() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED, 20, 0, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED.get(), 20, 0, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
@@ -63,7 +63,7 @@ public class OthersideBiomes {
 
     public static Biome deeplands() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER, 12, 5,8));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 12, 5,8));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 3, 0, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();

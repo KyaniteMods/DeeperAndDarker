@@ -11,7 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum DDArmorMaterials implements ArmorMaterial {
-    WARDEN("warden", 45, new int[]{3, 6, 8, 3}, 21, SoundEvents.SCULK_BLOCK_PLACE, 3.0F, 0.5F, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD));
+    WARDEN("warden", 45, new int[]{3, 6, 8, 3}, 21, SoundEvents.SCULK_BLOCK_PLACE, 3.0F, 0.5F, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

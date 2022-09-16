@@ -10,6 +10,6 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class DDEnchantments {
     public static void registerEnchantments() {
-        PlatformHelper.registerEnchant("sculk_smite", new SculkSmiteEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+        PlatformHelper.registerEnchant("sculk_smite", () -> new SculkSmiteEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
     }
 }

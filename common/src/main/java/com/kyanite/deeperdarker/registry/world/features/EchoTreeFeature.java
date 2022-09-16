@@ -28,7 +28,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         for(logs = 0; logs < height; logs++) {
             BlockPos logPos = new BlockPos(pContext.origin().getX(), pContext.origin().above(logs).getY(), pContext.origin().getZ());
             if(TreeFeature.validTreePos(pContext.level(), logPos)) {
-                pContext.level().setBlock(logPos, DDBlocks.ECHO_LOG.defaultBlockState(), 3);
+                pContext.level().setBlock(logPos, DDBlocks.ECHO_LOG.get().defaultBlockState(), 3);
             }
         }
 
@@ -119,24 +119,24 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int y = origin.getY();
         int z = origin.getZ();
 
-        level.setBlock(new BlockPos(x - 1, y, z), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x - 1, y - 1, z), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x + 1, y, z), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x + 1, y - 1, z), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x - 1, y, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x - 1, y - 1, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x + 1, y, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x + 1, y - 1, z), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
 
-        level.setBlock(new BlockPos(x, y, z - 1), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x, y - 1, z - 1), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x, y + 1, z - 1), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y, z - 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y - 1, z - 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y + 1, z - 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
 
-        level.setBlock(new BlockPos(x, y, z + 1), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x, y - 1, z + 1), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
-        level.setBlock(new BlockPos(x, y + 1, z + 1), DDBlocks.ECHO_WOOD.defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y, z + 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y - 1, z + 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
+        level.setBlock(new BlockPos(x, y + 1, z + 1), DDBlocks.ECHO_WOOD.get().defaultBlockState(), 3);
     }
 
     public void tryPlaceLeaf(WorldGenLevel level, BlockPos pos) {
         if(TreeFeature.validTreePos(level, pos)) {
-            if(level.getRandom().nextInt(0, 20) == 0) setBlock(level, pos, DDBlocks.SCULK_GLEAM.defaultBlockState());
-            else setBlock(level, pos, DDBlocks.ECHO_LEAVES.defaultBlockState());
+            if(level.getRandom().nextInt(0, 20) == 0) setBlock(level, pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState());
+            else setBlock(level, pos, DDBlocks.ECHO_LEAVES.get().defaultBlockState());
         }
     }
 }

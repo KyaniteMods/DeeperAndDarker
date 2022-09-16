@@ -63,7 +63,7 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
         if(randomSource.nextFloat() < 0.125) {
             if(randomSource.nextFloat() < 0.6) {
                 for(int i = 0; i < randomSource.nextInt(1, 4); i++) {
-                    SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.create(pLevel);
+                    SculkLeechEntity sculkLeechEntity = (SculkLeechEntity) DDEntities.SCULK_LEECH.get().create(pLevel);
                     sculkLeechEntity.moveTo(pPos.getX() + randomSource.nextFloat(), pPos.getY() + randomSource.nextFloat(), pPos.getZ(), 0, 0);
                     pLevel.addFreshEntity(sculkLeechEntity);
                 }

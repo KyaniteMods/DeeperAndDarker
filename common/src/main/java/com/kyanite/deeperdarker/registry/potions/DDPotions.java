@@ -8,9 +8,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.alchemy.Potion;
 
+import java.util.function.Supplier;
+
 public class DDPotions {
-    public static Potion SCULK_AFFINITY;
+    public static Supplier<Potion> SCULK_AFFINITY;
     public static void registerPotions() {
-        SCULK_AFFINITY = PlatformHelper.registerPotion("sculk_affinity", new Potion(new MobEffectInstance(DDEffects.SCULK_AFFINITY, 3600, 0)));
+        SCULK_AFFINITY = PlatformHelper.registerPotion("sculk_affinity", () -> new Potion(new MobEffectInstance(DDEffects.SCULK_AFFINITY.get(), 3600, 0)));
     }
 }

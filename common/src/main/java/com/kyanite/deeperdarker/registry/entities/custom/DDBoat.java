@@ -23,7 +23,7 @@ public class DDBoat extends Boat {
     }
 
     public static DDBoat create(Level level, double x, double y, double z) {
-        DDBoat boat = DDEntities.BOAT.create(level);
+        DDBoat boat = DDEntities.BOAT.get().create(level);
         boat.setPos(x, y, z);
         boat.setDeltaMovement(Vec3.ZERO);
         boat.xo = x;
@@ -71,7 +71,7 @@ public class DDBoat extends Boat {
     }
 
     public enum Type {
-        ECHO("echo", DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
+        ECHO("echo", DDItems.ECHO_BOAT.get(), DDItems.ECHO_CHEST_BOAT.get());
 
         private final String name;
         private final Item item;

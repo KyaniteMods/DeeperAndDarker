@@ -22,7 +22,7 @@ public class VibrationListenerMixin {
         if (this.receivingEvent != null || message.context().sourceEntity() == null || message.context() == null) return;
 
         if(message.context().sourceEntity() instanceof Player plr) {
-            if(plr.hasEffect(DDEffects.SCULK_AFFINITY)) cir.setReturnValue(false);
+            if(plr.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
         }
     }
 }

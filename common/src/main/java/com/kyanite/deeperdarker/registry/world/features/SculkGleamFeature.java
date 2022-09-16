@@ -32,7 +32,7 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
             if(!blockState.is(Blocks.SCULK)) {
                 return false;
             } else {
-                level.setBlock(pos, DDBlocks.SCULK_GLEAM.defaultBlockState(), 2);
+                level.setBlock(pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
 
                 for(int i = 0; i < 1500; i++) {
                     BlockPos offset = pos.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
@@ -40,11 +40,11 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
                         int j = 0;
 
                         for(Direction direction : Direction.values()) {
-                            if(level.getBlockState(offset.relative(direction)).is(DDBlocks.SCULK_GLEAM)) j++;
+                            if(level.getBlockState(offset.relative(direction)).is(DDBlocks.SCULK_GLEAM.get())) j++;
                             if(j > 1) break;
                         }
 
-                        if(j == 1) level.setBlock(offset, DDBlocks.SCULK_GLEAM.defaultBlockState(), 2);
+                        if(j == 1) level.setBlock(offset, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 2);
                     }
                 }
 

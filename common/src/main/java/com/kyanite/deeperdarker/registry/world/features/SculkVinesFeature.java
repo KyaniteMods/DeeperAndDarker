@@ -28,7 +28,7 @@ public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
             return false;
         } else {
             BlockState blockstate = worldgenlevel.getBlockState(blockpos.above());
-            if(!blockstate.is(Blocks.SCULK) && !blockstate.is(DDBlocks.ECHO_LEAVES) && !blockstate.is(DDBlocks.SCULK_STONE)) {
+            if(!blockstate.is(Blocks.SCULK) && !blockstate.is(DDBlocks.ECHO_LEAVES.get()) && !blockstate.is(DDBlocks.SCULK_STONE.get())) {
                 return false;
             } else {
                 this.placeVines(worldgenlevel, randomsource, blockpos);
@@ -44,7 +44,7 @@ public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
             mutableBlockPos.setWithOffset(pos, randomSource.nextInt(8) - randomSource.nextInt(8), randomSource.nextInt(2) - randomSource.nextInt(7), randomSource.nextInt(8) - randomSource.nextInt(8));
             if(levelAccessor.isEmptyBlock(mutableBlockPos)) {
                 BlockState blockstate = levelAccessor.getBlockState(mutableBlockPos.above());
-                if(blockstate.is(Blocks.SCULK) || blockstate.is(DDBlocks.ECHO_LEAVES)) {
+                if(blockstate.is(Blocks.SCULK) || blockstate.is(DDBlocks.ECHO_LEAVES.get())) {
                     int j = Mth.nextInt(randomSource, 1, 8);
                     if(randomSource.nextInt(6) == 0) j *= 2;
                     if(randomSource.nextInt(5) == 0) j = 1;
@@ -60,11 +60,11 @@ public class SculkVinesFeature extends Feature<NoneFeatureConfiguration> {
         for(int i = 0; i <= a; i++) {
             if(levelAccessor.isEmptyBlock(blockPos)) {
                 if(i == a || !levelAccessor.isEmptyBlock(blockPos.below())) {
-                    levelAccessor.setBlock(blockPos, DDBlocks.SCULK_VINES.defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(randomSource, b, c)), 2);
+                    levelAccessor.setBlock(blockPos, DDBlocks.SCULK_VINES.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(randomSource, b, c)), 2);
                     break;
                 }
 
-                levelAccessor.setBlock(blockPos, DDBlocks.SCULK_VINES_PLANT.defaultBlockState(), 2);
+                levelAccessor.setBlock(blockPos, DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState(), 2);
             }
 
             blockPos.move(Direction.DOWN);

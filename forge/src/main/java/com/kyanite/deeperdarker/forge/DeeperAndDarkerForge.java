@@ -71,16 +71,16 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerClient {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
-            EntityRenderers.register(DDEntities.SCULK_LEECH, SculkLeechRenderer::new);
-            EntityRenderers.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
-            EntityRenderers.register(DDEntities.SHATTERED, ShatteredRenderer::new);
-            EntityRenderers.register(DDEntities.SCULK_WORM, SculkWormRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
+            EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
         }
 
         @SubscribeEvent
         public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
-            event.registerEntityRenderer(DDEntities.BOAT, context -> new DDBoatRenderer<>(context, false));
-            event.registerEntityRenderer(DDEntities.CHEST_BOAT, context -> new DDBoatRenderer<>(context, true));
+            event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
+            event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
         }
 
         @SubscribeEvent

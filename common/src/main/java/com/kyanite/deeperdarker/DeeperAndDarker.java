@@ -52,12 +52,6 @@ public class DeeperAndDarker {
         //GeckoLib.initialize();
        // GeckoLibMod.DISABLE_IN_DEV = true;
 
-        DDFeatures.registerFeatures();
-        DDConfiguredFeatures.registerConfiguredFeatures();
-        DDPlacedFeatures.registerPlacedFeatures();
-        DDDimensions.dimension();
-        OthersideBiomes.createBiomes();
-
         DDEffects.registerEffects();
         DDPotions.registerPotions();
         DDEntities.registerEntities();
@@ -65,6 +59,15 @@ public class DeeperAndDarker {
         DDItems.registerItems();
         DDSounds.registerSounds();
         DDEnchantments.registerEnchantments();
+
+        DDFeatures.registerFeatures();
+        DDConfiguredFeatures.registerConfiguredFeatures();
+        DDPlacedFeatures.registerPlacedFeatures();
+
+        DDDimensions.dimension();
+        OthersideBiomes.createBiomes();
+
+        GeckoLib.initialize();
 
       //  CustomPortalBuilder.beginPortal()
         //        .frameBlock(Blocks.REINFORCED_DEEPSLATE)
@@ -78,24 +81,24 @@ public class DeeperAndDarker {
     }
 
     public static void commonInit() {
-        ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.asItem(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);
 
-        PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST, DDPotions.SCULK_AFFINITY);
-        SpawnPlacements.register(DDEntities.SCULK_SNAPPER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(DDEntities.SHATTERED, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY.get());
+        SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }
 
     public static void attributes(Map<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> attributes) {
-        attributes.put(DDEntities.SHATTERED, ShatteredEntity.attributes());
-        attributes.put(DDEntities.SCULK_LEECH, SculkLeechEntity.attributes());
-        attributes.put(DDEntities.SCULK_WORM, SculkWormEntity.attributes());
-        attributes.put(DDEntities.SCULK_SNAPPER, SculkSnapperEntity.attributes());
+        attributes.put(DDEntities.SHATTERED.get(), ShatteredEntity.attributes());
+        attributes.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
+        attributes.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
+        attributes.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
     }
 
     public static void registerArmor() {
-        GeoArmorRenderer.registerArmorRenderer(new WardenArmorRenderer(), DDItems.WARDEN_HELMET,
-                DDItems.WARDEN_CHESTPLATE, DDItems.WARDEN_LEGGINGS, DDItems.WARDEN_BOOTS);
+        GeoArmorRenderer.registerArmorRenderer(new WardenArmorRenderer(), DDItems.WARDEN_HELMET.get(),
+                DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get());
     }
 }

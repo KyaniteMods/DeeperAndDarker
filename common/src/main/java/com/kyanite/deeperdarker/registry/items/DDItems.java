@@ -20,33 +20,34 @@ import net.minecraft.world.item.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class DDItems {
-    public static final Map<String, Item> REGISTERED_ITEMS = new HashMap<>();
-    public static final Item HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item WARDEN_CARAPACE = registerItem("warden_carapace", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item SOUL_DUST = registerItem("soul_dust", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item SCULK_TRANSMITTER = registerItem("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
+    public static final Map<String, Supplier<Item>> REGISTERED_ITEMS = new HashMap<>();
+    public static final Supplier<Item> HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_CARAPACE = registerItem("warden_carapace", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> SOUL_DUST = registerItem("soul_dust", new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> SCULK_TRANSMITTER = registerItem("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 
-    public static final Item WARDEN_HELMET = registerItem("warden_helmet", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.HEAD, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item WARDEN_CHESTPLATE = registerItem("warden_chestplate", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.CHEST, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item WARDEN_LEGGINGS = registerItem("warden_leggings", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item WARDEN_BOOTS = registerItem("warden_boots", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item SHATTERED_SPAWN_EGG = registerItem("shattered_spawn_egg", new SpawnEggItem(DDEntities.SHATTERED, 0x0d1217, 0xD1D6B6, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item SCULK_LEECH_SPAWN_EGG = registerItem("sculk_leech_spawn_egg", new SpawnEggItem(DDEntities.SCULK_LEECH, 0x152B38, 0x00FAFF, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item SCULK_SNAPPER_SPAWN_EGG = registerItem("sculk_snapper_spawn_egg", new SpawnEggItem(DDEntities.SCULK_SNAPPER, 0xD1D6B6, 0x1D726F, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item SHRIEK_WORM_SPAWN_EGG = registerItem("shriek_worm_spawn_egg", new SpawnEggItem(DDEntities.SCULK_WORM, 0x204C61, 0xF1F7D0, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item ECHO_BOAT = registerItem("echo_boat", new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item ECHO_CHEST_BOAT = registerItem("echo_chest_boat", new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Item WARDEN_SWORD = registerItem("warden_sword",  new SwordItem(DDTiers.WARDEN, 3, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item WARDEN_SHOVEL = registerItem("warden_shovel",  new ShovelItem(DDTiers.WARDEN, 1.5F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item WARDEN_PICKAXE = registerItem("warden_pickaxe",  new PickaxeItem(DDTiers.WARDEN, 1, -2.8F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item WARDEN_AXE = registerItem("warden_axe", new AxeItem(DDTiers.WARDEN, 7.0F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Item WARDEN_HOE = registerItem("warden_hoe",  new CustomHoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> WARDEN_HELMET = registerItem("warden_helmet", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.HEAD, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_CHESTPLATE = registerItem("warden_chestplate", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.CHEST, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_LEGGINGS = registerItem("warden_leggings", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_BOOTS = registerItem("warden_boots", new WardenArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> SHATTERED_SPAWN_EGG = registerItem("shattered_spawn_egg", new SpawnEggItem(DDEntities.SHATTERED.get(), 0x0d1217, 0xD1D6B6, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> SCULK_LEECH_SPAWN_EGG = registerItem("sculk_leech_spawn_egg", new SpawnEggItem(DDEntities.SCULK_LEECH.get(), 0x152B38, 0x00FAFF, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> SCULK_SNAPPER_SPAWN_EGG = registerItem("sculk_snapper_spawn_egg", new SpawnEggItem(DDEntities.SCULK_SNAPPER.get(), 0xD1D6B6, 0x1D726F, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> SHRIEK_WORM_SPAWN_EGG = registerItem("shriek_worm_spawn_egg", new SpawnEggItem(DDEntities.SCULK_WORM.get(), 0x204C61, 0xF1F7D0, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> ECHO_BOAT = registerItem("echo_boat", new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> ECHO_CHEST_BOAT = registerItem("echo_chest_boat", new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB.get()).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_SWORD = registerItem("warden_sword",  new SwordItem(DDTiers.WARDEN, 3, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> WARDEN_SHOVEL = registerItem("warden_shovel",  new ShovelItem(DDTiers.WARDEN, 1.5F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> WARDEN_PICKAXE = registerItem("warden_pickaxe",  new PickaxeItem(DDTiers.WARDEN, 1, -2.8F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> WARDEN_AXE = registerItem("warden_axe", new AxeItem(DDTiers.WARDEN, 7.0F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB.get())));
+    public static final Supplier<Item> WARDEN_HOE = registerItem("warden_hoe",  new CustomHoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB.get())));
 
-    public static Item registerItem(String name, Item item) {
-        Item result = PlatformHelper.registerItem(name, item);
+    public static Supplier<Item> registerItem(String name, Item item) {
+        Supplier<Item> result = PlatformHelper.registerItem(name, () -> item);
         REGISTERED_ITEMS.put(name, result);
         return result;
     }

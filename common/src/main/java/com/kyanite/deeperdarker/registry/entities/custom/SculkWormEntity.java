@@ -119,7 +119,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
         if(EMERGE.equals(entityState)) {
             setState(AWAKE);
         } else if(DESCEND.equals(entityState)) {
-            this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.defaultBlockState(), 3);
+            this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.KILLED);
         } else if(ATTACK.equals(entityState)) {
             setState(AWAKE);

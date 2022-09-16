@@ -20,7 +20,7 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
 
     @Override
     protected Block getBodyBlock() {
-        return DDBlocks.SCULK_VINES_PLANT;
+        return DDBlocks.SCULK_VINES_PLANT.get();
     }
 
     @Override

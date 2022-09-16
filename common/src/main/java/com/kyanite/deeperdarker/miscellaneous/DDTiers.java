@@ -34,7 +34,7 @@ public class DDTiers {
 
         @Override
         public Ingredient getRepairIngredient() {
-            return Ingredient.of(DDItems.REINFORCED_ECHO_SHARD);
+            return Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get());
         }
     };
 

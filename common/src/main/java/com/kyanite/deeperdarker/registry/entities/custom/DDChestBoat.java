@@ -37,7 +37,7 @@ public class DDChestBoat extends DDBoat implements HasCustomInventoryScreen, Con
     }
 
     public static DDChestBoat create(Level level, double x, double y, double z) {
-        DDChestBoat boat = DDEntities.CHEST_BOAT.create(level);
+        DDChestBoat boat = DDEntities.CHEST_BOAT.get().create(level);
         boat.setPos(x, y, z);
         boat.setDeltaMovement(Vec3.ZERO);
         boat.xo = x;

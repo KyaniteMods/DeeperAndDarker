@@ -43,25 +43,25 @@ public class PlatformHelperImpl {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
 
 
-    public static Block registerBlock(String name, Block block) {
-        return BLOCKS.register(name, () -> block).get();
+    public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 
-    public static Item registerItem(String name, Item item) {
-        return ITEMS.register(name, () -> item).get();
+    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        return ITEMS.register(name, item);
     }
 
-    public static Biome registerBiome(ResourceLocation biomeLocation, Biome biomeConsumer) {
+    public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
         ResourceKey<Biome> biome = ResourceKey.create(Registry.BIOME_REGISTRY, biomeLocation);
-        return BIOMES.register(biome.location().getPath(), () -> biomeConsumer).get();
+        return BIOMES.register(biome.location().getPath(), biomeConsumer);
     }
 
-    public static EntityType registerEntity(String name, EntityType<?> entity) {
-        return ENTITY_TYPES.register(name, () -> entity).get();
+    public static <T extends EntityType> Supplier<T> registerEntity(String name, Supplier<T> entity) {
+        return ENTITY_TYPES.register(name, entity);
     }
 
-    public static Potion registerPotion(String name, Potion potion) {
-        return POTIONS.register(name, () -> potion).get();
+    public static <T extends Potion> Supplier<T> registerPotion(String name, Supplier<T> potion) {
+        return POTIONS.register(name, potion);
     }
 
     public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
@@ -72,16 +72,16 @@ public class PlatformHelperImpl {
         return FEATURES.register(name, feature);
     }
 
-    public static MobEffect registerEffect(String name, MobEffect effect) {
-        return MOB_EFFECTS.register(name, () -> effect).get();
+    public static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> effect) {
+        return MOB_EFFECTS.register(name, effect);
     }
 
     public static <T extends PlacedFeature> Supplier<T> registerPlacedFeature(String name, Supplier<T> placedFeature) {
         return PLACED_FEATURES.register(name, placedFeature);
     }
 
-    public static CreativeModeTab registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
-        return new CreativeModeTab(new ResourceLocation(DeeperAndDarker.MOD_ID, name).toLanguageKey()) {
+    public static <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
+        return () -> (T) new CreativeModeTab(new ResourceLocation(DeeperAndDarker.MOD_ID, name).toLanguageKey()) {
             @Override
             public ItemStack makeIcon() {
                 return icon.get();
@@ -89,12 +89,12 @@ public class PlatformHelperImpl {
         };
     }
 
-    public static Enchantment registerEnchant(String name, Enchantment enchantment) {
-        return ENCHANTMENTS.register(name, () -> enchantment).get();
+    public static <T extends Enchantment> Supplier<T> registerEnchant(String name, Supplier<T> enchantment) {
+        return ENCHANTMENTS.register(name, enchantment);
     }
 
-    public static SoundEvent registerSound(String name, SoundEvent sound) {
-        return SOUND_EVENTS.register(name, () -> sound).get();
+    public static <T extends SoundEvent> Supplier<T> registerSound(String name, Supplier<T> sound) {
+        return SOUND_EVENTS.register(name, sound);
     }
 
     public static WoodType registerWoodType(String name) {
