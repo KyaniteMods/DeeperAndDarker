@@ -12,20 +12,25 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerOpenersCounter.class)
-public abstract class ChestEntityMixin  {
-    @Shadow protected abstract int getOpenCount(Level pLevel, BlockPos pPos);
-
-    @Shadow private int openCount;
-
-    @Shadow protected abstract void onOpen(Level pLevel, BlockPos pPos, BlockState pState);
-
-    @Shadow protected abstract void onClose(Level pLevel, BlockPos pPos, BlockState pState);
-
-    @Shadow protected abstract void openerCountChanged(Level pLevel, BlockPos pPos, BlockState pState, int pCount, int pOpenCount);
+public abstract class ChestEntityMixin {
+    @Shadow
+    private int openCount;
 
     @Shadow
     protected static void scheduleRecheck(Level pLevel, BlockPos pPos, BlockState pState) {
     }
+
+    @Shadow
+    protected abstract int getOpenCount(Level pLevel, BlockPos pPos);
+
+    @Shadow
+    protected abstract void onOpen(Level pLevel, BlockPos pPos, BlockState pState);
+
+    @Shadow
+    protected abstract void onClose(Level pLevel, BlockPos pPos, BlockState pState);
+
+    @Shadow
+    protected abstract void openerCountChanged(Level pLevel, BlockPos pPos, BlockState pState, int pCount, int pOpenCount);
 
     @Inject(method = "recheckOpeners", at = @At("HEAD"), cancellable = true)
     public void recheckOpen(Level pLevel, BlockPos pPos, BlockState pState, CallbackInfo ci) {
@@ -46,6 +51,6 @@ public abstract class ChestEntityMixin  {
             this.openCount = i;
         }
 
-      //  this.openerCountChanged(pLevel, pPos, pState, j, i);
+        //  this.openerCountChanged(pLevel, pPos, pState, j, i);
     }
 }

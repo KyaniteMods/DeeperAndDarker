@@ -52,8 +52,8 @@ public class RegistryHelperImpl {
         return BIOMES.register(biome.location().getPath(), biomeConsumer);
     }
 
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, EntityType.EntityFactory<T> factory, MobCategory category, float width, float height, int clientTrackingRange) {
-        return ENTITY_TYPES.register(name, () -> EntityType.Builder.of(factory, category).sized(width, height).build(name));
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, EntityType.EntityFactory<T> entityFactory, MobCategory category, float width, float height, int clientTrackingRange) {
+        return ENTITY_TYPES.register(name, () -> EntityType.Builder.of(entityFactory, category).sized(width, height).clientTrackingRange(clientTrackingRange).build(name));
     }
 
     public static <T extends Potion> Supplier<T> registerPotion(String name, Supplier<T> potion) {
@@ -76,8 +76,8 @@ public class RegistryHelperImpl {
         return PLACED_FEATURES.register(name, placedFeature);
     }
 
-    public static <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
-        return () -> (T) new CreativeModeTab(new ResourceLocation(DeeperAndDarker.MOD_ID, name).toLanguageKey()) {
+    public static <T extends CreativeModeTab> T registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
+        return (T) new CreativeModeTab(new ResourceLocation(DeeperAndDarker.MOD_ID, name).toLanguageKey()) {
             @Override
             public ItemStack makeIcon() {
                 return icon.get();

@@ -5,15 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "deeperdarker.refmap.json",
   "mixins": [
-    "WardenMixin",
-    "PhantomRendererMixin",
-    "SculkSpreadMixin",
-    "PhantomMixin",
-    "SculkSensorMixin",
-    "VibrationListenerMixin",
+    "ChestEntityMixin",
     "ContainerMixin",
+    "PhantomMixin",
+    "PhantomRendererMixin",
+    "SculkSensorMixin",
+    "SculkSpreadMixin",
     "StonecutterMixin",
-    "ChestEntityMixin"
+    "VibrationListenerMixin",
+    "WardenMixin"
   ],
   "client": [
     "WardenAnimations"

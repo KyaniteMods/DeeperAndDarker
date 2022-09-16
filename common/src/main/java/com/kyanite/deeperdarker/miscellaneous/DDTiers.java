@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.miscellaneous;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 

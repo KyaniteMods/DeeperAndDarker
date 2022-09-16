@@ -27,7 +27,7 @@ public class WardenArmorModel extends AnimatedGeoModel<WardenArmorItem> {
     public void setLivingAnimations(WardenArmorItem entity, Integer uniqueID, AnimationEvent customPredicate) {
         super.setLivingAnimations(entity, uniqueID, customPredicate);
 
-        if(entity.asItem() != DDItems.WARDEN_LEGGINGS)
+        if (entity.asItem() != DDItems.WARDEN_LEGGINGS)
             getBone("armorWaist").setHidden(true);
         else
             getBone("armorWaist").setHidden(false);

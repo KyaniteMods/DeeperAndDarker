@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.platform;
 
-import java.util.function.Supplier;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -19,6 +18,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+
+import java.util.function.Supplier;
 
 public class RegistryHelper {
     @ExpectPlatform
@@ -42,7 +43,9 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
-    public static <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String name, Supplier<ItemStack> icon) { throw new AssertionError(); }
+    public static <T extends CreativeModeTab> T registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
+        throw new AssertionError();
+    }
 
     @ExpectPlatform
     public static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> effect) {
@@ -55,18 +58,32 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
-    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, java.util.function.Supplier<T> feature) { throw new AssertionError(); }
+    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, java.util.function.Supplier<T> feature) {
+        throw new AssertionError();
+    }
 
     @ExpectPlatform
-    public static <T extends Feature<?>> Supplier<T> registerFeature(String name, Supplier<T> feature) { throw new AssertionError(); }
-    @ExpectPlatform
-    public static <T extends PlacedFeature> Supplier<T>  registerPlacedFeature(String name, Supplier<T> placedFeature) { throw new AssertionError(); }
-    @ExpectPlatform
-    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, EntityType.EntityFactory<T> entityFactory, MobCategory category, float width, float height, int clientTrackingRange) {throw new AssertionError();}
+    public static <T extends Feature<?>> Supplier<T> registerFeature(String name, Supplier<T> feature) {
+        throw new AssertionError();
+    }
 
     @ExpectPlatform
-    public static <T extends Biome> Supplier<T>  registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {throw new AssertionError();}
+    public static <T extends PlacedFeature> Supplier<T> registerPlacedFeature(String name, Supplier<T> placedFeature) {
+        throw new AssertionError();
+    }
 
     @ExpectPlatform
-    public static WoodType registerWoodType(String name) {throw new AssertionError();}
+    public static <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, EntityType.EntityFactory<T> entityFactory, MobCategory category, float width, float height, int clientTrackingRange) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static WoodType registerWoodType(String name) {
+        throw new AssertionError();
+    }
 }

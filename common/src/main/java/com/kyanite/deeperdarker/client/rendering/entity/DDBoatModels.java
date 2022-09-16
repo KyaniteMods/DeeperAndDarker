@@ -23,7 +23,7 @@ public class DDBoatModels {
     private static boolean isInitialized = false;
 
     private static void initialize() {
-        if(isInitialized) return;
+        if (isInitialized) return;
         isInitialized = true;
 
         boat = addModel("boat", () -> BoatModel.createBodyModel(false), r -> new BoatModel(r, false));
@@ -43,7 +43,7 @@ public class DDBoatModels {
     public static void registerLayers() {
         initialize();
 
-        for(ModelLayerLocation location : layerDefinitions.keySet()) {
+        for (ModelLayerLocation location : layerDefinitions.keySet()) {
             EntityModelLayerRegistry.registerModelLayer(location, () -> layerDefinitions.get(location).get());
         }
     }

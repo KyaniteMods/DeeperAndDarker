@@ -32,26 +32,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable {
-    private final AnimationFactory factory = new AnimationFactory(this);
-
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", DDUtils.secondsToTicks(4), true, false));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(4), false, true));
     public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", DDUtils.secondsToTicks(4), false, true));
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", DDUtils.secondsToTicks(1), false, true));
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public SculkWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
+    public static AttributeSupplier.Builder attributes() {
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 550).add(Attributes.ATTACK_KNOCKBACK, 0).add(Attributes.ATTACK_DAMAGE, 7);
+    }
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 50F));
         this.goalSelector.addGoal(4, new CustomAttackAnimMelee(this, 0, true, 16, 55, ATTACK));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
-    }
-
-    public static AttributeSupplier.Builder attributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 550).add(Attributes.ATTACK_KNOCKBACK, 0).add(Attributes.ATTACK_DAMAGE, 7);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateTick(EntityState entityState) {
-        if(entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
+        if (entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
             DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
     }
@@ -104,8 +104,8 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void tick() {
         super.tick();
-        if(this.getCurrentState().equals(AWAKE)) {
-            if(getDescendTime() != 0) {
+        if (this.getCurrentState().equals(AWAKE)) {
+            if (getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {
                 setDescendTime(1200);
@@ -116,17 +116,17 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateDone(EntityState entityState) {
-        if(EMERGE.equals(entityState)) {
+        if (EMERGE.equals(entityState)) {
             setState(AWAKE);
-        } else if(DESCEND.equals(entityState)) {
+        } else if (DESCEND.equals(entityState)) {
             this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.KILLED);
-        } else if(ATTACK.equals(entityState)) {
+        } else if (ATTACK.equals(entityState)) {
             setState(AWAKE);
-            if(this.getTarget() != null) {
+            if (this.getTarget() != null) {
                 this.doHurtTarget(this.getTarget());
-                if(this.getTarget() instanceof Player plr)
-                    if(plr.totalExperience > 2)
+                if (this.getTarget() instanceof Player plr)
+                    if (plr.totalExperience > 2)
                         plr.giveExperiencePoints(-2);
                     else plr.kill();
             }
@@ -168,6 +168,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     public int getDescendTime() {
         return this.entityData.get(DESCEND_COUNTDOWN);
     }
+
     public void setDescendTime(int value) {
         this.entityData.set(DESCEND_COUNTDOWN, value);
     }

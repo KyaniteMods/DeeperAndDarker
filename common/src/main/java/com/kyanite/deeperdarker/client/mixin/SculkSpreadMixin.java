@@ -22,54 +22,50 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SculkVeinBlock.class)
 public abstract class SculkSpreadMixin extends MultifaceBlock {
-    @Shadow @Final private MultifaceSpreader veinSpreader;
+    @Shadow
+    @Final
+    private MultifaceSpreader veinSpreader;
 
     public SculkSpreadMixin(Properties pProperties) {
         super(pProperties);
     }
-    @Shadow public abstract void onDischarged(LevelAccessor levelAccessor, BlockState state, BlockPos pos, RandomSource randomSource);
+
+    @Shadow
+    public abstract void onDischarged(LevelAccessor levelAccessor, BlockState state, BlockPos pos, RandomSource randomSource);
 
     public BlockState getBlockState(BlockState state) {
         BlockState replaceState = Blocks.SCULK.defaultBlockState();
 
-        if(state.is(Blocks.STONE)) {
+        if (state.is(Blocks.STONE)) {
             replaceState = DDBlocks.SCULK_STONE.get().defaultBlockState();
-        }
-
-        else if(state.is(DDTags.Blocks.STRIPPED_LOGS)) {
+        } else if (state.is(DDTags.Blocks.STRIPPED_LOGS)) {
             replaceState = DDBlocks.STRIPPED_ECHO_LOG.get().defaultBlockState();
-        }
-        else if(state.is(DDTags.Blocks.WOOD)) {
+        } else if (state.is(DDTags.Blocks.WOOD)) {
             replaceState = DDBlocks.ECHO_WOOD.get().defaultBlockState();
-        }
-        else if(state.is(DDTags.Blocks.STRIPPED_WOOD)) {
+        } else if (state.is(DDTags.Blocks.STRIPPED_WOOD)) {
             replaceState = DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState();
-        }
-
-        else if(state.is(BlockTags.LEAVES) || state == Blocks.SHROOMLIGHT.defaultBlockState()) {
+        } else if (state.is(BlockTags.LEAVES) || state == Blocks.SHROOMLIGHT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
-        }
-
-        else if(state == Blocks.WEEPING_VINES.defaultBlockState()) {
+        } else if (state == Blocks.WEEPING_VINES.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES.get().defaultBlockState();
-        }
-        else if(state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
+        } else if (state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
         }
 
         return replaceState;
     }
+
     @Inject(method = "attemptPlaceSculk", cancellable = true, at = @At("HEAD"))
     public void attemptSculk(SculkSpreader sculkSpreader, LevelAccessor levelAccessor, BlockPos pos, RandomSource randomSource, CallbackInfoReturnable<Boolean> cir) {
         cir.cancel();
         BlockState state = levelAccessor.getBlockState(pos);
         TagKey<Block> replaceable = sculkSpreader.replaceableBlocks();
 
-        for(Direction direction : Direction.allShuffled(randomSource)) {
-            if(hasFace(state, direction)) {
+        for (Direction direction : Direction.allShuffled(randomSource)) {
+            if (hasFace(state, direction)) {
                 BlockPos relativePos = pos.relative(direction);
                 BlockState relativeState = levelAccessor.getBlockState(relativePos);
-                if(relativeState.is(replaceable)) {
+                if (relativeState.is(replaceable)) {
                     BlockState blockState = getBlockState(relativeState);
                     levelAccessor.setBlock(relativePos, blockState, 3);
                     Block.pushEntitiesUp(relativeState, blockState, levelAccessor, relativePos);
@@ -77,11 +73,11 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
                     this.veinSpreader.spreadAll(blockState, levelAccessor, relativePos, sculkSpreader.isWorldGeneration());
                     Direction direction1 = direction.getOpposite();
 
-                    for(Direction direction2 : DIRECTIONS) {
-                        if(direction2 != direction1) {
+                    for (Direction direction2 : DIRECTIONS) {
+                        if (direction2 != direction1) {
                             BlockPos blockPos = relativePos.relative(direction2);
                             BlockState checkState = levelAccessor.getBlockState(blockPos);
-                            if(checkState.is(this)) {
+                            if (checkState.is(this)) {
                                 this.onDischarged(levelAccessor, checkState, blockPos, randomSource);
                             }
                         }

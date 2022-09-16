@@ -8,9 +8,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -39,15 +37,14 @@ public class SculkJawBlock extends Block {
 
     @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if(!pState.is(DDBlocks.SCULK_JAW.get())) return;
-        if(pState.getValue(ACTIVATED)) return;
+        if (!pState.is(DDBlocks.SCULK_JAW.get())) return;
+        if (pState.getValue(ACTIVATED)) return;
 
-        if(pEntity instanceof Player plr) {
-            if(plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
+        if (pEntity instanceof Player plr) {
+            if (plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
         }
 
-        if(pEntity instanceof LivingEntity mob)
-        {
+        if (pEntity instanceof LivingEntity mob) {
             mob.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80));
             mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1));
         }
@@ -59,14 +56,14 @@ public class SculkJawBlock extends Block {
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        if(!pState.is(DDBlocks.SCULK_JAW.get())) return;
+        if (!pState.is(DDBlocks.SCULK_JAW.get())) return;
 
-        if(pEntity instanceof ItemEntity itemEntity) {
+        if (pEntity instanceof ItemEntity itemEntity) {
             itemEntity.remove(Entity.RemovalReason.KILLED);
             return;
         }
 
-        if(pEntity instanceof Player plr) {
+        if (pEntity instanceof Player plr) {
             plr.giveExperiencePoints(-1);
         }
 
@@ -76,8 +73,8 @@ public class SculkJawBlock extends Block {
 
     @Override
     public void randomTick(BlockState p_222954_, ServerLevel p_222955_, BlockPos p_222956_, RandomSource p_222957_) {
-        if(!p_222954_.is(DDBlocks.SCULK_JAW.get())) return;
-        if(!p_222954_.getValue(ACTIVATED)) return;
+        if (!p_222954_.is(DDBlocks.SCULK_JAW.get())) return;
+        if (!p_222954_.getValue(ACTIVATED)) return;
 
         p_222955_.setBlock(p_222956_, p_222954_.setValue(ACTIVATED, false), 3);
     }
@@ -89,9 +86,9 @@ public class SculkJawBlock extends Block {
 
     @Override
     public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        if(!pState.is(DDBlocks.SCULK_JAW.get())) return super.getCollisionShape(pState, pLevel, pPos, pContext);
+        if (!pState.is(DDBlocks.SCULK_JAW.get())) return super.getCollisionShape(pState, pLevel, pPos, pContext);
 
-        if(pState.getValue(ACTIVATED))
+        if (pState.getValue(ACTIVATED))
             return Block.box(0, 0, 0, 0, 0, 0);
 
         return super.getCollisionShape(pState, pLevel, pPos, pContext);

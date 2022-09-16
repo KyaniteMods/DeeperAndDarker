@@ -21,13 +21,7 @@ import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.item.alchemy.PotionBrewing;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
 import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
@@ -59,12 +53,12 @@ public class DeeperAndDarker {
         OthersideBiomes.createBiomes();
         //  CustomPortalBuilder.beginPortal()
         //        .frameBlock(Blocks.REINFORCED_DEEPSLATE)
-          //      .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-            //    .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
-              //  .tintColor(5, 98, 93)
-               // .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-                //.forcedSize(20, 6)
-                //.registerPortal();
+        //      .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
+        //    .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
+        //  .tintColor(5, 98, 93)
+        // .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+        //.forcedSize(20, 6)
+        //.registerPortal();
 
         callback.callback();
     }

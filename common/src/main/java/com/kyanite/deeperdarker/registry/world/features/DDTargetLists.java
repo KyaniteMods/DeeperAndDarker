@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTes
 import java.util.List;
 import java.util.function.Supplier;
 
-public class DDTargetLists  {
+public class DDTargetLists {
     public static final Supplier<List<OreConfiguration.TargetBlockState>> SCULK_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_STONE.get()), Blocks.SCULK.defaultBlockState())));
     public static final Supplier<List<OreConfiguration.TargetBlockState>> ECHO_SAND_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.ECHO_SOIL.get().defaultBlockState())));
     public static final Supplier<List<OreConfiguration.TargetBlockState>> INFESTED_SCULK_TARGET_LIST = Suppliers.memoize(() -> List.of(OreConfiguration.target(new BlockMatchTest(Blocks.SCULK), DDBlocks.INFESTED_SCULK.get().defaultBlockState())));

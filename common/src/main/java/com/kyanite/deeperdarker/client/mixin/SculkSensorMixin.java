@@ -18,8 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class SculkSensorMixin {
     @Inject(method = "onSignalReceive", at = @At("HEAD"), cancellable = true)
     public void onSignalReceive(ServerLevel level, GameEventListener listener, BlockPos pos, GameEvent gameEvent, Entity entity1, Entity entity2, float f, CallbackInfo ci) {
-        if(entity1 instanceof Player player && gameEvent.equals(GameEvent.STEP)) {
-            if(player.getInventory().getArmor(EquipmentSlot.FEET.getIndex()).is(DDItems.WARDEN_BOOTS.get())) {
+        if (entity1 instanceof Player player && gameEvent.equals(GameEvent.STEP)) {
+            if (player.getInventory().getArmor(EquipmentSlot.FEET.getIndex()).is(DDItems.WARDEN_BOOTS.get())) {
                 ci.cancel();
             }
         }

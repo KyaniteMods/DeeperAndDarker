@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.registry.world.dimension;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;

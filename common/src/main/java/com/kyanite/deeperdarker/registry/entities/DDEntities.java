@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.registry.entities;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.custom.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 
@@ -14,13 +13,13 @@ import java.util.function.Supplier;
 public class DDEntities {
     public static final Map<String, Supplier<EntityType<?>>> ENTITIES = new HashMap<>();
     public static final Supplier<EntityType<ShatteredEntity>> SHATTERED = RegistryHelper.registerEntity(
-           "shattered",
+            "shattered",
             ShatteredEntity::new, MobCategory.MONSTER, 0.85f, 2.45f, 10
     );
 
     public static final Supplier<EntityType<SculkLeechEntity>> SCULK_LEECH = RegistryHelper.registerEntity(
             "sculk_leech",
-            SculkLeechEntity::new, MobCategory.MONSTER,0.3f, 0.2f, 10
+            SculkLeechEntity::new, MobCategory.MONSTER, 0.3f, 0.2f, 10
     );
 
     public static final Supplier<EntityType<SculkSnapperEntity>> SCULK_SNAPPER = RegistryHelper.registerEntity(
@@ -30,7 +29,7 @@ public class DDEntities {
 
     public static final Supplier<EntityType<SculkWormEntity>> SCULK_WORM = RegistryHelper.registerEntity(
             "shriek_worm",
-           SculkWormEntity::new, MobCategory.MONSTER, 1.5f, 5.7f, 10
+            SculkWormEntity::new, MobCategory.MONSTER, 1.5f, 5.7f, 10
     );
 
     public static final Supplier<EntityType<DDBoat>> BOAT = RegistryHelper.registerEntity(

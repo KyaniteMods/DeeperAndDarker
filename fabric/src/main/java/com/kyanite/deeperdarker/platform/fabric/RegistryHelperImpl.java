@@ -69,13 +69,13 @@ public class RegistryHelperImpl {
     }
 
 
-    public static <T extends PlacedFeature> Supplier<T>  registerPlacedFeature(String name, Supplier<T> placedFeature) {
+    public static <T extends PlacedFeature> Supplier<T> registerPlacedFeature(String name, Supplier<T> placedFeature) {
         T registry = (T) Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), placedFeature.get());
         return () -> registry;
     }
 
-    public static <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
-        return () -> (T) FabricItemGroupBuilder.build(new ResourceLocation(DeeperAndDarker.MOD_ID, name), icon);
+    public static <T extends CreativeModeTab> T registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
+        return (T) FabricItemGroupBuilder.build(new ResourceLocation(DeeperAndDarker.MOD_ID, name), icon);
     }
 
     public static <T extends Enchantment> Supplier<T> registerEnchant(String name, Supplier<T> enchantment) {

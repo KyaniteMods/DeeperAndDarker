@@ -9,6 +9,7 @@ import java.util.function.Supplier;
 
 public class DDPotions {
     public static Supplier<Potion> SCULK_AFFINITY;
+
     public static void registerPotions() {
         SCULK_AFFINITY = RegistryHelper.registerPotion("sculk_affinity", () -> new Potion(new MobEffectInstance(DDEffects.SCULK_AFFINITY.get(), 3600, 0)));
     }

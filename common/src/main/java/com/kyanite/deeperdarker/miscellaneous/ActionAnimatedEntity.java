@@ -20,7 +20,9 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     private static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(ActionAnimatedEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> ANIMATION_TIME = SynchedEntityData.defineId(ActionAnimatedEntity.class, EntityDataSerializers.INT);
     private final List<EntityState> states;
+    public boolean isMoving = false;
     private EntityState lastState;
+    private boolean wasMoving = false;
 
     protected ActionAnimatedEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -41,13 +43,10 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
         data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
     }
 
-    private boolean wasMoving = false;
-    public boolean isMoving = false;
-
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         event.getController().transitionLengthTicks = this.getTransitionTick(this.getCurrentState());
 
-        if(event.isMoving() && getMovingState() != null) {
+        if (event.isMoving() && getMovingState() != null) {
             wasMoving = true;
             isMoving = event.isMoving();
             this.setState(getMovingState());
@@ -55,8 +54,7 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
             return PlayState.CONTINUE;
         }
 
-        if(wasMoving != event.isMoving() && getMovingState() != null)
-        {
+        if (wasMoving != event.isMoving() && getMovingState() != null) {
             stateDone(getMovingState());
             wasMoving = event.isMoving();
         }
@@ -88,27 +86,29 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     public int getAnimationTime() {
         return this.entityData.get(ANIMATION_TIME);
     }
+
     @Override
     public void tick() {
         super.tick();
-        if(isDeadOrDying()) return;
+        if (isDeadOrDying()) return;
 
-        if(!this.getCurrentState().animationHolder.countTicks) return;
+        if (!this.getCurrentState().animationHolder.countTicks) return;
 
-        if(this.entityData.get(ANIMATION_TIME) != 0) {
+        if (this.entityData.get(ANIMATION_TIME) != 0) {
             this.entityData.set(ANIMATION_TIME, this.entityData.get(ANIMATION_TIME) + 1);
             stateTick(this.getCurrentState());
-            if(this.entityData.get(ANIMATION_TIME) > this.getCurrentState().animationHolder.lengthInTicks) {
+            if (this.entityData.get(ANIMATION_TIME) > this.getCurrentState().animationHolder.lengthInTicks) {
                 this.entityData.set(ANIMATION_TIME, 0);
             }
         }
-        if(this.entityData.get(ANIMATION_TIME) == 0)
+        if (this.entityData.get(ANIMATION_TIME) == 0)
             stateDone(getCurrentState());
     }
 
     public abstract List<EntityState> createStates();
 
     public abstract EntityState getMovingState();
+
     public abstract void stateDone(EntityState entityState);
 
     public abstract void stateTick(EntityState entityState);

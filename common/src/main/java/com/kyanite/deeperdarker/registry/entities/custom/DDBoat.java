@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
+
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -12,8 +12,6 @@ import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-
-import java.util.function.Supplier;
 
 public class DDBoat extends Boat {
     private static final EntityDataAccessor<Integer> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.INT);
@@ -41,7 +39,7 @@ public class DDBoat extends Boat {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
-        if(pCompound.contains("Type", 8)) {
+        if (pCompound.contains("Type", 8)) {
             this.setWoodType(Type.byName(pCompound.getString("Type")));
         }
     }
@@ -71,7 +69,9 @@ public class DDBoat extends Boat {
     }
 
     public enum Type {
-        ECHO("echo", DDItems.ECHO_BOAT.get(), DDItems.ECHO_CHEST_BOAT.get());
+        // TODO: Rework this, because .get() isnr available instantly!
+//        ECHO("echo", DDItems.ECHO_BOAT.get(), DDItems.ECHO_CHEST_BOAT.get())
+        ;
 
         private final String name;
         private final Item item;
@@ -81,6 +81,27 @@ public class DDBoat extends Boat {
             this.name = name;
             this.item = boatItem;
             this.chestItem = chestBoatItem;
+        }
+
+        public static Type byId(int id) {
+            Type[] values = values();
+            if (id < 0 || id >= values.length) {
+                id = 0;
+            }
+
+            return values[id];
+        }
+
+        public static Type byName(String name) {
+            Type[] values = values();
+
+            for (Type value : values) {
+                if (value.getName().equals(name)) {
+                    return value;
+                }
+            }
+
+            return values[0];
         }
 
         public String getName() {
@@ -93,27 +114,6 @@ public class DDBoat extends Boat {
 
         public Item getChestItem() {
             return chestItem;
-        }
-
-        public static Type byId(int id) {
-            Type[] values = values();
-            if(id < 0 || id >= values.length) {
-                id = 0;
-            }
-
-            return values[id];
-        }
-
-        public static Type byName(String name) {
-            Type[] values = values();
-
-            for(Type value : values) {
-                if(value.getName().equals(name)) {
-                    return value;
-                }
-            }
-
-            return values[0];
         }
     }
 }

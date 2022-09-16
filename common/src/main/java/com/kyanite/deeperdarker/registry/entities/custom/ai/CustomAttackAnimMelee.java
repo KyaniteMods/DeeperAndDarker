@@ -31,7 +31,7 @@ public class CustomAttackAnimMelee extends MeleeAttackGoal {
     protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
         double d0 = this.getAttackReachSqr(pEnemy);
         ActionAnimatedEntity entity = (ActionAnimatedEntity) this.mob;
-        if(pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0 && !entity.isMoving) {
+        if (pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0 && !entity.isMoving) {
             this.resetAttackCooldown();
             entity.setState(state);
         }

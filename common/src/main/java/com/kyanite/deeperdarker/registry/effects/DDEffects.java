@@ -1,10 +1,10 @@
 package com.kyanite.deeperdarker.registry.effects;
 
-import java.util.function.Supplier;
-
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+
+import java.util.function.Supplier;
 
 public class DDEffects {
     public static Supplier<MobEffect> SCULK_AFFINITY;

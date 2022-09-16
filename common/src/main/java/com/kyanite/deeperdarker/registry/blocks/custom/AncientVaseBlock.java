@@ -26,8 +26,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.stream.Stream;
 
 public class AncientVaseBlock extends DropExperienceBlock implements SimpleWaterloggedBlock {
-    public final RandomSource randomSource = RandomSource.create();
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public final RandomSource randomSource = RandomSource.create();
 
     public AncientVaseBlock(Properties properties) {
         super(properties, ConstantInt.of(1));
@@ -60,9 +60,9 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        if(randomSource.nextFloat() < 0.125) {
-            if(randomSource.nextFloat() < 0.6) {
-                for(int i = 0; i < randomSource.nextInt(1, 4); i++) {
+        if (randomSource.nextFloat() < 0.125) {
+            if (randomSource.nextFloat() < 0.6) {
+                for (int i = 0; i < randomSource.nextInt(1, 4); i++) {
                     SculkLeechEntity sculkLeechEntity = (SculkLeechEntity) DDEntities.SCULK_LEECH.get().create(pLevel);
                     sculkLeechEntity.moveTo(pPos.getX() + randomSource.nextFloat(), pPos.getY() + randomSource.nextFloat(), pPos.getZ(), 0, 0);
                     pLevel.addFreshEntity(sculkLeechEntity);

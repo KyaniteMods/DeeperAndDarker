@@ -21,13 +21,13 @@ public class GoToDisturbanceGoal extends Goal {
 
     @Override
     public void tick() {
-        if(entity instanceof IDisturbanceListener disturbanceListener) {
-            if(disturbanceListener.getDisturbanceLocation() != null && !entity.getNavigation().isInProgress()) {
+        if (entity instanceof IDisturbanceListener disturbanceListener) {
+            if (disturbanceListener.getDisturbanceLocation() != null && !entity.getNavigation().isInProgress()) {
                 Path path = entity.getNavigation().createPath(disturbanceListener.getDisturbanceLocation(), 0);
                 entity.getNavigation().moveTo(path, 1);
             }
 
-            if(disturbanceListener.getDisturbanceLocation() != null && entity.getNavigation().isDone()) {
+            if (disturbanceListener.getDisturbanceLocation() != null && entity.getNavigation().isDone()) {
                 disturbanceListener.setDisturbanceLocation(null);
             }
         }

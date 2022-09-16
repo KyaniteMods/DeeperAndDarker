@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.world.features;
 
-import java.util.function.Supplier;
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
@@ -9,6 +8,7 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class DDPlacedFeatures {
     // Ores
@@ -29,7 +29,7 @@ public class DDPlacedFeatures {
 
     public static Supplier<PlacedFeature> OTHERSIDE_PILLAR = registerPlacedFeature("otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.OTHERSIDE_PILLAR.get()), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
     public static Supplier<PlacedFeature> SCULK = registerPlacedFeature("sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK.get()), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
-    public static Supplier<PlacedFeature> SCULK_JAW = registerPlacedFeature("sculk_jaw", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK_JAW.get()),commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static Supplier<PlacedFeature> SCULK_JAW = registerPlacedFeature("sculk_jaw", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK_JAW.get()), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static Supplier<PlacedFeature> INFESTED_SCULK = registerPlacedFeature("infested_sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_INFESTED_SCULK.get()), commonOrePlacement(35, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static Supplier<PlacedFeature> ECHO_SAND = registerPlacedFeature("echo_sand", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_ECHO_SAND.get()), commonOrePlacement(200, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 

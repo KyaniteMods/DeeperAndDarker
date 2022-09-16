@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 public interface IDisturbanceListener {
     BlockPos getDisturbanceLocation();
+
     @Nullable
     void setDisturbanceLocation(BlockPos disturbanceLocation);
 }

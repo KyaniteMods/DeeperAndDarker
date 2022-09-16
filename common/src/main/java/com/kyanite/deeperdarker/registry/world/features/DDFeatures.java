@@ -1,9 +1,9 @@
 package com.kyanite.deeperdarker.registry.world.features;
 
-import java.util.function.Supplier;
-
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+
+import java.util.function.Supplier;
 
 public class DDFeatures {
     public static Supplier<SculkGleamFeature> SCULK_GLEAM_BLOB = RegistryHelper.registerFeature("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
