@@ -4,9 +4,6 @@ dependencies {
 
     // GeckoLib
     modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:3.1.18"
-
-    // Portal API
-    include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta52-1.19')
 }
 
 architectury {
