@@ -60,7 +60,7 @@ public class RegistryHelper {
     @ExpectPlatform
     public static <T extends PlacedFeature> Supplier<T>  registerPlacedFeature(String name, Supplier<T> placedFeature) { throw new AssertionError(); }
     @ExpectPlatform
-    public static <T extends EntityType> Supplier<T> registerEntity(String name, Supplier<T> entity) {throw new AssertionError();}
+    public static <T extends EntityType<?>> Supplier<T> registerEntity(String name, Supplier<T> entity) {throw new AssertionError();}
 
     @ExpectPlatform
     public static <T extends Biome> Supplier<T>  registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {throw new AssertionError();}

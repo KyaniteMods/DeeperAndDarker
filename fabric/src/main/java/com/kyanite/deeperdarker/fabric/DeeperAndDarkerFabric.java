@@ -18,5 +18,6 @@ public class DeeperAndDarkerFabric implements ModInitializer {
         attributes.forEach(FabricDefaultAttributeRegistry::register);
 
         DeeperAndDarker.init();
+        DeeperAndDarker.commonInit();
     }
 }

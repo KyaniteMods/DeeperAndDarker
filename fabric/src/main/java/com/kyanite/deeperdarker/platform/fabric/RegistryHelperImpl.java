@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.platform.fabric;
 
-import com.google.common.base.Supplier;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.fabric.mixin.WoodTypeAccessor;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -22,55 +21,58 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
+import java.util.function.Supplier;
+
 public class RegistryHelperImpl {
-    public static Block registerBlock(String name, Block block) {
-        return Registry.register(Registry.BLOCK, new ResourceLocation(DeeperAndDarker.MOD_ID, name), block);
+    public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
+        return () -> Registry.register(Registry.BLOCK, new ResourceLocation(DeeperAndDarker.MOD_ID, name), block.get());
     }
 
-    public static Item registerItem(String name, Item item) {
-        return Registry.register(Registry.ITEM, new ResourceLocation(DeeperAndDarker.MOD_ID, name), item);
+    public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        return () -> Registry.register(Registry.ITEM, new ResourceLocation(DeeperAndDarker.MOD_ID, name), item.get());
     }
 
-    public static Biome registerBiome(ResourceLocation biomeLocation, Biome biomeConsumer) {
-        return Registry.register(BuiltinRegistries.BIOME, biomeLocation, biomeConsumer);
+    public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
+        return () -> Registry.register(BuiltinRegistries.BIOME, biomeLocation, biomeConsumer.get());
     }
 
-    public static EntityType registerEntity(String name, EntityType<?> entity) {
-        return Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), entity);
+    public static <T extends EntityType<?>> Supplier<T> registerEntity(String name, Supplier<T> entity){
+        return () -> Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), entity.get());
     }
 
-    public static Potion registerPotion(String name, Potion potion) {
-        return Registry.register(Registry.POTION, new ResourceLocation(DeeperAndDarker.MOD_ID, name), potion);
+    public static <T extends Potion> Supplier<T> registerPotion(String name, Supplier<T> potion) {
+        return () -> Registry.register(Registry.POTION, new ResourceLocation(DeeperAndDarker.MOD_ID, name), potion.get());
     }
 
-    public static ConfiguredFeature registerConfiguredFeature(String name, ConfiguredFeature feature) {
-        return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE,
-                new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature);
+    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
+        return () -> (T) Registry.register(BuiltinRegistries.CONFIGURED_FEATURE,
+                new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature.get());
     }
 
-    public static <T extends Feature<?>> java.util.function.Supplier<T> registerFeature(String name, java.util.function.Supplier<T> feature) {
+    public static <T extends Feature<?>> Supplier<T> registerFeature(String name, Supplier<T> feature) {
         return () -> Registry.register(Registry.FEATURE,
                 new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature.get());
     }
 
-    public static MobEffect registerEffect(String name, MobEffect effect) {
-        return Registry.register(Registry.MOB_EFFECT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), effect);
+    public static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> effect) {
+        return () -> Registry.register(Registry.MOB_EFFECT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), effect.get());
     }
 
-    public static PlacedFeature registerPlacedFeature(String name, PlacedFeature placedFeature) {
-        return Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), placedFeature);
+
+    public static <T extends PlacedFeature> Supplier<T>  registerPlacedFeature(String name, Supplier<T> placedFeature) {
+        return () -> Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), placedFeature.get());
     }
 
-    public static CreativeModeTab registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
-        return FabricItemGroupBuilder.build(new ResourceLocation(DeeperAndDarker.MOD_ID, name), icon);
+    public static <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
+        return () -> (T) FabricItemGroupBuilder.build(new ResourceLocation(DeeperAndDarker.MOD_ID, name), icon);
     }
 
-    public static Enchantment registerEnchant(String name, Enchantment enchantment) {
-        return Registry.register(Registry.ENCHANTMENT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), enchantment);
+    public static <T extends Enchantment> Supplier<T> registerEnchant(String name, Supplier<T> enchantment) {
+        return () -> Registry.register(Registry.ENCHANTMENT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), enchantment.get());
     }
 
-    public static SoundEvent registerSound(String name, SoundEvent sound) {
-        return Registry.register(Registry.SOUND_EVENT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), new SoundEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));
+    public static <T extends SoundEvent> Supplier<T> registerSound(String name, Supplier<T> sound) {
+        return () -> Registry.register(Registry.SOUND_EVENT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), sound.get());
     }
 
     public static WoodType registerWoodType(String name) {

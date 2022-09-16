@@ -50,7 +50,7 @@ public class RegistryHelperImpl {
         return BIOMES.register(biome.location().getPath(), biomeConsumer);
     }
 
-    public static <T extends EntityType> Supplier<T> registerEntity(String name, Supplier<T> entity) {
+    public static <T extends EntityType<?>> Supplier<T> registerEntity(String name, Supplier<T> entity) {
         return ENTITY_TYPES.register(name, entity);
     }
 
