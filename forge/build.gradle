@@ -20,6 +20,11 @@ loom {
             mod "deeperdarker"
         }
     }
+    launches {
+        data {
+            arg "--existing", file("../../common/src/main/generated/").absolutePath
+        }
+    }
 }
 
 dependencies {
