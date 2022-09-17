@@ -32,10 +32,11 @@ jobs:
         job-id: jdk18
         arguments: clean build --no-build-cache
         gradle-version: wrapper
-    - uses: burrunan/gradle-cache-action@v1
-      name: Build
+    - name: Release to CurseForge and Modrinth
+      uses: gradle/gradle-build-action@v2
+      env:
+        CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+        MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
       with:
-        job-id: jdk18
-        arguments: publishUnified --no-build-cache
-        gradle-version: wrapper
+        arguments: publishUnified --stacktrace --no-daemon
 
