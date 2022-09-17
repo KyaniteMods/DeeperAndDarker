@@ -10,6 +10,16 @@ architectury {
     common()
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    "src/main/generated"
+            ]
+        }
+    }
+}
+
 publishing {
     publications {
         mavenCommon(MavenPublication) {
