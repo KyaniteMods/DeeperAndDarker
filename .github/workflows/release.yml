@@ -28,6 +28,7 @@ jobs:
         distribution: 'adopt'
     - name: Validate Gradle Wrapper
       uses: gradle/wrapper-validation-action@v1
+    - run: chmod +x gradlew
     - uses: burrunan/gradle-cache-action@v1
       name: Build
       with:
