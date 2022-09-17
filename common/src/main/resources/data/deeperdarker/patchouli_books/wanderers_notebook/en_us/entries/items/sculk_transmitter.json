@@ -1,0 +1,12 @@
+{
+  "name": "Sculk Transmitter",
+  "icon": "deeperdarker:sculk_transmitter",
+  "category": "deeperdarker:items",
+  "advancement": "deeperdarker:main/obtain_transmitter",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Sculk Transmitter Description"
+    }
+  ]
+}

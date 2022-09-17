@@ -20,9 +20,10 @@ loom {
             mod "deeperdarker"
         }
     }
+
     launches {
         data {
-            arg "--existing", file("../../common/src/main/generated/").absolutePath
+            arg "--existing", project(":common").file("src/main/resources").absolutePath
         }
     }
 }
@@ -39,6 +40,8 @@ dependencies {
 
 processResources {
     inputs.property "version", project.version
+
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version

@@ -24,8 +24,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         axisBlock(DDBlocks.ECHO_LOG.get(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_LOG.get(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG, "top"));
-        axisBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeColumn(DDBlocks.STRIPPED_ECHO_WOOD.get().getDescriptionId(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)), models().cubeColumn(DDBlocks.STRIPPED_ECHO_WOOD.get().getDescriptionId(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
-        axisBlock(DDBlocks.ECHO_WOOD.get(), models().cubeColumn(DDBlocks.ECHO_WOOD.get().getDescriptionId(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)), models().cubeColumn(DDBlocks.ECHO_WOOD.get().getDescriptionId(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)));
+        axisBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeColumn(getName(DDBlocks.STRIPPED_ECHO_WOOD.get()), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)), models().cubeColumn(getName(DDBlocks.STRIPPED_ECHO_WOOD.get()), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
+        axisBlock(DDBlocks.ECHO_WOOD.get(), models().cubeColumn(getName(DDBlocks.ECHO_WOOD.get()), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)), models().cubeColumn(getName(DDBlocks.ECHO_WOOD.get()), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG)));
         simpleBlock(DDBlocks.ECHO_LEAVES.get());
         slabBlock(DDBlocks.ECHO_SLAB.get(), blockLoc(DDBlocks.ECHO_PLANKS), blockLoc(DDBlocks.ECHO_PLANKS));
         fenceBlock(DDBlocks.ECHO_FENCE, blockLoc(DDBlocks.ECHO_PLANKS));
@@ -66,38 +66,42 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
-        simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.get().getDescriptionId(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
-        simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.get().getDescriptionId(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(getName(DDBlocks.SCULK_VINES.get()), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(getName(DDBlocks.SCULK_VINES_PLANT.get()), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 
-        ConfiguredModel[] sculkJawModels = { new ConfiguredModel(models().cubeAll(DDBlocks.SCULK_JAW.get().getDescriptionId() + "_activated", blockLoc(DDBlocks.SCULK_JAW, "activated"))), new ConfiguredModel(models().cubeAll(DDBlocks.SCULK_JAW.get().getDescriptionId(), blockLoc(DDBlocks.SCULK_JAW))) };
+        ConfiguredModel[] sculkJawModels = { new ConfiguredModel(models().cubeAll(getName(DDBlocks.SCULK_JAW.get()) + "_activated", blockLoc(DDBlocks.SCULK_JAW, "activated"))), new ConfiguredModel(models().cubeAll(getName(DDBlocks.SCULK_JAW.get()), blockLoc(DDBlocks.SCULK_JAW))) };
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.ACTIVATED, true).setModels(sculkJawModels[0]).partialState().with(SculkJawBlock.ACTIVATED, false).setModels(sculkJawModels[1]);
 
-        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.get().getDescriptionId(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
+        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(getName(DDBlocks.ANCIENT_VASE.get()), modLoc("block/ancient_vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
     }
 
     public void fenceBlock(Supplier<FenceBlock> block, ResourceLocation texture) {
         super.fenceBlock(block.get(), texture);
-        models().fenceInventory(block.get().getDescriptionId() + "_inventory", texture);
+        models().fenceInventory(getName(block.get()) + "_inventory", texture);
     }
 
     public void buttonBlock(Supplier<ButtonBlock> block, ResourceLocation texture) {
         super.buttonBlock(block.get(), texture);
-        models().buttonInventory(block.get().getDescriptionId() + "_inventory", texture);
+        models().buttonInventory(getName(block.get()) + "_inventory", texture);
     }
 
     public void wallBlock(Supplier<WallBlock> block, ResourceLocation texture) {
         super.wallBlock(block.get(), texture);
-        models().wallInventory(block.get().getDescriptionId() + "_inventory", texture);
+        models().wallInventory(getName(block.get()) + "_inventory", texture);
     }
 
     public ResourceLocation blockLoc(Supplier<? extends Block> block) {
-        return new ResourceLocation(DeeperAndDarker.MOD_ID, "block/" + block.get().getDescriptionId());
+        return new ResourceLocation(DeeperAndDarker.MOD_ID, "block/" + getName(block.get()));
+    }
+
+    public String getName(Block block) {
+        return block.builtInRegistryHolder().key().location().getPath();
     }
 
     public ResourceLocation blockLoc(Supplier<? extends Block> block, String suffix) {
-        return new ResourceLocation(DeeperAndDarker.MOD_ID, "block/" + block.get().getDescriptionId() + "_" + suffix);
+        return new ResourceLocation(DeeperAndDarker.MOD_ID, "block/" + getName(block.get()) + "_" + suffix);
     }
 }

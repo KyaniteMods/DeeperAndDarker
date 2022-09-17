@@ -1,0 +1,12 @@
+{
+  "name": "Shriek Worm",
+  "icon": "deeperdarker:shriek_worm_spawn_egg",
+  "category": "deeperdarker:mobs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Otherside Monsters",
+      "text": "Description"
+    }
+  ]
+}

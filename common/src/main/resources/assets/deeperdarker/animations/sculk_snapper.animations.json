@@ -101,7 +101,7 @@
 			}
 		},
 		"emerge": {
-			"animation_length": 1.16667,
+			"animation_length": 0.75,
 			"bones": {
 				"SculkSnapper": {
 					"rotation": {

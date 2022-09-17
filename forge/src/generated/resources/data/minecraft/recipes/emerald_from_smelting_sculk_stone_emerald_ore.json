@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 2.0,
+  "group": "emerald",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone_emerald_ore"
+  },
+  "result": "minecraft:emerald"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Sculk Stone",
+  "icon": "deeperdarker:sculk_stone",
+  "category": "deeperdarker:blocks",
+  "advancement": "deeperdarker:main/obtain_sculk_stone",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Sculk Stone Description"
+    }
+  ]
+}

@@ -70,7 +70,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
         blockModel(DDBlocks.INFESTED_SCULK);
 
-        getBuilder(DDBlocks.SCULK_VINES.get().getDescriptionId()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.get().getDescriptionId());
+        getBuilder(getName(DDBlocks.SCULK_VINES.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.SCULK_VINES_PLANT.get()));
 
         blockModel(DDBlocks.SCULK_JAW);
         blockModel(DDBlocks.SCULK_GLEAM);
@@ -81,7 +81,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
-        getBuilder(DDItems.SCULK_TRANSMITTER.get().getDescriptionId() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.get().getDescriptionId() + "_on");
+        getBuilder(getName(DDItems.SCULK_TRANSMITTER.get()) + "_on").parent(GENERATED).texture("layer0", "item/" + getName(DDItems.SCULK_TRANSMITTER.get()) + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
@@ -93,10 +93,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
 
-        withExistingParent(DDItems.SCULK_LEECH_SPAWN_EGG.get().getDescriptionId(), mcLoc("item/template_spawn_egg"));
-        withExistingParent(DDItems.SCULK_SNAPPER_SPAWN_EGG.get().getDescriptionId(), mcLoc("item/template_spawn_egg"));
-        withExistingParent(DDItems.SHATTERED_SPAWN_EGG.get().getDescriptionId(), mcLoc("item/template_spawn_egg"));
-        withExistingParent(DDItems.SHRIEK_WORM_SPAWN_EGG.get().getDescriptionId(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SCULK_LEECH_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SCULK_SNAPPER_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SHATTERED_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SHRIEK_WORM_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
 
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
@@ -105,14 +105,23 @@ public class DDItemModelProvider extends ItemModelProvider {
     }
 
     public void blockModel(Supplier<? extends Block> block) {
-        withExistingParent(block.get().getDescriptionId(), modLoc("block/" + block.get().getDescriptionId()));
+        withExistingParent(getName(block.get()), modLoc("block/" + getName(block.get())));
+    }
+
+    public String getName(Block block) {
+        return block.builtInRegistryHolder().key().location().getPath();
+    }
+
+    public String getName(Item item) {
+        return item.builtInRegistryHolder().key().location().getPath();
     }
 
     public void blockModel(Supplier<? extends Block> block, String suffix) {
-        withExistingParent(block.get().getDescriptionId(), modLoc("block/" + block.get().getDescriptionId() + "_" + suffix));
+        withExistingParent(getName(block.get()), modLoc("block/" + getName(block.get()) + "_" + suffix));
     }
 
+
     public void itemModel(Supplier<? extends Item> item, ModelFile modelFile) {
-        getBuilder(item.get().getDescriptionId()).parent(modelFile).texture("layer0", "item/" + item.get().getDescriptionId());
+        getBuilder(getName(item.get())).parent(modelFile).texture("layer0", "item/" + getName(item.get()));
     }
 }

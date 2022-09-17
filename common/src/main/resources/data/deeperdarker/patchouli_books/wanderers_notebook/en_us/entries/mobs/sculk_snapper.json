@@ -1,0 +1,12 @@
+{
+  "name": "Sculk Snapper",
+  "icon": "deeperdarker:sculk_snapper_spawn_egg",
+  "category": "deeperdarker:mobs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Otherside Monsters",
+      "text": "Description"
+    }
+  ]
+}

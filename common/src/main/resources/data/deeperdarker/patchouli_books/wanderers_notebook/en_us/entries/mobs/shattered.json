@@ -1,0 +1,12 @@
+{
+  "name": "The Shattered",
+  "icon": "deeperdarker:shattered_spawn_egg",
+  "category": "deeperdarker:mobs",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Otherside Monsters",
+      "text": "Description"
+    }
+  ]
+}

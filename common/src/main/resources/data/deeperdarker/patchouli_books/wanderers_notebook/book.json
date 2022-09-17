@@ -1,0 +1,8 @@
+{
+  "name": "Wanderer's Notebook",
+  "landing_text": "May this guide serve you well in the depths of the Otherside",
+  "model": "deeperdarker:wanderers_notebook",
+  "show_progress": false,
+  "version": 1,
+  "creative_tab": "deeperdarker"
+}

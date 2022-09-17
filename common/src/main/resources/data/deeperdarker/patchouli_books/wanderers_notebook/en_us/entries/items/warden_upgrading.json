@@ -1,0 +1,12 @@
+{
+  "name": "Warden Upgrading",
+  "icon": "deeperdarker:reinforced_echo_shard",
+  "category": "deeperdarker:items",
+  "advancement": "deeperdarker:main/obtain_warden_carapace",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Warden Upgrading Description"
+    }
+  ]
+}

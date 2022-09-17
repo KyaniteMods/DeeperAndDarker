@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 2.0,
+  "group": "diamond",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone_diamond_ore"
+  },
+  "result": "minecraft:diamond"
+}

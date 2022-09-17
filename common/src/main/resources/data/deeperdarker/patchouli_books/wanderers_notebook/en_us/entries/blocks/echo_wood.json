@@ -1,0 +1,11 @@
+{
+  "name": "Echo Wood",
+  "icon": "deeperdarker:echo_log",
+  "category": "deeperdarker:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Echo Wood Description"
+    }
+  ]
+}
