@@ -1,0 +1,63 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "echoing_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:echoing_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "otherside_deeplands": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:otherside_deeplands"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.explore_otherside.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:echo_log"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.explore_otherside.title"
+    }
+  },
+  "requirements": [
+    [
+      "otherside_deeplands"
+    ],
+    [
+      "echoing_forest"
+    ]
+  ],
+  "rewards": {
+    "experience": 120
+  }
+}

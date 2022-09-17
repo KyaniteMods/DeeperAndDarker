@@ -1,120 +1,72 @@
 {
-  "format_version": "1.8.0",
-  "animations": {
-    "animation.sculkleech.idle": {
-      "loop": true,
-      "animation_length": 4
-    },
-    "animation.sculkleech.move": {
-      "loop": true,
-      "animation_length": 0.66667,
-      "bones": {
-        "Head": {
-          "rotation": {
-            "0.0": {
-              "vector": [
-                0,
-                -20,
-                0
-              ]
-            },
-            "0.3333": {
-              "vector": [
-                0,
-                22.5,
-                0
-              ],
-              "easing": "easeInOutSine"
-            },
-            "0.6667": {
-              "vector": [
-                0,
-                -20,
-                0
-              ]
-            }
-          }
-        },
-        "Segment1": {
-          "rotation": {
-            "0.0": {
-              "vector": [
-                0,
-                -12.5,
-                0
-              ]
-            },
-            "0.3333": {
-              "vector": [
-                0,
-                17.5,
-                0
-              ],
-              "easing": "easeInOutSine"
-            },
-            "0.6667": {
-              "vector": [
-                0,
-                -12.5,
-                0
-              ]
-            }
-          }
-        },
-        "Segment2": {
-          "rotation": {
-            "0.0": {
-              "vector": [
-                0,
-                17.5,
-                0
-              ]
-            },
-            "0.3333": {
-              "vector": [
-                0,
-                -40,
-                0
-              ],
-              "easing": "easeInOutSine"
-            },
-            "0.6667": {
-              "vector": [
-                0,
-                17.5,
-                0
-              ]
-            }
-          }
-        },
-        "Segment3": {
-          "rotation": {
-            "0.0": {
-              "vector": [
-                0,
-                17.5,
-                0
-              ]
-            },
-            "0.3333": {
-              "vector": [
-                0,
-                -5,
-                0
-              ],
-              "easing": "easeInOutSine"
-            },
-            "0.6667": {
-              "vector": [
-                0,
-                17.5,
-                0
-              ]
-            }
-          }
-        }
-      }
-    }
-  },
-  "geckolib_format_version": 2
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.sculkleech.idle": {
+			"loop": true,
+			"animation_length": 4
+		},
+		"animation.sculkleech.move": {
+			"loop": true,
+			"animation_length": 0.66667,
+			"bones": {
+				"Head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, -20, 0]
+						},
+						"0.3333": {
+							"vector": [0, 22.5, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.6667": {
+							"vector": [0, -20, 0]
+						}
+					}
+				},
+				"Segment1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, -12.5, 0]
+						},
+						"0.3333": {
+							"vector": [0, 17.5, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.6667": {
+							"vector": [0, -12.5, 0]
+						}
+					}
+				},
+				"Segment2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 17.5, 0]
+						},
+						"0.3333": {
+							"vector": [0, -40, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.6667": {
+							"vector": [0, 17.5, 0]
+						}
+					}
+				},
+				"Segment3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 17.5, 0]
+						},
+						"0.3333": {
+							"vector": [0, -5, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.6667": {
+							"vector": [0, 17.5, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
 }
