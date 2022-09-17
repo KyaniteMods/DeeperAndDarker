@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:translucent",
-  "textures": {
-    "cross": "deeperdarker:block/sculk_vines_plant"
-  }
-}

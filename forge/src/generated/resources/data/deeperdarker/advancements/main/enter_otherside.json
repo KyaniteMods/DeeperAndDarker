@@ -1,0 +1,31 @@
+{
+  "parent": "deeperdarker:main/kill_warden",
+  "criteria": {
+    "otherside": {
+      "conditions": {
+        "to": "deeperdarker:otherside"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.enter_otherside.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:reinforced_deepslate"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.enter_otherside.title"
+    }
+  },
+  "requirements": [
+    [
+      "otherside"
+    ]
+  ]
+}

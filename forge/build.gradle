@@ -14,6 +14,14 @@ configurations {
     developmentForge.extendsFrom common
 }
 
+loom {
+    forge{
+        dataGen {
+            mod "deeperdarker"
+        }
+    }
+}
+
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
 

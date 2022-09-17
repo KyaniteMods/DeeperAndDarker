@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "chance": 0.25,
+          "condition": "minecraft:random_chance_with_looting",
+          "looting_multiplier": 0.0375
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:soul_dust"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "phantom": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:phantom"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "deeperdarker:textures/gui/advancements/root.png",
+    "description": {
+      "translate": "advancements.deeperdarker.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:sculk"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.deeperdarker.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "phantom"
+    ]
+  ]
+}
