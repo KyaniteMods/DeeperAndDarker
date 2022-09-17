@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.fabric.client.FabricBoatModels;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import net.fabricmc.api.ClientModInitializer;
@@ -25,7 +26,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
 
-        DDBoatModels.registerLayers();
+        FabricBoatModels.registerLayers();
 
         EntityRendererRegistry.register(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));

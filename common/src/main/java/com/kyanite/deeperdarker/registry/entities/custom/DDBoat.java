@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -12,6 +13,8 @@ import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.function.Supplier;
 
 public class DDBoat extends Boat {
     private static final EntityDataAccessor<Integer> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.INT);
@@ -69,15 +72,13 @@ public class DDBoat extends Boat {
     }
 
     public enum Type {
-        // TODO: Rework this, because .get() isnr available instantly!
-//        ECHO("echo", DDItems.ECHO_BOAT.get(), DDItems.ECHO_CHEST_BOAT.get())
-        ;
+        ECHO("echo", DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
 
         private final String name;
-        private final Item item;
-        private final Item chestItem;
+        private final Supplier<Item> item;
+        private final Supplier<Item> chestItem;
 
-        Type(String name, Item boatItem, Item chestBoatItem) {
+        Type(String name, Supplier<Item> boatItem, Supplier<Item> chestBoatItem) {
             this.name = name;
             this.item = boatItem;
             this.chestItem = chestBoatItem;
@@ -109,11 +110,11 @@ public class DDBoat extends Boat {
         }
 
         public Item getItem() {
-            return item;
+            return item.get();
         }
 
         public Item getChestItem() {
-            return chestItem;
+            return chestItem.get();
         }
     }
 }
