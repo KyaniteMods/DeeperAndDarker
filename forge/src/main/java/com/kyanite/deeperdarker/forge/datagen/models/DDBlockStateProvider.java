@@ -68,6 +68,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(getName(DDBlocks.SCULK_VINES.get()), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(getName(DDBlocks.SCULK_VINES_PLANT.get()), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS.get()), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS_PLANT.get()), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
+
+
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());

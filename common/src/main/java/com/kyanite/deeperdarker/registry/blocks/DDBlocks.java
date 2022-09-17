@@ -4,10 +4,8 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
-import com.kyanite.deeperdarker.registry.blocks.custom.AncientVaseBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.InfestedSculkBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.OthersidePortalBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.*;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.*;
 import com.kyanite.deeperdarker.registry.blocks.custom.vines.sculkvines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vines.sculkvines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
@@ -115,6 +113,8 @@ public class DDBlocks {
     public static final Supplier<Block> SCULK_VINES = registerBlock("sculk_vines", true, () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
     public static final Supplier<Block> SCULK_VINES_PLANT = registerBlock("sculk_vines_plant", false, () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak()));
     public static final Supplier<Block> SCULK_GLEAM = registerBlock("sculk_gleam", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
+    public static final Supplier<SculkTendrilsBlock> SCULK_TENDRILS = registerBlock("sculk_tendrils", true, () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).randomTicks().noOcclusion().instabreak()));
+    public static final Supplier<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = registerBlock("sculk_tendrils_plant", true, () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()));
 
     // Miscellaneous
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
@@ -122,11 +122,28 @@ public class DDBlocks {
     public static final Supplier<Block> ANCIENT_VASE = registerBlock("ancient_vase", true, () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
     public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
 
+
+    // Blooming Caverns
+    public static final Supplier<Block> BLOOMING_GRASS_BLOCK = registerBlock("blooming_grass_block", false, () -> new BloomGrass(BlockBehaviour.Properties.of(Material.MOSS).strength(0.8f).sound(DDSounds.SCULK_STONE)));
+    public static final Supplier<Block> BLOOMING_SHRUB = registerBlock("blooming_shrub", false, () -> new BloomingShrubBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.GRASS).randomTicks().noCollission().instabreak()));
+    public static final Supplier<Block> BLOOM_BERRY_BUSH = registerBlock("bloom_berry_bush", false, () -> new BloomBerryBushBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SWEET_BERRY_BUSH).lightLevel(state -> 4).randomTicks().noCollission()));
+
+    // Overcast Columns
+    public static final Supplier<GloomSculkBlock> GLOOM_SCULK = registerBlock("gloom_sculk", false, () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
+    public static final Supplier<Block> GLOOMSLATE = registerBlock("gloomslate", false, () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final Supplier<SlabBlock> GLOOMSLATE_SLAB = registerBlock("gloomslate_slab", false, () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<StairBlock> GLOOMSLATE_STAIRS = registerBlock("gloomslate_stairs", false, () -> new StairBlock(GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<WallBlock> GLOOMSLATE_WALL = registerBlock("gloomslate_wall", false, () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<GeyserBlock> GEYSER = registerBlock("geyser", false, () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).requiresCorrectToolForDrops()));
+    public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", false, () -> new Block(BlockBehaviour.Properties.of(Material.SCULK).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
+    public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", false, () -> new GloomCactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
+    public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", false, () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
+
+
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createBE, Supplier<T> block) {
         Supplier<T> toReturn = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, (Supplier<Block>) toReturn);
-        if (createBE)
-            RegistryHelper.registerItem(name, () -> new BlockItem(toReturn.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
+        if (createBE) RegistryHelper.registerItem(name, () -> new BlockItem(toReturn.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
         return toReturn;
     }
 
