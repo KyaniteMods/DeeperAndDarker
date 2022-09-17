@@ -14,7 +14,7 @@ sourceSets {
     main {
         resources {
             srcDirs += [
-                    "src/main/generated"
+                    project(":forge").file("src/generated/resources").absolutePath
             ]
         }
     }
