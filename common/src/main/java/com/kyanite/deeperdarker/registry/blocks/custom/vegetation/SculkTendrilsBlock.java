@@ -17,7 +17,7 @@ public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
         super(properties, Direction.UP, SHAPE, false, 0.1);
     }
 
-    @Override
+
     public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
         return silkTouchLevel != 0 ? 0 : 1;
     }
