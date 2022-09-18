@@ -1,0 +1,6 @@
+{
+  "parent": "deeperdarker:block/ancient_vase",
+  "textures": {
+    "vase": "deeperdarker:block/ancient_vase"
+  }
+}
