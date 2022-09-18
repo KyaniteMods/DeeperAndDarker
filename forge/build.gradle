@@ -32,7 +32,7 @@ dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
 
     // GeckoLib
-    modImplementation "software.bernie.geckolib:geckolib-forge-1.19:3.1.18"
+    modImplementation ("software.bernie.geckolib:geckolib-forge-1.19:3.1.18")
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

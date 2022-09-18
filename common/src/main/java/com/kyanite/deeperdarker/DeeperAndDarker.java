@@ -34,7 +34,6 @@ public class DeeperAndDarker {
 
     public static void init(DeeperAndDarkerInitCallback callback) {
         GeckoLib.initialize();
-        GeckoLibMod.DISABLE_IN_DEV = true;
 
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
