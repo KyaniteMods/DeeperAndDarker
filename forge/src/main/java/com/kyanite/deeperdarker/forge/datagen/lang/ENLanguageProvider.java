@@ -2,12 +2,6 @@ package com.kyanite.deeperdarker.forge.datagen.lang;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.effects.DDEffects;
-import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
-import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;

@@ -24,10 +24,8 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 import java.util.function.Supplier;
 
 public class DDBlocks {
@@ -85,6 +83,22 @@ public class DDBlocks {
     public static final Supplier<SlabBlock> SCULK_STONE_SLAB = registerBlock("sculk_stone_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
     public static final Supplier<StairBlock> SCULK_STONE_STAIRS = registerBlock("sculk_stone_stairs", true, () -> new StairBlock(SCULK_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE.get())));
     public static final Supplier<WallBlock> SCULK_STONE_WALL = registerBlock("sculk_stone_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
+
+    public static final Supplier<Block> COBBLED_SCULK_STONE = registerBlock("cobbled_sculk_stone", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final Supplier<SlabBlock> COBBLED_SCULK_STONE_SLAB = registerBlock("cobbled_sculk_stone_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(COBBLED_SCULK_STONE.get())));
+    public static final Supplier<StairBlock> COBBLED_SCULK_STONE_STAIRS = registerBlock("cobbled_sculk_stone_stairs", true, () -> new StairBlock(COBBLED_SCULK_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(COBBLED_SCULK_STONE.get())));
+    public static final Supplier<WallBlock> COBBLED_SCULK_STONE_WALL = registerBlock("cobbled_sculk_stone_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(COBBLED_SCULK_STONE.get())));
+
+    public static final Supplier<Block> POLISHED_SCULK_STONE = registerBlock("polished_sculk_stone", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final Supplier<SlabBlock> POLISHED_SCULK_STONE_SLAB = registerBlock("polished_sculk_stone_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_SCULK_STONE.get())));
+    public static final Supplier<StairBlock> POLISHED_SCULK_STONE_STAIRS = registerBlock("polished_sculk_stone_stairs", true, () -> new StairBlock(POLISHED_SCULK_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_SCULK_STONE.get())));
+    public static final Supplier<WallBlock> POLISHED_SCULK_STONE_WALL = registerBlock("polished_sculk_stone_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_SCULK_STONE.get())));
+
+    public static final Supplier<Block> SCULK_STONE_BRICKS = registerBlock("sculk_stone_bricks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final Supplier<SlabBlock> SCULK_STONE_BRICK_SLAB = registerBlock("sculk_stone_brick_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE_BRICKS.get())));
+    public static final Supplier<StairBlock> SCULK_STONE_BRICK_STAIRS = registerBlock("sculk_stone_brick_stairs", true, () -> new StairBlock(SCULK_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE_BRICKS.get())));
+    public static final Supplier<WallBlock> SCULK_STONE_BRICK_WALL = registerBlock("sculk_stone_brick_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE_BRICKS.get())));
+
     // Sculk Stone Ores
     public static final Supplier<Block> SCULK_STONE_COAL_ORE = registerBlock("sculk_stone_coal_ore", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(2, 4)));
     public static final Supplier<Block> SCULK_STONE_IRON_ORE = registerBlock("sculk_stone_iron_ore", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(2, 4)));
@@ -94,34 +108,13 @@ public class DDBlocks {
     public static final Supplier<Block> SCULK_STONE_EMERALD_ORE = registerBlock("sculk_stone_emerald_ore", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(6, 14)));
     public static final Supplier<Block> SCULK_STONE_LAPIS_ORE = registerBlock("sculk_stone_lapis_ore", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(4, 10)));
     public static final Supplier<Block> SCULK_STONE_DIAMOND_ORE = registerBlock("sculk_stone_diamond_ore", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(6, 14)));
-    // Cobbled
-    public static final Supplier<Block> COBBLED_SCULK_STONE = registerBlock("cobbled_sculk_stone", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
-    public static final Supplier<SlabBlock> COBBLED_SCULK_STONE_SLAB = registerBlock("cobbled_sculk_stone_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(COBBLED_SCULK_STONE.get())));
-    public static final Supplier<StairBlock> COBBLED_SCULK_STONE_STAIRS = registerBlock("cobbled_sculk_stone_stairs", true, () -> new StairBlock(COBBLED_SCULK_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(COBBLED_SCULK_STONE.get())));
-    public static final Supplier<WallBlock> COBBLED_SCULK_STONE_WALL = registerBlock("cobbled_sculk_stone_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(COBBLED_SCULK_STONE.get())));
-    // Polished
-    public static final Supplier<Block> POLISHED_SCULK_STONE = registerBlock("polished_sculk_stone", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
-    public static final Supplier<SlabBlock> POLISHED_SCULK_STONE_SLAB = registerBlock("polished_sculk_stone_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_SCULK_STONE.get())));
-    public static final Supplier<StairBlock> POLISHED_SCULK_STONE_STAIRS = registerBlock("polished_sculk_stone_stairs", true, () -> new StairBlock(POLISHED_SCULK_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_SCULK_STONE.get())));
-    public static final Supplier<WallBlock> POLISHED_SCULK_STONE_WALL = registerBlock("polished_sculk_stone_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_SCULK_STONE.get())));
-    // Bricks
-    public static final Supplier<Block> SCULK_STONE_BRICKS = registerBlock("sculk_stone_bricks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
-    public static final Supplier<SlabBlock> SCULK_STONE_BRICK_SLAB = registerBlock("sculk_stone_brick_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE_BRICKS.get())));
-    public static final Supplier<StairBlock> SCULK_STONE_BRICK_STAIRS = registerBlock("sculk_stone_brick_stairs", true, () -> new StairBlock(SCULK_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE_BRICKS.get())));
-    public static final Supplier<WallBlock> SCULK_STONE_BRICK_WALL = registerBlock("sculk_stone_brick_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_STONE_BRICKS.get())));
+
     // Vegetation
     public static final Supplier<Block> SCULK_VINES = registerBlock("sculk_vines", true, () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
     public static final Supplier<Block> SCULK_VINES_PLANT = registerBlock("sculk_vines_plant", false, () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak()));
     public static final Supplier<Block> SCULK_GLEAM = registerBlock("sculk_gleam", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
     public static final Supplier<SculkTendrilsBlock> SCULK_TENDRILS = registerBlock("sculk_tendrils", true, () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).randomTicks().noOcclusion().instabreak()));
     public static final Supplier<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = registerBlock("sculk_tendrils_plant", true, () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()));
-
-    // Miscellaneous
-    public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
-    public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).noLootTable()));
-    public static final Supplier<Block> ANCIENT_VASE = registerBlock("ancient_vase", true, () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
-    public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
-
 
     // Blooming Caverns
     public static final Supplier<Block> BLOOMING_GRASS_BLOCK = registerBlock("blooming_grass_block", false, () -> new BloomGrass(BlockBehaviour.Properties.of(Material.MOSS).strength(0.8f).sound(DDSounds.SCULK_STONE)));
@@ -139,6 +132,11 @@ public class DDBlocks {
     public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", false, () -> new GloomCactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
     public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", false, () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
 
+    // Miscellaneous
+    public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
+    public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).noLootTable()));
+    public static final Supplier<Block> ANCIENT_VASE = registerBlock("ancient_vase", true, () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
+    public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
 
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createBE, Supplier<T> block) {
         Supplier<T> toReturn = RegistryHelper.registerBlock(name, block);
@@ -155,9 +153,7 @@ public class DDBlocks {
     }
 
     public static RotatedPillarBlock log(MaterialColor materialColor, MaterialColor materialColor2) {
-        return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (blockState) -> {
-            return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? materialColor : materialColor2;
-        }).strength(2.0F).sound(SoundType.WOOD));
+        return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (state) -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? materialColor : materialColor2).strength(2.0F).sound(SoundType.WOOD));
     }
 
     public static void registerBlocks() {

@@ -25,10 +25,10 @@ public class OthersideBiomes {
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "overcast_columns"));
 
     public static void createBiomes() {
-        RegistryHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), () -> deeplands());
-        RegistryHelper.registerBiome(ECHOING_FOREST.location(), () -> forest());
-        RegistryHelper.registerBiome(BLOOMING_CAVERNS.location(), () -> caverns());
-        RegistryHelper.registerBiome(OVERCAST_COLUMNS.location(), () -> columns());
+        RegistryHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), OthersideBiomes::deeplands);
+        RegistryHelper.registerBiome(ECHOING_FOREST.location(), OthersideBiomes::forest);
+        RegistryHelper.registerBiome(BLOOMING_CAVERNS.location(), OthersideBiomes::caverns);
+        RegistryHelper.registerBiome(OVERCAST_COLUMNS.location(), OthersideBiomes::columns);
     }
 
     public static Biome columns() {
@@ -154,5 +154,4 @@ public class OthersideBiomes {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.SCULK.get()));
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.INFESTED_SCULK.get()));
     }
-
 }

@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -36,8 +37,8 @@ public class RegistryHelperImpl {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<PoiType> POI = DeferredRegister.create(ForgeRegistries.POI_TYPES, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
-
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
@@ -60,7 +61,7 @@ public class RegistryHelperImpl {
         return POTIONS.register(name, potion);
     }
 
-    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
+    public static <T extends ConfiguredFeature<?, ?>> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
         return CONFIGURED_FEATURES.register(name, feature);
     }
 
@@ -76,8 +77,8 @@ public class RegistryHelperImpl {
         return PLACED_FEATURES.register(name, placedFeature);
     }
 
-    public static <T extends CreativeModeTab> T registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
-        return (T) new CreativeModeTab(new ResourceLocation(DeeperAndDarker.MOD_ID, name).toLanguageKey()) {
+    public static <T extends CreativeModeTab> T registerCreativeModeTab(Supplier<ItemStack> icon) {
+        return (T) new CreativeModeTab(DeeperAndDarker.MOD_ID) {
             @Override
             public ItemStack makeIcon() {
                 return icon.get();
@@ -91,6 +92,10 @@ public class RegistryHelperImpl {
 
     public static <T extends SoundEvent> Supplier<T> registerSound(String name, Supplier<T> sound) {
         return SOUND_EVENTS.register(name, sound);
+    }
+
+    public static <T extends PoiType> Supplier<T> registerPOI(String name, Supplier<T> portal) {
+        return POI.register(name, portal);
     }
 
     public static WoodType registerWoodType(String name) {

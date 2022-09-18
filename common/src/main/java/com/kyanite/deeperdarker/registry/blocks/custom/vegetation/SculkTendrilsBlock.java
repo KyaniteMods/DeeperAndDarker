@@ -1,10 +1,8 @@
 package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,9 +16,9 @@ public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
     }
 
 
-    public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
+    /*public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
         return silkTouchLevel != 0 ? 0 : 1;
-    }
+    }*/
 
     @Override
     protected int getBlocksToGrowWhenBonemealed(RandomSource randomSource) {

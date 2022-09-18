@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -70,7 +69,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(getName(DDBlocks.SCULK_VINES_PLANT.get()), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS.get()), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS_PLANT.get()), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
-
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.SCULK_GLEAM.get());

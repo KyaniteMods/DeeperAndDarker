@@ -6,5 +6,5 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class DDCreativeModeTab {
-    public static final CreativeModeTab DD_TAB = RegistryHelper.registerCreativeModeTab("deeperdarker", () -> new ItemStack(DDItems.WARDEN_HELMET.get()));
+    public static final CreativeModeTab DD_TAB = RegistryHelper.registerCreativeModeTab(() -> new ItemStack(DDItems.WARDEN_HELMET.get()));
 }

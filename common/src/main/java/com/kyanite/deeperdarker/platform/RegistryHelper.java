@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -43,7 +44,7 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
-    public static <T extends CreativeModeTab> T registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
+    public static <T extends CreativeModeTab> T registerCreativeModeTab(Supplier<ItemStack> icon) {
         throw new AssertionError();
     }
 
@@ -58,7 +59,7 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
-    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, java.util.function.Supplier<T> feature) {
+    public static <T extends ConfiguredFeature<?, ?>> Supplier<T> registerConfiguredFeature(String name, java.util.function.Supplier<T> feature) {
         throw new AssertionError();
     }
 
@@ -79,6 +80,11 @@ public class RegistryHelper {
 
     @ExpectPlatform
     public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T extends PoiType> Supplier<T> registerPOI(String name, Supplier<T> portal) {
         throw new AssertionError();
     }
 

@@ -14,7 +14,6 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
-import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
@@ -49,21 +48,17 @@ public class DeeperAndDarker {
         DDConfiguredFeatures.registerConfiguredFeatures();
         DDPlacedFeatures.registerPlacedFeatures();
 
-        DDDimensions.dimension();
         OthersideBiomes.createBiomes();
-        //  CustomPortalBuilder.beginPortal()
-        //        .frameBlock(Blocks.REINFORCED_DEEPSLATE)
-        //      .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-        //    .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
-        //  .tintColor(5, 98, 93)
-        // .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-        //.forcedSize(20, 6)
-        //.registerPortal();
+//        CustomPortalBuilder.beginPortal()
+//                .frameBlock(Blocks.REINFORCED_DEEPSLATE)
+//                .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
+//                .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
+//                .tintColor(5, 98, 93)
+//                .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+//                .forcedSize(20, 6)
+//                .registerPortal();
 
         callback.callback();
-    }
-
-    public static void commonInit() {
     }
 
     public static void attributes(Map<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> attributes) {

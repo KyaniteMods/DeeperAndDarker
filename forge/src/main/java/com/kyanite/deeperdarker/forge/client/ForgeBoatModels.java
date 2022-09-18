@@ -14,8 +14,6 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 

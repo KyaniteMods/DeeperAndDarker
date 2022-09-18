@@ -12,15 +12,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.IForgeShearable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
@@ -48,7 +45,6 @@ public class DeeperAndDarkerForge {
         RegistryHelperImpl.PLACED_FEATURES.register(bus);
         RegistryHelperImpl.BIOMES.register(bus);
         bus.addListener(this::attributes);
-        bus.addListener(this::common);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -57,13 +53,6 @@ public class DeeperAndDarkerForge {
         Map<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> attributes = new HashMap<>();
         DeeperAndDarker.attributes(attributes);
         attributes.forEach((entity, builder) -> event.put(entity, builder.build()));
-    }
-
-    private void common(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            DeeperAndDarker.commonInit();
-
-        });
     }
 
     @Mod.EventBusSubscriber(modid = DeeperAndDarker.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

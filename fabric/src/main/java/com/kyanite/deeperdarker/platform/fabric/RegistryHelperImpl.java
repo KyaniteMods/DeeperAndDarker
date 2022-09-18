@@ -13,6 +13,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -53,7 +54,7 @@ public class RegistryHelperImpl {
         return () -> registry;
     }
 
-    public static <T extends ConfiguredFeature> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
+    public static <T extends ConfiguredFeature<?, ?>> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
         T registry = (T) Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature.get());
         return () -> registry;
     }
@@ -74,8 +75,8 @@ public class RegistryHelperImpl {
         return () -> registry;
     }
 
-    public static <T extends CreativeModeTab> T registerCreativeModeTab(String name, Supplier<ItemStack> icon) {
-        return (T) FabricItemGroupBuilder.build(new ResourceLocation(DeeperAndDarker.MOD_ID, name), icon);
+    public static <T extends CreativeModeTab> T registerCreativeModeTab(Supplier<ItemStack> icon) {
+        return (T) FabricItemGroupBuilder.build(new ResourceLocation(DeeperAndDarker.MOD_ID, DeeperAndDarker.MOD_ID), icon);
     }
 
     public static <T extends Enchantment> Supplier<T> registerEnchant(String name, Supplier<T> enchantment) {
@@ -85,6 +86,11 @@ public class RegistryHelperImpl {
 
     public static <T extends SoundEvent> Supplier<T> registerSound(String name, Supplier<T> sound) {
         T registry = Registry.register(Registry.SOUND_EVENT, new ResourceLocation(DeeperAndDarker.MOD_ID, name), sound.get());
+        return () -> registry;
+    }
+
+    public static <T extends PoiType> Supplier<T> registerPOI(String name, Supplier<T> portal) {
+        T registry = Registry.register(Registry.POINT_OF_INTEREST_TYPE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), portal.get());
         return () -> registry;
     }
 

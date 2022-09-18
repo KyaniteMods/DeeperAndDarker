@@ -10,8 +10,6 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
