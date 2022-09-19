@@ -15,7 +15,7 @@
   "advancements.deeperdarker.reinforce_shard.title": "Sculk-Ingenieur",
   "advancements.deeperdarker.root.description": "Du fühlst wie dich etwas nach unten zieht...",
   "advancements.deeperdarker.root.title": "Sculk-Geschichte",
-  "biome.deeperdarker.echoing_forest": "Dröhnend Wald",
+  "biome.deeperdarker.echoing_forest": "Hallender Wald",
   "biome.deeperdarker.otherside_deeplands": "Andersseitiger Tieflander",
   "block.deeperdarker.ancient_vase": "Uralte Vase",
   "block.deeperdarker.cobbled_sculk_stone": "Bruchsculkgestein",
@@ -69,7 +69,6 @@
   "block.deeperdarker.stripped_echo_wood": "Entrindetes Echoholz",
   "death.attack.jaw": "%1$s wurde von einem Sculk-Kiefer verschlungen",
   "effect.deeperdarker.sculk_affinity": "Sculk-Affinität",
-  "effect.deeperdarker.sculk_affinity.description": "Verhindert, dass der Spieler Vibrationen verursacht.",
   "enchantment.deeperdarker.sculk_smite": "Sculk-Bann",
   "entity.deeperdarker.boat": "Boot",
   "entity.deeperdarker.chest_boat": "Truhenboot",
@@ -111,6 +110,6 @@
   "subtitles.entity.snapper.bite": "Sculk-Schnapper beißt",
   "subtitles.entity.snapper.hurt": "Sculk-Schnapper nimmt Schaden",
   "subtitles.entity.snapper.sniff": "Sculk-Schnapper schnüffelt",
-  "subtitles.item.transmitter.link": "Sender Verbindungen",
+  "subtitles.item.transmitter.link": "Senderverbindungen",
   "subtitles.item.transmitter.transmit": "Sender senden"
 }
