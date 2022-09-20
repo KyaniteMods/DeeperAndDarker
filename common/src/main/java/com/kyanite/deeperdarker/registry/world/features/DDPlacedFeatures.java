@@ -37,7 +37,7 @@ public class DDPlacedFeatures {
     public static final Supplier<PlacedFeature> ECHO_TREE_SPAWN = registerPlacedFeature("echo_tree_placed", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ECHO_TREE.get()), echoTreePlacement()));
 
     public static final Supplier<PlacedFeature> GLOOM_SCULK_VEGETATION = registerPlacedFeature("gloom_sculk_vegetation", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_SCULK_VEGETATION.get()), vegetationPlacement()));
-    public static final Supplier<PlacedFeature> GLOOM_CACTUS = registerPlacedFeature("gloom_cactus", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_CACTUS_SINGULAR.get()), cactusPlacement()));
+    public static final Supplier<PlacedFeature> GLOOM_CACTUS = registerPlacedFeature("gloom_cactus", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOW_CACTUS.get()), cactusPlacement()));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());
