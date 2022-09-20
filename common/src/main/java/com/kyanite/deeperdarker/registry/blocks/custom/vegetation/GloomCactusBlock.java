@@ -21,7 +21,7 @@ public class GloomCactusBlock extends CactusBlock {
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockState stateBelow = pLevel.getBlockState(pPos.below());
-        return stateBelow.is(DDBlocks.GLOOM_SCULK.get());
+        return stateBelow.is(DDBlocks.GLOOM_SCULK.get()) || stateBelow.is(DDBlocks.GLOOM_CACTUS.get());
     }
 
     @Override

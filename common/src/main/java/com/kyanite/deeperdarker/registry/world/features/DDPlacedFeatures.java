@@ -3,10 +3,12 @@ package com.kyanite.deeperdarker.registry.world.features;
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -34,6 +36,9 @@ public class DDPlacedFeatures {
     public static final Supplier<PlacedFeature> OTHERSIDE_PILLAR = registerPlacedFeature("otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.OTHERSIDE_PILLAR.get()), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
     public static final Supplier<PlacedFeature> ECHO_TREE_SPAWN = registerPlacedFeature("echo_tree_placed", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ECHO_TREE.get()), echoTreePlacement()));
 
+    public static final Supplier<PlacedFeature> GLOOM_SCULK_VEGETATION = registerPlacedFeature("gloom_sculk_vegetation", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_SCULK_VEGETATION.get()), vegetationPlacement()));
+    public static final Supplier<PlacedFeature> GLOOM_CACTUS = registerPlacedFeature("gloom_cactus", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_CACTUS_SINGULAR.get()), cactusPlacement()));
+
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());
     }
@@ -44,6 +49,14 @@ public class DDPlacedFeatures {
 
     public static List<PlacementModifier> rareOrePlacement(int chance, PlacementModifier range) {
         return orePlacement(RarityFilter.onAverageOnceEvery(chance), range);
+    }
+
+    public static List<PlacementModifier> vegetationPlacement() {
+        return List.of(new PlacementModifier[]{NoiseThresholdCountPlacement.of(-0.8, 5, 10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome()});
+    }
+
+    public static List<PlacementModifier> cactusPlacement() {
+        return List.of(new PlacementModifier[] {RarityFilter.onAverageOnceEvery(13), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()});
     }
 
     public static List<PlacementModifier> echoTreePlacement() {

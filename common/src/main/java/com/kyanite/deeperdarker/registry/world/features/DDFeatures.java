@@ -10,9 +10,8 @@ public class DDFeatures {
     public static final Supplier<SculkVinesFeature> SCULK_VINES = RegistryHelper.registerFeature("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<OthersidePillarFeature> OTHERSIDE_PILLAR = RegistryHelper.registerFeature("otherside_pillar", () -> new OthersidePillarFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<EchoTreeFeature> ECHO_TREE = RegistryHelper.registerFeature("echo_tree", () -> new EchoTreeFeature(NoneFeatureConfiguration.CODEC));
-
     public static final Supplier<SculkTendrilFeature> SCULK_TENDRILS = RegistryHelper.registerFeature("sculk_tendrils", () -> new SculkTendrilFeature(NoneFeatureConfiguration.CODEC));
-
+    public static final Supplier<CactusFeature> GLOOM_CACTUS_FEATURE = RegistryHelper.registerFeature("gloom_cactus_feature", () -> new CactusFeature(NoneFeatureConfiguration.CODEC));
 
     public static void registerFeatures() {}
 }

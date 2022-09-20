@@ -76,15 +76,20 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ANCIENT_VASE);
         blockModel(DDBlocks.ECHO_SOIL);
 
-        blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
+
         blockModel(DDBlocks.GLOOM_CACTUS);
         blockModel(DDBlocks.GLOOM_SCULK);
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_SLAB);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
         blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
+
+        blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
         blockModel(DDBlocks.BLOOM_BERRY_BUSH, "stage3");
         blockModel(DDBlocks.BLOOMING_SHRUB);
+
+        blockModel(DDBlocks.SCULK_TENDRILS);
+        blockModel(DDBlocks.SCULK_TENDRILS_PLANT);
 
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);

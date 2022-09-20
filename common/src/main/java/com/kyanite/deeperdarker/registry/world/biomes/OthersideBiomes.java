@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.registry.world.biomes;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -39,9 +40,10 @@ public class OthersideBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOM_CACTUS.get()));
+
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
-        BiomeDefaultFeatures.addSculk(biomeBuilder);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(0.7f)
@@ -66,7 +68,6 @@ public class OthersideBiomes {
 
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
-        BiomeDefaultFeatures.addSculk(biomeBuilder);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(1f)
@@ -127,8 +128,6 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.SCULK_JAW.get()));
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
-
-        BiomeDefaultFeatures.addSculk(biomeBuilder);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.SCULK_VINES.get()));

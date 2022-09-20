@@ -42,7 +42,7 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "deeperdarker:echo_log"
+      "item": "minecraft:air"
     },
     "show_toast": true,
     "title": {
