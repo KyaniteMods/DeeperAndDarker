@@ -82,8 +82,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_SLAB);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
-        blockModel(DDBlocks.GLOOMSLATE_WALL);
-        blockModel(DDBlocks.BLOOM_BERRY_BUSH);
+        blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.BLOOM_BERRY_BUSH, "stage3");
         blockModel(DDBlocks.BLOOMING_SHRUB);
 
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
