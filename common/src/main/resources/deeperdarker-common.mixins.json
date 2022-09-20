@@ -9,6 +9,7 @@
     "ContainerMixin",
     "PhantomMixin",
     "PhantomRendererMixin",
+    "PlayerMixin",
     "SculkSensorMixin",
     "SculkSpreadMixin",
     "StonecutterMixin",
