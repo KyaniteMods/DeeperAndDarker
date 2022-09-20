@@ -75,6 +75,8 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.STRIPPED_WOOD).add(Blocks.STRIPPED_OAK_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, Blocks.STRIPPED_BIRCH_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, Blocks.STRIPPED_ACACIA_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, Blocks.STRIPPED_CRIMSON_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE);
         tag(DDTags.Blocks.WOOD).add(Blocks.OAK_WOOD, Blocks.SPRUCE_WOOD, Blocks.BIRCH_WOOD, Blocks.JUNGLE_WOOD, Blocks.ACACIA_WOOD, Blocks.DARK_OAK_WOOD, Blocks.CRIMSON_HYPHAE, Blocks.WARPED_HYPHAE);
 
+        tag(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE).add(DDBlocks.GLOOM_SCULK.get(), DDBlocks.GLOOMSLATE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.ECHO_SOIL.get(), Blocks.STONE, Blocks.DEEPSLATE, Blocks.SCULK);
+
         tag(DDTags.Blocks.TRANSMITTABLE).add(Blocks.CHEST, Blocks.FURNACE, Blocks.BLAST_FURNACE, Blocks.BARREL, Blocks.SMOKER, Blocks.STONECUTTER);
     }
 

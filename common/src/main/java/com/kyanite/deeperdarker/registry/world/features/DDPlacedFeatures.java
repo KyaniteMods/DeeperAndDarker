@@ -11,7 +11,13 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class DDPlacedFeatures {
-    // Ores
+
+    public static final Supplier<PlacedFeature> SCULK = registerPlacedFeature("sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK.get()), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final Supplier<PlacedFeature> ECHO_SAND = registerPlacedFeature("echo_sand", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_ECHO_SAND.get()), commonOrePlacement(200, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final Supplier<PlacedFeature> INFESTED_SCULK = registerPlacedFeature("infested_sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_INFESTED_SCULK.get()), commonOrePlacement(35, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
+    public static final Supplier<PlacedFeature> SCULK_JAW = registerPlacedFeature("sculk_jaw", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK_JAW.get()), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+
     public static final Supplier<PlacedFeature> SCULK_COAL_ORE = registerPlacedFeature("sculk_coal_ore", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_COAL_SCULK.get()), commonOrePlacement(7, HeightRangePlacement.triangle(VerticalAnchor.belowTop(64), VerticalAnchor.top()))));
     public static final Supplier<PlacedFeature> SCULK_IRON_ORE = registerPlacedFeature("sculk_iron_ore", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_IRON_SCULK.get()), commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128)))));
     public static final Supplier<PlacedFeature> SCULK_COPPER_ORE = registerPlacedFeature("sculk_copper_ore", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_COPPER_SCULK.get()), commonOrePlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256)))));
@@ -21,17 +27,12 @@ public class DDPlacedFeatures {
     public static final Supplier<PlacedFeature> SCULK_LAPIS_ORE = registerPlacedFeature("sculk_lapis_ore", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_LAPIS_SCULK.get()), commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25)))));
     public static final Supplier<PlacedFeature> SCULK_DIAMOND_ORE = registerPlacedFeature("sculk_diamond_ore", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_DIAMOND_SCULK.get()), rareOrePlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50)))));
 
-    public static Supplier<PlacedFeature> ECHO_TREE_SPAWN = registerPlacedFeature("echo_tree_placed", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ECHO_TREE.get()), echoTreePlacement()));
+    public static final Supplier<PlacedFeature> SCULK_GLEAM = registerPlacedFeature("sculk_gleam", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.get()), commonOrePlacement(26, PlacementUtils.FULL_RANGE)));
+    public static final Supplier<PlacedFeature> SCULK_VINES = registerPlacedFeature("sculk_vines", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.SCULK_VINES.get()), commonOrePlacement(32, PlacementUtils.FULL_RANGE)));
+    public static final Supplier<PlacedFeature> SCULK_TENDRILS = registerPlacedFeature("sculk_tendrils", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.SCULK_TENDRILS.get()), commonOrePlacement(55, PlacementUtils.FULL_RANGE)));
 
-    public static Supplier<PlacedFeature> SCULK_GLEAM = registerPlacedFeature("sculk_gleam", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.EXTRA_SCULK_GLEAM.get()), commonOrePlacement(26, PlacementUtils.FULL_RANGE)));
-
-    public static Supplier<PlacedFeature> SCULK_VINES = registerPlacedFeature("sculk_vines", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.SCULK_VINES.get()), commonOrePlacement(32, PlacementUtils.FULL_RANGE)));
-
-    public static Supplier<PlacedFeature> OTHERSIDE_PILLAR = registerPlacedFeature("otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.OTHERSIDE_PILLAR.get()), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
-    public static Supplier<PlacedFeature> SCULK = registerPlacedFeature("sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK.get()), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
-    public static Supplier<PlacedFeature> SCULK_JAW = registerPlacedFeature("sculk_jaw", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK_JAW.get()), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
-    public static Supplier<PlacedFeature> INFESTED_SCULK = registerPlacedFeature("infested_sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_INFESTED_SCULK.get()), commonOrePlacement(35, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
-    public static Supplier<PlacedFeature> ECHO_SAND = registerPlacedFeature("echo_sand", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_ECHO_SAND.get()), commonOrePlacement(200, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final Supplier<PlacedFeature> OTHERSIDE_PILLAR = registerPlacedFeature("otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.OTHERSIDE_PILLAR.get()), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
+    public static final Supplier<PlacedFeature> ECHO_TREE_SPAWN = registerPlacedFeature("echo_tree_placed", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ECHO_TREE.get()), echoTreePlacement()));
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());

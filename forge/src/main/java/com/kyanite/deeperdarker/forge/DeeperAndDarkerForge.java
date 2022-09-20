@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.forge;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
@@ -45,6 +46,9 @@ public class DeeperAndDarkerForge {
         RegistryHelperImpl.CONFIGURED_FEATURES.register(bus);
         RegistryHelperImpl.PLACED_FEATURES.register(bus);
         RegistryHelperImpl.BIOMES.register(bus);
+
+        DDBiomeModifiers.BIOME_MODIFIERS.register(bus);
+
         bus.addListener(this::attributes);
 
         MinecraftForge.EVENT_BUS.register(this);
