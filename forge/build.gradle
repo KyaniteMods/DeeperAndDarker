@@ -15,10 +15,14 @@ configurations {
 }
 
 loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+
     forge{
         dataGen {
             mod "deeperdarker"
         }
+        convertAccessWideners = true
+        extraAccessWideners.add('deeperdarker.accesswidener')
     }
 
     launches {

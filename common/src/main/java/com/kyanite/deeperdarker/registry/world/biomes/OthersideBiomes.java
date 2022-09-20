@@ -17,6 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class OthersideBiomes {
     public static final ResourceKey<Biome> OTHERSIDE_DEEPLANDS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside_deeplands"));
@@ -38,6 +39,10 @@ public class OthersideBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
+        addSculkDecoration(biomeBuilder);
+        addSculkOres(biomeBuilder);
+        BiomeDefaultFeatures.addSculk(biomeBuilder);
+
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(0.7f)
                 .downfall(0.2f)
@@ -57,7 +62,11 @@ public class OthersideBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         addSculkOres(biomeBuilder);
+        addSculkDecoration(biomeBuilder);
+
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
+        BiomeDefaultFeatures.addSculk(biomeBuilder);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(1f)
@@ -85,6 +94,7 @@ public class OthersideBiomes {
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
 
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.SCULK_TENDRILS.get()));
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.ECHO_TREE_SPAWN.get()));
 
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
@@ -118,9 +128,12 @@ public class OthersideBiomes {
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
 
+        BiomeDefaultFeatures.addSculk(biomeBuilder);
+
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.SCULK_VINES.get()));
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.SCULK_GLEAM.get()));
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.SCULK_TENDRILS.get()));
 
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
