@@ -28,6 +28,6 @@ public class GloomSculkBlock extends SculkBlock implements BonemealableBlock, Sc
 
     @Override
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-//        DDConfiguredFeatures.GLOOM_SCULK_BONEMEAL.get().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
+        DDConfiguredFeatures.GLOOM_SCULK_BONEMEAL.get().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
     }
 }

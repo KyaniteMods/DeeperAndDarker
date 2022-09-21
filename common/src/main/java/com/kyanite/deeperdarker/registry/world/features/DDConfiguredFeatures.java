@@ -36,7 +36,6 @@ public class DDConfiguredFeatures {
     public static final Supplier<ConfiguredFeature<?, ?>> ECHO_TREE = register("echo_tree", DDFeatures.ECHO_TREE);
     public static final Supplier<ConfiguredFeature<?, ?>> SCULK_VINES = register("sculk_vines", DDFeatures.SCULK_VINES);
     public static final Supplier<ConfiguredFeature<?, ?>> SCULK_TENDRILS = register("sculk_tendrils", DDFeatures.SCULK_TENDRILS);
-    public static final Supplier<ConfiguredFeature<?, ?>> GLOW_CACTUS = register("glow_cactus", DDFeatures.GLOOM_CACTUS_FEATURE);
 
 
     // Decoration Gen
@@ -54,10 +53,8 @@ public class DDConfiguredFeatures {
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_EMERALD_SCULK = RegistryHelper.registerConfiguredFeature("ore_emerald_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_EMERALD_TARGET_LIST.get(), 6, 0.4f)));
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_LAPIS_SCULK = RegistryHelper.registerConfiguredFeature("ore_lapis_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_LAPIS_TARGET_LIST.get(), 7)));
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_DIAMOND_SCULK = RegistryHelper.registerConfiguredFeature("ore_diamond_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_DIAMOND_TARGET_LIST.get(), 5, 0.7f)));
-
     public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION = RegistryHelper.registerConfiguredFeature("gloom_sculk_vegetation", () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.get().defaultBlockState(), 4).add(DDBlocks.GLOOM_CACTUS.get().defaultBlockState(), 1).add(DDBlocks.SCULK_TENDRILS.get().defaultBlockState(), 1)))));
-//    public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_SCULK_BONEMEAL = RegistryHelper.registerConfiguredFeature("gloom_sculk_bonemeal", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE, BlockStateProvider.simple(DDBlocks.GLOOM_SCULK.get()), PlacementUtils.inlinePlaced(Holder.direct(GLOOM_SCULK_VEGETATION.get())), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.3f, UniformInt.of(1, 2), 0.7f)));
-//    public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_CACTUS_PATCH = RegistryHelper.registerConfiguredFeature("gloom_cactus_patch", () -> new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, Holder.direct(DDPlacedFeatures.GLOOM_CACTUS.get()))));
+    public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_SCULK_BONEMEAL = RegistryHelper.registerConfiguredFeature("gloom_sculk_bonemeal", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE, BlockStateProvider.simple(DDBlocks.GLOOM_SCULK.get()), PlacementUtils.inlinePlaced(Holder.direct(GLOOM_SCULK_VEGETATION.get())), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.3f, UniformInt.of(1, 2), 0.7f)));
 
     public static <F extends Feature<NoneFeatureConfiguration>> Supplier<ConfiguredFeature<?, ?>> register(String id, Supplier<F> feature) {
         Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
