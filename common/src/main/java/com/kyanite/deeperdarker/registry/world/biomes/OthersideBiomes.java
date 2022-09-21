@@ -40,7 +40,7 @@ public class OthersideBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOM_CACTUS.get()));
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOM_SCULK_VEGETATION.get()));
 
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
