@@ -31,8 +31,12 @@ public class SculkPillarFeature extends Feature<NoneFeatureConfiguration> {
         int y = pContext.origin().getY();
         int pillarHeight = pContext.random().nextInt(13, 35);
 
+        BlockState down = pContext.level().getBlockState(pContext.origin().below());
+
+        boolean hasValidBelowBlock = down.is(Blocks.SCULK) || down.is(DDBlocks.GLOOM_SCULK.get());
+
         if (noSpace(pContext.level(), pContext.origin(), pillarHeight)) return false;
-        if (!pContext.level().getBlockState(pContext.origin().below()).is(DDBlocks.SCULK_STONE.get()) && !pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK))
+        if (!hasValidBelowBlock)
             return false;
 
         for (int i = 0; i < pillarHeight; i++) {
