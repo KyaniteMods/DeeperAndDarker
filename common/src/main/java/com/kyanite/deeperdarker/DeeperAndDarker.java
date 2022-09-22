@@ -6,10 +6,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
+import com.kyanite.deeperdarker.registry.entities.custom.*;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
@@ -68,6 +65,7 @@ public class DeeperAndDarker {
         attributes.put(DDEntities.SCULK_LEECH.get(), SculkLeechEntity.attributes());
         attributes.put(DDEntities.SCULK_WORM.get(), SculkWormEntity.attributes());
         attributes.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
+        attributes.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeEntity.attributes());
     }
 
     public static void registerArmor() {

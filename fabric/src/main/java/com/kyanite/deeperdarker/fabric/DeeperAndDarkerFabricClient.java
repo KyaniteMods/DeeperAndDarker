@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.client.rendering.entity.*;
 import com.kyanite.deeperdarker.fabric.client.FabricBoatModels;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.entities.custom.SculkCentipedeEntity;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -25,6 +26,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
 
         FabricBoatModels.registerLayers();
 
