@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.entities.custom.SculkCentipedeEntity;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
@@ -87,6 +88,7 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
         }
 
         @SubscribeEvent

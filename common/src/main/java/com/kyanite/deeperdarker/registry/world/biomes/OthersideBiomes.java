@@ -38,9 +38,12 @@ public class OthersideBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 95, 4, 4));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOM_SCULK_VEGETATION.get()));
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOMSTONE_PILLAR.get()));
+
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
 
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
@@ -66,8 +69,12 @@ public class OthersideBiomes {
         addSculkOres(biomeBuilder);
         addSculkDecoration(biomeBuilder);
 
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_CENTIPEDE.get(), 80, 0, 2));
+
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
+
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
+
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(1f)

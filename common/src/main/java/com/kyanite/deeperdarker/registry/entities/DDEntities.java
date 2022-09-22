@@ -42,6 +42,11 @@ public class DDEntities {
             DDChestBoat::new, MobCategory.MISC, 1.375F, 0.5625F, 10
     );
 
+    public static final Supplier<EntityType<SculkCentipedeEntity>> SCULK_CENTIPEDE = RegistryHelper.registerEntity(
+            "sculk_centipede",
+            SculkCentipedeEntity::new, MobCategory.MONSTER, 0.3f, 0.2f, 10
+    );
+
     public static void registerEntities() {
         DeeperAndDarker.LOGGER.info("Deeper And Darker entities have been registered");
     }
