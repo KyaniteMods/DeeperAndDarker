@@ -39,7 +39,12 @@ public class DDPlacedFeatures {
 
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
-        return List.of(placementModifier, InSquarePlacement.spread(), range, BiomeFilter.biome());
+        ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
+        builder.add(InSquarePlacement.spread());
+        builder.add(placementModifier);
+        builder.add(range);
+        builder.add(BiomeFilter.biome());
+        return builder.build();
     }
 
     public static List<PlacementModifier> commonOrePlacement(int attempts, PlacementModifier range) {

@@ -11,6 +11,7 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
+import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
@@ -46,8 +47,9 @@ public class DeeperAndDarker {
         DDFeatures.registerFeatures();
         DDConfiguredFeatures.registerConfiguredFeatures();
         DDPlacedFeatures.registerPlacedFeatures();
-
         OthersideBiomes.createBiomes();
+        DDDimensions.registerDimensions();
+
 //        CustomPortalBuilder.beginPortal()
 //                .frameBlock(Blocks.REINFORCED_DEEPSLATE)
 //                .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))

@@ -44,7 +44,7 @@ public class DDEntities {
 
     public static final Supplier<EntityType<SculkCentipedeEntity>> SCULK_CENTIPEDE = RegistryHelper.registerEntity(
             "sculk_centipede",
-            SculkCentipedeEntity::new, MobCategory.MONSTER, 0.3f, 0.2f, 10
+            SculkCentipedeEntity::new, MobCategory.MONSTER, 2.3f, 0.3f, 10
     );
 
     public static void registerEntities() {
