@@ -11,10 +11,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 // Todo, add shearable support.
-public class GloomyGrassBlock extends BushBlock {
+public class GloomGrassBlock extends BushBlock {
     protected static final VoxelShape SHAPE = Block.box(1, 0, 1, 14, 12, 14);
 
-    public GloomyGrassBlock(Properties pProperties) {
+    public GloomGrassBlock(Properties pProperties) {
         super(pProperties);
     }
 

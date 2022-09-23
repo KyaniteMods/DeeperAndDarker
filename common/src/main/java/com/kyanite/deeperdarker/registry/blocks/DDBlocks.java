@@ -130,7 +130,7 @@ public class DDBlocks {
     public static final Supplier<GeyserBlock> GEYSER = registerBlock("geyser", true, () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).requiresCorrectToolForDrops()));
     public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", true, () -> new Block(BlockBehaviour.Properties.of(Material.GLASS).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
     public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", true, () -> new GloomCactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
-    public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", true, () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
+    public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", true, () -> new GloomGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
 
     // Miscellaneous
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));

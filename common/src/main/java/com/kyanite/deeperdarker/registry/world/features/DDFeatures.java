@@ -14,7 +14,7 @@ public class DDFeatures {
     public static final Supplier<SculkGleamFeature> SCULK_GLEAM_BLOB = RegistryHelper.registerFeature("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<SculkVinesFeature> SCULK_VINES = RegistryHelper.registerFeature("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<SculkPillarFeature> SCULK_PILLAR = RegistryHelper.registerFeature("otherside_pillar", () -> new SculkPillarFeature(NoneFeatureConfiguration.CODEC, new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>().add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 100))));
-    public static final Supplier<GloomyPillarFeature> GLOOM_SCULK_PILLAR = RegistryHelper.registerFeature("gloom_otherside_pillar", () -> new GloomyPillarFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<GloomPillarFeature> GLOOM_SCULK_PILLAR = RegistryHelper.registerFeature("gloom_otherside_pillar", () -> new GloomPillarFeature(NoneFeatureConfiguration.CODEC));
 
     public static final Supplier<EchoTreeFeature> ECHO_TREE = RegistryHelper.registerFeature("echo_tree", () -> new EchoTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<SculkTendrilFeature> SCULK_TENDRILS = RegistryHelper.registerFeature("sculk_tendrils", () -> new SculkTendrilFeature(NoneFeatureConfiguration.CODEC));

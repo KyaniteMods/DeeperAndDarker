@@ -10,8 +10,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class GloomyPillarFeature extends Feature<NoneFeatureConfiguration> {
-    public GloomyPillarFeature(Codec<NoneFeatureConfiguration> codec) {
+public class GloomPillarFeature extends Feature<NoneFeatureConfiguration> {
+    public GloomPillarFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
     }
 
