@@ -7,7 +7,7 @@ dependencies {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/deeperdarker.accessWidener")
+    accessWidenerPath = file("src/main/resources/deeperdarker.accesswidener")
 }
 
 architectury {
