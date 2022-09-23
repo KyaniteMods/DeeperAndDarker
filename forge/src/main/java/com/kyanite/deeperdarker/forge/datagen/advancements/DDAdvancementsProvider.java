@@ -77,6 +77,8 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                         null, FrameType.CHALLENGE, true, true, false)
                 .rewards(AdvancementRewards.Builder.experience(120))
                 .addCriterion("otherside_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OTHERSIDE_DEEPLANDS)))
+                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.BLOOMING_CAVERNS)))
+                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST)))
                 .requirements(RequirementsStrategy.AND).save(consumer, path + "explore_otherside");
 

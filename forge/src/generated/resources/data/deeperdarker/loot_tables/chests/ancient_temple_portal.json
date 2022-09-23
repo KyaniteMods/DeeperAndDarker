@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "deeperdarker:sculk_transmitter"
         }
       ],
       "rolls": 1.0
