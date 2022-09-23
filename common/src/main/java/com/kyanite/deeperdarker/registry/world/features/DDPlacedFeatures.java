@@ -4,6 +4,11 @@ import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.WeightedListInt;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -35,7 +40,7 @@ public class DDPlacedFeatures {
     public static final Supplier<PlacedFeature> ECHO_TREE_SPAWN = registerPlacedFeature("echo_tree_placed", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ECHO_TREE.get()), echoTreePlacement()));
 
     public static final Supplier<PlacedFeature> GLOOM_SCULK_VEGETATION = registerPlacedFeature("gloom_sculk_vegetation", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_SCULK_VEGETATION_BASE.get()), vegetationPlacement()));
-    public static final Supplier<PlacedFeature> GLOOMSTONE_PILLAR = registerPlacedFeature("gloom_otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_PILLAR.get()), commonOrePlacement(60, PlacementUtils.FULL_RANGE)));
+    public static final Supplier<PlacedFeature> GLOOMSTONE_PILLAR = registerPlacedFeature("gloom_otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_PILLAR.get()), gloomPillarPlacement()));
 
 
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
@@ -55,11 +60,21 @@ public class DDPlacedFeatures {
         return orePlacement(RarityFilter.onAverageOnceEvery(chance), range);
     }
 
+    public static List<PlacementModifier> gloomPillarPlacement() {
+        ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
+        builder.add(CountPlacement.of(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(ConstantInt.of(50), 9).add(ConstantInt.of(51), 1).build())));
+        builder.add(InSquarePlacement.spread());
+        builder.add(SurfaceWaterDepthFilter.forMaxDepth(0));
+        builder.add(HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR));
+        builder.add(BiomeFilter.biome());
+        return builder.build();
+    }
+
     public static List<PlacementModifier> vegetationPlacement() {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
         builder.add(InSquarePlacement.spread());
         builder.add(CountOnEveryLayerPlacement.of(8));
-        builder.add(SurfaceWaterDepthFilter.forMaxDepth(0));
+        builder.add(HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE));
         builder.add(BiomeFilter.biome());
         return builder.build();
     }

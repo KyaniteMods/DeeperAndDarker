@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.world.features;
+package com.kyanite.deeperdarker.registry.world.features.custom;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.mojang.serialization.Codec;

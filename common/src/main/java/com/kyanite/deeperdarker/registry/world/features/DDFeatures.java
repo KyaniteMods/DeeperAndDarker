@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.registry.world.features;
 
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.world.features.custom.*;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -13,7 +14,7 @@ public class DDFeatures {
     public static final Supplier<SculkGleamFeature> SCULK_GLEAM_BLOB = RegistryHelper.registerFeature("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<SculkVinesFeature> SCULK_VINES = RegistryHelper.registerFeature("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<SculkPillarFeature> SCULK_PILLAR = RegistryHelper.registerFeature("otherside_pillar", () -> new SculkPillarFeature(NoneFeatureConfiguration.CODEC, new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>().add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 100))));
-    public static final Supplier<SculkPillarFeature> GLOOM_SCULK_PILLAR = RegistryHelper.registerFeature("gloom_otherside_pillar", () -> new SculkPillarFeature(NoneFeatureConfiguration.CODEC, new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>().add(DDBlocks.GLOOMSLATE.get().defaultBlockState(), 70).add(DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState(), 45))));
+    public static final Supplier<GloomyPillarFeature> GLOOM_SCULK_PILLAR = RegistryHelper.registerFeature("gloom_otherside_pillar", () -> new GloomyPillarFeature(NoneFeatureConfiguration.CODEC));
 
     public static final Supplier<EchoTreeFeature> ECHO_TREE = RegistryHelper.registerFeature("echo_tree", () -> new EchoTreeFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<SculkTendrilFeature> SCULK_TENDRILS = RegistryHelper.registerFeature("sculk_tendrils", () -> new SculkTendrilFeature(NoneFeatureConfiguration.CODEC));

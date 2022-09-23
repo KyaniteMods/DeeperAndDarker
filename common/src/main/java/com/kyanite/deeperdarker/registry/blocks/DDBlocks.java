@@ -128,7 +128,7 @@ public class DDBlocks {
     public static final Supplier<StairBlock> GLOOMSLATE_STAIRS = registerBlock("gloomslate_stairs", true, () -> new StairBlock(GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
     public static final Supplier<WallBlock> GLOOMSLATE_WALL = registerBlock("gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
     public static final Supplier<GeyserBlock> GEYSER = registerBlock("geyser", true, () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).requiresCorrectToolForDrops()));
-    public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", true, () -> new Block(BlockBehaviour.Properties.of(Material.SCULK).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
+    public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", true, () -> new Block(BlockBehaviour.Properties.of(Material.GLASS).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
     public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", true, () -> new GloomCactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
     public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", true, () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
 
