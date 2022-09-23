@@ -2,14 +2,19 @@ package com.kyanite.deeperdarker.registry.world.features;
 
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.WeightedListInt;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicateType;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
@@ -65,17 +70,15 @@ public class DDPlacedFeatures {
         builder.add(CountPlacement.of(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(ConstantInt.of(50), 9).add(ConstantInt.of(51), 1).build())));
         builder.add(InSquarePlacement.spread());
         builder.add(SurfaceWaterDepthFilter.forMaxDepth(0));
-        builder.add(HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR));
         builder.add(BiomeFilter.biome());
         return builder.build();
     }
 
     public static List<PlacementModifier> vegetationPlacement() {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
-        builder.add(InSquarePlacement.spread());
         builder.add(CountOnEveryLayerPlacement.of(8));
-        builder.add(HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE));
         builder.add(BiomeFilter.biome());
+        builder.add(BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
         return builder.build();
     }
 
