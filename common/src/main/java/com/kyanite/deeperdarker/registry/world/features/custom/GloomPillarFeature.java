@@ -33,9 +33,9 @@ public class GloomPillarFeature extends Feature<NoneFeatureConfiguration> {
         if (!down.is(DDBlocks.GLOOM_SCULK.get()))
             return false;
 
-        for (int i = 0; i < pillarHeight; i++) {
-            int newY = y + i;
-            float percentageToTop = ((float)pillarHeight) / i;
+        for (int i = 1; i < pillarHeight+1; i++) {
+            int newY = y + i - 1;
+            float percentageToTop = i / ((float)pillarHeight+1);
             BlockPos pos = new BlockPos(pContext.origin().getX(), newY, pContext.origin().getZ());
 
             if(percentageToTop >= 0.5f && percentageToTop <= 0.7f) {

@@ -68,9 +68,8 @@ public class DDPlacedFeatures {
 
     public static List<PlacementModifier> gloomPillarPlacement() {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
-        builder.add(CountPlacement.of(32));
+        builder.add(CountOnEveryLayerPlacement.of(32));
         builder.add(InSquarePlacement.spread());
-        builder.add(PlacementUtils.FULL_RANGE);
         builder.add(BiomeFilter.biome());
         return builder.build();
     }
@@ -79,7 +78,7 @@ public class DDPlacedFeatures {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
         builder.add(CountOnEveryLayerPlacement.of(25));
         builder.add(InSquarePlacement.spread());
-        builder.add(PlacementUtils.FULL_RANGE);
+        builder.add(PlacementUtils.HEIGHTMAP_WORLD_SURFACE)
         builder.add(BiomeFilter.biome());
         return builder.build();
     }
