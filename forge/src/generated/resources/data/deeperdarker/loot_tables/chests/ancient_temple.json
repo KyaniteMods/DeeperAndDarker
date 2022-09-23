@@ -393,7 +393,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "deeperdarker:warden_carapace"
         }
       ],
       "rolls": {

@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "deeperdarker:sculk_transmitter"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:air"
+      "item": "deeperdarker:sculk_transmitter"
     },
     "show_toast": true,
     "title": {

@@ -1,6 +1,22 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
+    "blooming_caverns": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:blooming_caverns"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "echoing_forest": {
       "conditions": {
         "player": [
@@ -32,6 +48,22 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "overcast_columns": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:overcast_columns"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -42,7 +74,7 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "minecraft:air"
+      "item": "deeperdarker:echo_log"
     },
     "show_toast": true,
     "title": {
@@ -52,6 +84,12 @@
   "requirements": [
     [
       "otherside_deeplands"
+    ],
+    [
+      "blooming_caverns"
+    ],
+    [
+      "overcast_columns"
     ],
     [
       "echoing_forest"
