@@ -11,6 +11,7 @@ import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.WeightedListInt;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -67,9 +68,8 @@ public class DDPlacedFeatures {
 
     public static List<PlacementModifier> gloomPillarPlacement() {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
-        builder.add(CountPlacement.of(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(ConstantInt.of(50), 9).add(ConstantInt.of(51), 1).build())));
+        builder.add(CountPlacement.of(12));
         builder.add(InSquarePlacement.spread());
-        builder.add(SurfaceWaterDepthFilter.forMaxDepth(0));
         builder.add(BiomeFilter.biome());
         return builder.build();
     }
@@ -78,7 +78,7 @@ public class DDPlacedFeatures {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
         builder.add(CountOnEveryLayerPlacement.of(8));
         builder.add(BiomeFilter.biome());
-        builder.add(BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+        builder.add(HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING));
         return builder.build();
     }
 
