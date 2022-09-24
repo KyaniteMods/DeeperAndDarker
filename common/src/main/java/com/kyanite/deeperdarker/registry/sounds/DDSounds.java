@@ -32,6 +32,9 @@ public class DDSounds {
     public static final Supplier<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
     public static final Supplier<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
 
+    // Stalker
+    public static final Supplier<SoundEvent> STALKER_RING = register("entity.stalker.ring");
+
     // Portal
     public static final Supplier<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 

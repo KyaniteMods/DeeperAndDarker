@@ -47,6 +47,11 @@ public class DDEntities {
             SculkCentipedeEntity::new, MobCategory.MONSTER, 2.3f, 0.3f, 10
     );
 
+    public static final Supplier<EntityType<StalkerEntity>> STALKER = RegistryHelper.registerEntity(
+            "stalker",
+            StalkerEntity::new, MobCategory.MONSTER, 1f, 4.4f, 10
+    );
+
     public static void registerEntities() {
         DeeperAndDarker.LOGGER.info("Deeper And Darker entities have been registered");
     }

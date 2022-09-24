@@ -106,6 +106,7 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
+            EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
         }
 
         @SubscribeEvent
