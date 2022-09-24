@@ -43,32 +43,28 @@ import java.util.Map;
 
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
-    public static Block PORTAL_BLOCK = new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable());
-    public static Item HEART = new DeepHeartItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     public DeeperAndDarkerForge() {
-        DeeperAndDarker.init(() -> {
-            IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        DeeperAndDarker.init(() -> {});
 
-            DDPoiTypes.POI.register(bus);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-            RegistryHelperImpl.SOUND_EVENTS.register(bus);
-            RegistryHelperImpl.ITEMS.register(bus);
-            RegistryHelperImpl.BLOCKS.register(bus);
-            RegistryHelperImpl.ENCHANTMENTS.register(bus);
-            RegistryHelperImpl.MOB_EFFECTS.register(bus);
-            RegistryHelperImpl.POTIONS.register(bus);
-            RegistryHelperImpl.ENTITY_TYPES.register(bus);
-            RegistryHelperImpl.FEATURES.register(bus);
-            RegistryHelperImpl.CONFIGURED_FEATURES.register(bus);
-            RegistryHelperImpl.PLACED_FEATURES.register(bus);
-            RegistryHelperImpl.BIOMES.register(bus);
+        RegistryHelperImpl.SOUND_EVENTS.register(bus);
+        RegistryHelperImpl.ITEMS.register(bus);
+        RegistryHelperImpl.BLOCKS.register(bus);
+        RegistryHelperImpl.ENCHANTMENTS.register(bus);
+        RegistryHelperImpl.MOB_EFFECTS.register(bus);
+        RegistryHelperImpl.POTIONS.register(bus);
+        RegistryHelperImpl.ENTITY_TYPES.register(bus);
+        RegistryHelperImpl.FEATURES.register(bus);
+        RegistryHelperImpl.CONFIGURED_FEATURES.register(bus);
+        RegistryHelperImpl.PLACED_FEATURES.register(bus);
+        RegistryHelperImpl.BIOMES.register(bus);
+        DDBiomeModifiers.BIOME_MODIFIERS.register(bus);
+        DDPoiTypes.POI.register(bus);
 
-            DDBiomeModifiers.BIOME_MODIFIERS.register(bus);
+        bus.addListener(this::attributes);
 
-            bus.addListener(this::attributes);
-
-            MinecraftForge.EVENT_BUS.register(this);
-        });
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     public void attributes(EntityAttributeCreationEvent event) {

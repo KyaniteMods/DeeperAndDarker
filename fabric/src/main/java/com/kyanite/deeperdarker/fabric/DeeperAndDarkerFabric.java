@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeeperAndDarkerFabric implements ModInitializer {
-    public static Block PORTAL_BLOCK = new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable());
+    public static OthersidePortalBlock PORTAL_BLOCK = new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable());
     public static Item HEART = new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
 
     @Override
@@ -41,7 +41,7 @@ public class DeeperAndDarkerFabric implements ModInitializer {
                     .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP.get()))
                     .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
                     .tintColor(5, 98, 93)
-                    .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+                    .customPortalBlock(PORTAL_BLOCK)
                     .forcedSize(20, 6)
                     .registerPortal();
         });
