@@ -27,11 +27,23 @@ public class CustomAttackAnimMelee extends MeleeAttackGoal {
         return attackReach + pAttackTarget.getBbWidth();
     }
 
+    public boolean checkInRange(float a, float b, double deviation)
+    {
+        if (a < b)
+        {
+            a = a + b;
+            b = a - b;
+            a = a - b;
+        }
+
+        return ((a - b) <= deviation || a == b);
+    }
+
     @Override
     protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
         double d0 = this.getAttackReachSqr(pEnemy);
         ActionAnimatedEntity entity = (ActionAnimatedEntity) this.mob;
-        if (pDistToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0 && !entity.isMoving) {
+        if (pDistToEnemySqr <= d0 && checkInRange(pEnemy.blockPosition().getY(), entity.blockPosition().getY() + 5, 5) && this.getTicksUntilNextAttack() <= 0 && !entity.isMoving) {
             this.resetAttackCooldown();
             entity.setState(state);
         }

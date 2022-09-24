@@ -49,15 +49,6 @@ public class DeeperAndDarker {
         OthersideBiomes.createBiomes();
         DDDimensions.registerDimensions();
 
-//        CustomPortalBuilder.beginPortal()
-//                .frameBlock(Blocks.REINFORCED_DEEPSLATE)
-//                .customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-//                .destDimID(new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"))
-//                .tintColor(5, 98, 93)
-//                .customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-//                .forcedSize(20, 6)
-//                .registerPortal();
-
         callback.callback();
     }
 
