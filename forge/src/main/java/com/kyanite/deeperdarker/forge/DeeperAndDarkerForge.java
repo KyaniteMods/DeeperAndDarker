@@ -3,20 +3,29 @@ package com.kyanite.deeperdarker.forge;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
+import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
+import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,28 +43,32 @@ import java.util.Map;
 
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
+    public static Block PORTAL_BLOCK = new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable());
+    public static Item HEART = new DeepHeartItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     public DeeperAndDarkerForge() {
-        DeeperAndDarker.init(() -> {});
+        DeeperAndDarker.init(() -> {
+            IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+            DDPoiTypes.POI.register(bus);
 
-        RegistryHelperImpl.SOUND_EVENTS.register(bus);
-        RegistryHelperImpl.ITEMS.register(bus);
-        RegistryHelperImpl.BLOCKS.register(bus);
-        RegistryHelperImpl.ENCHANTMENTS.register(bus);
-        RegistryHelperImpl.MOB_EFFECTS.register(bus);
-        RegistryHelperImpl.POTIONS.register(bus);
-        RegistryHelperImpl.ENTITY_TYPES.register(bus);
-        RegistryHelperImpl.FEATURES.register(bus);
-        RegistryHelperImpl.CONFIGURED_FEATURES.register(bus);
-        RegistryHelperImpl.PLACED_FEATURES.register(bus);
-        RegistryHelperImpl.BIOMES.register(bus);
+            RegistryHelperImpl.SOUND_EVENTS.register(bus);
+            RegistryHelperImpl.ITEMS.register(bus);
+            RegistryHelperImpl.BLOCKS.register(bus);
+            RegistryHelperImpl.ENCHANTMENTS.register(bus);
+            RegistryHelperImpl.MOB_EFFECTS.register(bus);
+            RegistryHelperImpl.POTIONS.register(bus);
+            RegistryHelperImpl.ENTITY_TYPES.register(bus);
+            RegistryHelperImpl.FEATURES.register(bus);
+            RegistryHelperImpl.CONFIGURED_FEATURES.register(bus);
+            RegistryHelperImpl.PLACED_FEATURES.register(bus);
+            RegistryHelperImpl.BIOMES.register(bus);
 
-        DDBiomeModifiers.BIOME_MODIFIERS.register(bus);
+            DDBiomeModifiers.BIOME_MODIFIERS.register(bus);
 
-        bus.addListener(this::attributes);
+            bus.addListener(this::attributes);
 
-        MinecraftForge.EVENT_BUS.register(this);
+            MinecraftForge.EVENT_BUS.register(this);
+        });
     }
 
     public void attributes(EntityAttributeCreationEvent event) {
@@ -68,6 +81,11 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerCommon {
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
+            event.enqueueWork(() -> {
+                Sheets.addWoodType(DDWoodTypes.ECHO);
+                DeeperAndDarker.spawnPlacements();
+            });
+
             ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.5f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);

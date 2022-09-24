@@ -39,12 +39,10 @@ public class OthersideBiomes {
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOM_SCULK_VEGETATION.get()));
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOMSTONE_PILLAR.get()));
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.GLOOMSLATE.get()));
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, Holder.direct(DDPlacedFeatures.GEYSER.get()));
 
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
-
-
-        addSculkDecoration(biomeBuilder);
-        addSculkOres(biomeBuilder);
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
                 .temperature(0.7f)
@@ -53,6 +51,7 @@ public class OthersideBiomes {
                         .waterFogColor(0xa88539)
                         .fogColor(0xd19f4f)
                         .skyColor(0x8f6014)
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.055f))
                         .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
                         .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
                         .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))

@@ -29,12 +29,14 @@ public class DDConfiguredFeatures {
     public static final Supplier<ConfiguredFeature<?, ?>> ECHO_TREE = register("echo_tree", DDFeatures.ECHO_TREE);
     public static final Supplier<ConfiguredFeature<?, ?>> SCULK_VINES = register("sculk_vines", DDFeatures.SCULK_VINES);
     public static final Supplier<ConfiguredFeature<?, ?>> SCULK_TENDRILS = register("sculk_tendrils", DDFeatures.SCULK_TENDRILS);
+    public static final Supplier<ConfiguredFeature<?, ?>> GLOOMSLATE = register("gloomslate", DDFeatures.GLOOMSLATE);
 
 
     // Decoration Gen
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_SCULK = RegistryHelper.registerConfiguredFeature("ore_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.SCULK_TARGET_LIST.get(), 64)));
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_ECHO_SAND = RegistryHelper.registerConfiguredFeature("ore_echo_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ECHO_SAND_TARGET_LIST.get(), 32)));
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_INFESTED_SCULK = RegistryHelper.registerConfiguredFeature("ore_infested_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.INFESTED_SCULK_TARGET_LIST.get(), 3)));
+    public static final Supplier<ConfiguredFeature<?, ?>> ORE_GEYSER = RegistryHelper.registerConfiguredFeature("ore_geyser", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.GEYSER_TARGET_LIST.get(), 5)));
     public static final Supplier<ConfiguredFeature<?, ?>> ORE_SCULK_JAW = RegistryHelper.registerConfiguredFeature("ore_sculk_jaw", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.SCULK_JAW_TARGET_LIST.get(), 8)));
 
     // Otherside Ores

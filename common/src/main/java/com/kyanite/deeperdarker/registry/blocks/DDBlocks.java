@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.registry.blocks;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
+import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.*;
@@ -136,7 +137,7 @@ public class DDBlocks {
     // Miscellaneous
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
     public static final Supplier<Block> ANCIENT_VASE = registerBlock("ancient_vase", true, () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
-    public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable()));
+    public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, PortalHelper.getPortalBlock());
 
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createItem, Supplier<T> block) {
         Supplier<T> toReturn = RegistryHelper.registerBlock(name, block);

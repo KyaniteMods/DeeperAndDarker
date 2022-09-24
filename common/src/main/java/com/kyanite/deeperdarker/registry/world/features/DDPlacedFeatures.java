@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -15,6 +16,7 @@ public class DDPlacedFeatures {
     public static final Supplier<PlacedFeature> SCULK = registerPlacedFeature("sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK.get()), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static final Supplier<PlacedFeature> ECHO_SAND = registerPlacedFeature("echo_sand", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_ECHO_SAND.get()), commonOrePlacement(200, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
     public static final Supplier<PlacedFeature> INFESTED_SCULK = registerPlacedFeature("infested_sculk", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_INFESTED_SCULK.get()), commonOrePlacement(35, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
+    public static final Supplier<PlacedFeature> GEYSER = registerPlacedFeature("geyser", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_GEYSER.get()), commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 
     public static final Supplier<PlacedFeature> SCULK_JAW = registerPlacedFeature("sculk_jaw", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.ORE_SCULK_JAW.get()), commonOrePlacement(250, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top()))));
 
@@ -38,6 +40,9 @@ public class DDPlacedFeatures {
     public static final Supplier<PlacedFeature> GLOOMSTONE_PILLAR = registerPlacedFeature("gloom_otherside_pillar", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOM_PILLAR.get()), gloomPillarPlacement()));
 
 
+    public static final Supplier<PlacedFeature> GLOOMSLATE = registerPlacedFeature("gloomslate", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOMSLATE.get()), gloomSlatePlacement()));
+
+
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
         builder.add(InSquarePlacement.spread());
@@ -57,7 +62,15 @@ public class DDPlacedFeatures {
 
     public static List<PlacementModifier> gloomPillarPlacement() {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
-        builder.add(CountOnEveryLayerPlacement.of(32));
+        builder.add(CountOnEveryLayerPlacement.of(7));
+        builder.add(InSquarePlacement.spread());
+        builder.add(BiomeFilter.biome());
+        return builder.build();
+    }
+
+    public static List<PlacementModifier> gloomSlatePlacement() {
+        ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
+        builder.add(CountOnEveryLayerPlacement.of(10));
         builder.add(InSquarePlacement.spread());
         builder.add(BiomeFilter.biome());
         return builder.build();

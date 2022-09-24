@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDArmorMaterials;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
+import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
@@ -22,7 +23,7 @@ import static com.kyanite.deeperdarker.platform.RegistryHelper.registerItem;
 public class DDItems {
 
     public static final Supplier<Item> BLOOM_BERRIES = registerItem("bloom_berries", () -> new ItemNameBlockItem(DDBlocks.BLOOM_BERRY_BUSH.get(), new Item.Properties().food(Foods.GLOW_BERRIES).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Supplier<Item> HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", PortalHelper.getHeartItem());
     public static final Supplier<Item> REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> WARDEN_CARAPACE = registerItem("warden_carapace", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SOUL_DUST = registerItem("soul_dust", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
