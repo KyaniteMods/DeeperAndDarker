@@ -1,3 +1,6 @@
 {
-  "parent": "deeperdarker:block/sculk_tendrils"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "deeperdarker:block/sculk_tendrils_plant"
+  }
 }

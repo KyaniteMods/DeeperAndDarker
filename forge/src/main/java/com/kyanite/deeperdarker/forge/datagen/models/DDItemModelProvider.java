@@ -38,6 +38,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_TRAPDOOR, "bottom");
         blockModel(DDBlocks.ECHO_FENCE_GATE);
         itemModel(() -> DDBlocks.ECHO_SIGN.get().asItem(), GENERATED);
+        blockModel(DDBlocks.ECHO_SOIL);
 
         blockModel(DDBlocks.SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_SLAB);
@@ -70,32 +71,36 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.INFESTED_SCULK);
 
         getBuilder(getName(DDBlocks.SCULK_VINES.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.SCULK_VINES_PLANT.get()));
-
-        blockModel(DDBlocks.SCULK_JAW);
+        getBuilder(getName(DDBlocks.SCULK_TENDRILS.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.SCULK_TENDRILS_PLANT.get()));
         blockModel(DDBlocks.SCULK_GLEAM);
-        blockModel(DDBlocks.ANCIENT_VASE);
-        blockModel(DDBlocks.ECHO_SOIL);
 
+        blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
+        getBuilder(getName(DDBlocks.BLOOMING_SHRUB.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.BLOOMING_SHRUB.get()));
 
-        blockModel(DDBlocks.GLOOM_CACTUS);
         blockModel(DDBlocks.GLOOM_SCULK);
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_SLAB);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
         blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.GEYSER);
+        blockModel(DDBlocks.CRYSTALLIZED_AMBER);
+        blockModel(DDBlocks.GLOOM_CACTUS);
+        getBuilder(getName(DDBlocks.GLOOMY_GRASS.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.GLOOMY_GRASS.get()));
 
-        blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
-        blockModel(DDBlocks.BLOOM_BERRY_BUSH, "stage3");
-        blockModel(DDBlocks.BLOOMING_SHRUB);
+        // sculk tendril plant
+        // double bloom berry
 
-        blockModel(DDBlocks.SCULK_TENDRILS);
-        blockModel(DDBlocks.SCULK_TENDRILS_PLANT);
+        // ancient vase
 
+        blockModel(DDBlocks.SCULK_JAW);
+        blockModel(DDBlocks.ANCIENT_VASE);
+
+        itemModel(DDItems.BLOOM_BERRIES, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
-        getBuilder(getName(DDItems.SCULK_TRANSMITTER.get()) + "_on").parent(GENERATED).texture("layer0", "item/" + getName(DDItems.SCULK_TRANSMITTER.get()) + "_on");
+        getBuilder(getName(DDItems.SCULK_TRANSMITTER) + "_on").parent(GENERATED).texture("layer0", "item/" + getName(DDItems.SCULK_TRANSMITTER) + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
@@ -107,10 +112,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
 
-        withExistingParent(getName(DDItems.SCULK_LEECH_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
-        withExistingParent(getName(DDItems.SCULK_SNAPPER_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
-        withExistingParent(getName(DDItems.SHATTERED_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
-        withExistingParent(getName(DDItems.SHRIEK_WORM_SPAWN_EGG.get()), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SCULK_LEECH_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SCULK_SNAPPER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SHATTERED_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SHRIEK_WORM_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
 
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
@@ -126,16 +131,15 @@ public class DDItemModelProvider extends ItemModelProvider {
         return block.builtInRegistryHolder().key().location().getPath();
     }
 
-    public String getName(Item item) {
-        return item.builtInRegistryHolder().key().location().getPath();
+    public String getName(Supplier<? extends Item> item) {
+        return item.get().builtInRegistryHolder().key().location().getPath();
     }
 
     public void blockModel(Supplier<? extends Block> block, String suffix) {
         withExistingParent(getName(block.get()), modLoc("block/" + getName(block.get()) + "_" + suffix));
     }
 
-
     public void itemModel(Supplier<? extends Item> item, ModelFile modelFile) {
-        getBuilder(getName(item.get())).parent(modelFile).texture("layer0", "item/" + getName(item.get()));
+        getBuilder(getName(item)).parent(modelFile).texture("layer0", "item/" + getName(item));
     }
 }
