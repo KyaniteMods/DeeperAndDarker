@@ -22,10 +22,22 @@ public class GloomPillarFeature extends Feature<NoneFeatureConfiguration> {
         return false;
     }
 
+    public int getHeight(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
+        int number = 0;
+        while(true) {
+            BlockPos pos = new BlockPos(pContext.origin().getX(), pContext.origin().getY() + number + 1, pContext.origin().getZ());
+            if(pContext.level().getBlockState(pos.below()   ).isAir()) {
+                number = number + 1;
+                continue;
+            }else{
+                return number;
+            }
+        }
+    }
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
         int y = pContext.origin().getY();
-        int pillarHeight = pContext.random().nextInt(6, 14);
+        int pillarHeight = getHeight(pContext);
 
         BlockState down = pContext.level().getBlockState(pContext.origin().below());
 
@@ -41,7 +53,8 @@ public class GloomPillarFeature extends Feature<NoneFeatureConfiguration> {
             if(percentageToTop >= 0.5f && percentageToTop <= 0.7f) {
                 pContext.level().setBlock(pos, DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState(), i);
             } else {
-                pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), i);
+                if(pContext.random().nextInt(0, 3) == 0) pContext.level().setBlock(pos, DDBlocks.GLOOM_SCULK.get().defaultBlockState(), i); else
+                    pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), i);
             }
         }
 
