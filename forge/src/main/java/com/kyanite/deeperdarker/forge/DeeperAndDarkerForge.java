@@ -118,6 +118,7 @@ public class DeeperAndDarkerForge {
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.GLOOMY_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.BLOOMING_SHRUB.get(), RenderType.cutout());
         }
 
         @SubscribeEvent
