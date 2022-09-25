@@ -118,11 +118,6 @@ public class DDBlocks {
     public static final Supplier<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = registerBlock("sculk_tendrils_plant", false, () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()));
     public static final Supplier<Block> SCULK_GLEAM = registerBlock("sculk_gleam", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
 
-    // Blooming Caverns
-    public static final Supplier<Block> BLOOMING_GRASS_BLOCK = registerBlock("blooming_grass_block", true, () -> new BloomGrass(BlockBehaviour.Properties.of(Material.MOSS).strength(0.8f).sound(DDSounds.SCULK_STONE)));
-    public static final Supplier<Block> BLOOMING_SHRUB = registerBlock("blooming_shrub", true, () -> new BloomingShrubBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.GRASS).randomTicks().noCollission().instabreak()));
-    public static final Supplier<Block> BLOOM_BERRY_BUSH = registerBlock("bloom_berry_bush", false, () -> new BloomBerryBushBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SWEET_BERRY_BUSH).lightLevel(state -> 4).randomTicks().noCollission()));
-
     // Overcast Columns
     public static final Supplier<GloomSculkBlock> GLOOM_SCULK = registerBlock("gloom_sculk", true, () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Supplier<Block> GLOOMSLATE = registerBlock("gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));

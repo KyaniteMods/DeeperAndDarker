@@ -74,9 +74,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         getBuilder(getName(DDBlocks.SCULK_TENDRILS.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.SCULK_TENDRILS_PLANT.get()));
         blockModel(DDBlocks.SCULK_GLEAM);
 
-        blockModel(DDBlocks.BLOOMING_GRASS_BLOCK);
-        getBuilder(getName(DDBlocks.BLOOMING_SHRUB.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.BLOOMING_SHRUB.get()));
-
         blockModel(DDBlocks.GLOOM_SCULK);
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_SLAB);
@@ -95,7 +92,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_JAW);
         blockModel(DDBlocks.ANCIENT_VASE);
 
-        itemModel(DDItems.BLOOM_BERRIES, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);

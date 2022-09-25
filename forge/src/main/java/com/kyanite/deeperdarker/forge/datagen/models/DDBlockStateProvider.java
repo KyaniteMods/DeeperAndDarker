@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.forge.datagen.models;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.BloomBerryBushBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -75,11 +74,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS_PLANT), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
-
-        simpleBlock(DDBlocks.BLOOMING_GRASS_BLOCK.get(), models().cubeBottomTop(getName(DDBlocks.BLOOMING_GRASS_BLOCK), blockLoc(DDBlocks.BLOOMING_GRASS_BLOCK, "side"), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.BLOOMING_GRASS_BLOCK)));
-        simpleBlock(DDBlocks.BLOOMING_SHRUB.get(), models().cross(getName(DDBlocks.BLOOMING_SHRUB), blockLoc(DDBlocks.BLOOMING_SHRUB)).renderType("cutout"));
-        ConfiguredModel[] bbm = { new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage0", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage0")).renderType("cutout")), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage1", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage1")).renderType("cutout")), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage2", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage2")).renderType("cutout")), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage3", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage3")).renderType("cutout")) };
-        getVariantBuilder(DDBlocks.BLOOM_BERRY_BUSH.get()).partialState().with(BloomBerryBushBlock.AGE, 0).setModels(bbm[0]).partialState().with(BloomBerryBushBlock.AGE, 1).setModels(bbm[1]).partialState().with(BloomBerryBushBlock.AGE, 2).setModels(bbm[2]).partialState().with(BloomBerryBushBlock.AGE, 3).setModels(bbm[3]);
 
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
         simpleBlock(DDBlocks.GLOOMSLATE.get());

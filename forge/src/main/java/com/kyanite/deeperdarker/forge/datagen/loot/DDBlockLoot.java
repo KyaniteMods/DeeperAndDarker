@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.forge.datagen.loot;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.BloomBerryBushBlock;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLoot;
@@ -80,10 +79,6 @@ public class DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
         this.dropSelf(DDBlocks.ECHO_SOIL.get());
         this.dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
-
-        this.dropSelf(DDBlocks.BLOOMING_GRASS_BLOCK.get());
-        this.add(DDBlocks.BLOOMING_SHRUB.get(), BlockLoot::createShearsOnlyDrop);
-        this.add(DDBlocks.BLOOM_BERRY_BUSH.get(), block -> applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.BLOOM_BERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BloomBerryBushBlock.AGE, 3))).add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.BLOOM_BERRY_BUSH.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BloomBerryBushBlock.AGE, 2))).add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))));
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get()); 
         this.dropSelf(DDBlocks.GLOOMSLATE.get());

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "deeperdarker:block/sculk_stone",
-    "side": "deeperdarker:block/blooming_grass_block_side",
-    "top": "deeperdarker:block/blooming_grass_block"
-  }
-}

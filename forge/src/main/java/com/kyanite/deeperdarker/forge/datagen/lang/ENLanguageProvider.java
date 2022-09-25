@@ -30,7 +30,7 @@ public class ENLanguageProvider extends LanguageProvider {
         RegistryHelperImpl.MOB_EFFECTS.getEntries().forEach(this::addEffect);
         RegistryHelperImpl.ENTITY_TYPES.getEntries().forEach(this::addEntity);
         RegistryHelperImpl.BIOMES.getEntries().forEach(this::addBiome);
-        RegistryHelperImpl.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem) || item == DDItems.BLOOM_BERRIES).forEach(this::addItem);
+        RegistryHelperImpl.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(this::addItem);
         RegistryHelperImpl.ENCHANTMENTS.getEntries().forEach(this::addEnchantment);
 
         add("advancements.deeperdarker.root.title", "Sculk Story");

@@ -22,13 +22,11 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 public class OthersideBiomes {
     public static final ResourceKey<Biome> OTHERSIDE_DEEPLANDS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside_deeplands"));
     public static final ResourceKey<Biome> ECHOING_FOREST = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "echoing_forest"));
-    public static final ResourceKey<Biome> BLOOMING_CAVERNS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "blooming_caverns"));
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "overcast_columns"));
 
     public static void createBiomes() {
         RegistryHelper.registerBiome(OTHERSIDE_DEEPLANDS.location(), OthersideBiomes::deeplands);
         RegistryHelper.registerBiome(ECHOING_FOREST.location(), OthersideBiomes::forest);
-        RegistryHelper.registerBiome(BLOOMING_CAVERNS.location(), OthersideBiomes::caverns);
         RegistryHelper.registerBiome(OVERCAST_COLUMNS.location(), OthersideBiomes::columns);
     }
 
@@ -53,32 +51,6 @@ public class OthersideBiomes {
                         .fogColor(0xd19f4f)
                         .skyColor(0x8f6014)
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.055f))
-                        .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
-                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
-                        .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)).build())
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(biomeBuilder.build()).build();
-    }
-
-    public static Biome caverns() {
-        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
-        addSculkOres(biomeBuilder);
-        addSculkDecoration(biomeBuilder);
-
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
-
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
-
-
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE)
-                .temperature(1f)
-                .downfall(0.5f)
-                .specialEffects((new BiomeSpecialEffects.Builder()).waterColor(0x56dbd7)
-                        .waterFogColor(0x6bc7d1)
-                        .fogColor(0x08bcc2)
-                        .skyColor(0x22d0e3)
                         .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
                         .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
                         .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
