@@ -16,15 +16,15 @@ import net.minecraft.client.renderer.RenderType;
 public class DeeperAndDarkerFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_TENDRILS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES_PLANT.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_DOOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.GLOOMY_GRASS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES_PLANT.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_TENDRILS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.BLOOMING_SHRUB.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.GLOOMY_GRASS.get(), RenderType.cutout());
 
         EntityRendererRegistry.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);

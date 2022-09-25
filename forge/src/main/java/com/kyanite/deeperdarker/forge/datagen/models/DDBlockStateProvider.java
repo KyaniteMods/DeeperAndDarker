@@ -34,8 +34,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         stairsBlock(DDBlocks.ECHO_STAIRS.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         buttonBlock(DDBlocks.ECHO_BUTTON, blockLoc(DDBlocks.ECHO_PLANKS));
         pressurePlateBlock(DDBlocks.ECHO_PRESSURE_PLATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
-        doorBlock(DDBlocks.ECHO_DOOR.get(), blockLoc(DDBlocks.ECHO_DOOR, "bottom"), blockLoc(DDBlocks.ECHO_DOOR, "top"));
-        trapdoorBlock(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true);
+        doorBlockWithRenderType(DDBlocks.ECHO_DOOR.get(), blockLoc(DDBlocks.ECHO_DOOR, "bottom"), blockLoc(DDBlocks.ECHO_DOOR, "top"), "cutout");
+        trapdoorBlockWithRenderType(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true, "cutout");
         fenceGateBlock(DDBlocks.ECHO_FENCE_GATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         signBlock(DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         simpleBlock(DDBlocks.ECHO_SOIL.get());
@@ -70,15 +70,15 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
         simpleBlock(DDBlocks.INFESTED_SCULK.get());
 
-        simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(getName(DDBlocks.SCULK_VINES), blockLoc(DDBlocks.SCULK_VINES)));
-        simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(getName(DDBlocks.SCULK_VINES_PLANT), blockLoc(DDBlocks.SCULK_VINES_PLANT)));
-        simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS), blockLoc(DDBlocks.SCULK_TENDRILS)));
-        simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS_PLANT), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)));
+        simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(getName(DDBlocks.SCULK_VINES), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(getName(DDBlocks.SCULK_VINES_PLANT), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
+        simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(getName(DDBlocks.SCULK_TENDRILS_PLANT), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
 
         simpleBlock(DDBlocks.BLOOMING_GRASS_BLOCK.get(), models().cubeBottomTop(getName(DDBlocks.BLOOMING_GRASS_BLOCK), blockLoc(DDBlocks.BLOOMING_GRASS_BLOCK, "side"), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.BLOOMING_GRASS_BLOCK)));
-        simpleBlock(DDBlocks.BLOOMING_SHRUB.get(), models().cross(getName(DDBlocks.BLOOMING_SHRUB), blockLoc(DDBlocks.BLOOMING_SHRUB)));
-        ConfiguredModel[] bbm = { new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage0", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage0"))), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage1", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage1"))), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage2", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage2"))), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage3", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage3"))) };
+        simpleBlock(DDBlocks.BLOOMING_SHRUB.get(), models().cross(getName(DDBlocks.BLOOMING_SHRUB), blockLoc(DDBlocks.BLOOMING_SHRUB)).renderType("cutout"));
+        ConfiguredModel[] bbm = { new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage0", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage0")).renderType("cutout")), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage1", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage1")).renderType("cutout")), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage2", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage2")).renderType("cutout")), new ConfiguredModel(models().cross(getName(DDBlocks.BLOOM_BERRY_BUSH) + "_stage3", blockLoc(DDBlocks.BLOOM_BERRY_BUSH, "stage3")).renderType("cutout")) };
         getVariantBuilder(DDBlocks.BLOOM_BERRY_BUSH.get()).partialState().with(BloomBerryBushBlock.AGE, 0).setModels(bbm[0]).partialState().with(BloomBerryBushBlock.AGE, 1).setModels(bbm[1]).partialState().with(BloomBerryBushBlock.AGE, 2).setModels(bbm[2]).partialState().with(BloomBerryBushBlock.AGE, 3).setModels(bbm[3]);
 
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
@@ -89,7 +89,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GEYSER.get(), models().cubeTop(getName(DDBlocks.GEYSER), blockLoc(DDBlocks.GLOOM_SCULK), blockLoc(DDBlocks.GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(getName(DDBlocks.CRYSTALLIZED_AMBER), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")));
         simpleBlock(DDBlocks.GLOOM_CACTUS.get(), models().withExistingParent(getName(DDBlocks.GLOOM_CACTUS), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOM_CACTUS, "top")));
-        simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(getName(DDBlocks.GLOOMY_GRASS), blockLoc(DDBlocks.GLOOMY_GRASS)));
+        simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(getName(DDBlocks.GLOOMY_GRASS), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
 
         ConfiguredModel[] sjm = { new ConfiguredModel(models().cubeAll(getName(DDBlocks.SCULK_JAW) + "_activated", blockLoc(DDBlocks.SCULK_JAW, "activated"))), new ConfiguredModel(models().cubeAll(getName(DDBlocks.SCULK_JAW), blockLoc(DDBlocks.SCULK_JAW))) };
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.ACTIVATED, true).setModels(sjm[0]).partialState().with(SculkJawBlock.ACTIVATED, false).setModels(sjm[1]);

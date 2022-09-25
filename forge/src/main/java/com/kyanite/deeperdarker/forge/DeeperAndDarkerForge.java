@@ -110,15 +110,7 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
 
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_TENDRILS_PLANT.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_TENDRILS.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_VINES.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_VINES_PLANT.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.ECHO_DOOR.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.GLOOMY_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(DDBlocks.BLOOMING_SHRUB.get(), RenderType.cutout());
         }
 
         @SubscribeEvent
