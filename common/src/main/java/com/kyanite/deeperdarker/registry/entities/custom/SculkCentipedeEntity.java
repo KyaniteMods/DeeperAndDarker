@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.SculkLeechMelee;
+import com.kyanite.deeperdarker.registry.entities.custom.ai.nav.BetterWallClimberNavigation;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
@@ -28,7 +30,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class SculkCentipedeEntity extends Monster implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
-    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Spider.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(SculkCentipedeEntity.class, EntityDataSerializers.BYTE);
 
     public SculkCentipedeEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -55,6 +57,11 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
 
     public boolean isClimbing() {
         return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
+    }
+
+    @Override
+    protected PathNavigation createNavigation(Level pLevel) {
+        return new BetterWallClimberNavigation(this, pLevel);
     }
 
     public void setClimbing(boolean pClimbing) {
@@ -86,8 +93,11 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
     @Override
     public void tick() {
         super.tick();
-        if(!this.level.isClientSide) {
+        if (!this.level.isClientSide) {
             this.setClimbing(this.horizontalCollision);
+        }
+        if (this.horizontalCollision && this.onClimbable()) {
+            this.setDeltaMovement(this.getDeltaMovement().x, this.getDeltaMovement().y * 0.5f, this.getDeltaMovement().z);
         }
     }
 

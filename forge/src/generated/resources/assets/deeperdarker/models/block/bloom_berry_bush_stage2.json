@@ -1,6 +1,5 @@
 {
   "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
   "textures": {
     "cross": "deeperdarker:block/bloom_berry_bush_stage2"
   }

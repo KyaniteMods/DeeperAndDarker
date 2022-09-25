@@ -29,6 +29,8 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -105,6 +107,11 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DDSounds.SCULK_SNAPPER_HURT.get();
+    }
+
+    @Override
+    protected PathNavigation createNavigation(Level level) {
+        return new GroundPathNavigation(this, level);
     }
 
     @Nullable

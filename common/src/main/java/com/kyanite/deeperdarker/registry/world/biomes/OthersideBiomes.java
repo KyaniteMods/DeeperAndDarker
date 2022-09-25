@@ -9,6 +9,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.Carvers;
+import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Musics;
@@ -66,8 +67,6 @@ public class OthersideBiomes {
         addSculkOres(biomeBuilder);
         addSculkDecoration(biomeBuilder);
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_CENTIPEDE.get(), 80, 0, 2));
-
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(DDPlacedFeatures.OTHERSIDE_PILLAR.get()));
 
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
@@ -122,8 +121,9 @@ public class OthersideBiomes {
 
     public static Biome deeplands() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 95, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 80, 0, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 120, 4, 6));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 50, 0, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_CENTIPEDE.get(), 55, 1, 3));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
@@ -169,5 +169,6 @@ public class OthersideBiomes {
     public static void addSculkDecoration(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.SCULK.get()));
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.INFESTED_SCULK.get()));
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(CavePlacements.SCULK_PATCH_DEEP_DARK.value()));
     }
 }

@@ -10,6 +10,8 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -70,6 +72,10 @@ public class SculkLeechEntity extends Monster implements IAnimatable {
         return PlayState.CONTINUE;
     }
 
+    @Override
+    protected PathNavigation createNavigation(Level level) {
+        return new GroundPathNavigation(this, level);
+    }
     @Override
     public AnimationFactory getFactory() {
         return this.factory;

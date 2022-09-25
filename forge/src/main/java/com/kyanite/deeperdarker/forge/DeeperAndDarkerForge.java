@@ -14,6 +14,8 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -107,6 +109,15 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_TENDRILS_PLANT.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_TENDRILS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_VINES.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.SCULK_VINES_PLANT.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.ECHO_DOOR.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.GLOOMY_GRASS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
         }
 
         @SubscribeEvent

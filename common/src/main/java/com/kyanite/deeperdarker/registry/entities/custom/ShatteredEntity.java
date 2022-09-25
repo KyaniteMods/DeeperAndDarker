@@ -203,6 +203,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
         }
     }
 
+
     public boolean canTargetEntity(Entity entity) {
         if (entity instanceof LivingEntity livingentity) {
             return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
