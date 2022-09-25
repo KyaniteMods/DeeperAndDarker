@@ -9,8 +9,10 @@ import com.kyanite.deeperdarker.registry.entities.custom.ai.GoToDisturbanceGoal;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.IDisturbanceListener;
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
+import com.mojang.math.Vector3d;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Position;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -28,6 +30,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
@@ -47,6 +50,7 @@ import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
@@ -76,7 +80,6 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     };
     private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D).selector(LIVING_ENTITY_SELECTOR);
     private static final TargetingConditions ITEM_TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D);
-
     public BlockPos disturbanceLocation = null;
 
     public DamageSource damageSource = new DamageSource("ring");
@@ -104,6 +107,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.75D, true, 17, 16, ATTACK));
         this.goalSelector.addGoal(8, new GoToDisturbanceGoal(this));
+        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.75D));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
     }

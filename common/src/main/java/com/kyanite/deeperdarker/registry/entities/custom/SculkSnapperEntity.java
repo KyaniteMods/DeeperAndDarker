@@ -86,6 +86,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
     }
 
+
     @Override
     public float getSpeed() {
         return isPerformingAction() ? 0 : super.getSpeed();

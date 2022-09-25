@@ -19,6 +19,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
@@ -40,12 +41,13 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
+import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig, IDisturbanceListener {
     public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.shattered.idle", DDUtils.secondsToTicks(3), true, false));
-    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.shattered.walk", DDUtils.secondsToTicks(1), true, false));
-    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.shattered.attack", DDUtils.secondsToTicks(1), false, true));
+    public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.shattered.walk", DDUtils.secondsToTicks(1.5f), true, false));
+    public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.shattered.attack", DDUtils.secondsToTicks(0.5f), false, true));
     private final AnimationFactory factory = new AnimationFactory(this);
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
     public BlockPos disturbanceLocation = null;
@@ -71,6 +73,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 1.0D, true, 14, 7, ATTACK));
         this.goalSelector.addGoal(8, new GoToDisturbanceGoal(this));
+        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
     }
@@ -78,6 +81,11 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public boolean dampensVibrations() {
         return true;
+    }
+
+    @Override
+    protected float nextStep() {
+        return this.moveDist + 0.3f;
     }
 
     @Override
