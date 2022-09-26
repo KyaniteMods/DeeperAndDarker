@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.registry.blocks.custom.vegetation;
+package com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculktendrils;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.Direction;
