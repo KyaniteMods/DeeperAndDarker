@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.ShatteredEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.StalkerEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;

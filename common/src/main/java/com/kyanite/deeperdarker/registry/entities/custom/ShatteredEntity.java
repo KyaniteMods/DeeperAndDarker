@@ -41,7 +41,6 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.List;
-import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig, IDisturbanceListener {

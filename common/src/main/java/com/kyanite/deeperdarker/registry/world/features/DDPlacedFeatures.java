@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 

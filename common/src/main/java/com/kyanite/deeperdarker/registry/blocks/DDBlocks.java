@@ -6,19 +6,18 @@ import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.*;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.GloomCactusBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.GloomGrassBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculktendrils.SculkTendrilsBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculktendrils.SculkTendrilsPlantBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculkvines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculkvines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,36 +34,12 @@ public class DDBlocks {
     public static final Map<String, Supplier<Block>> BLOCKS = new HashMap<>();
 
     // Echo Wood
-    public static final Supplier<Block> ECHO_PLANKS = registerBlock("echo_planks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
-        public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-            return true;
-        }
-
-        public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-            return 20;
-        }
-
-        public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-            return 5;
-        }
-    });
+    public static final Supplier<Block> ECHO_PLANKS = registerBlock("echo_planks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final Supplier<RotatedPillarBlock> ECHO_LOG = registerBlock("echo_log", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
     public static final Supplier<RotatedPillarBlock> STRIPPED_ECHO_LOG = registerBlock("stripped_echo_log", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
     public static final Supplier<RotatedPillarBlock> STRIPPED_ECHO_WOOD = registerBlock("stripped_echo_wood", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
     public static final Supplier<RotatedPillarBlock> ECHO_WOOD = registerBlock("echo_wood", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
     public static final Supplier<Block> ECHO_LEAVES = registerBlock("echo_leaves", true, () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
-        public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-            return true;
-        }
-
-        public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-            return 60;
-        }
-
-        public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-            return 30;
-        }
-
         protected boolean decaying(@NotNull BlockState state) {
             return state.getValue(DISTANCE) == 16;
         }

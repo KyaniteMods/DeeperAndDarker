@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.forge.datagen.lang;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
-import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;

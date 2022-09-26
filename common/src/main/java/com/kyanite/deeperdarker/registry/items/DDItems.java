@@ -5,7 +5,6 @@ import com.kyanite.deeperdarker.miscellaneous.DDArmorMaterials;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.platform.PortalHelper;
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
 import com.kyanite.deeperdarker.registry.items.custom.CustomHoeItem;
@@ -13,7 +12,6 @@ import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitterItem;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;

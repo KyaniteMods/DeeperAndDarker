@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.platform.forge;
 
 import com.kyanite.deeperdarker.forge.DeepHeartItem;
-import com.kyanite.deeperdarker.forge.DeeperAndDarkerForge;
 import com.kyanite.deeperdarker.forge.OthersidePortalBlock;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import net.minecraft.world.item.Item;

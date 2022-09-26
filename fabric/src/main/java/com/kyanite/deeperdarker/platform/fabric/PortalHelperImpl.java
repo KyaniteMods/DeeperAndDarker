@@ -1,9 +1,6 @@
 package com.kyanite.deeperdarker.platform.fabric;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.fabric.DeeperAndDarkerFabric;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 

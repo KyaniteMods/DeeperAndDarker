@@ -1,8 +1,5 @@
 package com.kyanite.deeperdarker.client.mixin;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
-import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -15,14 +12,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.SculkPatchFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.SculkPatchConfiguration;
-import org.checkerframework.checker.units.qual.A;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Objects;
 
 @Mixin(SculkPatchFeature.class)
 public abstract class SculkPatchFeatureMixin {
