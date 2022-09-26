@@ -123,6 +123,7 @@ public class ENLanguageProvider extends LanguageProvider {
         String name = builder.toString();
         if(name.contains("Chest Boat")) name = name.substring(0, name.indexOf("Chest")) + "Boat with Chest";
         if(name.equals("Heart Of The Deep")) name = "Heart of the Deep";
+        if(name.equals("Sculk Stone Lapis Ore")) name = "Sculk Stone Lapis Lazuli Ore";
 
         return upsideDown ? toUpsideDown(name) : name;
     }
