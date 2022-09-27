@@ -3,6 +3,8 @@ package com.kyanite.deeperdarker.forge;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.config.DDClientConfig;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
@@ -33,7 +35,9 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -45,6 +49,9 @@ import java.util.Map;
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
     public DeeperAndDarkerForge() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DDClientConfig.SPEC, "deeperdarker-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DDConfig.SPEC, "deeperdarker-common.toml");
+
         DeeperAndDarker.init(() -> {});
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

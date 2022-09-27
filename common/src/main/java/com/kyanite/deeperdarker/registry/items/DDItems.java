@@ -38,10 +38,10 @@ public class DDItems {
     public static final Supplier<Item> STALKER_SPAWN_EGG = registerItem("stalker_spawn_egg", () -> new SpawnEggItem(DDEntities.STALKER.get(), 0x172226 , 0x6abdd9, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> ECHO_BOAT = registerItem("echo_boat", () -> new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> ECHO_CHEST_BOAT = registerItem("echo_chest_boat", () -> new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> WARDEN_SWORD = registerItem("warden_sword", () -> new SwordItem(DDTiers.WARDEN, 3, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Supplier<Item> WARDEN_SHOVEL = registerItem("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, 1.5F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> WARDEN_SWORD = registerItem("warden_sword", () -> new SwordItem(DDTiers.WARDEN, 2, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> WARDEN_SHOVEL = registerItem("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, 1.2F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> WARDEN_PICKAXE = registerItem("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, 1, -2.8F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Supplier<Item> WARDEN_AXE = registerItem("warden_axe", () -> new AxeItem(DDTiers.WARDEN, 7.0F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> WARDEN_AXE = registerItem("warden_axe", () -> new AxeItem(DDTiers.WARDEN, 3.5F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> WARDEN_HOE = registerItem("warden_hoe", () -> new CustomHoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
     public static void registerItems() {

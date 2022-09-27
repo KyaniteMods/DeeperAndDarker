@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
+import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.miscellaneous.DeeperAndDarkerInitCallback;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
@@ -37,6 +38,7 @@ public class DeeperAndDarker {
 
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
+        DDTiers.registerTypes();
         DDItems.registerItems();
         DDSounds.registerSounds();
         DDEnchantments.registerEnchantments();
