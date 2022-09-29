@@ -29,8 +29,8 @@ public class DeeperAndDarkerFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ModLoadingContext.registerConfig(DeeperAndDarker.MOD_ID, ModConfig.Type.CLIENT, DDClientConfig.SPEC, "deeperdarker-client.toml");
-        ModLoadingContext.registerConfig(DeeperAndDarker.MOD_ID, ModConfig.Type.COMMON, DDConfig.SPEC, "deeperdarker-common.toml");
+        ModLoadingContext.registerConfig(DeeperAndDarker.MOD_ID, ModConfig.Type.CLIENT, DDClientConfig.SPEC);
+        ModLoadingContext.registerConfig(DeeperAndDarker.MOD_ID, ModConfig.Type.COMMON, DDConfig.SPEC);
 
         DeeperAndDarker.init(() -> {
             Map<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> attributes = new HashMap<>();

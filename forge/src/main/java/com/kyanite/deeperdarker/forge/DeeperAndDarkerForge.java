@@ -49,10 +49,8 @@ import java.util.Map;
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
     public DeeperAndDarkerForge() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DDClientConfig.SPEC, "deeperdarker-client.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DDConfig.SPEC, "deeperdarker-common.toml");
-
-        DeeperAndDarker.init(() -> {});
+        DeeperAndDarker.init(() -> {
+        });
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -85,6 +83,9 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerCommon {
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
+            ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DDClientConfig.SPEC);
+            ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DDConfig.SPEC);
+
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDWoodTypes.ECHO);
                 DeeperAndDarker.spawnPlacements();

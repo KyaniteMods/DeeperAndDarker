@@ -12,13 +12,13 @@ import java.util.function.Supplier;
 public final class ConfigurableTier implements Tier {
     private final int level;
     private final ForgeConfigSpec.ConfigValue<Integer> uses;
-    private final ForgeConfigSpec.ConfigValue<Float> speed;
-    private final ForgeConfigSpec.ConfigValue<Float> attackDamageBonus;
+    private final ForgeConfigSpec.ConfigValue<Double> speed;
+    private final ForgeConfigSpec.ConfigValue<Double> attackDamageBonus;
     private final int enchantmentValue;
     private final @NotNull TagKey<Block> tag;
     private final @NotNull Supplier<Ingredient> repairIngredient;
 
-    public ConfigurableTier(int level, ForgeConfigSpec.ConfigValue<Integer> uses, ForgeConfigSpec.ConfigValue<Float> speed, ForgeConfigSpec.ConfigValue<Float> attackDamageBonus, int enchantmentValue, @NotNull TagKey<Block> tag, @NotNull Supplier<Ingredient> repairIngredient) {
+    public ConfigurableTier(int level, ForgeConfigSpec.ConfigValue<Integer> uses, ForgeConfigSpec.ConfigValue<Double> speed, ForgeConfigSpec.ConfigValue<Double> attackDamageBonus, int enchantmentValue, @NotNull TagKey<Block> tag, @NotNull Supplier<Ingredient> repairIngredient) {
         this.level = level;
         this.uses = uses;
         this.speed = speed;
@@ -33,11 +33,11 @@ public final class ConfigurableTier implements Tier {
     }
 
     public float getSpeed() {
-        return this.speed.get();
+        return this.speed.get().floatValue();
     }
 
     public float getAttackDamageBonus() {
-        return this.attackDamageBonus.get();
+        return this.attackDamageBonus.get().floatValue();
     }
 
     public int getLevel() {
