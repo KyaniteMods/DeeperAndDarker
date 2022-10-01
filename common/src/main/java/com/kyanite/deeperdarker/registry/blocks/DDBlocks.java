@@ -97,14 +97,45 @@ public class DDBlocks {
 
     // Overcast Columns
     public static final Supplier<GloomSculkBlock> GLOOM_SCULK = registerBlock("gloom_sculk", true, () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
-    public static final Supplier<Block> GLOOMSLATE = registerBlock("gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
-    public static final Supplier<SlabBlock> GLOOMSLATE_SLAB = registerBlock("gloomslate_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final Supplier<StairBlock> GLOOMSLATE_STAIRS = registerBlock("gloomslate_stairs", true, () -> new StairBlock(GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final Supplier<WallBlock> GLOOMSLATE_WALL = registerBlock("gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
     public static final Supplier<GeyserBlock> GEYSER = registerBlock("geyser", true, () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).requiresCorrectToolForDrops()));
     public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", true, () -> new HalfTransparentBlock(BlockBehaviour.Properties.of(Material.GLASS).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
     public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", true, () -> new GloomCactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
     public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", true, () -> new GloomGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
+
+    // Gloomslate
+    public static final Supplier<Block> GLOOMSLATE = registerBlock("gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
+    public static final Supplier<SlabBlock> GLOOMSLATE_SLAB = registerBlock("gloomslate_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<StairBlock> GLOOMSLATE_STAIRS = registerBlock("gloomslate_stairs", true, () -> new StairBlock(GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<WallBlock> GLOOMSLATE_WALL = registerBlock("gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+
+    public static final Supplier<Block> COBBLED_GLOOMSLATE = registerBlock("cobbled_gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<SlabBlock> COBBLED_GLOOMSLATE_SLAB = registerBlock("cobbled_gloomslate_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
+    public static final Supplier<StairBlock> COBBLED_GLOOMSLATE_STAIRS = registerBlock("cobbled_gloomslate_stairs", true, () -> new StairBlock(COBBLED_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
+    public static final Supplier<WallBlock> COBBLED_GLOOMSLATE_WALL = registerBlock("cobbled_gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
+
+    public static final Supplier<Block> POLISHED_GLOOMSLATE = registerBlock("polished_gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<SlabBlock> POLISHED_GLOOMSLATE_SLAB = registerBlock("polished_gloomslate_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
+    public static final Supplier<StairBlock> POLISHED_GLOOMSLATE_STAIRS = registerBlock("polished_gloomslate_stairs", true, () -> new StairBlock(POLISHED_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
+    public static final Supplier<WallBlock> POLISHED_GLOOMSLATE_WALL = registerBlock("polished_gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
+
+    public static final Supplier<Block> GLOOMSLATE_BRICKS = registerBlock("gloomslate_bricks", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<SlabBlock> GLOOMSLATE_BRICK_SLAB = registerBlock("gloomslate_brick_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
+    public static final Supplier<StairBlock> GLOOMSLATE_BRICK_STAIRS = registerBlock("gloomslate_brick_stairs", true, () -> new StairBlock(GLOOMSLATE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
+    public static final Supplier<WallBlock> GLOOMSLATE_BRICK_WALL = registerBlock("gloomslate_brick_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
+
+    public static final Supplier<Block> GLOOMSLATE_TILES = registerBlock("gloomslate_tiles", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<SlabBlock> GLOOMSLATE_TILE_SLAB = registerBlock("gloomslate_tile_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
+    public static final Supplier<StairBlock> GLOOMSLATE_TILE_STAIRS = registerBlock("gloomslate_tile_stairs", true, () -> new StairBlock(GLOOMSLATE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
+    public static final Supplier<WallBlock> GLOOMSLATE_TILE_WALL = registerBlock("gloomslate_tile_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
+
+    public static final Supplier<Block> SMOOTH_GLOOMSLATE = registerBlock("smooth_gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<SlabBlock> SMOOTH_GLOOMSLATE_SLAB = registerBlock("smooth_gloomslate_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
+    public static final Supplier<StairBlock> SMOOTH_GLOOMSLATE_STAIRS = registerBlock("smooth_gloomslate_stairs", true, () -> new StairBlock(SMOOTH_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
+    public static final Supplier<WallBlock> SMOOTH_GLOOMSLATE_WALL = registerBlock("smooth_gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
+
+
+
+    public static final Supplier<Block> CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
 
     // Miscellaneous
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));

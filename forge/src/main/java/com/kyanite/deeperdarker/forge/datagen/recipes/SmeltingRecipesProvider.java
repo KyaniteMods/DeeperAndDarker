@@ -23,6 +23,16 @@ public class SmeltingRecipesProvider extends RecipeProvider implements IConditio
         oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get()), DDBlocks.SCULK_STONE_STAIRS.get(), 0.1F, 200, "sculk_stone_stairs");
         oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_SCULK_STONE_WALL.get()), DDBlocks.SCULK_STONE_WALL.get(), 0.1F, 200, "sculk_stone_wall");
 
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_GLOOMSLATE.get()), DDBlocks.GLOOMSLATE.get(), 0.1F, 200, "gloomslate");
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get()), DDBlocks.GLOOMSLATE_SLAB.get(), 0.1F, 200, "gloomslate_slab");
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get()), DDBlocks.GLOOMSLATE_STAIRS.get(), 0.1F, 200, "gloomslate_stairs");
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_GLOOMSLATE_WALL.get()), DDBlocks.GLOOMSLATE_WALL.get(), 0.1F, 200, "gloomslate_wall");
+
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.GLOOMSLATE.get()), DDBlocks.SMOOTH_GLOOMSLATE.get(), 0.1F, 200, "smooth_gloomslate");
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.GLOOMSLATE_SLAB.get()), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), 0.1F, 200, "smooth_gloomslate_slab");
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.GLOOMSLATE_STAIRS.get()), DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), 0.1F, 200, "smooth_gloomslate_stairs");
+        oreSmelting(consumer, ImmutableList.of(DDBlocks.GLOOMSLATE_WALL.get()), DDBlocks.SMOOTH_GLOOMSLATE_WALL.get(), 0.1F, 200, "smooth_gloomslate_wall");
+
         oreSmelting(consumer, ImmutableList.of(DDBlocks.SCULK_STONE_COAL_ORE.get()), Items.COAL, 0.2F, 200, "coal");
         oreSmelting(consumer, ImmutableList.of(DDBlocks.SCULK_STONE_IRON_ORE.get()), Items.IRON_INGOT, 1.4F, 200, "iron_ingot");
         oreSmelting(consumer, ImmutableList.of(DDBlocks.SCULK_STONE_COPPER_ORE.get()), Items.COPPER_INGOT, 1.4F, 200, "copper_ingot");

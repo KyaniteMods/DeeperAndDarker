@@ -57,8 +57,8 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
 
-        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
-        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem());
+        tag(ItemTags.STONE_CRAFTING_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem(), DDBlocks.COBBLED_GLOOMSLATE.get().asItem());
+        tag(ItemTags.STONE_TOOL_MATERIALS).add(DDBlocks.COBBLED_SCULK_STONE.get().asItem(), DDBlocks.COBBLED_GLOOMSLATE.get().asItem());
 
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get());
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get());

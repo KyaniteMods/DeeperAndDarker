@@ -78,15 +78,45 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.ECHO_SOIL.get());
         this.dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
 
-        this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get()); 
-        this.dropSelf(DDBlocks.GLOOMSLATE.get());
-        this.add(DDBlocks.GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
-        this.dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
-        this.dropSelf(DDBlocks.GLOOMSLATE_WALL.get());
+        this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
         this.dropSelf(DDBlocks.GEYSER.get());
         this.dropSelf(DDBlocks.CRYSTALLIZED_AMBER.get());
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());
         this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLoot::createShearsOnlyDrop);
+
+        this.add(DDBlocks.GLOOMSLATE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
+        this.add(DDBlocks.GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
+        this.dropSelf(DDBlocks.GLOOMSLATE_WALL.get());
+
+        this.dropSelf(DDBlocks.COBBLED_GLOOMSLATE.get());
+        this.add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get());
+        this.dropSelf(DDBlocks.COBBLED_GLOOMSLATE_WALL.get());
+
+        this.dropSelf(DDBlocks.POLISHED_GLOOMSLATE.get());
+        this.add(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get());
+        this.dropSelf(DDBlocks.POLISHED_GLOOMSLATE_WALL.get());
+
+        this.dropSelf(DDBlocks.GLOOMSLATE_BRICKS.get());
+        this.add(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
+        this.dropSelf(DDBlocks.GLOOMSLATE_BRICK_WALL.get());
+
+        this.dropSelf(DDBlocks.GLOOMSLATE_TILES.get());
+        this.add(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
+        this.dropSelf(DDBlocks.GLOOMSLATE_TILE_WALL.get());
+
+        this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE.get());
+        this.add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get());
+        this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
+
+
+
+        this.dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
     }

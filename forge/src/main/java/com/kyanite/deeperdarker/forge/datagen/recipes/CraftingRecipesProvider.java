@@ -57,6 +57,37 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
         wallBuilder(DDBlocks.SCULK_STONE_BRICK_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(consumer);
 
+        slabBuilder(DDBlocks.GLOOMSLATE_SLAB.get(), Ingredient.of(DDBlocks.GLOOMSLATE.get())).unlockedBy("has_gloomslate", has(DDBlocks.GLOOMSLATE.get())).save(consumer);
+        stairBuilder(DDBlocks.GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.GLOOMSLATE.get())).unlockedBy("has_gloomslate", has(DDBlocks.GLOOMSLATE.get())).save(consumer);
+        wallBuilder(DDBlocks.GLOOMSLATE_WALL.get(), Ingredient.of(DDBlocks.GLOOMSLATE.get())).unlockedBy("has_gloomslate", has(DDBlocks.GLOOMSLATE.get())).save(consumer);
+
+        slabBuilder(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), Ingredient.of(DDBlocks.COBBLED_GLOOMSLATE.get())).unlockedBy("has_cobbled_gloomslate", has(DDBlocks.COBBLED_GLOOMSLATE.get())).save(consumer);
+        stairBuilder(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.COBBLED_GLOOMSLATE.get())).unlockedBy("has_cobbled_gloomslate", has(DDBlocks.COBBLED_GLOOMSLATE.get())).save(consumer);
+        wallBuilder(DDBlocks.COBBLED_GLOOMSLATE_WALL.get(), Ingredient.of(DDBlocks.COBBLED_GLOOMSLATE.get())).unlockedBy("has_cobbled_gloomslate", has(DDBlocks.COBBLED_GLOOMSLATE.get())).save(consumer);
+
+        polishedBuilder(DDBlocks.POLISHED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.GLOOMSLATE.get())).unlockedBy("has_gloomslate", has(DDBlocks.GLOOMSLATE.get())).save(consumer);
+        slabBuilder(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE.get())).unlockedBy("has_polished_gloomslate", has(DDBlocks.POLISHED_GLOOMSLATE.get())).save(consumer);
+        stairBuilder(DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE.get())).unlockedBy("has_polished_gloomslate", has(DDBlocks.POLISHED_GLOOMSLATE.get())).save(consumer);
+        wallBuilder(DDBlocks.POLISHED_GLOOMSLATE_WALL.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE.get())).unlockedBy("has_polished_gloomslate", has(DDBlocks.POLISHED_GLOOMSLATE.get())).save(consumer);
+
+        polishedBuilder(DDBlocks.GLOOMSLATE_BRICKS.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE.get())).unlockedBy("has_polished_gloomslate", has(DDBlocks.POLISHED_GLOOMSLATE.get())).save(consumer);
+        slabBuilder(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICKS.get())).unlockedBy("has_gloomslate_bricks", has(DDBlocks.GLOOMSLATE_BRICKS.get())).save(consumer);
+        stairBuilder(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICKS.get())).unlockedBy("has_gloomslate_bricks", has(DDBlocks.GLOOMSLATE_BRICKS.get())).save(consumer);
+        wallBuilder(DDBlocks.GLOOMSLATE_BRICK_WALL.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICKS.get())).unlockedBy("has_gloomslate_bricks", has(DDBlocks.GLOOMSLATE_BRICKS.get())).save(consumer);
+
+        polishedBuilder(DDBlocks.GLOOMSLATE_TILES.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICKS.get())).unlockedBy("has_gloomslate_bricks", has(DDBlocks.GLOOMSLATE_BRICKS.get())).save(consumer);
+        slabBuilder(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), Ingredient.of(DDBlocks.GLOOMSLATE_TILES.get())).unlockedBy("has_gloomslate_tiles", has(DDBlocks.GLOOMSLATE_TILES.get())).save(consumer);
+        stairBuilder(DDBlocks.GLOOMSLATE_TILE_STAIRS.get(), Ingredient.of(DDBlocks.GLOOMSLATE_TILES.get())).unlockedBy("has_gloomslate_tiles", has(DDBlocks.GLOOMSLATE_TILES.get())).save(consumer);
+        wallBuilder(DDBlocks.GLOOMSLATE_TILE_WALL.get(), Ingredient.of(DDBlocks.GLOOMSLATE_TILES.get())).unlockedBy("has_gloomslate_tiles", has(DDBlocks.GLOOMSLATE_TILES.get())).save(consumer);
+
+        slabBuilder(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(consumer);
+        stairBuilder(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(consumer);
+        wallBuilder(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(consumer);
+
+
+
+        chiseledBuilder(DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get())).unlockedBy("has_polished_gloomslate_slab", has(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get())).save(consumer);
+
         ShapedRecipeBuilder.shaped(DDItems.REINFORCED_ECHO_SHARD.get(), 1)
                 .define('P', Items.PHANTOM_MEMBRANE)
                 .define('E', Items.ECHO_SHARD)

@@ -75,14 +75,44 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_GLEAM);
 
         blockModel(DDBlocks.GLOOM_SCULK);
-        blockModel(DDBlocks.GLOOMSLATE);
-        blockModel(DDBlocks.GLOOMSLATE_SLAB);
-        blockModel(DDBlocks.GLOOMSLATE_STAIRS);
-        blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
         blockModel(DDBlocks.GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
         blockModel(DDBlocks.GLOOM_CACTUS);
         getBuilder(getName(DDBlocks.GLOOMY_GRASS.get())).parent(GENERATED).texture("layer0", "block/" + getName(DDBlocks.GLOOMY_GRASS.get()));
+
+        blockModel(DDBlocks.GLOOMSLATE);
+        blockModel(DDBlocks.GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
+
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE);
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE_WALL, "inventory");
+
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE);
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE_WALL, "inventory");
+
+        blockModel(DDBlocks.GLOOMSLATE_BRICKS);
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_WALL, "inventory");
+
+        blockModel(DDBlocks.GLOOMSLATE_TILES);
+        blockModel(DDBlocks.GLOOMSLATE_TILE_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_TILE_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_TILE_WALL, "inventory");
+
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE);
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE_WALL, "inventory");
+
+
+
+        blockModel(DDBlocks.CHISELED_GLOOMSLATE);
 
         // sculk tendril plant
         // double bloom berry

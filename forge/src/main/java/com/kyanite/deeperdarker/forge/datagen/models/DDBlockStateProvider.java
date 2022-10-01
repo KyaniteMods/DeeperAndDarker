@@ -76,14 +76,44 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
 
         simpleBlock(DDBlocks.GLOOM_SCULK.get());
-        simpleBlock(DDBlocks.GLOOMSLATE.get());
-        slabBlock(DDBlocks.GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE), blockLoc(DDBlocks.GLOOMSLATE));
-        stairsBlock(DDBlocks.GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE));
-        wallBlock(DDBlocks.GLOOMSLATE_WALL, blockLoc(DDBlocks.GLOOMSLATE));
         simpleBlock(DDBlocks.GEYSER.get(), models().cubeTop(getName(DDBlocks.GEYSER), blockLoc(DDBlocks.GLOOM_SCULK), blockLoc(DDBlocks.GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(getName(DDBlocks.CRYSTALLIZED_AMBER), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")));
         simpleBlock(DDBlocks.GLOOM_CACTUS.get(), models().withExistingParent(getName(DDBlocks.GLOOM_CACTUS), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOM_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOM_CACTUS, "top")));
         simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(getName(DDBlocks.GLOOMY_GRASS), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
+
+        simpleBlock(DDBlocks.GLOOMSLATE.get());
+        slabBlock(DDBlocks.GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE), blockLoc(DDBlocks.GLOOMSLATE));
+        stairsBlock(DDBlocks.GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE));
+        wallBlock(DDBlocks.GLOOMSLATE_WALL, blockLoc(DDBlocks.GLOOMSLATE));
+
+        simpleBlock(DDBlocks.COBBLED_GLOOMSLATE.get());
+        slabBlock(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.COBBLED_GLOOMSLATE), blockLoc(DDBlocks.COBBLED_GLOOMSLATE));
+        stairsBlock(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.COBBLED_GLOOMSLATE));
+        wallBlock(DDBlocks.COBBLED_GLOOMSLATE_WALL, blockLoc(DDBlocks.COBBLED_GLOOMSLATE));
+
+        simpleBlock(DDBlocks.POLISHED_GLOOMSLATE.get());
+        slabBlock(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.POLISHED_GLOOMSLATE), blockLoc(DDBlocks.POLISHED_GLOOMSLATE));
+        stairsBlock(DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.POLISHED_GLOOMSLATE));
+        wallBlock(DDBlocks.POLISHED_GLOOMSLATE_WALL, blockLoc(DDBlocks.POLISHED_GLOOMSLATE));
+
+        simpleBlock(DDBlocks.GLOOMSLATE_BRICKS.get());
+        slabBlock(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE_BRICKS), blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
+        stairsBlock(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
+        wallBlock(DDBlocks.GLOOMSLATE_BRICK_WALL, blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
+
+        simpleBlock(DDBlocks.GLOOMSLATE_TILES.get());
+        slabBlock(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE_TILES), blockLoc(DDBlocks.GLOOMSLATE_TILES));
+        stairsBlock(DDBlocks.GLOOMSLATE_TILE_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE_TILES));
+        wallBlock(DDBlocks.GLOOMSLATE_TILE_WALL, blockLoc(DDBlocks.GLOOMSLATE_TILES));
+
+        simpleBlock(DDBlocks.SMOOTH_GLOOMSLATE.get());
+        slabBlock(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.SMOOTH_GLOOMSLATE), blockLoc(DDBlocks.SMOOTH_GLOOMSLATE));
+        stairsBlock(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.SMOOTH_GLOOMSLATE));
+        wallBlock(DDBlocks.SMOOTH_GLOOMSLATE_WALL, blockLoc(DDBlocks.SMOOTH_GLOOMSLATE));
+
+
+
+        simpleBlock(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         ConfiguredModel[] sjm = { new ConfiguredModel(models().cubeAll(getName(DDBlocks.SCULK_JAW) + "_activated", blockLoc(DDBlocks.SCULK_JAW, "activated"))), new ConfiguredModel(models().cubeAll(getName(DDBlocks.SCULK_JAW), blockLoc(DDBlocks.SCULK_JAW))) };
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.ACTIVATED, true).setModels(sjm[0]).partialState().with(SculkJawBlock.ACTIVATED, false).setModels(sjm[1]);
