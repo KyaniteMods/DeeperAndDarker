@@ -3,9 +3,14 @@ package com.kyanite.deeperdarker.registry.world.features;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.world.features.custom.*;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.SculkPatchFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SculkPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 
 import java.util.function.Supplier;

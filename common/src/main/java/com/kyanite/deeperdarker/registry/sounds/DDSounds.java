@@ -38,6 +38,10 @@ public class DDSounds {
     // Portal
     public static final Supplier<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 
+    // Dimension
+    public static final Supplier<SoundEvent> DEEPLANDS_AMBIENCE = register("ambience.deeplands");
+    public static final Supplier<SoundEvent> FOREST_AMBIENCE = register("ambience.forest");
+
     // Item
     public static final Supplier<SoundEvent> SCULK_LINK = register("item.transmitter.link");
     public static final Supplier<SoundEvent> SCULK_TRANSMIT = register("item.transmitter.transmit");

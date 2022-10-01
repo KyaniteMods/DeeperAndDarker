@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -41,7 +42,6 @@ public class DDPlacedFeatures {
 
     public static final Supplier<PlacedFeature> GLOOMSLATE = registerPlacedFeature("gloomslate", () -> new PlacedFeature(Holder.direct(DDConfiguredFeatures.GLOOMSLATE.get()), gloomSlatePlacement()));
 
-
     public static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier range) {
         ImmutableList.Builder<PlacementModifier> builder = ImmutableList.builder();
         builder.add(InSquarePlacement.spread());
@@ -50,7 +50,6 @@ public class DDPlacedFeatures {
         builder.add(BiomeFilter.biome());
         return builder.build();
     }
-
     public static List<PlacementModifier> commonOrePlacement(int attempts, PlacementModifier range) {
         return orePlacement(CountPlacement.of(attempts), range);
     }
