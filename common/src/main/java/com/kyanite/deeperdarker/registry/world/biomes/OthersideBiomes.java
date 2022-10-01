@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.registry.world.biomes;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -82,11 +83,8 @@ public class OthersideBiomes {
                         .waterFogColor(0x1d1352)
                         .fogColor(0x61519c)
                         .skyColor(0x54458c)
-                        .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.055f))
-                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
-                        .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)).build())
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.FOREST_AMBIENCE.get())).build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
@@ -119,10 +117,7 @@ public class OthersideBiomes {
                         .waterFogColor(0x0c2a57)
                         .fogColor(0x046b5d)
                         .skyColor(0x0b364a)
-                        .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
-                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
-                        .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY)).build())
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.DEEPLANDS_AMBIENCE.get())).build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }

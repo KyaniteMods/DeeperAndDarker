@@ -8,6 +8,18 @@
       "deeperdarker:ambience/portal/groan4"
     ]
   },
+  "ambience.deeplands": {
+    "subtitle": "subtitles.ambience.deeplands",
+    "sounds": [
+      "deeperdarker:ambience/dimension/deeplands_ambience"
+    ]
+  },
+  "ambience.forest": {
+    "subtitle": "subtitles.ambience.forest",
+    "sounds": [
+      "deeperdarker:ambience/dimension/forest_ambience"
+    ]
+  },
   "block.sculk_stone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
