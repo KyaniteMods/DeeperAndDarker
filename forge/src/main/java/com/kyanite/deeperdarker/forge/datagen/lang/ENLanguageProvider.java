@@ -61,8 +61,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.deeperdarker.sculk_transmitter.not_found", "The linked block is missing or obstructed");
         add("item.deeperdarker.sculk_transmitter.not_linked", "Unlinked");
 
-        add("itemGroup.deeperdarker.deeperdarker", "Deeper And Darker");
-        add("itemGroup.deeperdarker", "Deeper And Darker");
+        add("itemGroup.deeperdarker.deeperdarker", "Deeper and Darker");
+        add("itemGroup.deeperdarker", "Deeper and Darker");
 
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
