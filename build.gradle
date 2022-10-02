@@ -64,7 +64,7 @@ allprojects {
             }
             def time = dateFormat.format(new Date())
             def changes = new StringBuilder()
-            changes << "## Deeper And Darker v${rootProject.mod_version} for ${rootProject.minecraft_version}\nUpdated at **$time**."
+            changes << "## Deeper and Darker v${rootProject.mod_version} for ${rootProject.minecraft_version}\nUpdated at **$time**."
             def proc = "git log --max-count=200 --pretty=format:%s".execute()
             proc.in.eachLine { line ->
                 def processedLine = line.toString()
