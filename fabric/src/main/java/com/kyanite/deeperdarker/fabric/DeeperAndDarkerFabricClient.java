@@ -31,6 +31,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
         EntityRendererRegistry.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+        EntityRendererRegistry.register(DDEntities.GLOOM_GLARE.get(), GloomGlareRenderer::new);
 
         FabricBoatModels.registerLayers();
 

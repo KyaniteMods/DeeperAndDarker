@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "deeperdarker:cobbled_sculk_stone"
+              "minecraft:air"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "deeperdarker:sculk_stone"
+      "item": "minecraft:air"
     },
     "show_toast": false,
     "title": {

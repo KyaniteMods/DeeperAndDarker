@@ -6,11 +6,40 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 
+
 public class DDTiers {
-    public static Tier WARDEN;
+    public static final Tier WARDEN = new Tier() {
+        @Override
+        public int getUses() {
+            return 2464;
+        }
+
+        @Override
+        public float getSpeed() {
+            return 11f;
+        }
+
+        @Override
+        public float getAttackDamageBonus() {
+            return 7f;
+        }
+
+        @Override
+        public int getLevel() {
+            return 4;
+        }
+
+        @Override
+        public int getEnchantmentValue() {
+            return 21;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient() {
+            return Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get());
+        }
+    };
 
     public static void registerTypes() {
-        WARDEN = new ConfigurableTier(4, DDConfig.WARDEN_TOOLS_USES, DDConfig.WARDEN_TOOLS_SPEED, DDConfig.WARDEN_TOOLS_DAMAGE, 21,
-                BlockTags.NEEDS_DIAMOND_TOOL, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
     }
 }

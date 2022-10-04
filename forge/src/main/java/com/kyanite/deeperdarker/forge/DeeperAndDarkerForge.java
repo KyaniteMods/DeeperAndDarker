@@ -83,9 +83,6 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerCommon {
         @SubscribeEvent
         public static void commonSetup(final FMLCommonSetupEvent event) {
-            ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DDClientConfig.SPEC);
-            ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DDConfig.SPEC);
-
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDWoodTypes.ECHO);
                 DeeperAndDarker.spawnPlacements();
@@ -110,6 +107,7 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+            EntityRenderers.register(DDEntities.GLOOM_GLARE.get(), GloomGlareRenderer::new);
 
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
         }
