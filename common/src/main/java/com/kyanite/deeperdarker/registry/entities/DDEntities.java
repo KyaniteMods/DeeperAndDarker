@@ -27,9 +27,9 @@ public class DDEntities {
             SculkSnapperEntity::new, MobCategory.MONSTER, 1, 1, 10
     );
 
-    public static final Supplier<EntityType<GloomGlareEntity>> GLOOM_GLARE = RegistryHelper.registerEntity(
-            "gloom_glare",
-            GloomGlareEntity::new, MobCategory.MONSTER, 1, 1, 10
+    public static final Supplier<EntityType<ScavengerEntity>> SCAVENGER = RegistryHelper.registerEntity(
+            "scavenger",
+            ScavengerEntity::new, MobCategory.MONSTER, 1, 1, 10
     );
 
     public static final Supplier<EntityType<SculkWormEntity>> SCULK_WORM = RegistryHelper.registerEntity(

@@ -3,8 +3,6 @@ package com.kyanite.deeperdarker.forge;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
-import com.kyanite.deeperdarker.config.DDClientConfig;
-import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
@@ -35,9 +33,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -107,7 +103,7 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
-            EntityRenderers.register(DDEntities.GLOOM_GLARE.get(), GloomGlareRenderer::new);
+            EntityRenderers.register(DDEntities.SCAVENGER.get(), ScavengerRenderer::new);
 
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
         }

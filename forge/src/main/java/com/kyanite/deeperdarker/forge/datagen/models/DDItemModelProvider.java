@@ -132,6 +132,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
+        itemModel(DDItems.AMBER_CRYSTAL, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
         itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
@@ -144,7 +145,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(getName(DDItems.SHRIEK_WORM_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.SCULK_CENTIPEDE_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.STALKER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
-        withExistingParent(getName(DDItems.GLOOM_GLARE_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.SCAVENGER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
 
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
