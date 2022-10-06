@@ -2,9 +2,12 @@ package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.fabric.client.ArmorRenderer;
 import com.kyanite.deeperdarker.fabric.client.FabricBoatModels;
+import com.kyanite.deeperdarker.fabric.client.WardenArmorRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -38,6 +41,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
 
-        DeeperAndDarker.registerArmor();
+        ArmorRenderer.registerArmorRenderer(new WardenArmorRenderer(), DDItems.WARDEN_HELMET.get(),
+                DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get());
     }
 }

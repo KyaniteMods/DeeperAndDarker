@@ -1,7 +1,5 @@
 package com.kyanite.deeperdarker;
 
-import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
-import com.kyanite.deeperdarker.miscellaneous.ArmorRenderer;
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.miscellaneous.DeeperAndDarkerInitCallback;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
@@ -26,7 +24,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 import java.util.Map;
 
@@ -71,9 +68,5 @@ public class DeeperAndDarker {
         SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.STALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.SCAVENGER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-    }
-    public static void registerArmor() {
-        ArmorRenderer.registerArmorRenderer(new WardenArmorRenderer(), DDItems.WARDEN_HELMET.get(),
-                DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get());
     }
 }

@@ -1,6 +1,6 @@
-package com.kyanite.deeperdarker.client.rendering.armor;
+package com.kyanite.deeperdarker.forge.client;
 
-import com.kyanite.deeperdarker.miscellaneous.ArmorRenderer;
+import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorModel;
 import com.kyanite.deeperdarker.registry.items.custom.WardenArmorItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -9,7 +9,7 @@ import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 import software.bernie.geckolib3.util.GeoUtils;
 
-public class WardenArmorRenderer extends ArmorRenderer<WardenArmorItem> {
+public class WardenArmorRenderer extends GeoArmorRenderer<WardenArmorItem> {
     public WardenArmorRenderer() {
         super(new WardenArmorModel());
         this.headBone = "armorHead";
@@ -23,13 +23,13 @@ public class WardenArmorRenderer extends ArmorRenderer<WardenArmorItem> {
     }
 
     @Override
-    public void fitToBiped() {
+    protected void fitToBiped() {
         super.fitToBiped();
         IBone bodyBone = this.getGeoModelProvider().getBone("armorWaist");
-        GeoUtils.copyRotations(baseModel.body, bodyBone);
-        bodyBone.setPositionX(baseModel.body.x);
-        bodyBone.setPositionY(-baseModel.body.y);
-        bodyBone.setPositionZ(baseModel.body.z);
+        GeoUtils.copyRotations(this.body, bodyBone);
+        bodyBone.setPositionX(this.body.x);
+        bodyBone.setPositionY(-this.body.y);
+        bodyBone.setPositionZ(this.body.z);
     }
 
     @Override

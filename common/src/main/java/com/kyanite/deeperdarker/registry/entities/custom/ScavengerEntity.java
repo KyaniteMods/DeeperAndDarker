@@ -54,6 +54,7 @@ public class ScavengerEntity extends Monster implements IAnimatable {
         return flyingPathNavigation;
     }
 
+
     @Override
     public boolean causeFallDamage(float f, float g, DamageSource damageSource) {
         return false;

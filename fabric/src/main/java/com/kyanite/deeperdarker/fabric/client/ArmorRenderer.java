@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.miscellaneous;
+package com.kyanite.deeperdarker.fabric.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -26,6 +26,8 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
 import software.bernie.geckolib3.util.GeoUtils;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
@@ -75,6 +77,24 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     public static <E extends Entity> void registerArmorRenderer(ArmorRenderer renderer, Item... items) {
         for (Item item : items) {
             registerArmorRenderer(renderer, item);
+        }
+    }
+
+    public static void registerArmorRenderer(Class<? extends ArmorItem> itemClass, ArmorRenderer instance) {
+        for (Constructor<?> c : instance.getClass().getConstructors()) {
+            if (c.getParameterCount() == 0) {
+                try {
+                    registerArmorRenderer(itemClass, (ArmorRenderer) c.newInstance());
+                } catch (InstantiationException e) {
+                    throw new RuntimeException(e);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                throw new IllegalArgumentException("If you still use the registration using instances, please give it a no-args constructor!");
+            }
         }
     }
 

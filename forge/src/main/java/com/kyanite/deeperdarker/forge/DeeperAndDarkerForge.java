@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.client.rendering.armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.forge.client.WardenArmorRenderer;
 import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
