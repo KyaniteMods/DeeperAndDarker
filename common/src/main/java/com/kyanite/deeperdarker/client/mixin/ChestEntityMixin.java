@@ -50,7 +50,5 @@ public abstract class ChestEntityMixin {
 
             this.openCount = i;
         }
-
-        //  this.openerCountChanged(pLevel, pPos, pState, j, i);
     }
 }

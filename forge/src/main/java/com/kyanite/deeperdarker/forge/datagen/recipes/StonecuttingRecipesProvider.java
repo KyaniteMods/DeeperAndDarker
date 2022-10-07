@@ -1,11 +1,9 @@
 package com.kyanite.deeperdarker.forge.datagen.recipes;
 
-import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 

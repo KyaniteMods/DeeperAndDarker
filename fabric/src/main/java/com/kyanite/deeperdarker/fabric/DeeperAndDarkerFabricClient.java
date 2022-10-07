@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.fabric;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
 import com.kyanite.deeperdarker.fabric.client.ArmorRenderer;
 import com.kyanite.deeperdarker.fabric.client.FabricBoatModels;

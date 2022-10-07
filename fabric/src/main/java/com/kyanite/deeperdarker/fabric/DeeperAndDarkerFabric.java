@@ -1,8 +1,6 @@
 package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.config.DDClientConfig;
-import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.fabricmc.api.ModInitializer;
@@ -17,8 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.api.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.client.mixin;
 
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
@@ -12,7 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ContainerMixin {
     @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
     public void stillValid(Player pPlayer, CallbackInfoReturnable<Boolean> cir) {
-        cir.cancel();
-        cir.setReturnValue(true);
+        if(pPlayer.getMainHandItem().is(DDItems.SCULK_TRANSMITTER.get())) {
+            cir.cancel();
+            cir.setReturnValue(true);
+        }
     }
 }
