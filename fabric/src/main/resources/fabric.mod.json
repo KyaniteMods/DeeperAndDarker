@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "id": "deeperdarker",
   "version": "${version}",
-  "name": "DeeperAndDarker",
+  "name": "Deeper and Darker",
   "description": "",
   "authors": [],
   "contact": {},
   "license": "All-Rights-Reserved",
-  "icon": "icon.png",
+  "icon": "assets/deeperdarker/banner.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -23,6 +23,8 @@
   ],
   "depends": {
     "fabricloader": ">=0.14.9",
-    "minecraft": ">=1.19.2"
+    "fabric": "*",
+    "minecraft": "1.19.2",
+    "geckolib3": ">=3.1.22"
   }
 }

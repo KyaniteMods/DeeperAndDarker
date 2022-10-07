@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chiseled_gloomslate": {
+    "has_smooth_gloomslate": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:chiseled_gloomslate"
+              "deeperdarker:smooth_gloomslate"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:polished_gloomslate_from_chiseled_gloomslate_stonecutting"
+        "recipe": "minecraft:cut_gloomslate_slab_from_smooth_gloomslate_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_chiseled_gloomslate",
+      "has_smooth_gloomslate",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:polished_gloomslate_from_chiseled_gloomslate_stonecutting"
+      "minecraft:cut_gloomslate_slab_from_smooth_gloomslate_stonecutting"
     ]
   }
 }

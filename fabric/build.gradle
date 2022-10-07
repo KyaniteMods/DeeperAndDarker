@@ -24,7 +24,7 @@ dependencies {
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
 
     // GeckoLib
-    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:3.1.18"
+    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:3.1.22"
 
     // Portal API
     include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta52-1.19')

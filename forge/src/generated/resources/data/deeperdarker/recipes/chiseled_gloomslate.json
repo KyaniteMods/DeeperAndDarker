@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "deeperdarker:polished_gloomslate_slab"
+      "item": "deeperdarker:gloomslate_slab"
     }
   },
   "pattern": [

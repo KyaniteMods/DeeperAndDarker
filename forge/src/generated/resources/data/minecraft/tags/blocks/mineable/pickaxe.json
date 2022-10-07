@@ -50,6 +50,10 @@
     "deeperdarker:smooth_gloomslate_slab",
     "deeperdarker:smooth_gloomslate_stairs",
     "deeperdarker:smooth_gloomslate_wall",
+    "deeperdarker:cut_gloomslate",
+    "deeperdarker:cut_gloomslate_slab",
+    "deeperdarker:cut_gloomslate_stairs",
+    "deeperdarker:cut_gloomslate_wall",
     "deeperdarker:chiseled_gloomslate"
   ]
 }

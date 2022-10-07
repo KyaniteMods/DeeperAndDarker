@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_polished_gloomslate_slab": {
+    "has_gloomslate_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:polished_gloomslate_slab"
+              "deeperdarker:gloomslate_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_polished_gloomslate_slab",
+      "has_gloomslate_slab",
       "has_the_recipe"
     ]
   ],
