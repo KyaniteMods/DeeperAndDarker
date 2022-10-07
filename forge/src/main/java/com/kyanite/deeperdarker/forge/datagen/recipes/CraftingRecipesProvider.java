@@ -84,9 +84,12 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         stairBuilder(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(consumer);
         wallBuilder(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(consumer);
 
+        polishedBuilder(DDBlocks.CUT_GLOOMSLATE.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(consumer);
+        slabBuilder(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), Ingredient.of(DDBlocks.CUT_GLOOMSLATE.get())).unlockedBy("has_cut_gloomslate", has(DDBlocks.CUT_GLOOMSLATE.get())).save(consumer);
+        stairBuilder(DDBlocks.CUT_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.CUT_GLOOMSLATE.get())).unlockedBy("has_cut_gloomslate", has(DDBlocks.CUT_GLOOMSLATE.get())).save(consumer);
+        wallBuilder(DDBlocks.CUT_GLOOMSLATE_WALL.get(), Ingredient.of(DDBlocks.CUT_GLOOMSLATE.get())).unlockedBy("has_cut_gloomslate", has(DDBlocks.CUT_GLOOMSLATE.get())).save(consumer);
 
-
-        chiseledBuilder(DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get())).unlockedBy("has_polished_gloomslate_slab", has(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get())).save(consumer);
+        chiseledBuilder(DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.GLOOMSLATE_SLAB.get())).unlockedBy("has_gloomslate_slab", has(DDBlocks.GLOOMSLATE_SLAB.get())).save(consumer);
 
         ShapedRecipeBuilder.shaped(DDItems.REINFORCED_ECHO_SHARD.get(), 1)
                 .define('P', Items.PHANTOM_MEMBRANE)

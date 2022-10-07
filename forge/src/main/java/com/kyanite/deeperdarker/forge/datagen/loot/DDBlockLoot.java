@@ -114,7 +114,10 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
 
-
+        this.dropSelf(DDBlocks.CUT_GLOOMSLATE.get());
+        this.add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
+        this.dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
 
         this.dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 

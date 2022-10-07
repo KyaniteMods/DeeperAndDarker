@@ -134,7 +134,10 @@ public class DDBlocks {
     public static final Supplier<StairBlock> SMOOTH_GLOOMSLATE_STAIRS = registerBlock("smooth_gloomslate_stairs", true, () -> new StairBlock(SMOOTH_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
     public static final Supplier<WallBlock> SMOOTH_GLOOMSLATE_WALL = registerBlock("smooth_gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
 
-
+    public static final Supplier<Block> CUT_GLOOMSLATE = registerBlock("cut_gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final Supplier<SlabBlock> CUT_GLOOMSLATE_SLAB = registerBlock("cut_gloomslate_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
+    public static final Supplier<StairBlock> CUT_GLOOMSLATE_STAIRS = registerBlock("cut_gloomslate_stairs", true, () -> new StairBlock(CUT_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
+    public static final Supplier<WallBlock> CUT_GLOOMSLATE_WALL = registerBlock("cut_gloomslate_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
 
     public static final Supplier<Block> CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", true, () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
 
