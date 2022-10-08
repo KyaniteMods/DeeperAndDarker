@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "deeperdarker:warden_carapace"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": true,
     "icon": {
-      "item": "minecraft:air"
+      "item": "deeperdarker:warden_carapace"
     },
     "show_toast": false,
     "title": {

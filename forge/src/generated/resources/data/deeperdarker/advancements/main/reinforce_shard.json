@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "deeperdarker:reinforced_echo_shard"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:air"
+      "item": "deeperdarker:reinforced_echo_shard"
     },
     "show_toast": true,
     "title": {
