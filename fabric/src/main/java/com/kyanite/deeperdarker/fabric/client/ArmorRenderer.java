@@ -239,8 +239,23 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     @Override
+    public void setCurrentRTB(MultiBufferSource rtb) {
+
+    }
+
+    @Override
+    public MultiBufferSource getCurrentRTB() {
+        return null;
+    }
+
+    @Override
     public AnimatedGeoModel<T> getGeoModelProvider() {
         return this.modelProvider;
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(T instance) {
+        return null;
     }
 
     @Override
