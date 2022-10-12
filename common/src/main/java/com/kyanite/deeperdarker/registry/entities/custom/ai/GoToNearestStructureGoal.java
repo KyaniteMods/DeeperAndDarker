@@ -1,12 +1,8 @@
 package com.kyanite.deeperdarker.registry.entities.custom.ai;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.miscellaneous.ActionAnimatedEntity;
 import com.kyanite.deeperdarker.registry.entities.custom.ScavengerEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.Path;
 
 import java.util.EnumSet;
 
