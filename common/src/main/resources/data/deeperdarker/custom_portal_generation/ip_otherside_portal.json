@@ -1,0 +1,6 @@
+{
+  "schema_version": "imm_ptl:v1",
+  "from": ["minecraft:overworld"],"to": "deeperdarker:otherside",
+  "form": {"type": "imm_ptl:convert_conventional_portal","portal_block": "deeperdarker:otherside_portal"},
+  "trigger": {"type": "imm_ptl:conventional_dimension_change"}
+}

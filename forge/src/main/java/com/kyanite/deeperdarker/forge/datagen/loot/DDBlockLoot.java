@@ -62,6 +62,23 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
 
+        this.dropSelf(DDBlocks.SCULK_STONE_TILES.get());
+        this.add(DDBlocks.SCULK_STONE_TILE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        this.dropSelf(DDBlocks.SCULK_STONE_TILE_WALL.get());
+
+        this.dropSelf(DDBlocks.SMOOTH_SCULK_STONE.get());
+        this.add(DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get());
+        this.dropSelf(DDBlocks.SMOOTH_SCULK_STONE_WALL.get());
+
+        this.dropSelf(DDBlocks.CUT_SCULK_STONE.get());
+        this.add(DDBlocks.CUT_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.CUT_SCULK_STONE_STAIRS.get());
+        this.dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
+
+        this.dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
+
         this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> sculkOreDrop(block, Items.COAL));
         this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_IRON));
         this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_COPPER));
