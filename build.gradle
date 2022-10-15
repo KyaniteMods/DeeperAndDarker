@@ -39,6 +39,9 @@ allprojects {
         maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
     }
 
+    processResources {
+        duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    }
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"

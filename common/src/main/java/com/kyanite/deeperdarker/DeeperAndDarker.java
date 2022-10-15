@@ -59,7 +59,7 @@ public class DeeperAndDarker {
         attributes.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
         attributes.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeEntity.attributes());
         attributes.put(DDEntities.STALKER.get(), StalkerEntity.attributes());
-        attributes.put(DDEntities.SCAVENGER.get(), ScavengerEntity.attributes());;
+  //      attributes.put(DDEntities.SCAVENGER.get(), ScavengerEntity.attributes());;
     }
 
     public static void spawnPlacements() {
@@ -67,6 +67,6 @@ public class DeeperAndDarker {
         SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.STALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(DDEntities.SCAVENGER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+    //    SpawnPlacements.register(DDEntities.SCAVENGER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }
 }

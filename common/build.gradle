@@ -17,10 +17,6 @@ architectury {
     common()
 }
 
-processResources {
-    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-}
-
 sourceSets {
     main {
         resources {

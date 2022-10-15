@@ -103,7 +103,7 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
-            EntityRenderers.register(DDEntities.SCAVENGER.get(), ScavengerRenderer::new);
+         //   EntityRenderers.register(DDEntities.SCAVENGER.get(), ScavengerRenderer::new);
 
             ItemBlockRenderTypes.setRenderLayer(DDBlocks.CRYSTALLIZED_AMBER.get(), RenderType.translucent());
         }

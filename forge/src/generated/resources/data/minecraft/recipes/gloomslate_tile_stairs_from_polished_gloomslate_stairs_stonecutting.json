@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "deeperdarker:polished_gloomslate_stairs"
-  },
-  "result": "deeperdarker:gloomslate_tile_stairs"
-}

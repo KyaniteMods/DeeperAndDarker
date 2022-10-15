@@ -45,8 +45,6 @@ dependencies {
 processResources {
     inputs.property "version", project.version
 
-    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
