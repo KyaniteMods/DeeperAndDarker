@@ -33,6 +33,16 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    project(":forge").file("src/generated/resources").absolutePath
+            ]
+        }
+    }
+}
+
 processResources {
     inputs.property "version", project.version
 

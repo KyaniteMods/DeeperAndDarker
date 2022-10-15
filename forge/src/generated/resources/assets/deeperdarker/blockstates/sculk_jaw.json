@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "activated=false": {
+      "model": "deeperdarker:block/sculk_jaw"
+    },
+    "activated=true": {
+      "model": "deeperdarker:block/sculk_jaw_activated"
+    }
+  }
+}

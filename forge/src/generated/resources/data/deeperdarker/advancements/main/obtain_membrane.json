@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:main/root",
+  "criteria": {
+    "membrane": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:phantom_membrane"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.obtain_membrane.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.obtain_membrane.title"
+    }
+  },
+  "requirements": [
+    [
+      "membrane"
+    ]
+  ]
+}

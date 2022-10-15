@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "deeperdarker:warden_carapace"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "P": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "pattern": [
+    "PEP",
+    "ECE",
+    "PEP"
+  ],
+  "result": {
+    "item": "deeperdarker:reinforced_echo_shard"
+  }
+}

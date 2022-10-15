@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "group": "coal",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone_coal_ore"
+  },
+  "result": "minecraft:coal"
+}

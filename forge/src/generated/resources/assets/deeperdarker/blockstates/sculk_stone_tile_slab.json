@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deeperdarker:block/sculk_stone_tile_slab"
+    },
+    "type=double": {
+      "model": "deeperdarker:block/sculk_stone_tiles"
+    },
+    "type=top": {
+      "model": "deeperdarker:block/sculk_stone_tile_slab_top"
+    }
+  }
+}

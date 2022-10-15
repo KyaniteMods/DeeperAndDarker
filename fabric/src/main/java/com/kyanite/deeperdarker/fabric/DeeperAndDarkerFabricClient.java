@@ -1,9 +1,9 @@
 package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.client.rendering.entity.*;
-import com.kyanite.deeperdarker.fabric.client.ArmorRenderer;
+import com.kyanite.deeperdarker.fabric.client.warden_armor.ArmorRenderer;
 import com.kyanite.deeperdarker.fabric.client.FabricBoatModels;
-import com.kyanite.deeperdarker.fabric.client.WardenArmorRenderer;
+import com.kyanite.deeperdarker.fabric.client.warden_armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;

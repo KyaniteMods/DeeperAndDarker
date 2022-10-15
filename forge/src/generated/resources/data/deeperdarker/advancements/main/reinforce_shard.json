@@ -1,0 +1,37 @@
+{
+  "parent": "deeperdarker:main/kill_warden",
+  "criteria": {
+    "reinforced_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:reinforced_echo_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.reinforce_shard.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:reinforced_echo_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.reinforce_shard.title"
+    }
+  },
+  "requirements": [
+    [
+      "reinforced_shard"
+    ]
+  ]
+}

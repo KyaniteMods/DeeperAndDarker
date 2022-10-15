@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "deeperdarker:block/cobbled_sculk_stone",
+    "side": "deeperdarker:block/cobbled_sculk_stone",
+    "top": "deeperdarker:block/cobbled_sculk_stone"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1.4,
+  "group": "redstone",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone_redstone_ore"
+  },
+  "result": "minecraft:redstone"
+}

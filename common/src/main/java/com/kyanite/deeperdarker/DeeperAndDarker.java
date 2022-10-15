@@ -32,8 +32,6 @@ public class DeeperAndDarker {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static void init(DeeperAndDarkerInitCallback callback) {
-        GeckoLib.initialize();
-
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
         DDTiers.registerTypes();

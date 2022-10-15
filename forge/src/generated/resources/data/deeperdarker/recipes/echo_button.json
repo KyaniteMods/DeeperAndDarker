@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "deeperdarker:echo_planks"
+    }
+  ],
+  "result": {
+    "item": "deeperdarker:echo_button"
+  }
+}

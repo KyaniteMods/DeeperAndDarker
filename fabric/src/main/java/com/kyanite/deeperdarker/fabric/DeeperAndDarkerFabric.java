@@ -15,6 +15,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import software.bernie.example.GeckoLibMod;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,6 +41,9 @@ public class DeeperAndDarkerFabric implements ModInitializer {
                     .customPortalBlock(PORTAL_BLOCK)
                     .forcedSize(20, 6)
                     .registerPortal();
+
+            GeckoLibMod.DISABLE_IN_DEV = true;
+            GeckoLib.initialize();
         });
     }
 }

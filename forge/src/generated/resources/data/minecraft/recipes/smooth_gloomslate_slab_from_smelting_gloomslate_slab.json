@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "smooth_gloomslate_slab",
+  "ingredient": {
+    "item": "deeperdarker:gloomslate_slab"
+  },
+  "result": "deeperdarker:smooth_gloomslate_slab"
+}
