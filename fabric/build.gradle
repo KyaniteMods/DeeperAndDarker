@@ -29,9 +29,6 @@ dependencies {
     // Portal API
     include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta52-1.19')
 
-    // Config API
-    include modImplementation("net.minecraftforge:forgeconfigapiport-fabric:4.2.6")
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }

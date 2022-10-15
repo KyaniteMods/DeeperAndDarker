@@ -4,9 +4,6 @@ dependencies {
 
     // GeckoLib
     modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:3.1.18"
-
-    // Config API
-    include modImplementation("net.minecraftforge:forgeconfigapiport-fabric:4.2.6")
 }
 
 loom {
@@ -15,6 +12,11 @@ loom {
 
 architectury {
     common()
+}
+
+
+processResources {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 }
 
 sourceSets {
