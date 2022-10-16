@@ -1,0 +1,38 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "got_soul_elytra": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:soul_elytra"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.got_soul_elytra.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:soul_elytra",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.got_soul_elytra.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_soul_elytra"
+    ]
+  ]
+}

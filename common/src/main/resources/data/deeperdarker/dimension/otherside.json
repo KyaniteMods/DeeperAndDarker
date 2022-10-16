@@ -55,7 +55,7 @@
           "type": "minecraft:squeeze",
           "argument": {
             "type": "minecraft:mul",
-            "argument1": 25,
+            "argument1": 42,
             "argument2": {
               "type": "minecraft:interpolated",
               "argument": {

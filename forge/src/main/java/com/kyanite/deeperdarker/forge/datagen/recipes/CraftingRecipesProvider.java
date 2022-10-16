@@ -115,6 +115,16 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
                 .pattern("ECE")
                 .pattern("PEP")
                 .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(consumer);
+
+        ShapedRecipeBuilder.shaped(DDItems.SOUL_ELYTRA.get(), 1)
+                .define('S', DDItems.SOUL_CRYSTAL.get())
+                .define('D', DDItems.SOUL_DUST.get())
+                .define('B', DDItems.SCULK_BONE.get())
+                .define('E', Items.ELYTRA)
+                .pattern("BDB")
+                .pattern("DED")
+                .pattern("BSB")
+                .unlockedBy("has_soul_elytra", has(DDItems.SOUL_ELYTRA.get())).save(consumer);
     }
 
     @NotNull

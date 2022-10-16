@@ -23,8 +23,10 @@ public class DDItems {
     public static final Supplier<Item> HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", PortalHelper.getHeartItem());
     public static final Supplier<Item> REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> WARDEN_CARAPACE = registerItem("warden_carapace", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> SOUL_ELYTRA = registerItem("soul_elytra", ClientHelper.getElytraItem());
     public static final Supplier<Item> SOUL_DUST = registerItem("soul_dust", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> AMBER_CRYSTAL = registerItem("amber_crystal", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> SCULK_BONE = registerItem("sculk_bone", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> SOUL_CRYSTAL = registerItem("soul_crystal", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SCULK_TRANSMITTER = registerItem("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 
     public static final Supplier<Item> WARDEN_HELMET = registerItem("warden_helmet", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.HEAD, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));

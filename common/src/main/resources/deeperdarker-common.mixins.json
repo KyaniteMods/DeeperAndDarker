@@ -12,7 +12,8 @@
     "SculkSpreadMixin",
     "StonecutterMixin",
     "VibrationListenerMixin",
-    "WardenMixin"
+    "WardenMixin",
+    "SculkBlockMixin"
   ],
   "client": [
     "WardenAnimations"

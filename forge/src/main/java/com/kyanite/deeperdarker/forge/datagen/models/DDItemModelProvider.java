@@ -146,13 +146,14 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
+        itemModel(DDItems.SOUL_CRYSTAL, GENERATED);
+        itemModel(DDItems.SCULK_BONE, GENERATED);
         getBuilder(getName(DDItems.SCULK_TRANSMITTER) + "_on").parent(GENERATED).texture("layer0", "item/" + getName(DDItems.SCULK_TRANSMITTER) + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
         itemModel(DDItems.WARDEN_HELMET, GENERATED);
         itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
         itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
-        itemModel(DDItems.AMBER_CRYSTAL, GENERATED);
         itemModel(DDItems.WARDEN_BOOTS, GENERATED);
         itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);

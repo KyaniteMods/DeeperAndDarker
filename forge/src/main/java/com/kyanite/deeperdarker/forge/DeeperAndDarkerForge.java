@@ -2,6 +2,9 @@ package com.kyanite.deeperdarker.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
+import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraArmorStandLayer;
+import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraLayer;
 import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorItem;
 import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
@@ -13,14 +16,23 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -107,6 +119,9 @@ public class DeeperAndDarkerForge {
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_WORM.get(), SculkWormRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+
+            ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation(DeeperAndDarker.MOD_ID, "broken"),
+                    (stack, arg1, arg2, arg3) -> SoulElytraItem.isUseable(stack) ? 0 : 1);
         }
 
         @SubscribeEvent
@@ -117,8 +132,20 @@ public class DeeperAndDarkerForge {
 
         @SubscribeEvent
         public static void entityRenderers(final EntityRenderersEvent.AddLayers event) {
-            DeeperAndDarker.LOGGER.info("RENDERING ARMOR RENDERING ARMOR RENDERING ARMOR");
             GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
+
+            EntityModelSet entityModels = event.getEntityModels();
+            event.getSkins().forEach(s -> {
+                LivingEntityRenderer<? extends Player, ? extends EntityModel<? extends Player>> livingEntityRenderer = event.getSkin(s);
+                if(livingEntityRenderer instanceof PlayerRenderer playerRenderer){
+                    playerRenderer.addLayer(new SoulElytraLayer(playerRenderer, entityModels));
+                }
+            });
+            LivingEntityRenderer<ArmorStand, ? extends EntityModel<ArmorStand>> livingEntityRenderer = event.getRenderer(EntityType.ARMOR_STAND);
+            if(livingEntityRenderer instanceof ArmorStandRenderer armorStandRenderer){
+                armorStandRenderer.addLayer(new SoulElytraArmorStandLayer(armorStandRenderer, entityModels));
+            }
+
         }
     }
 

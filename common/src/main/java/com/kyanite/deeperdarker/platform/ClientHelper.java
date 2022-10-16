@@ -12,4 +12,9 @@ public class ClientHelper {
     public static <T extends Item> Supplier<T> createArmorItem(ArmorMaterial pMaterial, EquipmentSlot pSlot, Item.Properties pProperties) {
         throw new AssertionError();
     }
+
+    @ExpectPlatform
+    public static <T extends Item> Supplier<T> getElytraItem() {
+        throw new AssertionError();
+    }
 }

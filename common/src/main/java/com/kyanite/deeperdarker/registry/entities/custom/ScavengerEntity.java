@@ -46,12 +46,6 @@ public class ScavengerEntity extends TamableAnimal implements IAnimatable {
     public static AttributeSupplier.Builder attributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 25.0D).add(Attributes.FLYING_SPEED, 0.35).add(Attributes.MOVEMENT_SPEED, 0.3);
     }
-
-    @Override
-    public boolean isFood(ItemStack itemStack) {
-        return itemStack.is(DDItems.AMBER_CRYSTAL.get());
-    }
-
     @Override
     protected void registerGoals() {
        // this.goalSelector.addGoal(3, new FloatGoal(this));

@@ -97,8 +97,8 @@ public class DDBlockLoot extends BlockLoot {
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
         this.dropSelf(DDBlocks.GEYSER.get());
-        this.add(DDBlocks.CRYSTALLIZED_AMBER.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDItems.AMBER_CRYSTAL.get()));
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());
+        this.dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
         this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLoot::createShearsOnlyDrop);
 
         this.add(DDBlocks.GLOOMSLATE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
