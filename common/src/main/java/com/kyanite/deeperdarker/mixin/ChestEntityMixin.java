@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;

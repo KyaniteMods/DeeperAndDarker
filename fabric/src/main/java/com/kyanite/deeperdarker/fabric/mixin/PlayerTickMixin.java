@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Player.class)
 public class PlayerTickMixin {
-    @Inject(method = "tick", at = @At("TAIL"))
+    @Inject(method = "tick", at = @At("TAIL"), cancellable = true)
     public void tick(CallbackInfo ci) {
         Player plr = (Player)(Object)this;
         if(!plr.level.isClientSide()) {

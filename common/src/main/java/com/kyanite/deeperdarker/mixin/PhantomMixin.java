@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import net.minecraft.world.entity.EntityType;

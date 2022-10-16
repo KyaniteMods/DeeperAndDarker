@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

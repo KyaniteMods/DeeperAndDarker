@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.client.mixin;
+package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import net.minecraft.server.level.ServerLevel;
