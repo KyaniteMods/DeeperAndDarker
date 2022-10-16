@@ -11,22 +11,15 @@ authors = "Kyanite Mods"
 description = '''A Minecraft 1.19 mod which features more blocks, items, armors, and hidden mysteries to complement the new Deep Dark biome.'''
 
 [[dependencies.deeperdarker]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.19.2, 1.20)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.deeperdarker]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[41.0.94,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.deeperdarker]]
 modId = "geckolib3"
 mandatory = true
-versionRange = "[3.1.23,)"
+versionRange = "[3.1.22,)"
 ordering = "NONE"
 side = "BOTH"
