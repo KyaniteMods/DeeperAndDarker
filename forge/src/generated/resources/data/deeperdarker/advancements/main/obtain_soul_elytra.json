@@ -1,7 +1,7 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
-    "got_soul_elytra": {
+    "obtain_soul_elytra": {
       "conditions": {
         "items": [
           {
@@ -17,7 +17,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.got_soul_elytra.description"
+      "translate": "advancements.deeperdarker.obtain_soul_elytra.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,12 +27,12 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.got_soul_elytra.title"
+      "translate": "advancements.deeperdarker.obtain_soul_elytra.title"
     }
   },
   "requirements": [
     [
-      "got_soul_elytra"
+      "obtain_soul_elytra"
     ]
   ]
 }

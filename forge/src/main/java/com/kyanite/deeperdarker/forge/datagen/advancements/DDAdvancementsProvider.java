@@ -89,11 +89,11 @@ public class DDAdvancementsProvider extends AdvancementProvider {
                 .save(consumer, path + "reinforce_shard");
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SOUL_ELYTRA.get(),
-                        Component.translatable(id + "got_soul_elytra.title"),
-                        Component.translatable(id + "got_soul_elytra.description"),
+                        Component.translatable(id + "obtain_soul_elytra.title"),
+                        Component.translatable(id + "obtain_soul_elytra.description"),
                         null, FrameType.TASK, true, true, false)
-                .addCriterion("got_soul_elytra", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SOUL_ELYTRA.get()))
-                .save(consumer, path + "got_soul_elytra");
+                .addCriterion("obtain_soul_elytra", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SOUL_ELYTRA.get()))
+                .save(consumer, path + "obtain_soul_elytra");
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SCULK_TRANSMITTER.get(),
                         Component.translatable(id + "obtain_transmitter.title"),

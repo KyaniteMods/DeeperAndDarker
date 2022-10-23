@@ -48,8 +48,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
         add("advancements.deeperdarker.obtain_transmitter.title", "Remote Storage");
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
-        add("advancements.deeperdarker.got_soul_elytra.title", "Wings of the Broken Souls");
-        add("advancements.deeperdarker.got_soul_elytra.description", "Craft a Soul Elytra");
+        add("advancements.deeperdarker.obtain_soul_elytra.title", "Wings of the Broken Souls");
+        add("advancements.deeperdarker.obtain_soul_elytra.description", "Craft Soul Elytra");
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");
 
