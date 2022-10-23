@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.paragon.api.ConfigOption;
-import com.kyanite.paragon.api.annotation.ModConfig;
+import com.kyanite.paragon.api.interfaces.ModConfig;
 
 import java.util.List;
 
@@ -25,16 +25,12 @@ public class DDConfig implements ModConfig {
     // Otherside Decoration Options
     public static final ConfigOption<Boolean> SCULK_BLOCKS_IN_OTHERSIDE = new ConfigOption<>("sculk_blocks_in_otherside", true);
 
-    // Other Options
-    public static final ConfigOption<Boolean> NERF_WARDEN_HEALTH = new ConfigOption<>("nerf_warden_health", true);
-
     @Override
     public List<ConfigOption> configOptions() {
         return List.of(
                 WARDEN_ARMOR_DURABILITY, WARDEN_ARMOR_TOUGHNESS, WARDEN_ARMOR_KNOCKBACK_RESISTANCE,
                 WARDEN_TOOLS_DURABILITY, WARDEN_TOOLS_SPEED, WARDEN_TOOLS_DAMAGE,
                 SHATTERED_SPAWNING, PHANTOM_SPAWNING, SNAPPER_SPAWNING, CENTIPEDE_SPAWNING,
-                SCULK_BLOCKS_IN_OTHERSIDE,
-                NERF_WARDEN_HEALTH);
+                SCULK_BLOCKS_IN_OTHERSIDE);
     }
 }

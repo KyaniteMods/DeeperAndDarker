@@ -22,8 +22,7 @@ public abstract class WardenMixin extends Monster {
 
     @Inject(method = "createAttributes", at = @At("RETURN"), cancellable = true)
     private static void createAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
-        if(DDConfig.NERF_WARDEN_HEALTH.get() == true)
-            cir.setReturnValue(Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 350).add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 15));
+        cir.setReturnValue(Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 350).add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 15));
     }
 
     @Override
