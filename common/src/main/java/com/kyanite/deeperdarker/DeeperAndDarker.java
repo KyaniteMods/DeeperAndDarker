@@ -15,6 +15,7 @@ import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
+import com.kyanite.paragon.api.ConfigRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -36,10 +37,10 @@ public class DeeperAndDarker {
             "textures/entity/soul_elytra.png");
 
     public static void init(DeeperAndDarkerInitCallback callback) {
+        ConfigRegistry.register("deeperdarker", new DDConfig());
+
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
-        DDTiers.registerTypes();
-        DDItems.registerItems();
         DDSounds.registerSounds();
         DDEnchantments.registerEnchantments();
         DDEffects.registerEffects();
@@ -51,6 +52,8 @@ public class DeeperAndDarker {
         OthersideBiomes.createBiomes();
         DDDimensions.registerDimensions();
 
+        DDTiers.registerTypes();
+        DDItems.registerItems();
         callback.callback();
     }
 

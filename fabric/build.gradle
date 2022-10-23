@@ -29,6 +29,9 @@ dependencies {
     // Portal API
     include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta52-1.19')
 
+    // Paragon
+    include modImplementation("maven.modrinth:paragon:fabric-1.0.0b-1.19.2")
+
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }

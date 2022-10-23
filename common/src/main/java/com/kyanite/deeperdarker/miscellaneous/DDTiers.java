@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.miscellaneous;
 
+import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -9,17 +10,17 @@ public class DDTiers {
     public static final Tier WARDEN = new Tier() {
         @Override
         public int getUses() {
-            return 2464;
+            return DDConfig.WARDEN_TOOLS_DURABILITY.get();
         }
 
         @Override
         public float getSpeed() {
-            return 11f;
+            return DDConfig.WARDEN_TOOLS_SPEED.get().floatValue();
         }
 
         @Override
         public float getAttackDamageBonus() {
-            return 7f;
+            return DDConfig.WARDEN_TOOLS_DAMAGE.get().floatValue();
         }
 
         @Override

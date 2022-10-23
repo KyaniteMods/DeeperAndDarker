@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.world.biomes;
 
+import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
@@ -62,7 +63,9 @@ public class OthersideBiomes {
 
     public static Biome forest() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED.get(), 20, 0, 2));
+
+        if(DDConfig.SHATTERED_SPAWNING.get() == true)
+            spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED.get(), 20, 0, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
@@ -91,9 +94,14 @@ public class OthersideBiomes {
 
     public static Biome deeplands() {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 120, 4, 6));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 50, 0, 1));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_CENTIPEDE.get(), 55, 1, 3));
+        if(DDConfig.SNAPPER_SPAWNING.get() == true)
+            spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 120, 4, 6));
+
+        if(DDConfig.PHANTOM_SPAWNING.get() == true)
+            spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 50, 0, 1));
+
+        if(DDConfig.CENTIPEDE_SPAWNING.get() == true)
+            spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_CENTIPEDE.get(), 55, 1, 3));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
@@ -136,6 +144,7 @@ public class OthersideBiomes {
     public static void addSculkDecoration(BiomeGenerationSettings.Builder builder) {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.SCULK.get()));
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, Holder.direct(DDPlacedFeatures.INFESTED_SCULK.get()));
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(CavePlacements.SCULK_PATCH_DEEP_DARK.value()));
+        if(DDConfig.SCULK_BLOCKS_IN_OTHERSIDE.get() == true)
+            builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(CavePlacements.SCULK_PATCH_DEEP_DARK.value()));
     }
 }

@@ -4,6 +4,9 @@ dependencies {
 
     // GeckoLib
     modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:3.1.18"
+
+    // Paragon
+    modImplementation("maven.modrinth:paragon:common-1.0.0b-1.19.2")
 }
 
 loom {

@@ -37,6 +37,13 @@ allprojects {
         maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
         maven { url = "https://maven.kyrptonaught.dev" }
         maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
+        maven {
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+            content {
+                includeGroup "maven.modrinth"
+            }
+        }
     }
 
     processResources {
