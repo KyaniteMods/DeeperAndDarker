@@ -18,6 +18,13 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.deeperdarker]]
+modId = "paragon"
+mandatory = true
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.deeperdarker]]
 modId = "geckolib3"
 mandatory = true
 versionRange = "[3.1.22,)"

@@ -38,6 +38,9 @@ dependencies {
     // GeckoLib
     modImplementation ("software.bernie.geckolib:geckolib-forge-1.19:3.1.23")
 
+    // Paragon
+    include modImplementation("maven.modrinth:paragon:forge-1.0.1b-1.19x")
+
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }

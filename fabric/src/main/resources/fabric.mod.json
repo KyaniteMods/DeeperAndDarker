@@ -22,6 +22,7 @@
     "deeperdarker-common.mixins.json"
   ],
   "depends": {
+    "paragon": ">=1.0.0",
     "fabricloader": ">=0.14.9",
     "fabric": "*",
     "minecraft": "1.19.x",
