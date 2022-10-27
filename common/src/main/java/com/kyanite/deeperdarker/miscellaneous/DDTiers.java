@@ -5,7 +5,6 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 
-
 public class DDTiers {
     public static final Tier WARDEN = new Tier() {
         @Override

@@ -1,4 +1,4 @@
-    package com.kyanite.deeperdarker.forge.client.elytra;
+package com.kyanite.deeperdarker.forge.client.elytra;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.items.DDItems;
@@ -20,7 +20,9 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("rawtypes")
 @OnlyIn(Dist.CLIENT)
 public class SoulElytraArmorStandLayer extends ElytraLayer<ArmorStand, ArmorStandArmorModel> {
     private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID,
@@ -34,7 +36,8 @@ public class SoulElytraArmorStandLayer extends ElytraLayer<ArmorStand, ArmorStan
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorStand livingEntity, float f, float g, float h, float j, float k, float l) {
+    @SuppressWarnings("unchecked")
+    public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, ArmorStand livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
         if (itemStack.is(DDItems.SOUL_ELYTRA.get())) {
             poseStack.pushPose();

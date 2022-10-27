@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.mixin;
 
-import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobType;
