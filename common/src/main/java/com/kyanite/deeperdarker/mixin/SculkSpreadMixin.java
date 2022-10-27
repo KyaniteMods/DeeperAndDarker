@@ -38,18 +38,26 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
 
         if (state.is(Blocks.STONE)) {
             replaceState = DDBlocks.SCULK_STONE.get().defaultBlockState();
+        } else if (state.is(BlockTags.LOGS)) {
+            replaceState = DDBlocks.ECHO_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
         } else if (state.is(DDTags.Blocks.STRIPPED_LOGS)) {
-            replaceState = DDBlocks.STRIPPED_ECHO_LOG.get().defaultBlockState();
+            replaceState = DDBlocks.STRIPPED_ECHO_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
         } else if (state.is(DDTags.Blocks.WOOD)) {
-            replaceState = DDBlocks.ECHO_WOOD.get().defaultBlockState();
+            replaceState = DDBlocks.ECHO_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
         } else if (state.is(DDTags.Blocks.STRIPPED_WOOD)) {
-            replaceState = DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState();
-        } else if (state.is(BlockTags.LEAVES) || state == Blocks.SHROOMLIGHT.defaultBlockState()) {
+            replaceState = DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
+        } else if (state.is(BlockTags.LEAVES)) {
+            replaceState = DDBlocks.ECHO_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, state.getValue(LeavesBlock.DISTANCE)).setValue(LeavesBlock.PERSISTENT, state.getValue(LeavesBlock.PERSISTENT)).setValue(LeavesBlock.WATERLOGGED, state.getValue(LeavesBlock.WATERLOGGED));
+        } else if (state == Blocks.SHROOMLIGHT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
         } else if (state == Blocks.WEEPING_VINES.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES.get().defaultBlockState();
         } else if (state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
+        } else if (state == Blocks.TWISTING_VINES.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_TENDRILS.get().defaultBlockState();
+        } else if (state == Blocks.TWISTING_VINES_PLANT.defaultBlockState()) {
+            replaceState = DDBlocks.SCULK_TENDRILS_PLANT.get().defaultBlockState();
         }
 
         return replaceState;
