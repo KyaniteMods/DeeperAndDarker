@@ -4,6 +4,6 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 
 public class DDBlockEntityTypes {
     public static void registerBlockEntities() {
-        DeeperAndDarker.LOGGER.info("Deeper And Darker block entities have been registered");
+        DeeperAndDarker.LOGGER.info("Deeper and Darker block entities have been registered");
     }
 }

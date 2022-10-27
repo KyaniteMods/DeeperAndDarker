@@ -25,7 +25,6 @@ import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Map;
 
@@ -33,8 +32,7 @@ public class DeeperAndDarker {
     public static final String MOD_ID = "deeperdarker";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final ResourceLocation SOUL_ELYTRA_TEXTURE = new ResourceLocation(DeeperAndDarker.MOD_ID,
-            "textures/entity/soul_elytra.png");
+    public static final ResourceLocation SOUL_ELYTRA_TEXTURE = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
 
     public static void init(DeeperAndDarkerInitCallback callback) {
         ConfigRegistry.register("deeperdarker", new DDConfig());

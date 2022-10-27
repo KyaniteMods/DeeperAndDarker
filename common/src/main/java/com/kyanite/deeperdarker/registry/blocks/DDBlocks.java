@@ -162,6 +162,7 @@ public class DDBlocks {
     public static final Supplier<Block> ANCIENT_VASE = registerBlock("ancient_vase", true, () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
     public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, PortalHelper.getPortalBlock());
 
+    @SuppressWarnings("unchecked")
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createItem, Supplier<T> block) {
         Supplier<T> toReturn = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, (Supplier<Block>) toReturn);
@@ -169,6 +170,7 @@ public class DDBlocks {
         return toReturn;
     }
 
+    @SuppressWarnings("unchecked")
     public static <T extends Block> Supplier<T> registerSign(String name, Supplier<T> block, Supplier<WallSignBlock> wallBlock) {
         Supplier<T> standing = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, (Supplier<Block>) standing);
@@ -181,6 +183,6 @@ public class DDBlocks {
     }
 
     public static void registerBlocks() {
-        DeeperAndDarker.LOGGER.info("Deeper And Darker blocks have been registered");
+        DeeperAndDarker.LOGGER.info("Deeper and Darker blocks have been registered");
     }
 }

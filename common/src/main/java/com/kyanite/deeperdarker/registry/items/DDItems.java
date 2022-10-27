@@ -49,6 +49,6 @@ public class DDItems {
     public static final Supplier<Item> WARDEN_HOE = registerItem("warden_hoe", () -> new CustomHoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
 
     public static void registerItems() {
-        DeeperAndDarker.LOGGER.info("Deeper And Darker items have been registered");
+        DeeperAndDarker.LOGGER.info("Deeper and Darker items have been registered");
     }
 }

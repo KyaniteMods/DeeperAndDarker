@@ -58,6 +58,6 @@ public class DDEntities {
     );
 
     public static void registerEntities() {
-        DeeperAndDarker.LOGGER.info("Deeper And Darker entities have been registered");
+        DeeperAndDarker.LOGGER.info("Deeper and Darker entities have been registered");
     }
 }

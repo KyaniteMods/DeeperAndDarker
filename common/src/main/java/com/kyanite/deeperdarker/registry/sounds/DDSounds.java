@@ -47,7 +47,7 @@ public class DDSounds {
     public static final Supplier<SoundEvent> SCULK_TRANSMIT = register("item.transmitter.transmit");
 
     public static void registerSounds() {
-        DeeperAndDarker.LOGGER.info("Deeper And Darker sounds have been registered");
+        DeeperAndDarker.LOGGER.info("Deeper and Darker sounds have been registered");
     }
 
     private static Supplier<SoundEvent> register(String name) {
