@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.forge.client;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +22,7 @@ public class SoulElytraItem extends ElytraItem {
         super(properties);
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         UUID uuid = ARMOR_MODIFIER_UUID_PER_SLOT[EquipmentSlot.CHEST.getIndex()];
-        builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", 8.5d, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "Armor modifier", DDConfig.SOUL_ELYTRA_ARMOR_MODIFIER.get(), AttributeModifier.Operation.ADDITION));
 
         this.defaultModifiers = builder.build();
     }

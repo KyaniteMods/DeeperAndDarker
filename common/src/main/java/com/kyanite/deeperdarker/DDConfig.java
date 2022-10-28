@@ -11,6 +11,7 @@ public class DDConfig implements ModConfig {
     public static final ConfigOption<Integer> WARDEN_ARMOR_DURABILITY = new ConfigOption<>("warden_armor_durability", 45);
     public static final ConfigOption<Double> WARDEN_ARMOR_TOUGHNESS = new ConfigOption<>("warden_armor_toughness", 3.0d);
     public static final ConfigOption<Double> WARDEN_ARMOR_KNOCKBACK_RESISTANCE = new ConfigOption<>("warden_armor_knockback_resistance", 0.5d);
+    public static final ConfigOption<Double> SOUL_ELYTRA_ARMOR_MODIFIER = new ConfigOption<>("soul_elytra_armor_modifier", 4.0d);
 
     // Tool Options
     public static final ConfigOption<Integer> WARDEN_TOOLS_DURABILITY = new ConfigOption<>("warden_tools_durability", 2464);
@@ -28,7 +29,7 @@ public class DDConfig implements ModConfig {
     @Override
     public List<ConfigOption> configOptions() {
         return List.of(
-                WARDEN_ARMOR_DURABILITY, WARDEN_ARMOR_TOUGHNESS, WARDEN_ARMOR_KNOCKBACK_RESISTANCE,
+                WARDEN_ARMOR_DURABILITY, WARDEN_ARMOR_TOUGHNESS, WARDEN_ARMOR_KNOCKBACK_RESISTANCE, SOUL_ELYTRA_ARMOR_MODIFIER,
                 WARDEN_TOOLS_DURABILITY, WARDEN_TOOLS_SPEED, WARDEN_TOOLS_DAMAGE,
                 SHATTERED_SPAWNING, PHANTOM_SPAWNING, SNAPPER_SPAWNING, CENTIPEDE_SPAWNING,
                 SCULK_BLOCKS_IN_OTHERSIDE);
