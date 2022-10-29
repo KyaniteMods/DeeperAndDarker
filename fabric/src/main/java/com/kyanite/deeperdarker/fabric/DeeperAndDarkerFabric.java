@@ -2,9 +2,8 @@ package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
-import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -21,6 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import software.bernie.example.GeckoLibMod;
@@ -57,6 +57,14 @@ public class DeeperAndDarkerFabric implements ModInitializer {
                     BiomeSelectors.includeByKey(Biomes.DEEP_DARK),
                     GenerationStep.Decoration.VEGETAL_DECORATION,
                     ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "sculk_tendrils")));
+
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_TENDRILS.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOM_SCULK.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOM_CACTUS.get().asItem(), 0.4f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOMY_GRASS.get().asItem(), 0.2f);
         });
     }
 }
