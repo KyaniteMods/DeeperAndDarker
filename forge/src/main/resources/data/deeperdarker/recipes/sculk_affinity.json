@@ -1,0 +1,11 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": {
+    "idi": "deeperdarker:sculk_affinity"
+  },
+  "providers": [
+    {
+      "item": "deeperdarker:soul_dust"
+    }
+  ]
+}

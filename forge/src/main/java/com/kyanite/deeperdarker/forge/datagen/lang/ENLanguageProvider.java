@@ -12,6 +12,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 public class ENLanguageProvider extends LanguageProvider {
     private static final String NORMAL_CHARS = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,;.?!/\\'";
@@ -50,8 +51,11 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
         add("advancements.deeperdarker.obtain_soul_elytra.title", "Wings of the Broken Souls");
         add("advancements.deeperdarker.obtain_soul_elytra.description", "Craft Soul Elytra");
+
         add("death.attack.jaw", "%1$s was devoured by a Sculk Jaw");
         add("death.attack.ring", "%1$s heard the Stalker's ring");
+
+        add("effect.deeperdarker.sculk_affinity.description", "Prevents you from causing vibrations.");
 
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
@@ -76,7 +80,7 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     @Override
-    public void add(String key, String value) {
+    public void add(@NotNull String key, @NotNull String value) {
         if(upsideDown) super.add(key, toUpsideDown(value));
         else super.add(key, value);
     }
