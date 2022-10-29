@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.forge;
 
-import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
 import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
@@ -17,7 +16,6 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
-import com.kyanite.paragon.api.ConfigRegistry;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.Sheets;
@@ -102,9 +100,12 @@ public class DeeperAndDarkerForge {
             });
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
-            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.5f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_TENDRILS.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_GLEAM.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOM_SCULK.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOM_CACTUS.get().asItem(), 0.4f);
+            ComposterBlock.COMPOSTABLES.put(DDBlocks.GLOOMY_GRASS.get().asItem(), 0.2f);
 
             PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY.get());
         }
