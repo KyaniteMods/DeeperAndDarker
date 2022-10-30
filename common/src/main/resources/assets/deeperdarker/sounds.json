@@ -14,6 +14,12 @@
       "deeperdarker:ambience/dimension/deeplands_ambience"
     ]
   },
+  "ambience.overcast": {
+    "subtitle": "subtitles.ambience.overcast",
+    "sounds": [
+      "deeperdarker:ambience/dimension/overcast_ambience"
+    ]
+  },
   "ambience.forest": {
     "subtitle": "subtitles.ambience.forest",
     "sounds": [
