@@ -56,6 +56,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("death.attack.ring", "%1$s heard the Stalker's ring");
 
         add("effect.deeperdarker.sculk_affinity.description", "Prevents you from causing vibrations.");
+        add("enchantment.deeperdarker.sculk_smite.description", "Increases damage against Sculk mobs including Phantoms and the Warden.");
 
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
