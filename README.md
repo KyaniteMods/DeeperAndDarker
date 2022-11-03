@@ -17,7 +17,11 @@ We accept pull requests, however, most development is internally done by the Kya
 
 If you need Deeper And Darker as a library, eg: to create mixin-based compatability classes, or to access classes in Deeper And Darker, you can add it to your projects like so:
 
-You can find the latest `deeper_darker_version` [on the maven repo.](https://maven.mineblock11.dev/releases)
+You can find the latest `deeper_darker_version` [on the maven repo](https://maven.mineblock11.dev/#/releases/com/kyanite) or on [Curseforge](https://curseforge.com/minecraft/mc-mods/deeperdarker)
+
+![](https://maven.mineblock11.dev/api/badge/latest/releases/com/kyanite/deeperdarker-fabric?color=00898c&name=Fabric&prefix=v)
+
+![](https://maven.mineblock11.dev/api/badge/latest/releases/com/kyanite/deeperdarker-forge?color=00898c&name=Forge&prefix=v)
 
 ```groovy
 repositories {

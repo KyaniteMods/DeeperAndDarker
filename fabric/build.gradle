@@ -93,6 +93,22 @@ task renameJarForPublication(type: Zip, dependsOn: remapJar) {
 
 assemble.dependsOn renameJarForPublication
 
+publishing {
+    publications {
+        mavenForge(MavenPublication) {
+            artifactId = rootProject.archives_base_name + "-" + project.name
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name "mineblockMaven"
+            url "https://maven.mineblock11.dev/releases"
+            credentials(PasswordCredentials)
+        }
+    }
+}
+
 unifiedPublishing {
     project {
         displayName = "[Fabric $rootProject.minecraft_version] $project.version"
