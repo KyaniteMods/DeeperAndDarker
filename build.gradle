@@ -44,13 +44,6 @@ allprojects {
                 includeGroup "maven.modrinth"
             }
         }
-        maven {
-            url = "https://maven.theillusivec4.top/"
-        }
-        maven {
-            name = "Ladysnake Libs"
-            url = 'https://dl.bintray.com/ladysnake/libs'
-        }
     }
 
     processResources {
