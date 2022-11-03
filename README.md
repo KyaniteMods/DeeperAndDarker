@@ -15,7 +15,7 @@ We accept pull requests, however, most development is internally done by the Kya
 
 # API
 
-If you need Deeper And Darker as a library, eg: to create mixin-based compatability classes, or to access classes in Deeper And Darker, you can add it to your projects like so:
+If you need Deeper and Darker as a library; to create mixin-based compatability classes, or to access classes in Deeper and Darker, you can add it to your projects like so:
 
 You can find the latest `deeper_darker_version` [on the maven repo](https://maven.mineblock11.dev/#/releases/com/kyanite) or on [Curseforge](https://curseforge.com/minecraft/mc-mods/deeperdarker)
 
@@ -30,7 +30,13 @@ repositories {
 
 dependencies {
     // Fabric
-    implementation include("com.kyanite:deeperdarker-fabric:${deeper_darker_version}")
+    // DO NOT "include" DEEPER AND DARKER, IT WILL NOT WORK.
+    implementation "com.kyanite:deeperdarker-fabric:${deeper_darker_version}"
+    
+    // Forge
+    // DO NOT Jar-Jar DEEPER AND DARKER, IT WILL NOT WORK.
+    runtimeOnly fg.deobf("com.kyanite:deeperdarker-forge:${deeper_darker_version}")
+    compileOnly fg.deobf("com.kyanite:deeperdarker-forge:${deeper_darker_version}")
 }
 ```
 
