@@ -19,7 +19,10 @@ public class DDUtils {
     }
 
     public static void soulElytraTick(LivingEntity entity) {
-        if(entity.level.getRandom().nextInt(0, 55) == 0) {
+        // One thirtieth chance of boost per tick.
+        // Uncontrollable at 1/3, needs to be balanced to allow control and not be too OP.
+        // 29f/30f same as 0 in roll of 20
+        if(entity.level.getRandom().nextFloat() > 29f/30f) {
             entity.level.gameEvent(entity, GameEvent.ITEM_INTERACT_START, entity.blockPosition());
             Vec3 vec31 = entity.getLookAngle();
             Vec3 vec32 = entity.getDeltaMovement();
@@ -33,7 +36,9 @@ public class DDUtils {
             }
         }
 
-        if(entity.level.isClientSide() && entity.level.getRandom().nextInt(0, 5) == 0) {
+        // One fifth chance of particle per tick.
+        // It's way too absurd at 1/2 chance per tick. Lag issues on high particle settings and shaders.
+        if(entity.level.isClientSide() && entity.level.getRandom().nextFloat() > 4f/5f) {
             entity.level.addParticle(ParticleTypes.SCULK_SOUL, entity.getRandomX(1), entity.position().y, entity.getRandomZ(1), 0, -0.2d, 0);
             entity.level.playSound((Player) entity, entity.blockPosition(), SoundEvents.SCULK_BLOCK_SPREAD, SoundSource.BLOCKS, 1, 1);
         }
