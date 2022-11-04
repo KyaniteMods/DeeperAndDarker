@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class DDBlockLoot extends BlockLoot {
+public class    DDBlockLoot extends BlockLoot {
     @Override
     protected void addTables() {
         this.dropSelf(DDBlocks.ECHO_PLANKS.get());
@@ -139,6 +139,8 @@ public class DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
+
+        this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
     }
 
     private static LootTable.Builder sculkOreDrop(Block block, Item item) {

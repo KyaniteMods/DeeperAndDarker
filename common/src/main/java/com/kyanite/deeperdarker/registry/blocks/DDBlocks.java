@@ -55,7 +55,7 @@ public class DDBlocks {
     public static final Supplier<WallSignBlock> ECHO_WALL_SIGN = registerBlock("echo_wall_sign", false, () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final Supplier<StandingSignBlock> ECHO_SIGN = registerSign("echo_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), DDWoodTypes.ECHO), ECHO_WALL_SIGN);
     public static final Supplier<Block> ECHO_SOIL = registerBlock("echo_soil", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
-    public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).noLootTable()));
+    public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(6f)));
 
     // Sculk Stone
