@@ -18,6 +18,8 @@ public class DDSounds {
 
     public static final SoundType SCULK_STONE = new DDSoundType(5, 1, SCULK_STONE_BREAK, SCULK_STONE_STEP, SCULK_STONE_PLACE, SCULK_STONE_HIT, SCULK_STONE_FALL);
 
+    // Ancient Chest
+    public static final Supplier<SoundEvent> ANCIENT_CHEST_OPEN = register("block.ancient_chest.open");
     // Vase
     public static final Supplier<SoundEvent> VASE_BREAK = register("block.vase.break");
     public static final Supplier<SoundEvent> VASE_FALL = register("block.vase.fall");

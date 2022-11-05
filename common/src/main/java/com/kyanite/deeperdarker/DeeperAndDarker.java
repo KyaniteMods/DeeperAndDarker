@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.miscellaneous.DeeperAndDarkerInitCallback;
+import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
@@ -39,6 +40,7 @@ public class DeeperAndDarker {
 
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
+        DDBlockEntityTypes.registerBlockEntities();
         DDSounds.registerSounds();
         DDEnchantments.registerEnchantments();
         DDEffects.registerEffects();

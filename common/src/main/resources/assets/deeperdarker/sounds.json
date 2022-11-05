@@ -26,6 +26,12 @@
       "deeperdarker:ambience/dimension/forest_ambience"
     ]
   },
+  "block.ancient_chest.open": {
+    "subtitle": "subtitles.block.chest.open",
+    "sounds": [
+      "deeperdarker:block/ancient_chest/open"
+    ]
+  },
   "block.sculk_stone.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [

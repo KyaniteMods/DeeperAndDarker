@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.unknown",
+				"identifier": "geometry.ancient_chest_single",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 4,
@@ -12,20 +12,45 @@
 			},
 			"bones": [
 				{
-					"name": "base",
-					"pivot": [-8, 0, 8],
-					"rotation": [180, 0, 0],
+					"name": "lid",
+					"pivot": [0, 9, 7],
 					"cubes": [
-						{"origin": [-7, -10, 9], "size": [14, 10, 14], "uv": [0, 19]}
+						{
+							"origin": [-7, 9, -7],
+							"size": [14, 4, 14],
+							"uv": {
+								"north": {"uv": [28, 18], "uv_size": [14, 4]},
+								"east": {"uv": [28, 22], "uv_size": [14, 4]},
+								"south": {"uv": [28, 26], "uv_size": [14, 4]},
+								"west": {"uv": [28, 30], "uv_size": [14, 4]},
+								"up": {"uv": [14, 0], "uv_size": [14, 14]},
+								"down": {"uv": [14, 28], "uv_size": [14, -14]}
+							}
+						}
 					]
 				},
 				{
-					"name": "lid",
-					"pivot": [0, 10.02, 7],
-					"rotation": [180, 0, 0],
+					"name": "bottom",
+					"pivot": [-8, 8, 8],
 					"cubes": [
-						{"origin": [-7, 5, 7], "size": [14, 5, 14], "uv": [0, 0]}
+						{
+							"origin": [-7, 0, -7],
+							"size": [14, 9, 14],
+							"uv": {
+								"north": {"uv": [0, 28], "uv_size": [14, 9]},
+								"east": {"uv": [28, 0], "uv_size": [14, 9]},
+								"south": {"uv": [28, 9], "uv_size": [14, 9]},
+								"west": {"uv": [14, 28], "uv_size": [14, 9]},
+								"up": {"uv": [0, 0], "uv_size": [14, 14]},
+								"down": {"uv": [0, 28], "uv_size": [14, -14]}
+							}
+						}
 					]
+				},
+				{
+					"name": "bone",
+					"parent": "bottom",
+					"pivot": [-8, 8, 8]
 				}
 			]
 		}

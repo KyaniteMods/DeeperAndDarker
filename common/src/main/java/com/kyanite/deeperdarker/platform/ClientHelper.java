@@ -17,4 +17,9 @@ public class ClientHelper {
     public static <T extends Item> Supplier<T> getElytraItem() {
         throw new AssertionError();
     }
+
+    @ExpectPlatform
+    public static <T extends Item> Supplier<T> getAncientChestItem() {
+        throw new AssertionError();
+    }
 }

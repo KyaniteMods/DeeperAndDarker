@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.client.rendering.block;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.blocks.custom.entity.AncientChestEntity;
 import com.kyanite.deeperdarker.registry.items.custom.AncientChestItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;

@@ -1,8 +1,10 @@
 package com.kyanite.deeperdarker.platform.fabric;
 
+import com.kyanite.deeperdarker.registry.items.custom.AncientChestItem;
 import com.kyanite.deeperdarker.fabric.client.SoulElytraItem;
 import com.kyanite.deeperdarker.fabric.client.warden_armor.WardenArmorItem;
 import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;

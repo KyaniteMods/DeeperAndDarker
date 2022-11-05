@@ -1,9 +1,13 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.custom.entity.AncientChestEntity;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -30,22 +34,21 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import org.w3c.dom.Entity;
 
 import java.util.stream.Stream;
 
-public class AncientChestBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
+public class AncientChestBlock extends DirectionalBlock implements SimpleWaterloggedBlock, EntityBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public AncientChestEntity entity;
 
-    private VoxelShape openShape = Stream.of(Block.box(1, 0, 1, 15, 10, 15)).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    private VoxelShape openShape = Stream.of(Block.box(1, 0, 1, 15, 9, 15)).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     private VoxelShape closedShape = Stream.of(
-            Block.box(1, 9, 1, 15, 15, 15), Block.box(1, 0, 1, 15, 10, 15)
+            Block.box(1, 9, 1, 15, 13, 15), Block.box(1, 0, 1, 15, 9, 15)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     public AncientChestBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(FACING, Direction.NORTH))).setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -60,7 +63,8 @@ public class AncientChestBlock extends BaseEntityBlock implements SimpleWaterlog
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{FACING, WATERLOGGED});
+        builder.add(FACING);
+        builder.add(WATERLOGGED);
     }
 
     @Override
@@ -75,7 +79,7 @@ public class AncientChestBlock extends BaseEntityBlock implements SimpleWaterlog
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        this.entity = new AncientChestEntity(blockPos, blockState);
+        this.entity = DDBlockEntityTypes.ANCIENT_CHEST.get().create(blockPos, blockState);
         return this.entity;
     }
 
@@ -103,8 +107,15 @@ public class AncientChestBlock extends BaseEntityBlock implements SimpleWaterlog
             DeeperAndDarker.LOGGER.info(String.valueOf(this.entity.lidAttempts));
             if(this.entity.lidAttempts > 9) {
                 if(level.isClientSide()) {
-                    level.playSound(player, blockPos, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, 1);
+                    level.playSound(player, blockPos, DDSounds.ANCIENT_CHEST_OPEN.get(), SoundSource.BLOCKS, 2, 1);
+                    for(int i = 0; i < 15; ++i)
+                    level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DEEPSLATE.defaultBlockState()),
+                            blockPos.getX((long) (2.0 * level.random.nextDouble() - 1.0)) + 0.5d,
+                            blockPos.getY((long) (2.0 * level.random.nextDouble() - 1.0)) + 0.6d,
+                            blockPos.getZ((long) (2.0 * level.random.nextDouble() - 1.0)) + 0.5d
+                            , 0.05d, 0.05d, 0.05d);
                 }
+
                 this.entity.closeTicks = 720;
             }else{
                 this.entity.wiggleTicks = 15;

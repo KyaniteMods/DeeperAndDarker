@@ -2,59 +2,40 @@
   "credit": "Made with Blockbench",
   "parent": "builtin/entity",
   "textures": {
-    "particle": "minecraft:block/oak_planks"
+    "particle": "minecraft:block/deepslate"
   },
   "texture_size": [
     64,
     64
   ],
+  "gui_light": "front",
   "display": {
     "thirdperson_righthand": {
       "scale": [
-        0.3,
-        0.3,
-        0.3
+        0.5,
+        0.5,
+        0.5
       ]
     },
     "thirdperson_lefthand": {
       "scale": [
-        0.3,
-        0.3,
-        0.3
+        0.5,
+        0.5,
+        0.5
       ]
     },
     "firstperson_righthand": {
-      "rotation": [
-        0,
-        14,
-        0
-      ],
-      "translation": [
-        -2.25,
-        -1.25,
-        0
-      ],
       "scale": [
-        0.4,
-        0.4,
-        0.4
+        0.5,
+        0.5,
+        0.5
       ]
     },
     "firstperson_lefthand": {
-      "rotation": [
-        0,
-        14,
-        0
-      ],
-      "translation": [
-        0,
-        -1.25,
-        0
-      ],
       "scale": [
-        0.4,
-        0.4,
-        0.4
+        0.5,
+        0.5,
+        0.5
       ]
     },
     "ground": {
@@ -66,13 +47,13 @@
     },
     "gui": {
       "rotation": [
-        21,
-        -137,
+        23,
+        -134,
         0
       ],
       "translation": [
-        0.25,
-        -5.25,
+        0,
+        -5,
         0
       ],
       "scale": [
@@ -84,15 +65,15 @@
     "head": {
       "translation": [
         0,
-        -6.5,
+        -6.25,
         0
       ]
     },
     "fixed": {
       "translation": [
         0,
-        -7.25,
-        6.25
+        -5.5,
+        0
       ]
     }
   }

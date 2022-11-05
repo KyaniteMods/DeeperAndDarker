@@ -1,9 +1,8 @@
 package com.kyanite.deeperdarker.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.client.rendering.block.AncientChestItemRenderer;
-import com.kyanite.deeperdarker.client.rendering.block.AncientChestRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.forge.client.AncientChestRenderer;
 import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraArmorStandLayer;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraLayer;
@@ -54,7 +53,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
-import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +67,6 @@ public class DeeperAndDarkerForge {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        RegistryHelperImpl.BLOCK_ENTITIES.register(bus);
         RegistryHelperImpl.SOUND_EVENTS.register(bus);
         RegistryHelperImpl.ITEMS.register(bus);
         RegistryHelperImpl.BLOCKS.register(bus);
@@ -83,6 +80,7 @@ public class DeeperAndDarkerForge {
         RegistryHelperImpl.BIOMES.register(bus);
         DDBiomeModifiers.BIOME_MODIFIERS.register(bus);
         DDPoiTypes.POI.register(bus);
+        RegistryHelperImpl.BLOCK_ENTITIES.register(bus);
 
         bus.addListener(this::attributes);
 

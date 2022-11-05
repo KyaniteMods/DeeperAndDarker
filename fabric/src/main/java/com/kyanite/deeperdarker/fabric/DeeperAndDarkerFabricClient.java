@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.block.AncientChestItemRenderer;
-import com.kyanite.deeperdarker.client.rendering.block.AncientChestRenderer;
+import com.kyanite.deeperdarker.fabric.client.AncientChestRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
 import com.kyanite.deeperdarker.fabric.client.elytra.SoulElytraArmorStandLayer;
 import com.kyanite.deeperdarker.fabric.client.elytra.SoulElytraLayer;
@@ -55,7 +55,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
-        BlockEntityRendererRegistry.register(DDBlockEntityTypes.ANCIENT_CHEST.get(), context -> new AncientChestRenderer(context));
+        BlockEntityRendererRegistry.register(DDBlockEntityTypes.ANCIENT_CHEST.get(), context -> new AncientChestRenderer());
 
         FabricModelPredicateProviderRegistry.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation(DeeperAndDarker.MOD_ID, "broken"),
                 (stack, arg1, arg2, arg3) -> SoulElytraItem.isUseable(stack) ? 0 : 1);

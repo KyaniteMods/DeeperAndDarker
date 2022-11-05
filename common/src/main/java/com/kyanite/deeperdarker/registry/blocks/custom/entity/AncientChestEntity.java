@@ -44,13 +44,16 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     public AncientChestEntity(BlockPos blockPos, BlockState blockState) {
         super(DDBlockEntityTypes.ANCIENT_CHEST.get(), blockPos, blockState);
-        this.items = NonNullList.withSize(27, ItemStack.EMPTY);
+        this.items = NonNullList.withSize(36, ItemStack.EMPTY);
         this.ancientChestBlock = (AncientChestBlock) blockState.getBlock();
+        this.lidAttempts = 0;
+        this.wiggleTicks = 0;
+        this.closeTicks = 0;
+        this.cooldownTicks = 0;
     }
 
     @Override
     public boolean stillValid(Player player) {
-        DeeperAndDarker.LOGGER.info(String.valueOf(ancientChestBlock.entity.closeTicks));
         return ancientChestBlock.entity.closeTicks > 3;
     }
 
@@ -61,9 +64,8 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
         if(this.closeTicks != 0) {
             this.closeTicks = this.closeTicks - 1;
-            if(this.closeTicks == 0) {
+            if(this.closeTicks < 1) {
                 if(level.isClientSide()) {
-                    level.playSound((Player) null, getBlockPos(), SoundEvents.DEEPSLATE_BRICKS_BREAK, SoundSource.BLOCKS, 1, 1);
                     level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DEEPSLATE_TILES.defaultBlockState()), getBlockPos().getX() + 0.5d, getBlockPos().getY() + 0.6d, getBlockPos().getZ() + 0.5d, 0.05d, 0.05d, 0.05d);
                 }
                 this.lidAttempts = 0;
@@ -82,15 +84,17 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController
-                (this, "controller", 7, this::predicate));
+                (this, "controller", 13, this::predicate));
     }
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        event.getController().transitionLengthTicks = 13;
         if(this.wiggleTicks != 0)  {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.lid_wiggle", false));
+            event.getController().transitionLengthTicks = 2;
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.wiggle", false));
             return PlayState.CONTINUE;
         }
 
-        if(this.closeTicks != 0) {
+        if(this.closeTicks > 3) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle_open", false));
             return PlayState.CONTINUE;
         }
@@ -134,7 +138,7 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     @Override
     protected AbstractContainerMenu createMenu(int i, Inventory inventory) {
-        return ChestMenu.threeRows(i, inventory, this);
+        return ChestMenu.fourRows(i, inventory);
     }
 
     @Override
@@ -144,7 +148,7 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     @Override
     public int getContainerSize() {
-        return 27;
+        return 36;
     }
 
     @Override
