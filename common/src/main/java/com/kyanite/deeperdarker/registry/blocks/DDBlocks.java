@@ -161,6 +161,8 @@ public class DDBlocks {
     // Miscellaneous
     public static final Supplier<Block> ANCIENT_VASE = registerBlock("ancient_vase", true, () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).noOcclusion()));
     public static final Supplier<Block> OTHERSIDE_PORTAL = registerBlock("otherside_portal", false, PortalHelper.getPortalBlock());
+    public static final Supplier<Block> ANCIENT_CHEST = registerBlock("ancient_chest", false, () -> new AncientChestBlock(BlockBehaviour.Properties.of(Material.STONE)
+            .sound(SoundType.DEEPSLATE_TILES).noOcclusion()));
 
     @SuppressWarnings("unchecked")
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createItem, Supplier<T> block) {

@@ -21,6 +21,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -31,6 +32,10 @@ import java.util.function.Supplier;
 public class RegistryHelperImpl {
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         T registry = Registry.register(Registry.BLOCK, new ResourceLocation(DeeperAndDarker.MOD_ID, name), block.get());
+        return () -> registry;
+    }
+    public static <T extends BlockEntityType<?>> Supplier<T> registerBlockEntity(String name, Supplier<T> blockEntityType) {
+        T registry = Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), blockEntityType.get());
         return () -> registry;
     }
 

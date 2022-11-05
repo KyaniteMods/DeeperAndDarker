@@ -22,7 +22,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get(), DDBlocks.GLOOM_SCULK.get());
 
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.CRYSTALLIZED_AMBER.get(), DDBlocks.ANCIENT_VASE.get(),
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.CRYSTALLIZED_AMBER.get(), DDBlocks.ANCIENT_VASE.get(), DDBlocks.ANCIENT_CHEST.get(),
                 DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_WALL.get(),
                 DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(),
                 DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(),

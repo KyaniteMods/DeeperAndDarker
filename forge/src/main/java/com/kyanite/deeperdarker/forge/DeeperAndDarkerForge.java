@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.client.rendering.block.AncientChestItemRenderer;
+import com.kyanite.deeperdarker.client.rendering.block.AncientChestRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
 import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraArmorStandLayer;
@@ -11,6 +13,7 @@ import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
+import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
@@ -51,6 +54,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,6 +69,7 @@ public class DeeperAndDarkerForge {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        RegistryHelperImpl.BLOCK_ENTITIES.register(bus);
         RegistryHelperImpl.SOUND_EVENTS.register(bus);
         RegistryHelperImpl.ITEMS.register(bus);
         RegistryHelperImpl.BLOCKS.register(bus);
@@ -131,6 +136,8 @@ public class DeeperAndDarkerForge {
         public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
             event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
+
+            event.registerBlockEntityRenderer(DDBlockEntityTypes.ANCIENT_CHEST.get(), AncientChestRenderer::new);
         }
 
         @SubscribeEvent
