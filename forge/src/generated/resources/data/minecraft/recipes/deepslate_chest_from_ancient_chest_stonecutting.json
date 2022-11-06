@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "deeperdarker:ancient_chest"
+  },
+  "result": "deeperdarker:deepslate_chest"
+}

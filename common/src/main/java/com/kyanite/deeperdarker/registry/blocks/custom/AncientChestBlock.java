@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
+import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.entity.AncientChestEntity;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
@@ -11,22 +12,26 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.ai.behavior.ShowTradesToPlayer;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -40,17 +45,24 @@ import java.util.stream.Stream;
 
 public class AncientChestBlock extends DirectionalBlock implements SimpleWaterloggedBlock, EntityBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-
-    public AncientChestEntity entity;
+    public static final BooleanProperty POLISHED = BooleanProperty.create("polished");
 
     private VoxelShape openShape = Stream.of(Block.box(1, 0, 1, 15, 9, 15)).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     private VoxelShape closedShape = Stream.of(
             Block.box(1, 9, 1, 15, 13, 15), Block.box(1, 0, 1, 15, 9, 15)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
-    public AncientChestBlock(Properties properties) {
+    public AncientChestBlock(Properties properties, boolean isPolished) {
         super(properties);
+        this.registerDefaultState(this.defaultBlockState().setValue(POLISHED, isPolished));
     }
 
+    public boolean isPolished(BlockPos pos, Level level) {
+        return level.getBlockState(pos).getValue(AncientChestBlock.POLISHED);
+    }
+
+    public boolean isPolished(BlockState state) {
+        return state.getValue(AncientChestBlock.POLISHED);
+    }
     @Override
     public BlockState rotate(BlockState blockState, Rotation rotation) {
         return (BlockState)blockState.setValue(FACING, rotation.rotate((Direction)blockState.getValue(FACING)));
@@ -62,9 +74,25 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
     }
 
     @Override
+    public boolean isSignalSource(BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public int getDirectSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
+        return direction == Direction.UP ? blockState.getSignal(blockGetter, blockPos, direction) : 0;
+    }
+
+    @Override
+    public int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
+        return Mth.clamp(AncientChestEntity.getWiggleTicks(blockPos, blockGetter), 0, 15);
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
         builder.add(WATERLOGGED);
+        builder.add(POLISHED);
     }
 
     @Override
@@ -79,8 +107,15 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        this.entity = DDBlockEntityTypes.ANCIENT_CHEST.get().create(blockPos, blockState);
-        return this.entity;
+        DeeperAndDarker.LOGGER.info(String.valueOf(isPolished(blockState)));
+        return DDBlockEntityTypes.DEEPSLATE_CHEST.get().create(blockPos, blockState);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        return this.defaultBlockState().setValue(FACING,
+                blockPlaceContext.getHorizontalDirection().getClockWise().getClockWise());
     }
 
     @Nullable
@@ -91,49 +126,70 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
 
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        if(this.entity == null) return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+        AncientChestEntity entity = (AncientChestEntity) level.getBlockEntity(blockPos);
+        ItemStack item = player.getItemInHand(interactionHand);
+        if(item != null) {
+            if(item.is(Items.SCULK) && isPolished(blockState)) {
+               level.setBlock(blockPos, DDBlocks.ANCIENT_CHEST.get().defaultBlockState(), 3);
+               if(!player.isCreative()) item.shrink(1);
 
-        if(this.entity.cooldownTicks == 0) {
-            if(this.entity.closeTicks > 3) {
-                MenuProvider menuProvider = this.getMenuProvider(blockState, level, blockPos);
-                if (menuProvider != null) {
-                    player.openMenu(menuProvider);
+                if (level.isClientSide()) {
+                    level.playSound(player, blockPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 1, 1);
                 }
-                DeeperAndDarker.LOGGER.info("HI");
-                return InteractionResult.SUCCESS;
+
+               return InteractionResult.SUCCESS;
             }
+        }
+        if(entity != null) {
+            if (entity.cooldownTicks == 0) {
+                if (isPolished(blockState)) {
+                    if (entity.closeTicks > 3) {
+                        player.openMenu(entity);
+                        return InteractionResult.SUCCESS;
+                    }
 
-            this.entity.lidAttempts = this.entity.lidAttempts + 3;
-            DeeperAndDarker.LOGGER.info(String.valueOf(this.entity.lidAttempts));
-            if(this.entity.lidAttempts > 9) {
-                if(level.isClientSide()) {
-                    level.playSound(player, blockPos, DDSounds.ANCIENT_CHEST_OPEN.get(), SoundSource.BLOCKS, 2, 1);
-                    for(int i = 0; i < 15; ++i)
-                    level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DEEPSLATE.defaultBlockState()),
-                            blockPos.getX((long) (2.0 * level.random.nextDouble() - 1.0)) + 0.5d,
-                            blockPos.getY((long) (2.0 * level.random.nextDouble() - 1.0)) + 0.6d,
-                            blockPos.getZ((long) (2.0 * level.random.nextDouble() - 1.0)) + 0.5d
-                            , 0.05d, 0.05d, 0.05d);
-                }
+                    if (entity.closeTicks == 0) {
+                        if (level.isClientSide()) {
+                            level.playSound(player, blockPos, DDSounds.ANCIENT_CHEST_OPEN.get(), SoundSource.BLOCKS, 2, 1);
+                        }
 
-                this.entity.closeTicks = 720;
-            }else{
-                this.entity.wiggleTicks = 15;
-                if(level.isClientSide()) {
-                    level.playSound(player, blockPos, SoundEvents.DEEPSLATE_TILES_STEP, SoundSource.BLOCKS, 1, 1);
+                        player.openMenu(entity);
+                        entity.closeTicks = 720;
+                    }
+                } else {
+                    if (entity.closeTicks > 3) {
+                        player.openMenu(entity);
+                        return InteractionResult.SUCCESS;
+                    }
+
+                    if (entity.lidAttempts < 10) {
+                        entity.lidAttempts = entity.lidAttempts + 3;
+                        entity.wiggleTicks = 20;
+                        if (level.isClientSide()) {
+                            level.playSound(player, blockPos, SoundEvents.DEEPSLATE_TILES_STEP, SoundSource.BLOCKS, 1, 1);
+                        }
+                    } else if (entity.lidAttempts > 10 && entity.closeTicks == 0) {
+                        if (level.isClientSide()) {
+                            level.playSound(player, blockPos, DDSounds.ANCIENT_CHEST_OPEN.get(), SoundSource.BLOCKS, 2, 1);
+                        }
+
+                        player.openMenu(entity);
+                        entity.closeTicks = 720;
+                    }
                 }
+                level.gameEvent(GameEvent.BLOCK_ACTIVATE, blockPos, GameEvent.Context.of(blockState));
+                entity.cooldownTicks = 65;
+                return InteractionResult.CONSUME;
             }
-            this.entity.cooldownTicks = 65;
-            return InteractionResult.CONSUME;
         }
         return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
     }
 
-
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        if(this.entity == null) return closedShape;
-        return(this.entity.lidAttempts == 10 ? openShape : closedShape);
+        AncientChestEntity entity = (AncientChestEntity) pLevel.getBlockEntity(pPos);
+        if(entity == null) return closedShape;
+        return(entity.lidAttempts == 10 ? openShape : closedShape);
     }
 
     @Override

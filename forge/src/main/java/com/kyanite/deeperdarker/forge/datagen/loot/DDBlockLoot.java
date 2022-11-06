@@ -140,6 +140,7 @@ public class    DDBlockLoot extends BlockLoot {
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
         this.dropSelf(DDBlocks.ANCIENT_CHEST.get());
+        this.dropSelf(DDBlocks.DEEPSLATE_CHEST.get());
 
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
     }

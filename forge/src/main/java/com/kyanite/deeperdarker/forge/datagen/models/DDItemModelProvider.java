@@ -168,6 +168,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(getName(DDItems.STALKER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         //withExistingParent(getName(DDItems.SCAVENGER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.ANCIENT_CHEST), modLoc("block/ancient_chest"));
+        withExistingParent(getName(DDItems.DEEPSLATE_CHEST), modLoc("block/deepslate_chest"));
 
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);

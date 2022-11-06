@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.forge.datagen.recipes;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.blocks.custom.AncientChestBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -16,6 +17,7 @@ public class StonecuttingRecipesProvider extends RecipeProvider implements ICond
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+        stonecutterResultFromBase(consumer, DDBlocks.DEEPSLATE_CHEST.get(), DDBlocks.ANCIENT_CHEST.get());
         stonecutterResultFromBase(consumer, DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE.get(), 2);
         stonecutterResultFromBase(consumer, DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE.get());
         stonecutterResultFromBase(consumer, DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE.get());

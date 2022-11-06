@@ -11,18 +11,18 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.CompoundContainer;
+import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -31,6 +31,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class AncientChestEntity extends RandomizableContainerBlockEntity implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
@@ -43,18 +44,27 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     public int cooldownTicks = 0;
 
     public AncientChestEntity(BlockPos blockPos, BlockState blockState) {
-        super(DDBlockEntityTypes.ANCIENT_CHEST.get(), blockPos, blockState);
+        super(blockState.getValue(AncientChestBlock.POLISHED) ? DDBlockEntityTypes.DEEPSLATE_CHEST.get() : DDBlockEntityTypes.ANCIENT_CHEST.get(), blockPos, blockState);
         this.items = NonNullList.withSize(36, ItemStack.EMPTY);
         this.ancientChestBlock = (AncientChestBlock) blockState.getBlock();
-        this.lidAttempts = 0;
-        this.wiggleTicks = 0;
-        this.closeTicks = 0;
-        this.cooldownTicks = 0;
+    }
+
+
+    public static int getWiggleTicks(BlockPos blockPos, BlockGetter blockGetter) {
+        BlockState blockState = blockGetter.getBlockState(blockPos);
+        if (blockState.hasBlockEntity()) {
+            BlockEntity blockEntity = blockGetter.getBlockEntity(blockPos);
+            if (blockEntity instanceof AncientChestEntity ancientChestEntity) {
+                return ancientChestEntity.wiggleTicks;
+            }
+        }
+
+        return 0;
     }
 
     @Override
     public boolean stillValid(Player player) {
-        return ancientChestBlock.entity.closeTicks > 3;
+        return this.closeTicks > 3;
     }
 
     public void tick() {
@@ -83,7 +93,7 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController
+        data.addAnimationController(new AnimationController<AncientChestEntity>
                 (this, "controller", 13, this::predicate));
     }
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -133,7 +143,9 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     @Override
     protected Component getDefaultName() {
-        return Component.literal("Ancient Chest");
+        return this.getBlockState().getValue(AncientChestBlock.POLISHED) == true ?
+                Component.translatable("block.deeperdarker.deepslate_chest") :
+                Component.translatable("block.deeperdarker.ancient_chest");
     }
 
     @Override
