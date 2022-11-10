@@ -20,4 +20,4 @@ Steps to reproduce the behavior:
 If applicable, add screenshots to help explain your problem.
 
 **Additional context**:
-Add any other context about the problem here.
+Add any other context about the problem here: crash reports & logs, the version of the mod and platform you are playing on, and any other details.
