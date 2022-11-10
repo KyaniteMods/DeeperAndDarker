@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.forge.datagen.recipes;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import com.kyanite.deeperdarker.registry.blocks.custom.AncientChestBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;

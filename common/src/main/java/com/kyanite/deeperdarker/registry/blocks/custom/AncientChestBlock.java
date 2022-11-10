@@ -7,19 +7,12 @@ import com.kyanite.deeperdarker.registry.blocks.custom.entity.AncientChestEntity
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.ai.behavior.ShowTradesToPlayer;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -27,10 +20,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
@@ -39,7 +35,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import org.w3c.dom.Entity;
 
 import java.util.stream.Stream;
 
@@ -97,7 +92,7 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
 
     @Override
     public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        if ((Boolean)blockState.getValue(WATERLOGGED)) {
+        if (blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
 
@@ -132,10 +127,9 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
             if(item.is(Items.SCULK) && isPolished(blockState)) {
                level.setBlock(blockPos, DDBlocks.ANCIENT_CHEST.get().defaultBlockState(), 3);
                if(!player.isCreative()) item.shrink(1);
-
-                if (level.isClientSide()) {
+               if (level.isClientSide()) {
                     level.playSound(player, blockPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 1, 1);
-                }
+               }
 
                return InteractionResult.SUCCESS;
             }

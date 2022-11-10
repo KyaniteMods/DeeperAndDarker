@@ -29,7 +29,7 @@ public class GoToNearestStructureGoal extends Goal {
         }
 
         if (entity.structureLocation != null && entity.getNavigation().isDone()) {
-            DeeperAndDarker.LOGGER.info("ARRIVVED");
+            DeeperAndDarker.LOGGER.info("ARRIVED");
             entity.structureLocation = null;
             entity.getNavigation().stop();
             entity.setGlowingTag(false);
