@@ -55,22 +55,6 @@ processResources {
     }
 }
 
-publishing {
-    publications {
-        mavenForge(MavenPublication) {
-            artifactId = rootProject.archives_base_name + "-" + project.name
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            name "mineblockMaven"
-            url "https://maven.mineblock11.dev/releases"
-            credentials(PasswordCredentials)
-        }
-    }
-}
-
 shadowJar {
     exclude "fabric.mod.json"
 
