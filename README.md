@@ -12,30 +12,6 @@ If you would like to help translate Deeper and Darker, head over to our [Crowdin
 
 We accept pull requests; however, the majority of development is done internally by the Kyanite Mods team.
 
-# API
-
-If you want to add Deeper and Darker as a library, you can add it by finding the latest `deeper_darker_version` on the [maven repo](https://maven.mineblock11.dev/#/releases/com/kyanite) or on [CurseForge](https://curseforge.com/minecraft/mc-mods/deeperdarker).
-
-![](https://maven.mineblock11.dev/api/badge/latest/releases/com/kyanite/deeperdarker-fabric?color=00898c&name=Fabric&prefix=v)
-![](https://maven.mineblock11.dev/api/badge/latest/releases/com/kyanite/deeperdarker-forge?color=00898c&name=Forge&prefix=v)
-
-```groovy
-repositories {
-    maven "https://maven.mineblock11.dev/releases"
-}
-
-dependencies {
-    // Fabric
-    // DO NOT "include" DEEPER AND DARKER, IT WILL NOT WORK.
-    implementation "com.kyanite:deeperdarker-fabric:${deeper_darker_version}"
-    
-    // Forge
-    // DO NOT Jar-Jar DEEPER AND DARKER, IT WILL NOT WORK.
-    runtimeOnly fg.deobf("com.kyanite:deeperdarker-forge:${deeper_darker_version}")
-    compileOnly fg.deobf("com.kyanite:deeperdarker-forge:${deeper_darker_version}")
-}
-```
-
 # Building From Source
 
 If you want to build Deeper And Darker from source, clone this repo and run the following:
