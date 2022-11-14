@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerTickMixin {
     @Inject(method = "tick", at = @At("TAIL"), cancellable = true)
     public void tick(CallbackInfo ci) {
-        Player plr = (Player)(Object)this;
+        Player plr = (Player) (Object) this;
         if(!plr.level.isClientSide()) {
             if(plr.getLevel().dimension() == DDDimensions.OTHERSIDE_LEVEL) {
                 if(!plr.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get()) && !plr.isCreative() && !plr.isSpectator()) {
@@ -24,5 +24,4 @@ public class PlayerTickMixin {
             }
         }
     }
-
 }

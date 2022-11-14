@@ -38,7 +38,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
 
     static {
         AnimationController.addModelFetcher((IAnimatable object) -> {
-            if (object instanceof ArmorItem) {
+            if(object instanceof ArmorItem) {
                 ArmorRenderer renderer = renderers.get(object.getClass());
                 return renderer == null ? null : renderer.getGeoModelProvider();
             }
@@ -75,14 +75,14 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     public static <E extends Entity> void registerArmorRenderer(ArmorRenderer renderer, Item... items) {
-        for (Item item : items) {
+        for(Item item : items) {
             registerArmorRenderer(renderer, item);
         }
     }
 
     public static void registerArmorRenderer(Class<? extends ArmorItem> itemClass, ArmorRenderer instance) {
-        for (Constructor<?> c : instance.getClass().getConstructors()) {
-            if (c.getParameterCount() == 0) {
+        for(Constructor<?> c : instance.getClass().getConstructors()) {
+            if(c.getParameterCount() == 0) {
                 try {
                     registerArmorRenderer(itemClass, (ArmorRenderer) c.newInstance());
                 } catch (InstantiationException e) {
@@ -99,7 +99,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     public static <E extends Entity> void registerArmorRenderer(ArmorRenderer renderer, Item item) {
-        if (item instanceof ArmorItem) {
+        if(item instanceof ArmorItem) {
             renderers.put((Class<? extends ArmorItem>) item.getClass(), renderer);
             net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer.register(renderer, item);
         }
@@ -107,7 +107,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
 
     public static ArmorRenderer getRenderer(Class<? extends ArmorItem> item) {
         final ArmorRenderer renderer = renderers.get(item);
-        if (renderer == null) {
+        if(renderer == null) {
             throw new IllegalArgumentException("Renderer not registered for item " + item);
         }
         return renderer;
@@ -140,7 +140,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
                 OverlayTexture.NO_OVERLAY, (float) renderColor.getRed() / 255f, (float) renderColor.getGreen() / 255f,
                 (float) renderColor.getBlue() / 255f, (float) renderColor.getAlpha() / 255);
 
-        if (FabricLoader.getInstance().isModLoaded("patchouli")) {
+        if(FabricLoader.getInstance().isModLoaded("patchouli")) {
             PatchouliCompat.patchouliLoaded(stack);
         }
         stack.popPose();
@@ -169,7 +169,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
                 (float) renderColor.getRed() / 255f, (float) renderColor.getGreen() / 255f,
                 (float) renderColor.getBlue() / 255f, (float) renderColor.getAlpha() / 255);
 
-        if (FabricLoader.getInstance().isModLoaded("patchouli")) {
+        if(FabricLoader.getInstance().isModLoaded("patchouli")) {
             PatchouliCompat.patchouliLoaded(stack);
         }
         stack.popPose();
@@ -178,7 +178,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     public void fitToBiped() {
-        if (this.headBone != null) {
+        if(this.headBone != null) {
             IBone headBone = this.modelProvider.getBone(this.headBone);
             GeoUtils.copyRotations(baseModel.head, headBone);
             headBone.setPositionX(baseModel.head.x);
@@ -186,14 +186,14 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
             headBone.setPositionZ(baseModel.head.z);
         }
 
-        if (this.bodyBone != null) {
+        if(this.bodyBone != null) {
             IBone bodyBone = this.modelProvider.getBone(this.bodyBone);
             GeoUtils.copyRotations(baseModel.body, bodyBone);
             bodyBone.setPositionX(baseModel.body.x);
             bodyBone.setPositionY(-baseModel.body.y);
             bodyBone.setPositionZ(baseModel.body.z);
         }
-        if (this.rightArmBone != null) {
+        if(this.rightArmBone != null) {
             IBone rightArmBone = this.modelProvider.getBone(this.rightArmBone);
             GeoUtils.copyRotations(baseModel.rightArm, rightArmBone);
             rightArmBone.setPositionX(baseModel.rightArm.x + 5);
@@ -201,20 +201,20 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
             rightArmBone.setPositionZ(baseModel.rightArm.z);
         }
 
-        if (this.leftArmBone != null) {
+        if(this.leftArmBone != null) {
             IBone leftArmBone = this.modelProvider.getBone(this.leftArmBone);
             GeoUtils.copyRotations(baseModel.leftArm, leftArmBone);
             leftArmBone.setPositionX(baseModel.leftArm.x - 5);
             leftArmBone.setPositionY(2 - baseModel.leftArm.y);
             leftArmBone.setPositionZ(baseModel.leftArm.z);
         }
-        if (this.rightLegBone != null) {
+        if(this.rightLegBone != null) {
             IBone rightLegBone = this.modelProvider.getBone(this.rightLegBone);
             GeoUtils.copyRotations(baseModel.rightLeg, rightLegBone);
             rightLegBone.setPositionX(baseModel.rightLeg.x + 2);
             rightLegBone.setPositionY(12 - baseModel.rightLeg.y);
             rightLegBone.setPositionZ(baseModel.rightLeg.z);
-            if (this.rightBootBone != null) {
+            if(this.rightBootBone != null) {
                 IBone rightBootBone = this.modelProvider.getBone(this.rightBootBone);
                 GeoUtils.copyRotations(baseModel.rightLeg, rightBootBone);
                 rightBootBone.setPositionX(baseModel.rightLeg.x + 2);
@@ -222,13 +222,13 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
                 rightBootBone.setPositionZ(baseModel.rightLeg.z);
             }
         }
-        if (this.leftLegBone != null) {
+        if(this.leftLegBone != null) {
             IBone leftLegBone = this.modelProvider.getBone(this.leftLegBone);
             GeoUtils.copyRotations(baseModel.leftLeg, leftLegBone);
             leftLegBone.setPositionX(baseModel.leftLeg.x - 2);
             leftLegBone.setPositionY(12 - baseModel.leftLeg.y);
             leftLegBone.setPositionZ(baseModel.leftLeg.z);
-            if (this.leftBootBone != null) {
+            if(this.leftBootBone != null) {
                 IBone leftBootBone = this.modelProvider.getBone(this.leftBootBone);
                 GeoUtils.copyRotations(baseModel.leftLeg, leftBootBone);
                 leftBootBone.setPositionX(baseModel.leftLeg.x - 2);
@@ -292,27 +292,27 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
 
         switch (boneSlot) {
             case HEAD:
-                if (headBone != null)
+                if(headBone != null)
                     headBone.setHidden(false);
                 break;
             case CHEST:
-                if (bodyBone != null)
+                if(bodyBone != null)
                     bodyBone.setHidden(false);
-                if (rightArmBone != null)
+                if(rightArmBone != null)
                     rightArmBone.setHidden(false);
-                if (leftArmBone != null)
+                if(leftArmBone != null)
                     leftArmBone.setHidden(false);
                 break;
             case LEGS:
-                if (rightLegBone != null)
+                if(rightLegBone != null)
                     rightLegBone.setHidden(false);
-                if (leftLegBone != null)
+                if(leftLegBone != null)
                     leftLegBone.setHidden(false);
                 break;
             case FEET:
-                if (rightBootBone != null)
+                if(rightBootBone != null)
                     rightBootBone.setHidden(false);
-                if (leftBootBone != null)
+                if(leftBootBone != null)
                     leftBootBone.setHidden(false);
                 break;
         }
@@ -320,7 +320,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     protected IBone getAndHideBone(String boneName) {
-        if (boneName != null) {
+        if(boneName != null) {
             final IBone bone = this.modelProvider.getBone(boneName);
             bone.setHidden(true);
             return bone;

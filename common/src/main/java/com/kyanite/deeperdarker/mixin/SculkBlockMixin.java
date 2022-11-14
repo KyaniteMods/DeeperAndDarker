@@ -19,7 +19,7 @@ import java.util.Objects;
 public class SculkBlockMixin {
     @Inject(method = "getRandomGrowthState", at = @At("HEAD"), cancellable = true)
     public void getRandomGrowthState(LevelAccessor levelAccessor, BlockPos blockPos, RandomSource randomSource, boolean bl, CallbackInfoReturnable<BlockState> cir) {
-        if (levelAccessor.getBiome(blockPos).is(Objects.requireNonNull(OthersideBiomes.OTHERSIDE_DEEPLANDS.location())) || levelAccessor.getBiome(blockPos).is(Objects.requireNonNull(OthersideBiomes.ECHOING_FOREST.location()))) {
+        if(levelAccessor.getBiome(blockPos).is(Objects.requireNonNull(OthersideBiomes.OTHERSIDE_DEEPLANDS.location())) || levelAccessor.getBiome(blockPos).is(Objects.requireNonNull(OthersideBiomes.ECHOING_FOREST.location()))) {
             cir.cancel();
             BlockState blockState = Blocks.SCULK_SENSOR.defaultBlockState();
             cir.setReturnValue(blockState.hasProperty(BlockStateProperties.WATERLOGGED) && !levelAccessor.getFluidState(blockPos).isEmpty() ? (BlockState)blockState.setValue(BlockStateProperties.WATERLOGGED, true) : blockState);

@@ -92,7 +92,7 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
 
     @Override
     public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
-        if (blockState.getValue(WATERLOGGED)) {
+        if(blockState.getValue(WATERLOGGED)) {
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
 
@@ -127,7 +127,7 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
             if(item.is(Items.SCULK) && isPolished(blockState)) {
                level.setBlock(blockPos, DDBlocks.ANCIENT_CHEST.get().defaultBlockState(), 3);
                if(!player.isCreative()) item.shrink(1);
-               if (level.isClientSide()) {
+               if(level.isClientSide()) {
                     level.playSound(player, blockPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 1, 1);
                }
 
@@ -135,15 +135,15 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
             }
         }
         if(entity != null) {
-            if (entity.cooldownTicks == 0) {
-                if (isPolished(blockState)) {
-                    if (entity.closeTicks > 3) {
+            if(entity.cooldownTicks == 0) {
+                if(isPolished(blockState)) {
+                    if(entity.closeTicks > 3) {
                         player.openMenu(entity);
                         return InteractionResult.SUCCESS;
                     }
 
-                    if (entity.closeTicks == 0) {
-                        if (level.isClientSide()) {
+                    if(entity.closeTicks == 0) {
+                        if(level.isClientSide()) {
                             level.playSound(player, blockPos, DDSounds.ANCIENT_CHEST_OPEN.get(), SoundSource.BLOCKS, 2, 1);
                         }
 
@@ -151,19 +151,19 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
                         entity.closeTicks = 720;
                     }
                 } else {
-                    if (entity.closeTicks > 3) {
+                    if(entity.closeTicks > 3) {
                         player.openMenu(entity);
                         return InteractionResult.SUCCESS;
                     }
 
-                    if (entity.lidAttempts < 10) {
+                    if(entity.lidAttempts < 10) {
                         entity.lidAttempts = entity.lidAttempts + 3;
                         entity.wiggleTicks = 20;
-                        if (level.isClientSide()) {
+                        if(level.isClientSide()) {
                             level.playSound(player, blockPos, SoundEvents.DEEPSLATE_TILES_STEP, SoundSource.BLOCKS, 1, 1);
                         }
-                    } else if (entity.lidAttempts > 10 && entity.closeTicks == 0) {
-                        if (level.isClientSide()) {
+                    } else if(entity.lidAttempts > 10 && entity.closeTicks == 0) {
+                        if(level.isClientSide()) {
                             level.playSound(player, blockPos, DDSounds.ANCIENT_CHEST_OPEN.get(), SoundSource.BLOCKS, 2, 1);
                         }
 

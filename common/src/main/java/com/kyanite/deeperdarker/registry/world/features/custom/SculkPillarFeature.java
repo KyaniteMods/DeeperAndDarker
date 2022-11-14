@@ -14,14 +14,14 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 public class SculkPillarFeature extends Feature<NoneFeatureConfiguration> {
     private final WeightedStateProvider placementBlock;
 
-    public SculkPillarFeature(Codec<NoneFeatureConfiguration> pCodec,  WeightedStateProvider placementBlock) {
+    public SculkPillarFeature(Codec<NoneFeatureConfiguration> pCodec, WeightedStateProvider placementBlock) {
         super(pCodec);
         this.placementBlock = placementBlock;
     }
 
     public boolean noSpace(WorldGenLevel getter, BlockPos origin, int distance) {
-        for (int i = 0; i < distance; i++) {
-            if (!getter.getBlockState(origin.above(i)).is(Blocks.AIR)) return true;
+        for(int i = 0; i < distance; i++) {
+            if(!getter.getBlockState(origin.above(i)).is(Blocks.AIR)) return true;
         }
         return false;
     }
@@ -35,11 +35,11 @@ public class SculkPillarFeature extends Feature<NoneFeatureConfiguration> {
 
         boolean hasValidBelowBlock = down.is(Blocks.SCULK) || down.is(DDBlocks.GLOOM_SCULK.get());
 
-        if (noSpace(pContext.level(), pContext.origin(), pillarHeight)) return false;
-        if (!hasValidBelowBlock)
+        if(noSpace(pContext.level(), pContext.origin(), pillarHeight)) return false;
+        if(!hasValidBelowBlock)
             return false;
 
-        for (int i = 0; i < pillarHeight; i++) {
+        for(int i = 0; i < pillarHeight; i++) {
             int newY = y + i;
             placeSingle(pContext.level(), new BlockPos(pContext.origin().getX(), newY, pContext.origin().getZ()), i, pillarHeight);
         }
@@ -50,7 +50,7 @@ public class SculkPillarFeature extends Feature<NoneFeatureConfiguration> {
     public void placeSingle(WorldGenLevel level, BlockPos pos, int i, int height) {
         level.setBlock(pos, placementBlock.getState(level.getRandom(), pos), 3);
 
-        if (i < height / 1.8f) {
+        if(i < height / 1.8f) {
             level.setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), placementBlock.getState(level.getRandom(), pos), 3);
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), placementBlock.getState(level.getRandom(), pos), 3);
             level.setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), placementBlock.getState(level.getRandom(), pos), 3);
@@ -60,7 +60,7 @@ public class SculkPillarFeature extends Feature<NoneFeatureConfiguration> {
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1), placementBlock.getState(level.getRandom(), pos), 3);
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1), placementBlock.getState(level.getRandom(), pos), 3);
             level.setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1), placementBlock.getState(level.getRandom(), pos), 3);
-        } else if (i < height / 1.3f) {
+        } else if(i < height / 1.3f) {
             level.setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), placementBlock.getState(level.getRandom(), pos), 3);
             level.setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), placementBlock.getState(level.getRandom(), pos), 3);
             level.setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1), placementBlock.getState(level.getRandom(), pos), 3);

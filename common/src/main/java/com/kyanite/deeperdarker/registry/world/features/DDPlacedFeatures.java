@@ -49,6 +49,7 @@ public class DDPlacedFeatures {
         builder.add(BiomeFilter.biome());
         return builder.build();
     }
+
     public static List<PlacementModifier> commonOrePlacement(int attempts, PlacementModifier range) {
         return orePlacement(CountPlacement.of(attempts), range);
     }
@@ -94,7 +95,5 @@ public class DDPlacedFeatures {
         return RegistryHelper.registerPlacedFeature(id, placedFeature);
     }
 
-    public static void registerPlacedFeatures() {
-
-    }
+    public static void registerPlacedFeatures() {}
 }

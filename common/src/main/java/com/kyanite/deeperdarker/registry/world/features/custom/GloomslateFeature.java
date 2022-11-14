@@ -28,12 +28,12 @@ public class GloomslateFeature extends Feature<NoneFeatureConfiguration> {
         int startY = 0; // get starting X of chunk (In this case 0)
         int endY = featurePlaceContext.level().getHeight();  // get ending X of chunk (only replacing up to sea level to reduce amount of scaninng. )
 
-        for (int x = startX; x <= endX; ++x) {
-            for (int z = startZ; z <= endZ; ++z) {
-                for (int y = startY; y <= endY; ++y) {
+        for(int x = startX; x <= endX; ++x) {
+            for(int z = startZ; z <= endZ; ++z) {
+                for(int y = startY; y <= endY; ++y) {
                     BlockState state = featurePlaceContext.level().getBlockState(new BlockPos(x, y, z));
                     Block block = state.getBlock();
-                    if (block == fromBlock) {
+                    if(block == fromBlock) {
                         featurePlaceContext.level().setBlock(new BlockPos(x, y, z), toBlock.defaultBlockState(), 2);
                     }
                 }

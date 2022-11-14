@@ -18,7 +18,6 @@ import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.kyanite.paragon.api.ConfigRegistry;
 import com.mojang.logging.LogUtils;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -32,8 +31,6 @@ import java.util.Map;
 public class DeeperAndDarker {
     public static final String MOD_ID = "deeperdarker";
     public static final Logger LOGGER = LogUtils.getLogger();
-
-    public static final ResourceLocation SOUL_ELYTRA_TEXTURE = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
 
     public static void init(DeeperAndDarkerInitCallback callback) {
         ConfigRegistry.register("deeperdarker", new DDConfig());
@@ -64,7 +61,7 @@ public class DeeperAndDarker {
         attributes.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapperEntity.attributes());
         attributes.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeEntity.attributes());
         attributes.put(DDEntities.STALKER.get(), StalkerEntity.attributes());
-  //      attributes.put(DDEntities.SCAVENGER.get(), ScavengerEntity.attributes());;
+        //      attributes.put(DDEntities.SCAVENGER.get(), ScavengerEntity.attributes());;
     }
 
     public static void spawnPlacements() {
@@ -72,6 +69,6 @@ public class DeeperAndDarker {
         SpawnPlacements.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(DDEntities.STALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-    //    SpawnPlacements.register(DDEntities.SCAVENGER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        //    SpawnPlacements.register(DDEntities.SCAVENGER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }
 }

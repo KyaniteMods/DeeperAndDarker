@@ -17,7 +17,7 @@ public class InfestedSculkBlock extends SculkBlock {
 
     @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if (pEntity instanceof Player player) {
+        if(pEntity instanceof Player player) {
             pLevel.setBlock(pPos, Blocks.SCULK.defaultBlockState(), 3);
             player.knockback(1.5, 1.5, 1.5);
             SculkWormEntity entity = (SculkWormEntity) DDEntities.SCULK_WORM.get().create(pLevel);

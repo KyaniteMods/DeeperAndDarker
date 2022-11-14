@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(Phantom.class)
 public class PhantomMixin extends FlyingMob {
-
     protected PhantomMixin(EntityType<? extends FlyingMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }

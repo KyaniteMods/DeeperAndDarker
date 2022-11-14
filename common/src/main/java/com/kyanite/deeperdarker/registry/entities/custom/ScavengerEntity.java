@@ -59,9 +59,9 @@ public class ScavengerEntity extends TamableAnimal implements IAnimatable {
     @Nullable
     public InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
-        if (isFood(itemstack) && !this.isTame()) {
+        if(isFood(itemstack) && !this.isTame()) {
             this.usePlayerItem(player, hand, itemstack);
-            if (!this.level.isClientSide()) {
+            if(!this.level.isClientSide()) {
                 this.tame(player);
                 this.setOwnerUUID(player.getUUID());
                 setTarget(null);
@@ -92,7 +92,7 @@ public class ScavengerEntity extends TamableAnimal implements IAnimatable {
 
     @Override
     public void handleEntityEvent(byte pId) {
-        if (pId == 244) {
+        if(pId == 244) {
             DDParticleUtils.spawnHeartParticles(this, this.getRandom());
         } else {
             super.handleEntityEvent(pId);

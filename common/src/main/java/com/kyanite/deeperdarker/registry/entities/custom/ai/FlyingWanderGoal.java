@@ -31,7 +31,7 @@ public class FlyingWanderGoal extends Goal {
     @Override
     public void start() {
         Vec3 vec3 = this.findPos();
-        if (vec3 != null) {
+        if(vec3 != null) {
             mob.getNavigation().moveTo(mob.getNavigation().createPath(new BlockPos(vec3), 1), 1.0D);
         }
 

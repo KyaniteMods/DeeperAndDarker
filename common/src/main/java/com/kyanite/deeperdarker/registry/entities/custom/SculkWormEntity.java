@@ -86,7 +86,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateTick(EntityState entityState) {
-        if (entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
+        if(entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
             DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
         }
     }
@@ -104,8 +104,8 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void tick() {
         super.tick();
-        if (this.getCurrentState().equals(AWAKE)) {
-            if (getDescendTime() != 0) {
+        if(this.getCurrentState().equals(AWAKE)) {
+            if(getDescendTime() != 0) {
                 setDescendTime(getDescendTime() - 1);
             } else {
                 setDescendTime(1200);
@@ -116,17 +116,17 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateDone(EntityState entityState) {
-        if (EMERGE.equals(entityState)) {
+        if(EMERGE.equals(entityState)) {
             setState(AWAKE);
-        } else if (DESCEND.equals(entityState)) {
+        } else if(DESCEND.equals(entityState)) {
             this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.KILLED);
-        } else if (ATTACK.equals(entityState)) {
+        } else if(ATTACK.equals(entityState)) {
             setState(AWAKE);
-            if (this.getTarget() != null) {
+            if(this.getTarget() != null) {
                 this.doHurtTarget(this.getTarget());
-                if (this.getTarget() instanceof Player plr)
-                    if (plr.totalExperience > 2)
+                if(this.getTarget() instanceof Player plr)
+                    if(plr.totalExperience > 2)
                         plr.giveExperiencePoints(-2);
             }
         }

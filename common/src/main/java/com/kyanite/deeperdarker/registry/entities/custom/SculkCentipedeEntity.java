@@ -92,10 +92,10 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level.isClientSide) {
+        if(!this.level.isClientSide) {
             this.setClimbing(this.horizontalCollision);
         }
-        if (this.horizontalCollision && this.onClimbable()) {
+        if(this.horizontalCollision && this.onClimbable()) {
             this.setDeltaMovement(this.getDeltaMovement().x, this.getDeltaMovement().y * 0.5f, this.getDeltaMovement().z);
         }
     }

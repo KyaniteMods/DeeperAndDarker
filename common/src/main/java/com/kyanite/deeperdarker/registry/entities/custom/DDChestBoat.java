@@ -77,7 +77,7 @@ public class DDChestBoat extends DDBoat implements HasCustomInventoryScreen, Con
 
     @Override
     public void remove(RemovalReason pReason) {
-        if (!this.level.isClientSide && pReason.shouldDestroy()) {
+        if(!this.level.isClientSide && pReason.shouldDestroy()) {
             Containers.dropContents(this.level, this, this);
         }
 
@@ -92,7 +92,7 @@ public class DDChestBoat extends DDBoat implements HasCustomInventoryScreen, Con
     @Override
     public void openCustomInventoryScreen(Player player) {
         player.openMenu(this);
-        if (!player.level.isClientSide) {
+        if(!player.level.isClientSide) {
             this.gameEvent(GameEvent.CONTAINER_OPEN, player);
             PiglinAi.angerNearbyPiglins(player, true);
         }
@@ -150,7 +150,7 @@ public class DDChestBoat extends DDBoat implements HasCustomInventoryScreen, Con
 
     @Nullable
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory, Player pPlayer) {
-        if (this.lootTable != null && pPlayer.isSpectator()) {
+        if(this.lootTable != null && pPlayer.isSpectator()) {
             return null;
         } else {
             this.unpackLootTable(pInventory.player);

@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class DDParticleUtils {
     public static void clientDiggingParticles(RandomSource randomSource, BlockState state, BlockPos pos, Level level) {
-        for (int i = 0; i < 30; i++) {
+        for(int i = 0; i < 30; i++) {
             double d0 = pos.getX() + (double) Mth.randomBetween(randomSource, -0.7F, 0.7F);
             double d1 = pos.getY();
             double d2 = pos.getZ() + (double) Mth.randomBetween(randomSource, -0.7F, 0.7F);
@@ -22,7 +22,7 @@ public class DDParticleUtils {
 
     public static void spawnHeartParticles(Entity entity, RandomSource randomSource) {
         ParticleOptions particle = ParticleTypes.HEART;
-        for (int i = 0; i < 7; i++) {
+        for(int i = 0; i < 7; i++) {
             double x = randomSource.nextGaussian() * 0.02D;
             double y = randomSource.nextGaussian() * 0.02D;
             double z = randomSource.nextGaussian() * 0.02D;

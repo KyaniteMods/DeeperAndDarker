@@ -90,10 +90,10 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void tick() {
         super.tick();
-        if (isDeadOrDying()) return;
+        if(isDeadOrDying()) return;
 
         Level level = this.level;
-        if (level instanceof ServerLevel serverlevel) {
+        if(level instanceof ServerLevel serverlevel) {
             this.dynamicGameEventListener.getListener().tick(serverlevel);
         }
     }
@@ -110,7 +110,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public float getSpeed() {
-        if (ATTACK.equals(getCurrentState())) {
+        if(ATTACK.equals(getCurrentState())) {
             return 0;
         }
 
@@ -119,11 +119,11 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void stateDone(EntityState entityState) {
-        if (IDLE.equals(entityState)) {
-        } else if (WALK.equals(entityState)) {
+        if(IDLE.equals(entityState)) {
+        } else if(WALK.equals(entityState)) {
             setState(IDLE);
-        } else if (ATTACK.equals(entityState)) {
-            if (this.getTarget() != null) this.doHurtTarget(this.getTarget());
+        } else if(ATTACK.equals(entityState)) {
+            if(this.getTarget() != null) this.doHurtTarget(this.getTarget());
 
             setState(IDLE);
         }
@@ -141,7 +141,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> consumer) {
         Level level = this.level;
-        if (level instanceof ServerLevel serverlevel) {
+        if(level instanceof ServerLevel serverlevel) {
             consumer.accept(this.dynamicGameEventListener, serverlevel);
         }
     }
@@ -171,7 +171,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        if (pCompound.contains("listener", 10)) {
+        if(pCompound.contains("listener", 10)) {
             VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((vibrationListener) -> this.dynamicGameEventListener.updateListener(vibrationListener, this.level));
         }
     }
@@ -188,11 +188,11 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public boolean shouldListen(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, GameEvent.Context context) {
-        if (event.equals(GameEvent.STEP)) return false;
+        if(event.equals(GameEvent.STEP)) return false;
 
-        if (!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
+        if(!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pos) && !this.isRemoved() && this.level == level) {
             Entity entity = context.sourceEntity();
-            if (entity instanceof LivingEntity livingentity) {
+            if(entity instanceof LivingEntity livingentity) {
                 return this.canTargetEntity(livingentity);
             }
 
@@ -204,7 +204,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
 
     public boolean canTargetEntity(Entity entity) {
-        if (entity instanceof LivingEntity livingentity) {
+        if(entity instanceof LivingEntity livingentity) {
             return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }
 
@@ -213,22 +213,22 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Override
     public void onSignalReceive(ServerLevel level, GameEventListener eventListener, BlockPos pos, GameEvent event, @Nullable Entity entity1, @Nullable Entity entity2, float f) {
-        if (isDeadOrDying()) return;
+        if(isDeadOrDying()) return;
 
         this.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
 
-        if (entity1 != null) {
-            if (canTargetEntity(entity1)) {
-                if (entity1 instanceof Monster && ((Monster) entity1).getMobType() != DDTypes.SCULK)
+        if(entity1 != null) {
+            if(canTargetEntity(entity1)) {
+                if(entity1 instanceof Monster && ((Monster) entity1).getMobType() != DDTypes.SCULK)
                     this.setTarget((LivingEntity) entity1);
-                if (entity1 instanceof Player)
+                if(entity1 instanceof Player)
                     this.setTarget((LivingEntity) entity1);
 
                 return;
             }
         }
 
-        if (this.getTarget() != null)
+        if(this.getTarget() != null)
             this.setTarget(null);
 
         this.disturbanceLocation = pos;
@@ -255,7 +255,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     }
 
     @Override
-    public @Nullable void setDisturbanceLocation(BlockPos disturbanceLocation) {
+    public void setDisturbanceLocation(BlockPos disturbanceLocation) {
         this.disturbanceLocation = disturbanceLocation;
     }
 }

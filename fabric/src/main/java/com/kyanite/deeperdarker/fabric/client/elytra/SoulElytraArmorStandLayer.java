@@ -23,9 +23,7 @@ import net.minecraft.world.item.ItemStack;
 
     @Environment(EnvType.CLIENT)
 public class SoulElytraArmorStandLayer extends ElytraLayer<ArmorStand, ArmorStandArmorModel>  {
-    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID,
-            "textures/entity/soul_elytra.png");
-
+    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
     private final ElytraModel elytraModel;
 
     public SoulElytraArmorStandLayer(ArmorStandRenderer rendererIn, EntityModelSet modelSet) {
@@ -36,7 +34,7 @@ public class SoulElytraArmorStandLayer extends ElytraLayer<ArmorStand, ArmorStan
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, ArmorStand livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
-        if (itemStack.is(DDItems.SOUL_ELYTRA.get())) {
+        if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {
             poseStack.pushPose();
             poseStack.translate(0.0, 0.0, 0.125);
             this.getParentModel().copyPropertiesTo(this.elytraModel);

@@ -29,7 +29,7 @@ public class DDUtils {
             entity.setDeltaMovement(vec32.add(vec31.x * 0.1 + (vec31.x * 2 - vec32.x) * 0.5, vec31.y * 0.1 + (vec31.y * 2 - vec32.y) * 0.5, vec31.z * 0.1 + (vec31.z * 2 - vec32.z) * 0.5));
             if(entity.level.isClientSide()) {
                 entity.level.playSound((Player) entity, entity.blockPosition(), SoundEvents.SCULK_SHRIEKER_SHRIEK, SoundSource.BLOCKS, 1, 1);
-                for (int i = 0; i < 5; i++) {
+                for(int i = 0; i < 5; i++) {
                     entity.level.addParticle(ParticleTypes.SCULK_CHARGE_POP, entity.getRandomX(5), entity.position().y, entity.getRandomZ(5), 0.2d, -0.2d, 0.2d);
                 }
                 return;

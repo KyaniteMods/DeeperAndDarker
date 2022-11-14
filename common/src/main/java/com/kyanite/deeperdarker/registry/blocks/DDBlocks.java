@@ -170,7 +170,7 @@ public class DDBlocks {
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createItem, Supplier<T> block) {
         Supplier<T> toReturn = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, (Supplier<Block>) toReturn);
-        if (createItem) RegistryHelper.registerItem(name, () -> new BlockItem(toReturn.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
+        if(createItem) RegistryHelper.registerItem(name, () -> new BlockItem(toReturn.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
         return toReturn;
     }
 

@@ -23,9 +23,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class SoulElytraLayer extends ElytraLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
-    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID,
-            "textures/entity/soul_elytra.png");
-
+    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
     private final ElytraModel elytraModel;
 
     public SoulElytraLayer(RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> arg, EntityModelSet entityModelSet) {
@@ -36,7 +34,7 @@ public class SoulElytraLayer extends ElytraLayer<AbstractClientPlayer, PlayerMod
     @Override
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, AbstractClientPlayer livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
-        if (itemStack.is(DDItems.SOUL_ELYTRA.get())) {
+        if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {
             poseStack.pushPose();
             poseStack.translate(0.0, 0.0, 0.125);
             this.getParentModel().copyPropertiesTo(this.elytraModel);

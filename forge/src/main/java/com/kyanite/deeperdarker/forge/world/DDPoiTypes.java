@@ -10,6 +10,5 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class DDPoiTypes {
     public static final DeferredRegister<PoiType> POI = DeferredRegister.create(ForgeRegistries.POI_TYPES, DeeperAndDarker.MOD_ID);
-
     public static final RegistryObject<PoiType> OTHERSIDE_PORTAL = POI.register("otherside_portal", () -> new PoiType(ImmutableSet.copyOf(DDBlocks.OTHERSIDE_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
 }

@@ -59,7 +59,7 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
             if(pLevel.isOutsideBuildHeight(pPos)) {
                 return false;
             }
-        } while(pLevel.getBlockState(pPos).isAir());
+        } while (pLevel.getBlockState(pPos).isAir());
 
         pPos.move(0, 1, 0);
         return true;

@@ -17,11 +17,14 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 @Environment(EnvType.CLIENT)
 public class SoulElytraLayer extends ElytraLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+    private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
     private final ElytraModel elytraModel;
 
     public SoulElytraLayer(RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> renderLayerParent, EntityModelSet entityModelSet) {
@@ -29,16 +32,16 @@ public class SoulElytraLayer extends ElytraLayer<AbstractClientPlayer, PlayerMod
         this.elytraModel = new ElytraModel(entityModelSet.bakeLayer(ModelLayers.ELYTRA));
     }
 
-
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, AbstractClientPlayer livingEntity, float f, float g, float h, float j, float k, float l) {
+    @SuppressWarnings("unchecked")
+    public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, AbstractClientPlayer livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
-        if (itemStack.is(DDItems.SOUL_ELYTRA.get())) {
+        if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {
             poseStack.pushPose();
             poseStack.translate(0.0, 0.0, 0.125);
             this.getParentModel().copyPropertiesTo(this.elytraModel);
             this.elytraModel.setupAnim(livingEntity, f, g, j, k, l);
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(multiBufferSource, RenderType.armorCutoutNoCull(DeeperAndDarker.SOUL_ELYTRA_TEXTURE), false, itemStack.hasFoil());
+            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(multiBufferSource, RenderType.armorCutoutNoCull(TEXTURE_ELYTRA), false, itemStack.hasFoil());
             this.elytraModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
             poseStack.popPose();
         }

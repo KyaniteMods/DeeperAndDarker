@@ -115,7 +115,7 @@ unifiedPublishing {
         }
 
         var CURSE_API_KEY = project.findProperty("CURSEFORGE_TOKEN") ?: System.getenv("CURSEFORGE_TOKEN")
-        if (CURSE_API_KEY != null) {
+        if(CURSE_API_KEY != null) {
             curseforge {
                 token = CURSE_API_KEY
                 id = rootProject.curseforge_id
@@ -124,7 +124,7 @@ unifiedPublishing {
         }
 
         var MODRINTH_TOKEN = project.findProperty("MODRINTH_TOKEN") ?: System.getenv("MODRINTH_TOKEN")
-        if (MODRINTH_TOKEN != null) {
+        if(MODRINTH_TOKEN != null) {
             modrinth {
                 token = MODRINTH_TOKEN
                 id = rootProject.modrinth_id

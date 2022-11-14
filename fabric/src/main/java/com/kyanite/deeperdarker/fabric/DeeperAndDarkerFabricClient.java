@@ -67,9 +67,9 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
                 DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get());
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-            if (entityRenderer instanceof PlayerRenderer playerRenderer) {
+            if(entityRenderer instanceof PlayerRenderer playerRenderer) {
                 registrationHelper.register(new SoulElytraLayer(playerRenderer, context.getModelSet()));
-            } else if (entityRenderer instanceof ArmorStandRenderer armorStandRenderer) {
+            } else if(entityRenderer instanceof ArmorStandRenderer armorStandRenderer) {
                 registrationHelper.register(new SoulElytraArmorStandLayer(armorStandRenderer, context.getModelSet()));
             }
         });

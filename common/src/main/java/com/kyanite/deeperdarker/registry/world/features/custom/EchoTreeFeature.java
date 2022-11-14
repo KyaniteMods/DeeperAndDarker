@@ -20,14 +20,14 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
         int height = pContext.random().nextInt(6, 8);
 
-        if (pContext.random().nextInt(0, 2) == 0) return false;
-        if (!pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK)) return false;
-        if (noSpace(pContext.level(), pContext.origin(), height + 3)) return false;
+        if(pContext.random().nextInt(0, 2) == 0) return false;
+        if(!pContext.level().getBlockState(pContext.origin().below()).is(Blocks.SCULK)) return false;
+        if(noSpace(pContext.level(), pContext.origin(), height + 3)) return false;
 
         int logs;
-        for (logs = 0; logs < height; logs++) {
+        for(logs = 0; logs < height; logs++) {
             BlockPos logPos = new BlockPos(pContext.origin().getX(), pContext.origin().above(logs).getY(), pContext.origin().getZ());
-            if (TreeFeature.validTreePos(pContext.level(), logPos)) {
+            if(TreeFeature.validTreePos(pContext.level(), logPos)) {
                 pContext.level().setBlock(logPos, DDBlocks.ECHO_LOG.get().defaultBlockState(), 3);
             }
         }
@@ -39,8 +39,8 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public boolean noSpace(WorldGenLevel getter, BlockPos origin, int distance) {
-        for (int i = 0; i < distance; i++) {
-            if (!getter.getBlockState(origin.above(i)).is(Blocks.AIR)) return true;
+        for(int i = 0; i < distance; i++) {
+            if(!getter.getBlockState(origin.above(i)).is(Blocks.AIR)) return true;
         }
         return false;
     }
@@ -54,17 +54,17 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int topLengthX = randomSources.nextInt(3, 4);
         int topLengthZ = randomSources.nextInt(3, 4);
 
-        for (x1 = 0; x1 < topLengthX; x1++) {
+        for(x1 = 0; x1 < topLengthX; x1++) {
             tryPlaceLeaf(level, new BlockPos(x + x1, y, z));
             tryPlaceLeaf(level, new BlockPos(x - x1, y, z));
-            if (x1 < topLengthX / 1.2f) {
+            if(x1 < topLengthX / 1.2f) {
                 tryPlaceLeaf(level, new BlockPos(x + x1, y + 1, z));
                 tryPlaceLeaf(level, new BlockPos(x - x1, y + 1, z));
             }
-            for (z1 = 0; z1 < topLengthZ; z1++) {
+            for(z1 = 0; z1 < topLengthZ; z1++) {
                 tryPlaceLeaf(level, new BlockPos(x, y, z + z1));
                 tryPlaceLeaf(level, new BlockPos(x, y, z - z1));
-                if (z1 < topLengthZ / 1.2f) {
+                if(z1 < topLengthZ / 1.2f) {
                     tryPlaceLeaf(level, new BlockPos(x, y + 1, z + z1));
                     tryPlaceLeaf(level, new BlockPos(x, y + 1, z - z1));
                 }
@@ -74,13 +74,13 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
         int x2;
         int spiderTopLength = randomSources.nextInt(3, 4);
 
-        for (x2 = 0; x2 < spiderTopLength; x2++) {
+        for(x2 = 0; x2 < spiderTopLength; x2++) {
             tryPlaceLeaf(level, new BlockPos(x - x2, y, z - x2));
             tryPlaceLeaf(level, new BlockPos(x + x2, y, z + x2));
             tryPlaceLeaf(level, new BlockPos(x - x2, y, z + x2));
             tryPlaceLeaf(level, new BlockPos(x + x2, y, z - x2));
 
-            if (x2 < spiderTopLength / 1.2f) {
+            if(x2 < spiderTopLength / 1.2f) {
                 tryPlaceLeaf(level, new BlockPos(x - x2, y + 1, z - x2));
                 tryPlaceLeaf(level, new BlockPos(x + x2, y + 1, z + x2));
                 tryPlaceLeaf(level, new BlockPos(x - x2, y + 1, z + x2));
@@ -109,7 +109,7 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public void placeHanging(RandomSource source, WorldGenLevel level, BlockPos pos) {
-        for (int dripAmount = 0; dripAmount < source.nextInt(2, 5); dripAmount++) {
+        for(int dripAmount = 0; dripAmount < source.nextInt(2, 5); dripAmount++) {
             tryPlaceLeaf(level, new BlockPos(pos.getX(), pos.getY() - dripAmount, pos.getZ()));
         }
     }
@@ -134,8 +134,8 @@ public class EchoTreeFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     public void tryPlaceLeaf(WorldGenLevel level, BlockPos pos) {
-        if (TreeFeature.validTreePos(level, pos)) {
-            if (level.getRandom().nextInt(0, 20) == 0)
+        if(TreeFeature.validTreePos(level, pos)) {
+            if(level.getRandom().nextInt(0, 20) == 0)
                 setBlock(level, pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState());
             else setBlock(level, pos, DDBlocks.ECHO_LEAVES.get().defaultBlockState());
         }

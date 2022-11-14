@@ -46,9 +46,9 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     public static int getWiggleTicks(BlockPos blockPos, BlockGetter blockGetter) {
         BlockState blockState = blockGetter.getBlockState(blockPos);
-        if (blockState.hasBlockEntity()) {
+        if(blockState.hasBlockEntity()) {
             BlockEntity blockEntity = blockGetter.getBlockEntity(blockPos);
-            if (blockEntity instanceof AncientChestEntity ancientChestEntity) {
+            if(blockEntity instanceof AncientChestEntity ancientChestEntity) {
                 return ancientChestEntity.wiggleTicks;
             }
         }
@@ -112,7 +112,7 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
         super.load(compoundTag);
 
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        if (!this.tryLoadLootTable(compoundTag)) {
+        if(!this.tryLoadLootTable(compoundTag)) {
             ContainerHelper.loadAllItems(compoundTag, this.items);
         }
 
@@ -126,7 +126,7 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
 
-        if (!this.trySaveLootTable(compoundTag)) {
+        if(!this.trySaveLootTable(compoundTag)) {
             ContainerHelper.saveAllItems(compoundTag, this.items);
         }
 

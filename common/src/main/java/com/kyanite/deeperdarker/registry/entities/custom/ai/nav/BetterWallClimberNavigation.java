@@ -32,7 +32,7 @@ public class BetterWallClimberNavigation extends GroundPathNavigation {
     @Override
     public boolean moveTo(Entity entity, double speed) {
         Path path = this.createPath(entity, 0);
-        if (path != null) {
+        if(path != null) {
             return this.moveTo(path, speed);
         } else {
             this.pathToPosition = entity.blockPosition();
@@ -43,11 +43,11 @@ public class BetterWallClimberNavigation extends GroundPathNavigation {
 
     @Override
     public void tick() {
-        if (!this.isDone()) {
+        if(!this.isDone()) {
             super.tick();
         } else {
-            if (this.pathToPosition != null) {
-                if (!this.pathToPosition.closerToCenterThan(this.mob.position(),
+            if(this.pathToPosition != null) {
+                if(!this.pathToPosition.closerToCenterThan(this.mob.position(),
                         Math.max(this.mob.getBbWidth(), 1.0D))
                         && (!(this.mob.getY() > (double) this.pathToPosition.getY())
                         || !(new BlockPos(this.pathToPosition.getX(), this.mob.getY(),

@@ -22,13 +22,13 @@ public class GoToNearestStructureGoal extends Goal {
 
     @Override
     public void tick() {
-        if (entity.structureLocation != null && !entity.getNavigation().isInProgress()) {
+        if(entity.structureLocation != null && !entity.getNavigation().isInProgress()) {
             entity.getNavigation().setCanFloat(true);
             entity.getNavigation().moveTo(entity.structureLocation.getX(), entity.structureLocation.getY(), entity.structureLocation.getZ(), this.speedModifier);
             entity.setGlowingTag(true);
         }
 
-        if (entity.structureLocation != null && entity.getNavigation().isDone()) {
+        if(entity.structureLocation != null && entity.getNavigation().isDone()) {
             DeeperAndDarker.LOGGER.info("ARRIVED");
             entity.structureLocation = null;
             entity.getNavigation().stop();

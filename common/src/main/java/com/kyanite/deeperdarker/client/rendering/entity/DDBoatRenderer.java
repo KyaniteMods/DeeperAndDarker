@@ -24,7 +24,7 @@ public class DDBoatRenderer<T extends DDBoat> extends EntityRenderer<T> {
 
     public DDBoatRenderer(EntityRendererProvider.Context pContext, boolean hasChest) {
         super(pContext);
-        for (DDBoat.Type type : DDBoat.Type.values()) {
+        for(DDBoat.Type type : DDBoat.Type.values()) {
             String folder = hasChest ? "chest_boat" : "boat";
             ResourceLocation texture = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/" + folder + "/" + type.getName() + ".png");
             BoatModel model = new BoatModel(pContext.bakeLayer(hasChest ? DDBoatModels.boatChest : DDBoatModels.boat), hasChest);
@@ -41,11 +41,11 @@ public class DDBoatRenderer<T extends DDBoat> extends EntityRenderer<T> {
 
         float f = (float) boat.getHurtTime() - partialTicks;
         float g = boat.getDamage() - partialTicks;
-        if (g < 0.0f) g = 0.0f;
-        if (f > 0.0f)
+        if(g < 0.0f) g = 0.0f;
+        if(f > 0.0f)
             matrixStack.mulPose(Vector3f.XP.rotationDegrees(Mth.sin(f) * f * g / 10.0f * (float) boat.getHurtDir()));
 
-        if (!Mth.equal(boat.getBubbleAngle(partialTicks), 0.0f)) {
+        if(!Mth.equal(boat.getBubbleAngle(partialTicks), 0.0f)) {
             matrixStack.mulPose(new Quaternion(new Vector3f(1.0f, 0.0f, 1.0f), boat.getBubbleAngle(partialTicks), true));
         }
 
@@ -59,7 +59,7 @@ public class DDBoatRenderer<T extends DDBoat> extends EntityRenderer<T> {
         VertexConsumer vertexConsumer = buffer.getBuffer(boatModel.renderType(resourceLocation));
         boatModel.renderToBuffer(matrixStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
 
-        if (!boat.isUnderWater()) {
+        if(!boat.isUnderWater()) {
             VertexConsumer vertexConsumer2 = buffer.getBuffer(RenderType.waterMask());
             boatModel.waterPatch().render(matrixStack, vertexConsumer2, packedLight, OverlayTexture.NO_OVERLAY);
         }

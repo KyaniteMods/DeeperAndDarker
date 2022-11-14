@@ -70,7 +70,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.stalker.attack", 10, false, true));
     public static EntityState RING = new EntityState(true, new EntityAnimationHolder("animation.stalker.ring", 60, false, true));
 
-    private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
+    private final ServerBossEvent bossEvent = (ServerBossEvent) (new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
 
     private static final Predicate<LivingEntity> LIVING_ENTITY_SELECTOR = (entity) -> {
         return entity.getMobType() != DDTypes.SCULK;
@@ -83,7 +83,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     public StalkerEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, (VibrationListener.ReceivingEvent)null, 0.0F, 0));
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, (VibrationListener.ReceivingEvent) null, 0.0F, 0));
         this.xpReward = 45;
         this.getNavigation().setCanFloat(true);
         this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0.0F);
@@ -110,7 +110,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     public static AttributeSupplier.Builder attributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250).add(Attributes.MOVEMENT_SPEED, (double)0.2F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 17.0D);
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250).add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 17.0D);
     }
 
     public boolean isPerformingAction() {
@@ -296,11 +296,15 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
-    public int getTransitionTick(EntityState entityState) {return getCurrentState() == EMERGE ? 0 : 4;}
+    public int getTransitionTick(EntityState entityState) {
+        return getCurrentState() == EMERGE ? 0 : 4;
+    }
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {return null;}
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return null;
+    }
 
     @Override
     public boolean shouldListen(ServerLevel pLevel, GameEventListener pListener, BlockPos pPos, GameEvent pEvent, GameEvent.Context pContext) {
@@ -345,7 +349,8 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
         if(entity1 != null) {
             if(canTargetEntity(entity1)) {
-                if(entity1 instanceof Monster && ((Monster) entity1).getMobType() != DDTypes.SCULK) this.setTarget((LivingEntity) entity1);
+                if(entity1 instanceof Monster && ((Monster) entity1).getMobType() != DDTypes.SCULK)
+                    this.setTarget((LivingEntity) entity1);
                 if(entity1 instanceof Player) this.setTarget((LivingEntity) entity1);
 
                 return;
@@ -369,7 +374,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
-    public AnimationFactory getFactory() {return this.factory;}
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
 
     @Override
     public PathNavigation createNavigation(Level pLevel) {
@@ -392,7 +399,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     @Override
-    public @Nullable void setDisturbanceLocation(BlockPos disturbanceLocation) {
+    public void setDisturbanceLocation(BlockPos disturbanceLocation) {
         this.disturbanceLocation = disturbanceLocation;
     }
 }

@@ -22,8 +22,7 @@ public class AncientChestItem extends BlockItem implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController
-                (this, "controller", 0, this::predicate));
+        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
     }
 
     @Override

@@ -36,27 +36,27 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
     public BlockState getBlockState(BlockState state) {
         BlockState replaceState = Blocks.SCULK.defaultBlockState();
 
-        if (state.is(Blocks.STONE)) {
+        if(state.is(Blocks.STONE)) {
             replaceState = DDBlocks.SCULK_STONE.get().defaultBlockState();
-        } else if (state.is(BlockTags.LOGS)) {
+        } else if(state.is(BlockTags.LOGS)) {
             replaceState = DDBlocks.ECHO_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-        } else if (state.is(DDTags.Blocks.STRIPPED_LOGS)) {
+        } else if(state.is(DDTags.Blocks.STRIPPED_LOGS)) {
             replaceState = DDBlocks.STRIPPED_ECHO_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-        } else if (state.is(DDTags.Blocks.WOOD)) {
+        } else if(state.is(DDTags.Blocks.WOOD)) {
             replaceState = DDBlocks.ECHO_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-        } else if (state.is(DDTags.Blocks.STRIPPED_WOOD)) {
+        } else if(state.is(DDTags.Blocks.STRIPPED_WOOD)) {
             replaceState = DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-        } else if (state.is(BlockTags.LEAVES)) {
+        } else if(state.is(BlockTags.LEAVES)) {
             replaceState = DDBlocks.ECHO_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, state.getValue(LeavesBlock.DISTANCE)).setValue(LeavesBlock.PERSISTENT, state.getValue(LeavesBlock.PERSISTENT)).setValue(LeavesBlock.WATERLOGGED, state.getValue(LeavesBlock.WATERLOGGED));
-        } else if (state == Blocks.SHROOMLIGHT.defaultBlockState()) {
+        } else if(state == Blocks.SHROOMLIGHT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_GLEAM.get().defaultBlockState();
-        } else if (state == Blocks.WEEPING_VINES.defaultBlockState()) {
+        } else if(state == Blocks.WEEPING_VINES.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES.get().defaultBlockState();
-        } else if (state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
+        } else if(state == Blocks.WEEPING_VINES_PLANT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState();
-        } else if (state == Blocks.TWISTING_VINES.defaultBlockState()) {
+        } else if(state == Blocks.TWISTING_VINES.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_TENDRILS.get().defaultBlockState();
-        } else if (state == Blocks.TWISTING_VINES_PLANT.defaultBlockState()) {
+        } else if(state == Blocks.TWISTING_VINES_PLANT.defaultBlockState()) {
             replaceState = DDBlocks.SCULK_TENDRILS_PLANT.get().defaultBlockState();
         }
 
@@ -69,11 +69,11 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
         BlockState state = levelAccessor.getBlockState(pos);
         TagKey<Block> replaceable = sculkSpreader.replaceableBlocks();
 
-        for (Direction direction : Direction.allShuffled(randomSource)) {
-            if (hasFace(state, direction)) {
+        for(Direction direction : Direction.allShuffled(randomSource)) {
+            if(hasFace(state, direction)) {
                 BlockPos relativePos = pos.relative(direction);
                 BlockState relativeState = levelAccessor.getBlockState(relativePos);
-                if (relativeState.is(replaceable)) {
+                if(relativeState.is(replaceable)) {
                     BlockState blockState = getBlockState(relativeState);
                     levelAccessor.setBlock(relativePos, blockState, 3);
                     Block.pushEntitiesUp(relativeState, blockState, levelAccessor, relativePos);
@@ -81,11 +81,11 @@ public abstract class SculkSpreadMixin extends MultifaceBlock {
                     this.veinSpreader.spreadAll(blockState, levelAccessor, relativePos, sculkSpreader.isWorldGeneration());
                     Direction direction1 = direction.getOpposite();
 
-                    for (Direction direction2 : DIRECTIONS) {
-                        if (direction2 != direction1) {
+                    for(Direction direction2 : DIRECTIONS) {
+                        if(direction2 != direction1) {
                             BlockPos blockPos = relativePos.relative(direction2);
                             BlockState checkState = levelAccessor.getBlockState(blockPos);
-                            if (checkState.is(this)) {
+                            if(checkState.is(this)) {
                                 this.onDischarged(levelAccessor, checkState, blockPos, randomSource);
                             }
                         }
