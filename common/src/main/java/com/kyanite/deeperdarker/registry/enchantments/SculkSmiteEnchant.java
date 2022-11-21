@@ -20,4 +20,14 @@ public class SculkSmiteEnchant extends Enchantment {
     public int getMaxLevel() {
         return 1;
     }
+
+    @Override
+    public boolean isTreasureOnly() {
+        return true;
+    }
+
+    @Override
+    public boolean isTradeable() {
+        return false;
+    }
 }
