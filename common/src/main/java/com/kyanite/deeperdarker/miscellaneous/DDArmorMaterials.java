@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.miscellaneous;
 
-import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.paragon.api.ConfigOption;
 import net.minecraft.sounds.SoundEvent;

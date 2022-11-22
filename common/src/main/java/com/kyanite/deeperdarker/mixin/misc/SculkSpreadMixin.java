@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.mixin;
+package com.kyanite.deeperdarker.mixin.misc;
 
 import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;

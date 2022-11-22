@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.mixin;
+package com.kyanite.deeperdarker.mixin.misc;
 
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import net.minecraft.core.BlockPos;

@@ -3,11 +3,16 @@
   "id": "deeperdarker",
   "version": "${version}",
   "name": "Deeper and Darker",
-  "description": "",
-  "authors": [],
-  "contact": {},
-  "license": "All-Rights-Reserved",
-  "icon": "assets/deeperdarker/banner.png",
+  "description": "Deeper and Darker is a mod that aims to improve and enhance the Deep Dark.",
+  "authors": [
+    "Kyanite Team"
+  ],
+  "contact": {
+    "homepage": "https://kyanitemods.dev/about",
+    "email": "kyanitemods@gmail.com"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -22,7 +27,7 @@
     "deeperdarker-common.mixins.json"
   ],
   "depends": {
-    "paragon": ">=1.0.0",
+    "paragon": ">=2.0.0",
     "fabricloader": ">=0.14.9",
     "fabric": "*",
     "minecraft": "1.19.x",

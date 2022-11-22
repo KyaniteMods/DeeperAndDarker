@@ -10,6 +10,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
+import java.io.IOException;
+import java.net.InetAddress;
+
 public class DDUtils {
     public static int secondsToTicks(float seconds) {
         return (int) (20 * seconds);
@@ -18,6 +21,13 @@ public class DDUtils {
         return level.findNearestMapStructure(DDTags.Others.ALL_STRUCTURES, pos, 150, false);
     }
 
+    public static boolean isConnected() {
+        try {
+            return InetAddress.getByName("www.google.com").isReachable(8000);
+        } catch (IOException e) {
+            return false;
+        }
+    }
     public static void soulElytraTick(LivingEntity entity) {
         // One thirtieth chance of boost per tick.
         // Uncontrollable at 1/3, needs to be balanced to allow control and not be too OP.

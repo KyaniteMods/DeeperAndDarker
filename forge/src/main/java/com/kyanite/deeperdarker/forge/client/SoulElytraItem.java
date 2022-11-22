@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.forge.client;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.kyanite.deeperdarker.DDConfig;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;

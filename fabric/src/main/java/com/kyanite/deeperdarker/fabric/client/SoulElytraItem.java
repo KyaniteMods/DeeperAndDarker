@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.fabric.client;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.kyanite.deeperdarker.DDConfig;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import net.fabricmc.fabric.api.entity.event.v1.FabricElytraItem;
 import net.minecraft.world.entity.EquipmentSlot;

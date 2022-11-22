@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.mixin;
+package com.kyanite.deeperdarker.mixin.containers;
 
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.world.entity.player.Player;

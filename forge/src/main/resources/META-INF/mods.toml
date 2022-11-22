@@ -6,7 +6,7 @@ license = "All Rights Reserved"
 modId = "deeperdarker"
 version = "${version}"
 displayName = "Deeper and Darker"
-logoFile = "banner.png"
+logoFile = "icon.png"
 authors = "Kyanite Mods"
 description = '''A Minecraft 1.19 mod which features more blocks, items, armors, and hidden mysteries to complement the new Deep Dark biome.'''
 
@@ -20,7 +20,7 @@ side = "BOTH"
 [[dependencies.deeperdarker]]
 modId = "paragon"
 mandatory = true
-versionRange = "[1.0.0,)"
+versionRange = "[2.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 

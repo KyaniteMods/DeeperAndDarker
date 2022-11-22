@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.config.DDClientConfig;
 import com.kyanite.deeperdarker.forge.client.AncientChestRenderer;
 import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraArmorStandLayer;
@@ -18,6 +19,7 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
+import com.kyanite.paragon.api.ConfigRegistry;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.Sheets;
@@ -120,6 +122,8 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerClient {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
+            ConfigRegistry.register(new DDClientConfig());
+
             WoodType.register(DDWoodTypes.ECHO);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);

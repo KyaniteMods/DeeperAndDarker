@@ -4,19 +4,20 @@
   "package": "com.kyanite.deeperdarker.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ChestEntityMixin",
-    "ContainerMixin",
-    "PhantomMixin",
-    "PhantomRendererMixin",
-    "SculkSensorMixin",
-    "SculkSpreadMixin",
-    "StonecutterMixin",
-    "VibrationListenerMixin",
-    "WardenMixin",
-    "SculkBlockMixin"
+    "containers.ChestEntityMixin",
+    "containers.ContainerMixin",
+    "entities.PhantomMixin",
+    "misc.SculkSensorMixin",
+    "misc.SculkSpreadMixin",
+    "containers.StonecutterMixin",
+    "misc.VibrationListenerMixin",
+    "entities.WardenMixin",
+    "misc.SculkBlockMixin"
   ],
   "client": [
-    "WardenAnimations"
+    "client.WardenAnimations",
+    "client.MinecraftMixin",
+    "client.PhantomRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.mixin;
+package com.kyanite.deeperdarker.mixin.client;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;

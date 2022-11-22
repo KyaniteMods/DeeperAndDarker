@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.registry.world.biomes;
 
-import com.kyanite.deeperdarker.DDConfig;
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;

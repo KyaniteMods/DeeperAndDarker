@@ -32,16 +32,79 @@
       "deeperdarker:block/ancient_chest/open"
     ]
   },
-  "block.sculk_stone.break": {
+  "block.sculk_jaw.close": {
+    "subtitle": "subtitles.block.jaw.close",
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/close1",
+      "deeperdarker:block/sculk_jaw/close2",
+      "deeperdarker:block/sculk_jaw/close3"
+    ]
+  },
+  "block.sculk_jaw.retract": {
+    "subtitle": "subtitles.block.jaw.retract",
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/retract1",
+      "deeperdarker:block/sculk_jaw/retract2",
+      "deeperdarker:block/sculk_jaw/retract3"
+    ]
+  },
+  "block.sculk_jaw.break": {
     "subtitle": "subtitles.block.generic.break",
     "sounds": [
-      "deeperdarker:block/sculk_stone/break1",
-      "deeperdarker:block/sculk_stone/break2",
-      "deeperdarker:block/sculk_stone/break3",
-      "deeperdarker:block/sculk_stone/break4",
-      "deeperdarker:block/sculk_stone/break5",
-      "deeperdarker:block/sculk_stone/break6",
-      "deeperdarker:block/sculk_stone/break7"
+      "deeperdarker:block/sculk_jaw/break1",
+      "deeperdarker:block/sculk_jaw/break2",
+      "deeperdarker:block/sculk_jaw/break3",
+      "deeperdarker:block/sculk_jaw/break4",
+      "deeperdarker:block/sculk_jaw/break5"
+    ]
+  },
+  "block.sculk_jaw.fall": {
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/step1",
+      "deeperdarker:block/sculk_jaw/step2",
+      "deeperdarker:block/sculk_jaw/step3",
+      "deeperdarker:block/sculk_jaw/step4",
+      "deeperdarker:block/sculk_jaw/step5"
+    ]
+  },
+  "block.sculk_jaw.hit": {
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/step1",
+      "deeperdarker:block/sculk_jaw/step2",
+      "deeperdarker:block/sculk_jaw/step3",
+      "deeperdarker:block/sculk_jaw/step4",
+      "deeperdarker:block/sculk_jaw/step5"
+    ]
+  },
+  "block.sculk_jaw.place": {
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/place1",
+      "deeperdarker:block/sculk_jaw/place2",
+      "deeperdarker:block/sculk_jaw/place3",
+      "deeperdarker:block/sculk_jaw/place4",
+      "deeperdarker:block/sculk_jaw/place5"
+    ]
+  },
+  "block.sculk_jaw.step": {
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/step1",
+      "deeperdarker:block/sculk_jaw/step2",
+      "deeperdarker:block/sculk_jaw/step3",
+      "deeperdarker:block/sculk_jaw/step4",
+      "deeperdarker:block/sculk_jaw/step5"
+    ]
+  },
+  "block.sculk_jaw.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "deeperdarker:block/sculk_jaw/break1",
+      "deeperdarker:block/sculk_jaw/break2",
+      "deeperdarker:block/sculk_jaw/break3",
+      "deeperdarker:block/sculk_jaw/break4",
+      "deeperdarker:block/sculk_jaw/break5"
     ]
   },
   "block.sculk_stone.fall": {

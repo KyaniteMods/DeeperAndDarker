@@ -1,22 +1,28 @@
-package com.kyanite.deeperdarker;
+package com.kyanite.deeperdarker.config;
 
+import com.kyanite.paragon.api.ConfigGroup;
 import com.kyanite.paragon.api.ConfigOption;
-import com.kyanite.paragon.api.interfaces.ModConfig;
+import com.kyanite.paragon.api.interfaces.configtypes.JSONModConfig;
 
 import java.util.List;
 
-public class DDConfig implements ModConfig {
-
+public class DDConfig implements JSONModConfig {
     // Armor Options
     public static final ConfigOption<Integer> WARDEN_ARMOR_DURABILITY = new ConfigOption<>("warden_armor_durability", 45);
     public static final ConfigOption<Double> WARDEN_ARMOR_TOUGHNESS = new ConfigOption<>("warden_armor_toughness", 3.0d);
     public static final ConfigOption<Double> WARDEN_ARMOR_KNOCKBACK_RESISTANCE = new ConfigOption<>("warden_armor_knockback_resistance", 0.5d);
     public static final ConfigOption<Double> SOUL_ELYTRA_ARMOR_MODIFIER = new ConfigOption<>("soul_elytra_armor_modifier", 4.0d);
 
+    public static final ConfigGroup WARDEN_ARMOR = new ConfigGroup("warden_armor",
+            WARDEN_ARMOR_DURABILITY, WARDEN_ARMOR_TOUGHNESS, WARDEN_ARMOR_KNOCKBACK_RESISTANCE, SOUL_ELYTRA_ARMOR_MODIFIER);
+
     // Tool Options
     public static final ConfigOption<Integer> WARDEN_TOOLS_DURABILITY = new ConfigOption<>("warden_tools_durability", 2464);
     public static final ConfigOption<Double> WARDEN_TOOLS_SPEED = new ConfigOption<>("warden_tools_speed", 11d);
     public static final ConfigOption<Double> WARDEN_TOOLS_DAMAGE = new ConfigOption<>("warden_tools_damage", 7d);
+
+    public static final ConfigGroup WARDEN_TOOLS = new ConfigGroup("warden_tools",
+            WARDEN_TOOLS_DURABILITY, WARDEN_TOOLS_SPEED, WARDEN_TOOLS_DAMAGE);
     // Mob Spawning Options
     public static final ConfigOption<Boolean> SHATTERED_SPAWNING = new ConfigOption<>("shattered_spawning", true);
     public static final ConfigOption<Boolean> PHANTOM_SPAWNING = new ConfigOption<>("phantom_spawning", true);
@@ -26,12 +32,11 @@ public class DDConfig implements ModConfig {
     // Otherside Decoration Options
     public static final ConfigOption<Boolean> SCULK_BLOCKS_IN_OTHERSIDE = new ConfigOption<>("sculk_blocks_in_otherside", true);
 
+    public static final ConfigGroup OTHERSIDE = new ConfigGroup("otherside",
+            SHATTERED_SPAWNING, PHANTOM_SPAWNING, SNAPPER_SPAWNING, CENTIPEDE_SPAWNING, SCULK_BLOCKS_IN_OTHERSIDE);
+
     @Override
-    public List<ConfigOption> configOptions() {
-        return List.of(
-                WARDEN_ARMOR_DURABILITY, WARDEN_ARMOR_TOUGHNESS, WARDEN_ARMOR_KNOCKBACK_RESISTANCE, SOUL_ELYTRA_ARMOR_MODIFIER,
-                WARDEN_TOOLS_DURABILITY, WARDEN_TOOLS_SPEED, WARDEN_TOOLS_DAMAGE,
-                SHATTERED_SPAWNING, PHANTOM_SPAWNING, SNAPPER_SPAWNING, CENTIPEDE_SPAWNING,
-                SCULK_BLOCKS_IN_OTHERSIDE);
+    public String getModId() {
+        return "deeperdarker";
     }
 }

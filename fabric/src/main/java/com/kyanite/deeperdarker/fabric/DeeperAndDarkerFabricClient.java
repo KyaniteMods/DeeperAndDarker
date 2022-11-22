@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.fabric;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.client.rendering.block.AncientChestItemRenderer;
 import com.kyanite.deeperdarker.client.rendering.entity.*;
+import com.kyanite.deeperdarker.config.DDClientConfig;
 import com.kyanite.deeperdarker.fabric.client.AncientChestRenderer;
 import com.kyanite.deeperdarker.fabric.client.FabricBoatModels;
 import com.kyanite.deeperdarker.fabric.client.SoulElytraItem;
@@ -14,6 +15,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.paragon.api.ConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -32,6 +34,8 @@ import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 public class DeeperAndDarkerFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        ConfigRegistry.register(new DDClientConfig());
+
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_DOOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.SCULK_VINES.get(), RenderType.cutout());
