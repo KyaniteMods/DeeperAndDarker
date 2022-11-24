@@ -72,6 +72,8 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
         tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
         tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
+
+        tag(Tags.Items.DUSTS).add(DDItems.SOUL_DUST.get());
     }
 
     @NotNull
