@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:gloomslate_tiles"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:cobbled_gloomslate"
+  }
+}

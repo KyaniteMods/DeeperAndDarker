@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:gloomslate_tiles"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:gloomslate_bricks"
+  }
+}

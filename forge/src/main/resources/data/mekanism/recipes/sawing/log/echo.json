@@ -1,0 +1,16 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "ingredient": {
+      "tag": "deeperdarker:echo_logs"
+    }
+  },
+  "mainOutput": {
+    "count": 6,
+    "item": "deeperdarker:echo_planks"
+  },
+  "secondaryChance": 0.25,
+  "secondaryOutput": {
+    "item": "mekanism:sawdust"
+  }
+}
