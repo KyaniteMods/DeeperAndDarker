@@ -88,6 +88,9 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.ORES_LAPIS).add(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         tag(Tags.Blocks.ORES_DIAMOND).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
+        tag(Tags.Blocks.COBBLESTONE).add(DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_GLOOMSLATE.get());
+        tag(Tags.Blocks.STONE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get());
+
         tag(BlockTags.SCULK_REPLACEABLE).add(Blocks.MOSS_BLOCK, DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get()).addTags(BlockTags.LEAVES);
         tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN).add(Blocks.SHROOMLIGHT, Blocks.WEEPING_VINES, Blocks.WEEPING_VINES_PLANT, DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
 

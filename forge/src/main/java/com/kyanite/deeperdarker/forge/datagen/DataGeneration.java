@@ -11,6 +11,7 @@ import com.kyanite.deeperdarker.forge.datagen.recipes.SmeltingRecipesProvider;
 import com.kyanite.deeperdarker.forge.datagen.recipes.SmithingRecipesProvider;
 import com.kyanite.deeperdarker.forge.datagen.recipes.StonecuttingRecipesProvider;
 import com.kyanite.deeperdarker.forge.datagen.tags.DDBlockTagsProvider;
+import com.kyanite.deeperdarker.forge.datagen.tags.DDEntityTypeTagsProvider;
 import com.kyanite.deeperdarker.forge.datagen.tags.DDItemTagsProvider;
 import com.kyanite.deeperdarker.forge.datagen.tags.DDStructureTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -44,6 +45,7 @@ public class DataGeneration {
         DDBlockTagsProvider blockTags = new DDBlockTagsProvider(generator, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(generator, blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(generator, fileHelper));
         generator.addProvider(event.includeServer(), new DDStructureTagsProvider(generator, fileHelper));
     }
 }
