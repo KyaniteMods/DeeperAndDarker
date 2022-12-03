@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:cobbled_gloomslate"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:gloomslate"
+  }
+}
