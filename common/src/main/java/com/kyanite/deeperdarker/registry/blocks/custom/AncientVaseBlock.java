@@ -61,7 +61,7 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        if(randomSource.nextFloat() < 0.125) {
+        if(randomSource.nextFloat() < 0.167) {
             if(randomSource.nextFloat() < 0.6) {
                 for(int i = 0; i < randomSource.nextInt(1, 4); i++) {
                     SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(pLevel);
@@ -69,7 +69,7 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
                     pLevel.addFreshEntity(sculkLeechEntity);
                 }
             } else {
-                StalkerEntity.emergeFromVase(pPos, pLevel);
+                if(!pLevel.getBlockState(pPos.below()).isAir() && !pLevel.getBlockState(pPos.below().below()).isAir()) StalkerEntity.emergeFromVase(pPos, pLevel);
             }
         }
     }
