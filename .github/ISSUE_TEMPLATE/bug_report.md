@@ -6,6 +6,10 @@ assignees: ''
 
 ---
 
+**Mod Version**: x.xx.xx
+
+**Mod Loader**: forge/fabric/both
+
 **Description**:
 Explanation of what the bug is doing, versus what the intended feature is supposed to be.
 
@@ -20,4 +24,4 @@ Steps to reproduce the behavior:
 If applicable, add screenshots to help explain your problem.
 
 **Additional context**:
-Add any other context about the problem here: crash reports & logs, the version of the mod and platform you are playing on, and any other details.
+Add any other context about the problem here: crash reports, logs, and any other details.
