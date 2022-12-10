@@ -141,8 +141,8 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         blockModel(DDBlocks.SCULK_JAW);
         blockModel(DDBlocks.ANCIENT_VASE);
-        blockModel(DDBlocks.ANCIENT_CHEST);
-        blockModel(DDBlocks.DEEPSLATE_CHEST);
+        //blockModel(DDBlocks.ANCIENT_CHEST);
+        //blockModel(DDBlocks.DEEPSLATE_CHEST);
 
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
