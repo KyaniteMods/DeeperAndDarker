@@ -24,8 +24,8 @@ public class DDItems {
 
     public static final Supplier<Item> HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", PortalHelper.getHeartItem());
     public static final Supplier<Item> REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> ANCIENT_CHEST = registerItem("ancient_chest", () -> new AncientChestItem(DDBlocks.ANCIENT_CHEST.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1)));
-    public static final Supplier<Item> DEEPSLATE_CHEST = registerItem("deepslate_chest", () -> new AncientChestItem(DDBlocks.DEEPSLATE_CHEST.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1)));
+  //  public static final Supplier<Item> ANCIENT_CHEST = registerItem("ancient_chest", () -> new AncientChestItem(DDBlocks.ANCIENT_CHEST.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1)));
+    //public static final Supplier<Item> DEEPSLATE_CHEST = registerItem("deepslate_chest", () -> new AncientChestItem(DDBlocks.DEEPSLATE_CHEST.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1)));
     public static final Supplier<Item> WARDEN_CARAPACE = registerItem("warden_carapace", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SOUL_ELYTRA = registerItem("soul_elytra", ClientHelper.getElytraItem());
     public static final Supplier<Item> SOUL_DUST = registerItem("soul_dust", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));

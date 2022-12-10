@@ -103,7 +103,8 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         DeeperAndDarker.LOGGER.info(String.valueOf(isPolished(blockState)));
-        return DDBlockEntityTypes.DEEPSLATE_CHEST.get().create(blockPos, blockState);
+        //return DDBlockEntityTypes.DEEPSLATE_CHEST.get().create(blockPos, blockState);
+        return null;
     }
 
     @Nullable
@@ -125,7 +126,7 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
         ItemStack item = player.getItemInHand(interactionHand);
         if(item != null) {
             if(item.is(Items.SCULK) && isPolished(blockState)) {
-               level.setBlock(blockPos, DDBlocks.ANCIENT_CHEST.get().defaultBlockState(), 3);
+//               level.setBlock(blockPos, DDBlocks.ANCIENT_CHEST.get().defaultBlockState(), 3);
                if(!player.isCreative()) item.shrink(1);
                if(level.isClientSide()) {
                     level.playSound(player, blockPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 1, 1);

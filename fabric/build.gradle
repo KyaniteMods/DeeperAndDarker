@@ -29,9 +29,9 @@ dependencies {
     include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta54-1.19')
 
     // Paragon
-    include modImplementation("maven.modrinth:paragon:fabric-2.1.0-1.19x")
+    include modImplementation("maven.modrinth:paragon:fabric-3.0.1-1.19x")
 
-
+    include implementation('blue.endless:jankson:1.2.1')
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
