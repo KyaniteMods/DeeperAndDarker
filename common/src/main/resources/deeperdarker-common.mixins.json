@@ -16,7 +16,6 @@
   ],
   "client": [
     "client.WardenAnimations",
-    "client.MinecraftMixin",
     "client.PhantomRendererMixin"
   ],
   "injectors": {
