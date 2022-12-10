@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker;
 
-import com.kyanite.deeperdarker.config.DDClientConfig;
 import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.miscellaneous.DeeperAndDarkerInitCallback;
@@ -19,7 +18,6 @@ import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
 import com.kyanite.paragon.api.ConfigManager;
-import com.kyanite.paragon.api.ConfigRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -35,7 +33,7 @@ import java.util.Map;
 public class DeeperAndDarker {
     public static final String MOD_ID = "deeperdarker";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static String VERSION = "1.2.0";
+    public static String VERSION = "1.1.5";
     public static final ResourceLocation SOUL_ELYTRA_TEXTURE = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
 
     public static void init(DeeperAndDarkerInitCallback callback) {
