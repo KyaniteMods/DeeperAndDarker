@@ -19,7 +19,7 @@ import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
-import com.kyanite.paragon.api.ConfigRegistry;
+import com.kyanite.paragon.api.ConfigManager;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.Sheets;
@@ -122,7 +122,7 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerClient {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
-            ConfigRegistry.register(new DDClientConfig());
+            ConfigManager.register("deeperdarker", new DDClientConfig());
 
             WoodType.register(DDWoodTypes.ECHO);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), CentipedeRenderer::new);
@@ -141,8 +141,8 @@ public class DeeperAndDarkerForge {
             event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
             event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
 
-            event.registerBlockEntityRenderer(DDBlockEntityTypes.DEEPSLATE_CHEST.get(), AncientChestRenderer::new);
-            event.registerBlockEntityRenderer(DDBlockEntityTypes.ANCIENT_CHEST.get(), AncientChestRenderer::new);
+           // event.registerBlockEntityRenderer(DDBlockEntityTypes.DEEPSLATE_CHEST.get(), AncientChestRenderer::new);
+          //  event.registerBlockEntityRenderer(DDBlockEntityTypes.ANCIENT_CHEST.get(), AncientChestRenderer::new);
         }
 
         @SubscribeEvent

@@ -15,7 +15,7 @@ import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import com.kyanite.paragon.api.ConfigRegistry;
+import com.kyanite.paragon.api.ConfigManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -34,7 +34,7 @@ import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 public class DeeperAndDarkerFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ConfigRegistry.register(new DDClientConfig());
+        ConfigManager.register("deeperdarker", new DDClientConfig());
 
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_DOOR.get(), RenderType.translucent());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.ECHO_TRAPDOOR.get(), RenderType.translucent());
@@ -54,16 +54,16 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.STALKER.get(), StalkerRenderer::new);
      //   EntityRendererRegistry.register(DDEntities.SCAVENGER.get(), ScavengerRenderer::new);
 
-        GeoItemRenderer.registerItemRenderer(DDItems.ANCIENT_CHEST.get(), new AncientChestItemRenderer());
-        GeoItemRenderer.registerItemRenderer(DDItems.DEEPSLATE_CHEST.get(), new AncientChestItemRenderer());
+        //GeoItemRenderer.registerItemRenderer(DDItems.ANCIENT_CHEST.get(), new AncientChestItemRenderer());
+        //GeoItemRenderer.registerItemRenderer(DDItems.DEEPSLATE_CHEST.get(), new AncientChestItemRenderer());
 
         FabricBoatModels.registerLayers();
 
         EntityRendererRegistry.register(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
         
-        BlockEntityRendererRegistry.register(DDBlockEntityTypes.ANCIENT_CHEST.get(), context -> new AncientChestRenderer());
-        BlockEntityRendererRegistry.register(DDBlockEntityTypes.DEEPSLATE_CHEST.get(), context -> new AncientChestRenderer());
+        //BlockEntityRendererRegistry.register(DDBlockEntityTypes.ANCIENT_CHEST.get(), context -> new AncientChestRenderer());
+        //BlockEntityRendererRegistry.register(DDBlockEntityTypes.DEEPSLATE_CHEST.get(), context -> new AncientChestRenderer());
 
         FabricModelPredicateProviderRegistry.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation(DeeperAndDarker.MOD_ID, "broken"),
                 (stack, arg1, arg2, arg3) -> SoulElytraItem.isUseable(stack) ? 0 : 1);

@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
@@ -61,7 +62,7 @@ public class SculkJawBlock extends Block {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (!pState.is(DDBlocks.SCULK_JAW.get())) return;
 
-        if (pEntity instanceof ItemEntity itemEntity) {
+        if (pEntity instanceof ItemEntity itemEntity && DDConfig.SCULK_JAW_EATS_ITEMS.get() == true) {
             itemEntity.remove(Entity.RemovalReason.KILLED);
             return;
         }

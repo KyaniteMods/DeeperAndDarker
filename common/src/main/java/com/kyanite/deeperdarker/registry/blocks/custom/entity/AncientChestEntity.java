@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -37,8 +38,8 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     public int closeTicks = 0;
     public int cooldownTicks = 0;
 
-    public AncientChestEntity(BlockPos blockPos, BlockState blockState) {
-        super(blockState.getValue(AncientChestBlock.POLISHED) ? DDBlockEntityTypes.DEEPSLATE_CHEST.get() : DDBlockEntityTypes.ANCIENT_CHEST.get(), blockPos, blockState);
+    protected AncientChestEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+        super(blockEntityType, blockPos, blockState);
         this.items = NonNullList.withSize(36, ItemStack.EMPTY);
         this.ancientChestBlock = (AncientChestBlock) blockState.getBlock();
     }
