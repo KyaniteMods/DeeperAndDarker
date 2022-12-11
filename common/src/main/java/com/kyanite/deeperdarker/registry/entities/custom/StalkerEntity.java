@@ -51,13 +51,14 @@ import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
 public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig, IDisturbanceListener {
-    private final AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     private static final EntityDataAccessor<Integer> RING_COOLDOWN = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.INT);
 

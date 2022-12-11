@@ -39,6 +39,7 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -47,7 +48,7 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
     public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.shattered.idle", DDUtils.secondsToTicks(3), true, false));
     public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.shattered.walk", DDUtils.secondsToTicks(1.5f), true, false));
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("animation.shattered.attack", DDUtils.secondsToTicks(0.5f), false, true));
-    private final AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
     public BlockPos disturbanceLocation = null;
 

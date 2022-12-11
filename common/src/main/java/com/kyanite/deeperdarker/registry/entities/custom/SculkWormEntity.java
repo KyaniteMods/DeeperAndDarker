@@ -27,6 +27,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +38,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(4), false, true));
     public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", DDUtils.secondsToTicks(4), false, true));
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", DDUtils.secondsToTicks(1), false, true));
-    private final AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public SculkWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

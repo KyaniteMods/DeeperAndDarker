@@ -44,6 +44,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +58,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     public static EntityState DIG = new EntityState(true, new EntityAnimationHolder("dig", DDUtils.secondsToTicks(3), false, true));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(0.8f), false, true));
-    private final AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private BlockPos TARGET_POS = null;
 
     public SculkSnapperEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
