@@ -43,6 +43,7 @@ dependencies {
     // Paragon
     include modImplementation("maven.modrinth:paragon:forge-3.0.2-1.19x")
 
+    runtimeOnly 'blue.endless:jankson:1.1.2'
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
