@@ -36,12 +36,12 @@ dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
 
     // GeckoLib
-    modImplementation ("software.bernie.geckolib:geckolib-forge-1.19:3.1.23")
+    modImplementation ("software.bernie.geckolib:geckolib-forge-1.19:3.1.23"){
+        exclude(module: "jankson")
+    }
 
     // Paragon
     include modImplementation("maven.modrinth:paragon:forge-3.0.1-1.19x")
-
-    include(implementation(forgeRuntimeLibrary('blue.endless:jankson:1.2.1')))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
