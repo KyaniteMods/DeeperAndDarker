@@ -97,16 +97,6 @@
       "deeperdarker:block/sculk_jaw/step5"
     ]
   },
-  "block.sculk_jaw.break": {
-    "subtitle": "subtitles.block.generic.break",
-    "sounds": [
-      "deeperdarker:block/sculk_jaw/break1",
-      "deeperdarker:block/sculk_jaw/break2",
-      "deeperdarker:block/sculk_jaw/break3",
-      "deeperdarker:block/sculk_jaw/break4",
-      "deeperdarker:block/sculk_jaw/break5"
-    ]
-  },
   "block.sculk_stone.fall": {
     "sounds": [
       "deeperdarker:block/sculk_stone/step1",
