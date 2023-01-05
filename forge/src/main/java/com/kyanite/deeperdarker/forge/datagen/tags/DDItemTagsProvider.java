@@ -77,6 +77,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(Tags.Items.BONES).add(DDItems.SCULK_BONE.get());
         tag(Tags.Items.DUSTS).add(DDItems.SOUL_DUST.get());
+        tag(DDTags.Items.HEART).add(DDItems.HEART_OF_THE_DEEP.get());
     }
 
     @NotNull
