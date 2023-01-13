@@ -47,7 +47,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
         copy(Tags.Blocks.FENCES_WOODEN, Tags.Items.FENCES_WOODEN);
         copy(Tags.Blocks.COBBLESTONE, Tags.Items.COBBLESTONE);
-        copy(Tags.Blocks.STONE, Tags.Items.COBBLESTONE);
+        copy(Tags.Blocks.STONE, Tags.Items.STONE);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
         copy(Tags.Blocks.ORES_COPPER, Tags.Items.ORES_COPPER);
