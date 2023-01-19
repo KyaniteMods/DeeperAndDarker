@@ -8,5 +8,11 @@
   "mainOutput": {
     "count": 2,
     "item": "deeperdarker:echo_planks"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

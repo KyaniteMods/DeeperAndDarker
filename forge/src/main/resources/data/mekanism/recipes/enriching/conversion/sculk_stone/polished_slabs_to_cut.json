@@ -7,5 +7,11 @@
   },
   "output": {
     "item": "deeperdarker:cut_sculk_stone_slab"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

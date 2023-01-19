@@ -13,5 +13,11 @@
   "secondaryOutput": {
     "count": 4,
     "item": "minecraft:stick"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

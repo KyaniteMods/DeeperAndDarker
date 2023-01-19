@@ -7,5 +7,11 @@
   },
   "output": {
     "item": "deeperdarker:gloomslate"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

@@ -12,5 +12,11 @@
   "secondaryChance": 0.25,
   "secondaryOutput": {
     "item": "mekanism:sawdust"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }
