@@ -11,5 +11,11 @@
   "secondaryChance": 1.0,
   "secondaryOutput": {
     "item": "minecraft:chest"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

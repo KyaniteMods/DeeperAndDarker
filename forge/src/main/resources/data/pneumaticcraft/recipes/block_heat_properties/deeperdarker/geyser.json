@@ -2,5 +2,11 @@
   "type": "pneumaticcraft:heat_properties",
   "block": "deeperdarker:geyser",
   "temperature": 2000,
-  "thermalResistance": 50
+  "thermalResistance": 50,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }
