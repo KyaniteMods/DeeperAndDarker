@@ -26,6 +26,14 @@
       "deeperdarker:ambience/dimension/forest_ambience"
     ]
   },
+  "ambience.warden_dreaming": {
+    "subtitle": "subtitles.ambience.warden_dreaming",
+    "sounds": [
+      "deeperdarker:ambience/dimension/warden_dreaming1",
+      "deeperdarker:ambience/dimension/warden_dreaming2",
+      "deeperdarker:ambience/dimension/warden_dreaming3"
+    ]
+  },
   "block.ancient_chest.open": {
     "subtitle": "subtitles.block.chest.open",
     "sounds": [
