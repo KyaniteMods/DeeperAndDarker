@@ -3,8 +3,10 @@ package com.kyanite.deeperdarker.registry.entities;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.custom.*;
+import com.kyanite.deeperdarker.registry.entities.custom.projectiles.ShriekProjectile;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.projectile.Arrow;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,11 @@ public class DDEntities {
     public static final Supplier<EntityType<ShatteredEntity>> SHATTERED = RegistryHelper.registerEntity(
             "shattered",
             ShatteredEntity::new, MobCategory.MONSTER, 0.85f, 2.45f, 10
+    );
+
+    public static final Supplier<EntityType<ShriekProjectile>> SHRIEK_PROJECTILE = RegistryHelper.registerEntity(
+            "shriek_projectile",
+            ShriekProjectile::new, MobCategory.MISC, 0.5F, 0.5F, 4
     );
 
     public static final Supplier<EntityType<SculkLeechEntity>> SCULK_LEECH = RegistryHelper.registerEntity(
