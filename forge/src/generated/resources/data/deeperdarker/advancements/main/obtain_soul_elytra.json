@@ -19,7 +19,7 @@
     "description": {
       "translate": "advancements.deeperdarker.obtain_soul_elytra.description"
     },
-    "frame": "task",
+    "frame": "challenge",
     "hidden": false,
     "icon": {
       "item": "deeperdarker:soul_elytra",

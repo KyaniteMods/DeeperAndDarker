@@ -47,6 +47,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements.deeperdarker.explore_otherside.description", "Explore all Otherside biomes");
         add("advancements.deeperdarker.reinforce_shard.title", "Sculk Engineer");
         add("advancements.deeperdarker.reinforce_shard.description", "Reinforce an Echo Shard");
+        add("advancements.deeperdarker.warden_armor.title", "Cover Me with Sculk");
+        add("advancements.deeperdarker.warden_armor.description", "Protect yourself with a full set of Warden Armor");
         add("advancements.deeperdarker.obtain_transmitter.title", "Remote Storage");
         add("advancements.deeperdarker.obtain_transmitter.description", "Acquire a Sculk Transmitter");
         add("advancements.deeperdarker.obtain_soul_elytra.title", "Wings of the Broken Souls");
