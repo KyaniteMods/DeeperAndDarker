@@ -9,16 +9,19 @@
     ]
   },
   "ambience.biome.deeplands": {
+    "subtitle": "subtitles.ambience.warden_dreaming",
     "sounds": [
       "deeperdarker:ambience/dimension/deeplands_ambience"
     ]
   },
   "ambience.biome.overcast": {
+    "subtitle": "subtitles.ambience.warden_dreaming",
     "sounds": [
       "deeperdarker:ambience/dimension/overcast_ambience"
     ]
   },
   "ambience.biome.forest": {
+    "subtitle": "subtitles.ambience.warden_dreaming",
     "sounds": [
       "deeperdarker:ambience/dimension/forest_ambience"
     ]
