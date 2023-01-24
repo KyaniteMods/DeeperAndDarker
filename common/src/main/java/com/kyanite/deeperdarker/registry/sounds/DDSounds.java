@@ -54,10 +54,13 @@ public class DDSounds {
     // Portal
     public static final Supplier<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 
-    // Dimension
-    public static final Supplier<SoundEvent> DEEPLANDS_AMBIENCE = register("ambience.deeplands");
-    public static final Supplier<SoundEvent> FOREST_AMBIENCE = register("ambience.forest");
-    public static final Supplier<SoundEvent> OVERCAST_AMBIENCE = register("ambience.overcast");
+    // Dimension music
+    public static final Supplier<SoundEvent> DEEPLANDS_AMBIENCE = register("ambience.biome.deeplands");
+    public static final Supplier<SoundEvent> FOREST_AMBIENCE = register("ambience.biome.forest");
+    public static final Supplier<SoundEvent> OVERCAST_AMBIENCE = register("ambience.biome.overcast");
+
+    // Dimension sound effects
+    public static final Supplier<SoundEvent> WARDEN_DREAMING = register("ambience.warden_dreaming");
 
     // Item
     public static final Supplier<SoundEvent> SCULK_LINK = register("item.transmitter.link");

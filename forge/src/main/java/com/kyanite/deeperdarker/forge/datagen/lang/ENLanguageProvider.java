@@ -73,6 +73,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("itemGroup.deeperdarker", "Deeper and Darker");
 
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
+        add("subtitles.ambience.warden_dreaming", "Warden dreams");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");

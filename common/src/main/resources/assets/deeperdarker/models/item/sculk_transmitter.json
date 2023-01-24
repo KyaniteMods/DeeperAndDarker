@@ -1,14 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "deeperdarker:item/sculk_transmitter"
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "custom_model_data": 1
-      },
-      "model": "deeperdarker:item/sculk_transmitter_on"
-    }
-  ]
+  }
 }

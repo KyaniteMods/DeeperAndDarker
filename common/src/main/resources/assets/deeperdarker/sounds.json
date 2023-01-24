@@ -8,22 +8,27 @@
       "deeperdarker:ambience/portal/groan4"
     ]
   },
-  "ambience.deeplands": {
-    "subtitle": "subtitles.ambience.deeplands",
+  "ambience.biome.deeplands": {
     "sounds": [
       "deeperdarker:ambience/dimension/deeplands_ambience"
     ]
   },
-  "ambience.overcast": {
-    "subtitle": "subtitles.ambience.overcast",
+  "ambience.biome.overcast": {
     "sounds": [
       "deeperdarker:ambience/dimension/overcast_ambience"
     ]
   },
-  "ambience.forest": {
-    "subtitle": "subtitles.ambience.forest",
+  "ambience.biome.forest": {
     "sounds": [
       "deeperdarker:ambience/dimension/forest_ambience"
+    ]
+  },
+  "ambience.warden_dreaming": {
+    "subtitle": "subtitles.ambience.warden_dreaming",
+    "sounds": [
+      "deeperdarker:ambience/dimension/warden_dreaming1",
+      "deeperdarker:ambience/dimension/warden_dreaming2",
+      "deeperdarker:ambience/dimension/warden_dreaming3"
     ]
   },
   "block.ancient_chest.open": {

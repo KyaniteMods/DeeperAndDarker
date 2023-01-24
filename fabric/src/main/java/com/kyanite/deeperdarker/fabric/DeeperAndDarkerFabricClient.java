@@ -46,6 +46,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.GLOOMY_GRASS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.GLOOM_CACTUS.get(), RenderType.cutout());
 
+        EntityRendererRegistry.register(DDEntities.SHRIEK_PROJECTILE.get(), context -> new ShriekRenderer(context));
         EntityRendererRegistry.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
