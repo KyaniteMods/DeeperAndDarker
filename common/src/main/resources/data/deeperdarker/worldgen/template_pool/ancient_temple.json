@@ -1,13 +1,13 @@
 {
   "name": "deeperdarker:ancient_temple",
-  "fallback": "deeperdarker:ancient_temples",
+  "fallback": "minecraft:empty",
   "elements": [
     {
       "weight": 1,
       "element": {
-        "projection": "rigid",
         "element_type": "minecraft:single_pool_element",
         "location": "deeperdarker:ancient_temple",
+        "projection": "rigid",
         "processors": "minecraft:empty"
       }
     }

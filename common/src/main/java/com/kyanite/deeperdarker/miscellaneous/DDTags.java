@@ -16,7 +16,6 @@ public class DDTags {
         public static final TagKey<Block> STRIPPED_WOOD = createDDTag("stripped_wood");
         public static final TagKey<Block> TRANSMITTABLE = createDDTag("transmittable");
         public static final TagKey<Block> GLOOM_SCULK_REPLACEABLE = createDDTag("gloom_sculk_replaceable");
-        public static final TagKey<Block> INFINIBURN_OTHERSIDE = createDDTag("infiniburn_otherside");
 
         private static TagKey<Block> createDDTag(String name) {
             return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
