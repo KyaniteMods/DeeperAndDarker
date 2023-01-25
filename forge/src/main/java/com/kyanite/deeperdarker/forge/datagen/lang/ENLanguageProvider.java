@@ -81,8 +81,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.transmit", "Transmitter transmits");
         add("subtitles.entity.stalker.ring", "Stalker rings");
-        add("block.sculk_jaw.retract", "Sculk jaw retracts");
-        add("block.sculk_jaw.close", "Sculk jaw bites");
+        add("block.sculk_jaw.retract", "Sculk Jaw retracts");
+        add("block.sculk_jaw.close", "Sculk Jaw bites");
     }
 
     @Override

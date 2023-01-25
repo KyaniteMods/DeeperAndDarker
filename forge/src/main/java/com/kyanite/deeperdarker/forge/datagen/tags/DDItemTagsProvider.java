@@ -47,7 +47,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
         copy(Tags.Blocks.FENCES_WOODEN, Tags.Items.FENCES_WOODEN);
-        copy(Tags.Blocks.COBBLESTONE, Tags.Items.COBBLESTONE);
+        copy(Tags.Blocks.COBBLESTONE_NORMAL, Tags.Items.COBBLESTONE_NORMAL);
         copy(Tags.Blocks.STONE, Tags.Items.STONE);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
@@ -78,6 +78,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(Tags.Items.BONES).add(DDItems.SCULK_BONE.get());
         tag(Tags.Items.DUSTS).add(DDItems.SOUL_DUST.get());
+        tag(Tags.Items.INGOTS_BRICK).add(DDItems.GRIME_BRICK.get());
         tag(DDTags.Items.HEART).add(DDItems.HEART_OF_THE_DEEP.get());
     }
 
