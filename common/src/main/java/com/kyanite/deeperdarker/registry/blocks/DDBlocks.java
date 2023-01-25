@@ -54,11 +54,17 @@ public class DDBlocks {
     public static final Supplier<FenceGateBlock> ECHO_FENCE_GATE = registerBlock("echo_fence_gate", true, () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<WallSignBlock> ECHO_WALL_SIGN = registerBlock("echo_wall_sign", false, () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final Supplier<StandingSignBlock> ECHO_SIGN = registerSign("echo_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), DDWoodTypes.ECHO), ECHO_WALL_SIGN);
-    public static final Supplier<Block> ECHO_SOIL = registerBlock("echo_soil", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
     public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.of(Material.SCULK)
             .sound(DDSounds.SCULK_JAW).strength(6f)));
+
+    // Echo Soil/Sculk Grime
+    public static final Supplier<Block> ECHO_SOIL = registerBlock("echo_soil", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
     public static final Supplier<Block> SCULK_GRIME = registerBlock("sculk_grime", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f)));
+    public static final Supplier<Block> GRIME_BRICKS = registerBlock("sculk_grime_bricks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).color(MaterialColor.COLOR_BLACK).sound(DDSounds.SCULK_STONE)));
+    public static final Supplier<SlabBlock> GRIME_BRICK_SLAB = registerBlock("sculk_grime_brick_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(DDBlocks.GRIME_BRICKS.get())));
+    public static final Supplier<StairBlock> GRIME_BRICK_STAIRS = registerBlock("sculk_grime_brick_stairs", true, () -> new StairBlock(GRIME_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(DDBlocks.GRIME_BRICKS.get())));
+    public static final Supplier<WallBlock> GRIME_BRICK_WALL = registerBlock("sculk_grime_brick_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(DDBlocks.GRIME_BRICKS.get())));
 
     // Sculk Stone
     public static final Supplier<Block> SCULK_STONE = registerBlock("sculk_stone", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));

@@ -38,7 +38,13 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_TRAPDOOR, "bottom");
         blockModel(DDBlocks.ECHO_FENCE_GATE);
         itemModel(() -> DDBlocks.ECHO_SIGN.get().asItem(), GENERATED);
+
         blockModel(DDBlocks.ECHO_SOIL);
+        blockModel(DDBlocks.SCULK_GRIME);
+        blockModel(DDBlocks.GRIME_BRICKS);
+        blockModel(DDBlocks.GRIME_BRICK_SLAB);
+        blockModel(DDBlocks.GRIME_BRICK_STAIRS);
+        blockModel(DDBlocks.GRIME_BRICK_WALL, "inventory");
 
         blockModel(DDBlocks.SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_SLAB);
@@ -133,7 +139,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
 
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
-        blockModel(DDBlocks.SCULK_GRIME);
 
         // sculk tendril plant
         // double bloom berry
@@ -151,6 +156,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.SOUL_DUST, GENERATED);
         itemModel(DDItems.SOUL_CRYSTAL, GENERATED);
         itemModel(DDItems.SCULK_BONE, GENERATED);
+        itemModel(DDItems.GRIME_BRICK, GENERATED);
+        itemModel(DDItems.GRIME_BALL, GENERATED);
         getBuilder(getName(DDItems.SCULK_TRANSMITTER) + "_on").parent(GENERATED).texture("layer0", "item/" + getName(DDItems.SCULK_TRANSMITTER) + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
@@ -162,8 +169,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
-        itemModel(DDItems.GRIME_BRICK, GENERATED);
-        itemModel(DDItems.GRIME_BALL, GENERATED);
 
         withExistingParent(getName(DDItems.SCULK_LEECH_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.SCULK_SNAPPER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));

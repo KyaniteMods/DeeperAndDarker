@@ -39,6 +39,12 @@ public class CraftingRecipesProvider extends RecipeProvider implements IConditio
         woodenBoat(consumer, DDItems.ECHO_BOAT.get(), DDBlocks.ECHO_PLANKS.get());
         ShapelessRecipeBuilder.shapeless(DDItems.ECHO_CHEST_BOAT.get()).requires(Blocks.CHEST).requires(DDItems.ECHO_BOAT.get()).group("chest_boat").unlockedBy("has_boat", has(ItemTags.BOATS)).save(consumer);
 
+        polishedBuilder(DDBlocks.SCULK_GRIME.get(), Ingredient.of(DDItems.GRIME_BALL.get())).unlockedBy("has_grime_ball", has(DDItems.GRIME_BALL.get())).save(consumer);
+        polishedBuilder(DDBlocks.GRIME_BRICKS.get(), Ingredient.of(DDItems.GRIME_BRICK.get())).unlockedBy("has_grime_brick", has(DDItems.GRIME_BRICK.get())).save(consumer);
+        slabBuilder(DDBlocks.GRIME_BRICK_SLAB.get(), Ingredient.of(DDBlocks.GRIME_BRICKS.get())).unlockedBy("has_grime_bricks", has(DDBlocks.GRIME_BRICKS.get())).save(consumer);
+        stairBuilder(DDBlocks.GRIME_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.GRIME_BRICKS.get())).unlockedBy("has_grime_bricks", has(DDBlocks.GRIME_BRICKS.get())).save(consumer);
+        wallBuilder(DDBlocks.GRIME_BRICK_WALL.get(), Ingredient.of(DDBlocks.GRIME_BRICKS.get())).unlockedBy("has_grime_bricks", has(DDBlocks.GRIME_BRICKS.get())).save(consumer);
+
         slabBuilder(DDBlocks.SCULK_STONE_SLAB.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);
         wallBuilder(DDBlocks.SCULK_STONE_WALL.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(consumer);

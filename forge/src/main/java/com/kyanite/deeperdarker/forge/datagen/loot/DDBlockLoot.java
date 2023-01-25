@@ -42,6 +42,14 @@ public class    DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.ECHO_SIGN.get());
         this.dropSelf(DDBlocks.ECHO_WALL_SIGN.get());
 
+        this.dropSelf(DDBlocks.ECHO_SOIL.get());
+        this.add(DDBlocks.SCULK_GRIME.get(), (arg) -> createSingleItemTableWithSilkTouch(arg, DDItems.GRIME_BALL.get(), ConstantValue.exactly(4.0F)));
+        this.dropSelf(DDBlocks.GRIME_BRICKS.get());
+        this.add(DDBlocks.GRIME_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.dropSelf(DDBlocks.GRIME_BRICK_STAIRS.get());
+        this.dropSelf(DDBlocks.GRIME_BRICK_WALL.get());
+
+
         this.add(DDBlocks.SCULK_STONE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
         this.add(DDBlocks.SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
         this.dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());
@@ -92,11 +100,10 @@ public class    DDBlockLoot extends BlockLoot {
         this.addVineAndPlant(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());
 
         this.dropWhenSilkTouch(DDBlocks.SCULK_GLEAM.get());
-        this.dropSelf(DDBlocks.ECHO_SOIL.get());
         this.dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
 
         this.dropWhenSilkTouch(DDBlocks.GLOOM_SCULK.get());
-        this.dropSelf(DDBlocks.GEYSER.get());
+        this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());
         this.dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
         this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLoot::createShearsOnlyDrop);
@@ -136,7 +143,6 @@ public class    DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
 
-        this.dropOther(DDBlocks.SCULK_GRIME.get(), DDItems.GRIME_BALL.get());
         this.dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);

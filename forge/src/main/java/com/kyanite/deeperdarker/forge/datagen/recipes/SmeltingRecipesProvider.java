@@ -19,6 +19,8 @@ public class SmeltingRecipesProvider extends RecipeProvider implements IConditio
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+        oreSmelting(consumer, ImmutableList.of(DDItems.GRIME_BALL.get()), DDItems.GRIME_BRICK.get(), 0.1f, 200, "grime_brick_from_grime_ball");
+
         oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_SCULK_STONE.get()), DDBlocks.SCULK_STONE.get(), 0.1F, 200, "sculk_stone");
         oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_SCULK_STONE_SLAB.get()), DDBlocks.SCULK_STONE_SLAB.get(), 0.1F, 200, "sculk_stone_slab");
         oreSmelting(consumer, ImmutableList.of(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get()), DDBlocks.SCULK_STONE_STAIRS.get(), 0.1F, 200, "sculk_stone_stairs");

@@ -23,7 +23,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(DDBlocks.ECHO_PLANKS.get());
-        simpleBlock(DDBlocks.SCULK_GRIME.get());
         axisBlock(DDBlocks.ECHO_LOG.get(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_LOG.get(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeColumn(getName(DDBlocks.STRIPPED_ECHO_WOOD), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)), models().cubeColumn(getName(DDBlocks.STRIPPED_ECHO_WOOD), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
@@ -38,7 +37,13 @@ public class DDBlockStateProvider extends BlockStateProvider {
         trapdoorBlockWithRenderType(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true, "cutout");
         fenceGateBlock(DDBlocks.ECHO_FENCE_GATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         signBlock(DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get(), blockLoc(DDBlocks.ECHO_PLANKS));
+
         simpleBlock(DDBlocks.ECHO_SOIL.get());
+        simpleBlock(DDBlocks.SCULK_GRIME.get());
+        simpleBlock(DDBlocks.GRIME_BRICKS.get());
+        slabBlock(DDBlocks.GRIME_BRICK_SLAB.get(), blockLoc(DDBlocks.GRIME_BRICKS), blockLoc(DDBlocks.GRIME_BRICKS));
+        stairsBlock(DDBlocks.GRIME_BRICK_STAIRS.get(), blockLoc(DDBlocks.GRIME_BRICKS));
+        wallBlock(DDBlocks.GRIME_BRICK_WALL.get(), blockLoc(DDBlocks.GRIME_BRICKS));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
         slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));
