@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.entities.custom.projectiles.ShriekProjectile;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -24,7 +25,7 @@ public class SculkTransmitterItem extends Item {
     }
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        player.getCooldowns().addCooldown(this, 15);
+        player.getCooldowns().addCooldown(this, DDConfig.TRANSMITTER_COOLDOWN.get());
 
         if (!level.isClientSide()) {
             ShriekProjectile abstractarrowentity = new ShriekProjectile(level, player);

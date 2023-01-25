@@ -41,7 +41,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
                 DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_SLAB.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get(),
                 DDBlocks.CHISELED_GLOOMSLATE.get());
 
-        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.GEYSER.get(), DDBlocks.ECHO_SOIL.get());
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.GEYSER.get(), DDBlocks.ECHO_SOIL.get(), DDBlocks.SCULK_GRIME.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL).add(DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         tag(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get());

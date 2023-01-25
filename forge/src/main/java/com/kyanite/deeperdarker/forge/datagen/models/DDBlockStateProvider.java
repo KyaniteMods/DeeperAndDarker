@@ -23,6 +23,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(DDBlocks.ECHO_PLANKS.get());
+        simpleBlock(DDBlocks.SCULK_GRIME.get());
         axisBlock(DDBlocks.ECHO_LOG.get(), blockLoc(DDBlocks.ECHO_LOG), blockLoc(DDBlocks.ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_LOG.get(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG, "top"));
         axisBlock(DDBlocks.STRIPPED_ECHO_WOOD.get(), models().cubeColumn(getName(DDBlocks.STRIPPED_ECHO_WOOD), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)), models().cubeColumn(getName(DDBlocks.STRIPPED_ECHO_WOOD), blockLoc(DDBlocks.STRIPPED_ECHO_LOG), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));

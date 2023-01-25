@@ -27,7 +27,9 @@ public class DDItems {
     public static final Supplier<Item> WARDEN_CARAPACE = registerItem("warden_carapace", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SOUL_ELYTRA = registerItem("soul_elytra", ClientHelper.getElytraItem());
     public static final Supplier<Item> SOUL_DUST = registerItem("soul_dust", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> SCULK_BONE = registerItem("sculk_bone", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> GRIME_BALL = registerItem("sculk_grime_ball", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant()));
+    public static final Supplier<Item> GRIME_BRICK = registerItem("sculk_grime_brick", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant()));
+    public static final Supplier<Item> SCULK_BONE = registerItem("sculk_bone", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant()));
     public static final Supplier<Item> SOUL_CRYSTAL = registerItem("soul_crystal", () -> new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SCULK_TRANSMITTER = registerItem("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 
@@ -41,7 +43,7 @@ public class DDItems {
     public static final Supplier<Item> SHRIEK_WORM_SPAWN_EGG = registerItem("shriek_worm_spawn_egg", () -> new SpawnEggItem(DDEntities.SCULK_WORM.get(), 0x204C61, 0xF1F7D0, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> SCULK_CENTIPEDE_SPAWN_EGG = registerItem("sculk_centipede_spawn_egg", () -> new SpawnEggItem(DDEntities.SCULK_CENTIPEDE.get(), 0x1a2340, 0xded697, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> STALKER_SPAWN_EGG = registerItem("stalker_spawn_egg", () -> new SpawnEggItem(DDEntities.STALKER.get(), 0x172226, 0x6abdd9, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
-    //    public static final Supplier<Item> SCAVENGER_SPAWN_EGG = registerItem("scavenger_spawn_egg", () -> new SpawnEggItem(DDEntities.SCAVENGER.get(), 0xfd9d22, 0xe35909, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> OVERCASTER_SPAWN_EGG = registerItem("overcaster_spawn_egg", () -> new SpawnEggItem(DDEntities.OVERCASTER.get(), 0xfd9d22, 0xe35909, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> ECHO_BOAT = registerItem("echo_boat", () -> new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> ECHO_CHEST_BOAT = registerItem("echo_chest_boat", () -> new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> WARDEN_SWORD = registerItem("warden_sword", () -> new SwordItem(DDTiers.WARDEN, 2, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));

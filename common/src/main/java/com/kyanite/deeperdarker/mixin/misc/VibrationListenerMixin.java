@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.mixin.misc;
 
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
@@ -21,6 +23,12 @@ public class VibrationListenerMixin {
 
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
     public void handle(ServerLevel level, GameEvent.Message message, CallbackInfoReturnable<Boolean> cir) {
+        if(message.context().sourceEntity() instanceof Player player && message.gameEvent().equals(GameEvent.STEP)) {
+            if(player.getInventory().getArmor(EquipmentSlot.FEET.getIndex()).is(DDItems.WARDEN_BOOTS.get())) {
+                cir.cancel();
+            }
+        }
+
         if(this.receivingEvent != null || message.context().sourceEntity() == null || message.context() == null)
             return;
 

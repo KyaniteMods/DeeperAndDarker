@@ -136,6 +136,7 @@ public class    DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
 
+        this.dropOther(DDBlocks.SCULK_GRIME.get(), DDItems.GRIME_BALL.get());
         this.dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);

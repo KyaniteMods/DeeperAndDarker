@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom.projectiles;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -60,7 +61,6 @@ public class ShriekProjectile extends AbstractArrow {
 
     @Override
     public void tick() {
-        super.tick();
         boolean bl = this.isNoPhysics();
         Vec3 vec3 = this.getDeltaMovement();
         if (this.xRotO == 0.0F && this.yRotO == 0.0F) {
@@ -201,7 +201,7 @@ public class ShriekProjectile extends AbstractArrow {
         if(!level.isClientSide) {
             entityHitResult.getEntity().playSound(SoundEvents.SCULK_SHRIEKER_SHRIEK, 3, 1);
             if(entityHitResult.getEntity() instanceof LivingEntity living) {
-                living.hurt(DamageSource.MAGIC, 10);
+                living.hurt(DamageSource.MAGIC, DDConfig.TRANSMITTER_DAMAGE.get().floatValue());
                 if(living.getHealth() <= 0) {
                     living.skipDropExperience();
                     if(getOwner() instanceof Player player) {

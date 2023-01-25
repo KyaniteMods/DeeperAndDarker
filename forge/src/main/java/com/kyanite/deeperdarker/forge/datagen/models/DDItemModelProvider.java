@@ -133,6 +133,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
 
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
+        blockModel(DDBlocks.SCULK_GRIME);
 
         // sculk tendril plant
         // double bloom berry
@@ -161,6 +162,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
+        itemModel(DDItems.GRIME_BRICK, GENERATED);
+        itemModel(DDItems.GRIME_BALL, GENERATED);
 
         withExistingParent(getName(DDItems.SCULK_LEECH_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.SCULK_SNAPPER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
@@ -168,6 +171,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(getName(DDItems.SHRIEK_WORM_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.SCULK_CENTIPEDE_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.STALKER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.OVERCASTER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         //withExistingParent(getName(DDItems.SCAVENGER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
 
         itemModel(DDItems.ECHO_BOAT, GENERATED);

@@ -7,7 +7,6 @@
     "containers.ChestEntityMixin",
     "containers.ContainerMixin",
     "entities.PhantomMixin",
-    "misc.SculkSensorMixin",
     "misc.SculkSpreadMixin",
     "containers.StonecutterMixin",
     "misc.VibrationListenerMixin",

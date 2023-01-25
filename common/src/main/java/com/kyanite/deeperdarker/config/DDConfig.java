@@ -24,6 +24,9 @@ public class DDConfig implements Config {
 
     public static final ConfigGroup WARDEN_TOOLS = new ConfigGroup("warden_tools",
             WARDEN_TOOLS_DURABILITY, WARDEN_TOOLS_SPEED, WARDEN_TOOLS_DAMAGE);
+
+    public static final ConfigOption<Double> TRANSMITTER_DAMAGE = new ConfigOption<>("transmitter_damage", 10d);
+    public static final ConfigOption<Integer> TRANSMITTER_COOLDOWN = new ConfigOption<>("transmitter_cooldown", 15);
     // Mob Spawning Options
     public static final ConfigOption<Boolean> SHATTERED_SPAWNING = new ConfigOption<>("shattered_spawning", true);
     public static final ConfigOption<Boolean> PHANTOM_SPAWNING = new ConfigOption<>("phantom_spawning", true);

@@ -138,6 +138,7 @@ public class DeeperAndDarkerForge {
 
         @SubscribeEvent
         public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(DDEntities.SHRIEK_PROJECTILE.get(), context -> new ShriekRenderer<>(context));
             event.registerEntityRenderer(DDEntities.BOAT.get(), context -> new DDBoatRenderer<>(context, false));
             event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), context -> new DDBoatRenderer<>(context, true));
 

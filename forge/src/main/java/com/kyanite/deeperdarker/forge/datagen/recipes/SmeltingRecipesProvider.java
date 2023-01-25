@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.forge.datagen.recipes;
 
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
+import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;

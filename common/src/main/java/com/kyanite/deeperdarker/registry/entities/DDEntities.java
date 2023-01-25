@@ -34,6 +34,11 @@ public class DDEntities {
             SculkSnapperEntity::new, MobCategory.MONSTER, 1, 1, 10
     );
 
+    public static final Supplier<EntityType<OvercasterEntity>> OVERCASTER = RegistryHelper.registerEntity(
+            "overcaster",
+            OvercasterEntity::new, MobCategory.MONSTER, 1, 1, 10
+    );
+
     // public static final Supplier<EntityType<ScavengerEntity>> SCAVENGER = RegistryHelper.registerEntity(
     //         "scavenger",
     //         ScavengerEntity::new, MobCategory.MONSTER, 1, 1, 10

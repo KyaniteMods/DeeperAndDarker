@@ -58,6 +58,7 @@ public class DDBlocks {
     public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.of(Material.SCULK)
             .sound(DDSounds.SCULK_JAW).strength(6f)));
+    public static final Supplier<Block> SCULK_GRIME = registerBlock("sculk_grime", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f)));
 
     // Sculk Stone
     public static final Supplier<Block> SCULK_STONE = registerBlock("sculk_stone", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
