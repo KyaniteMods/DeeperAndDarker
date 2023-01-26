@@ -184,7 +184,6 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     }
 
     @Override
-    @Nullable
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if(isFood(itemstack) && !this.isTame()) {

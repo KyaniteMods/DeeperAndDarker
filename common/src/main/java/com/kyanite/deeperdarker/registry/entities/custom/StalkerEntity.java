@@ -73,9 +73,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     private final ServerBossEvent bossEvent = (ServerBossEvent) (new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
 
-    private static final Predicate<LivingEntity> LIVING_ENTITY_SELECTOR = (entity) -> {
-        return entity.getMobType() != DDTypes.SCULK;
-    };
+    private static final Predicate<LivingEntity> LIVING_ENTITY_SELECTOR = (entity) -> entity.getMobType() != DDTypes.SCULK;
     private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D).selector(LIVING_ENTITY_SELECTOR);
     private static final TargetingConditions ITEM_TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D);
     public BlockPos disturbanceLocation = null;
@@ -84,7 +82,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     public StalkerEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, (VibrationListener.ReceivingEvent) null, 0.0F, 0));
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, null, 0.0F, 0));
         this.xpReward = 45;
         this.getNavigation().setCanFloat(true);
         this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0.0F);
@@ -111,7 +109,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     }
 
     public static AttributeSupplier.Builder attributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250).add(Attributes.MOVEMENT_SPEED, (double) 0.2F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 17.0D);
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250).add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_DAMAGE, 17.0D);
     }
 
     public boolean isPerformingAction() {
@@ -124,7 +122,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        if(getHealth() < getMaxHealth() / 2 && this.entityData.get(HAS_VASE) == true) {
+        if(getHealth() < getMaxHealth() / 2 && this.entityData.get(HAS_VASE)) {
             this.entityData.set(HAS_VASE, false);
             playSound(DDSounds.VASE_BREAK.get(), 4, 1);
             for(int i = 0; i < getRandom().nextInt(5, 8); i++) {
@@ -225,7 +223,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public boolean isPushable() {
-        return isPerformingAction() ? false : super.isPushable();
+        return !isPerformingAction() && super.isPushable();
     }
 
     @Override

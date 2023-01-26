@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.registry.sounds;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDSoundType;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.SoundType;

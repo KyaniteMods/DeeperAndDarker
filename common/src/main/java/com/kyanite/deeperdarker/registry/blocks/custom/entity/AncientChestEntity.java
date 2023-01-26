@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.blocks.custom.entity;
 
-import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.custom.AncientChestBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -23,13 +22,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class AncientChestEntity extends RandomizableContainerBlockEntity implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     public AncientChestBlock ancientChestBlock;
     private NonNullList<ItemStack> items;
 
@@ -95,16 +96,16 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
         event.getController().transitionLengthTicks = 13;
         if(this.wiggleTicks != 0)  {
             event.getController().transitionLengthTicks = 2;
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.wiggle", false));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.wiggle", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
             return PlayState.CONTINUE;
         }
 
         if(this.closeTicks > 3) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle_open", false));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle_open", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle", ILoopType.EDefaultLoopTypes.LOOP));
         return PlayState.CONTINUE;
     }
 
@@ -138,7 +139,7 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     @Override
     protected Component getDefaultName() {
-        return this.getBlockState().getValue(AncientChestBlock.POLISHED) == true ?
+        return this.getBlockState().getValue(AncientChestBlock.POLISHED) ?
                 Component.translatable("block.deeperdarker.deepslate_chest") :
                 Component.translatable("block.deeperdarker.ancient_chest");
     }

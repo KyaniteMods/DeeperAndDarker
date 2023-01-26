@@ -22,7 +22,7 @@ public class SculkBlockMixin {
         if(levelAccessor.getBiome(blockPos).is(Objects.requireNonNull(OthersideBiomes.OTHERSIDE_DEEPLANDS.location())) || levelAccessor.getBiome(blockPos).is(Objects.requireNonNull(OthersideBiomes.ECHOING_FOREST.location()))) {
             cir.cancel();
             BlockState blockState = Blocks.SCULK_SENSOR.defaultBlockState();
-            cir.setReturnValue(blockState.hasProperty(BlockStateProperties.WATERLOGGED) && !levelAccessor.getFluidState(blockPos).isEmpty() ? (BlockState)blockState.setValue(BlockStateProperties.WATERLOGGED, true) : blockState);
+            cir.setReturnValue(blockState.hasProperty(BlockStateProperties.WATERLOGGED) && !levelAccessor.getFluidState(blockPos).isEmpty() ? blockState.setValue(BlockStateProperties.WATERLOGGED, true) : blockState);
         }
     }
 }

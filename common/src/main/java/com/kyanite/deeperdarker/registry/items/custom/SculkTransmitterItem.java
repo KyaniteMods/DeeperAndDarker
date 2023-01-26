@@ -3,21 +3,12 @@ package com.kyanite.deeperdarker.registry.items.custom;
 import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.entities.custom.projectiles.ShriekProjectile;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ProjectileWeaponItem;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-
-import java.util.function.Predicate;
 
 public class SculkTransmitterItem extends Item {
     public SculkTransmitterItem(Properties pProperties) {

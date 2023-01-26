@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
@@ -62,7 +61,7 @@ public class SculkJawBlock extends Block {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (!pState.is(DDBlocks.SCULK_JAW.get())) return;
 
-        if (pEntity instanceof ItemEntity itemEntity && DDConfig.SCULK_JAW_EATS_ITEMS.get() == true) {
+        if (pEntity instanceof ItemEntity itemEntity && DDConfig.SCULK_JAW_EATS_ITEMS.get()) {
             itemEntity.remove(Entity.RemovalReason.KILLED);
             return;
         }
@@ -76,7 +75,7 @@ public class SculkJawBlock extends Block {
 
     @Override
     public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        if (blockState.getValue(SculkJawBlock.ACTIVATED) == true) {
+        if (blockState.getValue(SculkJawBlock.ACTIVATED)) {
             serverLevel.setBlock(blockPos, blockState.setValue(ACTIVATED, false), 3);
             serverLevel.playSound(null, blockPos, DDSounds.JAW_RETRACT.get(), SoundSource.BLOCKS, 3.5f, 1f);
         }

@@ -25,16 +25,16 @@ public class StalkerModel extends AnimatedGeoModel<StalkerEntity> {
     }
 
     @Override
-    public void setLivingAnimations(StalkerEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
-        super.setLivingAnimations(entity, uniqueID, customPredicate);
-        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+    public void setCustomAnimations(StalkerEntity animatable, int instanceId, AnimationEvent animationEvent) {
+        super.setCustomAnimations(animatable, instanceId, animationEvent);
+        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
         IBone fakeVase = this.getBone("FakeVase");
         IBone vase = this.getBone("Vase");
         IBone upperBody = this.getBone("Body");
         IBone head = this.getBone("Head");
 
-        fakeVase.setHidden(entity.getCurrentState() != StalkerEntity.EMERGE);
-        vase.setHidden(!entity.hasVase());
+        fakeVase.setHidden(animatable.getCurrentState() != StalkerEntity.EMERGE);
+        vase.setHidden(!animatable.hasVase());
 
         head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
         head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));

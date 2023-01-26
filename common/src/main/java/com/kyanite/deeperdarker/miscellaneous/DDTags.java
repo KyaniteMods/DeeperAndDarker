@@ -20,17 +20,12 @@ public class DDTags {
         private static TagKey<Block> createDDTag(String name) {
             return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         }
+
         private static TagKey<Block> createOtherTag(String modID, String name) {
             return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(modID, name));
         }
     }
 
-    public static class Others {
-        public static final TagKey<Structure> ALL_STRUCTURES = structureTag("all_structures");
-        private static TagKey<Structure> structureTag(String string) {
-            return TagKey.create(Registry.STRUCTURE_REGISTRY, new ResourceLocation(string));
-        }
-    }
     public static class Items {
         public static final TagKey<Item> ECHO_LOGS = createDDTag("echo_logs");
 
@@ -39,8 +34,16 @@ public class DDTags {
         private static TagKey<Item> createDDTag(String name) {
             return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         }
+
         private static TagKey<Item> createOtherTag(String modID, String name) {
             return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(modID, name));
+        }
+    }
+
+    public static class Others {
+        public static final TagKey<Structure> ALL_STRUCTURES = structureTag("all_structures");
+        private static TagKey<Structure> structureTag(String string) {
+            return TagKey.create(Registry.STRUCTURE_REGISTRY, new ResourceLocation(string));
         }
     }
 }

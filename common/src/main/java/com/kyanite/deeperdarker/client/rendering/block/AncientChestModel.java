@@ -8,19 +8,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class AncientChestModel extends AnimatedGeoModel<AncientChestEntity> {
     @Override
-    public ResourceLocation getModelResource(AncientChestEntity object) {
+    public ResourceLocation getModelResource(AncientChestEntity entity) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/ancient_chest.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(AncientChestEntity object) {
-        return object.getBlockState().getValue(AncientChestBlock.POLISHED) == true ?
-                new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/block/ancient_chest_polished.png") :
-                new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/block/ancient_chest.png");
+    public ResourceLocation getTextureResource(AncientChestEntity entity) {
+        return entity.getBlockState().getValue(AncientChestBlock.POLISHED) ? new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/block/ancient_chest_polished.png") : new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/block/ancient_chest.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(AncientChestEntity animatable) {
+    public ResourceLocation getAnimationResource(AncientChestEntity entity) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "animations/ancient_chest.animation.json");
     }
 }

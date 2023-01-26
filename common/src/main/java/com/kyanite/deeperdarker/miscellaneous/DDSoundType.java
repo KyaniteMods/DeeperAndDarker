@@ -14,7 +14,7 @@ public class DDSoundType extends SoundType {
     private final Supplier<SoundEvent> fallSound;
 
     public DDSoundType(float volumeIn, float pitchIn, Supplier<SoundEvent> breakSoundIn, Supplier<SoundEvent> stepSoundIn, Supplier<SoundEvent> placeSoundIn, Supplier<SoundEvent> hitSoundIn, Supplier<SoundEvent> fallSoundIn) {
-        super(volumeIn, pitchIn, (SoundEvent)null, (SoundEvent)null, (SoundEvent)null, (SoundEvent)null, (SoundEvent)null);
+        super(volumeIn, pitchIn, null, null, null, null, null);
         this.breakSound = breakSoundIn;
         this.stepSound = stepSoundIn;
         this.placeSound = placeSoundIn;
@@ -23,22 +23,22 @@ public class DDSoundType extends SoundType {
     }
 
     public @NotNull SoundEvent getBreakSound() {
-        return (SoundEvent)this.breakSound.get();
+        return this.breakSound.get();
     }
 
     public @NotNull SoundEvent getStepSound() {
-        return (SoundEvent)this.stepSound.get();
+        return this.stepSound.get();
     }
 
     public @NotNull SoundEvent getPlaceSound() {
-        return (SoundEvent)this.placeSound.get();
+        return this.placeSound.get();
     }
 
     public @NotNull SoundEvent getHitSound() {
-        return (SoundEvent)this.hitSound.get();
+        return this.hitSound.get();
     }
 
     public @NotNull SoundEvent getFallSound() {
-        return (SoundEvent)this.fallSound.get();
+        return this.fallSound.get();
     }
 }

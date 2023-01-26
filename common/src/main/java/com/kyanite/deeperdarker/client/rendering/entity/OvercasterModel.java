@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.OvercasterEntity;
-import com.kyanite.deeperdarker.registry.entities.custom.SculkSnapperEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
@@ -26,9 +25,9 @@ public class OvercasterModel extends AnimatedGeoModel<OvercasterEntity> {
     }
 
     @Override
-    public void setLivingAnimations(OvercasterEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
-        super.setLivingAnimations(entity, uniqueID, customPredicate);
-        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+    public void setCustomAnimations(OvercasterEntity animatable, int instanceId, AnimationEvent animationEvent) {
+        super.setCustomAnimations(animatable, instanceId, animationEvent);
+        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
         IBone head = getBone("Head");
         head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
         head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));

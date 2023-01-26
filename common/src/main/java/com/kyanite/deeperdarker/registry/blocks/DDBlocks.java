@@ -8,10 +8,10 @@ import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.GloomCactusBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.GloomGrassBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculktendrils.SculkTendrilsBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculktendrils.SculkTendrilsPlantBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculkvines.SculkVinesBlock;
-import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.sculkvines.SculkVinesPlantBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.tendrils.SculkTendrilsBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.tendrils.SculkTendrilsPlantBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.SculkVinesBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -55,8 +55,7 @@ public class DDBlocks {
     public static final Supplier<WallSignBlock> ECHO_WALL_SIGN = registerBlock("echo_wall_sign", false, () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final Supplier<StandingSignBlock> ECHO_SIGN = registerSign("echo_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), DDWoodTypes.ECHO), ECHO_WALL_SIGN);
     public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
-    public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.of(Material.SCULK)
-            .sound(DDSounds.SCULK_JAW).strength(6f)));
+    public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.of(Material.SCULK).sound(DDSounds.SCULK_JAW).strength(6f)));
 
     // Echo Soil/Sculk Grime
     public static final Supplier<Block> ECHO_SOIL = registerBlock("echo_soil", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));

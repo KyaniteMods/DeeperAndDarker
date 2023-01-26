@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -40,7 +41,7 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -50,7 +51,7 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
             wasMoving = true;
             isMoving = event.isMoving();
             this.setState(getMovingState());
-            event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         }
 
@@ -58,7 +59,7 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
             stateDone(getMovingState());
             wasMoving = event.isMoving();
         }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, getCurrentState().animationHolder.loop));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, getCurrentState().animationHolder.loop ? ILoopType.EDefaultLoopTypes.LOOP : ILoopType.EDefaultLoopTypes.PLAY_ONCE));
         return PlayState.CONTINUE;
     }
 

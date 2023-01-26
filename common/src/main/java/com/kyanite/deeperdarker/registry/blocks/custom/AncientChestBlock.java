@@ -1,8 +1,6 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
-import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.entity.AncientChestEntity;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
@@ -42,8 +40,8 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty POLISHED = BooleanProperty.create("polished");
 
-    private VoxelShape openShape = Stream.of(Block.box(1, 0, 1, 15, 9, 15)).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
-    private VoxelShape closedShape = Stream.of(
+    private final VoxelShape openShape = Stream.of(Block.box(1, 0, 1, 15, 9, 15)).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+    private final VoxelShape closedShape = Stream.of(
             Block.box(1, 9, 1, 15, 13, 15), Block.box(1, 0, 1, 15, 9, 15)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     public AncientChestBlock(Properties properties, boolean isPolished) {
@@ -60,12 +58,12 @@ public class AncientChestBlock extends DirectionalBlock implements SimpleWaterlo
     }
     @Override
     public BlockState rotate(BlockState blockState, Rotation rotation) {
-        return (BlockState)blockState.setValue(FACING, rotation.rotate((Direction)blockState.getValue(FACING)));
+        return blockState.setValue(FACING, rotation.rotate(blockState.getValue(FACING)));
     }
 
     @Override
     public BlockState mirror(BlockState blockState, Mirror mirror) {
-        return blockState.rotate(mirror.getRotation((Direction)blockState.getValue(FACING)));
+        return blockState.rotate(mirror.getRotation(blockState.getValue(FACING)));
     }
 
     @Override

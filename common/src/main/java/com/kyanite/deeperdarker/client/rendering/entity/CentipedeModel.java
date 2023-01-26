@@ -24,9 +24,9 @@ public class CentipedeModel extends AnimatedGeoModel<SculkCentipedeEntity> {
     }
 
     @Override
-    public void setLivingAnimations(SculkCentipedeEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
-        super.setLivingAnimations(entity, uniqueID, customPredicate);
-        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+    public void setCustomAnimations(SculkCentipedeEntity animatable, int instanceId, AnimationEvent animationEvent) {
+        super.setCustomAnimations(animatable, instanceId, animationEvent);
+        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
 
         getBone("Head").setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
         getBone("Head").setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));

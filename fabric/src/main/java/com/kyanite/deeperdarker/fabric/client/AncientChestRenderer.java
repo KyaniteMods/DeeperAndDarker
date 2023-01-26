@@ -19,7 +19,7 @@ public class AncientChestRenderer extends GeoBlockRenderer<AncientChestEntity> {
 
     @Override
     public ResourceLocation getTextureResource(AncientChestEntity entity) {
-        return entity.getBlockState().getValue(AncientChestBlock.POLISHED) == true ?
+        return entity.getBlockState().getValue(AncientChestBlock.POLISHED) ?
                 new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/block/ancient_chest_polished.png") :
                 new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/block/ancient_chest.png");
     }

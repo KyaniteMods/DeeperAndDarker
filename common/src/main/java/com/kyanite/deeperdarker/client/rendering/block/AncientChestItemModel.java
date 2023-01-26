@@ -9,18 +9,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 public class AncientChestItemModel extends AnimatedGeoModel<AncientChestItem> {
 
     @Override
-    public ResourceLocation getModelResource(AncientChestItem object) {
+    public ResourceLocation getModelResource(AncientChestItem item) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/ancient_chest.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(AncientChestItem object) {
-        return new ResourceLocation(DeeperAndDarker.MOD_ID,
-                object.getBlock().defaultBlockState().getValue(AncientChestBlock.POLISHED) ? "textures/block/ancient_chest_polished.png" : "textures/block/ancient_chest.png");
+    public ResourceLocation getTextureResource(AncientChestItem item) {
+        return new ResourceLocation(DeeperAndDarker.MOD_ID, item.getBlock().defaultBlockState().getValue(AncientChestBlock.POLISHED) ? "textures/block/ancient_chest_polished.png" : "textures/block/ancient_chest.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(AncientChestItem animatable) {
+    public ResourceLocation getAnimationResource(AncientChestItem item) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "animations/ancient_chest.animation.json");
     }
 }

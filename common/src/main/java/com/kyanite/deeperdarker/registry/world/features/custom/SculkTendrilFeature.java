@@ -69,7 +69,7 @@ public class SculkTendrilFeature extends Feature<NoneFeatureConfiguration> {
         for(int i = 1; i <= pLength; i++) {
             if(pLevel.isEmptyBlock(pPos)) {
                 if(i == pLength || !pLevel.isEmptyBlock(pPos.above())) {
-                    pLevel.setBlock(pPos, DDBlocks.SCULK_TENDRILS.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Integer.valueOf(Mth.nextInt(pRandom, pMinAge, pMaxAge))), 2);
+                    pLevel.setBlock(pPos, DDBlocks.SCULK_TENDRILS.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(pRandom, pMinAge, pMaxAge)), 2);
                     break;
                 }
 

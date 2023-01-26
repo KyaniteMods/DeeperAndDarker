@@ -28,7 +28,6 @@ public class GloomPillarFeature extends Feature<NoneFeatureConfiguration> {
             BlockPos pos = new BlockPos(pContext.origin().getX(), pContext.origin().getY() + number + 1, pContext.origin().getZ());
             if(pContext.level().getBlockState(pos.below()).isAir()) {
                 number = number + 1;
-                continue;
             } else {
                 return number;
             }

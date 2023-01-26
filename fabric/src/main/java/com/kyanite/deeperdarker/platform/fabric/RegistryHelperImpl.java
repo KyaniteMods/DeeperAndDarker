@@ -60,7 +60,7 @@ public class RegistryHelperImpl {
     }
 
     public static <T extends ConfiguredFeature<?, ?>> Supplier<T> registerConfiguredFeature(String name, Supplier<T> feature) {
-        T registry = (T) Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature.get());
+        T registry = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), feature.get());
         return () -> registry;
     }
 
@@ -76,7 +76,7 @@ public class RegistryHelperImpl {
 
 
     public static <T extends PlacedFeature> Supplier<T> registerPlacedFeature(String name, Supplier<T> placedFeature) {
-        T registry = (T) Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), placedFeature.get());
+        T registry = Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), placedFeature.get());
         return () -> registry;
     }
 
