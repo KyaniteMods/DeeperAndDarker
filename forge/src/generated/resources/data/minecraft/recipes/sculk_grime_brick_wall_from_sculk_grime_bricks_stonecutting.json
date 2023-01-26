@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "deeperdarker:sculk_grime_bricks"
+  },
+  "result": "deeperdarker:sculk_grime_brick_wall"
+}

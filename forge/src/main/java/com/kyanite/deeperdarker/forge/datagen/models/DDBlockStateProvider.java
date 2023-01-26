@@ -43,7 +43,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GRIME_BRICKS.get());
         slabBlock(DDBlocks.GRIME_BRICK_SLAB.get(), blockLoc(DDBlocks.GRIME_BRICKS), blockLoc(DDBlocks.GRIME_BRICKS));
         stairsBlock(DDBlocks.GRIME_BRICK_STAIRS.get(), blockLoc(DDBlocks.GRIME_BRICKS));
-        wallBlock(DDBlocks.GRIME_BRICK_WALL.get(), blockLoc(DDBlocks.GRIME_BRICKS));
+        wallBlock(DDBlocks.GRIME_BRICK_WALL, blockLoc(DDBlocks.GRIME_BRICKS));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
         slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));
