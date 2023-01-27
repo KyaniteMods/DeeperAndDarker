@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.miscellaneous.DDTypes;
+import com.kyanite.deeperdarker.registry.enchantments.DDEnchantments;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -20,8 +21,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
@@ -36,8 +39,18 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class EchoerEntity extends AbstractVillager implements IAnimatable {
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    public final MerchantOffer[] offers = new MerchantOffer[]{
+            new MerchantOffer(
+                    new ItemStack(Items.AMETHYST_SHARD, 12),
+                    EnchantedBookItem.createForEnchantment(new EnchantmentInstance(DDEnchantments.catalysisEnchant.get(), 1)),
+                    2, 4, 0f)
+    };
 
     public EchoerEntity(EntityType<? extends AbstractVillager> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -120,18 +133,11 @@ public class EchoerEntity extends AbstractVillager implements IAnimatable {
 
     @Override
     protected void updateTrades() {
-        VillagerTrades.ItemListing[] itemListings = (VillagerTrades.ItemListing[])VillagerTrades.WANDERING_TRADER_TRADES.get(1);
-        VillagerTrades.ItemListing[] itemListings2 = (VillagerTrades.ItemListing[])VillagerTrades.WANDERING_TRADER_TRADES.get(2);
-        if (itemListings != null && itemListings2 != null) {
-            MerchantOffers merchantOffers = this.getOffers();
-            this.addOffersFromItemListings(merchantOffers, itemListings, 5);
-            int i = this.random.nextInt(itemListings2.length);
-            VillagerTrades.ItemListing itemListing = itemListings2[i];
-            MerchantOffer merchantOffer = itemListing.getOffer(this, this.random);
-            if (merchantOffer != null) {
-                merchantOffers.add(merchantOffer);
-            }
-
+        MerchantOffers merchantOffers = new MerchantOffers();
+        while(merchantOffers.size() < 3) {
+            MerchantOffer chosenOffer = Arrays.stream(offers).toList().get(random.nextInt(offers.length));
+            merchantOffers.add(chosenOffer);
+            this.overrideOffers(merchantOffers);
         }
     }
 
