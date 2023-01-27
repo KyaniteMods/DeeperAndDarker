@@ -8,9 +8,7 @@ import com.kyanite.deeperdarker.platform.ClientHelper;
 import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
-import com.kyanite.deeperdarker.registry.items.custom.CustomHoeItem;
-import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
-import com.kyanite.deeperdarker.registry.items.custom.SculkTransmitterItem;
+import com.kyanite.deeperdarker.registry.items.custom.*;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 
@@ -51,6 +49,8 @@ public class DDItems {
     public static final Supplier<Item> WARDEN_PICKAXE = registerItem("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, 1, -2.8F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> WARDEN_AXE = registerItem("warden_axe", () -> new AxeItem(DDTiers.WARDEN, 3.5F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> WARDEN_HOE = registerItem("warden_hoe", () -> new CustomHoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> SCULK_SUPPRESSOR = registerItem("sculk_suppressor", () -> new SculkSuppressorItem(new Item.Properties().rarity(Rarity.UNCOMMON).tab(DDCreativeModeTab.DD_TAB)));
+    public static final Supplier<Item> SCULK_MEAL = registerItem("sculk_meal", () -> new SculkMealItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).fireResistant()));
 
     public static void registerItems() {
         DeeperAndDarker.LOGGER.info("Deeper and Darker items have been registered");

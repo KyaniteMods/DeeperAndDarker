@@ -158,6 +158,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.SCULK_BONE, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
         itemModel(DDItems.GRIME_BALL, GENERATED);
+        itemModel(DDItems.SCULK_SUPPRESSOR, GENERATED);
+        itemModel(DDItems.SCULK_MEAL, GENERATED);
         getBuilder(getName(DDItems.SCULK_TRANSMITTER) + "_on").parent(GENERATED).texture("layer0", "item/" + getName(DDItems.SCULK_TRANSMITTER) + "_on");
 
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
