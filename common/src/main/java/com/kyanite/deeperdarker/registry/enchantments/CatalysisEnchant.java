@@ -20,7 +20,6 @@ public class CatalysisEnchant extends Enchantment {
 
     @Override
     public void doPostAttack(LivingEntity livingEntity, Entity entity, int i) {
-        DeeperAndDarker.LOGGER.info("HI 2");
         if(entity instanceof LivingEntity living) {
             if(living.isDeadOrDying()) {
                 SculkSpreader sculkSpreader = SculkSpreader.createLevelSpreader();
