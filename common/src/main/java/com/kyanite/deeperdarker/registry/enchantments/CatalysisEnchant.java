@@ -1,12 +1,16 @@
 package com.kyanite.deeperdarker.registry.enchantments;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.block.Blocks;
@@ -30,6 +34,7 @@ public class CatalysisEnchant extends Enchantment {
                 living.skipDropExperience();
                 living.level.setBlock(living.blockPosition(), Blocks.SCULK_CATALYST.defaultBlockState(), 3);
                 SculkCatalystBlock.bloom((ServerLevel) living.level, living.blockPosition(), living.level.getBlockState(living.blockPosition()), living.level.getRandom());
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) livingEntity, entity, DamageSource.playerAttack((Player) livingEntity));
             }
         }
     }
