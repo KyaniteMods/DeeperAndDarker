@@ -8,5 +8,6 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 public class DDEnchantments {
     public static void registerEnchantments() {
         RegistryHelper.registerEnchant("sculk_smite", () -> new SculkSmiteEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+        RegistryHelper.registerEnchant("catalysis", () -> new CatalysisEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
     }
 }

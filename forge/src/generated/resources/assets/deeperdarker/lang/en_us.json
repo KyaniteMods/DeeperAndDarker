@@ -130,6 +130,8 @@
   "death.attack.ring": "%1$s heard the Stalker's ring",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "effect.deeperdarker.sculk_affinity.description": "Prevents you from causing vibrations.",
+  "enchantment.deeperdarker.catalysis": "Catalysis",
+  "enchantment.deeperdarker.catalysis.description": "Spreads Sculk upon killing entities.",
   "enchantment.deeperdarker.sculk_smite": "Sculk Smite",
   "enchantment.deeperdarker.sculk_smite.description": "Increases damage against Sculk mobs including Phantoms and the Warden.",
   "entity.deeperdarker.boat": "Boat",
