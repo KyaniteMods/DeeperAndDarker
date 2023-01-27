@@ -176,7 +176,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(getName(DDItems.SHRIEK_WORM_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.SCULK_CENTIPEDE_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         withExistingParent(getName(DDItems.STALKER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
-        withExistingParent(getName(DDItems.OVERCASTER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
+        withExistingParent(getName(DDItems.ECHOER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
         //withExistingParent(getName(DDItems.SCAVENGER_SPAWN_EGG), mcLoc("item/template_spawn_egg"));
 
         itemModel(DDItems.ECHO_BOAT, GENERATED);
