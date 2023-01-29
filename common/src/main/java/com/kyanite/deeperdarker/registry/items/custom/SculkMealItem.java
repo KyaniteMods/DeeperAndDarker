@@ -1,9 +1,11 @@
 package com.kyanite.deeperdarker.registry.items.custom;
 
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
@@ -23,9 +25,9 @@ public class SculkMealItem extends Item {
     public InteractionResult useOn(UseOnContext useOnContext) {
         Level level = useOnContext.getLevel();
         BlockPos blockPos = useOnContext.getClickedPos();
-        if (growCrop(useOnContext.getItemInHand(), level, blockPos)) {
+        if (growPlant(useOnContext.getItemInHand(), level, blockPos)) {
             if (!level.isClientSide) {
-                level.levelEvent(1505, blockPos, 0);
+                level.playSound(null, blockPos, DDSounds.SCULK_MEAL_USE.get(), SoundSource.BLOCKS, 1, 1);
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -34,13 +36,12 @@ public class SculkMealItem extends Item {
         }
     }
 
-    public static boolean growCrop(ItemStack itemStack, Level level, BlockPos blockPos) {
+    public static boolean growPlant(ItemStack itemStack, Level level, BlockPos blockPos) {
         BlockState blockState = level.getBlockState(blockPos);
         if (blockState.getBlock() instanceof BonemealableBlock bonemealableBlock) {
             if (bonemealableBlock.isValidBonemealTarget(level, blockPos, blockState, level.isClientSide)) {
                 if (level instanceof ServerLevel) {
                     if (bonemealableBlock instanceof SaplingBlock) {
-                        level.setBlock(blockPos, blockState.cycle(SaplingBlock.STAGE), 2);
                         bonemealableBlock.performBonemeal((ServerLevel)level, level.random, blockPos, blockState);
                     } else if (bonemealableBlock instanceof CropBlock) {
                         level.setBlock(blockPos, ((CropBlock) bonemealableBlock).getStateForAge(7), 2);
@@ -53,14 +54,14 @@ public class SculkMealItem extends Item {
 
                 return true;
             }
-        } else if (blockState.getBlock() instanceof NetherWartBlock) {
+        } else if (blockState.getBlock() instanceof NetherWartBlock && blockState.getValue(NetherWartBlock.AGE) != NetherWartBlock.MAX_AGE) {
             if (level instanceof ServerLevel) {
                 itemStack.shrink(1);
             }
             level.setBlock(blockPos, blockState.setValue(NetherWartBlock.AGE, NetherWartBlock.MAX_AGE), 2);
 
             return true;
-        } else if (blockState.getBlock() instanceof CactusBlock && blockState.canSurvive(level, blockPos.above())) {
+        } else if (blockState.getBlock() instanceof CactusBlock && blockState.canSurvive(level, blockPos.above()) && level.getBlockState(blockPos.above()).isAir()) {
             if (level instanceof ServerLevel) {
                 itemStack.shrink(1);
             }
@@ -68,7 +69,7 @@ public class SculkMealItem extends Item {
             level.setBlock(blockPos.above(), Blocks.CACTUS.defaultBlockState(), 11);
 
             return true;
-        } else if (blockState.getBlock() instanceof SugarCaneBlock && blockState.canSurvive(level, blockPos.above())) {
+        } else if (blockState.getBlock() instanceof SugarCaneBlock && blockState.canSurvive(level, blockPos.above()) && level.getBlockState(blockPos.above()).isAir()) {
             if (level instanceof ServerLevel) {
                 itemStack.shrink(1);
             }

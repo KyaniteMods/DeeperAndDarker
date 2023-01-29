@@ -81,6 +81,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.transmit", "Transmitter transmits");
+        add("subtitles.item.sculk_meal.use", "Sculk Meal crinkles");
         add("subtitles.entity.stalker.ring", "Stalker rings");
         add("block.sculk_jaw.retract", "Sculk Jaw retracts");
         add("block.sculk_jaw.close", "Sculk Jaw bites");

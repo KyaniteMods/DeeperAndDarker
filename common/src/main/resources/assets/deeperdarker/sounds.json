@@ -224,5 +224,70 @@
     "sounds": [
       "deeperdarker:item/transmitter/transmit"
     ]
+  },
+  "item.sculk_meal.use": {
+    "subtitle": "subtitles.item.sculk_meal.use",
+    "sounds": [
+      {
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 1.0
+      },
+      {
+        "name": "item/bonemeal/bonemeal1",
+        "pitch": 1.1
+      },
+      {
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 1.0
+      },
+      {
+        "name": "item/bonemeal/bonemeal2",
+        "pitch": 1.1
+      },
+      {
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 1.0
+      },
+      {
+        "name": "item/bonemeal/bonemeal3",
+        "pitch": 1.1
+      },
+      {
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 1.0
+      },
+      {
+        "name": "item/bonemeal/bonemeal4",
+        "pitch": 1.1
+      },
+      {
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 0.9
+      },
+      {
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 1.0
+      },
+      {
+        "name": "item/bonemeal/bonemeal5",
+        "pitch": 1.1
+      }
+    ]
   }
 }
