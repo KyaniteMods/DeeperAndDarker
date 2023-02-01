@@ -8,16 +8,17 @@
   "processingTime": 350,
   "results": [
     {
-      "count": 2,
-      "item": "create:crushed_iron_ore"
-    },
-    {
-      "chance": 0.25,
+      "count": 3,
       "item": "create:crushed_iron_ore"
     },
     {
       "chance": 0.75,
-      "item": "create:experience_nugget"
+      "item": "create:crushed_iron_ore",
+      "count": 2
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 2
     },
     {
       "chance": 0.125,

@@ -8,16 +8,16 @@
   "processingTime": 350,
   "results": [
     {
-      "count": 7,
-      "item": "minecraft:redstone"
-    },
-    {
-      "chance": 0.5,
+      "count": 12,
       "item": "minecraft:redstone"
     },
     {
       "chance": 0.75,
-      "item": "create:experience_nugget"
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 2
     },
     {
       "chance": 0.125,

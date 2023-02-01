@@ -12,12 +12,13 @@
       "item": "create:crushed_copper_ore"
     },
     {
-      "chance": 0.25,
-      "item": "create:crushed_copper_ore"
+      "chance": 0.75,
+      "item": "create:crushed_copper_ore",
+      "count": 2
     },
     {
-      "chance": 0.75,
-      "item": "create:experience_nugget"
+      "item": "create:experience_nugget",
+      "count": 2
     },
     {
       "chance": 0.125,

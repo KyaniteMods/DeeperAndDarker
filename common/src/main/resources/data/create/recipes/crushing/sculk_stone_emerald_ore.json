@@ -8,16 +8,17 @@
   "processingTime": 450,
   "results": [
     {
-      "count": 2,
-      "item": "minecraft:emerald"
-    },
-    {
-      "chance": 0.25,
+      "count": 4,
       "item": "minecraft:emerald"
     },
     {
       "chance": 0.75,
-      "item": "create:experience_nugget"
+      "item": "minecraft:emerald",
+      "count": 2
+    },
+    {
+      "item": "create:experience_nugget",
+      "count": 2
     },
     {
       "chance": 0.125,

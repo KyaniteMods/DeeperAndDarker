@@ -1,0 +1,20 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "deeperdarker:sculk_bone"
+    }
+  ],
+  "results": [
+    {
+      "item": "deeperdarker:sculk_meal",
+      "count": 3
+    },
+    {
+      "item": "deeperdarker:sculk_meal",
+      "count": 3,
+      "chance": 0.25
+    }
+  ],
+  "processingTime": 100
+}
