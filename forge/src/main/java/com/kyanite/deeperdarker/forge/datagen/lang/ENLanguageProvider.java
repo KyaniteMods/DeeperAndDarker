@@ -75,12 +75,14 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.ambience.warden_dreaming", "Warden dreams");
+        // TODO: Come up with a better subtitle for this.
+        add("subtitles.entity.shriek_worm.ambient", "Shriek Worm breathes");
+        add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
+        add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
-        add("subtitles.item.transmitter.link", "Transmitter links");
-        add("subtitles.item.transmitter.transmit", "Transmitter transmits");
         add("subtitles.item.sculk_meal.use", "Sculk Meal crinkles");
         add("subtitles.entity.stalker.ring", "Stalker rings");
         add("block.sculk_jaw.retract", "Sculk Jaw retracts");

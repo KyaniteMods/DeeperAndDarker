@@ -50,7 +50,7 @@ public class SculkJawBlock extends Block {
             mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1));
         }
 
-        pLevel.playSound(null, pPos, DDSounds.JAW_CLOSE.get(), SoundSource.BLOCKS, 3.0f, 1f);
+        pLevel.playSound(null, pPos, DDSounds.SCULK_JAW_CLOSE.get(), SoundSource.BLOCKS, 3.0f, 1f);
         pEntity.hurt(damageSource, 4);
         pEntity.setDeltaMovement(Vec3.ZERO);
         pLevel.setBlock(pPos, DDBlocks.SCULK_JAW.get().defaultBlockState().setValue(ACTIVATED, true), 3);
@@ -77,7 +77,7 @@ public class SculkJawBlock extends Block {
     public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         if (blockState.getValue(SculkJawBlock.ACTIVATED)) {
             serverLevel.setBlock(blockPos, blockState.setValue(ACTIVATED, false), 3);
-            serverLevel.playSound(null, blockPos, DDSounds.JAW_RETRACT.get(), SoundSource.BLOCKS, 3.5f, 1f);
+            serverLevel.playSound(null, blockPos, DDSounds.SCULK_JAW_RETRACT.get(), SoundSource.BLOCKS, 3.5f, 1f);
         }
     }
 

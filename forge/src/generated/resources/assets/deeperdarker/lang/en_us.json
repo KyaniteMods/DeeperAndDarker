@@ -186,12 +186,13 @@
   "itemGroup.deeperdarker.deeperdarker": "Deeper and Darker",
   "subtitles.ambience.portal.groan": "The Otherside forebodes",
   "subtitles.ambience.warden_dreaming": "Warden dreams",
+  "subtitles.entity.shriek_worm.ambient": "Shriek Worm breathes",
+  "subtitles.entity.shriek_worm.death": "Shriek Worm dies",
+  "subtitles.entity.shriek_worm.hurt": "Shriek Worm hurts",
   "subtitles.entity.snapper.ambient": "Sculk Snapper breathes",
   "subtitles.entity.snapper.bite": "Sculk Snapper bites",
   "subtitles.entity.snapper.hurt": "Sculk Snapper hurts",
   "subtitles.entity.snapper.sniff": "Sculk Snapper sniffs",
   "subtitles.entity.stalker.ring": "Stalker rings",
-  "subtitles.item.sculk_meal.use": "Sculk Meal crinkles",
-  "subtitles.item.transmitter.link": "Transmitter links",
-  "subtitles.item.transmitter.transmit": "Transmitter transmits"
+  "subtitles.item.sculk_meal.use": "Sculk Meal crinkles"
 }

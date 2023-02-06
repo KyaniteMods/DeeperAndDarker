@@ -31,9 +31,8 @@ public class DDSounds {
     public static final DDSoundType VASE = new DDSoundType(1, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
 
     // Sculk Jaw
-    public static final Supplier<SoundEvent> JAW_CLOSE = register("block.sculk_jaw.close");
-    public static final Supplier<SoundEvent> JAW_RETRACT = register("block.sculk_jaw.retract");
-
+    public static final Supplier<SoundEvent> SCULK_JAW_CLOSE = register("block.sculk_jaw.close");
+    public static final Supplier<SoundEvent> SCULK_JAW_RETRACT = register("block.sculk_jaw.retract");
     public static final Supplier<SoundEvent> SCULK_JAW_BREAK = register("block.sculk_jaw.break");
     public static final Supplier<SoundEvent> SCULK_JAW_FALL = register("block.sculk_jaw.fall");
     public static final Supplier<SoundEvent> SCULK_JAW_HIT = register("block.sculk_jaw.hit");
@@ -41,11 +40,17 @@ public class DDSounds {
     public static final Supplier<SoundEvent> SCULK_JAW_STEP = register("block.sculk_jaw.step");
 
     public static final DDSoundType SCULK_JAW = new DDSoundType(1, 1, SCULK_JAW_BREAK, SCULK_JAW_STEP, SCULK_JAW_PLACE, SCULK_JAW_HIT, SCULK_JAW_FALL);
+
     // Sculk Snapper
     public static final Supplier<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");
     public static final Supplier<SoundEvent> SCULK_SNAPPER_BITE = register("entity.snapper.bite");
     public static final Supplier<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
     public static final Supplier<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
+
+    // Shriek Worm
+    public static final Supplier<SoundEvent> SHRIEK_WORM_AMBIENT = register("entity.shriek_worm.ambient");
+    public static final Supplier<SoundEvent> SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
+    public static final Supplier<SoundEvent> SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
 
     // Stalker
     public static final Supplier<SoundEvent> STALKER_RING = register("entity.stalker.ring");
@@ -62,8 +67,6 @@ public class DDSounds {
     public static final Supplier<SoundEvent> WARDEN_DREAMING = register("ambience.warden_dreaming");
 
     // Item
-    public static final Supplier<SoundEvent> SCULK_LINK = register("item.transmitter.link");
-    public static final Supplier<SoundEvent> SCULK_TRANSMIT = register("item.transmitter.transmit");
     public static final Supplier<SoundEvent> SCULK_MEAL_USE = register("item.sculk_meal.use");
 
     public static void registerSounds() {

@@ -189,6 +189,28 @@
       "deeperdarker:block/vase/step3"
     ]
   },
+  "entity.shriek_worm.ambient": {
+    "subtitle": "subtitles.entity.shriek_worm.ambient",
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/ambient1",
+      "deeperdarker:entity/shriek_worm/ambient2",
+      "deeperdarker:entity/shriek_worm/ambient3"
+    ]
+  },
+  "entity.shriek_worm.hurt": {
+    "subtitle": "subtitles.entity.shriek_worm.hurt",
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/hurt1",
+      "deeperdarker:entity/shriek_worm/hurt2",
+      "deeperdarker:entity/shriek_worm/hurt3"
+    ]
+  },
+  "entity.shriek_worm.death": {
+    "subtitle": "subtitles.entity.shriek_worm.death",
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/death"
+      ]
+  },
   "entity.snapper.ambient": {
     "subtitle": "subtitles.entity.snapper.ambient",
     "sounds": [
@@ -211,18 +233,6 @@
     "subtitle": "subtitles.entity.snapper.sniff",
     "sounds": [
       "deeperdarker:entity/sculk_snapper/sniff"
-    ]
-  },
-  "item.transmitter.link": {
-    "subtitle": "subtitles.item.transmitter.link",
-    "sounds": [
-      "deeperdarker:item/transmitter/link"
-    ]
-  },
-  "item.transmitter.transmit": {
-    "subtitle": "subtitles.item.transmitter.transmit",
-    "sounds": [
-      "deeperdarker:item/transmitter/transmit"
     ]
   },
   "item.sculk_meal.use": {

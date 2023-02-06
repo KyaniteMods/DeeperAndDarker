@@ -186,12 +186,13 @@
   "itemGroup.deeperdarker.deeperdarker": "ɹǝʞɹɐᗡ puɐ ɹǝdǝǝᗡ",
   "subtitles.ambience.portal.groan": "sǝpoqǝɹoɟ ǝpısɹǝɥʇO ǝɥ⟘",
   "subtitles.ambience.warden_dreaming": "sɯɐǝɹp uǝpɹɐM",
+  "subtitles.entity.shriek_worm.ambient": "sǝɥʇɐǝɹq ɯɹoM ʞǝıɹɥS",
+  "subtitles.entity.shriek_worm.death": "sǝıp ɯɹoM ʞǝıɹɥS",
+  "subtitles.entity.shriek_worm.hurt": "sʇɹnɥ ɯɹoM ʞǝıɹɥS",
   "subtitles.entity.snapper.ambient": "sǝɥʇɐǝɹq ɹǝddɐuS ʞןnɔS",
   "subtitles.entity.snapper.bite": "sǝʇıq ɹǝddɐuS ʞןnɔS",
   "subtitles.entity.snapper.hurt": "sʇɹnɥ ɹǝddɐuS ʞןnɔS",
   "subtitles.entity.snapper.sniff": "sɟɟıus ɹǝddɐuS ʞןnɔS",
   "subtitles.entity.stalker.ring": "sbuıɹ ɹǝʞןɐʇS",
-  "subtitles.item.sculk_meal.use": "sǝןʞuıɹɔ ןɐǝW ʞןnɔS",
-  "subtitles.item.transmitter.link": "sʞuıן ɹǝʇʇıɯsuɐɹ⟘",
-  "subtitles.item.transmitter.transmit": "sʇıɯsuɐɹʇ ɹǝʇʇıɯsuɐɹ⟘"
+  "subtitles.item.sculk_meal.use": "sǝןʞuıɹɔ ןɐǝW ʞןnɔS"
 }
