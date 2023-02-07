@@ -65,18 +65,13 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
         add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
-        add("item.deeperdarker.sculk_transmitter.linked", "Linked");
-        add("item.deeperdarker.sculk_transmitter.not_container", "Cannot link to block");
-        add("item.deeperdarker.sculk_transmitter.not_found", "The linked block is missing or obstructed");
-        add("item.deeperdarker.sculk_transmitter.not_linked", "Unlinked");
 
         add("itemGroup.deeperdarker.deeperdarker", "Deeper and Darker");
         add("itemGroup.deeperdarker", "Deeper and Darker");
 
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.ambience.warden_dreaming", "Warden dreams");
-        // TODO: Come up with a better subtitle for this.
-        add("subtitles.entity.shriek_worm.ambient", "Shriek Worm breathes");
+        add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
         add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
         add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
