@@ -39,7 +39,7 @@ public class SoulElytraItem extends ElytraItem implements FabricElytraItem {
         DDUtils.soulElytraTick(entity);
     }
 
-    public static boolean isUseable(ItemStack stack) {
+    public static boolean isUsable(ItemStack stack) {
         return stack.getDamageValue() < stack.getMaxDamage() - 1;
     }
 }

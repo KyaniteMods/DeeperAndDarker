@@ -63,7 +63,7 @@ public class DeeperAndDarkerFabricClient implements ClientModInitializer {
         //BlockEntityRendererRegistry.register(DDBlockEntityTypes.DEEPSLATE_CHEST.get(), context -> new AncientChestRenderer());
 
         FabricModelPredicateProviderRegistry.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation(DeeperAndDarker.MOD_ID, "broken"),
-                (stack, arg1, arg2, arg3) -> SoulElytraItem.isUseable(stack) ? 0 : 1);
+                (stack, arg1, arg2, arg3) -> SoulElytraItem.isUsable(stack) ? 0 : 1);
 
         ArmorRenderer.registerArmorRenderer(new WardenArmorRenderer(), DDItems.WARDEN_HELMET.get(),
                 DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get());
