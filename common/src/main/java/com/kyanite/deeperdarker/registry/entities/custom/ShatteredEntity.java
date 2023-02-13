@@ -7,14 +7,17 @@ import com.kyanite.deeperdarker.miscellaneous.DDUtils;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMelee;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.GoToDisturbanceGoal;
 import com.kyanite.deeperdarker.registry.entities.custom.ai.IDisturbanceListener;
+import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -182,6 +185,24 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
         return DDTypes.SCULK;
     }
 
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return DDSounds.SHATTERED_AMBIENT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return DDSounds.SHATTERED_DEATH.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return DDSounds.SHATTERED_HURT.get();
+    }
+
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
@@ -196,7 +217,6 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
             if(entity instanceof LivingEntity livingentity) {
                 return this.canTargetEntity(livingentity);
             }
-
             return true;
         } else {
             return false;
@@ -208,7 +228,6 @@ public class ShatteredEntity extends ActionAnimatedEntity implements IAnimatable
         if(entity instanceof LivingEntity livingentity) {
             return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }
-
         return false;
     }
 

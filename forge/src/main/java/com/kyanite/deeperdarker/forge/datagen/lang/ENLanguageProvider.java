@@ -71,15 +71,37 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.ambience.warden_dreaming", "Warden dreams");
+
+        add("subtitles.entity.shattered.ambient", "Shattered ambience");
+        add("subtitles.entity.shattered.death", "Shattered dies");
+        add("subtitles.entity.shattered.hurt", "Shattered hurts");
+
         add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
-        add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
+        add("subtitles.entity.shriek_worm.attack", "Shriek Worm attacks");
         add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
+        add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
+
+        add("subtitles.entity.centipede.ambient", "Sculk Centipede ambience");
+        add("subtitles.entity.centipede.death", "Sculk Centipede dies");
+        add("subtitles.entity.centipede.hurt", "Sculk Centipede hurts");
+
+        add("subtitles.entity.leech.ambient", "Sculk Leech ambience");
+        add("subtitles.entity.leech.death", "Sculk Leech dies");
+        add("subtitles.entity.leech.hurt", "Sculk Leech hurts");
+
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
+        add("subtitles.entity.snapper.death", "Sculk Snapper dies");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
-        add("subtitles.item.sculk_meal.use", "Sculk Meal crinkles");
+
+        add("subtitles.entity.stalker.ambient", "Stalker ambience");
+        add("subtitles.entity.stalker.death", "Stalker dies");
+        add("subtitles.entity.stalker.hurt", "Stalker hurts");
         add("subtitles.entity.stalker.ring", "Stalker rings");
+
+        add("subtitles.item.sculk_meal.use", "Sculk Meal crinkles");
+
         add("block.sculk_jaw.retract", "Sculk Jaw retracts");
         add("block.sculk_jaw.close", "Sculk Jaw bites");
     }

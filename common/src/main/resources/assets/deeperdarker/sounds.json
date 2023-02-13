@@ -105,6 +105,18 @@
       "deeperdarker:block/sculk_jaw/step5"
     ]
   },
+  "block.sculk_stone.break": {
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "deeperdarker:block/sculk_stone/break1",
+      "deeperdarker:block/sculk_stone/break2",
+      "deeperdarker:block/sculk_stone/break3",
+      "deeperdarker:block/sculk_stone/break4",
+      "deeperdarker:block/sculk_stone/break5",
+      "deeperdarker:block/sculk_stone/break6",
+      "deeperdarker:block/sculk_stone/break7"
+    ]
+  },
   "block.sculk_stone.fall": {
     "sounds": [
       "deeperdarker:block/sculk_stone/step1",
@@ -189,12 +201,20 @@
       "deeperdarker:block/vase/step3"
     ]
   },
+  "comment_": "Shattered sounds here",
   "entity.shriek_worm.ambient": {
     "subtitle": "subtitles.entity.shriek_worm.ambient",
     "sounds": [
       "deeperdarker:entity/shriek_worm/ambient1",
       "deeperdarker:entity/shriek_worm/ambient2",
       "deeperdarker:entity/shriek_worm/ambient3"
+    ]
+  },
+  "comment______": "Shriek Worm attack sound here",
+  "entity.shriek_worm.death": {
+    "subtitle": "subtitles.entity.shriek_worm.death",
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/death"
     ]
   },
   "entity.shriek_worm.hurt": {
@@ -205,12 +225,8 @@
       "deeperdarker:entity/shriek_worm/hurt3"
     ]
   },
-  "entity.shriek_worm.death": {
-    "subtitle": "subtitles.entity.shriek_worm.death",
-    "sounds": [
-      "deeperdarker:entity/shriek_worm/death"
-      ]
-  },
+  "comment__": "Centipede sounds here",
+  "comment___": "Leech sounds here",
   "entity.snapper.ambient": {
     "subtitle": "subtitles.entity.snapper.ambient",
     "sounds": [
@@ -223,6 +239,7 @@
       "deeperdarker:entity/sculk_snapper/bite"
     ]
   },
+  "comment____": "Snapper death sound here",
   "entity.snapper.hurt": {
     "subtitle": "subtitles.entity.snapper.hurt",
     "sounds": [
@@ -233,6 +250,13 @@
     "subtitle": "subtitles.entity.snapper.sniff",
     "sounds": [
       "deeperdarker:entity/sculk_snapper/sniff"
+    ]
+  },
+  "comment_____": "Stalker sounds here",
+  "entity.stalker.ring":{
+    "subtitle": "subtitles.entity.stalker.ring",
+    "sounds": [
+      "deeperdarker:entity/stalker/ring"
     ]
   },
   "item.sculk_meal.use": {

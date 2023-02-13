@@ -41,18 +41,38 @@ public class DDSounds {
 
     public static final DDSoundType SCULK_JAW = new DDSoundType(1, 1, SCULK_JAW_BREAK, SCULK_JAW_STEP, SCULK_JAW_PLACE, SCULK_JAW_HIT, SCULK_JAW_FALL);
 
-    // Sculk Snapper
-    public static final Supplier<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");
-    public static final Supplier<SoundEvent> SCULK_SNAPPER_BITE = register("entity.snapper.bite");
-    public static final Supplier<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
-    public static final Supplier<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
+    // Shattered
+    public static final Supplier<SoundEvent> SHATTERED_AMBIENT = register("entity.shattered.ambient");
+    public static final Supplier<SoundEvent> SHATTERED_DEATH = register("entity.shattered.death");
+    public static final Supplier<SoundEvent> SHATTERED_HURT = register("entity.shattered.hurt");
 
     // Shriek Worm
     public static final Supplier<SoundEvent> SHRIEK_WORM_AMBIENT = register("entity.shriek_worm.ambient");
-    public static final Supplier<SoundEvent> SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
+    public static final Supplier<SoundEvent> SHRIEK_WORM_ATTACK = register("entity.shriek_worm.attack");
     public static final Supplier<SoundEvent> SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
+    public static final Supplier<SoundEvent> SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
+
+    // Sculk Centipede
+    public static final Supplier<SoundEvent> SCULK_CENTIPEDE_AMBIENT = register("entity.centipede.ambient");
+    public static final Supplier<SoundEvent> SCULK_CENTIPEDE_DEATH = register("entity.centipede.death");
+    public static final Supplier<SoundEvent> SCULK_CENTIPEDE_HURT = register("entity.centipede.hurt");
+
+    // Sculk Leech
+    public static final Supplier<SoundEvent> SCULK_LEECH_AMBIENT = register("entity.leech.ambient");
+    public static final Supplier<SoundEvent> SCULK_LEECH_DEATH = register("entity.leech.death");
+    public static final Supplier<SoundEvent> SCULK_LEECH_HURT = register("entity.leech.hurt");
+
+    // Sculk Snapper
+    public static final Supplier<SoundEvent> SCULK_SNAPPER_AMBIENT = register("entity.snapper.ambient");
+    public static final Supplier<SoundEvent> SCULK_SNAPPER_BITE = register("entity.snapper.bite");
+    public static final Supplier<SoundEvent> SCULK_SNAPPER_DEATH = register("entity.snapper.death");
+    public static final Supplier<SoundEvent> SCULK_SNAPPER_HURT = register("entity.snapper.hurt");
+    public static final Supplier<SoundEvent> SCULK_SNAPPER_SNIFF = register("entity.snapper.sniff");
 
     // Stalker
+    public static final Supplier<SoundEvent> STALKER_AMBIENT = register("entity.stalker.ambient");
+    public static final Supplier<SoundEvent> STALKER_DEATH = register("entity.stalker.death");
+    public static final Supplier<SoundEvent> STALKER_HURT = register("entity.stalker.hurt");
     public static final Supplier<SoundEvent> STALKER_RING = register("entity.stalker.ring");
 
     // Portal

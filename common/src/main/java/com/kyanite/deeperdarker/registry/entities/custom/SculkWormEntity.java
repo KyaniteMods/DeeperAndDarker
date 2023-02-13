@@ -71,9 +71,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     }
 
     @Override
-    public void knockback(double strength, double x, double z) {
-
-    }
+    public void knockback(double strength, double x, double z) {}
 
     @Override
     public List<EntityState> createStates() {
@@ -126,6 +124,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
             setState(AWAKE);
             if(this.getTarget() != null) {
                 this.doHurtTarget(this.getTarget());
+                this.playSound(DDSounds.SHRIEK_WORM_ATTACK.get(), 1.0F, 1.0F);
                 if(this.getTarget() instanceof Player plr)
                     if(plr.totalExperience > 2)
                         plr.giveExperiencePoints(-2);
@@ -173,11 +172,13 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
         this.entityData.set(DESCEND_COUNTDOWN, value);
     }
 
+    @Nullable
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return DDSounds.SHRIEK_WORM_HURT.get();
+    protected SoundEvent getAmbientSound() {
+        return DDSounds.SHRIEK_WORM_AMBIENT.get();
     }
 
+    @Nullable
     @Override
     protected SoundEvent getDeathSound() {
         return DDSounds.SHRIEK_WORM_DEATH.get();
@@ -185,7 +186,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
 
     @Nullable
     @Override
-    protected SoundEvent getAmbientSound() {
-        return DDSounds.SHRIEK_WORM_AMBIENT.get();
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return DDSounds.SHRIEK_WORM_HURT.get();
     }
 }

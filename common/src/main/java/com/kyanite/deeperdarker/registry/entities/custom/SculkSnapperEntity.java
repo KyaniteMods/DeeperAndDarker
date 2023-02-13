@@ -106,6 +106,18 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     @Nullable
     @Override
+    protected SoundEvent getAmbientSound() {
+        return DDSounds.SCULK_SNAPPER_AMBIENT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return DDSounds.SCULK_SNAPPER_DEATH.get();
+    }
+
+    @Nullable
+    @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DDSounds.SCULK_SNAPPER_HURT.get();
     }
@@ -113,12 +125,6 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Override
     protected PathNavigation createNavigation(Level level) {
         return new GroundPathNavigation(this, level);
-    }
-
-    @Nullable
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return DDSounds.SCULK_SNAPPER_AMBIENT.get();
     }
 
     @Override
