@@ -72,7 +72,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.ambience.portal.groan", "The Otherside forebodes");
         add("subtitles.ambience.warden_dreaming", "Warden dreams");
 
-        add("subtitles.entity.shattered.ambient", "Shattered ambience");
+        add("subtitles.block.jaw.close", "Sculk Jaw bites");
+        add("subtitles.block.jaw.retract", "Sculk Jaw retracts");
+
+        add("subtitles.entity.shattered.ambient", "Shattered growls");
         add("subtitles.entity.shattered.death", "Shattered dies");
         add("subtitles.entity.shattered.hurt", "Shattered hurts");
 
@@ -95,15 +98,12 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
         add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
 
-        add("subtitles.entity.stalker.ambient", "Stalker ambience");
+        add("subtitles.entity.stalker.ambient", "Stalker chirps");
         add("subtitles.entity.stalker.death", "Stalker dies");
         add("subtitles.entity.stalker.hurt", "Stalker hurts");
         add("subtitles.entity.stalker.ring", "Stalker rings");
 
         add("subtitles.item.sculk_meal.use", "Sculk Meal crinkles");
-
-        add("block.sculk_jaw.retract", "Sculk Jaw retracts");
-        add("block.sculk_jaw.close", "Sculk Jaw bites");
     }
 
     @Override

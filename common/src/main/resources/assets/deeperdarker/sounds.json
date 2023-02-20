@@ -201,7 +201,28 @@
       "deeperdarker:block/vase/step3"
     ]
   },
-  "comment_": "Shattered sounds here",
+  "entity.shattered.ambient":{
+    "subtitle": "subtitles.entity.shattered.ambient",
+    "sounds": [
+      "deeperdarker:entity/shattered/ambient1",
+      "deeperdarker:entity/shattered/ambient2",
+      "deeperdarker:entity/shattered/ambient3"
+    ]
+  },
+  "entity.shattered.death":{
+    "subtitle": "subtitles.entity.shattered.death",
+    "sounds": [
+      "deeperdarker:entity/shattered/death"
+    ]
+  },
+  "entity.shattered.hurt":{
+    "subtitle": "subtitles.entity.shattered.hurt",
+    "sounds": [
+      "deeperdarker:entity/shattered/hurt1",
+      "deeperdarker:entity/shattered/hurt2",
+      "deeperdarker:entity/shattered/hurt3"
+    ]
+  },
   "entity.shriek_worm.ambient": {
     "subtitle": "subtitles.entity.shriek_worm.ambient",
     "sounds": [
@@ -252,7 +273,29 @@
       "deeperdarker:entity/sculk_snapper/sniff"
     ]
   },
-  "comment_____": "Stalker sounds here",
+  "entity.stalker.ambient": {
+    "subtitle": "subtitles.entity.stalker.ambient",
+    "sounds": [
+      "deeperdarker:entity/stalker/ambient1",
+      "deeperdarker:entity/stalker/ambient2",
+      "deeperdarker:entity/stalker/ambient3"
+    ]
+  },
+    "entity.stalker.death": {
+        "subtitle": "subtitles.entity.stalker.death",
+        "sounds": [
+        "deeperdarker:entity/stalker/death"
+        ]
+  },
+  "entity.stalker.hurt": {
+    "subtitle": "subtitles.entity.stalker.hurt",
+    "sounds": [
+      "deeperdarker:entity/stalker/hurt1",
+      "deeperdarker:entity/stalker/hurt2",
+      "deeperdarker:entity/stalker/hurt3",
+      "deeperdarker:entity/stalker/hurt4"
+    ]
+  },
   "entity.stalker.ring":{
     "subtitle": "subtitles.entity.stalker.ring",
     "sounds": [
