@@ -133,7 +133,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
         if(this.isTame() && this.getOwner() != null) {
             if(this.getOwner().distanceTo(this) < 13 && this.getRandom().nextInt(0, 1100) == 0) {
-                List<Enchantment> enchantments = (List<Enchantment>) Registry.ENCHANTMENT_REGISTRY;
+                List<Enchantment> enchantments = Registry.ENCHANTMENT.stream().toList();
                 int randomIndex = this.getRandom().nextInt(enchantments.size());
                 Enchantment randomEnchantment = enchantments.get(randomIndex);
                 EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, 1);
