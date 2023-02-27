@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.registry.blocks.custom;
 
 import com.kyanite.deeperdarker.config.DDConfig;
+import com.kyanite.deeperdarker.miscellaneous.DDTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
@@ -8,8 +9,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.ticks.TickPriority;
@@ -39,20 +37,10 @@ public class SculkJawBlock extends Block {
         if (!pState.is(DDBlocks.SCULK_JAW.get())) return;
         if (pState.getValue(ACTIVATED)) return;
 
-        if (pEntity instanceof Player plr) {
-            if (plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
-        }
-
         if (pEntity instanceof Player plr) if (plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
 
-        if (pEntity instanceof LivingEntity mob) {
-            mob.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 80));
-            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1));
-        }
-
         pLevel.playSound(null, pPos, DDSounds.SCULK_JAW_CLOSE.get(), SoundSource.BLOCKS, 3.0f, 1f);
-        pEntity.hurt(damageSource, 4);
-        pEntity.setDeltaMovement(Vec3.ZERO);
+        pEntity.hurt(damageSource, 3);
         pLevel.setBlock(pPos, DDBlocks.SCULK_JAW.get().defaultBlockState().setValue(ACTIVATED, true), 3);
         pLevel.scheduleTick(pPos, DDBlocks.SCULK_JAW.get(), 35, TickPriority.EXTREMELY_HIGH);
     }
@@ -70,7 +58,10 @@ public class SculkJawBlock extends Block {
             plr.giveExperiencePoints(-1);
         }
 
-        pEntity.hurt(damageSource, 3);
+        if (pEntity instanceof LivingEntity livingEntity) {
+            if (livingEntity.getMobType() == DDTypes.SCULK) return;
+            else pEntity.hurt(damageSource, 3);
+        }
     }
 
     @Override
