@@ -6,9 +6,9 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:ancient_temple",
         "projection": "rigid",
-        "processors": "minecraft:empty"
+        "processors": "minecraft:empty",
+        "location": "deeperdarker:ancient_temple"
       }
     }
   ]
