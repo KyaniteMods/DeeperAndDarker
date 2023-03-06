@@ -102,7 +102,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.75D, true, 17, 16, ATTACK));
+        this.goalSelector.addGoal(2, new CustomAttackAnimMelee(this, 0.75D, true, 17, 4, ATTACK));
         this.goalSelector.addGoal(8, new GoToDisturbanceGoal(this));
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.75D));
@@ -171,7 +171,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                             this.bossEvent.addPlayer((ServerPlayer) player);
 
                         if(getCurrentState() == RING) {
-                            livingEntity.hurt(damageSource, 1.4f);
+                            livingEntity.hurt(damageSource, 0.8f);
                             livingEntity.knockback(0.2f, 1, 1);
                         }
                     }
