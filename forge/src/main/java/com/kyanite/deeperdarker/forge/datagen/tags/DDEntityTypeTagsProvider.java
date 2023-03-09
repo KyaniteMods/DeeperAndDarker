@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.forge.datagen.tags;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
@@ -15,6 +16,10 @@ public class DDEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags() {
+        // tag(EntityTypeTags) For Minecraft tags.
+
+        tag(DDTags.Entities.SCULK).add(DDEntities.SHATTERED.get(), DDEntities.SCULK_LEECH.get(), DDEntities.SCULK_SNAPPER.get(), DDEntities.SCULK_WORM.get(), DDEntities.SCULK_CENTIPEDE.get(), DDEntities.STALKER.get(), DDEntities.ECHOER.get());
+
         tag(Tags.EntityTypes.BOSSES).add(DDEntities.STALKER.get());
     }
 

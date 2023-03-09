@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -23,6 +24,14 @@ public class DDTags {
 
         private static TagKey<Block> createOtherTag(String modID, String name) {
             return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(modID, name));
+        }
+    }
+
+    public static class Entities {
+        public static final TagKey<EntityType<?>> SCULK = createDDTag("sculk");
+
+        private static TagKey<EntityType<?>> createDDTag(String name) {
+            return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
         }
     }
 
