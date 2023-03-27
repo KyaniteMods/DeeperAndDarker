@@ -14,19 +14,13 @@ import java.util.function.Supplier;
 public class DDEntities {
     public static final Map<String, Supplier<EntityType<?>>> ENTITIES = new HashMap<>();
 
-    public static final Supplier<EntityType<ShriekProjectile>> SHRIEK_PROJECTILE = RegistryHelper.registerEntity(
-            "shriek_projectile",
-            ShriekProjectile::new, MobCategory.MISC, 0.5F, 0.5F, 4
-    );
+    public static final Supplier<EntityType<ShriekProjectile>> SHRIEK_PROJECTILE = RegistryHelper.registerEntity("shriek_projectile", ShriekProjectile::new, MobCategory.MISC, 0.5F, 0.5F, 4);
 
     public static final Supplier<EntityType<ShatteredEntity>> SHATTERED = RegistryHelper.registerEntity("shattered", ShatteredEntity::new, MobCategory.MONSTER, 0.85f, 2.45f, 10);
     public static final Supplier<EntityType<SculkLeechEntity>> SCULK_LEECH = RegistryHelper.registerEntity("sculk_leech", SculkLeechEntity::new, MobCategory.MONSTER, 0.3f, 0.2f, 10);
     public static final Supplier<EntityType<SculkSnapperEntity>> SCULK_SNAPPER = RegistryHelper.registerEntity("sculk_snapper", SculkSnapperEntity::new, MobCategory.MONSTER, 1, 1, 10);
 
-    public static final Supplier<EntityType<EchoerEntity>> ECHOER = RegistryHelper.registerEntity(
-            "echoer",
-            EchoerEntity::new, MobCategory.MONSTER, 0.85f, 2.45f, 10
-    );
+    public static final Supplier<EntityType<EchoerEntity>> ECHOER = RegistryHelper.registerEntity("echoer", EchoerEntity::new, MobCategory.MONSTER, 0.85f, 2.45f, 10);
 
     // public static final Supplier<EntityType<ScavengerEntity>> SCAVENGER = RegistryHelper.registerEntity(
     //         "scavenger",

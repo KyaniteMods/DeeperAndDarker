@@ -13,12 +13,12 @@ public class SculkSmiteEnchant extends Enchantment {
 
     @Override
     public float getDamageBonus(int i, MobType mobType) {
-        return mobType == DDTypes.SCULK ? 10F : 0.0F;
+        return mobType == DDTypes.SCULK ? (float)i * 2.5F : 0.0F;
     }
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 5;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.mixin.misc;
 
-import com.kyanite.deeperdarker.miscellaneous.DDTypes;
+import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.effects.DDEffects;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.minecraft.server.level.ServerLevel;
@@ -28,7 +28,7 @@ public class VibrationListenerMixin {
 
         if(message.context().sourceEntity() instanceof LivingEntity entity && entity.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
 
-        if(message.context().sourceEntity() instanceof LivingEntity entity && entity.getMobType() == DDTypes.SCULK) cir.setReturnValue(false);
+        if(message.context().sourceEntity() instanceof LivingEntity entity && entity.getType().is(DDTags.Entities.SCULK)) cir.setReturnValue(false);
 
         if(receivingEvent != null || message.context().sourceEntity() == null || message.context() == null) cir.setReturnValue(false);
     }
