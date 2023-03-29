@@ -248,6 +248,14 @@
   },
   "comment__": "Centipede sounds here",
   "comment___": "Leech sounds here",
+  "entity.leech.hurt": {
+    "subtitle": "subtitles.entity.leech.hurt",
+    "sounds": [
+      "deeperdarker:entity/sculk_leech/hurt1",
+      "deeperdarker:entity/sculk_leech/hurt2",
+      "deeperdarker:entity/sculk_leech/hurt3"
+    ]
+  },
   "entity.snapper.ambient": {
     "subtitle": "subtitles.entity.snapper.ambient",
     "sounds": [
