@@ -26,8 +26,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.Iterator;
-
 public class ShriekProjectile extends AbstractArrow {
     private final SculkSpreader sculkSpreader;
 
@@ -73,10 +71,8 @@ public class ShriekProjectile extends AbstractArrow {
             VoxelShape voxelShape = blockState.getCollisionShape(this.level, blockPos);
             if (!voxelShape.isEmpty()) {
                 vec32 = this.position();
-                Iterator var7 = voxelShape.toAabbs().iterator();
 
-                while(var7.hasNext()) {
-                    AABB aABB = (AABB)var7.next();
+                for (AABB aABB : voxelShape.toAabbs()) {
                     if (aABB.move(blockPos).contains(vec32)) {
                         this.inGround = true;
                         break;
@@ -100,8 +96,8 @@ public class ShriekProjectile extends AbstractArrow {
             Vec3 vec33 = this.position();
             vec32 = vec33.add(vec3);
             HitResult hitResult = this.level.clip(new ClipContext(vec33, vec32, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-            if (((HitResult)hitResult).getType() != HitResult.Type.MISS) {
-                vec32 = ((HitResult)hitResult).getLocation();
+            if (hitResult.getType() != HitResult.Type.MISS) {
+                vec32 = hitResult.getLocation();
             }
 
             while(!this.isRemoved()) {
@@ -110,7 +106,7 @@ public class ShriekProjectile extends AbstractArrow {
                     hitResult = entityHitResult;
                 }
 
-                if (hitResult != null && ((HitResult)hitResult).getType() == HitResult.Type.ENTITY) {
+                if (hitResult != null && hitResult.getType() == HitResult.Type.ENTITY) {
                     Entity entity = ((EntityHitResult)hitResult).getEntity();
                     Entity entity2 = this.getOwner();
                     if (entity instanceof Player && entity2 instanceof Player && !((Player)entity2).canHarmPlayer((Player)entity)) {
@@ -155,17 +151,15 @@ public class ShriekProjectile extends AbstractArrow {
             this.setXRot(lerpRotation(this.xRotO, this.getXRot()));
             this.setYRot(lerpRotation(this.yRotO, this.getYRot()));
             float m = 0.99F;
-            float n = 0.05F;
             if (this.isInWater()) {
                 for(int o = 0; o < 4; ++o) {
-                    float p = 0.25F;
                     this.level.addParticle(ParticleTypes.BUBBLE, h - e * 0.25, j - f * 0.25, k - g * 0.25, e, f, g);
                 }
 
                 m = this.getWaterInertia();
             }
 
-            this.setDeltaMovement(vec3.scale((double)m));
+            this.setDeltaMovement(vec3.scale(m));
             if (!this.isNoGravity() && !bl) {
                 Vec3 vec34 = this.getDeltaMovement();
                 this.setDeltaMovement(vec34.x, vec34.y - 0.05000000074505806, vec34.z);

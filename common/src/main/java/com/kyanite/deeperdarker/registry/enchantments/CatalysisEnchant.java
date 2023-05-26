@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.registry.enchantments;
 
-import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

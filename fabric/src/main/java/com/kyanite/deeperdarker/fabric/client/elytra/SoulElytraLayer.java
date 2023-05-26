@@ -25,15 +25,14 @@ import org.jetbrains.annotations.NotNull;
 @Environment(EnvType.CLIENT)
 public class SoulElytraLayer extends ElytraLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
     private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
-    private final ElytraModel elytraModel;
+    private final ElytraModel<AbstractClientPlayer> elytraModel;
 
     public SoulElytraLayer(RenderLayerParent<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> renderLayerParent, EntityModelSet entityModelSet) {
         super(renderLayerParent, entityModelSet);
-        this.elytraModel = new ElytraModel(entityModelSet.bakeLayer(ModelLayers.ELYTRA));
+        this.elytraModel = new ElytraModel<>(entityModelSet.bakeLayer(ModelLayers.ELYTRA));
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, AbstractClientPlayer livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
         if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {

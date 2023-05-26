@@ -25,9 +25,7 @@ public class AncientChestRenderer extends GeoBlockRenderer<AncientChestEntity> {
     }
 
     @Override
-    public RenderType getRenderType(AncientChestEntity animatable, float partialTicks, PoseStack stack,
-                                    @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder,
-                                    int packedLightIn, ResourceLocation textureLocation) {
+    public RenderType getRenderType(AncientChestEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
         return RenderType.entityTranslucent(this.getTextureResource(animatable));
     }
 }

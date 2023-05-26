@@ -25,9 +25,9 @@ public class EchoerModel extends AnimatedGeoModel<EchoerEntity> {
     }
 
     @Override
-    public void setLivingAnimations(EchoerEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
-        super.setLivingAnimations(entity, uniqueID, customPredicate);
-        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+    public void setCustomAnimations(EchoerEntity animatable, int instanceId, AnimationEvent animationEvent) {
+        super.setCustomAnimations(animatable, instanceId, animationEvent);
+        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
         IBone head = getBone("head");
         head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
         head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));

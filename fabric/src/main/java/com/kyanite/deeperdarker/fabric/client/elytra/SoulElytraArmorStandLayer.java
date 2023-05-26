@@ -24,11 +24,11 @@ import net.minecraft.world.item.ItemStack;
     @Environment(EnvType.CLIENT)
 public class SoulElytraArmorStandLayer extends ElytraLayer<ArmorStand, ArmorStandArmorModel>  {
     private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
-    private final ElytraModel elytraModel;
+    private final ElytraModel<ArmorStand> elytraModel;
 
     public SoulElytraArmorStandLayer(ArmorStandRenderer rendererIn, EntityModelSet modelSet) {
         super(rendererIn, modelSet);
-        this.elytraModel = new ElytraModel(modelSet.bakeLayer(ModelLayers.ELYTRA));
+        this.elytraModel = new ElytraModel<>(modelSet.bakeLayer(ModelLayers.ELYTRA));
     }
 
     @Override

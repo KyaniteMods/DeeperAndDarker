@@ -34,7 +34,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRenderer<T>, net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer {
-    public static final Map<Class<? extends ArmorItem>, ArmorRenderer> renderers = new ConcurrentHashMap<>();
+    public static final Map<Class<? extends ArmorItem>, ArmorRenderer<?>> renderers = new ConcurrentHashMap<>();
 
     static {
         AnimationController.addModelFetcher((IAnimatable object) -> {
@@ -127,7 +127,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
         AnimationEvent<T> itemEvent = new AnimationEvent<T>(this.currentArmorItem, 0, 0,
                 Minecraft.getInstance().getFrameTime(), false,
                 Arrays.asList(this.itemStack, this.entityLiving, this.armorSlot));
-        modelProvider.setLivingAnimations(currentArmorItem, this.getUniqueID(this.currentArmorItem), itemEvent);
+        modelProvider.setCustomAnimations(currentArmorItem, this.getInstanceId(this.currentArmorItem), itemEvent);
 
         this.fitToBiped();
         this.applySlot(armorSlot);
@@ -156,7 +156,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
         AnimationEvent<T> itemEvent = new AnimationEvent<T>(this.currentArmorItem, 0, 0,
                 Minecraft.getInstance().getFrameTime(), false,
                 Arrays.asList(this.itemStack, this.entityLiving, this.armorSlot));
-        modelProvider.setLivingAnimations(currentArmorItem, this.getUniqueID(this.currentArmorItem), itemEvent);
+        modelProvider.setCustomAnimations(currentArmorItem, this.getInstanceId(this.currentArmorItem), itemEvent);
 
         this.fitToBiped();
         this.applySlot(armorSlot);
@@ -329,8 +329,7 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     @Override
-    public Integer getUniqueID(T animatable) {
-        return Objects.hash(this.armorSlot, itemStack.getItem(), itemStack.getCount(),
-                itemStack.hasTag() ? itemStack.getTag().toString() : 1, this.entityLiving.getUUID().toString());
+    public int getInstanceId(T animatable) {
+        return Objects.hash(this.armorSlot, itemStack.getItem(), itemStack.getCount(), itemStack.hasTag() ? itemStack.getTag().toString() : 1, this.entityLiving.getUUID().toString());
     }
 }

@@ -89,9 +89,9 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<AncientChestEntity>
-                (this, "controller", 13, this::predicate));
+        data.addAnimationController(new AnimationController<>(this, "controller", 13, this::predicate));
     }
+
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         event.getController().transitionLengthTicks = 13;
         if(this.wiggleTicks != 0)  {

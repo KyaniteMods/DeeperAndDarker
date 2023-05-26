@@ -74,12 +74,10 @@ public class SculkJawBlock extends Block {
 
 
     @Override
-    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext
-            pContext) {
+    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         if (!pState.is(DDBlocks.SCULK_JAW.get())) return super.getCollisionShape(pState, pLevel, pPos, pContext);
 
-        if (pState.getValue(ACTIVATED))
-            return Block.box(0, 0, 0, 0, 0, 0);
+        if (pState.getValue(ACTIVATED)) return Block.box(0, 0, 0, 0, 0, 0);
 
         return super.getCollisionShape(pState, pLevel, pPos, pContext);
     }

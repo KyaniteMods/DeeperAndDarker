@@ -18,22 +18,18 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
-@OnlyIn(Dist.CLIENT)
 public class SoulElytraArmorStandLayer extends ElytraLayer<ArmorStand, ArmorStandArmorModel> {
     private static final ResourceLocation TEXTURE_ELYTRA = new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/entity/soul_elytra.png");
-    private final ElytraModel elytraModel;
+    private final ElytraModel<ArmorStand> elytraModel;
 
     public SoulElytraArmorStandLayer(ArmorStandRenderer rendererIn, EntityModelSet modelSet) {
         super(rendererIn, modelSet);
-        this.elytraModel = new ElytraModel(modelSet.bakeLayer(ModelLayers.ELYTRA));
+        this.elytraModel = new ElytraModel<>(modelSet.bakeLayer(ModelLayers.ELYTRA));
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, ArmorStand livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
         if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {

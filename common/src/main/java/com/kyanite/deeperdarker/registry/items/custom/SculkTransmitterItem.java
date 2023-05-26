@@ -20,14 +20,13 @@ public class SculkTransmitterItem extends Item {
 
         if (!level.isClientSide()) {
             ShriekProjectile abstractarrowentity = new ShriekProjectile(level, player);
-            abstractarrowentity.shootFromRotation(player, player.getXRot(), player.getYRot(),
-                    0.0F, 1.0F * 5.0F, 1.0F);
+            abstractarrowentity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 5, 1);
 
             abstractarrowentity.tickCount = 35;
             abstractarrowentity.isNoGravity();
 
             level.addFreshEntity(abstractarrowentity);
-            player.playSound(SoundEvents.WARDEN_SONIC_BOOM, 3.0F, 1.0F);
+            player.playSound(SoundEvents.WARDEN_SONIC_BOOM, 3, 1);
         }
         return InteractionResultHolder.consume(player.getItemInHand(interactionHand));
     }
