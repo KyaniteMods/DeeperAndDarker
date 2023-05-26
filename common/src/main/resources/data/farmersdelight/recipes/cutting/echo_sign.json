@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "deeperdarker:echo_sign"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "tag": "c:tools/axes"
+  },
+  "result": [
+    {
+      "item": "deeperdarker:echo_planks"
+    }
+  ]
+}

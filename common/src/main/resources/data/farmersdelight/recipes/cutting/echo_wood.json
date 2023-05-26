@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "deeperdarker:echo_wood"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "tag": "c:tools/axes"
+  },
+  "result": [
+    {
+      "item": "deeperdarker:stripped_echo_wood"
+    },
+    {
+      "item": "farmersdelight:tree_bark"
+    }
+  ],
+  "sound": "minecraft:item.axe.strip"
+}
