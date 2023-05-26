@@ -8,30 +8,22 @@
       "deeperdarker:ambience/portal/groan4"
     ]
   },
-  "ambience.biome.deeplands": {
-    "subtitle": "subtitles.ambience.warden_dreaming",
+  "ambience.deeplands": {
+    "subtitle": "subtitles.ambience.deeplands",
     "sounds": [
       "deeperdarker:ambience/dimension/deeplands_ambience"
     ]
   },
-  "ambience.biome.overcast": {
-    "subtitle": "subtitles.ambience.warden_dreaming",
+  "ambience.overcast": {
+    "subtitle": "subtitles.ambience.overcast",
     "sounds": [
       "deeperdarker:ambience/dimension/overcast_ambience"
     ]
   },
-  "ambience.biome.forest": {
-    "subtitle": "subtitles.ambience.warden_dreaming",
+  "ambience.forest": {
+    "subtitle": "subtitles.ambience.forest",
     "sounds": [
       "deeperdarker:ambience/dimension/forest_ambience"
-    ]
-  },
-  "ambience.warden_dreaming": {
-    "subtitle": "subtitles.ambience.warden_dreaming",
-    "sounds": [
-      "deeperdarker:ambience/dimension/warden_dreaming1",
-      "deeperdarker:ambience/dimension/warden_dreaming2",
-      "deeperdarker:ambience/dimension/warden_dreaming3"
     ]
   },
   "block.ancient_chest.open": {
@@ -201,61 +193,6 @@
       "deeperdarker:block/vase/step3"
     ]
   },
-  "entity.shattered.ambient":{
-    "subtitle": "subtitles.entity.shattered.ambient",
-    "sounds": [
-      "deeperdarker:entity/shattered/ambient1",
-      "deeperdarker:entity/shattered/ambient2",
-      "deeperdarker:entity/shattered/ambient3"
-    ]
-  },
-  "entity.shattered.death":{
-    "subtitle": "subtitles.entity.shattered.death",
-    "sounds": [
-      "deeperdarker:entity/shattered/death"
-    ]
-  },
-  "entity.shattered.hurt":{
-    "subtitle": "subtitles.entity.shattered.hurt",
-    "sounds": [
-      "deeperdarker:entity/shattered/hurt1",
-      "deeperdarker:entity/shattered/hurt2",
-      "deeperdarker:entity/shattered/hurt3"
-    ]
-  },
-  "entity.shriek_worm.ambient": {
-    "subtitle": "subtitles.entity.shriek_worm.ambient",
-    "sounds": [
-      "deeperdarker:entity/shriek_worm/ambient1",
-      "deeperdarker:entity/shriek_worm/ambient2",
-      "deeperdarker:entity/shriek_worm/ambient3"
-    ]
-  },
-  "comment______": "Shriek Worm attack sound here",
-  "entity.shriek_worm.death": {
-    "subtitle": "subtitles.entity.shriek_worm.death",
-    "sounds": [
-      "deeperdarker:entity/shriek_worm/death"
-    ]
-  },
-  "entity.shriek_worm.hurt": {
-    "subtitle": "subtitles.entity.shriek_worm.hurt",
-    "sounds": [
-      "deeperdarker:entity/shriek_worm/hurt1",
-      "deeperdarker:entity/shriek_worm/hurt2",
-      "deeperdarker:entity/shriek_worm/hurt3"
-    ]
-  },
-  "comment__": "Centipede sounds here",
-  "comment___": "Leech sounds here",
-  "entity.leech.hurt": {
-    "subtitle": "subtitles.entity.leech.hurt",
-    "sounds": [
-      "deeperdarker:entity/sculk_leech/hurt1",
-      "deeperdarker:entity/sculk_leech/hurt2",
-      "deeperdarker:entity/sculk_leech/hurt3"
-    ]
-  },
   "entity.snapper.ambient": {
     "subtitle": "subtitles.entity.snapper.ambient",
     "sounds": [
@@ -268,7 +205,6 @@
       "deeperdarker:entity/sculk_snapper/bite"
     ]
   },
-  "comment____": "Snapper death sound here",
   "entity.snapper.hurt": {
     "subtitle": "subtitles.entity.snapper.hurt",
     "sounds": [
@@ -281,98 +217,22 @@
       "deeperdarker:entity/sculk_snapper/sniff"
     ]
   },
-  "entity.stalker.ambient": {
-    "subtitle": "subtitles.entity.stalker.ambient",
-    "sounds": [
-      "deeperdarker:entity/stalker/ambient1",
-      "deeperdarker:entity/stalker/ambient2",
-      "deeperdarker:entity/stalker/ambient3"
-    ]
-  },
-    "entity.stalker.death": {
-        "subtitle": "subtitles.entity.stalker.death",
-        "sounds": [
-        "deeperdarker:entity/stalker/death"
-        ]
-  },
-  "entity.stalker.hurt": {
-    "subtitle": "subtitles.entity.stalker.hurt",
-    "sounds": [
-      "deeperdarker:entity/stalker/hurt1",
-      "deeperdarker:entity/stalker/hurt2",
-      "deeperdarker:entity/stalker/hurt3",
-      "deeperdarker:entity/stalker/hurt4"
-    ]
-  },
-  "entity.stalker.ring":{
+  "entity.stalker.ring": {
     "subtitle": "subtitles.entity.stalker.ring",
     "sounds": [
       "deeperdarker:entity/stalker/ring"
     ]
   },
-  "item.sculk_meal.use": {
-    "subtitle": "subtitles.item.sculk_meal.use",
+  "item.transmitter.link": {
+    "subtitle": "subtitles.item.transmitter.link",
     "sounds": [
-      {
-        "name": "item/bonemeal/bonemeal1",
-        "pitch": 0.9
-      },
-      {
-        "name": "item/bonemeal/bonemeal1",
-        "pitch": 1.0
-      },
-      {
-        "name": "item/bonemeal/bonemeal1",
-        "pitch": 1.1
-      },
-      {
-        "name": "item/bonemeal/bonemeal2",
-        "pitch": 0.9
-      },
-      {
-        "name": "item/bonemeal/bonemeal2",
-        "pitch": 1.0
-      },
-      {
-        "name": "item/bonemeal/bonemeal2",
-        "pitch": 1.1
-      },
-      {
-        "name": "item/bonemeal/bonemeal3",
-        "pitch": 0.9
-      },
-      {
-        "name": "item/bonemeal/bonemeal3",
-        "pitch": 1.0
-      },
-      {
-        "name": "item/bonemeal/bonemeal3",
-        "pitch": 1.1
-      },
-      {
-        "name": "item/bonemeal/bonemeal4",
-        "pitch": 0.9
-      },
-      {
-        "name": "item/bonemeal/bonemeal4",
-        "pitch": 1.0
-      },
-      {
-        "name": "item/bonemeal/bonemeal4",
-        "pitch": 1.1
-      },
-      {
-        "name": "item/bonemeal/bonemeal5",
-        "pitch": 0.9
-      },
-      {
-        "name": "item/bonemeal/bonemeal5",
-        "pitch": 1.0
-      },
-      {
-        "name": "item/bonemeal/bonemeal5",
-        "pitch": 1.1
-      }
+      "deeperdarker:item/transmitter/link"
+    ]
+  },
+  "item.transmitter.transmit": {
+    "subtitle": "subtitles.item.transmitter.transmit",
+    "sounds": [
+      "deeperdarker:item/transmitter/transmit"
     ]
   }
 }
