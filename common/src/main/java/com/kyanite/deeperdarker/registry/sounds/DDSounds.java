@@ -3,6 +3,9 @@ package com.kyanite.deeperdarker.registry.sounds;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDSoundType;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.SoundType;
@@ -79,12 +82,12 @@ public class DDSounds {
     public static final Supplier<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 
     // Dimension music
-    public static final Supplier<SoundEvent> DEEPLANDS_AMBIENCE = register("ambience.biome.deeplands");
-    public static final Supplier<SoundEvent> FOREST_AMBIENCE = register("ambience.biome.forest");
-    public static final Supplier<SoundEvent> OVERCAST_AMBIENCE = register("ambience.biome.overcast");
+    public static final Holder.Reference<SoundEvent> DEEPLANDS_AMBIENCE = registerForHolder(new ResourceLocation(DeeperAndDarker.MOD_ID, "ambience.biome.deeplands"));
+    public static final Holder.Reference<SoundEvent> FOREST_AMBIENCE = registerForHolder(new ResourceLocation(DeeperAndDarker.MOD_ID, "ambience.biome.forest"));
+    public static final Holder.Reference<SoundEvent> OVERCAST_AMBIENCE = registerForHolder(new ResourceLocation(DeeperAndDarker.MOD_ID, "ambience.biome.overcast"));
 
     // Dimension sound effects
-    public static final Supplier<SoundEvent> WARDEN_DREAMING = register("ambience.warden_dreaming");
+    public static final Holder.Reference<SoundEvent> WARDEN_DREAMING = registerForHolder(new ResourceLocation(DeeperAndDarker.MOD_ID, "ambience.warden_dreaming"));
 
     // Item
     public static final Supplier<SoundEvent> SCULK_MEAL_USE = register("item.sculk_meal.use");
@@ -94,6 +97,10 @@ public class DDSounds {
     }
 
     private static Supplier<SoundEvent> register(String name) {
-        return RegistryHelper.registerSound(name, () -> new SoundEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));
+        return RegistryHelper.registerSound(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperAndDarker.MOD_ID, name)));
+    }
+
+    private static Holder.Reference<SoundEvent> registerForHolder(ResourceLocation resourceLocation) {
+        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, resourceLocation, SoundEvent.createVariableRangeEvent(resourceLocation));
     }
 }

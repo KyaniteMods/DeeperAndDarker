@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.miscellaneous;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.MobType;
@@ -12,6 +12,6 @@ public class DDTypes {
     public static final TagKey<GameEvent> SHATTERED_CAN_LISTEN = createEventTag("shattered_can_listen");
 
     private static TagKey<GameEvent> createEventTag(String pName) {
-        return TagKey.create(Registry.GAME_EVENT_REGISTRY, new ResourceLocation(pName));
+        return TagKey.create(Registries.GAME_EVENT, new ResourceLocation(pName));
     }
 }

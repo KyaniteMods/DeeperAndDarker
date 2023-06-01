@@ -86,7 +86,7 @@ public class DDChestBoat extends DDBoat implements HasCustomInventoryScreen, Con
 
     @Override
     public InteractionResult interact(Player pPlayer, InteractionHand pHand) {
-        return this.canAddPassenger(pPlayer) && !pPlayer.isSecondaryUseActive() ? super.interact(pPlayer, pHand) : this.interactWithChestVehicle(this::gameEvent, pPlayer);
+        return this.canAddPassenger(pPlayer) && !pPlayer.isSecondaryUseActive() ? super.interact(pPlayer, pHand) : this.interactWithContainerVehicle(pPlayer);
     }
 
     @Override

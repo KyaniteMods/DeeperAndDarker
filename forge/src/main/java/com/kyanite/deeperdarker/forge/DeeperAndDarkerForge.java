@@ -8,6 +8,18 @@ import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraArmorStandLayer;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraLayer;
 import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorItem;
 import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorRenderer;
+import com.kyanite.deeperdarker.forge.datagen.advancements.DDAdvancementsProvider;
+import com.kyanite.deeperdarker.forge.datagen.lang.ENLanguageProvider;
+import com.kyanite.deeperdarker.forge.datagen.loot.DDLootTableProvider;
+import com.kyanite.deeperdarker.forge.datagen.models.DDBlockStateProvider;
+import com.kyanite.deeperdarker.forge.datagen.models.DDItemModelProvider;
+import com.kyanite.deeperdarker.forge.datagen.recipes.CraftingRecipesProvider;
+import com.kyanite.deeperdarker.forge.datagen.recipes.SmeltingRecipesProvider;
+import com.kyanite.deeperdarker.forge.datagen.recipes.StonecuttingRecipesProvider;
+import com.kyanite.deeperdarker.forge.datagen.tags.DDBlockTagsProvider;
+import com.kyanite.deeperdarker.forge.datagen.tags.DDEntityTypeTagsProvider;
+import com.kyanite.deeperdarker.forge.datagen.tags.DDItemTagsProvider;
+import com.kyanite.deeperdarker.forge.datagen.tags.DDStructureTagsProvider;
 import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
@@ -18,6 +30,7 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.paragon.api.ConfigManager;
+import net.minecraft.Util;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.Sheets;
@@ -26,6 +39,9 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -43,6 +59,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -56,7 +75,9 @@ import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
@@ -86,6 +107,36 @@ public class DeeperAndDarkerForge {
         bus.addListener(this::attributes);
 
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    public void generateData(final GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        PackOutput packOutput = generator.getPackOutput();
+        ExistingFileHelper fileHelper = event.getExistingFileHelper();
+
+        generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, CompletableFuture.supplyAsync(VanillaRegistries::createLookup, Util.backgroundExecutor()), fileHelper, List.of(new DDAdvancementsProvider())));
+
+        generator.addProvider(event.includeClient(), new ENLanguageProvider(packOutput, "en_us", false));
+        generator.addProvider(event.includeClient(), new ENLanguageProvider(packOutput, "en_ud", true));
+
+        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
+
+        generator.addProvider(event.includeClient(), new DDBlockStateProvider(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new DDItemModelProvider(packOutput, fileHelper));
+
+        generator.addProvider(event.includeServer(), new CraftingRecipesProvider(packOutput));
+        generator.addProvider(event.includeServer(), new SmeltingRecipesProvider(packOutput));
+//        generator.addProvider(event.includeServer(), new SmithingRecipesProvider(packOutput));
+        generator.addProvider(event.includeServer(), new StonecuttingRecipesProvider(packOutput));
+
+
+        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, event.getLookupProvider(), fileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, blockTags.contentsGetter(), fileHelper));
+        generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(packOutput, event.getLookupProvider(), fileHelper));
+        generator.addProvider(event.includeServer(), new DDStructureTagsProvider(packOutput, event.getLookupProvider(), fileHelper));
+
+//        generator.addProvider(event.includeServer(), new DDWorldGen(packOutput, event.getLookupProvider()));
     }
 
     public void attributes(EntityAttributeCreationEvent event) {

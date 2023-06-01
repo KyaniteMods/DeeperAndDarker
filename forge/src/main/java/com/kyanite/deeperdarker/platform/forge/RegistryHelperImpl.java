@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.platform.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -10,14 +10,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -37,10 +36,10 @@ public class RegistryHelperImpl {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, DeeperAndDarker.MOD_ID);
-    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registry.BIOME_REGISTRY, DeeperAndDarker.MOD_ID);
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registries.BIOME, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registries.CONFIGURED_FEATURE, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<PoiType> POI = DeferredRegister.create(ForgeRegistries.POI_TYPES, DeeperAndDarker.MOD_ID);
-    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registries.PLACED_FEATURE, DeeperAndDarker.MOD_ID);
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
@@ -55,7 +54,7 @@ public class RegistryHelperImpl {
     }
 
     public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
-        ResourceKey<Biome> biome = ResourceKey.create(Registry.BIOME_REGISTRY, biomeLocation);
+        ResourceKey<Biome> biome = ResourceKey.create(Registries.BIOME, biomeLocation);
         return BIOMES.register(biome.location().getPath(), biomeConsumer);
     }
 
@@ -83,15 +82,6 @@ public class RegistryHelperImpl {
         return PLACED_FEATURES.register(name, placedFeature);
     }
 
-    public static <T extends CreativeModeTab> T registerCreativeModeTab(Supplier<ItemStack> icon) {
-        return (T) new CreativeModeTab(DeeperAndDarker.MOD_ID) {
-            @Override
-            public ItemStack makeIcon() {
-                return icon.get();
-            }
-        };
-    }
-
     public static <T extends Enchantment> Supplier<T> registerEnchant(String name, Supplier<T> enchantment) {
         return ENCHANTMENTS.register(name, enchantment);
     }
@@ -104,7 +94,7 @@ public class RegistryHelperImpl {
         return POI.register(name, portal);
     }
 
-    public static WoodType registerWoodType(String name) {
-        return WoodType.register(WoodType.create(new ResourceLocation(DeeperAndDarker.MOD_ID, name).toString()));
+    public static WoodType registerWoodType(String name, BlockSetType blockType) {
+        return WoodType.register(new WoodType(name, blockType));
     }
 }

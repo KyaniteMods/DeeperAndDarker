@@ -9,7 +9,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -190,7 +189,7 @@ public class ShriekProjectile extends AbstractArrow {
         if(!level.isClientSide) {
             entityHitResult.getEntity().playSound(SoundEvents.SCULK_SHRIEKER_SHRIEK, 3, 1);
             if(entityHitResult.getEntity() instanceof LivingEntity living) {
-                living.hurt(DamageSource.MAGIC, DDConfig.TRANSMITTER_DAMAGE.get().floatValue());
+                living.hurt(living.damageSources().magic(), DDConfig.TRANSMITTER_DAMAGE.get().floatValue());
                 if(living.getHealth() <= 0) {
                     living.skipDropExperience();
                     if(getOwner() instanceof Player player) {

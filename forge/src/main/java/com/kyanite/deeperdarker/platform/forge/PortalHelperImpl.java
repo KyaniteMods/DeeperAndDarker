@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.platform.forge;
 
 import com.kyanite.deeperdarker.forge.DeepHeartItem;
 import com.kyanite.deeperdarker.forge.OthersidePortalBlock;
-import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
@@ -17,6 +16,6 @@ public class PortalHelperImpl {
     }
 
     public static <T extends Item> Supplier<T> getHeartItem() {
-        return () -> (T) new DeepHeartItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+        return () -> (T) new DeepHeartItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     }
 }

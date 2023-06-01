@@ -39,7 +39,7 @@ public class WardenArmorRenderer extends GeoArmorRenderer<WardenArmorItem> {
     @Override
     public void render(float partialTicks, PoseStack stack, VertexConsumer bufferIn, int packedLightIn) {
         super.render(partialTicks, stack, bufferIn, packedLightIn);
-        IBone waistBone = getAndHideBone("armorWaist");
-        waistBone.setHidden(armorSlot != EquipmentSlot.LEGS);
+        setBoneVisibility("armorWaist", false);
+        getGeoModelProvider().getBone("armorWaist").setHidden(armorSlot != EquipmentSlot.LEGS);
     }
 }

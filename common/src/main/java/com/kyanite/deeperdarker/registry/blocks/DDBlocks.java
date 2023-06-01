@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
@@ -47,7 +46,8 @@ public class DDBlocks {
     public static final Supplier<SlabBlock> ECHO_SLAB = registerBlock("echo_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<FenceBlock> ECHO_FENCE = registerBlock("echo_fence", true, () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<StairBlock> ECHO_STAIRS = registerBlock("echo_stairs", true, () -> new StairBlock(ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
-    public static final Supplier<ButtonBlock> ECHO_BUTTON = registerBlock("echo_button", true, () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
+    public static final Supplier<ButtonBlock> ECHO_BUTTON = registerBlock("echo_button", true, () -> new ButtonBlock());
+    public static final Supplier<ButtonBlock> ECHO_BUTTON = registerBlock("echo_button", true, () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final Supplier<PressurePlateBlock> ECHO_PRESSURE_PLATE = registerBlock("echo_pressure_plate", true, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE)));
     public static final Supplier<DoorBlock> ECHO_DOOR = registerBlock("echo_door", true, () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR)));
     public static final Supplier<TrapDoorBlock> ECHO_TRAPDOOR = registerBlock("echo_trapdoor", true, () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
@@ -177,7 +177,7 @@ public class DDBlocks {
     public static <T extends Block> Supplier<T> registerBlock(String name, boolean createItem, Supplier<T> block) {
         Supplier<T> toReturn = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, (Supplier<Block>) toReturn);
-        if(createItem) RegistryHelper.registerItem(name, () -> new BlockItem(toReturn.get(), new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
+        if(createItem) RegistryHelper.registerItem(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
 
@@ -185,7 +185,7 @@ public class DDBlocks {
     public static <T extends Block> Supplier<T> registerSign(String name, Supplier<T> block, Supplier<WallSignBlock> wallBlock) {
         Supplier<T> standing = RegistryHelper.registerBlock(name, block);
         BLOCKS.put(name, (Supplier<Block>) standing);
-        RegistryHelper.registerItem(name, () -> new SignItem(new Item.Properties().stacksTo(16).tab(DDCreativeModeTab.DD_TAB), standing.get(), wallBlock.get()));
+        RegistryHelper.registerItem(name, () -> new SignItem(new Item.Properties().stacksTo(16), standing.get(), wallBlock.get()));
         return standing;
     }
 

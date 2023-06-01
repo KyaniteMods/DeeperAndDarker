@@ -5,7 +5,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -37,7 +36,7 @@ public class GeyserBlock extends Block {
     }
 
     private void bounceUp(Entity pEntity, BlockPos pos) {
-        pEntity.hurt(DamageSource.GENERIC, 2);
+        pEntity.hurt(pEntity.level.damageSources().generic(), 2);
         if(pEntity instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 125, 1, true, false, false));
         }

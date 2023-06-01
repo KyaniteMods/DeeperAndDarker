@@ -4,8 +4,8 @@ import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SculkBehaviour;
 import net.minecraft.world.level.block.SculkBlock;
@@ -17,8 +17,8 @@ public class GloomSculkBlock extends SculkBlock implements BonemealableBlock, Sc
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
-        return pLevel.getBlockState(pPos.above()).isAir();
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+        return levelReader.getBlockState(blockPos.above()).isAir();
     }
 
     @Override

@@ -34,19 +34,17 @@ public class MerchantScreenMixin extends AbstractContainerScreen<MerchantMenu> {
         RenderSystem.setShaderTexture(0, this.title.contains(Component.translatable("entity.deeperdarker.echoer")) ? new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/gui/echoer_ui.png") : VILLAGER_LOCATION);
         int k = (this.width - this.imageWidth) / 2;
         int l = (this.height - this.imageHeight) / 2;
-        blit(poseStack, k, l, this.getBlitOffset(), 0.0F, 0.0F, this.imageWidth, this.imageHeight, 512, 256);
-        MerchantOffers merchantOffers = ((MerchantMenu) this.menu).getOffers();
+        blit(poseStack, k, l, 0, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 512, 256);
+        MerchantOffers merchantOffers = this.menu.getOffers();
         if (!merchantOffers.isEmpty()) {
             int m = this.shopItem;
-            if (m < 0 || m >= merchantOffers.size()) {
-                return;
-            }
+            if (m < 0 || m >= merchantOffers.size()) return;
 
-            MerchantOffer merchantOffer = (MerchantOffer) merchantOffers.get(m);
+            MerchantOffer merchantOffer = merchantOffers.get(m);
             if (merchantOffer.isOutOfStock()) {
                 RenderSystem.setShaderTexture(0, this.title.contains(Component.translatable("entity.deeperdarker.echoer")) ? new ResourceLocation(DeeperAndDarker.MOD_ID, "textures/gui/echoer_ui.png") : VILLAGER_LOCATION);
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                blit(poseStack, this.leftPos + 83 + 99, this.topPos + 35, this.getBlitOffset(), 311.0F, 0.0F, 28, 21, 512, 256);
+                blit(poseStack, this.leftPos + 83 + 99, this.topPos + 35, 0, 311.0F, 0.0F, 28, 21, 512, 256);
             }
         }
     }

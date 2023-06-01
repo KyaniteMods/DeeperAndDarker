@@ -3,23 +3,25 @@ package com.kyanite.deeperdarker.forge.datagen.tags;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
 
 public class DDBlockTagsProvider extends BlockTagsProvider {
-    public DDBlockTagsProvider(DataGenerator pGenerator, ExistingFileHelper pExistingFileHelper) {
-        super(pGenerator, DeeperAndDarker.MOD_ID, pExistingFileHelper);
+    public DDBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, DeeperAndDarker.MOD_ID, existingFileHelper);
     }
-
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider arg) {
         tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get(), DDBlocks.GLOOM_SCULK.get(), DDBlocks.GEYSER.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.CRYSTALLIZED_AMBER.get(), DDBlocks.ANCIENT_VASE.get(),
@@ -99,11 +101,5 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.STRIPPED_WOOD).add(Blocks.STRIPPED_OAK_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, Blocks.STRIPPED_BIRCH_WOOD, Blocks.STRIPPED_JUNGLE_WOOD, Blocks.STRIPPED_ACACIA_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD, Blocks.STRIPPED_CRIMSON_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE);
         tag(DDTags.Blocks.WOOD).add(Blocks.OAK_WOOD, Blocks.SPRUCE_WOOD, Blocks.BIRCH_WOOD, Blocks.JUNGLE_WOOD, Blocks.ACACIA_WOOD, Blocks.DARK_OAK_WOOD, Blocks.CRIMSON_HYPHAE, Blocks.WARPED_HYPHAE);
         tag(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE).add(DDBlocks.GLOOM_SCULK.get(), DDBlocks.GLOOMSLATE.get(), DDBlocks.SCULK_STONE.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.ECHO_SOIL.get(), Blocks.STONE, Blocks.DEEPSLATE, Blocks.SCULK);
-    }
-
-    @NotNull
-    @Override
-    public String getName() {
-        return "Block Tags";
     }
 }

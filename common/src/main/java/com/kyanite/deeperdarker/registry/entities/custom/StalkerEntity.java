@@ -79,11 +79,12 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     private static final TargetingConditions ITEM_TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D);
     public BlockPos disturbanceLocation = null;
 
-    public DamageSource damageSource = new DamageSource("ring");
+    // TODO: figure out damage types
+//    public DamageSource damageSource = new DamageSource("ring");
 
     public StalkerEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this, null, 0.0F, 0));
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this));
         this.xpReward = 45;
         this.getNavigation().setCanFloat(true);
         this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0.0F);
@@ -171,7 +172,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                             this.bossEvent.addPlayer((ServerPlayer) player);
 
                         if(getCurrentState() == RING) {
-                            livingEntity.hurt(damageSource, 0.8f);
+                            livingEntity.hurt(livingEntity.level.damageSources().magic(), 0.8f);
                             livingEntity.knockback(0.2f, 1, 1);
                         }
                     }
@@ -180,7 +181,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                     if(!player.isDeadOrDying()) {
                         this.bossEvent.addPlayer((ServerPlayer) player);
                         if(getCurrentState() == RING) {
-                            player.hurt(damageSource, 1.4f);
+                            player.hurt(player.level.damageSources().magic(), 1.4f);
                             player.knockback(0.2f, -0.4f, -0.4f);
                         }
                     }
