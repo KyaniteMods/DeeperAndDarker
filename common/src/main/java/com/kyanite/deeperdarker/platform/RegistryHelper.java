@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.platform;
 
+import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -36,6 +37,11 @@ public class RegistryHelper {
 
     @ExpectPlatform
     public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T extends DDBoatItem> Supplier<T> registerBoatItem(String name, Supplier<T> item) {
         throw new AssertionError();
     }
 

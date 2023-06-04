@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.platform.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
+import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -51,6 +52,10 @@ public class RegistryHelperImpl {
     }
 
     public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        return ITEMS.register(name, item);
+    }
+
+    public static <T extends DDBoatItem> Supplier<T> registerBoatItem(String name, Supplier<T> item) {
         return ITEMS.register(name, item);
     }
 

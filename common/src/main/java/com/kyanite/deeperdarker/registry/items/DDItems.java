@@ -14,6 +14,7 @@ import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;
 
+import static com.kyanite.deeperdarker.platform.RegistryHelper.registerBoatItem;
 import static com.kyanite.deeperdarker.platform.RegistryHelper.registerItem;
 
 public class DDItems {
@@ -42,8 +43,8 @@ public class DDItems {
     public static final Supplier<Item> SCULK_CENTIPEDE_SPAWN_EGG = registerItem("sculk_centipede_spawn_egg", () -> new SpawnEggItem(DDEntities.SCULK_CENTIPEDE.get(), 0x1a2340, 0xded697, new Item.Properties().tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> STALKER_SPAWN_EGG = registerItem("stalker_spawn_egg", () -> new SpawnEggItem(DDEntities.STALKER.get(), 0x172226, 0x6abdd9, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> ECHOER_SPAWN_EGG = registerItem("echoer_spawn_egg", () -> new SpawnEggItem(DDEntities.ECHOER.get(), 0x1a2340, 0xded697, (new Item.Properties()).tab(DDCreativeModeTab.DD_TAB)));
-    public static final Supplier<Item> ECHO_BOAT = registerItem("echo_boat", () -> new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> ECHO_CHEST_BOAT = registerItem("echo_chest_boat", () -> new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<DDBoatItem> ECHO_BOAT = registerBoatItem("echo_boat", () -> new DDBoatItem(false, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<DDBoatItem> ECHO_CHEST_BOAT = registerItem("echo_chest_boat", () -> new DDBoatItem(true, DDBoat.Type.ECHO, new Item.Properties().tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> WARDEN_SWORD = registerItem("warden_sword", () -> new SwordItem(DDTiers.WARDEN, 2, -2.4F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> WARDEN_SHOVEL = registerItem("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, 1.2F, -3.0F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
     public static final Supplier<Item> WARDEN_PICKAXE = registerItem("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, 1, -2.8F, new Item.Properties().fireResistant().rarity(Rarity.EPIC).tab(DDCreativeModeTab.DD_TAB)));
