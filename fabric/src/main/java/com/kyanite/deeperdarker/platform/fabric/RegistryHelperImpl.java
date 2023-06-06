@@ -2,6 +2,8 @@ package com.kyanite.deeperdarker.platform.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.fabric.mixin.WoodTypeAccessor;
+import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.core.Registry;
@@ -44,6 +46,11 @@ public class RegistryHelperImpl {
         return () -> registry;
     }
 
+
+    public static <T extends DDBoatItem> Supplier<T> registerBoatItem(String name, Supplier<T> item) {
+        T registery = Registry.register(Registry.ITEM, new ResourceLocation(DeeperAndDarker.MOD_ID, name), item.get());
+        return () -> registery;
+    }
     public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
         T registry = Registry.register(BuiltinRegistries.BIOME, biomeLocation, biomeConsumer.get());
         return () -> registry;

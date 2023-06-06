@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.registry.entities.custom;
 
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.items.DDItems;
+import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -11,8 +12,10 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.slf4j.Logger;
 
 import java.util.function.Supplier;
 
@@ -75,10 +78,10 @@ public class DDBoat extends Boat {
         ECHO("echo", DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
 
         private final String name;
-        private final Supplier<Item> item;
-        private final Supplier<Item> chestItem;
+        private final Supplier<DDBoatItem> item;
+        private final Supplier<DDBoatItem> chestItem;
 
-        Type(String name, Supplier<Item> boatItem, Supplier<Item> chestBoatItem) {
+        Type(String name, Supplier<DDBoatItem> boatItem, Supplier<DDBoatItem> chestBoatItem) {
             this.name = name;
             this.item = boatItem;
             this.chestItem = chestBoatItem;
@@ -110,11 +113,16 @@ public class DDBoat extends Boat {
         }
 
         public Item getItem() {
-            return item.get();
+            if(this.item != null) {
+                return item.get();
+            }
+            return this.name.equals("echo") ? DDItems.ECHO_BOAT.get() : Items.AIR;
         }
 
         public Item getChestItem() {
-            return chestItem.get();
+            if(this.chestItem != null)
+                return chestItem.get();
+            return this.name.equals("echo") ? DDItems.ECHO_CHEST_BOAT.get() : Items.AIR;
         }
     }
 }
