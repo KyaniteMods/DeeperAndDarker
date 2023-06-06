@@ -104,6 +104,7 @@ public class DeeperAndDarkerForge {
         DDPoiTypes.POI.register(bus);
         RegistryHelperImpl.BLOCK_ENTITIES.register(bus);
 
+        bus.addListener(this::generateData);
         bus.addListener(this::attributes);
 
         MinecraftForge.EVENT_BUS.register(this);
