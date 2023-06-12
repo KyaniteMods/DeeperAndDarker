@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.forge.datagen.loot;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.data.loot.ChestLoot;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
@@ -17,12 +17,12 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.function.BiConsumer;
 
-public class DDChestLoot extends ChestLoot {
+public class DDChestLoot implements LootTableSubProvider {
     public static final ResourceLocation ANCIENT_TEMPLE = new ResourceLocation(DeeperAndDarker.MOD_ID, "chests/ancient_temple");
     public static final ResourceLocation ANCIENT_TEMPLE_PORTAL = new ResourceLocation(DeeperAndDarker.MOD_ID, "chests/ancient_temple_portal");
 
     @Override
-    public void accept(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
+    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
         consumer.accept(ANCIENT_TEMPLE, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 10))
                         .add(LootItem.lootTableItem(Items.DIAMOND_HOE).setWeight(2).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5f, 0.9f))).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 50)).allowTreasure()))

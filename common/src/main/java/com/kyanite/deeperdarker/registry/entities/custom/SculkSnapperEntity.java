@@ -7,7 +7,7 @@ import com.kyanite.deeperdarker.registry.entities.custom.ai.CustomAttackAnimMele
 import com.kyanite.deeperdarker.registry.particle.DDParticleUtils;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -72,7 +72,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
     @Override
     protected void reassessTameGoals() {
         super.reassessTameGoals();
-        this.goalSelector.removeAllGoals();
+        this.goalSelector.removeAllGoals(goal -> true);
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 0.3F, 10.0F, 2.0F, false));
         this.goalSelector.addGoal(3, new CustomAttackAnimMelee(this, 0.4F, true, 12, 4, MOUTH_OPEN));
@@ -133,7 +133,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
         if(this.isTame() && this.getOwner() != null) {
             if(this.getOwner().distanceTo(this) < 13 && this.getRandom().nextInt(0, 1100) == 0) {
-                List<Enchantment> enchantments = Registry.ENCHANTMENT.stream().toList();
+                List<Enchantment> enchantments = (List<Enchantment>) Registries.ENCHANTMENT;
                 int randomIndex = this.getRandom().nextInt(enchantments.size());
                 Enchantment randomEnchantment = enchantments.get(randomIndex);
                 EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, 1);
@@ -284,7 +284,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             setState(IDLE);
             return;
         }
-        BlockPos pos = new BlockPos(lookAngle.x * 2.5F + getTarget().position().x, lookAngle.y * 2.5F + getTarget().position().y, lookAngle.z * 2.5F + getTarget().position().z);
+        BlockPos pos = new BlockPos((int) (lookAngle.x * 2.5 + getTarget().position().x), (int) (lookAngle.y * 2.5 + getTarget().position().y), (int) (lookAngle.z * 2.5 + getTarget().position().z));
         digTo(pos);
     }
 

@@ -20,16 +20,13 @@ import javax.annotation.Nullable;
 public class VibrationListenerMixin {
     @Shadow
     @Nullable
-    protected VibrationListener.ReceivingEvent receivingEvent;
+    protected VibrationListener receivingEvent;
 
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
-    public void handle(ServerLevel level, GameEvent.Message message, CallbackInfoReturnable<? super Boolean> cir) {
-        if(message.context().sourceEntity() instanceof LivingEntity entity && message.gameEvent().equals(GameEvent.STEP) && entity.getItemBySlot(EquipmentSlot.FEET).getItem().equals(DDItems.WARDEN_BOOTS.get())) cir.setReturnValue(false);
-
-        if(message.context().sourceEntity() instanceof LivingEntity entity && entity.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
-
-        if(message.context().sourceEntity() instanceof LivingEntity entity && entity.getType().is(DDTags.Entities.SCULK)) cir.setReturnValue(false);
-
-        if(receivingEvent != null || message.context().sourceEntity() == null || message.context() == null) cir.setReturnValue(false);
+    public void handle(ServerLevel level, GameEvent.Context message, CallbackInfoReturnable<? super Boolean> cir) {
+        if(message.sourceEntity() instanceof LivingEntity entity && message.equals(GameEvent.STEP) && entity.getItemBySlot(EquipmentSlot.FEET).getItem().equals(DDItems.WARDEN_BOOTS.get())) cir.setReturnValue(false);
+        if(message.sourceEntity() instanceof LivingEntity entity && entity.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
+        if(message.sourceEntity() instanceof LivingEntity entity && entity.getType().is(DDTags.Entities.SCULK)) cir.setReturnValue(false);
+        if(receivingEvent != null || message.sourceEntity() == null || message == null) cir.setReturnValue(false);
     }
 }

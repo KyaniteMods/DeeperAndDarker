@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.fabric;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import net.fabricmc.api.ModInitializer;
@@ -10,7 +9,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -31,7 +30,7 @@ import java.util.Map;
 
 public class DeeperAndDarkerFabric implements ModInitializer {
     public static OthersidePortalBlock PORTAL_BLOCK = new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).lightLevel(state -> 5).noLootTable());
-    public static Item HEART = new Item(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+    public static Item HEART = new Item(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
 
     @Override
     public void onInitialize() {
@@ -56,7 +55,7 @@ public class DeeperAndDarkerFabric implements ModInitializer {
             BiomeModifications.addFeature(
                     BiomeSelectors.includeByKey(Biomes.DEEP_DARK),
                     GenerationStep.Decoration.VEGETAL_DECORATION,
-                    ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, new ResourceLocation(DeeperAndDarker.MOD_ID, "sculk_tendrils")));
+                    ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, "sculk_tendrils")));
 
             ComposterBlock.COMPOSTABLES.put(DDBlocks.ECHO_LEAVES.get().asItem(), 0.3f);
             ComposterBlock.COMPOSTABLES.put(DDBlocks.SCULK_VINES.get().asItem(), 0.5f);

@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.forge.datagen.lang;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.platform.forge.RegistryHelperImpl;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -19,8 +19,8 @@ public class ENLanguageProvider extends LanguageProvider {
     private static final String UPSIDE_DOWN_CHARS = " ɐqɔpǝɟbɥıظʞןɯuodbɹsʇnʌʍxʎzⱯᗺƆᗡƎℲ⅁HIſʞꞀWNOԀὉᴚS⟘∩ΛMXʎZ0ƖᄅƐㄣϛ9ㄥ86‾'؛˙¿¡/\\,";
     private final boolean upsideDown;
 
-    public ENLanguageProvider(DataGenerator pGenerator, String locale, boolean upsideDown) {
-        super(pGenerator, DeeperAndDarker.MOD_ID, locale);
+    public ENLanguageProvider(PackOutput output, String locale, boolean upsideDown) {
+        super(output, DeeperAndDarker.MOD_ID, locale);
         this.upsideDown = upsideDown;
     }
 

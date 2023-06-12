@@ -4,44 +4,56 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.paragon.api.ConfigOption;
+import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public enum DDArmorMaterials implements ArmorMaterial {
-    WARDEN("warden", DDConfig.WARDEN_ARMOR_DURABILITY, new int[]{3, 6, 8, 3}, 21, SoundEvents.SCULK_BLOCK_PLACE, DDConfig.WARDEN_ARMOR_TOUGHNESS, DDConfig.WARDEN_ARMOR_KNOCKBACK_RESISTANCE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
+    WARDEN("warden", DDConfig.WARDEN_ARMOR_DURABILITY, Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
+        enumMap.put(ArmorItem.Type.BOOTS, 3);
+        enumMap.put(ArmorItem.Type.LEGGINGS, 6);
+        enumMap.put(ArmorItem.Type.CHESTPLATE, 8);
+        enumMap.put(ArmorItem.Type.HELMET, 3);
+    }), 21, SoundEvents.SCULK_BLOCK_PLACE, DDConfig.WARDEN_ARMOR_TOUGHNESS, DDConfig.WARDEN_ARMOR_KNOCKBACK_RESISTANCE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
 
-    private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
+    private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
+        enumMap.put(ArmorItem.Type.BOOTS, 13);
+        enumMap.put(ArmorItem.Type.LEGGINGS, 15);
+        enumMap.put(ArmorItem.Type.CHESTPLATE, 16);
+        enumMap.put(ArmorItem.Type.HELMET, 11);
+    });
     private final String name;
     private final ConfigOption<Integer> durabilityMultiplier;
-    private final int[] slotProtections;
+    private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
     private final int enchantmentValue;
     private final SoundEvent sound;
-    private final ConfigOption<Double> toughness;
-    private final ConfigOption<Double> knockbackResistance;
+    private final ConfigOption<Float> toughness;
+    private final ConfigOption<Float> knockbackResistance;
     private final Supplier<Ingredient> repairIngredient;
 
-    DDArmorMaterials(String name, ConfigOption<Integer> durability, int[] protection, int enchantment, SoundEvent event, ConfigOption<Double> tough, ConfigOption<Double> knockback, Supplier<Ingredient> ingredient) {
+    DDArmorMaterials(String name, ConfigOption<Integer> durability, EnumMap<ArmorItem.Type, Integer> slotProtections, int enchantmentValue, SoundEvent soundEvent, ConfigOption<Float> toughness, ConfigOption<Float> knockbackResistance, Supplier<Ingredient> ingredient) {
         this.name = name;
         this.durabilityMultiplier = durability;
-        this.slotProtections = protection;
-        this.enchantmentValue = enchantment;
-        this.sound = event;
-        this.toughness = tough;
-        this.knockbackResistance = knockback;
+        this.protectionFunctionForType = slotProtections;
+        this.enchantmentValue = enchantmentValue;
+        this.sound = soundEvent;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
         this.repairIngredient = ingredient;
     }
 
-    public int getDurabilityForSlot(EquipmentSlot pSlot) {
-        return HEALTH_PER_SLOT[pSlot.getIndex()] * this.durabilityMultiplier.get();
+    public int getDurabilityForType(ArmorItem.Type type) {
+        return HEALTH_FUNCTION_FOR_TYPE.get(type) * this.durabilityMultiplier.get();
     }
 
-    public int getDefenseForSlot(EquipmentSlot pSlot) {
-        return this.slotProtections[pSlot.getIndex()];
+    public int getDefenseForType(ArmorItem.Type type) {
+        return this.protectionFunctionForType.get(type);
     }
 
     public int getEnchantmentValue() {

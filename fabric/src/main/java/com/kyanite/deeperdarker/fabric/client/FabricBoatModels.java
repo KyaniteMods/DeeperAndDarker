@@ -20,8 +20,8 @@ public class FabricBoatModels {
         if(isInitialized) return;
         isInitialized = true;
 
-        DDBoatModels.boat = addModel("boat", () -> BoatModel.createBodyModel(false), r -> new BoatModel(r, false));
-        DDBoatModels.boatChest = addModel("boat_chest", () -> BoatModel.createBodyModel(true), r -> new BoatModel(r, true));
+        DDBoatModels.boat = addModel("boat", BoatModel::createBodyModel, BoatModel::new);
+        DDBoatModels.boatChest = addModel("boat_chest", BoatModel::createBodyModel, BoatModel::new);
     }
 
     private static ModelLayerLocation addModel(String name, Supplier<LayerDefinition> supplier, Function<ModelPart, EntityModel<?>> modelConstructor) {

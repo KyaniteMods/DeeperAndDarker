@@ -111,7 +111,7 @@ public class SculkMealItem extends Item {
                 double l = (double)blockPos.getX() + k + randomSource.nextDouble() * d * 2.0;
                 double m = (double)blockPos.getY() + randomSource.nextDouble() * e;
                 double n = (double)blockPos.getZ() + k + randomSource.nextDouble() * d * 2.0;
-                if (!levelAccessor.getBlockState((new BlockPos(l, m, n)).below()).isAir()) {
+                if (!levelAccessor.getBlockState((new BlockPos((int) l, (int) m, (int) n)).below()).isAir()) {
                     levelAccessor.addParticle(ParticleTypes.HAPPY_VILLAGER, l, m, n, f, g, h);
                 }
             }

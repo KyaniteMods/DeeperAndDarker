@@ -2,10 +2,12 @@ package com.kyanite.deeperdarker.forge.datagen.loot;
 
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -20,23 +22,32 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Set;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class    DDBlockLoot extends BlockLoot {
+public class DDBlockLoot extends BlockLootSubProvider {
+    private static final Set<Item> EXPLOSION_RESISTANT = Stream.of(Blocks.DRAGON_EGG, Blocks.BEACON, Blocks.CONDUIT, Blocks.SKELETON_SKULL, Blocks.WITHER_SKELETON_SKULL, Blocks.PLAYER_HEAD, Blocks.ZOMBIE_HEAD, Blocks.CREEPER_HEAD, Blocks.DRAGON_HEAD, Blocks.PIGLIN_HEAD, Blocks.SHULKER_BOX, Blocks.BLACK_SHULKER_BOX, Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.GRAY_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.LIGHT_GRAY_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.PINK_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.WHITE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX).map(ItemLike::asItem).collect(Collectors.toSet());
+
+    protected DDBlockLoot() {
+        super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags());
+    }
+
     @Override
-    protected void addTables() {
+    protected void generate() {
         this.dropSelf(DDBlocks.ECHO_PLANKS.get());
         this.dropSelf(DDBlocks.ECHO_LOG.get());
         this.dropSelf(DDBlocks.STRIPPED_ECHO_LOG.get());
         this.dropSelf(DDBlocks.STRIPPED_ECHO_WOOD.get());
         this.dropSelf(DDBlocks.ECHO_WOOD.get());
         this.add(DDBlocks.ECHO_LEAVES.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK)).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.5f))));
-        this.add(DDBlocks.ECHO_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.ECHO_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.ECHO_FENCE.get());
         this.dropSelf(DDBlocks.ECHO_STAIRS.get());
         this.dropSelf(DDBlocks.ECHO_BUTTON.get());
         this.dropSelf(DDBlocks.ECHO_PRESSURE_PLATE.get());
-        this.add(DDBlocks.ECHO_DOOR.get(), BlockLoot::createDoorTable);
+        this.add(DDBlocks.ECHO_DOOR.get(), this::createDoorTable);
         this.dropSelf(DDBlocks.ECHO_TRAPDOOR.get());
         this.dropSelf(DDBlocks.ECHO_FENCE_GATE.get());
         this.dropSelf(DDBlocks.ECHO_SIGN.get());
@@ -45,43 +56,43 @@ public class    DDBlockLoot extends BlockLoot {
         this.dropSelf(DDBlocks.ECHO_SOIL.get());
         this.add(DDBlocks.SCULK_GRIME.get(), (arg) -> createSingleItemTableWithSilkTouch(arg, DDItems.GRIME_BALL.get(), ConstantValue.exactly(4.0F)));
         this.dropSelf(DDBlocks.GRIME_BRICKS.get());
-        this.add(DDBlocks.GRIME_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.GRIME_BRICK_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.GRIME_BRICK_STAIRS.get());
         this.dropSelf(DDBlocks.GRIME_BRICK_WALL.get());
 
 
         this.add(DDBlocks.SCULK_STONE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
-        this.add(DDBlocks.SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_WALL.get());
 
         this.dropSelf(DDBlocks.COBBLED_SCULK_STONE.get());
-        this.add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.COBBLED_SCULK_STONE_WALL.get());
 
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE.get());
-        this.add(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.POLISHED_SCULK_STONE_WALL.get());
 
         this.dropSelf(DDBlocks.SCULK_STONE_BRICKS.get());
-        this.add(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
 
         this.dropSelf(DDBlocks.SCULK_STONE_TILES.get());
-        this.add(DDBlocks.SCULK_STONE_TILE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.SCULK_STONE_TILE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.SCULK_STONE_TILE_STAIRS.get());
         this.dropSelf(DDBlocks.SCULK_STONE_TILE_WALL.get());
 
         this.dropSelf(DDBlocks.SMOOTH_SCULK_STONE.get());
-        this.add(DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.SMOOTH_SCULK_STONE_WALL.get());
 
         this.dropSelf(DDBlocks.CUT_SCULK_STONE.get());
-        this.add(DDBlocks.CUT_SCULK_STONE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.CUT_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.CUT_SCULK_STONE_STAIRS.get());
         this.dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
 
@@ -106,53 +117,53 @@ public class    DDBlockLoot extends BlockLoot {
         this.dropWhenSilkTouch(DDBlocks.GEYSER.get());
         this.dropSelf(DDBlocks.GLOOM_CACTUS.get());
         this.dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
-        this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLoot::createShearsOnlyDrop);
+        this.add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
 
         this.add(DDBlocks.GLOOMSLATE.get(), (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
-        this.add(DDBlocks.GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.GLOOMSLATE_WALL.get());
 
         this.dropSelf(DDBlocks.COBBLED_GLOOMSLATE.get());
-        this.add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.COBBLED_GLOOMSLATE_WALL.get());
 
         this.dropSelf(DDBlocks.POLISHED_GLOOMSLATE.get());
-        this.add(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.POLISHED_GLOOMSLATE_WALL.get());
 
         this.dropSelf(DDBlocks.GLOOMSLATE_BRICKS.get());
-        this.add(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
         this.dropSelf(DDBlocks.GLOOMSLATE_BRICK_WALL.get());
 
         this.dropSelf(DDBlocks.GLOOMSLATE_TILES.get());
-        this.add(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
         this.dropSelf(DDBlocks.GLOOMSLATE_TILE_WALL.get());
 
         this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE.get());
-        this.add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
 
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE.get());
-        this.add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), BlockLoot::createSlabItemTable);
+        this.add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         this.dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
 
         this.dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         this.add(DDBlocks.ANCIENT_VASE.get(), DDBlockLoot::ancientVaseDrop);
-        //this.dropSelf(DDBlocks.ANCIENT_CHEST.get());
-        //this.dropSelf(DDBlocks.DEEPSLATE_CHEST.get());
+//        this.dropSelf(DDBlocks.ANCIENT_CHEST.get());
+//        this.dropSelf(DDBlocks.DEEPSLATE_CHEST.get());
 
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
     }
 
-    private static LootTable.Builder sculkOreDrop(Block block, Item item) {
+    private LootTable.Builder sculkOreDrop(Block block, Item item) {
         return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 

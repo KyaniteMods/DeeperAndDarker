@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.forge.datagen.models;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -16,8 +16,8 @@ public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
     private final ModelFile HANDHELD = getExistingFile(mcLoc("item/handheld"));
 
-    public DDItemModelProvider(DataGenerator pGenerator, ExistingFileHelper pExistingFileHelper) {
-        super(pGenerator, DeeperAndDarker.MOD_ID, pExistingFileHelper);
+    public DDItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
+        super(output, DeeperAndDarker.MOD_ID, existingFileHelper);
     }
 
     @Override

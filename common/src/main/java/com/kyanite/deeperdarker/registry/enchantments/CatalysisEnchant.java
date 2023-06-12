@@ -3,9 +3,9 @@ package com.kyanite.deeperdarker.registry.enchantments;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,14 +26,15 @@ public class CatalysisEnchant extends Enchantment {
         if(entity instanceof LivingEntity living) {
             if(living.isDeadOrDying()) {
                 SculkSpreader sculkSpreader = SculkSpreader.createLevelSpreader();
-                sculkSpreader.addCursors(new BlockPos(living.position().relative(Direction.UP, 0.5)), 20);
+//                sculkSpreader.addCursors(new BlockPos(living.position().relative(Direction.UP, 0.5)), 20);
+                sculkSpreader.addCursors(new BlockPos(new Vec3i((int) (living.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (living.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (living.position().z + 0.5 * Direction.UP.getNormal().getZ()))), 20);
                 for (int i2 = 0; i2 < 10; i2++) {
                     sculkSpreader.updateCursors(living.level, living.blockPosition(), living.getRandom(), true);
                 }
                 living.skipDropExperience();
                 living.level.setBlock(living.blockPosition(), Blocks.SCULK_CATALYST.defaultBlockState(), 3);
                 SculkCatalystBlock.bloom((ServerLevel) living.level, living.blockPosition(), living.level.getBlockState(living.blockPosition()), living.level.getRandom());
-                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) livingEntity, entity, DamageSource.playerAttack((Player) livingEntity));
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) livingEntity, entity, entity.damageSources().playerAttack((Player) livingEntity));
             }
         }
     }

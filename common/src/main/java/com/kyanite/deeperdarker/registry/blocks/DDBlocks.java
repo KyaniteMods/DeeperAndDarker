@@ -1,11 +1,15 @@
 package com.kyanite.deeperdarker.registry.blocks;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import com.kyanite.deeperdarker.miscellaneous.DDCreativeModeTab;
+import com.kyanite.deeperdarker.miscellaneous.DDBlockSetType;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
 import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.custom.*;
+import com.kyanite.deeperdarker.registry.blocks.custom.generic.CustomButtonBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.generic.CustomDoorBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.generic.CustomPressurePlateBlock;
+import com.kyanite.deeperdarker.registry.blocks.custom.generic.CustomTrapdoorBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.GloomCactusBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.GloomGrassBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.tendrils.SculkTendrilsBlock;
@@ -51,11 +55,13 @@ public class DDBlocks {
     public static final Supplier<SlabBlock> ECHO_SLAB = registerBlock("echo_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<FenceBlock> ECHO_FENCE = registerBlock("echo_fence", true, () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<StairBlock> ECHO_STAIRS = registerBlock("echo_stairs", true, () -> new StairBlock(ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
-    public static final Supplier<ButtonBlock> ECHO_BUTTON = registerBlock("echo_button", true, () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BlockSetType.OAK, 30, true));
-    public static final Supplier<PressurePlateBlock> ECHO_PRESSURE_PLATE = registerBlock("echo_pressure_plate", true, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE)));
-    public static final Supplier<DoorBlock> ECHO_DOOR = registerBlock("echo_door", true, () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR)));
-    public static final Supplier<TrapDoorBlock> ECHO_TRAPDOOR = registerBlock("echo_trapdoor", true, () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
-    public static final Supplier<FenceGateBlock> ECHO_FENCE_GATE = registerBlock("echo_fence_gate", true, () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get()), WoodType.OAK));
+
+    public static final Supplier<ButtonBlock> ECHO_BUTTON = registerBlock("echo_button", true, () -> new CustomButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), DDBlockSetType.ECHO, 30, true));
+    public static final Supplier<PressurePlateBlock> ECHO_PRESSURE_PLATE = registerBlock("echo_pressure_plate", true, () -> new CustomPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), DDBlockSetType.ECHO));
+    public static final Supplier<DoorBlock> ECHO_DOOR = registerBlock("echo_door", true, () -> new CustomDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), DDBlockSetType.ECHO));
+    public static final Supplier<TrapDoorBlock> ECHO_TRAPDOOR = registerBlock("echo_trapdoor", true, () -> new CustomTrapdoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), DDBlockSetType.ECHO));
+    public static final Supplier<FenceGateBlock> ECHO_FENCE_GATE = registerBlock("echo_fence_gate", true, () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get()),  DDWoodTypes.ECHO));
+  
     public static final Supplier<WallSignBlock> ECHO_WALL_SIGN = registerBlock("echo_wall_sign", false, () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final Supplier<StandingSignBlock> ECHO_SIGN = registerSign("echo_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), DDWoodTypes.ECHO), ECHO_WALL_SIGN);
     public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));

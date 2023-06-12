@@ -8,8 +8,8 @@ import com.kyanite.paragon.api.interfaces.Description;
 public class DDConfig implements Config {
     // Armor Options
     public static final ConfigOption<Integer> WARDEN_ARMOR_DURABILITY = new ConfigOption<>("warden_armor_durability", 45);
-    public static final ConfigOption<Double> WARDEN_ARMOR_TOUGHNESS = new ConfigOption<>("warden_armor_toughness", 3.0d);
-    public static final ConfigOption<Double> WARDEN_ARMOR_KNOCKBACK_RESISTANCE = new ConfigOption<>("warden_armor_knockback_resistance", 0.5d);
+    public static final ConfigOption<Float> WARDEN_ARMOR_TOUGHNESS = new ConfigOption<>("warden_armor_toughness", 3.0f);
+    public static final ConfigOption<Float> WARDEN_ARMOR_KNOCKBACK_RESISTANCE = new ConfigOption<>("warden_armor_knockback_resistance", 0.5f);
     @Description("How much strength/armor you get from the Soul Elytra")
     public static final ConfigOption<Double> SOUL_ELYTRA_ARMOR_MODIFIER = new ConfigOption<>("soul_elytra_armor_modifier", 4.0d);
 

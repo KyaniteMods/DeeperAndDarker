@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.forge.datagen.models;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.blocks.custom.SculkJawBlock;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
@@ -16,8 +16,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import java.util.function.Supplier;
 
 public class DDBlockStateProvider extends BlockStateProvider {
-    public DDBlockStateProvider(DataGenerator pGenerator, ExistingFileHelper pExistingFileHelper) {
-        super(pGenerator, DeeperAndDarker.MOD_ID, pExistingFileHelper);
+    public DDBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, DeeperAndDarker.MOD_ID, exFileHelper);
     }
 
     @Override
@@ -168,7 +168,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
     public ResourceLocation blockLoc(Supplier<? extends Block> block) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "block/" + getName(block));
     }
-
 
     public ResourceLocation blockLoc(Supplier<? extends Block> block, String suffix) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "block/" + getName(block) + "_" + suffix);

@@ -4,22 +4,28 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import com.kyanite.deeperdarker.registry.items.DDItems;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.Util;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
 
 public class DDItemTagsProvider extends ItemTagsProvider {
-    public DDItemTagsProvider(DataGenerator pGenerator, BlockTagsProvider pBlockTagsProvider, ExistingFileHelper existingFileHelper) {
-        super(pGenerator, pBlockTagsProvider, DeeperAndDarker.MOD_ID, existingFileHelper);
+    public DDItemTagsProvider(PackOutput arg, CompletableFuture<TagLookup<Block>> completableFuture2, @Nullable ExistingFileHelper existingFileHelper) {
+        super(arg, CompletableFuture.supplyAsync(VanillaRegistries::createLookup, Util.backgroundExecutor()), completableFuture2, DeeperAndDarker.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider arg) {
         copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.LEAVES, ItemTags.LEAVES);

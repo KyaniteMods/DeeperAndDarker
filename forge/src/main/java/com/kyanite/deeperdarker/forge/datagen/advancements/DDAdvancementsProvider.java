@@ -9,8 +9,7 @@ import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -18,17 +17,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.NotNull;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 
 import java.util.function.Consumer;
 
-public class DDAdvancementsProvider extends AdvancementProvider {
-    public DDAdvancementsProvider(DataGenerator pGenerator, ExistingFileHelper pExistingFileHelper) {
-        super(pGenerator, pExistingFileHelper);
-    }
-
+public class DDAdvancementsProvider implements ForgeAdvancementProvider.AdvancementGenerator {
     @Override
-    protected void registerAdvancements(@NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper fileHelper) {
+    public void generate(HolderLookup.Provider arg, Consumer<Advancement> consumer, ExistingFileHelper existingFileHelper) {
         String path = DeeperAndDarker.MOD_ID + ":main/";
         String id = "advancements.deeperdarker.";
 

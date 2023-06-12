@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.platform.fabric;
 
+public class RegistryHelperImpl {
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.fabric.mixin.WoodTypeAccessor;
 import com.kyanite.deeperdarker.registry.items.DDItems;
@@ -104,9 +105,5 @@ public class RegistryHelperImpl {
     public static <T extends PoiType> Supplier<T> registerPOI(String name, Supplier<T> portal) {
         T registry = Registry.register(Registry.POINT_OF_INTEREST_TYPE, new ResourceLocation(DeeperAndDarker.MOD_ID, name), portal.get());
         return () -> registry;
-    }
-
-    public static WoodType registerWoodType(String name) {
-        return WoodTypeAccessor.registerNew(WoodTypeAccessor.newWoodType(name));
     }
 }
