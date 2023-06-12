@@ -16,6 +16,6 @@ public class ClientHelperImpl {
     }
 
     public static <T extends Item> Supplier<T> getElytraItem() {
-        return () -> (T) new SoulElytraItem(new Item.Properties().durability(1500).tab(DDCreativeModeTab.DD_TAB).rarity(Rarity.UNCOMMON).fireResistant());
+        return () -> (T) new SoulElytraItem(new Item.Properties().durability(1500).rarity(Rarity.UNCOMMON).fireResistant());
     }
 }

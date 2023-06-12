@@ -25,7 +25,7 @@ import net.minecraft.world.ticks.TickPriority;
 
 public class SculkJawBlock extends Block {
     public static final BooleanProperty ACTIVATED = BooleanProperty.create("activated");
-    public DamageSource damageSource = new DamageSource("jaw");
+    public DamageSource damageSource = new DamageSource();
 
     public SculkJawBlock(Properties pProperties) {
         super(pProperties);

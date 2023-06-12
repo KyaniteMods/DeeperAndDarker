@@ -17,6 +17,6 @@ public class PortalHelperImpl {
     }
 
     public static <T extends Item> Supplier<T> getHeartItem() {
-        return () -> (T) new DeepHeartItem(new Item.Properties().tab(DDCreativeModeTab.DD_TAB).stacksTo(1).rarity(Rarity.EPIC).fireResistant());
+        return () -> (T) new DeepHeartItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     }
 }
