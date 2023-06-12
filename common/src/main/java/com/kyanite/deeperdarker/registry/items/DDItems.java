@@ -13,6 +13,7 @@ import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;
 
+import static com.kyanite.deeperdarker.platform.RegistryHelper.registerBoatItem;
 import static com.kyanite.deeperdarker.platform.RegistryHelper.registerItem;
 
 public class DDItems {

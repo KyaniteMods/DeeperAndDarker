@@ -1,8 +1,11 @@
 package com.kyanite.deeperdarker.platform;
 
+import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
 import dev.architectury.injectables.annotations.ExpectPlatform;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -30,12 +33,23 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
+    public static <T extends DamageSource> Supplier<T> registerDamageSource(String name) {
+        throw new AssertionError();
+    }
+
+
+    @ExpectPlatform
     public static <T extends BlockEntityType<?>> Supplier<T> registerBlockEntity(String name, Supplier<T> blockEntityType) {
         throw new AssertionError();
     }
 
     @ExpectPlatform
     public static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static <T extends DDBoatItem> Supplier<T> registerBoatItem(String name, Supplier<T> item) {
         throw new AssertionError();
     }
 
@@ -65,7 +79,7 @@ public class RegistryHelper {
     }
 
     @ExpectPlatform
-    public static <T extends ConfiguredFeature<?, ?>> Supplier<T> registerConfiguredFeature(String name, java.util.function.Supplier<T> feature) {
+    public static <T extends ConfiguredFeature<?, ?>> Supplier<T> registerConfiguredFeature(ResourceKey<ConfiguredFeature<?, ?>> name, java.util.function.Supplier<T> feature) {
         throw new AssertionError();
     }
 

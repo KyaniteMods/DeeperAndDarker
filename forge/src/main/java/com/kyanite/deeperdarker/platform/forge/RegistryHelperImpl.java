@@ -1,10 +1,12 @@
 package com.kyanite.deeperdarker.platform.forge;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import net.minecraft.core.registries.Registries;
+import com.kyanite.deeperdarker.registry.items.custom.DDBoatItem;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -36,13 +38,17 @@ public class RegistryHelperImpl {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, DeeperAndDarker.MOD_ID);
-    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registries.BIOME, DeeperAndDarker.MOD_ID);
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registries.CONFIGURED_FEATURE, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, DeeperAndDarker.MOD_ID);
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<PoiType> POI = DeferredRegister.create(ForgeRegistries.POI_TYPES, DeeperAndDarker.MOD_ID);
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registries.PLACED_FEATURE, DeeperAndDarker.MOD_ID);
 
     public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
+    }
+
+    public static <T extends DamageSource> Supplier<T> registerDamageSource(String name) {
+        throw new AssertionError();
     }
 
     public static <T extends BlockEntityType<?>> Supplier<T> registerBlockEntity(String name, Supplier<T> blockEntityType) {
@@ -53,8 +59,12 @@ public class RegistryHelperImpl {
         return ITEMS.register(name, item);
     }
 
+    public static <T extends DDBoatItem> Supplier<T> registerBoatItem(String name, Supplier<T> item) {
+        return ITEMS.register(name, item);
+    }
+
     public static <T extends Biome> Supplier<T> registerBiome(ResourceLocation biomeLocation, Supplier<T> biomeConsumer) {
-        ResourceKey<Biome> biome = ResourceKey.create(Registries.BIOME, biomeLocation);
+        ResourceKey<Biome> biome = ResourceKey.create(ForgeRegistries.BIOMES.getRegistryKey(), biomeLocation);
         return BIOMES.register(biome.location().getPath(), biomeConsumer);
     }
 

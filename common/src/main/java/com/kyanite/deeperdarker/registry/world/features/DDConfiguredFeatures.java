@@ -1,10 +1,15 @@
 package com.kyanite.deeperdarker.registry.world.features;
 
+import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.miscellaneous.DDTags;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -20,41 +25,64 @@ import java.util.function.Supplier;
 
 public class DDConfiguredFeatures {
     // Features
-    public static final Supplier<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = register("extra_sculk_gleam", DDFeatures.SCULK_GLEAM_BLOB);
-    public static final Supplier<ConfiguredFeature<?, ?>> SCULKSTONE_PILLAR = register("otherside_pillar", DDFeatures.SCULK_PILLAR);
-    public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_PILLAR = register("gloom_otherside_pillar", DDFeatures.GLOOM_SCULK_PILLAR);
-    public static final Supplier<ConfiguredFeature<?, ?>> ECHO_TREE = register("echo_tree", DDFeatures.ECHO_TREE);
-    public static final Supplier<ConfiguredFeature<?, ?>> SCULK_VINES = register("sculk_vines", DDFeatures.SCULK_VINES);
-    public static final Supplier<ConfiguredFeature<?, ?>> SCULK_TENDRILS = register("sculk_tendrils", DDFeatures.SCULK_TENDRILS);
-    public static final Supplier<ConfiguredFeature<?, ?>> GLOOMSLATE = register("gloomslate", DDFeatures.GLOOMSLATE);
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EXTRA_SCULK_GLEAM = key("extra_sculk_gleam");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULKSTONE_PILLAR = key("otherside_pillar");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOM_PILLAR = key("gloom_otherside_pillar");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ECHO_TREE = key("echo_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_VINES = key("sculk_vines");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_TENDRILS = key("sculk_tendrils");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMSLATE = key("gloomslate");
 
 
     // Decoration Gen
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_SCULK = RegistryHelper.registerConfiguredFeature("ore_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.SCULK_TARGET_LIST.get(), 64)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_ECHO_SAND = RegistryHelper.registerConfiguredFeature("ore_echo_sand", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ECHO_SAND_TARGET_LIST.get(), 32)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_INFESTED_SCULK = RegistryHelper.registerConfiguredFeature("ore_infested_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.INFESTED_SCULK_TARGET_LIST.get(), 3)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_GEYSER = RegistryHelper.registerConfiguredFeature("ore_geyser", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.GEYSER_TARGET_LIST.get(), 5)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_SCULK_JAW = RegistryHelper.registerConfiguredFeature("ore_sculk_jaw", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.SCULK_JAW_TARGET_LIST.get(), 8)));
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_SCULK = key("ore_sculk");
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_ECHO_SAND = key("ore_echo_sand");
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_INFESTED_SCULK = key("ore_infested_sculk");
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_GEYSER = key("ore_geyser");
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_SCULK_JAW = key("ore_sculk_jaw");
 
     // Otherside Ores
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_COAL_SCULK = RegistryHelper.registerConfiguredFeature("ore_coal_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_COAL_TARGET_LIST.get(), 8, 0.1f)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_IRON_SCULK = RegistryHelper.registerConfiguredFeature("ore_iron_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_IRON_TARGET_LIST.get(), 7)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_COPPER_SCULK = RegistryHelper.registerConfiguredFeature("ore_copper_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_COPPER_TARGET_LIST.get(), 6, 0.2f)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_GOLD_SCULK = RegistryHelper.registerConfiguredFeature("ore_gold_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_GOLD_TARGET_LIST.get(), 7)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_REDSTONE_SCULK = RegistryHelper.registerConfiguredFeature("ore_redstone_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_REDSTONE_TARGET_LIST.get(), 6, 0.1f)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_EMERALD_SCULK = RegistryHelper.registerConfiguredFeature("ore_emerald_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_EMERALD_TARGET_LIST.get(), 6, 0.4f)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_LAPIS_SCULK = RegistryHelper.registerConfiguredFeature("ore_lapis_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_LAPIS_TARGET_LIST.get(), 7)));
-    public static final Supplier<ConfiguredFeature<?, ?>> ORE_DIAMOND_SCULK = RegistryHelper.registerConfiguredFeature("ore_diamond_sculk", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(DDTargetLists.ORE_DIAMOND_TARGET_LIST.get(), 5, 0.7f)));
-    public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION_BASE = RegistryHelper.registerConfiguredFeature("gloom_sculk_vegetation", () -> new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.get().defaultBlockState(), 50).add(DDBlocks.GLOOM_CACTUS.get().defaultBlockState(), 35).add(DDBlocks.SCULK_TENDRILS.get().defaultBlockState(), 16)))));
-    public static final Supplier<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION_COLLECTION = RegistryHelper.registerConfiguredFeature("gloom_sculk_bonemeal", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOM_SCULK_REPLACEABLE, BlockStateProvider.simple(DDBlocks.GLOOM_SCULK.get()), PlacementUtils.inlinePlaced(Holder.direct(GLOOM_SCULK_VEGETATION_BASE.get())), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.3f, UniformInt.of(1, 2), 0.7f)));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COAL_SCULK = key("ore_coal_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON_SCULK = key("ore_iron_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_SCULK = key("ore_copper_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD_SCULK = key("ore_gold_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_REDSTONE_SCULK = key("ore_redstone_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_EMERALD_SCULK = key("ore_emerald_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS_SCULK = key("ore_lapis_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_SCULK = key("ore_diamond_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION_BASE = key("gloom_sculk_vegetation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION_COLLECTION = key("gloom_sculk_bonemeal");
 
-    public static <F extends Feature<NoneFeatureConfiguration>> Supplier<ConfiguredFeature<?, ?>> register(String id, Supplier<F> feature) {
-        Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
-        return RegistryHelper.registerConfiguredFeature(id, () -> new ConfiguredFeature<>(feature.get(), configuration.get()));
+    public static void featureRegistry(BootstapContext<ConfiguredFeature<?, ?>> context) {
+        // Environmental stuff (trees/pillars/etc)
+        register(context, EXTRA_SCULK_GLEAM, DDFeatures.SCULK_GLEAM_BLOB.get());
+        register(context, SCULKSTONE_PILLAR, DDFeatures.SCULK_PILLAR.get());
+        register(context, GLOOM_PILLAR, DDFeatures.GLOOM_SCULK_PILLAR.get());
+        register(context, ECHO_TREE, DDFeatures.ECHO_TREE.get());
+        register(context, SCULK_VINES, DDFeatures.SCULK_VINES.get());
+        register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS.get());
+        register(context, GLOOMSLATE, DDFeatures.GLOOMSLATE.get());
+
+        // Blocks/ores
+        register(context, ORE_SCULK, Feature.ORE, new OreConfiguration(DDTargetLists.SCULK_TARGET_LIST.get(), 64));
+        register(context, ORE_ECHO_SAND, Feature.ORE, new OreConfiguration(DDTargetLists.ECHO_SAND_TARGET_LIST.get(), 32));
+        register(context, ORE_INFESTED_SCULK, Feature.ORE, new OreConfiguration(DDTargetLists.INFESTED_SCULK_TARGET_LIST.get(), 3));
+        register(context, ORE_GEYSER, Feature.ORE, new OreConfiguration(DDTargetLists.GEYSER_TARGET_LIST.get(), 5));
+        register(context, ORE_SCULK_JAW, Feature.ORE, new OreConfiguration(DDTargetLists.SCULK_JAW_TARGET_LIST.get(), 8));
     }
 
-    public static <FC extends FeatureConfiguration, F extends Feature<FC>> Supplier<ConfiguredFeature<FC, ?>> register(String string, F feature, FC featureConfiguration) {
-        return RegistryHelper.registerConfiguredFeature(string, () -> new ConfiguredFeature<>(feature, featureConfiguration));
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
+        context.register(key, new ConfiguredFeature<>(feature, configuration));
+    }
+
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature) {
+        Supplier<NoneFeatureConfiguration> configuration = () -> NoneFeatureConfiguration.INSTANCE;
+        context.register(key, new ConfiguredFeature<>(feature, (FC)configuration));
+    }
+
+
+    public static ResourceKey<ConfiguredFeature<?, ?>> key(String name) {
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
     }
 
     public static void registerConfiguredFeatures() {

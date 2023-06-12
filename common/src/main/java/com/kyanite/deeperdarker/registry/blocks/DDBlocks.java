@@ -17,17 +17,21 @@ import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.tendrils.Sculk
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -39,10 +43,10 @@ public class DDBlocks {
 
     // Echo Wood
     public static final Supplier<Block> ECHO_PLANKS = registerBlock("echo_planks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
-    public static final Supplier<RotatedPillarBlock> ECHO_LOG = registerBlock("echo_log", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
-    public static final Supplier<RotatedPillarBlock> STRIPPED_ECHO_LOG = registerBlock("stripped_echo_log", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
-    public static final Supplier<RotatedPillarBlock> STRIPPED_ECHO_WOOD = registerBlock("stripped_echo_wood", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
-    public static final Supplier<RotatedPillarBlock> ECHO_WOOD = registerBlock("echo_wood", true, () -> log(MaterialColor.WOOD, MaterialColor.PODZOL));
+    public static final Supplier<RotatedPillarBlock> ECHO_LOG = registerBlock("echo_log", true, () -> log(MapColor.WOOD, MapColor.PODZOL));
+    public static final Supplier<RotatedPillarBlock> STRIPPED_ECHO_LOG = registerBlock("stripped_echo_log", true, () -> log(MapColor.WOOD, MapColor.PODZOL));
+    public static final Supplier<RotatedPillarBlock> STRIPPED_ECHO_WOOD = registerBlock("stripped_echo_wood", true, () -> log(MapColor.WOOD, MapColor.PODZOL));
+    public static final Supplier<RotatedPillarBlock> ECHO_WOOD = registerBlock("echo_wood", true, () -> log(MapColor.WOOD, MapColor.PODZOL));
     public static final Supplier<Block> ECHO_LEAVES = registerBlock("echo_leaves", true, () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
         protected boolean decaying(@NotNull BlockState state) {
             return state.getValue(DISTANCE) == 16;
@@ -51,20 +55,22 @@ public class DDBlocks {
     public static final Supplier<SlabBlock> ECHO_SLAB = registerBlock("echo_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<FenceBlock> ECHO_FENCE = registerBlock("echo_fence", true, () -> new FenceBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
     public static final Supplier<StairBlock> ECHO_STAIRS = registerBlock("echo_stairs", true, () -> new StairBlock(ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ECHO_PLANKS.get())));
+
     public static final Supplier<ButtonBlock> ECHO_BUTTON = registerBlock("echo_button", true, () -> new CustomButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), DDBlockSetType.ECHO, 30, true));
     public static final Supplier<PressurePlateBlock> ECHO_PRESSURE_PLATE = registerBlock("echo_pressure_plate", true, () -> new CustomPressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), DDBlockSetType.ECHO));
     public static final Supplier<DoorBlock> ECHO_DOOR = registerBlock("echo_door", true, () -> new CustomDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), DDBlockSetType.ECHO));
     public static final Supplier<TrapDoorBlock> ECHO_TRAPDOOR = registerBlock("echo_trapdoor", true, () -> new CustomTrapdoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), DDBlockSetType.ECHO));
     public static final Supplier<FenceGateBlock> ECHO_FENCE_GATE = registerBlock("echo_fence_gate", true, () -> new FenceGateBlock(BlockBehaviour.Properties.copy(ECHO_PLANKS.get()),  DDWoodTypes.ECHO));
+  
     public static final Supplier<WallSignBlock> ECHO_WALL_SIGN = registerBlock("echo_wall_sign", false, () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), DDWoodTypes.ECHO));
     public static final Supplier<StandingSignBlock> ECHO_SIGN = registerSign("echo_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), DDWoodTypes.ECHO), ECHO_WALL_SIGN);
     public static final Supplier<Block> INFESTED_SCULK = registerBlock("infested_sculk", true, () -> new InfestedSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
-    public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.of(Material.SCULK).sound(DDSounds.SCULK_JAW).strength(6f)));
+    public static final Supplier<SculkJawBlock> SCULK_JAW = registerBlock("sculk_jaw", true, () -> new SculkJawBlock(BlockBehaviour.Properties.of().sound(DDSounds.SCULK_JAW).strength(6f)));
 
     // Echo Soil/Sculk Grime
     public static final Supplier<Block> ECHO_SOIL = registerBlock("echo_soil", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
     public static final Supplier<Block> SCULK_GRIME = registerBlock("sculk_grime", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f)));
-    public static final Supplier<Block> GRIME_BRICKS = registerBlock("sculk_grime_bricks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).color(MaterialColor.COLOR_BLACK).sound(DDSounds.SCULK_STONE)));
+    public static final Supplier<Block> GRIME_BRICKS = registerBlock("sculk_grime_bricks", true, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.COLOR_BLACK).sound(DDSounds.SCULK_STONE)));
     public static final Supplier<SlabBlock> GRIME_BRICK_SLAB = registerBlock("sculk_grime_brick_slab", true, () -> new SlabBlock(BlockBehaviour.Properties.copy(DDBlocks.GRIME_BRICKS.get())));
     public static final Supplier<StairBlock> GRIME_BRICK_STAIRS = registerBlock("sculk_grime_brick_stairs", true, () -> new StairBlock(GRIME_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(DDBlocks.GRIME_BRICKS.get())));
     public static final Supplier<WallBlock> GRIME_BRICK_WALL = registerBlock("sculk_grime_brick_wall", true, () -> new WallBlock(BlockBehaviour.Properties.copy(DDBlocks.GRIME_BRICKS.get())));
@@ -118,17 +124,17 @@ public class DDBlocks {
     public static final Supplier<Block> SCULK_STONE_DIAMOND_ORE = registerBlock("sculk_stone_diamond_ore", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(6, 14)));
 
     // Vegetation
-    public static final Supplier<Block> SCULK_VINES = registerBlock("sculk_vines", true, () -> new SculkVinesBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
-    public static final Supplier<Block> SCULK_VINES_PLANT = registerBlock("sculk_vines_plant", false, () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).noCollission().instabreak()));
-    public static final Supplier<SculkTendrilsBlock> SCULK_TENDRILS = registerBlock("sculk_tendrils", true, () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.SCULK).randomTicks().noOcclusion().noCollission().instabreak()));
-    public static final Supplier<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = registerBlock("sculk_tendrils_plant", false, () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak()));
+    public static final Supplier<Block> SCULK_VINES = registerBlock("sculk_vines", true, () -> new SculkVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
+    public static final Supplier<Block> SCULK_VINES_PLANT = registerBlock("sculk_vines_plant", false, () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak()));
+    public static final Supplier<SculkTendrilsBlock> SCULK_TENDRILS = registerBlock("sculk_tendrils", true, () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noOcclusion().noCollission().instabreak()));
+    public static final Supplier<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = registerBlock("sculk_tendrils_plant", false, () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().noCollission().instabreak()));
     public static final Supplier<Block> SCULK_GLEAM = registerBlock("sculk_gleam", true, () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
 
     // Overcast Columns
     public static final Supplier<GloomSculkBlock> GLOOM_SCULK = registerBlock("gloom_sculk", true, () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Supplier<GeyserBlock> GEYSER = registerBlock("geyser", true, () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).requiresCorrectToolForDrops()));
-    public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", true, () -> new HalfTransparentBlock(BlockBehaviour.Properties.of(Material.GLASS).noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
-    public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", true, () -> new GloomCactusBlock(BlockBehaviour.Properties.of(Material.CACTUS).strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
+    public static final Supplier<Block> CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", true, () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().noOcclusion().lightLevel(state -> 1).sound(SoundType.GLASS)));
+    public static final Supplier<Block> GLOOM_CACTUS = registerBlock("gloom_cactus", true, () -> new GloomCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL)));
     public static final Supplier<Block> GLOOMY_GRASS = registerBlock("gloomy_grass", true, () -> new GloomGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
 
     // Gloomslate
@@ -193,8 +199,8 @@ public class DDBlocks {
         return standing;
     }
 
-    public static RotatedPillarBlock log(MaterialColor materialColor, MaterialColor materialColor2) {
-        return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (state) -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? materialColor : materialColor2).strength(2.0F).sound(SoundType.WOOD));
+    public static RotatedPillarBlock log(MapColor materialColor, MapColor materialColor2) {
+        return new RotatedPillarBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD));
     }
 
     public static void registerBlocks() {
