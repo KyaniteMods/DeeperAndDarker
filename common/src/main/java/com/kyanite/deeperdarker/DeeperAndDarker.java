@@ -16,7 +16,7 @@ import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
 import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
 import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
-import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeatures;
+import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeaturesOld;
 import com.kyanite.paragon.api.ConfigManager;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.EntityType;
@@ -47,7 +47,7 @@ public class DeeperAndDarker {
 
         DDFeatures.registerFeatures();
         DDConfiguredFeatures.registerConfiguredFeatures();
-        DDPlacedFeatures.registerPlacedFeatures();
+        DDPlacedFeaturesOld.registerPlacedFeatures();
         OthersideBiomes.createBiomes();
         DDDimensions.registerDimensions();
 
