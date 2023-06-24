@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.config.DDConfig;
-import com.kyanite.deeperdarker.miscellaneous.DDTiers;
 import com.kyanite.deeperdarker.miscellaneous.DeeperAndDarkerInitCallback;
 import com.kyanite.deeperdarker.registry.blocks.DDBlockEntityTypes;
 import com.kyanite.deeperdarker.registry.blocks.DDBlocks;
@@ -13,9 +12,6 @@ import com.kyanite.deeperdarker.registry.items.DDItems;
 import com.kyanite.deeperdarker.registry.potions.DDPotions;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
 import com.kyanite.deeperdarker.registry.world.biomes.OthersideBiomes;
-import com.kyanite.deeperdarker.registry.world.dimension.DDDimensions;
-import com.kyanite.deeperdarker.registry.world.features.DDConfiguredFeatures;
-import com.kyanite.deeperdarker.registry.world.features.DDFeatures;
 import com.kyanite.paragon.api.ConfigManager;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.entity.EntityType;
@@ -36,6 +32,7 @@ public class DeeperAndDarker {
     public static void init(DeeperAndDarkerInitCallback callback) {
         ConfigManager.register("deeperdarker", new DDConfig());
 
+        DDItems.registerItems();
         DDEntities.registerEntities();
         DDBlocks.registerBlocks();
         DDBlockEntityTypes.registerBlockEntities();
@@ -44,14 +41,8 @@ public class DeeperAndDarker {
         DDEffects.registerEffects();
         DDPotions.registerPotions();
 
-        DDFeatures.registerFeatures();
-        DDConfiguredFeatures.registerConfiguredFeatures();
-        DDPlacedFeaturesOld.registerPlacedFeatures();
         OthersideBiomes.createBiomes();
-        DDDimensions.registerDimensions();
 
-        DDTiers.registerTypes();
-        DDItems.registerItems();
         callback.callback();
     }
 

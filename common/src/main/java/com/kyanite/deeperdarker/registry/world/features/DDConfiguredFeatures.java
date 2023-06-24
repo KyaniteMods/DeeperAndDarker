@@ -74,8 +74,4 @@ public class DDConfiguredFeatures {
     public static ResourceKey<ConfiguredFeature<?, ?>> key(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DeeperAndDarker.MOD_ID, name));
     }
-
-    public static void registerConfiguredFeatures() {
-
-    }
 }

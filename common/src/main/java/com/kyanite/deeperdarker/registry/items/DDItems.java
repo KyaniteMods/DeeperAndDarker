@@ -15,7 +15,6 @@ import java.util.function.Supplier;
 import static com.kyanite.deeperdarker.platform.RegistryHelper.registerItem;
 
 public class DDItems {
-
     public static final Supplier<Item> HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", PortalHelper.getHeartItem());
     public static final Supplier<Item> REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
   //  public static final Supplier<Item> ANCIENT_CHEST = registerItem("ancient_chest", () -> new AncientChestItem(DDBlocks.ANCIENT_CHEST.get(), new Item.Properties().stacksTo(1)));

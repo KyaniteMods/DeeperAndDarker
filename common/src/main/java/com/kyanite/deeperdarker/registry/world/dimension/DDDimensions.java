@@ -17,6 +17,4 @@ public class DDDimensions {
     public static final ResourceKey<Level> OTHERSIDE_LEVEL = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(DeeperAndDarker.MOD_ID, "otherside"));
     public static final ResourceKey<DimensionType> OTHERSIDE = ResourceKey.create(Registries.DIMENSION_TYPE, OTHERSIDE_LEVEL.registry());
     public static final Supplier<PoiType> OTHERSIDE_PORTAL = RegistryHelper.registerPOI("otherside_portal", () -> new PoiType(ImmutableSet.copyOf(DDBlocks.OTHERSIDE_PORTAL.get().getStateDefinition().getPossibleStates()), 0, 1));
-
-    public static void registerDimensions() {}
 }

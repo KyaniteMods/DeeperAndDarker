@@ -20,6 +20,4 @@ public class DDFeatures {
     public static final Supplier<SculkTendrilFeature> SCULK_TENDRILS = RegistryHelper.registerFeature("sculk_tendrils", () -> new SculkTendrilFeature(NoneFeatureConfiguration.CODEC));
 
     public static final Supplier<GloomslateFeature> GLOOMSLATE = RegistryHelper.registerFeature("gloomslate", () -> new GloomslateFeature(NoneFeatureConfiguration.CODEC));
-
-    public static void registerFeatures() {}
 }

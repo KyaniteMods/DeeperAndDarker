@@ -37,7 +37,4 @@ public class DDTiers {
             return Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get());
         }
     };
-
-    public static void registerTypes() {
-    }
 }
