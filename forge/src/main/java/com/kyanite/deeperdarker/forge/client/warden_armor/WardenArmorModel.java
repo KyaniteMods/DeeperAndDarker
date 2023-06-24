@@ -2,9 +2,9 @@ package com.kyanite.deeperdarker.forge.client.warden_armor;
 
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class WardenArmorModel extends AnimatedGeoModel<WardenArmorItem> {
+public class WardenArmorModel extends GeoModel<WardenArmorItem> {
     @Override
     public ResourceLocation getModelResource(WardenArmorItem object) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/warden_armor.geo.json");
