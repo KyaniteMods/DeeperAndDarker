@@ -41,7 +41,7 @@ public class SculkJawBlock extends Block {
         if (pEntity instanceof Player plr) if (plr.isCreative() || plr.isSpectator() || plr.isCrouching()) return;
 
         pLevel.playSound(null, pPos, DDSounds.SCULK_JAW_CLOSE.get(), SoundSource.BLOCKS, 3.0f, 1f);
-        pEntity.hurt(pEntity.level.damageSources().magic(), 3);
+        pEntity.hurt(pEntity.level().damageSources().magic(), 3);
         pLevel.setBlock(pPos, DDBlocks.SCULK_JAW.get().defaultBlockState().setValue(ACTIVATED, true), 3);
         pLevel.scheduleTick(pPos, DDBlocks.SCULK_JAW.get(), 35, TickPriority.EXTREMELY_HIGH);
     }
@@ -60,7 +60,7 @@ public class SculkJawBlock extends Block {
         }
 
         if (pEntity instanceof LivingEntity livingEntity) {
-            if(livingEntity.getMobType() != DDTypes.SCULK) pEntity.hurt(pEntity.level.damageSources().magic(), 3);
+            if(livingEntity.getMobType() != DDTypes.SCULK) pEntity.hurt(pEntity.level().damageSources().magic(), 3);
         }
     }
 

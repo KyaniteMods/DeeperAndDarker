@@ -36,7 +36,7 @@ public class GeyserBlock extends Block {
     }
 
     private void bounceUp(Entity pEntity, BlockPos pos) {
-        pEntity.hurt(pEntity.level.damageSources().generic(), 2);
+        pEntity.hurt(pEntity.level().damageSources().generic(), 2);
         if(pEntity instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 125, 1, true, false, false));
         }
@@ -45,9 +45,9 @@ public class GeyserBlock extends Block {
         double d0 = 2.5;
         pEntity.setDeltaMovement(vec3.x, d0, vec3.z);
 
-        if(pEntity.level.isClientSide()) {
-            pEntity.level.playLocalSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 2 + pEntity.level.random.nextFloat(), pEntity.level.random.nextFloat() * 0.7F + 0.6F, false);
-            pEntity.level.addParticle(ParticleTypes.LARGE_SMOKE, pos.getX(), pos.getY(), pos.getZ(), 0.05d, 0.5d, 0.05d);
+        if(pEntity.level().isClientSide()) {
+            pEntity.level().playLocalSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 2 + pEntity.level().random.nextFloat(), pEntity.level().random.nextFloat() * 0.7F + 0.6F, false);
+            pEntity.level().addParticle(ParticleTypes.LARGE_SMOKE, pos.getX(), pos.getY(), pos.getZ(), 0.05d, 0.5d, 0.05d);
         }
     }
 }

@@ -26,7 +26,7 @@ public class DDParticleUtils {
             double x = randomSource.nextGaussian() * 0.02D;
             double y = randomSource.nextGaussian() * 0.02D;
             double z = randomSource.nextGaussian() * 0.02D;
-            entity.level.addParticle(particle, entity.getRandomX(1.0D), entity.getRandomY() + 0.5D, entity.getRandomZ(1), x, y, z);
+            entity.level().addParticle(particle, entity.getRandomX(1.0D), entity.getRandomY() + 0.5D, entity.getRandomZ(1), x, y, z);
         }
     }
 }

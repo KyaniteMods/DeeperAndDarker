@@ -64,10 +64,10 @@ public class ShriekProjectile extends AbstractArrow {
         }
 
         BlockPos blockPos = this.blockPosition();
-        BlockState blockState = this.level.getBlockState(blockPos);
+        BlockState blockState = this.level().getBlockState(blockPos);
         Vec3 vec32;
         if (!blockState.isAir() && !bl) {
-            VoxelShape voxelShape = blockState.getCollisionShape(this.level, blockPos);
+            VoxelShape voxelShape = blockState.getCollisionShape(this.level(), blockPos);
             if (!voxelShape.isEmpty()) {
                 vec32 = this.position();
 
@@ -94,7 +94,7 @@ public class ShriekProjectile extends AbstractArrow {
             this.inGroundTime = 0;
             Vec3 vec33 = this.position();
             vec32 = vec33.add(vec3);
-            HitResult hitResult = this.level.clip(new ClipContext(vec33, vec32, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
+            HitResult hitResult = this.level().clip(new ClipContext(vec33, vec32, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
             if (hitResult.getType() != HitResult.Type.MISS) {
                 vec32 = hitResult.getLocation();
             }
@@ -132,7 +132,7 @@ public class ShriekProjectile extends AbstractArrow {
             double g = vec3.z;
             if (this.isCritArrow()) {
                 for(int i = 0; i < 4; ++i) {
-                    this.level.addParticle(ParticleTypes.CRIT, this.getX() + e * (double)i / 4.0, this.getY() + f * (double)i / 4.0, this.getZ() + g * (double)i / 4.0, -e, -f + 0.2, -g);
+                    this.level().addParticle(ParticleTypes.CRIT, this.getX() + e * (double)i / 4.0, this.getY() + f * (double)i / 4.0, this.getZ() + g * (double)i / 4.0, -e, -f + 0.2, -g);
                 }
             }
 
@@ -152,7 +152,7 @@ public class ShriekProjectile extends AbstractArrow {
             float m = 0.99F;
             if (this.isInWater()) {
                 for(int o = 0; o < 4; ++o) {
-                    this.level.addParticle(ParticleTypes.BUBBLE, h - e * 0.25, j - f * 0.25, k - g * 0.25, e, f, g);
+                    this.level().addParticle(ParticleTypes.BUBBLE, h - e * 0.25, j - f * 0.25, k - g * 0.25, e, f, g);
                 }
 
                 m = this.getWaterInertia();
@@ -168,8 +168,8 @@ public class ShriekProjectile extends AbstractArrow {
             this.checkInsideBlocks();
         }
 
-        if(level.isClientSide()) {
-            getLevel().addParticle(ParticleTypes.SONIC_BOOM, position().x, position().y, position().z, 0.0, 0.0, 0.0);
+        if(level().isClientSide()) {
+            level().addParticle(ParticleTypes.SONIC_BOOM, position().x, position().y, position().z, 0.0, 0.0, 0.0);
         }
     }
 
@@ -186,7 +186,7 @@ public class ShriekProjectile extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         //super.onHitEntity(entityHitResult);
-        if(!level.isClientSide) {
+        if(!level().isClientSide) {
             entityHitResult.getEntity().playSound(SoundEvents.SCULK_SHRIEKER_SHRIEK, 3, 1);
             if(entityHitResult.getEntity() instanceof LivingEntity living) {
                 living.hurt(living.damageSources().magic(), DDConfig.TRANSMITTER_DAMAGE.get().floatValue());
@@ -205,7 +205,7 @@ public class ShriekProjectile extends AbstractArrow {
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
         super.onHitBlock(blockHitResult);
-        if(!level.isClientSide) {
+        if(!level().isClientSide) {
             this.discard();
         }
     }

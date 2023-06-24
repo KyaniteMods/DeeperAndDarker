@@ -15,7 +15,7 @@ public class SculkSuppressorItem extends Item {
 
     public InteractionResult interactLivingEntity(ItemStack itemStack, Player player, LivingEntity livingEntity, InteractionHand interactionHand) {
         if (!(livingEntity instanceof Player)) {
-            if (!player.level.isClientSide && livingEntity.isAlive()) {
+            if (!player.level().isClientSide && livingEntity.isAlive()) {
                 livingEntity.setSilent(true);
                 if (livingEntity instanceof Mob) {
                     ((Mob)livingEntity).setPersistenceRequired();
@@ -24,7 +24,7 @@ public class SculkSuppressorItem extends Item {
                 itemStack.shrink(1);
             }
 
-            return InteractionResult.sidedSuccess(player.level.isClientSide);
+            return InteractionResult.sidedSuccess(player.level().isClientSide);
         } else {
             return InteractionResult.PASS;
         }
