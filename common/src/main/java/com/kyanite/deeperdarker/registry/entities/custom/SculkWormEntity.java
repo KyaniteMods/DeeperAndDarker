@@ -25,20 +25,20 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable {
+public class SculkWormEntity extends ActionAnimatedEntity implements GeoAnimatable {
     private static final EntityDataAccessor<Integer> DESCEND_COUNTDOWN = SynchedEntityData.defineId(SculkWormEntity.class, EntityDataSerializers.INT);
     public static EntityState AWAKE = new EntityState(true, new EntityAnimationHolder("idle", DDUtils.secondsToTicks(4), true, false));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(4), false, true));
     public static EntityState DESCEND = new EntityState(true, new EntityAnimationHolder("descend", DDUtils.secondsToTicks(4), false, true));
     public static EntityState ATTACK = new EntityState(true, new EntityAnimationHolder("melee", DDUtils.secondsToTicks(1), false, true));
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
 
     public SculkWormEntity(EntityType<? extends ActionAnimatedEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -86,7 +86,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     public void stateTick(EntityState entityState) {
         if(entityState.equals(DESCEND) || entityState.equals(EMERGE)) {
-            DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
+            DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level());
         }
     }
 
@@ -118,7 +118,7 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
         if(EMERGE.equals(entityState)) {
             setState(AWAKE);
         } else if(DESCEND.equals(entityState)) {
-            this.level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
+            this.level().setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.KILLED);
         } else if(ATTACK.equals(entityState)) {
             setState(AWAKE);
@@ -130,11 +130,6 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
                         plr.giveExperiencePoints(-2);
             }
         }
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
     }
 
     @Nullable
@@ -188,5 +183,10 @@ public class SculkWormEntity extends ActionAnimatedEntity implements IAnimatable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DDSounds.SHRIEK_WORM_HURT.get();
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.factory;
     }
 }

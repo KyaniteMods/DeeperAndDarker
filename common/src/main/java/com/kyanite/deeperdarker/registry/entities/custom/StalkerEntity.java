@@ -42,29 +42,29 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
 import net.minecraft.world.level.gameevent.EntityPositionSource;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
+import net.minecraft.world.level.gameevent.PositionSource;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
-public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, VibrationListener.VibrationListenerConfig, IDisturbanceListener {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+public class StalkerEntity extends ActionAnimatedEntity implements GeoAnimatable, VibrationSystem, IDisturbanceListener {
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
 
     private static final EntityDataAccessor<Integer> RING_COOLDOWN = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.INT);
 
     private static final EntityDataAccessor<Boolean> HAS_VASE = SynchedEntityData.defineId(StalkerEntity.class, EntityDataSerializers.BOOLEAN);
-    private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
+    private final DynamicGameEventListener<VibrationSystem.Listener> dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
 
     public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("animation.stalker.idle", 60, true, false));
     public static EntityState WALK = new EntityState(true, new EntityAnimationHolder("animation.stalker.walk", 40, true, false));
@@ -79,12 +79,14 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     private static final TargetingConditions ITEM_TARGETING_CONDITIONS = TargetingConditions.forCombat().range(25.0D);
     public BlockPos disturbanceLocation = null;
 
+    private VibrationSystem.Data vibrationData = new VibrationSystem.Data();
+    private final VibrationSystem.User vibrationUser = new VibrationUser();
+
     // TODO: figure out damage types
 //    public DamageSource damageSource = new DamageSource("ring");
 
     public StalkerEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 16, this));
         this.xpReward = 45;
         this.getNavigation().setCanFloat(true);
         this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0.0F);
@@ -128,9 +130,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
             this.entityData.set(HAS_VASE, false);
             playSound(DDSounds.VASE_BREAK.get(), 4, 1);
             for(int i = 0; i < getRandom().nextInt(5, 8); i++) {
-                SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(level);
+                SculkLeechEntity sculkLeechEntity = DDEntities.SCULK_LEECH.get().create(level());
                 sculkLeechEntity.moveTo(position());
-                level.addFreshEntity(sculkLeechEntity);
+                level().addFreshEntity(sculkLeechEntity);
             }
         }
         return super.hurt(pSource, pAmount);
@@ -150,9 +152,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
             }
         }
 
-        Level level = this.level;
+        Level level = this.level();
         if(level instanceof ServerLevel serverlevel) {
-            this.dynamicGameEventListener.getListener().tick(serverlevel);
+            Ticker.tick(level, vibrationData, vibrationUser);
             this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
 
             if(getCurrentState() != EMERGE) {
@@ -172,7 +174,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                             this.bossEvent.addPlayer((ServerPlayer) player);
 
                         if(getCurrentState() == RING) {
-                            livingEntity.hurt(livingEntity.level.damageSources().magic(), 0.8f);
+                            livingEntity.hurt(livingEntity.level().damageSources().magic(), 0.8f);
                             livingEntity.knockback(0.2f, 1, 1);
                         }
                     }
@@ -181,7 +183,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
                     if(!player.isDeadOrDying()) {
                         this.bossEvent.addPlayer((ServerPlayer) player);
                         if(getCurrentState() == RING) {
-                            player.hurt(player.level.damageSources().magic(), 1.4f);
+                            player.hurt(player.level().damageSources().magic(), 1.4f);
                             player.knockback(0.2f, -0.4f, -0.4f);
                         }
                     }
@@ -262,7 +264,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         if(entityState == EMERGE) {
             if(this.getAnimationTime() < 25 && this.getAnimationTime() > 5) {
                 playSound(this.getBlockStateOn().getSoundType().getHitSound());
-                DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
+                DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level());
             }
         }
     }
@@ -278,7 +280,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("HasVase", this.entityData.get(HAS_VASE));
         pCompound.putInt("RingDelay", this.entityData.get(RING_COOLDOWN));
-        VibrationListener.codec(this).encodeStart(NbtOps.INSTANCE, this.dynamicGameEventListener.getListener()).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((tag) -> pCompound.put("listener", tag));
+        Data.CODEC.encodeStart(NbtOps.INSTANCE, this.vibrationData).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((tag) -> pCompound.put("listener", tag));
     }
 
     @Override
@@ -287,7 +289,7 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         this.entityData.set(HAS_VASE, pCompound.getBoolean("HasVase"));
         this.entityData.set(RING_COOLDOWN, pCompound.getInt("RingDelay"));
         if(pCompound.contains("listener", 10)) {
-            VibrationListener.codec(this).parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((vibrationListener) -> this.dynamicGameEventListener.updateListener(vibrationListener, this.level));
+            Data.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, pCompound.getCompound("listener"))).resultOrPartial(DeeperAndDarker.LOGGER::error).ifPresent((data) -> this.vibrationData = data);
         }
     }
 
@@ -325,23 +327,9 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
         return null;
     }
 
-    @Override
-    public boolean shouldListen(ServerLevel pLevel, GameEventListener pListener, BlockPos pPos, GameEvent pEvent, GameEvent.Context pContext) {
-        if(!this.isDeadOrDying() && level.getWorldBorder().isWithinBounds(pPos) && !this.isRemoved() && this.level == level) {
-            Entity entity = pContext.sourceEntity();
-            if(entity instanceof LivingEntity livingentity) {
-                return this.canTargetEntity(livingentity);
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public boolean canTargetEntity(Entity entity) {
         if(entity instanceof LivingEntity livingentity) {
-            return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
+            return level() == entity.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getMobType() != DDTypes.SCULK && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(livingentity.getBoundingBox());
         }
 
         return false;
@@ -349,52 +337,15 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
 
     @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> consumer) {
-        Level level = this.level;
+        Level level = this.level();
         if(level instanceof ServerLevel serverlevel) {
             consumer.accept(this.dynamicGameEventListener, serverlevel);
         }
     }
 
     @Override
-    public boolean canTriggerAvoidVibration() {
-        return true;
-    }
-
-    @Override
-    public void onSignalReceive(ServerLevel pLevel, GameEventListener pListener, BlockPos pPos, GameEvent pEvent, @Nullable Entity entity1, @Nullable Entity entity2, float pDistance) {
-        if(isDeadOrDying()) return;
-
-        this.playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
-
-        if(entity1 != null) {
-            if(canTargetEntity(entity1)) {
-                if(entity1 instanceof Monster && ((Monster) entity1).getMobType() != DDTypes.SCULK)
-                    this.setTarget((LivingEntity) entity1);
-                if(entity1 instanceof Player) this.setTarget((LivingEntity) entity1);
-
-                return;
-            }
-        }
-
-        if(this.getTarget() != null)
-            this.setTarget(null);
-
-        this.disturbanceLocation = pPos;
-    }
-
-    @Override
     protected float nextStep() {
         return this.moveDist + 0.3f;
-    }
-
-    @Override
-    public TagKey<GameEvent> getListenableEvents() {
-        return GameEventTags.WARDEN_CAN_LISTEN;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
     }
 
     @Override
@@ -420,5 +371,80 @@ public class StalkerEntity extends ActionAnimatedEntity implements IAnimatable, 
     @Override
     public void setDisturbanceLocation(BlockPos disturbanceLocation) {
         this.disturbanceLocation = disturbanceLocation;
+    }
+
+    @Override
+    public Data getVibrationData() {
+        return vibrationData;
+    }
+
+    @Override
+    public User getVibrationUser() {
+        return vibrationUser;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.factory;
+    }
+
+    class VibrationUser implements VibrationSystem.User {
+        PositionSource positionSource = new EntityPositionSource(StalkerEntity.this, StalkerEntity.this.getEyeHeight());
+
+        VibrationUser() {}
+
+        @Override
+        public int getListenerRadius() {
+            return 16;
+        }
+
+        @Override
+        public PositionSource getPositionSource() {
+            return positionSource;
+        }
+
+        public TagKey<GameEvent> getListenableEvents() {
+            return GameEventTags.WARDEN_CAN_LISTEN;
+        }
+
+        @Override
+        public boolean canTriggerAvoidVibration() {
+            return true;
+        }
+
+        @Override
+        public boolean canReceiveVibration(ServerLevel serverLevel, BlockPos blockPos, GameEvent gameEvent, GameEvent.Context context) {
+            if(!isDeadOrDying() && level().getWorldBorder().isWithinBounds(blockPos) && !isRemoved() && level() == serverLevel) {
+                Entity entity = context.sourceEntity();
+                if(entity instanceof LivingEntity livingentity) {
+                    return canTargetEntity(livingentity);
+                }
+
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public void onReceiveVibration(ServerLevel serverLevel, BlockPos blockPos, GameEvent gameEvent, @Nullable Entity entity, @Nullable Entity entity2, float f) {
+            if(isDeadOrDying()) return;
+
+            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
+
+            if(entity != null) {
+                if(canTargetEntity(entity)) {
+                    if(entity instanceof Monster && ((Monster) entity).getMobType() != DDTypes.SCULK) setTarget((LivingEntity) entity);
+                    if(entity instanceof Player) setTarget((LivingEntity) entity);
+
+                    return;
+                }
+            }
+
+            if(getTarget() != null)
+                setTarget(null);
+
+            disturbanceLocation = blockPos;
+        }
     }
 }

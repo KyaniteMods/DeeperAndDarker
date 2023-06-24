@@ -23,12 +23,12 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     // GeckoLib
-    modImplementation("software.bernie.geckolib:geckolib-fabric-1.19:3.1.37"){
+    modImplementation("software.bernie.geckolib:geckolib-fabric-1.20:4.2"){
         exclude(module: "jankson")
     }
 
     // Portal API
-    include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta54-1.19')
+    include modImplementation('net.kyrptonaught:customportalapi:0.0.1-beta64-1.20')
 
     // Paragon
     include modImplementation("maven.modrinth:paragon:fabric-3.0.2-1.19x")

@@ -3,12 +3,13 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.EchoerEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.model.data.EntityModelData;
 
-public class EchoerModel extends AnimatedGeoModel<EchoerEntity> {
+public class EchoerModel extends GeoModel<EchoerEntity> {
     @Override
     public ResourceLocation getModelResource(EchoerEntity object) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/echoer.geo.json");
@@ -25,11 +26,12 @@ public class EchoerModel extends AnimatedGeoModel<EchoerEntity> {
     }
 
     @Override
-    public void setCustomAnimations(EchoerEntity animatable, int instanceId, AnimationEvent animationEvent) {
-        super.setCustomAnimations(animatable, instanceId, animationEvent);
-        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
-        IBone head = getBone("head");
-        head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
-        head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+    public void setCustomAnimations(EchoerEntity animatable, long instanceId, AnimationState<EchoerEntity> animationState) {
+        super.setCustomAnimations(animatable, instanceId, animationState);
+
+        EntityModelData extraData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+        GeoBone head = getBone("head").get();
+        head.setRotX(extraData.headPitch() * ((float)Math.PI / 180F));
+        head.setRotY(extraData.netHeadYaw() * ((float)Math.PI / 180F));
     }
 }

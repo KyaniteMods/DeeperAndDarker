@@ -24,18 +24,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class ScavengerEntity extends TamableAnimal implements IAnimatable {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+@SuppressWarnings("NullableProblems")
+public class ScavengerEntity extends TamableAnimal implements GeoAnimatable {
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     public BlockPos structureLocation = null;
 
     public ScavengerEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
@@ -62,25 +61,25 @@ public class ScavengerEntity extends TamableAnimal implements IAnimatable {
         ItemStack itemstack = player.getItemInHand(hand);
         if(isFood(itemstack) && !this.isTame()) {
             this.usePlayerItem(player, hand, itemstack);
-            if(!this.level.isClientSide()) {
+            if(!this.level().isClientSide()) {
                 this.tame(player);
                 this.setOwnerUUID(player.getUUID());
                 setTarget(null);
                 DDParticleUtils.spawnHeartParticles(this, this.getRandom());
-                this.level.broadcastEntityEvent(this, (byte) 244);
+                this.level().broadcastEntityEvent(this, (byte) 244);
             }
             return InteractionResult.SUCCESS;
         }
 
-        if(this.isTame() && !level.isClientSide()) {
+        if(this.isTame() && !level().isClientSide()) {
             DeeperAndDarker.LOGGER.info("CLICKED");
-            BlockPos nearestStructure = DDUtils.getNearestStructure(blockPosition(), getServer().getLevel(level.dimension()));
+            BlockPos nearestStructure = DDUtils.getNearestStructure(blockPosition(), getServer().getLevel(level().dimension()));
             if(nearestStructure != null) {
                 DeeperAndDarker.LOGGER.info("FOUND NEAREST STRUCTURE");
                 this.usePlayerItem(player, hand, itemstack);
                 structureLocation = nearestStructure;
                 DDParticleUtils.spawnHeartParticles(this, this.getRandom());
-                this.level.broadcastEntityEvent(this, (byte) 244);
+                this.level().broadcastEntityEvent(this, (byte) 244);
                 return InteractionResult.SUCCESS;
             }else{
                 DeeperAndDarker.LOGGER.info("NOT FOUND NEAREST STRUCTURE");
@@ -126,25 +125,28 @@ public class ScavengerEntity extends TamableAnimal implements IAnimatable {
         super.tick();
     }
 
-    @Override
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 5, this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.glare.idle", ILoopType.EDefaultLoopTypes.LOOP));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(@NotNull ServerLevel serverLevel, @NotNull AgeableMob ageableMob) {
         return null;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 5, state -> {
+            state.getController().setAnimation(RawAnimation.begin().thenLoop("animation.glare.idle"));
+
+            return PlayState.CONTINUE;
+        }));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.factory;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return 0;
     }
 }

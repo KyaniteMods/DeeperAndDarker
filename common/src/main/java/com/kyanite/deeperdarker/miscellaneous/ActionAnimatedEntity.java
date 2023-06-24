@@ -7,17 +7,15 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.List;
 
-public abstract class ActionAnimatedEntity extends TamableAnimal implements IAnimatable {
+public abstract class ActionAnimatedEntity extends TamableAnimal implements GeoAnimatable {
     private static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(ActionAnimatedEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> ANIMATION_TIME = SynchedEntityData.defineId(ActionAnimatedEntity.class, EntityDataSerializers.INT);
     private final List<EntityState> states;
@@ -40,27 +38,33 @@ public abstract class ActionAnimatedEntity extends TamableAnimal implements IAni
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 0, state -> {
+            state.getController().transitionLength(getTransitionTick(getCurrentState()));
+
+            if(state.isMoving() && getMovingState() != null) {
+                wasMoving = true;
+                isMoving = state.isMoving();
+                this.setState(getMovingState());
+                state.getController().setAnimation(RawAnimation.begin().thenLoop(getCurrentState().animationHolder.animationId));
+
+                return PlayState.CONTINUE;
+            }
+
+            if(wasMoving != state.isMoving() && getMovingState() != null) {
+                stateDone(getMovingState());
+                wasMoving = state.isMoving();
+            }
+            if(getCurrentState().animationHolder.loop) state.getController().setAnimation(RawAnimation.begin().thenLoop(getCurrentState().animationHolder.animationId));
+            else state.getController().setAnimation(RawAnimation.begin().thenPlay(getCurrentState().animationHolder.animationId));
+
+            return PlayState.CONTINUE;
+        }));
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().transitionLengthTicks = this.getTransitionTick(this.getCurrentState());
-
-        if(event.isMoving() && getMovingState() != null) {
-            wasMoving = true;
-            isMoving = event.isMoving();
-            this.setState(getMovingState());
-            event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, ILoopType.EDefaultLoopTypes.LOOP));
-            return PlayState.CONTINUE;
-        }
-
-        if(wasMoving != event.isMoving() && getMovingState() != null) {
-            stateDone(getMovingState());
-            wasMoving = event.isMoving();
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation(getCurrentState().animationHolder.animationId, getCurrentState().animationHolder.loop ? ILoopType.EDefaultLoopTypes.LOOP : ILoopType.EDefaultLoopTypes.PLAY_ONCE));
-        return PlayState.CONTINUE;
+    @Override
+    public double getTick(Object object) {
+        return 0;
     }
 
     @Override

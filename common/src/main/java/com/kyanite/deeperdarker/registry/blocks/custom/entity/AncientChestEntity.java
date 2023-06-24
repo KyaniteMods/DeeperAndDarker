@@ -19,18 +19,17 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class AncientChestEntity extends RandomizableContainerBlockEntity implements IAnimatable {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+@SuppressWarnings("NullableProblems")
+public class AncientChestEntity extends RandomizableContainerBlockEntity implements GeoAnimatable {
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     public AncientChestBlock ancientChestBlock;
     private NonNullList<ItemStack> items;
 
@@ -88,28 +87,6 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 13, this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().transitionLengthTicks = 13;
-        if(this.wiggleTicks != 0)  {
-            event.getController().transitionLengthTicks = 2;
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.wiggle", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
-            return PlayState.CONTINUE;
-        }
-
-        if(this.closeTicks > 3) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle_open", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
-            return PlayState.CONTINUE;
-        }
-
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.ancient_chest.idle", ILoopType.EDefaultLoopTypes.LOOP));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
 
@@ -150,11 +127,6 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    @Override
     public int getContainerSize() {
         return 36;
     }
@@ -167,5 +139,35 @@ public class AncientChestEntity extends RandomizableContainerBlockEntity impleme
     @Override
     protected void setItems(NonNullList<ItemStack> nonNullList) {
         this.items = nonNullList;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 13, state -> {
+            state.getController().transitionLength(13);
+            if(this.wiggleTicks != 0)  {
+                state.getController().transitionLength(2);
+                state.getController().setAnimation(RawAnimation.begin().thenPlay("animation.ancient_chest.wiggle"));
+                return PlayState.CONTINUE;
+            }
+
+            if(this.closeTicks > 3) {
+                state.getController().setAnimation(RawAnimation.begin().thenPlay("animation.ancient_chest.idle_open"));
+                return PlayState.CONTINUE;
+            }
+
+            state.getController().setAnimation(RawAnimation.begin().thenLoop("animation.ancient_chest.idle"));
+            return PlayState.CONTINUE;
+        }));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.factory;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return 13;
     }
 }

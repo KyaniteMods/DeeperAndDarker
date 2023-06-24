@@ -3,11 +3,12 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkCentipedeEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
+import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.model.data.EntityModelData;
 
-public class CentipedeModel extends AnimatedGeoModel<SculkCentipedeEntity> {
+public class CentipedeModel extends GeoModel<SculkCentipedeEntity> {
     @Override
     public ResourceLocation getModelResource(SculkCentipedeEntity object) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/sculk_centipede.geo.json");
@@ -24,16 +25,16 @@ public class CentipedeModel extends AnimatedGeoModel<SculkCentipedeEntity> {
     }
 
     @Override
-    public void setCustomAnimations(SculkCentipedeEntity animatable, int instanceId, AnimationEvent animationEvent) {
-        super.setCustomAnimations(animatable, instanceId, animationEvent);
-        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
+    public void setCustomAnimations(SculkCentipedeEntity animatable, long instanceId, AnimationState<SculkCentipedeEntity> animationState) {
+        super.setCustomAnimations(animatable, instanceId, animationState);
+        EntityModelData extraData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
 
-        getBone("Head").setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
-        getBone("Head").setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+        getBone("Head").get().setRotX(extraData.headPitch() * ((float)Math.PI / 180F));
+        getBone("Head").get().setRotY(extraData.netHeadYaw() * ((float)Math.PI / 180F));
 
-        getBone("Seg2").setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
-        getBone("Seg2").setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+        getBone("Seg2").get().setRotX(extraData.headPitch() * ((float)Math.PI / 180F));
+        getBone("Seg2").get().setRotY(extraData.netHeadYaw() * ((float)Math.PI / 180F));
 
-        getBone("Seg5").setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+        getBone("Seg5").get().setRotY(extraData.netHeadYaw() * ((float)Math.PI / 180F));
     }
 }

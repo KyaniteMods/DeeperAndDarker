@@ -31,10 +31,10 @@ public class DDItems {
     public static final Supplier<Item> SOUL_CRYSTAL = registerItem("soul_crystal", () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SCULK_TRANSMITTER = registerItem("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 
-    public static final Supplier<Item> WARDEN_HELMET = registerItem("warden_helmet", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.HEAD, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> WARDEN_CHESTPLATE = registerItem("warden_chestplate", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.CHEST, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> WARDEN_LEGGINGS = registerItem("warden_leggings", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.LEGS, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> WARDEN_BOOTS = registerItem("warden_boots", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, EquipmentSlot.FEET, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_HELMET = registerItem("warden_helmet", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_CHESTPLATE = registerItem("warden_chestplate", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_LEGGINGS = registerItem("warden_leggings", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Supplier<Item> WARDEN_BOOTS = registerItem("warden_boots", ClientHelper.createArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> SHATTERED_SPAWN_EGG = registerItem("shattered_spawn_egg", () -> new SpawnEggItem(DDEntities.SHATTERED.get(), 0x0d1217, 0xD1D6B6, new Item.Properties()));
     public static final Supplier<Item> SCULK_LEECH_SPAWN_EGG = registerItem("sculk_leech_spawn_egg", () -> new SpawnEggItem(DDEntities.SCULK_LEECH.get(), 0x152B38, 0x00FAFF, new Item.Properties()));
     public static final Supplier<Item> SCULK_SNAPPER_SPAWN_EGG = registerItem("sculk_snapper_spawn_egg", () -> new SpawnEggItem(DDEntities.SCULK_SNAPPER.get(), 0xD1D6B6, 0x1D726F, new Item.Properties()));

@@ -23,18 +23,16 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class SculkCentipedeEntity extends Monster implements IAnimatable {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+public class SculkCentipedeEntity extends Monster implements GeoAnimatable {
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(SculkCentipedeEntity.class, EntityDataSerializers.BYTE);
 
     public SculkCentipedeEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -45,10 +43,6 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 25.0D).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ATTACK_DAMAGE, 2.5D);
     }
 
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
-    }
     @Override
     public boolean onClimbable() {
         return this.isClimbing();
@@ -116,7 +110,7 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
     @Override
     public void tick() {
         super.tick();
-        if(!this.level.isClientSide) {
+        if(!this.level().isClientSide) {
             this.setClimbing(this.horizontalCollision);
         }
         if(this.horizontalCollision && this.onClimbable()) {
@@ -128,17 +122,25 @@ public class SculkCentipedeEntity extends Monster implements IAnimatable {
         super.setYBodyRot(pOffset);
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sculk_centipede.walk", ILoopType.EDefaultLoopTypes.LOOP));
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                state.getController().setAnimation(RawAnimation.begin().thenLoop("animation.sculk_centipede.walk"));
+                return PlayState.CONTINUE;
+            }
+            state.getController().setAnimation(RawAnimation.begin().thenLoop("animation.sculk_centipede.idle"));
             return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sculk_centipede.idle", ILoopType.EDefaultLoopTypes.LOOP));
-        return PlayState.CONTINUE;
+        }));
     }
 
     @Override
-    public AnimationFactory getFactory() {
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return 5;
     }
 }

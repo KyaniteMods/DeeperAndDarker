@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,11 +16,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
 
-@Mixin(VibrationListener.class)
+@Mixin(VibrationSystem.Listener.class)
 public class VibrationListenerMixin {
     @Shadow
     @Nullable
-    protected VibrationListener receivingEvent;
+    protected VibrationSystem.Listener receivingEvent;
 
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
     public void handle(ServerLevel level, GameEvent.Context message, CallbackInfoReturnable<? super Boolean> cir) {

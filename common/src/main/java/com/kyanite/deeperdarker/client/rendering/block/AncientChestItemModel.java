@@ -4,9 +4,9 @@ import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.blocks.custom.AncientChestBlock;
 import com.kyanite.deeperdarker.registry.items.custom.AncientChestItem;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class AncientChestItemModel extends AnimatedGeoModel<AncientChestItem> {
+public class AncientChestItemModel extends GeoModel<AncientChestItem> {
 
     @Override
     public ResourceLocation getModelResource(AncientChestItem item) {

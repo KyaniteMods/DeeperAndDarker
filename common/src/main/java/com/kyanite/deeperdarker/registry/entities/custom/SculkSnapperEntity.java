@@ -42,14 +42,14 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimatable {
+public class SculkSnapperEntity extends ActionAnimatedEntity implements GeoAnimatable {
     private static final EntityDataAccessor<Integer> SNIFF_COUNTER = SynchedEntityData.defineId(SculkSnapperEntity.class, EntityDataSerializers.INT);
     public static EntityState IDLE = new EntityState(true, new EntityAnimationHolder("idle", DDUtils.secondsToTicks(4), true, false));
     public static EntityState MOUTH_OPEN = new EntityState(true, new EntityAnimationHolder("openmouth", DDUtils.secondsToTicks(0.5f), false, true));
@@ -58,7 +58,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
 
     public static EntityState DIG = new EntityState(true, new EntityAnimationHolder("dig", DDUtils.secondsToTicks(3), false, true));
     public static EntityState EMERGE = new EntityState(true, new EntityAnimationHolder("emerge", DDUtils.secondsToTicks(0.8f), false, true));
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     private BlockPos TARGET_POS = null;
 
     public SculkSnapperEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
@@ -139,8 +139,8 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
                 EnchantmentInstance instance = new EnchantmentInstance(randomEnchantment, 1);
                 ItemStack randomBook = EnchantedBookItem.createForEnchantment(instance);
                 if(!randomBook.isEmpty()) {
-                    ItemEntity itementity = new ItemEntity(this.level, this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), randomBook);
-                    this.level.addFreshEntity(itementity);
+                    ItemEntity itementity = new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), randomBook);
+                    this.level().addFreshEntity(itementity);
                 }
             }
         }
@@ -194,21 +194,21 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if(isFood(itemstack) && !this.isTame()) {
             this.usePlayerItem(pPlayer, pHand, itemstack);
-            if(!this.level.isClientSide()) {
+            if(!this.level().isClientSide()) {
                 this.tame(pPlayer);
                 this.setOwnerUUID(pPlayer.getUUID());
                 setTarget(null);
                 DDParticleUtils.spawnHeartParticles(this, this.getRandom());
-                this.level.broadcastEntityEvent(this, (byte) 244);
+                this.level().broadcastEntityEvent(this, (byte) 244);
             }
         }
 
         if(!itemstack.getEnchantmentTags().isEmpty() && isTame() && this.getHealth() != this.getMaxHealth()) {
             this.usePlayerItem(pPlayer, pHand, itemstack);
-            if(!this.level.isClientSide()) {
+            if(!this.level().isClientSide()) {
                 this.heal(getMaxHealth());
                 DDParticleUtils.spawnHeartParticles(this, this.getRandom());
-                this.level.broadcastEntityEvent(this, (byte) 244);
+                this.level().broadcastEntityEvent(this, (byte) 244);
             }
         }
         return super.mobInteract(pPlayer, pHand);
@@ -252,7 +252,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         if(entityState == DIG || entityState == EMERGE) {
             if(this.getAnimationTime() < 10) {
                 playSound(this.getBlockStateOn().getSoundType().getHitSound());
-                DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level);
+                DDParticleUtils.clientDiggingParticles(this.getRandom(), this.getBlockStateOn(), this.blockPosition(), this.level());
             }
         }
     }
@@ -272,7 +272,7 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             return;
         }
 
-        Player player = getLevel().getNearestPlayer(this, 40);
+        Player player = level().getNearestPlayer(this, 40);
         if(player == null || player.isDeadOrDying() || player.isCreative() || player.blockPosition() == null) {
             setState(IDLE);
             return;
@@ -306,11 +306,6 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
         this.entityData.set(SNIFF_COUNTER, pCompound.getInt("SniffCounter"));
     }
 
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
@@ -323,5 +318,10 @@ public class SculkSnapperEntity extends ActionAnimatedEntity implements IAnimata
             return !pStack.getEnchantmentTags().isEmpty();
         }
         return false;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.factory;
     }
 }

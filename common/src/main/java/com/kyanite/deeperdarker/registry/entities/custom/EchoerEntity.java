@@ -28,26 +28,20 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Arrays;
 
-public class EchoerEntity extends AbstractVillager implements IAnimatable {
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
-    public final MerchantOffer[] offers = new MerchantOffer[]{
-            new MerchantOffer(
-                    new ItemStack(Items.AMETHYST_SHARD, 12),
-                    EnchantedBookItem.createForEnchantment(new EnchantmentInstance(DDEnchantments.catalysisEnchant.get(), 1)),
-                    2, 4, 0f)
-    };
+@SuppressWarnings("NullableProblems")
+public class EchoerEntity extends AbstractVillager implements GeoAnimatable {
+    private final AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
+    public final MerchantOffer[] offers = new MerchantOffer[]{ new MerchantOffer(new ItemStack(Items.AMETHYST_SHARD, 12), EnchantedBookItem.createForEnchantment(new EnchantmentInstance(DDEnchantments.catalysisEnchant.get(), 1)), 2, 4, 0f) };
 
     public EchoerEntity(EntityType<? extends AbstractVillager> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -55,11 +49,6 @@ public class EchoerEntity extends AbstractVillager implements IAnimatable {
 
     public static AttributeSupplier.Builder attributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 25.0D).add(Attributes.MOVEMENT_SPEED, 0.1D).add(Attributes.ATTACK_DAMAGE, 2.5D);
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     @Override
@@ -71,14 +60,14 @@ public class EchoerEntity extends AbstractVillager implements IAnimatable {
             }
 
             if (this.getOffers().isEmpty()) {
-                return InteractionResult.sidedSuccess(this.level.isClientSide);
+                return InteractionResult.sidedSuccess(this.level().isClientSide);
             } else {
-                if (!this.level.isClientSide) {
+                if (!this.level().isClientSide) {
                     this.setTradingPlayer(player);
                     this.openTradingScreen(player, this.getDisplayName(), 1);
                 }
 
-                return InteractionResult.sidedSuccess(this.level.isClientSide);
+                return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
         } else {
             return super.mobInteract(player, interactionHand);
@@ -106,25 +95,11 @@ public class EchoerEntity extends AbstractVillager implements IAnimatable {
         return DDTypes.SCULK;
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.echoer.walk", ILoopType.EDefaultLoopTypes.LOOP));
-            return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.echoer.idle", ILoopType.EDefaultLoopTypes.LOOP));
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
     @Override
     protected void rewardTradeXp(MerchantOffer merchantOffer) {
         if (merchantOffer.shouldRewardExp()) {
             int i = 3 + this.random.nextInt(4);
-            this.level.addFreshEntity(new ExperienceOrb(this.level, this.getX(), this.getY() + 0.5, this.getZ(), i));
+            this.level().addFreshEntity(new ExperienceOrb(this.level(), this.getX(), this.getY() + 0.5, this.getZ(), i));
         }
     }
 
@@ -147,5 +122,27 @@ public class EchoerEntity extends AbstractVillager implements IAnimatable {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
         return null;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 5, state -> {
+            if(state.isMoving()) {
+                state.getController().setAnimation(RawAnimation.begin().thenLoop("animation.echoer.walk"));
+                return PlayState.CONTINUE;
+            }
+            state.getController().setAnimation(RawAnimation.begin().thenLoop("animation.echoer.idle"));
+            return PlayState.CONTINUE;
+        }));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.factory;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return 5;
     }
 }

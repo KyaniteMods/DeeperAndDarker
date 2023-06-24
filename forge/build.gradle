@@ -36,7 +36,7 @@ dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
 
     // GeckoLib
-    modImplementation ("software.bernie.geckolib:geckolib-forge-1.19:3.1.38"){
+    modImplementation ("software.bernie.geckolib:geckolib-forge-1.20:4.2"){
         exclude(module: "jankson")
     }
 

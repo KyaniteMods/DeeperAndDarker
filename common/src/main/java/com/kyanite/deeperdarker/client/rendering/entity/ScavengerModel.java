@@ -3,12 +3,13 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.ScavengerEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.model.data.EntityModelData;
 
-public class ScavengerModel extends AnimatedGeoModel<ScavengerEntity> {
+public class ScavengerModel extends GeoModel<ScavengerEntity> {
     @Override
     public ResourceLocation getModelResource(ScavengerEntity object) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/scavenger.geo.json");
@@ -25,11 +26,12 @@ public class ScavengerModel extends AnimatedGeoModel<ScavengerEntity> {
     }
 
     @Override
-    public void setCustomAnimations(ScavengerEntity animatable, int instanceId, AnimationEvent animationEvent) {
-        super.setCustomAnimations(animatable, instanceId, animationEvent);
-        EntityModelData extraData = (EntityModelData) animationEvent.getExtraDataOfType(EntityModelData.class).get(0);
-        IBone head = getBone("Glare");
-        head.setRotationX(extraData.headPitch * ((float)Math.PI / 180F));
-        head.setRotationY(extraData.netHeadYaw * ((float)Math.PI / 180F));
+    public void setCustomAnimations(ScavengerEntity animatable, long instanceId, AnimationState<ScavengerEntity> animationState) {
+        super.setCustomAnimations(animatable, instanceId, animationState);
+
+        EntityModelData extraData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+        GeoBone head = getBone("Glare").get();
+        head.setRotX(extraData.headPitch() * ((float)Math.PI / 180F));
+        head.setRotY(extraData.netHeadYaw() * ((float)Math.PI / 180F));
     }
 }
