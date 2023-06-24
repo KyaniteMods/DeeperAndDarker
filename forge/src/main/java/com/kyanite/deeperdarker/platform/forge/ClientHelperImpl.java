@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.platform.forge;
 
 import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
 import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorItem;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;

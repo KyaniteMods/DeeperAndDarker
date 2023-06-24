@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.registry.world.features;
 
 import com.google.common.collect.ImmutableList;
 import com.kyanite.deeperdarker.DeeperAndDarker;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK = key("sculk");

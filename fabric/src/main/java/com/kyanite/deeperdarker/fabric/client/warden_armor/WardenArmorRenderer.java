@@ -3,8 +3,7 @@ package com.kyanite.deeperdarker.fabric.client.warden_armor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.world.entity.EquipmentSlot;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.util.GeoUtils;
+import software.bernie.geckolib.cache.object.GeoBone;
 
 public class WardenArmorRenderer extends ArmorRenderer<WardenArmorItem> {
     public WardenArmorRenderer() {
@@ -22,17 +21,17 @@ public class WardenArmorRenderer extends ArmorRenderer<WardenArmorItem> {
     @Override
     public void fitToBiped() {
         super.fitToBiped();
-        IBone bodyBone = this.getGeoModelProvider().getBone("armorWaist");
-        GeoUtils.copyRotations(baseModel.body, bodyBone);
-        bodyBone.setPositionX(baseModel.body.x);
-        bodyBone.setPositionY(-baseModel.body.y);
-        bodyBone.setPositionZ(baseModel.body.z);
+        GeoBone bodyBone = this.getGeoModel().getBone("armorWaist").get();
+//        GeoUtils.copyRotations(baseModel.body, bodyBone);
+        bodyBone.setPosX(baseModel.body.x);
+        bodyBone.setPosY(-baseModel.body.y);
+        bodyBone.setPosZ(baseModel.body.z);
     }
 
     @Override
     public void render(float partialTicks, PoseStack stack, VertexConsumer bufferIn, int packedLightIn) {
         super.render(partialTicks, stack, bufferIn, packedLightIn);
-        IBone waistBone = getAndHideBone("armorWaist");
+        GeoBone waistBone = getAndHideBone("armorWaist");
         waistBone.setHidden(armorSlot != EquipmentSlot.LEGS);
     }
 }

@@ -3,9 +3,9 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkLeechEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class SculkLeechModel extends AnimatedGeoModel<SculkLeechEntity> {
+public class SculkLeechModel extends GeoModel<SculkLeechEntity> {
     @Override
     public ResourceLocation getModelResource(SculkLeechEntity object) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/sculk_leech.geo.json");

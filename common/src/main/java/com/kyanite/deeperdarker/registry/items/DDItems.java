@@ -8,12 +8,10 @@ import com.kyanite.deeperdarker.platform.PortalHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.entities.custom.DDBoat;
 import com.kyanite.deeperdarker.registry.items.custom.*;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 
 import java.util.function.Supplier;
 
-import static com.kyanite.deeperdarker.platform.RegistryHelper.registerBoatItem;
 import static com.kyanite.deeperdarker.platform.RegistryHelper.registerItem;
 
 public class DDItems {

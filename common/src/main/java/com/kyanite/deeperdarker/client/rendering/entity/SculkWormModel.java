@@ -3,9 +3,9 @@ package com.kyanite.deeperdarker.client.rendering.entity;
 import com.kyanite.deeperdarker.DeeperAndDarker;
 import com.kyanite.deeperdarker.registry.entities.custom.SculkWormEntity;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class SculkWormModel extends AnimatedGeoModel<SculkWormEntity> {
+public class SculkWormModel extends GeoModel<SculkWormEntity> {
     @Override
     public ResourceLocation getModelResource(SculkWormEntity object) {
         return new ResourceLocation(DeeperAndDarker.MOD_ID, "geo/shriek_worm.geo.json");

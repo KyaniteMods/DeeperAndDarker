@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.fabric.client.warden_armor;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,38 +14,36 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import software.bernie.geckolib3.compat.PatchouliCompat;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
-import software.bernie.geckolib3.core.util.Color;
-import software.bernie.geckolib3.geo.render.built.GeoModel;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.object.Color;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib3.util.GeoUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRenderer<T>, net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer {
+public class ArmorRenderer<T extends ArmorItem & GeoAnimatable> implements GeoRenderer<T>, net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer {
     public static final Map<Class<? extends ArmorItem>, ArmorRenderer<?>> renderers = new ConcurrentHashMap<>();
 
     static {
-        AnimationController.addModelFetcher((IAnimatable object) -> {
+        AnimationController.addModelFetcher((GeoAnimatable object) -> {
             if(object instanceof ArmorItem) {
                 ArmorRenderer renderer = renderers.get(object.getClass());
-                return renderer == null ? null : renderer.getGeoModelProvider();
+                return renderer == null ? null : renderer.getGeoModel();
             }
             return null;
         });
     }
 
-    protected AnimatedGeoModel<T> modelProvider;
+    protected GeoModel<T> modelProvider;
     protected ItemStack currentItemStack;
 
     // Set these to the names of your armor's bones, or null if you aren't using
@@ -66,11 +63,11 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     public EquipmentSlot armorSlot;
     public HumanoidModel baseModel;
 
-    public ArmorRenderer(AnimatedGeoModel<T> modelProvider) {
+    public ArmorRenderer(GeoModel<T> modelProvider) {
         this.modelProvider = modelProvider;
     }
 
-    public void setModel(AnimatedGeoModel<T> model) {
+    public void setModel(GeoModel<T> model) {
         this.modelProvider = model;
     }
 
@@ -122,27 +119,22 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     public void render(float partialTicks, PoseStack stack, VertexConsumer bufferIn, int packedLightIn) {
         stack.translate(0.0D, 1.497F, 0.0D);
         stack.scale(-1.005F, -1.0F, 1.005F);
-        GeoModel model = modelProvider.getModel(modelProvider.getModelResource(currentArmorItem));
+        GeoModel<T> model = modelProvider;
 
-        AnimationEvent<T> itemEvent = new AnimationEvent<T>(this.currentArmorItem, 0, 0,
-                Minecraft.getInstance().getFrameTime(), false,
-                Arrays.asList(this.itemStack, this.entityLiving, this.armorSlot));
+        AnimationState<T> itemEvent = new AnimationState<>(this.currentArmorItem, 0, 0, Minecraft.getInstance().getFrameTime(), false);
         modelProvider.setCustomAnimations(currentArmorItem, this.getInstanceId(this.currentArmorItem), itemEvent);
 
         this.fitToBiped();
         this.applySlot(armorSlot);
         stack.pushPose();
-        Minecraft.getInstance().getTextureManager().bindForSetup(getTextureResource(currentArmorItem));
+        Minecraft.getInstance().getTextureManager().bindForSetup(getTextureLocation(currentArmorItem));
         Color renderColor = getRenderColor(currentArmorItem, partialTicks, stack, null, bufferIn, packedLightIn);
         RenderType renderType = getRenderType(currentArmorItem, partialTicks, stack, null, bufferIn, packedLightIn,
-                getTextureResource(currentArmorItem));
+                getTextureLocation(currentArmorItem));
         render(model, currentArmorItem, partialTicks, renderType, stack, null, bufferIn, packedLightIn,
                 OverlayTexture.NO_OVERLAY, (float) renderColor.getRed() / 255f, (float) renderColor.getGreen() / 255f,
                 (float) renderColor.getBlue() / 255f, (float) renderColor.getAlpha() / 255);
 
-        if(FabricLoader.getInstance().isModLoaded("patchouli")) {
-            PatchouliCompat.patchouliLoaded(stack);
-        }
         stack.popPose();
         stack.scale(-1.005F, -1.0F, 1.005F);
         stack.translate(0.0D, -1.497F, 0.0D);
@@ -151,27 +143,22 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     public void render(PoseStack stack, MultiBufferSource bufferIn, int packedLightIn) {
         stack.translate(0.0D, 1.497F, 0.0D);
         stack.scale(-1.005F, -1.0F, 1.005F);
-        GeoModel model = modelProvider.getModel(modelProvider.getModelResource(currentArmorItem));
+        GeoModel<T> model = modelProvider;
 
-        AnimationEvent<T> itemEvent = new AnimationEvent<T>(this.currentArmorItem, 0, 0,
-                Minecraft.getInstance().getFrameTime(), false,
-                Arrays.asList(this.itemStack, this.entityLiving, this.armorSlot));
+        AnimationState<T> itemEvent = new AnimationState<>(this.currentArmorItem, 0, 0, Minecraft.getInstance().getFrameTime(), false);
         modelProvider.setCustomAnimations(currentArmorItem, this.getInstanceId(this.currentArmorItem), itemEvent);
 
         this.fitToBiped();
         this.applySlot(armorSlot);
         stack.pushPose();
-        Minecraft.getInstance().getTextureManager().bindForSetup(getTextureResource(currentArmorItem));
+        Minecraft.getInstance().getTextureManager().bindForSetup(getTextureLocation(currentArmorItem));
         Color renderColor = getRenderColor(currentArmorItem, 0, stack, bufferIn, null, packedLightIn);
         RenderType renderType = getRenderType(currentArmorItem, 0, stack, bufferIn, null, packedLightIn,
-                getTextureResource(currentArmorItem));
+                getTextureLocation(currentArmorItem));
         render(model, currentArmorItem, 0, renderType, stack, bufferIn, null, packedLightIn, OverlayTexture.NO_OVERLAY,
                 (float) renderColor.getRed() / 255f, (float) renderColor.getGreen() / 255f,
                 (float) renderColor.getBlue() / 255f, (float) renderColor.getAlpha() / 255);
 
-        if(FabricLoader.getInstance().isModLoaded("patchouli")) {
-            PatchouliCompat.patchouliLoaded(stack);
-        }
         stack.popPose();
         stack.scale(-1.005F, -1.0F, 1.005F);
         stack.translate(0.0D, -1.497F, 0.0D);
@@ -179,95 +166,84 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
 
     public void fitToBiped() {
         if(this.headBone != null) {
-            IBone headBone = this.modelProvider.getBone(this.headBone);
+            GeoBone headBone = this.modelProvider.getBone(this.headBone).get();
             GeoUtils.copyRotations(baseModel.head, headBone);
-            headBone.setPositionX(baseModel.head.x);
-            headBone.setPositionY(-baseModel.head.y);
-            headBone.setPositionZ(baseModel.head.z);
+            headBone.setPosX(baseModel.head.x);
+            headBone.setPosY(-baseModel.head.y);
+            headBone.setPosZ(baseModel.head.z);
         }
 
         if(this.bodyBone != null) {
-            IBone bodyBone = this.modelProvider.getBone(this.bodyBone);
+            GeoBone bodyBone = this.modelProvider.getBone(this.bodyBone).get();
             GeoUtils.copyRotations(baseModel.body, bodyBone);
-            bodyBone.setPositionX(baseModel.body.x);
-            bodyBone.setPositionY(-baseModel.body.y);
-            bodyBone.setPositionZ(baseModel.body.z);
+            bodyBone.setPosX(baseModel.body.x);
+            bodyBone.setPosY(-baseModel.body.y);
+            bodyBone.setPosZ(baseModel.body.z);
         }
         if(this.rightArmBone != null) {
-            IBone rightArmBone = this.modelProvider.getBone(this.rightArmBone);
+            GeoBone rightArmBone = this.modelProvider.getBone(this.rightArmBone).get();
             GeoUtils.copyRotations(baseModel.rightArm, rightArmBone);
-            rightArmBone.setPositionX(baseModel.rightArm.x + 5);
-            rightArmBone.setPositionY(2 - baseModel.rightArm.y);
-            rightArmBone.setPositionZ(baseModel.rightArm.z);
+            rightArmBone.setPosX(baseModel.rightArm.x + 5);
+            rightArmBone.setPosY(2 - baseModel.rightArm.y);
+            rightArmBone.setPosZ(baseModel.rightArm.z);
         }
 
         if(this.leftArmBone != null) {
-            IBone leftArmBone = this.modelProvider.getBone(this.leftArmBone);
+            GeoBone leftArmBone = this.modelProvider.getBone(this.leftArmBone).get();
             GeoUtils.copyRotations(baseModel.leftArm, leftArmBone);
-            leftArmBone.setPositionX(baseModel.leftArm.x - 5);
-            leftArmBone.setPositionY(2 - baseModel.leftArm.y);
-            leftArmBone.setPositionZ(baseModel.leftArm.z);
+            leftArmBone.setPosX(baseModel.leftArm.x - 5);
+            leftArmBone.setPosY(2 - baseModel.leftArm.y);
+            leftArmBone.setPosZ(baseModel.leftArm.z);
         }
         if(this.rightLegBone != null) {
-            IBone rightLegBone = this.modelProvider.getBone(this.rightLegBone);
+            GeoBone rightLegBone = this.modelProvider.getBone(this.rightLegBone).get();
             GeoUtils.copyRotations(baseModel.rightLeg, rightLegBone);
-            rightLegBone.setPositionX(baseModel.rightLeg.x + 2);
-            rightLegBone.setPositionY(12 - baseModel.rightLeg.y);
-            rightLegBone.setPositionZ(baseModel.rightLeg.z);
+            rightLegBone.setPosX(baseModel.rightLeg.x + 2);
+            rightLegBone.setPosY(12 - baseModel.rightLeg.y);
+            rightLegBone.setPosZ(baseModel.rightLeg.z);
             if(this.rightBootBone != null) {
-                IBone rightBootBone = this.modelProvider.getBone(this.rightBootBone);
+                GeoBone rightBootBone = this.modelProvider.getBone(this.rightBootBone).get();
                 GeoUtils.copyRotations(baseModel.rightLeg, rightBootBone);
-                rightBootBone.setPositionX(baseModel.rightLeg.x + 2);
-                rightBootBone.setPositionY(12 - baseModel.rightLeg.y);
-                rightBootBone.setPositionZ(baseModel.rightLeg.z);
+                rightBootBone.setPosX(baseModel.rightLeg.x + 2);
+                rightBootBone.setPosY(12 - baseModel.rightLeg.y);
+                rightBootBone.setPosZ(baseModel.rightLeg.z);
             }
         }
         if(this.leftLegBone != null) {
-            IBone leftLegBone = this.modelProvider.getBone(this.leftLegBone);
+            GeoBone leftLegBone = this.modelProvider.getBone(this.leftLegBone).get();
             GeoUtils.copyRotations(baseModel.leftLeg, leftLegBone);
-            leftLegBone.setPositionX(baseModel.leftLeg.x - 2);
-            leftLegBone.setPositionY(12 - baseModel.leftLeg.y);
-            leftLegBone.setPositionZ(baseModel.leftLeg.z);
+            leftLegBone.setPosX(baseModel.leftLeg.x - 2);
+            leftLegBone.setPosY(12 - baseModel.leftLeg.y);
+            leftLegBone.setPosZ(baseModel.leftLeg.z);
             if(this.leftBootBone != null) {
-                IBone leftBootBone = this.modelProvider.getBone(this.leftBootBone);
+                GeoBone leftBootBone = this.modelProvider.getBone(this.leftBootBone).get();
                 GeoUtils.copyRotations(baseModel.leftLeg, leftBootBone);
-                leftBootBone.setPositionX(baseModel.leftLeg.x - 2);
-                leftBootBone.setPositionY(12 - baseModel.leftLeg.y);
-                leftBootBone.setPositionZ(baseModel.leftLeg.z);
+                leftBootBone.setPosX(baseModel.leftLeg.x - 2);
+                leftBootBone.setPosY(12 - baseModel.leftLeg.y);
+                leftBootBone.setPosZ(baseModel.leftLeg.z);
             }
         }
     }
 
     @Override
-    public void setCurrentRTB(MultiBufferSource rtb) {
-
-    }
-
-    @Override
-    public MultiBufferSource getCurrentRTB() {
-        return null;
-    }
-
-    @Override
-    public AnimatedGeoModel<T> getGeoModelProvider() {
+    public GeoModel<T> getGeoModel() {
         return this.modelProvider;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(T instance) {
-        return null;
+    public T getAnimatable() {
+        return ;
     }
 
     @Override
-    public ResourceLocation getTextureResource(T instance) {
+    public ResourceLocation getTextureLocation(T instance) {
         return this.modelProvider.getTextureResource(instance);
     }
 
     /**
      * Everything after this point needs to be called every frame before rendering
      */
-    public ArmorRenderer<T> setCurrentItem(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot,
-                                           HumanoidModel model) {
+    public ArmorRenderer<T> setCurrentItem(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel model) {
         this.entityLiving = entityLiving;
         this.itemStack = itemStack;
         this.armorSlot = armorSlot;
@@ -281,14 +257,14 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     public ArmorRenderer<T> applySlot(EquipmentSlot boneSlot) {
         modelProvider.getModel(modelProvider.getModelResource(currentArmorItem));
 
-        IBone headBone = this.getAndHideBone(this.headBone);
-        IBone bodyBone = this.getAndHideBone(this.bodyBone);
-        IBone rightArmBone = this.getAndHideBone(this.rightArmBone);
-        IBone leftArmBone = this.getAndHideBone(this.leftArmBone);
-        IBone rightLegBone = this.getAndHideBone(this.rightLegBone);
-        IBone leftLegBone = this.getAndHideBone(this.leftLegBone);
-        IBone rightBootBone = this.getAndHideBone(this.rightBootBone);
-        IBone leftBootBone = this.getAndHideBone(this.leftBootBone);
+        GeoBone headBone = this.getAndHideBone(this.headBone);
+        GeoBone bodyBone = this.getAndHideBone(this.bodyBone);
+        GeoBone rightArmBone = this.getAndHideBone(this.rightArmBone);
+        GeoBone leftArmBone = this.getAndHideBone(this.leftArmBone);
+        GeoBone rightLegBone = this.getAndHideBone(this.rightLegBone);
+        GeoBone leftLegBone = this.getAndHideBone(this.leftLegBone);
+        GeoBone rightBootBone = this.getAndHideBone(this.rightBootBone);
+        GeoBone leftBootBone = this.getAndHideBone(this.leftBootBone);
 
         switch (boneSlot) {
             case HEAD:
@@ -319,9 +295,9 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
         return this;
     }
 
-    protected IBone getAndHideBone(String boneName) {
+    protected GeoBone getAndHideBone(String boneName) {
         if(boneName != null) {
-            final IBone bone = this.modelProvider.getBone(boneName);
+            final GeoBone bone = this.modelProvider.getBone(boneName).get();
             bone.setHidden(true);
             return bone;
         }
@@ -329,7 +305,27 @@ public class ArmorRenderer<T extends ArmorItem & IAnimatable> implements IGeoRen
     }
 
     @Override
-    public int getInstanceId(T animatable) {
+    public long getInstanceId(T animatable) {
         return Objects.hash(this.armorSlot, itemStack.getItem(), itemStack.getCount(), itemStack.hasTag() ? itemStack.getTag().toString() : 1, this.entityLiving.getUUID().toString());
+    }
+
+    @Override
+    public void fireCompileRenderLayersEvent() {
+
+    }
+
+    @Override
+    public boolean firePreRenderEvent(PoseStack poseStack, BakedGeoModel model, MultiBufferSource bufferSource, float partialTick, int packedLight) {
+        return false;
+    }
+
+    @Override
+    public void firePostRenderEvent(PoseStack poseStack, BakedGeoModel model, MultiBufferSource bufferSource, float partialTick, int packedLight) {
+
+    }
+
+    @Override
+    public void updateAnimatedTextureFrame(T animatable) {
+
     }
 }

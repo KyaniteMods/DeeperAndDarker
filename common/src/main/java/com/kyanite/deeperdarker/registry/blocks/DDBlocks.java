@@ -17,21 +17,15 @@ import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.tendrils.Sculk
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.SculkVinesBlock;
 import com.kyanite.deeperdarker.registry.blocks.custom.vegetation.vines.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

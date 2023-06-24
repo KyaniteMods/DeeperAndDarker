@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public class VibrationListenerMixin {
     @Shadow
     @Nullable
-    protected VibrationSystem.Listener receivingEvent;
+    protected VibrationSystem receivingEvent;
 
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
     public void handle(ServerLevel level, GameEvent.Context message, CallbackInfoReturnable<? super Boolean> cir) {
