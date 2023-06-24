@@ -5,7 +5,6 @@ import com.kyanite.deeperdarker.config.DDConfig;
 import com.kyanite.deeperdarker.platform.RegistryHelper;
 import com.kyanite.deeperdarker.registry.entities.DDEntities;
 import com.kyanite.deeperdarker.registry.sounds.DDSounds;
-import com.kyanite.deeperdarker.registry.world.features.DDPlacedFeaturesOld;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.particles.ParticleTypes;

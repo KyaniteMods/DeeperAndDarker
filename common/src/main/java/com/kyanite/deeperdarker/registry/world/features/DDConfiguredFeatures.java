@@ -43,7 +43,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION_BASE = key("gloom_sculk_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOM_SCULK_VEGETATION_COLLECTION = key("gloom_sculk_bonemeal");
 
-    public static void featureRegistry(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         // Environmental stuff (trees/pillars/etc)
         register(context, EXTRA_SCULK_GLEAM, DDFeatures.SCULK_GLEAM_BLOB.get());
         register(context, SCULKSTONE_PILLAR, DDFeatures.SCULK_PILLAR.get());

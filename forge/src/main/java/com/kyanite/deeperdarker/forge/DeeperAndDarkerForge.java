@@ -6,8 +6,6 @@ import com.kyanite.deeperdarker.config.DDClientConfig;
 import com.kyanite.deeperdarker.forge.client.SoulElytraItem;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraArmorStandLayer;
 import com.kyanite.deeperdarker.forge.client.elytra.SoulElytraLayer;
-import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorItem;
-import com.kyanite.deeperdarker.forge.client.warden_armor.WardenArmorRenderer;
 import com.kyanite.deeperdarker.forge.datagen.advancements.DDAdvancementsProvider;
 import com.kyanite.deeperdarker.forge.datagen.lang.ENLanguageProvider;
 import com.kyanite.deeperdarker.forge.datagen.loot.DDLootTableProvider;
@@ -20,6 +18,7 @@ import com.kyanite.deeperdarker.forge.datagen.tags.DDBlockTagsProvider;
 import com.kyanite.deeperdarker.forge.datagen.tags.DDEntityTypeTagsProvider;
 import com.kyanite.deeperdarker.forge.datagen.tags.DDItemTagsProvider;
 import com.kyanite.deeperdarker.forge.datagen.tags.DDStructureTagsProvider;
+import com.kyanite.deeperdarker.forge.datagen.worldgen.DDWorldGen;
 import com.kyanite.deeperdarker.forge.world.DDPoiTypes;
 import com.kyanite.deeperdarker.forge.world.biomes.DDBiomeModifiers;
 import com.kyanite.deeperdarker.miscellaneous.DDWoodTypes;
@@ -70,9 +69,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import software.bernie.example.GeckoLibMod;
-import software.bernie.geckolib3.GeckoLib;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
+import software.bernie.geckolib.GeckoLib;
 
 import java.util.HashMap;
 import java.util.List;
@@ -82,10 +79,7 @@ import java.util.concurrent.CompletableFuture;
 @Mod(DeeperAndDarker.MOD_ID)
 public class DeeperAndDarkerForge {
     public DeeperAndDarkerForge() {
-        DeeperAndDarker.init(() -> {
-            GeckoLibMod.DISABLE_IN_DEV = true;
-            GeckoLib.initialize();
-        });
+        DeeperAndDarker.init(GeckoLib::initialize);
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -137,7 +131,7 @@ public class DeeperAndDarkerForge {
         generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(packOutput, event.getLookupProvider(), fileHelper));
         generator.addProvider(event.includeServer(), new DDStructureTagsProvider(packOutput, event.getLookupProvider(), fileHelper));
 
-//        generator.addProvider(event.includeServer(), new DDWorldGen(packOutput, event.getLookupProvider()));
+        generator.addProvider(event.includeServer(), new DDWorldGen(packOutput, event.getLookupProvider()));
     }
 
     public void attributes(EntityAttributeCreationEvent event) {
@@ -198,7 +192,7 @@ public class DeeperAndDarkerForge {
 
         @SubscribeEvent
         public static void entityRenderers(final EntityRenderersEvent.AddLayers event) {
-            GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
+//            GeoArmorRenderer.registerArmorRenderer(WardenArmorItem.class, WardenArmorRenderer::new);
 
             EntityModelSet entityModels = event.getEntityModels();
             event.getSkins().forEach(s -> {
@@ -220,8 +214,8 @@ public class DeeperAndDarkerForge {
     public static class DeeperDarkerEvents {
         @SubscribeEvent
         public static void playerTick(final TickEvent.PlayerTickEvent event) {
-            if(!event.player.level.isClientSide()) {
-                if(event.player.getLevel().dimension() == DDDimensions.OTHERSIDE_LEVEL) {
+            if(!event.player.level().isClientSide()) {
+                if(event.player.level().dimension() == DDDimensions.OTHERSIDE_LEVEL) {
                     if(!event.player.getInventory().getArmor(EquipmentSlot.HEAD.getIndex()).is(DDItems.WARDEN_HELMET.get()) && !event.player.isCreative() && !event.player.isSpectator()) {
                         event.player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 25, 0));
                     }
