@@ -98,14 +98,14 @@ public class DDBlockLoot extends BlockLootSubProvider {
 
         this.dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
 
-        this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> sculkOreDrop(block, Items.COAL));
-        this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_IRON));
-        this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_COPPER));
-        this.add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_GOLD));
-        this.add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), (block) -> sculkOreDrop(block, Items.REDSTONE));
-        this.add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> sculkOreDrop(block, Items.EMERALD));
-        this.add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), (block) -> sculkOreDrop(block, Items.LAPIS_LAZULI));
-        this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> sculkOreDrop(block, Items.DIAMOND));
+        this.add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> sculkOreDrop(block, Items.COAL, 1, 3));
+        this.add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_IRON, 1, 3));
+        this.add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_COPPER, 2, 12));
+        this.add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> sculkOreDrop(block, Items.RAW_GOLD, 1, 3));
+        this.add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), (block) -> sculkOreDrop(block, Items.REDSTONE, 4, 22));
+        this.add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> sculkOreDrop(block, Items.EMERALD, 1, 3));
+        this.add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), (block) -> sculkOreDrop(block, Items.LAPIS_LAZULI, 4, 14));
+        this.add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> sculkOreDrop(block, Items.DIAMOND, 1, 3));
 
         this.addVineAndPlant(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
         this.addVineAndPlant(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());
@@ -163,8 +163,8 @@ public class DDBlockLoot extends BlockLootSubProvider {
         this.dropWhenSilkTouch(DDBlocks.INFESTED_SCULK.get());
     }
 
-    private LootTable.Builder sculkOreDrop(Block block, Item item) {
-        return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+    private LootTable.Builder sculkOreDrop(Block block, Item item, int min, int max) {
+        return createSilkTouchDispatchTable(block, applyExplosionDecay(block, LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 
     private void addVineAndPlant(Block vines, Block plant) {
