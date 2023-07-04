@@ -11,7 +11,7 @@ assignees: ''
 **Mod Loader**: forge/fabric/both
 
 **Description**:
-Explanation of what the bug is doing, versus what the intended feature is supposed to be.
+Explanation of what the bug is and how it affects the game.
 
 **To Reproduce**:
 Steps to reproduce the behavior:
