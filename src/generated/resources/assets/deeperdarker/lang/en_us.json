@@ -1,0 +1,22 @@
+{
+  "block.deeperdarker.echo_button": "Echo Button",
+  "block.deeperdarker.echo_door": "Echo Door",
+  "block.deeperdarker.echo_fence": "Echo Fence",
+  "block.deeperdarker.echo_fence_gate": "Echo Fence Gate",
+  "block.deeperdarker.echo_hanging_sign": "Echo Hanging Sign",
+  "block.deeperdarker.echo_leaves": "Echo Leaves",
+  "block.deeperdarker.echo_log": "Echo Log",
+  "block.deeperdarker.echo_planks": "Echo Planks",
+  "block.deeperdarker.echo_pressure_plate": "Echo Pressure Plate",
+  "block.deeperdarker.echo_sign": "Echo Sign",
+  "block.deeperdarker.echo_slab": "Echo Slab",
+  "block.deeperdarker.echo_stairs": "Echo Stairs",
+  "block.deeperdarker.echo_trapdoor": "Echo Trapdoor",
+  "block.deeperdarker.echo_wood": "Echo Wood",
+  "block.deeperdarker.stripped_echo_log": "Stripped Echo Log",
+  "block.deeperdarker.stripped_echo_wood": "Stripped Echo Wood",
+  "entity.deeperdarker.deeper_darker_chest_boat": "Boat with Chest",
+  "item.deeperdarker.echo_boat": "Echo Boat",
+  "item.deeperdarker.echo_chest_boat": "Echo Boat With Chest",
+  "itemGroup.deeperdarker": "Deeper And Darker"
+}
