@@ -1,2 +1,2 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+src/generated/**/.cache/cache text eol=lf
+src/generated/**/*.json text eol=lf

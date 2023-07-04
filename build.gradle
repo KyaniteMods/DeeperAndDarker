@@ -1,91 +1,110 @@
-import java.text.SimpleDateFormat
-
 plugins {
-    id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "0.12.0-SNAPSHOT" apply false
-    id "me.shedaniel.unified-publishing" version "0.1.+" apply false
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-architectury {
-    minecraft = rootProject.minecraft_version
-}
+version = mod_version
+group = mod_group_id
 
-subprojects {
-    apply plugin: "dev.architectury.loom"
+base { archivesName = mod_id }
 
-    loom {
-        silentMojangMappingsLicense()
-    }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-    dependencies {
-        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
-        mappings loom.officialMojangMappings()
-    }
-}
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
 
-allprojects {
-    apply plugin: "java"
-    apply plugin: "architectury-plugin"
-    apply plugin: "maven-publish"
-    apply plugin: "me.shedaniel.unified-publishing"
+    copyIdeResources = true
 
-    archivesBaseName = rootProject.archives_base_name + "-" + project.name
-    version = rootProject.mod_version
-    group = rootProject.maven_group
+    // https://docs.minecraftforge.net/en/latest/advanced/accesstransformers/
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    repositories {
-        maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
-        maven { url = "https://maven.kyrptonaught.dev" }
-        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
-        maven {
-            name = "Modrinth"
-            url = "https://api.modrinth.com/maven"
-            content {
-                includeGroup "maven.modrinth"
-            }
-        }
-    }
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
 
-    processResources {
-        duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-    }
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
 
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-        options.release = 17
-    }
-
-    ext {
-        releaseChangelog = {
-            def dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm")
-            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"))
-            def branch
-            if(System.env.BRANCH_NAME) {
-                branch = System.env.BRANCH_NAME
-                branch = branch.substring(branch.lastIndexOf("/") + 1)
-            } else {
-                branch = "git rev-parse --abbrev-ref HEAD".execute().in.text.trim()
-            }
-            if(branch == "HEAD") {
-                branch = "git rev-parse --short HEAD".execute().in.text.trim()
-            }
-            def time = dateFormat.format(new Date())
-            def changes = new StringBuilder()
-            changes << "## Deeper and Darker v${rootProject.mod_version} for ${rootProject.minecraft_version}\nUpdated at **$time**."
-            def proc = "git log --max-count=200 --pretty=format:%s".execute()
-            proc.in.eachLine { line ->
-                def processedLine = line.toString()
-                if(!processedLine.contains("New translations") && !processedLine.contains("Merge") && !processedLine.contains("branch")) {
-                    changes << "\n- ${processedLine.capitalize()}"
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
                 }
             }
-            proc.waitFor()
-            return changes.toString()
+        }
+
+        client {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        server {
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
+        }
+
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        data {
+            workingDirectory project.file('run-data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
+}
 
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-    java {
-        withSourcesJar()
+repositories {}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
     }
 }
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_name,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : mod_version,
+                'Implementation-Title'    : mod_name,
+                'Implementation-Version'  : mod_version,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+
+    finalizedBy 'reobfJar'
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
