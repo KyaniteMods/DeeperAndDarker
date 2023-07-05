@@ -1,0 +1,19 @@
+// 1.20.1	2023-07-05T11:55:59.2662811	Tags for minecraft:block mod id deeperdarker
+3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
+353e05883557bd5ca39b3b73e78bb9ae3edd0795 data/minecraft/tags/blocks/ceiling_hanging_signs.json
+4b1b7b3d622aeb255906e952be4ddaf003b6026f data/minecraft/tags/blocks/fence_gates.json
+65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/blocks/leaves.json
+752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/blocks/logs_that_burn.json
+fc0840dbf04c396cf7e11fd67d5b67d858f21402 data/minecraft/tags/blocks/mineable/axe.json
+65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/blocks/mineable/hoe.json
+a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/blocks/planks.json
+3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/blocks/standing_signs.json
+59d845afe4fd0c9146ddc55b4cc1bc6d1e2606c2 data/minecraft/tags/blocks/wall_hanging_signs.json
+fd38b0e7d7082c1795e0c4db934fc18507a12568 data/minecraft/tags/blocks/wall_signs.json
+379b61d8edf96f7b8cd4ca99ccbcff328671b625 data/minecraft/tags/blocks/wooden_buttons.json
+69b7a2070c82cd4b9e8d452aa206ed9ea7a0a4fe data/minecraft/tags/blocks/wooden_doors.json
+745b9bc16fc1f5b402a0c3f456bbb941964c1c35 data/minecraft/tags/blocks/wooden_fences.json
+a3785fee83758bbbfc450d28ac7fece0585beac6 data/minecraft/tags/blocks/wooden_pressure_plates.json
+a7f0d91a81f411e40f2b391f95f27a87b6fa4928 data/minecraft/tags/blocks/wooden_slabs.json
+d3cfe90b1a4a1d5dcdf10ff368036f3ec98901e4 data/minecraft/tags/blocks/wooden_stairs.json
+9bb6eed01ef4f5caad00e08825cc9e78b1947e69 data/minecraft/tags/blocks/wooden_trapdoors.json
