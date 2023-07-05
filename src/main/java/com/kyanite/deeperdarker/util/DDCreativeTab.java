@@ -35,6 +35,45 @@ public class DDCreativeTab {
             event.accept(DDItems.ECHO_HANGING_SIGN);
             event.accept(DDItems.ECHO_BOAT);
             event.accept(DDItems.ECHO_CHEST_BOAT);
+
+            event.accept(DDBlocks.SCULK_STONE);
+            event.accept(DDBlocks.SCULK_STONE_STAIRS);
+            event.accept(DDBlocks.SCULK_STONE_SLAB);
+            event.accept(DDBlocks.SCULK_STONE_WALL);
+            event.accept(DDBlocks.COBBLED_SCULK_STONE);
+            event.accept(DDBlocks.COBBLED_SCULK_STONE_STAIRS);
+            event.accept(DDBlocks.COBBLED_SCULK_STONE_SLAB);
+            event.accept(DDBlocks.COBBLED_SCULK_STONE_WALL);
+            event.accept(DDBlocks.POLISHED_SCULK_STONE);
+            event.accept(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
+            event.accept(DDBlocks.POLISHED_SCULK_STONE_SLAB);
+            event.accept(DDBlocks.POLISHED_SCULK_STONE_WALL);
+            event.accept(DDBlocks.SCULK_STONE_BRICKS);
+            event.accept(DDBlocks.SCULK_STONE_BRICK_STAIRS);
+            event.accept(DDBlocks.SCULK_STONE_BRICK_SLAB);
+            event.accept(DDBlocks.SCULK_STONE_BRICK_WALL);
+            event.accept(DDBlocks.SCULK_STONE_TILES);
+            event.accept(DDBlocks.SCULK_STONE_TILE_STAIRS);
+            event.accept(DDBlocks.SCULK_STONE_TILE_SLAB);
+            event.accept(DDBlocks.SCULK_STONE_TILE_WALL);
+            event.accept(DDBlocks.SMOOTH_SCULK_STONE);
+            event.accept(DDBlocks.SMOOTH_SCULK_STONE_STAIRS);
+            event.accept(DDBlocks.SMOOTH_SCULK_STONE_SLAB);
+            event.accept(DDBlocks.SMOOTH_SCULK_STONE_WALL);
+            event.accept(DDBlocks.CUT_SCULK_STONE);
+            event.accept(DDBlocks.CUT_SCULK_STONE_STAIRS);
+            event.accept(DDBlocks.CUT_SCULK_STONE_SLAB);
+            event.accept(DDBlocks.CUT_SCULK_STONE_WALL);
+            event.accept(DDBlocks.CHISELED_SCULK_STONE);
+
+            event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
+            event.accept(DDBlocks.SCULK_STONE_IRON_ORE);
+            event.accept(DDBlocks.SCULK_STONE_COPPER_ORE);
+            event.accept(DDBlocks.SCULK_STONE_GOLD_ORE);
+            event.accept(DDBlocks.SCULK_STONE_REDSTONE_ORE);
+            event.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
+            event.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
+            event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
         }
     }
 }

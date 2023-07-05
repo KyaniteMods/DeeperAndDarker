@@ -4,9 +4,16 @@ import com.kyanite.deeperdarker.registries.DDBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,6 +46,52 @@ public class DDLootTables extends BlockLootSubProvider {
         add(DDBlocks.ECHO_LEAVES.get(), (block) -> this.createLeavesDrops(block, Blocks.AIR, NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(DDBlocks.ECHO_SIGN.get());
         dropSelf(DDBlocks.ECHO_HANGING_SIGN.get());
+
+        add(DDBlocks.SCULK_STONE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
+        dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());
+        add(DDBlocks.SCULK_STONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SCULK_STONE_WALL.get());
+
+        dropSelf(DDBlocks.COBBLED_SCULK_STONE.get());
+        dropSelf(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get());
+        add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.COBBLED_SCULK_STONE_WALL.get());
+
+        dropSelf(DDBlocks.POLISHED_SCULK_STONE.get());
+        dropSelf(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
+        add(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.POLISHED_SCULK_STONE_WALL.get());
+
+        dropSelf(DDBlocks.SCULK_STONE_BRICKS.get());
+        dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
+        add(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
+
+        dropSelf(DDBlocks.SCULK_STONE_TILES.get());
+        dropSelf(DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        add(DDBlocks.SCULK_STONE_TILE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SCULK_STONE_TILE_WALL.get());
+
+        dropSelf(DDBlocks.SMOOTH_SCULK_STONE.get());
+        dropSelf(DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get());
+        add(DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SMOOTH_SCULK_STONE_WALL.get());
+
+        dropSelf(DDBlocks.CUT_SCULK_STONE.get());
+        dropSelf(DDBlocks.CUT_SCULK_STONE_STAIRS.get());
+        add(DDBlocks.CUT_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
+
+        dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
+
+        add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
+        add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_IRON));
+        add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), this::createCopperOreDrops);
+        add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_GOLD));
+        add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), this::createRedstoneOreDrops);
+        add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> this.createOreDrop(block, Items.EMERALD));
+        add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), this::createLapisOreDrops);
+        add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
     }
 
     @Override

@@ -45,7 +45,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         String name = builder.toString();
         if(name.contains("Chest")) name = name.replace("Chest ", "") + " With Chest";
-        if(name.contains(" Block")) name = "Block of " + name.replace(" Block", "");
+        if(name.equals("Lapis")) name = name.replace("Lapis", "Lapis Lazuli");
 
         return name;
     }
