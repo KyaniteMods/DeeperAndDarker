@@ -1,15 +1,17 @@
 package com.kyanite.deeperdarker.datagen.data;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.registries.DDBlocks;
 import com.kyanite.deeperdarker.registries.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.RegistryObject;
@@ -24,10 +26,117 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> pWriter) {
-        addWoodenRecipes(pWriter, DDTags.Items.ECHO_LOGS, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
+        addCraftingRecipes(pWriter);
+        addCookingRecipes(pWriter);
+        addStonecuttingRecipes(pWriter);
     }
 
-    private void addWoodenRecipes(Consumer<FinishedRecipe> writer, TagKey<Item> logs, RegistryObject<RotatedPillarBlock> strippedLog, RegistryObject<Block> planks, RegistryObject<StairBlock> stairs, RegistryObject<SlabBlock> slabs, RegistryObject<FenceBlock> fence, RegistryObject<FenceGateBlock> fenceGate, RegistryObject<DoorBlock> door, RegistryObject<TrapDoorBlock> trapDoor, RegistryObject<PressurePlateBlock> pressurePlate, RegistryObject<ButtonBlock> button, RegistryObject<Item> sign, RegistryObject<Item> hangingSign, RegistryObject<Item> boat, RegistryObject<Item> chestBoat) {
+    private void addCraftingRecipes(Consumer<FinishedRecipe> writer) {
+        woodenRecipes(writer, DDTags.Items.ECHO_LOGS, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
+
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE.get());
+        stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE.get());
+
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE.get());
+        stairBuilder(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk_stone", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE.get());
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE.get());
+        stairBuilder(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk_stone", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.POLISHED_SCULK_STONE.get());
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICKS.get());
+        stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get());
+
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_SLAB.get(), DDBlocks.SCULK_STONE_TILES.get());
+        stairBuilder(DDBlocks.SCULK_STONE_TILE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_TILES.get())).unlockedBy("has_sculk_stone_tiles", has(DDBlocks.SCULK_STONE_TILES.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_WALL.get(), DDBlocks.SCULK_STONE_TILES.get());
+
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), DDBlocks.SMOOTH_SCULK_STONE.get());
+        stairBuilder(DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SMOOTH_SCULK_STONE.get())).unlockedBy("has_smooth_sculk_stone", has(DDBlocks.SMOOTH_SCULK_STONE.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_WALL.get(), DDBlocks.SMOOTH_SCULK_STONE.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE.get());
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_SLAB.get(), DDBlocks.CUT_SCULK_STONE.get());
+        stairBuilder(DDBlocks.CUT_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.CUT_SCULK_STONE.get())).unlockedBy("has_cut_sculk_stone", has(DDBlocks.CUT_SCULK_STONE.get())).save(writer);
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_WALL.get(), DDBlocks.CUT_SCULK_STONE.get());
+
+        chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_SCULK_STONE.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICK_SLAB.get())).unlockedBy("has_sculk_stone_slab", has(DDBlocks.SCULK_STONE_SLAB.get())).save(writer);
+    }
+
+    private void addCookingRecipes(Consumer<FinishedRecipe> writer) {
+        smelting(DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE.get(), 0.1f, "sculk_stone", writer);
+        smelting(DDBlocks.SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE.get(), 0.1f, "smooth_sculk_stone", writer);
+
+        oreSmelting(DDBlocks.SCULK_STONE_COAL_ORE.get(), RecipeCategory.MISC, Items.COAL, 0.1f, "coal", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_IRON_ORE.get(), RecipeCategory.MISC, Items.RAW_IRON, 0.7f, "iron_ingot", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_COPPER_ORE.get(), RecipeCategory.MISC, Items.RAW_COPPER, 0.7f, "copper_ingot", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_GOLD_ORE.get(), RecipeCategory.MISC, Items.RAW_GOLD, 1, "gold_ingot", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), RecipeCategory.REDSTONE, Items.REDSTONE, 0.7f, "redstone", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), RecipeCategory.MISC, Items.EMERALD, 1, "emerald", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, "lapis_lazuli", writer);
+        oreSmelting(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), RecipeCategory.MISC, Items.DIAMOND, 1, "diamond", writer);
+
+        oreBlasting(DDBlocks.SCULK_STONE_COAL_ORE.get(), RecipeCategory.MISC, Items.COAL, 0.1f, "coal", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_IRON_ORE.get(), RecipeCategory.MISC, Items.RAW_IRON, 0.7f, "iron_ingot", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_COPPER_ORE.get(), RecipeCategory.MISC, Items.RAW_COPPER, 0.7f, "copper_ingot", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_GOLD_ORE.get(), RecipeCategory.MISC, Items.RAW_GOLD, 1, "gold_ingot", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), RecipeCategory.REDSTONE, Items.REDSTONE, 0.7f, "redstone", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), RecipeCategory.MISC, Items.EMERALD, 1, "emerald", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, "lapis_lazuli", writer);
+        oreBlasting(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), RecipeCategory.MISC, Items.DIAMOND, 1, "diamond", writer);
+    }
+
+    private void addStonecuttingRecipes(Consumer<FinishedRecipe> writer) {
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+    }
+
+    private void woodenRecipes(Consumer<FinishedRecipe> writer, TagKey<Item> logs, RegistryObject<RotatedPillarBlock> strippedLog, RegistryObject<Block> planks, RegistryObject<StairBlock> stairs, RegistryObject<SlabBlock> slabs, RegistryObject<FenceBlock> fence, RegistryObject<FenceGateBlock> fenceGate, RegistryObject<DoorBlock> door, RegistryObject<TrapDoorBlock> trapDoor, RegistryObject<PressurePlateBlock> pressurePlate, RegistryObject<ButtonBlock> button, RegistryObject<Item> sign, RegistryObject<Item> hangingSign, RegistryObject<Item> boat, RegistryObject<Item> chestBoat) {
         planksFromLogs(writer, planks.get(), logs, 4);
         stairBuilder(stairs.get(), Ingredient.of(planks.get())).unlockedBy("has_planks", has(planks.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, slabs.get(), planks.get());
@@ -41,5 +150,25 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         hangingSign(writer, hangingSign.get(), strippedLog.get());
         woodenBoat(writer, boat.get(), planks.get());
         chestBoat(writer, chestBoat.get(), boat.get());
+    }
+
+    private void smelting(ItemLike ingredient, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer);
+    }
+
+    private void oreSmelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getSmeltingRecipeName(result)  + getItemName(ingredient)));
+    }
+
+    private void oreBlasting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, experience, 100).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getBlastingRecipeName(result) + getItemName(ingredient)));
+    }
+
+    private void stonecuttingRecipe(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
+        stonecuttingRecipe(writer, ingredient, result, 1);
+    }
+
+    private void stonecuttingRecipe(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result, int count) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, result, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID,getConversionRecipeName(result, ingredient) + "_stonecutting"));
     }
 }

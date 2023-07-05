@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "smooth_sculk_stone",
+  "ingredient": {
+    "item": "deeperdarker:sculk_stone"
+  },
+  "result": "deeperdarker:smooth_sculk_stone"
+}
