@@ -66,15 +66,6 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CUT_SCULK_STONE_WALL);
             event.accept(DDBlocks.CHISELED_SCULK_STONE);
 
-            event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
-            event.accept(DDBlocks.SCULK_STONE_IRON_ORE);
-            event.accept(DDBlocks.SCULK_STONE_COPPER_ORE);
-            event.accept(DDBlocks.SCULK_STONE_GOLD_ORE);
-            event.accept(DDBlocks.SCULK_STONE_REDSTONE_ORE);
-            event.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
-            event.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
-            event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
-
             event.accept(DDBlocks.GLOOMSLATE);
             event.accept(DDBlocks.GLOOMSLATE_STAIRS);
             event.accept(DDBlocks.GLOOMSLATE_SLAB);
@@ -104,6 +95,15 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CUT_GLOOMSLATE_SLAB);
             event.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
             event.accept(DDBlocks.CHISELED_GLOOMSLATE);
+
+            event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
+            event.accept(DDBlocks.SCULK_STONE_IRON_ORE);
+            event.accept(DDBlocks.SCULK_STONE_COPPER_ORE);
+            event.accept(DDBlocks.SCULK_STONE_GOLD_ORE);
+            event.accept(DDBlocks.SCULK_STONE_REDSTONE_ORE);
+            event.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
+            event.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
+            event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
         }
     }
 }

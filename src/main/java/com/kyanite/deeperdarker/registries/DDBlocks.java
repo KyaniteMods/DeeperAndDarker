@@ -98,6 +98,36 @@ public class DDBlocks {
     public static final RegistryObject<WallBlock> CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE.get())));
     public static final RegistryObject<Block> CHISELED_SCULK_STONE = register("chiseled_sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
 
+    public static final RegistryObject<Block> GLOOMSLATE = register("gloomslate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
+    public static final RegistryObject<StairBlock> GLOOMSLATE_STAIRS = register("gloomslate_stairs", () -> new StairBlock(() -> GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<SlabBlock> GLOOMSLATE_SLAB = register("gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<WallBlock> GLOOMSLATE_WALL = register("gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<Block> COBBLED_GLOOMSLATE = register("cobbled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<StairBlock> COBBLED_GLOOMSLATE_STAIRS = register("cobbled_gloomslate_stairs", () -> new StairBlock(() -> COBBLED_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
+    public static final RegistryObject<SlabBlock> COBBLED_GLOOMSLATE_SLAB = register("cobbled_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
+    public static final RegistryObject<WallBlock> COBBLED_GLOOMSLATE_WALL = register("cobbled_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
+    public static final RegistryObject<Block> POLISHED_GLOOMSLATE = register("polished_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<StairBlock> POLISHED_GLOOMSLATE_STAIRS = register("polished_gloomslate_stairs", () -> new StairBlock(() -> POLISHED_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
+    public static final RegistryObject<SlabBlock> POLISHED_GLOOMSLATE_SLAB = register("polished_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
+    public static final RegistryObject<WallBlock> POLISHED_GLOOMSLATE_WALL = register("polished_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
+    public static final RegistryObject<Block> GLOOMSLATE_BRICKS = register("gloomslate_bricks", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<StairBlock> GLOOMSLATE_BRICK_STAIRS = register("gloomslate_brick_stairs", () -> new StairBlock(() -> GLOOMSLATE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
+    public static final RegistryObject<SlabBlock> GLOOMSLATE_BRICK_SLAB = register("gloomslate_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
+    public static final RegistryObject<WallBlock> GLOOMSLATE_BRICK_WALL = register("gloomslate_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
+    public static final RegistryObject<Block> GLOOMSLATE_TILES = register("gloomslate_tiles", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<StairBlock> GLOOMSLATE_TILE_STAIRS = register("gloomslate_tile_stairs", () -> new StairBlock(() -> GLOOMSLATE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
+    public static final RegistryObject<SlabBlock> GLOOMSLATE_TILE_SLAB = register("gloomslate_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
+    public static final RegistryObject<WallBlock> GLOOMSLATE_TILE_WALL = register("gloomslate_tile_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
+    public static final RegistryObject<Block> SMOOTH_GLOOMSLATE = register("smooth_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<StairBlock> SMOOTH_GLOOMSLATE_STAIRS = register("smooth_gloomslate_stairs", () -> new StairBlock(() -> SMOOTH_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
+    public static final RegistryObject<SlabBlock> SMOOTH_GLOOMSLATE_SLAB = register("smooth_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
+    public static final RegistryObject<WallBlock> SMOOTH_GLOOMSLATE_WALL = register("smooth_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
+    public static final RegistryObject<Block> CUT_GLOOMSLATE = register("cut_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<StairBlock> CUT_GLOOMSLATE_STAIRS = register("cut_gloomslate_stairs", () -> new StairBlock(() -> CUT_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
+    public static final RegistryObject<SlabBlock> CUT_GLOOMSLATE_SLAB = register("cut_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
+    public static final RegistryObject<WallBlock> CUT_GLOOMSLATE_WALL = register("cut_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
+    public static final RegistryObject<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+
     public static final RegistryObject<Block> SCULK_STONE_COAL_ORE = register("sculk_stone_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(1, 4)));
     public static final RegistryObject<Block> SCULK_STONE_IRON_ORE = register("sculk_stone_iron_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get())));
     public static final RegistryObject<Block> SCULK_STONE_COPPER_ORE = register("sculk_stone_copper_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get())));
@@ -106,37 +136,6 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_STONE_EMERALD_ORE = register("sculk_stone_emerald_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(5, 10)));
     public static final RegistryObject<Block> SCULK_STONE_LAPIS_ORE = register("sculk_stone_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(4, 8)));
     public static final RegistryObject<Block> SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(DDBlocks.SCULK_STONE.get()), UniformInt.of(5, 10)));
-
-    public static final RegistryObject<Block> GLOOMSLATE = register("gloomslate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
-    public static final RegistryObject<SlabBlock> GLOOMSLATE_SLAB = register("gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<StairBlock> GLOOMSLATE_STAIRS = register("gloomslate_stairs", () -> new StairBlock(() -> GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<WallBlock> GLOOMSLATE_WALL = register("gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<Block> COBBLED_GLOOMSLATE = register("cobbled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<SlabBlock> COBBLED_GLOOMSLATE_SLAB = register("cobbled_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
-    public static final RegistryObject<StairBlock> COBBLED_GLOOMSLATE_STAIRS = register("cobbled_gloomslate_stairs", () -> new StairBlock(() -> COBBLED_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
-    public static final RegistryObject<WallBlock> COBBLED_GLOOMSLATE_WALL = register("cobbled_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(COBBLED_GLOOMSLATE.get())));
-    public static final RegistryObject<Block> POLISHED_GLOOMSLATE = register("polished_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<SlabBlock> POLISHED_GLOOMSLATE_SLAB = register("polished_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
-    public static final RegistryObject<StairBlock> POLISHED_GLOOMSLATE_STAIRS = register("polished_gloomslate_stairs", () -> new StairBlock(() -> POLISHED_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
-    public static final RegistryObject<WallBlock> POLISHED_GLOOMSLATE_WALL = register("polished_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(POLISHED_GLOOMSLATE.get())));
-    public static final RegistryObject<Block> GLOOMSLATE_BRICKS = register("gloomslate_bricks", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<SlabBlock> GLOOMSLATE_BRICK_SLAB = register("gloomslate_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
-    public static final RegistryObject<StairBlock> GLOOMSLATE_BRICK_STAIRS = register("gloomslate_brick_stairs", () -> new StairBlock(() -> GLOOMSLATE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
-    public static final RegistryObject<WallBlock> GLOOMSLATE_BRICK_WALL = register("gloomslate_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS.get())));
-    public static final RegistryObject<Block> GLOOMSLATE_TILES = register("gloomslate_tiles", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<SlabBlock> GLOOMSLATE_TILE_SLAB = register("gloomslate_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
-    public static final RegistryObject<StairBlock> GLOOMSLATE_TILE_STAIRS = register("gloomslate_tile_stairs", () -> new StairBlock(() -> GLOOMSLATE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
-    public static final RegistryObject<WallBlock> GLOOMSLATE_TILE_WALL = register("gloomslate_tile_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_TILES.get())));
-    public static final RegistryObject<Block> SMOOTH_GLOOMSLATE = register("smooth_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<SlabBlock> SMOOTH_GLOOMSLATE_SLAB = register("smooth_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
-    public static final RegistryObject<StairBlock> SMOOTH_GLOOMSLATE_STAIRS = register("smooth_gloomslate_stairs", () -> new StairBlock(() -> SMOOTH_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
-    public static final RegistryObject<WallBlock> SMOOTH_GLOOMSLATE_WALL = register("smooth_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SMOOTH_GLOOMSLATE.get())));
-    public static final RegistryObject<Block> CUT_GLOOMSLATE = register("cut_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-    public static final RegistryObject<SlabBlock> CUT_GLOOMSLATE_SLAB = register("cut_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
-    public static final RegistryObject<StairBlock> CUT_GLOOMSLATE_STAIRS = register("cut_gloomslate_stairs", () -> new StairBlock(() -> CUT_GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
-    public static final RegistryObject<WallBlock> CUT_GLOOMSLATE_WALL = register("cut_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
-    public static final RegistryObject<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
-
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> pBlock) {
         RegistryObject<T> block = BLOCKS.register(name, pBlock);
