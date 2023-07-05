@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.DDBlockTagsProvider;
 import com.kyanite.deeperdarker.datagen.data.DDItemTagsProvider;
 import com.kyanite.deeperdarker.datagen.data.DDLootTableProvider;
+import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
 import com.kyanite.deeperdarker.registries.DDBlockEntities;
 import com.kyanite.deeperdarker.registries.DDBlocks;
 import com.kyanite.deeperdarker.registries.DDEntities;
@@ -71,5 +72,6 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
 
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
+        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
     }
 }
