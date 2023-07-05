@@ -103,6 +103,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
 
         blockModel(DDBlocks.ECHO_SOIL);
+        blockModel(DDBlocks.SCULK_GLEAM);
 
         blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
         blockModel(DDBlocks.SCULK_STONE_IRON_ORE);
@@ -112,6 +113,9 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+
+        getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
+        getBuilder(DDBlocks.SCULK_TENDRILS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath());
 
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);

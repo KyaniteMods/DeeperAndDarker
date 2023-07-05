@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T17:30:01.0126085	Item Models: deeperdarker
+// 1.20.1	2023-07-05T18:04:32.3370653	Item Models: deeperdarker
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
 0eb658806d9c4c3faa4843fa00fd273b3d44dbdc assets/deeperdarker/models/item/cobbled_gloomslate.json
@@ -59,6 +59,7 @@ b3a17670ce04497d99b6b8ee3dda60ed1e330885 assets/deeperdarker/models/item/polishe
 bdc3ad08e38c745a346717a9719044e0db544588 assets/deeperdarker/models/item/polished_sculk_stone_wall.json
 8864938ba857d68c957e39e40fe9f7117f72e31e assets/deeperdarker/models/item/reinforced_echo_shard.json
 18121c23d9e0f562f3d6394f3f7930858df5c802 assets/deeperdarker/models/item/sculk_bone.json
+f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
 b39bd762d88e9ae7abd82eb34651cd1428868b35 assets/deeperdarker/models/item/sculk_grime.json
 8905f1d600289ef9552902df176a0c240855fe4b assets/deeperdarker/models/item/sculk_grime_bricks.json
 1174cba899804b1ece4d461364bda44a9258a667 assets/deeperdarker/models/item/sculk_grime_brick_slab.json
@@ -84,6 +85,8 @@ e95d7689a6be15bf680edb1555a406663ae62acf assets/deeperdarker/models/item/sculk_s
 527a04ef37cf2771e8dd60d3ddfac2ddeebe6962 assets/deeperdarker/models/item/sculk_stone_tile_stairs.json
 22c1896061ae2e9ee8871a1f769d1262b62c0530 assets/deeperdarker/models/item/sculk_stone_tile_wall.json
 a71c8b14b5e81663a9802d02da7ebe84c176e094 assets/deeperdarker/models/item/sculk_stone_wall.json
+9dd7f9949be123d91bbfd61aa9e838972edccbba assets/deeperdarker/models/item/sculk_tendrils.json
+826d5e09ad2e18070d74add221ff22017abadb39 assets/deeperdarker/models/item/sculk_vines.json
 a486e0567f9d7ed81cc982dc986042fa09f181d8 assets/deeperdarker/models/item/smooth_gloomslate.json
 41fe998b4bcdf450a042c53f50f6b124c11bf27c assets/deeperdarker/models/item/smooth_gloomslate_slab.json
 405be8a3845c30eda1385a6f712555e8fe39e8f0 assets/deeperdarker/models/item/smooth_gloomslate_stairs.json

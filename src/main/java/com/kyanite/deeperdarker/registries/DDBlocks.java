@@ -2,6 +2,10 @@ package com.kyanite.deeperdarker.registries;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.registries.blocks.*;
+import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkTendrilsBlock;
+import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkTendrilsPlantBlock;
+import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkVinesBlock;
+import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.registries.entities.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.registries.entities.DDSignBlockEntity;
 import net.minecraft.core.BlockPos;
@@ -135,6 +139,7 @@ public class DDBlocks {
     public static final RegistryObject<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
 
     public static final RegistryObject<Block> ECHO_SOIL = register("echo_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
+    public static final RegistryObject<Block> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15)));
 
     public static final RegistryObject<Block> SCULK_STONE_COAL_ORE = register("sculk_stone_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(1, 4)));
     public static final RegistryObject<Block> SCULK_STONE_IRON_ORE = register("sculk_stone_iron_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
@@ -145,9 +150,14 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_STONE_LAPIS_ORE = register("sculk_stone_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(4, 8)));
     public static final RegistryObject<Block> SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(5, 10)));
 
-    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> pBlock) {
-        RegistryObject<T> block = BLOCKS.register(name, pBlock);
-        DDItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-        return block;
+    public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
+    public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak()));
+    public static final RegistryObject<SculkTendrilsBlock> SCULK_TENDRILS = register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noOcclusion().noCollission().instabreak()));
+    public static final RegistryObject<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().noCollission().instabreak()));
+
+    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
+        RegistryObject<T> registeredBlock = BLOCKS.register(name, block);
+        DDItems.ITEMS.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));
+        return registeredBlock;
     }
 }

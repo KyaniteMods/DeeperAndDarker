@@ -1,5 +1,8 @@
 {
   "values": [
-    "deeperdarker:echo_leaves"
+    "deeperdarker:echo_leaves",
+    "deeperdarker:sculk_gleam",
+    "deeperdarker:sculk_vines",
+    "deeperdarker:sculk_vines_plant"
   ]
 }
