@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T13:17:14.9099407	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2023-07-05T16:25:22.0660145	Tags for minecraft:item mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/forge/tags/items/ores/coal.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/forge/tags/items/ores/copper.json
@@ -8,7 +8,7 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/forge/tags/items/ores/emerald.json
 0117d79b5b204352a7d9f3d7e65b5e653ea0f6b6 data/forge/tags/items/ores/iron.json
 4e4f551591c4ad1d281b26925a975dd77dcd8182 data/forge/tags/items/ores/lapis.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/forge/tags/items/ores/redstone.json
-2da0393e290a6ec8aef95b5f09da2253177ac597 data/forge/tags/items/stone.json
+d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/forge/tags/items/stone.json
 46a970866e0f7a97eb38ae9eb6b564804fd8bf61 data/minecraft/tags/items/boats.json
 fed577a93949a2c8794141b01cf67a4303f6b5d0 data/minecraft/tags/items/chest_boats.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/items/coal_ores.json
@@ -25,10 +25,10 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/minecraft/tags/items/emerald_ores.
 a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/items/planks.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/items/redstone_ores.json
 3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/items/signs.json
-ce3e71fa5ef1ccba592f1bac7d54ec2cc4ebf648 data/minecraft/tags/items/slabs.json
-4c5fc1c4371e444db9f9ea02c4f4eff70d5d5536 data/minecraft/tags/items/stairs.json
-978443551a61e1a1e5c6bad16ec425965fc6f8fc data/minecraft/tags/items/stone_bricks.json
-a257c27da6deba1788ca5d2b9772dfb738293c5c data/minecraft/tags/items/walls.json
+74cfc1e9fc18d5928c44b6f37ad2e97daa1315d3 data/minecraft/tags/items/slabs.json
+77f6d4149a11a9fb88028c16bdd2247f286056eb data/minecraft/tags/items/stairs.json
+13dfef1f4c167287302ab794e0ce8d35bd63ec5e data/minecraft/tags/items/stone_bricks.json
+3e1b7d9816ebef14dfd87df3905300d381ad8a83 data/minecraft/tags/items/walls.json
 379b61d8edf96f7b8cd4ca99ccbcff328671b625 data/minecraft/tags/items/wooden_buttons.json
 69b7a2070c82cd4b9e8d452aa206ed9ea7a0a4fe data/minecraft/tags/items/wooden_doors.json
 745b9bc16fc1f5b402a0c3f456bbb941964c1c35 data/minecraft/tags/items/wooden_fences.json

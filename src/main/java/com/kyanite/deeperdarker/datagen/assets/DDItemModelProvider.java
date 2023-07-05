@@ -40,37 +40,30 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_STAIRS);
         blockModel(DDBlocks.SCULK_STONE_SLAB);
         blockModel(DDBlocks.SCULK_STONE_WALL, "inventory");
-
         blockModel(DDBlocks.COBBLED_SCULK_STONE);
         blockModel(DDBlocks.COBBLED_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.COBBLED_SCULK_STONE_SLAB);
         blockModel(DDBlocks.COBBLED_SCULK_STONE_WALL, "inventory");
-
         blockModel(DDBlocks.POLISHED_SCULK_STONE);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_SLAB);
         blockModel(DDBlocks.POLISHED_SCULK_STONE_WALL, "inventory");
-
         blockModel(DDBlocks.SCULK_STONE_BRICKS);
         blockModel(DDBlocks.SCULK_STONE_BRICK_STAIRS);
         blockModel(DDBlocks.SCULK_STONE_BRICK_SLAB);
         blockModel(DDBlocks.SCULK_STONE_BRICK_WALL, "inventory");
-
         blockModel(DDBlocks.SCULK_STONE_TILES);
         blockModel(DDBlocks.SCULK_STONE_TILE_STAIRS);
         blockModel(DDBlocks.SCULK_STONE_TILE_SLAB);
         blockModel(DDBlocks.SCULK_STONE_TILE_WALL, "inventory");
-
         blockModel(DDBlocks.SMOOTH_SCULK_STONE);
         blockModel(DDBlocks.SMOOTH_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.SMOOTH_SCULK_STONE_SLAB);
         blockModel(DDBlocks.SMOOTH_SCULK_STONE_WALL, "inventory");
-
         blockModel(DDBlocks.CUT_SCULK_STONE);
         blockModel(DDBlocks.CUT_SCULK_STONE_STAIRS);
         blockModel(DDBlocks.CUT_SCULK_STONE_SLAB);
         blockModel(DDBlocks.CUT_SCULK_STONE_WALL, "inventory");
-
         blockModel(DDBlocks.CHISELED_SCULK_STONE);
 
         blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
@@ -81,6 +74,36 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+
+        blockModel(DDBlocks.GLOOMSLATE);
+        blockModel(DDBlocks.GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE);
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.COBBLED_GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE);
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.POLISHED_GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.GLOOMSLATE_BRICKS);
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_WALL, "inventory");
+        blockModel(DDBlocks.GLOOMSLATE_TILES);
+        blockModel(DDBlocks.GLOOMSLATE_TILE_STAIRS);
+        blockModel(DDBlocks.GLOOMSLATE_TILE_SLAB);
+        blockModel(DDBlocks.GLOOMSLATE_TILE_WALL, "inventory");
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE);
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.SMOOTH_GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.CUT_GLOOMSLATE);
+        blockModel(DDBlocks.CUT_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.CUT_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.CHISELED_GLOOMSLATE);
 
 
         itemModel(DDItems.ECHO_SIGN, GENERATED);

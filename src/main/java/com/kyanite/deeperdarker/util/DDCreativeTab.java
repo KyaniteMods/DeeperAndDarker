@@ -74,6 +74,36 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
             event.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
             event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+
+            event.accept(DDBlocks.GLOOMSLATE);
+            event.accept(DDBlocks.GLOOMSLATE_STAIRS);
+            event.accept(DDBlocks.GLOOMSLATE_SLAB);
+            event.accept(DDBlocks.GLOOMSLATE_WALL);
+            event.accept(DDBlocks.COBBLED_GLOOMSLATE);
+            event.accept(DDBlocks.COBBLED_GLOOMSLATE_STAIRS);
+            event.accept(DDBlocks.COBBLED_GLOOMSLATE_SLAB);
+            event.accept(DDBlocks.COBBLED_GLOOMSLATE_WALL);
+            event.accept(DDBlocks.POLISHED_GLOOMSLATE);
+            event.accept(DDBlocks.POLISHED_GLOOMSLATE_STAIRS);
+            event.accept(DDBlocks.POLISHED_GLOOMSLATE_SLAB);
+            event.accept(DDBlocks.POLISHED_GLOOMSLATE_WALL);
+            event.accept(DDBlocks.GLOOMSLATE_BRICKS);
+            event.accept(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
+            event.accept(DDBlocks.GLOOMSLATE_BRICK_SLAB);
+            event.accept(DDBlocks.GLOOMSLATE_BRICK_WALL);
+            event.accept(DDBlocks.GLOOMSLATE_TILES);
+            event.accept(DDBlocks.GLOOMSLATE_TILE_STAIRS);
+            event.accept(DDBlocks.GLOOMSLATE_TILE_SLAB);
+            event.accept(DDBlocks.GLOOMSLATE_TILE_WALL);
+            event.accept(DDBlocks.SMOOTH_GLOOMSLATE);
+            event.accept(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS);
+            event.accept(DDBlocks.SMOOTH_GLOOMSLATE_SLAB);
+            event.accept(DDBlocks.SMOOTH_GLOOMSLATE_WALL);
+            event.accept(DDBlocks.CUT_GLOOMSLATE);
+            event.accept(DDBlocks.CUT_GLOOMSLATE_STAIRS);
+            event.accept(DDBlocks.CUT_GLOOMSLATE_SLAB);
+            event.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
+            event.accept(DDBlocks.CHISELED_GLOOMSLATE);
         }
     }
 }

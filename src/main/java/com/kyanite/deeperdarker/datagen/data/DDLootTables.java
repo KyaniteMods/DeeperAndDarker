@@ -45,37 +45,30 @@ public class DDLootTables extends BlockLootSubProvider {
         dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());
         add(DDBlocks.SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_STONE_WALL.get());
-
         dropSelf(DDBlocks.COBBLED_SCULK_STONE.get());
         dropSelf(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get());
         add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.COBBLED_SCULK_STONE_WALL.get());
-
         dropSelf(DDBlocks.POLISHED_SCULK_STONE.get());
         dropSelf(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
         add(DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.POLISHED_SCULK_STONE_WALL.get());
-
         dropSelf(DDBlocks.SCULK_STONE_BRICKS.get());
         dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         add(DDBlocks.SCULK_STONE_BRICK_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL.get());
-
         dropSelf(DDBlocks.SCULK_STONE_TILES.get());
         dropSelf(DDBlocks.SCULK_STONE_TILE_STAIRS.get());
         add(DDBlocks.SCULK_STONE_TILE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_STONE_TILE_WALL.get());
-
         dropSelf(DDBlocks.SMOOTH_SCULK_STONE.get());
         dropSelf(DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get());
         add(DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.SMOOTH_SCULK_STONE_WALL.get());
-
         dropSelf(DDBlocks.CUT_SCULK_STONE.get());
         dropSelf(DDBlocks.CUT_SCULK_STONE_STAIRS.get());
         add(DDBlocks.CUT_SCULK_STONE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
-
         dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
@@ -86,6 +79,36 @@ public class DDLootTables extends BlockLootSubProvider {
         add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> this.createOreDrop(block, Items.EMERALD));
         add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), this::createLapisOreDrops);
         add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
+
+        add(DDBlocks.GLOOMSLATE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
+        dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
+        add(DDBlocks.GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.COBBLED_GLOOMSLATE.get());
+        dropSelf(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get());
+        add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.COBBLED_GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.POLISHED_GLOOMSLATE.get());
+        dropSelf(DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get());
+        add(DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.POLISHED_GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.GLOOMSLATE_BRICKS.get());
+        dropSelf(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
+        add(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.GLOOMSLATE_BRICK_WALL.get());
+        dropSelf(DDBlocks.GLOOMSLATE_TILES.get());
+        dropSelf(DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
+        add(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.GLOOMSLATE_TILE_WALL.get());
+        dropSelf(DDBlocks.SMOOTH_GLOOMSLATE.get());
+        dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get());
+        add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.CUT_GLOOMSLATE.get());
+        dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
+        add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
     }
 
     @Override
