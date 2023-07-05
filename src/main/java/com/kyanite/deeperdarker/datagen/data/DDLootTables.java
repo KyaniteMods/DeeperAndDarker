@@ -71,14 +71,11 @@ public class DDLootTables extends BlockLootSubProvider {
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
         dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
 
-        add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
-        add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_IRON));
-        add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), this::createCopperOreDrops);
-        add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_GOLD));
-        add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), this::createRedstoneOreDrops);
-        add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> this.createOreDrop(block, Items.EMERALD));
-        add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), this::createLapisOreDrops);
-        add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
+        dropSelf(DDBlocks.SCULK_GRIME.get());
+        dropSelf(DDBlocks.SCULK_GRIME_BRICKS.get());
+        dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get());
+        add(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL.get());
 
         add(DDBlocks.GLOOMSLATE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
@@ -109,6 +106,17 @@ public class DDLootTables extends BlockLootSubProvider {
         add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
+
+        dropSelf(DDBlocks.ECHO_SOIL.get());
+
+        add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
+        add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_IRON));
+        add(DDBlocks.SCULK_STONE_COPPER_ORE.get(), this::createCopperOreDrops);
+        add(DDBlocks.SCULK_STONE_GOLD_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_GOLD));
+        add(DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), this::createRedstoneOreDrops);
+        add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> this.createOreDrop(block, Items.EMERALD));
+        add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), this::createLapisOreDrops);
+        add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
     }
 
     @Override

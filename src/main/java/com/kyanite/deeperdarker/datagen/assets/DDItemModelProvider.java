@@ -66,14 +66,11 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_SCULK_STONE_WALL, "inventory");
         blockModel(DDBlocks.CHISELED_SCULK_STONE);
 
-        blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
-        blockModel(DDBlocks.SCULK_STONE_IRON_ORE);
-        blockModel(DDBlocks.SCULK_STONE_COPPER_ORE);
-        blockModel(DDBlocks.SCULK_STONE_GOLD_ORE);
-        blockModel(DDBlocks.SCULK_STONE_REDSTONE_ORE);
-        blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
-        blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
-        blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockModel(DDBlocks.SCULK_GRIME);
+        blockModel(DDBlocks.SCULK_GRIME_BRICKS);
+        blockModel(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
+        blockModel(DDBlocks.SCULK_GRIME_BRICK_SLAB);
+        blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
 
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
@@ -105,11 +102,31 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
 
+        blockModel(DDBlocks.ECHO_SOIL);
+
+        blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
+        blockModel(DDBlocks.SCULK_STONE_IRON_ORE);
+        blockModel(DDBlocks.SCULK_STONE_COPPER_ORE);
+        blockModel(DDBlocks.SCULK_STONE_GOLD_ORE);
+        blockModel(DDBlocks.SCULK_STONE_REDSTONE_ORE);
+        blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
+        blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
+        blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
 
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
+
+        itemModel(DDItems.GRIME_BALL, GENERATED);
+        itemModel(DDItems.GRIME_BRICK, GENERATED);
+
+        itemModel(DDItems.SCULK_BONE, GENERATED);
+        itemModel(DDItems.SOUL_DUST, GENERATED);
+        itemModel(DDItems.SOUL_CRYSTAL, GENERATED);
+        itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
+        itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
+        itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

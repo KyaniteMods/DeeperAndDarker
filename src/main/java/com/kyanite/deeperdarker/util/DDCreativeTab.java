@@ -30,11 +30,6 @@ public class DDCreativeTab {
             event.accept(DDBlocks.ECHO_TRAPDOOR);
             event.accept(DDBlocks.ECHO_PRESSURE_PLATE);
             event.accept(DDBlocks.ECHO_BUTTON);
-            event.accept(DDBlocks.ECHO_LEAVES);
-            event.accept(DDItems.ECHO_SIGN);
-            event.accept(DDItems.ECHO_HANGING_SIGN);
-            event.accept(DDItems.ECHO_BOAT);
-            event.accept(DDItems.ECHO_CHEST_BOAT);
 
             event.accept(DDBlocks.SCULK_STONE);
             event.accept(DDBlocks.SCULK_STONE_STAIRS);
@@ -65,6 +60,12 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CUT_SCULK_STONE_SLAB);
             event.accept(DDBlocks.CUT_SCULK_STONE_WALL);
             event.accept(DDBlocks.CHISELED_SCULK_STONE);
+
+            event.accept(DDBlocks.SCULK_GRIME);
+            event.accept(DDBlocks.SCULK_GRIME_BRICKS);
+            event.accept(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
+            event.accept(DDBlocks.SCULK_GRIME_BRICK_SLAB);
+            event.accept(DDBlocks.SCULK_GRIME_BRICK_WALL);
 
             event.accept(DDBlocks.GLOOMSLATE);
             event.accept(DDBlocks.GLOOMSLATE_STAIRS);
@@ -104,6 +105,23 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
             event.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
             event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+
+            event.accept(DDBlocks.ECHO_LEAVES);
+
+            event.accept(DDItems.ECHO_SIGN);
+            event.accept(DDItems.ECHO_HANGING_SIGN);
+            event.accept(DDItems.ECHO_BOAT);
+            event.accept(DDItems.ECHO_CHEST_BOAT);
+
+            event.accept(DDItems.GRIME_BALL);
+            event.accept(DDItems.GRIME_BRICK);
+
+            event.accept(DDItems.SCULK_BONE);
+            event.accept(DDItems.SOUL_DUST);
+            event.accept(DDItems.SOUL_CRYSTAL);
+            event.accept(DDItems.HEART_OF_THE_DEEP);
+            event.accept(DDItems.WARDEN_CARAPACE);
+            event.accept(DDItems.REINFORCED_ECHO_SHARD);
         }
     }
 }

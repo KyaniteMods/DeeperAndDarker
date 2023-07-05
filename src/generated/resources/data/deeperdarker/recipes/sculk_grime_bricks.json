@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": {
+      "item": "deeperdarker:grime_brick"
+    }
+  },
+  "pattern": [
+    "GG",
+    "GG"
+  ],
+  "result": {
+    "item": "deeperdarker:sculk_grime_bricks"
+  },
+  "show_notification": true
+}
