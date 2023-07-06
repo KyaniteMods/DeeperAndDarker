@@ -3,23 +3,25 @@
 	"id": "deeperdarker",
 	"version": "${version}",
 	"name": "Deeper and Darker",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Minecraft 1.20 mod which features more blocks, items, armors, and hidden mysteries to complement the Deep Dark biome.",
 	"authors": [
-		"Me!"
+		"Kyanite Mods"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://kyanitemods.dev/",
+		"sources": "https://github.com/KyaniteMods/DeeperAndDarker/tree/fabric-1.20"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/deeperdarker/icon.png",
+	"license": "ARR",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.kyanite.deeperdarker.ExampleMod"
+			"com.kyanite.deeperdarker.DeeperDarker"
+		],
+		"client": [
+			"com.kyanite.deeperdarker.DeeperDarkerClient"
 		],
 		"fabric-datagen": [
-			"com.kyanite.deeperdarker.ExampleModDataGenerator"
+          "com.kyanite.deeperdarker.DeeperDarkerDataGenerator"
 		]
 	},
 	"mixins": [
