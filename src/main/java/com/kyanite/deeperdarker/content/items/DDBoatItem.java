@@ -1,7 +1,7 @@
-package com.kyanite.deeperdarker.registries.items;
+package com.kyanite.deeperdarker.content.items;
 
-import com.kyanite.deeperdarker.registries.entities.DDBoat;
-import com.kyanite.deeperdarker.registries.entities.DDChestBoat;
+import com.kyanite.deeperdarker.content.entities.DDBoat;
+import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

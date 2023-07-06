@@ -2,9 +2,9 @@ package com.kyanite.deeperdarker.util.render;
 
 import com.google.common.collect.ImmutableMap;
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.DDBlocks;
-import com.kyanite.deeperdarker.registries.entities.DDBoat;
-import com.kyanite.deeperdarker.registries.entities.DDChestBoat;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.entities.DDBoat;
+import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;

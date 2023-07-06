@@ -1,13 +1,13 @@
-package com.kyanite.deeperdarker.registries;
+package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.blocks.*;
-import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkTendrilsBlock;
-import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkTendrilsPlantBlock;
-import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkVinesBlock;
-import com.kyanite.deeperdarker.registries.blocks.vegetation.SculkVinesPlantBlock;
-import com.kyanite.deeperdarker.registries.entities.DDHangingSignBlockEntity;
-import com.kyanite.deeperdarker.registries.entities.DDSignBlockEntity;
+import com.kyanite.deeperdarker.content.blocks.*;
+import com.kyanite.deeperdarker.content.blocks.vegetation.SculkTendrilsBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.SculkTendrilsPlantBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.SculkVinesBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.SculkVinesPlantBlock;
+import com.kyanite.deeperdarker.content.entities.DDHangingSignBlockEntity;
+import com.kyanite.deeperdarker.content.entities.DDSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;

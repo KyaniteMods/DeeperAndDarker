@@ -1,27 +1,28 @@
-package com.kyanite.deeperdarker.registries.entities;
+package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.registries.DDEntities;
-import com.kyanite.deeperdarker.registries.DDItems;
+import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
+import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("NullableProblems")
-public class DDBoat extends Boat {
-    private static final EntityDataAccessor<String> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.STRING);
+public class DDChestBoat extends ChestBoat {
+    private static final EntityDataAccessor<String> WOOD_TYPE = SynchedEntityData.defineId(DDChestBoat.class, EntityDataSerializers.STRING);
 
-    public DDBoat(EntityType<? extends Boat> pEntityType, Level pLevel) {
+    public DDChestBoat(EntityType<? extends Boat> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    public DDBoat(Level level, double x, double y, double z, String woodType) {
-        this(DDEntities.DEEPER_DARKER_BOAT.get(), level);
+    public DDChestBoat(Level level, double x, double y, double z, String woodType) {
+        this(DDEntities.DEEPER_DARKER_CHEST_BOAT.get(), level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;
@@ -37,7 +38,7 @@ public class DDBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        return DDItems.ECHO_BOAT.get();
+        return DDItems.ECHO_CHEST_BOAT.get();
     }
 
     @Override

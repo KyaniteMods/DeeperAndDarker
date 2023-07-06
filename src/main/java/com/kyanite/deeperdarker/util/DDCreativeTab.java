@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.DDBlocks;
-import com.kyanite.deeperdarker.registries.DDItems;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

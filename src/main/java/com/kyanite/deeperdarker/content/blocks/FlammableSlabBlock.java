@@ -1,16 +1,16 @@
-package com.kyanite.deeperdarker.registries.blocks;
+package com.kyanite.deeperdarker.content.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammableBlock extends Block {
+public class FlammableSlabBlock extends SlabBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableBlock(Properties pProperties, int flammability, int spread) {
+    public FlammableSlabBlock(Properties pProperties, int flammability, int spread) {
         super(pProperties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;

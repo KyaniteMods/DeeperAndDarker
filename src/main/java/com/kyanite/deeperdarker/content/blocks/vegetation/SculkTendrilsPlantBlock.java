@@ -1,6 +1,6 @@
-package com.kyanite.deeperdarker.registries.blocks.vegetation;
+package com.kyanite.deeperdarker.content.blocks.vegetation;
 
-import com.kyanite.deeperdarker.registries.DDBlocks;
+import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantBodyBlock;

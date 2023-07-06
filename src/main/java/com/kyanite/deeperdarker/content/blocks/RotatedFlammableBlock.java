@@ -1,6 +1,6 @@
-package com.kyanite.deeperdarker.registries.blocks;
+package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.registries.DDBlocks;
+import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.UseOnContext;

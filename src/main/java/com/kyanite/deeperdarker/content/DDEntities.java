@@ -1,8 +1,8 @@
-package com.kyanite.deeperdarker.registries;
+package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.entities.DDBoat;
-import com.kyanite.deeperdarker.registries.entities.DDChestBoat;
+import com.kyanite.deeperdarker.content.entities.DDBoat;
+import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;

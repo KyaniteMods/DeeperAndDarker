@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.DDBlocks;
-import com.kyanite.deeperdarker.registries.DDItems;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;

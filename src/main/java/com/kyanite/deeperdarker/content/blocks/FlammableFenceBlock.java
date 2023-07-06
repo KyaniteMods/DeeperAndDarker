@@ -1,17 +1,17 @@
-package com.kyanite.deeperdarker.registries.blocks;
+package com.kyanite.deeperdarker.content.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FlammableLeavesBlock extends LeavesBlock {
+public class FlammableFenceBlock extends FenceBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableLeavesBlock(Properties pProperties, int flammability, int spread) {
-        super(pProperties);
+    public FlammableFenceBlock(Properties properties, int flammability, int spread) {
+        super(properties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;
     }

@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.datagen.data;
 
-import com.kyanite.deeperdarker.registries.DDBlocks;
+import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;

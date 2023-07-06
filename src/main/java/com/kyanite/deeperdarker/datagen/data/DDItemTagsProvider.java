@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.DDItems;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

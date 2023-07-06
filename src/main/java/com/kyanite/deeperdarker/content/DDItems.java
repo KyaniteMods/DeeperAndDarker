@@ -1,7 +1,7 @@
-package com.kyanite.deeperdarker.registries;
+package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.items.DDBoatItem;
+import com.kyanite.deeperdarker.content.items.DDBoatItem;
 import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;

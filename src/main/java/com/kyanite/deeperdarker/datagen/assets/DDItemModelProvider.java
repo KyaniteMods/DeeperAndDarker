@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.registries.DDBlocks;
-import com.kyanite.deeperdarker.registries.DDItems;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
