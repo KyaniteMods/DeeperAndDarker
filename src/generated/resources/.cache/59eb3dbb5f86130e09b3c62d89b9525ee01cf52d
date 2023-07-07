@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-07T01:16:30.1618755	Loot Tables
+// 1.20.1	2023-07-07T11:29:25.5729681	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 55589564f7ea5847138db468199d54cd1142b139 data/deeperdarker/loot_tables/blocks/chiseled_gloomslate.json
 c29aeb5add1d38dc94087bd93c15ff08dab7a74d data/deeperdarker/loot_tables/blocks/chiseled_sculk_stone.json
@@ -10,6 +10,7 @@ c7ac8d491100fb210ab3f52a61dee0d48b472654 data/deeperdarker/loot_tables/blocks/co
 c60d076bc2f8f7ca0f9b9de9b801a309f91cdc4e data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_slab.json
 501aa81a3c7aa13b0b6ecfe119800293d3c7d495 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_stairs.json
 33b2b0df4b2f209d15aa20e371a0756b470b48bb data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
+8da49fdaa022842df6fccca4d3b1e10fe4d76ac1 data/deeperdarker/loot_tables/blocks/crystallized_amber.json
 6b42790fa76fec7a33fe310660cbd533c8173847 data/deeperdarker/loot_tables/blocks/cut_gloomslate.json
 4665bac5d0dbd1b4700b6341ec4690f1382cae8a data/deeperdarker/loot_tables/blocks/cut_gloomslate_slab.json
 41d96f72b9100532cecdfb08864adcab29e5226f data/deeperdarker/loot_tables/blocks/cut_gloomslate_stairs.json

@@ -120,6 +120,7 @@ public class DDLootTables extends BlockLootSubProvider {
 
         dropSelf(DDBlocks.ECHO_SOIL.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
+        dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
         dropSelf(DDBlocks.SCULK_GLEAM.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));

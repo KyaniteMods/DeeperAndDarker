@@ -100,6 +100,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.ECHO_SOIL);
             event.accept(DDBlocks.GLOOMY_SCULK);
             event.accept(DDBlocks.GLOOMY_GEYSER);
+            event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
 
             event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
@@ -121,7 +122,6 @@ public class DDCreativeTab {
             event.accept(DDItems.ECHO_HANGING_SIGN);
 
             event.accept(DDBlocks.ANCIENT_VASE);
-
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
 
