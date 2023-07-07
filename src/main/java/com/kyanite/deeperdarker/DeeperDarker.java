@@ -7,10 +7,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.data.DDBlockTagsProvider;
-import com.kyanite.deeperdarker.datagen.data.DDItemTagsProvider;
-import com.kyanite.deeperdarker.datagen.data.DDLootTableProvider;
-import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
+import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.render.DDBoatRenderer;
 import net.minecraft.client.renderer.Sheets;
@@ -73,5 +70,7 @@ public class DeeperDarker {
 
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
+
+        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
     }
 }
