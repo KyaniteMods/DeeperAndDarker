@@ -20,7 +20,7 @@ minecraft {
     copyIdeResources = true
 
     // https://docs.minecraftforge.net/en/latest/advanced/accesstransformers/
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
         configureEach {
