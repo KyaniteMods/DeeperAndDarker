@@ -137,6 +137,8 @@ public class DDCreativeTab {
             event.accept(DDItems.HEART_OF_THE_DEEP);
             event.accept(DDItems.WARDEN_CARAPACE);
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
+
+            event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
         }
     }
 }

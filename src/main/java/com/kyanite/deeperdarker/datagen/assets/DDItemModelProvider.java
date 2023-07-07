@@ -142,6 +142,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
+
+        itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

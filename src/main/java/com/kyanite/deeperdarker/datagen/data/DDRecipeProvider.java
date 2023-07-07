@@ -29,6 +29,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         addCraftingRecipes(pWriter);
         addCookingRecipes(pWriter);
         addStonecuttingRecipes(pWriter);
+        addSmithingRecipes(pWriter);
     }
 
     private void addCraftingRecipes(Consumer<FinishedRecipe> writer) {
@@ -201,6 +202,22 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get());
         stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+    }
+
+    private void addSmithingRecipes(Consumer<FinishedRecipe> writer) {
+        wardenSmithing(writer, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, DDItems.WARDEN_SHOVEL.get());
+        wardenSmithing(writer, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, DDItems.WARDEN_PICKAXE.get());
+        wardenSmithing(writer, Items.NETHERITE_AXE, RecipeCategory.TOOLS, DDItems.WARDEN_AXE.get());
+        wardenSmithing(writer, Items.NETHERITE_HOE, RecipeCategory.TOOLS, DDItems.WARDEN_HOE.get());
+        wardenSmithing(writer, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, DDItems.WARDEN_SWORD.get());
+        wardenSmithing(writer, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, DDItems.WARDEN_HELMET.get());
+        wardenSmithing(writer, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, DDItems.WARDEN_CHESTPLATE.get());
+        wardenSmithing(writer, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, DDItems.WARDEN_LEGGINGS.get());
+        wardenSmithing(writer, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS.get());
+    }
+
+    private void wardenSmithing(Consumer<FinishedRecipe> writer, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), category, result).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(writer, getItemName(result) + "_smithing");
     }
 
     private void woodenRecipes(Consumer<FinishedRecipe> writer, TagKey<Item> logs, RegistryObject<RotatedPillarBlock> strippedLog, RegistryObject<Block> planks, RegistryObject<StairBlock> stairs, RegistryObject<SlabBlock> slabs, RegistryObject<FenceBlock> fence, RegistryObject<FenceGateBlock> fenceGate, RegistryObject<DoorBlock> door, RegistryObject<TrapDoorBlock> trapDoor, RegistryObject<PressurePlateBlock> pressurePlate, RegistryObject<ButtonBlock> button, RegistryObject<Item> sign, RegistryObject<Item> hangingSign, RegistryObject<Item> boat, RegistryObject<Item> chestBoat) {

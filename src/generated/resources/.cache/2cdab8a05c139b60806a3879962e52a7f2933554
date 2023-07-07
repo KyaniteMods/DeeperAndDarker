@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-06T09:53:43.5578123	Item Models: deeperdarker
+// 1.20.1	2023-07-06T22:01:53.1641113	Item Models: deeperdarker
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
 0eb658806d9c4c3faa4843fa00fd273b3d44dbdc assets/deeperdarker/models/item/cobbled_gloomslate.json
@@ -109,3 +109,4 @@ a4836e9b34b63c884ea3bbe089a2843b6c883670 assets/deeperdarker/models/item/warden_
 8ef8a0112f3c52edcefef408b2319254a47afbea assets/deeperdarker/models/item/warden_pickaxe.json
 697151117a7520a43959398c9539b1f5fc1ad747 assets/deeperdarker/models/item/warden_shovel.json
 fbd874e4d9d3f4f76a9fbdd08f79145db3627dae assets/deeperdarker/models/item/warden_sword.json
+d92735f2589cfd49b7f1387536fe987d832e731b assets/deeperdarker/models/item/warden_upgrade_smithing_template.json
