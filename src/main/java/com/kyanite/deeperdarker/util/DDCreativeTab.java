@@ -121,6 +121,16 @@ public class DDCreativeTab {
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
 
+            event.accept(DDItems.WARDEN_SHOVEL);
+            event.accept(DDItems.WARDEN_PICKAXE);
+            event.accept(DDItems.WARDEN_AXE);
+            event.accept(DDItems.WARDEN_HOE);
+            event.accept(DDItems.WARDEN_SWORD);
+            event.accept(DDItems.WARDEN_HELMET);
+            event.accept(DDItems.WARDEN_CHESTPLATE);
+            event.accept(DDItems.WARDEN_LEGGINGS);
+            event.accept(DDItems.WARDEN_BOOTS);
+
             event.accept(DDItems.SCULK_BONE);
             event.accept(DDItems.SOUL_DUST);
             event.accept(DDItems.SOUL_CRYSTAL);

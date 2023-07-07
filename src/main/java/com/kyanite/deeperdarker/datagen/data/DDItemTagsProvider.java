@@ -65,5 +65,15 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get());
+
+        tag(ItemTags.SHOVELS).add(DDItems.WARDEN_SHOVEL.get());
+        tag(ItemTags.PICKAXES).add(DDItems.WARDEN_PICKAXE.get());
+        tag(ItemTags.AXES).add(DDItems.WARDEN_AXE.get());
+        tag(ItemTags.HOES).add(DDItems.WARDEN_HOE.get());
+        tag(ItemTags.SWORDS).add(DDItems.WARDEN_SWORD.get());
+        tag(Tags.Items.ARMORS_HELMETS).add(DDItems.WARDEN_HELMET.get());
+        tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
+        tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
+        tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
     }
 }

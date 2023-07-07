@@ -102,6 +102,15 @@
   "item.deeperdarker.sculk_bone": "Sculk Bone",
   "item.deeperdarker.soul_crystal": "Soul Crystal",
   "item.deeperdarker.soul_dust": "Soul Dust",
+  "item.deeperdarker.warden_axe": "Warden Axe",
+  "item.deeperdarker.warden_boots": "Warden Boots",
   "item.deeperdarker.warden_carapace": "Warden Carapace",
+  "item.deeperdarker.warden_chestplate": "Warden Chestplate With Chest",
+  "item.deeperdarker.warden_helmet": "Warden Helmet",
+  "item.deeperdarker.warden_hoe": "Warden Hoe",
+  "item.deeperdarker.warden_leggings": "Warden Leggings",
+  "item.deeperdarker.warden_pickaxe": "Warden Pickaxe",
+  "item.deeperdarker.warden_shovel": "Warden Shovel",
+  "item.deeperdarker.warden_sword": "Warden Sword",
   "itemGroup.deeperdarker": "Deeper And Darker"
 }

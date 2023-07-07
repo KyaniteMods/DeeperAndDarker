@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-05T18:04:32.3370653	Item Models: deeperdarker
+// 1.20.1	2023-07-06T09:53:43.5578123	Item Models: deeperdarker
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
 0eb658806d9c4c3faa4843fa00fd273b3d44dbdc assets/deeperdarker/models/item/cobbled_gloomslate.json
@@ -99,4 +99,13 @@ ae8bb988e24dd1b2fc704b8e6b9e0e2bd9768190 assets/deeperdarker/models/item/smooth_
 dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_dust.json
 04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets/deeperdarker/models/item/stripped_echo_log.json
 aeff20ceb06371eb7973f8f39caa5eb4dd38e201 assets/deeperdarker/models/item/stripped_echo_wood.json
+290e9b82b23fb5bd4019f6db897d0fa01e144397 assets/deeperdarker/models/item/warden_axe.json
+43c8356885606b9d1beaecba592e38d0ee2b9b64 assets/deeperdarker/models/item/warden_boots.json
 3d17c3dc7cb5cd4507d1008365ce98a5befb5a4a assets/deeperdarker/models/item/warden_carapace.json
+f268a3ee9626f605ef6352dfd069f8ece1ab05b0 assets/deeperdarker/models/item/warden_chestplate.json
+8f05816b54724b5a4518c7c03ca7250cf23c475d assets/deeperdarker/models/item/warden_helmet.json
+a4836e9b34b63c884ea3bbe089a2843b6c883670 assets/deeperdarker/models/item/warden_hoe.json
+114963b338c4d62cd496e74d2ce165f1650085e4 assets/deeperdarker/models/item/warden_leggings.json
+8ef8a0112f3c52edcefef408b2319254a47afbea assets/deeperdarker/models/item/warden_pickaxe.json
+697151117a7520a43959398c9539b1f5fc1ad747 assets/deeperdarker/models/item/warden_shovel.json
+fbd874e4d9d3f4f76a9fbdd08f79145db3627dae assets/deeperdarker/models/item/warden_sword.json

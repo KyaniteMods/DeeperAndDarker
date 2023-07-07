@@ -14,6 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
+    private final ModelFile HANDHELD = getExistingFile(mcLoc("item/handheld"));
 
     public DDItemModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, DeeperDarker.MOD_ID, exFileHelper);
@@ -124,6 +125,16 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
+
+        itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
+        itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
+        itemModel(DDItems.WARDEN_AXE, HANDHELD);
+        itemModel(DDItems.WARDEN_HOE, HANDHELD);
+        itemModel(DDItems.WARDEN_SWORD, HANDHELD);
+        itemModel(DDItems.WARDEN_HELMET, GENERATED);
+        itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
+        itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
+        itemModel(DDItems.WARDEN_BOOTS, GENERATED);
 
         itemModel(DDItems.SCULK_BONE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
