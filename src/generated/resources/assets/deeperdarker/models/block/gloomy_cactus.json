@@ -1,0 +1,7 @@
+{
+  "parent": "deeperdarker:block/cube_cactus",
+  "textures": {
+    "side": "deeperdarker:block/gloomy_cactus_side",
+    "top": "deeperdarker:block/gloomy_cactus_top"
+  }
+}

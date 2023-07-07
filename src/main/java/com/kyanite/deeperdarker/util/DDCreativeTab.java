@@ -98,6 +98,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CHISELED_GLOOMSLATE);
 
             event.accept(DDBlocks.ECHO_SOIL);
+            event.accept(DDBlocks.GLOOMY_SCULK);
+            event.accept(DDBlocks.GLOOMY_GEYSER);
             event.accept(DDBlocks.SCULK_GLEAM);
 
             event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
@@ -110,6 +112,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
 
             event.accept(DDBlocks.ECHO_LEAVES);
+            event.accept(DDBlocks.GLOOMY_GRASS);
+            event.accept(DDBlocks.GLOOMY_CACTUS);
             event.accept(DDBlocks.SCULK_VINES);
             event.accept(DDBlocks.SCULK_TENDRILS);
 

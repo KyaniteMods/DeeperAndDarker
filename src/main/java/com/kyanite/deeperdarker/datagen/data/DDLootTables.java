@@ -112,6 +112,7 @@ public class DDLootTables extends BlockLootSubProvider {
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         dropSelf(DDBlocks.ECHO_SOIL.get());
+        dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
         dropSelf(DDBlocks.SCULK_GLEAM.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
@@ -123,6 +124,8 @@ public class DDLootTables extends BlockLootSubProvider {
         add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), this::createLapisOreDrops);
         add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
 
+        add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
+        dropSelf(DDBlocks.GLOOMY_CACTUS.get());
         addVineAndPlant(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
         addVineAndPlant(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());
     }

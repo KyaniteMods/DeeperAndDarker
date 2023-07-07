@@ -104,6 +104,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());
+        simpleBlock(DDBlocks.GLOOMY_SCULK.get());
+        simpleBlock(DDBlocks.GLOOMY_GEYSER.get(), models().cubeTop(DDBlocks.GLOOMY_GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOMY_SCULK), blockLoc(DDBlocks.GLOOMY_GEYSER)));
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
 
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());
@@ -115,11 +117,12 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
 
+        simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
+        simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOMY_CACTUS.getId().getPath(), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOMY_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOMY_CACTUS, "top")));
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(DDBlocks.SCULK_TENDRILS.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
-
     }
 
     private void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
