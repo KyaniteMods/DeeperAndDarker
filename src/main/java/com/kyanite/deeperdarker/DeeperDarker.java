@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -11,6 +12,6 @@ public class DeeperDarker implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		DeeperDarkerItems.init();
 	}
 }
