@@ -123,6 +123,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(DDBlocks.SCULK_TENDRILS.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
+
+        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
     }
 
     private void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {

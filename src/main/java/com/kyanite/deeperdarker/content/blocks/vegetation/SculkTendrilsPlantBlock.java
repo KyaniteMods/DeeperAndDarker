@@ -9,7 +9,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class SculkTendrilsPlantBlock extends GrowingPlantBodyBlock {
-    public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 16, 12);
+    private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 16, 12);
 
     public SculkTendrilsPlantBlock(Properties pProperties) {
         super(pProperties, Direction.UP, SHAPE, false);

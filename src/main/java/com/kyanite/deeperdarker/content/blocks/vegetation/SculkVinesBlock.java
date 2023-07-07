@@ -12,7 +12,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class SculkVinesBlock extends GrowingPlantHeadBlock {
-    protected static final VoxelShape SHAPE = Block.box(4, 9, 4, 12, 16, 12);
+    private static final VoxelShape SHAPE = Block.box(4, 9, 4, 12, 16, 12);
 
     public SculkVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.1);

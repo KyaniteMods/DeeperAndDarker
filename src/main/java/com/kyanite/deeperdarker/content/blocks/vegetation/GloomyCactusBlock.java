@@ -12,8 +12,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("NullableProblems")
 public class GloomyCactusBlock extends CactusBlock {
-    protected static final VoxelShape COLLISION_SHAPE = Block.box(1, 0, 1, 15, 13, 15);
-    protected static final VoxelShape OUTLINE_SHAPE = Block.box(1, 0, 1, 15, 14, 15);
+    private static final VoxelShape COLLISION_SHAPE = Block.box(1, 0, 1, 15, 13, 15);
+    private static final VoxelShape OUTLINE_SHAPE = Block.box(1, 0, 1, 15, 14, 15);
 
     public GloomyCactusBlock(Properties pProperties) {
         super(pProperties);

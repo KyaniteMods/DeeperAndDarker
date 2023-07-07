@@ -122,6 +122,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
         getBuilder(DDBlocks.SCULK_TENDRILS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath());
 
+        blockModel(DDBlocks.ANCIENT_VASE);
+
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
