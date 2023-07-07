@@ -119,11 +119,12 @@ public class DDCreativeTab {
 
             event.accept(DDItems.ECHO_SIGN);
             event.accept(DDItems.ECHO_HANGING_SIGN);
-            event.accept(DDItems.ECHO_BOAT);
-            event.accept(DDItems.ECHO_CHEST_BOAT);
 
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
+
+            event.accept(DDItems.ECHO_BOAT);
+            event.accept(DDItems.ECHO_CHEST_BOAT);
 
             event.accept(DDItems.WARDEN_SHOVEL);
             event.accept(DDItems.WARDEN_PICKAXE);
