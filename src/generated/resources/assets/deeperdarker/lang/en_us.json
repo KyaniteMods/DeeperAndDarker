@@ -50,6 +50,9 @@
   "block.deeperdarker.gloomy_geyser": "Gloomy Geyser",
   "block.deeperdarker.gloomy_grass": "Gloomy Grass",
   "block.deeperdarker.gloomy_sculk": "Gloomy Sculk",
+  "block.deeperdarker.linked": "Linked to block",
+  "block.deeperdarker.not_found": "The linked block is missing or unloaded",
+  "block.deeperdarker.not_transmittable": "Cannot link to block",
   "block.deeperdarker.polished_gloomslate": "Polished Gloomslate",
   "block.deeperdarker.polished_gloomslate_slab": "Polished Gloomslate Slab",
   "block.deeperdarker.polished_gloomslate_stairs": "Polished Gloomslate Stairs",
@@ -98,6 +101,7 @@
   "block.deeperdarker.smooth_sculk_stone_wall": "Smooth Sculk Stone Wall",
   "block.deeperdarker.stripped_echo_log": "Stripped Echo Log",
   "block.deeperdarker.stripped_echo_wood": "Stripped Echo Wood",
+  "block.deeperdarker.unlinked": "Unlinked transmitter",
   "entity.deeperdarker.deeper_darker_chest_boat": "Boat with Chest",
   "item.deeperdarker.echo_boat": "Echo Boat",
   "item.deeperdarker.echo_chest_boat": "Echo Boat With Chest",
@@ -106,6 +110,7 @@
   "item.deeperdarker.heart_of_the_deep": "Heart Of The Deep",
   "item.deeperdarker.reinforced_echo_shard": "Reinforced Echo Shard",
   "item.deeperdarker.sculk_bone": "Sculk Bone",
+  "item.deeperdarker.sculk_transmitter": "Sculk Transmitter",
   "item.deeperdarker.soul_crystal": "Soul Crystal",
   "item.deeperdarker.soul_dust": "Soul Dust",
   "item.deeperdarker.warden_axe": "Warden Axe",
@@ -119,5 +124,7 @@
   "item.deeperdarker.warden_shovel": "Warden Shovel",
   "item.deeperdarker.warden_sword": "Warden Sword",
   "item.deeperdarker.warden_upgrade_smithing_template": "Warden Upgrade Smithing Template",
-  "itemGroup.deeperdarker": "Deeper And Darker"
+  "itemGroup.deeperdarker": "Deeper And Darker",
+  "tooltips.deeperdarker.sculk_transmitter.linked": "Linked",
+  "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked"
 }

@@ -150,6 +150,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
+        getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
     }
 

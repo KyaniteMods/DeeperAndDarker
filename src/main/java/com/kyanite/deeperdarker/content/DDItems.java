@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.items.DDBoatItem;
+import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.WardenArmorItem;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
@@ -40,6 +41,8 @@ public class DDItems {
     public static final RegistryObject<Item> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final RegistryObject<Item> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final RegistryObject<Item> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
+
+    public static final RegistryObject<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
             Component.literal("Netherite Equipment").withStyle(ChatFormatting.BLUE),

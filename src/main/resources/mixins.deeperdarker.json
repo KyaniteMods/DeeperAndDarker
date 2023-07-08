@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.kyanite.deeperdarker.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.deeperdarker.refmap.json",
+  "mixins": [
+    "ContainerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

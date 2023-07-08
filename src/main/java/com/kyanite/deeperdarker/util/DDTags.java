@@ -12,6 +12,7 @@ public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
+        public static final TagKey<Block> TRANSMITTABLE = tag("transmittable");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));

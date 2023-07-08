@@ -145,6 +145,7 @@ public class DDCreativeTab {
             event.accept(DDItems.WARDEN_CARAPACE);
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
 
+            event.accept(DDItems.SCULK_TRANSMITTER);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
         }
     }

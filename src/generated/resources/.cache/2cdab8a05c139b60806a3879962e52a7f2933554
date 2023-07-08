@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-07T11:29:25.5674563	Item Models: deeperdarker
+// 1.20.1	2023-07-07T13:36:28.2809081	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
@@ -92,6 +92,7 @@ e95d7689a6be15bf680edb1555a406663ae62acf assets/deeperdarker/models/item/sculk_s
 22c1896061ae2e9ee8871a1f769d1262b62c0530 assets/deeperdarker/models/item/sculk_stone_tile_wall.json
 a71c8b14b5e81663a9802d02da7ebe84c176e094 assets/deeperdarker/models/item/sculk_stone_wall.json
 9dd7f9949be123d91bbfd61aa9e838972edccbba assets/deeperdarker/models/item/sculk_tendrils.json
+b456f6dcb2e3009eb3828b3a389c14a93a2d4e71 assets/deeperdarker/models/item/sculk_transmitter_on.json
 826d5e09ad2e18070d74add221ff22017abadb39 assets/deeperdarker/models/item/sculk_vines.json
 a486e0567f9d7ed81cc982dc986042fa09f181d8 assets/deeperdarker/models/item/smooth_gloomslate.json
 41fe998b4bcdf450a042c53f50f6b124c11bf27c assets/deeperdarker/models/item/smooth_gloomslate_slab.json

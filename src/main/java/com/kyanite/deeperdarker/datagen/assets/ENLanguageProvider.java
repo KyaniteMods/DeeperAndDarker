@@ -17,8 +17,16 @@ public class ENLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
         add("entity." + DeeperDarker.MOD_ID + ".deeper_darker_chest_boat", "Boat with Chest");
+
+        add("block." + DeeperDarker.MOD_ID + ".linked", "Linked to block");
+        add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
+        add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
+        add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
+        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked");
+        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
+
+        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));
