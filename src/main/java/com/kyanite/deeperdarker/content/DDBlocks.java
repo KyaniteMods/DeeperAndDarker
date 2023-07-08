@@ -158,6 +158,7 @@ public class DDBlocks {
     public static final RegistryObject<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().noCollission().instabreak()));
 
     public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f)));
+    public static final RegistryObject<Block> OTHERSIDE_PORTAL = register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> registeredBlock = BLOCKS.register(name, block);
