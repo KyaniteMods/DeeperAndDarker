@@ -1,6 +1,6 @@
-// 1.20.1	2023-07-08T13:02:48.9215115	Registries
-bcd289069a173fd65da785bf244b33a8f3a30b65 data/deeperdarker/worldgen/biome/deeplands.json
-23b23826249372478a7527f94f4c3c4a39302009 data/deeperdarker/worldgen/biome/echoing_forest.json
+// 1.20.1	2023-07-08T14:08:02.6846505	Registries
+f936ea7c99991cd419e479b6dea17c32c32ec2c7 data/deeperdarker/worldgen/biome/deeplands.json
+fd72715d4cc5becc67fe2fafb4948261f3de80ec data/deeperdarker/worldgen/biome/echoing_forest.json
 85ed2dc3623830ca1168d3ac8cd7bfbce424db14 data/deeperdarker/worldgen/biome/overcast_columns.json
 04507f8019ea27bf80bec176c9e6093c495068d8 data/deeperdarker/worldgen/configured_feature/gloomy_sculk_bonemeal.json
 091c066d3e288c08e5d68a8aca7b3fb0e6e5639b data/deeperdarker/worldgen/configured_feature/gloomy_sculk_vegetation.json

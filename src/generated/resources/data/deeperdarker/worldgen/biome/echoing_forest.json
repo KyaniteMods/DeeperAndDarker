@@ -20,7 +20,7 @@
       "replace_current_music": false,
       "sound": "minecraft:ambient.soul_sand_valley.loop"
     },
-    "sky_color": 8168703,
+    "sky_color": 8233983,
     "water_color": 4330347,
     "water_fog_color": 3742046
   },
@@ -58,5 +58,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.4
+  "temperature": 0.275
 }

@@ -1,5 +1,5 @@
 {
-  "sea_level": 3,
+  "sea_level": 24,
   "disable_mob_generation": false,
   "aquifers_enabled": true,
   "ore_veins_enabled": false,
@@ -8,7 +8,10 @@
     "Name": "deeperdarker:sculk_stone"
   },
   "default_fluid": {
-    "Name": "deeperdarker:sculk_grime"
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
   },
   "noise": {
     "min_y": 0,
@@ -62,47 +65,47 @@
       "type": "minecraft:squeeze",
       "argument": {
         "type": "minecraft:mul",
-        "argument1": 23,
+        "argument1": 25,
         "argument2": {
           "type": "minecraft:interpolated",
           "argument": {
             "type": "minecraft:blend_density",
             "argument": {
               "type": "minecraft:add",
-              "argument1": {
+              "argument1": 2.5,
+              "argument2": {
                 "type": "minecraft:mul",
                 "argument1": {
                   "type": "minecraft:y_clamped_gradient",
-                  "from_y": -72,
-                  "to_y": -40,
+                  "from_y": -8,
+                  "to_y": 24,
                   "from_value": 0,
                   "to_value": 1
                 },
                 "argument2": {
                   "type": "minecraft:add",
-                  "argument1": {
+                  "argument1": -2.5,
+                  "argument2": {
                     "type": "minecraft:add",
-                    "argument1": {
+                    "argument1": 0.9375,
+                    "argument2": {
                       "type": "minecraft:mul",
                       "argument1": {
                         "type": "minecraft:y_clamped_gradient",
-                        "from_y": 296,
-                        "to_y": 320,
+                        "from_y": 104,
+                        "to_y": 128,
                         "from_value": 1,
                         "to_value": 0
                       },
                       "argument2": {
                         "type": "minecraft:add",
-                        "argument1": "minecraft:overworld/caves/spaghetti_2d",
-                        "argument2": -0.9375
+                        "argument1": -0.9375,
+                        "argument2": "minecraft:overworld/caves/entrances"
                       }
-                    },
-                    "argument2": 0.9375
-                  },
-                  "argument2": -2.5
+                    }
+                  }
                 }
-              },
-              "argument2": 2.5
+              }
             }
           }
         }
@@ -119,16 +122,13 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:not",
-          "invert": {
-            "type": "minecraft:vertical_gradient",
-            "random_name": "minecraft:bedrock_roof",
-            "true_at_and_below": {
-              "below_top": 5
-            },
-            "false_at_and_above": {
-              "below_top": 0
-            }
+          "type": "minecraft:vertical_gradient",
+          "random_name": "minecraft:bedrock_floor",
+          "true_at_and_below": {
+            "above_bottom": 0
+          },
+          "false_at_and_above": {
+            "above_bottom": 5
           }
         },
         "then_run": {
@@ -141,13 +141,16 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:vertical_gradient",
-          "random_name": "minecraft:bedrock_floor",
-          "true_at_and_below": {
-            "above_bottom": 0
-          },
-          "false_at_and_above": {
-            "above_bottom": 5
+          "type": "minecraft:not",
+          "invert": {
+            "type": "minecraft:vertical_gradient",
+            "random_name": "minecraft:bedrock_roof",
+            "true_at_and_below": {
+              "below_top": 5
+            },
+            "false_at_and_above": {
+              "below_top": 0
+            }
           }
         },
         "then_run": {
