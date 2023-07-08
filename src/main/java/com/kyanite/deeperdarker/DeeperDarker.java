@@ -1,5 +1,7 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,6 +14,8 @@ public class DeeperDarker implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		DeeperDarkerItemGroups.init();
+		DeeperDarkerBlocks.init();
 		DeeperDarkerItems.init();
 	}
 }
