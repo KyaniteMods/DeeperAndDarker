@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -22,6 +23,8 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class SculkTransmitterItem extends Item {
+    private BlockPos linkedPos;
+
     public SculkTransmitterItem(Properties pProperties) {
         super(pProperties);
     }
@@ -38,6 +41,7 @@ public class SculkTransmitterItem extends Item {
             return InteractionResult.FAIL;
         }
 
+        actionBarMessage(pContext.getPlayer(), "linked");
         formConnection(pContext.getItemInHand(), pContext.getClickedPos());
         return InteractionResult.SUCCESS;
     }
@@ -53,8 +57,8 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked"));
-        else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked"));
+        if(pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", pLevel.getBlockState(linkedPos).getBlock().getName()).withStyle(ChatFormatting.GRAY));
+        else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
@@ -95,6 +99,7 @@ public class SculkTransmitterItem extends Item {
 
     private void formConnection(ItemStack stack, BlockPos pos) {
         CompoundTag tag = new CompoundTag();
+        linkedPos = pos;
         if(pos == null) {
             stack.removeTagKey("blockPos");
             return;

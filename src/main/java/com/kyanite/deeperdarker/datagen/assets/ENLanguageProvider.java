@@ -19,11 +19,11 @@ public class ENLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("entity." + DeeperDarker.MOD_ID + ".deeper_darker_chest_boat", "Boat with Chest");
 
-        add("block." + DeeperDarker.MOD_ID + ".linked", "Linked to block");
+        add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
         add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
-        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked");
+        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
