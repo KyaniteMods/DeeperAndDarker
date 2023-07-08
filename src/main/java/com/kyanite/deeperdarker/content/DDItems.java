@@ -8,10 +8,13 @@ import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class DDItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperDarker.MOD_ID);
@@ -51,6 +54,6 @@ public class DDItems {
             Component.literal("Add netherite armor, weapon, or tool"),
             Component.literal("Add Reinforced Echo Shard"),
             SmithingTemplateItem.createNetheriteUpgradeIconList(),
-            SmithingTemplateItem.createNetheriteUpgradeMaterialList()
+            List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_shard"))
     ));
 }
