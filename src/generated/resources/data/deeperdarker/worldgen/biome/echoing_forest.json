@@ -31,6 +31,18 @@
     [
       "minecraft:fossil_upper",
       "minecraft:fossil_lower"
+    ],
+    [],
+    [],
+    [
+      "deeperdarker:sculk_coal",
+      "deeperdarker:sculk_iron",
+      "deeperdarker:sculk_copper",
+      "deeperdarker:sculk_gold",
+      "deeperdarker:sculk_redstone",
+      "deeperdarker:sculk_emerald",
+      "deeperdarker:sculk_lapis",
+      "deeperdarker:sculk_diamond"
     ]
   ],
   "has_precipitation": true,

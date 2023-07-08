@@ -28,7 +28,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class OthersideTeleporter implements ITeleporter {
-    protected final ServerLevel level;
+    private final ServerLevel level;
 
     public OthersideTeleporter(ServerLevel level) {
         this.level = level;
