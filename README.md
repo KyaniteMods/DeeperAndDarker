@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/KyaniteMods/DeeperAndDarker/tree/forge-1.20/src/main/resources/banner.png" alt="banner" width="1024"></p>
+<p align="center"><img src="https://github.com/KyaniteMods/DeeperAndDarker/blob/forge-1.20/src/main/resources/banner.png" alt="banner" width="1024"></p>
 
 ---
 A Minecraft mod featuring more blocks, items, armors, and hidden mysteries to complement the Deep Dark update. Deeper and Darker introduces new sculk-related blocks, Warden armor and tools, the Otherside dimension, and secrets waiting to be discovered by you!
