@@ -5,7 +5,7 @@
       "minecraft:cave_extra_underground"
     ]
   },
-  "downfall": 0.5,
+  "downfall": -0.5,
   "effects": {
     "fog_color": 2043481,
     "mood_sound": {
@@ -20,7 +20,7 @@
       "replace_current_music": false,
       "sound": "minecraft:ambient.soul_sand_valley.loop"
     },
-    "sky_color": 8495103,
+    "sky_color": 8625919,
     "water_color": 1254763,
     "water_fog_color": 1253458
   },
@@ -58,5 +58,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": -0.25
+  "temperature": -0.5
 }
