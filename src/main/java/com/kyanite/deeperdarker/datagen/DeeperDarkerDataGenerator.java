@@ -1,7 +1,5 @@
-package com.kyanite.deeperdarker;
+package com.kyanite.deeperdarker.datagen;
 
-import com.kyanite.deeperdarker.datagen.DeeperDarkerModelProvider;
-import com.kyanite.deeperdarker.datagen.DeeperDarkerRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -11,6 +9,8 @@ public class DeeperDarkerDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(DeeperDarkerRecipeProvider::new);
 		pack.addProvider(DeeperDarkerModelProvider::new);
+		pack.addProvider(DeeperDarkerBlockLootTableProvider::new);
+		pack.addProvider(DeeperDarkerBlockTagProvider::new);
 //		String[] armorTypes = new String[]{"helmet","chestplate","leggings","boots"};
 //		String[] values = new String[]{"amethyst","copper","diamond","emerald","gold","iron","lapis","netherite","quartz","redstone"};
 	}

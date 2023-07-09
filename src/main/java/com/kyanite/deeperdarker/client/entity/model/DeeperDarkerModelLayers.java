@@ -2,6 +2,8 @@ package com.kyanite.deeperdarker.client.entity.model;
 
 import com.google.common.collect.Sets;
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import net.minecraft.block.WoodType;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;

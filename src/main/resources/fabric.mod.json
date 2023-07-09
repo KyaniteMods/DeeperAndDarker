@@ -21,7 +21,7 @@
 			"com.kyanite.deeperdarker.DeeperDarkerClient"
 		],
 		"fabric-datagen": [
-          "com.kyanite.deeperdarker.DeeperDarkerDataGenerator"
+			"com.kyanite.deeperdarker.datagen.DeeperDarkerDataGenerator"
 		]
 	},
 	"mixins": [

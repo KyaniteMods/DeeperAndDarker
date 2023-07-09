@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -36,6 +37,19 @@ public class DeeperDarkerItems {
     public static final Item ECHO_WOOD;
     public static final Item STRIPPED_ECHO_LOG;
     public static final Item STRIPPED_ECHO_WOOD;
+    public static final Item ECHO_BUTTON;
+    public static final Item ECHO_DOOR;
+    public static final Item ECHO_FENCE_GATE;
+    public static final Item ECHO_FENCE;
+    public static final Item ECHO_HANGING_SIGN;
+    public static final Item ECHO_LEAVES;
+    public static final Item ECHO_PLANKS;
+    public static final Item ECHO_PRESSURE_PLATE;
+    public static final Item ECHO_SAPLING;
+    public static final Item ECHO_SIGN;
+    public static final Item ECHO_SLAB;
+    public static final Item ECHO_STAIRS;
+    public static final Item ECHO_TRAPDOOR;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
@@ -62,6 +76,19 @@ public class DeeperDarkerItems {
         ECHO_WOOD = registerItem("echo_wood", new BlockItem(DeeperDarkerBlocks.ECHO_WOOD, new Item.Settings()));
         STRIPPED_ECHO_LOG = registerItem("stripped_echo_log", new BlockItem(DeeperDarkerBlocks.STRIPPED_ECHO_LOG, new Item.Settings()));
         STRIPPED_ECHO_WOOD = registerItem("stripped_echo_wood", new BlockItem(DeeperDarkerBlocks.STRIPPED_ECHO_WOOD, new Item.Settings()));
+        ECHO_BUTTON = registerItem("echo_button", new BlockItem(DeeperDarkerBlocks.ECHO_BUTTON, new Item.Settings()));
+        ECHO_DOOR = registerItem("echo_door", new TallBlockItem(DeeperDarkerBlocks.ECHO_DOOR, new Item.Settings()));
+        ECHO_FENCE_GATE = registerItem("echo_fence_gate", new BlockItem(DeeperDarkerBlocks.ECHO_FENCE_GATE, new Item.Settings()));
+        ECHO_FENCE = registerItem("echo_fence", new BlockItem(DeeperDarkerBlocks.ECHO_FENCE, new Item.Settings()));
+        ECHO_HANGING_SIGN = registerItem("echo_hanging_sign", new HangingSignItem(DeeperDarkerBlocks.ECHO_HANGING_SIGN, DeeperDarkerBlocks.ECHO_WALL_HANGING_SIGN, new Item.Settings()));
+        ECHO_LEAVES = registerItem("echo_leaves", new BlockItem(DeeperDarkerBlocks.ECHO_LEAVES, new Item.Settings()));
+        ECHO_PLANKS = registerItem("echo_planks", new BlockItem(DeeperDarkerBlocks.ECHO_PLANKS, new Item.Settings()));
+        ECHO_PRESSURE_PLATE = registerItem("echo_pressure_plate", new BlockItem(DeeperDarkerBlocks.ECHO_PRESSURE_PLATE, new Item.Settings()));
+        ECHO_SAPLING = registerItem("echo_sapling", new BlockItem(DeeperDarkerBlocks.ECHO_SAPLING, new Item.Settings()));
+        ECHO_SIGN = registerItem("echo_sign", new SignItem(new Item.Settings(), DeeperDarkerBlocks.ECHO_SIGN, DeeperDarkerBlocks.ECHO_WALL_SIGN));
+        ECHO_SLAB = registerItem("echo_slab", new BlockItem(DeeperDarkerBlocks.ECHO_SLAB, new Item.Settings()));
+        ECHO_STAIRS = registerItem("echo_stairs", new BlockItem(DeeperDarkerBlocks.ECHO_STAIRS, new Item.Settings()));
+        ECHO_TRAPDOOR = registerItem("echo_trapdoor", new BlockItem(DeeperDarkerBlocks.ECHO_TRAPDOOR, new Item.Settings()));
     }
 
     private static Item registerItem(String id, Item item) {

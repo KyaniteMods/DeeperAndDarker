@@ -6,6 +6,8 @@
     "ExampleMixin"
   ],
   "client": [
+    "ShowHangingSignScreenMixin",
+    "ShowHangingSignScreenMixin$ClientAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
