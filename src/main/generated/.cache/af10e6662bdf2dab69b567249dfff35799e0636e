@@ -1,11 +1,11 @@
-// 1.20.1	2023-07-09T18:00:39.1355147	Deeper and Darker/Tags for minecraft:block
+// 1.20.1	2023-07-09T20:15:16.5811514	Deeper and Darker/Tags for minecraft:block
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\blocks\leaves.json
 67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\blocks\logs_that_burn.json
 ad4068cbc07d6695e52fe55e47e251e2a62b6c33 data\minecraft\tags\blocks\wall_signs.json
-cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\blocks\wooden_stairs.json
 a79df4671755271345962c0aa23680929668ccea data\minecraft\tags\blocks\planks.json
 d0b222d759fe0c881261b06d778a3563df87b7db data\minecraft\tags\blocks\wooden_doors.json
 12e8918117d16b5db99ad05f804eb63b5389e861 data\minecraft\tags\blocks\ceiling_hanging_signs.json
+cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\blocks\wooden_stairs.json
 fc4746e6361c4738f8d49d9736180f693b5d89f6 data\minecraft\tags\blocks\wooden_pressure_plates.json
 8787510abc7136bd0e101f9597e4c972f261ec32 data\minecraft\tags\blocks\standing_signs.json
 666498abb0b9ee22c5239c4a897b6f03923b6ec6 data\minecraft\tags\blocks\wooden_fences.json
@@ -14,6 +14,6 @@ fc4746e6361c4738f8d49d9736180f693b5d89f6 data\minecraft\tags\blocks\wooden_press
 f05849880cdbeeabfa8cf9a677718a7ea229b91a data\minecraft\tags\blocks\wooden_trapdoors.json
 8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data\minecraft\tags\blocks\wooden_slabs.json
 0b611850fa88d0382e3e8016186b458466af19fb data\minecraft\tags\blocks\wooden_buttons.json
-a7e5e7b68762e62de81e6db89df51f1faac1ab3c data\minecraft\tags\blocks\walls.json
+5853dd3bde739be76992a2067a4a916e9f14659f data\minecraft\tags\blocks\walls.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data\deeperdarker\tags\blocks\echo_logs.json
-be288fd7480a4d3e0b208b846015a9d4679406a3 data\minecraft\tags\blocks\mineable\pickaxe.json
+e740d0555605643dabea859adbfa95d31faeae41 data\minecraft\tags\blocks\mineable\pickaxe.json

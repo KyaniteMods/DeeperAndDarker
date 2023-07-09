@@ -24,7 +24,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), DeeperDarkerBlocks.ECHO_DOOR, DeeperDarkerBlocks.ECHO_TRAPDOOR);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), DeeperDarkerBlocks.ECHO_DOOR, DeeperDarkerBlocks.ECHO_TRAPDOOR, DeeperDarkerBlocks.ECHO_SAPLING);
         BlockEntityRendererFactories.register(DeeperDarkerBlockEntityTypes.HANGING_SIGN, HangingSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(DeeperDarkerBlockEntityTypes.SIGN, SignBlockEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.WARDEN_HELMET, WardenHelmetHornsModel::getTexturedModelData);

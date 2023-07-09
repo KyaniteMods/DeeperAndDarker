@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,8 +12,6 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
 
 import java.util.List;
-
-import static com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks.ECHO_LOG;
 
 public class DeeperDarkerItems {
     public static final Item WARDEN_HELMET;
@@ -79,6 +76,40 @@ public class DeeperDarkerItems {
     public static final Item CUT_SCULK_STONE_SLAB;
     public static final Item CUT_SCULK_STONE_WALL;
     public static final Item CHISELED_SCULK_STONE;
+    public static final Item SCULK_GRIME;
+    public static final Item SCULK_GRIME_BRICKS;
+    public static final Item SCULK_GRIME_BRICK_STAIRS;
+    public static final Item SCULK_GRIME_BRICK_SLAB;
+    public static final Item SCULK_GRIME_BRICK_WALL;
+    public static final Item GLOOMSLATE;
+    public static final Item GLOOMSLATE_STAIRS;
+    public static final Item GLOOMSLATE_SLAB;
+    public static final Item GLOOMSLATE_WALL;
+    public static final Item COBBLED_GLOOMSLATE;
+    public static final Item COBBLED_GLOOMSLATE_STAIRS;
+    public static final Item COBBLED_GLOOMSLATE_SLAB;
+    public static final Item COBBLED_GLOOMSLATE_WALL;
+    public static final Item POLISHED_GLOOMSLATE;
+    public static final Item POLISHED_GLOOMSLATE_STAIRS;
+    public static final Item POLISHED_GLOOMSLATE_SLAB;
+    public static final Item POLISHED_GLOOMSLATE_WALL;
+    public static final Item GLOOMSLATE_BRICKS;
+    public static final Item GLOOMSLATE_BRICK_STAIRS;
+    public static final Item GLOOMSLATE_BRICK_SLAB;
+    public static final Item GLOOMSLATE_BRICK_WALL;
+    public static final Item GLOOMSLATE_TILES;
+    public static final Item GLOOMSLATE_TILE_STAIRS;
+    public static final Item GLOOMSLATE_TILE_SLAB;
+    public static final Item GLOOMSLATE_TILE_WALL;
+    public static final Item SMOOTH_GLOOMSLATE;
+    public static final Item SMOOTH_GLOOMSLATE_STAIRS;
+    public static final Item SMOOTH_GLOOMSLATE_SLAB;
+    public static final Item SMOOTH_GLOOMSLATE_WALL;
+    public static final Item CUT_GLOOMSLATE;
+    public static final Item CUT_GLOOMSLATE_STAIRS;
+    public static final Item CUT_GLOOMSLATE_SLAB;
+    public static final Item CUT_GLOOMSLATE_WALL;
+    public static final Item CHISELED_GLOOMSLATE;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
@@ -147,6 +178,40 @@ public class DeeperDarkerItems {
         CUT_SCULK_STONE_SLAB = registerItem("cut_sculk_stone_slab", new BlockItem(DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB, new Item.Settings()));
         CUT_SCULK_STONE_WALL = registerItem("cut_sculk_stone_wall", new BlockItem(DeeperDarkerBlocks.CUT_SCULK_STONE_WALL, new Item.Settings()));
         CHISELED_SCULK_STONE = registerItem("chiseled_sculk_stone", new BlockItem(DeeperDarkerBlocks.CHISELED_SCULK_STONE, new Item.Settings()));
+        SCULK_GRIME = registerItem("sculk_grime", new BlockItem(DeeperDarkerBlocks.SCULK_GRIME, new Item.Settings()));
+        SCULK_GRIME_BRICKS = registerItem("sculk_grime_bricks", new BlockItem(DeeperDarkerBlocks.SCULK_GRIME_BRICKS, new Item.Settings()));
+        SCULK_GRIME_BRICK_STAIRS = registerItem("sculk_grime_brick_stairs", new BlockItem(DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS, new Item.Settings()));
+        SCULK_GRIME_BRICK_SLAB = registerItem("sculk_grime_brick_slab", new BlockItem(DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB, new Item.Settings()));
+        SCULK_GRIME_BRICK_WALL = registerItem("sculk_grime_brick_wall", new BlockItem(DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL, new Item.Settings()));
+        GLOOMSLATE = registerItem("gloomslate", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE, new Item.Settings()));
+        GLOOMSLATE_STAIRS = registerItem("gloomslate_stairs", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_STAIRS, new Item.Settings()));
+        GLOOMSLATE_SLAB = registerItem("gloomslate_slab", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_SLAB, new Item.Settings()));
+        GLOOMSLATE_WALL = registerItem("gloomslate_wall", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_WALL, new Item.Settings()));
+        COBBLED_GLOOMSLATE = registerItem("cobbled_gloomslate", new BlockItem(DeeperDarkerBlocks.COBBLED_GLOOMSLATE, new Item.Settings()));
+        COBBLED_GLOOMSLATE_STAIRS = registerItem("cobbled_gloomslate_stairs", new BlockItem(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS, new Item.Settings()));
+        COBBLED_GLOOMSLATE_SLAB = registerItem("cobbled_gloomslate_slab", new BlockItem(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB, new Item.Settings()));
+        COBBLED_GLOOMSLATE_WALL = registerItem("cobbled_gloomslate_wall", new BlockItem(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL, new Item.Settings()));
+        POLISHED_GLOOMSLATE = registerItem("polished_gloomslate", new BlockItem(DeeperDarkerBlocks.POLISHED_GLOOMSLATE, new Item.Settings()));
+        POLISHED_GLOOMSLATE_STAIRS = registerItem("polished_gloomslate_stairs", new BlockItem(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS, new Item.Settings()));
+        POLISHED_GLOOMSLATE_SLAB = registerItem("polished_gloomslate_slab", new BlockItem(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB, new Item.Settings()));
+        POLISHED_GLOOMSLATE_WALL = registerItem("polished_gloomslate_wall", new BlockItem(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL, new Item.Settings()));
+        GLOOMSLATE_BRICKS = registerItem("gloomslate_bricks", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_BRICKS, new Item.Settings()));
+        GLOOMSLATE_BRICK_STAIRS = registerItem("gloomslate_brick_stairs", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS, new Item.Settings()));
+        GLOOMSLATE_BRICK_SLAB = registerItem("gloomslate_brick_slab", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB, new Item.Settings()));
+        GLOOMSLATE_BRICK_WALL = registerItem("gloomslate_brick_wall", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL, new Item.Settings()));
+        GLOOMSLATE_TILES = registerItem("gloomslate_tiles", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_TILES, new Item.Settings()));
+        GLOOMSLATE_TILE_STAIRS = registerItem("gloomslate_tile_stairs", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS, new Item.Settings()));
+        GLOOMSLATE_TILE_SLAB = registerItem("gloomslate_tile_slab", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB, new Item.Settings()));
+        GLOOMSLATE_TILE_WALL = registerItem("gloomslate_tile_wall", new BlockItem(DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL, new Item.Settings()));
+        SMOOTH_GLOOMSLATE = registerItem("smooth_gloomslate", new BlockItem(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE, new Item.Settings()));
+        SMOOTH_GLOOMSLATE_STAIRS = registerItem("smooth_gloomslate_stairs", new BlockItem(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS, new Item.Settings()));
+        SMOOTH_GLOOMSLATE_SLAB = registerItem("smooth_gloomslate_slab", new BlockItem(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB, new Item.Settings()));
+        SMOOTH_GLOOMSLATE_WALL = registerItem("smooth_gloomslate_wall", new BlockItem(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL, new Item.Settings()));
+        CUT_GLOOMSLATE = registerItem("cut_gloomslate", new BlockItem(DeeperDarkerBlocks.CUT_GLOOMSLATE, new Item.Settings()));
+        CUT_GLOOMSLATE_STAIRS = registerItem("cut_gloomslate_stairs", new BlockItem(DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS, new Item.Settings()));
+        CUT_GLOOMSLATE_SLAB = registerItem("cut_gloomslate_slab", new BlockItem(DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB, new Item.Settings()));
+        CUT_GLOOMSLATE_WALL = registerItem("cut_gloomslate_wall", new BlockItem(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, new Item.Settings()));
+        CHISELED_GLOOMSLATE = registerItem("chiseled_gloomslate", new BlockItem(DeeperDarkerBlocks.CHISELED_GLOOMSLATE, new Item.Settings()));
     }
 
     private static Item registerItem(String id, Item item) {

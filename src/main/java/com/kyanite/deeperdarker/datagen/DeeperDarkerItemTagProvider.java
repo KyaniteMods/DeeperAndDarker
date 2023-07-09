@@ -73,7 +73,15 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
                 DeeperDarkerItems.SCULK_STONE_BRICK_WALL,
                 DeeperDarkerItems.SCULK_STONE_TILE_WALL,
                 DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL,
-                DeeperDarkerItems.CUT_SCULK_STONE_WALL
+                DeeperDarkerItems.CUT_SCULK_STONE_WALL,
+                DeeperDarkerItems.SCULK_GRIME_BRICK_WALL,
+                DeeperDarkerItems.GLOOMSLATE_WALL,
+                DeeperDarkerItems.COBBLED_GLOOMSLATE_WALL,
+                DeeperDarkerItems.POLISHED_GLOOMSLATE_WALL,
+                DeeperDarkerItems.GLOOMSLATE_BRICK_WALL,
+                DeeperDarkerItems.GLOOMSLATE_TILE_WALL,
+                DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL,
+                DeeperDarkerItems.CUT_GLOOMSLATE_WALL
         );
     }
 }

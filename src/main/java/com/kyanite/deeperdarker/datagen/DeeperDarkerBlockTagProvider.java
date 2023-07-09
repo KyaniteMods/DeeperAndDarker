@@ -5,7 +5,6 @@ import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
-import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
@@ -88,7 +87,41 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.CUT_SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB,
                 DeeperDarkerBlocks.CUT_SCULK_STONE_WALL,
-                DeeperDarkerBlocks.CHISELED_SCULK_STONE
+                DeeperDarkerBlocks.CHISELED_SCULK_STONE,
+                DeeperDarkerBlocks.SCULK_GRIME,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICKS,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL,
+                DeeperDarkerBlocks.GLOOMSLATE,
+                DeeperDarkerBlocks.GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICKS,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL,
+                DeeperDarkerBlocks.GLOOMSLATE_TILES,
+                DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS,
+                DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB,
+                DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.CHISELED_GLOOMSLATE
         );
 
         getOrCreateTagBuilder(WALLS).setReplace(false).add(
@@ -98,7 +131,15 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SCULK_STONE_BRICK_WALL,
                 DeeperDarkerBlocks.SCULK_STONE_TILE_WALL,
                 DeeperDarkerBlocks.SMOOTH_SCULK_STONE_WALL,
-                DeeperDarkerBlocks.CUT_SCULK_STONE_WALL
+                DeeperDarkerBlocks.CUT_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL,
+                DeeperDarkerBlocks.GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL,
+                DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL
         );
     }
 }

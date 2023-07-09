@@ -7,13 +7,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.loot.v2.FabricLootTableBuilder;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.AlternativeLootCondition;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootConditionTypes;
 import net.minecraft.loot.condition.SurvivesExplosionLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -47,7 +50,8 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.ECHO_SLAB);
         this.addDrop(DeeperDarkerBlocks.ECHO_STAIRS);
         this.addDrop(DeeperDarkerBlocks.ECHO_TRAPDOOR);
-        this.addDrop(DeeperDarkerBlocks.SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE, BlockLootTableGenerator.dropsWithSilkTouch(DeeperDarkerBlocks.SCULK_STONE).pool(LootPool.builder().rolls(
+                ConstantLootNumberProvider.create(1.0f)).conditionally(WITHOUT_SILK_TOUCH).with(ItemEntry.builder(DeeperDarkerItems.COBBLED_SCULK_STONE))));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_STAIRS);
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_SLAB);
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_WALL);
@@ -76,5 +80,40 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB);
         this.addDrop(DeeperDarkerBlocks.CUT_SCULK_STONE_WALL);
         this.addDrop(DeeperDarkerBlocks.CHISELED_SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.SCULK_GRIME);
+        this.addDrop(DeeperDarkerBlocks.SCULK_GRIME_BRICKS);
+        this.addDrop(DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB);
+        this.addDrop(DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE, BlockLootTableGenerator.dropsWithSilkTouch(DeeperDarkerBlocks.GLOOMSLATE).pool(LootPool.builder().rolls(
+                ConstantLootNumberProvider.create(1.0f)).conditionally(WITHOUT_SILK_TOUCH).with(ItemEntry.builder(DeeperDarkerItems.COBBLED_GLOOMSLATE))));
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_WALL);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_GLOOMSLATE);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_GLOOMSLATE);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_BRICKS);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_TILES);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL);
+        this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE);
+        this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL);
+        this.addDrop(DeeperDarkerBlocks.CHISELED_GLOOMSLATE);
     }
 }

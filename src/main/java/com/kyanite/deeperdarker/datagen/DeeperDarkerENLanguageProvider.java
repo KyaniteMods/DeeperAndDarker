@@ -1,12 +1,10 @@
 package com.kyanite.deeperdarker.datagen;
 
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
-import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Util;
 
 public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
@@ -84,5 +82,39 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB, "Cut Sculk Stone Slab");
         translationBuilder.add(DeeperDarkerBlocks.CUT_SCULK_STONE_WALL, "Cut Sculk Stone Wall");
         translationBuilder.add(DeeperDarkerBlocks.CHISELED_SCULK_STONE, "Chiseled Sculk Stone");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_GRIME, "Sculk Grime");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_GRIME_BRICKS, "Sculk Grime Bricks");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS, "Sculk Grime Brick Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB, "Sculk Grime Brick Slab");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL, "Sculk Grime Brick Wall");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE, "Gloomslate");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_STAIRS, "Gloomslate Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_SLAB, "Gloomslate Slab");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_WALL, "Gloomslate Wall");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_GLOOMSLATE, "Cobbled Gloomslate");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS, "Cobbled Gloomslate Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB, "Cobbled Gloomslate Slab");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL, "Cobbled Gloomslate Wall");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_GLOOMSLATE, "Polished Gloomslate");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS, "Polished Gloomslate Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB, "Polished Gloomslate Slab");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL, "Polished Gloomslate Wall");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_BRICKS, "Gloomslate Bricks");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS, "Gloomslate Brick Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB, "Gloomslate Brick Slab");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL, "Gloomslate Brick Wall");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_TILES, "Gloomslate Tiles");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS, "Gloomslate Tile Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB, "Gloomslate Tile Slab");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL, "Gloomslate Tile Wall");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE, "Smooth Gloomslate");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS, "Smooth Gloomslate Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB, "Smooth Gloomslate Slab");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL, "Smooth Gloomslate Wall");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_GLOOMSLATE, "Cut Gloomslate");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS, "Cut Gloomslate Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB, "Cut Gloomslate Slab");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, "Cut Gloomslate Wall");
+        translationBuilder.add(DeeperDarkerBlocks.CHISELED_GLOOMSLATE, "Chiseled Gloomslate");
     }
 }

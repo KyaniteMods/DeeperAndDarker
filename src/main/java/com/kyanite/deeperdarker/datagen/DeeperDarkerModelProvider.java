@@ -30,6 +30,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.ECHO_SLAB, DeeperDarkerBlocks.ECHO_PLANKS);
         registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.ECHO_STAIRS, DeeperDarkerBlocks.ECHO_PLANKS);
         blockStateModelGenerator.registerOrientableTrapdoor(DeeperDarkerBlocks.ECHO_TRAPDOOR);
+
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE);
         registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.SCULK_STONE_STAIRS, DeeperDarkerBlocks.SCULK_STONE);
         registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.SCULK_STONE_SLAB, DeeperDarkerBlocks.SCULK_STONE);
@@ -59,6 +60,42 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB, DeeperDarkerBlocks.CUT_SCULK_STONE);
         registerWall(blockStateModelGenerator, DeeperDarkerBlocks.CUT_SCULK_STONE_WALL, DeeperDarkerBlocks.CUT_SCULK_STONE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.CHISELED_SCULK_STONE);
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_GRIME);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_GRIME_BRICKS);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS, DeeperDarkerBlocks.SCULK_GRIME_BRICKS);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB, DeeperDarkerBlocks.SCULK_GRIME_BRICKS);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL, DeeperDarkerBlocks.SCULK_GRIME_BRICKS);
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.GLOOMSLATE);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_STAIRS, DeeperDarkerBlocks.GLOOMSLATE);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_SLAB, DeeperDarkerBlocks.GLOOMSLATE);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_WALL, DeeperDarkerBlocks.GLOOMSLATE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.COBBLED_GLOOMSLATE);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS, DeeperDarkerBlocks.COBBLED_GLOOMSLATE);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB, DeeperDarkerBlocks.COBBLED_GLOOMSLATE);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL, DeeperDarkerBlocks.COBBLED_GLOOMSLATE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.POLISHED_GLOOMSLATE);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS, DeeperDarkerBlocks.POLISHED_GLOOMSLATE);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB, DeeperDarkerBlocks.POLISHED_GLOOMSLATE);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL, DeeperDarkerBlocks.POLISHED_GLOOMSLATE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.GLOOMSLATE_BRICKS);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS, DeeperDarkerBlocks.GLOOMSLATE_BRICKS);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB, DeeperDarkerBlocks.GLOOMSLATE_BRICKS);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL, DeeperDarkerBlocks.GLOOMSLATE_BRICKS);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.GLOOMSLATE_TILES);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS, DeeperDarkerBlocks.GLOOMSLATE_TILES);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB, DeeperDarkerBlocks.GLOOMSLATE_TILES);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL, DeeperDarkerBlocks.GLOOMSLATE_TILES);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS, DeeperDarkerBlocks.SMOOTH_GLOOMSLATE);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB, DeeperDarkerBlocks.SMOOTH_GLOOMSLATE);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL, DeeperDarkerBlocks.SMOOTH_GLOOMSLATE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.CUT_GLOOMSLATE);
+        registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS, DeeperDarkerBlocks.CUT_GLOOMSLATE);
+        registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB, DeeperDarkerBlocks.CUT_GLOOMSLATE);
+        registerWall(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, DeeperDarkerBlocks.CUT_GLOOMSLATE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.CHISELED_GLOOMSLATE);
     }
 
     @Override
@@ -84,6 +121,14 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_TILE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_STONE_TILES).getTextures(), itemModelGenerator.writer);
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SMOOTH_SCULK_STONE).getTextures(), itemModelGenerator.writer);
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.CUT_SCULK_STONE).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_GRIME_BRICK_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_GRIME).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMSLATE).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.COBBLED_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.COBBLED_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.POLISHED_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.POLISHED_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_BRICK_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMSLATE_BRICKS).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_TILE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMSLATE_TILES).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.CUT_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {

@@ -75,6 +75,40 @@ public class DeeperDarkerBlocks {
     public static final Block CUT_SCULK_STONE_SLAB;
     public static final Block CUT_SCULK_STONE_WALL;
     public static final Block CHISELED_SCULK_STONE;
+    public static final Block SCULK_GRIME;
+    public static final Block SCULK_GRIME_BRICKS;
+    public static final Block SCULK_GRIME_BRICK_STAIRS;
+    public static final Block SCULK_GRIME_BRICK_SLAB;
+    public static final Block SCULK_GRIME_BRICK_WALL;
+    public static final Block GLOOMSLATE;
+    public static final Block GLOOMSLATE_STAIRS;
+    public static final Block GLOOMSLATE_SLAB;
+    public static final Block GLOOMSLATE_WALL;
+    public static final Block COBBLED_GLOOMSLATE;
+    public static final Block COBBLED_GLOOMSLATE_STAIRS;
+    public static final Block COBBLED_GLOOMSLATE_SLAB;
+    public static final Block COBBLED_GLOOMSLATE_WALL;
+    public static final Block POLISHED_GLOOMSLATE;
+    public static final Block POLISHED_GLOOMSLATE_STAIRS;
+    public static final Block POLISHED_GLOOMSLATE_SLAB;
+    public static final Block POLISHED_GLOOMSLATE_WALL;
+    public static final Block GLOOMSLATE_BRICKS;
+    public static final Block GLOOMSLATE_BRICK_STAIRS;
+    public static final Block GLOOMSLATE_BRICK_SLAB;
+    public static final Block GLOOMSLATE_BRICK_WALL;
+    public static final Block GLOOMSLATE_TILES;
+    public static final Block GLOOMSLATE_TILE_STAIRS;
+    public static final Block GLOOMSLATE_TILE_SLAB;
+    public static final Block GLOOMSLATE_TILE_WALL;
+    public static final Block SMOOTH_GLOOMSLATE;
+    public static final Block SMOOTH_GLOOMSLATE_STAIRS;
+    public static final Block SMOOTH_GLOOMSLATE_SLAB;
+    public static final Block SMOOTH_GLOOMSLATE_WALL;
+    public static final Block CUT_GLOOMSLATE;
+    public static final Block CUT_GLOOMSLATE_STAIRS;
+    public static final Block CUT_GLOOMSLATE_SLAB;
+    public static final Block CUT_GLOOMSLATE_WALL;
+    public static final Block CHISELED_GLOOMSLATE;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -152,6 +186,42 @@ public class DeeperDarkerBlocks {
         CUT_SCULK_STONE_SLAB = registerBlock("cut_sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
         CUT_SCULK_STONE_WALL = registerBlock("cut_sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
         CHISELED_SCULK_STONE = registerBlock("chiseled_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+
+        SCULK_GRIME = registerBlock("sculk_grime", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.CYAN)));
+        SCULK_GRIME_BRICKS = registerBlock("sculk_grime_bricks", new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
+        SCULK_GRIME_BRICK_STAIRS = registerBlock("sculk_grime_brick_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SCULK_GRIME_BRICKS)));
+        SCULK_GRIME_BRICK_SLAB = registerBlock("sculk_grime_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_SLAB)));
+        SCULK_GRIME_BRICK_WALL = registerBlock("sculk_grime_brick_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_GRIME_BRICKS)));
+
+        GLOOMSLATE = registerBlock("gloomslate", new Block(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN)));
+        GLOOMSLATE_STAIRS = registerBlock("gloomslate_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(GLOOMSLATE)));
+        GLOOMSLATE_SLAB = registerBlock("gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.COBBLED_DEEPSLATE_SLAB).mapColor(MapColor.CYAN)));
+        GLOOMSLATE_WALL = registerBlock("gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        COBBLED_GLOOMSLATE = registerBlock("cobbled_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        COBBLED_GLOOMSLATE_STAIRS = registerBlock("cobbled_gloomslate_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(COBBLED_GLOOMSLATE)));
+        COBBLED_GLOOMSLATE_SLAB = registerBlock("cobbled_gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
+        COBBLED_GLOOMSLATE_WALL = registerBlock("cobbled_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        POLISHED_GLOOMSLATE = registerBlock("polished_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        POLISHED_GLOOMSLATE_STAIRS = registerBlock("polished_gloomslate_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(POLISHED_GLOOMSLATE)));
+        POLISHED_GLOOMSLATE_SLAB = registerBlock("polished_gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
+        POLISHED_GLOOMSLATE_WALL = registerBlock("polished_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        GLOOMSLATE_BRICKS = registerBlock("gloomslate_bricks", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        GLOOMSLATE_BRICK_STAIRS = registerBlock("gloomslate_brick_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(GLOOMSLATE_BRICKS)));
+        GLOOMSLATE_BRICK_SLAB = registerBlock("gloomslate_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
+        GLOOMSLATE_BRICK_WALL = registerBlock("gloomslate_brick_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        GLOOMSLATE_TILES = registerBlock("gloomslate_tiles", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        GLOOMSLATE_TILE_STAIRS = registerBlock("gloomslate_tile_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(GLOOMSLATE_TILES)));
+        GLOOMSLATE_TILE_SLAB = registerBlock("gloomslate_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
+        GLOOMSLATE_TILE_WALL = registerBlock("gloomslate_tile_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        SMOOTH_GLOOMSLATE = registerBlock("smooth_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        SMOOTH_GLOOMSLATE_STAIRS = registerBlock("smooth_gloomslate_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(SMOOTH_GLOOMSLATE)));
+        SMOOTH_GLOOMSLATE_SLAB = registerBlock("smooth_gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
+        SMOOTH_GLOOMSLATE_WALL = registerBlock("smooth_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        CUT_GLOOMSLATE = registerBlock("cut_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        CUT_GLOOMSLATE_STAIRS = registerBlock("cut_gloomslate_stairs", new StairsBlock(GLOOMSLATE.getDefaultState(), AbstractBlock.Settings.copy(CUT_GLOOMSLATE)));
+        CUT_GLOOMSLATE_SLAB = registerBlock("cut_gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
+        CUT_GLOOMSLATE_WALL = registerBlock("cut_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
     }
 
     private static Block registerBlock(String id, Block block) {
