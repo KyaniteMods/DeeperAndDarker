@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-09T01:33:19.4415293	Deeper and Darker/Model Definitions
+// 1.20.1	2023-07-09T11:07:34.5553629	Deeper and Darker/Model Definitions
 fbd874e4d9d3f4f76a9fbdd08f79145db3627dae assets\deeperdarker\models\item\warden_sword.json
 209c03bfe359acb8d2c8de06d737ff5700e27665 assets\deeperdarker\models\item\echo_leaves.json
 779aeab7f78b9d6ef28de093ccf3fa252fea118e assets\deeperdarker\models\block\echo_fence_gate_open.json
@@ -17,8 +17,8 @@ c918d7bf217d133d61f6b85200ee8ed06e93f804 assets\deeperdarker\models\block\echo_s
 8864938ba857d68c957e39e40fe9f7117f72e31e assets\deeperdarker\models\item\reinforced_echo_shard.json
 4f146afd7e15e53a7f3987453d0acad4b2c85535 assets\deeperdarker\models\item\echo_planks.json
 1482614d3ee56429560cc8b3e553b25970a7b5aa assets\deeperdarker\models\item\echo_door.json
-c423df58d4e94cb49f50fcbc3d89223dd68d4028 assets\deeperdarker\models\block\echo_planks.json
 4eb302db46e44afee723af6f314f39ed3dde5e3e assets\deeperdarker\models\block\echo_door_bottom_right_open.json
+c423df58d4e94cb49f50fcbc3d89223dd68d4028 assets\deeperdarker\models\block\echo_planks.json
 d47c3025fbdc29b01594c184b43767b669dbc1fa assets\deeperdarker\models\block\echo_door_top_right_open.json
 95c9440c32396fc91b10b682317387856b4b85f0 assets\deeperdarker\models\block\echo_sapling.json
 8f1ad42651a0862e13a9c8c04fc7fe53931f0aa2 assets\deeperdarker\models\block\echo_log.json

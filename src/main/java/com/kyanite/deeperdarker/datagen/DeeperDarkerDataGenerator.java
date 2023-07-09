@@ -11,6 +11,7 @@ public class DeeperDarkerDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(DeeperDarkerModelProvider::new);
 		pack.addProvider(DeeperDarkerBlockLootTableProvider::new);
 		pack.addProvider(DeeperDarkerBlockTagProvider::new);
+		pack.addProvider(DeeperDarkerENLanguageProvider::new);
 //		String[] armorTypes = new String[]{"helmet","chestplate","leggings","boots"};
 //		String[] values = new String[]{"amethyst","copper","diamond","emerald","gold","iron","lapis","netherite","quartz","redstone"};
 	}
