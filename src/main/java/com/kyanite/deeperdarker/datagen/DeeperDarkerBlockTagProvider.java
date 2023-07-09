@@ -37,6 +37,7 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
     private static final TagKey<Block> WALL_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_signs"));
     private static final TagKey<Block> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_pressure_plates"));
     private static final TagKey<Block> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_trapdoors"));
+    private static final TagKey<Block> WALLS = TagKey.of(RegistryKeys.BLOCK, new Identifier("walls"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -88,6 +89,16 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB,
                 DeeperDarkerBlocks.CUT_SCULK_STONE_WALL,
                 DeeperDarkerBlocks.CHISELED_SCULK_STONE
+        );
+
+        getOrCreateTagBuilder(WALLS).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_STONE_WALL,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.SCULK_STONE_BRICK_WALL,
+                DeeperDarkerBlocks.SCULK_STONE_TILE_WALL,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.CUT_SCULK_STONE_WALL
         );
     }
 }

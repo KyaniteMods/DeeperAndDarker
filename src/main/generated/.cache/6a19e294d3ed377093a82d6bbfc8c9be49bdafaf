@@ -1,14 +1,15 @@
-// 1.20.1	2023-07-09T17:52:54.7711593	Deeper and Darker/Tags for minecraft:item
+// 1.20.1	2023-07-09T18:00:39.231259	Deeper and Darker/Tags for minecraft:item
 d0b222d759fe0c881261b06d778a3563df87b7db data\minecraft\tags\items\wooden_doors.json
 8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data\minecraft\tags\items\wooden_slabs.json
+a7e5e7b68762e62de81e6db89df51f1faac1ab3c data\minecraft\tags\items\walls.json
 a79df4671755271345962c0aa23680929668ccea data\minecraft\tags\items\planks.json
 cd824c2c5df9dd9ae11e32a8d9b2287999afdb5e data\minecraft\tags\items\hoes.json
 0b611850fa88d0382e3e8016186b458466af19fb data\minecraft\tags\items\wooden_buttons.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data\deeperdarker\tags\items\echo_logs.json
 ed7aa5cbfb388747192f4eba2210e4463510e836 data\minecraft\tags\items\shovels.json
 666498abb0b9ee22c5239c4a897b6f03923b6ec6 data\minecraft\tags\items\wooden_fences.json
-67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\items\logs_that_burn.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\items\leaves.json
+67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\items\logs_that_burn.json
 cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\items\wooden_stairs.json
 3a2de920aa00b902f0ba269ab2b6a1caacaf4405 data\minecraft\tags\items\fence_gates.json
 f05849880cdbeeabfa8cf9a677718a7ea229b91a data\minecraft\tags\items\wooden_trapdoors.json

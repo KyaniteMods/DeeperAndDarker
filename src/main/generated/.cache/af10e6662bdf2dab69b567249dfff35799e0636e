@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-09T17:52:54.7502145	Deeper and Darker/Tags for minecraft:block
+// 1.20.1	2023-07-09T18:00:39.1355147	Deeper and Darker/Tags for minecraft:block
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\blocks\leaves.json
 67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\blocks\logs_that_burn.json
 ad4068cbc07d6695e52fe55e47e251e2a62b6c33 data\minecraft\tags\blocks\wall_signs.json
@@ -14,5 +14,6 @@ fc4746e6361c4738f8d49d9736180f693b5d89f6 data\minecraft\tags\blocks\wooden_press
 f05849880cdbeeabfa8cf9a677718a7ea229b91a data\minecraft\tags\blocks\wooden_trapdoors.json
 8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data\minecraft\tags\blocks\wooden_slabs.json
 0b611850fa88d0382e3e8016186b458466af19fb data\minecraft\tags\blocks\wooden_buttons.json
+a7e5e7b68762e62de81e6db89df51f1faac1ab3c data\minecraft\tags\blocks\walls.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data\deeperdarker\tags\blocks\echo_logs.json
 be288fd7480a4d3e0b208b846015a9d4679406a3 data\minecraft\tags\blocks\mineable\pickaxe.json

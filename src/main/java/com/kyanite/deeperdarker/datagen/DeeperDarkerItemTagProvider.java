@@ -35,6 +35,7 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
     private static final TagKey<Item> SIGNS = TagKey.of(RegistryKeys.ITEM, new Identifier("signs"));
     private static final TagKey<Item> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_pressure_plates"));
     private static final TagKey<Item> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_trapdoors"));
+    private static final TagKey<Item> WALLS = TagKey.of(RegistryKeys.ITEM, new Identifier("walls"));
 
     private static final TagKey<Item> SWORDS = TagKey.of(RegistryKeys.ITEM, new Identifier("swords"));
     private static final TagKey<Item> PICKAXES = TagKey.of(RegistryKeys.ITEM, new Identifier("pickaxes"));
@@ -64,5 +65,15 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
         getOrCreateTagBuilder(AXES).setReplace(false).add(DeeperDarkerItems.WARDEN_AXE);
         getOrCreateTagBuilder(SHOVELS).setReplace(false).add(DeeperDarkerItems.WARDEN_SHOVEL);
         getOrCreateTagBuilder(HOES).setReplace(false).add(DeeperDarkerItems.WARDEN_HOE);
+
+        getOrCreateTagBuilder(WALLS).setReplace(false).add(
+                DeeperDarkerItems.SCULK_STONE_WALL,
+                DeeperDarkerItems.COBBLED_SCULK_STONE_WALL,
+                DeeperDarkerItems.POLISHED_SCULK_STONE_WALL,
+                DeeperDarkerItems.SCULK_STONE_BRICK_WALL,
+                DeeperDarkerItems.SCULK_STONE_TILE_WALL,
+                DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL,
+                DeeperDarkerItems.CUT_SCULK_STONE_WALL
+        );
     }
 }
