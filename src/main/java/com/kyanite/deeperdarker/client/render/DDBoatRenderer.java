@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.util.render;
+package com.kyanite.deeperdarker.client.render;
 
 import com.google.common.collect.ImmutableMap;
 import com.kyanite.deeperdarker.DeeperDarker;

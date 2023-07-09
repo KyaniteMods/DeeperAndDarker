@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.client.render.DDBoatRenderer;
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
@@ -9,7 +10,6 @@ import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
-import com.kyanite.deeperdarker.util.render.DDBoatRenderer;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
