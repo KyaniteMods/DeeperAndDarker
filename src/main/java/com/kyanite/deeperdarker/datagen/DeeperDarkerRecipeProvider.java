@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
@@ -93,5 +95,17 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_axe_to_warden_axe_upgrade"));
         NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_shovel_to_warden_shovel_upgrade"));
         NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_hoe_to_warden_hoe_upgrade"));
+        offerPlanksRecipe(exporter, DeeperDarkerItems.ECHO_PLANKS, TagKey.of(
+                RegistryKeys.ITEM, new Identifier(DeeperDarker.MOD_ID, "echo_logs")), 4);
+        offerSingleOutputShapelessRecipe(exporter, DeeperDarkerItems.ECHO_BUTTON, DeeperDarkerItems.ECHO_PLANKS, "wooden_button");
+        createDoorRecipe(DeeperDarkerItems.ECHO_DOOR, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
+        createFenceGateRecipe(DeeperDarkerItems.ECHO_FENCE_GATE, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
+        createFenceRecipe(DeeperDarkerItems.ECHO_FENCE, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
+        offerHangingSignRecipe(exporter, DeeperDarkerItems.ECHO_HANGING_SIGN, DeeperDarkerItems.ECHO_PLANKS);
+        offerPressurePlateRecipe(exporter, DeeperDarkerItems.ECHO_PRESSURE_PLATE, DeeperDarkerItems.ECHO_PLANKS);
+        createSignRecipe(DeeperDarkerItems.ECHO_SIGN, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS));
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.ECHO_SLAB, DeeperDarkerItems.ECHO_PLANKS);
+        createStairsRecipe(DeeperDarkerItems.ECHO_STAIRS, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
+        createTrapdoorRecipe(DeeperDarkerItems.ECHO_TRAPDOOR, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
     }
 }
