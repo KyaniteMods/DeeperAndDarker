@@ -61,7 +61,7 @@ public class DeeperDarkerBlocks {
         ECHO_FENCE_GATE = registerBlock("echo_fence_gate", new FenceGateBlock(AbstractBlock.Settings.copy(
                 Blocks.OAK_FENCE_GATE).mapColor(MapColor.LIGHT_GRAY), ECHO_WOOD_TYPE));
         ECHO_FENCE = registerBlock("echo_fence", new FenceBlock(AbstractBlock.Settings.copy(Blocks.OAK_FENCE).mapColor(MapColor.LIGHT_GRAY)));
-        ECHO_WALL_HANGING_SIGN = registerBlock("echo_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.LIGHT_GRAY), ECHO_WOOD_TYPE) {
+        ECHO_WALL_HANGING_SIGN = registerBlock("echo_wall_hanging_sign", new WallHangingSignBlock(AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(MapColor.LIGHT_GRAY), ECHO_WOOD_TYPE) {
             @Override
             public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
                 return new DeeperDarkerHangingSignBlockEntity(pos, state);
@@ -85,7 +85,7 @@ public class DeeperDarkerBlocks {
                 return new DeeperDarkerSignBlockEntity(pos, state);
             }
         });
-        ECHO_WALL_SIGN = registerBlock("echo_wall_sign", new WallSignBlock(AbstractBlock.Settings.copy(Blocks.OAK_SIGN).mapColor(MapColor.LIGHT_GRAY), ECHO_WOOD_TYPE) {
+        ECHO_WALL_SIGN = registerBlock("echo_wall_sign", new WallSignBlock(AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.LIGHT_GRAY), ECHO_WOOD_TYPE) {
             @Override
             public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
                 return new DeeperDarkerSignBlockEntity(pos, state);
@@ -93,7 +93,7 @@ public class DeeperDarkerBlocks {
         });
         ECHO_SLAB = registerBlock("echo_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB).mapColor(MapColor.LIGHT_GRAY)));
         ECHO_STAIRS = registerBlock("echo_stairs", new StairsBlock(ECHO_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS).mapColor(MapColor.LIGHT_GRAY)));
-        ECHO_TRAPDOOR = registerBlock("echo_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(Blocks.OAK_STAIRS).mapColor(MapColor.LIGHT_GRAY), ECHO_BLOCK_SET_TYPE));
+        ECHO_TRAPDOOR = registerBlock("echo_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.LIGHT_GRAY), ECHO_BLOCK_SET_TYPE));
     }
 
     private static Block registerBlock(String id, Block block) {

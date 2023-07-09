@@ -16,7 +16,7 @@ public class WardenToolMaterial implements ToolMaterial {
 
     @Override
     public float getAttackDamage() {
-        return 7.0f;
+        return 6.0f;
     }
 
     @Override
@@ -31,6 +31,6 @@ public class WardenToolMaterial implements ToolMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return null;
+        return Ingredient.ofItems(DeeperDarkerItems.REINFORCED_ECHO_SHARD);
     }
 }

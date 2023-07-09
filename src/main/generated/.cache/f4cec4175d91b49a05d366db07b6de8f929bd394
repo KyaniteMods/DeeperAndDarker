@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-09T11:07:34.5553629	Deeper and Darker/Model Definitions
+// 1.20.1	2023-07-09T12:31:42.6257465	Deeper and Darker/Model Definitions
 fbd874e4d9d3f4f76a9fbdd08f79145db3627dae assets\deeperdarker\models\item\warden_sword.json
 209c03bfe359acb8d2c8de06d737ff5700e27665 assets\deeperdarker\models\item\echo_leaves.json
 779aeab7f78b9d6ef28de093ccf3fa252fea118e assets\deeperdarker\models\block\echo_fence_gate_open.json
@@ -49,8 +49,8 @@ e94fc45e791c65302fcc908ab5d32adc564c5e88 assets\deeperdarker\blockstates\strippe
 4a0495ac03c5006d065137d377a1c839d0036835 assets\deeperdarker\models\item\echo_stairs.json
 697151117a7520a43959398c9539b1f5fc1ad747 assets\deeperdarker\models\item\warden_shovel.json
 1fc3880ebaa4661ad4173947733665f1a83534fa assets\deeperdarker\blockstates\echo_wood.json
-cd82e68e87b2915aae3e92b3c10f9dbed598e4b7 assets\deeperdarker\models\block\echo_trapdoor_top.json
-70be57b221b670e2bdc67c3fc80bdd7f1a7da74c assets\deeperdarker\models\block\echo_trapdoor_open.json
+4304d33b3029561034325dc2ab13fd51e5ba7a32 assets\deeperdarker\models\block\echo_trapdoor_top.json
+c49ac634dd0ddc7b438a7d31a7e67348a8494b52 assets\deeperdarker\models\block\echo_trapdoor_open.json
 fbdb658da8bb79d5ffeece11d0affd1aa8ea1823 assets\deeperdarker\models\block\echo_door_top_left_open.json
 8ef8a0112f3c52edcefef408b2319254a47afbea assets\deeperdarker\models\item\warden_pickaxe.json
 0b44e8e04f9bfff7a8ce0a2fca010f4e063004f8 assets\deeperdarker\models\block\echo_slab_top.json
@@ -64,7 +64,7 @@ ec886404ea6d28788b4bf71f6451ea59b930be1f assets\deeperdarker\models\item\echo_ha
 18121c23d9e0f562f3d6394f3f7930858df5c802 assets\deeperdarker\models\item\sculk_bone.json
 255dc54bb2c1b5e62af3fb7de79d69b29b1df574 assets\deeperdarker\models\item\echo_button.json
 006703dc9e90b5396062146fa402725ba62b5847 assets\deeperdarker\models\block\echo_button.json
-679fc826821469065debc0d6391ee1d77f9914f5 assets\deeperdarker\blockstates\echo_trapdoor.json
+77d65342ace79361d3c80098ebd65fe2902b94dd assets\deeperdarker\blockstates\echo_trapdoor.json
 22787d8b12b387cd62096303bcb570f2b38854db assets\deeperdarker\models\block\echo_stairs_inner.json
 a15bc2a76465d23421fa0553992557befd826f9e assets\deeperdarker\models\block\echo_button_pressed.json
 1ea150687eb100b38d7f68de78da79998e72b60a assets\deeperdarker\blockstates\echo_sapling.json
@@ -78,7 +78,7 @@ b7e85e44f04a58facac77c5d1f859fd0f87bf5a1 assets\deeperdarker\blockstates\echo_pl
 03c177d7e91179a54980c73d47d94077ee2bb301 assets\deeperdarker\models\block\echo_pressure_plate.json
 276ee6aa65e11bc12857f29c799269d6fa1d05e2 assets\deeperdarker\models\item\soul_crystal.json
 25f46d593c3988a750078ac8aef64f6c71005bf4 assets\deeperdarker\blockstates\echo_pressure_plate.json
-d1b3386df3998f1bd9b6d10da8d39c17de8825c3 assets\deeperdarker\models\block\echo_trapdoor_bottom.json
+51af4e7407743414050354fe5f0cedea343e3700 assets\deeperdarker\models\block\echo_trapdoor_bottom.json
 04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets\deeperdarker\models\item\stripped_echo_log.json
 aaabde15374205c551540811ecffc2e00da76029 assets\deeperdarker\models\block\echo_leaves.json
 ecc43ab1d2137fb5ac8327f1595de6a1e2520cf9 assets\deeperdarker\models\block\echo_door_bottom_left.json

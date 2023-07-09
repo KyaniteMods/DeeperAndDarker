@@ -29,7 +29,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerHangingSign(DeeperDarkerBlocks.ECHO_PLANKS, DeeperDarkerBlocks.ECHO_SIGN, DeeperDarkerBlocks.ECHO_WALL_SIGN);
         registerWoodenSlab(blockStateModelGenerator, DeeperDarkerBlocks.ECHO_SLAB, DeeperDarkerBlocks.ECHO_PLANKS);
         registerStairs(blockStateModelGenerator, DeeperDarkerBlocks.ECHO_STAIRS, DeeperDarkerBlocks.ECHO_PLANKS);
-        blockStateModelGenerator.registerTrapdoor(DeeperDarkerBlocks.ECHO_TRAPDOOR);
+        blockStateModelGenerator.registerOrientableTrapdoor(DeeperDarkerBlocks.ECHO_TRAPDOOR);
     }
 
     @Override

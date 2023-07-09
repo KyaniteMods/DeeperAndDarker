@@ -27,7 +27,7 @@ public class WardenArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDurability(ArmorItem.Type type) {
-        return BASE_DURABILITY.get(type) * 200;
+        return BASE_DURABILITY.get(type) * 220;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class WardenArmorMaterial implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return null;
+        return Ingredient.ofItems(DeeperDarkerItems.REINFORCED_ECHO_SHARD);
     }
 
     @Override
