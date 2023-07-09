@@ -19,23 +19,24 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
         super(output, registriesFuture);
     }
 
-    private static TagKey<Block> ECHO_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
+    private static final TagKey<Block> ECHO_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
 
-    private static TagKey<Block> CEILING_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("ceiling_hanging_signs"));
-    private static TagKey<Block> WOODEN_BUTTONS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_buttons"));
-    private static TagKey<Block> WOODEN_DOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_doors"));
-    private static TagKey<Block> FENCE_GATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("fence_gates"));
-    private static TagKey<Block> WOODEN_FENCES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_fences"));
-    private static TagKey<Block> LEAVES = TagKey.of(RegistryKeys.BLOCK, new Identifier("leaves"));
-    private static TagKey<Block> LOGS_THAT_BURN = TagKey.of(RegistryKeys.BLOCK, new Identifier("logs_that_burn"));
-    private static TagKey<Block> PLANKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("planks"));
-    private static TagKey<Block> WOODEN_SLABS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_slabs"));
-    private static TagKey<Block> WOODEN_STAIRS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_stairs"));
-    private static TagKey<Block> STANDING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("standing_signs"));
-    private static TagKey<Block> WALL_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_hanging_signs"));
-    private static TagKey<Block> WALL_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_signs"));
-    private static TagKey<Block> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_pressure_plates"));
-    private static TagKey<Block> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_trapdoors"));
+    private static final TagKey<Block> MINEABLE_PICKAXE = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/pickaxe"));
+    private static final TagKey<Block> CEILING_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("ceiling_hanging_signs"));
+    private static final TagKey<Block> WOODEN_BUTTONS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_buttons"));
+    private static final TagKey<Block> WOODEN_DOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_doors"));
+    private static final TagKey<Block> FENCE_GATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("fence_gates"));
+    private static final TagKey<Block> WOODEN_FENCES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_fences"));
+    private static final TagKey<Block> LEAVES = TagKey.of(RegistryKeys.BLOCK, new Identifier("leaves"));
+    private static final TagKey<Block> LOGS_THAT_BURN = TagKey.of(RegistryKeys.BLOCK, new Identifier("logs_that_burn"));
+    private static final TagKey<Block> PLANKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("planks"));
+    private static final TagKey<Block> WOODEN_SLABS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_slabs"));
+    private static final TagKey<Block> WOODEN_STAIRS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_stairs"));
+    private static final TagKey<Block> STANDING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("standing_signs"));
+    private static final TagKey<Block> WALL_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_hanging_signs"));
+    private static final TagKey<Block> WALL_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_signs"));
+    private static final TagKey<Block> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_pressure_plates"));
+    private static final TagKey<Block> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_trapdoors"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -56,5 +57,37 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
         getOrCreateTagBuilder(WALL_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_WALL_SIGN);
         getOrCreateTagBuilder(WOODEN_PRESSURE_PLATES).setReplace(false).add(DeeperDarkerBlocks.ECHO_PRESSURE_PLATE);
         getOrCreateTagBuilder(WOODEN_TRAPDOORS).setReplace(false).add(DeeperDarkerBlocks.ECHO_TRAPDOOR);
+
+        getOrCreateTagBuilder(MINEABLE_PICKAXE).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_STONE,
+                DeeperDarkerBlocks.SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.SCULK_STONE_WALL,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.SCULK_STONE_BRICKS,
+                DeeperDarkerBlocks.SCULK_STONE_BRICK_STAIRS,
+                DeeperDarkerBlocks.SCULK_STONE_BRICK_SLAB,
+                DeeperDarkerBlocks.SCULK_STONE_BRICK_WALL,
+                DeeperDarkerBlocks.SCULK_STONE_TILES,
+                DeeperDarkerBlocks.SCULK_STONE_TILE_STAIRS,
+                DeeperDarkerBlocks.SCULK_STONE_TILE_SLAB,
+                DeeperDarkerBlocks.SCULK_STONE_TILE_WALL,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.CUT_SCULK_STONE,
+                DeeperDarkerBlocks.CUT_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.CUT_SCULK_STONE_WALL,
+                DeeperDarkerBlocks.CHISELED_SCULK_STONE
+        );
     }
 }

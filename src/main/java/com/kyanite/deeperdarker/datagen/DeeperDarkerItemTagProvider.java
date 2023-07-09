@@ -20,21 +20,27 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
         super(output, registriesFuture);
     }
 
-    private static TagKey<Item> ECHO_LOGS = TagKey.of(RegistryKeys.ITEM, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
+    private static final TagKey<Item> ECHO_LOGS = TagKey.of(RegistryKeys.ITEM, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
 
-    private static TagKey<Item> HANGING_SIGNS = TagKey.of(RegistryKeys.ITEM, new Identifier("hanging_signs"));
-    private static TagKey<Item> WOODEN_BUTTONS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_buttons"));
-    private static TagKey<Item> WOODEN_DOORS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_doors"));
-    private static TagKey<Item> FENCE_GATES = TagKey.of(RegistryKeys.ITEM, new Identifier("fence_gates"));
-    private static TagKey<Item> WOODEN_FENCES = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_fences"));
-    private static TagKey<Item> LEAVES = TagKey.of(RegistryKeys.ITEM, new Identifier("leaves"));
-    private static TagKey<Item> LOGS_THAT_BURN = TagKey.of(RegistryKeys.ITEM, new Identifier("logs_that_burn"));
-    private static TagKey<Item> PLANKS = TagKey.of(RegistryKeys.ITEM, new Identifier("planks"));
-    private static TagKey<Item> WOODEN_SLABS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_slabs"));
-    private static TagKey<Item> WOODEN_STAIRS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_stairs"));
-    private static TagKey<Item> SIGNS = TagKey.of(RegistryKeys.ITEM, new Identifier("signs"));
-    private static TagKey<Item> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_pressure_plates"));
-    private static TagKey<Item> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_trapdoors"));
+    private static final TagKey<Item> HANGING_SIGNS = TagKey.of(RegistryKeys.ITEM, new Identifier("hanging_signs"));
+    private static final TagKey<Item> WOODEN_BUTTONS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_buttons"));
+    private static final TagKey<Item> WOODEN_DOORS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_doors"));
+    private static final TagKey<Item> FENCE_GATES = TagKey.of(RegistryKeys.ITEM, new Identifier("fence_gates"));
+    private static final TagKey<Item> WOODEN_FENCES = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_fences"));
+    private static final TagKey<Item> LEAVES = TagKey.of(RegistryKeys.ITEM, new Identifier("leaves"));
+    private static final TagKey<Item> LOGS_THAT_BURN = TagKey.of(RegistryKeys.ITEM, new Identifier("logs_that_burn"));
+    private static final TagKey<Item> PLANKS = TagKey.of(RegistryKeys.ITEM, new Identifier("planks"));
+    private static final TagKey<Item> WOODEN_SLABS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_slabs"));
+    private static final TagKey<Item> WOODEN_STAIRS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_stairs"));
+    private static final TagKey<Item> SIGNS = TagKey.of(RegistryKeys.ITEM, new Identifier("signs"));
+    private static final TagKey<Item> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_pressure_plates"));
+    private static final TagKey<Item> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_trapdoors"));
+
+    private static final TagKey<Item> SWORDS = TagKey.of(RegistryKeys.ITEM, new Identifier("swords"));
+    private static final TagKey<Item> PICKAXES = TagKey.of(RegistryKeys.ITEM, new Identifier("pickaxes"));
+    private static final TagKey<Item> AXES = TagKey.of(RegistryKeys.ITEM, new Identifier("axes"));
+    private static final TagKey<Item> SHOVELS = TagKey.of(RegistryKeys.ITEM, new Identifier("shovels"));
+    private static final TagKey<Item> HOES = TagKey.of(RegistryKeys.ITEM, new Identifier("hoes"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -53,5 +59,10 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
         getOrCreateTagBuilder(SIGNS).setReplace(false).add(DeeperDarkerItems.ECHO_SIGN);
         getOrCreateTagBuilder(WOODEN_PRESSURE_PLATES).setReplace(false).add(DeeperDarkerItems.ECHO_PRESSURE_PLATE);
         getOrCreateTagBuilder(WOODEN_TRAPDOORS).setReplace(false).add(DeeperDarkerItems.ECHO_TRAPDOOR);
+        getOrCreateTagBuilder(SWORDS).setReplace(false).add(DeeperDarkerItems.WARDEN_SWORD);
+        getOrCreateTagBuilder(PICKAXES).setReplace(false).add(DeeperDarkerItems.WARDEN_PICKAXE);
+        getOrCreateTagBuilder(AXES).setReplace(false).add(DeeperDarkerItems.WARDEN_AXE);
+        getOrCreateTagBuilder(SHOVELS).setReplace(false).add(DeeperDarkerItems.WARDEN_SHOVEL);
+        getOrCreateTagBuilder(HOES).setReplace(false).add(DeeperDarkerItems.WARDEN_HOE);
     }
 }

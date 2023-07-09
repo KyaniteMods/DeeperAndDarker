@@ -47,5 +47,34 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.ECHO_SLAB);
         this.addDrop(DeeperDarkerBlocks.ECHO_STAIRS);
         this.addDrop(DeeperDarkerBlocks.ECHO_TRAPDOOR);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_WALL);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_SCULK_STONE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_SCULK_STONE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.COBBLED_SCULK_STONE_WALL);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_SCULK_STONE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_SCULK_STONE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.POLISHED_SCULK_STONE_WALL);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_BRICKS);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_BRICK_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_BRICK_SLAB);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_BRICK_WALL);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_TILES);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_TILE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_TILE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_TILE_WALL);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_SCULK_STONE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_SCULK_STONE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.SMOOTH_SCULK_STONE_WALL);
+        this.addDrop(DeeperDarkerBlocks.CUT_SCULK_STONE);
+        this.addDrop(DeeperDarkerBlocks.CUT_SCULK_STONE_STAIRS);
+        this.addDrop(DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB);
+        this.addDrop(DeeperDarkerBlocks.CUT_SCULK_STONE_WALL);
+        this.addDrop(DeeperDarkerBlocks.CHISELED_SCULK_STONE);
     }
 }

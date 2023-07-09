@@ -46,6 +46,35 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_SLAB));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_STAIRS));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_TRAPDOOR));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.COBBLED_SCULK_STONE));
+                entries.add(new ItemStack(DeeperDarkerItems.COBBLED_SCULK_STONE_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.COBBLED_SCULK_STONE_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.COBBLED_SCULK_STONE_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.POLISHED_SCULK_STONE));
+                entries.add(new ItemStack(DeeperDarkerItems.POLISHED_SCULK_STONE_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.POLISHED_SCULK_STONE_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.POLISHED_SCULK_STONE_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_BRICKS));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_BRICK_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_BRICK_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_BRICK_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_TILES));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_TILE_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_TILE_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_TILE_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.SMOOTH_SCULK_STONE));
+                entries.add(new ItemStack(DeeperDarkerItems.SMOOTH_SCULK_STONE_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.SMOOTH_SCULK_STONE_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.CUT_SCULK_STONE));
+                entries.add(new ItemStack(DeeperDarkerItems.CUT_SCULK_STONE_STAIRS));
+                entries.add(new ItemStack(DeeperDarkerItems.CUT_SCULK_STONE_SLAB));
+                entries.add(new ItemStack(DeeperDarkerItems.CUT_SCULK_STONE_WALL));
+                entries.add(new ItemStack(DeeperDarkerItems.CHISELED_SCULK_STONE));
             })).build());
 
     public static void init() {

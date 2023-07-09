@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
@@ -107,5 +108,63 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.ECHO_SLAB, DeeperDarkerItems.ECHO_PLANKS);
         createStairsRecipe(DeeperDarkerItems.ECHO_STAIRS, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
         createTrapdoorRecipe(DeeperDarkerItems.ECHO_TRAPDOOR, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
+        
+        createStairsRecipe(DeeperDarkerItems.SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_STONE));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_STAIRS, DeeperDarkerItems.SCULK_STONE);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_SLAB, DeeperDarkerItems.SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_SLAB, DeeperDarkerItems.SCULK_STONE, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_WALL, DeeperDarkerItems.SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_WALL, DeeperDarkerItems.SCULK_STONE);
+
+        createStairsRecipe(DeeperDarkerItems.COBBLED_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.COBBLED_SCULK_STONE));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_STAIRS, DeeperDarkerItems.COBBLED_SCULK_STONE);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_SLAB, DeeperDarkerItems.COBBLED_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_SLAB, DeeperDarkerItems.COBBLED_SCULK_STONE, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_WALL, DeeperDarkerItems.COBBLED_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_WALL, DeeperDarkerItems.COBBLED_SCULK_STONE);
+        
+        offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE);
+        createStairsRecipe(DeeperDarkerItems.POLISHED_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.POLISHED_SCULK_STONE));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_STAIRS, DeeperDarkerItems.POLISHED_SCULK_STONE);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_SLAB, DeeperDarkerItems.POLISHED_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_SLAB, DeeperDarkerItems.POLISHED_SCULK_STONE, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_WALL, DeeperDarkerItems.POLISHED_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_WALL, DeeperDarkerItems.POLISHED_SCULK_STONE);
+
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICKS, DeeperDarkerItems.SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICKS, DeeperDarkerItems.SCULK_STONE);
+        createStairsRecipe(DeeperDarkerItems.SCULK_STONE_BRICK_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_STONE_BRICKS));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_STAIRS, DeeperDarkerItems.SCULK_STONE_BRICKS);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB, DeeperDarkerItems.SCULK_STONE_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB, DeeperDarkerItems.SCULK_STONE_BRICKS, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_WALL, DeeperDarkerItems.SCULK_STONE_BRICKS);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_WALL, DeeperDarkerItems.SCULK_STONE_BRICKS);
+
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILES, DeeperDarkerItems.SCULK_STONE);
+        createStairsRecipe(DeeperDarkerItems.SCULK_STONE_TILE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_STONE_TILES));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_STAIRS, DeeperDarkerItems.SCULK_STONE_TILES);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_SLAB, DeeperDarkerItems.SCULK_STONE_TILES);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_SLAB, DeeperDarkerItems.SCULK_STONE_TILES, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_WALL, DeeperDarkerItems.SCULK_STONE_TILES);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_WALL, DeeperDarkerItems.SCULK_STONE_TILES);
+
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE), RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE, 0.1f, 200, "sculk_stone");
+        createStairsRecipe(DeeperDarkerItems.SMOOTH_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SMOOTH_SCULK_STONE));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_STAIRS, DeeperDarkerItems.SMOOTH_SCULK_STONE);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_SLAB, DeeperDarkerItems.SMOOTH_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_SLAB, DeeperDarkerItems.SMOOTH_SCULK_STONE, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL, DeeperDarkerItems.SMOOTH_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL, DeeperDarkerItems.SMOOTH_SCULK_STONE);
+        
+        offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE, DeeperDarkerItems.SMOOTH_SCULK_STONE);
+        createStairsRecipe(DeeperDarkerItems.CUT_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.CUT_SCULK_STONE));
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_STAIRS, DeeperDarkerItems.CUT_SCULK_STONE);
+        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_SLAB, DeeperDarkerItems.CUT_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_SLAB, DeeperDarkerItems.CUT_SCULK_STONE, 2);
+        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_WALL, DeeperDarkerItems.CUT_SCULK_STONE);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_WALL, DeeperDarkerItems.CUT_SCULK_STONE);
+
+        offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CHISELED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB);
     }
 }

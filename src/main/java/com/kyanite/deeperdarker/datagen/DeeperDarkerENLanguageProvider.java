@@ -55,5 +55,34 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(Util.createTranslationKey("block", Registries.BLOCK.getId(DeeperDarkerBlocks.ECHO_WALL_SIGN)), "Echo Wall Sign");
         translationBuilder.add(DeeperDarkerBlocks.ECHO_SLAB, "Echo Slab");
         translationBuilder.add(DeeperDarkerBlocks.ECHO_TRAPDOOR, "Echo Trapdoor");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE, "Sculk Stone");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_STAIRS, "Sculk Stone Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_SLAB, "Sculk Stone Slab");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_WALL, "Sculk Stone Wall");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_SCULK_STONE, "Cobbled Sculk Stone");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_SCULK_STONE_STAIRS, "Cobbled Sculk Stone Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_SCULK_STONE_SLAB, "Cobbled Sculk Stone Slab");
+        translationBuilder.add(DeeperDarkerBlocks.COBBLED_SCULK_STONE_WALL, "Cobbled Sculk Stone Wall");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_SCULK_STONE, "Polished Sculk Stone");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_SCULK_STONE_STAIRS, "Polished Sculk Stone Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_SCULK_STONE_SLAB, "Polished Sculk Stone Slab");
+        translationBuilder.add(DeeperDarkerBlocks.POLISHED_SCULK_STONE_WALL, "Polished Sculk Stone Wall");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_BRICKS, "Sculk Stone Bricks");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_BRICK_STAIRS, "Sculk Stone Brick Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_BRICK_SLAB, "Sculk Stone Brick Slab");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_BRICK_WALL, "Sculk Stone Brick Wall");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_TILES, "Sculk Stone Tiles");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_TILE_STAIRS, "Sculk Stone Tile Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_TILE_SLAB, "Sculk Stone Tile Slab");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_TILE_WALL, "Sculk Stone Tile Wall");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_SCULK_STONE, "Smooth Sculk Stone");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_SCULK_STONE_STAIRS, "Smooth Sculk Stone Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_SCULK_STONE_SLAB, "Smooth Sculk Stone Slab");
+        translationBuilder.add(DeeperDarkerBlocks.SMOOTH_SCULK_STONE_WALL, "Smooth Sculk Stone Wall");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_SCULK_STONE, "Cut Sculk Stone");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_SCULK_STONE_STAIRS, "Cut Sculk Stone Stairs");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB, "Cut Sculk Stone Slab");
+        translationBuilder.add(DeeperDarkerBlocks.CUT_SCULK_STONE_WALL, "Cut Sculk Stone Wall");
+        translationBuilder.add(DeeperDarkerBlocks.CHISELED_SCULK_STONE, "Chiseled Sculk Stone");
     }
 }

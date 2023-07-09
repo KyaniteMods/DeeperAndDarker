@@ -46,6 +46,35 @@ public class DeeperDarkerBlocks {
     public static final Block ECHO_SLAB;
     public static final Block ECHO_STAIRS;
     public static final Block ECHO_TRAPDOOR;
+    public static final Block SCULK_STONE;
+    public static final Block SCULK_STONE_STAIRS;
+    public static final Block SCULK_STONE_SLAB;
+    public static final Block SCULK_STONE_WALL;
+    public static final Block COBBLED_SCULK_STONE;
+    public static final Block COBBLED_SCULK_STONE_STAIRS;
+    public static final Block COBBLED_SCULK_STONE_SLAB;
+    public static final Block COBBLED_SCULK_STONE_WALL;
+    public static final Block POLISHED_SCULK_STONE;
+    public static final Block POLISHED_SCULK_STONE_STAIRS;
+    public static final Block POLISHED_SCULK_STONE_SLAB;
+    public static final Block POLISHED_SCULK_STONE_WALL;
+    public static final Block SCULK_STONE_BRICKS;
+    public static final Block SCULK_STONE_BRICK_STAIRS;
+    public static final Block SCULK_STONE_BRICK_SLAB;
+    public static final Block SCULK_STONE_BRICK_WALL;
+    public static final Block SCULK_STONE_TILES;
+    public static final Block SCULK_STONE_TILE_STAIRS;
+    public static final Block SCULK_STONE_TILE_SLAB;
+    public static final Block SCULK_STONE_TILE_WALL;
+    public static final Block SMOOTH_SCULK_STONE;
+    public static final Block SMOOTH_SCULK_STONE_STAIRS;
+    public static final Block SMOOTH_SCULK_STONE_SLAB;
+    public static final Block SMOOTH_SCULK_STONE_WALL;
+    public static final Block CUT_SCULK_STONE;
+    public static final Block CUT_SCULK_STONE_STAIRS;
+    public static final Block CUT_SCULK_STONE_SLAB;
+    public static final Block CUT_SCULK_STONE_WALL;
+    public static final Block CHISELED_SCULK_STONE;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -94,6 +123,35 @@ public class DeeperDarkerBlocks {
         ECHO_SLAB = registerBlock("echo_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB).mapColor(MapColor.LIGHT_GRAY)));
         ECHO_STAIRS = registerBlock("echo_stairs", new StairsBlock(ECHO_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS).mapColor(MapColor.LIGHT_GRAY)));
         ECHO_TRAPDOOR = registerBlock("echo_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.LIGHT_GRAY), ECHO_BLOCK_SET_TYPE));
+        SCULK_STONE = registerBlock("sculk_stone", new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.CYAN)));
+        SCULK_STONE_STAIRS = registerBlock("sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_SLAB = registerBlock("sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_SLAB).mapColor(MapColor.CYAN)));
+        SCULK_STONE_WALL = registerBlock("sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        COBBLED_SCULK_STONE = registerBlock("cobbled_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+        COBBLED_SCULK_STONE_STAIRS = registerBlock("cobbled_sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(COBBLED_SCULK_STONE)));
+        COBBLED_SCULK_STONE_SLAB = registerBlock("cobbled_sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
+        COBBLED_SCULK_STONE_WALL = registerBlock("cobbled_sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        POLISHED_SCULK_STONE = registerBlock("polished_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+        POLISHED_SCULK_STONE_STAIRS = registerBlock("polished_sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(POLISHED_SCULK_STONE)));
+        POLISHED_SCULK_STONE_SLAB = registerBlock("polished_sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
+        POLISHED_SCULK_STONE_WALL = registerBlock("polished_sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_BRICKS = registerBlock("sculk_stone_bricks", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_BRICK_STAIRS = registerBlock("sculk_stone_brick_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SCULK_STONE_BRICKS)));
+        SCULK_STONE_BRICK_SLAB = registerBlock("sculk_stone_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
+        SCULK_STONE_BRICK_WALL = registerBlock("sculk_stone_brick_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_TILES = registerBlock("sculk_stone_tiles", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_TILE_STAIRS = registerBlock("sculk_stone_tile_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SCULK_STONE_TILES)));
+        SCULK_STONE_TILE_SLAB = registerBlock("sculk_stone_tile_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
+        SCULK_STONE_TILE_WALL = registerBlock("sculk_stone_tile_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SMOOTH_SCULK_STONE = registerBlock("smooth_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SMOOTH_SCULK_STONE_STAIRS = registerBlock("smooth_sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SMOOTH_SCULK_STONE)));
+        SMOOTH_SCULK_STONE_SLAB = registerBlock("smooth_sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
+        SMOOTH_SCULK_STONE_WALL = registerBlock("smooth_sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        CUT_SCULK_STONE = registerBlock("cut_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
+        CUT_SCULK_STONE_STAIRS = registerBlock("cut_sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(CUT_SCULK_STONE)));
+        CUT_SCULK_STONE_SLAB = registerBlock("cut_sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(SCULK_STONE_SLAB)));
+        CUT_SCULK_STONE_WALL = registerBlock("cut_sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        CHISELED_SCULK_STONE = registerBlock("chiseled_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
     }
 
     private static Block registerBlock(String id, Block block) {
