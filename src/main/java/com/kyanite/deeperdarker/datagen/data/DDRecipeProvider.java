@@ -97,6 +97,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .define('P', Items.PHANTOM_MEMBRANE).define('E', Items.ECHO_SHARD).define('C', DDItems.WARDEN_CARAPACE.get())
                 .pattern("PEP").pattern("ECE").pattern("PEP")
                 .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(writer);
+        copySmithingTemplate(writer, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.SCULK);
     }
 
     private void addCookingRecipes(Consumer<FinishedRecipe> writer) {
