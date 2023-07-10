@@ -169,7 +169,8 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CHISELED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB);
 
         // Sculk Grime
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICKS, DeeperDarkerItems.SCULK_GRIME);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME, DeeperDarkerItems.GRIME_BALL);
+        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICKS, DeeperDarkerItems.GRIME_BRICK);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICKS, DeeperDarkerItems.SCULK_GRIME);
         createStairsRecipe(DeeperDarkerItems.SCULK_GRIME_BRICK_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_GRIME_BRICKS));
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICK_STAIRS, DeeperDarkerItems.SCULK_GRIME_BRICKS);
@@ -253,5 +254,7 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.BUILDING_BLOCKS, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
         offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 200, "diamond");
         offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 100, "diamond");
+
+        offerSmelting(exporter, List.of(DeeperDarkerItems.GRIME_BALL), RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
     }
 }

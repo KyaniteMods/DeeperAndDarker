@@ -1,16 +1,13 @@
 package com.kyanite.deeperdarker.blocks;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerBlockEntityTypes;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerHangingSignBlockEntity;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerSignBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.block.sapling.OakSaplingGenerator;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -18,11 +15,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DeeperDarkerBlocks {
     public static final BlockSetType ECHO_BLOCK_SET_TYPE = new BlockSetTypeBuilder().register(new Identifier(DeeperDarker.MOD_ID, "echo"));
@@ -253,5 +245,7 @@ public class DeeperDarkerBlocks {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker blocks");
+        StrippableBlockRegistry.register(DeeperDarkerBlocks.ECHO_LOG, DeeperDarkerBlocks.STRIPPED_ECHO_LOG);
+        StrippableBlockRegistry.register(DeeperDarkerBlocks.ECHO_WOOD, DeeperDarkerBlocks.STRIPPED_ECHO_WOOD);
     }
 }

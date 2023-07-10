@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_grime_brick": {
+    "has_grime_ball": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:grime_brick"
+              "deeperdarker:grime_ball"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:sculk_grime_bricks"
+        "recipe": "deeperdarker:sculk_grime"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_grime_brick",
+      "has_grime_ball",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:sculk_grime_bricks"
+      "deeperdarker:sculk_grime"
     ]
   },
   "sends_telemetry_event": false

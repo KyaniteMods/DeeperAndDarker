@@ -119,6 +119,8 @@ public class DeeperDarkerItems {
     public static final Item SCULK_STONE_EMERALD_ORE;
     public static final Item SCULK_STONE_LAPIS_ORE;
     public static final Item SCULK_STONE_DIAMOND_ORE;
+    public static final Item GRIME_BALL;
+    public static final Item GRIME_BRICK;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
@@ -140,6 +142,8 @@ public class DeeperDarkerItems {
         SOUL_CRYSTAL = registerItem("soul_crystal", new Item(new Item.Settings().rarity(Rarity.RARE)));
         SOUL_DUST = registerItem("soul_dust", new Item(new Item.Settings().rarity(Rarity.RARE)));
         SCULK_BONE = registerItem("sculk_bone", new Item(new Item.Settings().fireproof().rarity(Rarity.EPIC)));
+        GRIME_BALL = registerItem("grime_ball", new Item(new Item.Settings()));
+        GRIME_BRICK = registerItem("grime_brick", new Item(new Item.Settings()));
 
         ECHO_LOG = registerItem("echo_log", new BlockItem(DeeperDarkerBlocks.ECHO_LOG, new Item.Settings()));
         ECHO_WOOD = registerItem("echo_wood", new BlockItem(DeeperDarkerBlocks.ECHO_WOOD, new Item.Settings()));

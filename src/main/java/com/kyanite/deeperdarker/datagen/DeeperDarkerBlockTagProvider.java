@@ -21,6 +21,8 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
     private static final TagKey<Block> ECHO_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
 
     private static final TagKey<Block> MINEABLE_PICKAXE = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/pickaxe"));
+    private static final TagKey<Block> MINEABLE_SHOVEL = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/shovel"));
+    private static final TagKey<Block> MINEABLE_HOE = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/hoe"));
     private static final TagKey<Block> CEILING_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("ceiling_hanging_signs"));
     private static final TagKey<Block> WOODEN_BUTTONS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_buttons"));
     private static final TagKey<Block> WOODEN_DOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_doors"));
@@ -72,65 +74,49 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SCULK_STONE,
                 DeeperDarkerBlocks.SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.SCULK_STONE_SLAB,
-                DeeperDarkerBlocks.SCULK_STONE_WALL,
                 DeeperDarkerBlocks.COBBLED_SCULK_STONE,
                 DeeperDarkerBlocks.COBBLED_SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.COBBLED_SCULK_STONE_SLAB,
-                DeeperDarkerBlocks.COBBLED_SCULK_STONE_WALL,
                 DeeperDarkerBlocks.POLISHED_SCULK_STONE,
                 DeeperDarkerBlocks.POLISHED_SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.POLISHED_SCULK_STONE_SLAB,
-                DeeperDarkerBlocks.POLISHED_SCULK_STONE_WALL,
                 DeeperDarkerBlocks.SCULK_STONE_BRICKS,
                 DeeperDarkerBlocks.SCULK_STONE_BRICK_STAIRS,
                 DeeperDarkerBlocks.SCULK_STONE_BRICK_SLAB,
-                DeeperDarkerBlocks.SCULK_STONE_BRICK_WALL,
                 DeeperDarkerBlocks.SCULK_STONE_TILES,
                 DeeperDarkerBlocks.SCULK_STONE_TILE_STAIRS,
                 DeeperDarkerBlocks.SCULK_STONE_TILE_SLAB,
-                DeeperDarkerBlocks.SCULK_STONE_TILE_WALL,
                 DeeperDarkerBlocks.SMOOTH_SCULK_STONE,
                 DeeperDarkerBlocks.SMOOTH_SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.SMOOTH_SCULK_STONE_SLAB,
-                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_WALL,
                 DeeperDarkerBlocks.CUT_SCULK_STONE,
                 DeeperDarkerBlocks.CUT_SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB,
-                DeeperDarkerBlocks.CUT_SCULK_STONE_WALL,
                 DeeperDarkerBlocks.CHISELED_SCULK_STONE,
-                DeeperDarkerBlocks.SCULK_GRIME,
                 DeeperDarkerBlocks.SCULK_GRIME_BRICKS,
                 DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS,
                 DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB,
-                DeeperDarkerBlocks.SCULK_GRIME_BRICK_WALL,
                 DeeperDarkerBlocks.GLOOMSLATE,
                 DeeperDarkerBlocks.GLOOMSLATE_STAIRS,
                 DeeperDarkerBlocks.GLOOMSLATE_SLAB,
-                DeeperDarkerBlocks.GLOOMSLATE_WALL,
                 DeeperDarkerBlocks.COBBLED_GLOOMSLATE,
                 DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS,
                 DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB,
-                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_WALL,
                 DeeperDarkerBlocks.POLISHED_GLOOMSLATE,
                 DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS,
                 DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB,
-                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_WALL,
                 DeeperDarkerBlocks.GLOOMSLATE_BRICKS,
                 DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS,
                 DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB,
-                DeeperDarkerBlocks.GLOOMSLATE_BRICK_WALL,
                 DeeperDarkerBlocks.GLOOMSLATE_TILES,
                 DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS,
                 DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB,
-                DeeperDarkerBlocks.GLOOMSLATE_TILE_WALL,
                 DeeperDarkerBlocks.SMOOTH_GLOOMSLATE,
                 DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS,
                 DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB,
-                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL,
                 DeeperDarkerBlocks.CUT_GLOOMSLATE,
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS,
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB,
-                DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL,
                 DeeperDarkerBlocks.CHISELED_GLOOMSLATE,
                 DeeperDarkerBlocks.SCULK_STONE_COAL_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_IRON_ORE,
@@ -140,6 +126,15 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE
+        );
+
+        getOrCreateTagBuilder(MINEABLE_SHOVEL).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_GRIME,
+                DeeperDarkerBlocks.ECHO_SOIL
+        );
+
+        getOrCreateTagBuilder(MINEABLE_HOE).setReplace(false).add(
+                DeeperDarkerBlocks.ECHO_LEAVES
         );
 
         getOrCreateTagBuilder(WALLS).setReplace(false).add(

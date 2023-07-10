@@ -121,6 +121,8 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         itemModelGenerator.register(DeeperDarkerItems.SOUL_CRYSTAL, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.SOUL_DUST, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.SCULK_BONE, Models.GENERATED);
+        itemModelGenerator.register(DeeperDarkerItems.GRIME_BALL, Models.GENERATED);
+        itemModelGenerator.register(DeeperDarkerItems.GRIME_BRICK, Models.GENERATED);
         Models.BUTTON_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.ECHO_BUTTON), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.ECHO_PLANKS).getTextures(), itemModelGenerator.writer);
         Models.FENCE_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.ECHO_FENCE), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.ECHO_PLANKS).getTextures(), itemModelGenerator.writer);
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_STONE).getTextures(), itemModelGenerator.writer);

@@ -35,6 +35,8 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerItems.SOUL_CRYSTAL, "Soul Crystal");
         translationBuilder.add(DeeperDarkerItems.SOUL_DUST, "Soul Dust");
         translationBuilder.add(DeeperDarkerItems.SCULK_BONE, "Sculk Bone");
+        translationBuilder.add(DeeperDarkerItems.GRIME_BALL, "Grime Ball");
+        translationBuilder.add(DeeperDarkerItems.GRIME_BRICK, "Grime Brick");
         translationBuilder.add(DeeperDarkerBlocks.ECHO_LOG, "Echo Log");
         translationBuilder.add(DeeperDarkerBlocks.ECHO_WOOD, "Echo Wood");
         translationBuilder.add(DeeperDarkerBlocks.STRIPPED_ECHO_LOG, "Stripped Echo Log");

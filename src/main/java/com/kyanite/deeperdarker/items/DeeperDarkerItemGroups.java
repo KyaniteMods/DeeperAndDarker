@@ -116,6 +116,8 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.GRIME_BALL));
+                entries.add(new ItemStack(DeeperDarkerItems.GRIME_BRICK));
             })).build());
 
     public static void init() {

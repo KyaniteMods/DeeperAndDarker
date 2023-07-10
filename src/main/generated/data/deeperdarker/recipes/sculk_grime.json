@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "deeperdarker:grime_brick"
+      "item": "deeperdarker:grime_ball"
     }
   },
   "pattern": [
@@ -11,7 +11,7 @@
     "##"
   ],
   "result": {
-    "item": "deeperdarker:sculk_grime_bricks"
+    "item": "deeperdarker:sculk_grime"
   },
   "show_notification": true
 }
