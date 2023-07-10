@@ -147,6 +147,8 @@ public class DDCreativeTab {
 
             event.accept(DDItems.SCULK_TRANSMITTER);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
+
+            event.accept(DDItems.SCULK_SNAPPER_SPAWN_EGG);
         }
     }
 }

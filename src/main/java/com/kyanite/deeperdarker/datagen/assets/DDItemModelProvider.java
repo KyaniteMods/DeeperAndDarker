@@ -152,6 +152,12 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
+
+        spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
+    }
+
+    private void spawnEggModel(RegistryObject<Item> egg) {
+        withExistingParent(egg.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     public void blockModel(RegistryObject<? extends Block> block) {

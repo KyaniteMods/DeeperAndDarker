@@ -1,10 +1,13 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.client.model.SculkSnapperModel;
 import com.kyanite.deeperdarker.client.render.DDBoatRenderer;
+import com.kyanite.deeperdarker.client.render.SculkSnapperRenderer;
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.entities.SculkSnapper;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
@@ -19,9 +22,11 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -44,6 +49,8 @@ public class DeeperDarker {
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::generateData);
+        eventBus.addListener(this::registerAttributes);
+        eventBus.addListener(this::registerLayers);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
@@ -56,6 +63,8 @@ public class DeeperDarker {
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
         EntityRenderers.register(DDEntities.DEEPER_DARKER_BOAT.get(), (context) -> new DDBoatRenderer(context, false));
         EntityRenderers.register(DDEntities.DEEPER_DARKER_CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+
+        EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
     }
 
     private void generateData(GatherDataEvent event) {
@@ -77,5 +86,13 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
 
         generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
+    }
+
+    private void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
+    }
+
+    private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyLayer);
     }
 }
