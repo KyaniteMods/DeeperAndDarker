@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:warden_shovel_smithing"
+        "recipe": "deeperdarker:warden_helmet_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:warden_shovel_smithing"
+      "deeperdarker:warden_helmet_smithing"
     ]
   },
   "sends_telemetry_event": false

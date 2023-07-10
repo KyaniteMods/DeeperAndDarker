@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:warden_hoe_smithing"
+        "recipe": "deeperdarker:warden_leggings_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:warden_hoe_smithing"
+      "deeperdarker:warden_leggings_smithing"
     ]
   },
   "sends_telemetry_event": false

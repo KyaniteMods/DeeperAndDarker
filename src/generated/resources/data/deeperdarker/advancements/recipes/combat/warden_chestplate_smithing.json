@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:warden_leggings_smithing"
+        "recipe": "deeperdarker:warden_chestplate_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:warden_leggings_smithing"
+      "deeperdarker:warden_chestplate_smithing"
     ]
   },
   "sends_telemetry_event": false
