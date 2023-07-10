@@ -63,6 +63,14 @@
     "deeperdarker:cut_gloomslate_stairs",
     "deeperdarker:cut_gloomslate_slab",
     "deeperdarker:cut_gloomslate_wall",
-    "deeperdarker:chiseled_gloomslate"
+    "deeperdarker:chiseled_gloomslate",
+    "deeperdarker:sculk_stone_coal_ore",
+    "deeperdarker:sculk_stone_iron_ore",
+    "deeperdarker:sculk_stone_copper_ore",
+    "deeperdarker:sculk_stone_gold_ore",
+    "deeperdarker:sculk_stone_redstone_ore",
+    "deeperdarker:sculk_stone_emerald_ore",
+    "deeperdarker:sculk_stone_lapis_ore",
+    "deeperdarker:sculk_stone_diamond_ore"
   ]
 }

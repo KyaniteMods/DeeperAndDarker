@@ -17,6 +17,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -109,6 +110,15 @@ public class DeeperDarkerBlocks {
     public static final Block CUT_GLOOMSLATE_SLAB;
     public static final Block CUT_GLOOMSLATE_WALL;
     public static final Block CHISELED_GLOOMSLATE;
+    public static final Block ECHO_SOIL;
+    public static final Block SCULK_STONE_COAL_ORE;
+    public static final Block SCULK_STONE_IRON_ORE;
+    public static final Block SCULK_STONE_COPPER_ORE;
+    public static final Block SCULK_STONE_GOLD_ORE;
+    public static final Block SCULK_STONE_REDSTONE_ORE;
+    public static final Block SCULK_STONE_EMERALD_ORE;
+    public static final Block SCULK_STONE_LAPIS_ORE;
+    public static final Block SCULK_STONE_DIAMOND_ORE;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -222,6 +232,19 @@ public class DeeperDarkerBlocks {
         CUT_GLOOMSLATE_SLAB = registerBlock("cut_gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
         CUT_GLOOMSLATE_WALL = registerBlock("cut_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
         CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+        ECHO_SOIL = registerBlock("echo_soil", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.3f)));
+        SCULK_STONE_COAL_ORE = registerBlock("sculk_stone_coal_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
+                UniformIntProvider.create(1, 4)));
+        SCULK_STONE_IRON_ORE = registerBlock("sculk_stone_iron_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_COPPER_ORE = registerBlock("sculk_stone_copper_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_GOLD_ORE = registerBlock("sculk_stone_gold_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
+        SCULK_STONE_REDSTONE_ORE = registerBlock("sculk_stone_redstone_ore", new RedstoneOreBlock(AbstractBlock.Settings.copy(SCULK_STONE).ticksRandomly().luminance((state) -> state.get(Properties.LIT) ? 9 : 0)));
+        SCULK_STONE_EMERALD_ORE = registerBlock("sculk_stone_emerald_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
+                UniformIntProvider.create(5, 10)));
+        SCULK_STONE_LAPIS_ORE = registerBlock("sculk_stone_lapis_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
+                UniformIntProvider.create(4, 8)));
+        SCULK_STONE_DIAMOND_ORE = registerBlock("sculk_stone_diamond_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
+                UniformIntProvider.create(5, 10)));
     }
 
     private static Block registerBlock(String id, Block block) {

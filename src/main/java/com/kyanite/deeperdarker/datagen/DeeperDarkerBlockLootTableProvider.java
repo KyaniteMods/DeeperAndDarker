@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.loot.v2.FabricLootTableBuilder;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.AlternativeLootCondition;
@@ -115,5 +116,14 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB);
         this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL);
         this.addDrop(DeeperDarkerBlocks.CHISELED_GLOOMSLATE);
+        this.addDrop(DeeperDarkerBlocks.ECHO_SOIL);
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, Items.COAL));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, Items.RAW_IRON));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE, this.copperOreDrops(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE, Items.RAW_GOLD));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE, this.redstoneOreDrops(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, Items.EMERALD));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE, this.lapisOreDrops(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE));
+        this.addDrop(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, Items.DIAMOND));
     }
 }

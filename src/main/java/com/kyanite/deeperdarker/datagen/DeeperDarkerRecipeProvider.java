@@ -236,5 +236,22 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE_WALL, DeeperDarkerItems.CUT_GLOOMSLATE);
 
         offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CHISELED_GLOOMSLATE, DeeperDarkerItems.GLOOMSLATE_BRICK_SLAB);
+
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COAL, 0.1f, 200, "coal");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COAL, 0.1f, 100, "coal");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.BUILDING_BLOCKS, Items.REDSTONE, 0.7f, 200, "redstone");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.BUILDING_BLOCKS, Items.REDSTONE, 0.7f, 100, "redstone");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.EMERALD, 1.0f, 200, "emerald");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.EMERALD, 1.0f, 100, "emerald");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.BUILDING_BLOCKS, Items.LAPIS_LAZULI, 0.2f, 200, "lapis_lazuli");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.BUILDING_BLOCKS, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 200, "diamond");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 100, "diamond");
     }
 }

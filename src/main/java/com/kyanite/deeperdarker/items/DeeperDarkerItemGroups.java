@@ -107,6 +107,15 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.CUT_GLOOMSLATE_SLAB));
                 entries.add(new ItemStack(DeeperDarkerItems.CUT_GLOOMSLATE_WALL));
                 entries.add(new ItemStack(DeeperDarkerItems.CHISELED_GLOOMSLATE));
+                entries.add(new ItemStack(DeeperDarkerItems.ECHO_SOIL));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_COAL_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_IRON_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_COPPER_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_GOLD_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE));
             })).build());
 
     public static void init() {

@@ -110,6 +110,15 @@ public class DeeperDarkerItems {
     public static final Item CUT_GLOOMSLATE_SLAB;
     public static final Item CUT_GLOOMSLATE_WALL;
     public static final Item CHISELED_GLOOMSLATE;
+    public static final Item ECHO_SOIL;
+    public static final Item SCULK_STONE_COAL_ORE;
+    public static final Item SCULK_STONE_IRON_ORE;
+    public static final Item SCULK_STONE_COPPER_ORE;
+    public static final Item SCULK_STONE_GOLD_ORE;
+    public static final Item SCULK_STONE_REDSTONE_ORE;
+    public static final Item SCULK_STONE_EMERALD_ORE;
+    public static final Item SCULK_STONE_LAPIS_ORE;
+    public static final Item SCULK_STONE_DIAMOND_ORE;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
@@ -212,6 +221,15 @@ public class DeeperDarkerItems {
         CUT_GLOOMSLATE_SLAB = registerItem("cut_gloomslate_slab", new BlockItem(DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB, new Item.Settings()));
         CUT_GLOOMSLATE_WALL = registerItem("cut_gloomslate_wall", new BlockItem(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, new Item.Settings()));
         CHISELED_GLOOMSLATE = registerItem("chiseled_gloomslate", new BlockItem(DeeperDarkerBlocks.CHISELED_GLOOMSLATE, new Item.Settings()));
+        ECHO_SOIL = registerItem("echo_soil", new BlockItem(DeeperDarkerBlocks.ECHO_SOIL, new Item.Settings()));
+        SCULK_STONE_COAL_ORE = registerItem("sculk_stone_coal_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, new Item.Settings()));
+        SCULK_STONE_IRON_ORE = registerItem("sculk_stone_iron_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, new Item.Settings()));
+        SCULK_STONE_COPPER_ORE = registerItem("sculk_stone_copper_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE, new Item.Settings()));
+        SCULK_STONE_GOLD_ORE = registerItem("sculk_stone_gold_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE, new Item.Settings()));
+        SCULK_STONE_REDSTONE_ORE = registerItem("sculk_stone_redstone_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE, new Item.Settings()));
+        SCULK_STONE_EMERALD_ORE = registerItem("sculk_stone_emerald_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, new Item.Settings()));
+        SCULK_STONE_LAPIS_ORE = registerItem("sculk_stone_lapis_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE, new Item.Settings()));
+        SCULK_STONE_DIAMOND_ORE = registerItem("sculk_stone_diamond_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, new Item.Settings()));
     }
 
     private static Item registerItem(String id, Item item) {

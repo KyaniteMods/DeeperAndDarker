@@ -31,12 +31,22 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
     private static final TagKey<Block> PLANKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("planks"));
     private static final TagKey<Block> WOODEN_SLABS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_slabs"));
     private static final TagKey<Block> WOODEN_STAIRS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_stairs"));
+    private static final TagKey<Block> SLABS = TagKey.of(RegistryKeys.BLOCK, new Identifier("slabs"));
+    private static final TagKey<Block> STAIRS = TagKey.of(RegistryKeys.BLOCK, new Identifier("stairs"));
     private static final TagKey<Block> STANDING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("standing_signs"));
     private static final TagKey<Block> WALL_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_hanging_signs"));
     private static final TagKey<Block> WALL_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_signs"));
     private static final TagKey<Block> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_pressure_plates"));
     private static final TagKey<Block> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_trapdoors"));
     private static final TagKey<Block> WALLS = TagKey.of(RegistryKeys.BLOCK, new Identifier("walls"));
+    private static final TagKey<Block> COAL_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("coal_ores"));
+    private static final TagKey<Block> IRON_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("iron_ores"));
+    private static final TagKey<Block> COPPER_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("copper_ores"));
+    private static final TagKey<Block> GOLD_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("gold_ores"));
+    private static final TagKey<Block> REDSTONE_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("redstone_ores"));
+    private static final TagKey<Block> EMERALD_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("emerald_ores"));
+    private static final TagKey<Block> LAPIS_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("lapis_ores"));
+    private static final TagKey<Block> DIAMOND_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("diamond_ores"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -121,7 +131,15 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS,
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB,
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL,
-                DeeperDarkerBlocks.CHISELED_GLOOMSLATE
+                DeeperDarkerBlocks.CHISELED_GLOOMSLATE,
+                DeeperDarkerBlocks.SCULK_STONE_COAL_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_IRON_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE
         );
 
         getOrCreateTagBuilder(WALLS).setReplace(false).add(
@@ -141,5 +159,50 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_WALL,
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL
         );
+
+        getOrCreateTagBuilder(STAIRS).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.SCULK_STONE_BRICK_STAIRS,
+                DeeperDarkerBlocks.SCULK_STONE_TILE_STAIRS,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.CUT_SCULK_STONE_STAIRS,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICK_STAIRS,
+                DeeperDarkerBlocks.GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICK_STAIRS,
+                DeeperDarkerBlocks.GLOOMSLATE_TILE_STAIRS,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_STAIRS,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS
+        );
+
+        getOrCreateTagBuilder(SLABS).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.COBBLED_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.POLISHED_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.SCULK_STONE_BRICK_SLAB,
+                DeeperDarkerBlocks.SCULK_STONE_TILE_SLAB,
+                DeeperDarkerBlocks.SMOOTH_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.CUT_SCULK_STONE_SLAB,
+                DeeperDarkerBlocks.SCULK_GRIME_BRICK_SLAB,
+                DeeperDarkerBlocks.GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.COBBLED_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.POLISHED_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.GLOOMSLATE_BRICK_SLAB,
+                DeeperDarkerBlocks.GLOOMSLATE_TILE_SLAB,
+                DeeperDarkerBlocks.SMOOTH_GLOOMSLATE_SLAB,
+                DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB
+        );
+
+        getOrCreateTagBuilder(COAL_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE);
+        getOrCreateTagBuilder(IRON_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE);
+        getOrCreateTagBuilder(COPPER_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE);
+        getOrCreateTagBuilder(GOLD_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE);
+        getOrCreateTagBuilder(REDSTONE_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE);
+        getOrCreateTagBuilder(EMERALD_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE);
+        getOrCreateTagBuilder(LAPIS_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE);
+        getOrCreateTagBuilder(DIAMOND_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE);
     }
 }

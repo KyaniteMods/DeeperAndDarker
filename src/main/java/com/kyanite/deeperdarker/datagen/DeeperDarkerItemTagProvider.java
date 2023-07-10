@@ -36,12 +36,23 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
     private static final TagKey<Item> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_pressure_plates"));
     private static final TagKey<Item> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.ITEM, new Identifier("wooden_trapdoors"));
     private static final TagKey<Item> WALLS = TagKey.of(RegistryKeys.ITEM, new Identifier("walls"));
+    private static final TagKey<Item> STAIRS = TagKey.of(RegistryKeys.ITEM, new Identifier("stairs"));
+    private static final TagKey<Item> SLABS = TagKey.of(RegistryKeys.ITEM, new Identifier("slabs"));
 
     private static final TagKey<Item> SWORDS = TagKey.of(RegistryKeys.ITEM, new Identifier("swords"));
     private static final TagKey<Item> PICKAXES = TagKey.of(RegistryKeys.ITEM, new Identifier("pickaxes"));
     private static final TagKey<Item> AXES = TagKey.of(RegistryKeys.ITEM, new Identifier("axes"));
     private static final TagKey<Item> SHOVELS = TagKey.of(RegistryKeys.ITEM, new Identifier("shovels"));
     private static final TagKey<Item> HOES = TagKey.of(RegistryKeys.ITEM, new Identifier("hoes"));
+
+    private static final TagKey<Item> COAL_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("coal_ores"));
+    private static final TagKey<Item> IRON_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("iron_ores"));
+    private static final TagKey<Item> COPPER_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("copper_ores"));
+    private static final TagKey<Item> GOLD_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("gold_ores"));
+    private static final TagKey<Item> REDSTONE_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("redstone_ores"));
+    private static final TagKey<Item> EMERALD_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("emerald_ores"));
+    private static final TagKey<Item> LAPIS_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("lapis_ores"));
+    private static final TagKey<Item> DIAMOND_ORES = TagKey.of(RegistryKeys.ITEM, new Identifier("diamond_ores"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
@@ -83,5 +94,50 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
                 DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL,
                 DeeperDarkerItems.CUT_GLOOMSLATE_WALL
         );
+
+        getOrCreateTagBuilder(STAIRS).setReplace(false).add(
+                DeeperDarkerItems.SCULK_STONE_STAIRS,
+                DeeperDarkerItems.COBBLED_SCULK_STONE_STAIRS,
+                DeeperDarkerItems.POLISHED_SCULK_STONE_STAIRS,
+                DeeperDarkerItems.SCULK_STONE_BRICK_STAIRS,
+                DeeperDarkerItems.SCULK_STONE_TILE_STAIRS,
+                DeeperDarkerItems.SMOOTH_SCULK_STONE_STAIRS,
+                DeeperDarkerItems.CUT_SCULK_STONE_STAIRS,
+                DeeperDarkerItems.SCULK_GRIME_BRICK_STAIRS,
+                DeeperDarkerItems.GLOOMSLATE_STAIRS,
+                DeeperDarkerItems.COBBLED_GLOOMSLATE_STAIRS,
+                DeeperDarkerItems.POLISHED_GLOOMSLATE_STAIRS,
+                DeeperDarkerItems.GLOOMSLATE_BRICK_STAIRS,
+                DeeperDarkerItems.GLOOMSLATE_TILE_STAIRS,
+                DeeperDarkerItems.SMOOTH_GLOOMSLATE_STAIRS,
+                DeeperDarkerItems.CUT_GLOOMSLATE_STAIRS
+        );
+
+        getOrCreateTagBuilder(SLABS).setReplace(false).add(
+                DeeperDarkerItems.SCULK_STONE_SLAB,
+                DeeperDarkerItems.COBBLED_SCULK_STONE_SLAB,
+                DeeperDarkerItems.POLISHED_SCULK_STONE_SLAB,
+                DeeperDarkerItems.SCULK_STONE_BRICK_SLAB,
+                DeeperDarkerItems.SCULK_STONE_TILE_SLAB,
+                DeeperDarkerItems.SMOOTH_SCULK_STONE_SLAB,
+                DeeperDarkerItems.CUT_SCULK_STONE_SLAB,
+                DeeperDarkerItems.SCULK_GRIME_BRICK_SLAB,
+                DeeperDarkerItems.GLOOMSLATE_SLAB,
+                DeeperDarkerItems.COBBLED_GLOOMSLATE_SLAB,
+                DeeperDarkerItems.POLISHED_GLOOMSLATE_SLAB,
+                DeeperDarkerItems.GLOOMSLATE_BRICK_SLAB,
+                DeeperDarkerItems.GLOOMSLATE_TILE_SLAB,
+                DeeperDarkerItems.SMOOTH_GLOOMSLATE_SLAB,
+                DeeperDarkerItems.CUT_GLOOMSLATE_SLAB
+        );
+
+        getOrCreateTagBuilder(COAL_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_COAL_ORE);
+        getOrCreateTagBuilder(IRON_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_IRON_ORE);
+        getOrCreateTagBuilder(COPPER_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_COPPER_ORE);
+        getOrCreateTagBuilder(GOLD_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_GOLD_ORE);
+        getOrCreateTagBuilder(REDSTONE_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE);
+        getOrCreateTagBuilder(EMERALD_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE);
+        getOrCreateTagBuilder(LAPIS_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE);
+        getOrCreateTagBuilder(DIAMOND_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE);
     }
 }

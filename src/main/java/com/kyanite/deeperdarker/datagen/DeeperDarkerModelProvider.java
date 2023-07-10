@@ -96,6 +96,15 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB, DeeperDarkerBlocks.CUT_GLOOMSLATE);
         registerWall(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, DeeperDarkerBlocks.CUT_GLOOMSLATE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.CHISELED_GLOOMSLATE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.ECHO_SOIL);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE);
     }
 
     @Override
