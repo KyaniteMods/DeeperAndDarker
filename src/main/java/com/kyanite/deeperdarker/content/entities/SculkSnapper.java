@@ -1,6 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
@@ -14,8 +17,8 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("NullableProblems")
 public class SculkSnapper extends TamableAnimal {
     public final AnimationState idleState = new AnimationState();
     private int idleTimeout;
@@ -43,6 +46,16 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
+    protected SoundEvent getAmbientSound() {
+        return DDSounds.SNAPPER_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return DDSounds.SNAPPER_HURT.get();
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
@@ -57,7 +70,7 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    public AgeableMob getBreedOffspring(@NotNull ServerLevel pLevel, @NotNull AgeableMob pOtherParent) {
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
         return null;
     }
 }

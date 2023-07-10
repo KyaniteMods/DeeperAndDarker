@@ -1,11 +1,13 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,6 +20,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 
@@ -36,11 +39,11 @@ public class SculkTransmitterItem extends Item {
         }
 
         if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
-            actionBarMessage(pContext.getPlayer(), "not_transmittable");
+            actionBarMessage(pContext.getPlayer(), "not_transmittable", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
         }
 
-        actionBarMessage(pContext.getPlayer(), "linked");
+        actionBarMessage(pContext.getPlayer(), "linked", DDSounds.TRANSMITTER_LINK);
         formConnection(pContext.getItemInHand(), pContext.getClickedPos());
         return InteractionResult.SUCCESS;
     }
@@ -69,18 +72,18 @@ public class SculkTransmitterItem extends Item {
 
         if(player.isCrouching()) {
             if(clickedPos != null && level.getBlockState(clickedPos).is(DDTags.Blocks.TRANSMITTABLE)) {
-                actionBarMessage(player, "linked");
+                actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
                 formConnection(transmitter, clickedPos);
                 return InteractionResult.SUCCESS;
             }
 
-            actionBarMessage(player, "unlinked");
+            actionBarMessage(player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
             formConnection(transmitter, null);
             return InteractionResult.FAIL;
         }
 
         if(!level.getBlockState(linkedBlockPos).is(DDTags.Blocks.TRANSMITTABLE)) {
-            actionBarMessage(player, "not_found");
+            actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
             formConnection(transmitter, null);
             return InteractionResult.FAIL;
         }
@@ -89,6 +92,7 @@ public class SculkTransmitterItem extends Item {
 
         MenuProvider menu = level.getBlockState(linkedBlockPos).getMenuProvider(level, linkedBlockPos);
         if(menu != null) {
+            player.playSound(DDSounds.TRANSMITTER_OPEN.get(), 1, 1);
             player.openMenu(menu);
             if(level.getBlockEntity(linkedBlockPos) instanceof ChestBlockEntity chestBlockEntity) chestBlockEntity.startOpen(player);
         }
@@ -108,7 +112,8 @@ public class SculkTransmitterItem extends Item {
         stack.setTag(tag);
     }
 
-    private void actionBarMessage(Player player, String key) {
+    private void actionBarMessage(Player player, String key, RegistryObject<SoundEvent> sound) {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
+        player.playSound(sound.get());
     }
 }
