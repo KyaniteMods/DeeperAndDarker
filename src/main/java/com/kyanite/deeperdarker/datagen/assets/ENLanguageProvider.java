@@ -17,6 +17,8 @@ public class ENLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
+
         add("entity." + DeeperDarker.MOD_ID + ".deeper_darker_chest_boat", "Boat with Chest");
 
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
@@ -26,7 +28,15 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
-        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
+        add("subtitles.ambience.portal.groan", "The Otherside forebodes");
+        add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
+        add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
+        add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
+        add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
+        add("subtitles.item.transmitter.error", "Transmitter fails");
+        add("subtitles.item.transmitter.link", "Transmitter links");
+        add("subtitles.item.transmitter.open", "Transmitter transmits");
+        add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));

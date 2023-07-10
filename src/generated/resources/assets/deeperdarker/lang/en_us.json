@@ -127,6 +127,15 @@
   "item.deeperdarker.warden_sword": "Warden Sword",
   "item.deeperdarker.warden_upgrade_smithing_template": "Warden Upgrade Smithing Template",
   "itemGroup.deeperdarker": "Deeper And Darker",
+  "subtitles.ambience.portal.groan": "The Otherside forebodes",
+  "subtitles.entity.snapper.ambient": "Sculk Snapper breathes",
+  "subtitles.entity.snapper.bite": "Sculk Snapper bites",
+  "subtitles.entity.snapper.hurt": "Sculk Snapper hurts",
+  "subtitles.entity.snapper.sniff": "Sculk Snapper sniffs",
+  "subtitles.item.transmitter.error": "Transmitter fails",
+  "subtitles.item.transmitter.link": "Transmitter links",
+  "subtitles.item.transmitter.open": "Transmitter transmits",
+  "subtitles.item.transmitter.unlink": "Transmitter unlinks",
   "tooltips.deeperdarker.sculk_transmitter.linked": "Linked to %1$s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked"
 }

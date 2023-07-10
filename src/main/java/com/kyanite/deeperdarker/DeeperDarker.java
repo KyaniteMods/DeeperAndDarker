@@ -3,13 +3,11 @@ package com.kyanite.deeperdarker;
 import com.kyanite.deeperdarker.client.model.SculkSnapperModel;
 import com.kyanite.deeperdarker.client.render.DDBoatRenderer;
 import com.kyanite.deeperdarker.client.render.SculkSnapperRenderer;
-import com.kyanite.deeperdarker.content.DDBlockEntities;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.SculkSnapper;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
+import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
@@ -41,6 +39,7 @@ public class DeeperDarker {
 
         DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
+        DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
@@ -76,6 +75,7 @@ public class DeeperDarker {
         generator.addProvider(event.includeClient(), new ENLanguageProvider(packOutput));
         generator.addProvider(event.includeClient(), new DDBlockStateProvider(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new DDItemModelProvider(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
 
         // data
         DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, event.getLookupProvider(), fileHelper);
@@ -84,7 +84,6 @@ public class DeeperDarker {
 
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
-
         generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
     }
 

@@ -36,7 +36,6 @@ public class SculkTransmitterItem extends Item {
         }
 
         if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
-            pContext.getPlayer().displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + ".not_transmittable"), true);
             actionBarMessage(pContext.getPlayer(), "not_transmittable");
             return InteractionResult.FAIL;
         }
