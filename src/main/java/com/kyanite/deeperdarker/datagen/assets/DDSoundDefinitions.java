@@ -30,10 +30,10 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SNAPPER_BITE, subtitle("entity.snapper.bite").with(sound("entity/sculk_snapper/bite")));
         add(DDSounds.SNAPPER_HURT, subtitle("entity.snapper.hurt").with(sound("entity/sculk_snapper/hurt")));
         add(DDSounds.SNAPPER_SNIFF, subtitle("entity.snapper.sniff").with(sound("entity/sculk_snapper/sniff")));
-        add(DDSounds.TRANSMITTER_ERROR, subtitle("item.transmitter.error").with(sound("entity/sculk_snapper/sniff")));
-        add(DDSounds.TRANSMITTER_LINK, subtitle("item.transmitter.link").with(sound("entity/sculk_snapper/sniff")));
-        add(DDSounds.TRANSMITTER_OPEN, subtitle("item.transmitter.open").with(sound("entity/sculk_snapper/sniff")));
-        add(DDSounds.TRANSMITTER_UNLINK, subtitle("item.transmitter.unlink").with(sound("entity/sculk_snapper/sniff")));
+        add(DDSounds.TRANSMITTER_ERROR, subtitle("item.transmitter.error").with(sound("item/transmitter/error")));
+        add(DDSounds.TRANSMITTER_LINK, subtitle("item.transmitter.link").with(sound("item/transmitter/link")));
+        add(DDSounds.TRANSMITTER_OPEN, subtitle("item.transmitter.open").with(sound("item/transmitter/open")));
+        add(DDSounds.TRANSMITTER_UNLINK, subtitle("item.transmitter.unlink").with(sound("item/transmitter/unlink")));
     }
 
     private SoundDefinition subtitle(String subtitle) {

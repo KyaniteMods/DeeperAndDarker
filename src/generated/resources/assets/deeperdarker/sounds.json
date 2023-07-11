@@ -130,25 +130,25 @@
   },
   "item.transmitter.error": {
     "sounds": [
-      "deeperdarker:entity/sculk_snapper/sniff"
+      "deeperdarker:item/transmitter/error"
     ],
     "subtitle": "subtitles.item.transmitter.error"
   },
   "item.transmitter.link": {
     "sounds": [
-      "deeperdarker:entity/sculk_snapper/sniff"
+      "deeperdarker:item/transmitter/link"
     ],
     "subtitle": "subtitles.item.transmitter.link"
   },
   "item.transmitter.open": {
     "sounds": [
-      "deeperdarker:entity/sculk_snapper/sniff"
+      "deeperdarker:item/transmitter/open"
     ],
     "subtitle": "subtitles.item.transmitter.open"
   },
   "item.transmitter.unlink": {
     "sounds": [
-      "deeperdarker:entity/sculk_snapper/sniff"
+      "deeperdarker:item/transmitter/unlink"
     ],
     "subtitle": "subtitles.item.transmitter.unlink"
   }
