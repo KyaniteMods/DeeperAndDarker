@@ -43,6 +43,7 @@ public class DeeperDarker {
         DDBlocks.BLOCKS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
+        DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
@@ -83,6 +84,7 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
 
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
+        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
     }
