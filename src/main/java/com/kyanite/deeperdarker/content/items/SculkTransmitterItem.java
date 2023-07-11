@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,7 +27,7 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class SculkTransmitterItem extends Item {
-    private BlockPos linkedPos;
+    private Block linkedBlock;
 
     public SculkTransmitterItem(Properties pProperties) {
         super(pProperties);
@@ -44,7 +45,7 @@ public class SculkTransmitterItem extends Item {
         }
 
         actionBarMessage(pContext.getPlayer(), "linked", DDSounds.TRANSMITTER_LINK);
-        formConnection(pContext.getItemInHand(), pContext.getClickedPos());
+        formConnection(pContext.getItemInHand(), pContext.getLevel(), pContext.getClickedPos());
         return InteractionResult.SUCCESS;
     }
 
@@ -59,7 +60,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", pLevel.getBlockState(linkedPos).getBlock().getName()).withStyle(ChatFormatting.GRAY));
+        if(pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", linkedBlock.getName()).withStyle(ChatFormatting.GRAY));
         else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
@@ -73,18 +74,18 @@ public class SculkTransmitterItem extends Item {
         if(player.isCrouching()) {
             if(clickedPos != null && level.getBlockState(clickedPos).is(DDTags.Blocks.TRANSMITTABLE)) {
                 actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
-                formConnection(transmitter, clickedPos);
+                formConnection(transmitter, level, clickedPos);
                 return InteractionResult.SUCCESS;
             }
 
             actionBarMessage(player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
-            formConnection(transmitter, null);
+            formConnection(transmitter, level, null);
             return InteractionResult.FAIL;
         }
 
         if(!level.getBlockState(linkedBlockPos).is(DDTags.Blocks.TRANSMITTABLE)) {
             actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
-            formConnection(transmitter, null);
+            formConnection(transmitter, level, null);
             return InteractionResult.FAIL;
         }
 
@@ -100,14 +101,14 @@ public class SculkTransmitterItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
-    private void formConnection(ItemStack stack, BlockPos pos) {
+    private void formConnection(ItemStack stack, Level level, BlockPos pos) {
         CompoundTag tag = new CompoundTag();
-        linkedPos = pos;
         if(pos == null) {
             stack.removeTagKey("blockPos");
             return;
         }
 
+        linkedBlock = level.getBlockState(pos).getBlock();
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
         stack.setTag(tag);
     }
