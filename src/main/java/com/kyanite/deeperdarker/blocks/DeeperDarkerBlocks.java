@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.OakSaplingGenerator;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -261,7 +262,8 @@ public class DeeperDarkerBlocks {
                 BlockSoundGroup.WOOL)));
         GLOOMY_GRASS = registerBlock("gloomy_grass", new GloomyGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS).luminance((state) -> 1)));
         GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
-        GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 6)));
+        GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 9).pistonBehavior(
+                PistonBehavior.DESTROY)));
     }
 
     private static Block registerBlock(String id, Block block) {

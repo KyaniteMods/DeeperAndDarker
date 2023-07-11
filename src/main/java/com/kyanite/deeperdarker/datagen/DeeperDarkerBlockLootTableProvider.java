@@ -138,6 +138,6 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.GLOOMY_CACTUS);
         this.addDrop(DeeperDarkerBlocks.GLOOMY_GRASS, BlockLootTableGenerator.dropsWithShears(DeeperDarkerBlocks.GLOOMY_GRASS));
         this.addDropWithSilkTouch(DeeperDarkerBlocks.GLOOMY_SCULK);
-        this.addDrop(DeeperDarkerBlocks.GLOOMY_GEYSER);
+        this.addDropWithSilkTouch(DeeperDarkerBlocks.GLOOMY_GEYSER);
     }
 }
