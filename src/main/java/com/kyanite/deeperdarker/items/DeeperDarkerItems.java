@@ -160,12 +160,12 @@ public class DeeperDarkerItems {
         ECHO_DOOR = registerItem("echo_door", new TallBlockItem(DeeperDarkerBlocks.ECHO_DOOR, new Item.Settings()));
         ECHO_FENCE_GATE = registerItem("echo_fence_gate", new BlockItem(DeeperDarkerBlocks.ECHO_FENCE_GATE, new Item.Settings()));
         ECHO_FENCE = registerItem("echo_fence", new BlockItem(DeeperDarkerBlocks.ECHO_FENCE, new Item.Settings()));
-        ECHO_HANGING_SIGN = registerItem("echo_hanging_sign", new HangingSignItem(DeeperDarkerBlocks.ECHO_HANGING_SIGN, DeeperDarkerBlocks.ECHO_WALL_HANGING_SIGN, new Item.Settings()));
+        ECHO_HANGING_SIGN = registerItem("echo_hanging_sign", new HangingSignItem(DeeperDarkerBlocks.ECHO_HANGING_SIGN, DeeperDarkerBlocks.ECHO_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)));
         ECHO_LEAVES = registerItem("echo_leaves", new BlockItem(DeeperDarkerBlocks.ECHO_LEAVES, new Item.Settings()));
         ECHO_PLANKS = registerItem("echo_planks", new BlockItem(DeeperDarkerBlocks.ECHO_PLANKS, new Item.Settings()));
         ECHO_PRESSURE_PLATE = registerItem("echo_pressure_plate", new BlockItem(DeeperDarkerBlocks.ECHO_PRESSURE_PLATE, new Item.Settings()));
         ECHO_SAPLING = registerItem("echo_sapling", new BlockItem(DeeperDarkerBlocks.ECHO_SAPLING, new Item.Settings()));
-        ECHO_SIGN = registerItem("echo_sign", new SignItem(new Item.Settings(), DeeperDarkerBlocks.ECHO_SIGN, DeeperDarkerBlocks.ECHO_WALL_SIGN));
+        ECHO_SIGN = registerItem("echo_sign", new SignItem(new Item.Settings().maxCount(16), DeeperDarkerBlocks.ECHO_SIGN, DeeperDarkerBlocks.ECHO_WALL_SIGN));
         ECHO_SLAB = registerItem("echo_slab", new BlockItem(DeeperDarkerBlocks.ECHO_SLAB, new Item.Settings()));
         ECHO_STAIRS = registerItem("echo_stairs", new BlockItem(DeeperDarkerBlocks.ECHO_STAIRS, new Item.Settings()));
         ECHO_TRAPDOOR = registerItem("echo_trapdoor", new BlockItem(DeeperDarkerBlocks.ECHO_TRAPDOOR, new Item.Settings()));
