@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "minecraft:sculk"
+    },
+    "U": {
+      "item": "deeperdarker:warden_upgrade_smithing_template"
+    }
+  },
+  "pattern": [
+    "DUD",
+    "DSD",
+    "DDD"
+  ],
+  "result": {
+    "count": 2,
+    "item": "deeperdarker:warden_upgrade_smithing_template"
+  },
+  "show_notification": true
+}

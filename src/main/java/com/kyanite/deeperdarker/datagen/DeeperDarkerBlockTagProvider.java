@@ -2,11 +2,14 @@ package com.kyanite.deeperdarker.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.tags.DeeperDarkerTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -18,59 +21,27 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
         super(output, registriesFuture);
     }
 
-    private static final TagKey<Block> ECHO_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
-
-    private static final TagKey<Block> MINEABLE_PICKAXE = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/pickaxe"));
-    private static final TagKey<Block> MINEABLE_SHOVEL = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/shovel"));
-    private static final TagKey<Block> MINEABLE_HOE = TagKey.of(RegistryKeys.BLOCK, new Identifier("mineable/hoe"));
-    private static final TagKey<Block> CEILING_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("ceiling_hanging_signs"));
-    private static final TagKey<Block> WOODEN_BUTTONS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_buttons"));
-    private static final TagKey<Block> WOODEN_DOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_doors"));
-    private static final TagKey<Block> FENCE_GATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("fence_gates"));
-    private static final TagKey<Block> WOODEN_FENCES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_fences"));
-    private static final TagKey<Block> LEAVES = TagKey.of(RegistryKeys.BLOCK, new Identifier("leaves"));
-    private static final TagKey<Block> LOGS_THAT_BURN = TagKey.of(RegistryKeys.BLOCK, new Identifier("logs_that_burn"));
-    private static final TagKey<Block> PLANKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("planks"));
-    private static final TagKey<Block> WOODEN_SLABS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_slabs"));
-    private static final TagKey<Block> WOODEN_STAIRS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_stairs"));
-    private static final TagKey<Block> SLABS = TagKey.of(RegistryKeys.BLOCK, new Identifier("slabs"));
-    private static final TagKey<Block> STAIRS = TagKey.of(RegistryKeys.BLOCK, new Identifier("stairs"));
-    private static final TagKey<Block> STANDING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("standing_signs"));
-    private static final TagKey<Block> WALL_HANGING_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_hanging_signs"));
-    private static final TagKey<Block> WALL_SIGNS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wall_signs"));
-    private static final TagKey<Block> WOODEN_PRESSURE_PLATES = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_pressure_plates"));
-    private static final TagKey<Block> WOODEN_TRAPDOORS = TagKey.of(RegistryKeys.BLOCK, new Identifier("wooden_trapdoors"));
-    private static final TagKey<Block> WALLS = TagKey.of(RegistryKeys.BLOCK, new Identifier("walls"));
-    private static final TagKey<Block> COAL_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("coal_ores"));
-    private static final TagKey<Block> IRON_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("iron_ores"));
-    private static final TagKey<Block> COPPER_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("copper_ores"));
-    private static final TagKey<Block> GOLD_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("gold_ores"));
-    private static final TagKey<Block> REDSTONE_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("redstone_ores"));
-    private static final TagKey<Block> EMERALD_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("emerald_ores"));
-    private static final TagKey<Block> LAPIS_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("lapis_ores"));
-    private static final TagKey<Block> DIAMOND_ORES = TagKey.of(RegistryKeys.BLOCK, new Identifier("diamond_ores"));
-
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ECHO_LOGS).add(DeeperDarkerBlocks.ECHO_LOG, DeeperDarkerBlocks.ECHO_WOOD, DeeperDarkerBlocks.STRIPPED_ECHO_LOG, DeeperDarkerBlocks.STRIPPED_ECHO_WOOD);
+        getOrCreateTagBuilder(DeeperDarkerTags.Blocks.ECHO_LOGS).add(DeeperDarkerBlocks.ECHO_LOG, DeeperDarkerBlocks.ECHO_WOOD, DeeperDarkerBlocks.STRIPPED_ECHO_LOG, DeeperDarkerBlocks.STRIPPED_ECHO_WOOD);
 
-        getOrCreateTagBuilder(CEILING_HANGING_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_HANGING_SIGN);
-        getOrCreateTagBuilder(WALL_HANGING_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_WALL_HANGING_SIGN);
-        getOrCreateTagBuilder(WOODEN_BUTTONS).setReplace(false).add(DeeperDarkerBlocks.ECHO_BUTTON);
-        getOrCreateTagBuilder(WOODEN_DOORS).setReplace(false).add(DeeperDarkerBlocks.ECHO_DOOR);
-        getOrCreateTagBuilder(FENCE_GATES).setReplace(false).add(DeeperDarkerBlocks.ECHO_FENCE_GATE);
-        getOrCreateTagBuilder(WOODEN_FENCES).setReplace(false).add(DeeperDarkerBlocks.ECHO_FENCE);
-        getOrCreateTagBuilder(LEAVES).setReplace(false).add(DeeperDarkerBlocks.ECHO_LEAVES);
-        getOrCreateTagBuilder(LOGS_THAT_BURN).setReplace(false).addTag(ECHO_LOGS);
-        getOrCreateTagBuilder(PLANKS).setReplace(false).add(DeeperDarkerBlocks.ECHO_PLANKS);
-        getOrCreateTagBuilder(WOODEN_SLABS).setReplace(false).add(DeeperDarkerBlocks.ECHO_SLAB);
-        getOrCreateTagBuilder(WOODEN_STAIRS).setReplace(false).add(DeeperDarkerBlocks.ECHO_STAIRS);
-        getOrCreateTagBuilder(STANDING_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_SIGN);
-        getOrCreateTagBuilder(WALL_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_WALL_SIGN);
-        getOrCreateTagBuilder(WOODEN_PRESSURE_PLATES).setReplace(false).add(DeeperDarkerBlocks.ECHO_PRESSURE_PLATE);
-        getOrCreateTagBuilder(WOODEN_TRAPDOORS).setReplace(false).add(DeeperDarkerBlocks.ECHO_TRAPDOOR);
+        getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_HANGING_SIGN);
+        getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_WALL_HANGING_SIGN);
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).setReplace(false).add(DeeperDarkerBlocks.ECHO_BUTTON);
+        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).setReplace(false).add(DeeperDarkerBlocks.ECHO_DOOR);
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES).setReplace(false).add(DeeperDarkerBlocks.ECHO_FENCE_GATE);
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).setReplace(false).add(DeeperDarkerBlocks.ECHO_FENCE);
+        getOrCreateTagBuilder(BlockTags.LEAVES).setReplace(false).add(DeeperDarkerBlocks.ECHO_LEAVES);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).setReplace(false).addTag(DeeperDarkerTags.Blocks.ECHO_LOGS);
+        getOrCreateTagBuilder(BlockTags.PLANKS).setReplace(false).add(DeeperDarkerBlocks.ECHO_PLANKS);
+        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).setReplace(false).add(DeeperDarkerBlocks.ECHO_SLAB);
+        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).setReplace(false).add(DeeperDarkerBlocks.ECHO_STAIRS);
+        getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_SIGN);
+        getOrCreateTagBuilder(BlockTags.WALL_SIGNS).setReplace(false).add(DeeperDarkerBlocks.ECHO_WALL_SIGN);
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).setReplace(false).add(DeeperDarkerBlocks.ECHO_PRESSURE_PLATE);
+        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).setReplace(false).add(DeeperDarkerBlocks.ECHO_TRAPDOOR);
 
-        getOrCreateTagBuilder(MINEABLE_PICKAXE).setReplace(false).add(
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_STONE,
                 DeeperDarkerBlocks.SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.SCULK_STONE_SLAB,
@@ -128,16 +99,32 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE
         );
 
-        getOrCreateTagBuilder(MINEABLE_SHOVEL).setReplace(false).add(
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_STONE_IRON_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE
+        );
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE,
+                DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE
+        );
+
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_GRIME,
                 DeeperDarkerBlocks.ECHO_SOIL
         );
 
-        getOrCreateTagBuilder(MINEABLE_HOE).setReplace(false).add(
-                DeeperDarkerBlocks.ECHO_LEAVES
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).setReplace(false).add(
+                DeeperDarkerBlocks.ECHO_LEAVES,
+                DeeperDarkerBlocks.SCULK_GLEAM,
+                DeeperDarkerBlocks.SCULK_VINES_PLANT,
+                DeeperDarkerBlocks.SCULK_VINES
         );
 
-        getOrCreateTagBuilder(WALLS).setReplace(false).add(
+        getOrCreateTagBuilder(BlockTags.WALLS).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_STONE_WALL,
                 DeeperDarkerBlocks.COBBLED_SCULK_STONE_WALL,
                 DeeperDarkerBlocks.POLISHED_SCULK_STONE_WALL,
@@ -155,7 +142,7 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL
         );
 
-        getOrCreateTagBuilder(STAIRS).setReplace(false).add(
+        getOrCreateTagBuilder(BlockTags.STAIRS).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.COBBLED_SCULK_STONE_STAIRS,
                 DeeperDarkerBlocks.POLISHED_SCULK_STONE_STAIRS,
@@ -173,7 +160,7 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_STAIRS
         );
 
-        getOrCreateTagBuilder(SLABS).setReplace(false).add(
+        getOrCreateTagBuilder(BlockTags.SLABS).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_STONE_SLAB,
                 DeeperDarkerBlocks.COBBLED_SCULK_STONE_SLAB,
                 DeeperDarkerBlocks.POLISHED_SCULK_STONE_SLAB,
@@ -191,13 +178,28 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB
         );
 
-        getOrCreateTagBuilder(COAL_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE);
-        getOrCreateTagBuilder(IRON_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE);
-        getOrCreateTagBuilder(COPPER_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE);
-        getOrCreateTagBuilder(GOLD_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE);
-        getOrCreateTagBuilder(REDSTONE_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE);
-        getOrCreateTagBuilder(EMERALD_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE);
-        getOrCreateTagBuilder(LAPIS_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE);
-        getOrCreateTagBuilder(DIAMOND_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE);
+        getOrCreateTagBuilder(BlockTags.COAL_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE);
+        getOrCreateTagBuilder(BlockTags.IRON_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE);
+        getOrCreateTagBuilder(BlockTags.COPPER_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE);
+        getOrCreateTagBuilder(BlockTags.GOLD_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_GOLD_ORE);
+        getOrCreateTagBuilder(BlockTags.REDSTONE_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE);
+        getOrCreateTagBuilder(BlockTags.EMERALD_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE);
+        getOrCreateTagBuilder(BlockTags.LAPIS_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE);
+        getOrCreateTagBuilder(BlockTags.DIAMOND_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE);
+
+        getOrCreateTagBuilder(BlockTags.CLIMBABLE).setReplace(false).add(
+                DeeperDarkerBlocks.SCULK_TENDRILS_PLANT,
+                DeeperDarkerBlocks.SCULK_TENDRILS,
+                DeeperDarkerBlocks.SCULK_VINES_PLANT,
+                DeeperDarkerBlocks.SCULK_VINES
+        );
+
+        getOrCreateTagBuilder(DeeperDarkerTags.Blocks.GLOOMY_SCULK_REPLACEABLE).setReplace(false).add(
+                Blocks.SCULK,
+                DeeperDarkerBlocks.SCULK_STONE,
+                DeeperDarkerBlocks.GLOOMSLATE,
+                DeeperDarkerBlocks.ECHO_SOIL,
+                DeeperDarkerBlocks.GLOOMY_SCULK
+        );
     }
 }

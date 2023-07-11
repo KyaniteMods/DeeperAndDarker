@@ -119,6 +119,7 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, "Cut Gloomslate Wall");
         translationBuilder.add(DeeperDarkerBlocks.CHISELED_GLOOMSLATE, "Chiseled Gloomslate");
         translationBuilder.add(DeeperDarkerBlocks.ECHO_SOIL, "Echo Soil");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_GLEAM, "Sculk Gleam");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, "Sculk Stone Coal Ore");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, "Sculk Stone Iron Ore");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE, "Sculk Stone Copper Ore");
@@ -127,5 +128,13 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, "Sculk Stone Emerald Ore");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE, "Sculk Stone Lapis Lazuli Ore");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, "Sculk Stone Diamond Ore");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_TENDRILS_PLANT, "Sculk Tendrils Plant");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_TENDRILS, "Sculk Tendrils");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_VINES_PLANT, "Sculk Vines Plant");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_VINES, "Sculk Vines");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMY_CACTUS, "Gloomy Cactus");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMY_GRASS, "Gloomy Grass");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMY_SCULK, "Gloomy Sculk");
+        translationBuilder.add(DeeperDarkerBlocks.GLOOMY_GEYSER, "Gloomy Geyser");
     }
 }

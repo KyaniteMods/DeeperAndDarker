@@ -124,6 +124,7 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL);
         this.addDrop(DeeperDarkerBlocks.CHISELED_GLOOMSLATE);
         this.addDrop(DeeperDarkerBlocks.ECHO_SOIL);
+        this.addDropWithSilkTouch(DeeperDarkerBlocks.SCULK_GLEAM);
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, Items.COAL));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, Items.RAW_IRON));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE, this.copperOreDrops(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE));
@@ -132,5 +133,11 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, Items.EMERALD));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE, this.lapisOreDrops(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, Items.DIAMOND));
+        this.addVinePlantDrop(DeeperDarkerBlocks.SCULK_TENDRILS_PLANT, DeeperDarkerBlocks.SCULK_TENDRILS);
+        this.addVinePlantDrop(DeeperDarkerBlocks.SCULK_VINES_PLANT, DeeperDarkerBlocks.SCULK_VINES);
+        this.addDrop(DeeperDarkerBlocks.GLOOMY_CACTUS);
+        this.addDrop(DeeperDarkerBlocks.GLOOMY_GRASS, BlockLootTableGenerator.dropsWithShears(DeeperDarkerBlocks.GLOOMY_GRASS));
+        this.addDropWithSilkTouch(DeeperDarkerBlocks.GLOOMY_SCULK);
+        this.addDrop(DeeperDarkerBlocks.GLOOMY_GEYSER);
     }
 }

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "deeperdarker:sculk_stone_gold_ore",
+    "deeperdarker:sculk_stone_redstone_ore",
+    "deeperdarker:sculk_stone_emerald_ore",
+    "deeperdarker:sculk_stone_diamond_ore"
+  ]
+}

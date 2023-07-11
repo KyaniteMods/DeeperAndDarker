@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -256,5 +257,7 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 100, "diamond");
 
         offerSmelting(exporter, List.of(DeeperDarkerItems.GRIME_BALL), RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).input('D', Items.DIAMOND).input('U', DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).input('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).offerTo(exporter);
     }
 }

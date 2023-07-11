@@ -16,7 +16,7 @@ public class WardenToolMaterial implements ToolMaterial {
 
     @Override
     public float getAttackDamage() {
-        return 6.0f;
+        return 5.0f;
     }
 
     @Override

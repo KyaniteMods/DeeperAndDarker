@@ -11,6 +11,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.sapling.OakSaplingGenerator;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -103,6 +104,7 @@ public class DeeperDarkerBlocks {
     public static final Block CUT_GLOOMSLATE_WALL;
     public static final Block CHISELED_GLOOMSLATE;
     public static final Block ECHO_SOIL;
+    public static final Block SCULK_GLEAM;
     public static final Block SCULK_STONE_COAL_ORE;
     public static final Block SCULK_STONE_IRON_ORE;
     public static final Block SCULK_STONE_COPPER_ORE;
@@ -111,6 +113,14 @@ public class DeeperDarkerBlocks {
     public static final Block SCULK_STONE_EMERALD_ORE;
     public static final Block SCULK_STONE_LAPIS_ORE;
     public static final Block SCULK_STONE_DIAMOND_ORE;
+    public static final Block SCULK_TENDRILS_PLANT;
+    public static final Block SCULK_TENDRILS;
+    public static final Block SCULK_VINES_PLANT;
+    public static final Block SCULK_VINES;
+    public static final Block GLOOMY_CACTUS;
+    public static final Block GLOOMY_GRASS;
+    public static final Block GLOOMY_SCULK;
+    public static final Block GLOOMY_GEYSER;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -224,7 +234,10 @@ public class DeeperDarkerBlocks {
         CUT_GLOOMSLATE_SLAB = registerBlock("cut_gloomslate_slab", new SlabBlock(AbstractBlock.Settings.copy(GLOOMSLATE_SLAB)));
         CUT_GLOOMSLATE_WALL = registerBlock("cut_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
         CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
+
         ECHO_SOIL = registerBlock("echo_soil", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.3f)));
+        SCULK_GLEAM = registerBlock("sculk_gleam", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 15)));
+
         SCULK_STONE_COAL_ORE = registerBlock("sculk_stone_coal_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
                 UniformIntProvider.create(1, 4)));
         SCULK_STONE_IRON_ORE = registerBlock("sculk_stone_iron_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
@@ -237,6 +250,18 @@ public class DeeperDarkerBlocks {
                 UniformIntProvider.create(4, 8)));
         SCULK_STONE_DIAMOND_ORE = registerBlock("sculk_stone_diamond_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
                 UniformIntProvider.create(5, 10)));
+
+        SCULK_TENDRILS_PLANT = registerBlock("sculk_tendrils_plant", new SculkTendrilsPlantBlock(AbstractBlock.Settings.create().sounds(
+                BlockSoundGroup.SCULK).nonOpaque().noCollision().breakInstantly()));
+        SCULK_TENDRILS = registerBlock("sculk_tendrils", new SculkTendrilsBlock(AbstractBlock.Settings.copy(SCULK_TENDRILS_PLANT).ticksRandomly()));
+        SCULK_VINES_PLANT = registerBlock("sculk_vines_plant", new SculkVinesPlantBlock(AbstractBlock.Settings.create().sounds(
+                BlockSoundGroup.SCULK).nonOpaque().noCollision().breakInstantly()));
+        SCULK_VINES = registerBlock("sculk_vines", new SculkVinesBlock(AbstractBlock.Settings.copy(SCULK_VINES_PLANT).ticksRandomly()));
+        GLOOMY_CACTUS = registerBlock("gloomy_cactus", new GloomyCactusBlock(AbstractBlock.Settings.create().strength(0.5f).luminance((state) -> 6).sounds(
+                BlockSoundGroup.WOOL)));
+        GLOOMY_GRASS = registerBlock("gloomy_grass", new GloomyGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS).luminance((state) -> 1)));
+        GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
+        GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
     }
 
     private static Block registerBlock(String id, Block block) {

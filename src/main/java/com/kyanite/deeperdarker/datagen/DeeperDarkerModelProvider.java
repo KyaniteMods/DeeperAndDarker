@@ -1,12 +1,16 @@
 package com.kyanite.deeperdarker.datagen;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
+
+import java.util.Optional;
 
 public class DeeperDarkerModelProvider extends FabricModelProvider {
     public DeeperDarkerModelProvider(FabricDataOutput output) {
@@ -96,7 +100,10 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_SLAB, DeeperDarkerBlocks.CUT_GLOOMSLATE);
         registerWall(blockStateModelGenerator, DeeperDarkerBlocks.CUT_GLOOMSLATE_WALL, DeeperDarkerBlocks.CUT_GLOOMSLATE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.CHISELED_GLOOMSLATE);
+
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.ECHO_SOIL);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_GLEAM);
+
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE);
@@ -105,6 +112,27 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE);
         blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockStateModelGenerator.registerTintableCrossBlockState(DeeperDarkerBlocks.SCULK_TENDRILS_PLANT, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCrossBlockState(DeeperDarkerBlocks.SCULK_TENDRILS, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCrossBlockState(DeeperDarkerBlocks.SCULK_VINES_PLANT, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCrossBlockState(DeeperDarkerBlocks.SCULK_VINES, BlockStateModelGenerator.TintType.NOT_TINTED);
+
+//        Model cactusModel = new Model(Optional.of(ModelIds.getBlockModelId(Blocks.CACTUS)), Optional.empty(),
+//        TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM);
+
+//        cactusModel.upload(DeeperDarkerBlocks.GLOOMY_CACTUS,
+//        TextureMap.of(TextureKey.TOP, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_cactus_top"))
+//        .put(TextureKey.SIDE, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_cactus_side"))
+//        .put(TextureKey.BOTTOM, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_cactus_bottom")),
+//                blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.GLOOMY_CACTUS);
+        blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.GLOOMY_CACTUS, ModelIds.getBlockModelId(DeeperDarkerBlocks.GLOOMY_CACTUS));
+        blockStateModelGenerator.registerTintableCross(DeeperDarkerBlocks.GLOOMY_GRASS, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(DeeperDarkerBlocks.GLOOMY_SCULK);
+        blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.GLOOMY_GEYSER);
+        Models.CUBE_BOTTOM_TOP.upload(DeeperDarkerBlocks.GLOOMY_GEYSER, TextureMap.of(TextureKey.TOP, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_geyser")).put(TextureKey.SIDE, TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMY_SCULK).getTextures().getTexture(TextureKey.ALL)).put(TextureKey.BOTTOM, TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMY_SCULK).getTextures().getTexture(TextureKey.ALL)),
+                blockStateModelGenerator.modelCollector);
     }
 
     @Override
@@ -123,23 +151,25 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         itemModelGenerator.register(DeeperDarkerItems.SCULK_BONE, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.GRIME_BALL, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.GRIME_BRICK, Models.GENERATED);
-        Models.BUTTON_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.ECHO_BUTTON), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.ECHO_PLANKS).getTextures(), itemModelGenerator.writer);
-        Models.FENCE_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.ECHO_FENCE), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.ECHO_PLANKS).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_STONE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.COBBLED_SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.COBBLED_SCULK_STONE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.POLISHED_SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.POLISHED_SCULK_STONE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_BRICK_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_STONE_BRICKS).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_TILE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_STONE_TILES).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SMOOTH_SCULK_STONE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_SCULK_STONE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.CUT_SCULK_STONE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_GRIME_BRICK_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SCULK_GRIME).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMSLATE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.COBBLED_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.COBBLED_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.POLISHED_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.POLISHED_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_BRICK_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMSLATE_BRICKS).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_TILE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMSLATE_TILES).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
-        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_GLOOMSLATE_WALL), TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.CUT_GLOOMSLATE).getTextures(), itemModelGenerator.writer);
+        Models.GENERATED.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_TENDRILS), TextureMap.layer0(DeeperDarkerBlocks.SCULK_TENDRILS_PLANT), itemModelGenerator.writer);
+        Models.GENERATED.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_VINES), TextureMap.layer0(DeeperDarkerBlocks.SCULK_VINES_PLANT), itemModelGenerator.writer);
+        Models.BUTTON_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.ECHO_BUTTON), TextureMap.all(DeeperDarkerBlocks.ECHO_PLANKS), itemModelGenerator.writer);
+        Models.FENCE_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.ECHO_FENCE), TextureMap.all(DeeperDarkerBlocks.ECHO_PLANKS), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_WALL), TextureMap.all(DeeperDarkerBlocks.SCULK_STONE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.COBBLED_SCULK_STONE_WALL), TextureMap.all(DeeperDarkerBlocks.COBBLED_SCULK_STONE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.POLISHED_SCULK_STONE_WALL), TextureMap.all(DeeperDarkerBlocks.POLISHED_SCULK_STONE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_BRICK_WALL), TextureMap.all(DeeperDarkerBlocks.SCULK_STONE_BRICKS), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_STONE_TILE_WALL), TextureMap.all(DeeperDarkerBlocks.SCULK_STONE_TILES), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL), TextureMap.all(DeeperDarkerBlocks.SMOOTH_SCULK_STONE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_SCULK_STONE_WALL), TextureMap.all(DeeperDarkerBlocks.CUT_SCULK_STONE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SCULK_GRIME_BRICK_WALL), TextureMap.all(DeeperDarkerBlocks.SCULK_GRIME), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.GLOOMSLATE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.COBBLED_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.COBBLED_GLOOMSLATE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.POLISHED_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.POLISHED_GLOOMSLATE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_BRICK_WALL), TextureMap.all(DeeperDarkerBlocks.GLOOMSLATE_BRICKS), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_TILE_WALL), TextureMap.all(DeeperDarkerBlocks.GLOOMSLATE_TILES), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE), itemModelGenerator.writer);
+        Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.CUT_GLOOMSLATE), itemModelGenerator.writer);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {
