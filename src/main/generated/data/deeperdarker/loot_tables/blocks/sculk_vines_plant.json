@@ -37,7 +37,7 @@
                   ]
                 }
               ],
-              "name": "minecraft:air"
+              "name": "deeperdarker:sculk_vines"
             },
             {
               "type": "minecraft:item",
@@ -53,7 +53,7 @@
                   "enchantment": "minecraft:fortune"
                 }
               ],
-              "name": "minecraft:air"
+              "name": "deeperdarker:sculk_vines"
             }
           ]
         }

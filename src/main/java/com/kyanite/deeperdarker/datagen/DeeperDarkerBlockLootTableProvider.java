@@ -133,8 +133,8 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE, Items.EMERALD));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE, this.lapisOreDrops(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE));
         this.addDrop(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, this.oreDrops(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE, Items.DIAMOND));
-        this.addVinePlantDrop(DeeperDarkerBlocks.SCULK_TENDRILS_PLANT, DeeperDarkerBlocks.SCULK_TENDRILS);
-        this.addVinePlantDrop(DeeperDarkerBlocks.SCULK_VINES_PLANT, DeeperDarkerBlocks.SCULK_VINES);
+        this.addVinePlantDrop(DeeperDarkerBlocks.SCULK_TENDRILS, DeeperDarkerBlocks.SCULK_TENDRILS_PLANT);
+        this.addVinePlantDrop(DeeperDarkerBlocks.SCULK_VINES, DeeperDarkerBlocks.SCULK_VINES_PLANT);
         this.addDrop(DeeperDarkerBlocks.GLOOMY_CACTUS);
         this.addDrop(DeeperDarkerBlocks.GLOOMY_GRASS, BlockLootTableGenerator.dropsWithShears(DeeperDarkerBlocks.GLOOMY_GRASS));
         this.addDropWithSilkTouch(DeeperDarkerBlocks.GLOOMY_SCULK);
