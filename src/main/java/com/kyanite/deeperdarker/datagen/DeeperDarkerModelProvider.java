@@ -6,11 +6,9 @@ import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.util.Identifier;
-
-import java.util.Optional;
 
 public class DeeperDarkerModelProvider extends FabricModelProvider {
     public DeeperDarkerModelProvider(FabricDataOutput output) {
@@ -137,6 +135,10 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        registerWardenHelmet(itemModelGenerator, (ArmorItem) DeeperDarkerItems.WARDEN_HELMET);
+        itemModelGenerator.registerArmor((ArmorItem) DeeperDarkerItems.WARDEN_CHESTPLATE);
+        itemModelGenerator.registerArmor((ArmorItem) DeeperDarkerItems.WARDEN_LEGGINGS);
+        itemModelGenerator.registerArmor((ArmorItem) DeeperDarkerItems.WARDEN_BOOTS);
         itemModelGenerator.register(DeeperDarkerItems.WARDEN_SWORD, Models.HANDHELD);
         itemModelGenerator.register(DeeperDarkerItems.WARDEN_PICKAXE, Models.HANDHELD);
         itemModelGenerator.register(DeeperDarkerItems.WARDEN_AXE, Models.HANDHELD);
@@ -231,5 +233,18 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         Identifier sideModel = Models.TEMPLATE_WALL_SIDE.upload(wall, textureMap, blockStateModelGenerator.modelCollector);
         Identifier sideTallModel = Models.TEMPLATE_WALL_SIDE_TALL.upload(wall, textureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createWallBlockState(wall, postModel, sideModel, sideTallModel));
+    }
+
+    private static void registerWardenHelmet(ItemModelGenerator itemModelGenerator, ArmorItem armor) {
+        Identifier armorModelIdentifier = ModelIds.getItemModelId(armor);
+        Identifier armorTextureIdentifier = TextureMap.getId(armor);
+        Models.GENERATED.upload(armorModelIdentifier, TextureMap.layer0(armorTextureIdentifier), itemModelGenerator.writer, (id, textures) -> itemModelGenerator.createArmorJson(id, textures, armor.getMaterial()));
+        for (ItemModelGenerator.TrimMaterial trimMaterial : ItemModelGenerator.TRIM_MATERIALS) {
+            String string = trimMaterial.getAppliedName(armor.getMaterial());
+            Identifier identifier4 = itemModelGenerator.suffixTrim(armorModelIdentifier, string);
+            String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
+            Identifier trimOverlayIdentifier = new Identifier(DeeperDarker.MOD_ID, string2).withPrefixedPath("trims/items/");
+            itemModelGenerator.uploadArmor(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
+        }
     }
 }

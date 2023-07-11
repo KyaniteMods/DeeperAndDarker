@@ -261,7 +261,7 @@ public class DeeperDarkerBlocks {
                 BlockSoundGroup.WOOL)));
         GLOOMY_GRASS = registerBlock("gloomy_grass", new GloomyGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS).luminance((state) -> 1)));
         GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
-        GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
+        GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 6)));
     }
 
     private static Block registerBlock(String id, Block block) {

@@ -1,0 +1,3 @@
+accessWidener   v1 named
+accessible class net/minecraft/data/client/ItemModelGenerator$TrimMaterial
+accessible field net/minecraft/data/client/ItemModelGenerator TRIM_MATERIALS Ljava/util/List;
