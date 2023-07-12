@@ -205,7 +205,7 @@ public class DeeperDarkerBlocks {
         SCULK_GRIME = registerBlock("sculk_grime", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.CYAN)));
         SCULK_GRIME_BRICKS = registerBlock("sculk_grime_bricks", new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
         SCULK_GRIME_BRICK_STAIRS = registerBlock("sculk_grime_brick_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SCULK_GRIME_BRICKS)));
-        SCULK_GRIME_BRICK_SLAB = registerBlock("sculk_grime_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_SLAB)));
+        SCULK_GRIME_BRICK_SLAB = registerBlock("sculk_grime_brick_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_SLAB).mapColor(MapColor.TERRACOTTA_GREEN)));
         SCULK_GRIME_BRICK_WALL = registerBlock("sculk_grime_brick_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_GRIME_BRICKS)));
 
         GLOOMSLATE = registerBlock("gloomslate", new Block(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN)));
@@ -238,8 +238,8 @@ public class DeeperDarkerBlocks {
         CUT_GLOOMSLATE_WALL = registerBlock("cut_gloomslate_wall", new WallBlock(AbstractBlock.Settings.copy(GLOOMSLATE)));
         CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
 
-        ECHO_SOIL = registerBlock("echo_soil", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.3f)));
-        SCULK_GLEAM = registerBlock("sculk_gleam", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 15)));
+        ECHO_SOIL = registerBlock("echo_soil", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.PURPLE)));
+        SCULK_GLEAM = registerBlock("sculk_gleam", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 15).mapColor(MapColor.PALE_YELLOW)));
 
         SCULK_STONE_COAL_ORE = registerBlock("sculk_stone_coal_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
                 UniformIntProvider.create(1, 4)));
@@ -260,7 +260,7 @@ public class DeeperDarkerBlocks {
         SCULK_VINES_PLANT = registerBlock("sculk_vines_plant", new SculkVinesPlantBlock(AbstractBlock.Settings.create().sounds(
                 BlockSoundGroup.SCULK).nonOpaque().noCollision().breakInstantly()));
         SCULK_VINES = registerBlock("sculk_vines", new SculkVinesBlock(AbstractBlock.Settings.copy(SCULK_VINES_PLANT).ticksRandomly()));
-        GLOOMY_CACTUS = registerBlock("gloomy_cactus", new GloomyCactusBlock(AbstractBlock.Settings.create().strength(0.5f).luminance((state) -> 6).sounds(
+        GLOOMY_CACTUS = registerBlock("gloomy_cactus", new GloomyCactusBlock(AbstractBlock.Settings.create().strength(0.5f).luminance((state) -> 6).mapColor(MapColor.ORANGE).sounds(
                 BlockSoundGroup.WOOL)));
         GLOOMY_GRASS = registerBlock("gloomy_grass", new GloomyGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS).luminance((state) -> 1)));
         GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
