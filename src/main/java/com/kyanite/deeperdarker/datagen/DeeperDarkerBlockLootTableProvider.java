@@ -5,22 +5,20 @@ import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.fabricmc.fabric.api.loot.v2.FabricLootTableBuilder;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.condition.AlternativeLootCondition;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
-import net.minecraft.loot.condition.LootConditionTypes;
 import net.minecraft.loot.condition.SurvivesExplosionLootCondition;
+import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.function.EnchantRandomlyLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.loot.provider.number.LootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -45,6 +43,7 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.ECHO_FENCE_GATE);
         this.addDrop(DeeperDarkerBlocks.ECHO_FENCE);
         this.addDrop(DeeperDarkerBlocks.ECHO_HANGING_SIGN);
+        this.addDrop(DeeperDarkerBlocks.ECHO_WALL_HANGING_SIGN);
         this.leavesDrops(DeeperDarkerBlocks.ECHO_LEAVES, DeeperDarkerBlocks.ECHO_SAPLING);
         this.addDrop(DeeperDarkerBlocks.ECHO_PLANKS);
         this.addDrop(DeeperDarkerBlocks.ECHO_PRESSURE_PLATE);
@@ -139,5 +138,45 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
         this.addDrop(DeeperDarkerBlocks.GLOOMY_GRASS, BlockLootTableGenerator.dropsWithShears(DeeperDarkerBlocks.GLOOMY_GRASS));
         this.addDropWithSilkTouch(DeeperDarkerBlocks.GLOOMY_SCULK);
         this.addDropWithSilkTouch(DeeperDarkerBlocks.GLOOMY_GEYSER);
+        this.addDrop(DeeperDarkerBlocks.ANCIENT_VASE, BlockLootTableGenerator.dropsWithSilkTouch(DeeperDarkerBlocks.ANCIENT_VASE).pool(LootPool.builder().rolls(
+                ConstantLootNumberProvider.create(1.0f)).conditionally(WITHOUT_SILK_TOUCH)
+                .rolls(UniformLootNumberProvider.create(1.0f, 3.0f))
+                .with(EmptyEntry.builder().weight(20))
+                .with(ItemEntry.builder(Blocks.SAND).weight(11)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 6))))
+                .with(ItemEntry.builder(Items.STRING).weight(10)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3, 9))))
+                .with(ItemEntry.builder(Items.ROTTEN_FLESH).weight(9)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(5, 8))))
+                .with(ItemEntry.builder(Items.GOLD_INGOT).weight(6)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 5))))
+                .with(ItemEntry.builder(Items.IRON_INGOT).weight(5)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2, 8))))
+                .with(ItemEntry.builder(Items.GOLDEN_APPLE).weight(4)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))
+                .with(ItemEntry.builder(Items.EMERALD).weight(3)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 3))))
+                .with(ItemEntry.builder(Items.DIAMOND).weight(2)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))
+                .with(ItemEntry.builder(Items.BOOK).weight(2)
+                        .apply(EnchantRandomlyLootFunction.create()))
+                .with(ItemEntry.builder(Items.ENCHANTED_GOLDEN_APPLE).weight(1))
+                .with(ItemEntry.builder(DeeperDarkerItems.WARDEN_CARAPACE).weight(1)))
+                .pool(LootPool.builder().conditionally(WITHOUT_SILK_TOUCH)
+                        .rolls(ConstantLootNumberProvider.create(2.0f))
+                        .with(ItemEntry.builder(Blocks.COBWEB).weight(13)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))
+                        .with(ItemEntry.builder(Items.REDSTONE).weight(7)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3, 6))))
+                        .with(ItemEntry.builder(Items.STICK).weight(7)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))
+                        .with(ItemEntry.builder(Items.ROTTEN_FLESH).weight(5)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 4))))
+                        .with(ItemEntry.builder(Items.STRING).weight(5)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 4))))
+                        .with(ItemEntry.builder(Items.LAPIS_LAZULI).weight(4)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(5, 6))))
+                        .with(ItemEntry.builder(Blocks.SAND).weight(3)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))));
     }
 }

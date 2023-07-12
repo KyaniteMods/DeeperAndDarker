@@ -13,7 +13,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 
 public class SculkVinesBlock extends AbstractPlantStemBlock {
-    public static final VoxelShape SHAPE = Block.createCuboidShape(4, 9, 4, 12, 16, 12);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(4, 9, 4, 12, 16, 12);
 
     protected SculkVinesBlock(Settings settings) {
         super(settings, Direction.DOWN, SHAPE, false, 0.1);

@@ -7,7 +7,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 
 public class SculkTendrilsPlantBlock extends AbstractPlantBlock {
-    public static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 16, 12);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 16, 12);
 
     protected SculkTendrilsPlantBlock(Settings settings) {
         super(settings, Direction.UP, SHAPE, false);

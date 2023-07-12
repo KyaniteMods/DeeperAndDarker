@@ -1,17 +1,12 @@
 package com.kyanite.deeperdarker.datagen;
 
-import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.tags.DeeperDarkerTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -96,7 +91,8 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SCULK_STONE_REDSTONE_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE,
-                DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE
+                DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE,
+                DeeperDarkerBlocks.ANCIENT_VASE
         );
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).setReplace(false).add(

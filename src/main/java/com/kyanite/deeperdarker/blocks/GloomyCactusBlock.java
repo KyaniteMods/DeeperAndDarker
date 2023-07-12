@@ -10,8 +10,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 
 public class GloomyCactusBlock extends CactusBlock {
-    protected static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(1, 0, 1, 15, 13, 15);
-    protected static final VoxelShape OUTLINE_SHAPE = Block.createCuboidShape(1, 0, 1, 15, 14, 15);
+    private static final VoxelShape COLLISION_SHAPE = Block.createCuboidShape(1, 0, 1, 15, 13, 15);
+    private static final VoxelShape OUTLINE_SHAPE = Block.createCuboidShape(1, 0, 1, 15, 14, 15);
 
     public GloomyCactusBlock(Settings settings) {
         super(settings);

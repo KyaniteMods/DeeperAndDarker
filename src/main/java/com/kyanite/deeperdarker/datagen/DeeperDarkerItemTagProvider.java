@@ -1,18 +1,11 @@
 package com.kyanite.deeperdarker.datagen;
 
-import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import com.kyanite.deeperdarker.tags.DeeperDarkerTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 

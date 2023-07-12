@@ -115,15 +115,6 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCrossBlockState(DeeperDarkerBlocks.SCULK_VINES_PLANT, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCrossBlockState(DeeperDarkerBlocks.SCULK_VINES, BlockStateModelGenerator.TintType.NOT_TINTED);
 
-//        Model cactusModel = new Model(Optional.of(ModelIds.getBlockModelId(Blocks.CACTUS)), Optional.empty(),
-//        TextureKey.TOP, TextureKey.SIDE, TextureKey.BOTTOM);
-
-//        cactusModel.upload(DeeperDarkerBlocks.GLOOMY_CACTUS,
-//        TextureMap.of(TextureKey.TOP, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_cactus_top"))
-//        .put(TextureKey.SIDE, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_cactus_side"))
-//        .put(TextureKey.BOTTOM, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_cactus_bottom")),
-//                blockStateModelGenerator.modelCollector);
-
         blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.GLOOMY_CACTUS);
         blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.GLOOMY_CACTUS, ModelIds.getBlockModelId(DeeperDarkerBlocks.GLOOMY_CACTUS));
         blockStateModelGenerator.registerTintableCross(DeeperDarkerBlocks.GLOOMY_GRASS, BlockStateModelGenerator.TintType.NOT_TINTED);
@@ -131,6 +122,9 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.GLOOMY_GEYSER);
         Models.CUBE_BOTTOM_TOP.upload(DeeperDarkerBlocks.GLOOMY_GEYSER, TextureMap.of(TextureKey.TOP, new Identifier(DeeperDarker.MOD_ID, "block/gloomy_geyser")).put(TextureKey.SIDE, TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMY_SCULK).getTextures().getTexture(TextureKey.ALL)).put(TextureKey.BOTTOM, TexturedModel.CUBE_ALL.get(DeeperDarkerBlocks.GLOOMY_SCULK).getTextures().getTexture(TextureKey.ALL)),
                 blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.ANCIENT_VASE);
+        blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.ANCIENT_VASE, ModelIds.getBlockModelId(DeeperDarkerBlocks.ANCIENT_VASE));
     }
 
     @Override

@@ -141,5 +141,6 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
         translationBuilder.add(DeeperDarkerEntityTypes.BOAT, "Boat");
         translationBuilder.add(DeeperDarkerEntityTypes.CHEST_BOAT, "Boat with Chest");
+        translationBuilder.add(DeeperDarkerBlocks.ANCIENT_VASE, "Ancient Vase");
     }
 }

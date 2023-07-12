@@ -13,7 +13,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 
 public class SculkTendrilsBlock extends AbstractPlantStemBlock {
-    public static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 15, 12);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 15, 12);
 
     protected SculkTendrilsBlock(Settings settings) {
         super(settings, Direction.UP, SHAPE, false, 0.1);
