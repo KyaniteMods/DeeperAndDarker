@@ -12,19 +12,14 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
-import net.fabricmc.fabric.mixin.lookup.BlockEntityTypeAccessor;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.model.Dilation;
-import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.HangingSignBlockEntityRenderer;
 import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
-import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
+import net.minecraft.client.render.entity.model.EntityModel;
 
 public class DeeperDarkerClient implements ClientModInitializer {
 
@@ -40,6 +35,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DeeperDarkerBlocks.SCULK_VINES,
                 DeeperDarkerBlocks.GLOOMY_CACTUS,
                 DeeperDarkerBlocks.GLOOMY_GRASS);
+        BlockRenderLayerMap.INSTANCE.putBlock(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, RenderLayer.getTranslucent());
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.BOAT, (ctx) -> new DeeperDarkerBoatEntityRenderer(ctx, false));
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.CHEST_BOAT, (ctx) -> new DeeperDarkerBoatEntityRenderer(ctx, true));
         BlockEntityRendererFactories.register(DeeperDarkerBlockEntityTypes.HANGING_SIGN, HangingSignBlockEntityRenderer::new);

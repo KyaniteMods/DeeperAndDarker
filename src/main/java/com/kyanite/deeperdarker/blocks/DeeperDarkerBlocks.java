@@ -123,6 +123,7 @@ public class DeeperDarkerBlocks {
     public static final Block GLOOMY_SCULK;
     public static final Block GLOOMY_GEYSER;
     public static final Block ANCIENT_VASE;
+    public static final Block CRYSTALLIZED_AMBER;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -266,6 +267,8 @@ public class DeeperDarkerBlocks {
         GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 9).pistonBehavior(
                 PistonBehavior.DESTROY)));
         ANCIENT_VASE = registerBlock("ancient_vase", new AncientVaseBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.0f, 6.0f)));
+        CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", new TransparentBlock(AbstractBlock.Settings.create().luminance((state) -> 1).mapColor(MapColor.ORANGE).sounds(
+                BlockSoundGroup.GLASS).nonOpaque()));
     }
 
     private static Block registerBlock(String id, Block block) {

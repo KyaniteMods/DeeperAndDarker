@@ -50,7 +50,9 @@ public class DeeperDarkerBoatEntity extends BoatEntity implements IDeeperDarkerB
     }
 
     public String getWoodType() {
-        return this.dataTracker.get(WOOD_TYPE);
+        return switch (this.dataTracker.get(WOOD_TYPE)) {
+            default -> "echo";
+        };
     }
 
     public void setWoodType(String woodType) {

@@ -6,9 +6,15 @@ import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class DeeperDarkerModelProvider extends FabricModelProvider {
     public DeeperDarkerModelProvider(FabricDataOutput output) {
@@ -125,6 +131,15 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.ANCIENT_VASE);
         blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.ANCIENT_VASE, ModelIds.getBlockModelId(DeeperDarkerBlocks.ANCIENT_VASE));
+
+        blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.CRYSTALLIZED_AMBER);
+        registerParented(blockStateModelGenerator, Blocks.HONEY_BLOCK, DeeperDarkerBlocks.CRYSTALLIZED_AMBER,
+                new Pair<>(TextureKey.UP, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_inner")),
+                new Pair<>(TextureKey.SIDE, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_inner")),
+                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_inner")),
+                new Pair<>(TextureKey.DOWN, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_outer")));
+
+        blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.CRYSTALLIZED_AMBER, ModelIds.getBlockModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER));
     }
 
     @Override
@@ -242,5 +257,18 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
             Identifier trimOverlayIdentifier = new Identifier(DeeperDarker.MOD_ID, string2).withPrefixedPath("trims/items/");
             itemModelGenerator.uploadArmor(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
         }
+    }
+
+    @SafeVarargs
+    private static void registerParented(BlockStateModelGenerator blockStateModelGenerator, Block parent, Block child, Pair<TextureKey, Identifier> ... textures) {
+        List<TextureKey> textureKeys = new ArrayList<>();
+        TextureMap textureMap = new TextureMap();
+        for (Pair<TextureKey, Identifier> pair : textures) {
+            textureKeys.add(pair.getLeft());
+            textureMap.put(pair.getLeft(), pair.getRight());
+        }
+        Model parentModel = new Model(Optional.of(ModelIds.getBlockModelId(parent)), Optional.empty(), textureKeys.toArray(new TextureKey[0]));
+
+        parentModel.upload(child, textureMap, blockStateModelGenerator.modelCollector);
     }
 }

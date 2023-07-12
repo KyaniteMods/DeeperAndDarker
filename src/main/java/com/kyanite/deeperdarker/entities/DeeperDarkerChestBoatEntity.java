@@ -51,7 +51,9 @@ public class DeeperDarkerChestBoatEntity extends ChestBoatEntity implements IDee
     }
 
     public String getWoodType() {
-        return this.dataTracker.get(WOOD_TYPE);
+        return switch (this.dataTracker.get(WOOD_TYPE)) {
+            default -> "echo";
+        };
     }
 
     public void setWoodType(String woodType) {

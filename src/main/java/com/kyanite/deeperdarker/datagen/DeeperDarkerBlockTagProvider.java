@@ -92,13 +92,15 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.SCULK_STONE_EMERALD_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE,
-                DeeperDarkerBlocks.ANCIENT_VASE
+                DeeperDarkerBlocks.ANCIENT_VASE,
+                DeeperDarkerBlocks.CRYSTALLIZED_AMBER
         );
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_STONE_IRON_ORE,
                 DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE,
-                DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE
+                DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE,
+                DeeperDarkerBlocks.CRYSTALLIZED_AMBER
         );
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).setReplace(false).add(

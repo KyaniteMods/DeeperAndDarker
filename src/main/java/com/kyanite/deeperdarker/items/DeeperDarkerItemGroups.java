@@ -128,6 +128,7 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.GLOOMY_SCULK));
                 entries.add(new ItemStack(DeeperDarkerItems.GLOOMY_GEYSER));
                 entries.add(new ItemStack(DeeperDarkerItems.ANCIENT_VASE));
+                entries.add(new ItemStack(DeeperDarkerItems.CRYSTALLIZED_AMBER));
             })).build());
 
     public static void init() {
