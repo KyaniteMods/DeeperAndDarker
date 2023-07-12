@@ -31,6 +31,7 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_LOG));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_WOOD));
                 entries.add(new ItemStack(DeeperDarkerItems.STRIPPED_ECHO_LOG));
+                entries.add(new ItemStack(DeeperDarkerItems.STRIPPED_ECHO_WOOD));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_BUTTON));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_DOOR));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_FENCE_GATE));
