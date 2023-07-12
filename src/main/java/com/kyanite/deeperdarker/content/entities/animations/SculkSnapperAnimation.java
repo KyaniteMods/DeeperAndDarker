@@ -64,7 +64,7 @@ public class SculkSnapperAnimation {
             .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -2.5f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
 
-    public static final AnimationDefinition ATTACK = AnimationDefinition.Builder.withLength(0.5f)
+    public static final AnimationDefinition BITE = AnimationDefinition.Builder.withLength(0.5f)
             .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(-2.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,

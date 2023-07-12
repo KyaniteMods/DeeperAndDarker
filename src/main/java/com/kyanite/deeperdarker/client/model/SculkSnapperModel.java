@@ -57,7 +57,8 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
 		this.animateWalk(SculkSnapperAnimation.WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks, 1f);
+		this.animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks);
+		this.animate(entity.attackState, SculkSnapperAnimation.BITE, ageInTicks);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {
