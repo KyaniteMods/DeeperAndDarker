@@ -22,8 +22,6 @@ public class ENLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
 
-//        add("entity." + DeeperDarker.MOD_ID + ".deeper_darker_chest_boat", "Boat with Chest");
-
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
