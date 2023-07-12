@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.entities;
 
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import net.minecraft.block.WoodType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -17,25 +18,25 @@ public class DeeperDarkerBoatEntity extends BoatEntity implements IDeeperDarkerB
         super(entityType, world);
     }
 
-    public DeeperDarkerBoatEntity(World world, double x, double y, double z, String woodType) {
+    public DeeperDarkerBoatEntity(World world, double x, double y, double z, DeeperDarkerBoatTypes woodType) {
         super(DeeperDarkerEntityTypes.BOAT, world);
         this.setPosition(x, y, z);
         this.prevX = x;
         this.prevY = y;
         this.prevZ = z;
-        this.dataTracker.set(WOOD_TYPE, woodType);
+        this.dataTracker.set(WOOD_TYPE, woodType.getName());
     }
 
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(WOOD_TYPE, "echo");
+        this.dataTracker.startTracking(WOOD_TYPE, DeeperDarkerBoatTypes.ECHO.getName());
     }
 
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putString("Type", this.getWoodType());
+        nbt.putString("Type", this.getWoodType().getName());
     }
 
     @Override
@@ -49,13 +50,21 @@ public class DeeperDarkerBoatEntity extends BoatEntity implements IDeeperDarkerB
         return DeeperDarkerItems.ECHO_BOAT;
     }
 
-    public String getWoodType() {
+    public DeeperDarkerBoatTypes getWoodType() {
         return switch (this.dataTracker.get(WOOD_TYPE)) {
-            default -> "echo";
+            default -> DeeperDarkerBoatTypes.ECHO;
         };
     }
 
     public void setWoodType(String woodType) {
         this.dataTracker.set(WOOD_TYPE, woodType);
+    }
+
+    public void setWoodType(DeeperDarkerBoatTypes boatType) {
+        this.dataTracker.set(WOOD_TYPE, boatType.getName());
+    }
+
+    public void setWoodType(WoodType woodType) {
+        this.dataTracker.set(WOOD_TYPE, DeeperDarkerBoatTypes.getFromWoodType(woodType).getName());
     }
 }

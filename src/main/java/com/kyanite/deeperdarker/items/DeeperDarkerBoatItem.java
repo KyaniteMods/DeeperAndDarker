@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.items;
 
 import com.kyanite.deeperdarker.entities.DeeperDarkerBoatEntity;
+import com.kyanite.deeperdarker.entities.DeeperDarkerBoatTypes;
 import com.kyanite.deeperdarker.entities.DeeperDarkerChestBoatEntity;
+import com.kyanite.deeperdarker.entities.IDeeperDarkerBoatEntity;
 import net.minecraft.block.WoodType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,12 +27,12 @@ import java.util.function.Predicate;
 
 public class DeeperDarkerBoatItem extends BoatItem {
     private static final Predicate<Entity> RIDERS = EntityPredicates.EXCEPT_SPECTATOR.and(Entity::canHit);
-    private final String WOOD_TYPE;
+    private final DeeperDarkerBoatTypes WOOD_TYPE;
     private final boolean chest;
 
-    public DeeperDarkerBoatItem(boolean chest, WoodType type, Settings settings) {
+    public DeeperDarkerBoatItem(boolean chest, DeeperDarkerBoatTypes type, Settings settings) {
         super(chest, BoatEntity.Type.MANGROVE, settings);
-        this.WOOD_TYPE = type.name().split(":")[1];
+        this.WOOD_TYPE = type;
         this.chest = chest;
     }
 
@@ -53,11 +55,7 @@ public class DeeperDarkerBoatItem extends BoatItem {
         }
         if (((HitResult)hitResult).getType() == HitResult.Type.BLOCK) {
             BoatEntity boatEntity = this.createEntity(world, hitResult);
-            if (boatEntity instanceof DeeperDarkerChestBoatEntity) {
-                ((DeeperDarkerChestBoatEntity)boatEntity).setWoodType(WOOD_TYPE);
-            } else {
-                ((DeeperDarkerBoatEntity)boatEntity).setWoodType(WOOD_TYPE);
-            }
+            ((IDeeperDarkerBoatEntity)boatEntity).setWoodType(WOOD_TYPE);
             boatEntity.setYaw(user.getYaw());
             if (!world.isSpaceEmpty(boatEntity, boatEntity.getBoundingBox())) {
                 return TypedActionResult.fail(itemStack);

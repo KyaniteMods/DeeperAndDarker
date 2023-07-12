@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.entities.DeeperDarkerBoatTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -252,8 +253,8 @@ public class DeeperDarkerItems {
         GLOOMY_GRASS = registerItem("gloomy_grass", new BlockItem(DeeperDarkerBlocks.GLOOMY_GRASS, new Item.Settings()));
         GLOOMY_SCULK = registerItem("gloomy_sculk", new BlockItem(DeeperDarkerBlocks.GLOOMY_SCULK, new Item.Settings()));
         GLOOMY_GEYSER = registerItem("gloomy_geyser", new BlockItem(DeeperDarkerBlocks.GLOOMY_GEYSER, new Item.Settings()));
-        ECHO_BOAT = registerItem("echo_boat", new DeeperDarkerBoatItem(false, DeeperDarkerBlocks.ECHO_WOOD_TYPE, new Item.Settings().maxCount(1)));
-        ECHO_CHEST_BOAT = registerItem("echo_chest_boat", new DeeperDarkerBoatItem(true, DeeperDarkerBlocks.ECHO_WOOD_TYPE, new Item.Settings().maxCount(1)));
+        ECHO_BOAT = registerItem("echo_boat", new DeeperDarkerBoatItem(false, DeeperDarkerBoatTypes.ECHO, new Item.Settings().maxCount(1)));
+        ECHO_CHEST_BOAT = registerItem("echo_chest_boat", new DeeperDarkerBoatItem(true, DeeperDarkerBoatTypes.ECHO, new Item.Settings().maxCount(1)));
         ANCIENT_VASE = registerItem("ancient_vase", new BlockItem(DeeperDarkerBlocks.ANCIENT_VASE, new Item.Settings()));
         CRYSTALLIZED_AMBER = registerItem("crystallized_amber", new BlockItem(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, new Item.Settings()));
     }

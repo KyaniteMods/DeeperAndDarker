@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.client.entity.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.entity.model.DeeperDarkerModelLayers;
 import com.kyanite.deeperdarker.entities.DeeperDarkerBoatEntity;
+import com.kyanite.deeperdarker.entities.DeeperDarkerBoatTypes;
 import com.kyanite.deeperdarker.entities.DeeperDarkerChestBoatEntity;
 import com.kyanite.deeperdarker.entities.IDeeperDarkerBoatEntity;
 import net.minecraft.client.model.ModelPart;
@@ -27,12 +28,13 @@ import java.util.Map;
 
 
 public class DeeperDarkerBoatEntityRenderer extends EntityRenderer<BoatEntity> {
-    private final Map<String, Pair<Identifier, CompositeEntityModel<BoatEntity>>> texturesAndModels = new HashMap<>();
+    private final Map<DeeperDarkerBoatTypes, Pair<Identifier, CompositeEntityModel<BoatEntity>>> texturesAndModels = new HashMap<>();
     private final boolean HAS_CHEST;
 
     public DeeperDarkerBoatEntityRenderer(EntityRendererFactory.Context ctx, boolean chest) {
         super(ctx);
-        this.texturesAndModels.put("echo", new Pair<>(getTextureId("echo", chest), this.createBoatModel(ctx, chest)));
+        this.texturesAndModels.put(
+                DeeperDarkerBoatTypes.ECHO, new Pair<>(getTextureId(DeeperDarkerBoatTypes.ECHO.getName(), chest), this.createBoatModel(ctx, chest)));
         this.HAS_CHEST = chest;
     }
 
@@ -56,7 +58,6 @@ public class DeeperDarkerBoatEntityRenderer extends EntityRenderer<BoatEntity> {
 
     @Override
     public void render(BoatEntity boatEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        float k;
         matrixStack.push();
         matrixStack.translate(0.0f, 0.375f, 0.0f);
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f - f));
@@ -68,7 +69,7 @@ public class DeeperDarkerBoatEntityRenderer extends EntityRenderer<BoatEntity> {
         if (h > 0.0f) {
             matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.sin(h) * h * j / 10.0f * (float)boatEntity.getDamageWobbleSide()));
         }
-        if (!MathHelper.approximatelyEquals(k = boatEntity.interpolateBubbleWobble(g), 0.0f)) {
+        if (!MathHelper.approximatelyEquals(boatEntity.interpolateBubbleWobble(g), 0.0f)) {
             matrixStack.multiply(new Quaternionf().setAngleAxis(boatEntity.interpolateBubbleWobble(g) * ((float)Math.PI / 180), 1.0f, 0.0f, 1.0f));
         }
         Pair<Identifier, CompositeEntityModel<BoatEntity>> pair = this.texturesAndModels.get(((IDeeperDarkerBoatEntity)boatEntity).getWoodType());

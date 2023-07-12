@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.entities;
 
+import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import net.minecraft.block.WoodType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -9,7 +11,10 @@ import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.world.World;
+
+import java.util.IllegalFormatException;
 
 public class DeeperDarkerChestBoatEntity extends ChestBoatEntity implements IDeeperDarkerBoatEntity {
     private static final TrackedData<String> WOOD_TYPE = DataTracker.registerData(DeeperDarkerChestBoatEntity.class, TrackedDataHandlerRegistry.STRING);
@@ -18,25 +23,25 @@ public class DeeperDarkerChestBoatEntity extends ChestBoatEntity implements IDee
         super(entityType, world);
     }
 
-    public DeeperDarkerChestBoatEntity(World world, double x, double y, double z, String woodType) {
+    public DeeperDarkerChestBoatEntity(World world, double x, double y, double z, DeeperDarkerBoatTypes woodType) {
         super(DeeperDarkerEntityTypes.CHEST_BOAT, world);
         this.setPosition(x, y, z);
         this.prevX = x;
         this.prevY = y;
         this.prevZ = z;
-        this.dataTracker.set(WOOD_TYPE, woodType);
+        this.dataTracker.set(WOOD_TYPE, woodType.getName());
     }
 
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(WOOD_TYPE, "echo");
+        this.dataTracker.startTracking(WOOD_TYPE, DeeperDarkerBoatTypes.ECHO.getName());
     }
 
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putString("Type", this.getWoodType());
+        nbt.putString("Type", this.getWoodType().getName());
     }
 
     @Override
@@ -50,13 +55,21 @@ public class DeeperDarkerChestBoatEntity extends ChestBoatEntity implements IDee
         return DeeperDarkerItems.ECHO_CHEST_BOAT;
     }
 
-    public String getWoodType() {
+    public DeeperDarkerBoatTypes getWoodType() {
         return switch (this.dataTracker.get(WOOD_TYPE)) {
-            default -> "echo";
+            default -> DeeperDarkerBoatTypes.ECHO;
         };
     }
 
     public void setWoodType(String woodType) {
         this.dataTracker.set(WOOD_TYPE, woodType);
+    }
+
+    public void setWoodType(DeeperDarkerBoatTypes boatType) {
+        this.dataTracker.set(WOOD_TYPE, boatType.getName());
+    }
+
+    public void setWoodType(WoodType woodType) {
+        this.dataTracker.set(WOOD_TYPE, DeeperDarkerBoatTypes.getFromWoodType(woodType).getName());
     }
 }
