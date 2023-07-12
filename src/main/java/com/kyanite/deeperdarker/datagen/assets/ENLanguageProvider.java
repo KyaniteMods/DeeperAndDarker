@@ -2,7 +2,10 @@ package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.entities.DDBoat;
+import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.WallHangingSignBlock;
@@ -19,7 +22,7 @@ public class ENLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
 
-        add("entity." + DeeperDarker.MOD_ID + ".deeper_darker_chest_boat", "Boat with Chest");
+//        add("entity." + DeeperDarker.MOD_ID + ".deeper_darker_chest_boat", "Boat with Chest");
 
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
@@ -40,6 +43,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));
+        DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
     }
 
     private void add(RegistryObject<?> entry, String prefix) {
@@ -49,7 +53,7 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private boolean filter(RegistryObject<?> entry) {
-        return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock;
+        return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat;
     }
 
     private String convertToName(String key) {
@@ -62,9 +66,10 @@ public class ENLanguageProvider extends LanguageProvider {
         }
 
         String name = builder.toString();
-        if(name.contains("Chest")) name = name.replace("Chest ", "") + " With Chest";
+        if(name.contains("Chest ")) name = name.replace("Chest ", "") + " With Chest";
         if(name.contains("Lapis")) name = name.replace("Lapis", "Lapis Lazuli");
         if(name.contains("Of The")) name = name.replace("Of The", "of the");
+        if(name.contains("With")) name = name.replace("With", "with");
 
         return name;
     }

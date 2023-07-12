@@ -21,7 +21,7 @@ public class DDBoat extends Boat {
     }
 
     public DDBoat(Level level, double x, double y, double z, String woodType) {
-        this(DDEntities.DEEPER_DARKER_BOAT.get(), level);
+        this(DDEntities.BOAT.get(), level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;

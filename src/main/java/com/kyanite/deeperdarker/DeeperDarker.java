@@ -61,8 +61,8 @@ public class DeeperDarker {
 
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
-        EntityRenderers.register(DDEntities.DEEPER_DARKER_BOAT.get(), (context) -> new DDBoatRenderer(context, false));
-        EntityRenderers.register(DDEntities.DEEPER_DARKER_CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+        EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
+        EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
 
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
     }

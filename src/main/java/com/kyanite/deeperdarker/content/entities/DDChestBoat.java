@@ -22,7 +22,7 @@ public class DDChestBoat extends ChestBoat {
     }
 
     public DDChestBoat(Level level, double x, double y, double z, String woodType) {
-        this(DDEntities.DEEPER_DARKER_CHEST_BOAT.get(), level);
+        this(DDEntities.CHEST_BOAT.get(), level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;
