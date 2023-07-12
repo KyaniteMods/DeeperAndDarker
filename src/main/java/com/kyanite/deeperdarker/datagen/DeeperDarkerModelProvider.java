@@ -172,6 +172,8 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.GLOOMSLATE_TILE_WALL), TextureMap.all(DeeperDarkerBlocks.GLOOMSLATE_TILES), itemModelGenerator.writer);
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.SMOOTH_GLOOMSLATE), itemModelGenerator.writer);
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.CUT_GLOOMSLATE), itemModelGenerator.writer);
+        itemModelGenerator.register(DeeperDarkerItems.ECHO_BOAT, Models.GENERATED);
+        itemModelGenerator.register(DeeperDarkerItems.ECHO_CHEST_BOAT, Models.GENERATED);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {

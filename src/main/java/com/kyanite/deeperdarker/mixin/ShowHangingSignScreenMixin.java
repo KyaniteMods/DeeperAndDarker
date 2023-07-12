@@ -19,10 +19,11 @@ public class ShowHangingSignScreenMixin {
         MinecraftClient client();
     }
 
-    @Inject(method = "openEditSignScreen", at = @At("TAIL"))
+    @Inject(method = "openEditSignScreen", at = @At("HEAD"), cancellable = true)
     public void openEditSignScreen(SignBlockEntity sign, boolean front, CallbackInfo ci) {
         if (sign instanceof DeeperDarkerHangingSignBlockEntity deeperDarkerHangingSignBlockEntity) {
             ((ClientAccessor)((ClientPlayerEntity)(Object)this)).client().setScreen(new HangingSignEditScreen(deeperDarkerHangingSignBlockEntity, front, ((ClientAccessor)((ClientPlayerEntity)(Object)this)).client().shouldFilterText()));
+            ci.cancel();
         }
     }
 }

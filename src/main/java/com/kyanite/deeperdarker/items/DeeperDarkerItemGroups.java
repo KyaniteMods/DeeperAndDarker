@@ -44,6 +44,8 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_SLAB));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_STAIRS));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_TRAPDOOR));
+                entries.add(new ItemStack(DeeperDarkerItems.ECHO_BOAT));
+                entries.add(new ItemStack(DeeperDarkerItems.ECHO_CHEST_BOAT));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_STAIRS));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_SLAB));

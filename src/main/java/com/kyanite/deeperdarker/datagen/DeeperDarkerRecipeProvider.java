@@ -99,6 +99,8 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
         NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_hoe_to_warden_hoe_upgrade"));
         offerPlanksRecipe(exporter, DeeperDarkerItems.ECHO_PLANKS, TagKey.of(
                 RegistryKeys.ITEM, new Identifier(DeeperDarker.MOD_ID, "echo_logs")), 4);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.ECHO_WOOD, 3).input('L', DeeperDarkerItems.ECHO_LOG).pattern("LL").pattern("LL").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_LOG), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_LOG)).offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.STRIPPED_ECHO_WOOD, 3).input('L', DeeperDarkerItems.STRIPPED_ECHO_LOG).pattern("LL").pattern("LL").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_LOG), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_LOG)).offerTo(exporter);
         offerSingleOutputShapelessRecipe(exporter, DeeperDarkerItems.ECHO_BUTTON, DeeperDarkerItems.ECHO_PLANKS, "wooden_button");
         createDoorRecipe(DeeperDarkerItems.ECHO_DOOR, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
         createFenceGateRecipe(DeeperDarkerItems.ECHO_FENCE_GATE, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
@@ -239,25 +241,28 @@ public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
 
         offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CHISELED_GLOOMSLATE, DeeperDarkerItems.GLOOMSLATE_BRICK_SLAB);
 
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COAL, 0.1f, 200, "coal");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COAL, 0.1f, 100, "coal");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.BUILDING_BLOCKS, Items.REDSTONE, 0.7f, 200, "redstone");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.BUILDING_BLOCKS, Items.REDSTONE, 0.7f, 100, "redstone");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.EMERALD, 1.0f, 200, "emerald");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.BUILDING_BLOCKS, Items.EMERALD, 1.0f, 100, "emerald");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.BUILDING_BLOCKS, Items.LAPIS_LAZULI, 0.2f, 200, "lapis_lazuli");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.BUILDING_BLOCKS, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 200, "diamond");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.BUILDING_BLOCKS, Items.DIAMOND, 1.0f, 100, "diamond");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 200, "coal");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 100, "coal");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.MISC, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.MISC, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.MISC, Items.REDSTONE, 0.7f, 200, "redstone");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.MISC, Items.REDSTONE, 0.7f, 100, "redstone");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.MISC, Items.EMERALD, 1.0f, 200, "emerald");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.MISC, Items.EMERALD, 1.0f, 100, "emerald");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 200, "lapis_lazuli");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 200, "diamond");
+        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 100, "diamond");
 
-        offerSmelting(exporter, List.of(DeeperDarkerItems.GRIME_BALL), RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
+        offerSmelting(exporter, List.of(DeeperDarkerItems.GRIME_BALL), RecipeCategory.MISC, DeeperDarkerItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).input('D', Items.DIAMOND).input('U', DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).input('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).input('D', Items.DIAMOND).input('U', DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).input('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).offerTo(exporter);
+
+        offerBoatRecipe(exporter, DeeperDarkerItems.ECHO_BOAT, DeeperDarkerItems.ECHO_PLANKS);
+        offerChestBoatRecipe(exporter, DeeperDarkerItems.ECHO_CHEST_BOAT, DeeperDarkerItems.ECHO_PLANKS);
     }
 }

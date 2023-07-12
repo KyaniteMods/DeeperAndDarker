@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.datagen;
 
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -136,5 +137,9 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerBlocks.GLOOMY_GRASS, "Gloomy Grass");
         translationBuilder.add(DeeperDarkerBlocks.GLOOMY_SCULK, "Gloomy Sculk");
         translationBuilder.add(DeeperDarkerBlocks.GLOOMY_GEYSER, "Gloomy Geyser");
+        translationBuilder.add(DeeperDarkerItems.ECHO_BOAT, "Echo Boat");
+        translationBuilder.add(DeeperDarkerItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
+        translationBuilder.add(DeeperDarkerEntityTypes.BOAT, "Boat");
+        translationBuilder.add(DeeperDarkerEntityTypes.CHEST_BOAT, "Boat with Chest");
     }
 }
