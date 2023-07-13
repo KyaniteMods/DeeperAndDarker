@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.content.blocks;
+package com.kyanite.deeperdarker.content.blocks.flammable;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
