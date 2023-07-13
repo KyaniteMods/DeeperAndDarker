@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -52,6 +53,11 @@ public class SculkSnapper extends TamableAnimal {
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
+    @Override
+    public boolean isInvulnerableTo(DamageSource pSource) {
+        return (this.hasPose(Pose.DIGGING) || this.hasPose(Pose.EMERGING)) && !pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || super.isInvulnerableTo(pSource);
+    }
+
     public static AttributeSupplier createAttributes() {
         return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 12).add(Attributes.ATTACK_DAMAGE, 3).add(Attributes.MOVEMENT_SPEED, 0.3).build();
     }
@@ -76,7 +82,7 @@ public class SculkSnapper extends TamableAnimal {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(SNIFF_COUNTER, getRandom().nextInt(160, 400));
+        this.entityData.define(SNIFF_COUNTER, getRandom().nextInt(180, 400));
     }
 
     @Override
@@ -85,7 +91,7 @@ public class SculkSnapper extends TamableAnimal {
 
         if(level().isClientSide()) {
             if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextInt(50) + 50;
+                this.idleTimeout = this.random.nextInt(40, 120);
                 this.idleState.start(this.tickCount);
             } else {
                 this.idleTimeout--;
@@ -95,13 +101,15 @@ public class SculkSnapper extends TamableAnimal {
                 this.entityData.set(SNIFF_COUNTER, this.entityData.get(SNIFF_COUNTER) - 1);
                 if(this.entityData.get(SNIFF_COUNTER) % 20 == 0) System.out.println("sniff == " + this.entityData.get(SNIFF_COUNTER) / 20);
 
-                if(this.entityData.get(SNIFF_COUNTER) < 1) {
+                if(this.entityData.get(SNIFF_COUNTER) == 0) {
                     System.out.println("sniffing");
-                    this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(160, 400));
                     playSound(DDSounds.SNAPPER_SNIFF.get());
                     this.idleState.stop();
                     this.sniffState.start(this.tickCount);
+                }
 
+                if(this.entityData.get(SNIFF_COUNTER) < -31) {
+                    this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(180, 400));
                     if(findTarget()) {
                         System.out.println(targetPos);
                         this.digState.start(this.tickCount);
