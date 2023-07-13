@@ -23,11 +23,15 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -54,6 +58,7 @@ public class DeeperDarker {
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerLayers);
+        eventBus.addListener(this::registerSpawnPlacements);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
@@ -101,5 +106,10 @@ public class DeeperDarker {
     private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyLayer);
         event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyLayer);
+    }
+
+    private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+        event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
+        event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
     }
 }

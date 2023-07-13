@@ -1,10 +1,5 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground"
-    ]
-  },
+  "carvers": {},
   "downfall": 0.2,
   "effects": {
     "fog_color": 4663576,
@@ -40,20 +35,7 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [
-      {
-        "type": "minecraft:spider",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:phantom",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 3
-      }
-    ],
+    "monster": [],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

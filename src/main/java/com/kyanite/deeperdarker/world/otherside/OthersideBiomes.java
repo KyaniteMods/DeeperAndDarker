@@ -1,12 +1,12 @@
 package com.kyanite.deeperdarker.world.otherside;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.world.DDPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
@@ -40,13 +40,11 @@ public class OthersideBiomes {
 
     private static Biome deeplands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
-        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 8, 2, 4));
-        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 3, 1, 3));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 8, 3, 6));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 2, 1, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         addSculkOres(biomeBuilder);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);
@@ -66,13 +64,11 @@ public class OthersideBiomes {
 
     private static Biome echoingForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
-        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 8, 2, 4));
-        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 3, 1, 3));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 3, 1, 2));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED.get(), 7, 1, 3));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         addSculkOres(biomeBuilder);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);
@@ -91,14 +87,8 @@ public class OthersideBiomes {
     }
 
     private static Biome overcastColumns(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
-        MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
-        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 8, 2, 4));
-        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 3, 1, 3));
-
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND);
 
         Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
@@ -111,7 +101,7 @@ public class OthersideBiomes {
                         .skyColor(calculateSkyColor(0.6f))
                         .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
                         .backgroundMusic(music).build())
-                .mobSpawnSettings(mobSpawnBuilder.build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(biomeBuilder.build()).build();
     }
 

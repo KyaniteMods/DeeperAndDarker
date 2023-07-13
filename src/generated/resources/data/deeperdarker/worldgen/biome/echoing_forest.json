@@ -1,10 +1,5 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground"
-    ]
-  },
+  "carvers": {},
   "downfall": 0.5,
   "effects": {
     "fog_color": 3152448,
@@ -54,16 +49,16 @@
     "misc": [],
     "monster": [
       {
-        "type": "minecraft:spider",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 8
-      },
-      {
-        "type": "minecraft:phantom",
-        "maxCount": 3,
+        "type": "deeperdarker:sculk_snapper",
+        "maxCount": 2,
         "minCount": 1,
         "weight": 3
+      },
+      {
+        "type": "deeperdarker:shattered",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 7
       }
     ],
     "underground_water_creature": [],
