@@ -14,14 +14,10 @@ import net.minecraft.util.Mth;
 public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 	private final ModelPart root;
 	private final ModelPart head;
-	private final ModelPart body;
-	private final ModelPart legs;
 
 	public SculkSnapperModel(ModelPart root) {
 		this.root = root;
 		this.head = root.getChild("root").getChild("body").getChild("head");
-		this.body = root.getChild("root").getChild("body");
-		this.legs = root.getChild("root").getChild("legs");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -73,8 +69,7 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		legs.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		root.getChild("root").render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 
 	@Override

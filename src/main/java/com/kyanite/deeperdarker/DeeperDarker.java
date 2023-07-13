@@ -1,10 +1,13 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.model.SculkSnapperModel;
+import com.kyanite.deeperdarker.client.model.ShatteredModel;
 import com.kyanite.deeperdarker.client.render.DDBoatRenderer;
 import com.kyanite.deeperdarker.client.render.SculkSnapperRenderer;
+import com.kyanite.deeperdarker.client.render.ShatteredRenderer;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.SculkSnapper;
+import com.kyanite.deeperdarker.content.entities.Shattered;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
@@ -65,6 +68,7 @@ public class DeeperDarker {
         EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
 
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
+        EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
     }
 
     private void generateData(GatherDataEvent event) {
@@ -91,9 +95,11 @@ public class DeeperDarker {
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
+        event.put(DDEntities.SHATTERED.get(), Shattered.createAttributes());
     }
 
     private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyLayer);
+        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyLayer);
     }
 }

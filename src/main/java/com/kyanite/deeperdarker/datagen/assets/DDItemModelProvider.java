@@ -154,6 +154,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
+        spawnEggModel(DDItems.SHATTERED_SPAWN_EGG);
     }
 
     private void spawnEggModel(RegistryObject<Item> egg) {
