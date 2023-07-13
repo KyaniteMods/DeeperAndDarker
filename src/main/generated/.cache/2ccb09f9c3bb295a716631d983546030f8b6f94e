@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-12T12:40:13.0482917	Deeper and Darker/Block Loot Tables
+// 1.20.1	2023-07-13T02:52:44.7151453	Deeper and Darker/Block Loot Tables
 baa96be68d85a03c980802642478e61a7afa4032 data\deeperdarker\loot_tables\blocks\sculk_stone_gold_ore.json
 097f61034d2c53785e6b5b93d1e675d1038b7e63 data\deeperdarker\loot_tables\blocks\polished_sculk_stone.json
 9da81cff96f591867c050dc195a59591c0570c6b data\deeperdarker\loot_tables\blocks\echo_fence.json
@@ -23,8 +23,8 @@ ebd25273cdf04dfcf9f1ccba9c863882a87d0b1d data\deeperdarker\loot_tables\blocks\sc
 0bf1e212bab71b78da31aac6e0ff892c47fa0aee data\deeperdarker\loot_tables\blocks\sculk_grime_brick_slab.json
 1b5d52243f06c9bcde35945e6fd878235b253b0d data\deeperdarker\loot_tables\blocks\gloomslate.json
 429a10c3eb331cf3550dca721fbe4c8e7da46a26 data\deeperdarker\loot_tables\blocks\echo_slab.json
-fc15d81ed348ca71e648fa69bcc28be122e8fa8e data\deeperdarker\loot_tables\blocks\sculk_stone_diamond_ore.json
 e3157eea1f415865e488673a6289a3a5755eaff9 data\deeperdarker\loot_tables\blocks\echo_wood.json
+fc15d81ed348ca71e648fa69bcc28be122e8fa8e data\deeperdarker\loot_tables\blocks\sculk_stone_diamond_ore.json
 e47096547eedc8e9c6489234f87bd09dbb855ca8 data\deeperdarker\loot_tables\blocks\gloomy_geyser.json
 56092e8a9b5f36335c183107cc92543a34da815e data\deeperdarker\loot_tables\blocks\echo_log.json
 c6f04c0f91876c8bfd5959c08917d25cf449f405 data\deeperdarker\loot_tables\blocks\gloomy_sculk.json
@@ -44,8 +44,8 @@ ca4313bd7ac88f77fac1c3729406609f2e264ad6 data\deeperdarker\loot_tables\blocks\gl
 fc982950f378464e4de39f62cd19fc1183498cb7 data\deeperdarker\loot_tables\blocks\echo_sign.json
 06596f783c20abfbdcba619f2176513254a035b6 data\deeperdarker\loot_tables\blocks\echo_stairs.json
 d375c4bb020a515e5e1f4aebdfd52622e7ffd721 data\deeperdarker\loot_tables\blocks\sculk_stone_coal_ore.json
-8d08320ab978b379cc874c3d904d5e183c2691dd data\deeperdarker\loot_tables\blocks\smooth_sculk_stone_slab.json
 2567fce7d132638e816ddb4eaaccaf6c82e85ea6 data\deeperdarker\loot_tables\blocks\gloomslate_tiles.json
+8d08320ab978b379cc874c3d904d5e183c2691dd data\deeperdarker\loot_tables\blocks\smooth_sculk_stone_slab.json
 7cd2a61f42f49b84f844eb6bd5faee362c1ca05e data\deeperdarker\loot_tables\blocks\gloomslate_wall.json
 0aa64b072411ce139d0662293505cac66929ff55 data\deeperdarker\loot_tables\blocks\cobbled_sculk_stone_slab.json
 0342dd2aaaeeafb436acc2c92828e977d1e65e2c data\deeperdarker\loot_tables\blocks\ancient_vase.json

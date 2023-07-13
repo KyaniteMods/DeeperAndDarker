@@ -3,7 +3,10 @@
   "package": "com.kyanite.deeperdarker.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin"
+    "ExampleMixin",
+    "SculkTransmitterLinkFromAfarForgingScreenHandlerMixin",
+    "SculkTransmitterLinkFromAfarInventoryMixin",
+    "SculkTransmitterLinkFromAfarScreenHandlerMixin"
   ],
   "client": [
     "ShowHangingSignScreenMixin",

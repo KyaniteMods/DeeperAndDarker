@@ -1,20 +1,22 @@
 package com.kyanite.deeperdarker.datagen;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import com.kyanite.deeperdarker.items.DeeperDarkerSculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class DeeperDarkerModelProvider extends FabricModelProvider {
     public DeeperDarkerModelProvider(FabricDataOutput output) {
@@ -183,6 +185,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.CUT_GLOOMSLATE), itemModelGenerator.writer);
         itemModelGenerator.register(DeeperDarkerItems.ECHO_BOAT, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.ECHO_CHEST_BOAT, Models.GENERATED);
+        registerSculkTransmitter(itemModelGenerator, (DeeperDarkerSculkTransmitterItem)DeeperDarkerItems.SCULK_TRANSMITTER);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {
@@ -257,6 +260,21 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
             Identifier trimOverlayIdentifier = new Identifier(DeeperDarker.MOD_ID, string2).withPrefixedPath("trims/items/");
             itemModelGenerator.uploadArmor(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
         }
+    }
+
+    private static void registerSculkTransmitter(ItemModelGenerator itemModelGenerator, DeeperDarkerSculkTransmitterItem item) {
+        Identifier on = Models.GENERATED.upload(Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/"), TextureMap.layer0(Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/")), itemModelGenerator.writer);
+        JsonObject offJsonObject = Models.GENERATED.createJson(Registries.ITEM.getId(item).withPrefixedPath("item/"),
+                Map.of(TextureKey.LAYER0, Registries.ITEM.getId(item).withPrefixedPath("item/")));
+        JsonArray overrides = new JsonArray();
+        JsonObject override = new JsonObject();
+        JsonObject predicate = new JsonObject();
+        predicate.addProperty(DeeperDarker.MOD_ID + ":linked", 1);
+        override.add("predicate", predicate);
+        override.addProperty("model", Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/").toString());
+        overrides.add(override);
+        offJsonObject.add("overrides", overrides);
+        itemModelGenerator.writer.accept(Registries.ITEM.getId(item).withPrefixedPath("item/"), () -> offJsonObject);
     }
 
     @SafeVarargs

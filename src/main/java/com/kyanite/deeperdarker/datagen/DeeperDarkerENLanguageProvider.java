@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.datagen;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
@@ -143,5 +144,12 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerEntityTypes.CHEST_BOAT, "Boat with Chest");
         translationBuilder.add(DeeperDarkerBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
+        translationBuilder.add(DeeperDarkerItems.SCULK_TRANSMITTER, "Sculk Transmitter");
+        translationBuilder.add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
+        translationBuilder.add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
+        translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
+        translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
+        translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
+        translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
     }
 }

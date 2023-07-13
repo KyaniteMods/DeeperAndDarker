@@ -133,6 +133,7 @@ public class DeeperDarkerItems {
     public static final Item ECHO_CHEST_BOAT;
     public static final Item ANCIENT_VASE;
     public static final Item CRYSTALLIZED_AMBER;
+    public static final Item SCULK_TRANSMITTER;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
@@ -257,6 +258,7 @@ public class DeeperDarkerItems {
         ECHO_CHEST_BOAT = registerItem("echo_chest_boat", new DeeperDarkerBoatItem(true, DeeperDarkerBoatTypes.ECHO, new Item.Settings().maxCount(1)));
         ANCIENT_VASE = registerItem("ancient_vase", new BlockItem(DeeperDarkerBlocks.ANCIENT_VASE, new Item.Settings()));
         CRYSTALLIZED_AMBER = registerItem("crystallized_amber", new BlockItem(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, new Item.Settings()));
+        SCULK_TRANSMITTER = registerItem("sculk_transmitter", new DeeperDarkerSculkTransmitterItem(new Item.Settings().maxCount(1)));
     }
 
     private static Item registerItem(String id, Item item) {

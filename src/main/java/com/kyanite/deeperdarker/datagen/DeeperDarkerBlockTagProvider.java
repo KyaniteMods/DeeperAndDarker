@@ -199,5 +199,9 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
                 DeeperDarkerBlocks.ECHO_SOIL,
                 DeeperDarkerBlocks.GLOOMY_SCULK
         );
+
+        getOrCreateTagBuilder(DeeperDarkerTags.Blocks.NOT_TRANSMITTABLE).setReplace(false).add(
+                Blocks.CHISELED_BOOKSHELF
+        );
     }
 }

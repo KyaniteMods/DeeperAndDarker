@@ -261,7 +261,7 @@ public class DeeperDarkerBlocks {
                 BlockSoundGroup.SCULK).nonOpaque().noCollision().breakInstantly()));
         SCULK_VINES = registerBlock("sculk_vines", new SculkVinesBlock(AbstractBlock.Settings.copy(SCULK_VINES_PLANT).ticksRandomly()));
         GLOOMY_CACTUS = registerBlock("gloomy_cactus", new GloomyCactusBlock(AbstractBlock.Settings.create().strength(0.5f).luminance((state) -> 6).mapColor(MapColor.ORANGE).sounds(
-                BlockSoundGroup.WOOL)));
+                BlockSoundGroup.WOOL).pistonBehavior(PistonBehavior.DESTROY)));
         GLOOMY_GRASS = registerBlock("gloomy_grass", new GloomyGrassBlock(AbstractBlock.Settings.copy(Blocks.GRASS).luminance((state) -> 1)));
         GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
         GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 9).pistonBehavior(

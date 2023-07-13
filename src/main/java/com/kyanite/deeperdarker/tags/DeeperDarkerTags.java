@@ -12,6 +12,8 @@ public class DeeperDarkerTags {
         public static final TagKey<Block> ECHO_LOGS = TagKey.of(
                 RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "gloomy_sculk_replaceable"));
+
+        public static final TagKey<Block> NOT_TRANSMITTABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "not_transmittable"));
     }
 
     public static class Items {
