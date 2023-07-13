@@ -2,12 +2,14 @@ modLoader="javafml"
 loaderVersion="${forge_version_range}"
 license="${mod_license}"
 issueTrackerURL="https://github.com/KyaniteMods/DeeperAndDarker/issues"
+
 [[mods]]
     modId="${mod_id}"
     version="${mod_version}"
     displayName="${mod_name}"
     logoFile="banner.png"
     authors="${mod_authors}"
+    credits="${mod_credits}"
     description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]
