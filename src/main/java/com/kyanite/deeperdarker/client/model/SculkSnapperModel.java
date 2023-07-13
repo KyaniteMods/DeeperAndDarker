@@ -26,7 +26,7 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 
 		PartDefinition root = parts.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.75F, -1.0F));
 
-		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 39).addBox(-3.0F, -1.5F, -3.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 20.5F, 1.5F));
+		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 39).addBox(-3.0F, -1.5F, -3.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.5F, 1.5F));
 		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 13).addBox(-4.5F, -3.0F, -6.0F, 9.0F, 3.0F, 10.0F, new CubeDeformation(0.0F))
 				.texOffs(28, 3).addBox(-4.0F, -5.0F, -5.75F, 8.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
 				.texOffs(28, -5).addBox(4.25F, -5.0F, -5.0F, 0.0F, 2.0F, 8.0F, new CubeDeformation(0.0F))
@@ -40,10 +40,10 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 		jaw.addOrReplaceChild("tendril", CubeListBuilder.create().texOffs(33, 37).addBox(0.0F, -6.0F, -3.0F, 0.0F, 4.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, 0.0F));
 
 		PartDefinition legs = root.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 2.0F));
-		legs.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-1.8F, -0.35F, -0.74F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, 21.6F, -2.75F));
-		legs.addOrReplaceChild("right_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-0.2F, -0.35F, -0.74F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.75F, 21.6F, -2.75F));
-		legs.addOrReplaceChild("left_back_leg", CubeListBuilder.create().texOffs(0, 0).addBox(3.7F, -0.35F, -1.26F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.75F, 21.6F, 1.75F));
-		legs.addOrReplaceChild("right_back_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-5.7F, -0.35F, -1.26F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, 21.6F, 1.75F));
+		legs.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-1.8F, -0.35F, -0.74F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, -3.4F, -2.75F));
+		legs.addOrReplaceChild("right_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-0.2F, -0.35F, -0.74F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.75F, -3.4F, -2.75F));
+		legs.addOrReplaceChild("left_back_leg", CubeListBuilder.create().texOffs(0, 0).addBox(3.7F, -0.35F, -1.26F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.75F, -3.4F, 1.75F));
+		legs.addOrReplaceChild("right_back_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-5.7F, -0.35F, -1.26F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, -3.4F, 1.75F));
 
 		return LayerDefinition.create(mesh, 48, 48);
 	}
