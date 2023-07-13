@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "mixins.deeperdarker.refmap.json",
   "mixins": [
-    "ContainerMixin"
+    "ContainerMenuMixin",
+    "PhantomRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
