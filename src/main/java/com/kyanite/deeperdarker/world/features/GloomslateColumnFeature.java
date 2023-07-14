@@ -31,22 +31,23 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         if(anyObstruction(pContext.level(), origin, columnHeight)) return false;
         if(!state.is(DDBlocks.GLOOMY_SCULK.get())) return false;
         pContext.level().setBlock(origin.below(), Blocks.RED_WOOL.defaultBlockState(), 3);
+        pContext.level().setBlock(origin.above(columnHeight), Blocks.RED_WOOL.defaultBlockState(), 3);
 
         for(int i = 1; i < columnHeight + 1; i++) {
             int newY = origin.getY() + i - 1;
             float percentageToTop = i / ((float) columnHeight + 1);
             BlockPos pos = new BlockPos(origin.getX(), newY, origin.getZ());
 
-            if(percentageToTop >= 0.45f && percentageToTop <= 0.6f) {
+            if(percentageToTop >= 0.35f && percentageToTop <= 0.65f) {
                 pContext.level().setBlock(pos, DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState(), 3);
-            } else if(percentageToTop >= 0.39f && percentageToTop <= 0.66f) {
+            } else if(percentageToTop >= 0.3f && percentageToTop <= 0.7f) {
                 pContext.level().setBlock(pos, DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 3);
             } else {
                 pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
             }
         }
 
-        base(pContext.level(), pContext.random(), origin, columnHeight);
+        columnBase(pContext.level(), pContext.random(), origin, columnHeight);
 
         return true;
     }
@@ -59,40 +60,56 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         return false;
     }
 
-    private void base(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight) {
+    private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight) {
         for(int i = 0; i < 4; i++) {
-            int baseHeight = random.nextInt((int) (0.36 * columnHeight), (int) (0.4 * columnHeight) + 1);
+            int baseHeight = random.nextInt((int) (0.36 * columnHeight), (int) (0.41 * columnHeight) + 1);
             for(int j = 0; j < baseHeight; j++) {
-                level.setBlock(direction(origin.above(j), i, 1), Blocks.CYAN_WOOL.defaultBlockState(), 3);
-            }
-        }
-
-        for(int i = 0; i < 4; i++) {
-            int baseHeight = random.nextInt((int) (0.26 * columnHeight), (int) (0.3 * columnHeight) + 1);
-            for(int j = 0; j < baseHeight; j++) {
-                level.setBlock(direction(origin.above(j), i, 2), Blocks.PURPLE_WOOL.defaultBlockState(), 3);
+                level.setBlock(spread(origin.above(j), i, 1), Blocks.CYAN_WOOL.defaultBlockState(), 3);
             }
         }
 
         for(int i = 0; i < 8; i++) {
-            int baseHeight = random.nextInt((int) (0.15 * columnHeight), (int) (0.22 * columnHeight) + 1);
+            int baseHeight = random.nextInt((int) (0.22 * columnHeight), (int) (0.26 * columnHeight) + 1);
+            if(i > 3) baseHeight *= 0.67;
             for(int j = 0; j < baseHeight; j++) {
-                level.setBlock(direction(origin.above(j), i, 3), Blocks.LIME_WOOL.defaultBlockState(), 3);
+                if(i < 4) level.setBlock(spread(origin.above(j), i, 2), Blocks.PURPLE_WOOL.defaultBlockState(), 3);
+                else level.setBlock(spread(origin.above(j), i, 2), Blocks.PINK_WOOL.defaultBlockState(), 3);
+            }
+        }
+
+        for(int i = 0; i < 8; i++) {
+            int baseHeight = random.nextInt((int) (0.04 * columnHeight), (int) (0.08 * columnHeight) + 1);
+            for(int j = 0; j < baseHeight; j++) {
+                level.setBlock(spread(origin.above(j), i, 3), Blocks.LIME_WOOL.defaultBlockState(), 3);
             }
         }
     }
 
-    private BlockPos direction(BlockPos pos, int index, int loop) {
+    private BlockPos spread(BlockPos pos, int index, int loop) {
         BlockPos basePos = pos;
         for(int i = 0; i < loop; i++) {
             int j = i % 2;
-            if(index > 3 && i != 1) j += 2;
+            if(index > 3 && loop == 2 && i == 0) j++;
+            else if(index > 3 && i != 1) j += 2;
             switch ((index + j) % 4) {
                 default -> basePos = basePos.north();
                 case 1 -> basePos = basePos.east();
                 case 2 -> basePos = basePos.south();
                 case 3 -> basePos = basePos.west();
             }
+            // debug for loop = 2
+            //     i =    0  1
+            //     j =    0  1
+            // index = 0: n, e
+            // index = 1: e, s
+            // index = 2: s, w
+            // index = 3: w, n
+            //     j =    1  1
+            // index = 4: s, s
+            // index = 5: w, w
+            // index = 6: n, n
+            // index = 7: e, e
+
             // debug for loop = 3
             //     i =    0  1  2
             //     j =    0  1  0
