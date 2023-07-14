@@ -26,6 +26,14 @@
     [
       "minecraft:fossil_upper",
       "minecraft:fossil_lower"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "deeperdarker:gloomy_sculk_vegetation"
     ]
   ],
   "has_precipitation": true,

@@ -91,6 +91,7 @@ public class OthersideBiomes {
 
     private static Biome overcastColumns(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GLOOMY_SCULK_VEGETATION);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);

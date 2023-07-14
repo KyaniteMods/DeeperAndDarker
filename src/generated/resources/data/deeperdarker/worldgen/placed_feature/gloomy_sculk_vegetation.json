@@ -1,12 +1,27 @@
 {
-  "feature": "deeperdarker:gloomy_sculk_vegetation",
+  "feature": "deeperdarker:gloomy_sculk_bonemeal",
   "placement": [
     {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+      "type": "minecraft:count",
+      "count": 200
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 256
+        },
+        "min_inclusive": {
+          "above_bottom": 0
+        }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }
