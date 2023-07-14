@@ -134,8 +134,8 @@ public class DDLootTables extends BlockLootSubProvider {
 
         add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS.get());
-        addVineAndPlant(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
         addVineAndPlant(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());
+        addVineAndPlant(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
     }

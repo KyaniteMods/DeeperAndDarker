@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-12T17:04:46.4966922	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2023-07-13T23:22:24.3963016	Tags for minecraft:block mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 8b39a9211759bdc66dd9605eda994a0447adfe0a data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
@@ -14,7 +14,7 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/forge/tags/blocks/ores/emerald.jso
 f58b32d1f7d382f31ab717198403de59cce4117a data/forge/tags/blocks/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/forge/tags/blocks/stone.json
 353e05883557bd5ca39b3b73e78bb9ae3edd0795 data/minecraft/tags/blocks/ceiling_hanging_signs.json
-1a6cc9374308719dcb26ffa23e3877f6ccaf8fba data/minecraft/tags/blocks/climbable.json
+63b044bcc3280227ecffe48e242cddc200acd26c data/minecraft/tags/blocks/climbable.json
 7a4b74abdce816e8af7d3fbee9a671f47543dee9 data/minecraft/tags/blocks/coal_ores.json
 41a19a0eb4b21601199990bcb5dcf7273335667a data/minecraft/tags/blocks/copper_ores.json
 4624747c37a3e46a38723740815f2a4b2b5200c6 data/minecraft/tags/blocks/diamond_ores.json
