@@ -38,6 +38,15 @@
       "deeperdarker:sculk_emerald",
       "deeperdarker:sculk_lapis",
       "deeperdarker:sculk_diamond"
+    ],
+    [
+      "deeperdarker:sculk",
+      "deeperdarker:sculk_gleam"
+    ],
+    [],
+    [
+      "deeperdarker:sculk_tendrils",
+      "deeperdarker:sculk_vines"
     ]
   ],
   "has_precipitation": true,

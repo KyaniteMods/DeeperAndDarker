@@ -14,6 +14,7 @@ import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
+import com.kyanite.deeperdarker.world.DDFeatures;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
@@ -50,6 +51,7 @@ public class DeeperDarker {
         DDBlocks.BLOCKS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
+        DDFeatures.FEATURES.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
