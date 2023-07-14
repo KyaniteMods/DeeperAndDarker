@@ -38,7 +38,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
             float percentageToTop = i / ((float) columnHeight + 1);
             BlockPos pos = new BlockPos(origin.getX(), newY, origin.getZ());
 
-            if(percentageToTop >= 0.35f && percentageToTop <= 0.65f) {
+            if(percentageToTop >= 0.325f && percentageToTop <= 0.675f) {
                 pContext.level().setBlock(pos, DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState(), 3);
             } else if(percentageToTop >= 0.3f && percentageToTop <= 0.7f) {
                 pContext.level().setBlock(pos, DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 3);
@@ -47,7 +47,8 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
             }
         }
 
-        columnBase(pContext.level(), pContext.random(), origin, columnHeight);
+        columnBase(pContext.level(), pContext.random(), origin, columnHeight, true);
+        columnBase(pContext.level(), pContext.random(), origin.above(columnHeight - 1), columnHeight, false);
 
         return true;
     }
@@ -60,11 +61,12 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         return false;
     }
 
-    private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight) {
+    private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight, boolean bottom) {
         for(int i = 0; i < 4; i++) {
             int baseHeight = random.nextInt((int) (0.36 * columnHeight), (int) (0.41 * columnHeight) + 1);
             for(int j = 0; j < baseHeight; j++) {
-                level.setBlock(spread(origin.above(j), i, 1), Blocks.CYAN_WOOL.defaultBlockState(), 3);
+                if(j == baseHeight - 1 && random.nextFloat() < 0.25f) level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 1), Blocks.WHITE_WOOL.defaultBlockState(), 3);
+                else level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 1), Blocks.CYAN_WOOL.defaultBlockState(), 3);
             }
         }
 
@@ -72,15 +74,22 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
             int baseHeight = random.nextInt((int) (0.22 * columnHeight), (int) (0.26 * columnHeight) + 1);
             if(i > 3) baseHeight *= 0.67;
             for(int j = 0; j < baseHeight; j++) {
-                if(i < 4) level.setBlock(spread(origin.above(j), i, 2), Blocks.PURPLE_WOOL.defaultBlockState(), 3);
-                else level.setBlock(spread(origin.above(j), i, 2), Blocks.PINK_WOOL.defaultBlockState(), 3);
+                if(i < 4) {
+                    if(j == baseHeight - 1 && random.nextFloat() < 0.25f) level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 2), Blocks.WHITE_WOOL.defaultBlockState(), 3);
+                    else level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 2), Blocks.PURPLE_WOOL.defaultBlockState(), 3);
+                } else if(columnHeight > 18) {
+                    if(j == baseHeight - 1 && random.nextFloat() < 0.25f) level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 2), Blocks.WHITE_WOOL.defaultBlockState(), 3);
+                    else level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 2), Blocks.PINK_WOOL.defaultBlockState(), 3);
+                }
             }
         }
 
+        if(columnHeight < 19) return;
         for(int i = 0; i < 8; i++) {
             int baseHeight = random.nextInt((int) (0.04 * columnHeight), (int) (0.08 * columnHeight) + 1);
             for(int j = 0; j < baseHeight; j++) {
-                level.setBlock(spread(origin.above(j), i, 3), Blocks.LIME_WOOL.defaultBlockState(), 3);
+                if(j == baseHeight - 1 && random.nextFloat() < 0.25f) level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 3), Blocks.WHITE_WOOL.defaultBlockState(), 3);
+                else level.setBlock(spread(bottom ? origin.above(j) : origin.below(j), i, 3), Blocks.LIME_WOOL.defaultBlockState(), 3);
             }
         }
     }
@@ -97,31 +106,6 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
                 case 2 -> basePos = basePos.south();
                 case 3 -> basePos = basePos.west();
             }
-            // debug for loop = 2
-            //     i =    0  1
-            //     j =    0  1
-            // index = 0: n, e
-            // index = 1: e, s
-            // index = 2: s, w
-            // index = 3: w, n
-            //     j =    1  1
-            // index = 4: s, s
-            // index = 5: w, w
-            // index = 6: n, n
-            // index = 7: e, e
-
-            // debug for loop = 3
-            //     i =    0  1  2
-            //     j =    0  1  0
-            // index = 0: n, e, n
-            // index = 1: e, s, e
-            // index = 2: s, w, s
-            // index = 3: w, n, w
-            //     j =    2  3  2
-            // index = 4: s, e, s
-            // index = 5: w, s, w
-            // index = 6: n, w, n
-            // index = 7: e, n, e
         }
 
         return basePos;
