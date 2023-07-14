@@ -20,6 +20,8 @@ import java.util.Map;
 
 @SuppressWarnings("NullableProblems")
 public class DDBoatRenderer extends BoatRenderer {
+    public static final ModelLayerLocation ECHO_CHEST_BOAT_MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "chest_boat/echo"), "main");
+    public static final ModelLayerLocation ECHO_BOAT_MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "boat/echo"), "main");
     private final Map<String, Pair<ResourceLocation, ListModel<Boat>>> BOAT_RESOURCES;
     private final boolean HAS_CHEST;
 
@@ -30,11 +32,8 @@ public class DDBoatRenderer extends BoatRenderer {
     }
 
     private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, boolean chestBoat) {
-        ModelLayerLocation modellayerlocation = chestBoat ?
-                new ModelLayerLocation(new ResourceLocation("minecraft", "chest_boat/oak"), "main") :
-                new ModelLayerLocation(new ResourceLocation("minecraft", "boat/oak"), "main");
-        ModelPart modelpart = context.bakeLayer(modellayerlocation);
-        return chestBoat ? new ChestBoatModel(modelpart) : new BoatModel(modelpart);
+        ModelPart modelPart = context.bakeLayer(chestBoat ? ECHO_CHEST_BOAT_MODEL : ECHO_BOAT_MODEL);
+        return chestBoat ? new ChestBoatModel(modelPart) : new BoatModel(modelPart);
     }
 
     @Override

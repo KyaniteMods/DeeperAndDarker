@@ -20,7 +20,7 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 		this.head = root.getChild("root");
 	}
 
-	public static LayerDefinition createBodyLayer() {
+	public static LayerDefinition createBodyModel() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
 

@@ -20,7 +20,7 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 		this.head = root.getChild("root").getChild("body").getChild("head");
 	}
 
-	public static LayerDefinition createBodyLayer() {
+	public static LayerDefinition createBodyModel() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
 

@@ -15,6 +15,8 @@ import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
@@ -73,7 +75,6 @@ public class DeeperDarker {
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
         EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
         EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
-
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
     }
@@ -106,8 +107,10 @@ public class DeeperDarker {
     }
 
     private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyLayer);
-        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyLayer);
+        event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
+        event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
+        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
     }
 
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
