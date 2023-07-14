@@ -15,6 +15,7 @@ import java.util.List;
 
 public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_GLEAM = createKey("sculk_gleam");
+    public static final ResourceKey<PlacedFeature> SCULK_GLEAM_FOREST = createKey("sculk_gleam_forest");
     public static final ResourceKey<PlacedFeature> SCULK_TENDRILS = createKey("sculk_tendrils");
     public static final ResourceKey<PlacedFeature> SCULK_VINES = createKey("sculk_vines");
 
@@ -34,6 +35,7 @@ public class DDPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
         PlacementUtils.register(context, SCULK_GLEAM, features.getOrThrow(DDConfiguredFeatures.SCULK_GLEAM_EXTRA), commonOrePlacement(16, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, SCULK_GLEAM_FOREST, features.getOrThrow(DDConfiguredFeatures.SCULK_GLEAM_EXTRA), commonOrePlacement(28, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_TENDRILS, features.getOrThrow(DDConfiguredFeatures.SCULK_TENDRILS), commonOrePlacement(42, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_VINES, features.getOrThrow(DDConfiguredFeatures.SCULK_VINES), commonOrePlacement(36, PlacementUtils.FULL_RANGE));
 
