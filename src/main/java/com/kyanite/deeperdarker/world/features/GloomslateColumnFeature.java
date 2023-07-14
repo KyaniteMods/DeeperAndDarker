@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,6 +20,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
         BlockPos origin = pContext.origin();
+        RandomSource random = pContext.random();
         int columnHeight = 0;
         while(true) {
             BlockPos pos = new BlockPos(origin.getX(), origin.getY() + columnHeight + 1, origin.getZ());
@@ -33,25 +35,35 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         pContext.level().setBlock(origin.below(), Blocks.RED_WOOL.defaultBlockState(), 3);
         pContext.level().setBlock(origin.above(columnHeight), Blocks.RED_WOOL.defaultBlockState(), 3);
 
-        boolean solid = columnHeight * 0.675f - columnHeight * 0.325f < 7;
+        int amberLength = (int) (columnHeight * 0.35f);
+        int gapSize = 0;
+        boolean incomplete = random.nextFloat() < 0.3f;
+        if(amberLength > 9) gapSize = BiasedToBottomInt.of(2, amberLength - 7).sample(random);
+        int gapStart = (amberLength - gapSize) / 2;
+        int gapPlacement = 0;
+
         for(int i = 1; i < columnHeight + 1; i++) {
             int newY = origin.getY() + i - 1;
             float percentageToTop = i / ((float) columnHeight + 1);
             BlockPos pos = new BlockPos(origin.getX(), newY, origin.getZ());
 
             if(percentageToTop >= 0.325f && percentageToTop <= 0.675f) {
-                if(solid) pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
+                if(amberLength < 7) pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
+                else if(amberLength > 9 && incomplete) {
+                    if(gapPlacement < gapStart || gapPlacement > gapStart + gapSize) pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
+                    gapPlacement++;
+                }
                 else pContext.level().setBlock(pos, DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState(), 3);
-            } else if(!solid && percentageToTop >= 0.3f && percentageToTop <= 0.7f) {
+            } else if(amberLength > 6 && !incomplete && percentageToTop >= 0.3f && percentageToTop <= 0.7f) {
                 pContext.level().setBlock(pos, DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 3);
             } else {
                 pContext.level().setBlock(pos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
             }
         }
 
-        double multiplier = solid ? 1.2 : 1;
-        columnBase(pContext.level(), pContext.random(), origin, columnHeight, multiplier, true);
-        columnBase(pContext.level(), pContext.random(), origin.above(columnHeight - 1), columnHeight, multiplier, false);
+        double multiplier = amberLength < 7 ? 1.2 : amberLength > 9 && incomplete ? 0.92 : 1;
+        columnBase(pContext.level(), random, origin, columnHeight, multiplier, true);
+        columnBase(pContext.level(), random, origin.above(columnHeight - 1), columnHeight, multiplier, false);
 
         return true;
     }
