@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.world.DDPlacedFeatures;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -83,6 +84,7 @@ public class OthersideBiomes {
                         .waterFogColor(0x39195e)
                         .fogColor(0x301a40)
                         .skyColor(calculateSkyColor(0.3f))
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.04f))
                         .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
                         .backgroundMusic(music).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
@@ -104,6 +106,7 @@ public class OthersideBiomes {
                         .waterFogColor(0x362319)
                         .fogColor(0x472918)
                         .skyColor(calculateSkyColor(0.6f))
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.026f))
                         .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
                         .backgroundMusic(music).build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
