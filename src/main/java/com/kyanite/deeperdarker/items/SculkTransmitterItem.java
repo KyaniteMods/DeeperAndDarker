@@ -2,9 +2,7 @@ package com.kyanite.deeperdarker.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.tags.DeeperDarkerTags;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.block.entity.ChiseledBookshelfBlockEntity;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -25,10 +23,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DeeperDarkerSculkTransmitterItem extends Item {
+public class SculkTransmitterItem extends Item {
     private BlockPos linkedPos;
 
-    public DeeperDarkerSculkTransmitterItem(Settings settings) {
+    public SculkTransmitterItem(Settings settings) {
         super(settings);
     }
 

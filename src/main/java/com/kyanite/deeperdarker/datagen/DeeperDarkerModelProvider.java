@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
-import com.kyanite.deeperdarker.items.DeeperDarkerSculkTransmitterItem;
+import com.kyanite.deeperdarker.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
@@ -13,8 +13,10 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.registry.Registries;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
+import net.minecraft.util.math.Direction;
 
 import java.util.*;
 
@@ -136,12 +138,22 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.CRYSTALLIZED_AMBER);
         registerParented(blockStateModelGenerator, Blocks.HONEY_BLOCK, DeeperDarkerBlocks.CRYSTALLIZED_AMBER,
-                new Pair<>(TextureKey.UP, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_inner")),
-                new Pair<>(TextureKey.SIDE, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_inner")),
-                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_inner")),
-                new Pair<>(TextureKey.DOWN, new Identifier(DeeperDarker.MOD_ID, "block/crystallized_amber_outer")));
+                new Pair<>(TextureKey.UP, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_inner").withPrefixedPath("block/")),
+                new Pair<>(TextureKey.SIDE, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_inner").withPrefixedPath("block/")),
+                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_inner").withPrefixedPath("block/")),
+                new Pair<>(TextureKey.DOWN, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_outer").withPrefixedPath("block/")));
 
         blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.CRYSTALLIZED_AMBER, ModelIds.getBlockModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER));
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(DeeperDarkerBlocks.OTHERSIDE_PORTAL).coordinate(BlockStateVariantMap.create(
+                Properties.HORIZONTAL_AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ns").withPrefixedPath("block/")))
+                .register(Direction.Axis.Z, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ew").withPrefixedPath("block/")))));
+        registerParented(blockStateModelGenerator, ModelIds.getBlockSubModelId(Blocks.NETHER_PORTAL, "_ew"), ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ew"),
+                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")),
+                new Pair<>(TextureKey.of("portal"), new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")));
+        registerParented(blockStateModelGenerator, ModelIds.getBlockSubModelId(Blocks.NETHER_PORTAL, "_ns"), ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ns"),
+                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")),
+                new Pair<>(TextureKey.of("portal"), new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")));
     }
 
     @Override
@@ -185,7 +197,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         Models.WALL_INVENTORY.upload(ModelIds.getItemModelId(DeeperDarkerItems.CUT_GLOOMSLATE_WALL), TextureMap.all(DeeperDarkerBlocks.CUT_GLOOMSLATE), itemModelGenerator.writer);
         itemModelGenerator.register(DeeperDarkerItems.ECHO_BOAT, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.ECHO_CHEST_BOAT, Models.GENERATED);
-        registerSculkTransmitter(itemModelGenerator, (DeeperDarkerSculkTransmitterItem)DeeperDarkerItems.SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DeeperDarkerItems.SCULK_TRANSMITTER);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {
@@ -262,7 +274,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         }
     }
 
-    private static void registerSculkTransmitter(ItemModelGenerator itemModelGenerator, DeeperDarkerSculkTransmitterItem item) {
+    private static void registerSculkTransmitter(ItemModelGenerator itemModelGenerator, SculkTransmitterItem item) {
         Identifier on = Models.GENERATED.upload(Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/"), TextureMap.layer0(Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/")), itemModelGenerator.writer);
         JsonObject offJsonObject = Models.GENERATED.createJson(Registries.ITEM.getId(item).withPrefixedPath("item/"),
                 Map.of(TextureKey.LAYER0, Registries.ITEM.getId(item).withPrefixedPath("item/")));
@@ -286,6 +298,45 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
             textureMap.put(pair.getLeft(), pair.getRight());
         }
         Model parentModel = new Model(Optional.of(ModelIds.getBlockModelId(parent)), Optional.empty(), textureKeys.toArray(new TextureKey[0]));
+
+        parentModel.upload(child, textureMap, blockStateModelGenerator.modelCollector);
+    }
+
+    @SafeVarargs
+    private static void registerParented(BlockStateModelGenerator blockStateModelGenerator, Identifier parent, Block child, Pair<TextureKey, Identifier> ... textures) {
+        List<TextureKey> textureKeys = new ArrayList<>();
+        TextureMap textureMap = new TextureMap();
+        for (Pair<TextureKey, Identifier> pair : textures) {
+            textureKeys.add(pair.getLeft());
+            textureMap.put(pair.getLeft(), pair.getRight());
+        }
+        Model parentModel = new Model(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureKey[0]));
+
+        parentModel.upload(child, textureMap, blockStateModelGenerator.modelCollector);
+    }
+
+    @SafeVarargs
+    private static void registerParented(BlockStateModelGenerator blockStateModelGenerator, Block parent, Identifier child, Pair<TextureKey, Identifier> ... textures) {
+        List<TextureKey> textureKeys = new ArrayList<>();
+        TextureMap textureMap = new TextureMap();
+        for (Pair<TextureKey, Identifier> pair : textures) {
+            textureKeys.add(pair.getLeft());
+            textureMap.put(pair.getLeft(), pair.getRight());
+        }
+        Model parentModel = new Model(Optional.of(ModelIds.getBlockModelId(parent)), Optional.empty(), textureKeys.toArray(new TextureKey[0]));
+
+        parentModel.upload(child, textureMap, blockStateModelGenerator.modelCollector);
+    }
+
+    @SafeVarargs
+    private static void registerParented(BlockStateModelGenerator blockStateModelGenerator, Identifier parent, Identifier child, Pair<TextureKey, Identifier> ... textures) {
+        List<TextureKey> textureKeys = new ArrayList<>();
+        TextureMap textureMap = new TextureMap();
+        for (Pair<TextureKey, Identifier> pair : textures) {
+            textureKeys.add(pair.getLeft());
+            textureMap.put(pair.getLeft(), pair.getRight());
+        }
+        Model parentModel = new Model(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureKey[0]));
 
         parentModel.upload(child, textureMap, blockStateModelGenerator.modelCollector);
     }

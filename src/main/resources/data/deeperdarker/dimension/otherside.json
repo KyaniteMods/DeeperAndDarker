@@ -1,0 +1,320 @@
+{
+  "type": "deeperdarker:otherside",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": {
+      "sea_level": 24,
+      "disable_mob_generation": false,
+      "aquifers_enabled": false,
+      "ore_veins_enabled": false,
+      "legacy_random_source": true,
+      "default_block": {
+        "Name": "deeperdarker:sculk_stone"
+      },
+      "default_fluid": {
+        "Name": "minecraft:water",
+        "Properties": {
+          "level": "0"
+        }
+      },
+      "noise": {
+        "min_y": 0,
+        "height": 128,
+        "size_horizontal": 1,
+        "size_vertical": 2
+      },
+      "noise_router": {
+        "barrier": 0,
+        "fluid_level_floodedness": 0,
+        "fluid_level_spread": 0,
+        "lava": 0,
+        "temperature": {
+          "type": "minecraft:shifted_noise",
+          "noise": "minecraft:temperature",
+          "xz_scale": 0.25,
+          "y_scale": 0,
+          "shift_x": "minecraft:shift_x",
+          "shift_y": 0,
+          "shift_z": "minecraft:shift_z"
+        },
+        "vegetation": {
+          "type": "minecraft:shifted_noise",
+          "noise": "minecraft:vegetation",
+          "xz_scale": 0.25,
+          "y_scale": 0,
+          "shift_x": "minecraft:shift_x",
+          "shift_y": 0,
+          "shift_z": "minecraft:shift_z"
+        },
+        "continents": 0,
+        "erosion": 0,
+        "depth": 0,
+        "ridges": 0,
+        "initial_density_without_jaggedness": 0,
+        "final_density": {
+          "type": "minecraft:squeeze",
+          "argument": {
+            "type": "minecraft:mul",
+            "argument1": 25,
+            "argument2": {
+              "type": "minecraft:interpolated",
+              "argument": {
+                "type": "minecraft:blend_density",
+                "argument": {
+                  "type": "minecraft:add",
+                  "argument1": 2.5,
+                  "argument2": {
+                    "type": "minecraft:mul",
+                    "argument1": {
+                      "type": "minecraft:y_clamped_gradient",
+                      "from_y": -8,
+                      "to_y": 24,
+                      "from_value": 0,
+                      "to_value": 1
+                    },
+                    "argument2": {
+                      "type": "minecraft:add",
+                      "argument1": -2.5,
+                      "argument2": {
+                        "type": "minecraft:add",
+                        "argument1": 0.9375,
+                        "argument2": {
+                          "type": "minecraft:mul",
+                          "argument1": {
+                            "type": "minecraft:y_clamped_gradient",
+                            "from_y": 104,
+                            "to_y": 128,
+                            "from_value": 1,
+                            "to_value": 0
+                          },
+                          "argument2": {
+                            "type": "minecraft:add",
+                            "argument1": -0.9375,
+                            "argument2": "minecraft:nether/base_3d_noise"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "vein_toggle": 0,
+        "vein_ridged": 0,
+        "vein_gap": 0
+      },
+      "spawn_target": [],
+      "surface_rule": {
+        "type": "minecraft:sequence",
+        "sequence": [
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:vertical_gradient",
+              "random_name": "minecraft:bedrock_floor",
+              "true_at_and_below": {
+                "above_bottom": 0
+              },
+              "false_at_and_above": {
+                "above_bottom": 5
+              }
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:bedrock"
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:not",
+              "invert": {
+                "type": "minecraft:vertical_gradient",
+                "random_name": "minecraft:bedrock_roof",
+                "true_at_and_below": {
+                  "below_top": 5
+                },
+                "false_at_and_above": {
+                  "below_top": 0
+                }
+              }
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:bedrock"
+              }
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 0,
+              "surface_type": "floor",
+              "add_surface_depth": false,
+              "secondary_depth_range": 0
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:biome",
+                    "biome_is": [
+                      "deeperdarker:overcast_columns"
+                    ]
+                  },
+                  "then_run": {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:not",
+                      "invert": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:netherrack",
+                        "min_threshold": 0.54,
+                        "max_threshold": 2
+                      }
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:y_above",
+                        "anchor": {
+                          "absolute": 20
+                        },
+                        "surface_depth_multiplier": 0,
+                        "add_stone_depth": false
+                      },
+                      "then_run": {
+                        "type": "minecraft:sequence",
+                        "sequence": [
+                          {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                              "type": "minecraft:noise_threshold",
+                              "noise": "minecraft:nether_wart",
+                              "min_threshold": 1.17,
+                              "max_threshold": 1.7976931348623157e+308
+                            },
+                            "then_run": {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "minecraft:red_wool"
+                              }
+                            }
+                          },
+                          {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "deeperdarker:gloom_sculk"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 0,
+              "surface_type": "floor",
+              "add_surface_depth": false,
+              "secondary_depth_range": 0
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:biome",
+                    "biome_is": [
+                      "deeperdarker:blooming_caverns"
+                    ]
+                  },
+                  "then_run": {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:not",
+                      "invert": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:netherrack",
+                        "min_threshold": 0.54,
+                        "max_threshold": 2
+                      }
+                    },
+                    "then_run": {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:y_above",
+                        "anchor": {
+                          "absolute": 20
+                        },
+                        "surface_depth_multiplier": 0,
+                        "add_stone_depth": false
+                      },
+                      "then_run": {
+                        "type": "minecraft:sequence",
+                        "sequence": [
+                          {
+                            "type": "minecraft:condition",
+                            "if_true": {
+                              "type": "minecraft:noise_threshold",
+                              "noise": "minecraft:nether_wart",
+                              "min_threshold": 1.17,
+                              "max_threshold": 1.7976931348623157e+308
+                            },
+                            "then_run": {
+                              "type": "minecraft:block",
+                              "result_state": {
+                                "Name": "minecraft:red_wool"
+                              }
+                            }
+                          },
+                          {
+                            "type": "minecraft:block",
+                            "result_state": {
+                              "Name": "deeperdarker:blooming_grass_block"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "minecraft:plains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0.2,
+            "continentalness": 0.5,
+            "erosion": 0.6,
+            "weirdness": 0.1,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

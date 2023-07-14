@@ -1,0 +1,21 @@
+{
+  "name": "deeperdarker:otherside",
+  "ultrawarm": false,
+  "bed_works": false,
+  "has_skylight": false,
+  "has_ceiling": true,
+  "has_raids": false,
+  "respawn_anchor_works": false,
+  "natural": true,
+  "piglin_safe": true,
+  "coordinate_scale": 1,
+  "ambient_light": 0.05,
+  "fixed_time": 18000,
+  "logical_height": 128,
+  "effects": "minecraft:the_nether",
+  "infiniburn": "#minecraft:infiniburn_nether",
+  "min_y": 0,
+  "height": 128,
+  "monster_spawn_light_level": 11,
+  "monster_spawn_block_light_limit": 9
+}

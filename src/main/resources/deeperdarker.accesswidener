@@ -1,3 +1,6 @@
 accessWidener   v1 named
 accessible class net/minecraft/data/client/ItemModelGenerator$TrimMaterial
 accessible field net/minecraft/data/client/ItemModelGenerator TRIM_MATERIALS Ljava/util/List;
+accessible method net/minecraft/entity/Entity getPortalRect (Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;ZLnet/minecraft/world/border/WorldBorder;)Ljava/util/Optional;
+accessible field net/minecraft/entity/Entity lastNetherPortalPosition Lnet/minecraft/util/math/BlockPos;
+accessible field net/minecraft/entity/Entity netherPortalTime I

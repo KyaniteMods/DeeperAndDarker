@@ -27,7 +27,7 @@ public class AncientVaseBlock extends ExperienceDroppingBlock implements Waterlo
 
     public AncientVaseBlock(Settings settings) {
         super(settings, UniformIntProvider.create(1, 3));
-        this.setDefaultState(this.getDefaultState().with(Properties.WATERLOGGED, true));
+        this.setDefaultState(this.getDefaultState().with(Properties.WATERLOGGED, false));
     }
 
     @Override

@@ -3,13 +3,21 @@ package com.kyanite.deeperdarker.blocks;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerHangingSignBlockEntity;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerSignBlockEntity;
+import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import com.kyanite.deeperdarker.world.dimension.DeeperDarkerWorlds;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
+import net.kyrptonaught.customportalapi.CustomPortalBlock;
+import net.kyrptonaught.customportalapi.event.PortalIgniteEvent;
+import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
+import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.block.sapling.OakSaplingGenerator;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -17,6 +25,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.World;
 
 public class DeeperDarkerBlocks {
     public static final BlockSetType ECHO_BLOCK_SET_TYPE = new BlockSetTypeBuilder().register(new Identifier(DeeperDarker.MOD_ID, "echo"));
@@ -124,6 +133,7 @@ public class DeeperDarkerBlocks {
     public static final Block GLOOMY_GEYSER;
     public static final Block ANCIENT_VASE;
     public static final Block CRYSTALLIZED_AMBER;
+    public static final Block OTHERSIDE_PORTAL;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -269,6 +279,7 @@ public class DeeperDarkerBlocks {
         ANCIENT_VASE = registerBlock("ancient_vase", new AncientVaseBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.0f, 6.0f)));
         CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", new TransparentBlock(AbstractBlock.Settings.create().luminance((state) -> 1).mapColor(MapColor.ORANGE).sounds(
                 BlockSoundGroup.GLASS).nonOpaque()));
+        OTHERSIDE_PORTAL = registerBlock("otherside_portal", new CustomPortalBlock(AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)));
     }
 
     private static Block registerBlock(String id, Block block) {
@@ -279,5 +290,16 @@ public class DeeperDarkerBlocks {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker blocks");
         StrippableBlockRegistry.register(DeeperDarkerBlocks.ECHO_LOG, DeeperDarkerBlocks.STRIPPED_ECHO_LOG);
         StrippableBlockRegistry.register(DeeperDarkerBlocks.ECHO_WOOD, DeeperDarkerBlocks.STRIPPED_ECHO_WOOD);
+        PortalLink portalLink = new PortalLink();
+        portalLink.setPortalBlock((CustomPortalBlock)OTHERSIDE_PORTAL);
+        portalLink.dimID = new Identifier(DeeperDarker.MOD_ID, "otherside");
+        portalLink.portalIgnitionSource = PortalIgnitionSource.ItemUseSource(DeeperDarkerItems.HEART_OF_THE_DEEP);
+        portalLink.setPortalIgniteEvent((player, world, portalPos, framePos, portalIgnitionSource) -> {
+            if (player.getStackInHand(player.getActiveHand()).isOf(DeeperDarkerItems.HEART_OF_THE_DEEP)) {
+                player.getStackInHand(player.getActiveHand()).decrement(1);
+            }
+        });
+        portalLink.colorID = 0xFF003C56;
+        CustomPortalApiRegistry.addPortal(Blocks.REINFORCED_DEEPSLATE, portalLink);
     }
 }

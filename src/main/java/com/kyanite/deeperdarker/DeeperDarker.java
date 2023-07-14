@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

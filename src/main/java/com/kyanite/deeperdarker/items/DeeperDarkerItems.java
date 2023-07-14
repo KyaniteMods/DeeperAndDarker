@@ -151,7 +151,7 @@ public class DeeperDarkerItems {
 
         REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", new Item(new Item.Settings().fireproof().rarity(Rarity.RARE)));
         WARDEN_CARAPACE = registerItem("warden_carapace", new Item(new Item.Settings().fireproof().rarity(Rarity.RARE)));
-        HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", new Item(new Item.Settings().fireproof().rarity(Rarity.EPIC)));
+        HEART_OF_THE_DEEP = registerItem("heart_of_the_deep", new Item(new Item.Settings().fireproof().rarity(Rarity.EPIC).maxCount(1)));
         SOUL_CRYSTAL = registerItem("soul_crystal", new Item(new Item.Settings().rarity(Rarity.RARE)));
         SOUL_DUST = registerItem("soul_dust", new Item(new Item.Settings().rarity(Rarity.RARE)));
         SCULK_BONE = registerItem("sculk_bone", new Item(new Item.Settings().fireproof().rarity(Rarity.EPIC)));
@@ -258,7 +258,7 @@ public class DeeperDarkerItems {
         ECHO_CHEST_BOAT = registerItem("echo_chest_boat", new DeeperDarkerBoatItem(true, DeeperDarkerBoatTypes.ECHO, new Item.Settings().maxCount(1)));
         ANCIENT_VASE = registerItem("ancient_vase", new BlockItem(DeeperDarkerBlocks.ANCIENT_VASE, new Item.Settings()));
         CRYSTALLIZED_AMBER = registerItem("crystallized_amber", new BlockItem(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, new Item.Settings()));
-        SCULK_TRANSMITTER = registerItem("sculk_transmitter", new DeeperDarkerSculkTransmitterItem(new Item.Settings().maxCount(1)));
+        SCULK_TRANSMITTER = registerItem("sculk_transmitter", new SculkTransmitterItem(new Item.Settings().maxCount(1)));
     }
 
     private static Item registerItem(String id, Item item) {
