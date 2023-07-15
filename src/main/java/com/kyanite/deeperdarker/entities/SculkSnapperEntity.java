@@ -63,6 +63,11 @@ public class SculkSnapperEntity extends TameableEntity {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 12).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3);
     }
 
+    @Override
+    public EntityGroup getGroup() {
+        return DeeperDarkerEntityGroups.SCULK;
+    }
+
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {

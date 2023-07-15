@@ -201,6 +201,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         itemModelGenerator.register(DeeperDarkerItems.ECHO_CHEST_BOAT, Models.GENERATED);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DeeperDarkerItems.SCULK_TRANSMITTER);
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SHATTERED_SPAWN_EGG);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {

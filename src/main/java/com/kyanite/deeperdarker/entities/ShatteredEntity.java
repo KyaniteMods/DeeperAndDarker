@@ -4,10 +4,7 @@ import com.kyanite.deeperdarker.entities.goals.DisturbanceListener;
 import com.kyanite.deeperdarker.entities.goals.GoToDisturbanceGoal;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import net.minecraft.command.EntitySelector;
-import net.minecraft.entity.AnimationState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -64,6 +61,11 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
 
     public static DefaultAttributeContainer.Builder createShatteredAttributes() {
         return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 50).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2).add(EntityAttributes.GENERIC_ARMOR, 3.5).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 10);
+    }
+
+    @Override
+    public EntityGroup getGroup() {
+        return DeeperDarkerEntityGroups.SCULK;
     }
 
     @Override

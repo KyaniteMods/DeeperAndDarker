@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.entities.SculkSnapperEntity;
 import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import com.kyanite.deeperdarker.items.DeeperDarkerPotions;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import com.kyanite.deeperdarker.world.gen.feature.DeeperDarkerFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -24,5 +25,6 @@ public class DeeperDarker implements ModInitializer {
 		DeeperDarkerEntityTypes.init();
 		DeeperDarkerFeatures.init();
 		DeeperDarkerSounds.init();
+		DeeperDarkerPotions.init();
 	}
 }

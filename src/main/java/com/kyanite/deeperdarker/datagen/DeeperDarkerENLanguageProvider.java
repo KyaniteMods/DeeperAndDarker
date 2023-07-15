@@ -162,5 +162,15 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.item.sculk_transmitter.unlink", "Sculk Transmitter unlinks");
         translationBuilder.add(DeeperDarkerEntityTypes.SCULK_SNAPPER, "Sculk Snapper");
         translationBuilder.add(DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
+        translationBuilder.add(DeeperDarkerItems.SHATTERED_SPAWN_EGG, "Shattered Spawn Egg");
+        translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
+        translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
+        translationBuilder.add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
+        translationBuilder.add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
+        translationBuilder.add("item.minecraft.potion.effect.long_sculk_affinity", "Potion of Sculk Affinity");
+        translationBuilder.add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
+        translationBuilder.add("item.minecraft.splash_potion.effect.long_sculk_affinity", "Splash Potion of Sculk Affinity");
+        translationBuilder.add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
+        translationBuilder.add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
     }
 }
