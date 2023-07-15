@@ -1,13 +1,8 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDSounds;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -20,19 +15,13 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class SculkSnapper extends TamableAnimal {
-    private static final EntityDataAccessor<Integer> SNIFF_COUNTER = SynchedEntityData.defineId(SculkSnapper.class, EntityDataSerializers.INT);
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    public final AnimationState sniffState = new AnimationState();
-    public final AnimationState digState = new AnimationState();
-    public final AnimationState emergeState = new AnimationState();
     private int idleTimeout;
-    private BlockPos targetPos;
 
     public SculkSnapper(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -51,11 +40,6 @@ public class SculkSnapper extends TamableAnimal {
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, true));
-    }
-
-    @Override
-    public boolean isInvulnerableTo(DamageSource pSource) {
-        return (this.hasPose(Pose.DIGGING) || this.hasPose(Pose.EMERGING)) && !pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || super.isInvulnerableTo(pSource);
     }
 
     public static AttributeSupplier createAttributes() {
@@ -80,12 +64,6 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(SNIFF_COUNTER, getRandom().nextInt(180, 400));
-    }
-
-    @Override
     public void tick() {
         super.tick();
 
@@ -96,39 +74,7 @@ public class SculkSnapper extends TamableAnimal {
             } else {
                 this.idleTimeout--;
             }
-
-            if(!this.isTame()) {
-                this.entityData.set(SNIFF_COUNTER, this.entityData.get(SNIFF_COUNTER) - 1);
-                if(this.entityData.get(SNIFF_COUNTER) % 20 == 0) System.out.println("sniff == " + this.entityData.get(SNIFF_COUNTER) / 20);
-
-                if(this.entityData.get(SNIFF_COUNTER) == 0) {
-                    System.out.println("sniffing");
-                    playSound(DDSounds.SNAPPER_SNIFF.get());
-                    this.idleState.stop();
-                    this.sniffState.start(this.tickCount);
-                }
-
-                if(this.entityData.get(SNIFF_COUNTER) < -31) {
-                    this.entityData.set(SNIFF_COUNTER, getRandom().nextInt(180, 400));
-                    if(findTarget()) {
-                        System.out.println(targetPos);
-                        this.digState.start(this.tickCount);
-                    }
-                }
-            }
         }
-    }
-
-    private boolean findTarget() {
-        Player target = level().getNearestPlayer(this, 30);
-        if(target == null || target.isDeadOrDying() || target.isCreative()) {
-            return false;
-        }
-
-        setTarget(target);
-        Vec3 lookAngle = getTarget().getLookAngle();
-        this.targetPos = new BlockPos((int) (lookAngle.x * 2.5 + getTarget().position().x), (int) (lookAngle.y * 2.5 + getTarget().position().y), (int) (lookAngle.z * 2.5 + getTarget().position().z));
-        return true;
     }
 
     @Override
