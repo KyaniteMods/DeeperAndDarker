@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.items;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.entities.DeeperDarkerBoatTypes;
+import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -134,6 +135,8 @@ public class DeeperDarkerItems {
     public static final Item ANCIENT_VASE;
     public static final Item CRYSTALLIZED_AMBER;
     public static final Item SCULK_TRANSMITTER;
+    public static final Item SCULK_SNAPPER_SPAWN_EGG;
+    public static final Item SHATTERED_SPAWN_EGG;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
@@ -259,6 +262,8 @@ public class DeeperDarkerItems {
         ANCIENT_VASE = registerItem("ancient_vase", new BlockItem(DeeperDarkerBlocks.ANCIENT_VASE, new Item.Settings()));
         CRYSTALLIZED_AMBER = registerItem("crystallized_amber", new BlockItem(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, new Item.Settings()));
         SCULK_TRANSMITTER = registerItem("sculk_transmitter", new SculkTransmitterItem(new Item.Settings().maxCount(1)));
+        SCULK_SNAPPER_SPAWN_EGG = registerItem("sculk_snapper_spawn_egg", new SpawnEggItem(DeeperDarkerEntityTypes.SCULK_SNAPPER, 0xd1d6b6, 0x1d726f, new Item.Settings()));
+        SHATTERED_SPAWN_EGG = registerItem("shattered_spawn_egg", new SpawnEggItem(DeeperDarkerEntityTypes.SHATTERED, 0xd1d6b6, 0x1d726f, new Item.Settings()));
     }
 
     private static Item registerItem(String id, Item item) {

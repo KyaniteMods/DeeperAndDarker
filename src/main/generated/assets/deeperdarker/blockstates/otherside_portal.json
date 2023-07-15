@@ -3,6 +3,10 @@
     "axis=x": {
       "model": "deeperdarker:block/otherside_portal_ns"
     },
+    "axis=y": {
+      "model": "deeperdarker:block/otherside_portal_ns",
+      "x": 90
+    },
     "axis=z": {
       "model": "deeperdarker:block/otherside_portal_ew"
     }

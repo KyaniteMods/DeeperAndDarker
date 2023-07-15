@@ -161,5 +161,6 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.item.sculk_transmitter.open", "Sculk Transmitter transmits");
         translationBuilder.add("subtitles.item.sculk_transmitter.unlink", "Sculk Transmitter unlinks");
         translationBuilder.add(DeeperDarkerEntityTypes.SCULK_SNAPPER, "Sculk Snapper");
+        translationBuilder.add(DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
     }
 }

@@ -12,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -146,7 +147,8 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.CRYSTALLIZED_AMBER, ModelIds.getBlockModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER));
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(DeeperDarkerBlocks.OTHERSIDE_PORTAL).coordinate(BlockStateVariantMap.create(
-                Properties.HORIZONTAL_AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ns").withPrefixedPath("block/")))
+                Properties.AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ns").withPrefixedPath("block/")))
+                .register(Direction.Axis.Y, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ns").withPrefixedPath("block/")).put(VariantSettings.X, VariantSettings.Rotation.R90))
                 .register(Direction.Axis.Z, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ew").withPrefixedPath("block/")))));
         registerParented(blockStateModelGenerator, ModelIds.getBlockSubModelId(Blocks.NETHER_PORTAL, "_ew"), ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ew"),
                 new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")),
@@ -198,6 +200,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         itemModelGenerator.register(DeeperDarkerItems.ECHO_BOAT, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.ECHO_CHEST_BOAT, Models.GENERATED);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DeeperDarkerItems.SCULK_TRANSMITTER);
+        registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {
@@ -287,6 +290,12 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         overrides.add(override);
         offJsonObject.add("overrides", overrides);
         itemModelGenerator.writer.accept(Registries.ITEM.getId(item).withPrefixedPath("item/"), () -> offJsonObject);
+    }
+
+    private static void registerSpawnEgg(ItemModelGenerator itemModelGenerator, Item item) {
+        JsonObject model = new JsonObject();
+        model.addProperty("parent", new Identifier("template_spawn_egg").withPrefixedPath("item/").toString());
+        itemModelGenerator.writer.accept(Registries.ITEM.getId(item).withPrefixedPath("item/"), () -> model);
     }
 
     @SafeVarargs

@@ -14,6 +14,7 @@ public class DeeperDarkerEntityTypes {
     public static EntityType<DeeperDarkerBoatEntity> BOAT;
     public static EntityType<DeeperDarkerChestBoatEntity> CHEST_BOAT;
     public static EntityType<SculkSnapperEntity> SCULK_SNAPPER;
+    public static EntityType<ShatteredEntity> SHATTERED;
 
     static {
         BOAT = Registry.register(Registries.ENTITY_TYPE, new Identifier(DeeperDarker.MOD_ID, "boat"),
@@ -23,10 +24,14 @@ public class DeeperDarkerEntityTypes {
         SCULK_SNAPPER = Registry.register(Registries.ENTITY_TYPE, new Identifier(DeeperDarker.MOD_ID, "sculk_snapper"),
                 FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SculkSnapperEntity::new).dimensions(
                         EntityDimensions.fixed(0.65f, 0.65f)).build());
+        SHATTERED = Registry.register(Registries.ENTITY_TYPE, new Identifier(DeeperDarker.MOD_ID, "shattered"),
+                FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ShatteredEntity::new).dimensions(
+                        EntityDimensions.fixed(0.8f, 2.125f)).build());
     }
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
-        DefaultAttributeRegistryAccessor.getRegistry().put(DeeperDarkerEntityTypes.SCULK_SNAPPER, SculkSnapperEntity.createSculkSnapperAttributes().build());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_SNAPPER, SculkSnapperEntity.createSculkSnapperAttributes().build());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SHATTERED, ShatteredEntity.createShatteredAttributes().build());
     }
 }

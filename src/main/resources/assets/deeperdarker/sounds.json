@@ -104,6 +104,28 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "entity.shattered.ambient": {
+    "sounds": [
+      "deeperdarker:entity/shattered/ambient1",
+      "deeperdarker:entity/shattered/ambient2",
+      "deeperdarker:entity/shattered/ambient3"
+    ],
+    "subtitle": "subtitles.entity.shattered.ambient"
+  },
+  "entity.shattered.death": {
+    "sounds": [
+      "deeperdarker:entity/shattered/death"
+    ],
+    "subtitle": "subtitles.entity.shattered.death"
+  },
+  "entity.shattered.hurt": {
+    "sounds": [
+      "deeperdarker:entity/shattered/hurt1",
+      "deeperdarker:entity/shattered/hurt2",
+      "deeperdarker:entity/shattered/hurt3"
+    ],
+    "subtitle": "subtitles.entity.shattered.hurt"
+  },
   "entity.sculk_snapper.ambient": {
     "sounds": [
       "deeperdarker:entity/sculk_snapper/ambient"

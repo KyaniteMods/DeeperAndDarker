@@ -131,6 +131,8 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.CRYSTALLIZED_AMBER));
                 entries.add(new ItemStack(DeeperDarkerItems.ANCIENT_VASE));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_TRANSMITTER));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG));
+                entries.add(new ItemStack(DeeperDarkerItems.SHATTERED_SPAWN_EGG));
             })).build());
 
     public static void init() {

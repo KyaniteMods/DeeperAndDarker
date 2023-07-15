@@ -34,6 +34,10 @@ public class DeeperDarkerSounds {
     public static final SoundEvent SCULK_TRANSMITTER_UNLINK = register("item.sculk_transmitter.unlink");
     public static final SoundEvent SCULK_TRANSMITTER_OPEN = register("item.sculk_transmitter.open");
 
+    public static final SoundEvent SHATTERED_AMBIENT = register("entity.shattered.ambient");
+    public static final SoundEvent SHATTERED_DEATH = register("entity.shattered.death");
+    public static final SoundEvent SHATTERED_HURT = register("entity.shattered.hurt");
+
     private static SoundEvent register(String id) {
         return Registry.register(Registries.SOUND_EVENT, new Identifier(DeeperDarker.MOD_ID, id), SoundEvent.of(new Identifier(DeeperDarker.MOD_ID, id)));
     }

@@ -1,8 +1,8 @@
-// 1.20.1	2023-07-13T20:31:51.4258199	Deeper and Darker/Tags for minecraft:block
+// 1.20.1	2023-07-15T00:50:21.0065745	Deeper and Darker/Tags for minecraft:block
 91cc0adf830b0dda4cb501792e044b1e90172f5e data\minecraft\tags\blocks\stairs.json
 31cdf197ee4c0ba69484f6c8aa7c684cb61070bb data\deeperdarker\tags\blocks\not_transmittable.json
-67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\blocks\logs_that_burn.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\blocks\leaves.json
+67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\blocks\logs_that_burn.json
 ad4068cbc07d6695e52fe55e47e251e2a62b6c33 data\minecraft\tags\blocks\wall_signs.json
 c80dee266e59a33b021549e7e43084637cc0348f data\minecraft\tags\blocks\mineable\shovel.json
 cc8be56656b9b01f639d38e0c2d412a07a7a4642 data\minecraft\tags\blocks\redstone_ores.json
