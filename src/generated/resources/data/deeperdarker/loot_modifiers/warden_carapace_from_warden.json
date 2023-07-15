@@ -1,0 +1,10 @@
+{
+  "type": "deeperdarker:add",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/warden"
+    }
+  ],
+  "item": "deeperdarker:warden_carapace"
+}
