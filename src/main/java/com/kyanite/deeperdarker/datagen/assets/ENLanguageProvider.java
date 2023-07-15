@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDEffects;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.entities.DDBoat;
@@ -20,6 +21,15 @@ public class ENLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
+        add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
+        add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
+        add("item.minecraft.potion.effect.long_sculk_affinity", "Potion of Sculk Affinity");
+        add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
+        add("item.minecraft.splash_potion.effect.long_sculk_affinity", "Splash Potion of Sculk Affinity");
+        add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
+        add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
+
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
 
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
@@ -45,6 +55,7 @@ public class ENLanguageProvider extends LanguageProvider {
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));
         DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
+        DDEffects.EFFECTS.getEntries().forEach(effect -> add(effect, "effect"));
     }
 
     private void add(RegistryObject<?> entry, String prefix) {

@@ -28,6 +28,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,6 +41,7 @@ import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(DeeperDarker.MOD_ID)
@@ -53,12 +57,15 @@ public class DeeperDarker {
         DDBlocks.BLOCKS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
+        DDEffects.EFFECTS.register(eventBus);
+        DDPotions.POTIONS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
         eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerLayers);
@@ -77,6 +84,13 @@ public class DeeperDarker {
         EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+    }
+
+    private void commonSetup(FMLCommonSetupEvent event) {
+        PotionBrewing.addMix(Potions.AWKWARD, DDItems.SOUL_CRYSTAL.get(), DDPotions.SCULK_AFFINITY.get());
+        PotionBrewing.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY.get());
+        PotionBrewing.addMix(DDPotions.SCULK_AFFINITY.get(), Items.REDSTONE, DDPotions.LONG_SCULK_AFFINITY.get());
+        PotionBrewing.addMix(Potions.LONG_INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.LONG_SCULK_AFFINITY.get());
     }
 
     private void generateData(GatherDataEvent event) {
