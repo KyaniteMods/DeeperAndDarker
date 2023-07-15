@@ -30,6 +30,9 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SNAPPER_BITE, subtitle("entity.snapper.bite").with(sound("entity/sculk_snapper/bite")));
         add(DDSounds.SNAPPER_HURT, subtitle("entity.snapper.hurt").with(sound("entity/sculk_snapper/hurt")));
         add(DDSounds.SNAPPER_SNIFF, subtitle("entity.snapper.sniff").with(sound("entity/sculk_snapper/sniff")));
+        add(DDSounds.SHATTERED_AMBIENT, subtitle("entity.shattered.ambient").with(sound("entity/shattered/ambient1"), sound("entity/shattered/ambient2"), sound("entity/shattered/ambient3")));
+        add(DDSounds.SHATTERED_DEATH, subtitle("entity.shattered.death").with(sound("entity/shattered/death")));
+        add(DDSounds.SHATTERED_HURT, subtitle("entity.shattered.hurt").with(sound("entity/shattered/hurt1"), sound("entity/shattered/hurt2"), sound("entity/shattered/hurt3")));
         add(DDSounds.TRANSMITTER_ERROR, subtitle("item.transmitter.error").with(sound("item/transmitter/error")));
         add(DDSounds.TRANSMITTER_LINK, subtitle("item.transmitter.link").with(sound("item/transmitter/link")));
         add(DDSounds.TRANSMITTER_OPEN, subtitle("item.transmitter.open").with(sound("item/transmitter/open")));

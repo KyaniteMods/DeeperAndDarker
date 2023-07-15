@@ -1,6 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.GoToDisturbanceGoal;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -41,6 +44,21 @@ public class Shattered extends Monster {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 50).add(Attributes.ATTACK_DAMAGE, 6).add(Attributes.MOVEMENT_SPEED, 0.2).add(Attributes.ARMOR, 3.5).add(Attributes.FOLLOW_RANGE, 10).build();
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return DDSounds.SHATTERED_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return DDSounds.SHATTERED_DEATH.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return DDSounds.SHATTERED_HURT.get();
     }
 
     @Override

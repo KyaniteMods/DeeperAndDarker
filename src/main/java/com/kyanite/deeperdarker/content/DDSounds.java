@@ -32,6 +32,10 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> SNAPPER_HURT = register("entity.snapper.hurt");
     public static final RegistryObject<SoundEvent> SNAPPER_SNIFF = register("entity.snapper.sniff");
 
+    public static final RegistryObject<SoundEvent> SHATTERED_AMBIENT = register("entity.shattered.ambient");
+    public static final RegistryObject<SoundEvent> SHATTERED_DEATH = register("entity.shattered.death");
+    public static final RegistryObject<SoundEvent> SHATTERED_HURT = register("entity.shattered.hurt");
+
     public static final RegistryObject<SoundEvent> TRANSMITTER_ERROR = register("item.transmitter.error");
     public static final RegistryObject<SoundEvent> TRANSMITTER_LINK = register("item.transmitter.link");
     public static final RegistryObject<SoundEvent> TRANSMITTER_OPEN = register("item.transmitter.open");
