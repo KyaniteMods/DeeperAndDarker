@@ -68,6 +68,17 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
         return DeeperDarkerEntityGroups.SCULK;
     }
 
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return DeeperDarkerSounds.SHATTERED_AMBIENT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return DeeperDarkerSounds.SHATTERED_DEATH;
+    }
+
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
         return DeeperDarkerSounds.SHATTERED_HURT;

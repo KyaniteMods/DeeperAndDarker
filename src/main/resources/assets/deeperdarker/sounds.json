@@ -173,5 +173,33 @@
       "deeperdarker:item/sculk_transmitter/unlink"
     ],
     "subtitle": "subtitles.item.sculk_transmitter.unlink"
+  },
+  "ambience.warden_dreaming": {
+    "sounds": [
+      "deeperdarker:ambience/warden_dreaming1",
+      "deeperdarker:ambience/warden_dreaming2",
+      "deeperdarker:ambience/warden_dreaming3"
+    ],
+    "subtitle": "subtitles.ambience.warden_dreaming"
+  },
+  "music.deeperdarker.arrival": {
+    "sounds": [
+      "deeperdarker:music/arrival"
+    ]
+  },
+  "music.deeperdarker.echoing_forest": {
+    "sounds": [
+      "deeperdarker:music/echoing_forest"
+    ]
+  },
+  "music.deeperdarker.overcast_columns": {
+    "sounds": [
+      "deeperdarker:music/overcast_columns"
+    ]
+  },
+  "music.deeperdarker.overcast_columns_act_ii": {
+    "sounds": [
+      "deeperdarker:music/overcast_columns_act_ii"
+    ]
   }
 }

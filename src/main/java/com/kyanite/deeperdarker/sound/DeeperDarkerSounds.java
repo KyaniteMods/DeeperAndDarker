@@ -3,8 +3,10 @@ package com.kyanite.deeperdarker.sound;
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class DeeperDarkerSounds {
@@ -38,8 +40,14 @@ public class DeeperDarkerSounds {
     public static final SoundEvent SHATTERED_DEATH = register("entity.shattered.death");
     public static final SoundEvent SHATTERED_HURT = register("entity.shattered.hurt");
 
+    public static final RegistryEntry.Reference<SoundEvent> ARRIVAL = registerReference("music.deeperdarker.arrival");
+
     private static SoundEvent register(String id) {
         return Registry.register(Registries.SOUND_EVENT, new Identifier(DeeperDarker.MOD_ID, id), SoundEvent.of(new Identifier(DeeperDarker.MOD_ID, id)));
+    }
+
+    private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
+        return Registry.registerReference(Registries.SOUND_EVENT, new Identifier(DeeperDarker.MOD_ID, id), SoundEvent.of(new Identifier(DeeperDarker.MOD_ID, id)));
     }
 
     public static void init() {
