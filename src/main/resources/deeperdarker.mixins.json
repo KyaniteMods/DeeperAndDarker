@@ -6,9 +6,11 @@
     "ExampleMixin",
     "SculkTransmitterLinkFromAfarForgingScreenHandlerMixin",
     "SculkTransmitterLinkFromAfarInventoryMixin",
-    "SculkTransmitterLinkFromAfarScreenHandlerMixin"
+    "SculkTransmitterLinkFromAfarScreenHandlerMixin",
+    "WardenBootsOccludeVibrationsMixin"
   ],
   "client": [
+    "PhantomTextureInOthersideMixin",
     "ShowHangingSignScreenMixin",
     "ShowHangingSignScreenMixin$ClientAccessor"
   ],
