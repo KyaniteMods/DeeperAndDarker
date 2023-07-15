@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class DDLootTableProvider extends LootTableProvider {
     public DDLootTableProvider(PackOutput pOutput) {
-        super(pOutput, BuiltInLootTables.all(), List.of(new LootTableProvider.SubProviderEntry(DDLootTables::new, LootContextParamSets.BLOCK)));
+        super(pOutput, BuiltInLootTables.all(), List.of(new LootTableProvider.SubProviderEntry(DDBlockLoot::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(DDEntityLoot::new, LootContextParamSets.ENTITY)));
     }
 
     @Override
