@@ -11,7 +11,7 @@
 		"homepage": "https://kyanitemods.dev/",
 		"sources": "https://github.com/KyaniteMods/DeeperAndDarker/tree/fabric-1.20"
 	},
-	"license": "ARR",
+	"license": "AGPL-3.0",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
