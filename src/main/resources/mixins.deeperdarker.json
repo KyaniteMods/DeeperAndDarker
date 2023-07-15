@@ -6,8 +6,10 @@
   "refmap": "mixins.deeperdarker.refmap.json",
   "mixins": [
     "ContainerMenuMixin",
+    "PhantomMixin",
     "PhantomRendererMixin",
-    "VibrationListenerMixin"
+    "VibrationListenerMixin",
+    "WardenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

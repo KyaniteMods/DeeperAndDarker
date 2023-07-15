@@ -57,6 +57,11 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
+    public MobType getMobType() {
+        return DDMobType.SCULK;
+    }
+
+    @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
         this.playSound(DDSounds.SNAPPER_BITE.get());

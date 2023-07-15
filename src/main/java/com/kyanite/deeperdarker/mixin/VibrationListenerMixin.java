@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.DDEffects;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.entities.DDMobType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +21,7 @@ public class VibrationListenerMixin {
         if(context.sourceEntity() instanceof LivingEntity entity) {
             if((event.equals(GameEvent.STEP) || event.equals(GameEvent.HIT_GROUND) || event.equals(GameEvent.SWIM) || event.equals(GameEvent.SPLASH)) && entity.getItemBySlot(EquipmentSlot.FEET).is(DDItems.WARDEN_BOOTS.get())) cir.setReturnValue(false);
             if(entity.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
+            if(entity.getMobType().equals(DDMobType.SCULK)) cir.setReturnValue(false);
         }
     }
 }
