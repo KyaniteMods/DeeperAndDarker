@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-15T14:50:35.4277766	Deeper and Darker/Tags for minecraft:block
+// 1.20.1	2023-07-15T15:30:39.2619195	Deeper and Darker/Tags for minecraft:block
 91cc0adf830b0dda4cb501792e044b1e90172f5e data\minecraft\tags\blocks\stairs.json
 31cdf197ee4c0ba69484f6c8aa7c684cb61070bb data\deeperdarker\tags\blocks\not_transmittable.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\blocks\leaves.json
@@ -26,8 +26,8 @@ d8710d51c817ec43ec5398f405fb20f65d6a30d6 data\minecraft\tags\blocks\climbable.js
 f993e8285cb38d4c1a62aaa7a9631e5d4b957cc7 data\minecraft\tags\blocks\needs_stone_tool.json
 4153a807a665d99890ad7eac8f9a15080a466e6f data\minecraft\tags\blocks\lapis_ores.json
 a4a26cabae188169c902530ffe27faea3507b5e4 data\minecraft\tags\blocks\emerald_ores.json
-d0b222d759fe0c881261b06d778a3563df87b7db data\minecraft\tags\blocks\wooden_doors.json
 12e8918117d16b5db99ad05f804eb63b5389e861 data\minecraft\tags\blocks\ceiling_hanging_signs.json
+d0b222d759fe0c881261b06d778a3563df87b7db data\minecraft\tags\blocks\wooden_doors.json
 fc4746e6361c4738f8d49d9736180f693b5d89f6 data\minecraft\tags\blocks\wooden_pressure_plates.json
 7deab72452d2449237ab9a436b203f0e79034c37 data\minecraft\tags\blocks\wall_hanging_signs.json
 3a2de920aa00b902f0ba269ab2b6a1caacaf4405 data\minecraft\tags\blocks\fence_gates.json

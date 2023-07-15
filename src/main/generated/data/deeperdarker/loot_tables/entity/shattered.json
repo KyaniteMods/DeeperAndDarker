@@ -6,13 +6,17 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "deeperdarker:soul_dust"
+          "name": "deeperdarker:sculk_bone"
         }
       ],
       "functions": [
         {
           "add": false,
-          "count": 1.0,
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 3.0,
+            "min": 1.0
+          },
           "function": "minecraft:set_count"
         },
         {
@@ -27,5 +31,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "deeperdarker:entities/sculk_snapper"
+  "random_sequence": "deeperdarker:entities/shattered"
 }

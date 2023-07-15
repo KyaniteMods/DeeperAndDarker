@@ -141,15 +141,15 @@ public class DeeperDarkerItems {
     private static final ToolMaterial WARDEN_TOOL_MATERIAL = new WardenToolMaterial();
 
     static {
-        WARDEN_HELMET = registerItem("warden_helmet", new ArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().rarity(Rarity.RARE).fireproof()));
-        WARDEN_CHESTPLATE = registerItem("warden_chestplate", new ArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().rarity(Rarity.RARE).fireproof()));
-        WARDEN_LEGGINGS = registerItem("warden_leggings", new ArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().rarity(Rarity.RARE).fireproof()));
-        WARDEN_BOOTS = registerItem("warden_boots", new ArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().rarity(Rarity.RARE).fireproof()));
+        WARDEN_HELMET = registerItem("warden_helmet", new WardenArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings().rarity(Rarity.RARE).fireproof()));
+        WARDEN_CHESTPLATE = registerItem("warden_chestplate", new WardenArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings().rarity(Rarity.RARE).fireproof()));
+        WARDEN_LEGGINGS = registerItem("warden_leggings", new WardenArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings().rarity(Rarity.RARE).fireproof()));
+        WARDEN_BOOTS = registerItem("warden_boots", new WardenArmorItem(WARDEN_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings().rarity(Rarity.RARE).fireproof()));
         WARDEN_SWORD = registerItem("warden_sword", new SwordItem(WARDEN_TOOL_MATERIAL, 3, -2.4f, new Item.Settings().rarity(Rarity.RARE).fireproof()));
         WARDEN_PICKAXE = registerItem("warden_pickaxe", new PickaxeItem(WARDEN_TOOL_MATERIAL, 1, -2.8f, new Item.Settings().rarity(Rarity.RARE).fireproof()));
         WARDEN_AXE = registerItem("warden_axe", new AxeItem(WARDEN_TOOL_MATERIAL, 5, -3.0f, new Item.Settings().rarity(Rarity.RARE).fireproof()));
         WARDEN_SHOVEL = registerItem("warden_shovel", new ShovelItem(WARDEN_TOOL_MATERIAL, 1.5f, -3.0f, new Item.Settings().rarity(Rarity.RARE).fireproof()));
-        WARDEN_HOE = registerItem("warden_hoe", new HoeItem(WARDEN_TOOL_MATERIAL, -7, -2.4f, new Item.Settings().rarity(Rarity.RARE).fireproof()));
+        WARDEN_HOE = registerItem("warden_hoe", new HoeItem(WARDEN_TOOL_MATERIAL, -4, 0.0f, new Item.Settings().rarity(Rarity.RARE).fireproof()));
         WARDEN_UPGRADE_SMITHING_TEMPLATE = registerItem("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
 
         REINFORCED_ECHO_SHARD = registerItem("reinforced_echo_shard", new Item(new Item.Settings().fireproof().rarity(Rarity.RARE)));

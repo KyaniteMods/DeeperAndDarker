@@ -6,7 +6,7 @@ import net.minecraft.recipe.Ingredient;
 public class WardenToolMaterial implements ToolMaterial {
     @Override
     public int getDurability() {
-        return 2506;
+        return 2519;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class WardenToolMaterial implements ToolMaterial {
 
     @Override
     public int getMiningLevel() {
-        return 4;
+        return 5;
     }
 
     @Override
     public int getEnchantability() {
-        return 16;
+        return 18;
     }
 
     @Override
