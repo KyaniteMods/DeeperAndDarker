@@ -38,28 +38,36 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE.get());
+
         stairBuilder(DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.COBBLED_SCULK_STONE.get())).unlockedBy("has_cobbled_sculk_stone", has(DDBlocks.COBBLED_SCULK_STONE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE.get());
-        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE.get());
         stairBuilder(DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.POLISHED_SCULK_STONE.get())).unlockedBy("has_polished_sculk_stone", has(DDBlocks.POLISHED_SCULK_STONE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE.get());
+
         polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.POLISHED_SCULK_STONE.get());
         stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICKS.get())).unlockedBy("has_sculk_stone_bricks", has(DDBlocks.SCULK_STONE_BRICKS.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_BRICKS.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_BRICKS.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_BRICKS.get());
         stairBuilder(DDBlocks.SCULK_STONE_TILE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE_TILES.get())).unlockedBy("has_sculk_stone_tiles", has(DDBlocks.SCULK_STONE_TILES.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_SLAB.get(), DDBlocks.SCULK_STONE_TILES.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_WALL.get(), DDBlocks.SCULK_STONE_TILES.get());
+
         stairBuilder(DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SMOOTH_SCULK_STONE.get())).unlockedBy("has_smooth_sculk_stone", has(DDBlocks.SMOOTH_SCULK_STONE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), DDBlocks.SMOOTH_SCULK_STONE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_WALL.get(), DDBlocks.SMOOTH_SCULK_STONE.get());
+
         polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE.get());
         stairBuilder(DDBlocks.CUT_SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.CUT_SCULK_STONE.get())).unlockedBy("has_cut_sculk_stone", has(DDBlocks.CUT_SCULK_STONE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_SLAB.get(), DDBlocks.CUT_SCULK_STONE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_WALL.get(), DDBlocks.CUT_SCULK_STONE.get());
-        chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_SCULK_STONE.get(), Ingredient.of(DDBlocks.SCULK_STONE_BRICK_SLAB.get())).unlockedBy("has_sculk_stone_slab", has(DDBlocks.SCULK_STONE_SLAB.get())).save(writer);
+
+        chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_SCULK_STONE.get(), Ingredient.of(DDTags.Items.SCULK_STONE_SLABS)).unlockedBy("has_sculk_stone_slab", has(DDTags.Items.SCULK_STONE_SLABS)).save(writer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME.get()).define('G', DDItems.GRIME_BALL.get()).pattern("GG").pattern("GG").unlockedBy("has_grime_ball", has(DDItems.GRIME_BALL.get())).save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS.get()).define('G', DDItems.GRIME_BRICK.get()).pattern("GG").pattern("GG").unlockedBy("has_grime_brick", has(DDItems.GRIME_BRICK.get())).save(writer);
@@ -70,28 +78,36 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stairBuilder(DDBlocks.GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.GLOOMSLATE.get())).unlockedBy("has_gloomslate", has(DDBlocks.GLOOMSLATE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_SLAB.get(), DDBlocks.GLOOMSLATE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_WALL.get(), DDBlocks.GLOOMSLATE.get());
+
         stairBuilder(DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.COBBLED_GLOOMSLATE.get())).unlockedBy("has_cobbled_gloomslate", has(DDBlocks.COBBLED_GLOOMSLATE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), DDBlocks.COBBLED_GLOOMSLATE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_WALL.get(), DDBlocks.COBBLED_GLOOMSLATE.get());
-        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.COBBLED_GLOOMSLATE.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE.get());
         stairBuilder(DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE.get())).unlockedBy("has_polished_gloomslate", has(DDBlocks.POLISHED_GLOOMSLATE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), DDBlocks.POLISHED_GLOOMSLATE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_WALL.get(), DDBlocks.POLISHED_GLOOMSLATE.get());
+
         polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.POLISHED_GLOOMSLATE.get());
         stairBuilder(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICKS.get())).unlockedBy("has_gloomslate_bricks", has(DDBlocks.GLOOMSLATE_BRICKS.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), DDBlocks.GLOOMSLATE_BRICKS.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_WALL.get(), DDBlocks.GLOOMSLATE_BRICKS.get());
+
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILES.get(), DDBlocks.GLOOMSLATE_BRICKS.get());
         stairBuilder(DDBlocks.GLOOMSLATE_TILE_STAIRS.get(), Ingredient.of(DDBlocks.GLOOMSLATE_TILES.get())).unlockedBy("has_gloomslate_tiles", has(DDBlocks.GLOOMSLATE_TILES.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_SLAB.get(), DDBlocks.GLOOMSLATE_TILES.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_WALL.get(), DDBlocks.GLOOMSLATE_TILES.get());
+
         stairBuilder(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE.get())).unlockedBy("has_smooth_gloomslate", has(DDBlocks.SMOOTH_GLOOMSLATE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_WALL.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
+
         polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
         stairBuilder(DDBlocks.CUT_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.CUT_GLOOMSLATE.get())).unlockedBy("has_cut_gloomslate", has(DDBlocks.CUT_GLOOMSLATE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_SLAB.get(), DDBlocks.CUT_GLOOMSLATE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_WALL.get(), DDBlocks.CUT_GLOOMSLATE.get());
-        chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICK_SLAB.get())).unlockedBy("has_gloomslate_slab", has(DDBlocks.GLOOMSLATE_SLAB.get())).save(writer);
+
+        chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDTags.Items.GLOOMSLATE_SLABS)).unlockedBy("has_gloomslate_slab", has(DDTags.Items.GLOOMSLATE_SLABS)).save(writer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('E', Items.ECHO_SHARD).define('C', DDItems.WARDEN_CARAPACE.get())
@@ -131,38 +147,64 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_WALL.get());
+
         stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE.get());
         stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get());
         stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICKS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICKS.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILES.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_TILES.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_TILES.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SCULK_STONE_TILE_WALL.get());
+
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.SMOOTH_SCULK_STONE_WALL.get());
+
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_WALL.get());
         stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get());
 
         stonecuttingRecipe(writer, DDBlocks.SCULK_GRIME_BRICKS.get(), DDBlocks.SCULK_GRIME_BRICK_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_GRIME_BRICKS.get(), DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), 2);
@@ -171,38 +213,64 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_WALL.get());
+
         stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.COBBLED_GLOOMSLATE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.POLISHED_GLOOMSLATE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICKS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICK_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_BRICKS.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_BRICK_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_WALL.get());
+
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILES.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.GLOOMSLATE_TILES.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_TILE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_TILE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.GLOOMSLATE_TILES.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_TILES.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_TILES.get(), DDBlocks.GLOOMSLATE_TILE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_TILES.get(), DDBlocks.GLOOMSLATE_TILE_WALL.get());
+
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
+
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get());
         stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.COBBLED_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+        stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_TILES.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> writer) {

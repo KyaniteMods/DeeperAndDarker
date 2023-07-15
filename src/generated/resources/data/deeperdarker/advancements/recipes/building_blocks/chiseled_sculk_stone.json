@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "deeperdarker:sculk_stone_slab"
-            ]
+            "tag": "deeperdarker:sculk_stone_slabs"
           }
         ]
       },
