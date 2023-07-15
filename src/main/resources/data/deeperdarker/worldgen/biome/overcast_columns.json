@@ -15,6 +15,12 @@
       "replace_current_music": false,
       "sound": "minecraft:ambient.soul_sand_valley.loop"
     },
+    "particle": {
+      "options": {
+        "type": "minecraft:smoke"
+      },
+      "probability": 0.026
+    },
     "sky_color": 8037887,
     "water_color": 4530962,
     "water_fog_color": 3547929

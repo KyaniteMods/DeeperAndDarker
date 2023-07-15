@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.entities;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -14,7 +13,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
@@ -102,17 +100,17 @@ public class SculkSnapperEntity extends TameableEntity {
                 this.idleTimeout--;
             }
 
-            if(!this.isTamed()) {
+            if (!this.isTamed()) {
                 this.dataTracker.set(SNIFF_COUNTER, this.dataTracker.get(SNIFF_COUNTER) - 1);
-                if(this.dataTracker.get(SNIFF_COUNTER) % 20 == 0) System.out.println("sniff == " + this.dataTracker.get(SNIFF_COUNTER) / 20);
+                if (this.dataTracker.get(SNIFF_COUNTER) % 20 == 0) System.out.println("sniff == " + this.dataTracker.get(SNIFF_COUNTER) / 20);
 
-                if(this.dataTracker.get(SNIFF_COUNTER) == 0) {
+                if (this.dataTracker.get(SNIFF_COUNTER) == 0) {
                     playSound(DeeperDarkerSounds.SCULK_SNAPPER_SNIFF, 1.0f, 1.0f);
                     this.idleState.stop();
                     this.sniffState.start(this.age);
                 }
 
-                if(this.dataTracker.get(SNIFF_COUNTER) < -31) {
+                if (this.dataTracker.get(SNIFF_COUNTER) < -31) {
                     this.dataTracker.set(SNIFF_COUNTER, getRandom().nextBetween(180, 400));
                     if (findTarget()) {
                         System.out.println(targetPos);
