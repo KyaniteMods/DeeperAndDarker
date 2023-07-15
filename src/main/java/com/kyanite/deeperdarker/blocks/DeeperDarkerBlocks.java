@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerHangingSignBlockEntity;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerSignBlockEntity;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import com.kyanite.deeperdarker.world.dimension.DeeperDarkerWorlds;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
@@ -182,9 +183,11 @@ public class DeeperDarkerBlocks {
         ECHO_SLAB = registerBlock("echo_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB).mapColor(MapColor.LIGHT_GRAY)));
         ECHO_STAIRS = registerBlock("echo_stairs", new StairsBlock(ECHO_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS).mapColor(MapColor.LIGHT_GRAY)));
         ECHO_TRAPDOOR = registerBlock("echo_trapdoor", new TrapdoorBlock(AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.LIGHT_GRAY), ECHO_BLOCK_SET_TYPE));
-        SCULK_STONE = registerBlock("sculk_stone", new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.CYAN)));
+        SCULK_STONE = registerBlock("sculk_stone", new Block(AbstractBlock.Settings.copy(Blocks.STONE).mapColor(MapColor.CYAN).sounds(
+                DeeperDarkerSounds.SCULK_STONE)));
         SCULK_STONE_STAIRS = registerBlock("sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(SCULK_STONE)));
-        SCULK_STONE_SLAB = registerBlock("sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_SLAB).mapColor(MapColor.CYAN)));
+        SCULK_STONE_SLAB = registerBlock("sculk_stone_slab", new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_SLAB).mapColor(MapColor.CYAN).sounds(
+                DeeperDarkerSounds.SCULK_STONE)));
         SCULK_STONE_WALL = registerBlock("sculk_stone_wall", new WallBlock(AbstractBlock.Settings.copy(SCULK_STONE)));
         COBBLED_SCULK_STONE = registerBlock("cobbled_sculk_stone", new Block(AbstractBlock.Settings.copy(SCULK_STONE)));
         COBBLED_SCULK_STONE_STAIRS = registerBlock("cobbled_sculk_stone_stairs", new StairsBlock(SCULK_STONE.getDefaultState(), AbstractBlock.Settings.copy(COBBLED_SCULK_STONE)));
@@ -276,7 +279,7 @@ public class DeeperDarkerBlocks {
         GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
         GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 9).pistonBehavior(
                 PistonBehavior.DESTROY)));
-        ANCIENT_VASE = registerBlock("ancient_vase", new AncientVaseBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.0f, 6.0f)));
+        ANCIENT_VASE = registerBlock("ancient_vase", new AncientVaseBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.0f, 6.0f).sounds(DeeperDarkerSounds.ANCIENT_VASE)));
         CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", new TransparentBlock(AbstractBlock.Settings.create().luminance((state) -> 1).mapColor(MapColor.ORANGE).sounds(
                 BlockSoundGroup.GLASS).nonOpaque()));
         OTHERSIDE_PORTAL = registerBlock("otherside_portal", new CustomPortalBlock(AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)));
@@ -295,7 +298,7 @@ public class DeeperDarkerBlocks {
         portalLink.dimID = new Identifier(DeeperDarker.MOD_ID, "otherside");
         portalLink.portalIgnitionSource = PortalIgnitionSource.ItemUseSource(DeeperDarkerItems.HEART_OF_THE_DEEP);
         portalLink.setPortalIgniteEvent((player, world, portalPos, framePos, portalIgnitionSource) -> {
-            if (player.getStackInHand(player.getActiveHand()).isOf(DeeperDarkerItems.HEART_OF_THE_DEEP)) {
+            if (!player.isCreative() && player.getStackInHand(player.getActiveHand()).isOf(DeeperDarkerItems.HEART_OF_THE_DEEP)) {
                 player.getStackInHand(player.getActiveHand()).decrement(1);
             }
         });

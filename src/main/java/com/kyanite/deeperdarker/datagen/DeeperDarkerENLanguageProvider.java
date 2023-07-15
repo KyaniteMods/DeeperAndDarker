@@ -151,5 +151,15 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
+        translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
+        translationBuilder.add("subtitles.entity.sculk_snapper.ambient", "Sculk Snapper breathes");
+        translationBuilder.add("subtitles.entity.sculk_snapper.bite", "Sculk Snapper bites");
+        translationBuilder.add("subtitles.entity.sculk_snapper.hurt", "Sculk Snapper hurts");
+        translationBuilder.add("subtitles.entity.sculk_snapper.sniff", "Sculk Snapper sniffs");
+        translationBuilder.add("subtitles.item.sculk_transmitter.error", "Sculk Transmitter fails");
+        translationBuilder.add("subtitles.item.sculk_transmitter.link", "Sculk Transmitter links");
+        translationBuilder.add("subtitles.item.sculk_transmitter.open", "Sculk Transmitter transmits");
+        translationBuilder.add("subtitles.item.sculk_transmitter.unlink", "Sculk Transmitter unlinks");
+        translationBuilder.add(DeeperDarkerEntityTypes.SCULK_SNAPPER, "Sculk Snapper");
     }
 }

@@ -1,0 +1,155 @@
+{
+  "ambience.otherside_portal.groan": {
+    "sounds": [
+      "deeperdarker:ambience/otherside_portal/groan1",
+      "deeperdarker:ambience/otherside_portal/groan2",
+      "deeperdarker:ambience/otherside_portal/groan3",
+      "deeperdarker:ambience/otherside_portal/groan4"
+    ],
+    "subtitle": "subtitles.ambience.otherside_portal.groan"
+  },
+  "block.sculk_stone.break": {
+    "sounds": [
+      "deeperdarker:block/sculk_stone/break1",
+      "deeperdarker:block/sculk_stone/break2",
+      "deeperdarker:block/sculk_stone/break3",
+      "deeperdarker:block/sculk_stone/break4",
+      "deeperdarker:block/sculk_stone/break5",
+      "deeperdarker:block/sculk_stone/break6",
+      "deeperdarker:block/sculk_stone/break7"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.sculk_stone.fall": {
+    "sounds": [
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
+    ]
+  },
+  "block.sculk_stone.hit": {
+    "sounds": [
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.sculk_stone.place": {
+    "sounds": [
+      "deeperdarker:block/sculk_stone/place1",
+      "deeperdarker:block/sculk_stone/place2",
+      "deeperdarker:block/sculk_stone/place3",
+      "deeperdarker:block/sculk_stone/place4",
+      "deeperdarker:block/sculk_stone/place5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.sculk_stone.step": {
+    "sounds": [
+      "deeperdarker:block/sculk_stone/step1",
+      "deeperdarker:block/sculk_stone/step2",
+      "deeperdarker:block/sculk_stone/step3",
+      "deeperdarker:block/sculk_stone/step4",
+      "deeperdarker:block/sculk_stone/step5",
+      "deeperdarker:block/sculk_stone/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.ancient_vase.break": {
+    "sounds": [
+      "deeperdarker:block/ancient_vase/break1",
+      "deeperdarker:block/ancient_vase/break2",
+      "deeperdarker:block/ancient_vase/break3",
+      "deeperdarker:block/ancient_vase/break4",
+      "deeperdarker:block/ancient_vase/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.ancient_vase.fall": {
+    "sounds": [
+      "deeperdarker:block/ancient_vase/step1",
+      "deeperdarker:block/ancient_vase/step2",
+      "deeperdarker:block/ancient_vase/step3"
+    ]
+  },
+  "block.ancient_vase.hit": {
+    "sounds": [
+      "deeperdarker:block/ancient_vase/step1",
+      "deeperdarker:block/ancient_vase/step2",
+      "deeperdarker:block/ancient_vase/step3"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.ancient_vase.place": {
+    "sounds": [
+      "deeperdarker:block/ancient_vase/place1",
+      "deeperdarker:block/ancient_vase/place2",
+      "deeperdarker:block/ancient_vase/place3",
+      "deeperdarker:block/ancient_vase/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.ancient_vase.step": {
+    "sounds": [
+      "deeperdarker:block/ancient_vase/step1",
+      "deeperdarker:block/ancient_vase/step2",
+      "deeperdarker:block/ancient_vase/step3"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.sculk_snapper.ambient": {
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/ambient"
+    ],
+    "subtitle": "subtitles.entity.sculk_snapper.ambient"
+  },
+  "entity.sculk_snapper.bite": {
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/bite"
+    ],
+    "subtitle": "subtitles.entity.sculk_snapper.bite"
+  },
+  "entity.sculk_snapper.hurt": {
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/hurt"
+    ],
+    "subtitle": "subtitles.entity.sculk_snapper.hurt"
+  },
+  "entity.sculk_snapper.sniff": {
+    "sounds": [
+      "deeperdarker:entity/sculk_snapper/sniff"
+    ],
+    "subtitle": "subtitles.entity.sculk_snapper.sniff"
+  },
+  "item.sculk_transmitter.error": {
+    "sounds": [
+      "deeperdarker:item/sculk_transmitter/error"
+    ],
+    "subtitle": "subtitles.item.sculk_transmitter.error"
+  },
+  "item.sculk_transmitter.link": {
+    "sounds": [
+      "deeperdarker:item/sculk_transmitter/link"
+    ],
+    "subtitle": "subtitles.item.sculk_transmitter.link"
+  },
+  "item.sculk_transmitter.open": {
+    "sounds": [
+      "deeperdarker:item/sculk_transmitter/open"
+    ],
+    "subtitle": "subtitles.item.sculk_transmitter.open"
+  },
+  "item.sculk_transmitter.unlink": {
+    "sounds": [
+      "deeperdarker:item/sculk_transmitter/unlink"
+    ],
+    "subtitle": "subtitles.item.sculk_transmitter.unlink"
+  }
+}

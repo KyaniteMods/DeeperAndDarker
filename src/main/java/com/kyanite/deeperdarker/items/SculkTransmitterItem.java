@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import com.kyanite.deeperdarker.tags.DeeperDarkerTags;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.client.item.TooltipContext;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
@@ -40,12 +42,14 @@ public class SculkTransmitterItem extends Item {
             if (context.getWorld().getBlockState(context.getBlockPos()).isIn(DeeperDarkerTags.Blocks.NOT_TRANSMITTABLE) || !(context.getWorld().getBlockEntity(context.getBlockPos()) instanceof Inventory)) {
                 context.getPlayer().sendMessage(Text.translatable("block." + DeeperDarker.MOD_ID + ".not_transmittable"), true);
                 actionBarMessage(context.getPlayer(), "not_transmittable");
+                context.getPlayer().playSound(DeeperDarkerSounds.SCULK_TRANSMITTER_ERROR, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 return ActionResult.FAIL;
             }
         }
 
         actionBarMessage(context.getPlayer(), "linked");
         formConnection(context.getStack(), context.getBlockPos());
+        context.getPlayer().playSound(DeeperDarkerSounds.SCULK_TRANSMITTER_LINK, SoundCategory.PLAYERS, 1.0f, 1.0f);
         return ActionResult.SUCCESS;
     }
 
@@ -75,17 +79,20 @@ public class SculkTransmitterItem extends Item {
             if (clickedPos != null && this.isTransmittable(world, clickedPos, player)) {
                 actionBarMessage(player, "linked");
                 formConnection(transmitter, clickedPos);
+                player.playSound(DeeperDarkerSounds.SCULK_TRANSMITTER_LINK, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 return ActionResult.SUCCESS;
             }
 
             actionBarMessage(player, "unlinked");
             formConnection(transmitter, null);
+            player.playSound(DeeperDarkerSounds.SCULK_TRANSMITTER_UNLINK, SoundCategory.PLAYERS, 1.0f, 1.0f);
             return ActionResult.FAIL;
         }
 
         if (!this.isTransmittable(world, linkedBlockPos, player)) {
             actionBarMessage(player, "not_found");
             formConnection(transmitter, null);
+            player.playSound(DeeperDarkerSounds.SCULK_TRANSMITTER_ERROR, SoundCategory.PLAYERS, 1.0f, 1.0f);
             return ActionResult.FAIL;
         }
 
@@ -95,6 +102,7 @@ public class SculkTransmitterItem extends Item {
         if (menu != null) {
             player.openHandledScreen(menu);
             if (world.getBlockEntity(linkedBlockPos) instanceof ChestBlockEntity chestBlockEntity) chestBlockEntity.onOpen(player);
+            player.playSound(DeeperDarkerSounds.SCULK_TRANSMITTER_OPEN, SoundCategory.PLAYERS, 1.0f, 1.0f);
         }
         return ActionResult.SUCCESS;
     }

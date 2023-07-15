@@ -4,8 +4,10 @@ import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerBlockEntityTypes;
 import com.kyanite.deeperdarker.client.entity.feature.WardenHelmetHornsFeatureRenderer;
 import com.kyanite.deeperdarker.client.entity.model.DeeperDarkerModelLayers;
+import com.kyanite.deeperdarker.client.entity.model.SculkSnapperEntityModel;
 import com.kyanite.deeperdarker.client.entity.model.WardenHelmetHornsModel;
 import com.kyanite.deeperdarker.client.entity.render.DeeperDarkerBoatEntityRenderer;
+import com.kyanite.deeperdarker.client.entity.render.SculkSnapperEntityRenderer;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.api.ClientModInitializer;
@@ -45,10 +47,12 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.BOAT, (ctx) -> new DeeperDarkerBoatEntityRenderer(ctx, false));
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.CHEST_BOAT, (ctx) -> new DeeperDarkerBoatEntityRenderer(ctx, true));
+        EntityRendererRegistry.register(DeeperDarkerEntityTypes.SCULK_SNAPPER, SculkSnapperEntityRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.WARDEN_HELMET, WardenHelmetHornsModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.ECHO_BOAT, BoatEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.ECHO_CHEST_BOAT, ChestBoatEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SCULK_SNAPPER, SculkSnapperEntityModel::getTexturedModelData);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof BipedEntityModel) {
