@@ -25,14 +25,14 @@ public class DDPools {
 
         context.register(ANCIENT_TEMPLE, new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/center", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         DDPools.register(context, "ancient_temple/basement/aisles", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/aisles/aisle_0", degradation), 1)), StructureTemplatePool.Projection.RIGID));
-        DDPools.register(context, "ancient_temple/basement/corners", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/corners/corner_0", degradation), 1)), StructureTemplatePool.Projection.RIGID));
+        DDPools.register(context, "ancient_temple/basement/corners", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/corners/corner_0", degradation), 2), Pair.of(location("ancient_temple/basement/corners/corner_1", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         DDPools.register(context, "ancient_temple/basement/portal", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/portal/portal_room", degradation), 1)), StructureTemplatePool.Projection.RIGID));
-        DDPools.register(context, "ancient_temple/basement/rooms", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/rooms/room_0", degradation), 1)), StructureTemplatePool.Projection.RIGID));
+        DDPools.register(context, "ancient_temple/basement/rooms", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/rooms/room_0", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/room_1", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         DDPools.register(context, "ancient_temple/basement/stairs", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/stairs/staircase_0", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         DDPools.register(context, "ancient_temple/basement/throne", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/basement/throne/throne_room", degradation), 1)), StructureTemplatePool.Projection.RIGID));
 
-        DDPools.register(context, "ancient_temple/upper", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/upper/fountain_room", degradation), 1), Pair.of(location("ancient_temple/upper/apex", degradation), 1)), StructureTemplatePool.Projection.RIGID));
-        DDPools.register(context, "ancient_temple/upper/corners", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/upper/corners/corner_0", degradation), 1)), StructureTemplatePool.Projection.RIGID));
+//        DDPools.register(context, "ancient_temple/upper", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/upper/fountain_room", degradation), 1), Pair.of(location("ancient_temple/upper/apex", degradation), 1)), StructureTemplatePool.Projection.RIGID));
+//        DDPools.register(context, "ancient_temple/upper/corners", new StructureTemplatePool(pool, ImmutableList.of(Pair.of(location("ancient_temple/upper/corners/corner_0", degradation), 1)), StructureTemplatePool.Projection.RIGID));
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name, Holder<StructureProcessorList> processor) {
