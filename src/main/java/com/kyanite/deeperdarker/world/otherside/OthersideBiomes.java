@@ -22,9 +22,9 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class OthersideBiomes {
-    public static final ResourceKey<Biome> DEEPLANDS = registerKey("deeplands");
-    public static final ResourceKey<Biome> ECHOING_FOREST = registerKey("echoing_forest");
-    public static final ResourceKey<Biome> OVERCAST_COLUMNS = registerKey("overcast_columns");
+    public static final ResourceKey<Biome> DEEPLANDS = createKey("deeplands");
+    public static final ResourceKey<Biome> ECHOING_FOREST = createKey("echoing_forest");
+    public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
 
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -35,7 +35,7 @@ public class OthersideBiomes {
         context.register(OVERCAST_COLUMNS, overcastColumns(placedFeatures, worldCarvers));
     }
 
-    public static ResourceKey<Biome> registerKey(String name) {
+    public static ResourceKey<Biome> createKey(String name) {
         return ResourceKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, name));
     }
 

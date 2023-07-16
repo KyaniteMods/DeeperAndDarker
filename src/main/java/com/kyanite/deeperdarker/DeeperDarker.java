@@ -105,6 +105,8 @@ public class DeeperDarker {
         generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
 
         // data
+        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
+
         DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, event.getLookupProvider(), fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
@@ -112,7 +114,6 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
-        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
