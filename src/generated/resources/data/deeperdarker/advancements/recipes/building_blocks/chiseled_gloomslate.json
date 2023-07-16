@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "deeperdarker:gloomslate_slab"
-            ]
+            "tag": "deeperdarker:gloomslate_slabs"
           }
         ]
       },

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobbled_gloomslate": {
+    "has_gloomslate": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:cobbled_gloomslate"
+              "deeperdarker:gloomslate"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_cobbled_gloomslate",
+      "has_gloomslate",
       "has_the_recipe"
     ]
   ],
