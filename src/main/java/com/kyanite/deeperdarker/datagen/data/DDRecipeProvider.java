@@ -153,11 +153,11 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stonecuttingRecipe(writer, DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get());
 
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get());
+        stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE.get());
         stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get());
+        stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get());
 
         stonecuttingRecipe(writer, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get());
