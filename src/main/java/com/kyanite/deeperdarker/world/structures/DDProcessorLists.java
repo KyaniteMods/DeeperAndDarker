@@ -13,7 +13,7 @@ public class DDProcessorLists {
     public static final ResourceKey<StructureProcessorList> ANCIENT_TEMPLE_DEGRADATION = createKey("ancient_temple_degradation");
 
     public static void bootstrap(BootstapContext<StructureProcessorList> context) {
-        ProcessorRule rule = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_BRICKS, 0.15f), AlwaysTrueTest.INSTANCE, Blocks.LIME_WOOL.defaultBlockState());
+        ProcessorRule rule = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_BRICKS, 0.07f), AlwaysTrueTest.INSTANCE, Blocks.LIME_WOOL.defaultBlockState());
 
         context.register(ANCIENT_TEMPLE_DEGRADATION, new StructureProcessorList(ImmutableList.of(new RuleProcessor(ImmutableList.of(rule)))));
     }
