@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.datagen.data;
+package com.kyanite.deeperdarker.datagen.data.loot;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;

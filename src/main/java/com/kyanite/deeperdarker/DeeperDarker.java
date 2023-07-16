@@ -13,6 +13,8 @@ import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
+import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
+import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import net.minecraft.client.model.BoatModel;
