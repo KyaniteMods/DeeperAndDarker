@@ -11,10 +11,10 @@ import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 
-public interface DDStructureSets {
-    ResourceKey<StructureSet> ANCIENT_TEMPLE = createKey("ancient_temple");
+public class DDStructureSets {
+    public static final  ResourceKey<StructureSet> ANCIENT_TEMPLE = createKey("ancient_temple");
 
-    static void bootstrap(BootstapContext<StructureSet> context) {
+    public static void bootstrap(BootstapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
         context.register(ANCIENT_TEMPLE, new StructureSet(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 40510257)));
     }
