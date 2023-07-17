@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:ancient_temple/basement/throne/throne_room",
+        "location": "deeperdarker:ancient_temple/upper/rooms/room_0",
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"
       },

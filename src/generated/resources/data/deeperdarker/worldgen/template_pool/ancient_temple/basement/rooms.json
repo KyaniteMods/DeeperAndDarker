@@ -3,6 +3,24 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/portal_room",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/throne_room",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
         "location": "deeperdarker:ancient_temple/basement/rooms/room_0",
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"

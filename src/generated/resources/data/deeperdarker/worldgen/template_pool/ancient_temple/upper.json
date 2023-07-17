@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:ancient_temple/basement/aisles/secret_aisle",
+        "location": "deeperdarker:ancient_temple/upper/fountain_room",
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"
       },
@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:ancient_temple/basement/aisles/aisle_0",
+        "location": "deeperdarker:ancient_temple/upper/apex",
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"
       },
