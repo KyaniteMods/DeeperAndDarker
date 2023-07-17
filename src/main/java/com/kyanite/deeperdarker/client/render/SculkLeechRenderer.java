@@ -14,7 +14,7 @@ public class SculkLeechRenderer extends MobRenderer<SculkLeech, SculkLeechModel>
     private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/sculk_leech.png");
 
     public SculkLeechRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new SculkLeechModel(pContext.bakeLayer(MODEL)), 0.2f);
+        super(pContext, new SculkLeechModel(pContext.bakeLayer(MODEL)), 0.4f);
     }
 
     @Override
