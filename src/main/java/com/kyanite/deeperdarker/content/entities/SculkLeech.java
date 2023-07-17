@@ -1,5 +1,8 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDSounds;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -33,6 +36,11 @@ public class SculkLeech extends Monster {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 4).add(Attributes.ATTACK_DAMAGE, 1).add(Attributes.MOVEMENT_SPEED, 0.25).build();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+        return DDSounds.LEECH_HURT.get();
     }
 
     @Override

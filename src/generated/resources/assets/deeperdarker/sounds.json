@@ -104,6 +104,14 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "entity.leech.hurt": {
+    "sounds": [
+      "deeperdarker:entity/sculk_leech/hurt1",
+      "deeperdarker:entity/sculk_leech/hurt2",
+      "deeperdarker:entity/sculk_leech/hurt3"
+    ],
+    "subtitle": "subtitles.entity.leech.hurt"
+  },
   "entity.shattered.ambient": {
     "sounds": [
       "deeperdarker:entity/shattered/ambient1",

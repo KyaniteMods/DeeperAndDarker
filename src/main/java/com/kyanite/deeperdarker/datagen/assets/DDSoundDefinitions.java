@@ -26,6 +26,7 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.VASE_HIT, subtitle("block.generic.hit").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
         add(DDSounds.VASE_PLACE, subtitle("block.generic.place").with(sound("block/vase/place1"), sound("block/vase/place2"), sound("block/vase/place3"), sound("block/vase/place4")));
         add(DDSounds.VASE_STEP, subtitle("block.generic.footsteps").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
+        add(DDSounds.LEECH_HURT, subtitle("entity.leech.hurt").with(sound("entity/sculk_leech/hurt1"), sound("entity/sculk_leech/hurt2"), sound("entity/sculk_leech/hurt3")));
         add(DDSounds.SNAPPER_AMBIENT, subtitle("entity.snapper.ambient").with(sound("entity/sculk_snapper/ambient")));
         add(DDSounds.SNAPPER_BITE, subtitle("entity.snapper.bite").with(sound("entity/sculk_snapper/bite")));
         add(DDSounds.SNAPPER_HURT, subtitle("entity.snapper.hurt").with(sound("entity/sculk_snapper/hurt")));
