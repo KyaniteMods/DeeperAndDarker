@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.client.model;
 
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
-import com.kyanite.deeperdarker.content.entities.animations.SculkSnapperAnimation;
+import com.kyanite.deeperdarker.content.entities.animations.SculkLeechAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HierarchicalModel;
@@ -47,8 +47,8 @@ public class SculkLeechModel extends HierarchicalModel<SculkLeech> {
 	@Override
 	public void setupAnim(SculkLeech entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
-		this.animateWalk(SculkSnapperAnimation.WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks);
+		this.animateWalk(SculkLeechAnimation.MOVE, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animate(entity.idleState, SculkLeechAnimation.IDLE, ageInTicks);
 	}
 
 	@Override
