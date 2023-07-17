@@ -1,16 +1,15 @@
 package com.kyanite.deeperdarker.world.structures;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -27,11 +26,11 @@ public class DDStructures {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(BiomeTags.HAS_VILLAGE_PLAINS)), pools.getOrThrow(DDPools.ANCIENT_TEMPLE), 7, ConstantHeight.of(VerticalAnchor.absolute(30)), false, Heightmap.Types.WORLD_SURFACE));
+        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.ANCIENT_TEMPLE), 6, ConstantHeight.of(VerticalAnchor.absolute(18)), false));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {
-        return new Structure.StructureSettings(biomes, Map.of(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.NONE);
+        return new Structure.StructureSettings(biomes, Map.of(), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, TerrainAdjustment.NONE);
     }
 
     private static ResourceKey<Structure> createKey(String name) {

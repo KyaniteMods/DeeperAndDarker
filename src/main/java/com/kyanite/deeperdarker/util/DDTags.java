@@ -1,11 +1,13 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class DDTags {
@@ -28,5 +30,9 @@ public class DDTags {
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));
         }
+    }
+
+    public static class Biomes {
+        public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/ancient_temple"));
     }
 }
