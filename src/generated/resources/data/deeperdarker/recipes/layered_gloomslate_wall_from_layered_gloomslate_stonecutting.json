@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "deeperdarker:layered_gloomslate"
+  },
+  "result": "deeperdarker:layered_gloomslate_wall"
+}

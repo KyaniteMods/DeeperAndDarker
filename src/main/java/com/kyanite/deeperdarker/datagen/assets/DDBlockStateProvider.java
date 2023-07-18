@@ -97,10 +97,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         stairsBlock(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.SMOOTH_GLOOMSLATE));
         slabBlock(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.SMOOTH_GLOOMSLATE), blockLoc(DDBlocks.SMOOTH_GLOOMSLATE));
         wallBlock(DDBlocks.SMOOTH_GLOOMSLATE_WALL, blockLoc(DDBlocks.SMOOTH_GLOOMSLATE));
-        simpleBlock(DDBlocks.CUT_GLOOMSLATE.get());
-        stairsBlock(DDBlocks.CUT_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.CUT_GLOOMSLATE));
-        slabBlock(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.CUT_GLOOMSLATE), blockLoc(DDBlocks.CUT_GLOOMSLATE));
-        wallBlock(DDBlocks.CUT_GLOOMSLATE_WALL, blockLoc(DDBlocks.CUT_GLOOMSLATE));
+        simpleBlock(DDBlocks.LAYERED_GLOOMSLATE.get());
+        stairsBlock(DDBlocks.LAYERED_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.LAYERED_GLOOMSLATE));
+        slabBlock(DDBlocks.LAYERED_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.LAYERED_GLOOMSLATE), blockLoc(DDBlocks.LAYERED_GLOOMSLATE));
+        wallBlock(DDBlocks.LAYERED_GLOOMSLATE_WALL, blockLoc(DDBlocks.LAYERED_GLOOMSLATE));
         simpleBlock(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());

@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-13T23:22:24.3963016	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2023-07-18T17:49:34.2063363	Tags for minecraft:block mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 8b39a9211759bdc66dd9605eda994a0447adfe0a data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
@@ -27,18 +27,18 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/minecraft/tags/blocks/emerald_ores
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/blocks/logs_that_burn.json
 fc0840dbf04c396cf7e11fd67d5b67d858f21402 data/minecraft/tags/blocks/mineable/axe.json
 633c12d323e835aa78ab198b92db826d66b5e348 data/minecraft/tags/blocks/mineable/hoe.json
-56d633c34114806f7531a05ef22c7ffa4ba9709b data/minecraft/tags/blocks/mineable/pickaxe.json
+1496773af21d19364ba5ae148d8c2bc604b5257d data/minecraft/tags/blocks/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/blocks/mineable/shovel.json
 92b310730e3db819c9256a99e8b4392af463dbba data/minecraft/tags/blocks/needs_iron_tool.json
 e4f3c26837d812fe4e7ae077664a7e4c8613e64d data/minecraft/tags/blocks/needs_stone_tool.json
 a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/blocks/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/blocks/portals.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/blocks/redstone_ores.json
-7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/blocks/slabs.json
-8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/blocks/stairs.json
+641a47f671a909d63dc3bad528344166b6229f67 data/minecraft/tags/blocks/slabs.json
+6d8874ab5dfec2456f93fa4ad2ee0a9572569f2e data/minecraft/tags/blocks/stairs.json
 3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/blocks/standing_signs.json
 5381ed3d8b4133ed1bc9c4f6fe2434624f663b10 data/minecraft/tags/blocks/stone_bricks.json
-e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/blocks/walls.json
+1645771f2c8667ad89e9cfda671e86f3d8f7ca04 data/minecraft/tags/blocks/walls.json
 59d845afe4fd0c9146ddc55b4cc1bc6d1e2606c2 data/minecraft/tags/blocks/wall_hanging_signs.json
 fd38b0e7d7082c1795e0c4db934fc18507a12568 data/minecraft/tags/blocks/wall_signs.json
 379b61d8edf96f7b8cd4ca99ccbcff328671b625 data/minecraft/tags/blocks/wooden_buttons.json

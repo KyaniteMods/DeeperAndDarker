@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-17T16:34:55.3403423	Item Models: deeperdarker
+// 1.20.1	2023-07-18T17:49:34.2123363	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
@@ -11,10 +11,6 @@ b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled
 89328e616967e970f638a1a85dc99021c95ea9f0 assets/deeperdarker/models/item/cobbled_sculk_stone_stairs.json
 a83a97c9a52c6f16a0d4dd3fcb6f498389378b84 assets/deeperdarker/models/item/cobbled_sculk_stone_wall.json
 4513ac649c72f03bed009ed8f09133c9f5359e6f assets/deeperdarker/models/item/crystallized_amber.json
-2ffe2f7cebcf09c0f3eb69b2160667771e346348 assets/deeperdarker/models/item/cut_gloomslate.json
-a0e036cb7665388047ccdc5176b8adf7498cceb7 assets/deeperdarker/models/item/cut_gloomslate_slab.json
-385f5b34f30169540b2f82e833b86285aafb99bf assets/deeperdarker/models/item/cut_gloomslate_stairs.json
-cd27b1a4095d4454a5268ed4248cdccaaf694eb5 assets/deeperdarker/models/item/cut_gloomslate_wall.json
 ce4c787818f1f656692905c4368841b3b1e3b336 assets/deeperdarker/models/item/cut_sculk_stone.json
 ad7931d84518c11197577050228d842d4de206ab assets/deeperdarker/models/item/cut_sculk_stone_slab.json
 1fe2fe61a247431ef7b30bd5ece7ff4c7a92d7f0 assets/deeperdarker/models/item/cut_sculk_stone_stairs.json
@@ -55,6 +51,10 @@ c7343ab080a175d8521f10587a5b78957417aacc assets/deeperdarker/models/item/gloomsl
 dcb13683800224ef75b1e8919dc436a16060d157 assets/deeperdarker/models/item/grime_ball.json
 0713be97d937d3540b05b468690d8fe75c336e2a assets/deeperdarker/models/item/grime_brick.json
 d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_of_the_deep.json
+28776a83723561b77823224e193a87e0ce5160e8 assets/deeperdarker/models/item/layered_gloomslate.json
+71841bcf393b89e4cbf40eaab880d8dd593b4bb8 assets/deeperdarker/models/item/layered_gloomslate_slab.json
+a36c7ddaa0e478f9cef8c39509eb42928e8d5c36 assets/deeperdarker/models/item/layered_gloomslate_stairs.json
+a61f680ad1074966c3117f6c18449e04abd2e62a assets/deeperdarker/models/item/layered_gloomslate_wall.json
 5e5af3cb2453907678556dcd859a2a0bc6c5527b assets/deeperdarker/models/item/polished_gloomslate.json
 dc2fc01abd02b4e3b368176b7f05540ce3365f57 assets/deeperdarker/models/item/polished_gloomslate_slab.json
 d1f45dbc6e65425d6ce3d2ea175a412da105cc17 assets/deeperdarker/models/item/polished_gloomslate_stairs.json

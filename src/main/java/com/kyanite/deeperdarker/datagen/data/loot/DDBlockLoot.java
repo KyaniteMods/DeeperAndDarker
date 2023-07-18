@@ -112,10 +112,10 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get());
         add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
-        dropSelf(DDBlocks.CUT_GLOOMSLATE.get());
-        dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
-        add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
-        dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.LAYERED_GLOOMSLATE.get());
+        dropSelf(DDBlocks.LAYERED_GLOOMSLATE_STAIRS.get());
+        add(DDBlocks.LAYERED_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.LAYERED_GLOOMSLATE_WALL.get());
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         dropSelf(DDBlocks.ECHO_SOIL.get());

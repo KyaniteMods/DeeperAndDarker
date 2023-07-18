@@ -65,7 +65,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
 
         tag(DDTags.Items.SCULK_STONE_SLABS).add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_SLAB.get().asItem(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_BRICK_SLAB.get().asItem(), DDBlocks.SCULK_STONE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get().asItem(), DDBlocks.CUT_SCULK_STONE_SLAB.get().asItem());
-        tag(DDTags.Items.GLOOMSLATE_SLABS).add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_SLAB.get().asItem(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.CUT_GLOOMSLATE_SLAB.get().asItem());
+        tag(DDTags.Items.GLOOMSLATE_SLABS).add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_SLAB.get().asItem(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.LAYERED_GLOOMSLATE_SLAB.get().asItem());
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get());
