@@ -82,7 +82,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
         dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
 
-        dropSelf(DDBlocks.SCULK_GRIME.get());
+        add(DDBlocks.SCULK_GRIME.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL.get(), UniformGenerator.between(2, 4)));
         dropSelf(DDBlocks.SCULK_GRIME_BRICKS.get());
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get());
         add(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), this::createSlabItemTable);
