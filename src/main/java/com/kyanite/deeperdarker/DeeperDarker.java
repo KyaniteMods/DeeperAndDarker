@@ -15,10 +15,7 @@ import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.data.DDBlockTagsProvider;
-import com.kyanite.deeperdarker.datagen.data.DDItemTagsProvider;
-import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
-import com.kyanite.deeperdarker.datagen.data.DDWorldGeneration;
+import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
@@ -43,6 +40,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -51,6 +49,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.List;
 
 @Mod(DeeperDarker.MOD_ID)
 public class DeeperDarker {
@@ -114,12 +114,12 @@ public class DeeperDarker {
         generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
 
         // data
-        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
-
         DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, event.getLookupProvider(), fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
 
+        generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, event.getLookupProvider(), fileHelper, List.of(new DDAdvancements())));
+        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));

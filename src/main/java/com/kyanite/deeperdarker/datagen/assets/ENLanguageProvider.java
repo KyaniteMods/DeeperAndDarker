@@ -30,6 +30,25 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
 
+        add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
+        add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you towards the source...");
+        add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.title", "A Metropolis of Restless Souls");
+        add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.description", "Find an Ancient City");
+        add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
+        add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.description", "Slay the Warden and take its heart");
+        add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.title", "Below the Bedrock");
+        add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock... the darkness awaits");
+        add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.title", "fta name");
+        add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "fta desc");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Noise Complaint");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
+        add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
+        add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.title", "Sculk Engineer");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.description", "Reinforce an Echo Shard");
+        add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
+        add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
+
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
 
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
