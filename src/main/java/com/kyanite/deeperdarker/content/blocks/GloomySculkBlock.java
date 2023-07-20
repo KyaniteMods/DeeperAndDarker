@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 @SuppressWarnings("NullableProblems")
-public class GloomSculkBlock extends SculkBlock implements BonemealableBlock, SculkBehaviour {
-    public GloomSculkBlock(Properties pProperties) {
+public class GloomySculkBlock extends SculkBlock implements BonemealableBlock, SculkBehaviour {
+    public GloomySculkBlock(Properties pProperties) {
         super(pProperties);
     }
 

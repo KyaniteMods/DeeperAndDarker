@@ -122,6 +122,8 @@ public class DDCreativeTab {
             event.accept(DDItems.ECHO_HANGING_SIGN);
 
             event.accept(DDBlocks.ANCIENT_VASE);
+            event.accept(DDBlocks.INFESTED_SCULK);
+
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
 

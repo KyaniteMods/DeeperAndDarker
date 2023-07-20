@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-18T17:49:34.2313364	Block States: deeperdarker
+// 1.20.1	2023-07-19T22:09:18.9887414	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 b618639a1bd650f5bbceed1f24a777ca15ae37fe assets/deeperdarker/blockstates/chiseled_gloomslate.json
 389153807c5651eba34cf020ac7d3b675b0418a2 assets/deeperdarker/blockstates/chiseled_sculk_stone.json
@@ -48,6 +48,7 @@ e3a2b0ee80440e02561977fb683ed85c20c7213a assets/deeperdarker/blockstates/gloomsl
 3c096beaa9613e61820d7c7b3aa012585df0a82b assets/deeperdarker/blockstates/gloomy_geyser.json
 09d1e0a03feba8c94323895c8cd611eb1b080c6e assets/deeperdarker/blockstates/gloomy_grass.json
 49c82a06a73943a1539209d8e88a70833e64dfa1 assets/deeperdarker/blockstates/gloomy_sculk.json
+59b37cfc48b764ed52f057a40cda85004285aaee assets/deeperdarker/blockstates/infested_sculk.json
 4ad58ab59d96183b0a67ded15cb6d897d8e431a4 assets/deeperdarker/blockstates/layered_gloomslate.json
 444a774846c60e7e325df33a2509af2485d48109 assets/deeperdarker/blockstates/layered_gloomslate_slab.json
 f3f7b3d4da8369f2dd249c5110d9d81eafdc06ca assets/deeperdarker/blockstates/layered_gloomslate_stairs.json
@@ -235,6 +236,7 @@ d79b7c90b34a2d89cdc77fa0e9d4cf31fefb1cf6 assets/deeperdarker/models/block/polish
 67b6737eff68d46ff2868bdfd426a71318c9eff9 assets/deeperdarker/models/block/polished_sculk_stone_wall_post.json
 ef3f2ab8e3363b5ee55f8996ebe43b4ea697600d assets/deeperdarker/models/block/polished_sculk_stone_wall_side.json
 ff0ad82277459bbd5d5be49a64a5b28c44e020c3 assets/deeperdarker/models/block/polished_sculk_stone_wall_side_tall.json
+65ede8a217bf1dcc9e87c36e986efbed307197c3 assets/deeperdarker/models/block/sculk.json
 e2e629dbec3aea754f099585071808b78f8c482a assets/deeperdarker/models/block/sculk_gleam.json
 bb9156cf33490f8281cf5a321588132c6a392f03 assets/deeperdarker/models/block/sculk_grime.json
 f4e958c04992c0488b32c4983d888e9edc41b9b5 assets/deeperdarker/models/block/sculk_grime_bricks.json

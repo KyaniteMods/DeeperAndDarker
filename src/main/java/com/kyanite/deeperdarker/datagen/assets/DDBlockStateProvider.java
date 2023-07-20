@@ -4,10 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -126,6 +123,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
 
         simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
+        simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
     }
 
     private void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {

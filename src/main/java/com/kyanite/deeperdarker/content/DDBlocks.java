@@ -137,7 +137,7 @@ public class DDBlocks {
     public static final RegistryObject<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
 
     public static final RegistryObject<Block> ECHO_SOIL = register("echo_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
-    public static final RegistryObject<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomSculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
+    public static final RegistryObject<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomySculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
     public static final RegistryObject<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).noLootTable()));
     public static final RegistryObject<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().lightLevel(state -> 1).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.GLASS).noOcclusion()));
     public static final RegistryObject<Block> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15).mapColor(MapColor.SAND)));
@@ -159,6 +159,9 @@ public class DDBlocks {
     public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak()));
 
     public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE)));
+
+    public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
+
     public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {

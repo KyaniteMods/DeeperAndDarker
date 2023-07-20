@@ -31,7 +31,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_SLAB);
         blockModel(DDBlocks.ECHO_FENCE, "inventory");
         blockModel(DDBlocks.ECHO_FENCE_GATE);
-        blockItemModel(DDBlocks.ECHO_DOOR, GENERATED).renderType("translucent");
+        itemModel(DDBlocks.ECHO_DOOR, GENERATED).renderType("translucent");
         blockModel(DDBlocks.ECHO_TRAPDOOR, "bottom");
         blockModel(DDBlocks.ECHO_PRESSURE_PLATE);
         blockModel(DDBlocks.ECHO_BUTTON, "inventory");
@@ -125,6 +125,8 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         blockModel(DDBlocks.ANCIENT_VASE);
 
+        withExistingParent(DDBlocks.INFESTED_SCULK.getId().getPath(), mcLoc("block/sculk"));
+
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
@@ -170,11 +172,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 
-    public ItemModelBuilder blockItemModel(RegistryObject<? extends Block> item, ModelFile modelFile) {
+    public ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile) {
         return getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
-    }
-
-    public void itemModel(RegistryObject<? extends Item> item, ModelFile modelFile) {
-        getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
     }
 }
