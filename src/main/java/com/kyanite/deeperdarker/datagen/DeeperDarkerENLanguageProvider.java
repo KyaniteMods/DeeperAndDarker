@@ -173,6 +173,9 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         translationBuilder.add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
         translationBuilder.add("subtitles.ambience.warden_dreaming", "Warden dreams");
+        translationBuilder.add("subtitles.entity.shattered.ambient", "Shattered growls");
+        translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
+        translationBuilder.add("subtitles.entity.shattered.death", "Shattered dies");
         translationBuilder.add("advancements.deeperdarker.root.title", "Arrival");
         translationBuilder.add("advancements.deeperdarker.root.description", "Do not disturb");
     }
