@@ -6,9 +6,8 @@ assignees: ''
 
 ---
 
-**Mod Version**: x.xx.xx
-
-**Mod Loader**: forge/fabric/both
+**Mod Version**: x.x.x
+**Mod Loader**: forge/fabric
 
 **Description**:
 Explanation of what the bug is and how it affects the game.
