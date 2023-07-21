@@ -5,7 +5,6 @@ import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import com.kyanite.deeperdarker.world.dimension.DeeperDarkerWorlds;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementFrame;
-import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.ChangedDimensionCriterion;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;

@@ -3,11 +3,9 @@ package com.kyanite.deeperdarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerBlockEntityTypes;
 import com.kyanite.deeperdarker.client.entity.feature.WardenHelmetHornsFeatureRenderer;
-import com.kyanite.deeperdarker.client.entity.model.DeeperDarkerModelLayers;
-import com.kyanite.deeperdarker.client.entity.model.SculkSnapperEntityModel;
-import com.kyanite.deeperdarker.client.entity.model.ShatteredEntityModel;
-import com.kyanite.deeperdarker.client.entity.model.WardenHelmetHornsModel;
+import com.kyanite.deeperdarker.client.entity.model.*;
 import com.kyanite.deeperdarker.client.entity.render.DeeperDarkerBoatEntityRenderer;
+import com.kyanite.deeperdarker.client.entity.render.SculkLeechEntityRenderer;
 import com.kyanite.deeperdarker.client.entity.render.SculkSnapperEntityRenderer;
 import com.kyanite.deeperdarker.client.entity.render.ShatteredEntityRenderer;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
@@ -51,12 +49,14 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.CHEST_BOAT, (ctx) -> new DeeperDarkerBoatEntityRenderer(ctx, true));
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.SCULK_SNAPPER, SculkSnapperEntityRenderer::new);
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.SHATTERED, ShatteredEntityRenderer::new);
+        EntityRendererRegistry.register(DeeperDarkerEntityTypes.SCULK_LEECH, SculkLeechEntityRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.WARDEN_HELMET, WardenHelmetHornsModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.ECHO_BOAT, BoatEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.ECHO_CHEST_BOAT, ChestBoatEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SCULK_SNAPPER, SculkSnapperEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SHATTERED, ShatteredEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SCULK_LEECH, SculkLeechEntityModel::getTexturedModelData);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof BipedEntityModel) {

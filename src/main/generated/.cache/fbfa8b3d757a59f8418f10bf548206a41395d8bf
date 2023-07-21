@@ -1,3 +1,4 @@
-// 1.20.1	2023-07-15T15:30:39.2998178	Deeper and Darker/minecraft:entity Loot Table
+// 1.20.1	2023-07-20T23:32:11.402864	Deeper and Darker/minecraft:entity Loot Table
 ae928aae989af2006c248ba952b46c14342d17f5 data\deeperdarker\loot_tables\entity\shattered.json
 00ece200291c7b3078e0e75a34bec41530156a13 data\deeperdarker\loot_tables\entity\sculk_snapper.json
+bb4c50085ea3fd1f03b06775ea2b1374cba0b787 data\deeperdarker\loot_tables\entity\sculk_leech.json

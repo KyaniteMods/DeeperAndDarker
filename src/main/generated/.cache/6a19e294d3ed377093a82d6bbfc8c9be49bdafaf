@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-15T15:30:39.3077972	Deeper and Darker/Tags for minecraft:item
+// 1.20.1	2023-07-20T23:32:11.4138341	Deeper and Darker/Tags for minecraft:item
 d0b222d759fe0c881261b06d778a3563df87b7db data\minecraft\tags\items\wooden_doors.json
 8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data\minecraft\tags\items\wooden_slabs.json
 5853dd3bde739be76992a2067a4a916e9f14659f data\minecraft\tags\items\walls.json
@@ -13,8 +13,8 @@ a80782ad2aab1d6a87e5125ec63b62424ee43dcc data\minecraft\tags\items\slabs.json
 2915a566d48ac85eb725808dbced03b9425df731 data\minecraft\tags\items\iron_ores.json
 d65f46144dce454913a48c30b6512068f6d4932b data\minecraft\tags\items\pickaxes.json
 a4a26cabae188169c902530ffe27faea3507b5e4 data\minecraft\tags\items\emerald_ores.json
-cd824c2c5df9dd9ae11e32a8d9b2287999afdb5e data\minecraft\tags\items\hoes.json
 cc8be56656b9b01f639d38e0c2d412a07a7a4642 data\minecraft\tags\items\redstone_ores.json
+cd824c2c5df9dd9ae11e32a8d9b2287999afdb5e data\minecraft\tags\items\hoes.json
 0b611850fa88d0382e3e8016186b458466af19fb data\minecraft\tags\items\wooden_buttons.json
 4153a807a665d99890ad7eac8f9a15080a466e6f data\minecraft\tags\items\lapis_ores.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data\deeperdarker\tags\items\echo_logs.json

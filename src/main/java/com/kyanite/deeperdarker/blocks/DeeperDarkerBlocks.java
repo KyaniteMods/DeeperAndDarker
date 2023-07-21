@@ -275,7 +275,7 @@ public class DeeperDarkerBlocks {
         GLOOMY_SCULK = registerBlock("gloomy_sculk", new GloomySculkBlock(AbstractBlock.Settings.copy(Blocks.SCULK)));
         GLOOMY_GEYSER = registerBlock("gloomy_geyser", new GloomyGeyserBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 9).pistonBehavior(
                 PistonBehavior.DESTROY)));
-        ANCIENT_VASE = registerBlock("ancient_vase", new AncientVaseBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.0f, 6.0f).sounds(DeeperDarkerSounds.ANCIENT_VASE)));
+        ANCIENT_VASE = registerBlock("ancient_vase", new AncientVaseBlock(AbstractBlock.Settings.copy(Blocks.DEEPSLATE).strength(2.0f, 6.0f).sounds(DeeperDarkerSounds.ANCIENT_VASE).pistonBehavior(PistonBehavior.DESTROY)));
         CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", new TransparentBlock(AbstractBlock.Settings.create().luminance((state) -> 1).mapColor(MapColor.ORANGE).sounds(
                 BlockSoundGroup.GLASS).nonOpaque()));
         OTHERSIDE_PORTAL = registerBlock("otherside_portal", new CustomPortalBlock(AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)));

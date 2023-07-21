@@ -163,6 +163,7 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerEntityTypes.SCULK_SNAPPER, "Sculk Snapper");
         translationBuilder.add(DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
         translationBuilder.add(DeeperDarkerItems.SHATTERED_SPAWN_EGG, "Shattered Spawn Egg");
+        translationBuilder.add(DeeperDarkerItems.SCULK_LEECH_SPAWN_EGG, "Sculk Leech Spawn Egg");
         translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
@@ -176,6 +177,7 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.shattered.ambient", "Shattered growls");
         translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
         translationBuilder.add("subtitles.entity.shattered.death", "Shattered dies");
+        translationBuilder.add("subtitles.entity.sculk_leech.hurt", "Sculk Leech hurts");
         translationBuilder.add("advancements.deeperdarker.root.title", "Arrival");
         translationBuilder.add("advancements.deeperdarker.root.description", "Do not disturb");
     }

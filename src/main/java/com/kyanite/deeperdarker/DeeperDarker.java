@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
-import com.kyanite.deeperdarker.entities.SculkSnapperEntity;
 import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import com.kyanite.deeperdarker.items.DeeperDarkerPotions;
@@ -10,7 +9,6 @@ import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import com.kyanite.deeperdarker.world.gen.feature.DeeperDarkerFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.fabricmc.fabric.mixin.object.builder.DefaultAttributeRegistryAccessor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;

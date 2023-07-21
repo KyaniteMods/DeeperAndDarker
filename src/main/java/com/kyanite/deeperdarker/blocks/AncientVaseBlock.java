@@ -1,5 +1,7 @@
 package com.kyanite.deeperdarker.blocks;
 
+import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
+import com.kyanite.deeperdarker.entities.SculkLeechEntity;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -11,9 +13,11 @@ import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,5 +63,20 @@ public class AncientVaseBlock extends ExperienceDroppingBlock implements Waterlo
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return Stream.of(BASE, OUTLINE, RIM).reduce((v1, v2) -> VoxelShapes.combine(v1, v2, BooleanBiFunction.OR)).get();
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        super.onStateReplaced(state, world, pos, newState, movedByPiston);
+
+        Random random = Random.create();
+        if (random.nextFloat() < 0.125f) {
+            for(int i = 0; i < random.nextBetween(1, 4); i++) {
+                SculkLeechEntity entity = DeeperDarkerEntityTypes.SCULK_LEECH.create(world);
+                assert entity != null;
+                entity.refreshPositionAndAngles(pos.getX() + random.nextFloat(), pos.getY() + random.nextFloat() + 0.15f, pos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
+                world.spawnEntity(entity);
+            }
+        }
     }
 }

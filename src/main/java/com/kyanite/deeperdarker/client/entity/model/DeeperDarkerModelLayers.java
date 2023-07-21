@@ -20,6 +20,7 @@ public class DeeperDarkerModelLayers {
     public static final EntityModelLayer ECHO_CHEST_BOAT = createChestBoat("echo");
     public static final EntityModelLayer SCULK_SNAPPER = registerMain("sculk_snapper");
     public static final EntityModelLayer SHATTERED = registerMain("shattered");
+    public static final EntityModelLayer SCULK_LEECH = registerMain("sculk_leech");
 
     private static EntityModelLayer registerMain(String id) {
         return register(id, "main");
