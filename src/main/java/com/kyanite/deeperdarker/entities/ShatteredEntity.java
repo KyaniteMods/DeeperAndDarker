@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.entities;
 import com.kyanite.deeperdarker.entities.goals.DisturbanceListener;
 import com.kyanite.deeperdarker.entities.goals.GoToDisturbanceGoal;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
-import net.minecraft.command.EntitySelector;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.goal.*;
@@ -25,7 +24,6 @@ import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.event.PositionSource;
 import net.minecraft.world.event.Vibrations;
 import net.minecraft.world.event.listener.EntityGameEventHandler;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiConsumer;

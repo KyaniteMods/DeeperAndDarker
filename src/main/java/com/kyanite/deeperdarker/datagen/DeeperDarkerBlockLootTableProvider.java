@@ -179,5 +179,6 @@ public class DeeperDarkerBlockLootTableProvider extends FabricBlockLootTableProv
                         .with(ItemEntry.builder(Blocks.SAND).weight(3)
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))));
         this.addDropWithSilkTouch(DeeperDarkerBlocks.CRYSTALLIZED_AMBER);
+        this.addDropWithSilkTouch(DeeperDarkerBlocks.INFESTED_SCULK, Blocks.SCULK);
     }
 }

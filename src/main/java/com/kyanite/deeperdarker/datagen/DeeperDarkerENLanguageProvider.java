@@ -178,6 +178,10 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
         translationBuilder.add("subtitles.entity.shattered.death", "Shattered dies");
         translationBuilder.add("subtitles.entity.sculk_leech.hurt", "Sculk Leech hurts");
+        translationBuilder.add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
+        translationBuilder.add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
+        translationBuilder.add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
+        translationBuilder.add(DeeperDarkerBlocks.INFESTED_SCULK, "Infested Sculk");
         translationBuilder.add("advancements.deeperdarker.root.title", "Arrival");
         translationBuilder.add("advancements.deeperdarker.root.description", "Do not disturb");
     }

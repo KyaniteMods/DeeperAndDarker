@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
-import net.minecraft.loot.context.LootContextType;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.LootingEnchantLootFunction;
@@ -34,6 +33,7 @@ public class DeeperDarkerEntityLootTableProvider extends SimpleFabricLootTablePr
         exporter.accept(id("sculk_leech"), new LootTable.Builder().pool(
                 LootPool.builder().with(ItemEntry.builder(DeeperDarkerItems.SOUL_DUST)).apply(SetCountLootFunction.builder(
                         UniformLootNumberProvider.create(0.0f, 1.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f)))).randomSequenceId(randomSequenceId("sculk_leech")));
+        exporter.accept(id("shriek_worm"), new LootTable.Builder().randomSequenceId(randomSequenceId("shriek_worm")));
     }
 
     private static Identifier id(String entity) {

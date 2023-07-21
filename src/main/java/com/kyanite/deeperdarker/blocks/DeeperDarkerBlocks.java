@@ -131,6 +131,7 @@ public class DeeperDarkerBlocks {
     public static final Block ANCIENT_VASE;
     public static final Block CRYSTALLIZED_AMBER;
     public static final Block OTHERSIDE_PORTAL;
+    public static final Block INFESTED_SCULK;
 
     static {
         ECHO_LOG = registerBlock("echo_log", new PillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG).mapColor(state -> state.get(
@@ -279,6 +280,7 @@ public class DeeperDarkerBlocks {
         CRYSTALLIZED_AMBER = registerBlock("crystallized_amber", new TransparentBlock(AbstractBlock.Settings.create().luminance((state) -> 1).mapColor(MapColor.ORANGE).sounds(
                 BlockSoundGroup.GLASS).nonOpaque()));
         OTHERSIDE_PORTAL = registerBlock("otherside_portal", new CustomPortalBlock(AbstractBlock.Settings.copy(Blocks.NETHER_PORTAL)));
+        INFESTED_SCULK = registerBlock("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, AbstractBlock.Settings.copy(Blocks.SCULK)));
     }
 
     private static Block registerBlock(String id, Block block) {

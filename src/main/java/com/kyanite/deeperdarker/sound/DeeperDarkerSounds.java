@@ -42,6 +42,10 @@ public class DeeperDarkerSounds {
 
     public static final SoundEvent LEECH_HURT = register("entity.sculk_leech.hurt");
 
+    public static final SoundEvent SHRIEK_WORM_AMBIENT = register("entity.shriek_worm.ambient");
+    public static final SoundEvent SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
+    public static final SoundEvent SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
+
     public static final RegistryEntry.Reference<SoundEvent> ARRIVAL = registerReference("music.deeperdarker.arrival");
 
     private static SoundEvent register(String id) {

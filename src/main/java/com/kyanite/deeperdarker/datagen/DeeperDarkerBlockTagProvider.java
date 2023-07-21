@@ -117,9 +117,12 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
 
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).setReplace(false).add(
                 DeeperDarkerBlocks.ECHO_LEAVES,
+                DeeperDarkerBlocks.GLOOMY_SCULK,
+                DeeperDarkerBlocks.GLOOMY_GEYSER,
                 DeeperDarkerBlocks.SCULK_GLEAM,
                 DeeperDarkerBlocks.SCULK_VINES_PLANT,
-                DeeperDarkerBlocks.SCULK_VINES
+                DeeperDarkerBlocks.SCULK_VINES,
+                DeeperDarkerBlocks.INFESTED_SCULK
         );
 
         getOrCreateTagBuilder(BlockTags.WALLS).setReplace(false).add(

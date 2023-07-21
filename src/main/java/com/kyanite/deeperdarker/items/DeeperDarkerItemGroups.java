@@ -3,13 +3,8 @@ package com.kyanite.deeperdarker.items;
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.*;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -128,6 +123,7 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.GRIME_BRICK));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_TENDRILS));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_VINES));
+                entries.add(new ItemStack(DeeperDarkerItems.INFESTED_SCULK));
                 entries.add(new ItemStack(DeeperDarkerItems.GLOOMY_CACTUS));
                 entries.add(new ItemStack(DeeperDarkerItems.GLOOMY_GRASS));
                 entries.add(new ItemStack(DeeperDarkerItems.GLOOMY_SCULK));
@@ -138,6 +134,7 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG));
                 entries.add(new ItemStack(DeeperDarkerItems.SHATTERED_SPAWN_EGG));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_LEECH_SPAWN_EGG));
+                entries.add(new ItemStack(DeeperDarkerItems.SHRIEK_WORM_SPAWN_EGG));
             })).build());
 
     public static void init() {

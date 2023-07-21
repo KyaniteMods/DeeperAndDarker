@@ -134,6 +134,28 @@
     ],
     "subtitle": "subtitles.entity.sculk_leech.hurt"
   },
+  "entity.shriek_worm.ambient": {
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/ambient1",
+      "deeperdarker:entity/shriek_worm/ambient2",
+      "deeperdarker:entity/shriek_worm/ambient3"
+    ],
+    "subtitle": "subtitles.entity.shriek_worm.ambient"
+  },
+  "entity.shriek_worm.death": {
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/death"
+    ],
+    "subtitle": "subtitles.entity.shriek_worm.death"
+  },
+  "entity.shriek_worm.hurt": {
+    "sounds": [
+      "deeperdarker:entity/shriek_worm/hurt1",
+      "deeperdarker:entity/shriek_worm/hurt2",
+      "deeperdarker:entity/shriek_worm/hurt3"
+    ],
+    "subtitle": "subtitles.entity.shriek_worm.hurt"
+  },
   "entity.sculk_snapper.ambient": {
     "sounds": [
       "deeperdarker:entity/sculk_snapper/ambient"

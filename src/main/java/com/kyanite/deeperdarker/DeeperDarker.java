@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.enchantments.DeeperDarkerEnchantments;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
@@ -30,6 +31,7 @@ public class DeeperDarker implements ModInitializer {
 		DeeperDarkerFeatures.init();
 		DeeperDarkerSounds.init();
 		DeeperDarkerPotions.init();
+		DeeperDarkerEnchantments.init();
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getLootTableId().equals(id)) {

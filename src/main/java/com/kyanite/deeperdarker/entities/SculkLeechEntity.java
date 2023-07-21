@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.entities;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -41,6 +42,11 @@ public class SculkLeechEntity extends HostileEntity {
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DeeperDarkerSounds.LEECH_HURT;
+    }
+
+    @Override
+    public EntityGroup getGroup() {
+        return DeeperDarkerEntityGroups.SCULK;
     }
 
     @Override
