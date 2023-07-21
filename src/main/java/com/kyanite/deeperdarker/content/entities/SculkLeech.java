@@ -15,8 +15,8 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("NullableProblems")
 public class SculkLeech extends Monster {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
@@ -39,12 +39,12 @@ public class SculkLeech extends Monster {
     }
 
     @Override
-    protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DDSounds.LEECH_HURT.get();
     }
 
     @Override
-    public boolean doHurtTarget(@NotNull Entity pEntity) {
+    public boolean doHurtTarget(Entity pEntity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
     }

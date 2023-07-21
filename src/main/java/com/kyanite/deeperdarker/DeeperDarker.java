@@ -3,14 +3,13 @@ package com.kyanite.deeperdarker;
 import com.kyanite.deeperdarker.client.model.SculkLeechModel;
 import com.kyanite.deeperdarker.client.model.SculkSnapperModel;
 import com.kyanite.deeperdarker.client.model.ShatteredModel;
-import com.kyanite.deeperdarker.client.render.DDBoatRenderer;
-import com.kyanite.deeperdarker.client.render.SculkLeechRenderer;
-import com.kyanite.deeperdarker.client.render.SculkSnapperRenderer;
-import com.kyanite.deeperdarker.client.render.ShatteredRenderer;
+import com.kyanite.deeperdarker.client.model.ShriekWormModel;
+import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.SculkSnapper;
 import com.kyanite.deeperdarker.content.entities.Shattered;
+import com.kyanite.deeperdarker.content.entities.ShriekWorm;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
@@ -93,6 +92,7 @@ public class DeeperDarker {
         EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+        EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -129,6 +129,7 @@ public class DeeperDarker {
         event.put(DDEntities.SCULK_LEECH.get(), SculkLeech.createAttributes());
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
         event.put(DDEntities.SHATTERED.get(), Shattered.createAttributes());
+        event.put(DDEntities.SHRIEK_WORM.get(), ShriekWorm.createAttributes());
     }
 
     private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -137,6 +138,7 @@ public class DeeperDarker {
         event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
         event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
+        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
     }
 
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {

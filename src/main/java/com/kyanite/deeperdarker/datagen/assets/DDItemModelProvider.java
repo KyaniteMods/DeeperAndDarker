@@ -158,6 +158,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
         spawnEggModel(DDItems.SHATTERED_SPAWN_EGG);
+        spawnEggModel(DDItems.SHRIEK_WORM_SPAWN_EGG);
     }
 
     private void spawnEggModel(RegistryObject<Item> egg) {
