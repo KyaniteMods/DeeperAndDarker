@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-@SuppressWarnings("deprecation, NullableProblems")
+@SuppressWarnings("NullableProblems")
 public class InfestedSculkBlock extends Block {
     public InfestedSculkBlock(Block hostBlock, Properties properties) {
         super(properties.destroyTime(hostBlock.defaultDestroyTime() / 2.0f).explosionResistance(0.75f));
