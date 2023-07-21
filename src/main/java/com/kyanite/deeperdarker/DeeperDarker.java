@@ -66,6 +66,7 @@ public class DeeperDarker {
         DDEntities.ENTITIES.register(eventBus);
         DDEffects.EFFECTS.register(eventBus);
         DDPotions.POTIONS.register(eventBus);
+        DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
