@@ -1,12 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -94,13 +91,6 @@ public class ShriekWorm extends Monster {
 
         if(this.descendState.isStarted()) {
             this.entityData.set(IDLE_TIMER, this.entityData.get(IDLE_TIMER) - 1);
-            for(int i = 0; i < 30; i++) {
-                double x = blockPosition().getX() + (double) Mth.randomBetween(this.random, -0.7f, 0.7f);
-                double y = blockPosition().getY();
-                double z = blockPosition().getZ() + (double) Mth.randomBetween(this.random, -0.7f, 0.7f);
-                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, getBlockStateOn()), x, y, z, 0, 0, 0);
-            }
-
             if(this.entityData.get(IDLE_TIMER) <= -90) {
                 level().setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
                 // TODO: kill does not work... make it work (change descent chance once fixed)
