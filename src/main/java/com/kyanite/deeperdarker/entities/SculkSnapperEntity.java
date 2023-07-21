@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.entities;
 
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -13,14 +15,25 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.EnchantedBookItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SculkSnapperEntity extends TameableEntity {
     private static final TrackedData<Integer> SNIFF_COUNTER = DataTracker.registerData(SculkSnapperEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -97,31 +110,27 @@ public class SculkSnapperEntity extends TameableEntity {
     public void tick() {
         super.tick();
 
-        if (getWorld().isClient) {
-            if (this.idleTimeout <= 0) {
+        if (this.isTamed() && this.getOwner() != null) {
+            if(this.getOwner().distanceTo(this) < 6 && this.random.nextFloat() < 0.0004f) {
+                List<Enchantment> enchantments = new ArrayList<>();
+                Registries.ENCHANTMENT.forEach(enchant -> {
+                    if(!enchant.isCursed()) enchantments.add(enchant);
+                });
+                Enchantment enchantment1 = enchantments.remove(this.random.nextInt(enchantments.size()));
+                Enchantment enchantment2 = enchantments.get(this.random.nextInt(enchantments.size()));
+
+                ItemStack book = EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(enchantment1, this.random.nextBetween(1, enchantment1.getMaxLevel() + 1)));
+                if(this.random.nextFloat() < 0.2f) EnchantedBookItem.addEnchantment(book, new EnchantmentLevelEntry(enchantment2, 1));
+                if(!book.isEmpty()) this.getWorld().spawnEntity(new ItemEntity(this.getWorld(), this.getBlockPos().getX(), this.getBlockPos().getY(), this.getBlockPos().getZ(), book));
+            }
+        }
+
+        if (getWorld().isClient()) {
+            if(this.idleTimeout <= 0) {
                 this.idleTimeout = this.random.nextBetween(40, 120);
                 this.idleState.start(this.age);
             } else {
                 this.idleTimeout--;
-            }
-
-            if (!this.isTamed()) {
-                this.dataTracker.set(SNIFF_COUNTER, this.dataTracker.get(SNIFF_COUNTER) - 1);
-                if (this.dataTracker.get(SNIFF_COUNTER) % 20 == 0) System.out.println("sniff == " + this.dataTracker.get(SNIFF_COUNTER) / 20);
-
-                if (this.dataTracker.get(SNIFF_COUNTER) == 0) {
-                    playSound(DeeperDarkerSounds.SCULK_SNAPPER_SNIFF, 1.0f, 1.0f);
-                    this.idleState.stop();
-                    this.sniffState.start(this.age);
-                }
-
-                if (this.dataTracker.get(SNIFF_COUNTER) < -31) {
-                    this.dataTracker.set(SNIFF_COUNTER, getRandom().nextBetween(180, 400));
-                    if (findTarget()) {
-                        System.out.println(targetPos);
-                        this.digState.start(this.age);
-                    }
-                }
             }
         }
     }
@@ -143,9 +152,50 @@ public class SculkSnapperEntity extends TameableEntity {
         if (status == (byte)4) {
             this.idleState.stop();
             this.attackState.start(this.age);
+        } else if (status == 18) {
+            for (int i = 0; i < 7; i++) {
+                double sX = this.random.nextGaussian() * 0.02;
+                double sY = this.random.nextGaussian() * 0.02;
+                double sZ = this.random.nextGaussian() * 0.02;
+                this.getWorld().addParticle(ParticleTypes.HEART, this.getParticleX(1), this.getRandomBodyY() + 0.5,
+                        this.getParticleZ(1), sX, sY, sZ);
+            }
         } else {
             super.handleStatus(status);
         }
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.isOf(Items.NETHERITE_CHESTPLATE) && !stack.getEnchantments().isEmpty();
+    }
+
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+        if(this.isBreedingItem(stack) && !this.isTamed()) {
+            this.eat(player, hand, stack);
+            if(!getWorld().isClient()) {
+                this.setOwner(player);
+                this.setOwnerUuid(player.getUuid());
+                setTarget(null);
+                getWorld().sendEntityStatus(this, (byte) 18);
+            }
+
+            return ActionResult.SUCCESS;
+        }
+
+        if(!stack.getEnchantments().isEmpty() && isTamed() && this.getHealth() < this.getMaxHealth()) {
+            this.eat(player, hand, stack);
+            if(!getWorld().isClient()) {
+                this.heal(getMaxHealth());
+                this.emitGameEvent(GameEvent.EAT, this);
+            }
+
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.PASS;
     }
 
     @Override
