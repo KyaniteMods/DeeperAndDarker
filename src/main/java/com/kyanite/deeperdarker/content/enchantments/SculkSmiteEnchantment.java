@@ -18,4 +18,14 @@ public class SculkSmiteEnchantment extends DamageEnchantment {
         }
         return super.getDamageBonus(pLevel, pCreatureType);
     }
+
+    @Override
+    public int getMinCost(int pEnchantmentLevel) {
+        return 5 + (pEnchantmentLevel - 1) * 8;
+    }
+
+    @Override
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 20;
+    }
 }

@@ -41,7 +41,7 @@ public class CatalysisEnchantment extends Enchantment {
 
     @Override
     public int getMinCost(int pLevel) {
-        return 20;
+        return pLevel * 20;
     }
 
     @Override
