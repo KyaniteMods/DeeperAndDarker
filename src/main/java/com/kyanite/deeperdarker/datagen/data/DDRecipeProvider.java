@@ -102,10 +102,10 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_WALL.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
 
-        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LAYERED_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
-        stairBuilder(DDBlocks.LAYERED_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.LAYERED_GLOOMSLATE.get())).unlockedBy("has_cut_gloomslate", has(DDBlocks.LAYERED_GLOOMSLATE.get())).save(writer);
-        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LAYERED_GLOOMSLATE_SLAB.get(), DDBlocks.LAYERED_GLOOMSLATE.get());
-        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LAYERED_GLOOMSLATE_WALL.get(), DDBlocks.LAYERED_GLOOMSLATE.get());
+        polished(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE.get());
+        stairBuilder(DDBlocks.CUT_GLOOMSLATE_STAIRS.get(), Ingredient.of(DDBlocks.CUT_GLOOMSLATE.get())).unlockedBy("has_cut_gloomslate", has(DDBlocks.CUT_GLOOMSLATE.get())).save(writer);
+        slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_SLAB.get(), DDBlocks.CUT_GLOOMSLATE.get());
+        wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_WALL.get(), DDBlocks.CUT_GLOOMSLATE.get());
 
         chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDTags.Items.GLOOMSLATE_SLABS)).unlockedBy("has_gloomslate_slab", has(DDTags.Items.GLOOMSLATE_SLABS)).save(writer);
 
@@ -258,19 +258,19 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), 2);
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.SMOOTH_GLOOMSLATE_WALL.get());
 
-        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.LAYERED_GLOOMSLATE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.LAYERED_GLOOMSLATE_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.LAYERED_GLOOMSLATE_WALL.get());
-        stonecuttingRecipe(writer, DDBlocks.LAYERED_GLOOMSLATE.get(), DDBlocks.LAYERED_GLOOMSLATE_STAIRS.get());
-        stonecuttingRecipe(writer, DDBlocks.LAYERED_GLOOMSLATE.get(), DDBlocks.LAYERED_GLOOMSLATE_SLAB.get(), 2);
-        stonecuttingRecipe(writer, DDBlocks.LAYERED_GLOOMSLATE.get(), DDBlocks.LAYERED_GLOOMSLATE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_SLAB.get(), 2);
+        stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get());
 
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.POLISHED_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.GLOOMSLATE_TILES.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
         stonecuttingRecipe(writer, DDBlocks.SMOOTH_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
-        stonecuttingRecipe(writer, DDBlocks.LAYERED_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
+        stonecuttingRecipe(writer, DDBlocks.CUT_GLOOMSLATE.get(), DDBlocks.CHISELED_GLOOMSLATE.get());
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> writer) {

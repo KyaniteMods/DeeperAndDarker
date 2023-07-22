@@ -97,10 +97,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS);
         blockModel(DDBlocks.SMOOTH_GLOOMSLATE_SLAB);
         blockModel(DDBlocks.SMOOTH_GLOOMSLATE_WALL, "inventory");
-        blockModel(DDBlocks.LAYERED_GLOOMSLATE);
-        blockModel(DDBlocks.LAYERED_GLOOMSLATE_STAIRS);
-        blockModel(DDBlocks.LAYERED_GLOOMSLATE_SLAB);
-        blockModel(DDBlocks.LAYERED_GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.CUT_GLOOMSLATE);
+        blockModel(DDBlocks.CUT_GLOOMSLATE_STAIRS);
+        blockModel(DDBlocks.CUT_GLOOMSLATE_SLAB);
+        blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
 
         blockModel(DDBlocks.ECHO_SOIL);

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "deeperdarker:block/layered_gloomslate",
-    "side": "deeperdarker:block/layered_gloomslate",
-    "top": "deeperdarker:block/layered_gloomslate"
-  }
-}

@@ -91,10 +91,10 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS);
             event.accept(DDBlocks.SMOOTH_GLOOMSLATE_SLAB);
             event.accept(DDBlocks.SMOOTH_GLOOMSLATE_WALL);
-            event.accept(DDBlocks.LAYERED_GLOOMSLATE);
-            event.accept(DDBlocks.LAYERED_GLOOMSLATE_STAIRS);
-            event.accept(DDBlocks.LAYERED_GLOOMSLATE_SLAB);
-            event.accept(DDBlocks.LAYERED_GLOOMSLATE_WALL);
+            event.accept(DDBlocks.CUT_GLOOMSLATE);
+            event.accept(DDBlocks.CUT_GLOOMSLATE_STAIRS);
+            event.accept(DDBlocks.CUT_GLOOMSLATE_SLAB);
+            event.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
             event.accept(DDBlocks.CHISELED_GLOOMSLATE);
 
             event.accept(DDBlocks.ECHO_SOIL);
