@@ -11,19 +11,19 @@ import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 
 public class SoulElytraItem extends ElytraItem implements FabricElytraItem {
-    private final Multimap<EntityAttribute, EntityAttributeModifier> defaultModifiers;
+    private final Multimap<EntityAttribute, EntityAttributeModifier> MODIFIERS;
 
     public SoulElytraItem(Settings settings) {
         super(settings);
 
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier("Soul Elytra armor", 3, EntityAttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = builder.build();
+        this.MODIFIERS = builder.build();
     }
 
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-        return slot == EquipmentSlot.CHEST ? defaultModifiers : super.getAttributeModifiers(stack, slot);
+        return slot == EquipmentSlot.CHEST ? MODIFIERS : super.getAttributeModifiers(stack, slot);
     }
 
     @Override

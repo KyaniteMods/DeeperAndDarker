@@ -33,7 +33,7 @@ public class SoulElytraFeatureRenderer<E extends LivingEntity, M extends EntityM
         ItemStack itemStack = livingEntity.getEquippedStack(EquipmentSlot.CHEST);
         if(itemStack.isOf(DeeperDarkerItems.SOUL_ELYTRA)) {
             matrixStack.push();
-            matrixStack.translate(0.0, 0.0, 0.125);
+            matrixStack.translate(0.0f, 0.0f, 0.125f);
             this.getContextModel().copyStateTo(this.model);
             this.model.setAngles(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumerProvider, RenderLayer.getArmorCutoutNoCull(TEXTURE), false, itemStack.hasGlint());
