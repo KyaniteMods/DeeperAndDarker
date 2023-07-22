@@ -127,6 +127,7 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         withExistingParent(DDBlocks.INFESTED_SCULK.getId().getPath(), mcLoc("block/sculk"));
 
+        itemModelWithSuffix(DDItems.SOUL_ELYTRA, GENERATED, "broken");
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
@@ -152,7 +153,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
-        getBuilder(DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on").parent(GENERATED).texture("layer0", "item/" + DDItems.SCULK_TRANSMITTER.getId().getPath() + "_on");
+        itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);
@@ -175,5 +176,9 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     public ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile) {
         return getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
+    }
+
+    public void itemModelWithSuffix(RegistryObject<?> item, ModelFile modelFile, String suffix) {
+        getBuilder(item.getId().getPath() + "_" + suffix).parent(modelFile).texture("layer0", "item/" + item.getId().getPath() + "_" + suffix);
     }
 }

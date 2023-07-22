@@ -1,10 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.items.DDBoatItem;
-import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
-import com.kyanite.deeperdarker.content.items.WardenArmorItem;
-import com.kyanite.deeperdarker.content.items.WardenHeartItem;
+import com.kyanite.deeperdarker.content.items.*;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
 import net.minecraft.ChatFormatting;
@@ -27,6 +24,7 @@ public class DDItems {
     public static final RegistryObject<Item> GRIME_BALL = ITEMS.register("grime_ball", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GRIME_BRICK = ITEMS.register("grime_brick", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
     public static final RegistryObject<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
 

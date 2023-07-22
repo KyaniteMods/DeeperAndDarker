@@ -10,6 +10,7 @@ import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.SculkSnapper;
 import com.kyanite.deeperdarker.content.entities.Shattered;
 import com.kyanite.deeperdarker.content.entities.ShriekWorm;
+import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
@@ -25,11 +26,14 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.Items;
@@ -77,13 +81,15 @@ public class DeeperDarker {
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerLayers);
+        eventBus.addListener(this::addLayers);
         eventBus.addListener(this::registerSpawnPlacements);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             Sheets.addWoodType(DDBlocks.ECHO);
-            ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() ? 1f : 0f);
+            ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
+            ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() ? 1 : 0);
         });
 
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
@@ -140,6 +146,13 @@ public class DeeperDarker {
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
         event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
         event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
+    }
+
+    private void addLayers(EntityRenderersEvent.AddLayers event) {
+        event.getSkins().forEach(name -> {
+            if(event.getSkin(name) instanceof PlayerRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+        });
+        if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
     }
 
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {

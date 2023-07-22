@@ -127,6 +127,7 @@ public class DDCreativeTab {
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
 
+            event.accept(DDItems.SOUL_ELYTRA);
             event.accept(DDItems.ECHO_BOAT);
             event.accept(DDItems.ECHO_CHEST_BOAT);
 

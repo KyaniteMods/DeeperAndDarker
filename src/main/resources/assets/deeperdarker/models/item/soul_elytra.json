@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "deeperdarker:item/soul_elytra"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:broken": 1
+      },
+      "model": "deeperdarker:item/soul_elytra_broken"
+    }
+  ]
+}
