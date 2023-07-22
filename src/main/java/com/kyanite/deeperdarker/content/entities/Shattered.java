@@ -44,9 +44,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
 
     public Shattered(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
         this.vibrationUser = new Shattered.VibrationUser();
         this.vibrationData = new VibrationSystem.Data();
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
         this.setPathfindingMalus(BlockPathTypes.LAVA, 8);
         this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, 8);
         this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0);
@@ -121,13 +121,10 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    public boolean dampensVibrations() {
-        return true;
-    }
-
-    @Override
-    protected float nextStep() {
-        return this.moveDist + 0.3f;
+    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
+        if(this.level() instanceof ServerLevel level) {
+            pListenerConsumer.accept(this.dynamicGameEventListener, level);
+        }
     }
 
     public boolean canTargetEntity(Entity entity) {
@@ -139,10 +136,13 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
-        if(this.level() instanceof ServerLevel serverlevel) {
-            pListenerConsumer.accept(this.dynamicGameEventListener, serverlevel);
-        }
+    public BlockPos getDisturbanceLocation() {
+        return this.disturbanceLocation;
+    }
+
+    @Override
+    public void setDisturbanceLocation(BlockPos disturbancePos) {
+        this.disturbanceLocation = disturbancePos;
     }
 
     @Override
@@ -153,16 +153,6 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     @Override
     public User getVibrationUser() {
         return this.vibrationUser;
-    }
-
-    @Override
-    public BlockPos getDisturbanceLocation() {
-        return this.disturbanceLocation;
-    }
-
-    @Override
-    public void setDisturbanceLocation(BlockPos disturbancePos) {
-        this.disturbanceLocation = disturbancePos;
     }
 
     class VibrationUser implements VibrationSystem.User {
@@ -185,12 +175,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         public boolean canReceiveVibration(ServerLevel level, BlockPos bounds, GameEvent gameEvent, GameEvent.Context context) {
-            if (!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(bounds)) {
+            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(bounds)) {
                 Entity entity = context.sourceEntity();
-                if(entity instanceof LivingEntity livingEntity) {
-                    return canTargetEntity(livingEntity);
-                }
-
+                if(entity instanceof LivingEntity livingEntity) return canTargetEntity(livingEntity);
                 return true;
             } else {
                 return false;
@@ -199,8 +186,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
 
         public void onReceiveVibration(ServerLevel level, BlockPos pos, GameEvent gameEvent, Entity entity, Entity entity2, float v) {
             if(isDeadOrDying()) return;
-
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 0.4F, -1);
+            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS);
             if(entity != null) {
                 if(canTargetEntity(entity)) {
                     if(entity instanceof Monster && entity.getType() != DDEntities.SHATTERED.get()) setTarget((LivingEntity) entity);

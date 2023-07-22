@@ -9,6 +9,7 @@ import java.util.EnumSet;
 public class GoToDisturbanceGoal extends Goal {
     private final PathfinderMob mob;
 
+    // TODO: entities with this goal don't randomly stroll. look into it
     public GoToDisturbanceGoal(PathfinderMob mob) {
         this.mob = mob;
         this.setFlags(EnumSet.of(Flag.MOVE));
