@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.enchantments.DeeperDarkerEnchantments;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -182,6 +183,9 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
         translationBuilder.add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
         translationBuilder.add(DeeperDarkerBlocks.INFESTED_SCULK, "Infested Sculk");
+        translationBuilder.add(DeeperDarkerItems.SOUL_ELYTRA, "Soul Elytra");
+        translationBuilder.add(DeeperDarkerEnchantments.CATALYSIS, "Catalysis");
+        translationBuilder.add(DeeperDarkerEnchantments.SCULK_SMITE, "Sculk Smite");
         translationBuilder.add("advancements.deeperdarker.root.title", "Arrival");
         translationBuilder.add("advancements.deeperdarker.root.description", "Do not disturb");
     }

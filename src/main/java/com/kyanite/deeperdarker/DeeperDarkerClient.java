@@ -2,11 +2,13 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerBlockEntityTypes;
+import com.kyanite.deeperdarker.client.entity.feature.SoulElytraFeatureRenderer;
 import com.kyanite.deeperdarker.client.entity.feature.WardenHelmetHornsFeatureRenderer;
 import com.kyanite.deeperdarker.client.entity.model.*;
 import com.kyanite.deeperdarker.client.entity.render.*;
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import com.kyanite.deeperdarker.items.SoulElytraItem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -17,10 +19,10 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.HangingSignBlockEntityRenderer;
 import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
+import net.minecraft.client.render.entity.feature.ElytraFeatureRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
-import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.util.Identifier;
 
 public class DeeperDarkerClient implements ClientModInitializer {
@@ -60,11 +62,16 @@ public class DeeperDarkerClient implements ClientModInitializer {
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof BipedEntityModel) {
                 registrationHelper.register(new WardenHelmetHornsFeatureRenderer(entityRenderer, context.getModelLoader()));
+                registrationHelper.register(new SoulElytraFeatureRenderer<>(entityRenderer, context.getModelLoader()));
             }
         });
 
         ModelPredicateProviderRegistry.register(DeeperDarkerItems.SCULK_TRANSMITTER, new Identifier(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
             itemStack.hasNbt() && itemStack.getNbt().getBoolean("linked") ? 1 : 0
+        );
+
+        ModelPredicateProviderRegistry.register(DeeperDarkerItems.SOUL_ELYTRA, new Identifier("broken"), (itemStack, worldClient, livingEntity, i) ->
+            SoulElytraItem.isUsable(itemStack) ? 0 : 1
         );
     }
 }

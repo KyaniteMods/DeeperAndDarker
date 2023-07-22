@@ -21,18 +21,18 @@ public class InfestedSculkBlock extends Block {
 
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        if(entity instanceof PlayerEntity player) {
+        if (entity instanceof PlayerEntity player) {
             world.setBlockState(pos, Blocks.SCULK.getDefaultState(), 3);
             player.takeKnockback(1.5, 1.5, 1.5);
             ShriekWormEntity shriekWorm = DeeperDarkerEntityTypes.SHRIEK_WORM.create(world);
             assert shriekWorm != null;
             world.spawnEntity(shriekWorm);
-            entity.refreshPositionAndAngles(pos.up(), 0, 0);
+            shriekWorm.refreshPositionAndAngles(pos.up(), 0, 0);
         }
 
         if (world.isClient()) {
             Random random = Random.create();
-            for(int i = 0; i < 20; ++i) {
+            for (int i = 0; i < 20; ++i) {
                 double sX = random.nextGaussian() * 0.02;
                 double sY = random.nextGaussian() * 0.02;
                 double sZ = random.nextGaussian() * 0.02;

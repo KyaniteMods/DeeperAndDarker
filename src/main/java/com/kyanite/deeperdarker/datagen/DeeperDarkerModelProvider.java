@@ -201,6 +201,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         itemModelGenerator.register(DeeperDarkerItems.ECHO_BOAT, Models.GENERATED);
         itemModelGenerator.register(DeeperDarkerItems.ECHO_CHEST_BOAT, Models.GENERATED);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DeeperDarkerItems.SCULK_TRANSMITTER);
+        registerGeneratedWithPredicate(itemModelGenerator, DeeperDarkerItems.SOUL_ELYTRA, Identifier.DEFAULT_NAMESPACE + ":broken", "_broken");
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SCULK_SNAPPER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SHATTERED_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SCULK_LEECH_SPAWN_EGG);
@@ -281,19 +282,23 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         }
     }
 
-    private static void registerSculkTransmitter(ItemModelGenerator itemModelGenerator, SculkTransmitterItem item) {
-        Identifier on = Models.GENERATED.upload(Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/"), TextureMap.layer0(Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/")), itemModelGenerator.writer);
-        JsonObject offJsonObject = Models.GENERATED.createJson(Registries.ITEM.getId(item).withPrefixedPath("item/"),
+    private static void registerGeneratedWithPredicate(ItemModelGenerator itemModelGenerator, Item item, String predicate, String suffix) {
+        Identifier withPredicate = Models.GENERATED.upload(Registries.ITEM.getId(item).withSuffixedPath(suffix).withPrefixedPath("item/"), TextureMap.layer0(Registries.ITEM.getId(item).withSuffixedPath(suffix).withPrefixedPath("item/")), itemModelGenerator.writer);
+        JsonObject withoutPredicateJsonObject = Models.GENERATED.createJson(Registries.ITEM.getId(item).withPrefixedPath("item/"),
                 Map.of(TextureKey.LAYER0, Registries.ITEM.getId(item).withPrefixedPath("item/")));
         JsonArray overrides = new JsonArray();
         JsonObject override = new JsonObject();
-        JsonObject predicate = new JsonObject();
-        predicate.addProperty(DeeperDarker.MOD_ID + ":linked", 1);
-        override.add("predicate", predicate);
-        override.addProperty("model", Registries.ITEM.getId(item).withSuffixedPath("_on").withPrefixedPath("item/").toString());
+        JsonObject predicateJson = new JsonObject();
+        predicateJson.addProperty(predicate, 1);
+        override.add("predicate", predicateJson);
+        override.addProperty("model", Registries.ITEM.getId(item).withSuffixedPath(suffix).withPrefixedPath("item/").toString());
         overrides.add(override);
-        offJsonObject.add("overrides", overrides);
-        itemModelGenerator.writer.accept(Registries.ITEM.getId(item).withPrefixedPath("item/"), () -> offJsonObject);
+        withoutPredicateJsonObject.add("overrides", overrides);
+        itemModelGenerator.writer.accept(Registries.ITEM.getId(item).withPrefixedPath("item/"), () -> withoutPredicateJsonObject);
+    }
+
+    private static void registerSculkTransmitter(ItemModelGenerator itemModelGenerator, SculkTransmitterItem item) {
+        registerGeneratedWithPredicate(itemModelGenerator, item, DeeperDarker.MOD_ID + ":linked", "_on");
     }
 
     private static void registerSpawnEgg(ItemModelGenerator itemModelGenerator, Item item) {
