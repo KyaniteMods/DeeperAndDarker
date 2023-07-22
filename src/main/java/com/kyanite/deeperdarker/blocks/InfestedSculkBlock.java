@@ -26,7 +26,7 @@ public class InfestedSculkBlock extends Block {
             player.takeKnockback(1.5, 1.5, 1.5);
             ShriekWormEntity shriekWorm = DeeperDarkerEntityTypes.SHRIEK_WORM.create(world);
             assert shriekWorm != null;
-            world.spawnEntity(entity);
+            world.spawnEntity(shriekWorm);
             entity.refreshPositionAndAngles(pos.up(), 0, 0);
         }
 
