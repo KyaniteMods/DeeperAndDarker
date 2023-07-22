@@ -9,6 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -36,6 +38,11 @@ public class CatalysisEnchantment extends Enchantment {
                 Criteria.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayerEntity) attacker, target, target.getDamageSources().playerAttack((PlayerEntity) attacker));
             }
         }
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return stack.getItem() instanceof AxeItem || super.isAcceptableItem(stack);
     }
 
     @Override
