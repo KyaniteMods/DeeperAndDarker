@@ -34,7 +34,7 @@ public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>
         ItemStack itemStack = pLivingEntity.getItemBySlot(EquipmentSlot.CHEST);
         if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {
             pMatrixStack.pushPose();
-            pMatrixStack.translate(0.0, 0.0, 0.125);
+            pMatrixStack.translate(0, 0, 0.125f);
             this.getParentModel().copyPropertiesTo(this.model);
             this.model.setupAnim(pLivingEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
             VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false, itemStack.hasFoil());

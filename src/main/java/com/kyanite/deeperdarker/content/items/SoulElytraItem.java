@@ -12,19 +12,19 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class SoulElytraItem extends ElytraItem {
-    private final Multimap<Attribute, AttributeModifier> defaultModifiers;
+    private final Multimap<Attribute, AttributeModifier> MODIFIERS;
 
     public SoulElytraItem(Properties pProperties) {
         super(pProperties);
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ARMOR, new AttributeModifier("Soul Elytra armor", 3, AttributeModifier.Operation.ADDITION));
-        this.defaultModifiers = builder.build();
+        this.MODIFIERS = builder.build();
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
-        return slot == EquipmentSlot.CHEST ? this.defaultModifiers : super.getAttributeModifiers(slot, stack);
+        return slot == EquipmentSlot.CHEST ? this.MODIFIERS : super.getAttributeModifiers(slot, stack);
     }
 
     @Override
