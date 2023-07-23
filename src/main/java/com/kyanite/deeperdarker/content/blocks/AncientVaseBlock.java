@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
+import com.kyanite.deeperdarker.content.entities.Stalker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -61,12 +62,16 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
 
         RandomSource random = RandomSource.create();
-        if(random.nextFloat() < 0.125f) {
-            for(int i = 0; i < random.nextInt(1, 4); i++) {
-                SculkLeech entity = DDEntities.SCULK_LEECH.get().create(pLevel);
-                assert entity != null;
-                entity.moveTo(pPos.getX() + random.nextFloat(), pPos.getY() + random.nextFloat() + 0.15f, pPos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
-                pLevel.addFreshEntity(entity);
+        if(random.nextFloat() < 0.0917f) {
+            if(random.nextDouble() < 0.9814612868) {
+                for (int i = 0; i < random.nextInt(1, 4); i++) {
+                    SculkLeech entity = DDEntities.SCULK_LEECH.get().create(pLevel);
+                    assert entity != null;
+                    entity.moveTo(pPos.getX() + random.nextFloat(), pPos.getY() + random.nextFloat() + 0.15f, pPos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
+                    pLevel.addFreshEntity(entity);
+                }
+            } else {
+                Stalker.emergeFromVase(pLevel, pPos);
             }
         }
     }

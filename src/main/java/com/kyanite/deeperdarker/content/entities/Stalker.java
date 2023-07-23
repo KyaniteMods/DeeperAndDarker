@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
+import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -37,6 +37,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
     public final AnimationState ringAttackState = new AnimationState();
+    public final AnimationState emergeState = new AnimationState();
     private final DynamicGameEventListener<VibrationSystem.Listener> dynamicGameEventListener;
     private final VibrationSystem.User vibrationUser;
     private final VibrationSystem.Data vibrationData;
@@ -140,6 +141,15 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         } else {
             super.handleEntityEvent(pId);
         }
+    }
+
+    public static void emergeFromVase(Level level, BlockPos pos) {
+        Stalker entity = DDEntities.STALKER.get().create(level);
+        assert entity != null;
+        entity.emergeState.start(entity.tickCount);
+        entity.moveTo(pos, 0, 0);
+        level.addFreshEntity(entity);
+        entity.setNoAi(true);
     }
 
     @Override

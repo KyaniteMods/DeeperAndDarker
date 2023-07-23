@@ -307,8 +307,7 @@ public class StalkerAnimation {
                     new Keyframe(0f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(2f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("fake_vase", new AnimationChannel(AnimationChannel.Targets.SCALE,
-                    new Keyframe(0f, KeyframeAnimations.scaleVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(2f, KeyframeAnimations.scaleVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
     
     public static final AnimationDefinition ATTACK = AnimationDefinition.Builder.withLength(0.5f)
             .addAnimation("waist", new AnimationChannel(AnimationChannel.Targets.POSITION,
@@ -429,7 +428,9 @@ public class StalkerAnimation {
                     new Keyframe(0.5f, KeyframeAnimations.degreeVec(0.22f, -5f, -2.51f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.SCALE,
                     new Keyframe(0f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR))).build();
+                    new Keyframe(0.5f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("fake_vase", new AnimationChannel(AnimationChannel.Targets.SCALE,
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
     
     public static final AnimationDefinition RING_ATTACK = AnimationDefinition.Builder.withLength(3f).looping()
             .addAnimation("waist", new AnimationChannel(AnimationChannel.Targets.POSITION,
@@ -670,7 +671,9 @@ public class StalkerAnimation {
                     new Keyframe(3f, KeyframeAnimations.degreeVec(0.22f, -5f, -2.51f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.SCALE,
                     new Keyframe(0f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(3f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR))).build();
+                    new Keyframe(3f, KeyframeAnimations.scaleVec(1f, 1f, 1f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("fake_vase", new AnimationChannel(AnimationChannel.Targets.SCALE,
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
     
     public static final AnimationDefinition EMERGE = AnimationDefinition.Builder.withLength(3.5f)
             .addAnimation("waist", new AnimationChannel(AnimationChannel.Targets.POSITION,

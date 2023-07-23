@@ -77,6 +77,7 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 		this.animate(entity.idleState, StalkerAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
 		this.animate(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
+		this.animate(entity.emergeState, StalkerAnimation.EMERGE, ageInTicks);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {
