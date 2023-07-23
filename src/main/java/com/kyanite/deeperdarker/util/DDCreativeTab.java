@@ -155,7 +155,7 @@ public class DDCreativeTab {
             event.accept(DDItems.SCULK_SNAPPER_SPAWN_EGG);
             event.accept(DDItems.SHATTERED_SPAWN_EGG);
             event.accept(DDItems.SHRIEK_WORM_SPAWN_EGG);
-            event.accept(DDItems.STALKER_WORM_SPAWN_EGG);
+            event.accept(DDItems.STALKER_SPAWN_EGG);
         }
     }
 }

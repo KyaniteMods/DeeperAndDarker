@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-22T16:08:10.3599824	Item Models: deeperdarker
+// 1.20.1	2023-07-23T01:30:59.3357619	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
@@ -110,7 +110,7 @@ ae8bb988e24dd1b2fc704b8e6b9e0e2bd9768190 assets/deeperdarker/models/item/smooth_
 276ee6aa65e11bc12857f29c799269d6fa1d05e2 assets/deeperdarker/models/item/soul_crystal.json
 dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_dust.json
 7fa6b2d8c37ca5af719a2aeea3c2c4311b735068 assets/deeperdarker/models/item/soul_elytra_broken.json
-63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/stalker_worm_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/stalker_spawn_egg.json
 04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets/deeperdarker/models/item/stripped_echo_log.json
 aeff20ceb06371eb7973f8f39caa5eb4dd38e201 assets/deeperdarker/models/item/stripped_echo_wood.json
 290e9b82b23fb5bd4019f6db897d0fa01e144397 assets/deeperdarker/models/item/warden_axe.json
