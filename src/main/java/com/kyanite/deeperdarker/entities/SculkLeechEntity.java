@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 public class SculkLeechEntity extends HostileEntity {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    private int idleTimeout;
 
     public SculkLeechEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -60,11 +59,8 @@ public class SculkLeechEntity extends HostileEntity {
         super.tick();
 
         if (this.getWorld().isClient()) {
-            if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextBetween(40, 120);
+            if (!this.attackState.isRunning() && !this.idleState.isRunning()) {
                 this.idleState.start(this.age);
-            } else {
-                this.idleTimeout--;
             }
         }
     }

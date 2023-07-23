@@ -42,7 +42,6 @@ public class SculkSnapperEntity extends TameableEntity {
     public final AnimationState sniffState = new AnimationState();
     public final AnimationState digState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
-    private int idleTimeout;
     private BlockPos targetPos;
 
     protected SculkSnapperEntity(EntityType<? extends TameableEntity> entityType,
@@ -126,11 +125,8 @@ public class SculkSnapperEntity extends TameableEntity {
         }
 
         if (getWorld().isClient()) {
-            if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextBetween(40, 120);
+            if (!this.attackState.isRunning() && !this.idleState.isRunning()) {
                 this.idleState.start(this.age);
-            } else {
-                this.idleTimeout--;
             }
         }
     }
