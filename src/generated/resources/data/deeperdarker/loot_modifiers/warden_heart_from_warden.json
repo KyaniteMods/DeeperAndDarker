@@ -3,10 +3,10 @@
   "conditions": [
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:chests/ancient_city"
+      "loot_table_id": "minecraft:entities/warden"
     }
   ],
-  "item": "deeperdarker:warden_upgrade_smithing_template",
+  "item": "deeperdarker:heart_of_the_deep",
   "max": 1,
   "min": 1
 }

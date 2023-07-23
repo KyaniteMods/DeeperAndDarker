@@ -10,5 +10,7 @@
       "condition": "minecraft:random_chance"
     }
   ],
-  "item": "deeperdarker:warden_carapace"
+  "item": "deeperdarker:warden_carapace",
+  "max": 1,
+  "min": 1
 }

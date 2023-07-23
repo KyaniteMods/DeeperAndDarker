@@ -17,8 +17,9 @@ public class DDLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("warden_upgrade_from_ancient_city", new AddItemModifier(new LootItemCondition[]{ new LootTableIdCondition.Builder(new ResourceLocation("chests/ancient_city")).build() }, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()));
-        add("warden_carapace_from_ancient_city", new AddItemModifier(new LootItemCondition[]{ new LootTableIdCondition.Builder(new ResourceLocation("chests/ancient_city")).build(), LootItemRandomChanceCondition.randomChance(0.2f).build() }, DDItems.WARDEN_CARAPACE.get()));
-        add("warden_carapace_from_warden", new AddItemModifier(new LootItemCondition[]{ new LootTableIdCondition.Builder(new ResourceLocation("entities/warden")).build() }, DDItems.WARDEN_CARAPACE.get()));
+        add("warden_carapace_from_ancient_city", new AddItemModifier(new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("chests/ancient_city")).build(), LootItemRandomChanceCondition.randomChance(0.2f).build() }, DDItems.WARDEN_CARAPACE.get()));
+        add("warden_carapace_from_warden", new AddItemModifier(new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/warden")).build() }, DDItems.WARDEN_CARAPACE.get()));
+        add("warden_heart_from_warden", new AddItemModifier(new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("entities/warden")).build() }, DDItems.HEART_OF_THE_DEEP.get()));
+        add("warden_upgrade_from_ancient_city", new AddItemModifier(new LootItemCondition[] { LootTableIdCondition.builder(new ResourceLocation("chests/ancient_city")).build() }, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()));
     }
 }

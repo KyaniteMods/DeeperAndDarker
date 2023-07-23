@@ -2,6 +2,7 @@
   "entries": [
     "deeperdarker:warden_upgrade_from_ancient_city",
     "deeperdarker:warden_carapace_from_ancient_city",
+    "deeperdarker:warden_heart_from_warden",
     "deeperdarker:warden_carapace_from_warden"
   ],
   "replace": false
