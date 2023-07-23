@@ -75,7 +75,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(RING_COOLDOWN, getRandom().nextBetween(200, 600));
+        this.dataTracker.startTracking(RING_COOLDOWN, getRandom().nextBetween(20, 60));
     }
 
     @Override
@@ -105,7 +105,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
             if (this.dataTracker.get(RING_COOLDOWN) <= -100) {
                 this.playersInRange = false;
                 ring = false;
-                this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(200, 600));
+                this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(20, 60));
                 if (getWorld().isClient()) this.ringAttackState.stop();
             } else if (this.dataTracker.get(RING_COOLDOWN) <= 0) {
                 if (getWorld().isClient()) this.ringAttackState.start(this.age);
@@ -114,13 +114,13 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
             }
         } else if (this.playersInRange) {
             this.playersInRange = false;
-            this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(200, 600));
+            this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(20, 60));
             if (getWorld().isClient()) this.ringAttackState.stop();
         }
 
-        if(!players.isEmpty()) {
+        if (!players.isEmpty()) {
             System.out.println("1= " + getWorld().isClient() + ", " + ring);
-            if(ring) {
+            if(!getWorld().isClient() && ring) {
                 System.out.println("2= " + getWorld().isClient() + ", " + ring);
                 for(PlayerEntity player : players) {
                     player.damage(getWorld().getDamageSources().magic(), 2.5f);
@@ -132,7 +132,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
 
     @Override
     public void handleStatus(byte pId) {
-        if(pId == 4) {
+        if (pId == 4) {
             this.idleState.stop();
             this.attackState.start(this.age);
         } else {
@@ -151,13 +151,13 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
 
     @Override
     public void updateEventHandler(BiConsumer<EntityGameEventHandler<?>, ServerWorld> callback) {
-        if(this.getWorld() instanceof ServerWorld level) {
+        if (this.getWorld() instanceof ServerWorld level) {
             callback.accept(this.dynamicGameEventListener, level);
         }
     }
 
     public boolean canTargetEntity(Entity entity) {
-        if(entity instanceof LivingEntity livingEntity) {
+        if (entity instanceof LivingEntity livingEntity) {
             return this.getWorld() == entity.getWorld() && !this.isTeammate(entity) && livingEntity.getType() != EntityType.ARMOR_STAND && livingEntity.getType() != DeeperDarkerEntityTypes.STALKER && !livingEntity.isInvulnerable() && !livingEntity.isDead() && this.getWorld().getWorldBorder().contains(livingEntity.getBoundingBox());
         }
 
@@ -205,7 +205,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
 
         @Override
         public boolean accepts(ServerWorld level, BlockPos bounds, GameEvent gameEvent, GameEvent.Emitter emitter) {
-            if(!isAiDisabled() && !isDead() && !getBrain().hasMemoryModule(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().contains(bounds)) {
+            if (!isAiDisabled() && !isDead() && !getBrain().hasMemoryModule(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().contains(bounds)) {
                 Entity entity = emitter.sourceEntity();
                 if(entity instanceof LivingEntity livingEntity) return canTargetEntity(livingEntity);
                 return true;
