@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-22T16:08:10.3599824	Loot Tables
+// 1.20.1	2023-07-23T15:33:30.4031731	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 55589564f7ea5847138db468199d54cd1142b139 data/deeperdarker/loot_tables/blocks/chiseled_gloomslate.json
 c29aeb5add1d38dc94087bd93c15ff08dab7a74d data/deeperdarker/loot_tables/blocks/chiseled_sculk_stone.json
@@ -102,6 +102,7 @@ f72669b8c37430acdb6b9cbbe46d2645af4e77b0 data/deeperdarker/loot_tables/blocks/sm
 332a441cf8608bed8319274dae6c20c03821a179 data/deeperdarker/loot_tables/chests/ancient_temple_basement.json
 852d769aa18cfc16bbcd73373604904437e46ec6 data/deeperdarker/loot_tables/chests/ancient_temple_secret.json
 d41eeae40507e3d59fd9b702052a93959069a3f9 data/deeperdarker/loot_tables/chests/ancient_temple_storage.json
+c60ed132aec0a4edb60f3f24606795abfe2f3052 data/deeperdarker/loot_tables/entities/sculk_centipede.json
 05bf1050083516c73ab44a6dcfe6b4e27f878908 data/deeperdarker/loot_tables/entities/sculk_leech.json
 b5b8202f3e257dbca9b0c340f0a4b906d4ecec49 data/deeperdarker/loot_tables/entities/sculk_snapper.json
 e36d227cc06c7781ec00e92144665dc3b56a507d data/deeperdarker/loot_tables/entities/shattered.json

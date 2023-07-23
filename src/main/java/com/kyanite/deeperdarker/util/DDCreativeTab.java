@@ -151,6 +151,7 @@ public class DDCreativeTab {
             event.accept(DDItems.SCULK_TRANSMITTER);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 
+            event.accept(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
             event.accept(DDItems.SCULK_LEECH_SPAWN_EGG);
             event.accept(DDItems.SCULK_SNAPPER_SPAWN_EGG);
             event.accept(DDItems.SHATTERED_SPAWN_EGG);

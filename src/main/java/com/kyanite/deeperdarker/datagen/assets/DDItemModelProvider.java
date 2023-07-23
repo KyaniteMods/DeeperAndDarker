@@ -156,6 +156,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
+        spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
         spawnEggModel(DDItems.SHATTERED_SPAWN_EGG);

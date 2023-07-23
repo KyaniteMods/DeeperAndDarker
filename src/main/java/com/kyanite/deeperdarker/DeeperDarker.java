@@ -90,6 +90,7 @@ public class DeeperDarker {
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
         EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
         EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+        EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
@@ -128,6 +129,7 @@ public class DeeperDarker {
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipede.createAttributes());
         event.put(DDEntities.SCULK_LEECH.get(), SculkLeech.createAttributes());
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
         event.put(DDEntities.SHATTERED.get(), Shattered.createAttributes());
@@ -138,6 +140,7 @@ public class DeeperDarker {
     private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
         event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
         event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
@@ -153,7 +156,7 @@ public class DeeperDarker {
     }
 
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        event.register(DDEntities.SCULK_LEECH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
+        event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
         event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
     }

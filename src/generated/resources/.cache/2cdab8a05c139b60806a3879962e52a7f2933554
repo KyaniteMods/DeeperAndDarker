@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-23T01:30:59.3357619	Item Models: deeperdarker
+// 1.20.1	2023-07-23T15:33:30.3991754	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
@@ -66,6 +66,7 @@ b3a17670ce04497d99b6b8ee3dda60ed1e330885 assets/deeperdarker/models/item/polishe
 bdc3ad08e38c745a346717a9719044e0db544588 assets/deeperdarker/models/item/polished_sculk_stone_wall.json
 8864938ba857d68c957e39e40fe9f7117f72e31e assets/deeperdarker/models/item/reinforced_echo_shard.json
 18121c23d9e0f562f3d6394f3f7930858df5c802 assets/deeperdarker/models/item/sculk_bone.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sculk_centipede_spawn_egg.json
 f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
 b39bd762d88e9ae7abd82eb34651cd1428868b35 assets/deeperdarker/models/item/sculk_grime.json
 8905f1d600289ef9552902df176a0c240855fe4b assets/deeperdarker/models/item/sculk_grime_bricks.json
