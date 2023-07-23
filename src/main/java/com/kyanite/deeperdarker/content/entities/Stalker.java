@@ -78,7 +78,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(RING_COOLDOWN, getRandom().nextInt(20, 60));
+        this.entityData.define(RING_COOLDOWN, getRandom().nextInt(200, 600));
     }
 
     @Override
@@ -108,7 +108,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
             if(this.entityData.get(RING_COOLDOWN) <= -100) {
                 this.playersInRange = false;
                 ring = false;
-                this.entityData.set(RING_COOLDOWN, getRandom().nextInt(20, 60));
+                this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
                 if(level().isClientSide()) this.ringAttackState.stop();
             } else if(this.entityData.get(RING_COOLDOWN) <= 0) {
                 if(level().isClientSide()) this.ringAttackState.start(this.tickCount);
@@ -117,7 +117,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
             }
         } else if(this.playersInRange) {
             this.playersInRange = false;
-            this.entityData.set(RING_COOLDOWN, getRandom().nextInt(20, 60));
+            this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
             if(level().isClientSide()) this.ringAttackState.stop();
         }
 

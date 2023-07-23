@@ -17,10 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public class AddItemModifier extends LootModifier {
-    public static final Supplier<Codec<AddItemModifier>> CODEC = Suppliers.memoize(() ->
-            RecordCodecBuilder.create(app -> codecStart(app).and(ForgeRegistries.ITEMS.getCodec().fieldOf("item")
-                            .forGetter(modifier -> modifier.item)).and(Codec.INT.fieldOf("min").forGetter(modifier -> modifier.min)).and(Codec.INT.fieldOf("max").forGetter(modifier -> modifier.max))
-                    .apply(app, AddItemModifier::new)));
+    public static final Supplier<Codec<AddItemModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(app -> codecStart(app).and(ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(modifier -> modifier.item)).and(Codec.INT.fieldOf("min").forGetter(modifier -> modifier.min)).and(Codec.INT.fieldOf("max").forGetter(modifier -> modifier.max)).apply(app, AddItemModifier::new)));
     private final Item item;
     private final int min;
     private final int max;
