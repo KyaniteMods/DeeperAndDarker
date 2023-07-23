@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-23T15:33:30.4031731	Loot Tables
+// 1.20.1	2023-07-23T16:36:00.8929178	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 55589564f7ea5847138db468199d54cd1142b139 data/deeperdarker/loot_tables/blocks/chiseled_gloomslate.json
 c29aeb5add1d38dc94087bd93c15ff08dab7a74d data/deeperdarker/loot_tables/blocks/chiseled_sculk_stone.json
@@ -64,6 +64,7 @@ dde8ba2c88b0b1fc99fb6fe4eeda2e052a4eb7fa data/deeperdarker/loot_tables/blocks/sc
 33808914d00adbeab6bcd41e331795536dd7d17a data/deeperdarker/loot_tables/blocks/sculk_grime_brick_slab.json
 c53d0be249b265612a95a7306c1bb3abcca8873b data/deeperdarker/loot_tables/blocks/sculk_grime_brick_stairs.json
 dbe694240a21f5a1008c02b9bb55e9ffa7107230 data/deeperdarker/loot_tables/blocks/sculk_grime_brick_wall.json
+208fa9d82daec227f0f67723dddd678eca608ae1 data/deeperdarker/loot_tables/blocks/sculk_jaw.json
 0fc97ccafff2921c51232b9f54c6a2b1e6271c11 data/deeperdarker/loot_tables/blocks/sculk_stone.json
 f50506930016dd091a283e98dde3b9b40e5e59ef data/deeperdarker/loot_tables/blocks/sculk_stone_bricks.json
 c3e5123aa11dc03979c5cc2654d9c664d9c1fef4 data/deeperdarker/loot_tables/blocks/sculk_stone_brick_slab.json

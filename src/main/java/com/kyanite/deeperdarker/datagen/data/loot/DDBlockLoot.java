@@ -122,6 +122,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
         dropSelf(DDBlocks.SCULK_GLEAM.get());
+        dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
         add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_IRON));

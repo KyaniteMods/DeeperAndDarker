@@ -34,7 +34,7 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
 
     public AncientVaseBlock(Properties pProperties) {
         super(pProperties, UniformInt.of(1, 3));
-        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE));
     }
 
     @Override

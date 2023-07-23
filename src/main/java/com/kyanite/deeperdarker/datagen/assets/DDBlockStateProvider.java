@@ -2,10 +2,12 @@ package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -105,6 +107,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMY_GEYSER.get(), models().cubeTop(DDBlocks.GLOOMY_GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOMY_SCULK), blockLoc(DDBlocks.GLOOMY_GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("translucent"));
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
+
+        ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
+        ModelFile jawBiting = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath() + "_biting", blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW, "biting"));
+        getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel().partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
 
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_IRON_ORE.get());
