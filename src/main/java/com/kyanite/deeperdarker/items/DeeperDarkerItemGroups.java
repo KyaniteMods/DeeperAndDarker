@@ -135,6 +135,7 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.SHATTERED_SPAWN_EGG));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_LEECH_SPAWN_EGG));
                 entries.add(new ItemStack(DeeperDarkerItems.SHRIEK_WORM_SPAWN_EGG));
+                entries.add(new ItemStack(DeeperDarkerItems.STALKER_SPAWN_EGG));
             })).build());
 
     public static void init() {

@@ -22,6 +22,7 @@ public class DeeperDarkerModelLayers {
     public static final EntityModelLayer SHATTERED = registerMain("shattered");
     public static final EntityModelLayer SCULK_LEECH = registerMain("sculk_leech");
     public static final EntityModelLayer SHRIEK_WORM = registerMain("shriek_worm");
+    public static final EntityModelLayer STALKER = registerMain("stalker");
 
     private static EntityModelLayer registerMain(String id) {
         return register(id, "main");

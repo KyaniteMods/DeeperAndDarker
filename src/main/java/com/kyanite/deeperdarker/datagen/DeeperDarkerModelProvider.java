@@ -206,6 +206,7 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SHATTERED_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SCULK_LEECH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.SHRIEK_WORM_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DeeperDarkerItems.STALKER_SPAWN_EGG);
     }
 
     private static void registerButton(BlockStateModelGenerator blockStateModelGenerator, Block block, Block planks) {

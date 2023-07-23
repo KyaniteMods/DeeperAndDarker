@@ -34,6 +34,9 @@ public class DeeperDarkerEntityLootTableProvider extends SimpleFabricLootTablePr
                 LootPool.builder().with(ItemEntry.builder(DeeperDarkerItems.SOUL_DUST)).apply(SetCountLootFunction.builder(
                         UniformLootNumberProvider.create(0.0f, 1.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f)))).randomSequenceId(randomSequenceId("sculk_leech")));
         exporter.accept(id("shriek_worm"), new LootTable.Builder().randomSequenceId(randomSequenceId("shriek_worm")));
+        exporter.accept(id("stalker"), new LootTable.Builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
+                .with(ItemEntry.builder(DeeperDarkerItems.SOUL_CRYSTAL)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 2))))));
     }
 
     private static Identifier id(String entity) {

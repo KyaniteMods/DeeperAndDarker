@@ -19,7 +19,6 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.block.entity.HangingSignBlockEntityRenderer;
 import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
-import net.minecraft.client.render.entity.feature.ElytraFeatureRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
@@ -50,6 +49,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.SHATTERED, ShatteredEntityRenderer::new);
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.SCULK_LEECH, SculkLeechEntityRenderer::new);
         EntityRendererRegistry.register(DeeperDarkerEntityTypes.SHRIEK_WORM, ShriekWormEntityRenderer::new);
+        EntityRendererRegistry.register(DeeperDarkerEntityTypes.STALKER, StalkerEntityRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.WARDEN_HELMET, WardenHelmetHornsModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.ECHO_BOAT, BoatEntityModel::getTexturedModelData);
@@ -58,6 +58,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SHATTERED, ShatteredEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SCULK_LEECH, SculkLeechEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.SHRIEK_WORM, ShriekWormEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(DeeperDarkerModelLayers.STALKER, StalkerEntityModel::getTexturedModelData);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof BipedEntityModel) {

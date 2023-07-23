@@ -139,6 +139,7 @@ public class DeeperDarkerItems {
     public static final Item SHATTERED_SPAWN_EGG;
     public static final Item SCULK_LEECH_SPAWN_EGG;
     public static final Item SHRIEK_WORM_SPAWN_EGG;
+    public static final Item STALKER_SPAWN_EGG;
     public static final Item INFESTED_SCULK;
     public static final Item SOUL_ELYTRA;
     private static final ArmorMaterial WARDEN_ARMOR_MATERIAL = new WardenArmorMaterial();
@@ -270,6 +271,7 @@ public class DeeperDarkerItems {
         SHATTERED_SPAWN_EGG = registerItem("shattered_spawn_egg", new SpawnEggItem(DeeperDarkerEntityTypes.SHATTERED, 0x0e181d, 0x819699, new Item.Settings()));
         SCULK_LEECH_SPAWN_EGG = registerItem("sculk_leech_spawn_egg", new SpawnEggItem(DeeperDarkerEntityTypes.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Settings()));
         SHRIEK_WORM_SPAWN_EGG = registerItem("shriek_worm_spawn_egg", new SpawnEggItem(DeeperDarkerEntityTypes.SHRIEK_WORM, 0xd1d6b6, 0x009295, new Item.Settings()));
+        STALKER_SPAWN_EGG = registerItem("stalker_spawn_egg", new SpawnEggItem(DeeperDarkerEntityTypes.STALKER, 0x172226, 0x6abdd9, new Item.Settings()));
         INFESTED_SCULK = registerItem("infested_sculk", new BlockItem(DeeperDarkerBlocks.INFESTED_SCULK, new Item.Settings()));
         SOUL_ELYTRA = registerItem("soul_elytra", new SoulElytraItem(new Item.Settings().maxDamage(956).rarity(Rarity.UNCOMMON)));
     }

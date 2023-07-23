@@ -36,7 +36,8 @@ public class DeeperDarker implements ModInitializer {
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getLootTableId().equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.builder()
-						.with(ItemEntry.builder(DeeperDarkerItems.WARDEN_CARAPACE));
+						.with(ItemEntry.builder(DeeperDarkerItems.WARDEN_CARAPACE))
+						.with(ItemEntry.builder(DeeperDarkerItems.HEART_OF_THE_DEEP));
 
 				tableBuilder.pool(poolBuilder);
 			}

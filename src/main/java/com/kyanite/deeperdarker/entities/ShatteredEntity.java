@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.entities;
 
 import com.kyanite.deeperdarker.entities.goals.DisturbanceListener;
-import com.kyanite.deeperdarker.entities.goals.GoToDisturbanceGoal;
+import com.kyanite.deeperdarker.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
@@ -31,7 +31,6 @@ import java.util.function.BiConsumer;
 public class ShatteredEntity extends HostileEntity implements DisturbanceListener, Vibrations {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    private int idleTimeout;
     private final EntityGameEventHandler<VibrationListener> entityGameEventHandler;
     private final Callback vibrationCallback;
     private final ListenerData vibrationData;
@@ -39,9 +38,9 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
 
     public ShatteredEntity(EntityType<? extends HostileEntity> pEntityType, World world) {
         super(pEntityType, world);
+        this.entityGameEventHandler = new EntityGameEventHandler<>(new VibrationListener(this));
         this.vibrationCallback = new ShatteredEntity.VibrationCallback();
         this.vibrationData = new ListenerData();
-        this.entityGameEventHandler = new EntityGameEventHandler<>(new VibrationListener(this));
         this.setPathfindingPenalty(PathNodeType.LAVA, 8);
         this.setPathfindingPenalty(PathNodeType.POWDER_SNOW, 8);
         this.setPathfindingPenalty(PathNodeType.UNPASSABLE_RAIL, 0);
@@ -51,7 +50,7 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.1, true));
-        this.goalSelector.add(2, new GoToDisturbanceGoal(this));
+        this.goalSelector.add(2, new DisturbanceGoal(this, 1.1));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 1));
         this.goalSelector.add(4, new WanderAroundGoal(this, 0.5));
         this.targetSelector.add(1, new RevengeGoal(this));
@@ -96,12 +95,9 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
 
         super.tick();
 
-        if(getWorld().isClient) {
-            if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextBetween(40, 120);
+        if (getWorld().isClient()) {
+            if (!this.attackState.isRunning() && !this.idleState.isRunning()) {
                 this.idleState.start(this.age);
-            } else {
-                this.idleTimeout--;
             }
         }
     }
@@ -117,13 +113,10 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
     }
 
     @Override
-    public boolean occludeVibrationSignals() {
-        return true;
-    }
-
-    @Override
-    protected float calculateNextStepSoundDistance() {
-        return this.distanceTraveled + 0.3f;
+    public void updateEventHandler(BiConsumer<EntityGameEventHandler<?>, ServerWorld> callback) {
+        if (this.getWorld() instanceof ServerWorld serverWorld) {
+            callback.accept(this.entityGameEventHandler, serverWorld);
+        }
     }
 
     @Override
@@ -139,13 +132,6 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
     @Override
     public void setDisturbanceLocation(BlockPos disturbancePos) {
         this.disturbanceLocation = disturbancePos;
-    }
-
-    @Override
-    public void updateEventHandler(BiConsumer<EntityGameEventHandler<?>, ServerWorld> callback) {
-        if (this.getWorld() instanceof ServerWorld serverWorld) {
-            callback.accept(this.entityGameEventHandler, serverWorld);
-        }
     }
 
     @Override
@@ -172,12 +158,9 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
 
         @Override
         public boolean accepts(ServerWorld world, BlockPos pos, GameEvent event, GameEvent.Emitter emitter) {
-            if (!isAiDisabled() && !isDead() && !getBrain().hasMemoryModule(MemoryModuleType.VIBRATION_COOLDOWN) && world.getWorldBorder().contains(pos)) {
+            if (!isAiDisabled() && !isDead() && !getBrain().hasMemoryModule(MemoryModuleType.VIBRATION_COOLDOWN) && ShatteredEntity.this.getWorld().getWorldBorder().contains(pos)) {
                 Entity entity = emitter.sourceEntity();
-                if(entity instanceof LivingEntity livingEntity) {
-                    return canTarget(livingEntity);
-                }
-
+                if (entity instanceof LivingEntity livingEntity) return canTarget(livingEntity);
                 return true;
             } else {
                 return false;
@@ -188,8 +171,7 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
         public void accept(ServerWorld world, BlockPos pos, GameEvent event, @Nullable Entity sourceEntity,
                            @Nullable Entity entity, float distance) {
             if (isDead()) return;
-
-            playSound(SoundEvents.ENTITY_WARDEN_TENDRIL_CLICKS, 0.4F, -1);
+            playSound(SoundEvents.ENTITY_WARDEN_TENDRIL_CLICKS, 2.0f, 1.0f);
             if (entity instanceof LivingEntity livingEntity) {
                 if (canTarget(livingEntity)) {
                     if (entity instanceof HostileEntity && entity.getType() != DeeperDarkerEntityTypes.SHATTERED) setTarget((LivingEntity) entity);
@@ -198,15 +180,15 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
                 }
             }
 
-            if (getTarget() != null) setTarget(null);
+            if(getTarget() != null) setTarget(null);
             disturbanceLocation = pos;
         }
 
-        public TagKey<GameEvent> getListenableEvents() {
+        public TagKey<GameEvent> getTag() {
             return GameEventTags.WARDEN_CAN_LISTEN;
         }
 
-        public boolean canTriggerAvoidVibration() {
+        public boolean triggersAvoidCriterion() {
             return true;
         }
     }
