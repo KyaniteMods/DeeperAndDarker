@@ -58,6 +58,12 @@
     "misc": [],
     "monster": [
       {
+        "type": "deeperdarker:sculk_centipede",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 4
+      },
+      {
         "type": "deeperdarker:sculk_snapper",
         "maxCount": 6,
         "minCount": 3,
