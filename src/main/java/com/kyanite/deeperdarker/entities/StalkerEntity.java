@@ -34,6 +34,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
     public final AnimationState ringAttackState = new AnimationState();
+    public final AnimationState emergeState = new AnimationState();
     private final EntityGameEventHandler<VibrationListener> dynamicGameEventListener;
     private final Callback vibrationCallback;
     private final ListenerData vibrationData;
@@ -137,6 +138,15 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
         } else {
             super.handleStatus(pId);
         }
+    }
+
+    public static void emergeFromVase(World world, BlockPos pos) {
+        StalkerEntity entity = DeeperDarkerEntityTypes.STALKER.create(world);
+        assert entity != null;
+        entity.emergeState.start(entity.age);
+        entity.refreshPositionAndAngles(pos, 0, 0);
+        world.spawnEntity(entity);
+        entity.setAiDisabled(true);
     }
 
     @Override

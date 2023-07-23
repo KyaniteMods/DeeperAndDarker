@@ -74,6 +74,7 @@ public class StalkerEntityModel extends SinglePartEntityModel<StalkerEntity> {
         this.updateAnimation(entity.idleState, StalkerAnimation.IDLE, ageInTicks);
         this.updateAnimation(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
         this.updateAnimation(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
+        this.updateAnimation(entity.emergeState, StalkerAnimation.EMERGE, ageInTicks);
     }
 
     private void applyHeadRotation(float netHeadYaw, float headPitch) {

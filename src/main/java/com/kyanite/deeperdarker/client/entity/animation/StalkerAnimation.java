@@ -307,8 +307,7 @@ public class StalkerAnimation {
                     new Keyframe(0f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR),
                     new Keyframe(2f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR)))
             .addBoneAnimation("fake_vase", new Transformation(Transformation.Targets.SCALE,
-                    new Keyframe(0f, AnimationHelper.createScalingVector(0f, 0f, 0f), Transformation.Interpolations.LINEAR),
-                    new Keyframe(2f, AnimationHelper.createScalingVector(0f, 0f, 0f), Transformation.Interpolations.LINEAR))).build();
+                    new Keyframe(0f, AnimationHelper.createScalingVector(0f, 0f, 0f), Transformation.Interpolations.LINEAR))).build();
 
     public static final Animation ATTACK = Animation.Builder.create(0.5f)
             .addBoneAnimation("waist", new Transformation(Transformation.Targets.TRANSLATE,
@@ -428,8 +427,9 @@ public class StalkerAnimation {
                     new Keyframe(0f, AnimationHelper.createRotationalVector(0.22f, -5f, -2.51f), Transformation.Interpolations.LINEAR),
                     new Keyframe(0.5f, AnimationHelper.createRotationalVector(0.22f, -5f, -2.51f), Transformation.Interpolations.LINEAR)))
             .addBoneAnimation("left_leg", new Transformation(Transformation.Targets.SCALE,
-                    new Keyframe(0f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR),
-                    new Keyframe(0.5f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR))).build();
+                    new Keyframe(0.5f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR)))
+            .addBoneAnimation("fake_vase", new Transformation(Transformation.Targets.SCALE,
+                    new Keyframe(0f, AnimationHelper.createScalingVector(0f, 0f, 0f), Transformation.Interpolations.LINEAR))).build();
 
     public static final Animation RING_ATTACK = Animation.Builder.create(3f).looping()
             .addBoneAnimation("waist", new Transformation(Transformation.Targets.TRANSLATE,
@@ -669,8 +669,9 @@ public class StalkerAnimation {
                     new Keyframe(0f, AnimationHelper.createRotationalVector(0.22f, -5f, -2.51f), Transformation.Interpolations.LINEAR),
                     new Keyframe(3f, AnimationHelper.createRotationalVector(0.22f, -5f, -2.51f), Transformation.Interpolations.LINEAR)))
             .addBoneAnimation("left_leg", new Transformation(Transformation.Targets.SCALE,
-                    new Keyframe(0f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR),
-                    new Keyframe(3f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR))).build();
+                    new Keyframe(3f, AnimationHelper.createScalingVector(1f, 1f, 1f), Transformation.Interpolations.LINEAR)))
+            .addBoneAnimation("fake_vase", new Transformation(Transformation.Targets.SCALE,
+                    new Keyframe(0f, AnimationHelper.createScalingVector(0f, 0f, 0f), Transformation.Interpolations.LINEAR))).build();
 
     public static final Animation EMERGE = Animation.Builder.create(3.5f)
             .addBoneAnimation("waist", new Transformation(Transformation.Targets.TRANSLATE,

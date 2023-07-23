@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.blocks;
 
 import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
 import com.kyanite.deeperdarker.entities.SculkLeechEntity;
+import com.kyanite.deeperdarker.entities.StalkerEntity;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -70,12 +71,16 @@ public class AncientVaseBlock extends ExperienceDroppingBlock implements Waterlo
         super.onStateReplaced(state, world, pos, newState, movedByPiston);
 
         Random random = Random.create();
-        if (random.nextFloat() < 0.125f) {
-            for(int i = 0; i < random.nextBetween(1, 4); i++) {
-                SculkLeechEntity entity = DeeperDarkerEntityTypes.SCULK_LEECH.create(world);
-                assert entity != null;
-                entity.refreshPositionAndAngles(pos.getX() + random.nextFloat(), pos.getY() + random.nextFloat() + 0.15f, pos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
-                world.spawnEntity(entity);
+        if (random.nextFloat() < 0.0917f) {
+            if (random.nextDouble() < 0.9814612868) {
+                for (int i = 0; i < random.nextBetween(1, 4); i++) {
+                    SculkLeechEntity entity = DeeperDarkerEntityTypes.SCULK_LEECH.create(world);
+                    assert entity != null;
+                    entity.refreshPositionAndAngles(pos.getX() + random.nextFloat(), pos.getY() + random.nextFloat() + 0.15f, pos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
+                    world.spawnEntity(entity);
+                }
+            } else {
+                StalkerEntity.emergeFromVase(world, pos);
             }
         }
     }
