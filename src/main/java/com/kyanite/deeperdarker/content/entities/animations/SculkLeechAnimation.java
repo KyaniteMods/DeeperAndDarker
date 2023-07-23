@@ -6,7 +6,6 @@ import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
 public class SculkLeechAnimation {
-    public static final AnimationDefinition IDLE = AnimationDefinition.Builder.withLength(2f).looping().build();
     public static final AnimationDefinition MOVE = AnimationDefinition.Builder.withLength(0.66667f).looping()
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -20f, 0f), AnimationChannel.Interpolations.LINEAR),
