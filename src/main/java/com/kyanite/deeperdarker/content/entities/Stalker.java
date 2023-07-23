@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
-import com.kyanite.deeperdarker.content.entities.goals.GoToDisturbanceGoal;
+import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -58,7 +58,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.3, true));
-        this.goalSelector.addGoal(2, new GoToDisturbanceGoal(this));
+        this.goalSelector.addGoal(2, new DisturbanceGoal(this, 1.1));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.7));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
@@ -208,7 +208,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
         public void onReceiveVibration(ServerLevel level, BlockPos pos, GameEvent gameEvent, Entity entity, Entity entity2, float v) {
             if(isDeadOrDying()) return;
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS);
+            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
             if(entity != null) {
                 if(canTargetEntity(entity)) {
                     if(entity instanceof Monster && ((Monster) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
