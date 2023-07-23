@@ -1,15 +1,9 @@
 package com.kyanite.deeperdarker;
 
-import com.kyanite.deeperdarker.client.model.SculkLeechModel;
-import com.kyanite.deeperdarker.client.model.SculkSnapperModel;
-import com.kyanite.deeperdarker.client.model.ShatteredModel;
-import com.kyanite.deeperdarker.client.model.ShriekWormModel;
+import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
-import com.kyanite.deeperdarker.content.entities.SculkLeech;
-import com.kyanite.deeperdarker.content.entities.SculkSnapper;
-import com.kyanite.deeperdarker.content.entities.Shattered;
-import com.kyanite.deeperdarker.content.entities.ShriekWorm;
+import com.kyanite.deeperdarker.content.entities.*;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
@@ -100,6 +94,7 @@ public class DeeperDarker {
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
         EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
         EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
+        EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -137,6 +132,7 @@ public class DeeperDarker {
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
         event.put(DDEntities.SHATTERED.get(), Shattered.createAttributes());
         event.put(DDEntities.SHRIEK_WORM.get(), ShriekWorm.createAttributes());
+        event.put(DDEntities.STALKER.get(), Stalker.createAttributes());
     }
 
     private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -146,6 +142,7 @@ public class DeeperDarker {
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
         event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
         event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
+        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
     }
 
     private void addLayers(EntityRenderersEvent.AddLayers event) {
