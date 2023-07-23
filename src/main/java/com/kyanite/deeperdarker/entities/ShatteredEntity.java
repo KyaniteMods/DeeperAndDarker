@@ -174,7 +174,7 @@ public class ShatteredEntity extends HostileEntity implements DisturbanceListene
             playSound(SoundEvents.ENTITY_WARDEN_TENDRIL_CLICKS, 2.0f, 1.0f);
             if (entity instanceof LivingEntity livingEntity) {
                 if (canTarget(livingEntity)) {
-                    if (entity instanceof HostileEntity && entity.getType() != DeeperDarkerEntityTypes.SHATTERED) setTarget((LivingEntity) entity);
+                    if (entity instanceof HostileEntity && ((HostileEntity)entity).getGroup() != DeeperDarkerEntityGroups.SCULK) setTarget((LivingEntity) entity);
                     if (entity instanceof PlayerEntity) setTarget((LivingEntity) entity);
                     return;
                 }

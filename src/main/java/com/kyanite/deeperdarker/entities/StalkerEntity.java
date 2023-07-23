@@ -75,7 +75,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(RING_COOLDOWN, getRandom().nextBetween(20, 60));
+        this.dataTracker.startTracking(RING_COOLDOWN, getRandom().nextBetween(200, 600));
     }
 
     @Override
@@ -105,7 +105,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
             if (this.dataTracker.get(RING_COOLDOWN) <= -100) {
                 this.playersInRange = false;
                 ring = false;
-                this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(20, 60));
+                this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(200, 600));
                 if (getWorld().isClient()) this.ringAttackState.stop();
             } else if (this.dataTracker.get(RING_COOLDOWN) <= 0) {
                 if (getWorld().isClient()) this.ringAttackState.start(this.age);
@@ -114,7 +114,7 @@ public class StalkerEntity extends HostileEntity implements DisturbanceListener,
             }
         } else if (this.playersInRange) {
             this.playersInRange = false;
-            this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(20, 60));
+            this.dataTracker.set(RING_COOLDOWN, getRandom().nextBetween(200, 600));
             if (getWorld().isClient()) this.ringAttackState.stop();
         }
 

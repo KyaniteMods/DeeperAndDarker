@@ -6,7 +6,6 @@ import net.minecraft.client.render.entity.animation.Keyframe;
 import net.minecraft.client.render.entity.animation.Transformation;
 
 public class SculkLeechAnimation {
-    public static final Animation IDLE = Animation.Builder.create(2f).looping().build();
     public static final Animation MOVE = Animation.Builder.create(0.66667f).looping()
             .addBoneAnimation("head", new Transformation(Transformation.Targets.ROTATE,
                     new Keyframe(0f, AnimationHelper.createRotationalVector(0f, -20f, 0f), Transformation.Interpolations.LINEAR),

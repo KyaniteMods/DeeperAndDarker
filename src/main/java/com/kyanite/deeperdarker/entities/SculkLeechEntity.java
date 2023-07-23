@@ -15,7 +15,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
 
 public class SculkLeechEntity extends HostileEntity {
-    public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
 
     public SculkLeechEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -57,18 +56,11 @@ public class SculkLeechEntity extends HostileEntity {
     @Override
     public void tick() {
         super.tick();
-
-        if (this.getWorld().isClient()) {
-            if (!this.attackState.isRunning() && !this.idleState.isRunning()) {
-                this.idleState.start(this.age);
-            }
-        }
     }
 
     @Override
     public void handleStatus(byte id) {
         if (id == 4) {
-            this.idleState.stop();
             this.attackState.start(this.age);
         } else {
             super.handleStatus(id);
