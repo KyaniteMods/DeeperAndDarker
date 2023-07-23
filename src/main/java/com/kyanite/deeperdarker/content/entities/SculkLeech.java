@@ -20,7 +20,6 @@ import net.minecraft.world.level.Level;
 public class SculkLeech extends Monster {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    private int idleTimeout;
 
     public SculkLeech(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -54,11 +53,8 @@ public class SculkLeech extends Monster {
         super.tick();
 
         if(level().isClientSide()) {
-            if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextInt(40, 120);
+            if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
-            } else {
-                this.idleTimeout--;
             }
         }
     }

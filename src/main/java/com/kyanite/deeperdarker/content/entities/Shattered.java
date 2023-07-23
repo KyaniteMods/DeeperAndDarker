@@ -36,7 +36,6 @@ import java.util.function.BiConsumer;
 public class Shattered extends Monster implements DisturbanceListener, VibrationSystem {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    private int idleTimeout;
     private final DynamicGameEventListener<VibrationSystem.Listener> dynamicGameEventListener;
     private final VibrationSystem.User vibrationUser;
     private final VibrationSystem.Data vibrationData;
@@ -101,11 +100,8 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         super.tick();
 
         if(level().isClientSide()) {
-            if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextInt(40, 120);
+            if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
-            } else {
-                this.idleTimeout--;
             }
         }
     }

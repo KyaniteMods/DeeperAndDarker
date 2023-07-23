@@ -35,7 +35,6 @@ import java.util.List;
 public class SculkSnapper extends TamableAnimal {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    private int idleTimeout;
 
     public SculkSnapper(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -102,11 +101,8 @@ public class SculkSnapper extends TamableAnimal {
         }
 
         if(level().isClientSide()) {
-            if(this.idleTimeout <= 0) {
-                this.idleTimeout = this.random.nextInt(40, 120);
+            if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
-            } else {
-                this.idleTimeout--;
             }
         }
     }
