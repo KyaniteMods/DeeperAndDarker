@@ -38,13 +38,14 @@ public class DDProcessorLists {
         ProcessorRule rule19 = new ProcessorRule(new RandomBlockStateMatchTest(Blocks.DEEPSLATE_BRICK_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST).setValue(StairBlock.HALF, Half.TOP), 0.07f), AlwaysTrueTest.INSTANCE, Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST).setValue(StairBlock.HALF, Half.TOP));
         ProcessorRule rule20 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_TILES, 0.25f), AlwaysTrueTest.INSTANCE, Blocks.CRACKED_DEEPSLATE_TILES.defaultBlockState());
         ProcessorRule rule21 = new ProcessorRule(new RandomBlockMatchTest(Blocks.COBBLED_DEEPSLATE, 0.05f), AlwaysTrueTest.INSTANCE, Blocks.SMOOTH_BASALT.defaultBlockState());
-        ProcessorRule rule22 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_IRON_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState());
-        ProcessorRule rule23 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_COPPER_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_COPPER_ORE.get().defaultBlockState());
-        ProcessorRule rule24 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_GOLD_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_GOLD_ORE.get().defaultBlockState());
-        ProcessorRule rule25 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), 0.7f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE.get().defaultBlockState());
-        ProcessorRule rule26 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DIAMOND_BLOCK, 0.5f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState());
+        ProcessorRule rule22 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.ANCIENT_VASE.get(), 0.25f), AlwaysTrueTest.INSTANCE, Blocks.AIR.defaultBlockState());
+        ProcessorRule rule23 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_IRON_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState());
+        ProcessorRule rule24 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_COPPER_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_COPPER_ORE.get().defaultBlockState());
+        ProcessorRule rule25 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_GOLD_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_GOLD_ORE.get().defaultBlockState());
+        ProcessorRule rule26 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), 0.7f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE.get().defaultBlockState());
+        ProcessorRule rule27 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DIAMOND_BLOCK, 0.5f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState());
 
-        context.register(ANCIENT_TEMPLE_DEGRADATION, new StructureProcessorList(ImmutableList.of(new RuleProcessor(ImmutableList.of(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20, rule21, rule22, rule23, rule24, rule25, rule26)))));
+        context.register(ANCIENT_TEMPLE_DEGRADATION, new StructureProcessorList(ImmutableList.of(new RuleProcessor(ImmutableList.of(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20, rule21, rule22, rule23, rule24, rule25, rule26, rule27)))));
     }
 
     private static ResourceKey<StructureProcessorList> createKey(String name) {

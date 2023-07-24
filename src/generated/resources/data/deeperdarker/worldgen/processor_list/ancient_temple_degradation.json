@@ -502,6 +502,19 @@
         },
         {
           "input_predicate": {
+            "block": "deeperdarker:ancient_vase",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.25
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:air"
+          }
+        },
+        {
+          "input_predicate": {
             "block": "minecraft:raw_iron_block",
             "predicate_type": "minecraft:random_block_match",
             "probability": 0.16
