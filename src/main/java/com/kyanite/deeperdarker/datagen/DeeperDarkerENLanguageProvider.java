@@ -123,6 +123,7 @@ public class DeeperDarkerENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarkerBlocks.CHISELED_GLOOMSLATE, "Chiseled Gloomslate");
         translationBuilder.add(DeeperDarkerBlocks.ECHO_SOIL, "Echo Soil");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_GLEAM, "Sculk Gleam");
+        translationBuilder.add(DeeperDarkerBlocks.SCULK_JAW, "Sculk Jaw");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, "Sculk Stone Coal Ore");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, "Sculk Stone Iron Ore");
         translationBuilder.add(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE, "Sculk Stone Copper Ore");

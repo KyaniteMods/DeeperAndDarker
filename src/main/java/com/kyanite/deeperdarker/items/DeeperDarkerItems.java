@@ -114,6 +114,7 @@ public class DeeperDarkerItems {
     public static final Item CHISELED_GLOOMSLATE;
     public static final Item ECHO_SOIL;
     public static final Item SCULK_GLEAM;
+    public static final Item SCULK_JAW;
     public static final Item SCULK_STONE_COAL_ORE;
     public static final Item SCULK_STONE_IRON_ORE;
     public static final Item SCULK_STONE_COPPER_ORE;
@@ -248,6 +249,7 @@ public class DeeperDarkerItems {
         CHISELED_GLOOMSLATE = registerItem("chiseled_gloomslate", new BlockItem(DeeperDarkerBlocks.CHISELED_GLOOMSLATE, new Item.Settings()));
         ECHO_SOIL = registerItem("echo_soil", new BlockItem(DeeperDarkerBlocks.ECHO_SOIL, new Item.Settings()));
         SCULK_GLEAM = registerItem("sculk_gleam", new BlockItem(DeeperDarkerBlocks.SCULK_GLEAM, new Item.Settings()));
+        SCULK_JAW = registerItem("sculk_jaw", new BlockItem(DeeperDarkerBlocks.SCULK_JAW, new Item.Settings()));
         SCULK_STONE_COAL_ORE = registerItem("sculk_stone_coal_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_COAL_ORE, new Item.Settings()));
         SCULK_STONE_IRON_ORE = registerItem("sculk_stone_iron_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_IRON_ORE, new Item.Settings()));
         SCULK_STONE_COPPER_ORE = registerItem("sculk_stone_copper_ore", new BlockItem(DeeperDarkerBlocks.SCULK_STONE_COPPER_ORE, new Item.Settings()));

@@ -111,6 +111,7 @@ public class DeeperDarkerItemGroups {
                 entries.add(new ItemStack(DeeperDarkerItems.CHISELED_GLOOMSLATE));
                 entries.add(new ItemStack(DeeperDarkerItems.ECHO_SOIL));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_GLEAM));
+                entries.add(new ItemStack(DeeperDarkerItems.SCULK_JAW));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_COAL_ORE));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_IRON_ORE));
                 entries.add(new ItemStack(DeeperDarkerItems.SCULK_STONE_COPPER_ORE));

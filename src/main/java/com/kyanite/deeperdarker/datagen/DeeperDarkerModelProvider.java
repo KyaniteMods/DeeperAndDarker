@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
+import com.kyanite.deeperdarker.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import com.kyanite.deeperdarker.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -140,23 +141,26 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleState(DeeperDarkerBlocks.CRYSTALLIZED_AMBER);
         registerParented(blockStateModelGenerator, Blocks.HONEY_BLOCK, DeeperDarkerBlocks.CRYSTALLIZED_AMBER,
-                new Pair<>(TextureKey.UP, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_inner").withPrefixedPath("block/")),
-                new Pair<>(TextureKey.SIDE, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_inner").withPrefixedPath("block/")),
-                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_inner").withPrefixedPath("block/")),
-                new Pair<>(TextureKey.DOWN, new Identifier(DeeperDarker.MOD_ID, "crystallized_amber_outer").withPrefixedPath("block/")));
+                new Pair<>(TextureKey.UP, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, "_inner")),
+                new Pair<>(TextureKey.SIDE, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, "_inner")),
+                new Pair<>(TextureKey.PARTICLE, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, "_inner")),
+                new Pair<>(TextureKey.DOWN, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER, "_outer")));
 
         blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.CRYSTALLIZED_AMBER, ModelIds.getBlockModelId(DeeperDarkerBlocks.CRYSTALLIZED_AMBER));
 
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(DeeperDarkerBlocks.OTHERSIDE_PORTAL).coordinate(BlockStateVariantMap.create(
-                Properties.AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ns").withPrefixedPath("block/")))
-                .register(Direction.Axis.Y, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ns").withPrefixedPath("block/")).put(VariantSettings.X, VariantSettings.Rotation.R90))
-                .register(Direction.Axis.Z, BlockStateVariant.create().put(VariantSettings.MODEL, new Identifier(DeeperDarker.MOD_ID, "otherside_portal_ew").withPrefixedPath("block/")))));
+                Properties.AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ns")))
+                .register(Direction.Axis.Y, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ns")).put(VariantSettings.X, VariantSettings.Rotation.R90))
+                .register(Direction.Axis.Z, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ew")))));
         registerParented(blockStateModelGenerator, ModelIds.getBlockSubModelId(Blocks.NETHER_PORTAL, "_ew"), ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ew"),
-                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")),
-                new Pair<>(TextureKey.of("portal"), new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")));
+                new Pair<>(TextureKey.PARTICLE, TextureMap.getId(DeeperDarkerBlocks.OTHERSIDE_PORTAL)),
+                new Pair<>(TextureKey.of("portal"), TextureMap.getId(DeeperDarkerBlocks.OTHERSIDE_PORTAL)));
         registerParented(blockStateModelGenerator, ModelIds.getBlockSubModelId(Blocks.NETHER_PORTAL, "_ns"), ModelIds.getBlockSubModelId(DeeperDarkerBlocks.OTHERSIDE_PORTAL, "_ns"),
-                new Pair<>(TextureKey.PARTICLE, new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")),
-                new Pair<>(TextureKey.of("portal"), new Identifier(DeeperDarker.MOD_ID, "otherside_portal").withPrefixedPath("block/")));
+                new Pair<>(TextureKey.PARTICLE, TextureMap.getId(DeeperDarkerBlocks.OTHERSIDE_PORTAL)),
+                new Pair<>(TextureKey.of("portal"), TextureMap.getId(DeeperDarkerBlocks.OTHERSIDE_PORTAL)));
+
+        registerSculkJaw(blockStateModelGenerator, DeeperDarkerBlocks.SCULK_JAW);
+        blockStateModelGenerator.registerParentedItemModel(DeeperDarkerItems.SCULK_JAW, ModelIds.getBlockModelId(DeeperDarkerBlocks.SCULK_JAW));
     }
 
     @Override
@@ -268,6 +272,14 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         Identifier sideModel = Models.TEMPLATE_WALL_SIDE.upload(wall, textureMap, blockStateModelGenerator.modelCollector);
         Identifier sideTallModel = Models.TEMPLATE_WALL_SIDE_TALL.upload(wall, textureMap, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createWallBlockState(wall, postModel, sideModel, sideTallModel));
+    }
+
+    private static void registerSculkJaw(BlockStateModelGenerator blockStateModelGenerator, Block sculkJaw) {
+        Identifier sculkJawModel = Models.CUBE_TOP.upload(sculkJaw, TextureMap.of(TextureKey.TOP, TextureMap.getId(sculkJaw)).put(TextureKey.SIDE, TextureMap.getSubId(sculkJaw, "_side")), blockStateModelGenerator.modelCollector);
+        Identifier sculkJawBitingModel = Models.CUBE_TOP.upload(ModelIds.getBlockSubModelId(sculkJaw, "_biting"), TextureMap.of(TextureKey.TOP, TextureMap.getSubId(sculkJaw, "_biting")).put(TextureKey.SIDE, TextureMap.getSubId(sculkJaw, "_side")), blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(DeeperDarkerBlocks.SCULK_JAW).coordinate(BlockStateModelGenerator.createBooleanModelMap(
+                SculkJawBlock.BITING, sculkJawBitingModel, sculkJawModel)));
     }
 
     private static void registerWardenHelmet(ItemModelGenerator itemModelGenerator, ArmorItem armor) {

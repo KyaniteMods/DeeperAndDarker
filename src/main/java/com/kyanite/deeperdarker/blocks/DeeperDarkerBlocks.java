@@ -112,6 +112,7 @@ public class DeeperDarkerBlocks {
     public static final Block CHISELED_GLOOMSLATE;
     public static final Block ECHO_SOIL;
     public static final Block SCULK_GLEAM;
+    public static final Block SCULK_JAW;
     public static final Block SCULK_STONE_COAL_ORE;
     public static final Block SCULK_STONE_IRON_ORE;
     public static final Block SCULK_STONE_COPPER_ORE;
@@ -249,7 +250,8 @@ public class DeeperDarkerBlocks {
         CHISELED_GLOOMSLATE = registerBlock("chiseled_gloomslate", new Block(AbstractBlock.Settings.copy(GLOOMSLATE)));
 
         ECHO_SOIL = registerBlock("echo_soil", new Block(AbstractBlock.Settings.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.PURPLE)));
-        SCULK_GLEAM = registerBlock("sculk_gleam", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 15).mapColor(MapColor.PALE_YELLOW)));
+        SCULK_GLEAM = registerBlock("sculk_gleam", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(Blocks.SCULK).luminance((state) -> 15).mapColor(MapColor.PALE_YELLOW), UniformIntProvider.create(1, 3)));
+        SCULK_JAW = registerBlock("sculk_jaw", new SculkJawBlock(AbstractBlock.Settings.copy(Blocks.SCULK).ticksRandomly()));
 
         SCULK_STONE_COAL_ORE = registerBlock("sculk_stone_coal_ore", new ExperienceDroppingBlock(AbstractBlock.Settings.copy(SCULK_STONE),
                 UniformIntProvider.create(1, 4)));

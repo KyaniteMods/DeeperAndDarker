@@ -45,7 +45,6 @@ public class SculkLeechEntityModel extends SinglePartEntityModel<SculkLeechEntit
     public void setAngles(SculkLeechEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root.traverse().forEach(ModelPart::resetTransform);
         this.animateMovement(SculkLeechAnimation.MOVE, limbSwing, limbSwingAmount, 2.0f, 2.5f);
-        this.updateAnimation(entity.idleState, SculkLeechAnimation.IDLE, ageInTicks);
     }
 
     @Override
