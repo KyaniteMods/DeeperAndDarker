@@ -14,6 +14,7 @@ import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
@@ -66,6 +67,7 @@ public class DeeperDarker {
         DDPotions.POTIONS.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
+        OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
