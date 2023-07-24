@@ -7,7 +7,7 @@
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 3
     },
     {
       "element": {
