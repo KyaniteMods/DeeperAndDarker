@@ -114,6 +114,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
 
             event.accept(DDBlocks.ECHO_LEAVES);
+            event.accept(DDBlocks.ECHO_SAPLING);
             event.accept(DDBlocks.GLOOMY_GRASS);
             event.accept(DDBlocks.GLOOMY_CACTUS);
             event.accept(DDBlocks.SCULK_TENDRILS);

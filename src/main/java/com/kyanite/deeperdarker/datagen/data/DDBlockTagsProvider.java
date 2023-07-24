@@ -49,6 +49,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_PRESSURE_PLATES).add(DDBlocks.ECHO_PRESSURE_PLATE.get());
         tag(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON.get());
         tag(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES.get());
+        tag(BlockTags.SAPLINGS).add(DDBlocks.ECHO_SAPLING.get());
         tag(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN.get());
         tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get());
         tag(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN.get());

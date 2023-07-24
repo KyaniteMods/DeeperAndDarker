@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-21T22:17:15.7949331	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2023-07-24T15:23:04.2639099	Tags for minecraft:item mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 9e4ebbf0e38096f993924198f361dfb2cf939487 data/deeperdarker/tags/items/gloomslate_slabs.json
 a68bb1cb40bb6600c608243427041bdf6c7b662a data/deeperdarker/tags/items/sculk_stone_slabs.json
@@ -33,6 +33,7 @@ f65cfe67bc33a33cd3d34cb88d7792aff007fb34 data/minecraft/tags/items/emerald_ores.
 11f14987f1510c7fba24ae72c2eeae6ec44275bf data/minecraft/tags/items/pickaxes.json
 a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/items/planks.json
 f58b32d1f7d382f31ab717198403de59cce4117a data/minecraft/tags/items/redstone_ores.json
+194ada896e5d1f6d6cac977e3e771bc784d9911b data/minecraft/tags/items/saplings.json
 dff5da60a5f06c5c4f35c4f271b7c50221dd704d data/minecraft/tags/items/shovels.json
 3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/items/signs.json
 7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/items/slabs.json

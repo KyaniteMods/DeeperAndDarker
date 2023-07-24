@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-23T16:36:00.8929178	Loot Tables
+// 1.20.1	2023-07-24T15:23:04.2669092	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 55589564f7ea5847138db468199d54cd1142b139 data/deeperdarker/loot_tables/blocks/chiseled_gloomslate.json
 c29aeb5add1d38dc94087bd93c15ff08dab7a74d data/deeperdarker/loot_tables/blocks/chiseled_sculk_stone.json
@@ -24,10 +24,11 @@ cacaf706bc45fac9d43ccc6f88bbf72085cb755c data/deeperdarker/loot_tables/blocks/ec
 586251caf7f0f9ab229da1fe8d835fa71f5532c5 data/deeperdarker/loot_tables/blocks/echo_fence.json
 9fa8fed361e0d13197878c4a1c605ea30de74a4d data/deeperdarker/loot_tables/blocks/echo_fence_gate.json
 c717b40143b18c9378458f63a05297589ffe1c7c data/deeperdarker/loot_tables/blocks/echo_hanging_sign.json
-4e69873894ed81c5222e3fcb480e1e6add9889a8 data/deeperdarker/loot_tables/blocks/echo_leaves.json
+6f5159ef043db9819455daf4f138081a4a350186 data/deeperdarker/loot_tables/blocks/echo_leaves.json
 2a404553ee805f06c7c66bcadb3daa2b9f12ea12 data/deeperdarker/loot_tables/blocks/echo_log.json
 3be620f31ed592eb0563dfea376189131129d888 data/deeperdarker/loot_tables/blocks/echo_planks.json
 66f0220406bda0173fadcde8829857e91738de03 data/deeperdarker/loot_tables/blocks/echo_pressure_plate.json
+fb49525bad89348583a68ee4bf34d9fa29dc8219 data/deeperdarker/loot_tables/blocks/echo_sapling.json
 99e76395855e8ce466ee3ffeb1a91b153e26e044 data/deeperdarker/loot_tables/blocks/echo_sign.json
 3819a25b84d68311faee9ea98d0ce82f6ccaea27 data/deeperdarker/loot_tables/blocks/echo_slab.json
 40516ad586fa5f6118356b4f232e99a9727e3b58 data/deeperdarker/loot_tables/blocks/echo_soil.json

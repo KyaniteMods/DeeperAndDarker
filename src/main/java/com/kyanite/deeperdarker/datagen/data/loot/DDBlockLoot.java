@@ -48,7 +48,8 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.ECHO_TRAPDOOR.get());
         dropSelf(DDBlocks.ECHO_PRESSURE_PLATE.get());
         dropSelf(DDBlocks.ECHO_BUTTON.get());
-        add(DDBlocks.ECHO_LEAVES.get(), (block) -> this.createLeavesDrops(block, Blocks.AIR, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(DDBlocks.ECHO_LEAVES.get(), (block) -> this.createLeavesDrops(block, DDBlocks.ECHO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(DDBlocks.ECHO_SAPLING.get());
         dropSelf(DDBlocks.ECHO_SIGN.get());
         dropSelf(DDBlocks.ECHO_HANGING_SIGN.get());
 

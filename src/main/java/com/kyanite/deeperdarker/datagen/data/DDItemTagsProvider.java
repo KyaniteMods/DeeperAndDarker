@@ -35,6 +35,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.LEAVES, ItemTags.LEAVES);
+        copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 

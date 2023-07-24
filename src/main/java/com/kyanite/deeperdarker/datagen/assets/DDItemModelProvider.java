@@ -36,6 +36,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.ECHO_PRESSURE_PLATE);
         blockModel(DDBlocks.ECHO_BUTTON, "inventory");
         blockModel(DDBlocks.ECHO_LEAVES);
+        blockItemModel(DDBlocks.ECHO_SAPLING, DDBlocks.ECHO_SAPLING, GENERATED);
 
         blockModel(DDBlocks.SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_STAIRS);
@@ -119,10 +120,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
 
-        getBuilder(DDBlocks.GLOOMY_GRASS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.GLOOMY_GRASS.getId().getPath());
+        blockItemModel(DDBlocks.GLOOMY_GRASS, DDBlocks.GLOOMY_GRASS, GENERATED);
         blockModel(DDBlocks.GLOOMY_CACTUS);
-        getBuilder(DDBlocks.SCULK_TENDRILS.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath());
-        getBuilder(DDBlocks.SCULK_VINES.getId().getPath()).parent(GENERATED).texture("layer0", "block/" + DDBlocks.SCULK_VINES_PLANT.getId().getPath());
+        blockItemModel(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, GENERATED);
+        blockItemModel(DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, GENERATED);
 
         blockModel(DDBlocks.ANCIENT_VASE);
 
@@ -175,6 +176,10 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     public void blockModel(RegistryObject<? extends Block> block, String suffix) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
+    }
+
+    public void blockItemModel(RegistryObject<?> block, RegistryObject<?> textureBlock, ModelFile modelFile) {
+        getBuilder(block.getId().getPath()).parent(modelFile).texture("layer0", "block/" + textureBlock.getId().getPath());
     }
 
     public ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile) {

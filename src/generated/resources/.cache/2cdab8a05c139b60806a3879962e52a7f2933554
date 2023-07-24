@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-23T16:36:00.8909189	Item Models: deeperdarker
+// 1.20.1	2023-07-24T15:23:04.2649106	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
@@ -30,6 +30,7 @@ ec886404ea6d28788b4bf71f6451ea59b930be1f assets/deeperdarker/models/item/echo_ha
 b5a9cdf24751c70817ae24a894270341e5e54793 assets/deeperdarker/models/item/echo_log.json
 4f146afd7e15e53a7f3987453d0acad4b2c85535 assets/deeperdarker/models/item/echo_planks.json
 25d9a9afcec3a82548c0734b9370b7f79ccc5318 assets/deeperdarker/models/item/echo_pressure_plate.json
+9c5293fd5c7267b85a9439e3f170faaa65f08d76 assets/deeperdarker/models/item/echo_sapling.json
 65ba8802b86a620bed2ced03f007f9abe41f17f9 assets/deeperdarker/models/item/echo_sign.json
 9df9bbce4f954b4e9711893c0f9bb3412e44517d assets/deeperdarker/models/item/echo_slab.json
 2b5f3964327886520d8f62139045fe59a87018e8 assets/deeperdarker/models/item/echo_soil.json
