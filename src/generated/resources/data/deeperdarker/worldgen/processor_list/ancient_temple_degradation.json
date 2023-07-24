@@ -44,28 +44,434 @@
         },
         {
           "input_predicate": {
-            "block": "deeperdarker:sculk_stone_diamond_ore",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.7
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "north",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "deeperdarker:sculk_stone"
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "north",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
           }
         },
         {
           "input_predicate": {
-            "block": "minecraft:diamond_block",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.5
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "east",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "deeperdarker:sculk_stone_diamond_ore"
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "east",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "south",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "south",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "west",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "west",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "north",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "north",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "east",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "east",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "south",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "south",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "west",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.09
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:polished_deepslate_stairs",
+            "Properties": {
+              "facing": "west",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "north",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "north",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "east",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "east",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "south",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "south",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "west",
+                "half": "bottom",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "west",
+              "half": "bottom",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "north",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "north",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "east",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "east",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "south",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "south",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:deepslate_brick_stairs",
+              "Properties": {
+                "facing": "west",
+                "half": "top",
+                "shape": "straight",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.07
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobbled_deepslate_stairs",
+            "Properties": {
+              "facing": "west",
+              "half": "top",
+              "shape": "straight",
+              "waterlogged": "false"
+            }
           }
         },
         {
@@ -135,434 +541,28 @@
         },
         {
           "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "north",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
+            "block": "deeperdarker:sculk_stone_diamond_ore",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.7
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "north",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
+            "Name": "deeperdarker:sculk_stone"
           }
         },
         {
           "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "east",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
+            "block": "minecraft:diamond_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "east",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "south",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "south",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "west",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "west",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "north",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "north",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "east",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "east",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "south",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "south",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "west",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.09
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:polished_deepslate_stairs",
-            "Properties": {
-              "facing": "west",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "north",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "north",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "east",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "east",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "south",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "south",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "west",
-                "half": "bottom",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "west",
-              "half": "bottom",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "north",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "north",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "east",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "east",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "south",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "south",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
-          }
-        },
-        {
-          "input_predicate": {
-            "block_state": {
-              "Name": "minecraft:deepslate_brick_stairs",
-              "Properties": {
-                "facing": "west",
-                "half": "top",
-                "shape": "straight",
-                "waterlogged": "false"
-              }
-            },
-            "predicate_type": "minecraft:random_blockstate_match",
-            "probability": 0.07
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:cobbled_deepslate_stairs",
-            "Properties": {
-              "facing": "west",
-              "half": "top",
-              "shape": "straight",
-              "waterlogged": "false"
-            }
+            "Name": "deeperdarker:sculk_stone_diamond_ore"
           }
         }
       ]
