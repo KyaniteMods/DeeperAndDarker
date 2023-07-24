@@ -11,12 +11,15 @@ import com.kyanite.deeperdarker.world.gen.feature.DeeperDarkerFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.world.Heightmap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,5 +67,13 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.pool(poolBuilder);
 			}
 		});
+
+		registerSpawnPlacements();
+	}
+
+	public static void registerSpawnPlacements() {
+		SpawnRestriction.register(DeeperDarkerEntityTypes.SCULK_SNAPPER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+		SpawnRestriction.register(DeeperDarkerEntityTypes.SHATTERED, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+		SpawnRestriction.register(DeeperDarkerEntityTypes.STALKER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
 	}
 }
