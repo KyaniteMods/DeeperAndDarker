@@ -70,13 +70,13 @@
         "type": "deeperdarker:sculk_snapper",
         "maxCount": 2,
         "minCount": 1,
-        "weight": 3
+        "weight": 9
       },
       {
         "type": "deeperdarker:shattered",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 7
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 17
       }
     ],
     "underground_water_creature": [],
