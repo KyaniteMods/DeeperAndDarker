@@ -73,6 +73,7 @@ public class OthersideBiomes {
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM_FOREST);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.ECHO_TREE);
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);

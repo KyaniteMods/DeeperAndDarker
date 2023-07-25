@@ -22,7 +22,7 @@
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:dirt"
+        "Name": "deeperdarker:echo_soil"
       }
     },
     "foliage_placer": {

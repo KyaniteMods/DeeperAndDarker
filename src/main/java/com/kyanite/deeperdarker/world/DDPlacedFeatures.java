@@ -33,6 +33,8 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
 
+    public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
+
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -43,7 +45,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_TENDRILS, features.getOrThrow(DDConfiguredFeatures.SCULK_TENDRILS), countPlacement(42, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_VINES, features.getOrThrow(DDConfiguredFeatures.SCULK_VINES), countPlacement(36, PlacementUtils.FULL_RANGE));
 
-        PlacementUtils.register(context, GLOOMY_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.GLOOMY_SCULK_BONEMEAL), modifiedPlacement(CountPlacement.of(200), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+        PlacementUtils.register(context, GLOOMY_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.GLOOMY_SCULK_BONEMEAL), countPlacement(200, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
 
         PlacementUtils.register(context, SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK), countPlacement(14, HeightRangePlacement.triangle(VerticalAnchor.bottom(), VerticalAnchor.top())));
         PlacementUtils.register(context, SCULK_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
@@ -54,14 +56,16 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_EMERALD), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
         PlacementUtils.register(context, SCULK_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
         PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
+
+        PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), List.of(PlacementUtils.countExtra(10, 0.1f, 5), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(0), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.FULL_RANGE, BiomeFilter.biome()));
     }
 
-    private static List<PlacementModifier> countPlacement(int pAttempts, PlacementModifier pHeightRange) {
-        return modifiedPlacement(CountPlacement.of(pAttempts), pHeightRange);
+    private static List<PlacementModifier> countPlacement(int attempts, PlacementModifier heightRange) {
+        return modifiedPlacement(CountPlacement.of(attempts), heightRange);
     }
 
-    private static List<PlacementModifier> modifiedPlacement(PlacementModifier pModifier, PlacementModifier pHeightRange) {
-        return List.of(pModifier, InSquarePlacement.spread(), pHeightRange, BiomeFilter.biome());
+    private static List<PlacementModifier> modifiedPlacement(PlacementModifier count, PlacementModifier heightRange) {
+        return List.of(count, InSquarePlacement.spread(), heightRange, BiomeFilter.biome());
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
