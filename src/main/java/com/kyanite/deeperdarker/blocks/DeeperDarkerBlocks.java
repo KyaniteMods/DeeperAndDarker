@@ -302,6 +302,7 @@ public class DeeperDarkerBlocks {
                 player.getStackInHand(player.getActiveHand()).decrement(1);
             }
         });
+        portalLink.forcedWidth = 6;
         portalLink.colorID = 0xFF003C56;
         CustomPortalApiRegistry.addPortal(Blocks.REINFORCED_DEEPSLATE, portalLink);
     }
