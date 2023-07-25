@@ -25,7 +25,7 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> VASE_HIT = register("block.vase.hit");
     public static final RegistryObject<SoundEvent> VASE_PLACE = register("block.vase.place");
     public static final RegistryObject<SoundEvent> VASE_STEP = register("block.vase.step");
-    public static final ForgeSoundType VASE = new ForgeSoundType(1, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
+    public static final ForgeSoundType VASE = new ForgeSoundType(2, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
 
     public static final RegistryObject<SoundEvent> LEECH_HURT = register("entity.leech.hurt");
 
