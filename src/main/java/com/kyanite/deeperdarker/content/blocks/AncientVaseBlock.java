@@ -4,13 +4,15 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.Stalker;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,14 +28,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.stream.Stream;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
-public class AncientVaseBlock extends DropExperienceBlock implements SimpleWaterloggedBlock {
+public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape BASE = Block.box(3, 0, 3, 13, 1, 13);
     private static final VoxelShape OUTLINE = Block.box(2, 1, 2, 14, 13, 14);
     private static final VoxelShape RIM = Block.box(4, 13, 4, 12, 16, 12);
 
     public AncientVaseBlock(Properties pProperties) {
-        super(pProperties, UniformInt.of(1, 3));
+        super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE));
     }
 
@@ -74,5 +76,15 @@ public class AncientVaseBlock extends DropExperienceBlock implements SimpleWater
                 Stalker.emergeFromVase(pLevel, pPos);
             }
         }
+    }
+
+    @Override
+    public void spawnAfterBreak(BlockState pState, ServerLevel pLevel, BlockPos pPos, ItemStack pStack, boolean pDropExperience) {
+        super.spawnAfterBreak(pState, pLevel, pPos, pStack, pDropExperience);
+    }
+
+    @Override
+    public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
+        return silkTouchLevel == 0 ? randomSource.nextInt(1, 4) : 0;
     }
 }
