@@ -1,9 +1,9 @@
 {
-  "feature": "deeperdarker:ore_sculk",
+  "feature": "deeperdarker:ore_echo_soil",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 14
+      "count": 18
     },
     {
       "type": "minecraft:in_square"
