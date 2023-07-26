@@ -109,6 +109,10 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
         chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDTags.Items.GLOOMSLATE_SLABS)).unlockedBy("has_gloomslate_slab", has(DDTags.Items.GLOOMSLATE_SLABS)).save(writer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDItems.SOUL_ELYTRA.get())
+                .define('S', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('B', DDItems.SCULK_BONE.get()).define('E', Items.ELYTRA)
+                .pattern("BDB").pattern("DED").pattern("BSB")
+                .unlockedBy("has_elytra", has(Items.ELYTRA)).save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('E', Items.ECHO_SHARD).define('C', DDItems.WARDEN_CARAPACE.get())
                 .pattern("PEP").pattern("ECE").pattern("PEP")
