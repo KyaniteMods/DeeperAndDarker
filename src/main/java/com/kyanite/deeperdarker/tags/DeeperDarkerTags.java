@@ -11,7 +11,10 @@ public class DeeperDarkerTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = TagKey.of(
                 RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_logs"));
+        public static final TagKey<Block> ECHO_SOIL = TagKey.of(
+                RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "echo_soil"));
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "gloomy_sculk_replaceable"));
+        public static final TagKey<Block> SCULK_STONE_REPLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "sculk_stone_replaceable"));
 
         public static final TagKey<Block> NOT_TRANSMITTABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(DeeperDarker.MOD_ID, "not_transmittable"));
     }

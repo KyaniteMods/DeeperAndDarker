@@ -189,6 +189,11 @@ public class DeeperDarkerBlockTagProvider extends FabricTagProvider.BlockTagProv
         getOrCreateTagBuilder(BlockTags.LAPIS_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_LAPIS_ORE);
         getOrCreateTagBuilder(BlockTags.DIAMOND_ORES).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE_DIAMOND_ORE);
 
+        getOrCreateTagBuilder(BlockTags.SAPLINGS).setReplace(false).add(DeeperDarkerBlocks.ECHO_SAPLING);
+
+        getOrCreateTagBuilder(DeeperDarkerTags.Blocks.ECHO_SOIL).setReplace(false).add(DeeperDarkerBlocks.ECHO_SOIL, Blocks.SCULK);
+        getOrCreateTagBuilder(DeeperDarkerTags.Blocks.SCULK_STONE_REPLACEABLE).setReplace(false).add(DeeperDarkerBlocks.SCULK_STONE, DeeperDarkerBlocks.SCULK_GRIME);
+
         getOrCreateTagBuilder(BlockTags.CLIMBABLE).setReplace(false).add(
                 DeeperDarkerBlocks.SCULK_TENDRILS_PLANT,
                 DeeperDarkerBlocks.SCULK_TENDRILS,

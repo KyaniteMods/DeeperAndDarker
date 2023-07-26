@@ -13,7 +13,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "deeperdarker:music.deeperdarker.echoing_forest"
+      "sound": "minecraft:ambient.soul_sand_valley.loop"
     },
     "particle": {
       "options": {
@@ -36,6 +36,7 @@
     [],
     [],
     [
+      "deeperdarker:echo_soil",
       "deeperdarker:sculk_coal",
       "deeperdarker:sculk_iron",
       "deeperdarker:sculk_copper",
@@ -52,6 +53,7 @@
     ],
     [],
     [
+      "deeperdarker:echo_tree",
       "deeperdarker:sculk_tendrils",
       "deeperdarker:sculk_vines"
     ]
@@ -68,13 +70,13 @@
         "type": "deeperdarker:sculk_snapper",
         "maxCount": 2,
         "minCount": 1,
-        "weight": 3
+        "weight": 9
       },
       {
         "type": "deeperdarker:shattered",
-        "maxCount": 3,
-        "minCount": 1,
-        "weight": 7
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 17
       }
     ],
     "underground_water_creature": [],

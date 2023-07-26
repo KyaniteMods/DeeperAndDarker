@@ -100,5 +100,7 @@ public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvid
         getOrCreateTagBuilder(ItemTags.EMERALD_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE);
         getOrCreateTagBuilder(ItemTags.LAPIS_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE);
         getOrCreateTagBuilder(ItemTags.DIAMOND_ORES).setReplace(false).add(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE);
+
+        getOrCreateTagBuilder(ItemTags.SAPLINGS).setReplace(false).add(DeeperDarkerItems.ECHO_SAPLING);
     }
 }

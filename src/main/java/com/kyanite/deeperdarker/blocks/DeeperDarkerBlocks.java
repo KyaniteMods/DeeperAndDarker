@@ -3,8 +3,10 @@ package com.kyanite.deeperdarker.blocks;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerHangingSignBlockEntity;
 import com.kyanite.deeperdarker.blocks.entity.DeeperDarkerSignBlockEntity;
+import com.kyanite.deeperdarker.blocks.sapling.EchoSaplingGenerator;
 import com.kyanite.deeperdarker.items.DeeperDarkerItems;
 import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
+import com.kyanite.deeperdarker.tags.DeeperDarkerTags;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -23,6 +25,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.world.BlockView;
 
 public class DeeperDarkerBlocks {
     public static final BlockSetType ECHO_BLOCK_SET_TYPE = new BlockSetTypeBuilder().register(new Identifier(DeeperDarker.MOD_ID, "echo"));
@@ -164,8 +167,12 @@ public class DeeperDarkerBlocks {
         ECHO_PLANKS = registerBlock("echo_planks", new Block(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.LIGHT_GRAY)));
         ECHO_PRESSURE_PLATE = registerBlock("echo_pressure_plate", new PressurePlateBlock(
                 PressurePlateBlock.ActivationRule.EVERYTHING, AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.LIGHT_GRAY), ECHO_BLOCK_SET_TYPE));
-        // currently uses oak sapling generator, change that later when echo trees are added
-        ECHO_SAPLING = registerBlock("echo_sapling", new SaplingBlock(new OakSaplingGenerator(), AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)));
+        ECHO_SAPLING = registerBlock("echo_sapling", new SaplingBlock(new EchoSaplingGenerator(), AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)) {
+            @Override
+            protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+                return floor.isIn(DeeperDarkerTags.Blocks.ECHO_SOIL);
+            }
+        });
         ECHO_SIGN = registerBlock("echo_sign", new SignBlock(AbstractBlock.Settings.copy(Blocks.OAK_SIGN).mapColor(MapColor.LIGHT_GRAY), ECHO_WOOD_TYPE) {
             @Override
             public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {

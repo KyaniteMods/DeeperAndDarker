@@ -7,12 +7,15 @@ import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
@@ -24,14 +27,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
-public class AncientVaseBlock extends ExperienceDroppingBlock implements Waterloggable {
+public class AncientVaseBlock extends FallingBlock implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private static final VoxelShape BASE = Block.createCuboidShape(3, 0, 3, 13, 1, 13);
     private static final VoxelShape OUTLINE = Block.createCuboidShape(2, 1, 2, 14, 13, 14);
     private static final VoxelShape RIM = Block.createCuboidShape(4, 13, 4, 12, 16, 12);
 
     public AncientVaseBlock(Settings settings) {
-        super(settings, UniformIntProvider.create(1, 3));
+        super(settings);
         this.setDefaultState(this.getDefaultState().with(Properties.WATERLOGGED, false));
     }
 
@@ -82,6 +85,14 @@ public class AncientVaseBlock extends ExperienceDroppingBlock implements Waterlo
             } else {
                 StalkerEntity.emergeFromVase(world, pos);
             }
+        }
+    }
+
+    @Override
+    public void onStacksDropped(BlockState state, ServerWorld world, BlockPos pos, ItemStack tool, boolean dropExperience) {
+        super.onStacksDropped(state, world, pos, tool, dropExperience);
+        if (dropExperience) {
+            this.dropExperienceWhenMined(world, pos, tool, UniformIntProvider.create(1, 4));
         }
     }
 }

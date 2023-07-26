@@ -6,14 +6,14 @@
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
-      "sound": "deeperdarker:ambience.warden_dreaming",
+      "sound": "minecraft:ambient.soul_sand_valley.mood",
       "tick_delay": 6000
     },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
-      "replace_current_music": true,
-      "sound": "deeperdarker:music.deeperdarker.arrival"
+      "replace_current_music": false,
+      "sound": "minecraft:ambient.soul_sand_valley.loop"
     },
     "sky_color": 8625919,
     "water_color": 1254763,
@@ -40,6 +40,7 @@
       "deeperdarker:sculk_diamond"
     ],
     [
+      "deeperdarker:sculk_stone_column",
       "deeperdarker:sculk",
       "deeperdarker:sculk_gleam"
     ],
@@ -58,10 +59,16 @@
     "misc": [],
     "monster": [
       {
+        "type": "deeperdarker:sculk_centipede",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 6
+      },
+      {
         "type": "deeperdarker:sculk_snapper",
         "maxCount": 6,
         "minCount": 3,
-        "weight": 8
+        "weight": 11
       },
       {
         "type": "minecraft:phantom",

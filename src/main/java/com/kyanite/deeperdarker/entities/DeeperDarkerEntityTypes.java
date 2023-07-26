@@ -6,9 +6,12 @@ import net.fabricmc.fabric.mixin.object.builder.DefaultAttributeRegistryAccessor
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
 
 public class DeeperDarkerEntityTypes {
     public static EntityType<DeeperDarkerBoatEntity> BOAT;
@@ -43,10 +46,23 @@ public class DeeperDarkerEntityTypes {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
+        registerAttributes();
+        registerSpawnPlacements();
+    }
+
+    private static void registerAttributes() {
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_SNAPPER, SculkSnapperEntity.createSculkSnapperAttributes().build());
         DefaultAttributeRegistryAccessor.getRegistry().put(SHATTERED, ShatteredEntity.createShatteredAttributes().build());
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_LEECH, SculkLeechEntity.createSculkLeechAttributes().build());
         DefaultAttributeRegistryAccessor.getRegistry().put(SHRIEK_WORM, ShriekWormEntity.createShriekWormAttributes().build());
         DefaultAttributeRegistryAccessor.getRegistry().put(STALKER, StalkerEntity.createStalkerAttributes().build());
+    }
+
+    public static void registerSpawnPlacements() {
+        SpawnRestriction.register(DeeperDarkerEntityTypes.SCULK_SNAPPER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+        SpawnRestriction.register(DeeperDarkerEntityTypes.SHATTERED, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+        SpawnRestriction.register(DeeperDarkerEntityTypes.SCULK_LEECH, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+        SpawnRestriction.register(DeeperDarkerEntityTypes.SHRIEK_WORM, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+        SpawnRestriction.register(DeeperDarkerEntityTypes.STALKER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
     }
 }

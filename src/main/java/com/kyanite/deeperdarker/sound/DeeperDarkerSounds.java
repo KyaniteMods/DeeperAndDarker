@@ -24,7 +24,7 @@ public class DeeperDarkerSounds {
     public static final SoundEvent ANCIENT_VASE_HIT = register("block.ancient_vase.hit");
     public static final SoundEvent ANCIENT_VASE_PLACE = register("block.ancient_vase.place");
     public static final SoundEvent ANCIENT_VASE_STEP = register("block.ancient_vase.step");
-    public static final BlockSoundGroup ANCIENT_VASE = new BlockSoundGroup(1.0f, 1.0f, ANCIENT_VASE_BREAK, ANCIENT_VASE_FALL, ANCIENT_VASE_HIT, ANCIENT_VASE_PLACE, ANCIENT_VASE_STEP);
+    public static final BlockSoundGroup ANCIENT_VASE = new BlockSoundGroup(2.0f, 1.0f, ANCIENT_VASE_BREAK, ANCIENT_VASE_FALL, ANCIENT_VASE_HIT, ANCIENT_VASE_PLACE, ANCIENT_VASE_STEP);
 
     public static final SoundEvent SCULK_SNAPPER_AMBIENT = register("entity.sculk_snapper.ambient");
     public static final SoundEvent SCULK_SNAPPER_BITE = register("entity.sculk_snapper.bite");

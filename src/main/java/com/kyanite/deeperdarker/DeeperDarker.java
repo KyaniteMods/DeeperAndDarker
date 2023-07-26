@@ -20,6 +20,7 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.gen.feature.TreeFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,13 +68,5 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.pool(poolBuilder);
 			}
 		});
-
-		registerSpawnPlacements();
-	}
-
-	public static void registerSpawnPlacements() {
-		SpawnRestriction.register(DeeperDarkerEntityTypes.SCULK_SNAPPER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
-		SpawnRestriction.register(DeeperDarkerEntityTypes.SHATTERED, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
-		SpawnRestriction.register(DeeperDarkerEntityTypes.STALKER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
 	}
 }
