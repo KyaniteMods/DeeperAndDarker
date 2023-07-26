@@ -1,22 +1,22 @@
 package com.kyanite.deeperdarker.mixin;
 
-import com.kyanite.deeperdarker.entities.DeeperDarkerEntityGroups;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.WardenEntity;
-import net.minecraft.world.World;
+import com.kyanite.deeperdarker.content.entities.DDMobType;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(WardenEntity.class)
-public class WardenMixin extends HostileEntity {
-    protected WardenMixin(EntityType<? extends HostileEntity> entityType,
-                          World world) {
-        super(entityType, world);
+@Mixin(Warden.class)
+public class WardenMixin extends Monster {
+    public WardenMixin(EntityType<? extends Monster> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
     }
 
     @Override
-    public EntityGroup getGroup() {
-        return DeeperDarkerEntityGroups.SCULK;
+    public @NotNull MobType getMobType() {
+        return DDMobType.SCULK;
     }
 }

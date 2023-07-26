@@ -3,17 +3,13 @@
   "package": "com.kyanite.deeperdarker.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin",
-    "OccludeVibrationsMixin",
-    "SculkTransmitterLinkFromAfarForgingScreenHandlerMixin",
-    "SculkTransmitterLinkFromAfarInventoryMixin",
-    "SculkTransmitterLinkFromAfarScreenHandlerMixin",
+    "ContainerMenuMixin",
+    "PhantomMixin",
+    "VibrationListenerMixin",
     "WardenMixin"
   ],
   "client": [
-    "PhantomTextureInOthersideMixin",
-    "ShowHangingSignScreenMixin",
-    "ShowHangingSignScreenMixin$ClientAccessor"
+    "PhantomRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

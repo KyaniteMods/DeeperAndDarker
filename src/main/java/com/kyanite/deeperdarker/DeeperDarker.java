@@ -1,28 +1,22 @@
 package com.kyanite.deeperdarker;
 
-import com.kyanite.deeperdarker.blocks.DeeperDarkerBlocks;
-import com.kyanite.deeperdarker.enchantments.DeeperDarkerEnchantments;
-import com.kyanite.deeperdarker.entities.DeeperDarkerEntityTypes;
-import com.kyanite.deeperdarker.items.DeeperDarkerItemGroups;
-import com.kyanite.deeperdarker.items.DeeperDarkerItems;
-import com.kyanite.deeperdarker.items.DeeperDarkerPotions;
-import com.kyanite.deeperdarker.sound.DeeperDarkerSounds;
-import com.kyanite.deeperdarker.world.gen.feature.DeeperDarkerFeatures;
+import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.util.DDCreativeTab;
+import com.kyanite.deeperdarker.world.DDFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnRestriction;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTables;
-import net.minecraft.loot.condition.RandomChanceLootCondition;
-import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.function.SetCountLootFunction;
-import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.feature.TreeFeature;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Collection;
 
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
@@ -30,42 +24,44 @@ public class DeeperDarker implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		DeeperDarkerItemGroups.init();
-		DeeperDarkerBlocks.init();
-		DeeperDarkerItems.init();
-		DeeperDarkerEntityTypes.init();
-		DeeperDarkerFeatures.init();
-		DeeperDarkerSounds.init();
-		DeeperDarkerPotions.init();
-		DeeperDarkerEnchantments.init();
+		DDCreativeTab.init();
+		DDItems.init();
+		DDBlocks.init();
+		DDFeatures.init();
+		DDSounds.init();
+		DDPotions.init();
+		DDEnchantments.init();
+		DDEntities.init();
+		DDBlockEntities.init();
+		DDEffects.init();
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && EntityType.WARDEN.getLootTableId().equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.builder()
-						.with(ItemEntry.builder(DeeperDarkerItems.WARDEN_CARAPACE).apply(SetCountLootFunction.builder(
-								UniformLootNumberProvider.create(1.0f, 3.0f))))
-						.with(ItemEntry.builder(DeeperDarkerItems.HEART_OF_THE_DEEP));
+			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
+				LootPool.Builder poolBuilder = LootPool.lootPool()
+						.with((Collection<? extends LootPoolEntryContainer>) LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
+								UniformGenerator.between(1.0f, 3.0f))))
+						.with((Collection<? extends LootPoolEntryContainer>) LootItem.lootTableItem(DDItems.HEART_OF_THE_DEEP));
 
-				tableBuilder.pool(poolBuilder);
+				tableBuilder.pool(poolBuilder.build());
 			}
 		});
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && LootTables.ANCIENT_CITY_CHEST.equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.builder()
-						.with(ItemEntry.builder(DeeperDarkerItems.WARDEN_CARAPACE))
-						.conditionally(RandomChanceLootCondition.builder(0.2f));
+			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
+				LootPool.Builder poolBuilder = LootPool.lootPool()
+						.with((Collection<? extends LootPoolEntryContainer>) LootItem.lootTableItem(DDItems.WARDEN_CARAPACE))
+						.conditionally(LootItemRandomChanceCondition.randomChance(0.2f).build());
 
-				tableBuilder.pool(poolBuilder);
+				tableBuilder.pool(poolBuilder.build());
 			}
 		});
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && LootTables.ANCIENT_CITY_CHEST.equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.builder()
-						.with(ItemEntry.builder(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
+				LootPool.Builder poolBuilder = LootPool.lootPool()
+						.with((Collection<? extends LootPoolEntryContainer>) LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
 
-				tableBuilder.pool(poolBuilder);
+				tableBuilder.pool(poolBuilder.build());
 			}
 		});
 	}
