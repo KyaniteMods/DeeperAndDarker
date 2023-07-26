@@ -35,6 +35,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -43,6 +44,7 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -72,32 +74,10 @@ public class DeeperDarker {
 
         MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
-        eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
-        eventBus.addListener(this::registerLayers);
-        eventBus.addListener(this::addLayers);
         eventBus.addListener(this::registerSpawnPlacements);
-    }
-
-    private void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            Sheets.addWoodType(DDBlocks.ECHO);
-            ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
-            ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() ? 1 : 0);
-        });
-
-        BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
-        BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
-        EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
-        EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
-        EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
-        EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
-        EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
-        EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
-        EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
-        EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -139,27 +119,53 @@ public class DeeperDarker {
         event.put(DDEntities.STALKER.get(), Stalker.createAttributes());
     }
 
-    private void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
-        event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
-        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
-        event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
-        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
-        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
-        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
-        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
-    }
-
-    private void addLayers(EntityRenderersEvent.AddLayers event) {
-        event.getSkins().forEach(name -> {
-            if(event.getSkin(name) instanceof PlayerRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
-        });
-        if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
-    }
-
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
         event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
         event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
+    }
+
+    @SuppressWarnings("unused")
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class DeeperDarkerClient {
+        @SubscribeEvent
+        public static void clientSetup(final FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                Sheets.addWoodType(DDBlocks.ECHO);
+                ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
+                ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() ? 1 : 0);
+            });
+
+            BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
+            BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
+            EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
+            EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+            EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
+            EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
+            EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+            EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
+            EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
+            event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+            event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
+            event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
+            event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
+            event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
+            event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
+            event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
+        }
+
+        @SubscribeEvent
+        public static void addLayers(final EntityRenderersEvent.AddLayers event) {
+            event.getSkins().forEach(name -> {
+                if(event.getSkin(name) instanceof PlayerRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+            });
+            if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+        }
     }
 }
