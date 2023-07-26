@@ -102,7 +102,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
             }
         }
 
-        System.out.println(this.entityData.get(RING_COOLDOWN));
         List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
         if(!players.isEmpty()) {
             if(this.entityData.get(RING_COOLDOWN) <= -100) {
@@ -122,9 +121,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         if(!players.isEmpty()) {
-            System.out.println("1= " + level().isClientSide() + ", " + ring);
             if(!level().isClientSide() && ring) {
-                System.out.println("2= " + level().isClientSide() + ", " + ring);
                 for(Player player : players) {
                     player.hurt(level().damageSources().magic(), 2.5f);
                     player.knockback(0.2f, 0.4f, 0.4f);
