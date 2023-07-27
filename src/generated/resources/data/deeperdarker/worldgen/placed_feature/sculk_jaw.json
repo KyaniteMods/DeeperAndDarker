@@ -1,0 +1,27 @@
+{
+  "feature": "deeperdarker:ore_sculk_jaw",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 8
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "below_top": 0
+        },
+        "min_inclusive": {
+          "above_bottom": -96
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

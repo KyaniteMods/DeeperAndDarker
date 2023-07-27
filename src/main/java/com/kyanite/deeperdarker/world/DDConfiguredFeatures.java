@@ -49,6 +49,7 @@ public class DDConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_SCULK = createKey("ore_sculk");
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_INFESTED_SCULK = createKey("ore_infested_sculk");
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_SCULK_JAW = createKey("ore_sculk_jaw");
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_ECHO_SOIL = createKey("ore_echo_soil");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_COAL = createKey("ore_sculk_coal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_IRON = createKey("ore_sculk_iron");
@@ -65,6 +66,7 @@ public class DDConfiguredFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         List<OreConfiguration.TargetBlockState> SCULK_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, Blocks.SCULK.defaultBlockState()), OreConfiguration.target(new BlockMatchTest(DDBlocks.ECHO_SOIL.get()), Blocks.SCULK.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> INFESTED_SCULK_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.INFESTED_SCULK.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> SCULK_JAW_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_JAW.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> ECHO_SOIL_TARGET_LIST = List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_GRIME.get()), DDBlocks.ECHO_SOIL.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> COAL_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_COAL_ORE.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> IRON_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState()));
@@ -86,6 +88,7 @@ public class DDConfiguredFeatures {
 
         FeatureUtils.register(context, ORE_SCULK, Feature.ORE, new OreConfiguration(SCULK_TARGET_LIST, 40));
         FeatureUtils.register(context, ORE_INFESTED_SCULK, Feature.ORE, new OreConfiguration(INFESTED_SCULK_TARGET_LIST, 9));
+        FeatureUtils.register(context, ORE_SCULK_JAW, Feature.ORE, new OreConfiguration(SCULK_JAW_TARGET_LIST, 6));
         FeatureUtils.register(context, ORE_ECHO_SOIL, Feature.ORE, new OreConfiguration(ECHO_SOIL_TARGET_LIST, 64));
         FeatureUtils.register(context, ORE_SCULK_COAL, Feature.ORE, new OreConfiguration(COAL_TARGET_LIST, 14));
         FeatureUtils.register(context, ORE_SCULK_IRON, Feature.ORE, new OreConfiguration(IRON_TARGET_LIST, 13));
