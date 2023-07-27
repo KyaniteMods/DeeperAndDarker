@@ -18,8 +18,9 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class DeeperDarkerRecipeProvider extends FabricRecipeProvider {
-    public DeeperDarkerRecipeProvider(FabricDataOutput output) {
+// TODO
+public class DDRecipeProvider extends FabricRecipeProvider {
+    public DDRecipeProvider(FabricDataOutput output) {
         super(output);
     }
 

@@ -2,23 +2,28 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.ibm.icu.impl.Pair;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TexturedModel;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.data.models.blockstates.PropertyDispatch;
+import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.*;
 
-public class DeeperDarkerModelProvider extends FabricModelProvider {
-    public DeeperDarkerModelProvider(FabricDataOutput output) {
+// TODO: FINISH BLOCK MODEL GEN AND DO ITEM MODEL GEN
+public class DDModelProvider extends FabricModelProvider {
+    public DDModelProvider(FabricDataOutput output) {
         super(output);
     }
 
@@ -127,24 +132,24 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
         BlockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOOMY_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         BlockModelGenerators.family(DDBlocks.GLOOMY_SCULK);
         BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_GEYSER);
-        Models.CUBE_BOTTOM_TOP.upload(DDBlocks.GLOOMY_GEYSER, TextureMap.of(TextureKey.TOP, new ResourceLocation(DeeperDarker.MOD_ID, "block/gloomy_geyser")).put(TextureKey.SIDE, TexturedModel.CUBE_ALL.get(DDBlocks.GLOOMY_SCULK).getTextures().getTexture(TextureKey.ALL)).put(TextureKey.BOTTOM, TexturedModel.CUBE_ALL.get(DDBlocks.GLOOMY_SCULK).getTextures().getTexture(TextureKey.ALL)),
-                BlockModelGenerators.modelCollector);
+        ModelTemplates.CUBE_BOTTOM_TOP.create(DDBlocks.GLOOMY_GEYSER, TextureMapping.singleSlot(TextureSlot.TOP, new ResourceLocation(DeeperDarker.MOD_ID, "block/gloomy_geyser")).put(TextureSlot.SIDE, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)).put(TextureSlot.BOTTOM, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)),
+                BlockModelGenerators.modelOutput);
 
         BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.ANCIENT_VASE);
-        BlockModelGenerators.registerParentedItemModel(DeeperDarkerItems.ANCIENT_VASE, ModelIds.getBlockModelId(DDBlocks.ANCIENT_VASE));
-        BlockModelGenerators.registerParented(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
+        BlockModelGenerators.delegateItemModel(DDBlocks.ANCIENT_VASE, ModelLocationUtils.getModelLocation(DDBlocks.ANCIENT_VASE));
+        BlockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
 
         BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.CRYSTALLIZED_AMBER);
         registerParented(BlockModelGenerators, Blocks.HONEY_BLOCK, DDBlocks.CRYSTALLIZED_AMBER,
-                new Pair<>(TextureKey.UP, ModelIds.getBlockSubModelId(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
-                new Pair<>(TextureKey.SIDE, ModelIds.getBlockSubModelId(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
-                new Pair<>(TextureKey.PARTICLE, ModelIds.getBlockSubModelId(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
-                new Pair<>(TextureKey.DOWN, ModelIds.getBlockSubModelId(DDBlocks.CRYSTALLIZED_AMBER, "_outer")));
+                new Pair<>(TextureSlot.UP, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
+                new Pair<>(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
+                new Pair<>(TextureSlot.PARTICLE, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
+                new Pair<>(TextureSlot.DOWN, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_outer")));
 
-        BlockModelGenerators.registerParentedItemModel(DeeperDarkerItems.CRYSTALLIZED_AMBER, ModelIds.getBlockModelId(DDBlocks.CRYSTALLIZED_AMBER));
+        BlockModelGenerators.delegateItemModel(DDBlocks.CRYSTALLIZED_AMBER, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER));
 
-        BlockModelGenerators.blockStateCollector.accept(VariantsBlockStateSupplier.create(DDBlocks.OTHERSIDE_PORTAL).coordinate(BlockStateVariantMap.create(
-                        Properties.AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DDBlocks.OTHERSIDE_PORTAL, "_ns")))
+        BlockModelGenerators.modelOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.OTHERSIDE_PORTAL).with(PropertyDispatch.properties(
+                        BlockStateProperties.AXIS).register(Direction.Axis.X, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DDBlocks.OTHERSIDE_PORTAL, "_ns")))
                 .register(Direction.Axis.Y, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DDBlocks.OTHERSIDE_PORTAL, "_ns")).put(VariantSettings.X, VariantSettings.Rotation.R90))
                 .register(Direction.Axis.Z, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockSubModelId(DDBlocks.OTHERSIDE_PORTAL, "_ew")))));
         registerParented(BlockModelGenerators, ModelIds.getBlockSubModelId(Blocks.NETHER_PORTAL, "_ew"), ModelIds.getBlockSubModelId(DDBlocks.OTHERSIDE_PORTAL, "_ew"),
@@ -173,63 +178,63 @@ public class DeeperDarkerModelProvider extends FabricModelProvider {
     }
 
     private static void registerFenceGate(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {
-        TextureMap textureMap = TextureMap.texture(textureSource);
-        ResourceLocation fenceGateOpenModel = Models.TEMPLATE_FENCE_GATE_OPEN.upload(block, textureMap,
-                BlockModelGenerators.modelCollector);
-        ResourceLocation fenceGateModel = Models.TEMPLATE_FENCE_GATE.upload(block, textureMap,
-                BlockModelGenerators.modelCollector);
-        ResourceLocation wallFenceGateOpenModel = Models.TEMPLATE_FENCE_GATE_WALL_OPEN.upload(block, textureMap,
-                BlockModelGenerators.modelCollector);
-        ResourceLocation wallFenceGateModel = Models.TEMPLATE_FENCE_GATE_WALL.upload(block, textureMap,
-                BlockModelGenerators.modelCollector);
-        BlockModelGenerators.blockStateCollector.accept(BlockModelGenerators.createFenceGateBlockState(block, fenceGateOpenModel, fenceGateModel, wallFenceGateOpenModel, wallFenceGateModel, true));
+        TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
+        ResourceLocation fenceGateOpenModel = ModelTemplates.FENCE_GATE_OPEN.create(block, textureMap,
+                BlockModelGenerators.modelOutput);
+        ResourceLocation fenceGateModel = ModelTemplates.FENCE_GATE_CLOSED.create(block, textureMap,
+                BlockModelGenerators.modelOutput);
+        ResourceLocation wallFenceGateOpenModel = ModelTemplates.FENCE_GATE_WALL_OPEN.create(block, textureMap,
+                BlockModelGenerators.modelOutput);
+        ResourceLocation wallFenceGateModel = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(block, textureMap,
+                BlockModelGenerators.modelOutput);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFenceGate(block, fenceGateOpenModel, fenceGateModel, wallFenceGateOpenModel, wallFenceGateModel, true));
     }
 
     private static void registerFence(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {
-        TextureMap textureMap = TextureMap.texture(textureSource);
-        ResourceLocation fencePost = Models.FENCE_POST.upload(block, textureMap, BlockModelGenerators.modelCollector);
-        ResourceLocation fenceSide = Models.FENCE_SIDE.upload(block, textureMap, BlockModelGenerators.modelCollector);
-        BlockModelGenerators.blockStateCollector.accept(BlockModelGenerators.createFenceBlockState(block, fencePost, fenceSide));
+        TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
+        ResourceLocation fencePost = ModelTemplates.FENCE_POST.create(block, textureMap, BlockModelGenerators.modelOutput);
+        ResourceLocation fenceSide = ModelTemplates.FENCE_SIDE.create(block, textureMap, BlockModelGenerators.modelOutput);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFence(block, fencePost, fenceSide));
     }
 
     private static void registerPressurePlate(BlockModelGenerators BlockModelGenerators, Block pressurePlate, Block textureSource) {
-        TextureMap textureMap = TextureMap.texture(textureSource);
-        ResourceLocation upModel = Models.PRESSURE_PLATE_UP.upload(pressurePlate, textureMap, BlockModelGenerators.modelCollector);
-        ResourceLocation downModel = Models.PRESSURE_PLATE_DOWN.upload(pressurePlate, textureMap, BlockModelGenerators.modelCollector);
-        BlockModelGenerators.blockStateCollector.accept(BlockModelGenerators.createPressurePlateBlockState(pressurePlate, upModel, downModel));
+        TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
+        ResourceLocation upModel = ModelTemplates.PRESSURE_PLATE_UP.create(pressurePlate, textureMap, BlockModelGenerators.modelOutput);
+        ResourceLocation downModel = ModelTemplates.PRESSURE_PLATE_DOWN.create(pressurePlate, textureMap, BlockModelGenerators.modelOutput);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(pressurePlate, upModel, downModel));
     }
 
     private static void registerSlabWithCubeAll(BlockModelGenerators BlockModelGenerators, Block slab, Block textureSource) {
-        ResourceLocation ResourceLocation = ModelIds.getBlockModelId(textureSource);
-        TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(textureSource);
-        ResourceLocation ResourceLocation2 = Models.SLAB.upload(slab, texturedModel.getTextures(), BlockModelGenerators.modelCollector);
-        ResourceLocation ResourceLocation3 = Models.SLAB_TOP.upload(slab, texturedModel.getTextures(), BlockModelGenerators.modelCollector);
-        BlockModelGenerators.blockStateCollector.accept(BlockModelGenerators.createSlabBlockState(slab, net.minecraft.resources.ResourceLocation2, net.minecraft.resources.ResourceLocation3, net.minecraft.resources.ResourceLocation));
+        ResourceLocation ResourceLocation = ModelLocationUtils.getModelLocation(textureSource);
+        TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
+        ResourceLocation ResourceLocation2 = ModelTemplates.SLAB_BOTTOM.create(slab, texturedModel.getMapping(), BlockModelGenerators.modelOutput);
+        ResourceLocation ResourceLocation3 = ModelTemplates.SLAB_TOP.create(slab, texturedModel.getMapping(), BlockModelGenerators.modelOutput);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, ResourceLocation2, ResourceLocation3, ResourceLocation));
     }
 
     private static void registerStairs(BlockModelGenerators BlockModelGenerators, Block stairs, Block textureSource) {
-        TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(textureSource);
-        TextureMap textureMap = texturedModel.getTextures();
-        ResourceLocation innerModel = Models.INNER_STAIRS.upload(stairs, textureMap, BlockModelGenerators.modelCollector);
-        ResourceLocation regularModel = Models.STAIRS.upload(stairs, textureMap, BlockModelGenerators.modelCollector);
-        ResourceLocation outerModel = Models.OUTER_STAIRS.upload(stairs, textureMap, BlockModelGenerators.modelCollector);
-        BlockModelGenerators.blockStateCollector.accept(BlockModelGenerators.createStairsBlockState(stairs, innerModel, regularModel, outerModel));
+        TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
+        TextureMapping textureMap = texturedModel.getMapping();
+        ResourceLocation innerModel = ModelTemplates.STAIRS_INNER.create(stairs, textureMap, BlockModelGenerators.modelOutput);
+        ResourceLocation regularModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, textureMap, BlockModelGenerators.modelOutput);
+        ResourceLocation outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, textureMap, BlockModelGenerators.modelOutput);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, innerModel, regularModel, outerModel));
     }
 
     private static void registerWall(BlockModelGenerators BlockModelGenerators, Block wall, Block textureSource) {
-        TexturedModel texturedModel = TexturedModel.CUBE_ALL.get(textureSource);
-        TextureMap textureMap = texturedModel.getTextures();
-        ResourceLocation postModel = Models.TEMPLATE_WALL_POST.upload(wall, textureMap, BlockModelGenerators.modelCollector);
-        ResourceLocation sideModel = Models.TEMPLATE_WALL_SIDE.upload(wall, textureMap, BlockModelGenerators.modelCollector);
-        ResourceLocation sideTallModel = Models.TEMPLATE_WALL_SIDE_TALL.upload(wall, textureMap, BlockModelGenerators.modelCollector);
-        BlockModelGenerators.blockStateCollector.accept(BlockModelGenerators.createWallBlockState(wall, postModel, sideModel, sideTallModel));
+        TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
+        TextureMapping textureMap = texturedModel.getMapping();
+        ResourceLocation postModel = ModelTemplates.WALL_POST.create(wall, textureMap, BlockModelGenerators.modelOutput);
+        ResourceLocation sideModel = ModelTemplates.WALL_LOW_SIDE.create(wall, textureMap, BlockModelGenerators.modelOutput);
+        ResourceLocation sideTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, textureMap, BlockModelGenerators.modelOutput);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createWall(wall, postModel, sideModel, sideTallModel));
     }
 
     private static void registerSculkJaw(BlockModelGenerators BlockModelGenerators, Block sculkJaw) {
-        ResourceLocation sculkJawModel = Models.CUBE_TOP.upload(sculkJaw, TextureMap.of(TextureKey.TOP, TextureMap.getId(sculkJaw)).put(TextureKey.SIDE, TextureMap.getSubId(sculkJaw, "_side")), BlockModelGenerators.modelCollector);
-        ResourceLocation sculkJawBitingModel = Models.CUBE_TOP.upload(ModelIds.getBlockSubModelId(sculkJaw, "_biting"), TextureMap.of(TextureKey.TOP, TextureMap.getSubId(sculkJaw, "_biting")).put(TextureKey.SIDE, TextureMap.getSubId(sculkJaw, "_side")), BlockModelGenerators.modelCollector);
+        ResourceLocation sculkJawModel = ModelTemplates.CUBE_TOP.create(sculkJaw, TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw)).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), BlockModelGenerators.modelOutput);
+        ResourceLocation sculkJawBitingModel = ModelTemplates.CUBE_TOP.create(ModelLocationUtils.getModelLocation(sculkJaw, "_biting"), TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw, "_biting")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), BlockModelGenerators.modelOutput);
 
-        BlockModelGenerators.blockStateCollector.accept(VariantsBlockStateSupplier.create(DDBlocks.SCULK_JAW).coordinate(BlockModelGenerators.createBooleanModelMap(
+        BlockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.SCULK_JAW).with(BlockModelGenerators.createBooleanModelDispatch(
                 SculkJawBlock.BITING, sculkJawBitingModel, sculkJawModel)));
     }
 
