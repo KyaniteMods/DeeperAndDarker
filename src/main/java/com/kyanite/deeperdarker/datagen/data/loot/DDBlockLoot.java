@@ -123,7 +123,6 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
         dropSelf(DDBlocks.SCULK_GLEAM.get());
-        dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
         add(DDBlocks.SCULK_STONE_IRON_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_IRON));
@@ -140,8 +139,8 @@ public class DDBlockLoot extends BlockLootSubProvider {
         addVineAndPlant(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
-
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK.get(), Blocks.SCULK);
+        dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
     }
 
     private void addVineAndPlant(Block vines, Block plant) {

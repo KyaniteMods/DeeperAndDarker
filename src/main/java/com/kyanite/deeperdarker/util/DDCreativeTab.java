@@ -102,7 +102,6 @@ public class DDCreativeTab {
             event.accept(DDBlocks.GLOOMY_GEYSER);
             event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
-            event.accept(DDBlocks.SCULK_JAW);
 
             event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
             event.accept(DDBlocks.SCULK_STONE_IRON_ORE);
@@ -125,6 +124,7 @@ public class DDCreativeTab {
 
             event.accept(DDBlocks.ANCIENT_VASE);
             event.accept(DDBlocks.INFESTED_SCULK);
+            event.accept(DDBlocks.SCULK_JAW);
 
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);

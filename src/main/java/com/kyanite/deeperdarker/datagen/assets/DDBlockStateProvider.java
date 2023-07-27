@@ -109,10 +109,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("translucent"));
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
 
-        ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
-        ModelFile jawBiting = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath() + "_biting", blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW, "biting"));
-        getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel().partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
-
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_IRON_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_COPPER_ORE.get());
@@ -131,6 +127,9 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
+        ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
+        ModelFile jawBiting = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath() + "_biting", blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW, "biting"));
+        getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel().partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
     }
 
     private void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {

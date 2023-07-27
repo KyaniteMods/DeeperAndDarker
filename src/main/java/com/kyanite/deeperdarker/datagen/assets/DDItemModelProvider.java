@@ -109,7 +109,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMY_GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
         blockModel(DDBlocks.SCULK_GLEAM);
-        blockModel(DDBlocks.SCULK_JAW);
 
         blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
         blockModel(DDBlocks.SCULK_STONE_IRON_ORE);
@@ -126,8 +125,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockItemModel(DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, GENERATED);
 
         blockModel(DDBlocks.ANCIENT_VASE);
-
         withExistingParent(DDBlocks.INFESTED_SCULK.getId().getPath(), mcLoc("block/sculk"));
+        blockModel(DDBlocks.SCULK_JAW);
 
         itemModelWithSuffix(DDItems.SOUL_ELYTRA, GENERATED, "broken");
         itemModel(DDItems.ECHO_SIGN, GENERATED);
