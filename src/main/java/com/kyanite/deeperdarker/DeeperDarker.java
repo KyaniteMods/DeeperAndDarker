@@ -158,14 +158,21 @@ public class DeeperDarker {
             event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
             event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
             event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
+            event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createBodyModel);
         }
 
         @SubscribeEvent
         public static void addLayers(final EntityRenderersEvent.AddLayers event) {
             event.getSkins().forEach(name -> {
-                if(event.getSkin(name) instanceof PlayerRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+                if(event.getSkin(name) instanceof PlayerRenderer renderer) {
+                    renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+                    renderer.addLayer(new WardenHelmetRenderer<>(renderer, event.getEntityModels()));
+                }
             });
-            if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+            if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) {
+                renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+                renderer.addLayer(new WardenHelmetRenderer<>(renderer, event.getEntityModels()));
+            }
         }
     }
 }
