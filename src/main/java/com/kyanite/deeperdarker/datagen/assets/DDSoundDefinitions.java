@@ -37,6 +37,9 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SHRIEK_WORM_AMBIENT, subtitle("entity.shriek_worm.ambient").with(sound("entity/shriek_worm/ambient1"), sound("entity/shriek_worm/ambient2"), sound("entity/shriek_worm/ambient3")));
         add(DDSounds.SHRIEK_WORM_DEATH, subtitle("entity.shriek_worm.death").with(sound("entity/shriek_worm/death")));
         add(DDSounds.SHRIEK_WORM_HURT, subtitle("entity.shriek_worm.hurt").with(sound("entity/shriek_worm/hurt1"), sound("entity/shriek_worm/hurt2"), sound("entity/shriek_worm/hurt3")));
+        add(DDSounds.STALKER_AMBIENT, subtitle("entity.stalker.ambient").with(sound("entity/stalker/ambient1"), sound("entity/stalker/ambient2"), sound("entity/stalker/ambient3")));
+        add(DDSounds.STALKER_DEATH, subtitle("entity.stalker.death").with(sound("entity/stalker/death")));
+        add(DDSounds.STALKER_HURT, subtitle("entity.stalker.hurt").with(sound("entity/stalker/hurt1"), sound("entity/stalker/hurt2"), sound("entity/stalker/hurt3"), sound("entity/stalker/hurt4")));
         add(DDSounds.TRANSMITTER_ERROR, subtitle("item.transmitter.error").with(sound("item/transmitter/error")));
         add(DDSounds.TRANSMITTER_LINK, subtitle("item.transmitter.link").with(sound("item/transmitter/link")));
         add(DDSounds.TRANSMITTER_OPEN, subtitle("item.transmitter.open").with(sound("item/transmitter/open")));

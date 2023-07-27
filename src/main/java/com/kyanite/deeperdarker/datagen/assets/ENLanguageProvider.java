@@ -66,6 +66,9 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
         add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
         add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
+        add("subtitles.entity.stalker.ambient", "Stalker chirps");
+        add("subtitles.entity.stalker.death", "Stalker dies");
+        add("subtitles.entity.stalker.hurt", "Stalker hurts");
         add("subtitles.item.transmitter.error", "Transmitter fails");
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.open", "Transmitter transmits");

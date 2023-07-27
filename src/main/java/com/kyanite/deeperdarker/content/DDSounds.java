@@ -42,6 +42,10 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
     public static final RegistryObject<SoundEvent> SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
 
+    public static final RegistryObject<SoundEvent> STALKER_AMBIENT = register("entity.stalker.ambient");
+    public static final RegistryObject<SoundEvent> STALKER_DEATH = register("entity.stalker.death");
+    public static final RegistryObject<SoundEvent> STALKER_HURT = register("entity.stalker.hurt");
+
     public static final RegistryObject<SoundEvent> TRANSMITTER_ERROR = register("item.transmitter.error");
     public static final RegistryObject<SoundEvent> TRANSMITTER_LINK = register("item.transmitter.link");
     public static final RegistryObject<SoundEvent> TRANSMITTER_OPEN = register("item.transmitter.open");
