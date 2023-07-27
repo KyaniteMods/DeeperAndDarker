@@ -7,6 +7,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.resources.ResourceLocation;
@@ -41,18 +42,15 @@ public class DeeperDarker implements ModInitializer {
 		DDBlockEntities.init();
 		DDEffects.init();
 
-		PortalLink portalLink = new PortalLink();
-		portalLink.setPortalBlock((CustomPortalBlock)DDBlocks.OTHERSIDE_PORTAL);
-		portalLink.dimID = new ResourceLocation(DeeperDarker.MOD_ID, "otherside");
-		portalLink.portalIgnitionSource = PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP);
-		portalLink.setPortalIgniteEvent((player, world, portalPos, framePos, portalIgnitionSource) -> {
-			if (!player.isCreative() && player.getItemInHand(player.getUsedItemHand()).is(DDItems.HEART_OF_THE_DEEP)) {
-				player.getItemInHand(player.getUsedItemHand()).shrink(1);
-			}
-		});
-		portalLink.forcedWidth = 6;
-		portalLink.colorID = 0xFF003C56;
-		CustomPortalApiRegistry.addPortal(Blocks.REINFORCED_DEEPSLATE, portalLink);
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
+				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
+				.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
+				.tintColor(5, 98, 93)
+				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+				.forcedSize(20, 6)
+				.registerPortal();
+
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
