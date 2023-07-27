@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:netherite_hoe_to_warden_hoe_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warden_upgrade_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:warden_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_warden_upgrade_smithing_template",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:netherite_hoe_to_warden_hoe_upgrade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

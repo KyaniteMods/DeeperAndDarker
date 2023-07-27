@@ -60,40 +60,8 @@ public class DDConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_ECHO = createKey("tree_echo");
 
-    public static void init(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-        List<OreConfiguration.TargetBlockState> SCULK_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, Blocks.SCULK.defaultBlockState()), OreConfiguration.target(new BlockMatchTest(DDBlocks.ECHO_SOIL), Blocks.SCULK.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> ECHO_SOIL_TARGET_LIST = List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.SCULK_GRIME), DDBlocks.ECHO_SOIL.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> COAL_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_COAL_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> IRON_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_IRON_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> COPPER_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_COPPER_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> GOLD_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_GOLD_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> REDSTONE_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_REDSTONE_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> EMERALD_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_EMERALD_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> LAPIS_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_LAPIS_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> DIAMOND_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_DIAMOND_ORE.defaultBlockState()));
+    public static void init() {
 
-        FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.SCULK_STONE_COLUMN);
-        FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.GLOOMSLATE_COLUMN);
-        FeatureUtils.register(context, SCULK_GLEAM_EXTRA, DDFeatures.SCULK_GLEAM_BLOB);
-        FeatureUtils.register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS);
-        FeatureUtils.register(context, SCULK_VINES, DDFeatures.SCULK_VINES);
-
-        FeatureUtils.register(context, GLOOMY_SCULK_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.defaultBlockState(), 9).add(DDBlocks.GLOOMY_CACTUS.defaultBlockState(), 1))));
-        FeatureUtils.register(context, GLOOMY_SCULK_BONEMEAL, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE, BlockStateProvider.simple(DDBlocks.GLOOMY_SCULK), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GLOOMY_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.2f, UniformInt.of(1, 2), 0.7f));
-
-        FeatureUtils.register(context, ORE_SCULK, Feature.ORE, new OreConfiguration(SCULK_TARGET_LIST, 40));
-        FeatureUtils.register(context, ORE_ECHO_SOIL, Feature.ORE, new OreConfiguration(ECHO_SOIL_TARGET_LIST, 64));
-        FeatureUtils.register(context, ORE_SCULK_COAL, Feature.ORE, new OreConfiguration(COAL_TARGET_LIST, 14));
-        FeatureUtils.register(context, ORE_SCULK_IRON, Feature.ORE, new OreConfiguration(IRON_TARGET_LIST, 13));
-        FeatureUtils.register(context, ORE_SCULK_COPPER, Feature.ORE, new OreConfiguration(COPPER_TARGET_LIST, 15));
-        FeatureUtils.register(context, ORE_SCULK_GOLD, Feature.ORE, new OreConfiguration(GOLD_TARGET_LIST, 13));
-        FeatureUtils.register(context, ORE_SCULK_REDSTONE, Feature.ORE, new OreConfiguration(REDSTONE_TARGET_LIST, 8));
-        FeatureUtils.register(context, ORE_SCULK_EMERALD, Feature.ORE, new OreConfiguration(EMERALD_TARGET_LIST, 3, 0.4f));
-        FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10));
-        FeatureUtils.register(context, ORE_SCULK_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.1f));
-
-        FeatureUtils.register(context, TREE_ECHO, Feature.TREE, createEcho().build());
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createEcho() {

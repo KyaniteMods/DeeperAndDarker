@@ -11,14 +11,15 @@ public class DDModelLayers {
     private static final String MAIN = "main";
     private static final Set<ModelLayerLocation> LAYERS = Sets.newHashSet();
 
-    public static final ModelLayerLocation WARDEN_HELMET = registerMain("warden_helmet");
-    public static final ModelLayerLocation ECHO_BOAT = createBoat("echo");
-    public static final ModelLayerLocation ECHO_CHEST_BOAT = createChestBoat("echo");
-    public static final ModelLayerLocation SCULK_SNAPPER = registerMain("sculk_snapper");
-    public static final ModelLayerLocation SHATTERED = registerMain("shattered");
-    public static final ModelLayerLocation SCULK_LEECH = registerMain("sculk_leech");
-    public static final ModelLayerLocation SHRIEK_WORM = registerMain("shriek_worm");
-    public static final ModelLayerLocation STALKER = registerMain("stalker");
+    public static  ModelLayerLocation WARDEN_HELMET ;
+    public static  ModelLayerLocation ECHO_BOAT ;
+    public static  ModelLayerLocation ECHO_CHEST_BOAT;
+    public static  ModelLayerLocation SCULK_SNAPPER;
+    public static  ModelLayerLocation SHATTERED;
+    public static  ModelLayerLocation SCULK_LEECH ;
+    public static  ModelLayerLocation SHRIEK_WORM;;
+    public static  ModelLayerLocation STALKER;
+    public static ModelLayerLocation SCULK_CENTIPEDE;
 
     private static ModelLayerLocation registerMain(String id) {
         return register(id, "main");
@@ -43,5 +44,18 @@ public class DDModelLayers {
 
     public static ModelLayerLocation createChestBoat(String type) {
         return create("chest_boat/" + type, MAIN);
+    }
+
+    public static void init() {
+        DeeperDarker.LOGGER.info("Init model layerss");
+        WARDEN_HELMET = registerMain("warden_helmet");
+        ECHO_BOAT = createBoat("echo");
+        ECHO_CHEST_BOAT = createChestBoat("echo");
+        SCULK_SNAPPER = registerMain("sculk_snapper");
+        SHATTERED = registerMain("shattered");
+        SCULK_LEECH = registerMain("sculk_leech");
+        SHRIEK_WORM = registerMain("shriek_worm");
+        STALKER = registerMain("stalker");
+        SCULK_CENTIPEDE = registerMain("sculk_centipede");
     }
 }

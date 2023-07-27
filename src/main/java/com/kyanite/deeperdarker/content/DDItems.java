@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.items.*;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -39,15 +40,7 @@ public class DDItems {
     public static final Item WARDEN_BOOTS = register("warden_boots", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", new SmithingTemplateItem(
-            Component.literal("Netherite Equipment").withStyle(ChatFormatting.BLUE),
-            Component.literal("Reinforced Echo Shard").withStyle(ChatFormatting.BLUE),
-            Component.literal("Warden Upgrade").withStyle(ChatFormatting.GRAY),
-            Component.literal("Add netherite armor, weapon, or tool"),
-            Component.literal("Add Reinforced Echo Shard"),
-            SmithingTemplateItem.createNetheriteUpgradeTemplate().getBaseSlotEmptyIcons(),
-            List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_shard"))
-    ));
+    public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
 
     public static final Item SCULK_CENTIPEDE_SPAWN_EGG = register("sculk_centipede_spawn_egg", new SpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));
     public static final Item SCULK_LEECH_SPAWN_EGG = register("sculk_leech_spawn_egg", new SpawnEggItem(DDEntities.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Properties()));
@@ -58,6 +51,33 @@ public class DDItems {
 
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);
+    }
+
+    private static Item createWardenUpgradeSmithingTemplate() {
+        return new SmithingTemplateItem(
+                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(DeeperDarker.MOD_ID, "warden_upgrade"))).withStyle(ChatFormatting.GRAY),
+                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.base_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.additions_slot_description"))),
+                getWardenEmptyBaseSlotTextures(),
+                getWardenEmptyAdditionsSlotTextures());
+    }
+
+    private static List<ResourceLocation> getWardenEmptyBaseSlotTextures() {
+        return List.of(new ResourceLocation("item/empty_armor_slot_helmet"),
+                new ResourceLocation("item/empty_armor_slot_chestplate"),
+                new ResourceLocation("item/empty_armor_slot_leggings"),
+                new ResourceLocation("item/empty_armor_slot_boots"),
+                new ResourceLocation("item/empty_slot_sword"),
+                new ResourceLocation("item/empty_slot_pickaxe"),
+                new ResourceLocation("item/empty_slot_axe"),
+                new ResourceLocation("item/empty_slot_shovel"),
+                new ResourceLocation("item/empty_slot_hoe"));
+    }
+
+    private static List<ResourceLocation> getWardenEmptyAdditionsSlotTextures() {
+        return List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_reinforced_echo_shard"));
     }
 
     public static void init() {

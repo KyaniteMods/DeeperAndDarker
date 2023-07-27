@@ -35,7 +35,7 @@ public class DeeperDarker implements ModInitializer {
 		DDBlockEntities.init();
 		DDEffects.init();
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+		/*LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
 						.with((Collection<? extends LootPoolEntryContainer>) LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
@@ -63,6 +63,6 @@ public class DeeperDarker implements ModInitializer {
 
 				tableBuilder.pool(poolBuilder.build());
 			}
-		});
+		});*/
 	}
 }

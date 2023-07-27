@@ -27,6 +27,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        DDModelLayers.init();
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 DDBlocks.ECHO_DOOR,
                 DDBlocks.ECHO_TRAPDOOR,
@@ -42,14 +43,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.HANGING_SIGN, HangingSignRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SIGN, SignRenderer::new);
 
-        EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer(ctx, false));
-        EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer(ctx, true));
-        EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
-        EntityRendererRegistry.register(DDEntities.SHATTERED, ShatteredRenderer::new);
-        EntityRendererRegistry.register(DDEntities.SCULK_LEECH, SculkLeechRenderer::new);
-        EntityRendererRegistry.register(DDEntities.SHRIEK_WORM, ShriekWormRenderer::new);
-        EntityRendererRegistry.register(DDEntities.STALKER, StalkerRenderer::new);
-
+        DeeperDarker.LOGGER.info("Registering models");
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.WARDEN_HELMET, HelmetHornsModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_BOAT, BoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_CHEST_BOAT, ChestBoatModel::createBodyModel);
@@ -58,6 +52,16 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_LEECH, SculkLeechModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHRIEK_WORM, ShriekWormModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.STALKER, StalkerModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_CENTIPEDE, SculkCentipedeModel::createBodyModel);
+
+        EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer(ctx, false));
+        EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer(ctx, true));
+        EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SHATTERED, ShatteredRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_LEECH, SculkLeechRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SHRIEK_WORM, ShriekWormRenderer::new);
+        EntityRendererRegistry.register(DDEntities.STALKER, StalkerRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_CENTIPEDE, SculkCentipedeRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {

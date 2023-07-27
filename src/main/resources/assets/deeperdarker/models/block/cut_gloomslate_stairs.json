@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "deeperdarker:block/cut_gloomslate",
+    "side": "deeperdarker:block/cut_gloomslate",
+    "top": "deeperdarker:block/cut_gloomslate"
+  }
+}

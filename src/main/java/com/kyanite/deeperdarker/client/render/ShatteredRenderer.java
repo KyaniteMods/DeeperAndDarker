@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class ShatteredRenderer extends MobRenderer<Shattered, ShatteredModel> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "shattered_layer"), "main");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "shattered"), "main");
     private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shattered.png");
 
     public ShatteredRenderer(EntityRendererProvider.Context pContext) {
