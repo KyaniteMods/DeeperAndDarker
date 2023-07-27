@@ -141,15 +141,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
     }
 
-    public static void emergeFromVase(Level level, BlockPos pos) {
-        Stalker entity = DDEntities.STALKER.get().create(level);
-        assert entity != null;
-        entity.emergeState.start(entity.tickCount);
-        entity.moveTo(pos, 0, 0);
-        level.addFreshEntity(entity);
-        entity.setNoAi(true);
-    }
-
     @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
         if(this.level() instanceof ServerLevel level) {

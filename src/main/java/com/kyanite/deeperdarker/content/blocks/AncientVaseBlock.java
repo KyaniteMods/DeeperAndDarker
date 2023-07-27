@@ -4,9 +4,7 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.Stalker;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -62,6 +60,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+        if(pMovedByPiston) return;
 
         RandomSource random = RandomSource.create();
         if(random.nextFloat() < 0.0917f) {
@@ -73,14 +72,12 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                     pLevel.addFreshEntity(entity);
                 }
             } else {
-                Stalker.emergeFromVase(pLevel, pPos);
+                Stalker entity = DDEntities.STALKER.get().create(pLevel);
+                assert entity != null;
+                entity.moveTo(pPos, 0, 0);
+                pLevel.addFreshEntity(entity);
             }
         }
-    }
-
-    @Override
-    public void spawnAfterBreak(BlockState pState, ServerLevel pLevel, BlockPos pPos, ItemStack pStack, boolean pDropExperience) {
-        super.spawnAfterBreak(pState, pLevel, pPos, pStack, pDropExperience);
     }
 
     @Override
