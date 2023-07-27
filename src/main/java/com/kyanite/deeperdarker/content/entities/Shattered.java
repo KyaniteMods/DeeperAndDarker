@@ -185,7 +185,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
             playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
             if(entity != null) {
                 if(canTargetEntity(entity)) {
-                    if(entity instanceof Monster && ((Monster) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
+                    if(entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
                     if(entity instanceof Player) setTarget((LivingEntity) entity);
                     return;
                 }
