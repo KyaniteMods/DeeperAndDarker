@@ -9,6 +9,8 @@ import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -171,7 +173,7 @@ public class DDBlocks {
 
     public static final Block INFESTED_SCULK = register("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
 
-    public static final Block OTHERSIDE_PORTAL = register("otherside_portal", new Block(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
+    public static final Block OTHERSIDE_PORTAL = register("otherside_portal", new CustomPortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
     private static Block register(String name, Block block) {
         Block registeredBlock = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, name), block);
@@ -181,5 +183,7 @@ public class DDBlocks {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering blocks");
+        StrippableBlockRegistry.register(ECHO_LOG, STRIPPED_ECHO_LOG);
+        StrippableBlockRegistry.register(ECHO_WOOD, STRIPPED_ECHO_WOOD);
     }
 }
