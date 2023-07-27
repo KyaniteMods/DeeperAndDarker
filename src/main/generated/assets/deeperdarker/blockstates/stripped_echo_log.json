@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "deeperdarker:block/stripped_echo_log_horizontal",
+      "model": "deeperdarker:block/stripped_echo_log",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "deeperdarker:block/stripped_echo_log"
     },
     "axis=z": {
-      "model": "deeperdarker:block/stripped_echo_log_horizontal",
+      "model": "deeperdarker:block/stripped_echo_log",
       "x": 90
     }
   }

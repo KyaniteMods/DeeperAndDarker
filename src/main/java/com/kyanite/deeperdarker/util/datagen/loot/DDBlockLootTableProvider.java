@@ -20,7 +20,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
-    protected DDBlockLootTableProvider(FabricDataOutput dataOutput) {
+    public DDBlockLootTableProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 

@@ -19,6 +19,9 @@
 		],
 		"client": [
 			"com.kyanite.deeperdarker.DeeperDarkerClient"
+		],
+		"fabric-datagen": [
+			"com.kyanite.deeperdarker.util.DeeperDarkerDatagen"
 		]
 	},
 	"mixins": [

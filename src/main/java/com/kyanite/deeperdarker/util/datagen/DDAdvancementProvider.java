@@ -7,7 +7,7 @@ import net.minecraft.advancements.Advancement;
 import java.util.function.Consumer;
 
 public class DDAdvancementProvider extends FabricAdvancementProvider {
-    protected DDAdvancementProvider(FabricDataOutput output) {
+    public DDAdvancementProvider(FabricDataOutput output) {
         super(output);
     }
 

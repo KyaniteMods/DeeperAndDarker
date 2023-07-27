@@ -15,10 +15,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
-public class DeeperDarkerItemTagProvider extends FabricTagProvider.ItemTagProvider {
-
-    public DeeperDarkerItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture, @Nullable BlockTagProvider blockTagProvider) {
-        super(output, completableFuture, blockTagProvider);
+public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
+    public DDItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
+        super(output, completableFuture);
     }
 
     public void add(TagKey<Item> tag, Block... blocks) {

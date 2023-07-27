@@ -11,7 +11,7 @@ import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 public class DDENLanguageProvider extends FabricLanguageProvider {
-    protected DDENLanguageProvider(FabricDataOutput dataOutput) {
+    public DDENLanguageProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 

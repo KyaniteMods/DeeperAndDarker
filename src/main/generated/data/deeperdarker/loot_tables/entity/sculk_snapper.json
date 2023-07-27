@@ -6,26 +6,25 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
           "name": "deeperdarker:soul_dust"
-        }
-      ],
-      "functions": [
-        {
-          "add": false,
-          "count": 1.0,
-          "function": "minecraft:set_count"
-        },
-        {
-          "count": {
-            "type": "minecraft:uniform",
-            "max": 1.0,
-            "min": 0.0
-          },
-          "function": "minecraft:looting_enchant"
         }
       ],
       "rolls": 1.0
     }
-  ],
-  "random_sequence": "deeperdarker:entities/sculk_snapper"
+  ]
 }

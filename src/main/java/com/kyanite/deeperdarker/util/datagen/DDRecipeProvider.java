@@ -1,269 +1,269 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.items.DeeperDarkerItems;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-// TODO
 public class DDRecipeProvider extends FabricRecipeProvider {
     public DDRecipeProvider(FabricDataOutput output) {
         super(output);
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
-        SmithingTransformRecipeJsonBuilder NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_HELMET)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+        SmithingTransformRecipeBuilder NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_HELMET)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_HELMET);
-        SmithingTransformRecipeJsonBuilder NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_CHESTPLATE)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_HELMET);
+        SmithingTransformRecipeBuilder NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_CHESTPLATE)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_CHESTPLATE);
-        SmithingTransformRecipeJsonBuilder NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_LEGGINGS)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_CHESTPLATE);
+        SmithingTransformRecipeBuilder NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_LEGGINGS)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_LEGGINGS);
-        SmithingTransformRecipeJsonBuilder NETHERITE_BOOTS_TO_WARDEN_BOOTS_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_BOOTS)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_LEGGINGS);
+        SmithingTransformRecipeBuilder NETHERITE_BOOTS_TO_WARDEN_BOOTS_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_BOOTS)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_BOOTS);
-        SmithingTransformRecipeJsonBuilder NETHERITE_SWORD_TO_WARDEN_SWORD_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_SWORD)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_BOOTS);
+        SmithingTransformRecipeBuilder NETHERITE_SWORD_TO_WARDEN_SWORD_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_SWORD)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_SWORD);
-        SmithingTransformRecipeJsonBuilder NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_PICKAXE)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_SWORD);
+        SmithingTransformRecipeBuilder NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_PICKAXE)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_PICKAXE);
-        SmithingTransformRecipeJsonBuilder NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_AXE)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_PICKAXE);
+        SmithingTransformRecipeBuilder NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_AXE)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_AXE);
-        SmithingTransformRecipeJsonBuilder NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_SHOVEL)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_AXE);
+        SmithingTransformRecipeBuilder NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_SHOVEL)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_SHOVEL);
-        SmithingTransformRecipeJsonBuilder NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE = SmithingTransformRecipeJsonBuilder.create(
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
-                Ingredient.ofStacks(new ItemStack(Items.NETHERITE_HOE)),
-                Ingredient.ofStacks(new ItemStack(DeeperDarkerItems.REINFORCED_ECHO_SHARD)),
+                DDItems.WARDEN_SHOVEL);
+        SmithingTransformRecipeBuilder NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
+                Ingredient.of(new ItemStack(Items.NETHERITE_HOE)),
+                Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
-                DeeperDarkerItems.WARDEN_HOE);
-        NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_BOOTS_TO_WARDEN_BOOTS_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_SWORD_TO_WARDEN_SWORD_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_helmet_to_warden_helmet_upgrade"));
-        NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_chestplate_to_warden_chestplate_upgrade"));
-        NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_leggings_to_warden_leggings_upgrade"));
-        NETHERITE_BOOTS_TO_WARDEN_BOOTS_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_boots_to_warden_boots_upgrade"));
-        NETHERITE_SWORD_TO_WARDEN_SWORD_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_sword_to_warden_sword_upgrade"));
-        NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_pickaxe_to_warden_pickaxe_upgrade"));
-        NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_axe_to_warden_axe_upgrade"));
-        NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_shovel_to_warden_shovel_upgrade"));
-        NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.offerTo(exporter, new Identifier(DeeperDarker.MOD_ID, "netherite_hoe_to_warden_hoe_upgrade"));
-        offerPlanksRecipe(exporter, DeeperDarkerItems.ECHO_PLANKS, TagKey.of(
-                RegistryKeys.ITEM, new Identifier(DeeperDarker.MOD_ID, "echo_logs")), 4);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.ECHO_WOOD, 3).input('L', DeeperDarkerItems.ECHO_LOG).pattern("LL").pattern("LL").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_LOG), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_LOG)).offerTo(exporter);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.STRIPPED_ECHO_WOOD, 3).input('L', DeeperDarkerItems.STRIPPED_ECHO_LOG).pattern("LL").pattern("LL").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_LOG), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_LOG)).offerTo(exporter);
-        offerSingleOutputShapelessRecipe(exporter, DeeperDarkerItems.ECHO_BUTTON, DeeperDarkerItems.ECHO_PLANKS, "wooden_button");
-        createDoorRecipe(DeeperDarkerItems.ECHO_DOOR, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
-        createFenceGateRecipe(DeeperDarkerItems.ECHO_FENCE_GATE, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
-        createFenceRecipe(DeeperDarkerItems.ECHO_FENCE, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
-        offerHangingSignRecipe(exporter, DeeperDarkerItems.ECHO_HANGING_SIGN, DeeperDarkerItems.ECHO_PLANKS);
-        offerPressurePlateRecipe(exporter, DeeperDarkerItems.ECHO_PRESSURE_PLATE, DeeperDarkerItems.ECHO_PLANKS);
-        createSignRecipe(DeeperDarkerItems.ECHO_SIGN, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS));
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.ECHO_SLAB, DeeperDarkerItems.ECHO_PLANKS);
-        createStairsRecipe(DeeperDarkerItems.ECHO_STAIRS, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
-        createTrapdoorRecipe(DeeperDarkerItems.ECHO_TRAPDOOR, Ingredient.ofItems(DeeperDarkerItems.ECHO_PLANKS)).criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.ECHO_PLANKS), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.ECHO_PLANKS)).offerTo(exporter);
+                DDItems.WARDEN_HOE);
 
-        // Sculk Stone
-        createStairsRecipe(DeeperDarkerItems.SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_STONE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_STAIRS, DeeperDarkerItems.SCULK_STONE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_SLAB, DeeperDarkerItems.SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_SLAB, DeeperDarkerItems.SCULK_STONE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_WALL, DeeperDarkerItems.SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_WALL, DeeperDarkerItems.SCULK_STONE);
+        NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_BOOTS_TO_WARDEN_BOOTS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_SWORD_TO_WARDEN_SWORD_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_helmet_to_warden_helmet_upgrade"));
+        NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_chestplate_to_warden_chestplate_upgrade"));
+        NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_leggings_to_warden_leggings_upgrade"));
+        NETHERITE_BOOTS_TO_WARDEN_BOOTS_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_boots_to_warden_boots_upgrade"));
+        NETHERITE_SWORD_TO_WARDEN_SWORD_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_sword_to_warden_sword_upgrade"));
+        NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_pickaxe_to_warden_pickaxe_upgrade"));
+        NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_axe_to_warden_axe_upgrade"));
+        NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_shovel_to_warden_shovel_upgrade"));
+        NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_hoe_to_warden_hoe_upgrade"));
 
-        createStairsRecipe(DeeperDarkerItems.COBBLED_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.COBBLED_SCULK_STONE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_STAIRS, DeeperDarkerItems.COBBLED_SCULK_STONE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_SLAB, DeeperDarkerItems.COBBLED_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_SLAB, DeeperDarkerItems.COBBLED_SCULK_STONE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_WALL, DeeperDarkerItems.COBBLED_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_SCULK_STONE_WALL, DeeperDarkerItems.COBBLED_SCULK_STONE);
-        
-        offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE);
-        createStairsRecipe(DeeperDarkerItems.POLISHED_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.POLISHED_SCULK_STONE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_STAIRS, DeeperDarkerItems.POLISHED_SCULK_STONE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_SLAB, DeeperDarkerItems.POLISHED_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_SLAB, DeeperDarkerItems.POLISHED_SCULK_STONE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_WALL, DeeperDarkerItems.POLISHED_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_SCULK_STONE_WALL, DeeperDarkerItems.POLISHED_SCULK_STONE);
+        planksFromLogs(exporter, DDBlocks.ECHO_PLANKS, TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs")), 4);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.ECHO_WOOD, 3).define('L', DDBlocks.ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(exporter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_ECHO_WOOD, 3).define('L', DDBlocks.STRIPPED_ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(exporter);
+        oneToOneConversionRecipe(exporter, DDBlocks.ECHO_BUTTON, DDBlocks.ECHO_PLANKS, "wooden_button");
+        doorBuilder(DDBlocks.ECHO_DOOR, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
+        fenceGateBuilder(DDBlocks.ECHO_FENCE_GATE, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
+        fenceBuilder(DDBlocks.ECHO_FENCE, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
+        hangingSign(exporter, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_PLANKS);
+        pressurePlate(exporter, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_PLANKS);
+        signBuilder(DDBlocks.ECHO_SIGN, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS));
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
+        stairBuilder(DDBlocks.ECHO_STAIRS, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
+        trapdoorBuilder(DDBlocks.ECHO_TRAPDOOR, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
 
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICKS, DeeperDarkerItems.SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICKS, DeeperDarkerItems.SCULK_STONE);
-        createStairsRecipe(DeeperDarkerItems.SCULK_STONE_BRICK_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_STONE_BRICKS));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_STAIRS, DeeperDarkerItems.SCULK_STONE_BRICKS);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB, DeeperDarkerItems.SCULK_STONE_BRICKS);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB, DeeperDarkerItems.SCULK_STONE_BRICKS, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_WALL, DeeperDarkerItems.SCULK_STONE_BRICKS);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_BRICK_WALL, DeeperDarkerItems.SCULK_STONE_BRICKS);
+        stairBuilder(DDBlocks.SCULK_STONE_STAIRS, Ingredient.of(DDBlocks.SCULK_STONE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_SLAB, DDBlocks.SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_SLAB, DDBlocks.SCULK_STONE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_WALL, DDBlocks.SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_WALL, DDBlocks.SCULK_STONE);
 
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILES, DeeperDarkerItems.SCULK_STONE);
-        createStairsRecipe(DeeperDarkerItems.SCULK_STONE_TILE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_STONE_TILES));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_STAIRS, DeeperDarkerItems.SCULK_STONE_TILES);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_SLAB, DeeperDarkerItems.SCULK_STONE_TILES);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_SLAB, DeeperDarkerItems.SCULK_STONE_TILES, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_WALL, DeeperDarkerItems.SCULK_STONE_TILES);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_STONE_TILE_WALL, DeeperDarkerItems.SCULK_STONE_TILES);
+        stairBuilder(DDBlocks.COBBLED_SCULK_STONE_STAIRS, Ingredient.of(DDBlocks.COBBLED_SCULK_STONE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_WALL, DDBlocks.COBBLED_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_SCULK_STONE_WALL, DDBlocks.COBBLED_SCULK_STONE);
 
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE), RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE, 0.1f, 200, "sculk_stone");
-        createStairsRecipe(DeeperDarkerItems.SMOOTH_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SMOOTH_SCULK_STONE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_STAIRS, DeeperDarkerItems.SMOOTH_SCULK_STONE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_SLAB, DeeperDarkerItems.SMOOTH_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_SLAB, DeeperDarkerItems.SMOOTH_SCULK_STONE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL, DeeperDarkerItems.SMOOTH_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_SCULK_STONE_WALL, DeeperDarkerItems.SMOOTH_SCULK_STONE);
-        
-        offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE, DeeperDarkerItems.SMOOTH_SCULK_STONE);
-        createStairsRecipe(DeeperDarkerItems.CUT_SCULK_STONE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.CUT_SCULK_STONE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_STAIRS, DeeperDarkerItems.CUT_SCULK_STONE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_SLAB, DeeperDarkerItems.CUT_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_SLAB, DeeperDarkerItems.CUT_SCULK_STONE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_WALL, DeeperDarkerItems.CUT_SCULK_STONE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_SCULK_STONE_WALL, DeeperDarkerItems.CUT_SCULK_STONE);
+        polished(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE);
+        stairBuilder(DDBlocks.POLISHED_SCULK_STONE_STAIRS, Ingredient.of(DDBlocks.POLISHED_SCULK_STONE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_WALL, DDBlocks.POLISHED_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_SCULK_STONE_WALL, DDBlocks.POLISHED_SCULK_STONE);
 
-        offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CHISELED_SCULK_STONE, DeeperDarkerItems.SCULK_STONE_BRICK_SLAB);
+        twoByTwoPacker(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE);
+        stairBuilder(DDBlocks.SCULK_STONE_BRICK_STAIRS, Ingredient.of(DDBlocks.SCULK_STONE_BRICKS));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_BRICKS);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_BRICKS);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_BRICKS, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_WALL, DDBlocks.SCULK_STONE_BRICKS);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_BRICK_WALL, DDBlocks.SCULK_STONE_BRICKS);
+
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILES, DDBlocks.SCULK_STONE);
+        stairBuilder(DDBlocks.SCULK_STONE_TILE_STAIRS, Ingredient.of(DDBlocks.SCULK_STONE_TILES));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SCULK_STONE_TILES);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SCULK_STONE_TILES);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SCULK_STONE_TILES, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_WALL, DDBlocks.SCULK_STONE_TILES);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_TILE_WALL, DDBlocks.SCULK_STONE_TILES);
+
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE, 0.1f, 200, "sculk_stone");
+        stairBuilder(DDBlocks.SMOOTH_SCULK_STONE_STAIRS, Ingredient.of(DDBlocks.SMOOTH_SCULK_STONE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.SMOOTH_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.SMOOTH_SCULK_STONE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_WALL, DDBlocks.SMOOTH_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE_WALL, DDBlocks.SMOOTH_SCULK_STONE);
+
+        polished(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE, DDBlocks.SMOOTH_SCULK_STONE);
+        stairBuilder(DDBlocks.CUT_SCULK_STONE_STAIRS, Ingredient.of(DDBlocks.CUT_SCULK_STONE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_WALL, DDBlocks.CUT_SCULK_STONE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_SCULK_STONE_WALL, DDBlocks.CUT_SCULK_STONE);
+
+        chiseled(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_SCULK_STONE, DDBlocks.SCULK_STONE_BRICK_SLAB);
 
         // Sculk Grime
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME, DeeperDarkerItems.GRIME_BALL);
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICKS, DeeperDarkerItems.GRIME_BRICK);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICKS, DeeperDarkerItems.SCULK_GRIME);
-        createStairsRecipe(DeeperDarkerItems.SCULK_GRIME_BRICK_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SCULK_GRIME_BRICKS));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICK_STAIRS, DeeperDarkerItems.SCULK_GRIME_BRICKS);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICK_SLAB, DeeperDarkerItems.SCULK_GRIME_BRICKS);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICK_SLAB, DeeperDarkerItems.SCULK_GRIME_BRICKS, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICK_WALL, DeeperDarkerItems.SCULK_GRIME_BRICKS);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SCULK_GRIME_BRICK_WALL, DeeperDarkerItems.SCULK_GRIME_BRICKS);
-    
+        twoByTwoPacker(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME, DDItems.GRIME_BALL);
+        twoByTwoPacker(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS, DDItems.GRIME_BRICK);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS, DDBlocks.SCULK_GRIME);
+        stairBuilder(DDBlocks.SCULK_GRIME_BRICK_STAIRS, Ingredient.of(DDBlocks.SCULK_GRIME_BRICKS));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICKS);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
+
         // Gloomslate
-        createStairsRecipe(DeeperDarkerItems.GLOOMSLATE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.GLOOMSLATE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_STAIRS, DeeperDarkerItems.GLOOMSLATE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_SLAB, DeeperDarkerItems.GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_SLAB, DeeperDarkerItems.GLOOMSLATE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_WALL, DeeperDarkerItems.GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_WALL, DeeperDarkerItems.GLOOMSLATE);
+        stairBuilder(DDBlocks.GLOOMSLATE_STAIRS, Ingredient.of(DDBlocks.GLOOMSLATE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_SLAB, DDBlocks.GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_SLAB, DDBlocks.GLOOMSLATE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_WALL, DDBlocks.GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_WALL, DDBlocks.GLOOMSLATE);
 
-        createStairsRecipe(DeeperDarkerItems.COBBLED_GLOOMSLATE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.COBBLED_GLOOMSLATE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_GLOOMSLATE_STAIRS, DeeperDarkerItems.COBBLED_GLOOMSLATE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_GLOOMSLATE_SLAB, DeeperDarkerItems.COBBLED_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_GLOOMSLATE_SLAB, DeeperDarkerItems.COBBLED_GLOOMSLATE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_GLOOMSLATE_WALL, DeeperDarkerItems.COBBLED_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.COBBLED_GLOOMSLATE_WALL, DeeperDarkerItems.COBBLED_GLOOMSLATE);
+        stairBuilder(DDBlocks.COBBLED_GLOOMSLATE_STAIRS, Ingredient.of(DDBlocks.COBBLED_GLOOMSLATE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_STAIRS, DDBlocks.COBBLED_GLOOMSLATE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_SLAB, DDBlocks.COBBLED_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_SLAB, DDBlocks.COBBLED_GLOOMSLATE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_WALL, DDBlocks.COBBLED_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.COBBLED_GLOOMSLATE_WALL, DDBlocks.COBBLED_GLOOMSLATE);
 
-        offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE, DeeperDarkerItems.GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE, DeeperDarkerItems.GLOOMSLATE);
-        createStairsRecipe(DeeperDarkerItems.POLISHED_GLOOMSLATE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.POLISHED_GLOOMSLATE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE_STAIRS, DeeperDarkerItems.POLISHED_GLOOMSLATE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE_SLAB, DeeperDarkerItems.POLISHED_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE_SLAB, DeeperDarkerItems.POLISHED_GLOOMSLATE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE_WALL, DeeperDarkerItems.POLISHED_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.POLISHED_GLOOMSLATE_WALL, DeeperDarkerItems.POLISHED_GLOOMSLATE);
+        polished(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE, DDBlocks.GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE, DDBlocks.GLOOMSLATE);
+        stairBuilder(DDBlocks.POLISHED_GLOOMSLATE_STAIRS, Ingredient.of(DDBlocks.POLISHED_GLOOMSLATE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_STAIRS, DDBlocks.POLISHED_GLOOMSLATE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_SLAB, DDBlocks.POLISHED_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_SLAB, DDBlocks.POLISHED_GLOOMSLATE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_WALL, DDBlocks.POLISHED_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.POLISHED_GLOOMSLATE_WALL, DDBlocks.POLISHED_GLOOMSLATE);
 
-        offer2x2CompactingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICKS, DeeperDarkerItems.GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICKS, DeeperDarkerItems.GLOOMSLATE);
-        createStairsRecipe(DeeperDarkerItems.GLOOMSLATE_BRICK_STAIRS, Ingredient.ofItems(DeeperDarkerItems.GLOOMSLATE_BRICKS));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICK_STAIRS, DeeperDarkerItems.GLOOMSLATE_BRICKS);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICK_SLAB, DeeperDarkerItems.GLOOMSLATE_BRICKS);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICK_SLAB, DeeperDarkerItems.GLOOMSLATE_BRICKS, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICK_WALL, DeeperDarkerItems.GLOOMSLATE_BRICKS);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_BRICK_WALL, DeeperDarkerItems.GLOOMSLATE_BRICKS);
+        twoByTwoPacker(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICKS, DDBlocks.GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICKS, DDBlocks.GLOOMSLATE);
+        stairBuilder(DDBlocks.GLOOMSLATE_BRICK_STAIRS, Ingredient.of(DDBlocks.GLOOMSLATE_BRICKS));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_STAIRS, DDBlocks.GLOOMSLATE_BRICKS);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_SLAB, DDBlocks.GLOOMSLATE_BRICKS);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_SLAB, DDBlocks.GLOOMSLATE_BRICKS, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_WALL, DDBlocks.GLOOMSLATE_BRICKS);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_BRICK_WALL, DDBlocks.GLOOMSLATE_BRICKS);
 
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_TILES, DeeperDarkerItems.GLOOMSLATE);
-        createStairsRecipe(DeeperDarkerItems.GLOOMSLATE_TILE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.GLOOMSLATE_TILES));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_TILE_STAIRS, DeeperDarkerItems.GLOOMSLATE_TILES);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_TILE_SLAB, DeeperDarkerItems.GLOOMSLATE_TILES);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_TILE_SLAB, DeeperDarkerItems.GLOOMSLATE_TILES, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_TILE_WALL, DeeperDarkerItems.GLOOMSLATE_TILES);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.GLOOMSLATE_TILE_WALL, DeeperDarkerItems.GLOOMSLATE_TILES);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILES, DDBlocks.GLOOMSLATE);
+        stairBuilder(DDBlocks.GLOOMSLATE_TILE_STAIRS, Ingredient.of(DDBlocks.GLOOMSLATE_TILES));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_STAIRS, DDBlocks.GLOOMSLATE_TILES);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_SLAB, DDBlocks.GLOOMSLATE_TILES);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_SLAB, DDBlocks.GLOOMSLATE_TILES, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_WALL, DDBlocks.GLOOMSLATE_TILES);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE_TILE_WALL, DDBlocks.GLOOMSLATE_TILES);
 
-        offerSmelting(exporter, List.of(DeeperDarkerItems.GLOOMSLATE), RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_GLOOMSLATE, 0.1f, 200, "sculk_stone");
-        createStairsRecipe(DeeperDarkerItems.SMOOTH_GLOOMSLATE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.SMOOTH_GLOOMSLATE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_GLOOMSLATE_STAIRS, DeeperDarkerItems.SMOOTH_GLOOMSLATE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_GLOOMSLATE_SLAB, DeeperDarkerItems.SMOOTH_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_GLOOMSLATE_SLAB, DeeperDarkerItems.SMOOTH_GLOOMSLATE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL, DeeperDarkerItems.SMOOTH_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.SMOOTH_GLOOMSLATE_WALL, DeeperDarkerItems.SMOOTH_GLOOMSLATE);
+        oreSmelting(exporter, List.of(DDBlocks.GLOOMSLATE), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE, 0.1f, 200, "sculk_stone");
+        stairBuilder(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, Ingredient.of(DDBlocks.SMOOTH_GLOOMSLATE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, DDBlocks.SMOOTH_GLOOMSLATE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_SLAB, DDBlocks.SMOOTH_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_SLAB, DDBlocks.SMOOTH_GLOOMSLATE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_WALL, DDBlocks.SMOOTH_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE_WALL, DDBlocks.SMOOTH_GLOOMSLATE);
 
-        offerPolishedStoneRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE, DeeperDarkerItems.SMOOTH_GLOOMSLATE);
-        createStairsRecipe(DeeperDarkerItems.CUT_GLOOMSLATE_STAIRS, Ingredient.ofItems(DeeperDarkerItems.CUT_GLOOMSLATE));
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE_STAIRS, DeeperDarkerItems.CUT_GLOOMSLATE);
-        offerSlabRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE_SLAB, DeeperDarkerItems.CUT_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE_SLAB, DeeperDarkerItems.CUT_GLOOMSLATE, 2);
-        offerWallRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE_WALL, DeeperDarkerItems.CUT_GLOOMSLATE);
-        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CUT_GLOOMSLATE_WALL, DeeperDarkerItems.CUT_GLOOMSLATE);
+        polished(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE, DDBlocks.SMOOTH_GLOOMSLATE);
+        stairBuilder(DDBlocks.CUT_GLOOMSLATE_STAIRS, Ingredient.of(DDBlocks.CUT_GLOOMSLATE));
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_STAIRS, DDBlocks.CUT_GLOOMSLATE);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE, 2);
+        wall(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
+        stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
 
-        offerChiseledBlockRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, DeeperDarkerItems.CHISELED_GLOOMSLATE, DeeperDarkerItems.GLOOMSLATE_BRICK_SLAB);
+        chiseled(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE, DDBlocks.GLOOMSLATE_BRICK_SLAB);
 
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 200, "coal");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 100, "coal");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_COPPER_ORE), RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.MISC, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_GOLD_ORE), RecipeCategory.MISC, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.MISC, Items.REDSTONE, 0.7f, 200, "redstone");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_REDSTONE_ORE), RecipeCategory.MISC, Items.REDSTONE, 0.7f, 100, "redstone");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.MISC, Items.EMERALD, 1.0f, 200, "emerald");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_EMERALD_ORE), RecipeCategory.MISC, Items.EMERALD, 1.0f, 100, "emerald");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 200, "lapis_lazuli");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
-        offerSmelting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 200, "diamond");
-        offerBlasting(exporter, List.of(DeeperDarkerItems.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 100, "diamond");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 200, "coal");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 100, "coal");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_COPPER_ORE), RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_COPPER_ORE), RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_GOLD_ORE), RecipeCategory.MISC, Items.GOLD_INGOT, 1.0f, 200, "gold_ingot");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_GOLD_ORE), RecipeCategory.MISC, Items.GOLD_INGOT, 1.0f, 100, "gold_ingot");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_REDSTONE_ORE), RecipeCategory.MISC, Items.REDSTONE, 0.7f, 200, "redstone");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_REDSTONE_ORE), RecipeCategory.MISC, Items.REDSTONE, 0.7f, 100, "redstone");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_EMERALD_ORE), RecipeCategory.MISC, Items.EMERALD, 1.0f, 200, "emerald");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_EMERALD_ORE), RecipeCategory.MISC, Items.EMERALD, 1.0f, 100, "emerald");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 200, "lapis_lazuli");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
+        oreSmelting(exporter, List.of(DDBlocks.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 200, "diamond");
+        oreBlasting(exporter, List.of(DDBlocks.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 100, "diamond");
 
-        offerSmelting(exporter, List.of(DeeperDarkerItems.GRIME_BALL), RecipeCategory.MISC, DeeperDarkerItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
+        oreSmelting(exporter, List.of(DDItems.GRIME_BALL), RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).input('D', Items.DIAMOND).input('U', DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).input('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").criterion(FabricRecipeProvider.hasItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.conditionsFromItem(DeeperDarkerItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).offerTo(exporter);
-
-        offerBoatRecipe(exporter, DeeperDarkerItems.ECHO_BOAT, DeeperDarkerItems.ECHO_PLANKS);
-        offerChestBoatRecipe(exporter, DeeperDarkerItems.ECHO_CHEST_BOAT, DeeperDarkerItems.ECHO_PLANKS);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).define('D', Items.DIAMOND).define('U', DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).define('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").unlockedBy(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).save(exporter);
+        woodenBoat(exporter, DDItems.ECHO_BOAT, DDBlocks.ECHO_PLANKS);
+        chestBoat(exporter, DDItems.ECHO_CHEST_BOAT, DDBlocks.ECHO_PLANKS);
     }
 }

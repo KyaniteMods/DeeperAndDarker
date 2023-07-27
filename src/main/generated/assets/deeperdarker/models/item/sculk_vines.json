@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "deeperdarker:block/sculk_vines_plant"
+    "layer0": "deeperdarker:item/sculk_vines_plant"
   }
 }
