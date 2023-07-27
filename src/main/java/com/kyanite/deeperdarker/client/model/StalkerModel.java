@@ -18,7 +18,7 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 
 	public StalkerModel(ModelPart root) {
 		this.root = root;
-		this.head = root.getChild("root").getChild("waist");
+		this.head = root.getChild("root").getChild("waist").getChild("body").getChild("head");
 	}
 
 	public static LayerDefinition createBodyModel() {

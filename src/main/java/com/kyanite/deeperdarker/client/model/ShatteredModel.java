@@ -17,7 +17,7 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 
 	public ShatteredModel(ModelPart root) {
 		this.root = root;
-		this.head = root.getChild("root");
+		this.head = root.getChild("root").getChild("body");
 	}
 
 	public static LayerDefinition createBodyModel() {
