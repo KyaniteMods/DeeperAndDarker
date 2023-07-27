@@ -58,10 +58,10 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.3, true));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true));
         this.goalSelector.addGoal(2, new DisturbanceGoal(this, 1.1));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.7));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.9));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.4));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
