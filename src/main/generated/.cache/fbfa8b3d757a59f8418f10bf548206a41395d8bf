@@ -1,7 +1,7 @@
-// 1.20.1	2023-07-27T12:37:33.0218235	Deeper and Darker/minecraft:entity Loot Table
-388448b3ad520fcd7429161ae4a338778096d490 data\deeperdarker\loot_tables\entity\sculk_centipede.json
+// 1.20.1	2023-07-27T17:58:35.9756571	Deeper and Darker/minecraft:entity Loot Table
 e66ca0933bd6acc9d9772ee0defb0af928a35d26 data\deeperdarker\loot_tables\entity\shattered.json
-d415b9cd0e9492933b7a856647f3c99b4c41d51d data\deeperdarker\loot_tables\entity\stalker.json
 ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data\deeperdarker\loot_tables\entity\shriek_worm.json
+d415b9cd0e9492933b7a856647f3c99b4c41d51d data\deeperdarker\loot_tables\entity\stalker.json
 d6a76a929b89f883b9a08cb4f0c670206ccf3eb9 data\deeperdarker\loot_tables\entity\sculk_snapper.json
+388448b3ad520fcd7429161ae4a338778096d490 data\deeperdarker\loot_tables\entity\sculk_centipede.json
 9a8cab663c6a2d15d36153c5fb19fece2cefab21 data\deeperdarker\loot_tables\entity\sculk_leech.json

@@ -10,7 +10,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
@@ -48,6 +47,13 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE);
         getOrCreateTagBuilder(ItemTags.SHOVELS).setReplace(false).add(DDItems.WARDEN_SHOVEL);
         getOrCreateTagBuilder(ItemTags.HOES).setReplace(false).add(DDItems.WARDEN_HOE);
+
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR).setReplace(false).add(
+                DDItems.WARDEN_HELMET,
+                DDItems.WARDEN_CHESTPLATE,
+                DDItems.WARDEN_LEGGINGS,
+                DDItems.WARDEN_BOOTS
+        );
 
         add(ItemTags.WALLS,
                 DDBlocks.SCULK_STONE_WALL,

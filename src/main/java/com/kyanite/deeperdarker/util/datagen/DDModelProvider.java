@@ -18,6 +18,8 @@ import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.data.models.blockstates.PropertyDispatch;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
@@ -35,133 +37,144 @@ public class DDModelProvider extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockModelGenerators BlockModelGenerators) {
-        BlockModelGenerators.woodProvider(DDBlocks.ECHO_LOG).log(DDBlocks.ECHO_LOG).wood(DDBlocks.ECHO_WOOD);
-        BlockModelGenerators.woodProvider(DDBlocks.STRIPPED_ECHO_LOG).log(DDBlocks.STRIPPED_ECHO_LOG).wood(DDBlocks.STRIPPED_ECHO_WOOD);
-        registerButton(BlockModelGenerators, DDBlocks.ECHO_BUTTON, DDBlocks.ECHO_PLANKS);
-        BlockModelGenerators.createDoor(DDBlocks.ECHO_DOOR);
-        registerFenceGate(BlockModelGenerators, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_PLANKS);
-        registerFence(BlockModelGenerators, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_PLANKS);
-        BlockModelGenerators.createHangingSign(DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN);
-        BlockModelGenerators.family(DDBlocks.ECHO_LEAVES);
-        BlockModelGenerators.family(DDBlocks.ECHO_PLANKS);
-        registerPressurePlate(BlockModelGenerators, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_PLANKS);
-        BlockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.ECHO_SAPLING, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        BlockModelGenerators.createHangingSign(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
-        registerStairs(BlockModelGenerators, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_PLANKS);
-        BlockModelGenerators.createOrientableTrapdoor(DDBlocks.ECHO_TRAPDOOR);
+    public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+        blockModelGenerators.woodProvider(DDBlocks.ECHO_LOG).log(DDBlocks.ECHO_LOG).wood(DDBlocks.ECHO_WOOD);
+        blockModelGenerators.woodProvider(DDBlocks.STRIPPED_ECHO_LOG).log(DDBlocks.STRIPPED_ECHO_LOG).wood(DDBlocks.STRIPPED_ECHO_WOOD);
+        registerButton(blockModelGenerators, DDBlocks.ECHO_BUTTON, DDBlocks.ECHO_PLANKS);
+        blockModelGenerators.createDoor(DDBlocks.ECHO_DOOR);
+        registerFenceGate(blockModelGenerators, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_PLANKS);
+        registerFence(blockModelGenerators, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_PLANKS);
+        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN);
+        blockModelGenerators.family(DDBlocks.ECHO_LEAVES);
+        blockModelGenerators.family(DDBlocks.ECHO_PLANKS);
+        registerPressurePlate(blockModelGenerators, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_PLANKS);
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.ECHO_SAPLING, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createHangingSign(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
+        registerStairs(blockModelGenerators, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_PLANKS);
+        blockModelGenerators.createOrientableTrapdoor(DDBlocks.ECHO_TRAPDOOR);
 
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE);
-        registerStairs(BlockModelGenerators, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.SCULK_STONE_SLAB, DDBlocks.SCULK_STONE);
-        registerWall(BlockModelGenerators, DDBlocks.SCULK_STONE_WALL, DDBlocks.SCULK_STONE);
-        BlockModelGenerators.family(DDBlocks.COBBLED_SCULK_STONE);
-        registerStairs(BlockModelGenerators, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE);
-        registerWall(BlockModelGenerators, DDBlocks.COBBLED_SCULK_STONE_WALL, DDBlocks.COBBLED_SCULK_STONE);
-        BlockModelGenerators.family(DDBlocks.POLISHED_SCULK_STONE);
-        registerStairs(BlockModelGenerators, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE);
-        registerWall(BlockModelGenerators, DDBlocks.POLISHED_SCULK_STONE_WALL, DDBlocks.POLISHED_SCULK_STONE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_BRICKS);
-        registerStairs(BlockModelGenerators, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_BRICKS);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_BRICKS);
-        registerWall(BlockModelGenerators, DDBlocks.SCULK_STONE_BRICK_WALL, DDBlocks.SCULK_STONE_BRICKS);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_TILES);
-        registerStairs(BlockModelGenerators, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SCULK_STONE_TILES);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SCULK_STONE_TILES);
-        registerWall(BlockModelGenerators, DDBlocks.SCULK_STONE_TILE_WALL, DDBlocks.SCULK_STONE_TILES);
-        BlockModelGenerators.family(DDBlocks.SMOOTH_SCULK_STONE);
-        registerStairs(BlockModelGenerators, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.SMOOTH_SCULK_STONE);
-        registerWall(BlockModelGenerators, DDBlocks.SMOOTH_SCULK_STONE_WALL, DDBlocks.SMOOTH_SCULK_STONE);
-        BlockModelGenerators.family(DDBlocks.CUT_SCULK_STONE);
-        registerStairs(BlockModelGenerators, DDBlocks.CUT_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.CUT_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE);
-        registerWall(BlockModelGenerators, DDBlocks.CUT_SCULK_STONE_WALL, DDBlocks.CUT_SCULK_STONE);
-        BlockModelGenerators.family(DDBlocks.CHISELED_SCULK_STONE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE);
+        registerStairs(blockModelGenerators, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_STONE_SLAB, DDBlocks.SCULK_STONE);
+        registerWall(blockModelGenerators, DDBlocks.SCULK_STONE_WALL, DDBlocks.SCULK_STONE);
+        blockModelGenerators.family(DDBlocks.COBBLED_SCULK_STONE);
+        registerStairs(blockModelGenerators, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE);
+        registerWall(blockModelGenerators, DDBlocks.COBBLED_SCULK_STONE_WALL, DDBlocks.COBBLED_SCULK_STONE);
+        blockModelGenerators.family(DDBlocks.POLISHED_SCULK_STONE);
+        registerStairs(blockModelGenerators, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE);
+        registerWall(blockModelGenerators, DDBlocks.POLISHED_SCULK_STONE_WALL, DDBlocks.POLISHED_SCULK_STONE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_BRICKS);
+        registerStairs(blockModelGenerators, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_BRICKS);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_BRICKS);
+        registerWall(blockModelGenerators, DDBlocks.SCULK_STONE_BRICK_WALL, DDBlocks.SCULK_STONE_BRICKS);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_TILES);
+        registerStairs(blockModelGenerators, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SCULK_STONE_TILES);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SCULK_STONE_TILES);
+        registerWall(blockModelGenerators, DDBlocks.SCULK_STONE_TILE_WALL, DDBlocks.SCULK_STONE_TILES);
+        blockModelGenerators.family(DDBlocks.SMOOTH_SCULK_STONE);
+        registerStairs(blockModelGenerators, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.SMOOTH_SCULK_STONE);
+        registerWall(blockModelGenerators, DDBlocks.SMOOTH_SCULK_STONE_WALL, DDBlocks.SMOOTH_SCULK_STONE);
+        blockModelGenerators.family(DDBlocks.CUT_SCULK_STONE);
+        registerStairs(blockModelGenerators, DDBlocks.CUT_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.CUT_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE);
+        registerWall(blockModelGenerators, DDBlocks.CUT_SCULK_STONE_WALL, DDBlocks.CUT_SCULK_STONE);
+        blockModelGenerators.family(DDBlocks.CHISELED_SCULK_STONE);
 
-        BlockModelGenerators.family(DDBlocks.SCULK_GRIME);
-        BlockModelGenerators.family(DDBlocks.SCULK_GRIME_BRICKS);
-        registerStairs(BlockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICKS);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
-        registerWall(BlockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
+        blockModelGenerators.family(DDBlocks.SCULK_GRIME);
+        blockModelGenerators.family(DDBlocks.SCULK_GRIME_BRICKS);
+        registerStairs(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICKS);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
+        registerWall(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
 
-        BlockModelGenerators.family(DDBlocks.GLOOMSLATE);
-        registerStairs(BlockModelGenerators, DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.GLOOMSLATE_SLAB, DDBlocks.GLOOMSLATE);
-        registerWall(BlockModelGenerators, DDBlocks.GLOOMSLATE_WALL, DDBlocks.GLOOMSLATE);
-        BlockModelGenerators.family(DDBlocks.COBBLED_GLOOMSLATE);
-        registerStairs(BlockModelGenerators, DDBlocks.COBBLED_GLOOMSLATE_STAIRS, DDBlocks.COBBLED_GLOOMSLATE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.COBBLED_GLOOMSLATE_SLAB, DDBlocks.COBBLED_GLOOMSLATE);
-        registerWall(BlockModelGenerators, DDBlocks.COBBLED_GLOOMSLATE_WALL, DDBlocks.COBBLED_GLOOMSLATE);
-        BlockModelGenerators.family(DDBlocks.POLISHED_GLOOMSLATE);
-        registerStairs(BlockModelGenerators, DDBlocks.POLISHED_GLOOMSLATE_STAIRS, DDBlocks.POLISHED_GLOOMSLATE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.POLISHED_GLOOMSLATE_SLAB, DDBlocks.POLISHED_GLOOMSLATE);
-        registerWall(BlockModelGenerators, DDBlocks.POLISHED_GLOOMSLATE_WALL, DDBlocks.POLISHED_GLOOMSLATE);
-        BlockModelGenerators.family(DDBlocks.GLOOMSLATE_BRICKS);
-        registerStairs(BlockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_STAIRS, DDBlocks.GLOOMSLATE_BRICKS);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_SLAB, DDBlocks.GLOOMSLATE_BRICKS);
-        registerWall(BlockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_WALL, DDBlocks.GLOOMSLATE_BRICKS);
-        BlockModelGenerators.family(DDBlocks.GLOOMSLATE_TILES);
-        registerStairs(BlockModelGenerators, DDBlocks.GLOOMSLATE_TILE_STAIRS, DDBlocks.GLOOMSLATE_TILES);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.GLOOMSLATE_TILE_SLAB, DDBlocks.GLOOMSLATE_TILES);
-        registerWall(BlockModelGenerators, DDBlocks.GLOOMSLATE_TILE_WALL, DDBlocks.GLOOMSLATE_TILES);
-        BlockModelGenerators.family(DDBlocks.SMOOTH_GLOOMSLATE);
-        registerStairs(BlockModelGenerators, DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, DDBlocks.SMOOTH_GLOOMSLATE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.SMOOTH_GLOOMSLATE_SLAB, DDBlocks.SMOOTH_GLOOMSLATE);
-        registerWall(BlockModelGenerators, DDBlocks.SMOOTH_GLOOMSLATE_WALL, DDBlocks.SMOOTH_GLOOMSLATE);
-        BlockModelGenerators.family(DDBlocks.CUT_GLOOMSLATE);
-        registerStairs(BlockModelGenerators, DDBlocks.CUT_GLOOMSLATE_STAIRS, DDBlocks.CUT_GLOOMSLATE);
-        registerSlabWithCubeAll(BlockModelGenerators, DDBlocks.CUT_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE);
-        registerWall(BlockModelGenerators, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
-        BlockModelGenerators.family(DDBlocks.CHISELED_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE);
+        registerStairs(blockModelGenerators, DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.GLOOMSLATE_SLAB, DDBlocks.GLOOMSLATE);
+        registerWall(blockModelGenerators, DDBlocks.GLOOMSLATE_WALL, DDBlocks.GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.COBBLED_GLOOMSLATE);
+        registerStairs(blockModelGenerators, DDBlocks.COBBLED_GLOOMSLATE_STAIRS, DDBlocks.COBBLED_GLOOMSLATE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.COBBLED_GLOOMSLATE_SLAB, DDBlocks.COBBLED_GLOOMSLATE);
+        registerWall(blockModelGenerators, DDBlocks.COBBLED_GLOOMSLATE_WALL, DDBlocks.COBBLED_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.POLISHED_GLOOMSLATE);
+        registerStairs(blockModelGenerators, DDBlocks.POLISHED_GLOOMSLATE_STAIRS, DDBlocks.POLISHED_GLOOMSLATE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.POLISHED_GLOOMSLATE_SLAB, DDBlocks.POLISHED_GLOOMSLATE);
+        registerWall(blockModelGenerators, DDBlocks.POLISHED_GLOOMSLATE_WALL, DDBlocks.POLISHED_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_BRICKS);
+        registerStairs(blockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_STAIRS, DDBlocks.GLOOMSLATE_BRICKS);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_SLAB, DDBlocks.GLOOMSLATE_BRICKS);
+        registerWall(blockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_WALL, DDBlocks.GLOOMSLATE_BRICKS);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_TILES);
+        registerStairs(blockModelGenerators, DDBlocks.GLOOMSLATE_TILE_STAIRS, DDBlocks.GLOOMSLATE_TILES);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.GLOOMSLATE_TILE_SLAB, DDBlocks.GLOOMSLATE_TILES);
+        registerWall(blockModelGenerators, DDBlocks.GLOOMSLATE_TILE_WALL, DDBlocks.GLOOMSLATE_TILES);
+        blockModelGenerators.family(DDBlocks.SMOOTH_GLOOMSLATE);
+        registerStairs(blockModelGenerators, DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, DDBlocks.SMOOTH_GLOOMSLATE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SMOOTH_GLOOMSLATE_SLAB, DDBlocks.SMOOTH_GLOOMSLATE);
+        registerWall(blockModelGenerators, DDBlocks.SMOOTH_GLOOMSLATE_WALL, DDBlocks.SMOOTH_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.CUT_GLOOMSLATE);
+        registerStairs(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_STAIRS, DDBlocks.CUT_GLOOMSLATE);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE);
+        registerWall(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.CHISELED_GLOOMSLATE);
 
-        BlockModelGenerators.family(DDBlocks.ECHO_SOIL);
-        BlockModelGenerators.family(DDBlocks.SCULK_GLEAM);
+        blockModelGenerators.family(DDBlocks.ECHO_SOIL);
+        blockModelGenerators.family(DDBlocks.SCULK_GLEAM);
 
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_COAL_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_IRON_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_COPPER_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_GOLD_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_REDSTONE_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_EMERALD_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_LAPIS_ORE);
-        BlockModelGenerators.family(DDBlocks.SCULK_STONE_DIAMOND_ORE);
-        BlockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        BlockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        BlockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        BlockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_COAL_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_IRON_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_COPPER_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_GOLD_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_REDSTONE_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_EMERALD_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_LAPIS_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
 
-        BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_CACTUS);
-        BlockModelGenerators.delegateItemModel(DDBlocks.GLOOMY_CACTUS, ModelLocationUtils.getModelLocation(DDBlocks.GLOOMY_CACTUS));
-        BlockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOOMY_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        BlockModelGenerators.family(DDBlocks.GLOOMY_SCULK);
-        BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_GEYSER);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_CACTUS);
+        blockModelGenerators.delegateItemModel(DDBlocks.GLOOMY_CACTUS, ModelLocationUtils.getModelLocation(DDBlocks.GLOOMY_CACTUS));
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOOMY_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.family(DDBlocks.GLOOMY_SCULK);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_GEYSER);
         ModelTemplates.CUBE_BOTTOM_TOP.create(DDBlocks.GLOOMY_GEYSER, TextureMapping.singleSlot(TextureSlot.TOP, new ResourceLocation(DeeperDarker.MOD_ID, "block/gloomy_geyser")).put(TextureSlot.SIDE, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)).put(TextureSlot.BOTTOM, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)),
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
 
-        BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.ANCIENT_VASE);
-        BlockModelGenerators.delegateItemModel(DDBlocks.ANCIENT_VASE, ModelLocationUtils.getModelLocation(DDBlocks.ANCIENT_VASE));
-        BlockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ANCIENT_VASE);
+        blockModelGenerators.delegateItemModel(DDBlocks.ANCIENT_VASE, ModelLocationUtils.getModelLocation(DDBlocks.ANCIENT_VASE));
+        blockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
 
-        BlockModelGenerators.createNonTemplateModelBlock(DDBlocks.CRYSTALLIZED_AMBER);
-        registerParented(BlockModelGenerators, Blocks.HONEY_BLOCK, DDBlocks.CRYSTALLIZED_AMBER,
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.CRYSTALLIZED_AMBER);
+        registerParented(blockModelGenerators, Blocks.HONEY_BLOCK, DDBlocks.CRYSTALLIZED_AMBER,
                 new Tuple<>(TextureSlot.UP, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
                 new Tuple<>(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
                 new Tuple<>(TextureSlot.PARTICLE, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
                 new Tuple<>(TextureSlot.DOWN, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_outer")));
 
-        BlockModelGenerators.delegateItemModel(DDBlocks.CRYSTALLIZED_AMBER, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER));
+        blockModelGenerators.delegateItemModel(DDBlocks.CRYSTALLIZED_AMBER, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER));
 
-        registerSculkJaw(BlockModelGenerators, DDBlocks.SCULK_JAW);
-        BlockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.OTHERSIDE_PORTAL).with(PropertyDispatch.property(
+                        BlockStateProperties.AXIS).select(Direction.Axis.X, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ns")))
+                .select(Direction.Axis.Y, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ns")).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90))
+                .select(Direction.Axis.Z, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ew")))));
+        registerParented(blockModelGenerators, ModelLocationUtils.getModelLocation(Blocks.NETHER_PORTAL, "_ew"), ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ew"),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)),
+                new Tuple<>(TextureSlot.create("portal"), TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)));
+        registerParented(blockModelGenerators, ModelLocationUtils.getModelLocation(Blocks.NETHER_PORTAL, "_ns"), ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ns"),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)),
+                new Tuple<>(TextureSlot.create("portal"), TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)));
+
+        registerSculkJaw(blockModelGenerators, DDBlocks.SCULK_JAW);
+        blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
-        //registerWardenHelmet(itemModelGenerator, (ArmorItem) DDItems.WARDEN_HELMET);
+        registerWardenHelmet(itemModelGenerator, (ArmorItem) DDItems.WARDEN_HELMET);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_CHESTPLATE);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_LEGGINGS);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_BOOTS);
@@ -179,8 +192,8 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.SCULK_BONE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BALL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
-        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TENDRILS.asItem()), TextureMapping.layer0(DDBlocks.SCULK_TENDRILS_PLANT.asItem()), itemModelGenerator.output);
-        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT.asItem()), itemModelGenerator.output);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TENDRILS.asItem()), TextureMapping.layer0(DDBlocks.SCULK_TENDRILS_PLANT), itemModelGenerator.output);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT), itemModelGenerator.output);
         ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_BUTTON.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_FENCE.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_STONE), itemModelGenerator.output);
@@ -304,8 +317,21 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
     }
 
+    private static void registerWardenHelmet(ItemModelGenerators itemModelGenerators, ArmorItem armor) {
+        ResourceLocation armorModelIdentifier = ModelLocationUtils.getModelLocation(armor);
+        ResourceLocation armorTextureIdentifier = TextureMapping.getItemTexture(armor);
+        ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> itemModelGenerators.generateBaseArmorTrimTemplate(id, textures, armor.getMaterial()));
+        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGenerators.GENERATED_TRIM_MODELS) {
+            String string = trimMaterial.name(armor.getMaterial());
+            ResourceLocation identifier4 = itemModelGenerators.getItemModelForTrimMaterial(armorModelIdentifier, string);
+            String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
+            ResourceLocation trimOverlayIdentifier = new ResourceLocation(DeeperDarker.MOD_ID, string2).withPrefix("trims/items/");
+            itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
+        }
+    }
+
     @SafeVarargs
-    private static void registerParented(BlockModelGenerators BlockModelGenerators, Block parent, Block child, Tuple<TextureSlot, ResourceLocation> ... textures) {
+    private static void registerParented(BlockModelGenerators blockModelGenerators, Block parent, Block child, Tuple<TextureSlot, ResourceLocation> ... textures) {
         List<TextureSlot> textureKeys = new ArrayList<>();
         TextureMapping textureMap = new TextureMapping();
         for (Tuple<TextureSlot, ResourceLocation> pair : textures) {
@@ -314,6 +340,19 @@ public class DDModelProvider extends FabricModelProvider {
         }
         ModelTemplate parentModel = new ModelTemplate(Optional.of(ModelLocationUtils.getModelLocation(parent)), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
 
-        parentModel.create(child, textureMap, BlockModelGenerators.modelOutput);
+        parentModel.create(child, textureMap, blockModelGenerators.modelOutput);
+    }
+
+    @SafeVarargs
+    private static void registerParented(BlockModelGenerators blockModelGenerators, ResourceLocation parent, ResourceLocation child, Tuple<TextureSlot, ResourceLocation> ... textures) {
+        List<TextureSlot> textureKeys = new ArrayList<>();
+        TextureMapping textureMap = new TextureMapping();
+        for (Tuple<TextureSlot, ResourceLocation> pair : textures) {
+            textureKeys.add(pair.getA());
+            textureMap.put(pair.getA(), pair.getB());
+        }
+        ModelTemplate parentModel = new ModelTemplate(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
+
+        parentModel.create(child, textureMap, blockModelGenerators.modelOutput);
     }
 }
