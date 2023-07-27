@@ -15,10 +15,12 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 	private final ModelPart root;
 	private final ModelPart head;
 
+	private final ModelPart fakeVase;
 
 	public StalkerModel(ModelPart root) {
 		this.root = root;
 		this.head = root.getChild("root").getChild("waist");
+		this.fakeVase = root.getChild("root").getChild("fake_vase");
 	}
 
 	public static LayerDefinition createBodyModel() {
@@ -78,6 +80,8 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 		this.animate(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
 		this.animate(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
 		this.animate(entity.emergeState, StalkerAnimation.EMERGE, ageInTicks);
+
+		fakeVase.visible = entity.emergeState.isStarted() ? true : false;
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

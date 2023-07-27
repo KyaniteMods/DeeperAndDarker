@@ -52,6 +52,11 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
+    protected float getSoundVolume() {
+        return 0.15f;
+    }
+
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.1, true));

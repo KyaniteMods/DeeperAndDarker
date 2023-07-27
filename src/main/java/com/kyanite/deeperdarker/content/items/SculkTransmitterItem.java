@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -92,7 +93,7 @@ public class SculkTransmitterItem extends Item {
 
         MenuProvider menu = level.getBlockState(linkedBlockPos).getMenuProvider(level, linkedBlockPos);
         if(menu != null) {
-            player.playSound(DDSounds.TRANSMITTER_OPEN, 1, 1);
+            player.playNotifySound(DDSounds.TRANSMITTER_OPEN, SoundSource.PLAYERS, 1.0f, 1.0f);
             player.openMenu(menu);
             if(level.getBlockEntity(linkedBlockPos) instanceof ChestBlockEntity chestBlockEntity) chestBlockEntity.startOpen(player);
         }
@@ -104,16 +105,18 @@ public class SculkTransmitterItem extends Item {
         CompoundTag tag = new CompoundTag();
         if(pos == null) {
             stack.removeTagKey("blockPos");
+            stack.removeTagKey("linked");
             return;
         }
 
         linkedBlock = level.getBlockState(pos).getBlock();
+        tag.putBoolean("linked", true);
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
         stack.setTag(tag);
     }
 
     private void actionBarMessage(Player player, String key, SoundEvent sound) {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
-        player.playSound(sound);
+        player.playNotifySound(sound, SoundSource.PLAYERS, 1.0f, 1.0f);
     }
 }
