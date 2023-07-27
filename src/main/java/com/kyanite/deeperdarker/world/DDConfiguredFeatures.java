@@ -90,14 +90,14 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, ORE_INFESTED_SCULK, Feature.ORE, new OreConfiguration(INFESTED_SCULK_TARGET_LIST, 9));
         FeatureUtils.register(context, ORE_SCULK_JAW, Feature.ORE, new OreConfiguration(SCULK_JAW_TARGET_LIST, 6));
         FeatureUtils.register(context, ORE_ECHO_SOIL, Feature.ORE, new OreConfiguration(ECHO_SOIL_TARGET_LIST, 64));
-        FeatureUtils.register(context, ORE_SCULK_COAL, Feature.ORE, new OreConfiguration(COAL_TARGET_LIST, 14));
-        FeatureUtils.register(context, ORE_SCULK_IRON, Feature.ORE, new OreConfiguration(IRON_TARGET_LIST, 13));
-        FeatureUtils.register(context, ORE_SCULK_COPPER, Feature.ORE, new OreConfiguration(COPPER_TARGET_LIST, 15));
-        FeatureUtils.register(context, ORE_SCULK_GOLD, Feature.ORE, new OreConfiguration(GOLD_TARGET_LIST, 13));
-        FeatureUtils.register(context, ORE_SCULK_REDSTONE, Feature.ORE, new OreConfiguration(REDSTONE_TARGET_LIST, 8));
+        FeatureUtils.register(context, ORE_SCULK_COAL, Feature.ORE, new OreConfiguration(COAL_TARGET_LIST, 14, 0.2f));
+        FeatureUtils.register(context, ORE_SCULK_IRON, Feature.ORE, new OreConfiguration(IRON_TARGET_LIST, 13, 0.3f));
+        FeatureUtils.register(context, ORE_SCULK_COPPER, Feature.ORE, new OreConfiguration(COPPER_TARGET_LIST, 15, 0.3f));
+        FeatureUtils.register(context, ORE_SCULK_GOLD, Feature.ORE, new OreConfiguration(GOLD_TARGET_LIST, 13, 0.4f));
+        FeatureUtils.register(context, ORE_SCULK_REDSTONE, Feature.ORE, new OreConfiguration(REDSTONE_TARGET_LIST, 8, 0.5f));
         FeatureUtils.register(context, ORE_SCULK_EMERALD, Feature.ORE, new OreConfiguration(EMERALD_TARGET_LIST, 3, 0.4f));
-        FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10));
-        FeatureUtils.register(context, ORE_SCULK_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.1f));
+        FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10, 0.5f));
+        FeatureUtils.register(context, ORE_SCULK_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.4f));
 
         FeatureUtils.register(context, TREE_ECHO, Feature.TREE, createEcho().build());
     }
