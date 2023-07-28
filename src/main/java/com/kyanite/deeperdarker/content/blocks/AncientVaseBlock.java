@@ -2,9 +2,10 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
-import com.kyanite.deeperdarker.content.entities.Stalker;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -70,11 +71,8 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                         entity.moveTo(pPos.getX() + random.nextFloat(), pPos.getY() + random.nextFloat() + 0.15f, pPos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
                         level.addFreshEntity(entity);
                     }
-                } else {
-                    Stalker entity = DDEntities.STALKER.get().create(level);
-                    assert entity != null;
-                    entity.moveTo(pPos, 0, 0);
-                    level.addFreshEntity(entity);
+                } else if(pLevel instanceof ServerLevel serverLevel) {
+                    DDEntities.STALKER.get().spawn(serverLevel, pPos, MobSpawnType.TRIGGERED);
                 }
             }
         }

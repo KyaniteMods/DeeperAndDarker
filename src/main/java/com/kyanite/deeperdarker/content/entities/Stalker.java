@@ -5,6 +5,9 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -13,6 +16,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -24,17 +28,19 @@ import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
 import net.minecraft.world.level.gameevent.EntityPositionSource;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.BiConsumer;
 
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings("deprecation, NullableProblems")
 public class Stalker extends Monster implements DisturbanceListener, VibrationSystem {
     private static final EntityDataAccessor<Integer> RING_COOLDOWN = SynchedEntityData.defineId(Stalker.class, EntityDataSerializers.INT);
     public final AnimationState idleState = new AnimationState();
@@ -46,7 +52,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     private final VibrationSystem.Data vibrationData;
     public BlockPos disturbanceLocation;
     private boolean playersInRange;
-    private boolean ring;
 
     public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -118,34 +123,31 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
             if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
             }
+
+            if(this.getPose() == Pose.EMERGING) {
+                double sX = this.random.nextGaussian() * 0.02;
+                double sY = this.random.nextGaussian() * 0.02;
+                double sZ = this.random.nextGaussian() * 0.02;
+                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
+            }
         }
+
+        if(this.noActionTime > 70) this.setPose(Pose.STANDING);
 
         List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
         if(!players.isEmpty()) {
             if(this.entityData.get(RING_COOLDOWN) <= -100) {
                 this.playersInRange = false;
-                ring = false;
                 this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
                 if(level().isClientSide()) this.ringAttackState.stop();
             } else if(this.entityData.get(RING_COOLDOWN) <= 0) {
                 if(level().isClientSide()) this.ringAttackState.start(this.tickCount);
                 this.playersInRange = true;
-                ring = true;
             }
         } else if(this.playersInRange) {
             this.playersInRange = false;
             this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
             if(level().isClientSide()) this.ringAttackState.stop();
-        }
-
-        if(!players.isEmpty()) {
-            if(!level().isClientSide() && ring) {
-                for(Player player : players) {
-                    player.hurt(level().damageSources().magic(), 2.5f);
-                    player.knockback(0.2f, 0.4f, 0.4f);
-                    player.hurtMarked = true;
-                }
-            }
         }
     }
 
@@ -157,6 +159,22 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         } else {
             super.handleEntityEvent(pId);
         }
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
+        if(pKey.equals(DATA_POSE)) {
+            if(this.getPose() == Pose.EMERGING) this.emergeState.start(this.tickCount);
+            if(this.getPose() == Pose.STANDING) this.emergeState.stop();
+        }
+
+        super.onSyncedDataUpdated(pKey);
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+        if(pReason == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
     @Override
