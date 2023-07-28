@@ -1,11 +1,12 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.entities.ShriekWorm;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -22,16 +23,13 @@ public class InfestedSculkBlock extends Block {
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof Player player) {
             pLevel.setBlock(pPos, Blocks.SCULK.defaultBlockState(), 3);
-            player.knockback(1.5, 1.5, 1.5);
-            ShriekWorm entity = DDEntities.SHRIEK_WORM.get().create(pLevel);
-            assert entity != null;
-            pLevel.addFreshEntity(entity);
-            entity.moveTo(pPos.above(), 0, 0);
+            player.knockback(1.5, player.getX() - pPos.getX(), player.getZ() - pPos.getZ());
+            if(pLevel instanceof ServerLevel serverLevel) DDEntities.SHRIEK_WORM.get().spawn(serverLevel, pPos, MobSpawnType.TRIGGERED);
         }
 
         if(pLevel.isClientSide()) {
             RandomSource random = RandomSource.create();
-            for(int i = 0; i < 20; ++i) {
+            for(int i = 0; i < 20; i++) {
                 double sX = random.nextGaussian() * 0.02;
                 double sY = random.nextGaussian() * 0.02;
                 double sZ = random.nextGaussian() * 0.02;
