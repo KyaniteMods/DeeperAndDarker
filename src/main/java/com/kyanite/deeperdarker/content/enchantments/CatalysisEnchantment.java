@@ -26,7 +26,7 @@ public class CatalysisEnchantment extends Enchantment {
             if(entity.isDeadOrDying()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
                 spreader.addCursors(new BlockPos((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
-                for(int i = 0; i < 10; i++) {
+                for(int i = 0; i < (int) (10 * pLevel * 0.9); i++) {
                     spreader.updateCursors(entity.level(), entity.blockPosition(), entity.getRandom(), true);
                 }
                 entity.skipDropExperience();
@@ -43,6 +43,11 @@ public class CatalysisEnchantment extends Enchantment {
     @Override
     public int getMaxCost(int pLevel) {
         return (int) (getMinCost(pLevel) * 1.5);
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
     }
 
     @Override
