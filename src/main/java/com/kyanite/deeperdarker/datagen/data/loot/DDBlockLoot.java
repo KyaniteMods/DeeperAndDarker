@@ -52,6 +52,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.ECHO_SAPLING.get());
         dropSelf(DDBlocks.ECHO_SIGN.get());
         dropSelf(DDBlocks.ECHO_HANGING_SIGN.get());
+        dropPottedContents(DDBlocks.POTTED_ECHO_SAPLING.get());
 
         add(DDBlocks.SCULK_STONE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());
