@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-27T17:58:35.9796464	Deeper and Darker/Block Loot Tables
+// 1.20.1	2023-07-27T18:22:32.2072172	Deeper and Darker/Block Loot Tables
 baa96be68d85a03c980802642478e61a7afa4032 data\deeperdarker\loot_tables\blocks\sculk_stone_gold_ore.json
 097f61034d2c53785e6b5b93d1e675d1038b7e63 data\deeperdarker\loot_tables\blocks\polished_sculk_stone.json
 9da81cff96f591867c050dc195a59591c0570c6b data\deeperdarker\loot_tables\blocks\echo_fence.json
@@ -53,8 +53,8 @@ fac28cf1ae6e13e7a5931b99c9b50ed3abc5d0a0 data\deeperdarker\loot_tables\blocks\co
 9ae83cb0864e01c5dfc44cc94c51d7be9dc932e8 data\deeperdarker\loot_tables\blocks\sculk_stone_slab.json
 f4cf2356eb4c423fbf99bf770a1bcea193eafb05 data\deeperdarker\loot_tables\blocks\infested_sculk.json
 faa7dfad6b168dbafe412fcd7b76bbf4c62eb2c5 data\deeperdarker\loot_tables\blocks\echo_button.json
-8f9f175e4d806246025f39c8a60a65e1bed4b592 data\deeperdarker\loot_tables\blocks\echo_trapdoor.json
 9c4e812fbceedb188163d9048547ef79c9ca86be data\deeperdarker\loot_tables\blocks\sculk_grime_bricks.json
+8f9f175e4d806246025f39c8a60a65e1bed4b592 data\deeperdarker\loot_tables\blocks\echo_trapdoor.json
 6100982877a5b35f77e6f8efe70a3339be7008b6 data\deeperdarker\loot_tables\blocks\sculk_stone_brick_stairs.json
 08db9117226dcf5e1df78235919cbe39446bd660 data\deeperdarker\loot_tables\blocks\cobbled_sculk_stone_stairs.json
 83207688854f505e103483be82c1324df1daecb0 data\deeperdarker\loot_tables\blocks\cut_sculk_stone_stairs.json

@@ -7,6 +7,51 @@
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"
       },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/stairs/staircase_1",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/stairs/staircase_2",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/stairs/staircase_3",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/stairs/staircase_4",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/stairs/staircase_5",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
       "weight": 1
     }
   ],

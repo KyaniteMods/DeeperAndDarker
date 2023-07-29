@@ -13,7 +13,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:ambient.soul_sand_valley.loop"
+      "sound": "deeperdarker:music.deeperdarker.echoing_forest"
     },
     "particle": {
       "options": {
@@ -49,6 +49,8 @@
     [
       "deeperdarker:sculk_gleam_forest",
       "deeperdarker:sculk",
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
       "deeperdarker:sculk_gleam"
     ],
     [],

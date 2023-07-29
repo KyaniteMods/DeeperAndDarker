@@ -13,7 +13,8 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:ambient.soul_sand_valley.loop"
+      "sound": "deeperdarker:music.deeperdarker.arrival",
+      "_comment": "This song should probably be changed later, since this is probably meant to play once the player enters the Otherside for the first time only"
     },
     "sky_color": 8625919,
     "water_color": 1254763,
@@ -42,6 +43,8 @@
     [
       "deeperdarker:sculk_stone_column",
       "deeperdarker:sculk",
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
       "deeperdarker:sculk_gleam"
     ],
     [],
