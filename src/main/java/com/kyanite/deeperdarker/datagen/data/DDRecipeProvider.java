@@ -114,8 +114,8 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("BDB").pattern("DED").pattern("BSB")
                 .unlockedBy("has_elytra", has(Items.ELYTRA)).save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
-                .define('P', Items.PHANTOM_MEMBRANE).define('E', Items.ECHO_SHARD).define('C', DDItems.WARDEN_CARAPACE.get())
-                .pattern("PEP").pattern("ECE").pattern("PEP")
+                .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE.get()).define('E', Items.ECHO_SHARD)
+                .pattern("PCP").pattern("CEC").pattern("PCP")
                 .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(writer);
         copySmithingTemplate(writer, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.SCULK);
     }

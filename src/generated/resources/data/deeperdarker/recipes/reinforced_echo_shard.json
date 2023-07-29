@@ -13,9 +13,9 @@
     }
   },
   "pattern": [
-    "PEP",
-    "ECE",
-    "PEP"
+    "PCP",
+    "CEC",
+    "PCP"
   ],
   "result": {
     "item": "deeperdarker:reinforced_echo_shard"
