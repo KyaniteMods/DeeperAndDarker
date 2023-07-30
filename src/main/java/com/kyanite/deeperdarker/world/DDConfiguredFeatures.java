@@ -106,14 +106,14 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, ORE_SCULK_GOLD, Feature.ORE, new OreConfiguration(GOLD_TARGET_LIST, 13, 0.4f));
         FeatureUtils.register(context, ORE_SCULK_REDSTONE, Feature.ORE, new OreConfiguration(REDSTONE_TARGET_LIST, 8, 0.5f));
         FeatureUtils.register(context, ORE_SCULK_EMERALD, Feature.ORE, new OreConfiguration(EMERALD_TARGET_LIST, 3, 0.4f));
-        FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10, 0.5f));
+        FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10, 0.7f));
         FeatureUtils.register(context, ORE_SCULK_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.4f));
 
         FeatureUtils.register(context, ORE_GLOOMSLATE_COAL, Feature.ORE, new OreConfiguration(COAL_TARGET_LIST, 14, 0.3f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_IRON, Feature.ORE, new OreConfiguration(IRON_TARGET_LIST, 13, 0.4f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_COPPER, Feature.ORE, new OreConfiguration(COPPER_TARGET_LIST, 15, 0.4f));
-        FeatureUtils.register(context, ORE_GLOOMSLATE_GOLD, Feature.ORE, new OreConfiguration(GOLD_TARGET_LIST, 13, 0.6f));
-        FeatureUtils.register(context, ORE_GLOOMSLATE_REDSTONE, Feature.ORE, new OreConfiguration(REDSTONE_TARGET_LIST, 8, 0.7f));
+        FeatureUtils.register(context, ORE_GLOOMSLATE_GOLD, Feature.ORE, new OreConfiguration(GOLD_TARGET_LIST, 13, 0.5f));
+        FeatureUtils.register(context, ORE_GLOOMSLATE_REDSTONE, Feature.ORE, new OreConfiguration(REDSTONE_TARGET_LIST, 8, 0.6f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_EMERALD, Feature.ORE, new OreConfiguration(EMERALD_TARGET_LIST, 3, 0.6f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10, 0.7f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.6f));
