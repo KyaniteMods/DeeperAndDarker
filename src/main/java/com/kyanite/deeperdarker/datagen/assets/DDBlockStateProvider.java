@@ -118,6 +118,14 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_STONE_EMERALD_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_DIAMOND_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_COAL_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_IRON_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_COPPER_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_GOLD_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_REDSTONE_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_EMERALD_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_LAPIS_ORE.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
         simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOMY_CACTUS.getId().getPath(), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOMY_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOMY_CACTUS, "top")));

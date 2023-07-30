@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-24T15:23:04.2649106	Item Models: deeperdarker
+// 1.20.1	2023-07-30T14:33:21.5008835	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
@@ -42,6 +42,14 @@ f584b7594997a162416c8df4cfbe071fab3fe7a1 assets/deeperdarker/models/item/gloomsl
 730936190c22c49e6167650ca9765ccfb3275954 assets/deeperdarker/models/item/gloomslate_brick_slab.json
 7c8c5d2ca359d7edff71ffbe04e8f855f9e11a69 assets/deeperdarker/models/item/gloomslate_brick_stairs.json
 500ff87df1c3089ed9424076ee46dbe29296d141 assets/deeperdarker/models/item/gloomslate_brick_wall.json
+9817b0a47a20dd99fec2db505850e2dbb87f17c1 assets/deeperdarker/models/item/gloomslate_coal_ore.json
+57060eb6286f6e1d126d193acd6c23c35305d570 assets/deeperdarker/models/item/gloomslate_copper_ore.json
+3f5fe80e816e10b537bd79b1135cecdf246bef1e assets/deeperdarker/models/item/gloomslate_diamond_ore.json
+251dc5f82b06d7c4fad63109af40e1d27bfb8fda assets/deeperdarker/models/item/gloomslate_emerald_ore.json
+6b75ca6d33acf6d402fc9abb2da7b19b5bb380c7 assets/deeperdarker/models/item/gloomslate_gold_ore.json
+a4d691e5a501a86fb5fefd9d8701bd84889637e2 assets/deeperdarker/models/item/gloomslate_iron_ore.json
+af9de675cedb0420368c049eb6333f3bfb3902d7 assets/deeperdarker/models/item/gloomslate_lapis_ore.json
+f064ffe0000288a6ed9d50c83540f7c2142bbc95 assets/deeperdarker/models/item/gloomslate_redstone_ore.json
 67ac5b49ce349fd56af9d716b1b519568a3f4284 assets/deeperdarker/models/item/gloomslate_slab.json
 917e5b5e708a373b6d7bb96460c52ebc80e67be2 assets/deeperdarker/models/item/gloomslate_stairs.json
 3f8d9851eef666949d0f4f21eb509a877064769b assets/deeperdarker/models/item/gloomslate_tiles.json

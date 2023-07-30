@@ -133,6 +133,14 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.SCULK_STONE_EMERALD_ORE.get(), (block) -> this.createOreDrop(block, Items.EMERALD));
         add(DDBlocks.SCULK_STONE_LAPIS_ORE.get(), this::createLapisOreDrops);
         add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
+        add(DDBlocks.GLOOMSLATE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
+        add(DDBlocks.GLOOMSLATE_IRON_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_IRON));
+        add(DDBlocks.GLOOMSLATE_COPPER_ORE.get(), this::createCopperOreDrops);
+        add(DDBlocks.GLOOMSLATE_GOLD_ORE.get(), (block) -> this.createOreDrop(block, Items.RAW_GOLD));
+        add(DDBlocks.GLOOMSLATE_REDSTONE_ORE.get(), this::createRedstoneOreDrops);
+        add(DDBlocks.GLOOMSLATE_EMERALD_ORE.get(), (block) -> this.createOreDrop(block, Items.EMERALD));
+        add(DDBlocks.GLOOMSLATE_LAPIS_ORE.get(), this::createLapisOreDrops);
+        add(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
 
         add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS.get());

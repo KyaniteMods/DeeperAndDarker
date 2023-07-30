@@ -160,6 +160,14 @@ public class DDBlocks {
     public static final RegistryObject<Block> SCULK_STONE_EMERALD_ORE = register("sculk_stone_emerald_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(5, 10)));
     public static final RegistryObject<Block> SCULK_STONE_LAPIS_ORE = register("sculk_stone_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(4, 8)));
     public static final RegistryObject<Block> SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE.get()), UniformInt.of(5, 10)));
+    public static final RegistryObject<Block> GLOOMSLATE_COAL_ORE = register("gloomslate_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()), UniformInt.of(1, 4)));
+    public static final RegistryObject<Block> GLOOMSLATE_IRON_ORE = register("gloomslate_iron_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<Block> GLOOMSLATE_COPPER_ORE = register("gloomslate_copper_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<Block> GLOOMSLATE_GOLD_ORE = register("gloomslate_gold_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+    public static final RegistryObject<Block> GLOOMSLATE_REDSTONE_ORE = register("gloomslate_redstone_ore", () -> new RedStoneOreBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()).randomTicks().lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 9 : 0)));
+    public static final RegistryObject<Block> GLOOMSLATE_EMERALD_ORE = register("gloomslate_emerald_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()), UniformInt.of(5, 10)));
+    public static final RegistryObject<Block> GLOOMSLATE_LAPIS_ORE = register("gloomslate_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()), UniformInt.of(4, 8)));
+    public static final RegistryObject<Block> GLOOMSLATE_DIAMOND_ORE = register("gloomslate_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()), UniformInt.of(5, 10)));
 
     public static final RegistryObject<Block> GLOOMY_GRASS = register("gloomy_grass", () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
     public static final RegistryObject<Block> GLOOMY_CACTUS = register("gloomy_cactus", () -> new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOL)));

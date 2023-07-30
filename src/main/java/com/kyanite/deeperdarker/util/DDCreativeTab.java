@@ -111,6 +111,14 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
             event.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
             event.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_COAL_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_IRON_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_COPPER_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_GOLD_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_REDSTONE_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_EMERALD_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_LAPIS_ORE);
+            event.accept(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
             event.accept(DDBlocks.ECHO_LEAVES);
             event.accept(DDBlocks.ECHO_SAPLING);

@@ -118,6 +118,14 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModel(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModel(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_COAL_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_IRON_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_COPPER_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_GOLD_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_REDSTONE_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_EMERALD_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_LAPIS_ORE);
+        blockModel(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
         blockItemModel(DDBlocks.GLOOMY_GRASS, DDBlocks.GLOOMY_GRASS, GENERATED);
         blockModel(DDBlocks.GLOOMY_CACTUS);
