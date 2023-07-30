@@ -1,12 +1,15 @@
 {
   "type": "minecraft:ore",
   "config": {
-    "discard_chance_on_air_exposure": 0.2,
-    "size": 14,
+    "discard_chance_on_air_exposure": 0.7,
+    "size": 8,
     "targets": [
       {
         "state": {
-          "Name": "deeperdarker:sculk_stone_coal_ore"
+          "Name": "deeperdarker:sculk_stone_redstone_ore",
+          "Properties": {
+            "lit": "false"
+          }
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -15,7 +18,10 @@
       },
       {
         "state": {
-          "Name": "deeperdarker:gloomslate_coal_ore"
+          "Name": "deeperdarker:gloomslate_redstone_ore",
+          "Properties": {
+            "lit": "false"
+          }
         },
         "target": {
           "block": "deeperdarker:gloomslate",

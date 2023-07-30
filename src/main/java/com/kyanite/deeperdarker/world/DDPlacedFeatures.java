@@ -36,6 +36,15 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
 
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_COAL = createKey("gloomslate_coal");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_IRON = createKey("gloomslate_iron");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_COPPER = createKey("gloomslate_copper");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_GOLD = createKey("gloomslate_gold");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_REDSTONE = createKey("gloomslate_redstone");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_EMERALD = createKey("gloomslate_emerald");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_LAPIS = createKey("gloomslate_lapis");
+    public static final ResourceKey<PlacedFeature> GLOOMSLATE_DIAMOND = createKey("gloomslate_diamond");
+
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -62,6 +71,15 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_EMERALD), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
         PlacementUtils.register(context, SCULK_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
         PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
+
+        PlacementUtils.register(context, GLOOMSLATE_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
+        PlacementUtils.register(context, GLOOMSLATE_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));
+        PlacementUtils.register(context, GLOOMSLATE_COPPER, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COPPER), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256))));
+        PlacementUtils.register(context, GLOOMSLATE_GOLD, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_GOLD), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70))));
+        PlacementUtils.register(context, GLOOMSLATE_REDSTONE, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_REDSTONE), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64))));
+        PlacementUtils.register(context, GLOOMSLATE_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_EMERALD), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
+        PlacementUtils.register(context, GLOOMSLATE_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
+        PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome());
     }

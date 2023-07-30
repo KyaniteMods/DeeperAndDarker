@@ -15,6 +15,18 @@
           "predicate_type": "minecraft:tag_match",
           "tag": "deeperdarker:sculk_stone_replaceables"
         }
+      },
+      {
+        "state": {
+          "Name": "deeperdarker:gloomslate_redstone_ore",
+          "Properties": {
+            "lit": "false"
+          }
+        },
+        "target": {
+          "block": "deeperdarker:gloomslate",
+          "predicate_type": "minecraft:block_match"
+        }
       }
     ]
   }

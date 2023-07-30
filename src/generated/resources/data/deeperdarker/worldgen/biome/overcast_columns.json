@@ -35,7 +35,16 @@
     ],
     [],
     [],
-    [],
+    [
+      "deeperdarker:gloomslate_coal",
+      "deeperdarker:gloomslate_iron",
+      "deeperdarker:gloomslate_copper",
+      "deeperdarker:gloomslate_gold",
+      "deeperdarker:gloomslate_redstone",
+      "deeperdarker:gloomslate_emerald",
+      "deeperdarker:gloomslate_lapis",
+      "deeperdarker:gloomslate_diamond"
+    ],
     [
       "deeperdarker:gloomslate_column"
     ],
