@@ -330,11 +330,11 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void oreSmelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getSmeltingRecipeName(result)  + getItemName(ingredient)));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getSmeltingRecipeName(result)  + "_" + getItemName(ingredient)));
     }
 
     private void oreBlasting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, experience, 100).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getBlastingRecipeName(result) + getItemName(ingredient)));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, experience, 100).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getBlastingRecipeName(result) + "_" + getItemName(ingredient)));
     }
 
     private void stonecuttingRecipe(Consumer<FinishedRecipe> writer, ItemLike ingredient, ItemLike result) {
