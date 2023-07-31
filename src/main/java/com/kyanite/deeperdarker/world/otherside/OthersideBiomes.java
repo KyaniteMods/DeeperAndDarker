@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.world.otherside;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.world.DDPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.particles.ParticleTypes;
@@ -43,7 +44,6 @@ public class OthersideBiomes {
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
-        Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
                 .temperature(-0.5f)
                 .downfall(-0.5f)
@@ -52,8 +52,8 @@ public class OthersideBiomes {
                         .waterFogColor(0x132052)
                         .fogColor(0x141c33)
                         .skyColor(calculateSkyColor(-0.5f))
-                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
-                        .backgroundMusic(music).build())
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2.0D))
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_ARRIVAL)).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
@@ -72,7 +72,6 @@ public class OthersideBiomes {
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
-        Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
                 .temperature(0.3f)
                 .downfall(0.5f)
@@ -82,8 +81,8 @@ public class OthersideBiomes {
                         .fogColor(0x301a40)
                         .skyColor(calculateSkyColor(0.3f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.04f))
-                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
-                        .backgroundMusic(music).build())
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2.0D))
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST)).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
@@ -107,7 +106,6 @@ public class OthersideBiomes {
 
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
-        Music music = Musics.createGameMusic(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP);
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
                 .temperature(0.6f)
                 .downfall(0.2f)
@@ -117,8 +115,8 @@ public class OthersideBiomes {
                         .fogColor(0x472918)
                         .skyColor(calculateSkyColor(0.6f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.026f))
-                        .ambientMoodSound(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 6000, 8, 2.0D))
-                        .backgroundMusic(music).build())
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2.0D))
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS)).build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(biomeBuilder.build()).build();
     }

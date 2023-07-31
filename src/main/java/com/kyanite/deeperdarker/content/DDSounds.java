@@ -50,6 +50,11 @@ public class DDSounds {
     public static final SoundEvent TRANSMITTER_OPEN = register("item.sculk_transmitter.open");
     public static final SoundEvent TRANSMITTER_UNLINK = register("item.sculk_transmitter.unlink");
 
+    public static final Holder.Reference<SoundEvent> AMBIENT_OTHERSIDE_ADDITIONS = registerReference("ambience.otherside");
+    public static final Holder.Reference<SoundEvent> MUSIC_ARRIVAL = registerReference("music.deeperdarker.arrival");
+    public static final Holder.Reference<SoundEvent> MUSIC_BIOME_ECHOING_FOREST = registerReference("music.deeperdarker.echoing_forest");
+    public static final Holder.Reference<SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = registerReference("music.deeperdarker.overcast_columns");
+
     private static SoundEvent register(String id) {
         return Registry.register(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, id), SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, id)));
     }
