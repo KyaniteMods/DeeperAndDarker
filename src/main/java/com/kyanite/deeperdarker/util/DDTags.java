@@ -14,8 +14,10 @@ public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Block> ECHO_SOIL = tag("echo_soil");
-        public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = tag("sculk_stone_replaceables");
+        public static final TagKey<Block> SCULK_STONE_REPLACEABLE = tag("sculk_stone_replaceable");
+        public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = tag("gloomslate_replaceable");
+        public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
         public static final TagKey<Block> TRANSMITTABLE = tag("transmittable");
 
         private static TagKey<Block> tag(String name) {
