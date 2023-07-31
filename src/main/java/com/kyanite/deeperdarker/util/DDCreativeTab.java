@@ -78,11 +78,6 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.CUT_SCULK_STONE_SLAB));
         entries.accept(new ItemStack(DDBlocks.CUT_SCULK_STONE_WALL));
         entries.accept(new ItemStack(DDBlocks.CHISELED_SCULK_STONE));
-        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME));
-        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICKS));
-        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICK_STAIRS));
-        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICK_SLAB));
-        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICK_WALL));
         entries.accept(new ItemStack(DDBlocks.GLOOMSLATE));
         entries.accept(new ItemStack(DDBlocks.GLOOMSLATE_STAIRS));
         entries.accept(new ItemStack(DDBlocks.GLOOMSLATE_SLAB));
@@ -112,6 +107,11 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.CUT_GLOOMSLATE_SLAB));
         entries.accept(new ItemStack(DDBlocks.CUT_GLOOMSLATE_WALL));
         entries.accept(new ItemStack(DDBlocks.CHISELED_GLOOMSLATE));
+        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME));
+        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICKS));
+        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICK_STAIRS));
+        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICK_SLAB));
+        entries.accept(new ItemStack(DDBlocks.SCULK_GRIME_BRICK_WALL));
         entries.accept(new ItemStack(DDBlocks.ECHO_SOIL));
         entries.accept(new ItemStack(DDBlocks.SCULK_GLEAM));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_COAL_ORE));
