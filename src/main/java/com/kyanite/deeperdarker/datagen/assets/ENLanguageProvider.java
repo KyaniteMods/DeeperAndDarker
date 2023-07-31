@@ -56,7 +56,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
-        add("subtitles.ambience.portal.groan", "The Otherside forebodes");
+        add("subtitles.ambient.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
         add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");

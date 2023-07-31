@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
+@SuppressWarnings("OptionalGetWithoutIsPresent")
 public class OthersideBiomes {
     public static final ResourceKey<Biome> DEEPLANDS = createKey("deeplands");
     public static final ResourceKey<Biome> ECHOING_FOREST = createKey("echoing_forest");
@@ -59,7 +60,7 @@ public class OthersideBiomes {
                         .waterFogColor(0x132052)
                         .fogColor(0x141c33)
                         .skyColor(calculateSkyColor(-0.5f))
-                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getHolder().get(), 6000, 8, 2.0D))
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getHolder().get(), 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_DEEPLANDS.getHolder().get())).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();

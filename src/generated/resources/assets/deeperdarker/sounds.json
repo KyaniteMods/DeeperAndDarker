@@ -1,13 +1,4 @@
 {
-  "ambience.portal.groan": {
-    "sounds": [
-      "deeperdarker:ambience/portal/groan1",
-      "deeperdarker:ambience/portal/groan2",
-      "deeperdarker:ambience/portal/groan3",
-      "deeperdarker:ambience/portal/groan4"
-    ],
-    "subtitle": "subtitles.ambience.portal.groan"
-  },
   "ambient.otherside.additions": {
     "sounds": [
       "deeperdarker:ambience/otherside/otherside1",
@@ -15,6 +6,15 @@
       "deeperdarker:ambience/otherside/otherside3"
     ],
     "subtitle": "subtitles.ambient.otherside.additions"
+  },
+  "ambient.portal.groan": {
+    "sounds": [
+      "deeperdarker:ambience/portal/groan1",
+      "deeperdarker:ambience/portal/groan2",
+      "deeperdarker:ambience/portal/groan3",
+      "deeperdarker:ambience/portal/groan4"
+    ],
+    "subtitle": "subtitles.ambient.portal.groan"
   },
   "block.sculk_stone.break": {
     "sounds": [
