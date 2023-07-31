@@ -46,7 +46,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_VINES = createKey("sculk_vines");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMY_SCULK_VEGETATION = createKey("gloomy_sculk_vegetation");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMY_SCULK_BONEMEAL = createKey("gloomy_sculk_bonemeal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMY_SCULK_PATCH = createKey("gloomy_sculk_bonemeal");
 
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_SCULK = createKey("ore_sculk");
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_INFESTED_SCULK = createKey("ore_infested_sculk");
@@ -94,7 +94,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, SCULK_VINES, DDFeatures.SCULK_VINES.get());
 
         FeatureUtils.register(context, GLOOMY_SCULK_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.get().defaultBlockState(), 9).add(DDBlocks.GLOOMY_CACTUS.get().defaultBlockState(), 1))));
-        FeatureUtils.register(context, GLOOMY_SCULK_BONEMEAL, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 99).add(DDBlocks.GLOOMY_GEYSER.get().defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GLOOMY_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.2f, UniformInt.of(1, 2), 0.7f));
+        FeatureUtils.register(context, GLOOMY_SCULK_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 99).add(DDBlocks.GLOOMY_GEYSER.get().defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GLOOMY_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.2f, UniformInt.of(1, 2), 0.7f));
 
         FeatureUtils.register(context, ORE_SCULK, Feature.ORE, new OreConfiguration(SCULK_TARGET_LIST, 40));
         FeatureUtils.register(context, ORE_INFESTED_SCULK, Feature.ORE, new OreConfiguration(INFESTED_SCULK_TARGET_LIST, 9));
