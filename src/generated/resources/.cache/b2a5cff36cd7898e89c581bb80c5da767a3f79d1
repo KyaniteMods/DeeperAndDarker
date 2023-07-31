@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-31T15:42:50.7001364	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2023-07-31T16:56:21.7232868	Tags for minecraft:item mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 9e4ebbf0e38096f993924198f361dfb2cf939487 data/deeperdarker/tags/items/gloomslate_slabs.json
 a68bb1cb40bb6600c608243427041bdf6c7b662a data/deeperdarker/tags/items/sculk_stone_slabs.json
@@ -6,6 +6,7 @@ a84781beeff4cf18e5532d7e95fe62956c365027 data/forge/tags/items/armors/boots.json
 cd0c284256799e44917e495727d6befdd3b4515c data/forge/tags/items/armors/chestplates.json
 7f61d04c47afdea03496a2ecf268e2a58e08514e data/forge/tags/items/armors/helmets.json
 27cdfe38cacfb8862c0f8e357fb2d87ebe2c214a data/forge/tags/items/armors/leggings.json
+9d236ad52ffab14efb6405a34d837dafff77e363 data/forge/tags/items/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/forge/tags/items/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/forge/tags/items/ores/copper.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/forge/tags/items/ores/diamond.json
@@ -38,7 +39,6 @@ dff5da60a5f06c5c4f35c4f271b7c50221dd704d data/minecraft/tags/items/shovels.json
 3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/items/signs.json
 7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/items/slabs.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/items/stairs.json
-f4c908a9b679af3cc0f522524cb9e99bf1c71016 data/minecraft/tags/items/stone_bricks.json
 7a7e3ff463f91e4438ef607af19ff3fcc34f183d data/minecraft/tags/items/swords.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/items/walls.json
 379b61d8edf96f7b8cd4ca99ccbcff328671b625 data/minecraft/tags/items/wooden_buttons.json

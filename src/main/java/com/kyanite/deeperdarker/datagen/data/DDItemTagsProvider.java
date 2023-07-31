@@ -39,7 +39,6 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 
-        copy(BlockTags.STONE_BRICKS, ItemTags.STONE_BRICKS);
         copy(BlockTags.STAIRS, ItemTags.STAIRS);
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.WALLS, ItemTags.WALLS);
@@ -54,6 +53,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
         copy(Tags.Blocks.STONE, Tags.Items.STONE);
+        copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
         copy(Tags.Blocks.ORES_COPPER, Tags.Items.ORES_COPPER);
@@ -65,20 +65,20 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
 
-        tag(DDTags.Items.SCULK_STONE_SLABS).add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_SLAB.get().asItem(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_BRICK_SLAB.get().asItem(), DDBlocks.SCULK_STONE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get().asItem(), DDBlocks.CUT_SCULK_STONE_SLAB.get().asItem());
-        tag(DDTags.Items.GLOOMSLATE_SLABS).add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_SLAB.get().asItem(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.CUT_GLOOMSLATE_SLAB.get().asItem());
-
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get());
-
         tag(ItemTags.SHOVELS).add(DDItems.WARDEN_SHOVEL.get());
         tag(ItemTags.PICKAXES).add(DDItems.WARDEN_PICKAXE.get());
         tag(ItemTags.AXES).add(DDItems.WARDEN_AXE.get());
         tag(ItemTags.HOES).add(DDItems.WARDEN_HOE.get());
         tag(ItemTags.SWORDS).add(DDItems.WARDEN_SWORD.get());
+
         tag(Tags.Items.ARMORS_HELMETS).add(DDItems.WARDEN_HELMET.get());
         tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
         tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
         tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
+
+        tag(DDTags.Items.SCULK_STONE_SLABS).add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_SLAB.get().asItem(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_BRICK_SLAB.get().asItem(), DDBlocks.SCULK_STONE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get().asItem(), DDBlocks.CUT_SCULK_STONE_SLAB.get().asItem());
+        tag(DDTags.Items.GLOOMSLATE_SLABS).add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_SLAB.get().asItem(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.CUT_GLOOMSLATE_SLAB.get().asItem());
     }
 }

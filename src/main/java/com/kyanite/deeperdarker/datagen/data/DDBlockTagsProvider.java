@@ -56,8 +56,6 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get());
         tag(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN.get());
         tag(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN.get());
-
-        tag(BlockTags.STONE_BRICKS).add(DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.GLOOMSLATE_BRICKS.get(), DDBlocks.SCULK_GRIME_BRICKS.get());
         tag(BlockTags.STAIRS).add(DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get(), DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_GRIME_BRICK_STAIRS.get(),
                 DDBlocks.GLOOMSLATE_STAIRS.get(), DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get(), DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get(), DDBlocks.GLOOMSLATE_BRICK_STAIRS.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get(), DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         tag(BlockTags.SLABS).add(DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_GRIME_BRICK_SLAB.get(),
@@ -78,7 +76,6 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL.get());
 
         tag(Tags.Blocks.STONE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get());
-
         tag(Tags.Blocks.ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get(),
                 DDBlocks.GLOOMSLATE_COAL_ORE.get(), DDBlocks.GLOOMSLATE_IRON_ORE.get(), DDBlocks.GLOOMSLATE_COPPER_ORE.get(), DDBlocks.GLOOMSLATE_GOLD_ORE.get(), DDBlocks.GLOOMSLATE_REDSTONE_ORE.get(), DDBlocks.GLOOMSLATE_EMERALD_ORE.get(), DDBlocks.GLOOMSLATE_LAPIS_ORE.get(), DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
         tag(Tags.Blocks.ORES_COAL).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.GLOOMSLATE_COAL_ORE.get());
