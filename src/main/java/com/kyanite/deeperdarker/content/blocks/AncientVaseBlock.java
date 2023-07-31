@@ -87,6 +87,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                 }
             }
         }
+        super.playerDestroy(pLevel, pPlayer, pBlockPos, pBlockState, pBlockEntity, pItemStack);
     }
 
     @Override
