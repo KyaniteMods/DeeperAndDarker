@@ -1,8 +1,8 @@
-// 1.20.1	2023-07-31T15:19:28.6639557	Registries
+// 1.20.1	2023-07-31T16:12:10.7650879	Registries
 68170e4100ca5f0c7910e05fe8b65978b67d7214 data/deeperdarker/dimension_type/otherside.json
-2f497fc104a447d95c612e061a81215b226ea839 data/deeperdarker/worldgen/biome/deeplands.json
-06607f421f44429555a605ad8065e5087cc8055c data/deeperdarker/worldgen/biome/echoing_forest.json
-edcbe72b8f7724efcfa311d1a02e8bcfb4930164 data/deeperdarker/worldgen/biome/overcast_columns.json
+8b58be914958ee5f1e91cc71c77770e71e78fe6d data/deeperdarker/worldgen/biome/deeplands.json
+6d1c80cd2ba63b4ea42e3be82941c8f7ec9a8cfd data/deeperdarker/worldgen/biome/echoing_forest.json
+06d29b9291ed3a63be90750a8c6f182e0c168b7b data/deeperdarker/worldgen/biome/overcast_columns.json
 5097028f5c8ae5e294126d6df771e3126d4fbd07 data/deeperdarker/worldgen/configured_feature/gloomslate_column.json
 ba29dfa84f2bebe688044c6e89b6c1d38dbaf0c6 data/deeperdarker/worldgen/configured_feature/gloomslate_generation.json
 5d330f021ad1e22b038b08bfd79b49f5da654254 data/deeperdarker/worldgen/configured_feature/gloomy_sculk_bonemeal.json

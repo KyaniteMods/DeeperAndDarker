@@ -8,6 +8,14 @@
     ],
     "subtitle": "subtitles.ambience.portal.groan"
   },
+  "ambient.otherside.additions": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/otherside1",
+      "deeperdarker:ambience/otherside/otherside2",
+      "deeperdarker:ambience/otherside/otherside3"
+    ],
+    "subtitle": "subtitles.ambient.otherside.additions"
+  },
   "block.sculk_stone.break": {
     "sounds": [
       "deeperdarker:block/sculk_stone/break1",
@@ -226,5 +234,20 @@
       "deeperdarker:item/transmitter/unlink"
     ],
     "subtitle": "subtitles.item.transmitter.unlink"
+  },
+  "music.otherside.deeplands": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/deeplands"
+    ]
+  },
+  "music.otherside.echoing_forest": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/echoing_forest"
+    ]
+  },
+  "music.otherside.overcast_columns": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/overcast_columns"
+    ]
   }
 }

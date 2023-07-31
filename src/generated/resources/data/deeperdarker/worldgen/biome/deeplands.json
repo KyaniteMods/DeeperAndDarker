@@ -6,14 +6,14 @@
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
-      "sound": "minecraft:ambient.soul_sand_valley.mood",
+      "sound": "deeperdarker:ambient.otherside.additions",
       "tick_delay": 6000
     },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "minecraft:ambient.soul_sand_valley.loop"
+      "sound": "deeperdarker:music.otherside.deeplands"
     },
     "sky_color": 8625919,
     "water_color": 1254763,

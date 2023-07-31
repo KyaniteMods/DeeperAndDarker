@@ -11,6 +11,11 @@ import net.minecraftforge.registries.RegistryObject;
 public class DDSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, DeeperDarker.MOD_ID);
 
+    public static final RegistryObject<SoundEvent> AMBIENT_OTHERSIDE_ADDITIONS = register("ambient.otherside.additions");
+    public static final RegistryObject<SoundEvent> MUSIC_BIOME_DEEPLANDS = register("music.otherside.deeplands");
+    public static final RegistryObject<SoundEvent> MUSIC_BIOME_ECHOING_FOREST = register("music.otherside.echoing_forest");
+    public static final RegistryObject<SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = register("music.otherside.overcast_columns");
+
     public static final RegistryObject<SoundEvent> PORTAL_GROAN = register("ambience.portal.groan");
 
     public static final RegistryObject<SoundEvent> SCULK_STONE_BREAK = register("block.sculk_stone.break");
