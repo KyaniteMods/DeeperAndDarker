@@ -38,6 +38,10 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
 
+    public static final ResourceKey<PlacedFeature> GLOOMY_SCULK = createKey("gloomy_sculk");
+    public static final ResourceKey<PlacedFeature> MAGMA = createKey("magma");
+    public static final ResourceKey<PlacedFeature> SOUL_SAND = createKey("soul_sand");
+    public static final ResourceKey<PlacedFeature> SOUL_SOIL = createKey("soul_soil");
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_COAL = createKey("gloomslate_coal");
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_IRON = createKey("gloomslate_iron");
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_COPPER = createKey("gloomslate_copper");
@@ -76,6 +80,10 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
         PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
+        PlacementUtils.register(context, GLOOMY_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMY_SCULK), countPlacement(96, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(32))));
+        PlacementUtils.register(context, MAGMA, features.getOrThrow(DDConfiguredFeatures.ORE_MAGMA), countPlacement(128, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, SOUL_SAND, features.getOrThrow(DDConfiguredFeatures.ORE_SOUL_SAND), countPlacement(192, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, SOUL_SOIL, features.getOrThrow(DDConfiguredFeatures.ORE_SOUL_SOIL), countPlacement(256, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, GLOOMSLATE_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
         PlacementUtils.register(context, GLOOMSLATE_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));
         PlacementUtils.register(context, GLOOMSLATE_COPPER, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COPPER), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256))));
