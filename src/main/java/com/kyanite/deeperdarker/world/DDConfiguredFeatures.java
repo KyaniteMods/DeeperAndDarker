@@ -38,13 +38,13 @@ import java.util.List;
 public class DDConfiguredFeatures {
     public static final RuleTest SCULK_STONE_REPLACEABLES = new TagMatchTest(DDTags.Blocks.SCULK_STONE_REPLACEABLES);
     public static final RuleTest GLOOMSLATE_REPLACEABLES = new BlockMatchTest(DDBlocks.GLOOMSLATE.get());
+    public static final RuleTest SCULK_GRIME_REPLACEABLES = new BlockMatchTest(DDBlocks.SCULK_GRIME.get());
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_STONE_COLUMN = createKey("sculk_stone_column");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMSLATE_COLUMN = createKey("gloomslate_column");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_GLEAM_EXTRA = createKey("sculk_gleam_extra");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_TENDRILS = createKey("sculk_tendrils");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_VINES = createKey("sculk_vines");
-
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_STONE_GENERATION = createKey("sculk_stone_generation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");
@@ -66,6 +66,10 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_LAPIS = createKey("ore_sculk_lapis");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_DIAMOND = createKey("ore_sculk_diamond");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_GLOOMY_SCULK = createKey("ore_gloomy_sculk");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MAGMA = createKey("ore_magma");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SOUL_SAND = createKey("ore_soul_sand");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SOUL_SOIL = createKey("ore_soul_soil");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_COAL = createKey("ore_gloomslate_coal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_IRON = createKey("ore_gloomslate_iron");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_COPPER = createKey("ore_gloomslate_copper");
@@ -91,6 +95,10 @@ public class DDConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> EMERALD_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_EMERALD_ORE.get().defaultBlockState()), OreConfiguration.target(GLOOMSLATE_REPLACEABLES, DDBlocks.GLOOMSLATE_EMERALD_ORE.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> LAPIS_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_LAPIS_ORE.get().defaultBlockState()), OreConfiguration.target(GLOOMSLATE_REPLACEABLES, DDBlocks.GLOOMSLATE_LAPIS_ORE.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> DIAMOND_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState()), OreConfiguration.target(GLOOMSLATE_REPLACEABLES, DDBlocks.GLOOMSLATE_DIAMOND_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> GLOOMY_SCULK_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, DDBlocks.GLOOMY_SCULK.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> SOUL_SAND_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, Blocks.SOUL_SAND.defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> SOUL_SOIL_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, Blocks.SOUL_SOIL.defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> MAGMA_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, Blocks.MAGMA_BLOCK.defaultBlockState()));
 
         FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.SCULK_STONE_COLUMN.get());
         FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.GLOOMSLATE_COLUMN.get());
@@ -118,6 +126,10 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10, 0.7f));
         FeatureUtils.register(context, ORE_SCULK_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.4f));
 
+        FeatureUtils.register(context, ORE_GLOOMY_SCULK, Feature.ORE, new OreConfiguration(GLOOMY_SCULK_TARGET_LIST, 64));
+        FeatureUtils.register(context, ORE_MAGMA, Feature.ORE, new OreConfiguration(MAGMA_TARGET_LIST, 64));
+        FeatureUtils.register(context, ORE_SOUL_SAND, Feature.ORE, new OreConfiguration(SOUL_SAND_TARGET_LIST, 48));
+        FeatureUtils.register(context, ORE_SOUL_SOIL, Feature.ORE, new OreConfiguration(SOUL_SOIL_TARGET_LIST, 48));
         FeatureUtils.register(context, ORE_GLOOMSLATE_COAL, Feature.ORE, new OreConfiguration(COAL_TARGET_LIST, 14, 0.3f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_IRON, Feature.ORE, new OreConfiguration(IRON_TARGET_LIST, 13, 0.4f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_COPPER, Feature.ORE, new OreConfiguration(COPPER_TARGET_LIST, 15, 0.4f));
