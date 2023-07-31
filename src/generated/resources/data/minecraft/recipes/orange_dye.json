@@ -2,9 +2,9 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "cookingtime": 200,
-  "experience": 0.2,
+  "experience": 1.0,
   "ingredient": {
-    "item": "deeperdarker:grime_ball"
+    "item": "deeperdarker:gloomy_cactus"
   },
-  "result": "deeperdarker:grime_brick"
+  "result": "minecraft:orange_dye"
 }

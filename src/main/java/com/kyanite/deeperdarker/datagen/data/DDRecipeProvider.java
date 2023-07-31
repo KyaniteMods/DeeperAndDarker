@@ -121,12 +121,13 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void addCookingRecipes(Consumer<FinishedRecipe> writer) {
-        smelting(DDBlocks.COBBLED_SCULK_STONE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE.get(), 0.1f, "sculk_stone", writer);
-        smelting(DDBlocks.SCULK_STONE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE.get(), 0.1f, "smooth_sculk_stone", writer);
-        smelting(DDBlocks.COBBLED_GLOOMSLATE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE.get(), 0.1f, "gloomslate", writer);
-        smelting(DDBlocks.GLOOMSLATE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE.get(), 0.1f, "smooth_gloomslate", writer);
+        smelting(DDBlocks.COBBLED_SCULK_STONE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE.get(), 0.1f, writer);
+        smelting(DDBlocks.SCULK_STONE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE.get(), 0.1f, writer);
+        smelting(DDBlocks.COBBLED_GLOOMSLATE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLOOMSLATE.get(), 0.1f, writer);
+        smelting(DDBlocks.GLOOMSLATE.get(), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE.get(), 0.1f, writer);
 
-        smelting(DDItems.GRIME_BALL.get(), RecipeCategory.MISC, DDItems.GRIME_BRICK.get(), 0.2f, "grime_brick", writer);
+        smelting(DDBlocks.GLOOMY_CACTUS.get(), RecipeCategory.MISC, Items.ORANGE_DYE, 1f, writer);
+        smelting(DDItems.GRIME_BALL.get(), RecipeCategory.MISC, DDItems.GRIME_BRICK.get(), 0.2f, writer);
 
         oreSmelting(DDBlocks.SCULK_STONE_COAL_ORE.get(), RecipeCategory.MISC, Items.COAL, 0.1f, "coal", writer);
         oreSmelting(DDBlocks.SCULK_STONE_IRON_ORE.get(), RecipeCategory.MISC, Items.RAW_IRON, 0.7f, "iron_ingot", writer);
@@ -325,8 +326,8 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         chestBoat(writer, chestBoat.get(), boat.get());
     }
 
-    private void smelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer);
+    private void smelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, Consumer<FinishedRecipe> writer) {
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).unlockedBy(getHasName(ingredient), has(ingredient)).save(writer);
     }
 
     private void oreSmelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, Consumer<FinishedRecipe> writer) {

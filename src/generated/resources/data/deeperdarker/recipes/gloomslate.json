@@ -3,7 +3,6 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "group": "gloomslate",
   "ingredient": {
     "item": "deeperdarker:cobbled_gloomslate"
   },
