@@ -179,6 +179,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSculkJaw(blockModelGenerators, DDBlocks.SCULK_JAW);
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));
         ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_ECHO_SAPLING, TextureMapping.plant(DDBlocks.ECHO_SAPLING), blockModelGenerators.modelOutput);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
     }
 
     @Override
@@ -229,6 +230,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_LEECH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SHRIEK_WORM_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.STALKER_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
     }
 
     private static void registerButton(BlockModelGenerators BlockModelGenerators, Block block, Block planks) {

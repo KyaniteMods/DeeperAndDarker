@@ -35,6 +35,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
+        if (pContext.getPlayer() == null) return InteractionResult.FAIL;
         if(pContext.getItemInHand().hasTag()) {
             return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
         }
@@ -60,7 +61,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", linkedBlock.getName()).withStyle(ChatFormatting.GRAY));
+        if(linkedBlock != null && pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", linkedBlock.getName()).withStyle(ChatFormatting.GRAY));
         else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
