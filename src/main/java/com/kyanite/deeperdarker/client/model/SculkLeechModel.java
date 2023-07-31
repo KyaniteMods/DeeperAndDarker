@@ -24,11 +24,11 @@ public class SculkLeechModel extends HierarchicalModel<SculkLeech> {
 		PartDefinition root = parts.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 22.75F, -1.0F));
 
 		root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -1.5F, -3.0F, 3.0F, 3.0F, 3.0F, new CubeDeformation(0.0F))
-		.texOffs(0, -1).addBox(1.0F, -0.5F, -4.0F, 0.0F, 1.0F, 1.0F, new CubeDeformation(0.0F))
-		.texOffs(-1, 0).addBox(-1.0F, 1.5F, -4.0F, 1.0F, 0.0F, 1.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 0).addBox(-2.0F, -0.5F, -4.0F, 0.0F, 1.0F, 1.0F, new CubeDeformation(0.0F))
-		.texOffs(-1, 1).addBox(-1.0F, -1.5F, -4.0F, 1.0F, 0.0F, 1.0F, new CubeDeformation(0.0F))
-		.texOffs(9, -2).addBox(-0.5F, -3.5F, -3.0F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.5F, -0.25F, -3.0F));
+				.texOffs(0, -1).addBox(1.0F, -0.5F, -4.0F, 0.0F, 1.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(-1, 0).addBox(-1.0F, 1.5F, -4.0F, 1.0F, 0.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 0).addBox(-2.0F, -0.5F, -4.0F, 0.0F, 1.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(-1, 1).addBox(-1.0F, -1.5F, -4.0F, 1.0F, 0.0F, 1.0F, new CubeDeformation(0.0F))
+				.texOffs(9, -2).addBox(-0.5F, -3.5F, -3.0F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.5F, -0.25F, -3.0F));
 
 		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 6).addBox(-1.5F, -1.25F, -0.25F, 2.0F, 2.75F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.5F, -0.25F, -3.0F));
 		body.addOrReplaceChild("body_tendrils", CubeListBuilder.create().texOffs(-3, 12).addBox(-3.0F, 0.0F, -0.85F, 6.0F, 0.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.5F, 0.25F, 0.85F));

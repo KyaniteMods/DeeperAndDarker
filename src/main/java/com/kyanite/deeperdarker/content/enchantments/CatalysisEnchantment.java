@@ -27,15 +27,11 @@ public class CatalysisEnchantment extends Enchantment {
         if(pTarget instanceof LivingEntity entity) {
             if(entity.isDeadOrDying()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
-                spreader.addCursors(new BlockPos(new Vec3i((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ()))), 20);
-                for(int i2 = 0; i2 < 10; i2++) {
+                spreader.addCursors(new BlockPos((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
+                for(int i = 0; i < (int) (10 * pLevel * 0.9); i++) {
                     spreader.updateCursors(entity.level(), entity.blockPosition(), entity.getRandom(), true);
                 }
                 entity.skipDropExperience();
-                if(entity.level().getBlockState(entity.blockPosition()).getValue(SculkCatalystBlock.PULSE)) {
-                    entity.level().setBlock(entity.blockPosition(), entity.level().getBlockState(entity.blockPosition()).setValue(SculkCatalystBlock.PULSE, false), 3);
-                }
-
                 CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) pAttacker, pTarget, pTarget.damageSources().playerAttack((Player) pAttacker));
             }
         }
@@ -48,7 +44,12 @@ public class CatalysisEnchantment extends Enchantment {
 
     @Override
     public int getMaxCost(int pLevel) {
-        return 50;
+        return (int) (getMinCost(pLevel) * 1.5);
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
     }
 
     @Override

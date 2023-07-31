@@ -131,6 +131,14 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModelGenerators.family(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModelGenerators.family(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_COAL_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_IRON_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_COPPER_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_GOLD_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_REDSTONE_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_EMERALD_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_LAPIS_ORE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
@@ -146,7 +154,6 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ANCIENT_VASE);
         blockModelGenerators.delegateItemModel(DDBlocks.ANCIENT_VASE, ModelLocationUtils.getModelLocation(DDBlocks.ANCIENT_VASE));
-        blockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.CRYSTALLIZED_AMBER);
         registerParented(blockModelGenerators, Blocks.HONEY_BLOCK, DDBlocks.CRYSTALLIZED_AMBER,
@@ -168,8 +175,10 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)),
                 new Tuple<>(TextureSlot.create("portal"), TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)));
 
+        blockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
         registerSculkJaw(blockModelGenerators, DDBlocks.SCULK_JAW);
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));
+        ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_ECHO_SAPLING, TextureMapping.plant(DDBlocks.ECHO_SAPLING), blockModelGenerators.modelOutput);
     }
 
     @Override

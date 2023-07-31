@@ -132,6 +132,14 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_STONE_EMERALD_ORE, "Sculk Stone Emerald Ore");
         translationBuilder.add(DDBlocks.SCULK_STONE_LAPIS_ORE, "Sculk Stone Lapis Lazuli Ore");
         translationBuilder.add(DDBlocks.SCULK_STONE_DIAMOND_ORE, "Sculk Stone Diamond Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_COAL_ORE, "Gloomslate Coal Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_IRON_ORE, "Gloomslate Iron Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_COPPER_ORE, "Gloomslate Copper Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_GOLD_ORE, "Gloomslate Gold Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_REDSTONE_ORE, "Gloomslate Redstone Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_EMERALD_ORE, "Gloomslate Emerald Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_LAPIS_ORE, "Gloomslate Lapis Lazuli Ore");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, "Gloomslate Diamond Ore");
         translationBuilder.add(DDBlocks.SCULK_TENDRILS_PLANT, "Sculk Tendrils Plant");
         translationBuilder.add(DDBlocks.SCULK_TENDRILS, "Sculk Tendrils");
         translationBuilder.add(DDBlocks.SCULK_VINES_PLANT, "Sculk Vines Plant");
@@ -140,6 +148,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOOMY_GRASS, "Gloomy Grass");
         translationBuilder.add(DDBlocks.GLOOMY_SCULK, "Gloomy Sculk");
         translationBuilder.add(DDBlocks.GLOOMY_GEYSER, "Gloomy Geyser");
+        translationBuilder.add(DDBlocks.POTTED_ECHO_SAPLING, "Potted Echo Sapling");
         translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
         translationBuilder.add(DDItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
         translationBuilder.add(DDEntities.BOAT, "Boat");
@@ -167,11 +176,13 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.SCULK_LEECH, "Sculk Leech");
         translationBuilder.add(DDEntities.SHRIEK_WORM, "Shriek Worm");
         translationBuilder.add(DDEntities.STALKER, "Stalker");
+        translationBuilder.add(DDEntities.SCULK_CENTIPEDE, "Sculk Centipede");
         translationBuilder.add(DDItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
         translationBuilder.add(DDItems.SHATTERED_SPAWN_EGG, "Shattered Spawn Egg");
         translationBuilder.add(DDItems.SCULK_LEECH_SPAWN_EGG, "Sculk Leech Spawn Egg");
         translationBuilder.add(DDItems.SHRIEK_WORM_SPAWN_EGG, "Shriek Worm Spawn Egg");
         translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
+        translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
@@ -189,6 +200,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
         translationBuilder.add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
         translationBuilder.add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
+        translationBuilder.add("subtitles.entity.stalker.ambient", "Stalker chirps");
+        translationBuilder.add("subtitles.entity.stalker.hurt", "Stalker hurts");
+        translationBuilder.add("subtitles.entity.stalker.death", "Stalker dies");
         translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");

@@ -17,7 +17,7 @@ public class DDEntities {
     public static final EntityType<SculkLeech> SCULK_LEECH = register("sculk_leech", EntityType.Builder.of(SculkLeech::new, MobCategory.MONSTER).sized(0.42f, 0.2f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_leech").toString()));
     public static final EntityType<SculkSnapper> SCULK_SNAPPER = register("sculk_snapper", EntityType.Builder.of(SculkSnapper::new, MobCategory.MONSTER).sized(0.65f, 0.65f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_snapper").toString()));
     public static final EntityType<Shattered> SHATTERED = register("shattered", EntityType.Builder.of(Shattered::new, MobCategory.MONSTER).sized(0.8f, 2.125f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shattered").toString()));
-    public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", EntityType.Builder.of(ShriekWorm::new, MobCategory.MONSTER).sized(1.3f, 5.7f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shriek_worm").toString()));
+    public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", EntityType.Builder.of(ShriekWorm::new, MobCategory.MONSTER).sized(1.0f, 5.7f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shriek_worm").toString()));
     public static final EntityType<Stalker> STALKER = register("stalker", EntityType.Builder.of(Stalker::new, MobCategory.MONSTER).sized(1f, 4.4f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shriek_worm").toString()));
 
     public static void init() {

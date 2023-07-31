@@ -6,6 +6,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -39,6 +40,11 @@ public class SculkLeech extends Monster {
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DDSounds.LEECH_HURT;
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobType.SCULK;
     }
 
     @Override

@@ -59,10 +59,10 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.1, true));
-        this.goalSelector.addGoal(2, new DisturbanceGoal(this, 1.1));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.4, true));
+        this.goalSelector.addGoal(2, new DisturbanceGoal(this, 1.2));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.5));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.6));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
@@ -190,7 +190,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
             playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
             if(entity != null) {
                 if(canTargetEntity(entity)) {
-                    if(entity instanceof Monster && ((Monster) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
+                    if(entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
                     if(entity instanceof Player) setTarget((LivingEntity) entity);
                     return;
                 }

@@ -114,7 +114,6 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.CHISELED_GLOOMSLATE));
         entries.accept(new ItemStack(DDBlocks.ECHO_SOIL));
         entries.accept(new ItemStack(DDBlocks.SCULK_GLEAM));
-        entries.accept(new ItemStack(DDBlocks.SCULK_JAW));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_COAL_ORE));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_IRON_ORE));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_COPPER_ORE));
@@ -123,11 +122,20 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_EMERALD_ORE));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_LAPIS_ORE));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_DIAMOND_ORE));
+        entries.accept(DDBlocks.GLOOMSLATE_COAL_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_IRON_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_COPPER_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_GOLD_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_REDSTONE_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_EMERALD_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_LAPIS_ORE);
+        entries.accept(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
         entries.accept(new ItemStack(DDItems.GRIME_BALL));
         entries.accept(new ItemStack(DDItems.GRIME_BRICK));
         entries.accept(new ItemStack(DDBlocks.SCULK_TENDRILS));
         entries.accept(new ItemStack(DDBlocks.SCULK_VINES));
         entries.accept(new ItemStack(DDBlocks.INFESTED_SCULK));
+        entries.accept(new ItemStack(DDBlocks.SCULK_JAW));
         entries.accept(new ItemStack(DDBlocks.GLOOMY_CACTUS));
         entries.accept(new ItemStack(DDBlocks.GLOOMY_GRASS));
         entries.accept(new ItemStack(DDBlocks.GLOOMY_SCULK));

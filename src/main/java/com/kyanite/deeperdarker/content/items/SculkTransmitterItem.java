@@ -39,7 +39,7 @@ public class SculkTransmitterItem extends Item {
             return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
         }
 
-        if(!pContext.getLevel().getBlockState(pContext.getClickedPos()).is(DDTags.Blocks.TRANSMITTABLE)) {
+        if(!canConnect(pContext.getLevel(), pContext.getClickedPos())) {
             actionBarMessage(pContext.getPlayer(), "not_transmittable", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
         }
@@ -72,7 +72,7 @@ public class SculkTransmitterItem extends Item {
         ItemStack transmitter = player.getItemInHand(hand);
 
         if(player.isCrouching()) {
-            if(clickedPos != null && level.getBlockState(clickedPos).is(DDTags.Blocks.TRANSMITTABLE)) {
+            if(clickedPos != null && canConnect(level, clickedPos)) {
                 actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
                 formConnection(transmitter, level, clickedPos);
                 return InteractionResult.SUCCESS;
@@ -83,7 +83,7 @@ public class SculkTransmitterItem extends Item {
             return InteractionResult.FAIL;
         }
 
-        if(!level.getBlockState(linkedBlockPos).is(DDTags.Blocks.TRANSMITTABLE)) {
+        if(!canConnect(level, linkedBlockPos)) {
             actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
             formConnection(transmitter, level, null);
             return InteractionResult.FAIL;
@@ -113,6 +113,10 @@ public class SculkTransmitterItem extends Item {
         tag.putBoolean("linked", true);
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
         stack.setTag(tag);
+    }
+
+    private boolean canConnect(Level level, BlockPos target) {
+        return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
     }
 
     private void actionBarMessage(Player player, String key, SoundEvent sound) {

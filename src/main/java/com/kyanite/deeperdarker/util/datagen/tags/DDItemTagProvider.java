@@ -109,14 +109,14 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 DDBlocks.CUT_GLOOMSLATE_SLAB
         );
 
-        add(ItemTags.COAL_ORES, DDBlocks.SCULK_STONE_COAL_ORE);
-        add(ItemTags.IRON_ORES, DDBlocks.SCULK_STONE_IRON_ORE);
-        add(ItemTags.COPPER_ORES, DDBlocks.SCULK_STONE_COPPER_ORE);
-        add(ItemTags.GOLD_ORES, DDBlocks.SCULK_STONE_GOLD_ORE);
-        add(ItemTags.REDSTONE_ORES, DDBlocks.SCULK_STONE_REDSTONE_ORE);
-        add(ItemTags.EMERALD_ORES, DDBlocks.SCULK_STONE_EMERALD_ORE);
-        add(ItemTags.LAPIS_ORES, DDBlocks.SCULK_STONE_LAPIS_ORE);
-        add(ItemTags.DIAMOND_ORES, DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        add(ItemTags.COAL_ORES, DDBlocks.SCULK_STONE_COAL_ORE, DDBlocks.GLOOMSLATE_COAL_ORE);
+        add(ItemTags.IRON_ORES, DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.GLOOMSLATE_IRON_ORE);
+        add(ItemTags.COPPER_ORES, DDBlocks.SCULK_STONE_COPPER_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE);
+        add(ItemTags.GOLD_ORES, DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE);
+        add(ItemTags.REDSTONE_ORES, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE);
+        add(ItemTags.EMERALD_ORES, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE);
+        add(ItemTags.LAPIS_ORES, DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
+        add(ItemTags.DIAMOND_ORES, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
         add(ItemTags.SAPLINGS, DDBlocks.ECHO_SAPLING);
     }

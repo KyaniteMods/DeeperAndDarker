@@ -13,7 +13,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "deeperdarker:music.deeperdarker.overcast_columns"
+      "sound": "minecraft:ambient.soul_sand_valley.loop"
     },
     "particle": {
       "options": {
@@ -35,7 +35,16 @@
     ],
     [],
     [],
-    [],
+    [
+      "deeperdarker:gloomslate_coal",
+      "deeperdarker:gloomslate_iron",
+      "deeperdarker:gloomslate_copper",
+      "deeperdarker:gloomslate_gold",
+      "deeperdarker:gloomslate_redstone",
+      "deeperdarker:gloomslate_emerald",
+      "deeperdarker:gloomslate_lapis",
+      "deeperdarker:gloomslate_diamond"
+    ],
     [
       "deeperdarker:gloomslate_column"
     ],

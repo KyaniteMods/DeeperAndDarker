@@ -180,6 +180,29 @@
     ],
     "subtitle": "subtitles.entity.sculk_snapper.sniff"
   },
+  "entity.stalker.ambient": {
+    "sounds": [
+      "deeperdarker:entity/stalker/ambient1",
+      "deeperdarker:entity/stalker/ambient2",
+      "deeperdarker:entity/stalker/ambient3"
+    ],
+    "subtitle": "subtitles.entity.stalker.ambient"
+  },
+  "entity.stalker.death": {
+    "sounds": [
+      "deeperdarker:entity/stalker/death"
+    ],
+    "subtitle": "subtitles.entity.stalker.death"
+  },
+  "entity.stalker.hurt": {
+    "sounds": [
+      "deeperdarker:entity/stalker/hurt1",
+      "deeperdarker:entity/stalker/hurt2",
+      "deeperdarker:entity/stalker/hurt3",
+      "deeperdarker:entity/stalker/hurt4"
+    ],
+    "subtitle": "subtitles.entity.stalker.hurt"
+  },
   "item.sculk_transmitter.error": {
     "sounds": [
       "deeperdarker:item/sculk_transmitter/error"

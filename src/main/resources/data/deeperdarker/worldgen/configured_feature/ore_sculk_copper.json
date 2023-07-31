@@ -1,7 +1,7 @@
 {
   "type": "minecraft:ore",
   "config": {
-    "discard_chance_on_air_exposure": 0.0,
+    "discard_chance_on_air_exposure": 0.3,
     "size": 15,
     "targets": [
       {
@@ -11,6 +11,15 @@
         "target": {
           "predicate_type": "minecraft:tag_match",
           "tag": "deeperdarker:sculk_stone_replaceables"
+        }
+      },
+      {
+        "state": {
+          "Name": "deeperdarker:gloomslate_copper_ore"
+        },
+        "target": {
+          "block": "deeperdarker:gloomslate",
+          "predicate_type": "minecraft:block_match"
         }
       }
     ]

@@ -14,7 +14,7 @@ public class ShriekWormRenderer extends MobRenderer<ShriekWorm, ShriekWormModel>
     private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shriek_worm.png");
 
     public ShriekWormRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new ShriekWormModel(pContext.bakeLayer(MODEL)), 1.4f);
+        super(pContext, new ShriekWormModel(pContext.bakeLayer(MODEL)), 1.2f);
     }
 
     @Override

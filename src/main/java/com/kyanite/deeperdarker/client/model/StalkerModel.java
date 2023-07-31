@@ -15,12 +15,10 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 	private final ModelPart root;
 	private final ModelPart head;
 
-	private final ModelPart fakeVase;
 
 	public StalkerModel(ModelPart root) {
 		this.root = root;
-		this.head = root.getChild("root").getChild("waist");
-		this.fakeVase = root.getChild("root").getChild("fake_vase");
+		this.head = root.getChild("root").getChild("waist").getChild("body").getChild("head");
 	}
 
 	public static LayerDefinition createBodyModel() {
@@ -64,10 +62,6 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 		legs.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(24, 54).addBox(-2.5F, 0.0F, -2.5F, 5.0F, 29.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.5F, 0.0F, 0.0F));
 		legs.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(44, 55).addBox(-2.5F, 0.0F, -2.5F, 5.0F, 28.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(3.5F, 1.0F, 0.0F));
 
-		root.addOrReplaceChild("fake_vase", CubeListBuilder.create().texOffs(72, 58).addBox(-4.0F, -9.0F, -4.0F, 8.0F, 3.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(64, 69).addBox(-6.0F, -6.0F, -6.0F, 12.0F, 12.0F, 12.0F, new CubeDeformation(0.0F))
-				.texOffs(68, 93).addBox(-5.0F, 6.0F, -5.0F, 10.0F, 1.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -7.0F, 0.0F));
-
 		return LayerDefinition.create(mesh, 128, 128);
 	}
 
@@ -80,8 +74,6 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 		this.animate(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
 		this.animate(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
 		this.animate(entity.emergeState, StalkerAnimation.EMERGE, ageInTicks);
-
-		fakeVase.visible = entity.emergeState.isStarted() ? true : false;
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

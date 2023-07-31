@@ -43,6 +43,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.ECHO_SAPLING);
         dropSelf(DDBlocks.ECHO_SIGN);
         dropSelf(DDBlocks.ECHO_HANGING_SIGN);
+        dropPottedContents(DDBlocks.POTTED_ECHO_SAPLING);
 
         add(DDBlocks.SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS);
@@ -124,6 +125,14 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.SCULK_STONE_EMERALD_ORE, (block) -> this.createOreDrop(block, Items.EMERALD));
         add(DDBlocks.SCULK_STONE_LAPIS_ORE, this::createLapisOreDrops);
         add(DDBlocks.SCULK_STONE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
+        add(DDBlocks.GLOOMSLATE_COAL_ORE, (block) -> this.createOreDrop(block, Items.COAL));
+        add(DDBlocks.GLOOMSLATE_IRON_ORE, (block) -> this.createOreDrop(block, Items.RAW_IRON));
+        add(DDBlocks.GLOOMSLATE_COPPER_ORE, this::createCopperOreDrops);
+        add(DDBlocks.GLOOMSLATE_GOLD_ORE, (block) -> this.createOreDrop(block, Items.RAW_GOLD));
+        add(DDBlocks.GLOOMSLATE_REDSTONE_ORE, this::createRedstoneOreDrops);
+        add(DDBlocks.GLOOMSLATE_EMERALD_ORE, (block) -> this.createOreDrop(block, Items.EMERALD));
+        add(DDBlocks.GLOOMSLATE_LAPIS_ORE, this::createLapisOreDrops);
+        add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
 
         add(DDBlocks.GLOOMY_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS);
