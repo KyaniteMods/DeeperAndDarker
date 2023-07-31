@@ -1,15 +1,9 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FallingBlock;
@@ -57,25 +51,6 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return Stream.of(BASE, OUTLINE, RIM).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
-    }
-
-    @Override
-    public void destroy(LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
-        if(pLevel instanceof Level level) {
-            RandomSource random = level.getRandom();
-            if (random.nextFloat() < 0.0917f) {
-                if (random.nextDouble() < 0.9814612868) {
-                    for (int i = 0; i < random.nextInt(1, 4); i++) {
-                        SculkLeech entity = DDEntities.SCULK_LEECH.get().create(level);
-                        assert entity != null;
-                        entity.moveTo(pPos.getX() + random.nextFloat(), pPos.getY() + random.nextFloat() + 0.15f, pPos.getZ() + random.nextFloat(), random.nextFloat() * 360, random.nextFloat() * 360);
-                        level.addFreshEntity(entity);
-                    }
-                } else if(pLevel instanceof ServerLevel serverLevel) {
-                    DDEntities.STALKER.get().spawn(serverLevel, pPos, MobSpawnType.TRIGGERED);
-                }
-            }
-        }
     }
 
     @Override

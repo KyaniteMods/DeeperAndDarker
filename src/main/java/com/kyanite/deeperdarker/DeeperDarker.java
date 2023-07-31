@@ -28,12 +28,16 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -45,6 +49,7 @@ import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -54,6 +59,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Mod(DeeperDarker.MOD_ID)
 public class DeeperDarker {
     public static final String MOD_ID = "deeperdarker";
@@ -129,7 +135,28 @@ public class DeeperDarker {
         event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
     }
 
-    @SuppressWarnings("unused")
+    @Mod.EventBusSubscriber(modid = MOD_ID)
+    public static class DeeperDarkerEvents {
+        @SubscribeEvent
+        public static void breakEvent(final BlockEvent.BreakEvent event) {
+            if(!event.getState().is(DDBlocks.ANCIENT_VASE.get())) return;
+            if(event.getPlayer().getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) return;
+
+            if(event.getLevel() instanceof ServerLevel level) {
+                RandomSource random = level.getRandom();
+                if(random.nextFloat() < 0.1f) {
+                    if(random.nextFloat() < 0.953f) {
+                        for(int i = 0; i < random.nextInt(1, 4); i++) {
+                            DDEntities.SCULK_LEECH.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
+                        }
+                    } else {
+                        DDEntities.STALKER.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
+                    }
+                }
+            }
+        }
+    }
+
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class DeeperDarkerClient {
         @SubscribeEvent
