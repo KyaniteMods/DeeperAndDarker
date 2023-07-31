@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-31T16:29:28.9064614	Deeper and Darker/Tags for minecraft:block
+// 1.20.1	2023-07-31T17:10:03.8280656	Deeper and Darker/Tags for minecraft:block
 c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data\minecraft\tags\blocks\saplings.json
 91cc0adf830b0dda4cb501792e044b1e90172f5e data\minecraft\tags\blocks\stairs.json
 67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\blocks\logs_that_burn.json
@@ -7,9 +7,9 @@ bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\blocks\leaves.json
 677275c42b6d25804eeed9834a522c3abcdfefbf data\minecraft\tags\blocks\mineable\shovel.json
 ad4068cbc07d6695e52fe55e47e251e2a62b6c33 data\minecraft\tags\blocks\wall_signs.json
 f2d96eca233658a77cfb0767972a39f37e7876ea data\minecraft\tags\blocks\redstone_ores.json
-cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\blocks\wooden_stairs.json
 7d11d6c5ad2aae4b705302ecc42367df04d9e005 data\minecraft\tags\blocks\needs_iron_tool.json
 a79df4671755271345962c0aa23680929668ccea data\minecraft\tags\blocks\planks.json
+cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\blocks\wooden_stairs.json
 e0586e4c302c275c6a69b0b93f016b7a271f6e6b data\minecraft\tags\blocks\mineable\hoe.json
 8780ec507fe82c626fa8d77d75bea290a23304a8 data\minecraft\tags\blocks\mineable\axe.json
 a80782ad2aab1d6a87e5125ec63b62424ee43dcc data\minecraft\tags\blocks\slabs.json
