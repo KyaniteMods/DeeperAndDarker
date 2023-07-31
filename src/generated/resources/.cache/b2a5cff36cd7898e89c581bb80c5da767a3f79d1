@@ -1,7 +1,5 @@
-// 1.20.1	2023-07-31T16:56:21.7232868	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2023-07-31T18:31:35.7984136	Tags for minecraft:item mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
-9e4ebbf0e38096f993924198f361dfb2cf939487 data/deeperdarker/tags/items/gloomslate_slabs.json
-a68bb1cb40bb6600c608243427041bdf6c7b662a data/deeperdarker/tags/items/sculk_stone_slabs.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/forge/tags/items/armors/boots.json
 cd0c284256799e44917e495727d6befdd3b4515c data/forge/tags/items/armors/chestplates.json
 7f61d04c47afdea03496a2ecf268e2a58e08514e data/forge/tags/items/armors/helmets.json

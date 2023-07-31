@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
@@ -77,8 +76,5 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
         tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
         tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
-
-        tag(DDTags.Items.SCULK_STONE_SLABS).add(DDBlocks.COBBLED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_SLAB.get().asItem(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get().asItem(), DDBlocks.SCULK_STONE_BRICK_SLAB.get().asItem(), DDBlocks.SCULK_STONE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get().asItem(), DDBlocks.CUT_SCULK_STONE_SLAB.get().asItem());
-        tag(DDTags.Items.GLOOMSLATE_SLABS).add(DDBlocks.COBBLED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_SLAB.get().asItem(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get().asItem(), DDBlocks.GLOOMSLATE_TILE_SLAB.get().asItem(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get().asItem(), DDBlocks.CUT_GLOOMSLATE_SLAB.get().asItem());
     }
 }

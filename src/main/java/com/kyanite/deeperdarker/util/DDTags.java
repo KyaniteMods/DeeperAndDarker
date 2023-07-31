@@ -26,13 +26,7 @@ public class DDTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> ECHO_LOGS = tag("echo_logs");
-        public static final TagKey<Item> SCULK_STONE_SLABS = tag("sculk_stone_slabs");
-        public static final TagKey<Item> GLOOMSLATE_SLABS = tag("gloomslate_slabs");
-
-        private static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));
-        }
+        public static final TagKey<Item> ECHO_LOGS = ItemTags.create(new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
     }
 
     public static class Biomes {

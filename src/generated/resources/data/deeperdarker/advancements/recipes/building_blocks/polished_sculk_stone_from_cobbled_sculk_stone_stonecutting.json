@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:polished_sculk_stone"
+        "recipe": "deeperdarker:polished_sculk_stone_from_cobbled_sculk_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:polished_sculk_stone"
+      "deeperdarker:polished_sculk_stone_from_cobbled_sculk_stone_stonecutting"
     ]
   },
   "sends_telemetry_event": false
