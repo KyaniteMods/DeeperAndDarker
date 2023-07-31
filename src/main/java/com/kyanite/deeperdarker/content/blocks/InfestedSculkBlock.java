@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -8,12 +9,14 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings("deprecation, NullableProblems")
 public class InfestedSculkBlock extends Block {
     public InfestedSculkBlock(Block hostBlock, Properties properties) {
         super(properties.destroyTime(hostBlock.defaultDestroyTime() / 2.0f).explosionResistance(0.75f));
@@ -38,5 +41,18 @@ public class InfestedSculkBlock extends Block {
         }
 
         super.stepOn(pLevel, pPos, pState, pEntity);
+    }
+
+    @Override
+    public void spawnAfterBreak(BlockState pState, ServerLevel pLevel, BlockPos pPos, ItemStack pStack, boolean pDropExperience) {
+        super.spawnAfterBreak(pState, pLevel, pPos, pStack, pDropExperience);
+        if(pStack.getEnchantmentLevel(Enchantments.SILK_TOUCH) == 0) {
+            SculkLeech leech = DDEntities.SCULK_LEECH.get().create(pLevel);
+            if(leech != null) {
+                leech.moveTo(pPos.getX() + 0.5, pPos.getY(), pPos.getZ() + 0.5, 0, 0);
+                pLevel.addFreshEntity(leech);
+                leech.spawnAnim();
+            }
+        }
     }
 }
