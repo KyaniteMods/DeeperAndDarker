@@ -84,12 +84,6 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
         dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
 
-        add(DDBlocks.SCULK_GRIME.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL.get(), UniformGenerator.between(2, 4)));
-        dropSelf(DDBlocks.SCULK_GRIME_BRICKS.get());
-        dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get());
-        add(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), this::createSlabItemTable);
-        dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL.get());
-
         add(DDBlocks.GLOOMSLATE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
         add(DDBlocks.GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
@@ -119,6 +113,12 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
+
+        add(DDBlocks.SCULK_GRIME.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL.get(), UniformGenerator.between(2, 4)));
+        dropSelf(DDBlocks.SCULK_GRIME_BRICKS.get());
+        dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get());
+        add(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL.get());
 
         dropSelf(DDBlocks.ECHO_SOIL.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());

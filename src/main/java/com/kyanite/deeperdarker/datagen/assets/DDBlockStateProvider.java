@@ -68,12 +68,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
         wallBlock(DDBlocks.CUT_SCULK_STONE_WALL, blockLoc(DDBlocks.CUT_SCULK_STONE));
         simpleBlock(DDBlocks.CHISELED_SCULK_STONE.get());
 
-        simpleBlock(DDBlocks.SCULK_GRIME.get());
-        simpleBlock(DDBlocks.SCULK_GRIME_BRICKS.get());
-        stairsBlock(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get(), blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
-        slabBlock(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), blockLoc(DDBlocks.SCULK_GRIME_BRICKS), blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
-        wallBlock(DDBlocks.SCULK_GRIME_BRICK_WALL, blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
-
         simpleBlock(DDBlocks.GLOOMSLATE.get());
         stairsBlock(DDBlocks.GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE));
         slabBlock(DDBlocks.GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE), blockLoc(DDBlocks.GLOOMSLATE));
@@ -103,6 +97,12 @@ public class DDBlockStateProvider extends BlockStateProvider {
         slabBlock(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.CUT_GLOOMSLATE), blockLoc(DDBlocks.CUT_GLOOMSLATE));
         wallBlock(DDBlocks.CUT_GLOOMSLATE_WALL, blockLoc(DDBlocks.CUT_GLOOMSLATE));
         simpleBlock(DDBlocks.CHISELED_GLOOMSLATE.get());
+
+        simpleBlock(DDBlocks.SCULK_GRIME.get());
+        simpleBlock(DDBlocks.SCULK_GRIME_BRICKS.get());
+        stairsBlock(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get(), blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
+        slabBlock(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), blockLoc(DDBlocks.SCULK_GRIME_BRICKS), blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
+        wallBlock(DDBlocks.SCULK_GRIME_BRICK_WALL, blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.GLOOMY_SCULK.get());

@@ -68,12 +68,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_SCULK_STONE_WALL, "inventory");
         blockModel(DDBlocks.CHISELED_SCULK_STONE);
 
-        blockModel(DDBlocks.SCULK_GRIME);
-        blockModel(DDBlocks.SCULK_GRIME_BRICKS);
-        blockModel(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
-        blockModel(DDBlocks.SCULK_GRIME_BRICK_SLAB);
-        blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
-
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
         blockModel(DDBlocks.GLOOMSLATE_SLAB);
@@ -103,6 +97,12 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_GLOOMSLATE_SLAB);
         blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
+
+        blockModel(DDBlocks.SCULK_GRIME);
+        blockModel(DDBlocks.SCULK_GRIME_BRICKS);
+        blockModel(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
+        blockModel(DDBlocks.SCULK_GRIME_BRICK_SLAB);
+        blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
 
         blockModel(DDBlocks.ECHO_SOIL);
         blockModel(DDBlocks.GLOOMY_SCULK);

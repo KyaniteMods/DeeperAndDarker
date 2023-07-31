@@ -110,12 +110,6 @@ public class DDBlocks {
     public static final RegistryObject<WallBlock> CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE.get())));
     public static final RegistryObject<Block> CHISELED_SCULK_STONE = register("chiseled_sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
 
-    public static final RegistryObject<Block> SCULK_GRIME = register("sculk_grime", () -> new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
-    public static final RegistryObject<Block> SCULK_GRIME_BRICKS = register("sculk_grime_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
-    public static final RegistryObject<SlabBlock> SCULK_GRIME_BRICK_SLAB = register("sculk_grime_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS.get())));
-    public static final RegistryObject<StairBlock> SCULK_GRIME_BRICK_STAIRS = register("sculk_grime_brick_stairs", () -> new StairBlock(() -> SCULK_GRIME_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS.get())));
-    public static final RegistryObject<WallBlock> SCULK_GRIME_BRICK_WALL = register("sculk_grime_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS.get())));
-
     public static final RegistryObject<Block> GLOOMSLATE = register("gloomslate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final RegistryObject<StairBlock> GLOOMSLATE_STAIRS = register("gloomslate_stairs", () -> new StairBlock(() -> GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
     public static final RegistryObject<SlabBlock> GLOOMSLATE_SLAB = register("gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
@@ -145,6 +139,12 @@ public class DDBlocks {
     public static final RegistryObject<SlabBlock> CUT_GLOOMSLATE_SLAB = register("cut_gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
     public static final RegistryObject<WallBlock> CUT_GLOOMSLATE_WALL = register("cut_gloomslate_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE.get())));
     public static final RegistryObject<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
+
+    public static final RegistryObject<Block> SCULK_GRIME = register("sculk_grime", () -> new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
+    public static final RegistryObject<Block> SCULK_GRIME_BRICKS = register("sculk_grime_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
+    public static final RegistryObject<SlabBlock> SCULK_GRIME_BRICK_SLAB = register("sculk_grime_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS.get())));
+    public static final RegistryObject<StairBlock> SCULK_GRIME_BRICK_STAIRS = register("sculk_grime_brick_stairs", () -> new StairBlock(() -> SCULK_GRIME_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS.get())));
+    public static final RegistryObject<WallBlock> SCULK_GRIME_BRICK_WALL = register("sculk_grime_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS.get())));
 
     public static final RegistryObject<Block> ECHO_SOIL = register("echo_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
     public static final RegistryObject<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomySculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
