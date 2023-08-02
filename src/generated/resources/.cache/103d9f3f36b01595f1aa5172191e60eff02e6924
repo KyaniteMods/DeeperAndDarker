@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-31T20:47:55.9543437	Registries
+// 1.20.1	2023-08-01T21:49:34.2628223	Registries
 68170e4100ca5f0c7910e05fe8b65978b67d7214 data/deeperdarker/dimension_type/otherside.json
 8b58be914958ee5f1e91cc71c77770e71e78fe6d data/deeperdarker/worldgen/biome/deeplands.json
 6d1c80cd2ba63b4ea42e3be82941c8f7ec9a8cfd data/deeperdarker/worldgen/biome/echoing_forest.json
@@ -81,6 +81,6 @@ cbbe834f408841543b0b750cf6f471311983a9b7 data/deeperdarker/worldgen/template_poo
 9c92f58c312fecc4aedc70a40231c3aee9e82419 data/deeperdarker/worldgen/template_pool/ancient_temple/basement/rooms.json
 fd0123d46886c3b1f663646f0c6a4ce34fc97641 data/deeperdarker/worldgen/template_pool/ancient_temple/basement/stairs.json
 3a4cebd37b0a138ef1be1a09b2f199037622c535 data/deeperdarker/worldgen/template_pool/ancient_temple/starts.json
-ef744a437f4e1d046bf7a5e5c23e5f19b6e8b1f2 data/deeperdarker/worldgen/template_pool/ancient_temple/upper.json
+930d2a1efc6b9f569e125a078a6666b3bb35e680 data/deeperdarker/worldgen/template_pool/ancient_temple/upper.json
 9d456dd681ac7a240ce702c765a3ece97c7c5bb8 data/deeperdarker/worldgen/template_pool/ancient_temple/upper/corners.json
 da7f5ecfc416f201fd292ddfdc1a68eb082f3175 data/deeperdarker/worldgen/template_pool/ancient_temple/upper/rooms.json

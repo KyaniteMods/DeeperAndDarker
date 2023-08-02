@@ -30,7 +30,16 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:ancient_temple/upper/apex",
+        "location": "deeperdarker:ancient_temple/upper/apex_0",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/upper/apex_1",
         "processors": "deeperdarker:ancient_temple_degradation",
         "projection": "rigid"
       },
