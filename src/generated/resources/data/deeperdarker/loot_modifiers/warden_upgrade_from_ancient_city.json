@@ -4,6 +4,10 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/ancient_city"
+    },
+    {
+      "chance": 0.6,
+      "condition": "minecraft:random_chance"
     }
   ],
   "item": "deeperdarker:warden_upgrade_smithing_template",
