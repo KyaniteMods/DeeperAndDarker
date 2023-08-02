@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.levelgen.structure.templatesystem.*;
@@ -39,13 +40,15 @@ public class DDProcessorLists {
         ProcessorRule rule20 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_TILES, 0.25f), AlwaysTrueTest.INSTANCE, Blocks.CRACKED_DEEPSLATE_TILES.defaultBlockState());
         ProcessorRule rule21 = new ProcessorRule(new RandomBlockMatchTest(Blocks.COBBLED_DEEPSLATE, 0.05f), AlwaysTrueTest.INSTANCE, Blocks.SMOOTH_BASALT.defaultBlockState());
         ProcessorRule rule22 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.ANCIENT_VASE.get(), 0.25f), AlwaysTrueTest.INSTANCE, Blocks.AIR.defaultBlockState());
-        ProcessorRule rule23 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_IRON_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState());
-        ProcessorRule rule24 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_COPPER_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_COPPER_ORE.get().defaultBlockState());
-        ProcessorRule rule25 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_GOLD_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_GOLD_ORE.get().defaultBlockState());
-        ProcessorRule rule26 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), 0.7f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE.get().defaultBlockState());
-        ProcessorRule rule27 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DIAMOND_BLOCK, 0.5f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState());
+        ProcessorRule rule23 = new ProcessorRule(new RandomBlockMatchTest(Blocks.SCULK_SENSOR, 0.1f), AlwaysTrueTest.INSTANCE, Blocks.SCULK_VEIN.defaultBlockState().setValue(PipeBlock.DOWN, true));
+        ProcessorRule rule24 = new ProcessorRule(new RandomBlockMatchTest(Blocks.SCULK_SHRIEKER, 0.09f), AlwaysTrueTest.INSTANCE, Blocks.SCULK_VEIN.defaultBlockState().setValue(PipeBlock.DOWN, true));
+        ProcessorRule rule25 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_IRON_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState());
+        ProcessorRule rule26 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_COPPER_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_COPPER_ORE.get().defaultBlockState());
+        ProcessorRule rule27 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_GOLD_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_GOLD_ORE.get().defaultBlockState());
+        ProcessorRule rule28 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), 0.7f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE.get().defaultBlockState());
+        ProcessorRule rule29 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DIAMOND_BLOCK, 0.5f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState());
 
-        context.register(ANCIENT_TEMPLE_DEGRADATION, new StructureProcessorList(ImmutableList.of(new RuleProcessor(ImmutableList.of(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20, rule21, rule22, rule23, rule24, rule25, rule26, rule27)))));
+        context.register(ANCIENT_TEMPLE_DEGRADATION, new StructureProcessorList(ImmutableList.of(new RuleProcessor(ImmutableList.of(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20, rule21, rule22, rule23, rule24, rule25, rule26, rule27, rule28, rule29)))));
     }
 
     private static ResourceKey<StructureProcessorList> createKey(String name) {
