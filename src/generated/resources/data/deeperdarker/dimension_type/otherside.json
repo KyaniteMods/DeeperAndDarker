@@ -8,7 +8,7 @@
   "has_raids": false,
   "has_skylight": false,
   "height": 128,
-  "infiniburn": "#minecraft:infiniburn_nether",
+  "infiniburn": "#deeperdarker:infiniburn_otherside",
   "logical_height": 128,
   "min_y": 0,
   "monster_spawn_block_light_limit": 9,

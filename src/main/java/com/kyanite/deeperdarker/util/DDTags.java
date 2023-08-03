@@ -19,6 +19,7 @@ public class DDTags {
         public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = tag("gloomslate_replaceable");
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
         public static final TagKey<Block> TRANSMITTABLE = tag("transmittable");
+        public static final TagKey<Block> INFINIBURN_OTHERSIDE = tag("infiniburn_otherside");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));

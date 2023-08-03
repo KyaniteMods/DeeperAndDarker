@@ -1,8 +1,9 @@
-// 1.20.1	2023-07-31T16:56:21.7197842	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2023-08-02T18:56:54.7590059	Tags for minecraft:block mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 453499b5116c2c24d57c28ec55db0211260f511d data/deeperdarker/tags/blocks/echo_soil.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
+8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/blocks/infiniburn_otherside.json
 4b3a3834715a617924c94f9d91ae043b2f4c9d63 data/deeperdarker/tags/blocks/sculk_stone_replaceable.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
 a6f75bc5d6311e4ad5a407e50c93a292a386c662 data/deeperdarker/tags/blocks/transmittable.json
