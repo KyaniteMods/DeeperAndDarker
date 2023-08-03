@@ -60,8 +60,8 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOOMSLATE_COLUMN, features.getOrThrow(DDConfiguredFeatures.GLOOMSLATE_COLUMN), countPlacement(24, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_GLEAM, features.getOrThrow(DDConfiguredFeatures.SCULK_GLEAM_EXTRA), countPlacement(16, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_GLEAM_FOREST, features.getOrThrow(DDConfiguredFeatures.SCULK_GLEAM_EXTRA), countPlacement(28, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_TENDRILS, features.getOrThrow(DDConfiguredFeatures.SCULK_TENDRILS), countPlacement(42, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_VINES, features.getOrThrow(DDConfiguredFeatures.SCULK_VINES), countPlacement(36, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, SCULK_TENDRILS, features.getOrThrow(DDConfiguredFeatures.SCULK_TENDRILS), countPlacement(36, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, SCULK_VINES, features.getOrThrow(DDConfiguredFeatures.SCULK_VINES), countPlacement(28, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, SURFACE_SCULK_STONE, features.getOrThrow(DDConfiguredFeatures.SURFACE_SCULK_STONE), countPlacement(55, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SURFACE_GLOOMSLATE, features.getOrThrow(DDConfiguredFeatures.SURFACE_GLOOMSLATE), countPlacement(32, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
