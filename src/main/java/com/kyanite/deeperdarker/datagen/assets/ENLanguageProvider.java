@@ -53,6 +53,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
         add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
+        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
