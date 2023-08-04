@@ -61,7 +61,11 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(linkedBlock != null && pStack.hasTag()) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", linkedBlock.getName()).withStyle(ChatFormatting.GRAY));
+        if(linkedBlock != null && pStack.hasTag()) {
+            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", linkedBlock.getName()).withStyle(ChatFormatting.GRAY));
+            int[] pos = pStack.getTag().getIntArray("blockPos");
+            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos[0], pos[1], pos[2]).withStyle(ChatFormatting.GRAY));
+        }
         else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);

@@ -162,6 +162,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
+        translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
         translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
         translationBuilder.add("subtitles.entity.sculk_snapper.ambient", "Sculk Snapper breathes");
