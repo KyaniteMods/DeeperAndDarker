@@ -78,7 +78,8 @@ public class DeeperDarker implements ModInitializer {
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
-						.with(LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).build());
+						.with(LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).build())
+							.conditionally(LootItemRandomChanceCondition.randomChance(0.6f).build());
 
 				tableBuilder.pool(poolBuilder.build());
 			}
