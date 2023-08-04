@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cobbled_sculk_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:cobbled_sculk_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:polished_sculk_stone_slab_from_cobbled_sculk_stone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cobbled_sculk_stone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:polished_sculk_stone_slab_from_cobbled_sculk_stone"
+    ]
+  },
+  "sends_telemetry_event": false
+}

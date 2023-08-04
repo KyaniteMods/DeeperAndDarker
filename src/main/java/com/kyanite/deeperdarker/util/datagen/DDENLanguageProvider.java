@@ -52,6 +52,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ECHO_HANGING_SIGN, "Echo Hanging Sign");
         translationBuilder.add(DDBlocks.ECHO_LEAVES, "Echo Leaves");
         translationBuilder.add(DDBlocks.ECHO_PLANKS, "Echo Planks");
+        translationBuilder.add(DDBlocks.ECHO_STAIRS, "Echo Stairs");
         translationBuilder.add(DDBlocks.ECHO_PRESSURE_PLATE, "Echo Pressure Plate");
         translationBuilder.add(DDBlocks.ECHO_SAPLING, "Echo Sapling");
         translationBuilder.add(DDBlocks.ECHO_SIGN, "Echo Sign");
