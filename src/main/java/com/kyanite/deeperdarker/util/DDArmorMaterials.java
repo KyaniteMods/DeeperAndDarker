@@ -14,10 +14,10 @@ import java.util.EnumMap;
 @SuppressWarnings("NullableProblems")
 public enum DDArmorMaterials implements ArmorMaterial {
     WARDEN("warden", 40, Util.make(new EnumMap<>(ArmorItem.Type.class), protectionValue -> {
-        protectionValue.put(ArmorItem.Type.BOOTS, 3);
-        protectionValue.put(ArmorItem.Type.LEGGINGS, 6);
-        protectionValue.put(ArmorItem.Type.CHESTPLATE, 8);
-        protectionValue.put(ArmorItem.Type.HELMET, 3);
+        protectionValue.put(ArmorItem.Type.BOOTS, 4);
+        protectionValue.put(ArmorItem.Type.LEGGINGS, 7);
+        protectionValue.put(ArmorItem.Type.CHESTPLATE, 9);
+        protectionValue.put(ArmorItem.Type.HELMET, 4);
     }), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.1f, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD));
 
     private final String name;
