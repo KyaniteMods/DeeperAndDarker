@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
+import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.resources.ResourceLocation;
@@ -51,6 +52,7 @@ public class DeeperDarker implements ModInitializer {
 				.tintColor(5, 98, 93)
 				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
 				.forcedSize(20, 6)
+				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
 				.registerPortal();
 
 

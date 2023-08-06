@@ -190,6 +190,7 @@
   "subtitles.item.sculk_transmitter.open": "Sculk Transmitter transmits",
   "subtitles.item.sculk_transmitter.unlink": "Sculk Transmitter unlinks",
   "tooltips.deeperdarker.sculk_transmitter.linked": "Linked to %1$s",
+  "tooltips.deeperdarker.sculk_transmitter.location": "Located at %1$s, %2$s, %3$s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
   "upgrade.deeperdarker.warden_upgrade": "Warden Upgrade"
 }

@@ -81,6 +81,6 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(DDBlocks.POTTED_ECHO_SAPLING);
 
-        getOrCreateTagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
+        getOrCreateTagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).forceAddTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
     }
 }
