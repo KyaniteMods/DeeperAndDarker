@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,6 +27,7 @@ public class GeyserBlock extends Block {
 
     @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
+        if(pEntity instanceof ExperienceOrb) return;
 //        pEntity.hurt(pLevel.damageSources().hotFloor(), 2);
         pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), 2.5, pEntity.getDeltaMovement().z());
         if(pLevel.isClientSide()) {
