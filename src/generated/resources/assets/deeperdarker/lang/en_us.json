@@ -157,6 +157,10 @@
   "item.deeperdarker.sculk_transmitter": "Sculk Transmitter",
   "item.deeperdarker.shattered_spawn_egg": "Shattered Spawn Egg",
   "item.deeperdarker.shriek_worm_spawn_egg": "Shriek Worm Spawn Egg",
+  "item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description": "Add Reinforced Echo Shard",
+  "item.deeperdarker.smithing_template.warden_upgrade.applies_to": "Netherite Equipment",
+  "item.deeperdarker.smithing_template.warden_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
+  "item.deeperdarker.smithing_template.warden_upgrade.ingredients": "Reinforced Echo Shard",
   "item.deeperdarker.soul_crystal": "Soul Crystal",
   "item.deeperdarker.soul_dust": "Soul Dust",
   "item.deeperdarker.soul_elytra": "Soul Elytra",
@@ -202,5 +206,6 @@
   "subtitles.item.transmitter.unlink": "Transmitter unlinks",
   "tooltips.deeperdarker.sculk_transmitter.linked": "Linked to %1$s",
   "tooltips.deeperdarker.sculk_transmitter.location": "Located at %1$s, %2$s, %3$s",
-  "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked"
+  "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
+  "upgrade.deeperdarker.warden_upgrade": "Warden Upgrade"
 }

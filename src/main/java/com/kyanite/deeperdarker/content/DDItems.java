@@ -47,13 +47,12 @@ public class DDItems {
 
     public static final RegistryObject<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
-            Component.literal("Netherite Equipment").withStyle(ChatFormatting.BLUE),
-            Component.literal("Reinforced Echo Shard").withStyle(ChatFormatting.BLUE),
-            Component.literal("Warden Upgrade").withStyle(ChatFormatting.GRAY),
-            Component.literal("Add netherite armor, weapon, or tool"),
-            Component.literal("Add Reinforced Echo Shard"),
-            SmithingTemplateItem.createNetheriteUpgradeIconList(),
-            List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_shard"))
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade").withStyle(ChatFormatting.GRAY),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description"),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description"),
+            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_shard"))
     ));
 
     public static final RegistryObject<Item> SCULK_CENTIPEDE_SPAWN_EGG = ITEMS.register("sculk_centipede_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));

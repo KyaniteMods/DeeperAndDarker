@@ -47,7 +47,6 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
 
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
-
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
@@ -55,6 +54,11 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
+        add("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade", "Warden Upgrade");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
