@@ -30,6 +30,8 @@
     [],
     [],
     [
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
       "deeperdarker:sculk_coal",
       "deeperdarker:sculk_iron",
       "deeperdarker:sculk_copper",
@@ -41,9 +43,6 @@
     ],
     [
       "deeperdarker:sculk_stone_column",
-      "deeperdarker:sculk",
-      "deeperdarker:infested_sculk",
-      "deeperdarker:sculk_jaw",
       "deeperdarker:sculk_gleam"
     ],
     [],

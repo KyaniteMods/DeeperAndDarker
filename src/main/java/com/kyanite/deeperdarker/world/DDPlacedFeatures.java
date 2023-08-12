@@ -28,7 +28,6 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SURFACE_GLOOMSLATE = createKey("surface_gloomslate");
     public static final ResourceKey<PlacedFeature> GLOOMY_SCULK_VEGETATION = createKey("gloomy_sculk_vegetation");
 
-    public static final ResourceKey<PlacedFeature> SCULK = createKey("sculk");
     public static final ResourceKey<PlacedFeature> INFESTED_SCULK = createKey("infested_sculk");
     public static final ResourceKey<PlacedFeature> SCULK_JAW = createKey("sculk_jaw");
     public static final ResourceKey<PlacedFeature> ECHO_SOIL = createKey("echo_soil");
@@ -70,9 +69,8 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SURFACE_GLOOMSLATE, features.getOrThrow(DDConfiguredFeatures.SURFACE_GLOOMSLATE), countPlacement(32, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, GLOOMY_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.GLOOMY_SCULK_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
 
-        PlacementUtils.register(context, SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK), countPlacement(14, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, INFESTED_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_INFESTED_SCULK), countPlacement(14, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(86))));
-        PlacementUtils.register(context, SCULK_JAW, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_JAW), countPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-96), VerticalAnchor.top())));
+        PlacementUtils.register(context, INFESTED_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_INFESTED_SCULK), countPlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(86))));
+        PlacementUtils.register(context, SCULK_JAW, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_JAW), countPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-92), VerticalAnchor.top())));
         PlacementUtils.register(context, ECHO_SOIL, features.getOrThrow(DDConfiguredFeatures.ORE_ECHO_SOIL), countPlacement(25, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
         PlacementUtils.register(context, SCULK_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));

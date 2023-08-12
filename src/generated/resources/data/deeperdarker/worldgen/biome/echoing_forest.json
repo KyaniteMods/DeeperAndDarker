@@ -37,6 +37,8 @@
     [],
     [
       "deeperdarker:echo_soil",
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
       "deeperdarker:sculk_coal",
       "deeperdarker:sculk_iron",
       "deeperdarker:sculk_copper",
@@ -47,11 +49,7 @@
       "deeperdarker:sculk_diamond"
     ],
     [
-      "deeperdarker:sculk_gleam_forest",
-      "deeperdarker:sculk",
-      "deeperdarker:infested_sculk",
-      "deeperdarker:sculk_jaw",
-      "deeperdarker:sculk_gleam"
+      "deeperdarker:sculk_gleam_forest"
     ],
     [],
     [
