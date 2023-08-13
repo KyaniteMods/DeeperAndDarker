@@ -75,16 +75,16 @@ public class OthersidePortalBlock extends Block {
                 if(!pLevel.isClientSide && !pPos.equals(pEntity.portalEntrancePos)) pEntity.portalEntrancePos = pPos.immutable();
 
                 MinecraftServer server = pLevel.getServer();
-                ResourceKey<Level> destination = pLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL ? Level.OVERWORLD : OthersideDimension.OTHERSIDE_LEVEL;
+                if(server == null) return;
+                if(pLevel.dimension() != OthersideDimension.OTHERSIDE_LEVEL && pLevel.dimension() != Level.OVERWORLD) return;
 
-                if(server != null) {
-                    ServerLevel destinationWorld = server.getLevel(destination);
-                    if(destinationWorld != null && server.isNetherEnabled() && !pEntity.isPassenger()) {
-                        pLevel.getProfiler().push("OTHERSIDE_PORTAL");
-                        pEntity.setPortalCooldown();
-                        pEntity.changeDimension(destinationWorld, new OthersideTeleporter(destinationWorld));
-                        pLevel.getProfiler().pop();
-                    }
+                ResourceKey<Level> destination = pLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL ? Level.OVERWORLD : OthersideDimension.OTHERSIDE_LEVEL;
+                ServerLevel destWorld = server.getLevel(destination);
+                if(destWorld != null && !pEntity.isPassenger()) {
+                    pLevel.getProfiler().push("portal");
+                    pEntity.setPortalCooldown();
+                    pEntity.changeDimension(destWorld, new OthersideTeleporter(destWorld));
+                    pLevel.getProfiler().pop();
                 }
             }
         }
