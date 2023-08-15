@@ -27,7 +27,7 @@
         }
       ]
     },
-    "replaceable": "#deeperdarker:sculk_stone_replaceable",
+    "replaceable": "#deeperdarker:sculk_replaceables",
     "surface": "floor",
     "vegetation_chance": 0.2,
     "vegetation_feature": {

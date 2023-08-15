@@ -21,7 +21,7 @@ public class GeyserBlock extends Block {
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if(pRandom.nextInt(50) == 0) {
             pLevel.playLocalSound(pPos.getX() + 0.5, pPos.getY() + 0.5, pPos.getZ() + 0.5, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.5f + pRandom.nextFloat() * 0.5f, pRandom.nextFloat() * 0.1f + 0.85f, false);
-            pLevel.addParticle(ParticleTypes.LAVA, pPos.getX() + 0.5,  pPos.getY() + 0.5,  pPos.getZ() + 0.5, pRandom.nextFloat() / 2.0f, 5.0e-5d, pRandom.nextFloat() / 2f);
+            pLevel.addParticle(ParticleTypes.LAVA, pPos.getX() + 0.5, pPos.getY() + 0.5, pPos.getZ() + 0.5, pRandom.nextFloat() / 2.0f, 5.0e-5d, pRandom.nextFloat() / 2f);
         }
     }
 
@@ -31,7 +31,7 @@ public class GeyserBlock extends Block {
 //        pEntity.hurt(pLevel.damageSources().hotFloor(), 2);
         pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), 2.5, pEntity.getDeltaMovement().z());
         if(pLevel.isClientSide()) {
-            pLevel.playLocalSound( pPos.getX() + 0.5,  pPos.getY() + 0.5,  pPos.getZ() + 0.5, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 2 + pLevel.random.nextFloat(), pLevel.random.nextFloat() * 0.7f + 0.6f, false);
+            pLevel.playLocalSound( pPos.getX() + 0.5, pPos.getY() + 0.5, pPos.getZ() + 0.5, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 2 + pLevel.random.nextFloat(), pLevel.random.nextFloat() * 0.7f + 0.6f, false);
             pLevel.addParticle(ParticleTypes.LARGE_SMOKE, pPos.getX(), pPos.getY(), pPos.getZ(), 0.05, 0.5, 0.05);
         }
     }
