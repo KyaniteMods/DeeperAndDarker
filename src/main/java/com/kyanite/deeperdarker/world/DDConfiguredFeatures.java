@@ -15,6 +15,7 @@ import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -48,6 +49,8 @@ public class DDConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_STONE_GENERATION = createKey("sculk_stone_generation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_DECORATION = createKey("sculk_decoration");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_PATCH = createKey("sculk_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMSLATE_GENERATION = createKey("gloomslate_generation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GLOOMSLATE = createKey("surface_gloomslate");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMY_SCULK_VEGETATION = createKey("gloomy_sculk_vegetation");
@@ -106,6 +109,8 @@ public class DDConfiguredFeatures {
 
         FeatureUtils.register(context, SCULK_STONE_GENERATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.SCULK_STONE.get())));
         FeatureUtils.register(context, SURFACE_SCULK_STONE, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_STONE_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SCULK.defaultBlockState(), 1).add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 2)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_STONE_GENERATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0, UniformInt.of(1, 2), 0.3f));
+        FeatureUtils.register(context, SCULK_DECORATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SCULK_VEIN.defaultBlockState().setValue(PipeBlock.DOWN, true), 47).add(Blocks.SCULK_SENSOR.defaultBlockState(), 16).add(Blocks.SCULK_CATALYST.defaultBlockState(), 2).add(Blocks.SCULK_SHRIEKER.defaultBlockState(), 1))));
+        FeatureUtils.register(context, SCULK_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_STONE_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SCULK.defaultBlockState(), 6).add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 2).add(DDBlocks.SCULK_GRIME.get().defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_DECORATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.2f, UniformInt.of(2, 3), 0.3f));
         FeatureUtils.register(context, GLOOMSLATE_GENERATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.GLOOMSLATE.get())));
         FeatureUtils.register(context, SURFACE_GLOOMSLATE, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMSLATE_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 4).add(DDBlocks.GLOOMSLATE.get().defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GLOOMY_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0, ConstantInt.of(2), 0.3f));
         FeatureUtils.register(context, GLOOMY_SCULK_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.get().defaultBlockState(), 9).add(DDBlocks.GLOOMY_CACTUS.get().defaultBlockState(), 1))));
