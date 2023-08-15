@@ -39,8 +39,8 @@ public class DDProcessorLists {
         ProcessorRule rule19 = new ProcessorRule(new RandomBlockStateMatchTest(Blocks.DEEPSLATE_BRICK_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST).setValue(StairBlock.HALF, Half.TOP), 0.07f), AlwaysTrueTest.INSTANCE, Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST).setValue(StairBlock.HALF, Half.TOP));
         ProcessorRule rule20 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_TILES, 0.25f), AlwaysTrueTest.INSTANCE, Blocks.CRACKED_DEEPSLATE_TILES.defaultBlockState());
         ProcessorRule rule21 = new ProcessorRule(new RandomBlockMatchTest(Blocks.COBBLED_DEEPSLATE, 0.05f), AlwaysTrueTest.INSTANCE, Blocks.SMOOTH_BASALT.defaultBlockState());
-        ProcessorRule rule22 = new ProcessorRule(new RandomBlockMatchTest(DDBlocks.ANCIENT_VASE.get(), 0.25f), AlwaysTrueTest.INSTANCE, Blocks.AIR.defaultBlockState());
-        ProcessorRule rule23 = new ProcessorRule(new RandomBlockMatchTest(Blocks.SCULK_SENSOR, 0.1f), AlwaysTrueTest.INSTANCE, Blocks.SCULK_VEIN.defaultBlockState().setValue(PipeBlock.DOWN, true));
+        ProcessorRule rule22 = new ProcessorRule(new RandomBlockStateMatchTest(DDBlocks.ANCIENT_VASE.get().defaultBlockState(), 0.25f), AlwaysTrueTest.INSTANCE, Blocks.AIR.defaultBlockState());
+        ProcessorRule rule23 = new ProcessorRule(new RandomBlockStateMatchTest(Blocks.SCULK_SENSOR.defaultBlockState(), 0.1f), AlwaysTrueTest.INSTANCE, Blocks.SCULK_VEIN.defaultBlockState().setValue(PipeBlock.DOWN, true));
         ProcessorRule rule24 = new ProcessorRule(new RandomBlockMatchTest(Blocks.SCULK_SHRIEKER, 0.09f), AlwaysTrueTest.INSTANCE, Blocks.SCULK_VEIN.defaultBlockState().setValue(PipeBlock.DOWN, true));
         ProcessorRule rule25 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_IRON_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_IRON_ORE.get().defaultBlockState());
         ProcessorRule rule26 = new ProcessorRule(new RandomBlockMatchTest(Blocks.RAW_COPPER_BLOCK, 0.16f), AlwaysTrueTest.INSTANCE, DDBlocks.SCULK_STONE_COPPER_ORE.get().defaultBlockState());
