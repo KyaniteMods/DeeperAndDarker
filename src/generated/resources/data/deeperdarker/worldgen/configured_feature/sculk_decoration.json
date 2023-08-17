@@ -43,7 +43,7 @@
           "data": {
             "Name": "minecraft:sculk_shrieker",
             "Properties": {
-              "can_summon": "false",
+              "can_summon": "true",
               "shrieking": "false",
               "waterlogged": "false"
             }
