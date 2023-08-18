@@ -502,8 +502,13 @@
         },
         {
           "input_predicate": {
-            "block": "deeperdarker:ancient_vase",
-            "predicate_type": "minecraft:random_block_match",
+            "block_state": {
+              "Name": "deeperdarker:ancient_vase",
+              "Properties": {
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
             "probability": 0.25
           },
           "location_predicate": {
@@ -515,8 +520,15 @@
         },
         {
           "input_predicate": {
-            "block": "minecraft:sculk_sensor",
-            "predicate_type": "minecraft:random_block_match",
+            "block_state": {
+              "Name": "minecraft:sculk_sensor",
+              "Properties": {
+                "power": "0",
+                "sculk_sensor_phase": "inactive",
+                "waterlogged": "false"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
             "probability": 0.1
           },
           "location_predicate": {
