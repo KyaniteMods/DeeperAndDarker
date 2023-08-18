@@ -1,9 +1,9 @@
 {
-  "feature": "deeperdarker:gloomy_sculk_patch",
+  "feature": "deeperdarker:sculk_patch",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 256
+      "count": 86
     },
     {
       "type": "minecraft:in_square"

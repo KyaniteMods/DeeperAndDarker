@@ -25,7 +25,7 @@
     "surface": "floor",
     "vegetation_chance": 0.0,
     "vegetation_feature": {
-      "feature": "deeperdarker:gloomy_sculk_vegetation",
+      "feature": "deeperdarker:gloomslate_generation",
       "placement": []
     },
     "vertical_range": 2,
