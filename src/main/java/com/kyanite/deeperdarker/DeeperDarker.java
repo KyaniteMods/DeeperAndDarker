@@ -1,11 +1,10 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
-import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
@@ -19,18 +18,16 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collection;
-
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = new ResourceLocation(MOD_ID, "otherside");
 
 	@Override
 	public void onInitialize() {
@@ -45,18 +42,18 @@ public class DeeperDarker implements ModInitializer {
 		DDBlockEntities.init();
 		DDEffects.init();
 
-		CustomPortalBuilder.beginPortal()
+		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
+
+		PortalLink portalLink = CustomPortalBuilder.beginPortal()
 				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
 				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
 				.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
 				.tintColor(5, 98, 93)
 				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-				.forcedSize(20, 6)
+				.customFrameTester(OTHERSIDE_FRAME_TESTER)
 				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
 				.registerPortal();
 
-		// 1.20: .add(); .when(); .withPool().
-		// 1.20.1: .with(); .conditionally(); .pool().
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
