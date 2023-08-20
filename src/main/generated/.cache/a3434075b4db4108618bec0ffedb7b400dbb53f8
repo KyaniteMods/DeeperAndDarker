@@ -1,2 +1,10 @@
-// 1.20	2023-08-19T20:17:09.5000115	Deeper and Darker/Advancements
-ce44182b59347c8dccdc0ccecd6a633fbc30afc7 data\minecraft\advancements\deeperdarker\root.json
+// 1.20	2023-08-20T20:37:21.8024682	Deeper and Darker/Advancements
+cf318040575219b02ae94941e0fb33c02f196203 data\deeperdarker\advancements\main\find_ancient_city.json
+a6843dc478686746fc060953abc28acae4be33e3 data\deeperdarker\advancements\main\obtain_reinforce_echo_shard.json
+e35f7e028016ba746172bbef9f8469f33e99a450 data\deeperdarker\advancements\main\find_ancient_temple.json
+c92a96dd0a42d69d61838ea2b3e3730e93306019 data\deeperdarker\advancements\main\explore_otherside.json
+ca1f70251dc63bd13a77382d15ee29e9a61913df data\deeperdarker\advancements\main\enter_otherside.json
+bcc957ddb06cfce6c593c7065f0442333200594d data\deeperdarker\advancements\main\obtain_sculk_transmitter.json
+bb97859071e5fd47e387710d8c90493a84e0bf3c data\deeperdarker\advancements\main\root.json
+12f0245d5431f178e2d5ac6355e49e7c8c729034 data\deeperdarker\advancements\main\kill_warden.json
+9a8e630b0cc290791c3883160f3fd7adec527dc7 data\deeperdarker\advancements\main\warden_armor.json

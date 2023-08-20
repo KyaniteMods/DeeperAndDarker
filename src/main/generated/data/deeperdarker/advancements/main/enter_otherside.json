@@ -1,8 +1,8 @@
 {
+  "parent": "deeperdarker:main/kill_warden",
   "criteria": {
-    "entered_otherside": {
+    "otherside": {
       "conditions": {
-        "from": "minecraft:overworld",
         "to": "deeperdarker:otherside"
       },
       "trigger": "minecraft:changed_dimension"
@@ -10,23 +10,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "deeperdarker:textures/gui/advancements/backgrounds/deeperdarker.png",
     "description": {
-      "translate": "advancements.deeperdarker.root.description"
+      "translate": "advancements.deeperdarker.enter_otherside.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "deeperdarker:heart_of_the_deep"
+      "item": "minecraft:reinforced_deepslate"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.root.title"
+      "translate": "advancements.deeperdarker.enter_otherside.title"
     }
   },
   "requirements": [
     [
-      "entered_otherside"
+      "otherside"
     ]
   ],
   "sends_telemetry_event": true
