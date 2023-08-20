@@ -249,10 +249,5 @@
     "sounds": [
       "deeperdarker:music/overcast_columns"
     ]
-  },
-  "music.deeperdarker.overcast_columns_act_ii": {
-    "sounds": [
-      "deeperdarker:music/overcast_columns_act_ii"
-    ]
   }
 }
