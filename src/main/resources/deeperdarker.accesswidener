@@ -1,3 +1,4 @@
 accessWidener   v1 named
 accessible class net/minecraft/data/models/ItemModelGenerators$TrimModelData
 accessible field net/minecraft/data/models/ItemModelGenerators GENERATED_TRIM_MODELS Ljava/util/List;
+accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;

@@ -23,8 +23,8 @@ public class SoulElytraItem extends ElytraItem {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-        return slot == EquipmentSlot.CHEST ? this.MODIFIERS : super.getAttributeModifiers(stack, slot);
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
+        return slot == EquipmentSlot.CHEST ? this.MODIFIERS : super.getDefaultAttributeModifiers(slot);
     }
 
     @Override

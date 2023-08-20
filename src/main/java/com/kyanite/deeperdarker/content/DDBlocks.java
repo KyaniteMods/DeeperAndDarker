@@ -7,15 +7,13 @@ import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.item.BlockItem;
@@ -33,8 +31,8 @@ import net.minecraft.world.level.material.PushReaction;
 
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
-    private static final BlockSetType ECHO_SET = new BlockSetTypeBuilder().register(new ResourceLocation(DeeperDarker.MOD_ID, "echo"));
-    public static final WoodType ECHO = new WoodTypeBuilder().register(new ResourceLocation(DeeperDarker.MOD_ID, "echo"), ECHO_SET);
+    private static final BlockSetType ECHO_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final WoodType ECHO = WoodType.register(new WoodType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), ECHO_SET, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
 
     public static final Block ECHO_LOG = register("echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_WOOD = register("echo_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE)));

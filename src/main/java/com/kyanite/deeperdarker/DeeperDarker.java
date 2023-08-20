@@ -55,35 +55,36 @@ public class DeeperDarker implements ModInitializer {
 				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
 				.registerPortal();
 
-
+		// 1.20: .add(); .when(); .withPool().
+		// 1.20.1: .with(); .conditionally(); .pool().
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
-						.with(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
-								UniformGenerator.between(1.0f, 3.0f))).build())
-						.with(LootItem.lootTableItem(DDItems.HEART_OF_THE_DEEP).build());
+						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
+								UniformGenerator.between(1.0f, 3.0f))))
+						.add(LootItem.lootTableItem(DDItems.HEART_OF_THE_DEEP));
 
-				tableBuilder.pool(poolBuilder.build());
+				tableBuilder.withPool(poolBuilder);
 			}
 		});
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
-						.with(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).build())
-						.conditionally(LootItemRandomChanceCondition.randomChance(0.2f).build());
+						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE)
+								.when(LootItemRandomChanceCondition.randomChance(0.2f)));
 
-				tableBuilder.pool(poolBuilder.build());
+				tableBuilder.withPool(poolBuilder);
 			}
 		});
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
-						.with(LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).build())
-							.conditionally(LootItemRandomChanceCondition.randomChance(0.6f).build());
+						.add(LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE))
+							.when(LootItemRandomChanceCondition.randomChance(0.6f));
 
-				tableBuilder.pool(poolBuilder.build());
+				tableBuilder.withPool(poolBuilder);
 			}
 		});
 	}

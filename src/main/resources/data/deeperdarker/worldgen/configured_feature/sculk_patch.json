@@ -1,56 +1,46 @@
 {
-  "type": "minecraft:simple_block",
+  "type": "minecraft:vegetation_patch",
   "config": {
-    "to_place": {
+    "depth": 1,
+    "extra_bottom_block_chance": 0.0,
+    "extra_edge_column_chance": 0.3,
+    "ground_state": {
       "type": "minecraft:weighted_state_provider",
       "entries": [
         {
           "data": {
-            "Name": "minecraft:sculk_vein",
-            "Properties": {
-              "down": "true",
-              "east": "false",
-              "north": "false",
-              "south": "false",
-              "up": "false",
-              "waterlogged": "false",
-              "west": "false"
-            }
+            "Name": "minecraft:sculk"
           },
-          "weight": 47
+          "weight": 6
         },
         {
           "data": {
-            "Name": "minecraft:sculk_sensor",
-            "Properties": {
-              "power": "0",
-              "sculk_sensor_phase": "inactive",
-              "waterlogged": "false"
-            }
-          },
-          "weight": 16
-        },
-        {
-          "data": {
-            "Name": "minecraft:sculk_catalyst",
-            "Properties": {
-              "bloom": "false"
-            }
+            "Name": "deeperdarker:sculk_stone"
           },
           "weight": 2
         },
         {
           "data": {
-            "Name": "minecraft:sculk_shrieker",
-            "Properties": {
-              "can_summon": "false",
-              "shrieking": "false",
-              "waterlogged": "false"
-            }
+            "Name": "deeperdarker:sculk_grime"
           },
           "weight": 1
         }
       ]
+    },
+    "replaceable": "#deeperdarker:sculk_replaceables",
+    "surface": "floor",
+    "vegetation_chance": 0.2,
+    "vegetation_feature": {
+      "feature": "deeperdarker:sculk_decoration",
+      "placement": []
+    },
+    "vertical_range": 2,
+    "xz_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      }
     }
   }
 }
