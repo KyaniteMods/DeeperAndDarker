@@ -42,7 +42,7 @@ public class DDBoatRenderer extends EntityRenderer {
         if (chest) {
             return "textures/entity/chest_boat/echo.png";
         }
-        return "textures/entity/boat/chest/echo.png";
+        return "textures/entity/boat/echo.png";
     }
 
     private static ResourceLocation getTextureId(boolean chest) {

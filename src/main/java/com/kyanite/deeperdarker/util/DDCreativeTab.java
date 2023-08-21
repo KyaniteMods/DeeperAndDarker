@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class DDCreativeTab {
     private static final CreativeModeTab.Builder ITEM_GROUP_BUILDER =
-            FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
+        FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
         entries.accept(new ItemStack(DDItems.WARDEN_HELMET));
         entries.accept(new ItemStack(DDItems.WARDEN_CHESTPLATE));
         entries.accept(new ItemStack(DDItems.WARDEN_LEGGINGS));
@@ -23,6 +23,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.WARDEN_AXE));
         entries.accept(new ItemStack(DDItems.WARDEN_SHOVEL));
         entries.accept(new ItemStack(DDItems.WARDEN_HOE));
+        entries.accept(new ItemStack(DDItems.SOUL_ELYTRA));
         entries.accept(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         entries.accept(new ItemStack(DDItems.REINFORCED_ECHO_SHARD));
         entries.accept(new ItemStack(DDItems.WARDEN_CARAPACE));

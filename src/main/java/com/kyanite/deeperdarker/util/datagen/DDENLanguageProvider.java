@@ -18,28 +18,11 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add("itemGroup.deeperdarker", "Deeper and Darker");
-        translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
-        translationBuilder.add(DDItems.WARDEN_CHESTPLATE, "Warden Chestplate");
-        translationBuilder.add(DDItems.WARDEN_LEGGINGS, "Warden Leggings");
-        translationBuilder.add(DDItems.WARDEN_BOOTS, "Warden Boots");
-        translationBuilder.add(DDItems.WARDEN_SWORD, "Warden Sword");
-        translationBuilder.add(DDItems.WARDEN_PICKAXE, "Warden Pickaxe");
-        translationBuilder.add(DDItems.WARDEN_AXE, "Warden Axe");
-        translationBuilder.add(DDItems.WARDEN_SHOVEL, "Warden Shovel");
-        translationBuilder.add(DDItems.WARDEN_HOE, "Warden Hoe");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
         translationBuilder.add("upgrade.deeperdarker.warden_upgrade", "Warden Upgrade");
-        translationBuilder.add(DDItems.REINFORCED_ECHO_SHARD, "Reinforced Echo Shard");
-        translationBuilder.add(DDItems.WARDEN_CARAPACE, "Warden Carapace");
-        translationBuilder.add(DDItems.HEART_OF_THE_DEEP, "Heart of the Deep");
-        translationBuilder.add(DDItems.SOUL_CRYSTAL, "Soul Crystal");
-        translationBuilder.add(DDItems.SOUL_DUST, "Soul Dust");
-        translationBuilder.add(DDItems.SCULK_BONE, "Sculk Bone");
-        translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
-        translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");
         translationBuilder.add(DDBlocks.ECHO_LOG, "Echo Log");
         translationBuilder.add(DDBlocks.ECHO_WOOD, "Echo Wood");
         translationBuilder.add(DDBlocks.STRIPPED_ECHO_LOG, "Stripped Echo Log");
@@ -150,13 +133,41 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOOMY_SCULK, "Gloomy Sculk");
         translationBuilder.add(DDBlocks.GLOOMY_GEYSER, "Gloomy Geyser");
         translationBuilder.add(DDBlocks.POTTED_ECHO_SAPLING, "Potted Echo Sapling");
-        translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
-        translationBuilder.add(DDItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
-        translationBuilder.add(DDEntities.BOAT, "Boat");
-        translationBuilder.add(DDEntities.CHEST_BOAT, "Boat with Chest");
         translationBuilder.add(DDBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DDBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
+        translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
+
+        translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
+        translationBuilder.add(DDItems.WARDEN_CHESTPLATE, "Warden Chestplate");
+        translationBuilder.add(DDItems.WARDEN_LEGGINGS, "Warden Leggings");
+        translationBuilder.add(DDItems.WARDEN_BOOTS, "Warden Boots");
+        translationBuilder.add(DDItems.WARDEN_SWORD, "Warden Sword");
+        translationBuilder.add(DDItems.WARDEN_PICKAXE, "Warden Pickaxe");
+        translationBuilder.add(DDItems.WARDEN_AXE, "Warden Axe");
+        translationBuilder.add(DDItems.WARDEN_SHOVEL, "Warden Shovel");
+        translationBuilder.add(DDItems.WARDEN_HOE, "Warden Hoe");
+        translationBuilder.add(DDItems.REINFORCED_ECHO_SHARD, "Reinforced Echo Shard");
+        translationBuilder.add(DDItems.WARDEN_CARAPACE, "Warden Carapace");
+        translationBuilder.add(DDItems.HEART_OF_THE_DEEP, "Heart of the Deep");
+        translationBuilder.add(DDItems.SOUL_CRYSTAL, "Soul Crystal");
+        translationBuilder.add(DDItems.SOUL_DUST, "Soul Dust");
+        translationBuilder.add(DDItems.SCULK_BONE, "Sculk Bone");
+        translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
+        translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");
+        translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
+        translationBuilder.add(DDItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
         translationBuilder.add(DDItems.SCULK_TRANSMITTER, "Sculk Transmitter");
+        translationBuilder.add(DDItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
+        translationBuilder.add(DDItems.SHATTERED_SPAWN_EGG, "Shattered Spawn Egg");
+        translationBuilder.add(DDItems.SCULK_LEECH_SPAWN_EGG, "Sculk Leech Spawn Egg");
+        translationBuilder.add(DDItems.SHRIEK_WORM_SPAWN_EGG, "Shriek Worm Spawn Egg");
+        translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
+        translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
+        translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
+
+        translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
+        translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");
+
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
@@ -164,6 +175,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
+
         translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
         translationBuilder.add("subtitles.entity.sculk_snapper.ambient", "Sculk Snapper breathes");
         translationBuilder.add("subtitles.entity.sculk_snapper.bite", "Sculk Snapper bites");
@@ -173,18 +185,16 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.item.sculk_transmitter.link", "Sculk Transmitter links");
         translationBuilder.add("subtitles.item.sculk_transmitter.open", "Sculk Transmitter transmits");
         translationBuilder.add("subtitles.item.sculk_transmitter.unlink", "Sculk Transmitter unlinks");
+
+        translationBuilder.add(DDEntities.BOAT, "Boat");
+        translationBuilder.add(DDEntities.CHEST_BOAT, "Boat with Chest");
         translationBuilder.add(DDEntities.SCULK_SNAPPER, "Sculk Snapper");
         translationBuilder.add(DDEntities.SHATTERED, "Shattered");
         translationBuilder.add(DDEntities.SCULK_LEECH, "Sculk Leech");
         translationBuilder.add(DDEntities.SHRIEK_WORM, "Shriek Worm");
         translationBuilder.add(DDEntities.STALKER, "Stalker");
         translationBuilder.add(DDEntities.SCULK_CENTIPEDE, "Sculk Centipede");
-        translationBuilder.add(DDItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
-        translationBuilder.add(DDItems.SHATTERED_SPAWN_EGG, "Shattered Spawn Egg");
-        translationBuilder.add(DDItems.SCULK_LEECH_SPAWN_EGG, "Sculk Leech Spawn Egg");
-        translationBuilder.add(DDItems.SHRIEK_WORM_SPAWN_EGG, "Shriek Worm Spawn Egg");
-        translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
-        translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
+
         translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
@@ -205,11 +215,24 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.stalker.ambient", "Stalker chirps");
         translationBuilder.add("subtitles.entity.stalker.hurt", "Stalker hurts");
         translationBuilder.add("subtitles.entity.stalker.death", "Stalker dies");
-        translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
-        translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
-        translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
-        translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");
-        translationBuilder.add("advancements.deeperdarker.root.title", "Arrival");
-        translationBuilder.add("advancements.deeperdarker.root.description", "Do not disturb");
+
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you towards the source...");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.title", "A Metropolis of Restless Souls");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.description", "Find an Ancient City");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.description", "Slay the Warden and take its heart");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.title", "Below the Bedrock");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock... the darkness awaits");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.title", "Abyssal Descent");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Noise Complaint");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.title", "Sculk Engineer");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.description", "Reinforce an Echo Shard");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
     }
 }

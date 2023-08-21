@@ -47,7 +47,7 @@ public class DDModelLayers {
     }
 
     public static void init() {
-        DeeperDarker.LOGGER.info("Init model layerss");
+        DeeperDarker.LOGGER.info("Initializing model layers");
         WARDEN_HELMET = registerMain("warden_helmet");
         ECHO_BOAT = createBoat("echo");
         ECHO_CHEST_BOAT = createChestBoat("echo");

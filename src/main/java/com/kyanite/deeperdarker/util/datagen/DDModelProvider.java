@@ -239,7 +239,7 @@ public class DDModelProvider extends FabricModelProvider {
         ResourceLocation buttonPressedModel = ModelTemplates.BUTTON_PRESSED.create(block, TexturedModel.CUBE.get(planks).getMapping(),
                 BlockModelGenerators.modelOutput);
 
-        BlockModelGenerators.createButton(block, buttonModel, buttonPressedModel);
+        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, buttonModel, buttonPressedModel));
     }
 
     private static void registerFenceGate(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {

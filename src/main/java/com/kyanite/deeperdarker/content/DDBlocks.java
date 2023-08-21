@@ -54,33 +54,33 @@ public class DDBlocks {
             return pState.is(DDTags.Blocks.ECHO_SOIL);
         }
     });
-    public static final Block ECHO_SIGN = register("echo_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
+    public static final Block ECHO_SIGN = registerWithoutItem("echo_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
         }
     });
 
-    public static final Block ECHO_WALL_SIGN = register("echo_wall_sign", new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).dropsLike(ECHO_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
+    public static final Block ECHO_WALL_SIGN = registerWithoutItem("echo_wall_sign", new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).dropsLike(ECHO_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
         }
     });
-    public static final Block ECHO_HANGING_SIGN = register("echo_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
+    public static final Block ECHO_HANGING_SIGN = registerWithoutItem("echo_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDHangingSignBlockEntity(pPos, pState);
         }
     });
-    public static final Block ECHO_WALL_HANGING_SIGN = register("echo_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(ECHO_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
+    public static final Block ECHO_WALL_HANGING_SIGN = registerWithoutItem("echo_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(ECHO_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDHangingSignBlockEntity(pPos, pState);
         }
     });
 
-    public static final Block POTTED_ECHO_SAPLING = register("potted_echo_sapling", createFlowerPot(ECHO_SAPLING));
+    public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", createFlowerPot(ECHO_SAPLING));
 
     public static final Block SCULK_STONE = register("sculk_stone", new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.COLOR_CYAN).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final Block SCULK_STONE_STAIRS = register("sculk_stone_stairs", new StairBlock(SCULK_STONE.defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE)));
@@ -183,7 +183,7 @@ public class DDBlocks {
     public static final Block INFESTED_SCULK = register("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
 
-    public static final Block OTHERSIDE_PORTAL = register("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
+    public static final Block OTHERSIDE_PORTAL = registerWithoutItem("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(
@@ -196,9 +196,13 @@ public class DDBlocks {
     }
 
     private static Block register(String name, Block block) {
-        Block registeredBlock = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, name), block);
+        Block registeredBlock = registerWithoutItem(name, block);
         DDItems.register(name, new BlockItem(block, new Item.Properties()));
         return registeredBlock;
+    }
+
+    private static Block registerWithoutItem(String name, Block block) {
+        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, name), block);
     }
 
     public static void init() {
