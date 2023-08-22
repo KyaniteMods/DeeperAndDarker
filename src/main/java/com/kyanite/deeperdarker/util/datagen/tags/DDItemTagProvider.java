@@ -28,6 +28,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
+        getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
 
         add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
         add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON);
