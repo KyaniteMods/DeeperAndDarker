@@ -1,4 +1,4 @@
-// 1.20	2023-08-21T22:19:58.0288879	Deeper and Darker/Tags for minecraft:block
+// 1.20	2023-08-23T16:21:30.4773169	Deeper and Darker/Tags for minecraft:block
 c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data\minecraft\tags\blocks\saplings.json
 91cc0adf830b0dda4cb501792e044b1e90172f5e data\minecraft\tags\blocks\stairs.json
 67465033f6856e41a88bd8895a6406aa84188ee8 data\minecraft\tags\blocks\logs_that_burn.json
@@ -7,8 +7,8 @@ bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\blocks\leaves.json
 ad4068cbc07d6695e52fe55e47e251e2a62b6c33 data\minecraft\tags\blocks\wall_signs.json
 f2d96eca233658a77cfb0767972a39f37e7876ea data\minecraft\tags\blocks\redstone_ores.json
 cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\blocks\wooden_stairs.json
-7d11d6c5ad2aae4b705302ecc42367df04d9e005 data\minecraft\tags\blocks\needs_iron_tool.json
 a79df4671755271345962c0aa23680929668ccea data\minecraft\tags\blocks\planks.json
+7d11d6c5ad2aae4b705302ecc42367df04d9e005 data\minecraft\tags\blocks\needs_iron_tool.json
 d261c7115ff67087a4ab55ee4e23427f048b674f data\deeperdarker\tags\blocks\sculk_replaceables.json
 8780ec507fe82c626fa8d77d75bea290a23304a8 data\minecraft\tags\blocks\mineable\axe.json
 e0586e4c302c275c6a69b0b93f016b7a271f6e6b data\minecraft\tags\blocks\mineable\hoe.json
@@ -22,7 +22,7 @@ c26e65b7ac5b7349b7e5f94a143813f554bcd660 data\minecraft\tags\blocks\iron_ores.js
 f05849880cdbeeabfa8cf9a677718a7ea229b91a data\minecraft\tags\blocks\wooden_trapdoors.json
 c17d1bdd759702765aa934b86f1f6d3b593b821f data\minecraft\tags\blocks\coal_ores.json
 4c32a9c25e5ffe915daac210388a352a9e6cae02 data\minecraft\tags\blocks\portals.json
-30e30fc6bdd34c42680dba387e69cfc3ab517533 data\deeperdarker\tags\blocks\transmittable.json
+12e80d1d7b3fdf52b069977aa315c093b01ffa8a data\deeperdarker\tags\blocks\transmittable.json
 67efbd918b7c82e42584c44101410841f8a430c3 data\deeperdarker\tags\blocks\sculk_stone_replaceables.json
 0b611850fa88d0382e3e8016186b458466af19fb data\minecraft\tags\blocks\wooden_buttons.json
 b65a380e7891bc0ba008af53d6626d525db6b9f3 data\minecraft\tags\blocks\mineable\pickaxe.json

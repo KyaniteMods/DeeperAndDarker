@@ -1,9 +1,10 @@
-// 1.20	2023-08-21T22:19:58.2732336	Deeper and Darker/Tags for minecraft:item
+// 1.20	2023-08-23T16:21:30.5690708	Deeper and Darker/Tags for minecraft:item
 d0b222d759fe0c881261b06d778a3563df87b7db data\minecraft\tags\items\wooden_doors.json
 8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data\minecraft\tags\items\wooden_slabs.json
 5853dd3bde739be76992a2067a4a916e9f14659f data\minecraft\tags\items\walls.json
 a79df4671755271345962c0aa23680929668ccea data\minecraft\tags\items\planks.json
 c17d1bdd759702765aa934b86f1f6d3b593b821f data\minecraft\tags\items\coal_ores.json
+6bd8bfd25fac6809d51b20040e5aafc2cf79c96b data\deeperdarker\tags\items\dampens_vibrations.json
 91cc0adf830b0dda4cb501792e044b1e90172f5e data\minecraft\tags\items\stairs.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data\minecraft\tags\items\leaves.json
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data\minecraft\tags\items\diamond_ores.json
@@ -26,7 +27,6 @@ cf0fad197fd904acee9b676ffdf675297222de53 data\minecraft\tags\items\wooden_stairs
 f05849880cdbeeabfa8cf9a677718a7ea229b91a data\minecraft\tags\items\wooden_trapdoors.json
 7e86841155ecc8045b7ba4b53a96700cd5c1e359 data\minecraft\tags\items\swords.json
 0a07e9bd73f18c4a5fdd58fd08a08b2718041682 data\minecraft\tags\items\trimmable_armor.json
-6bd8bfd25fac6809d51b20040e5aafc2cf79c96b data\deeperdarker\tags\items\dampens_vibrations.json
 8787510abc7136bd0e101f9597e4c972f261ec32 data\minecraft\tags\items\signs.json
 633ef27c79c15ddc51b4f7893b8ebdbc6d155237 data\minecraft\tags\items\copper_ores.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data\minecraft\tags\items\gold_ores.json
