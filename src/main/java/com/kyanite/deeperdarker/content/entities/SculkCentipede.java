@@ -17,6 +17,7 @@ import java.util.UUID;
 
 @SuppressWarnings("NullableProblems")
 public class SculkCentipede extends Monster implements NeutralMob {
+    public final AnimationState walkState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
     private UUID angerTarget;
     private int remainingAngerTime;
@@ -50,7 +51,7 @@ public class SculkCentipede extends Monster implements NeutralMob {
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        level().broadcastEntityEvent(this, (byte) 4);
+        level.broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
     }
 
@@ -61,6 +62,22 @@ public class SculkCentipede extends Monster implements NeutralMob {
         } else {
             super.handleEntityEvent(pId);
         }
+    }
+
+    @Override
+    public void tick() {
+        if (this.level.isClientSide()) {
+            if (this.isMovingOnLand()) {
+                this.walkState.startIfStopped(this.tickCount);
+            } else {
+                this.walkState.stop();
+            }
+        }
+        super.tick();
+    }
+
+    private boolean isMovingOnLand() {
+        return this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && !this.isInWaterOrBubble();
     }
 
     @Override

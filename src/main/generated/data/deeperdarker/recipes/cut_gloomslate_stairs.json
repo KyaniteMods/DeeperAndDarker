@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "#": {
       "item": "deeperdarker:cut_gloomslate"
@@ -14,6 +13,5 @@
   "result": {
     "count": 4,
     "item": "deeperdarker:cut_gloomslate_stairs"
-  },
-  "show_notification": true
+  }
 }

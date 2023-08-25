@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing_transform",
+  "type": "minecraft:smithing",
   "addition": {
     "item": "deeperdarker:reinforced_echo_shard"
   },
@@ -8,8 +8,5 @@
   },
   "result": {
     "item": "deeperdarker:warden_sword"
-  },
-  "template": {
-    "item": "deeperdarker:warden_upgrade_smithing_template"
   }
 }

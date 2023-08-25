@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "key": {
     "#": {
       "item": "deeperdarker:echo_planks"
@@ -13,6 +12,5 @@
   "result": {
     "count": 2,
     "item": "deeperdarker:echo_trapdoor"
-  },
-  "show_notification": true
+  }
 }

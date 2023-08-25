@@ -1,9 +1,8 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDSounds;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
@@ -34,6 +33,7 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class SculkSnapper extends TamableAnimal {
+    public final AnimationState walkState = new AnimationState();
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
 
@@ -77,7 +77,7 @@ public class SculkSnapper extends TamableAnimal {
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        level().broadcastEntityEvent(this, (byte) 4);
+        level.broadcastEntityEvent(this, (byte) 4);
         this.playSound(DDSounds.SNAPPER_BITE);
         return super.doHurtTarget(pEntity);
     }
@@ -89,7 +89,7 @@ public class SculkSnapper extends TamableAnimal {
         if(this.isTame() && this.getOwner() != null) {
             if(this.getOwner().distanceTo(this) < 6 && this.random.nextFloat() < 0.0004f) {
                 List<Enchantment> enchantments = new ArrayList<>();
-                BuiltInRegistries.ENCHANTMENT.forEach(enchant -> {
+                Registry.ENCHANTMENT.forEach(enchant -> {
                     if(!enchant.isCurse()) enchantments.add(enchant);
                 });
                 Enchantment enchantment1 = enchantments.remove(this.random.nextInt(enchantments.size()));
@@ -97,15 +97,25 @@ public class SculkSnapper extends TamableAnimal {
 
                 ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment1, this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
                 if(this.random.nextFloat() < 0.2f) EnchantedBookItem.addEnchantment(book, new EnchantmentInstance(enchantment2, 1));
-                if(!book.isEmpty()) this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
+                if(!book.isEmpty()) this.level.addFreshEntity(new ItemEntity(this.level, this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
             }
         }
 
-        if(level().isClientSide()) {
+        if(level.isClientSide()) {
             if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
+            } else {
+                if (this.isMoving()) {
+                    this.walkState.startIfStopped(this.tickCount);
+                } else {
+                    this.walkState.stop();
+                }
             }
         }
+    }
+
+    private boolean isMoving() {
+        return this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && !this.isInWaterOrBubble();
     }
 
     @Override
@@ -118,11 +128,11 @@ public class SculkSnapper extends TamableAnimal {
         ItemStack stack = pPlayer.getItemInHand(pHand);
         if(this.isFood(stack) && !this.isTame()) {
             this.usePlayerItem(pPlayer, pHand, stack);
-            if(!level().isClientSide()) {
+            if(!level.isClientSide()) {
                 this.tame(pPlayer);
                 this.setOwnerUUID(pPlayer.getUUID());
                 setTarget(null);
-                level().broadcastEntityEvent(this, (byte) 18);
+                level.broadcastEntityEvent(this, (byte) 18);
             }
 
             return InteractionResult.SUCCESS;
@@ -130,7 +140,7 @@ public class SculkSnapper extends TamableAnimal {
 
         if(!stack.getEnchantmentTags().isEmpty() && isTame() && this.getHealth() < this.getMaxHealth()) {
             this.usePlayerItem(pPlayer, pHand, stack);
-            if(!level().isClientSide()) {
+            if(!level.isClientSide()) {
                 this.heal(getMaxHealth());
                 this.gameEvent(GameEvent.EAT, this);
             }
@@ -151,7 +161,7 @@ public class SculkSnapper extends TamableAnimal {
                 double sX = this.random.nextGaussian() * 0.02;
                 double sY = this.random.nextGaussian() * 0.02;
                 double sZ = this.random.nextGaussian() * 0.02;
-                this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1), this.getRandomY() + 0.5, this.getRandomZ(1), sX, sY, sZ);
+                this.level.addParticle(ParticleTypes.HEART, this.getRandomX(1), this.getRandomY() + 0.5, this.getRandomZ(1), sX, sY, sZ);
             }
         } else {
             super.handleEntityEvent(pId);

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "S": {
       "item": "deeperdarker:smooth_sculk_stone"
@@ -13,6 +12,5 @@
   "result": {
     "count": 4,
     "item": "deeperdarker:cut_sculk_stone"
-  },
-  "show_notification": true
+  }
 }

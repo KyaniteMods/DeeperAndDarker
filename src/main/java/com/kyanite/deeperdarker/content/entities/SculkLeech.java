@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 
 @SuppressWarnings("NullableProblems")
 public class SculkLeech extends Monster {
+    public final AnimationState walkState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
 
     public SculkLeech(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -49,13 +50,24 @@ public class SculkLeech extends Monster {
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        this.level().broadcastEntityEvent(this, (byte) 4);
+        this.level.broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
     }
 
     @Override
     public void tick() {
+        if (this.level.isClientSide()) {
+            if (this.isMovingOnLand()) {
+                this.walkState.startIfStopped(this.tickCount);
+            } else {
+                this.walkState.stop();
+            }
+        }
         super.tick();
+    }
+
+    private boolean isMovingOnLand() {
+        return this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && !this.isInWaterOrBubble();
     }
 
     @Override

@@ -3,7 +3,7 @@
 	"id": "deeperdarker",
 	"version": "${version}",
 	"name": "Deeper and Darker",
-	"description": "A Minecraft 1.20 mod which features more blocks, items, armors, and hidden mysteries to complement the Deep Dark biome.",
+	"description": "A Minecraft 1.19.2 mod which features more blocks, items, armors, and hidden mysteries to complement the Deep Dark biome.",
 	"authors": [
 		"Kyanite Mods"
 	],
@@ -29,7 +29,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20",
+		"minecraft": "~1.19.2",
 		"java": ">=17",
 		"fabric-api": "*"
 	},

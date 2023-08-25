@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "key": {
     "#": {
       "item": "minecraft:stick"
@@ -15,6 +14,5 @@
   ],
   "result": {
     "item": "deeperdarker:echo_fence_gate"
-  },
-  "show_notification": true
+  }
 }

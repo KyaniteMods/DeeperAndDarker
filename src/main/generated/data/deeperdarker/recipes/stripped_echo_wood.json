@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "L": {
       "item": "deeperdarker:stripped_echo_log"
@@ -13,6 +12,5 @@
   "result": {
     "count": 3,
     "item": "deeperdarker:stripped_echo_wood"
-  },
-  "show_notification": true
+  }
 }

@@ -2,18 +2,15 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.ibm.icu.impl.Pair;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.block.model.ItemModelGenerator;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.MultiVariantGenerator;
@@ -32,8 +29,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import java.util.*;
 
 public class DDModelProvider extends FabricModelProvider {
-    public DDModelProvider(FabricDataOutput output) {
-        super(output);
+    public DDModelProvider(FabricDataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     @Override
@@ -44,12 +41,11 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createDoor(DDBlocks.ECHO_DOOR);
         registerFenceGate(blockModelGenerators, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_PLANKS);
         registerFence(blockModelGenerators, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_PLANKS);
-        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN);
         blockModelGenerators.family(DDBlocks.ECHO_LEAVES);
         blockModelGenerators.family(DDBlocks.ECHO_PLANKS);
         registerPressurePlate(blockModelGenerators, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_PLANKS);
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.ECHO_SAPLING, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createHangingSign(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN);
+        blockModelGenerators.blockEntityModels(DDBlocks.ECHO_SIGN, DDBlocks.ECHO_PLANKS).create(DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN);
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
         registerStairs(blockModelGenerators, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_PLANKS);
         blockModelGenerators.createOrientableTrapdoor(DDBlocks.ECHO_TRAPDOOR);
@@ -184,16 +180,15 @@ public class DDModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
-        registerWardenHelmet(itemModelGenerator, (ArmorItem) DDItems.WARDEN_HELMET);
-        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_CHESTPLATE);
-        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_LEGGINGS);
-        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_BOOTS);
+        itemModelGenerator.generateFlatItem(DDItems.WARDEN_HELMET, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.WARDEN_CHESTPLATE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.WARDEN_LEGGINGS, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.WARDEN_BOOTS, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_CARAPACE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.HEART_OF_THE_DEEP, ModelTemplates.FLAT_ITEM);
@@ -233,89 +228,89 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
     }
 
-    private static void registerButton(BlockModelGenerators BlockModelGenerators, Block block, Block planks) {
+    private static void registerButton(BlockModelGenerators blockModelGenerators, Block block, Block planks) {
         ResourceLocation buttonModel = ModelTemplates.BUTTON.create(block, TexturedModel.CUBE.get(planks).getMapping(),
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation buttonPressedModel = ModelTemplates.BUTTON_PRESSED.create(block, TexturedModel.CUBE.get(planks).getMapping(),
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
 
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, buttonModel, buttonPressedModel));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, buttonModel, buttonPressedModel));
     }
 
-    private static void registerFenceGate(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {
+    private static void registerFenceGate(BlockModelGenerators blockModelGenerators, Block block, Block textureSource) {
         TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
         ResourceLocation fenceGateOpenModel = ModelTemplates.FENCE_GATE_OPEN.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation fenceGateModel = ModelTemplates.FENCE_GATE_CLOSED.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation wallFenceGateOpenModel = ModelTemplates.FENCE_GATE_WALL_OPEN.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation wallFenceGateModel = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFenceGate(block, fenceGateOpenModel, fenceGateModel, wallFenceGateOpenModel, wallFenceGateModel, true));
+                blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFenceGate(block, fenceGateOpenModel, fenceGateModel, wallFenceGateOpenModel, wallFenceGateModel));
     }
 
-    private static void registerFence(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {
+    private static void registerFence(BlockModelGenerators blockModelGenerators, Block block, Block textureSource) {
         TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
-        ResourceLocation fencePost = ModelTemplates.FENCE_POST.create(block, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation fenceSide = ModelTemplates.FENCE_SIDE.create(block, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFence(block, fencePost, fenceSide));
+        ResourceLocation fencePost = ModelTemplates.FENCE_POST.create(block, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation fenceSide = ModelTemplates.FENCE_SIDE.create(block, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFence(block, fencePost, fenceSide));
     }
 
-    private static void registerPressurePlate(BlockModelGenerators BlockModelGenerators, Block pressurePlate, Block textureSource) {
+    private static void registerPressurePlate(BlockModelGenerators blockModelGenerators, Block pressurePlate, Block textureSource) {
         TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
-        ResourceLocation upModel = ModelTemplates.PRESSURE_PLATE_UP.create(pressurePlate, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation downModel = ModelTemplates.PRESSURE_PLATE_DOWN.create(pressurePlate, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(pressurePlate, upModel, downModel));
+        ResourceLocation upModel = ModelTemplates.PRESSURE_PLATE_UP.create(pressurePlate, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation downModel = ModelTemplates.PRESSURE_PLATE_DOWN.create(pressurePlate, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(pressurePlate, upModel, downModel));
     }
 
-    private static void registerSlabWithCubeAll(BlockModelGenerators BlockModelGenerators, Block slab, Block textureSource) {
+    private static void registerSlabWithCubeAll(BlockModelGenerators blockModelGenerators, Block slab, Block textureSource) {
         ResourceLocation ResourceLocation = ModelLocationUtils.getModelLocation(textureSource);
         TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
-        ResourceLocation ResourceLocation2 = ModelTemplates.SLAB_BOTTOM.create(slab, texturedModel.getMapping(), BlockModelGenerators.modelOutput);
-        ResourceLocation ResourceLocation3 = ModelTemplates.SLAB_TOP.create(slab, texturedModel.getMapping(), BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, ResourceLocation2, ResourceLocation3, ResourceLocation));
+        ResourceLocation ResourceLocation2 = ModelTemplates.SLAB_BOTTOM.create(slab, texturedModel.getMapping(), blockModelGenerators.modelOutput);
+        ResourceLocation ResourceLocation3 = ModelTemplates.SLAB_TOP.create(slab, texturedModel.getMapping(), blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, ResourceLocation2, ResourceLocation3, ResourceLocation));
     }
 
-    private static void registerStairs(BlockModelGenerators BlockModelGenerators, Block stairs, Block textureSource) {
+    private static void registerStairs(BlockModelGenerators blockModelGenerators, Block stairs, Block textureSource) {
         TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
         TextureMapping textureMap = texturedModel.getMapping();
-        ResourceLocation innerModel = ModelTemplates.STAIRS_INNER.create(stairs, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation regularModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, innerModel, regularModel, outerModel));
+        ResourceLocation innerModel = ModelTemplates.STAIRS_INNER.create(stairs, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation regularModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, innerModel, regularModel, outerModel));
     }
 
-    private static void registerWall(BlockModelGenerators BlockModelGenerators, Block wall, Block textureSource) {
+    private static void registerWall(BlockModelGenerators blockModelGenerators, Block wall, Block textureSource) {
         TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
         TextureMapping textureMap = texturedModel.getMapping();
-        ResourceLocation postModel = ModelTemplates.WALL_POST.create(wall, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation sideModel = ModelTemplates.WALL_LOW_SIDE.create(wall, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation sideTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createWall(wall, postModel, sideModel, sideTallModel));
+        ResourceLocation postModel = ModelTemplates.WALL_POST.create(wall, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation sideModel = ModelTemplates.WALL_LOW_SIDE.create(wall, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation sideTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createWall(wall, postModel, sideModel, sideTallModel));
     }
 
-    private static void registerSculkJaw(BlockModelGenerators BlockModelGenerators, Block sculkJaw) {
-        ResourceLocation sculkJawModel = ModelTemplates.CUBE_TOP.create(sculkJaw, TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw)).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), BlockModelGenerators.modelOutput);
-        ResourceLocation sculkJawBitingModel = ModelTemplates.CUBE_TOP.create(ModelLocationUtils.getModelLocation(sculkJaw, "_biting"), TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw, "_biting")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), BlockModelGenerators.modelOutput);
+    private static void registerSculkJaw(BlockModelGenerators blockModelGenerators, Block sculkJaw) {
+        ResourceLocation sculkJawModel = ModelTemplates.CUBE_TOP.create(sculkJaw, TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw)).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), blockModelGenerators.modelOutput);
+        ResourceLocation sculkJawBitingModel = ModelTemplates.CUBE_TOP.create(ModelLocationUtils.getModelLocation(sculkJaw, "_biting"), TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw, "_biting")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), blockModelGenerators.modelOutput);
 
-        BlockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.SCULK_JAW).with(BlockModelGenerators.createBooleanModelDispatch(
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.SCULK_JAW).with(net.minecraft.data.models.BlockModelGenerators.createBooleanModelDispatch(
                 SculkJawBlock.BITING, sculkJawBitingModel, sculkJawModel)));
     }
 
     private static void registerGeneratedWithPredicate(ItemModelGenerators itemModelGenerator, Item item, String predicate, String suffix) {
-        ResourceLocation withPredicate = ModelTemplates.FLAT_ITEM.create(BuiltInRegistries.ITEM.getKey(item).withSuffix(suffix).withPrefix("item/"), TextureMapping.layer0(BuiltInRegistries.ITEM.getKey(item).withSuffix(suffix).withPrefix("item/")), itemModelGenerator.output);
-        JsonObject withoutPredicateJsonObject = ModelTemplates.FLAT_ITEM.createBaseTemplate(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"),
-                Map.of(TextureSlot.LAYER0, BuiltInRegistries.ITEM.getKey(item).withPrefix("item/")));
+        ResourceLocation withPredicate = ModelTemplates.FLAT_ITEM.create(prefixResourceLocation(suffixResourceLocation(Registry.ITEM.getKey(item), suffix), "item/"), TextureMapping.layer0(prefixResourceLocation(suffixResourceLocation(Registry.ITEM.getKey(item), suffix), "item/")), itemModelGenerator.output);
+        JsonObject withoutPredicateJsonObject = createModelTemplateJson(ModelTemplates.FLAT_ITEM, prefixResourceLocation(Registry.ITEM.getKey(item), "item/"),
+                new TextureMapping().put(TextureSlot.LAYER0, prefixResourceLocation(Registry.ITEM.getKey(item), "item/")));
         JsonArray overrides = new JsonArray();
         JsonObject override = new JsonObject();
         JsonObject predicateJson = new JsonObject();
         predicateJson.addProperty(predicate, 1);
         override.add("predicate", predicateJson);
-        override.addProperty("model", BuiltInRegistries.ITEM.getKey(item).withSuffix(suffix).withPrefix("item/").toString());
+        override.addProperty("model", prefixResourceLocation(suffixResourceLocation(Registry.ITEM.getKey(item), suffix), "item/").toString());
         overrides.add(override);
         withoutPredicateJsonObject.add("overrides", overrides);
-        itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> withoutPredicateJsonObject);
+        itemModelGenerator.output.accept(prefixResourceLocation(Registry.ITEM.getKey(item), "item/"), () -> withoutPredicateJsonObject);
     }
 
     private static void registerSculkTransmitter(ItemModelGenerators itemModelGenerator, SculkTransmitterItem item) {
@@ -324,21 +319,8 @@ public class DDModelProvider extends FabricModelProvider {
 
     private static void registerSpawnEgg(ItemModelGenerators itemModelGenerator, Item item) {
         JsonObject model = new JsonObject();
-        model.addProperty("parent", new ResourceLocation("template_spawn_egg").withPrefix("item/").toString());
-        itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
-    }
-
-    private static void registerWardenHelmet(ItemModelGenerators itemModelGenerators, ArmorItem armor) {
-        ResourceLocation armorModelIdentifier = ModelLocationUtils.getModelLocation(armor);
-        ResourceLocation armorTextureIdentifier = TextureMapping.getItemTexture(armor);
-        ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> itemModelGenerators.generateBaseArmorTrimTemplate(id, textures, armor.getMaterial()));
-        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGenerators.GENERATED_TRIM_MODELS) {
-            String string = trimMaterial.name(armor.getMaterial());
-            ResourceLocation identifier4 = itemModelGenerators.getItemModelForTrimMaterial(armorModelIdentifier, string);
-            String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
-            ResourceLocation trimOverlayIdentifier = new ResourceLocation(DeeperDarker.MOD_ID, string2).withPrefix("trims/items/");
-            itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
-        }
+        model.addProperty("parent", new ResourceLocation("item/template_spawn_egg").toString());
+        itemModelGenerator.output.accept(prefixResourceLocation(Registry.ITEM.getKey(item), "item/"), () -> model);
     }
 
     @SafeVarargs
@@ -365,5 +347,25 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplate parentModel = new ModelTemplate(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
 
         parentModel.create(child, textureMap, blockModelGenerators.modelOutput);
+    }
+
+    private static ResourceLocation prefixResourceLocation(ResourceLocation resourceLocation, String prefix) {
+        return new ResourceLocation(resourceLocation.getNamespace(), prefix + resourceLocation.getPath());
+    }
+
+    private static ResourceLocation suffixResourceLocation(ResourceLocation resourceLocation, String suffix) {
+        return new ResourceLocation(resourceLocation.getNamespace(), resourceLocation.getPath() + suffix);
+    }
+
+    private static JsonObject createModelTemplateJson(ModelTemplate modelTemplate, ResourceLocation resourceLocation, TextureMapping textureMapping) {
+        Map<TextureSlot, ResourceLocation> map = modelTemplate.createMap(textureMapping);
+        JsonObject jsonObject = new JsonObject();
+        modelTemplate.model.ifPresent(resourceLocationFromLambda -> jsonObject.addProperty("parent", resourceLocationFromLambda.toString()));
+        if (!map.isEmpty()) {
+            JsonObject jsonObject2 = new JsonObject();
+            map.forEach((textureSlot, resourceLocationFromLambda) -> jsonObject2.addProperty(textureSlot.getId(), resourceLocationFromLambda.toString()));
+            jsonObject.add("textures", jsonObject2);
+        }
+        return jsonObject;
     }
 }

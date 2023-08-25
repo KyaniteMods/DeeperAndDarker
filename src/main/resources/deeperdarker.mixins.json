@@ -9,9 +9,7 @@
     "WardenMixin"
   ],
   "client": [
-    "PhantomRendererMixin",
-    "ShowHangingSignScreenMixin",
-    "ShowHangingSignScreenMixin$ClientAccessor"
+    "PhantomRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

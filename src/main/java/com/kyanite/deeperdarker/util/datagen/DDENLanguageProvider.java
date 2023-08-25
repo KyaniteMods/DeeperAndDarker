@@ -5,13 +5,13 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.Util;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 
 public class DDENLanguageProvider extends FabricLanguageProvider {
-    public DDENLanguageProvider(FabricDataOutput dataOutput) {
+    public DDENLanguageProvider(FabricDataGenerator dataOutput) {
         super(dataOutput);
     }
 
@@ -31,15 +31,13 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ECHO_DOOR, "Echo Door");
         translationBuilder.add(DDBlocks.ECHO_FENCE_GATE, "Echo Fence Gate");
         translationBuilder.add(DDBlocks.ECHO_FENCE, "Echo Fence");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.ECHO_WALL_HANGING_SIGN)), "Echo Wall Hanging Sign");
-        translationBuilder.add(DDBlocks.ECHO_HANGING_SIGN, "Echo Hanging Sign");
         translationBuilder.add(DDBlocks.ECHO_LEAVES, "Echo Leaves");
         translationBuilder.add(DDBlocks.ECHO_PLANKS, "Echo Planks");
         translationBuilder.add(DDBlocks.ECHO_STAIRS, "Echo Stairs");
         translationBuilder.add(DDBlocks.ECHO_PRESSURE_PLATE, "Echo Pressure Plate");
         translationBuilder.add(DDBlocks.ECHO_SAPLING, "Echo Sapling");
         translationBuilder.add(DDBlocks.ECHO_SIGN, "Echo Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.ECHO_WALL_SIGN)), "Echo Wall Sign");
+        translationBuilder.add(Util.makeDescriptionId("block", Registry.BLOCK.getKey(DDBlocks.ECHO_WALL_SIGN)), "Echo Wall Sign");
         translationBuilder.add(DDBlocks.ECHO_SLAB, "Echo Slab");
         translationBuilder.add(DDBlocks.ECHO_TRAPDOOR, "Echo Trapdoor");
         translationBuilder.add(DDBlocks.SCULK_STONE, "Sculk Stone");

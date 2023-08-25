@@ -3,20 +3,18 @@ package com.kyanite.deeperdarker.util.datagen.tags;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Arrays;
-import java.util.concurrent.CompletableFuture;
 
 public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
-    public DDItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
-        super(output, completableFuture);
+    public DDItemTagProvider(FabricDataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     public void add(TagKey<Item> tag, Block... blocks) {
@@ -26,14 +24,12 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider arg) {
+    protected void generateTags() {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
 
-        add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
         add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON);
         add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR);
-        add(ItemTags.FENCE_GATES, DDBlocks.ECHO_FENCE_GATE);
         add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE);
         add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
@@ -43,18 +39,6 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
         add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE);
         add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR);
-        getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD);
-        getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE);
-        getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE);
-        getOrCreateTagBuilder(ItemTags.SHOVELS).setReplace(false).add(DDItems.WARDEN_SHOVEL);
-        getOrCreateTagBuilder(ItemTags.HOES).setReplace(false).add(DDItems.WARDEN_HOE);
-
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR).setReplace(false).add(
-                DDItems.WARDEN_HELMET,
-                DDItems.WARDEN_CHESTPLATE,
-                DDItems.WARDEN_LEGGINGS,
-                DDItems.WARDEN_BOOTS
-        );
 
         add(ItemTags.WALLS,
                 DDBlocks.SCULK_STONE_WALL,

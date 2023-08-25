@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "key": {
     "#": {
       "item": "deeperdarker:echo_planks"
@@ -11,6 +10,5 @@
   ],
   "result": {
     "item": "deeperdarker:echo_pressure_plate"
-  },
-  "show_notification": true
+  }
 }

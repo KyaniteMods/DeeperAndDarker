@@ -33,6 +33,5 @@
     [
       "sculk_transmitter"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

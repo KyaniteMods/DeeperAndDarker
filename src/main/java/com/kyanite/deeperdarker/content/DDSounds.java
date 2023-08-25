@@ -1,10 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.SoundType;
@@ -50,17 +47,13 @@ public class DDSounds {
     public static final SoundEvent TRANSMITTER_OPEN = register("item.sculk_transmitter.open");
     public static final SoundEvent TRANSMITTER_UNLINK = register("item.sculk_transmitter.unlink");
 
-    public static final Holder.Reference<SoundEvent> AMBIENT_OTHERSIDE_ADDITIONS = registerReference("ambience.otherside");
-    public static final Holder.Reference<SoundEvent> MUSIC_ARRIVAL = registerReference("music.deeperdarker.arrival");
-    public static final Holder.Reference<SoundEvent> MUSIC_BIOME_ECHOING_FOREST = registerReference("music.deeperdarker.echoing_forest");
-    public static final Holder.Reference<SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = registerReference("music.deeperdarker.overcast_columns");
+    public static final SoundEvent AMBIENT_OTHERSIDE_ADDITIONS = register("ambience.otherside");
+    public static final SoundEvent MUSIC_ARRIVAL = register("music.deeperdarker.arrival");
+    public static final SoundEvent MUSIC_BIOME_ECHOING_FOREST = register("music.deeperdarker.echoing_forest");
+    public static final SoundEvent MUSIC_BIOME_OVERCAST_COLUMNS = register("music.deeperdarker.overcast_columns");
 
     private static SoundEvent register(String id) {
-        return Registry.register(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, id), SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, id)));
-    }
-
-    private static Holder.Reference<SoundEvent> registerReference(String id) {
-        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, id), SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, id)));
+        return Registry.register(Registry.SOUND_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, id), new SoundEvent(new ResourceLocation(DeeperDarker.MOD_ID, id)));
     }
 
     public static void init() {

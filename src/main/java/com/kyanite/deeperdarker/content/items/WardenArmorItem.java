@@ -17,11 +17,11 @@ import net.minecraft.world.level.Level;
 public class WardenArmorItem extends ArmorItem {
     private final Multimap<Attribute, AttributeModifier> LEGGINGS_MODIFIERS;
 
-    public WardenArmorItem(ArmorMaterial material, Type type, Properties properties) {
-        super(material, type, properties);
+    public WardenArmorItem(ArmorMaterial material, EquipmentSlot equipmentSlot, Properties properties) {
+        super(material, equipmentSlot, properties);
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ARMOR, new AttributeModifier("Armor modifier", material.getDefenseForType(type), AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ARMOR, new AttributeModifier("Armor modifier", material.getDefenseForSlot(equipmentSlot), AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier("Armor toughness", material.getToughness(), AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier("Armor knockback resistance", this.knockbackResistance, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.MOVEMENT_SPEED, new AttributeModifier("Leggings speed boost", 0.05, AttributeModifier.Operation.ADDITION));
@@ -42,10 +42,5 @@ public class WardenArmorItem extends ArmorItem {
                 if (user.hasEffect(MobEffects.DARKNESS)) user.removeEffect(MobEffects.DARKNESS);
             }
         }
-    }
-
-    @Override
-    public EquipmentSlot getEquipmentSlot() {
-        return this.type.getSlot();
     }
 }

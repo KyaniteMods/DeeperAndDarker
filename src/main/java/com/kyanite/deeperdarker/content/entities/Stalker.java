@@ -29,11 +29,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.gameevent.DynamicGameEventListener;
-import net.minecraft.world.level.gameevent.EntityPositionSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.PositionSource;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
+import net.minecraft.world.level.gameevent.*;
+import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,24 +38,21 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation, NullableProblems")
-public class Stalker extends Monster implements DisturbanceListener, VibrationSystem {
+public class Stalker extends Monster implements DisturbanceListener, VibrationListener.VibrationListenerConfig {
     private static final EntityDataAccessor<Integer> RING_COOLDOWN = SynchedEntityData.defineId(Stalker.class, EntityDataSerializers.INT);
+    public final AnimationState walkState = new AnimationState();
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
     public final AnimationState ringAttackState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
-    private final DynamicGameEventListener<Listener> dynamicGameEventListener;
-    private final User vibrationUser;
-    private final Data vibrationData;
+    private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
     public BlockPos disturbanceLocation;
     private boolean playersInRange;
     private boolean ring;
 
     public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new Listener(this));
-        this.vibrationUser = new VibrationUser();
-        this.vibrationData = new Data();
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationListener(new EntityPositionSource(this, this.getEyeHeight()), 20, this, null, 0.0f, 0));
         this.setPathfindingMalus(BlockPathTypes.LAVA, 8);
         this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, 8);
         this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0);
@@ -107,49 +101,59 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        this.level().broadcastEntityEvent(this, (byte) 4);
+        this.level.broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
     }
 
     @Override
     public void tick() {
-        if(this.level() instanceof ServerLevel level) {
-            Ticker.tick(level, this.vibrationData, this.vibrationUser);
+        if(this.level instanceof ServerLevel level) {
+            this.dynamicGameEventListener.getListener().tick(level);
         }
 
         super.tick();
 
-        if(level().isClientSide()) {
+        if(level.isClientSide()) {
             this.entityData.set(RING_COOLDOWN, this.entityData.get(RING_COOLDOWN) - 1);
             if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
+            } else {
+                if (this.isMoving()) {
+                    this.walkState.startIfStopped(this.tickCount);
+                } else {
+                    this.walkState.stop();
+                }
             }
 
             if(this.getPose() == Pose.EMERGING) {
                 double sX = this.random.nextGaussian() * 0.02;
                 double sY = this.random.nextGaussian() * 0.02;
                 double sZ = this.random.nextGaussian() * 0.02;
-                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
+                level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
             }
         }
 
         if(this.noActionTime > 70) this.setPose(Pose.STANDING);
 
-        List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
+        List<Player> players = level.getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
         if(!players.isEmpty()) {
             if(this.entityData.get(RING_COOLDOWN) <= -100) {
                 this.playersInRange = false;
                 this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
-                if(level().isClientSide()) this.ringAttackState.stop();
+                if(level.isClientSide()) this.ringAttackState.stop();
             } else if(this.entityData.get(RING_COOLDOWN) <= 0) {
-                if(level().isClientSide()) this.ringAttackState.start(this.tickCount);
+                if(level.isClientSide()) this.ringAttackState.start(this.tickCount);
                 this.playersInRange = true;
             }
         } else if(this.playersInRange) {
             this.playersInRange = false;
             this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
-            if(level().isClientSide()) this.ringAttackState.stop();
+            if(level.isClientSide()) this.ringAttackState.stop();
         }
+    }
+
+    private boolean isMoving() {
+        return this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && !this.isInWaterOrBubble();
     }
 
     @Override
@@ -180,14 +184,14 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
-        if(this.level() instanceof ServerLevel level) {
+        if(this.level instanceof ServerLevel level) {
             pListenerConsumer.accept(this.dynamicGameEventListener, level);
         }
     }
 
     public boolean canTargetEntity(Entity entity) {
         if(entity instanceof LivingEntity livingEntity) {
-            return this.level() == entity.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingEntity.getType() != EntityType.ARMOR_STAND && livingEntity.getType() != DDEntities.SHATTERED && !livingEntity.isInvulnerable() && !livingEntity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(livingEntity.getBoundingBox());
+            return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingEntity.getType() != EntityType.ARMOR_STAND && livingEntity.getType() != DDEntities.SHATTERED && !livingEntity.isInvulnerable() && !livingEntity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingEntity.getBoundingBox());
         }
 
         return false;
@@ -204,57 +208,39 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    public Data getVibrationData() {
-        return this.vibrationData;
+    public TagKey<GameEvent> getListenableEvents() {
+        return GameEventTags.WARDEN_CAN_LISTEN;
     }
 
     @Override
-    public User getVibrationUser() {
-        return this.vibrationUser;
+    public boolean canTriggerAvoidVibration() {
+        return true;
     }
 
-    class VibrationUser implements User {
-        private final PositionSource positionSource = new EntityPositionSource(Stalker.this, Stalker.this.getEyeHeight());
-
-        public int getListenerRadius() {
-            return 20;
-        }
-
-        public PositionSource getPositionSource() {
-            return this.positionSource;
-        }
-
-        public TagKey<GameEvent> getListenableEvents() {
-            return GameEventTags.WARDEN_CAN_LISTEN;
-        }
-
-        public boolean canTriggerAvoidVibration() {
+    @Override
+    public boolean shouldListen(ServerLevel level, GameEventListener gameEventListener, BlockPos bounds, GameEvent gameEvent, GameEvent.Context context) {
+        if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(bounds)) {
+            Entity entity = context.sourceEntity();
+            if(entity instanceof LivingEntity livingEntity) return canTargetEntity(livingEntity);
             return true;
+        } else {
+            return false;
         }
+    }
 
-        public boolean canReceiveVibration(ServerLevel level, BlockPos bounds, GameEvent gameEvent, GameEvent.Context context) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(bounds)) {
-                Entity entity = context.sourceEntity();
-                if(entity instanceof LivingEntity livingEntity) return canTargetEntity(livingEntity);
-                return true;
-            } else {
-                return false;
+    @Override
+    public void onSignalReceive(ServerLevel level, GameEventListener gameEventListener, BlockPos pos, GameEvent gameEvent, Entity entity, Entity entity2, float v) {
+        if(isDeadOrDying()) return;
+        playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
+        if(entity != null) {
+            if(canTargetEntity(entity)) {
+                if(entity instanceof Monster && ((Monster) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
+                if(entity instanceof Player) setTarget((LivingEntity) entity);
+                return;
             }
         }
 
-        public void onReceiveVibration(ServerLevel level, BlockPos pos, GameEvent gameEvent, Entity entity, Entity entity2, float v) {
-            if(isDeadOrDying()) return;
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
-            if(entity != null) {
-                if(canTargetEntity(entity)) {
-                    if(entity instanceof Monster && ((Monster) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
-                    if(entity instanceof Player) setTarget((LivingEntity) entity);
-                    return;
-                }
-            }
-
-            if(getTarget() != null) setTarget(null);
-            disturbanceLocation = pos;
-        }
+        if(getTarget() != null) setTarget(null);
+        disturbanceLocation = pos;
     }
 }

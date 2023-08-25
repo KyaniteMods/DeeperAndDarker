@@ -73,7 +73,7 @@ public class SculkCentipedeModel extends HierarchicalModel<SculkCentipede> {
 	public void setupAnim(SculkCentipede entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(SculkCentipedeAnimation.CRAWL, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animate(entity.walkState, SculkCentipedeAnimation.CRAWL, ageInTicks);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

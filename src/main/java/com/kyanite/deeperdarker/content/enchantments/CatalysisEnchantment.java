@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,10 +30,10 @@ public class CatalysisEnchantment extends Enchantment {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
                 spreader.addCursors(new BlockPos((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
                 for(int i = 0; i < (int) (10 * pLevel * 0.9); i++) {
-                    spreader.updateCursors(entity.level(), entity.blockPosition(), entity.getRandom(), true);
+                    spreader.updateCursors(entity.level, entity.blockPosition(), entity.getRandom(), true);
                 }
                 entity.skipDropExperience();
-                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) pAttacker, pTarget, pTarget.damageSources().playerAttack((Player) pAttacker));
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) pAttacker, pTarget, DamageSource.playerAttack((Player) pAttacker));
             }
         }
     }

@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "deeperdarker:item/echo_sign"
-  }
+  "parent": "deeperdarker:block/echo_sign"
 }

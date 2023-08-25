@@ -1,4 +1,7 @@
 accessWidener   v1 named
-accessible class net/minecraft/data/models/ItemModelGenerators$TrimModelData
-accessible field net/minecraft/data/models/ItemModelGenerators GENERATED_TRIM_MODELS Ljava/util/List;
 accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;
+accessible field net/minecraft/data/loot/BlockLoot NORMAL_LEAVES_SAPLING_CHANCES [F
+accessible field net/minecraft/data/loot/BlockLoot HAS_SILK_TOUCH Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition$Builder;
+accessible field net/minecraft/data/loot/BlockLoot HAS_NO_SILK_TOUCH Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition$Builder;
+accessible method net/minecraft/data/models/model/ModelTemplate createMap (Lnet/minecraft/data/models/model/TextureMapping;)Ljava/util/Map;
+accessible field net/minecraft/data/models/model/ModelTemplate model Ljava/util/Optional;

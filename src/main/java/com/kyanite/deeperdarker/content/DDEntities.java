@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.*;
 import net.fabricmc.fabric.mixin.object.builder.DefaultAttributeRegistryAccessor;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -36,8 +35,7 @@ public class DDEntities {
     }
 
     private static EntityType register(String name, EntityType entity) {
-        EntityType registeredBlock = Registry.register(BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, name), entity);
-        return registeredBlock;
+        return Registry.register(Registry.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, name), entity);
     }
 
     public static void registerSpawnPlacements() {

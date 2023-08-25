@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "#": {
       "item": "deeperdarker:cobbled_sculk_stone"
@@ -12,6 +11,5 @@
   "result": {
     "count": 6,
     "item": "deeperdarker:cobbled_sculk_stone_slab"
-  },
-  "show_notification": true
+  }
 }

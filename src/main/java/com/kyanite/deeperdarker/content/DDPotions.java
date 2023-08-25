@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.content;
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistry;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Items;
@@ -18,7 +17,7 @@ public class DDPotions {
             DDEffects.SCULK_AFFINITY, 9600)));
 
     private static Potion register(String id, Potion potion) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(DeeperDarker.MOD_ID, id), potion);
+        return Registry.register(Registry.POTION, new ResourceLocation(DeeperDarker.MOD_ID, id), potion);
     }
 
     public static void init() {

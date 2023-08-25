@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:iron_ingot_from_smelting_sculk_stone_iron_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

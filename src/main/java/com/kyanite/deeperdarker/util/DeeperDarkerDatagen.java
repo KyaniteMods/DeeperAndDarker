@@ -15,15 +15,14 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 public class DeeperDarkerDatagen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-        FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-        pack.addProvider(DDRecipeProvider::new);
-        pack.addProvider(DDModelProvider::new);
-        pack.addProvider(DDBlockLootTableProvider::new);
-        pack.addProvider(DDBlockTagProvider::new);
-        pack.addProvider(DDItemTagProvider::new);
-        pack.addProvider(DDENLanguageProvider::new);
-        pack.addProvider(DDEntityLootTableProvider::new);
-        pack.addProvider(DDAdvancementProvider::new);
-        pack.addProvider(DDChestLootTableProvider::new);
+        fabricDataGenerator.addProvider(DDRecipeProvider::new);
+        fabricDataGenerator.addProvider(DDModelProvider::new);
+        fabricDataGenerator.addProvider(DDBlockLootTableProvider::new);
+        fabricDataGenerator.addProvider(DDBlockTagProvider::new);
+        fabricDataGenerator.addProvider(DDItemTagProvider::new);
+        fabricDataGenerator.addProvider(DDENLanguageProvider::new);
+        fabricDataGenerator.addProvider(DDEntityLootTableProvider::new);
+        fabricDataGenerator.addProvider(DDAdvancementProvider::new);
+        fabricDataGenerator.addProvider(DDChestLootTableProvider::new);
     }
 }

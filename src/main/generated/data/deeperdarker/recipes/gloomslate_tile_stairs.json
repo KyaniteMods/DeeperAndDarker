@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "#": {
       "item": "deeperdarker:gloomslate_tiles"
@@ -14,6 +13,5 @@
   "result": {
     "count": 4,
     "item": "deeperdarker:gloomslate_tile_stairs"
-  },
-  "show_notification": true
+  }
 }

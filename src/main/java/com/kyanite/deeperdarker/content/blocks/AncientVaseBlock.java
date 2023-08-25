@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -70,7 +71,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     @Override
     public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pBlockPos, BlockState pBlockState,
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
-        if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
+        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, pPlayer) <= 0) {
             RandomSource random = pLevel.getRandom();
             if (random.nextFloat() < 0.0917f) {
                 if (random.nextDouble() < 0.9814612868) {
@@ -83,7 +84,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                         pLevel.addFreshEntity(entity);
                     }
                 } else if (pLevel instanceof ServerLevel serverLevel) {
-                    DDEntities.STALKER.spawn(serverLevel, pBlockPos, MobSpawnType.TRIGGERED);
+                    DDEntities.STALKER.spawn(serverLevel, null, null, pBlockPos, MobSpawnType.TRIGGERED, true, false);
                 }
             }
         }

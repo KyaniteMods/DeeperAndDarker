@@ -33,6 +33,5 @@
     [
       "reinforce_echo_shard"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
-import com.kyanite.deeperdarker.content.entities.ShriekWorm;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -30,7 +29,7 @@ public class InfestedSculkBlock extends Block {
         if(pEntity instanceof Player player) {
             pLevel.setBlock(pPos, Blocks.SCULK.defaultBlockState(), 3);
             player.knockback(1.5, player.getX() - pPos.getX(), player.getZ() - pPos.getZ());
-            if(pLevel instanceof ServerLevel serverLevel) DDEntities.SHRIEK_WORM.spawn(serverLevel, pPos, MobSpawnType.TRIGGERED);
+            if(pLevel instanceof ServerLevel serverLevel) DDEntities.SHRIEK_WORM.spawn(serverLevel, null, null, pPos, MobSpawnType.TRIGGERED, true, false);
         }
 
         if(pLevel.isClientSide() && pEntity instanceof LivingEntity) {
@@ -47,7 +46,7 @@ public class InfestedSculkBlock extends Block {
     @Override
     public void spawnAfterBreak(BlockState pState, ServerLevel pLevel, BlockPos pPos, ItemStack pStack, boolean pDropExperience) {
         super.spawnAfterBreak(pState, pLevel, pPos, pStack, pDropExperience);
-        if(!EnchantmentHelper.hasSilkTouch(pStack)) {
+        if(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, pStack) <= 0) {
             SculkLeech leech = DDEntities.SCULK_LEECH.create(pLevel);
             if(leech != null) {
                 leech.moveTo(pPos.getX() + 0.5, pPos.getY(), pPos.getZ() + 0.5, 0, 0);

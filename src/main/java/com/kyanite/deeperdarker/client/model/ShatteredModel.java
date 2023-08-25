@@ -51,7 +51,7 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 	public void setupAnim(Shattered entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(ShatteredAnimation.WALK, limbSwing, limbSwingAmount, 5.5f, 2.5f);
+		this.animate(entity.walkState, ShatteredAnimation.WALK, ageInTicks);
 		this.animate(entity.idleState, ShatteredAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, ShatteredAnimation.ATTACK, ageInTicks);
 	}

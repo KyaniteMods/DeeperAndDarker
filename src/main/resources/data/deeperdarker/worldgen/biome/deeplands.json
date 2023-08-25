@@ -54,7 +54,8 @@
       "deeperdarker:sculk_vines"
     ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
+  "precipitation": 1,
   "spawn_costs": {},
   "spawners": {
     "ambient": [],

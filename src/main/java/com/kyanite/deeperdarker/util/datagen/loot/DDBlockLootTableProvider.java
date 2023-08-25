@@ -2,9 +2,9 @@ package com.kyanite.deeperdarker.util.datagen.loot;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -20,94 +20,93 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
-    public DDBlockLootTableProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public DDBlockLootTableProvider(FabricDataGenerator dataGenerator) {
+        super(dataGenerator);
     }
 
     @Override
-    public void generate() {
+    public void generateBlockLootTables() {
         dropSelf(DDBlocks.ECHO_LOG);
         dropSelf(DDBlocks.ECHO_WOOD);
         dropSelf(DDBlocks.STRIPPED_ECHO_LOG);
         dropSelf(DDBlocks.STRIPPED_ECHO_WOOD);
         dropSelf(DDBlocks.ECHO_PLANKS);
         dropSelf(DDBlocks.ECHO_STAIRS);
-        add(DDBlocks.ECHO_SLAB, this::createSlabItemTable);
+        add(DDBlocks.ECHO_SLAB, createSlabItemTable(DDBlocks.ECHO_SLAB));
         dropSelf(DDBlocks.ECHO_FENCE);
         dropSelf(DDBlocks.ECHO_FENCE_GATE);
-        add(DDBlocks.ECHO_DOOR, this::createDoorTable);
+        add(DDBlocks.ECHO_DOOR, createDoorTable(DDBlocks.ECHO_DOOR));
         dropSelf(DDBlocks.ECHO_TRAPDOOR);
         dropSelf(DDBlocks.ECHO_PRESSURE_PLATE);
         dropSelf(DDBlocks.ECHO_BUTTON);
-        add(DDBlocks.ECHO_LEAVES, (block) -> this.createLeavesDrops(block, DDBlocks.ECHO_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        add(DDBlocks.ECHO_LEAVES, (block) -> createLeavesDrops(block, DDBlocks.ECHO_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(DDBlocks.ECHO_SAPLING);
         dropSelf(DDBlocks.ECHO_SIGN);
-        dropSelf(DDBlocks.ECHO_HANGING_SIGN);
         dropPottedContents(DDBlocks.POTTED_ECHO_SAPLING);
 
-        add(DDBlocks.SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
+        add(DDBlocks.SCULK_STONE, (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS);
-        add(DDBlocks.SCULK_STONE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.SCULK_STONE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_STONE_WALL);
         dropSelf(DDBlocks.COBBLED_SCULK_STONE);
         dropSelf(DDBlocks.COBBLED_SCULK_STONE_STAIRS);
-        add(DDBlocks.COBBLED_SCULK_STONE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.COBBLED_SCULK_STONE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.COBBLED_SCULK_STONE_WALL);
         dropSelf(DDBlocks.POLISHED_SCULK_STONE);
         dropSelf(DDBlocks.POLISHED_SCULK_STONE_STAIRS);
-        add(DDBlocks.POLISHED_SCULK_STONE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.POLISHED_SCULK_STONE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.POLISHED_SCULK_STONE_WALL);
         dropSelf(DDBlocks.SCULK_STONE_BRICKS);
         dropSelf(DDBlocks.SCULK_STONE_BRICK_STAIRS);
-        add(DDBlocks.SCULK_STONE_BRICK_SLAB, this::createSlabItemTable);
+        add(DDBlocks.SCULK_STONE_BRICK_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_STONE_BRICK_WALL);
         dropSelf(DDBlocks.SCULK_STONE_TILES);
         dropSelf(DDBlocks.SCULK_STONE_TILE_STAIRS);
-        add(DDBlocks.SCULK_STONE_TILE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.SCULK_STONE_TILE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_STONE_TILE_WALL);
         dropSelf(DDBlocks.SMOOTH_SCULK_STONE);
         dropSelf(DDBlocks.SMOOTH_SCULK_STONE_STAIRS);
-        add(DDBlocks.SMOOTH_SCULK_STONE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.SMOOTH_SCULK_STONE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.SMOOTH_SCULK_STONE_WALL);
         dropSelf(DDBlocks.CUT_SCULK_STONE);
         dropSelf(DDBlocks.CUT_SCULK_STONE_STAIRS);
-        add(DDBlocks.CUT_SCULK_STONE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.CUT_SCULK_STONE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL);
         dropSelf(DDBlocks.CHISELED_SCULK_STONE);
 
-        add(DDBlocks.SCULK_GRIME, (block) -> this.createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL, UniformGenerator.between(2, 4)));
+        add(DDBlocks.SCULK_GRIME, (block) -> createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL, UniformGenerator.between(2, 4)));
         dropSelf(DDBlocks.SCULK_GRIME_BRICKS);
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
-        add(DDBlocks.SCULK_GRIME_BRICK_SLAB, this::createSlabItemTable);
+        add(DDBlocks.SCULK_GRIME_BRICK_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL);
 
-        add(DDBlocks.GLOOMSLATE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE));
+        add(DDBlocks.GLOOMSLATE, (block) -> createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS);
-        add(DDBlocks.GLOOMSLATE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.GLOOMSLATE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.GLOOMSLATE_WALL);
         dropSelf(DDBlocks.COBBLED_GLOOMSLATE);
         dropSelf(DDBlocks.COBBLED_GLOOMSLATE_STAIRS);
-        add(DDBlocks.COBBLED_GLOOMSLATE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.COBBLED_GLOOMSLATE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.COBBLED_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.POLISHED_GLOOMSLATE);
         dropSelf(DDBlocks.POLISHED_GLOOMSLATE_STAIRS);
-        add(DDBlocks.POLISHED_GLOOMSLATE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.POLISHED_GLOOMSLATE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.POLISHED_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.GLOOMSLATE_BRICKS);
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
-        add(DDBlocks.GLOOMSLATE_BRICK_SLAB, this::createSlabItemTable);
+        add(DDBlocks.GLOOMSLATE_BRICK_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_WALL);
         dropSelf(DDBlocks.GLOOMSLATE_TILES);
         dropSelf(DDBlocks.GLOOMSLATE_TILE_STAIRS);
-        add(DDBlocks.GLOOMSLATE_TILE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.GLOOMSLATE_TILE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.GLOOMSLATE_TILE_WALL);
         dropSelf(DDBlocks.SMOOTH_GLOOMSLATE);
         dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_STAIRS);
-        add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.SMOOTH_GLOOMSLATE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.SMOOTH_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.CUT_GLOOMSLATE);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS);
-        add(DDBlocks.CUT_GLOOMSLATE_SLAB, this::createSlabItemTable);
+        add(DDBlocks.CUT_GLOOMSLATE_SLAB, BlockLoot::createSlabItemTable);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE);
 
@@ -117,24 +116,24 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SCULK_GLEAM);
         dropWhenSilkTouch(DDBlocks.SCULK_JAW);
 
-        add(DDBlocks.SCULK_STONE_COAL_ORE, (block) -> this.createOreDrop(block, Items.COAL));
-        add(DDBlocks.SCULK_STONE_IRON_ORE, (block) -> this.createOreDrop(block, Items.RAW_IRON));
-        add(DDBlocks.SCULK_STONE_COPPER_ORE, this::createCopperOreDrops);
-        add(DDBlocks.SCULK_STONE_GOLD_ORE, (block) -> this.createOreDrop(block, Items.RAW_GOLD));
-        add(DDBlocks.SCULK_STONE_REDSTONE_ORE, this::createRedstoneOreDrops);
-        add(DDBlocks.SCULK_STONE_EMERALD_ORE, (block) -> this.createOreDrop(block, Items.EMERALD));
-        add(DDBlocks.SCULK_STONE_LAPIS_ORE, this::createLapisOreDrops);
-        add(DDBlocks.SCULK_STONE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
-        add(DDBlocks.GLOOMSLATE_COAL_ORE, (block) -> this.createOreDrop(block, Items.COAL));
-        add(DDBlocks.GLOOMSLATE_IRON_ORE, (block) -> this.createOreDrop(block, Items.RAW_IRON));
-        add(DDBlocks.GLOOMSLATE_COPPER_ORE, this::createCopperOreDrops);
-        add(DDBlocks.GLOOMSLATE_GOLD_ORE, (block) -> this.createOreDrop(block, Items.RAW_GOLD));
-        add(DDBlocks.GLOOMSLATE_REDSTONE_ORE, this::createRedstoneOreDrops);
-        add(DDBlocks.GLOOMSLATE_EMERALD_ORE, (block) -> this.createOreDrop(block, Items.EMERALD));
-        add(DDBlocks.GLOOMSLATE_LAPIS_ORE, this::createLapisOreDrops);
-        add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
+        add(DDBlocks.SCULK_STONE_COAL_ORE, (block) -> createOreDrop(block, Items.COAL));
+        add(DDBlocks.SCULK_STONE_IRON_ORE, (block) -> createOreDrop(block, Items.RAW_IRON));
+        add(DDBlocks.SCULK_STONE_COPPER_ORE, BlockLoot::createCopperOreDrops);
+        add(DDBlocks.SCULK_STONE_GOLD_ORE, (block) -> createOreDrop(block, Items.RAW_GOLD));
+        add(DDBlocks.SCULK_STONE_REDSTONE_ORE, BlockLoot::createRedstoneOreDrops);
+        add(DDBlocks.SCULK_STONE_EMERALD_ORE, (block) -> createOreDrop(block, Items.EMERALD));
+        add(DDBlocks.SCULK_STONE_LAPIS_ORE, BlockLoot::createLapisOreDrops);
+        add(DDBlocks.SCULK_STONE_DIAMOND_ORE, (block) -> createOreDrop(block, Items.DIAMOND));
+        add(DDBlocks.GLOOMSLATE_COAL_ORE, (block) -> createOreDrop(block, Items.COAL));
+        add(DDBlocks.GLOOMSLATE_IRON_ORE, (block) -> createOreDrop(block, Items.RAW_IRON));
+        add(DDBlocks.GLOOMSLATE_COPPER_ORE, BlockLoot::createCopperOreDrops);
+        add(DDBlocks.GLOOMSLATE_GOLD_ORE, (block) -> createOreDrop(block, Items.RAW_GOLD));
+        add(DDBlocks.GLOOMSLATE_REDSTONE_ORE, BlockLoot::createRedstoneOreDrops);
+        add(DDBlocks.GLOOMSLATE_EMERALD_ORE, (block) -> createOreDrop(block, Items.EMERALD));
+        add(DDBlocks.GLOOMSLATE_LAPIS_ORE, BlockLoot::createLapisOreDrops);
+        add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, (block) -> createOreDrop(block, Items.DIAMOND));
 
-        add(DDBlocks.GLOOMY_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
+        add(DDBlocks.GLOOMY_GRASS, BlockLoot::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS);
         addVineAndPlant(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT);
         addVineAndPlant(DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT);

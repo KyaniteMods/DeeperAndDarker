@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:emerald_from_blasting_sculk_stone_emerald_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
