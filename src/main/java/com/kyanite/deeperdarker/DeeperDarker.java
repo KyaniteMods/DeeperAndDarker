@@ -4,6 +4,9 @@ import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.DDFoliagePlacerTypes;
+import com.kyanite.deeperdarker.world.DDTreeFeatures;
+import com.kyanite.deeperdarker.world.DDTrunkPlacerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
@@ -24,7 +27,6 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: add echo trees
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -42,6 +44,9 @@ public class DeeperDarker implements ModInitializer {
 		DDEntities.init();
 		DDBlockEntities.init();
 		DDEffects.init();
+		DDTrunkPlacerTypes.init();
+		DDFoliagePlacerTypes.init();
+		DDTreeFeatures.init();
 
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 

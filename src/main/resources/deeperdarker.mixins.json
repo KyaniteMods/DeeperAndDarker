@@ -5,7 +5,6 @@
   "mixins": [
     "ContainerMenuMixin",
     "PhantomMixin",
-    "TrunkPlacerRegistryAccessor",
     "VibrationListenerMixin",
     "WardenMixin"
   ],

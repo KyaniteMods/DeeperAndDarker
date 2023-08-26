@@ -5,3 +5,7 @@ accessible field net/minecraft/data/loot/BlockLoot HAS_SILK_TOUCH Lnet/minecraft
 accessible field net/minecraft/data/loot/BlockLoot HAS_NO_SILK_TOUCH Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition$Builder;
 accessible method net/minecraft/data/models/model/ModelTemplate createMap (Lnet/minecraft/data/models/model/TextureMapping;)Ljava/util/Map;
 accessible field net/minecraft/data/models/model/ModelTemplate model Ljava/util/Optional;
+accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType register (Ljava/lang/String;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType register (Ljava/lang/String;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType;
+accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/Codec;)V
+accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/Codec;)V
