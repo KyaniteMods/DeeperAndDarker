@@ -1,4 +1,4 @@
-// 1.19.2	2023-08-24T22:22:10.1768078	Models
+// 1.19.2	2023-08-25T23:55:56.3369002	Models
 8c075e86bff96d51b50fb83c7c827035a2236c0b assets\deeperdarker\models\block\echo_soil.json
 22fc2a9ec7aa9aab53d4c07807a75c426ab1e25b assets\deeperdarker\models\block\potted_echo_sapling.json
 631e4a3ae46ab920592cbc72639d435930c661ea assets\deeperdarker\models\item\warden_leggings.json
@@ -67,7 +67,7 @@ cccf197b137f14396bbcd7fa0cf4bf57e66f8112 assets\deeperdarker\models\block\stripp
 7f56809d8f87f9099524a6cfa4def4090fb1b6b0 assets\deeperdarker\models\item\infested_sculk.json
 b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets\deeperdarker\models\item\cobbled_sculk_stone.json
 7f68f7fc317c0b30cb7187191d650cca118b1783 assets\deeperdarker\blockstates\sculk_stone_gold_ore.json
-d337e3b170092c1bd1a003f0f94f4c151f8e1add assets\deeperdarker\models\item\echo_sign.json
+65ba8802b86a620bed2ced03f007f9abe41f17f9 assets\deeperdarker\models\item\echo_sign.json
 2b89a11530d6691457b48efa5838c14e5aac6d74 assets\deeperdarker\models\block\sculk_grime_brick_wall_side.json
 4eb302db46e44afee723af6f314f39ed3dde5e3e assets\deeperdarker\models\block\echo_door_bottom_right_open.json
 cf8c07c84f9e312204f1ce48ce8a102224811d70 assets\deeperdarker\models\block\gloomslate_brick_slab_top.json
@@ -75,8 +75,8 @@ cf8c07c84f9e312204f1ce48ce8a102224811d70 assets\deeperdarker\models\block\glooms
 752a08f4bc3c8beddd25ec390e532a54e05ce549 assets\deeperdarker\models\block\sculk_grime_brick_stairs.json
 e386bf2674bac9a7f768cc3fea2bbe0b97b8cbfd assets\deeperdarker\models\block\echo_fence_gate_wall_open.json
 7eab15b19a5b80b36b489e483e5b1d133bf4ad13 assets\deeperdarker\models\block\cut_sculk_stone_slab_top.json
-5a8172db482268efcd1a4e8a7f6f5093e791f433 assets\deeperdarker\blockstates\gloomslate_slab.json
 55cc3ec07db6ec529cdbb67e5e47794befbcdcd1 assets\deeperdarker\blockstates\echo_sign.json
+5a8172db482268efcd1a4e8a7f6f5093e791f433 assets\deeperdarker\blockstates\gloomslate_slab.json
 f732b251f2e881e2e9aead95ce31b50f16f0588f assets\deeperdarker\models\item\gloomslate_tile_slab.json
 2b5f3964327886520d8f62139045fe59a87018e8 assets\deeperdarker\models\item\echo_soil.json
 d79b7c90b34a2d89cdc77fa0e9d4cf31fefb1cf6 assets\deeperdarker\models\block\polished_gloomslate_stairs_inner.json

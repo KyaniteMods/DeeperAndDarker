@@ -58,7 +58,7 @@
       "deeperdarker:gloomy_sculk_vegetation"
     ]
   ],
-  "has_precipitation": true,
+  "precipitation": "rain",
   "spawn_costs": {},
   "spawners": {
     "ambient": [],

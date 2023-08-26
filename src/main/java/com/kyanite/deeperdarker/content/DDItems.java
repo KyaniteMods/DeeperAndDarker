@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.items.*;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDTiers;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -14,7 +15,7 @@ public class DDItems {
     public static final Item GRIME_BALL = register("grime_ball", new Item(new Item.Properties().tab(DDCreativeTab.DEEPER_AND_DARKER)));
     public static final Item GRIME_BRICK = register("grime_brick", new Item(new Item.Properties().tab(DDCreativeTab.DEEPER_AND_DARKER)));
 
-    public static final Item SOUL_ELYTRA = register("soul_elytra", new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON).tab(DDCreativeTab.DEEPER_AND_DARKER)));
+    public static final Item SOUL_ELYTRA = register("soul_elytra", new SoulElytraItem(new FabricItemSettings().equipmentSlot((slot) -> EquipmentSlot.CHEST).durability(956).rarity(Rarity.UNCOMMON).tab(DDCreativeTab.DEEPER_AND_DARKER)));
     public static final Item ECHO_BOAT = register("echo_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1).tab(DDCreativeTab.DEEPER_AND_DARKER), DDBlocks.ECHO));
     public static final Item ECHO_CHEST_BOAT = register("echo_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1).tab(DDCreativeTab.DEEPER_AND_DARKER), DDBlocks.ECHO));
 
