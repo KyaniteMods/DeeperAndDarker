@@ -173,7 +173,7 @@ public class ShriekWormAnimation {
             .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.POSITION,
                     new Keyframe(0f, KeyframeAnimations.posVec(0f, -10f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.SCALE,
-                    new Keyframe(0f, KeyframeAnimations.scaleVec(0.1f, 0.1f, 0.1f), AnimationChannel.Interpolations.LINEAR)))
+                    new Keyframe(0f, KeyframeAnimations.scaleVec(1.0f, 1.0f, 1.0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("base", new AnimationChannel(AnimationChannel.Targets.POSITION,
                     new Keyframe(0f, KeyframeAnimations.posVec(0f, -97f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.POSITION,

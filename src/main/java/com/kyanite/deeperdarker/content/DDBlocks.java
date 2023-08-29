@@ -71,7 +71,7 @@ public class DDBlocks {
         }
     });
 
-    public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", new FlowerPotBlock(ECHO_SAPLING, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", new FlowerPotBlock(ECHO_SAPLING, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
 
     public static final Block SCULK_STONE = register("sculk_stone", new Block(BlockBehaviour.Properties.copy(Blocks.STONE).color(MaterialColor.COLOR_CYAN).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final Block SCULK_STONE_STAIRS = register("sculk_stone_stairs", new StairBlock(SCULK_STONE.defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE)));
