@@ -23,11 +23,5 @@
   "tool": {
     "type": "farmersdelight:tool",
     "tag": "c:tools/axes"
-  },
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "farmersdelight"
-    }
-  ]
+  }
 }

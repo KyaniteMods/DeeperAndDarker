@@ -16,11 +16,5 @@
     {
       "item": "deeperdarker:stripped_echo_log"
     }
-  ],
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "create"
-    }
   ]
 }
