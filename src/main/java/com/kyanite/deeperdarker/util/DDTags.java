@@ -27,7 +27,12 @@ public class DDTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> ECHO_LOGS = ItemTags.create(new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
+        public static final TagKey<Item> ECHO_LOGS = tag("echo_logs");
+        public static final TagKey<Item> DAMPENS_VIBRATIONS = tag("dampens_vibrations");
+
+        private static TagKey<Item> tag(String name) {
+            return ItemTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));
+        }
     }
 
     public static class Biomes {
