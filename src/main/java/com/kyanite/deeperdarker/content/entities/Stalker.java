@@ -8,14 +8,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -47,6 +51,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     public final AnimationState attackState = new AnimationState();
     public final AnimationState ringAttackState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
+    private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private final DynamicGameEventListener<VibrationSystem.Listener> dynamicGameEventListener;
     private final VibrationSystem.User vibrationUser;
     private final VibrationSystem.Data vibrationData;
@@ -76,6 +81,12 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 200).add(Attributes.ATTACK_DAMAGE, 22).add(Attributes.MOVEMENT_SPEED, 0.3f).add(Attributes.KNOCKBACK_RESISTANCE, 1).build();
+    }
+
+    @Override
+    public void setCustomName(@Nullable Component pName) {
+        super.setCustomName(pName);
+        this.bossEvent.setName(this.getDisplayName());
     }
 
     @Override
@@ -152,6 +163,12 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
+    public void aiStep() {
+        super.aiStep();
+        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+    }
+
+    @Override
     public void handleEntityEvent(byte pId) {
         if(pId == 4) {
             this.idleState.stop();
@@ -169,6 +186,18 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         super.onSyncedDataUpdated(pKey);
+    }
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer pServerPlayer) {
+        super.startSeenByPlayer(pServerPlayer);
+        this.bossEvent.addPlayer(pServerPlayer);
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer pServerPlayer) {
+        super.stopSeenByPlayer(pServerPlayer);
+        this.bossEvent.removePlayer(pServerPlayer);
     }
 
     @Override
