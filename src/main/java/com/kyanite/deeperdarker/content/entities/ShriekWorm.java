@@ -38,7 +38,12 @@ public class ShriekWorm extends Monster {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 0, true));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 0, true) {
+            @Override
+            protected double getAttackReachSqr(LivingEntity pAttackTarget) {
+                return 25.0 + pAttackTarget.getBbWidth();
+            }
+        });
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
