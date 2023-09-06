@@ -148,7 +148,7 @@ public class DDBlocks {
 
     public static final RegistryObject<Block> ECHO_SOIL = register("echo_soil", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
     public static final RegistryObject<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomySculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
-    public static final RegistryObject<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9).noLootTable()));
+    public static final RegistryObject<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9)));
     public static final RegistryObject<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new HalfTransparentBlock(BlockBehaviour.Properties.of().lightLevel(state -> 1).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.GLASS).noOcclusion()));
     public static final RegistryObject<Block> SCULK_GLEAM = register("sculk_gleam", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15).mapColor(MapColor.SAND), UniformInt.of(1, 3)));
 

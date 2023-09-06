@@ -122,6 +122,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
 
         dropSelf(DDBlocks.ECHO_SOIL.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
+        dropWhenSilkTouch(DDBlocks.GLOOMY_GEYSER.get());
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
         dropSelf(DDBlocks.SCULK_GLEAM.get());
 
