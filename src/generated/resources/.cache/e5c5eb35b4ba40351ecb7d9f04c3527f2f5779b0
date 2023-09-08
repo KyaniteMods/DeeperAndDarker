@@ -1,8 +1,9 @@
-// 1.20.1	2023-07-18T00:40:38.3005691	Advancements
+// 1.20.1	2023-09-08T11:33:53.9180407	Advancements
 ca1f70251dc63bd13a77382d15ee29e9a61913df data/deeperdarker/advancements/main/enter_otherside.json
 c92a96dd0a42d69d61838ea2b3e3730e93306019 data/deeperdarker/advancements/main/explore_otherside.json
 cf318040575219b02ae94941e0fb33c02f196203 data/deeperdarker/advancements/main/find_ancient_city.json
 e35f7e028016ba746172bbef9f8469f33e99a450 data/deeperdarker/advancements/main/find_ancient_temple.json
+65b70b5f6b71eaed34522456de68040d0c14d312 data/deeperdarker/advancements/main/kill_all_sculk_mobs.json
 12f0245d5431f178e2d5ac6355e49e7c8c729034 data/deeperdarker/advancements/main/kill_warden.json
 a6843dc478686746fc060953abc28acae4be33e3 data/deeperdarker/advancements/main/obtain_reinforce_echo_shard.json
 bcc957ddb06cfce6c593c7065f0442333200594d data/deeperdarker/advancements/main/obtain_sculk_transmitter.json
