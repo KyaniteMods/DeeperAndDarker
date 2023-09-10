@@ -1,6 +1,6 @@
 {
   "type": "pneumaticcraft:heat_properties",
-  "block": "deeperdarker:geyser",
+  "block": "deeperdarker:gloomy_geyser",
   "temperature": 2000,
   "thermalResistance": 50,
   "conditions": [
