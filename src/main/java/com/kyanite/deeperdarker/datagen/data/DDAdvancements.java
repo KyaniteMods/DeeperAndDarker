@@ -44,17 +44,6 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
         Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(Blocks.REINFORCED_DEEPSLATE, Component.translatable(id + "enter_otherside.title"), Component.translatable(id + "enter_otherside.description"), null, FrameType.GOAL, true, true, false)
                 .addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL)).save(saver, path("enter_otherside"), existingFileHelper);
 
-        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_SWORD.get(), Component.translatable(id + "kill_all_sculk_mobs.title"), Component.translatable(id + "kill_all_sculk_mobs.description"), null, FrameType.CHALLENGE, true, true, false)
-                .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
-                .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
-                .addCriterion("sculk_centipede", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_CENTIPEDE.get())))
-                .addCriterion("sculk_leech", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_LEECH.get())))
-                .addCriterion("sculk_snapper", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_SNAPPER.get())))
-                .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED.get())))
-                .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM.get())))
-                .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER.get())))
-                .requirements(RequirementsStrategy.AND).rewards(AdvancementRewards.Builder.experience(8210)).save(saver, path("kill_all_sculk_mobs"), existingFileHelper);
-
         Advancement findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside).display(DDBlocks.CUT_SCULK_STONE.get(), Component.translatable(id + "find_ancient_temple.title"), Component.translatable(id + "find_ancient_temple.description"), null, FrameType.GOAL, true, true, false)
                 .addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(DDStructures.ANCIENT_TEMPLE)))
                 .rewards(AdvancementRewards.Builder.experience(50)).save(saver, path("find_ancient_temple"), existingFileHelper);
@@ -67,6 +56,17 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST)))
                 .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
                 .requirements(RequirementsStrategy.AND).rewards(AdvancementRewards.Builder.experience(300)).save(saver, path("explore_otherside"), existingFileHelper);
+
+        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_SWORD.get(), Component.translatable(id + "kill_all_sculk_mobs.title"), Component.translatable(id + "kill_all_sculk_mobs.description"), null, FrameType.CHALLENGE, true, true, false)
+                .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
+                .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
+                .addCriterion("sculk_centipede", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_CENTIPEDE.get())))
+                .addCriterion("sculk_leech", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_LEECH.get())))
+                .addCriterion("sculk_snapper", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_SNAPPER.get())))
+                .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED.get())))
+                .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM.get())))
+                .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER.get())))
+                .requirements(RequirementsStrategy.AND).rewards(AdvancementRewards.Builder.experience(100)).save(saver, path("kill_all_sculk_mobs"), existingFileHelper);
 
         Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(), Component.translatable(id + "obtain_reinforce_echo_shard.title"), Component.translatable(id + "obtain_reinforce_echo_shard.description"), null, FrameType.TASK, true, true, false)
                 .addCriterion("reinforce_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD.get())).save(saver, path("obtain_reinforce_echo_shard"), existingFileHelper);

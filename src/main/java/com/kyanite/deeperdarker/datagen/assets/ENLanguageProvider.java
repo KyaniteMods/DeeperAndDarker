@@ -35,14 +35,14 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.description", "Slay the Warden and take its heart");
         add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.title", "Below the Bedrock");
         add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock... the darkness awaits");
-        add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");
-        add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.description", "Kill one of every Sculk monster");
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.title", "Abyssal Descent");
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Noise Complaint");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
+        add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");
+        add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.description", "Kill one of every Sculk monster");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.title", "Sculk Engineer");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.description", "Reinforce an Echo Shard");
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
