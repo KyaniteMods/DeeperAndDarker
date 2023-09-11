@@ -48,7 +48,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
 
-        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper And Darker");
+        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper and Darker");
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
