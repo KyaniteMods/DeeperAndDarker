@@ -6,7 +6,8 @@
     "ContainerMenuMixin",
     "PhantomMixin",
     "VibrationListenerMixin",
-    "WardenMixin"
+    "WardenMixin",
+    "DefaultAttributeRegistryMixin"
   ],
   "client": [
     "PhantomRendererMixin",
