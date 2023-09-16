@@ -3,6 +3,7 @@
   "package": "com.kyanite.deeperdarker.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AbstractBlockSettingsAccessor",
     "ContainerMenuMixin",
     "PhantomMixin",
     "VibrationListenerMixin",

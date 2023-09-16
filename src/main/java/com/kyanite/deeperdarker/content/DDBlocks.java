@@ -4,16 +4,15 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.blocks.*;
 import com.kyanite.deeperdarker.content.blocks.vegetation.*;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
+import com.kyanite.deeperdarker.mixin.AbstractBlockSettingsAccessor;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.fabricmc.fabric.mixin.object.builder.AbstractBlockSettingsAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -178,7 +177,7 @@ public class DDBlocks {
 
     private static BlockBehaviour.Properties getEchoLogProperties() {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.copy(Blocks.OAK_LOG);
-        ((AbstractBlockSettingsAccessor)properties).setMapColorProvider(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.COLOR_LIGHT_GRAY : MaterialColor.COLOR_PURPLE);
+        ((AbstractBlockSettingsAccessor)properties).setMaterialColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.COLOR_LIGHT_GRAY : MaterialColor.COLOR_PURPLE);
         return properties;
     }
 
