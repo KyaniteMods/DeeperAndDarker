@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["create"]
+    }
+  ],
   "type": "create:crushing",
   "ingredients": [
     {
@@ -22,12 +28,6 @@
     {
       "chance": 0.125,
       "item": "deeperdarker:cobbled_sculk_stone"
-    }
-  ],
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "create"
     }
   ]
 }
