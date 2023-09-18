@@ -8,25 +8,25 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "deeperdarker:sculk_stone_redstone_ore"
+      "item": "deeperdarker:gloomslate_iron_ore"
     }
   ],
-  "processingTime": 450,
+  "processingTime": 350,
   "results": [
     {
-      "count": 12,
-      "item": "minecraft:redstone"
+      "count": 3,
+      "item": "create:crushed_raw_iron"
     },
     {
-      "chance": 0.5,
-      "item": "minecraft:redstone"
+      "chance": 0.75,
+      "item": "create:crushed_raw_iron"
     },
     {
       "item": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "deeperdarker:cobbled_sculk_stone"
+      "item": "deeperdarker:cobbled_gloomslate"
     }
   ]
 }

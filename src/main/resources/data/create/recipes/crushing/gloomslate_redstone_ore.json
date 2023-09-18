@@ -8,7 +8,7 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "deeperdarker:sculk_stone_redstone_ore"
+      "item": "deeperdarker:gloomslate_redstone_ore"
     }
   ],
   "processingTime": 450,
@@ -26,7 +26,7 @@
     },
     {
       "chance": 0.125,
-      "item": "deeperdarker:cobbled_sculk_stone"
+      "item": "deeperdarker:cobbled_gloomslate"
     }
   ]
 }

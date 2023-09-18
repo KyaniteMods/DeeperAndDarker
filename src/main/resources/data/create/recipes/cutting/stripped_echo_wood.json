@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["create"]
+    }
+  ],
   "type": "create:cutting",
   "ingredients": [
     {
@@ -10,12 +16,6 @@
     {
       "count": 6,
       "item": "deeperdarker:echo_planks"
-    }
-  ],
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "create"
     }
   ]
 }
