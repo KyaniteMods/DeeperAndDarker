@@ -7,7 +7,7 @@
     "PhantomMixin",
     "VibrationListenerMixin",
     "WardenMixin",
-    "DefaultAttributeRegistryMixin"
+    "DefaultAttributeRegistryAccessor"
   ],
   "client": [
     "PhantomRendererMixin",

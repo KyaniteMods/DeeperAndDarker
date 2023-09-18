@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.*;
-import com.kyanite.deeperdarker.mixin.DefaultAttributeRegistryMixin;
+import com.kyanite.deeperdarker.mixin.DefaultAttributeRegistryAccessor;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -27,12 +27,12 @@ public class DDEntities {
     }
 
     private static void registerAttributes() {
-        DefaultAttributeRegistryMixin.getRegistry().put(SCULK_SNAPPER, SculkSnapper.createAttributes());
-        DefaultAttributeRegistryMixin.getRegistry().put(SHATTERED, Shattered.createAttributes());
-        DefaultAttributeRegistryMixin.getRegistry().put(SCULK_LEECH, SculkLeech.createAttributes());
-        DefaultAttributeRegistryMixin.getRegistry().put(SHRIEK_WORM, ShriekWorm.createAttributes());
-        DefaultAttributeRegistryMixin.getRegistry().put(STALKER, Stalker.createAttributes());
-        DefaultAttributeRegistryMixin.getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_SNAPPER, SculkSnapper.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SHATTERED, Shattered.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_LEECH, SculkLeech.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SHRIEK_WORM, ShriekWorm.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(STALKER, Stalker.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
     }
 
     private static EntityType register(String name, EntityType entity) {
