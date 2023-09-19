@@ -2,11 +2,11 @@
   "replace": false,
   "values": [
     "minecraft:phantom",
-    "deeperdarker:sculk_centipede",
+    "deeperdarker:shattered",
     "deeperdarker:sculk_leech",
     "deeperdarker:sculk_snapper",
-    "deeperdarker:shattered",
     "deeperdarker:shriek_worm",
+    "deeperdarker:sculk_centipede",
     "deeperdarker:stalker"
   ]
 }
