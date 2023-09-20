@@ -3,7 +3,7 @@
 ---
 A Minecraft mod featuring new blocks, items, armor, and hidden mysteries to complement the Deep Dark update. Some features introduced by Deeper and Darker include new sculk-related blocks, Warden armor and tools, and the Otherside dimension!
 
-If you happen to find any bugs in Deeper and Darker, be sure to report them here!
+If you happen to find any bugs in Deeper and Darker, be sure to report them here! Try not to post duplicate reports however.
 
 # Contributions
 [![Crowdin](https://badges.crowdin.net/deeper-and-darker/localized.svg)](https://crowdin.com/project/deeper-and-darker)
