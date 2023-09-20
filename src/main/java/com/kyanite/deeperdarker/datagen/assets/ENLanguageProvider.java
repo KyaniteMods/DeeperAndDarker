@@ -37,7 +37,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock... the darkness awaits");
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.title", "Abyssal Descent");
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
-        add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Noise Complaint");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
