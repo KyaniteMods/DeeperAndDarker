@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.content.entities.DDBoat;
 import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.SmithingTemplateItem;
 import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -58,9 +59,9 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
-        add("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade", "Warden Upgrade");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
+        add("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade", "Warden Upgrade");
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
@@ -96,7 +97,7 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private boolean filter(RegistryObject<?> entry) {
-        return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat;
+        return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat || entry.get() instanceof SmithingTemplateItem;
     }
 
     private String convertToName(String key) {
