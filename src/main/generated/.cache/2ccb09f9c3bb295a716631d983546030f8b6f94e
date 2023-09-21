@@ -1,4 +1,4 @@
-// 1.20	2023-09-19T12:34:12.1594837	Deeper and Darker/Block Loot Tables
+// 1.20	2023-09-21T16:30:02.4540546	Deeper and Darker/Block Loot Tables
 444ee2b8b48675db101a101eb52a7627428edaef data\deeperdarker\loot_tables\blocks\gloomslate_emerald_ore.json
 06596f783c20abfbdcba619f2176513254a035b6 data\deeperdarker\loot_tables\blocks\echo_stairs.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data\deeperdarker\loot_tables\blocks\stripped_echo_log.json
@@ -83,8 +83,8 @@ afb2bc06eff48d0e4fd88afb6b81e2ce6b8757bd data\deeperdarker\loot_tables\blocks\sc
 a0fe8fcc0780edfceaec47933c48fe3ede9a89c9 data\deeperdarker\loot_tables\blocks\polished_gloomslate_slab.json
 88f91ab8acb3ba320a5665ded760ad70597ccc26 data\deeperdarker\loot_tables\blocks\gloomslate_copper_ore.json
 ac3012a1465f93581ed2c20b3ef6c477da3434d8 data\deeperdarker\loot_tables\blocks\cut_sculk_stone.json
-598aeffe7e9b37f67b091e58c27a420b4577a4f3 data\deeperdarker\loot_tables\blocks\smooth_sculk_stone_stairs.json
 da079619b942b3eefa650cf15b1787dfaf427d2b data\deeperdarker\loot_tables\blocks\echo_leaves.json
+598aeffe7e9b37f67b091e58c27a420b4577a4f3 data\deeperdarker\loot_tables\blocks\smooth_sculk_stone_stairs.json
 2f796bd061ded54d6e74eccc35de8771db933e9d data\deeperdarker\loot_tables\blocks\echo_planks.json
 6bdd575f26271566303421811769317b05744138 data\deeperdarker\loot_tables\blocks\sculk_vines_plant.json
 12f8278becba6140e8bee12c9e73ab47e31d69f1 data\deeperdarker\loot_tables\blocks\cobbled_gloomslate_stairs.json
