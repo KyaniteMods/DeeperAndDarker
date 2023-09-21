@@ -221,7 +221,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.description", "Slay the Warden and take its heart");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.title", "Below the Bedrock");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock... the darkness awaits");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock, the darkness awaits");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.title", "Abyssal Descent");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
