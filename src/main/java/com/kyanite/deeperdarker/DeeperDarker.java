@@ -18,7 +18,12 @@ import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.DDPlacedFeatures;
+import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.structures.DDPools;
+import com.kyanite.deeperdarker.world.structures.DDProcessorLists;
+import com.kyanite.deeperdarker.world.structures.DDStructureSets;
+import com.kyanite.deeperdarker.world.structures.DDStructures;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -76,7 +81,12 @@ public class DeeperDarker {
         DDFeatures.FEATURES.register(eventBus);
         DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
         DDPlacedFeatures.PLACED_FEATURES.register(eventBus);
+        OthersideBiomes.BIOMES.register(eventBus);
         OthersideDimension.POI.register(eventBus);
+        DDPools.POOLS.register(eventBus);
+        DDProcessorLists.PROCESSOR_LISTS.register(eventBus);
+        DDStructures.STRUCTURES.register(eventBus);
+        DDStructureSets.STRUCTURE_SETS.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
