@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.content.entities.Shattered;
 import com.kyanite.deeperdarker.content.entities.animations.ShatteredAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -51,9 +53,15 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 	public void setupAnim(Shattered entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(ShatteredAnimation.WALK, limbSwing, limbSwingAmount, 5.5f, 2.5f);
+		this.animateWalk(limbSwing, limbSwingAmount);
 		this.animate(entity.idleState, ShatteredAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, ShatteredAnimation.ATTACK, ageInTicks);
+	}
+
+	private void animateWalk(float pLimbSwing, float pLimbSwingAmount) {
+		long i = (long)(pLimbSwing * 50 * 2);
+		float f = Math.min(pLimbSwingAmount * 2.5f, 1f);
+		KeyframeAnimations.animate(this, ShatteredAnimation.WALK, i, f, new Vector3f());
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

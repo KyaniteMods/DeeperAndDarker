@@ -4,17 +4,15 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.DDBoat;
 import com.kyanite.deeperdarker.content.entities.DDChestBoat;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.SmithingTemplateItem;
-import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ENLanguageProvider extends LanguageProvider {
-    public ENLanguageProvider(PackOutput output) {
-        super(output, DeeperDarker.MOD_ID, "en_us");
+    public ENLanguageProvider(DataGenerator generator) {
+        super(generator, DeeperDarker.MOD_ID, "en_us");
     }
 
     @Override
@@ -97,7 +95,7 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private boolean filter(RegistryObject<?> entry) {
-        return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat || entry.get() instanceof SmithingTemplateItem;
+        return entry.get() instanceof WallSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat;
     }
 
     private String convertToName(String key) {

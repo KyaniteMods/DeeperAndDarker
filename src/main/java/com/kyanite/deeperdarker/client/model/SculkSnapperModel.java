@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.content.entities.SculkSnapper;
 import com.kyanite.deeperdarker.content.entities.animations.SculkSnapperAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -52,9 +54,15 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 	public void setupAnim(SculkSnapper entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(SculkSnapperAnimation.WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animateWalk(limbSwing, limbSwingAmount);
 		this.animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, SculkSnapperAnimation.BITE, ageInTicks);
+	}
+
+	private void animateWalk(float pLimbSwing, float pLimbSwingAmount) {
+		long i = (long)(pLimbSwing * 50 * 2);
+		float f = Math.min(pLimbSwingAmount * 2.5f, 1f);
+		KeyframeAnimations.animate(this, SculkSnapperAnimation.WALK, i, f, new Vector3f());
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

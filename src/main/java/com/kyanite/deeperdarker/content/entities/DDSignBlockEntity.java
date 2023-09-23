@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.content.entities.blocks;
+package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import net.minecraft.core.BlockPos;

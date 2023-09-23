@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.content.entities.Stalker;
 import com.kyanite.deeperdarker.content.entities.animations.StalkerAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -69,11 +71,17 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 	public void setupAnim(Stalker entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(StalkerAnimation.WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animateWalk(limbSwing, limbSwingAmount);
 		this.animate(entity.idleState, StalkerAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
 		this.animate(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
 		this.animate(entity.emergeState, StalkerAnimation.EMERGE, ageInTicks);
+	}
+
+	private void animateWalk(float pLimbSwing, float pLimbSwingAmount) {
+		long i = (long)(pLimbSwing * 50 * 2);
+		float f = Math.min(pLimbSwingAmount * 2.5f, 1f);
+		KeyframeAnimations.animate(this, StalkerAnimation.WALK, i, f, new Vector3f());
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

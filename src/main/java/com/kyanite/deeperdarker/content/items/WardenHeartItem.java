@@ -22,7 +22,7 @@ public class WardenHeartItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         if(pContext.getPlayer() != null) {
-            if(pContext.getPlayer().level().dimension() == OthersideDimension.OTHERSIDE_LEVEL || pContext.getPlayer().level().dimension() == Level.OVERWORLD) {
+            if(pContext.getPlayer().level.dimension() == OthersideDimension.OTHERSIDE_LEVEL || pContext.getPlayer().level.dimension() == Level.OVERWORLD) {
                 BlockPos clickedPos = pContext.getClickedPos().relative(pContext.getClickedFace());
 
                 if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {

@@ -9,24 +9,25 @@ import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.data.*;
+import com.kyanite.deeperdarker.datagen.data.DDAdvancements;
+import com.kyanite.deeperdarker.datagen.data.DDBlockTagsProvider;
+import com.kyanite.deeperdarker.datagen.data.DDItemTagsProvider;
+import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
-import com.kyanite.deeperdarker.util.DDCreativeTab;
+import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.DDPlacedFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -45,7 +46,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -57,8 +57,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import java.util.List;
-
 @SuppressWarnings("unused")
 @Mod(DeeperDarker.MOD_ID)
 public class DeeperDarker {
@@ -67,7 +65,6 @@ public class DeeperDarker {
     public DeeperDarker() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
         DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
@@ -77,11 +74,12 @@ public class DeeperDarker {
         DDPotions.POTIONS.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
+        DDConfiguredFeatures.CONFIGURED_FEATURES.register(eventBus);
+        DDPlacedFeatures.PLACED_FEATURES.register(eventBus);
         OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
-        eventBus.addListener(DDCreativeTab::buildCreativeTab);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
@@ -99,25 +97,23 @@ public class DeeperDarker {
 
     private void generateData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
 
         // assets
-        generator.addProvider(event.includeClient(), new ENLanguageProvider(packOutput));
-        generator.addProvider(event.includeClient(), new DDBlockStateProvider(packOutput, fileHelper));
-        generator.addProvider(event.includeClient(), new DDItemModelProvider(packOutput, fileHelper));
-        generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
+        generator.addProvider(event.includeClient(), new ENLanguageProvider(generator));
+        generator.addProvider(event.includeClient(), new DDBlockStateProvider(generator, fileHelper));
+        generator.addProvider(event.includeClient(), new DDItemModelProvider(generator, fileHelper));
+        generator.addProvider(event.includeClient(), new DDSoundDefinitions(generator, fileHelper));
 
         // data
-        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, event.getLookupProvider(), fileHelper);
+        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(generator, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new DDItemTagsProvider(generator, blockTags, fileHelper));
 
-        generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, event.getLookupProvider(), fileHelper, List.of(new DDAdvancements())));
-        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
-        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
-        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput));
-        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
+        generator.addProvider(event.includeServer(), new DDAdvancements(generator, fileHelper));
+        generator.addProvider(event.includeServer(), new DDLootTableProvider(generator));
+        generator.addProvider(event.includeServer(), new DDLootModifierProvider(generator));
+        generator.addProvider(event.includeServer(), new DDRecipeProvider(generator));
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
@@ -147,10 +143,10 @@ public class DeeperDarker {
                 if(random.nextFloat() < 0.1f) {
                     if(random.nextFloat() < 0.953f) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
-                            DDEntities.SCULK_LEECH.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
+                            DDEntities.SCULK_LEECH.get().spawn(level, null, null, null, event.getPos(), MobSpawnType.TRIGGERED, false, false);
                         }
                     } else {
-                        DDEntities.STALKER.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
+                        DDEntities.STALKER.get().spawn(level, null, null, null, event.getPos(), MobSpawnType.TRIGGERED, false, false);
                     }
                 }
             }
@@ -168,7 +164,6 @@ public class DeeperDarker {
             });
 
             BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
-            BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
             EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
             EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
@@ -181,8 +176,8 @@ public class DeeperDarker {
 
         @SubscribeEvent
         public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
-            event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
-            event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+            event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, () -> BoatModel.createBodyModel(false));
+            event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, () -> BoatModel.createBodyModel(true));
             event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
             event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
             event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);

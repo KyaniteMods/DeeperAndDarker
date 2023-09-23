@@ -39,18 +39,18 @@ public class OthersideTeleporter implements ITeleporter {
 
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        if(entity.level().dimension() != OthersideDimension.OTHERSIDE_LEVEL && destWorld.dimension() != OthersideDimension.OTHERSIDE_LEVEL) return null;
+        if(entity.level.dimension() != OthersideDimension.OTHERSIDE_LEVEL && destWorld.dimension() != OthersideDimension.OTHERSIDE_LEVEL) return null;
 
         WorldBorder border = destWorld.getWorldBorder();
         double minX = Math.max(-2.9999872E7d, border.getMinX() + 16);
         double minZ = Math.max(-2.9999872E7d, border.getMinZ() + 16);
         double maxX = Math.min(2.9999872E7d, border.getMaxX() - 16);
         double maxZ = Math.min(2.9999872E7d, border.getMaxZ() - 16);
-        double coordinateRatio = DimensionType.getTeleportationScale(entity.level().dimensionType(), destWorld.dimensionType());
+        double coordinateRatio = DimensionType.getTeleportationScale(entity.level.dimensionType(), destWorld.dimensionType());
         BlockPos destPos = new BlockPos((int) Mth.clamp(entity.getX() * coordinateRatio, minX, maxX), (int) entity.getY(), (int) Mth.clamp(entity.getZ() * coordinateRatio, minZ, maxZ));
 
         return this.getOrMakePortal(entity, destPos).map((rectangle) -> {
-            BlockState state = entity.level().getBlockState(entity.portalEntrancePos);
+            BlockState state = entity.level.getBlockState(entity.portalEntrancePos);
             Direction.Axis axis;
             Vec3 vector3d;
             if(state.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
@@ -61,7 +61,7 @@ public class OthersideTeleporter implements ITeleporter {
                 vector3d = new Vec3(0.5, 0, 0);
             }
 
-            return PortalShape.createPortalInfo(destWorld, rectangle, axis, vector3d, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
+            return PortalShape.createPortalInfo(destWorld, rectangle, axis, vector3d, entity.getDimensions(entity.getPose()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
         }).orElse(null);
     }
 

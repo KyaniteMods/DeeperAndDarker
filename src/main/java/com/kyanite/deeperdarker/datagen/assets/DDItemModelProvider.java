@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -16,8 +16,8 @@ public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
     private final ModelFile HANDHELD = getExistingFile(mcLoc("item/handheld"));
 
-    public DDItemModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, DeeperDarker.MOD_ID, exFileHelper);
+    public DDItemModelProvider(DataGenerator generator, ExistingFileHelper exFileHelper) {
+        super(generator, DeeperDarker.MOD_ID, exFileHelper);
     }
 
     @Override
@@ -138,7 +138,6 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         itemModelWithSuffix(DDItems.SOUL_ELYTRA, GENERATED, "broken");
         itemModel(DDItems.ECHO_SIGN, GENERATED);
-        itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
 
@@ -163,7 +162,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
-        itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);

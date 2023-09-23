@@ -50,7 +50,7 @@ public class SculkCentipede extends Monster implements NeutralMob {
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        level().broadcastEntityEvent(this, (byte) 4);
+        level.broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
     }
 

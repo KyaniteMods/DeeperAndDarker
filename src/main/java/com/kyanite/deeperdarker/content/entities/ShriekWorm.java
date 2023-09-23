@@ -23,7 +23,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings("deprecation, NullableProblems")
+@SuppressWarnings("NullableProblems")
 public class ShriekWorm extends Monster {
     private static final EntityDataAccessor<Integer> IDLE_TIMER = SynchedEntityData.defineId(ShriekWorm.class, EntityDataSerializers.INT);
     public final AnimationState idleState = new AnimationState();
@@ -79,7 +79,7 @@ public class ShriekWorm extends Monster {
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        this.level().broadcastEntityEvent(this, (byte) 4);
+        this.level.broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
     }
 
@@ -87,7 +87,7 @@ public class ShriekWorm extends Monster {
     public void tick() {
         super.tick();
 
-        if(level().isClientSide()) {
+        if(level.isClientSide()) {
             if(this.idleState.isStarted()) {
                 this.entityData.set(IDLE_TIMER, this.entityData.get(IDLE_TIMER) - 1);
 
@@ -110,13 +110,13 @@ public class ShriekWorm extends Monster {
                 double sX = this.random.nextGaussian() * 0.02;
                 double sY = this.random.nextGaussian() * 0.02;
                 double sZ = this.random.nextGaussian() * 0.02;
-                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
+                level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
             }
         }
 
         if(this.noActionTime > 156) this.setPose(Pose.STANDING);
 
-        Player player = level().getNearestPlayer(this, 3);
+        Player player = level.getNearestPlayer(this, 3);
         if(player == null || player.isDeadOrDying() || player.isCreative()) {
             if(this.attackState.isStarted()) {
                 this.attackState.stop();
@@ -127,7 +127,7 @@ public class ShriekWorm extends Monster {
         /*if(this.descendState.isStarted()) {
             this.entityData.set(IDLE_TIMER, this.entityData.get(IDLE_TIMER) - 1);
             if(this.entityData.get(IDLE_TIMER) <= -90) {
-                level().setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
+                level.setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
                 // TODO: kill does not work... make it work (change descent chance once fixed)
                 this.kill();
                 this.remove(RemovalReason.KILLED);

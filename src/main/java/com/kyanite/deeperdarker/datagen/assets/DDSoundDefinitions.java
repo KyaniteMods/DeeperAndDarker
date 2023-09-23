@@ -2,15 +2,15 @@ package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDSounds;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.SoundDefinition;
 import net.minecraftforge.common.data.SoundDefinitionsProvider;
 
 public class DDSoundDefinitions extends SoundDefinitionsProvider {
-    public DDSoundDefinitions(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, DeeperDarker.MOD_ID, existingFileHelper);
+    public DDSoundDefinitions(DataGenerator generator, ExistingFileHelper existingFileHelper) {
+        super(generator, DeeperDarker.MOD_ID, existingFileHelper);
     }
 
     @Override

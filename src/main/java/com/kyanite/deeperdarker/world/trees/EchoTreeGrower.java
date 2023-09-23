@@ -1,15 +1,14 @@
 package com.kyanite.deeperdarker.world.trees;
 
 import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.NotNull;
 
 public class EchoTreeGrower extends AbstractTreeGrower {
     @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(@NotNull RandomSource pRandom, boolean pHasFlowers) {
-        return DDConfiguredFeatures.TREE_ECHO;
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource pRandom, boolean pLargeHive) {
+        return DDConfiguredFeatures.TREE_ECHO.getHolder().get();
     }
 }

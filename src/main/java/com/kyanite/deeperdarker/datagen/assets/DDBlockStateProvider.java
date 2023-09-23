@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -12,8 +12,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
 public class DDBlockStateProvider extends BlockStateProvider {
-    public DDBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, DeeperDarker.MOD_ID, exFileHelper);
+    public DDBlockStateProvider(DataGenerator generator, ExistingFileHelper exFileHelper) {
+        super(generator, DeeperDarker.MOD_ID, exFileHelper);
     }
 
     @Override
@@ -34,8 +34,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.ECHO_LEAVES.get(), models().cubeAll(DDBlocks.ECHO_LEAVES.getId().getPath(), blockLoc(DDBlocks.ECHO_LEAVES)).renderType("cutout"));
         simpleBlock(DDBlocks.ECHO_SAPLING.get(), models().cross(DDBlocks.ECHO_SAPLING.getId().getPath(), blockLoc(DDBlocks.ECHO_SAPLING)).renderType("cutout"));
         signBlock(DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get(), blockLoc(DDBlocks.ECHO_PLANKS));
-        simpleBlock(DDBlocks.ECHO_HANGING_SIGN.get(), models().sign(DDBlocks.ECHO_HANGING_SIGN.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
-        simpleBlock(DDBlocks.ECHO_WALL_HANGING_SIGN.get(), models().sign(DDBlocks.ECHO_HANGING_SIGN.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
         simpleBlock(DDBlocks.POTTED_ECHO_SAPLING.get(), models().withExistingParent(DDBlocks.POTTED_ECHO_SAPLING.getId().getPath(), mcLoc("flower_pot_cross")).texture("plant", blockLoc(DDBlocks.ECHO_SAPLING)).renderType("cutout"));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());

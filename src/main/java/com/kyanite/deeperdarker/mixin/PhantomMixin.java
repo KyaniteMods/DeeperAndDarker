@@ -18,6 +18,6 @@ public class PhantomMixin extends FlyingMob {
 
     @Override
     public @NotNull MobType getMobType() {
-        return this.level().dimension() == OthersideDimension.OTHERSIDE_LEVEL ? DDMobType.SCULK : MobType.UNDEAD;
+        return this.level.dimension() == OthersideDimension.OTHERSIDE_LEVEL ? DDMobType.SCULK : MobType.UNDEAD;
     }
 }

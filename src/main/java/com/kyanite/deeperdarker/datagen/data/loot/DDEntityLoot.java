@@ -2,9 +2,8 @@ package com.kyanite.deeperdarker.datagen.data.loot;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
-import net.minecraft.data.loot.EntityLootSubProvider;
+import net.minecraft.data.loot.EntityLoot;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -16,15 +15,12 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Iterator;
 import java.util.stream.Stream;
 
-public class DDEntityLoot extends EntityLootSubProvider {
-    public DDEntityLoot() {
-        super(FeatureFlags.REGISTRY.allFlags());
-    }
-
+public class DDEntityLoot extends EntityLoot {
     @Override
-    public void generate() {
+    protected void addTables() {
         add(DDEntities.SCULK_CENTIPEDE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(Items.STRING)).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1)))));
         add(DDEntities.SCULK_LEECH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_DUST.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))));
         add(DDEntities.SCULK_SNAPPER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_DUST.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))));
@@ -34,7 +30,8 @@ public class DDEntityLoot extends EntityLootSubProvider {
     }
 
     @Override
-    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
-        return DDEntities.ENTITIES.getEntries().stream().map(RegistryObject::get);
+    protected @NotNull Iterable<EntityType<?>> getKnownEntities() {
+        Stream<? extends EntityType<?>> stream = DDEntities.ENTITIES.getEntries().stream().map(RegistryObject::get);
+        return () -> (Iterator<EntityType<?>>) stream.iterator();
     }
 }

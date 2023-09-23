@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.content.entities.SculkCentipede;
 import com.kyanite.deeperdarker.content.entities.animations.SculkCentipedeAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -73,7 +75,13 @@ public class SculkCentipedeModel extends HierarchicalModel<SculkCentipede> {
 	public void setupAnim(SculkCentipede entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(SculkCentipedeAnimation.CRAWL, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animateWalk(limbSwing, limbSwingAmount);
+	}
+
+	private void animateWalk(float pLimbSwing, float pLimbSwingAmount) {
+		long i = (long)(pLimbSwing * 50 * 2);
+		float f = Math.min(pLimbSwingAmount * 2.5f, 1f);
+		KeyframeAnimations.animate(this, SculkCentipedeAnimation.CRAWL, i, f, new Vector3f());
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {

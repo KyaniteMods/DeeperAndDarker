@@ -3,111 +3,60 @@ package com.kyanite.deeperdarker.world;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 
+@SuppressWarnings("OptionalGetWithoutIsPresent")
 public class DDPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> SCULK_STONE_COLUMN = createKey("sculk_stone_column");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_COLUMN = createKey("gloomslate_column");
-    public static final ResourceKey<PlacedFeature> SCULK_GLEAM = createKey("sculk_gleam");
-    public static final ResourceKey<PlacedFeature> SCULK_GLEAM_FOREST = createKey("sculk_gleam_forest");
-    public static final ResourceKey<PlacedFeature> SCULK_TENDRILS = createKey("sculk_tendrils");
-    public static final ResourceKey<PlacedFeature> SCULK_VINES = createKey("sculk_vines");
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DeeperDarker.MOD_ID);
 
-    public static final ResourceKey<PlacedFeature> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");
-    public static final ResourceKey<PlacedFeature> SCULK_DECORATION = createKey("sculk_decoration");
-    public static final ResourceKey<PlacedFeature> SURFACE_GLOOMSLATE = createKey("surface_gloomslate");
-    public static final ResourceKey<PlacedFeature> GLOOMY_SCULK_VEGETATION = createKey("gloomy_sculk_vegetation");
+    public static final RegistryObject<PlacedFeature> SCULK_STONE_COLUMN = PLACED_FEATURES.register("sculk_stone_column", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_STONE_COLUMN.getHolder().get(), countPlacement(14, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_COLUMN = PLACED_FEATURES.register("gloomslate_column", () -> new PlacedFeature(DDConfiguredFeatures.GLOOMSLATE_COLUMN.getHolder().get(), countPlacement(24, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SCULK_GLEAM = PLACED_FEATURES.register("sculk_gleam", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_GLEAM_EXTRA.getHolder().get(), countPlacement(16, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SCULK_GLEAM_FOREST = PLACED_FEATURES.register("sculk_gleam_forest", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_GLEAM_EXTRA.getHolder().get(), countPlacement(28, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SCULK_TENDRILS = PLACED_FEATURES.register("sculk_tendrils", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_TENDRILS.getHolder().get(), countPlacement(36, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SCULK_VINES = PLACED_FEATURES.register("sculk_vines", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_VINES.getHolder().get(), countPlacement(28, PlacementUtils.FULL_RANGE)));
 
-    public static final ResourceKey<PlacedFeature> INFESTED_SCULK = createKey("infested_sculk");
-    public static final ResourceKey<PlacedFeature> SCULK_JAW = createKey("sculk_jaw");
-    public static final ResourceKey<PlacedFeature> ECHO_SOIL = createKey("echo_soil");
-    public static final ResourceKey<PlacedFeature> SCULK_COAL = createKey("sculk_coal");
-    public static final ResourceKey<PlacedFeature> SCULK_IRON = createKey("sculk_iron");
-    public static final ResourceKey<PlacedFeature> SCULK_COPPER = createKey("sculk_copper");
-    public static final ResourceKey<PlacedFeature> SCULK_GOLD = createKey("sculk_gold");
-    public static final ResourceKey<PlacedFeature> SCULK_REDSTONE = createKey("sculk_redstone");
-    public static final ResourceKey<PlacedFeature> SCULK_EMERALD = createKey("sculk_emerald");
-    public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
-    public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
+    public static final RegistryObject<PlacedFeature> SURFACE_SCULK_STONE = PLACED_FEATURES.register("surface_sculk_stone", () -> new PlacedFeature(DDConfiguredFeatures.SURFACE_SCULK_STONE.getHolder().get(), countPlacement(55, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)));
+    public static final RegistryObject<PlacedFeature> SCULK_DECORATION = PLACED_FEATURES.register("sculk_decoration", () -> new PlacedFeature(DDConfiguredFeatures.SCULK_PATCH.getHolder().get(), countPlacement(86, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)));
+    public static final RegistryObject<PlacedFeature> SURFACE_GLOOMSLATE = PLACED_FEATURES.register("surface_gloomslate", () -> new PlacedFeature(DDConfiguredFeatures.SURFACE_GLOOMSLATE.getHolder().get(), countPlacement(32, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)));
+    public static final RegistryObject<PlacedFeature> GLOOMY_SCULK_VEGETATION = PLACED_FEATURES.register("gloomy_sculk_vegetation", () -> new PlacedFeature(DDConfiguredFeatures.GLOOMY_SCULK_PATCH.getHolder().get(), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT)));
 
-    public static final ResourceKey<PlacedFeature> GLOOMY_SCULK = createKey("gloomy_sculk");
-    public static final ResourceKey<PlacedFeature> MAGMA = createKey("magma");
-    public static final ResourceKey<PlacedFeature> SOUL_SAND = createKey("soul_sand");
-    public static final ResourceKey<PlacedFeature> SOUL_SOIL = createKey("soul_soil");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_COAL = createKey("gloomslate_coal");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_IRON = createKey("gloomslate_iron");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_COPPER = createKey("gloomslate_copper");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_GOLD = createKey("gloomslate_gold");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_REDSTONE = createKey("gloomslate_redstone");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_EMERALD = createKey("gloomslate_emerald");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_LAPIS = createKey("gloomslate_lapis");
-    public static final ResourceKey<PlacedFeature> GLOOMSLATE_DIAMOND = createKey("gloomslate_diamond");
+    public static final RegistryObject<PlacedFeature> INFESTED_SCULK = PLACED_FEATURES.register("infested_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_INFESTED_SCULK.getHolder().get(), countPlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(86)))));
+    public static final RegistryObject<PlacedFeature> SCULK_JAW = PLACED_FEATURES.register("sculk_jaw", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_JAW.getHolder().get(), countPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-92), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> ECHO_SOIL = PLACED_FEATURES.register("echo_soil", () -> new PlacedFeature(DDConfiguredFeatures.ORE_ECHO_SOIL.getHolder().get(), countPlacement(25, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SCULK_COAL = PLACED_FEATURES.register("sculk_coal", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_COAL.getHolder().get(), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> SCULK_IRON = PLACED_FEATURES.register("sculk_iron", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_IRON.getHolder().get(), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128)))));
+    public static final RegistryObject<PlacedFeature> SCULK_COPPER = PLACED_FEATURES.register("sculk_copper", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_COPPER.getHolder().get(), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256)))));
+    public static final RegistryObject<PlacedFeature> SCULK_GOLD = PLACED_FEATURES.register("sculk_gold", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_GOLD.getHolder().get(), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70)))));
+    public static final RegistryObject<PlacedFeature> SCULK_REDSTONE = PLACED_FEATURES.register("sculk_redstone", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_REDSTONE.getHolder().get(), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64)))));
+    public static final RegistryObject<PlacedFeature> SCULK_EMERALD = PLACED_FEATURES.register("sculk_emerald", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_EMERALD.getHolder().get(), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30)))));
+    public static final RegistryObject<PlacedFeature> SCULK_LAPIS = PLACED_FEATURES.register("sculk_lapis", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_LAPIS.getHolder().get(), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25)))));
+    public static final RegistryObject<PlacedFeature> SCULK_DIAMOND = PLACED_FEATURES.register("sculk_diamond", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SCULK_DIAMOND.getHolder().get(), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50)))));
 
-    public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
+    public static final RegistryObject<PlacedFeature> GLOOMY_SCULK = PLACED_FEATURES.register("gloomy_sculk", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMY_SCULK.getHolder().get(), countPlacement(96, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(32)))));
+    public static final RegistryObject<PlacedFeature> MAGMA = PLACED_FEATURES.register("magma", () -> new PlacedFeature(DDConfiguredFeatures.ORE_MAGMA.getHolder().get(), countPlacement(128, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SOUL_SAND = PLACED_FEATURES.register("soul_sand", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SOUL_SAND.getHolder().get(), countPlacement(192, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> SOUL_SOIL = PLACED_FEATURES.register("soul_soil", () -> new PlacedFeature(DDConfiguredFeatures.ORE_SOUL_SOIL.getHolder().get(), countPlacement(256, PlacementUtils.FULL_RANGE)));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_COAL = PLACED_FEATURES.register("gloomslate_coal", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_COAL.getHolder().get(), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top()))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_IRON = PLACED_FEATURES.register("gloomslate_iron", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_IRON.getHolder().get(), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128)))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_COPPER = PLACED_FEATURES.register("gloomslate_copper", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_COPPER.getHolder().get(), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256)))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_GOLD = PLACED_FEATURES.register("gloomslate_gold", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_GOLD.getHolder().get(), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70)))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_REDSTONE = PLACED_FEATURES.register("gloomslate_redstone", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_REDSTONE.getHolder().get(), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64)))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_EMERALD = PLACED_FEATURES.register("gloomslate_emerald", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_EMERALD.getHolder().get(), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30)))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_LAPIS = PLACED_FEATURES.register("gloomslate_lapis", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_LAPIS.getHolder().get(), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25)))));
+    public static final RegistryObject<PlacedFeature> GLOOMSLATE_DIAMOND = PLACED_FEATURES.register("gloomslate_diamond", () -> new PlacedFeature(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND.getHolder().get(), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50)))));
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
-
-        PlacementUtils.register(context, SCULK_STONE_COLUMN, features.getOrThrow(DDConfiguredFeatures.SCULK_STONE_COLUMN), countPlacement(14, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, GLOOMSLATE_COLUMN, features.getOrThrow(DDConfiguredFeatures.GLOOMSLATE_COLUMN), countPlacement(24, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_GLEAM, features.getOrThrow(DDConfiguredFeatures.SCULK_GLEAM_EXTRA), countPlacement(16, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_GLEAM_FOREST, features.getOrThrow(DDConfiguredFeatures.SCULK_GLEAM_EXTRA), countPlacement(28, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_TENDRILS, features.getOrThrow(DDConfiguredFeatures.SCULK_TENDRILS), countPlacement(36, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_VINES, features.getOrThrow(DDConfiguredFeatures.SCULK_VINES), countPlacement(28, PlacementUtils.FULL_RANGE));
-
-        PlacementUtils.register(context, SURFACE_SCULK_STONE, features.getOrThrow(DDConfiguredFeatures.SURFACE_SCULK_STONE), countPlacement(55, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
-        PlacementUtils.register(context, SCULK_DECORATION, features.getOrThrow(DDConfiguredFeatures.SCULK_PATCH), countPlacement(86, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
-        PlacementUtils.register(context, SURFACE_GLOOMSLATE, features.getOrThrow(DDConfiguredFeatures.SURFACE_GLOOMSLATE), countPlacement(32, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
-        PlacementUtils.register(context, GLOOMY_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.GLOOMY_SCULK_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
-
-        PlacementUtils.register(context, INFESTED_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_INFESTED_SCULK), countPlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(86))));
-        PlacementUtils.register(context, SCULK_JAW, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_JAW), countPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-92), VerticalAnchor.top())));
-        PlacementUtils.register(context, ECHO_SOIL, features.getOrThrow(DDConfiguredFeatures.ORE_ECHO_SOIL), countPlacement(25, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SCULK_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
-        PlacementUtils.register(context, SCULK_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));
-        PlacementUtils.register(context, SCULK_COPPER, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_COPPER), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256))));
-        PlacementUtils.register(context, SCULK_GOLD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_GOLD), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70))));
-        PlacementUtils.register(context, SCULK_REDSTONE, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_REDSTONE), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64))));
-        PlacementUtils.register(context, SCULK_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_EMERALD), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
-        PlacementUtils.register(context, SCULK_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
-        PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
-
-        PlacementUtils.register(context, GLOOMY_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMY_SCULK), countPlacement(96, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(32))));
-        PlacementUtils.register(context, MAGMA, features.getOrThrow(DDConfiguredFeatures.ORE_MAGMA), countPlacement(128, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SOUL_SAND, features.getOrThrow(DDConfiguredFeatures.ORE_SOUL_SAND), countPlacement(192, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, SOUL_SOIL, features.getOrThrow(DDConfiguredFeatures.ORE_SOUL_SOIL), countPlacement(256, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, GLOOMSLATE_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
-        PlacementUtils.register(context, GLOOMSLATE_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));
-        PlacementUtils.register(context, GLOOMSLATE_COPPER, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COPPER), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256))));
-        PlacementUtils.register(context, GLOOMSLATE_GOLD, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_GOLD), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70))));
-        PlacementUtils.register(context, GLOOMSLATE_REDSTONE, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_REDSTONE), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64))));
-        PlacementUtils.register(context, GLOOMSLATE_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_EMERALD), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
-        PlacementUtils.register(context, GLOOMSLATE_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
-        PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
-
-        PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.get().defaultBlockState(), BlockPos.ZERO)));
-    }
+    public static final RegistryObject<PlacedFeature> ECHO_TREE = PLACED_FEATURES.register("echo_tree", () -> new PlacedFeature(DDConfiguredFeatures.TREE_ECHO.getHolder().get(), List.of(CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.get().defaultBlockState(), BlockPos.ZERO)))));
 
     private static List<PlacementModifier> countPlacement(int attempts, PlacementModifier heightRange) {
-        return modifiedPlacement(CountPlacement.of(attempts), heightRange);
-    }
-
-    private static List<PlacementModifier> modifiedPlacement(PlacementModifier count, PlacementModifier heightRange) {
-        return List.of(count, InSquarePlacement.spread(), heightRange, BiomeFilter.biome());
-    }
-
-    private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return List.of(CountPlacement.of(attempts), InSquarePlacement.spread(), heightRange, BiomeFilter.biome());
     }
 }
