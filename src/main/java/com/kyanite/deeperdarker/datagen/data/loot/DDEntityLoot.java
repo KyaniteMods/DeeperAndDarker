@@ -29,6 +29,7 @@ public class DDEntityLoot extends EntityLoot {
         add(DDEntities.STALKER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected @NotNull Iterable<EntityType<?>> getKnownEntities() {
         Stream<? extends EntityType<?>> stream = DDEntities.ENTITIES.getEntries().stream().map(RegistryObject::get);
