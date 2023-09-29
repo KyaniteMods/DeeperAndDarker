@@ -11,7 +11,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class WardenStaffItem extends Item {
-
     public WardenStaffItem(Properties pProperties) {
         super(pProperties);
     }
@@ -25,5 +24,4 @@ public class WardenStaffItem extends Item {
         }
         return InteractionResultHolder.success(itemStack);
     }
-
 }
