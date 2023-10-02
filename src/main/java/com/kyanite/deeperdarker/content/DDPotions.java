@@ -23,6 +23,7 @@ public class DDPotions {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering potions");
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.of(DDItems.SOUL_CRYSTAL), SCULK_AFFINITY);
         FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.INVISIBILITY, Ingredient.of(DDItems.SOUL_DUST), SCULK_AFFINITY);
         FabricBrewingRecipeRegistry.registerPotionRecipe(SCULK_AFFINITY, Ingredient.of(Items.REDSTONE), LONG_SCULK_AFFINITY);
         FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.LONG_INVISIBILITY, Ingredient.of(DDItems.SOUL_DUST), LONG_SCULK_AFFINITY);
