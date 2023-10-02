@@ -13,15 +13,21 @@ import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -81,5 +87,27 @@ public class DeeperDarker {
         event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID)
+    public static class DeeperDarkerEvents {
+        @SubscribeEvent
+        public static void breakEvent(final BlockEvent.BreakEvent event) {
+            if(!event.getState().is(DDBlocks.ANCIENT_VASE.get())) return;
+            if(event.getPlayer().getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) return;
+
+            if(event.getLevel() instanceof ServerLevel level) {
+                RandomSource random = level.getRandom();
+                if(random.nextFloat() < 0.1f) {
+                    if(random.nextFloat() < 0.953f) {
+                        for(int i = 0; i < random.nextInt(1, 4); i++) {
+                            DDEntities.SCULK_LEECH.get().spawn(level, null, null, null, event.getPos(), MobSpawnType.TRIGGERED, false, false);
+                        }
+                    } else {
+                        DDEntities.STALKER.get().spawn(level, null, null, null, event.getPos(), MobSpawnType.TRIGGERED, false, false);
+                    }
+                }
+            }
+        }
     }
 }
