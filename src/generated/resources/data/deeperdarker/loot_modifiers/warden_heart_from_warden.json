@@ -1,0 +1,12 @@
+{
+  "type": "deeperdarker:add",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/warden"
+    }
+  ],
+  "item": "deeperdarker:heart_of_the_deep",
+  "max": 1,
+  "min": 1
+}

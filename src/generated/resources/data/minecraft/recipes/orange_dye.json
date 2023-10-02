@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "deeperdarker:gloomy_cactus"
+  },
+  "result": "minecraft:orange_dye"
+}

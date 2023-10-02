@@ -1,0 +1,42 @@
+{
+  "parent": "deeperdarker:main/find_ancient_city",
+  "criteria": {
+    "warden": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:warden"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.kill_warden.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:heart_of_the_deep"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.kill_warden.title"
+    }
+  },
+  "requirements": [
+    [
+      "warden"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

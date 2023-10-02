@@ -1,0 +1,5 @@
+// 1.19.2	2023-10-01T22:20:58.9684295	Global Loot Modifiers : deeperdarker
+e7fefaa22e3e53fde58ab5d8edf868e57010b3c1 data/deeperdarker/loot_modifiers/warden_carapace_from_ancient_city.json
+5d5dbf6bf8e19dc74cd860a8679b30d920e0772e data/deeperdarker/loot_modifiers/warden_carapace_from_warden.json
+537f6dc2c609174fc8c0cf56455ccd2ece7819e3 data/deeperdarker/loot_modifiers/warden_heart_from_warden.json
+ee93a57654d7568ea4ce9bfd0c15f96db6368566 data/forge/loot_modifiers/global_loot_modifiers.json

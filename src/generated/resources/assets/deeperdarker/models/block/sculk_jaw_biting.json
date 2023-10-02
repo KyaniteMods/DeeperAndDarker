@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "deeperdarker:block/sculk_jaw_side",
+    "top": "deeperdarker:block/sculk_jaw_biting"
+  }
+}

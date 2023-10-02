@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "copper_ingot",
+  "ingredient": {
+    "item": "deeperdarker:gloomslate_copper_ore"
+  },
+  "result": "minecraft:raw_copper"
+}
