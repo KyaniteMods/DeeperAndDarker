@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -29,6 +28,6 @@ public class GloomySculkBlock extends SculkBlock implements BonemealableBlock, S
 
     @Override
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-        DDConfiguredFeatures.GLOOMY_SCULK_PATCH.get().place(pLevel, pLevel.getChunkSource().getGenerator(), pRandom, pPos.above());
+
     }
 }
