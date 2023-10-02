@@ -1,10 +1,7 @@
 package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDEnchantments;
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.DDBoat;
 import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import net.minecraft.data.DataGenerator;
@@ -87,7 +84,7 @@ public class ENLanguageProvider extends LanguageProvider {
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));
         DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
-//        DDEffects.EFFECTS.getEntries().forEach(effect -> add(effect, "effect"));
+        DDEffects.EFFECTS.getEntries().forEach(effect -> add(effect, "effect"));
         DDEnchantments.ENCHANTMENTS.getEntries().forEach(effect -> add(effect, "enchantment"));
     }
 

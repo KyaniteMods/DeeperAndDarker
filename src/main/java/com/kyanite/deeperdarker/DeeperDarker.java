@@ -67,6 +67,8 @@ public class DeeperDarker {
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
+        DDEffects.EFFECTS.register(eventBus);
+        DDPotions.POTIONS.register(eventBus);
         DDSounds.SOUND_EVENTS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);

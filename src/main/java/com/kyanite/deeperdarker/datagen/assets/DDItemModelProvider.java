@@ -163,12 +163,12 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
 
-        /*spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
+        spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
         spawnEggModel(DDItems.SHATTERED_SPAWN_EGG);
         spawnEggModel(DDItems.SHRIEK_WORM_SPAWN_EGG);
-        spawnEggModel(DDItems.STALKER_SPAWN_EGG);*/
+        spawnEggModel(DDItems.STALKER_SPAWN_EGG);
     }
 
     private void spawnEggModel(RegistryObject<Item> egg) {
