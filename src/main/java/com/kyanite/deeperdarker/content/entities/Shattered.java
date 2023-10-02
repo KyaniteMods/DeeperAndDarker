@@ -115,8 +115,8 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
 
     @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
-        if(this.level instanceof ServerLevel level) {
-            pListenerConsumer.accept(this.dynamicGameEventListener, level);
+        if(this.level instanceof ServerLevel serverLevel) {
+            pListenerConsumer.accept(this.dynamicGameEventListener, serverLevel);
         }
     }
 

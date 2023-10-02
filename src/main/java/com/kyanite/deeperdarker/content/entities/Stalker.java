@@ -209,8 +209,8 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
 
     @Override
     public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
-        if(this.level instanceof ServerLevel level) {
-            pListenerConsumer.accept(this.dynamicGameEventListener, level);
+        if(this.level instanceof ServerLevel serverLevel) {
+            pListenerConsumer.accept(this.dynamicGameEventListener, serverLevel);
         }
     }
 
