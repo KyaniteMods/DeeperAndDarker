@@ -124,8 +124,8 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
 
     @Override
     public void tick() {
-        if(this.level instanceof ServerLevel level) {
-            this.dynamicGameEventListener.getListener().tick(level);
+        if(this.level instanceof ServerLevel serverLevel) {
+            this.dynamicGameEventListener.getListener().tick(serverLevel);
         }
 
         super.tick();
