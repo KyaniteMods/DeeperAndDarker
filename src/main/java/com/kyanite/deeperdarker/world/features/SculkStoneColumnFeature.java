@@ -60,7 +60,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         for(int i = 0; i < 8; i++) {
-            int baseHeight = random.nextInt((int) (0.22 * columnHeight), (int) (0.26 * columnHeight) + 1);
+            double baseHeight = random.nextInt((int) (0.22 * columnHeight), (int) (0.26 * columnHeight) + 1);
             if(i > 3) baseHeight *= 0.67;
             placeSection(level, random, origin, baseHeight, i, 2, multiplier, bottom);
             stretchToFloor(level, origin, i, 2, bottom);
@@ -74,7 +74,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeSection(WorldGenLevel level, RandomSource random, BlockPos pos, int baseHeight, int iteration, int loop, double multiplier, boolean bottom) {
+    private void placeSection(WorldGenLevel level, RandomSource random, BlockPos pos, double baseHeight, int iteration, int loop, double multiplier, boolean bottom) {
         float p = random.nextFloat();
         for(int j = 0; j < baseHeight; j++) {
             BlockPos location = spread(bottom ? pos.above(j) : pos.below(j), iteration, loop);
@@ -107,14 +107,14 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos blockPos = spread(bottom ? pos.below() : pos.above(), i, loop);
 
         if(bottom) {
-            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE)) {
+            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && pos.getY() > 0) {
                 level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
                 blockPos = blockPos.below();
             }
             return;
         }
 
-        while(!level.getBlockState(blockPos).is(Blocks.SCULK) && !level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE)) {
+        while(!level.getBlockState(blockPos).is(Blocks.SCULK) && !level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && pos.getY() > 128) {
             level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             blockPos = blockPos.above();
         }
