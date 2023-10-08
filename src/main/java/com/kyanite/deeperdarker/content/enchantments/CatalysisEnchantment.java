@@ -29,7 +29,7 @@ public class CatalysisEnchantment extends Enchantment {
                     spreader.updateCursors(targetEntity.level(), targetEntity.blockPosition(), targetEntity.getRandom(), true);
                 }
                 targetEntity.skipDropExperience();
-                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(playerAttacker, pTarget, pTarget.damageSources().playerAttack((Player) pAttacker));
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(playerAttacker, pTarget, pTarget.damageSources().playerAttack(playerAttacker));
             }
         }
     }
