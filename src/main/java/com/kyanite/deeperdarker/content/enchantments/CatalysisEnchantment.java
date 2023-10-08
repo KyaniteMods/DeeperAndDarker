@@ -7,7 +7,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -22,15 +21,15 @@ public class CatalysisEnchantment extends Enchantment {
 
     @Override
     public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if(pTarget instanceof LivingEntity entity) {
-            if(entity.isDeadOrDying()) {
+        if(pAttacker instanceof ServerPlayer player && pTarget instanceof LivingEntity target) {
+            if(target.isDeadOrDying()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
-                spreader.addCursors(new BlockPos((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
+                spreader.addCursors(new BlockPos((int) (target.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (target.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (target.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
                 for(int i = 0; i < (int) (10 * pLevel * 0.9); i++) {
-                    spreader.updateCursors(entity.level(), entity.blockPosition(), entity.getRandom(), true);
+                    spreader.updateCursors(target.level(), target.blockPosition(), target.getRandom(), true);
                 }
-                entity.skipDropExperience();
-                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) pAttacker, pTarget, pTarget.damageSources().playerAttack((Player) pAttacker));
+                target.skipDropExperience();
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(player, pTarget, pTarget.damageSources().playerAttack(player));
             }
         }
     }
