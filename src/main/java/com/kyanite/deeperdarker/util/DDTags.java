@@ -13,10 +13,14 @@ import net.minecraft.world.level.block.Block;
 public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_SOIL = tag("echo_soil");
-        public static final TagKey<Block> SCULK_STONE_REPLACEABLES = tag("sculk_stone_replaceables");
+        public static final TagKey<Block> SCULK_STONE_TARGET = tag("sculk_stone_replaceables");
+        public static final TagKey<Block> GLOOMSLATE_TARGET = tag("gloomslate_replaceables");
+        public static final TagKey<Block> SCULK_GRIME_TARGET = tag("sculk_grime_replaceables");
         public static final TagKey<Block> SCULK_REPLACEABLES = tag("sculk_replaceables");
+
         public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = tag("gloomslate_replaceable");
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
+
         public static final TagKey<Block> TRANSMITTABLE = tag("transmittable");
         public static final TagKey<Block> INFINIBURN_OTHERSIDE = tag("infiniburn_otherside");
 

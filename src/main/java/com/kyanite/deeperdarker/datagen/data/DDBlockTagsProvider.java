@@ -82,10 +82,14 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.ORES_DIAMOND).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
         tag(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL.get(), Blocks.SCULK);
-        tag(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get());
+        tag(DDTags.Blocks.SCULK_STONE_TARGET).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get());
+        tag(DDTags.Blocks.GLOOMSLATE_TARGET).add(DDBlocks.GLOOMSLATE.get());
+        tag(DDTags.Blocks.SCULK_GRIME_TARGET).add(DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME.get());
+
         tag(DDTags.Blocks.GLOOMSLATE_REPLACEABLE).add(DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get());
         tag(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get(), DDBlocks.SCULK_GRIME.get(), DDBlocks.ECHO_SOIL.get(), DDBlocks.GLOOMY_SCULK.get());
+
         tag(DDTags.Blocks.TRANSMITTABLE).addTags(BlockTags.SHULKER_BOXES, BlockTags.ANVIL).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST);
         tag(DDTags.Blocks.INFINIBURN_OTHERSIDE).addTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE.get());
     }

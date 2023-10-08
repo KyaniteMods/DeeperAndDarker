@@ -1,8 +1,10 @@
-// 1.19.2	2023-10-01T22:20:58.9694291	Tags for minecraft:block
+// 1.19.2	2023-10-08T11:27:33.6552666	Tags for minecraft:block
 453499b5116c2c24d57c28ec55db0211260f511d data/deeperdarker/tags/blocks/echo_soil.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
+66d6d6cab09db0c4b4be9b5b12b1f58bbc631460 data/deeperdarker/tags/blocks/gloomslate_replaceables.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/blocks/infiniburn_otherside.json
+70abb5dfb2c5b942e3bebfa913c5391a0b6ce329 data/deeperdarker/tags/blocks/sculk_grime_replaceables.json
 4b3a3834715a617924c94f9d91ae043b2f4c9d63 data/deeperdarker/tags/blocks/sculk_replaceables.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
 a6f75bc5d6311e4ad5a407e50c93a292a386c662 data/deeperdarker/tags/blocks/transmittable.json
