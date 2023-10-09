@@ -107,14 +107,14 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos blockPos = spread(bottom ? pos.below() : pos.above(), i, loop);
 
         if(bottom) {
-            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE)) {
+            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && blockPos.getY() > 0) {
                 level.setBlock(blockPos, DDBlocks.SCULK_STONE.defaultBlockState(), 3);
                 blockPos = blockPos.below();
             }
             return;
         }
 
-        while(!level.getBlockState(blockPos).is(Blocks.SCULK) && !level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE)) {
+        while(!level.getBlockState(blockPos).is(Blocks.SCULK) && !level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && blockPos.getY() < 127) {
             level.setBlock(blockPos, DDBlocks.SCULK_STONE.defaultBlockState(), 3);
             blockPos = blockPos.above();
         }

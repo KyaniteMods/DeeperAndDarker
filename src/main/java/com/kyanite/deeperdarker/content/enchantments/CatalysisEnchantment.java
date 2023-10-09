@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.content.enchantments;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,10 +12,8 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.level.block.SculkCatalystBlock;
 import net.minecraft.world.level.block.SculkSpreader;
 
-@SuppressWarnings("NullableProblems")
 public class CatalysisEnchantment extends Enchantment {
     public CatalysisEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
         super(pRarity, EnchantmentCategory.WEAPON, pApplicableSlots);
@@ -24,15 +21,15 @@ public class CatalysisEnchantment extends Enchantment {
 
     @Override
     public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if(pTarget instanceof LivingEntity entity) {
-            if(entity.isDeadOrDying()) {
+        if(pTarget instanceof LivingEntity targetEntity && pAttacker instanceof ServerPlayer playerAttacker) {
+            if(targetEntity.isDeadOrDying()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
-                spreader.addCursors(new BlockPos((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
+                spreader.addCursors(new BlockPos((int) (targetEntity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (targetEntity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (targetEntity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
                 for(int i = 0; i < (int) (10 * pLevel * 0.9); i++) {
-                    spreader.updateCursors(entity.level(), entity.blockPosition(), entity.getRandom(), true);
+                    spreader.updateCursors(targetEntity.level(), targetEntity.blockPosition(), targetEntity.getRandom(), true);
                 }
-                entity.skipDropExperience();
-                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) pAttacker, pTarget, pTarget.damageSources().playerAttack((Player) pAttacker));
+                targetEntity.skipDropExperience();
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(playerAttacker, pTarget, pTarget.damageSources().playerAttack(playerAttacker));
             }
         }
     }
