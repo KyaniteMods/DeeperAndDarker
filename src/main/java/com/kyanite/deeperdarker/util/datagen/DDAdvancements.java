@@ -124,6 +124,28 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(advancementConsumer, path("explore_otherside"));
 
+        Advancement.Builder.advancement().parent(enterOtherside)
+                .display(
+                        DDItems.WARDEN_SWORD,
+                        Component.translatable(id + "kill_all_sculk_mobs.title"),
+                        Component.translatable(id + "kill_all_sculk_mobs.description"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false)
+                .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
+                .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
+                .addCriterion("sculk_centipede", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_CENTIPEDE)))
+                .addCriterion("sculk_leech", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_LEECH)))
+                .addCriterion("sculk_snapper", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_SNAPPER)))
+                .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED)))
+                .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM)))
+                .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER)))
+                .requirements(RequirementsStrategy.AND)
+                .rewards(AdvancementRewards.Builder.experience(100))
+                .save(advancementConsumer, path("kill_all_sculk_mobs"));
+
         Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
                 .display(
                         DDItems.REINFORCED_ECHO_SHARD,
