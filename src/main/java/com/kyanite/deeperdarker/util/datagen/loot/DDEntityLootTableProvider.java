@@ -34,6 +34,6 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
     }
 
     private static ResourceLocation id(String entity) {
-        return new ResourceLocation(DeeperDarker.MOD_ID, "entity/" + entity);
+        return new ResourceLocation(DeeperDarker.MOD_ID, "entities/" + entity);
     }
 }
