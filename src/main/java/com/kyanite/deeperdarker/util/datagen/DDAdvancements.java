@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
