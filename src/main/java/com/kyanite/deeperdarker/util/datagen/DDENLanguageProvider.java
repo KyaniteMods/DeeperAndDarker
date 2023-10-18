@@ -134,6 +134,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DDBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
         translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
+        translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
 
         translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
         translationBuilder.add(DDItems.WARDEN_CHESTPLATE, "Warden Chestplate");

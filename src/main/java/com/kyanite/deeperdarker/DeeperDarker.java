@@ -51,12 +51,13 @@ public class DeeperDarker implements ModInitializer {
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 
 		PortalLink portalLink = CustomPortalBuilder.beginPortal()
+				.customFrameTester(OTHERSIDE_FRAME_TESTER)
 				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
 				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
 				.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
 				.tintColor(5, 98, 93)
 				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-				.customFrameTester(OTHERSIDE_FRAME_TESTER)
+				.forcedSize(8, 4)
 				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
 				.registerPortal();
 
