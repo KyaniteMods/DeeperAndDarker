@@ -9,6 +9,7 @@ import com.kyanite.deeperdarker.world.DDTreeFeatures;
 import com.kyanite.deeperdarker.world.DDTrunkPlacerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
@@ -31,6 +32,8 @@ public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = new ResourceLocation(MOD_ID, "otherside");
+
+	public static final boolean SHOW_ME_YOUR_SKIN = FabricLoader.getInstance().isModLoaded("showmeyourskin");
 
 	@Override
 	public void onInitialize() {

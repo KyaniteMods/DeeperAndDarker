@@ -3,8 +3,10 @@ package com.kyanite.deeperdarker.client.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.HelmetHornsModel;
+import com.kyanite.deeperdarker.compat.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -22,6 +24,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png");
+
     private final float scaleX;
     private final float scaleY;
     private final float scaleZ;
@@ -40,6 +44,8 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
     }
 
     public void render(PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int light, T livingEntity, float f, float g, float h, float j, float k, float l) {
+        boolean hasShowMeYourSkin = FabricLoader.getInstance().isModLoaded("showmeyourskin");
+        if (hasShowMeYourSkin) ShowMeYourSkinCompat.captureContext(EquipmentSlot.HEAD, livingEntity);
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);
         if (!itemStack.isEmpty()) {
             Item item = itemStack.getItem();
@@ -65,14 +71,23 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
                     matrixStack.translate(0.0f, -0.1f, 0.0f);
                 }
                 HelmetHornsModel<T> hornsModel = new HelmetHornsModel<T>(this.modelLoader.bakeLayer(DDModelLayers.WARDEN_HELMET));
-                RenderType renderLayer = RenderType.armorCutoutNoCull(new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png"));
+                if (hasShowMeYourSkin && ShowMeYourSkinCompat.armorTransparency(matrixStack, vertexConsumerProvider, light, hornsModel, TEXTURE, 1.0f, 1.0f, 1.0f)) return;
+                RenderType renderLayer = RenderType.armorCutoutNoCull(TEXTURE);
                 RenderType glintRenderLayer = RenderType.armorEntityGlint();
                 hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(renderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
-                if (item.isFoil(itemStack)) {
+                if (isFoil(item, itemStack, hasShowMeYourSkin)) {
                     hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(glintRenderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
                 }
             }
             matrixStack.popPose();
         }
+    }
+
+    private static boolean isFoil(Item item, ItemStack itemStack, boolean hasShowMeYourSkin) {
+        boolean itemIsFoil = item.isFoil(itemStack);
+        if (!hasShowMeYourSkin) {
+            return itemIsFoil;
+        }
+        return ShowMeYourSkinCompat.isFoil(item, itemStack);
     }
 }

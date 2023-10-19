@@ -18,6 +18,14 @@ repositories {
 		name = "Modrinth"
 		url = "https://api.modrinth.com/maven"
 	}
+	ivy {
+		url = "https://github.com/enjarai"
+		patternLayout {
+			artifact "[organisation]/releases/download/[revision]/[organisation]-[revision].jar"
+			m2compatible = true
+		}
+		metadataSources { artifact() }
+	}
 }
 
 loom {
@@ -58,7 +66,8 @@ dependencies {
 
 	modImplementation "net.kyrptonaught:customportalapi:${project.customportalapi_version}"
 	include "net.kyrptonaught:customportalapi:${project.customportalapi_version}"
-	
+
+	modImplementation "show-me-your-skin:show-me-your-skin:1.6.3+1.19.2"
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
