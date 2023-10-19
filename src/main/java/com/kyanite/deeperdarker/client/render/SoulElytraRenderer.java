@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.compat.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -31,14 +32,21 @@ public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>
 
     @Override
     public void render(PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight, E pLivingEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTicks, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+        if (DeeperDarker.SHOW_ME_YOUR_SKIN && ShowMeYourSkinCompat.hideSoulElytra(pLivingEntity)) return;
         ItemStack itemStack = pLivingEntity.getItemBySlot(EquipmentSlot.CHEST);
         if(itemStack.is(DDItems.SOUL_ELYTRA)) {
             pMatrixStack.pushPose();
             pMatrixStack.translate(0, 0, 0.125f);
             this.getParentModel().copyPropertiesTo(this.model);
             this.model.setupAnim(pLivingEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false, itemStack.hasFoil());
-            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            VertexConsumer vertexConsumer;
+            if (DeeperDarker.SHOW_ME_YOUR_SKIN) {
+                vertexConsumer = ShowMeYourSkinCompat.enableElytraTransparency1(pBuffer, TEXTURE, false, itemStack.hasFoil(), pLivingEntity);
+            } else {
+                vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false, itemStack.hasFoil());
+            }
+            float transparency = DeeperDarker.SHOW_ME_YOUR_SKIN ? ShowMeYourSkinCompat.getElytraTransparency(1.0f, pLivingEntity) : 1.0f;
+            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, transparency);
             pMatrixStack.popPose();
         }
     }
