@@ -185,9 +185,9 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
     }
 
-    public boolean canTargetEntity(Entity entity) {
-        if(entity instanceof LivingEntity livingEntity) {
-            return this.level() == entity.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingEntity.getType() != EntityType.ARMOR_STAND && livingEntity.getType() != DDEntities.SHATTERED && !livingEntity.isInvulnerable() && !livingEntity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(livingEntity.getBoundingBox());
+    public boolean canTargetEntity(Entity target) {
+        if(target instanceof LivingEntity entity) {
+            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && entity.getType() != DDEntities.SHATTERED && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
         }
 
         return false;
@@ -216,45 +216,46 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     class VibrationUser implements User {
         private final PositionSource positionSource = new EntityPositionSource(Stalker.this, Stalker.this.getEyeHeight());
 
+        @Override
         public int getListenerRadius() {
             return 20;
         }
 
+        @Override
         public PositionSource getPositionSource() {
             return this.positionSource;
         }
 
+        @Override
         public TagKey<GameEvent> getListenableEvents() {
             return GameEventTags.WARDEN_CAN_LISTEN;
         }
 
+        @Override
         public boolean canTriggerAvoidVibration() {
             return true;
         }
 
-        public boolean canReceiveVibration(ServerLevel level, BlockPos bounds, GameEvent gameEvent, GameEvent.Context context) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(bounds)) {
-                Entity entity = context.sourceEntity();
-                if(entity instanceof LivingEntity livingEntity) return canTargetEntity(livingEntity);
+        @Override
+        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
+            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
+                if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
                 return false;
             }
         }
 
-        public void onReceiveVibration(ServerLevel level, BlockPos pos, GameEvent gameEvent, Entity entity, Entity entity2, float v) {
-            if(isDeadOrDying()) return;
+        @Override
+        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, Entity pEntity, Entity pPlayerEntity, float pDistance) {            if(isDeadOrDying()) return;
             playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
-            if(entity != null) {
-                if(canTargetEntity(entity)) {
-                    if(entity instanceof Monster && ((Monster) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
-                    if(entity instanceof Player) setTarget((LivingEntity) entity);
-                    return;
-                }
+            if(pEntity != null && canTargetEntity(pEntity)) {
+                if(pEntity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
+                return;
             }
 
             if(getTarget() != null) setTarget(null);
-            disturbanceLocation = pos;
+            disturbanceLocation = pPos;
         }
     }
 }
