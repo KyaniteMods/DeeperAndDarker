@@ -132,9 +132,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
     }
 
-    public boolean canTargetEntity(Entity entity) {
-        if(entity instanceof LivingEntity livingEntity) {
-            return this.level == entity.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity) && !this.isAlliedTo(entity) && livingEntity.getType() != EntityType.ARMOR_STAND && livingEntity.getType() != DDEntities.SHATTERED && !livingEntity.isInvulnerable() && !livingEntity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(livingEntity.getBoundingBox());
+    public boolean canTargetEntity(Entity target) {
+        if(target instanceof LivingEntity entity) {
+            return this.level == target.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && entity.getType() != DDEntities.SHATTERED && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(entity.getBoundingBox());
         }
 
         return false;
@@ -161,10 +161,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    public boolean shouldListen(ServerLevel level, GameEventListener gameEventListener, BlockPos bounds, GameEvent gameEvent, GameEvent.Context context) {
-        if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(bounds)) {
-            Entity entity = context.sourceEntity();
-            if(entity instanceof LivingEntity livingEntity) return canTargetEntity(livingEntity);
+    public boolean shouldListen(ServerLevel pLevel, GameEventListener pGameEventListener, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
+        if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
+            if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
             return true;
         } else {
             return false;
@@ -172,18 +171,15 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    public void onSignalReceive(ServerLevel level, GameEventListener gameEventListener, BlockPos pos, GameEvent gameEvent, Entity entity, Entity entity2, float v) {
+    public void onSignalReceive(ServerLevel pLevel, GameEventListener pGameEventListener, BlockPos pPos, GameEvent pGameEvent, Entity pEntity, Entity pPlayerEntity, float pDistance) {
         if(isDeadOrDying()) return;
         playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
-        if(entity != null) {
-            if(canTargetEntity(entity)) {
-                if(entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() != DDMobType.SCULK) setTarget((LivingEntity) entity);
-                if(entity instanceof Player) setTarget((LivingEntity) entity);
-                return;
-            }
+        if(pEntity != null && canTargetEntity(pEntity)) {
+            if(pEntity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
+            return;
         }
 
         if(getTarget() != null) setTarget(null);
-        disturbanceLocation = pos;
+        disturbanceLocation = pPos;
     }
 }
