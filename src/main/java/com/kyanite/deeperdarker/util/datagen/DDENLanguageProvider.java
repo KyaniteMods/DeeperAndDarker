@@ -180,10 +180,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.sculk_snapper.bite", "Sculk Snapper bites");
         translationBuilder.add("subtitles.entity.sculk_snapper.hurt", "Sculk Snapper hurts");
         translationBuilder.add("subtitles.entity.sculk_snapper.sniff", "Sculk Snapper sniffs");
-        translationBuilder.add("subtitles.item.sculk_transmitter.error", "Sculk Transmitter fails");
-        translationBuilder.add("subtitles.item.sculk_transmitter.link", "Sculk Transmitter links");
-        translationBuilder.add("subtitles.item.sculk_transmitter.open", "Sculk Transmitter transmits");
-        translationBuilder.add("subtitles.item.sculk_transmitter.unlink", "Sculk Transmitter unlinks");
+        translationBuilder.add("subtitles.item.transmitter.error", "Transmitter fails");
+        translationBuilder.add("subtitles.item.transmitter.link", "Transmitter links");
+        translationBuilder.add("subtitles.item.transmitter.open", "Transmitter transmits");
+        translationBuilder.add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
 
         translationBuilder.add(DDEntities.BOAT, "Boat");
         translationBuilder.add(DDEntities.CHEST_BOAT, "Boat with Chest");

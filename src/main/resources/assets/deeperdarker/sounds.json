@@ -207,25 +207,25 @@
     "sounds": [
       "deeperdarker:item/sculk_transmitter/error"
     ],
-    "subtitle": "subtitles.item.sculk_transmitter.error"
+    "subtitle": "subtitles.item.transmitter.error"
   },
   "item.sculk_transmitter.link": {
     "sounds": [
       "deeperdarker:item/sculk_transmitter/link"
     ],
-    "subtitle": "subtitles.item.sculk_transmitter.link"
+    "subtitle": "subtitles.item.transmitter.link"
   },
   "item.sculk_transmitter.open": {
     "sounds": [
       "deeperdarker:item/sculk_transmitter/open"
     ],
-    "subtitle": "subtitles.item.sculk_transmitter.open"
+    "subtitle": "subtitles.item.transmitter.open"
   },
   "item.sculk_transmitter.unlink": {
     "sounds": [
       "deeperdarker:item/sculk_transmitter/unlink"
     ],
-    "subtitle": "subtitles.item.sculk_transmitter.unlink"
+    "subtitle": "subtitles.item.transmitter.unlink"
   },
   "ambience.otherside": {
     "sounds": [
