@@ -1,0 +1,83 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "deeplands": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:deeplands"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "echoing_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:echoing_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "overcast_columns": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:overcast_columns"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.explore_otherside.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:warden_boots",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.explore_otherside.title"
+    }
+  },
+  "requirements": [
+    [
+      "deeplands"
+    ],
+    [
+      "echoing_forest"
+    ],
+    [
+      "overcast_columns"
+    ]
+  ],
+  "rewards": {
+    "experience": 300
+  }
+}

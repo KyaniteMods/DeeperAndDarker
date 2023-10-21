@@ -1,14 +1,17 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.structures.DDStructures;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.FrameType;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.KilledTrigger;
-import net.minecraft.advancements.critereon.LocationPredicate;
-import net.minecraft.advancements.critereon.PlayerTrigger;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.network.chat.Component;
@@ -42,7 +45,7 @@ public class DDAdvancements extends AdvancementProvider {
                 .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
                 .rewards(AdvancementRewards.Builder.experience(100)).save(consumer, path("kill_warden"));
 
-        /*Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(Blocks.REINFORCED_DEEPSLATE, Component.translatable(id + "enter_otherside.title"), Component.translatable(id + "enter_otherside.description"), null, FrameType.TASK, true, true, false)
+        Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(Blocks.REINFORCED_DEEPSLATE, Component.translatable(id + "enter_otherside.title"), Component.translatable(id + "enter_otherside.description"), null, FrameType.TASK, true, true, false)
                 .addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL)).save(consumer, path("enter_otherside"));
 
         Advancement findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside).display(DDBlocks.CUT_SCULK_STONE.get(), Component.translatable(id + "find_ancient_temple.title"), Component.translatable(id + "find_ancient_temple.description"), null, FrameType.GOAL, true, true, false)
@@ -74,7 +77,7 @@ public class DDAdvancements extends AdvancementProvider {
 
         Advancement.Builder.advancement().parent(obtainReinforcedEchoShard).display(DDItems.WARDEN_CHESTPLATE.get(), Component.translatable(id + "warden_armor.title"), Component.translatable(id + "warden_armor.description"), null, FrameType.CHALLENGE, true, true, false)
                 .addCriterion("warden_armor", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.WARDEN_HELMET.get(), DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get()))
-                .rewards(AdvancementRewards.Builder.experience(100)).save(consumer, path("warden_armor"));*/
+                .rewards(AdvancementRewards.Builder.experience(100)).save(consumer, path("warden_armor"));
     }
 
     private String path(String name) {
