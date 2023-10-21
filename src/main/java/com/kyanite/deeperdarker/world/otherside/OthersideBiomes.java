@@ -24,6 +24,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public class OthersideBiomes {
     public static final ResourceKey<Biome> DEEPLANDS = createKey("deeplands");
     public static final ResourceKey<Biome> ECHOING_FOREST = createKey("echoing_forest");
+    public static final ResourceKey<Biome> BLOOMING_CAVERNS = createKey("blooming_caverns");
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
 
     public static void bootstrap(BootstapContext<Biome> context) {
@@ -32,6 +33,7 @@ public class OthersideBiomes {
 
         context.register(DEEPLANDS, deeplands(placedFeatures, worldCarvers));
         context.register(ECHOING_FOREST, echoingForest(placedFeatures, worldCarvers));
+        context.register(BLOOMING_CAVERNS, bloomingCaverns(placedFeatures, worldCarvers));
         context.register(OVERCAST_COLUMNS, overcastColumns(placedFeatures, worldCarvers));
     }
 
@@ -90,6 +92,29 @@ public class OthersideBiomes {
                         .fogColor(0x301a40)
                         .skyColor(calculateSkyColor(0.3f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.04f))
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getHolder().get(), 6000, 8, 2))
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST.getHolder().get())).build())
+                .mobSpawnSettings(mobSpawnBuilder.build())
+                .generationSettings(biomeBuilder.build()).build();
+    }
+
+    private static Biome bloomingCaverns(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 1, 1, 2));
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        addSculkDecoration(biomeBuilder);
+        addSculkOres(biomeBuilder);
+
+        return (new Biome.BiomeBuilder()).hasPrecipitation(true)
+                .temperature(-0.3f)
+                .downfall(0.2f)
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x1f86a5)
+                        .waterFogColor(0x216888)
+                        .fogColor(0x1a2f40)
+                        .skyColor(calculateSkyColor(-0.3f))
+                        .ambientParticle(new AmbientParticleSettings(ParticleTypes.SCULK_CHARGE_POP, 0.002f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getHolder().get(), 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST.getHolder().get())).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())

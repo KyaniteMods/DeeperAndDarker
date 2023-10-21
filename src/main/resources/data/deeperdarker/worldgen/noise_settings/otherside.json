@@ -185,6 +185,21 @@
               "if_true": {
                 "type": "minecraft:biome",
                 "biome_is": [
+                  "deeperdarker:blooming_caverns"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "deeperdarker:blooming_sculk"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
                   "deeperdarker:overcast_columns"
                 ]
               },
