@@ -22,16 +22,16 @@ public class CatalysisEnchantment extends Enchantment {
 
     @Override
     public void doPostAttack(LivingEntity pAttacker, Entity pTarget, int pLevel) {
-        if(pTarget instanceof LivingEntity entity) {
-            if(entity.isDeadOrDying()) {
+        if(pAttacker instanceof ServerPlayer player && pTarget instanceof LivingEntity target) {
+            if(target.isDeadOrDying()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
-                spreader.addCursors(new BlockPos((int) (entity.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (entity.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (entity.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
+                spreader.addCursors(new BlockPos((int) (target.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (target.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (target.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
                 for(int i = 0; i < (int) (10 * pLevel * 0.9); i++) {
-                    spreader.updateCursors(entity.level, entity.blockPosition(), entity.getRandom(), true);
+                    spreader.updateCursors(target.level, target.blockPosition(), target.getRandom(), true);
                 }
-                entity.skipDropExperience();
+                target.skipDropExperience();
                 DamageSource damageSource = pAttacker.getLastDamageSource() == null ? DamageSource.playerAttack((ServerPlayer) pAttacker) : pAttacker.getLastDamageSource();
-                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger((ServerPlayer) pAttacker, pTarget, damageSource);
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(player, pTarget, damageSource);
             }
         }
     }

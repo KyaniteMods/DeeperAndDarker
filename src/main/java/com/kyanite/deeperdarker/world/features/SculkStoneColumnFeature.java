@@ -20,11 +20,12 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         WorldGenLevel level = pContext.level();
         BlockPos origin = pContext.origin();
         RandomSource random = pContext.random();
+
         int columnHeight = 0;
-        while(true) {
-            BlockPos pos = new BlockPos(origin.getX(), origin.getY() + columnHeight + 1, origin.getZ());
-            if(level.getBlockState(pos.below()).isAir()) columnHeight++;
-            else break;
+        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(origin.getX(), origin.getY() + 1, origin.getZ());
+        while(level.getBlockState(blockPos.below()).isAir()) {
+            columnHeight++;
+            blockPos.move(0, 1, 0);
         }
 
         if(anyObstruction(level, origin, columnHeight)) return false;
@@ -32,15 +33,16 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         level.setBlock(origin.below(), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
         level.setBlock(origin.above(columnHeight), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
 
+        blockPos.set(origin.getX(), origin.getY(), origin.getZ());
         for(int i = 1; i < columnHeight + 1; i++) {
-            int newY = origin.getY() + i - 1;
-            BlockPos pos = new BlockPos(origin.getX(), newY, origin.getZ());
-            level.setBlock(pos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
+            level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
+            blockPos.move(0, 1, 0);
         }
 
         double multiplier = columnHeight * 0.35f < 7 ? 1.2 : 1;
         columnBase(level, random, origin, columnHeight, multiplier, true);
         columnBase(level, random, origin.above(columnHeight - 1), columnHeight, multiplier, false);
+
         return true;
     }
 
@@ -60,7 +62,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         for(int i = 0; i < 8; i++) {
-            int baseHeight = random.nextInt((int) (0.22 * columnHeight), (int) (0.26 * columnHeight) + 1);
+            double baseHeight = random.nextInt((int) (0.22 * columnHeight), (int) (0.26 * columnHeight) + 1);
             if(i > 3) baseHeight *= 0.67;
             placeSection(level, random, origin, baseHeight, i, 2, multiplier, bottom);
             stretchToFloor(level, origin, i, 2, bottom);
@@ -74,7 +76,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeSection(WorldGenLevel level, RandomSource random, BlockPos pos, int baseHeight, int iteration, int loop, double multiplier, boolean bottom) {
+    private void placeSection(WorldGenLevel level, RandomSource random, BlockPos pos, double baseHeight, int iteration, int loop, double multiplier, boolean bottom) {
         float p = random.nextFloat();
         for(int j = 0; j < baseHeight; j++) {
             BlockPos location = spread(bottom ? pos.above(j) : pos.below(j), iteration, loop);
@@ -107,14 +109,14 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos blockPos = spread(bottom ? pos.below() : pos.above(), i, loop);
 
         if(bottom) {
-            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE)) {
+            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && !level.isOutsideBuildHeight(blockPos)) {
                 level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
                 blockPos = blockPos.below();
             }
             return;
         }
 
-        while(!level.getBlockState(blockPos).is(Blocks.SCULK) && !level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE)) {
+        while(!level.getBlockState(blockPos).is(Blocks.SCULK) && !level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && !level.isOutsideBuildHeight(blockPos)) {
             level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             blockPos = blockPos.above();
         }
