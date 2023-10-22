@@ -1,5 +1,6 @@
-// 1.20.1	2023-10-20T22:10:15.3863534	Block States: deeperdarker
+// 1.20.1	2023-10-21T23:09:41.5245696	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
+165980177c5adcf470b9a08fe401e3bb1a4966f0 assets/deeperdarker/blockstates/blooming_moss_block.json
 498227afd0f8c9b0fa72dfef97bf22b886a9069f assets/deeperdarker/blockstates/blooming_sculk.json
 b618639a1bd650f5bbceed1f24a777ca15ae37fe assets/deeperdarker/blockstates/chiseled_gloomslate.json
 389153807c5651eba34cf020ac7d3b675b0418a2 assets/deeperdarker/blockstates/chiseled_sculk_stone.json
@@ -114,6 +115,7 @@ d7f5127b333b891bbfa97cee4414876fef5429d5 assets/deeperdarker/blockstates/smooth_
 e94fc45e791c65302fcc908ab5d32adc564c5e88 assets/deeperdarker/blockstates/stripped_echo_log.json
 1482ba18bb49fe90f1bb3d0b7aec7963e6c0ac9f assets/deeperdarker/blockstates/stripped_echo_wood.json
 690d24d273d0514954cb5395b0a6220314038cfd assets/deeperdarker/models/block/ancient_vase.json
+5f6d78b44fd7067c2670c9e989ce03e4e9aac70f assets/deeperdarker/models/block/blooming_moss_block.json
 446377a22c7cd0fa8486a0da7afe4adf393c90e2 assets/deeperdarker/models/block/blooming_sculk.json
 b00bfe63a4595969e6f0a510761702536bf5c367 assets/deeperdarker/models/block/chiseled_gloomslate.json
 72cffa498213da488cf3a2f3f60488de0a5fab6a assets/deeperdarker/models/block/chiseled_sculk_stone.json

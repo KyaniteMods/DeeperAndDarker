@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-20T21:52:30.400465	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2023-10-21T23:09:41.5106188	Tags for minecraft:block mod id deeperdarker
 453499b5116c2c24d57c28ec55db0211260f511d data/deeperdarker/tags/blocks/echo_soil.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
@@ -21,6 +21,7 @@ d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/forge/tags/blocks/stone.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/blocks/coal_ores.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/blocks/copper_ores.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/blocks/diamond_ores.json
+8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/blocks/dirt.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/blocks/emerald_ores.json
 4b1b7b3d622aeb255906e952be4ddaf003b6026f data/minecraft/tags/blocks/fence_gates.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/blocks/gold_ores.json
@@ -30,7 +31,7 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/blocks/lapis_ores.j
 615016fb2f7bd4866e694de5e712cb29bb434032 data/minecraft/tags/blocks/logs_that_burn.json
 ff30cceaa398179d6968c43125fcc0cc5b17312f data/minecraft/tags/blocks/mineable/axe.json
 5292a241fb840cb557b81ad9012e39a2168f8888 data/minecraft/tags/blocks/mineable/hoe.json
-09fc66d1b9a7ab7213d51855863bc904e7395857 data/minecraft/tags/blocks/mineable/pickaxe.json
+ad177a07d9375078090756e86bdf590b27cd0566 data/minecraft/tags/blocks/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/blocks/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/blocks/needs_iron_tool.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/blocks/needs_stone_tool.json
@@ -39,6 +40,9 @@ a3dbfaeb7781a16a5f0d599aec390339e541834c data/minecraft/tags/blocks/planks.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/blocks/redstone_ores.json
 194ada896e5d1f6d6cac977e3e771bc784d9911b data/minecraft/tags/blocks/saplings.json
 7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/blocks/slabs.json
+8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/blocks/small_dripleaf_placeable.json
+8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/blocks/sniffer_diggable_block.json
+8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/blocks/sniffer_egg_hatch_boost.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/blocks/stairs.json
 3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/blocks/standing_signs.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/blocks/walls.json
