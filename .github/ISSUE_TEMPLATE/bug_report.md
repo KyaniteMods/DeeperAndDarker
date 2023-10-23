@@ -6,6 +6,7 @@ assignees: ''
 
 ---
 
+**Minecraft Version**: 1.xx.x
 **Mod Version**: x.x.x
 **Mod Loader**: forge/fabric
 
