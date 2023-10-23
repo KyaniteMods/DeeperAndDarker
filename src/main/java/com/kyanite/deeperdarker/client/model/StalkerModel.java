@@ -79,7 +79,7 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 	}
 
 	private void animateWalk(float pLimbSwing, float pLimbSwingAmount) {
-		long i = (long)(pLimbSwing * 50 * 2);
+		long i = (long)(pLimbSwing * 150);
 		float f = Math.min(pLimbSwingAmount * 2.5f, 1f);
 		KeyframeAnimations.animate(this, StalkerAnimation.WALK, i, f, new Vector3f());
 	}
