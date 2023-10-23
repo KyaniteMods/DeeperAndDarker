@@ -1,5 +1,7 @@
 package com.kyanite.deeperdarker.mixin;
 
+import com.kyanite.deeperdarker.content.entities.DDMobType;
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.MobType;
@@ -16,7 +18,6 @@ public class PhantomMixin extends FlyingMob {
 
     @Override
     public @NotNull MobType getMobType() {
-        return MobType.UNDEAD;
-        //return this.level.dimension() == OthersideDimension.OTHERSIDE_LEVEL ? DDMobType.SCULK : MobType.UNDEAD;
+        return this.level.dimension() == OthersideDimension.OTHERSIDE_LEVEL ? DDMobType.SCULK : MobType.UNDEAD;
     }
 }
