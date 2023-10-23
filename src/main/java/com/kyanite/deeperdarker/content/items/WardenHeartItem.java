@@ -1,6 +1,10 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +21,7 @@ public class WardenHeartItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
-        /*if(pContext.getPlayer() != null) {
+        if(pContext.getPlayer() != null) {
             if(pContext.getPlayer().level.dimension() == OthersideDimension.OTHERSIDE_LEVEL || pContext.getPlayer().level.dimension() == Level.OVERWORLD) {
                 BlockPos clickedPos = pContext.getClickedPos().relative(pContext.getClickedFace());
 
@@ -27,7 +31,7 @@ public class WardenHeartItem extends Item {
                     return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
                 } else return InteractionResult.FAIL;
             }
-        }*/
+        }
 
         return InteractionResult.FAIL;
     }
