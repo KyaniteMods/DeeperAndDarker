@@ -69,7 +69,7 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 	public void setupAnim(Stalker entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(StalkerAnimation.WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animateWalk(StalkerAnimation.WALK, limbSwing, limbSwingAmount, 3f, 2.5f);
 		this.animate(entity.idleState, StalkerAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
 		this.animate(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
