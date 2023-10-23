@@ -145,6 +145,21 @@ public class OthersideTeleporter implements ITeleporter {
                 return Optional.empty();
             }
 
+            int c = 0;
+            BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(finalPos.getX(), finalPos.getY(), finalPos.getZ());
+            while(!this.level.getBlockState(blockPos).isAir() && !this.level.isOutsideBuildHeight(blockPos)) {
+                blockPos.move(0, 1, 0);
+                c++;
+            }
+            if(!this.level.isOutsideBuildHeight(blockPos)) finalPos = blockPos;
+            else {
+                blockPos.move(0, -c, 0);
+                while(!this.level.getBlockState(blockPos).isAir() && !this.level.isOutsideBuildHeight(blockPos)) {
+                    blockPos.move(0, -1, 0);
+                }
+                if(!this.level.isOutsideBuildHeight(blockPos)) finalPos = blockPos;
+            }
+
             for(int i = -PORTAL_BASE; i < PORTAL_BASE + 1; i++) {
                 for(int j = 0; j < PORTAL_WIDTH; j++) {
                     for(int k = -1; k < PORTAL_HEIGHT; k++) {

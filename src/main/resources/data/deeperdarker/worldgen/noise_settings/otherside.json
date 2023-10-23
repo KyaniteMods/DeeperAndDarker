@@ -33,7 +33,7 @@
     "vegetation": {
       "type": "minecraft:shifted_noise",
       "noise": "minecraft:vegetation",
-      "xz_scale": 0.4,
+      "xz_scale": 0.6,
       "y_scale": 0,
       "shift_x": "minecraft:shift_x",
       "shift_y": 0,
@@ -70,7 +70,7 @@
                   "argument1": -2.5,
                   "argument2": {
                     "type": "minecraft:add",
-                    "argument1": 0.95,
+                    "argument1": 1.1,
                     "argument2": {
                       "type": "minecraft:mul",
                       "argument1": {
@@ -180,6 +180,21 @@
         "then_run": {
           "type": "minecraft:sequence",
           "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:biome",
+                "biome_is": [
+                  "deeperdarker:blooming_caverns"
+                ]
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "deeperdarker:blooming_sculk"
+                }
+              }
+            },
             {
               "type": "minecraft:condition",
               "if_true": {

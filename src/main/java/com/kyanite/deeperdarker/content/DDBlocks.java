@@ -110,6 +110,9 @@ public class DDBlocks {
     public static final RegistryObject<WallBlock> CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE.get())));
     public static final RegistryObject<Block> CHISELED_SCULK_STONE = register("chiseled_sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(SCULK_STONE.get())));
 
+    public static final RegistryObject<Block> BLOOMING_SCULK = register("blooming_sculk", () -> new Block(BlockBehaviour.Properties.copy(SCULK_STONE.get()).strength(1.5f, 4f)));
+    public static final RegistryObject<Block> BLOOMING_MOSS_BLOCK = register("blooming_moss_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.SCULK)));
+
     public static final RegistryObject<Block> GLOOMSLATE = register("gloomslate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final RegistryObject<StairBlock> GLOOMSLATE_STAIRS = register("gloomslate_stairs", () -> new StairBlock(() -> GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
     public static final RegistryObject<SlabBlock> GLOOMSLATE_SLAB = register("gloomslate_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get())));

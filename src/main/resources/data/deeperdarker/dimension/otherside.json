@@ -31,6 +31,18 @@
           }
         },
         {
+          "biome": "deeperdarker:blooming_caverns",
+          "parameters": {
+            "temperature": -0.3,
+            "humidity": 0.2,
+            "continentalness": 0,
+            "erosion": 0.5,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
           "biome": "deeperdarker:overcast_columns",
           "parameters": {
             "temperature": 0.6,

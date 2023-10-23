@@ -68,6 +68,9 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_SCULK_STONE_WALL, "inventory");
         blockModel(DDBlocks.CHISELED_SCULK_STONE);
 
+        blockModel(DDBlocks.BLOOMING_SCULK);
+        blockModel(DDBlocks.BLOOMING_MOSS_BLOCK);
+
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
         blockModel(DDBlocks.GLOOMSLATE_SLAB);

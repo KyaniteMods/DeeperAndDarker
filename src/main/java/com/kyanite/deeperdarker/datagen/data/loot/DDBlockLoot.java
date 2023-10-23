@@ -84,6 +84,9 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL.get());
         dropSelf(DDBlocks.CHISELED_SCULK_STONE.get());
 
+        add(DDBlocks.BLOOMING_SCULK.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
+        dropSelf(DDBlocks.BLOOMING_MOSS_BLOCK.get());
+
         add(DDBlocks.GLOOMSLATE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
         add(DDBlocks.GLOOMSLATE_SLAB.get(), this::createSlabItemTable);

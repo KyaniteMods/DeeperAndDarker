@@ -54,6 +54,7 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_BOOTS.get(), Component.translatable(id + "explore_otherside.title"), Component.translatable(id + "explore_otherside.description"), null, FrameType.CHALLENGE, true, true, false)
                 .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.DEEPLANDS)))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST)))
+                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.BLOOMING_CAVERNS)))
                 .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
                 .requirements(RequirementsStrategy.AND).rewards(AdvancementRewards.Builder.experience(300)).save(saver, path("explore_otherside"), existingFileHelper);
 

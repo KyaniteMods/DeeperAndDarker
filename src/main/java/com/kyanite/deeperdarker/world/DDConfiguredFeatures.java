@@ -69,6 +69,8 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_LAPIS = createKey("ore_sculk_lapis");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_DIAMOND = createKey("ore_sculk_diamond");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> ORE_BLOOMING_MOSS = createKey("ore_blooming_moss");
+
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_GLOOMY_SCULK = createKey("ore_gloomy_sculk");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MAGMA = createKey("ore_magma");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SOUL_SAND = createKey("ore_soul_sand");
@@ -97,6 +99,7 @@ public class DDConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> EMERALD_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_EMERALD_ORE.get().defaultBlockState()), OreConfiguration.target(GLOOMSLATE_REPLACEABLES, DDBlocks.GLOOMSLATE_EMERALD_ORE.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> LAPIS_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_LAPIS_ORE.get().defaultBlockState()), OreConfiguration.target(GLOOMSLATE_REPLACEABLES, DDBlocks.GLOOMSLATE_LAPIS_ORE.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> DIAMOND_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE_DIAMOND_ORE.get().defaultBlockState()), OreConfiguration.target(GLOOMSLATE_REPLACEABLES, DDBlocks.GLOOMSLATE_DIAMOND_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> BLOOMING_MOSS_TARGET_LIST = List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.BLOOMING_SCULK.get()), DDBlocks.BLOOMING_MOSS_BLOCK.get().defaultBlockState()), OreConfiguration.target(SCULK_GRIME_REPLACEABLES, DDBlocks.BLOOMING_MOSS_BLOCK.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> GLOOMY_SCULK_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, DDBlocks.GLOOMY_SCULK.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> SOUL_SAND_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, Blocks.SOUL_SAND.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> SOUL_SOIL_TARGET_LIST = List.of(OreConfiguration.target(SCULK_GRIME_REPLACEABLES, Blocks.SOUL_SOIL.defaultBlockState()));
@@ -128,6 +131,8 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, ORE_SCULK_EMERALD, Feature.ORE, new OreConfiguration(EMERALD_TARGET_LIST, 3, 0.4f));
         FeatureUtils.register(context, ORE_SCULK_LAPIS, Feature.ORE, new OreConfiguration(LAPIS_TARGET_LIST, 10, 0.7f));
         FeatureUtils.register(context, ORE_SCULK_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.4f));
+
+        FeatureUtils.register(context, ORE_BLOOMING_MOSS, Feature.ORE, new OreConfiguration(BLOOMING_MOSS_TARGET_LIST, 40));
 
         FeatureUtils.register(context, ORE_GLOOMY_SCULK, Feature.ORE, new OreConfiguration(GLOOMY_SCULK_TARGET_LIST, 64));
         FeatureUtils.register(context, ORE_MAGMA, Feature.ORE, new OreConfiguration(MAGMA_TARGET_LIST, 64));
