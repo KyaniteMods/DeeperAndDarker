@@ -173,7 +173,7 @@ public class DeeperDarker {
                 ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() ? 1 : 0);
             });
 
-            BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
+            BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), DDSignRenderer::new);
             EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
             EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
@@ -186,6 +186,7 @@ public class DeeperDarker {
 
         @SubscribeEvent
         public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(DDSignRenderer.MODEL, SignRenderer::createSignLayer);
             event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, () -> BoatModel.createBodyModel(false));
             event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, () -> BoatModel.createBodyModel(true));
             event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
