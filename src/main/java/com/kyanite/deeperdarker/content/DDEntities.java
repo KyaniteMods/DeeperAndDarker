@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.*;
-import net.fabricmc.fabric.mixin.object.builder.DefaultAttributeRegistryAccessor;
+import com.kyanite.deeperdarker.mixin.DefaultAttributeRegistryAccessor;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;

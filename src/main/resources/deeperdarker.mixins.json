@@ -5,6 +5,7 @@
   "mixins": [
     "AbstractBlockSettingsAccessor",
     "ContainerMenuMixin",
+    "DefaultAttributeRegistryAccessor",
     "PhantomMixin",
     "VibrationListenerMixin",
     "WardenMixin"
