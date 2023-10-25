@@ -14,6 +14,8 @@ repositories {
 	maven {
 		url = "https://maven.kyrptonaught.dev"
 	}
+
+	// Show Me Your Skin!
 	ivy {
 		url = "https://github.com/enjarai"
 		patternLayout {
@@ -21,6 +23,12 @@ repositories {
 			m2compatible = true
 		}
 		metadataSources { artifact() }
+	}
+	maven { url = "https://maven.enjarai.nl/releases" }
+	maven { url = "https://maven.enjarai.nl/mirrors" }
+	maven {
+		name = "Ladysnake Mods"
+		url = 'https://maven.ladysnake.org/releases'
 	}
 }
 
@@ -63,7 +71,16 @@ dependencies {
 	modImplementation "net.kyrptonaught:customportalapi:${project.customportalapi_version}"
 	include "net.kyrptonaught:customportalapi:${project.customportalapi_version}"
 
-	modImplementation "show-me-your-skin:show-me-your-skin:1.6.11+1.20"
+	// Show Me Your Skin!
+	modImplementation "show-me-your-skin:show-me-your-skin:${project.show_me_your_skin_version}"
+
+	modImplementation("nl.enjarai:cicada-lib:${project.cicada_version}") {
+		exclude group: "net.fabricmc.fabric-api"
+	}
+	annotationProcessor("com.github.LlamaLad7.mixinextras:mixinextras-fabric:${project.mixin_extras_version}")
+
+	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
+	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 	
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.

@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.Util;
@@ -237,5 +238,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.description", "Reinforce an Echo Shard");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
+
+        translationBuilder.add("biome." + OthersideBiomes.DEEPLANDS.location().getNamespace() + "." + OthersideBiomes.DEEPLANDS.location().getPath(), "Deeplands");
+        translationBuilder.add("biome." + OthersideBiomes.ECHOING_FOREST.location().getNamespace() + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), "Echoing Forest");
+        translationBuilder.add("biome." + OthersideBiomes.OVERCAST_COLUMNS.location().getNamespace() + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), "Overcast Columns");
     }
 }
