@@ -12,7 +12,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class GloomyGrassBlock extends BushBlock {
-    private static final VoxelShape SHAPE = Block.box(1, 0, 1, 14, 12, 14);
+    private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 10, 15);
 
     public GloomyGrassBlock(Properties pProperties) {
         super(pProperties);
