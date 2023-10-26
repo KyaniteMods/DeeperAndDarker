@@ -61,6 +61,9 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CUT_SCULK_STONE_WALL);
             event.accept(DDBlocks.CHISELED_SCULK_STONE);
 
+            event.accept(DDBlocks.BLOOMING_SCULK);
+            event.accept(DDBlocks.BLOOMING_MOSS_BLOCK);
+
             event.accept(DDBlocks.GLOOMSLATE);
             event.accept(DDBlocks.GLOOMSLATE_STAIRS);
             event.accept(DDBlocks.GLOOMSLATE_SLAB);
@@ -122,6 +125,8 @@ public class DDCreativeTab {
 
             event.accept(DDBlocks.ECHO_LEAVES);
             event.accept(DDBlocks.ECHO_SAPLING);
+            event.accept(DDBlocks.BLOOMING_FLOWERS);
+            event.accept(DDBlocks.GLOWING_GRASS);
             event.accept(DDBlocks.GLOOMY_GRASS);
             event.accept(DDBlocks.GLOOMY_CACTUS);
             event.accept(DDBlocks.SCULK_TENDRILS);
