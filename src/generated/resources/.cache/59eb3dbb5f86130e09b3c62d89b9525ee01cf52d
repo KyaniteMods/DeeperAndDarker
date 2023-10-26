@@ -1,5 +1,6 @@
-// 1.20.1	2023-10-21T23:09:41.5195872	Loot Tables
+// 1.20.1	2023-10-25T18:50:18.1508129	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
+50039af3ff092f15f51955da214409a709227433 data/deeperdarker/loot_tables/blocks/blooming_flowers.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_tables/blocks/blooming_moss_block.json
 d95dd7543f0edaed48f7e47c555fd9a2b5c517d4 data/deeperdarker/loot_tables/blocks/blooming_sculk.json
 55589564f7ea5847138db468199d54cd1142b139 data/deeperdarker/loot_tables/blocks/chiseled_gloomslate.json

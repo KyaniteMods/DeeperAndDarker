@@ -70,6 +70,7 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         blockModel(DDBlocks.BLOOMING_SCULK);
         blockModel(DDBlocks.BLOOMING_MOSS_BLOCK);
+        itemModel(DDBlocks.BLOOMING_FLOWERS, GENERATED).renderType("cutout");
 
         blockModel(DDBlocks.GLOOMSLATE);
         blockModel(DDBlocks.GLOOMSLATE_STAIRS);
