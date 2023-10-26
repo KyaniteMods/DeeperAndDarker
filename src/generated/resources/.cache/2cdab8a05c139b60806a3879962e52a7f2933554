@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-25T19:14:56.4838632	Item Models: deeperdarker
+// 1.20.1	2023-10-26T17:32:29.6413502	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 cf8de973e6d5a7a898fe6f699e576271f9f62f6a assets/deeperdarker/models/item/blooming_flowers.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -64,6 +64,7 @@ c7343ab080a175d8521f10587a5b78957417aacc assets/deeperdarker/models/item/gloomsl
 8e409b8aa7fe85d79e978db49a66dd36f5d4f814 assets/deeperdarker/models/item/gloomy_geyser.json
 181b6c50c80d78392abf4d0bfeba5ef09d0664a4 assets/deeperdarker/models/item/gloomy_grass.json
 419d0cd43e6279078460c2cff113efa95c578347 assets/deeperdarker/models/item/gloomy_sculk.json
+59f78721ae299030f68c3d188cc503eeebf7e632 assets/deeperdarker/models/item/glowing_grass.json
 dcb13683800224ef75b1e8919dc436a16060d157 assets/deeperdarker/models/item/grime_ball.json
 0713be97d937d3540b05b468690d8fe75c336e2a assets/deeperdarker/models/item/grime_brick.json
 d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_of_the_deep.json

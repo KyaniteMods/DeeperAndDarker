@@ -86,7 +86,6 @@ public class DDBlockLoot extends BlockLootSubProvider {
 
         add(DDBlocks.BLOOMING_SCULK.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
         dropSelf(DDBlocks.BLOOMING_MOSS_BLOCK.get());
-        dropSelf(DDBlocks.BLOOMING_FLOWERS.get());
 
         add(DDBlocks.GLOOMSLATE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE.get()));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS.get());
@@ -147,6 +146,8 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.GLOOMSLATE_LAPIS_ORE.get(), this::createLapisOreDrops);
         add(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
 
+        dropSelf(DDBlocks.BLOOMING_FLOWERS.get());
+        add(DDBlocks.GLOWING_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS.get());
         addVineAndPlant(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());

@@ -1,4 +1,4 @@
-// 1.20.1	2023-10-25T19:03:25.6337696	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2023-10-26T17:32:29.6413502	Tags for minecraft:block mod id deeperdarker
 453499b5116c2c24d57c28ec55db0211260f511d data/deeperdarker/tags/blocks/echo_soil.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
@@ -31,9 +31,9 @@ a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/blocks/gold_ores.js
 e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/blocks/lapis_ores.json
 65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/blocks/leaves.json
 615016fb2f7bd4866e694de5e712cb29bb434032 data/minecraft/tags/blocks/logs_that_burn.json
-ff30cceaa398179d6968c43125fcc0cc5b17312f data/minecraft/tags/blocks/mineable/axe.json
-5292a241fb840cb557b81ad9012e39a2168f8888 data/minecraft/tags/blocks/mineable/hoe.json
-a9a26adb2db990d5d1851ed5c1d103c9541d1fa4 data/minecraft/tags/blocks/mineable/pickaxe.json
+722e1c5cba20bee7da835bd56f9611ad437dcafa data/minecraft/tags/blocks/mineable/axe.json
+ac3e7a20ad6ffdf5ecc67f728c3ce58ec93a90e8 data/minecraft/tags/blocks/mineable/hoe.json
+ad177a07d9375078090756e86bdf590b27cd0566 data/minecraft/tags/blocks/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/blocks/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/blocks/needs_iron_tool.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/blocks/needs_stone_tool.json
@@ -47,7 +47,7 @@ b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/blocks/redstone_ore
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/blocks/sniffer_egg_hatch_boost.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/blocks/stairs.json
 3160b8c1824cc26cacda9143dd8d832ff3a4c422 data/minecraft/tags/blocks/standing_signs.json
-2863c20239d0632a3b2be29f894feb5960c9929d data/minecraft/tags/blocks/sword_efficient.json
+6a5f7fc14ff990e13a3cea1d7ea499a47137ed5a data/minecraft/tags/blocks/sword_efficient.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/blocks/walls.json
 59d845afe4fd0c9146ddc55b4cc1bc6d1e2606c2 data/minecraft/tags/blocks/wall_hanging_signs.json
 fd38b0e7d7082c1795e0c4db934fc18507a12568 data/minecraft/tags/blocks/wall_signs.json

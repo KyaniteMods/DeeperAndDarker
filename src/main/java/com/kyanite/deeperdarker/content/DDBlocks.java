@@ -118,7 +118,6 @@ public class DDBlocks {
 
     public static final RegistryObject<Block> BLOOMING_SCULK = register("blooming_sculk", () -> new Block(BlockBehaviour.Properties.copy(SCULK_STONE.get()).strength(1.5f, 4f)));
     public static final RegistryObject<Block> BLOOMING_MOSS_BLOCK = register("blooming_moss_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.SCULK)));
-    public static final RegistryObject<Block> BLOOMING_FLOWERS = register("blooming_flowers", () -> new BloomingFlowersBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).lightLevel(state -> 9)));
 
     public static final RegistryObject<Block> GLOOMSLATE = register("gloomslate", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final RegistryObject<StairBlock> GLOOMSLATE_STAIRS = register("gloomslate_stairs", () -> new StairBlock(() -> GLOOMSLATE.get().defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE.get())));
@@ -173,6 +172,8 @@ public class DDBlocks {
     public static final RegistryObject<Block> GLOOMSLATE_LAPIS_ORE = register("gloomslate_lapis_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()), UniformInt.of(4, 8)));
     public static final RegistryObject<Block> GLOOMSLATE_DIAMOND_ORE = register("gloomslate_diamond_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE.get()), UniformInt.of(5, 10)));
 
+    public static final RegistryObject<Block> BLOOMING_FLOWERS = register("blooming_flowers", () -> new BloomingFlowersBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).lightLevel(state -> 9)));
+    public static final RegistryObject<Block> GLOWING_GRASS = register("glowing_grass", () -> new GlowingGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 11)));
     public static final RegistryObject<Block> GLOOMY_GRASS = register("gloomy_grass", () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
     public static final RegistryObject<Block> GLOOMY_CACTUS = register("gloomy_cactus", () -> new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOL)));
     public static final RegistryObject<SculkTendrilsBlock> SCULK_TENDRILS = register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollission().instabreak()));

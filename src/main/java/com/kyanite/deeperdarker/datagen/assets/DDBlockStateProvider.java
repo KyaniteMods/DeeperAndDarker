@@ -70,7 +70,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(DDBlocks.BLOOMING_SCULK.get(), models().cubeBottomTop(DDBlocks.BLOOMING_SCULK.getId().getPath(), blockLoc(DDBlocks.BLOOMING_SCULK), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.BLOOMING_SCULK, "top")));
         simpleBlock(DDBlocks.BLOOMING_MOSS_BLOCK.get());
-        horizontalBlock(DDBlocks.BLOOMING_FLOWERS.get(), models().withExistingParent(DDBlocks.BLOOMING_FLOWERS.getId().getPath(), modLoc("flowers")).texture("flowers", blockLoc(DDBlocks.BLOOMING_FLOWERS)).texture("stem", blockLoc(DDBlocks.BLOOMING_FLOWERS, "stem")).renderType("cutout"));
 
         simpleBlock(DDBlocks.GLOOMSLATE.get());
         stairsBlock(DDBlocks.GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE));
@@ -131,6 +130,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMSLATE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
+        horizontalBlock(DDBlocks.BLOOMING_FLOWERS.get(), models().withExistingParent(DDBlocks.BLOOMING_FLOWERS.getId().getPath(), modLoc("flowers")).texture("flowers", blockLoc(DDBlocks.BLOOMING_FLOWERS)).texture("stem", blockLoc(DDBlocks.BLOOMING_FLOWERS, "stem")).renderType("cutout"));
+        simpleBlock(DDBlocks.GLOWING_GRASS.get(), models().cross(DDBlocks.GLOWING_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOWING_GRASS)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOMY_CACTUS.getId().getPath(), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOMY_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOMY_CACTUS, "top")));
         simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(DDBlocks.SCULK_TENDRILS.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
