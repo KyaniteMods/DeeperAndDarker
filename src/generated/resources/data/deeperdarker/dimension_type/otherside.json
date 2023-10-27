@@ -11,7 +11,7 @@
   "infiniburn": "#deeperdarker:infiniburn_otherside",
   "logical_height": 128,
   "min_y": 0,
-  "monster_spawn_block_light_limit": 9,
+  "monster_spawn_block_light_limit": 15,
   "monster_spawn_light_level": 7,
   "natural": true,
   "piglin_safe": true,
