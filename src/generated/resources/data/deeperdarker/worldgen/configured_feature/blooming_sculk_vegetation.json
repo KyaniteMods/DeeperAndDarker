@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "deeperdarker:blooming_flowers",
+            "Properties": {
+              "facing": "north"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "deeperdarker:glowing_grass"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}
