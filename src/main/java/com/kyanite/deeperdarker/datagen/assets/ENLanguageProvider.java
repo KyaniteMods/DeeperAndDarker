@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.DDBoat;
 import com.kyanite.deeperdarker.content.entities.DDChestBoat;
+import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.SmithingTemplateItem;
@@ -62,6 +63,11 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
         add("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade", "Warden Upgrade");
+
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.DEEPLANDS.location().getPath(), convertToName(OthersideBiomes.DEEPLANDS.location().getPath()));
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
