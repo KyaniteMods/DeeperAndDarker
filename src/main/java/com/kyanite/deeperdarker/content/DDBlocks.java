@@ -177,15 +177,15 @@ public class DDBlocks {
     public static final RegistryObject<Block> GLOOMY_GRASS = register("gloomy_grass", () -> new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
     public static final RegistryObject<Block> GLOOMY_CACTUS = register("gloomy_cactus", () -> new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOL)));
     public static final RegistryObject<SculkTendrilsBlock> SCULK_TENDRILS = register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollission().instabreak()));
-    public static final RegistryObject<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().noCollission().instabreak()));
+    public static final RegistryObject<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = BLOCKS.register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().noCollission().instabreak()));
     public static final RegistryObject<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
-    public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak()));
+    public static final RegistryObject<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak()));
 
     public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final RegistryObject<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
 
     public static final RegistryObject<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE)));
-    public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
+    public static final RegistryObject<OthersidePortalBlock> OTHERSIDE_PORTAL = BLOCKS.register("otherside_portal", () -> new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> registeredBlock = BLOCKS.register(name, block);
