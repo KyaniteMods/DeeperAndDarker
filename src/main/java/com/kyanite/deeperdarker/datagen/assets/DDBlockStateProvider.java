@@ -38,6 +38,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.ECHO_WALL_HANGING_SIGN.get(), models().sign(DDBlocks.ECHO_HANGING_SIGN.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
         simpleBlock(DDBlocks.POTTED_ECHO_SAPLING.get(), models().withExistingParent(DDBlocks.POTTED_ECHO_SAPLING.getId().getPath(), mcLoc("flower_pot_cross")).texture("plant", blockLoc(DDBlocks.ECHO_SAPLING)).renderType("cutout"));
 
+        axisBlock(DDBlocks.BLOOMING_STEM.get(), models().withExistingParent(DDBlocks.BLOOMING_STEM.getId().getPath(), modLoc("stem")).texture("stem", blockLoc(DDBlocks.BLOOMING_STEM)), models().withExistingParent(DDBlocks.BLOOMING_STEM.getId().getPath(), modLoc("stem")).texture("stem", blockLoc(DDBlocks.BLOOMING_STEM)));
+
         simpleBlock(DDBlocks.SCULK_STONE.get());
         stairsBlock(DDBlocks.SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.SCULK_STONE));
         slabBlock(DDBlocks.SCULK_STONE_SLAB.get(), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE));

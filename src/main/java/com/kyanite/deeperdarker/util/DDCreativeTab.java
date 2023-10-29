@@ -31,6 +31,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.ECHO_PRESSURE_PLATE);
             event.accept(DDBlocks.ECHO_BUTTON);
 
+            event.accept(DDBlocks.BLOOMING_STEM);
+
             event.accept(DDBlocks.SCULK_STONE);
             event.accept(DDBlocks.SCULK_STONE_STAIRS);
             event.accept(DDBlocks.SCULK_STONE_SLAB);

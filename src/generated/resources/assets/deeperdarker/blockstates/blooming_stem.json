@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "deeperdarker:block/blooming_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "deeperdarker:block/blooming_stem"
+    },
+    "axis=z": {
+      "model": "deeperdarker:block/blooming_stem",
+      "x": 90
+    }
+  }
+}
