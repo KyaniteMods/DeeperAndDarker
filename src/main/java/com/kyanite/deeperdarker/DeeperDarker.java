@@ -62,7 +62,7 @@ public class DeeperDarker implements ModInitializer {
 				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
 				.forcedSize(8, 4)
 				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
-				.setPortalSearchYRange(0, 128)
+				.setPortalSearchYRange(0, 127)
 				.registerPortal();
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
