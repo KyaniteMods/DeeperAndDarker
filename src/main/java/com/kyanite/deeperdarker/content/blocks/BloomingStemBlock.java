@@ -53,7 +53,6 @@ public class BloomingStemBlock extends Block {
         BlockPos pos = pContext.getClickedPos();
         BlockGetter level = pContext.getLevel();
 
-        BlockState aboveState = level.getBlockState(pos.above());
         BlockState belowState = level.getBlockState(pos.below());
         BlockState northState = level.getBlockState(pos.north());
         BlockState eastState = level.getBlockState(pos.east());
@@ -61,7 +60,7 @@ public class BloomingStemBlock extends Block {
         BlockState westState = level.getBlockState(pos.west());
 
         if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK.get())) return this.defaultBlockState();
-        return this.defaultBlockState().setValue(UP, aboveState.is(this)).setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK.get())).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
+        return this.defaultBlockState().setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK.get())).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
     }
 
     @Override
@@ -86,30 +85,23 @@ public class BloomingStemBlock extends Block {
         }
 
         if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK.get())) return pState.setValue(DOWN, true);
-        if(pDirection.getAxis().isHorizontal() && !pLevel.getBlockState(pNeighborPos.below()).isAir()) return pState;
+        if(pDirection.getAxis().isHorizontal() && pNeighborState.is(this) && canSurvive(pLevel.getBlockState(pNeighborPos.below()))) return pState;
         return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), pNeighborState.is(this));
     }
 
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(!pState.canSurvive(pLevel, pPos)) {
-            pLevel.destroyBlock(pPos, true);
-        }
+        if(!pState.canSurvive(pLevel, pPos)) pLevel.destroyBlock(pPos, true);
     }
 
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockState below = pLevel.getBlockState(pPos.below());
-
-        if(below.is(this) || below.is(DDBlocks.BLOOMING_SCULK.get())) return true;
-
-
         if(canSurvive(below)) return true;
-
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos pos = pPos.relative(direction);
             BlockState state = pLevel.getBlockState(pos);
-            if(state.is(this) && canSurvive(pLevel.getBlockState(pos.below()))) return true;
+            if(state.is(this) && pState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction)) && canSurvive(pLevel.getBlockState(pos.below()))) return true;
         }
 
         return false;
