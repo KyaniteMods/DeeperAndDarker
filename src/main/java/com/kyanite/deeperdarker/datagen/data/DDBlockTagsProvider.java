@@ -25,7 +25,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE).add(DDBlocks.ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_WOOD.get(), DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_BUTTON.get(),
                 DDBlocks.BLOOMING_STEM.get(),
                 DDBlocks.GLOWING_GRASS.get(), DDBlocks.GLOOMY_GRASS.get());
-        tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.BLOOMING_FLOWERS.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
+        tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.GLOWING_FLOWERS.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get(),
                 DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get(), DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get(),
                 DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(),
@@ -79,9 +79,9 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(DDBlocks.BLOOMING_MOSS_BLOCK.get());
         tag(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(DDBlocks.BLOOMING_MOSS_BLOCK.get());
         tag(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(DDBlocks.BLOOMING_MOSS_BLOCK.get());
-        tag(BlockTags.FLOWERS).add(DDBlocks.BLOOMING_FLOWERS.get());
-        tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.BLOOMING_FLOWERS.get());
-        tag(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS.get(), DDBlocks.BLOOMING_FLOWERS.get(), DDBlocks.GLOOMY_GRASS.get());
+        tag(BlockTags.FLOWERS).add(DDBlocks.GLOWING_FLOWERS.get());
+        tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.GLOWING_FLOWERS.get());
+        tag(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS.get(), DDBlocks.GLOWING_FLOWERS.get(), DDBlocks.GLOOMY_GRASS.get());
         tag(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
         tag(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL.get());
 

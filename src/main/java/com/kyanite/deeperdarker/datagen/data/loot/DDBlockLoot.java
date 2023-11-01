@@ -148,7 +148,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.GLOOMSLATE_LAPIS_ORE.get(), this::createLapisOreDrops);
         add(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get(), (block) -> this.createOreDrop(block, Items.DIAMOND));
 
-        dropSelf(DDBlocks.BLOOMING_FLOWERS.get());
+        dropSelf(DDBlocks.GLOWING_FLOWERS.get());
         add(DDBlocks.GLOWING_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS.get());

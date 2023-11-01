@@ -132,7 +132,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMSLATE_LAPIS_ORE);
         blockModel(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        itemModel(DDBlocks.BLOOMING_FLOWERS, GENERATED).renderType("cutout");
+        itemModel(DDBlocks.GLOWING_FLOWERS, GENERATED).renderType("cutout");
         blockItemModel(DDBlocks.GLOWING_GRASS, DDBlocks.GLOWING_GRASS, GENERATED);
         blockItemModel(DDBlocks.GLOOMY_GRASS, DDBlocks.GLOOMY_GRASS, GENERATED);
         blockModel(DDBlocks.GLOOMY_CACTUS);

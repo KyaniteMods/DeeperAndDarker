@@ -143,7 +143,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMSLATE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
-        horizontalBlock(DDBlocks.BLOOMING_FLOWERS.get(), models().withExistingParent(DDBlocks.BLOOMING_FLOWERS.getId().getPath(), modLoc("flowers")).texture("flowers", blockLoc(DDBlocks.BLOOMING_FLOWERS)).texture("stem", blockLoc(DDBlocks.BLOOMING_FLOWERS, "stem")).renderType("cutout"));
+        horizontalBlock(DDBlocks.GLOWING_FLOWERS.get(), models().withExistingParent(DDBlocks.GLOWING_FLOWERS.getId().getPath(), modLoc("flowers")).texture("flowers", blockLoc(DDBlocks.GLOWING_FLOWERS)).texture("stem", blockLoc(DDBlocks.GLOWING_FLOWERS, "stem")).renderType("cutout"));
         simpleBlock(DDBlocks.GLOWING_GRASS.get(), models().cross(DDBlocks.GLOWING_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOWING_GRASS)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOMY_CACTUS.getId().getPath(), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOMY_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOMY_CACTUS, "top")));

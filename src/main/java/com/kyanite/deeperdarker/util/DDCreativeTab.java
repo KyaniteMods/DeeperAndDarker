@@ -127,7 +127,7 @@ public class DDCreativeTab {
 
             event.accept(DDBlocks.ECHO_LEAVES);
             event.accept(DDBlocks.ECHO_SAPLING);
-            event.accept(DDBlocks.BLOOMING_FLOWERS);
+            event.accept(DDBlocks.GLOWING_FLOWERS);
             event.accept(DDBlocks.GLOWING_GRASS);
             event.accept(DDBlocks.GLOOMY_GRASS);
             event.accept(DDBlocks.GLOOMY_CACTUS);

@@ -18,10 +18,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("deprecation, NullableProblems")
-public class BloomingFlowersBlock extends BushBlock {
+public class GlowingFlowersBlock extends BushBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public BloomingFlowersBlock(Properties pProperties) {
+    public GlowingFlowersBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }

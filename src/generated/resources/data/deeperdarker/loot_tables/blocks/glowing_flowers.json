@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "deeperdarker:blooming_flowers"
+          "name": "deeperdarker:glowing_flowers"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "deeperdarker:blocks/blooming_flowers"
+  "random_sequence": "deeperdarker:blocks/glowing_flowers"
 }
