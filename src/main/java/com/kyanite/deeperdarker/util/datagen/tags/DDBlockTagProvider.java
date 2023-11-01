@@ -17,8 +17,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON);
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOMING_STEM, DDBlocks.GLOWING_GRASS, DDBlocks.GLOOMY_GRASS);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.BLOOMING_FLOWERS, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE, DDBlocks.COBBLED_SCULK_STONE, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE_TILES, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.CUT_SCULK_STONE, DDBlocks.CHISELED_SCULK_STONE,
                 DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS,
                 DDBlocks.SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE_SLAB,
@@ -35,7 +35,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.SCULK_STONE_COPPER_ORE, DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_IRON_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE, DDBlocks.CRYSTALLIZED_AMBER);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS);
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB);
@@ -68,6 +68,13 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
         getOrCreateTagBuilder(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
+        getOrCreateTagBuilder(BlockTags.DIRT).add(DDBlocks.BLOOMING_MOSS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(DDBlocks.BLOOMING_MOSS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(DDBlocks.BLOOMING_MOSS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(DDBlocks.BLOOMING_MOSS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.FLOWERS).add(DDBlocks.BLOOMING_FLOWERS);
+        getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.BLOOMING_FLOWERS);
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.BLOOMING_FLOWERS, DDBlocks.GLOOMY_GRASS);
         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT);
         getOrCreateTagBuilder(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL);
 

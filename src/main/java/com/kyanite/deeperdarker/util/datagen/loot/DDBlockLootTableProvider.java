@@ -45,6 +45,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.ECHO_HANGING_SIGN);
         dropPottedContents(DDBlocks.POTTED_ECHO_SAPLING);
 
+        dropSelf(DDBlocks.BLOOMING_STEM);
+
         add(DDBlocks.SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS);
         add(DDBlocks.SCULK_STONE_SLAB, this::createSlabItemTable);
@@ -80,6 +82,9 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
         add(DDBlocks.SCULK_GRIME_BRICK_SLAB, this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL);
+
+        add(DDBlocks.BLOOMING_SCULK, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
+        dropSelf(DDBlocks.BLOOMING_MOSS_BLOCK);
 
         add(DDBlocks.GLOOMSLATE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS);

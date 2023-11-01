@@ -1,36 +1,39 @@
 {
   "carvers": {},
-  "downfall": -0.5,
+  "downfall": 0.2,
   "effects": {
-    "fog_color": 1317939,
+    "fog_color": 1716032,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
-      "sound": "deeperdarker:ambience.otherside",
+      "sound": "deeperdarker:ambient.otherside.additions",
       "tick_delay": 6000
     },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "deeperdarker:music.deeperdarker.arrival",
-      "_comment": "This song should probably be changed later, since this is probably meant to play once the player enters the Otherside for the first time only"
+      "sound": "deeperdarker:music.otherside.echoing_forest"
     },
-    "sky_color": 8625919,
-    "water_color": 1254763,
-    "water_fog_color": 1253458
+    "particle": {
+      "options": {
+        "type": "minecraft:sculk_charge_pop"
+      },
+      "probability": 0.002
+    },
+    "sky_color": 8560639,
+    "water_color": 2066085,
+    "water_fog_color": 2189448
   },
   "features": [
     [],
     [],
     [],
-    [
-      "minecraft:fossil_upper",
-      "minecraft:fossil_lower"
-    ],
+    [],
     [],
     [],
     [
+      "deeperdarker:blooming_moss",
       "deeperdarker:infested_sculk",
       "deeperdarker:sculk_jaw",
       "deeperdarker:sculk_coal",
@@ -42,14 +45,10 @@
       "deeperdarker:sculk_lapis",
       "deeperdarker:sculk_diamond"
     ],
-    [
-      "deeperdarker:sculk_stone_column",
-      "deeperdarker:sculk_gleam"
-    ],
+    [],
     [],
     [
-      "deeperdarker:surface_sculk_stone",
-      "deeperdarker:sculk_decoration",
+      "deeperdarker:blooming_sculk_vegetation",
       "deeperdarker:sculk_tendrils",
       "deeperdarker:sculk_vines"
     ]
@@ -63,33 +62,15 @@
     "misc": [],
     "monster": [
       {
-        "type": "deeperdarker:sculk_centipede",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 6
-      },
-      {
         "type": "deeperdarker:sculk_snapper",
-        "maxCount": 6,
-        "minCount": 3,
-        "weight": 11
-      },
-      {
-        "type": "deeperdarker:shattered",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 5
-      },
-      {
-        "type": "minecraft:phantom",
         "maxCount": 2,
         "minCount": 1,
-        "weight": 2
+        "weight": 1
       }
     ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": -0.5
+  "temperature": -0.3
 }

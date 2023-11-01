@@ -6,7 +6,9 @@ import com.ibm.icu.impl.Pair;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.BloomingFlowersBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -16,17 +18,16 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.data.models.blockstates.PropertyDispatch;
-import net.minecraft.data.models.blockstates.Variant;
-import net.minecraft.data.models.blockstates.VariantProperties;
+import net.minecraft.data.models.blockstates.*;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.*;
@@ -180,6 +181,15 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));
         ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_ECHO_SAPLING, TextureMapping.plant(DDBlocks.ECHO_SAPLING), blockModelGenerators.modelOutput);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
+
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/flowers"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_FLOWERS),
+                new Tuple<>(TextureSlot.create("flowers"), TextureMapping.getBlockTexture(DDBlocks.BLOOMING_FLOWERS)),
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_FLOWERS).withSuffix("_stem")));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.BLOOMING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        registerBloomingSculk(blockModelGenerators, DDBlocks.BLOOMING_SCULK);
+        blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
+        registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.BLOOMING_STEM);
     }
 
     @Override
@@ -223,6 +233,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_GLOOMSLATE), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlocks.BLOOMING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, ResourceLocation.DEFAULT_NAMESPACE + ":broken", "_broken");
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
@@ -365,5 +376,46 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplate parentModel = new ModelTemplate(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
 
         parentModel.create(child, textureMap, blockModelGenerators.modelOutput);
+    }
+
+    private void registerBloomingSculk(BlockModelGenerators blockModelGenerators, Block block) {
+        TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_STONE)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_BOTTOM_TOP.create(block, textureMapping, blockModelGenerators.modelOutput)));
+    }
+
+    private void registerBloomingStem(BlockModelGenerators blockModelGenerators, BloomingStemBlock block) {
+        ResourceLocation stemModel = new ResourceLocation(DeeperDarker.MOD_ID, "block/stem");
+        ResourceLocation stemHorizontalModel = new ResourceLocation(DeeperDarker.MOD_ID, "block/stem_horizontal");
+        ResourceLocation stemVerticalModel = new ResourceLocation(DeeperDarker.MOD_ID, "block/stem_vertical");
+
+        ResourceLocation bloomingStemModel = ModelLocationUtils.getModelLocation(block);
+        ResourceLocation bloomingStemHorizontalModel = ModelLocationUtils.getModelLocation(block).withSuffix("_horizontal");
+        ResourceLocation bloomingStemVerticalModel = ModelLocationUtils.getModelLocation(block).withSuffix("_vertical");
+
+        registerParented(blockModelGenerators, stemModel, bloomingStemModel,
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(block)));
+        registerParented(blockModelGenerators, stemHorizontalModel, bloomingStemHorizontalModel,
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(block)));
+        registerParented(blockModelGenerators, stemVerticalModel, bloomingStemVerticalModel,
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(block)));
+        MultiPartGenerator builder = MultiPartGenerator.multiPart(block)
+                .with(Variant.variant().with(VariantProperties.MODEL, bloomingStemModel))
+                .with(Condition.condition().term(BloomingStemBlock.DOWN, true), Variant.variant().with(VariantProperties.MODEL, bloomingStemVerticalModel)
+                        .with(VariantProperties.UV_LOCK, true)
+                        .with(VariantProperties.X_ROT, VariantProperties.Rotation.R180))
+                .with(Condition.condition().term(BloomingStemBlock.UP, true), Variant.variant().with(VariantProperties.MODEL, bloomingStemVerticalModel)
+                        .with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BloomingStemBlock.NORTH, true), Variant.variant().with(VariantProperties.MODEL, bloomingStemHorizontalModel)
+                        .with(VariantProperties.UV_LOCK, true)
+                        .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition().term(BloomingStemBlock.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, bloomingStemHorizontalModel)
+                        .with(VariantProperties.UV_LOCK, true)
+                        .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with(Condition.condition().term(BloomingStemBlock.WEST, true), Variant.variant().with(VariantProperties.MODEL, bloomingStemHorizontalModel)
+                        .with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BloomingStemBlock.EAST, true), Variant.variant().with(VariantProperties.MODEL, bloomingStemHorizontalModel)
+                        .with(VariantProperties.UV_LOCK, true)
+                        .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180));
+        blockModelGenerators.blockStateOutput.accept(builder);
     }
 }

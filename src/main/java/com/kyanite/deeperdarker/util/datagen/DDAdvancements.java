@@ -120,6 +120,7 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         false)
                 .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.DEEPLANDS)))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST)))
+                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.BLOOMING_CAVERNS)))
                 .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(300))

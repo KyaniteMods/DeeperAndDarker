@@ -10,6 +10,9 @@
     "deeperdarker:echo_door",
     "deeperdarker:echo_trapdoor",
     "deeperdarker:echo_pressure_plate",
-    "deeperdarker:echo_button"
+    "deeperdarker:echo_button",
+    "deeperdarker:blooming_stem",
+    "deeperdarker:glowing_grass",
+    "deeperdarker:gloomy_grass"
   ]
 }

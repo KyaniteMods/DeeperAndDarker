@@ -82,6 +82,8 @@ public class DDBlocks {
 
     public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", createFlowerPot(ECHO_SAPLING));
 
+    public static final Block BLOOMING_STEM = register("blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).sound(SoundType.WOOD).ignitedByLava().noOcclusion()));
+
     public static final Block SCULK_STONE = register("sculk_stone", new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.COLOR_CYAN).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final Block SCULK_STONE_STAIRS = register("sculk_stone_stairs", new StairBlock(SCULK_STONE.defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE)));
     public static final Block SCULK_STONE_SLAB = register("sculk_stone_slab", new SlabBlock(BlockBehaviour.Properties.copy(SCULK_STONE)));
@@ -111,6 +113,9 @@ public class DDBlocks {
     public static final Block CUT_SCULK_STONE_SLAB = register("cut_sculk_stone_slab", new SlabBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CHISELED_SCULK_STONE = register("chiseled_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE)));
+
+    public static final Block BLOOMING_SCULK = register("blooming_sculk", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f)));
+    public static final Block BLOOMING_MOSS_BLOCK = register("blooming_moss_block", new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.SCULK)));
 
     public static final Block GLOOMSLATE = register("gloomslate", new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final Block GLOOMSLATE_STAIRS = register("gloomslate_stairs", new StairBlock(GLOOMSLATE.defaultBlockState(), BlockBehaviour.Properties.copy(GLOOMSLATE)));
@@ -171,6 +176,8 @@ public class DDBlocks {
     public static final Block GLOOMSLATE_LAPIS_ORE = register("gloomslate_lapis_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(4, 8)));
     public static final Block GLOOMSLATE_DIAMOND_ORE = register("gloomslate_diamond_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(5, 10)));
 
+    public static final Block BLOOMING_FLOWERS = register("blooming_flowers", new BloomingFlowersBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).lightLevel(state -> 9)));
+    public static final Block GLOWING_GRASS = register("glowing_grass", new GlowingGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 11)));
     public static final Block GLOOMY_GRASS = register("gloomy_grass", new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
     public static final Block GLOOMY_CACTUS = register("gloomy_cactus", new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOL)));
     public static final Block SCULK_TENDRILS = register("sculk_tendrils", new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollission().instabreak()));

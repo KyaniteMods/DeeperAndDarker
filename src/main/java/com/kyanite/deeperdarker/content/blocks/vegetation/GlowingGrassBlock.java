@@ -11,22 +11,22 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
-public class GloomyGrassBlock extends BushBlock {
-    private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 10, 15);
+public class GlowingGrassBlock extends BushBlock {
+    private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 12, 14);
 
-    public GloomyGrassBlock(Properties pProperties) {
+    public GlowingGrassBlock(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockState state = pLevel.getBlockState(pPos.below());
-        return state.is(DDBlocks.GLOOMY_SCULK);
+        return state.is(DDBlocks.BLOOMING_SCULK);
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(DDBlocks.GLOOMY_SCULK);
+        return pState.is(DDBlocks.BLOOMING_SCULK);
     }
 
     @Override

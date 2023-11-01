@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,7 +19,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,6 +30,7 @@ public class ShriekWorm extends Monster {
     public final AnimationState asleepState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
     public final AnimationState descendState = new AnimationState();
+    private int emerging;
 
     public ShriekWorm(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -83,6 +82,8 @@ public class ShriekWorm extends Monster {
     public void tick() {
         super.tick();
 
+        if(this.getPose() == Pose.EMERGING && ++emerging > 156) this.setPose(Pose.STANDING);
+
         if(level().isClientSide()) {
             if(this.idleState.isStarted()) {
                 this.entityData.set(IDLE_TIMER, this.entityData.get(IDLE_TIMER) - 1);
@@ -109,8 +110,6 @@ public class ShriekWorm extends Monster {
                 level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
             }
         }
-
-        if(this.noActionTime > 156) this.setPose(Pose.STANDING);
 
         Player player = level().getNearestPlayer(this, 3);
         if(player == null || player.isDeadOrDying() || player.isCreative()) {

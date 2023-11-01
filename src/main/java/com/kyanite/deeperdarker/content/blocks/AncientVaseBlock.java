@@ -72,8 +72,8 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
         if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
             RandomSource random = pLevel.getRandom();
-            if (random.nextFloat() < 0.0917f) {
-                if (random.nextDouble() < 0.9814612868) {
+            if (random.nextFloat() < 0.1f) {
+                if (random.nextDouble() < 0.92f) {
                     for (int i = 0; i < random.nextInt(1, 4); i++) {
                         SculkLeech entity = DDEntities.SCULK_LEECH.create(pLevel);
                         assert entity != null;

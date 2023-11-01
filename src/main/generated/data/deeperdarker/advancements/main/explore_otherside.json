@@ -1,6 +1,22 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
+    "blooming_caverns": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:blooming_caverns"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "deeplands": {
       "conditions": {
         "player": [
@@ -72,6 +88,9 @@
     ],
     [
       "echoing_forest"
+    ],
+    [
+      "blooming_caverns"
     ],
     [
       "overcast_columns"

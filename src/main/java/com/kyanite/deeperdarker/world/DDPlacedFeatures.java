@@ -26,6 +26,7 @@ public class DDPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");
     public static final ResourceKey<PlacedFeature> SCULK_DECORATION = createKey("sculk_decoration");
+    public static final ResourceKey<PlacedFeature> BLOOMING_SCULK_VEGETATION = createKey("blooming_sculk_vegetation");
     public static final ResourceKey<PlacedFeature> SURFACE_GLOOMSLATE = createKey("surface_gloomslate");
     public static final ResourceKey<PlacedFeature> GLOOMY_SCULK_VEGETATION = createKey("gloomy_sculk_vegetation");
 
@@ -40,6 +41,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_EMERALD = createKey("sculk_emerald");
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
+    public static final ResourceKey<PlacedFeature> BLOOMING_MOSS = createKey("blooming_moss");
 
     public static final ResourceKey<PlacedFeature> GLOOMY_SCULK = createKey("gloomy_sculk");
     public static final ResourceKey<PlacedFeature> MAGMA = createKey("magma");
@@ -68,6 +70,7 @@ public class DDPlacedFeatures {
 
         PlacementUtils.register(context, SURFACE_SCULK_STONE, features.getOrThrow(DDConfiguredFeatures.SURFACE_SCULK_STONE), countPlacement(55, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_DECORATION, features.getOrThrow(DDConfiguredFeatures.SCULK_PATCH), countPlacement(86, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+        PlacementUtils.register(context, BLOOMING_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.BLOOMING_SCULK_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SURFACE_GLOOMSLATE, features.getOrThrow(DDConfiguredFeatures.SURFACE_GLOOMSLATE), countPlacement(32, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, GLOOMY_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.GLOOMY_SCULK_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
 
@@ -82,6 +85,8 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_EMERALD), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
         PlacementUtils.register(context, SCULK_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LAPIS), countPlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
         PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
+
+        PlacementUtils.register(context, BLOOMING_MOSS, features.getOrThrow(DDConfiguredFeatures.ORE_BLOOMING_MOSS), countPlacement(19, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, GLOOMY_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMY_SCULK), countPlacement(96, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(32))));
         PlacementUtils.register(context, MAGMA, features.getOrThrow(DDConfiguredFeatures.ORE_MAGMA), countPlacement(128, PlacementUtils.FULL_RANGE));

@@ -24,9 +24,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
@@ -37,7 +35,6 @@ import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation, NullableProblems")
@@ -51,8 +48,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     private final User vibrationUser;
     private final Data vibrationData;
     public BlockPos disturbanceLocation;
-    private boolean playersInRange;
-    private boolean ring;
+    private int emerging;
 
     public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -119,8 +115,9 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
         super.tick();
 
+        if(this.getPose() == Pose.EMERGING && ++emerging > 70) this.setPose(Pose.STANDING);
+
         if(level().isClientSide()) {
-            this.entityData.set(RING_COOLDOWN, this.entityData.get(RING_COOLDOWN) - 1);
             if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
             }
@@ -131,24 +128,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
                 double sZ = this.random.nextGaussian() * 0.02;
                 level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
             }
-        }
-
-        if(this.noActionTime > 70) this.setPose(Pose.STANDING);
-
-        List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
-        if(!players.isEmpty()) {
-            if(this.entityData.get(RING_COOLDOWN) <= -100) {
-                this.playersInRange = false;
-                this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
-                if(level().isClientSide()) this.ringAttackState.stop();
-            } else if(this.entityData.get(RING_COOLDOWN) <= 0) {
-                if(level().isClientSide()) this.ringAttackState.start(this.tickCount);
-                this.playersInRange = true;
-            }
-        } else if(this.playersInRange) {
-            this.playersInRange = false;
-            this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
-            if(level().isClientSide()) this.ringAttackState.stop();
         }
     }
 
