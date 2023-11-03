@@ -1,9 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
-import net.minecraft.BlockUtil;
-import net.minecraft.commands.arguments.blocks.BlockInput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -22,11 +19,8 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("deprecation, NullableProblems")
@@ -95,7 +89,6 @@ public class BloomingStemBlock extends Block {
         }
 
         if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK)) return pState.setValue(DOWN, true);
-//        if(pDirection.getAxis().isHorizontal() && !pLevel.getBlockState(pNeighborPos.below()).isAir()) return pState;
         return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), pNeighborState.is(this));
     }
 
@@ -127,24 +120,6 @@ public class BloomingStemBlock extends Block {
                 this.getConnectedBloomingStems(pLevel, pPos.relative(direction), stemPositions);
             }
         }
-//        if (pLevel.getBlockState(pPos.above()).is(this) && !stemPositions.contains(pPos.above())) {
-//            this.getConnectedBloomingStems(pLevel, pPos.above(), stemPositions);
-//        }
-//        if (pLevel.getBlockState(pPos.below()).is(this) && !stemPositions.contains(pPos.below())) {
-//            this.getConnectedBloomingStems(pLevel, pPos.below(), stemPositions);
-//        }
-//        if (pLevel.getBlockState(pPos.north()).is(this) && !stemPositions.contains(pPos.north())) {
-//            this.getConnectedBloomingStems(pLevel, pPos.north(), stemPositions);
-//        }
-//        if (pLevel.getBlockState(pPos.east()).is(this) && !stemPositions.contains(pPos.east())) {
-//            this.getConnectedBloomingStems(pLevel, pPos.east(), stemPositions);
-//        }
-//        if (pLevel.getBlockState(pPos.south()).is(this) && !stemPositions.contains(pPos.south())) {
-//            this.getConnectedBloomingStems(pLevel, pPos.south(), stemPositions);
-//        }
-//        if (pLevel.getBlockState(pPos.west()).is(this) && !stemPositions.contains(pPos.west())) {
-//            this.getConnectedBloomingStems(pLevel, pPos.west(), stemPositions);
-//        }
         return stemPositions;
     }
 
