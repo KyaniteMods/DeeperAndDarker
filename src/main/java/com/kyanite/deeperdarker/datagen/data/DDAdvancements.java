@@ -51,6 +51,9 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
         Advancement.Builder.advancement().parent(findAncientTemple).display(DDItems.SCULK_TRANSMITTER.get(), Component.translatable(id + "obtain_sculk_transmitter.title"), Component.translatable(id + "obtain_sculk_transmitter.description"), null, FrameType.TASK, true, true, false)
                 .addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER.get())).save(saver, path("obtain_sculk_transmitter"), existingFileHelper);
 
+        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SONOROUS_STAFF.get(), Component.translatable(id + "obtain_warden_staff.title"), Component.translatable(id + "obtain_warden_staff.description"), null, FrameType.TASK, true, true, false)
+                .addCriterion("warden_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF.get())).save(saver, path("obtain_warden_staff"), existingFileHelper);
+
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_BOOTS.get(), Component.translatable(id + "explore_otherside.title"), Component.translatable(id + "explore_otherside.description"), null, FrameType.CHALLENGE, true, true, false)
                 .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.DEEPLANDS)))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST)))
@@ -69,8 +72,8 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER.get())))
                 .requirements(RequirementsStrategy.AND).rewards(AdvancementRewards.Builder.experience(100)).save(saver, path("kill_all_sculk_mobs"), existingFileHelper);
 
-        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(), Component.translatable(id + "obtain_reinforce_echo_shard.title"), Component.translatable(id + "obtain_reinforce_echo_shard.description"), null, FrameType.TASK, true, true, false)
-                .addCriterion("reinforce_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD.get())).save(saver, path("obtain_reinforce_echo_shard"), existingFileHelper);
+        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden).display(DDItems.REINFORCED_ECHO_SHARD.get(), Component.translatable(id + "obtain_reinforced_echo_shard.title"), Component.translatable(id + "obtain_reinforced_echo_shard.description"), null, FrameType.TASK, true, true, false)
+                .addCriterion("reinforced_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD.get())).save(saver, path("obtain_reinforced_echo_shard"), existingFileHelper);
 
         Advancement.Builder.advancement().parent(obtainReinforcedEchoShard).display(DDItems.WARDEN_CHESTPLATE.get(), Component.translatable(id + "warden_armor.title"), Component.translatable(id + "warden_armor.description"), null, FrameType.CHALLENGE, true, true, false)
                 .addCriterion("warden_armor", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.WARDEN_HELMET.get(), DDItems.WARDEN_CHESTPLATE.get(), DDItems.WARDEN_LEGGINGS.get(), DDItems.WARDEN_BOOTS.get()))

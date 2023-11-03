@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/obtain_reinforce_echo_shard",
+  "parent": "deeperdarker:main/obtain_reinforced_echo_shard",
   "criteria": {
     "warden_armor": {
       "conditions": {

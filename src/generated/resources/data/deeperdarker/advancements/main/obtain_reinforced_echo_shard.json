@@ -1,7 +1,7 @@
 {
   "parent": "deeperdarker:main/kill_warden",
   "criteria": {
-    "reinforce_echo_shard": {
+    "reinforced_echo_shard": {
       "conditions": {
         "items": [
           {
@@ -17,7 +17,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.obtain_reinforce_echo_shard.description"
+      "translate": "advancements.deeperdarker.obtain_reinforced_echo_shard.description"
     },
     "frame": "task",
     "hidden": false,
@@ -26,12 +26,12 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.obtain_reinforce_echo_shard.title"
+      "translate": "advancements.deeperdarker.obtain_reinforced_echo_shard.title"
     }
   },
   "requirements": [
     [
-      "reinforce_echo_shard"
+      "reinforced_echo_shard"
     ]
   ],
   "sends_telemetry_event": true

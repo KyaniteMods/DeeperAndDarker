@@ -170,6 +170,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
+        // itemModel(DDItems.SONOROUS_STAFF, GENERATED);
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);

@@ -1,0 +1,38 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "warden_staff": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:sonorous_staff"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.obtain_warden_staff.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:sonorous_staff"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.obtain_warden_staff.title"
+    }
+  },
+  "requirements": [
+    [
+      "warden_staff"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

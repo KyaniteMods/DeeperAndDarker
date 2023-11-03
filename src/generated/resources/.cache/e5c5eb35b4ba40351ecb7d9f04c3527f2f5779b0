@@ -1,11 +1,12 @@
-// 1.20.1	2023-10-21T23:34:22.8911106	Advancements
+// 1.20.1	2023-11-03T15:15:58.7181675	Advancements
 a76845401466a58c8f341ce586f131a1d31c123e data/deeperdarker/advancements/main/enter_otherside.json
 8b124d675dec747cdc32486c1d7098eb8bce594d data/deeperdarker/advancements/main/explore_otherside.json
 cf318040575219b02ae94941e0fb33c02f196203 data/deeperdarker/advancements/main/find_ancient_city.json
 e35f7e028016ba746172bbef9f8469f33e99a450 data/deeperdarker/advancements/main/find_ancient_temple.json
 0025e3f26af1bd7a49bef17667fd7df05657e4c9 data/deeperdarker/advancements/main/kill_all_sculk_mobs.json
 12f0245d5431f178e2d5ac6355e49e7c8c729034 data/deeperdarker/advancements/main/kill_warden.json
-a6843dc478686746fc060953abc28acae4be33e3 data/deeperdarker/advancements/main/obtain_reinforce_echo_shard.json
+7900a37a8e06c23dd7b3a659f04d6412cf42451c data/deeperdarker/advancements/main/obtain_reinforced_echo_shard.json
 bcc957ddb06cfce6c593c7065f0442333200594d data/deeperdarker/advancements/main/obtain_sculk_transmitter.json
+f53723b815feada7f9b49dcd7dfa0785d0de0a31 data/deeperdarker/advancements/main/obtain_warden_staff.json
 bb97859071e5fd47e387710d8c90493a84e0bf3c data/deeperdarker/advancements/main/root.json
-9a8e630b0cc290791c3883160f3fd7adec527dc7 data/deeperdarker/advancements/main/warden_armor.json
+96a4ca460a4dcf817a45737c9140feebdeb48a36 data/deeperdarker/advancements/main/warden_armor.json
