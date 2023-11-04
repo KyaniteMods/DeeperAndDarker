@@ -10,8 +10,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -28,7 +26,9 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
@@ -39,11 +39,11 @@ import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class Stalker extends Monster implements DisturbanceListener, VibrationSystem {
-    private static final EntityDataAccessor<Integer> RING_COOLDOWN = SynchedEntityData.defineId(Stalker.class, EntityDataSerializers.INT);
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
     public final AnimationState ringAttackState = new AnimationState();
@@ -53,7 +53,8 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     private final VibrationSystem.User vibrationUser;
     private final VibrationSystem.Data vibrationData;
     public BlockPos disturbanceLocation;
-    private int emerging;
+    private int emergingTime;
+    private int rangedCooldown = 440;
 
     public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -112,12 +113,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(RING_COOLDOWN, getRandom().nextInt(200, 600));
-    }
-
-    @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
@@ -125,17 +120,44 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     @Override
     public void tick() {
-        if(this.level() instanceof ServerLevel level) {
+        if(level() instanceof ServerLevel level) {
             Ticker.tick(level, this.vibrationData, this.vibrationUser);
         }
 
         super.tick();
 
-        if(this.getPose() == Pose.EMERGING && ++emerging > 70) this.setPose(Pose.STANDING);
+        if(this.getPose() == Pose.EMERGING && ++emergingTime > 70) this.setPose(Pose.STANDING);
+
+        List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
+        if(!players.isEmpty()) {
+            this.rangedCooldown--;
+            System.out.println(level().isClientSide() + ": " + this.rangedCooldown);
+            if(this.rangedCooldown < -200) {
+                if(level().isClientSide()) this.ringAttackState.stop();
+                this.rangedCooldown = 440;
+            } else if(this.rangedCooldown < 0 && !level().isClientSide()) {
+                for(Player player : players) {
+                    player.hurt(this.damageSources().magic(), 2f);
+                }
+                if(this.rangedCooldown % 40 == 0 && level() instanceof ServerLevel serverLevel) {
+                    int spawn = this.random.nextIntBetweenInclusive(1, 3);
+                    for(int i = 0; i < spawn; i++) {
+                        BlockPos spawnPos = new BlockPos((int) getRandomX(5), (int) getRandomY(), (int) getRandomZ(5));
+                        DDEntities.SCULK_LEECH.get().spawn(serverLevel, spawnPos, MobSpawnType.EVENT);
+                    }
+                }
+            }
+        } else if(this.rangedCooldown < 0) this.rangedCooldown--;
 
         if(level().isClientSide()) {
-            if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
+            if(!this.idleState.isStarted() && !this.attackState.isStarted() && !this.ringAttackState.isStarted()) {
                 this.idleState.start(this.tickCount);
+            }
+
+            if(this.rangedCooldown == 0) {
+                this.idleState.stop();
+                this.attackState.stop();
+                this.ringAttackState.start(this.tickCount);
             }
 
             if(this.getPose() == Pose.EMERGING) {
