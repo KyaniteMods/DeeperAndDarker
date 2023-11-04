@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDDamageSources;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
@@ -52,8 +53,8 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private final DynamicGameEventListener<VibrationListener> dynamicGameEventListener;
     public BlockPos disturbanceLocation;
-    private boolean playersInRange;
-    private boolean ring;
+    private int emergingTime;
+    private int rangedCooldown = 440;
 
     public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -110,12 +111,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(RING_COOLDOWN, getRandom().nextInt(200, 600));
-    }
-
-    @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.level.broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);
@@ -123,22 +118,44 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
 
     @Override
     public void tick() {
-        if(this.level instanceof ServerLevel level) {
+        if(level instanceof ServerLevel level) {
             this.dynamicGameEventListener.getListener().tick(level);
         }
 
         super.tick();
 
-        if(level.isClientSide()) {
-            this.entityData.set(RING_COOLDOWN, this.entityData.get(RING_COOLDOWN) - 1);
-            if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
-                this.idleState.start(this.tickCount);
-            } else {
-                if (this.isMoving()) {
-                    this.walkState.startIfStopped(this.tickCount);
-                } else {
-                    this.walkState.stop();
+        if(this.getPose() == Pose.EMERGING && ++emergingTime > 70) this.setPose(Pose.STANDING);
+
+        List<Player> players = level.getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
+        if(!players.isEmpty()) {
+            this.rangedCooldown--;
+//            System.out.println(level().isClientSide() + ": " + this.rangedCooldown);
+            if(this.rangedCooldown < -200) {
+                if(level.isClientSide()) this.ringAttackState.stop();
+                this.rangedCooldown = 440;
+            } else if(this.rangedCooldown < 0 && !level.isClientSide()) {
+                for(Player player : players) {
+                    player.hurt(DDDamageSources.ring(this, player), 2f);
                 }
+                if(this.rangedCooldown % 40 == 0 && level instanceof ServerLevel serverLevel) {
+                    int spawn = this.random.nextIntBetweenInclusive(1, 3);
+                    for(int i = 0; i < spawn; i++) {
+                        BlockPos spawnPos = new BlockPos((int) getRandomX(5), (int) getRandomY(), (int) getRandomZ(5));
+                        DDEntities.SCULK_LEECH.spawn(serverLevel, null, null, spawnPos, MobSpawnType.TRIGGERED, true, false);
+                    }
+                }
+            }
+        } else if(this.rangedCooldown < 0) this.rangedCooldown--;
+
+        if(level.isClientSide()) {
+            if(!this.idleState.isStarted() && !this.attackState.isStarted() && !this.ringAttackState.isStarted()) {
+                this.idleState.start(this.tickCount);
+            }
+
+            if(this.rangedCooldown == 0) {
+                this.idleState.stop();
+                this.attackState.stop();
+                this.ringAttackState.start(this.tickCount);
             }
 
             if(this.getPose() == Pose.EMERGING) {
@@ -148,28 +165,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
                 level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
             }
         }
-
-        if(this.noActionTime > 70) this.setPose(Pose.STANDING);
-
-        List<Player> players = level.getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
-        if(!players.isEmpty()) {
-            if(this.entityData.get(RING_COOLDOWN) <= -100) {
-                this.playersInRange = false;
-                this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
-                if(level.isClientSide()) this.ringAttackState.stop();
-            } else if(this.entityData.get(RING_COOLDOWN) <= 0) {
-                if(level.isClientSide()) this.ringAttackState.start(this.tickCount);
-                this.playersInRange = true;
-            }
-        } else if(this.playersInRange) {
-            this.playersInRange = false;
-            this.entityData.set(RING_COOLDOWN, getRandom().nextInt(200, 600));
-            if(level.isClientSide()) this.ringAttackState.stop();
-        }
-    }
-
-    private boolean isMoving() {
-        return this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && !this.isInWaterOrBubble();
     }
 
     @Override
@@ -224,7 +219,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationLi
     }
 
     public boolean canTargetEntity(Entity target) {
-        if (target instanceof LivingEntity entity) {
+        if(target instanceof LivingEntity entity) {
             return this.level == target.level && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && entity.getType() != DDEntities.SHATTERED && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level.getWorldBorder().isWithinBounds(entity.getBoundingBox());
         }
 
