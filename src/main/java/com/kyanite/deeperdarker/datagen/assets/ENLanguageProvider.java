@@ -72,6 +72,9 @@ public class ENLanguageProvider extends LanguageProvider {
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
 
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.getId().getPath() + ".desc", "Spreads sculk when mobs are killed.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.getId().getPath() + ".desc", "Increases damage against sculk mobs such as Wardens and Shattered.");
+
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
