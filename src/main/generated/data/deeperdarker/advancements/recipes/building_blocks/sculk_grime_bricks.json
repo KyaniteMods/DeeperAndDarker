@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_grime_brick",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_grime_brick"
     ]
   ],
   "rewards": {

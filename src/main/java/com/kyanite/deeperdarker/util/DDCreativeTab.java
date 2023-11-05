@@ -39,12 +39,12 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.ECHO_DOOR));
         entries.accept(new ItemStack(DDBlocks.ECHO_FENCE_GATE));
         entries.accept(new ItemStack(DDBlocks.ECHO_FENCE));
-        entries.accept(new ItemStack(DDBlocks.ECHO_HANGING_SIGN));
         entries.accept(new ItemStack(DDBlocks.ECHO_LEAVES));
         entries.accept(new ItemStack(DDBlocks.ECHO_PLANKS));
         entries.accept(new ItemStack(DDBlocks.ECHO_PRESSURE_PLATE));
         entries.accept(new ItemStack(DDBlocks.ECHO_SAPLING));
         entries.accept(new ItemStack(DDBlocks.ECHO_SIGN));
+        entries.accept(new ItemStack(DDBlocks.ECHO_HANGING_SIGN));
         entries.accept(new ItemStack(DDBlocks.ECHO_SLAB));
         entries.accept(new ItemStack(DDBlocks.ECHO_STAIRS));
         entries.accept(new ItemStack(DDBlocks.ECHO_TRAPDOOR));

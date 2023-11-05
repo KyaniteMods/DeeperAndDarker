@@ -166,6 +166,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
+        translationBuilder.add(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");

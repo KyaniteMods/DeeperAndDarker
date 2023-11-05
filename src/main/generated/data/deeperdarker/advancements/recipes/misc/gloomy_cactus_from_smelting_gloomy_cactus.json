@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_gloomy_cactus",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gloomy_cactus"
     ]
   ],
   "rewards": {

@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_gloomslate_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gloomslate_bricks"
     ]
   ],
   "rewards": {

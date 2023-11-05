@@ -6,10 +6,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +23,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+    public void buildRecipes(RecipeOutput exporter) {
         SmithingTransformRecipeBuilder NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
                 Ingredient.of(new ItemStack(Items.NETHERITE_HELMET)),
@@ -249,7 +246,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         oreSmelting(exporter, List.of(DDBlocks.GLOOMY_CACTUS), RecipeCategory.MISC, DDBlocks.GLOOMY_CACTUS, 1.0f, 200, "orange_dye");
     }
 
-    private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
+    private static void registerStairsSlabsAndWalls(RecipeOutput exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
         stairBuilder(stairs, Ingredient.of(stone)).unlockedBy(getHasName(stone), has(stone)).save(exporter);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, stone);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, originalStone);

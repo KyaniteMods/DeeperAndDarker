@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_sculk_stone_brick_slab",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sculk_stone_brick_slab"
     ]
   ],
   "rewards": {

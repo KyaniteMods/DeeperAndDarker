@@ -7,27 +7,23 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.kyanite.deeperdarker.world.structures.DDStructures;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.FrameType;
-import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 
 import java.util.function.Consumer;
 
-public class DDAdvancements implements Consumer<Consumer<Advancement>> {
+public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
     @Override
-    public void accept(Consumer<Advancement> advancementConsumer) {
+    public void accept(Consumer<AdvancementHolder> advancementConsumer) {
         String id = "advancements." + DeeperDarker.MOD_ID + ".";
 
-        Advancement root = Advancement.Builder.advancement()
+        AdvancementHolder root = Advancement.Builder.advancement()
                 .display(
                         Blocks.SCULK,
                         Component.translatable(id + "root.title"),
@@ -37,10 +33,10 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         false,
                         false,
                         false
-                ).addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(Biomes.DEEP_DARK)))
+                ).addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(Biomes.DEEP_DARK)))
                 .save(advancementConsumer, path("root"));
 
-        Advancement findAncientCity = Advancement.Builder.advancement().parent(root)
+        AdvancementHolder findAncientCity = Advancement.Builder.advancement().parent(root)
                 .display(
                         Blocks.DEEPSLATE_TILES,
                         Component.translatable(id + "find_ancient_city.title"),
@@ -50,11 +46,11 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         true,
                         true,
                         false
-                ).addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(BuiltinStructures.ANCIENT_CITY)))
+                ).addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(BuiltinStructures.ANCIENT_CITY)))
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(advancementConsumer, path("find_ancient_city"));
 
-        Advancement killWarden = Advancement.Builder.advancement().parent(findAncientCity)
+        AdvancementHolder killWarden = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.HEART_OF_THE_DEEP,
                         Component.translatable(id + "kill_warden.title"),
@@ -68,7 +64,7 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(advancementConsumer, path("kill_warden"));
 
-        Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden)
+        AdvancementHolder enterOtherside = Advancement.Builder.advancement().parent(killWarden)
                 .display(
                         Blocks.REINFORCED_DEEPSLATE,
                         Component.translatable(id + "enter_otherside.title"),
@@ -81,7 +77,7 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                 ).addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL))
                 .save(advancementConsumer, path("enter_otherside"));
 
-        Advancement findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
+        AdvancementHolder findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
                         DDBlocks.CUT_SCULK_STONE,
                         Component.translatable(id + "find_ancient_temple.title"),
@@ -91,7 +87,7 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         true,
                         true,
                         false
-                ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.inStructure(DDStructures.ANCIENT_TEMPLE)))
+                ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(DDStructures.ANCIENT_TEMPLE)))
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(advancementConsumer, path("find_ancient_temple"));
 
@@ -118,10 +114,10 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         true,
                         true,
                         false)
-                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.DEEPLANDS)))
-                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.ECHOING_FOREST)))
-                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
-                .requirements(RequirementsStrategy.AND)
+                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.DEEPLANDS)))
+                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.ECHOING_FOREST)))
+                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
+                .requirements(AdvancementRequirements.Strategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(advancementConsumer, path("explore_otherside"));
         
@@ -143,11 +139,11 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                 .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED)))
                 .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM)))
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER)))
-                .requirements(RequirementsStrategy.AND)
+                .requirements(AdvancementRequirements.Strategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(advancementConsumer, path("kill_all_sculk_mobs"));
 
-        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
+        AdvancementHolder obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
                 .display(
                         DDItems.REINFORCED_ECHO_SHARD,
                         Component.translatable(id + "obtain_reinforce_echo_shard.title"),
