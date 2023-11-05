@@ -50,7 +50,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.ECHO_TRAPDOOR));
         entries.accept(new ItemStack(DDItems.ECHO_BOAT));
         entries.accept(new ItemStack(DDItems.ECHO_CHEST_BOAT));
-        entries.accept(new ItemStack(DDBlocks.BLOOMING_FLOWERS));
+        entries.accept(new ItemStack(DDBlocks.GLOWING_FLOWERS));
         entries.accept(new ItemStack(DDBlocks.GLOWING_GRASS));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_SCULK));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_MOSS_BLOCK));

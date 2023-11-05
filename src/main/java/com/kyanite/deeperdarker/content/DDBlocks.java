@@ -176,7 +176,7 @@ public class DDBlocks {
     public static final Block GLOOMSLATE_LAPIS_ORE = register("gloomslate_lapis_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(4, 8)));
     public static final Block GLOOMSLATE_DIAMOND_ORE = register("gloomslate_diamond_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(5, 10)));
 
-    public static final Block BLOOMING_FLOWERS = register("blooming_flowers", new BloomingFlowersBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).lightLevel(state -> 9)));
+    public static final Block GLOWING_FLOWERS = register("glowing_flowers", new BloomingFlowersBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).lightLevel(state -> 9)));
     public static final Block GLOWING_GRASS = register("glowing_grass", new GlowingGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 11)));
     public static final Block GLOOMY_GRASS = register("gloomy_grass", new GloomyGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 1)));
     public static final Block GLOOMY_CACTUS = register("gloomy_cactus", new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOL)));

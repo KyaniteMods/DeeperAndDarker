@@ -18,7 +18,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOMING_STEM, DDBlocks.GLOWING_GRASS, DDBlocks.GLOOMY_GRASS);
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.BLOOMING_FLOWERS, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.GLOWING_FLOWERS, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE, DDBlocks.COBBLED_SCULK_STONE, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE_TILES, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.CUT_SCULK_STONE, DDBlocks.CHISELED_SCULK_STONE,
                 DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS,
                 DDBlocks.SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE_SLAB,
@@ -72,9 +72,9 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(DDBlocks.BLOOMING_MOSS_BLOCK);
         getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(DDBlocks.BLOOMING_MOSS_BLOCK);
         getOrCreateTagBuilder(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(DDBlocks.BLOOMING_MOSS_BLOCK);
-        getOrCreateTagBuilder(BlockTags.FLOWERS).add(DDBlocks.BLOOMING_FLOWERS);
-        getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.BLOOMING_FLOWERS);
-        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.BLOOMING_FLOWERS, DDBlocks.GLOOMY_GRASS);
+        getOrCreateTagBuilder(BlockTags.FLOWERS).add(DDBlocks.GLOWING_FLOWERS);
+        getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.GLOWING_FLOWERS);
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.GLOWING_FLOWERS, DDBlocks.GLOOMY_GRASS);
         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT);
         getOrCreateTagBuilder(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL);
 

@@ -2,18 +2,14 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.ibm.icu.impl.Pair;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
-import com.kyanite.deeperdarker.content.blocks.vegetation.BloomingFlowersBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.block.model.ItemModelGenerator;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -24,10 +20,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.*;
@@ -182,10 +176,10 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_ECHO_SAPLING, TextureMapping.plant(DDBlocks.ECHO_SAPLING), blockModelGenerators.modelOutput);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
 
-        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/flowers"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_FLOWERS),
-                new Tuple<>(TextureSlot.create("flowers"), TextureMapping.getBlockTexture(DDBlocks.BLOOMING_FLOWERS)),
-                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_FLOWERS).withSuffix("_stem")));
-        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.BLOOMING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/flowers"), ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS),
+                new Tuple<>(TextureSlot.create("flowers"), TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS)),
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS).withSuffix("_stem")));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.GLOWING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         registerBloomingSculk(blockModelGenerators, DDBlocks.BLOOMING_SCULK);
         blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
@@ -233,7 +227,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_GLOOMSLATE), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDBlocks.BLOOMING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, ResourceLocation.DEFAULT_NAMESPACE + ":broken", "_broken");
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
