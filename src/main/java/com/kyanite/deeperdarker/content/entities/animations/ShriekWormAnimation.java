@@ -229,7 +229,7 @@ public class ShriekWormAnimation {
                     new Keyframe(2f, KeyframeAnimations.degreeVec(-17.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(4f, KeyframeAnimations.degreeVec(-15f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
 
-    public static final AnimationDefinition EMERGE = AnimationDefinition.Builder.withLength(7.8f)
+    public static final AnimationDefinition EMERGE = AnimationDefinition.Builder.withLength(4f)
             .addAnimation("base", new AnimationChannel(AnimationChannel.Targets.POSITION,
                     new Keyframe(0f, KeyframeAnimations.posVec(0f, -129f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(4f, KeyframeAnimations.posVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))

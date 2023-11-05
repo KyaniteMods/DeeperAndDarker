@@ -127,7 +127,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
         if(!players.isEmpty()) {
             this.rangedCooldown--;
-//            System.out.println(level().isClientSide() + ": " + this.rangedCooldown);
             if(this.rangedCooldown < -200) {
                 if(level().isClientSide()) this.ringAttackState.stop();
                 this.rangedCooldown = 440;
@@ -160,7 +159,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
                 double sX = this.random.nextGaussian() * 0.02;
                 double sY = this.random.nextGaussian() * 0.02;
                 double sZ = this.random.nextGaussian() * 0.02;
-                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), this.getX() - this.random.nextDouble(), this.getY() + 1, this.getZ() - this.random.nextDouble(), sX, sY, sZ);
+                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), getRandomX(1), getY(), getRandomZ(1), sX, sY, sZ);
             }
         }
     }
