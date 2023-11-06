@@ -144,8 +144,8 @@ public class DeeperDarker {
 
             if(event.getLevel() instanceof ServerLevel level) {
                 RandomSource random = level.getRandom();
-                if(random.nextFloat() < 0.1f) {
-                    if(random.nextFloat() < 0.92f) {
+                if(random.nextFloat() < 0.16f) {
+                    if(random.nextFloat() < 0.7f) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
                         }
