@@ -21,12 +21,12 @@ public class GlowingGrassBlock extends BushBlock {
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockState state = pLevel.getBlockState(pPos.below());
-        return state.is(DDBlocks.BLOOMING_SCULK.get());
+        return state.is(DDBlocks.BLOOMING_SCULK_STONE.get());
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(DDBlocks.BLOOMING_SCULK.get());
+        return pState.is(DDBlocks.BLOOMING_SCULK_STONE.get());
     }
 
     @Override

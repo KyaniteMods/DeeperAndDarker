@@ -7,7 +7,7 @@
     "ground_state": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "deeperdarker:blooming_sculk"
+        "Name": "deeperdarker:blooming_sculk_stone"
       }
     },
     "replaceable": "#deeperdarker:gloomy_sculk_replaceable",

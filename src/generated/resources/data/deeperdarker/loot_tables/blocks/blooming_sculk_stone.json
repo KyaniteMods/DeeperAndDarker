@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "deeperdarker:blooming_sculk"
+              "name": "deeperdarker:blooming_sculk_stone"
             },
             {
               "type": "minecraft:item",
@@ -41,5 +41,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "deeperdarker:blocks/blooming_sculk"
+  "random_sequence": "deeperdarker:blocks/blooming_sculk_stone"
 }

@@ -63,7 +63,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CUT_SCULK_STONE_WALL);
             event.accept(DDBlocks.CHISELED_SCULK_STONE);
 
-            event.accept(DDBlocks.BLOOMING_SCULK);
+            event.accept(DDBlocks.BLOOMING_SCULK_STONE);
             event.accept(DDBlocks.BLOOMING_MOSS_BLOCK);
 
             event.accept(DDBlocks.GLOOMSLATE);

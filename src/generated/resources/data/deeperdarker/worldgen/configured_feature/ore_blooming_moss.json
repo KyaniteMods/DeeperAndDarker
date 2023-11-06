@@ -9,7 +9,7 @@
           "Name": "deeperdarker:blooming_moss_block"
         },
         "target": {
-          "block": "deeperdarker:blooming_sculk",
+          "block": "deeperdarker:blooming_sculk_stone",
           "predicate_type": "minecraft:block_match"
         }
       },

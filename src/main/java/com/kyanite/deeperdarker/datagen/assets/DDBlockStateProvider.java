@@ -81,7 +81,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         wallBlock(DDBlocks.CUT_SCULK_STONE_WALL, blockLoc(DDBlocks.CUT_SCULK_STONE));
         simpleBlock(DDBlocks.CHISELED_SCULK_STONE.get());
 
-        simpleBlock(DDBlocks.BLOOMING_SCULK.get(), models().cubeBottomTop(DDBlocks.BLOOMING_SCULK.getId().getPath(), blockLoc(DDBlocks.BLOOMING_SCULK), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.BLOOMING_SCULK, "top")));
+        simpleBlock(DDBlocks.BLOOMING_SCULK_STONE.get(), models().cubeBottomTop(DDBlocks.BLOOMING_SCULK_STONE.getId().getPath(), blockLoc(DDBlocks.BLOOMING_SCULK_STONE), blockLoc(DDBlocks.SCULK_STONE), blockLoc(DDBlocks.BLOOMING_SCULK_STONE, "top")));
         simpleBlock(DDBlocks.BLOOMING_MOSS_BLOCK.get());
 
         simpleBlock(DDBlocks.GLOOMSLATE.get());

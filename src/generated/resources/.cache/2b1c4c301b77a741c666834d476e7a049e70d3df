@@ -1,5 +1,6 @@
-// 1.20.1	2023-11-01T14:34:16.9781214	Tags for minecraft:block mod id deeperdarker
-453499b5116c2c24d57c28ec55db0211260f511d data/deeperdarker/tags/blocks/echo_soil.json
+// 1.20.1	2023-11-06T13:11:21.3683441	Tags for minecraft:block mod id deeperdarker
+3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
+7bc8986cab053fefad0438a574d6ee6ae0f5a2b2 data/deeperdarker/tags/blocks/echo_sapling_placeable.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/blocks/infiniburn_otherside.json
@@ -25,15 +26,16 @@ dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/blocks/copper_ores.
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/blocks/emerald_ores.json
 4b1b7b3d622aeb255906e952be4ddaf003b6026f data/minecraft/tags/blocks/fence_gates.json
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/blocks/flowers.json
+15974f1aa70f695dbcc29d783956bcdab88647ec data/minecraft/tags/blocks/flower_pots.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/blocks/gold_ores.json
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/blocks/inside_step_sound_blocks.json
 08b0595e3c0290061ed898dfbeb230d6c4f95eeb data/minecraft/tags/blocks/iron_ores.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/blocks/lapis_ores.json
 65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/blocks/leaves.json
-21ba86398acef0f961c304fe5b2fd972455e0e3d data/minecraft/tags/blocks/logs_that_burn.json
+752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/blocks/logs_that_burn.json
 f7e256dd1d5e6019b4d5f567311a3c83e0fcc213 data/minecraft/tags/blocks/mineable/axe.json
 7b8019698b80745368a00837d63c6265a4e8b120 data/minecraft/tags/blocks/mineable/hoe.json
-ad177a07d9375078090756e86bdf590b27cd0566 data/minecraft/tags/blocks/mineable/pickaxe.json
+64233959059c6b6d92305cd775cf39b7f4568548 data/minecraft/tags/blocks/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/blocks/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/blocks/needs_iron_tool.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/blocks/needs_stone_tool.json

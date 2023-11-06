@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
@@ -24,7 +23,6 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-        copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
@@ -63,7 +61,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(Tags.Blocks.ORES_LAPIS, Tags.Items.ORES_LAPIS);
         copy(Tags.Blocks.ORES_DIAMOND, Tags.Items.ORES_DIAMOND);
 
-        tag(DDTags.Items.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get().asItem(), DDBlocks.ECHO_WOOD.get().asItem(), DDBlocks.STRIPPED_ECHO_LOG.get().asItem(), DDBlocks.STRIPPED_ECHO_WOOD.get().asItem());
+        copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get());

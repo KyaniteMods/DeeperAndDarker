@@ -53,6 +53,6 @@ public class GlowingFlowersBlock extends BushBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(DDBlocks.BLOOMING_SCULK.get()) || pState.is(DDBlocks.BLOOMING_MOSS_BLOCK.get());
+        return pState.is(DDBlocks.BLOOMING_SCULK_STONE.get()) || pState.is(DDBlocks.BLOOMING_MOSS_BLOCK.get());
     }
 }

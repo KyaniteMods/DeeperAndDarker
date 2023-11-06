@@ -12,7 +12,8 @@ import net.minecraft.world.level.block.Block;
 
 public class DDTags {
     public static class Blocks {
-        public static final TagKey<Block> ECHO_SOIL = tag("echo_soil");
+        public static final TagKey<Block> ECHO_LOGS = tag("echo_logs");
+        public static final TagKey<Block> ECHO_SAPLING_PLACEABLE = tag("echo_sapling_placeable");
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = tag("sculk_stone_replaceables");
         public static final TagKey<Block> SCULK_REPLACEABLES = tag("sculk_replaceables");
         public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = tag("gloomslate_replaceable");

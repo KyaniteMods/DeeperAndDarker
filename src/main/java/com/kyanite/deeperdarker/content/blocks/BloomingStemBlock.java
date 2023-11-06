@@ -59,8 +59,8 @@ public class BloomingStemBlock extends Block {
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK.get())) return this.defaultBlockState();
-        return this.defaultBlockState().setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK.get())).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
+        if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return this.defaultBlockState();
+        return this.defaultBlockState().setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class BloomingStemBlock extends Block {
             return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
         }
 
-        if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK.get())) return pState.setValue(DOWN, true);
+        if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return pState.setValue(DOWN, true);
         if(pDirection.getAxis().isHorizontal() && pNeighborState.is(this) && canSurvive(pLevel.getBlockState(pNeighborPos.below()))) return pState;
         return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), pNeighborState.is(this));
     }
@@ -108,6 +108,6 @@ public class BloomingStemBlock extends Block {
     }
 
     private boolean canSurvive(BlockState state) {
-        return state.is(this) || state.is(DDBlocks.BLOOMING_SCULK.get());
+        return state.is(this) || state.is(DDBlocks.BLOOMING_SCULK_STONE.get());
     }
 }
