@@ -18,10 +18,10 @@ import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class DDWorldGeneration extends DatapackBuiltinEntriesProvider {
+public class DDRegistriesGenerator extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder().add(Registries.BIOME, OthersideBiomes::bootstrap).add(Registries.CONFIGURED_FEATURE, DDConfiguredFeatures::bootstrap).add(Registries.DIMENSION_TYPE, OthersideDimension::bootstrap).add(Registries.PLACED_FEATURE, DDPlacedFeatures::bootstrap).add(Registries.PROCESSOR_LIST, DDProcessorLists::bootstrap).add(Registries.STRUCTURE, DDStructures::bootstrap).add(Registries.STRUCTURE_SET, DDStructureSets::bootstrap).add(Registries.TEMPLATE_POOL, DDPools::bootstrap);
 
-    public DDWorldGeneration(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public DDRegistriesGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(DeeperDarker.MOD_ID));
     }
 }

@@ -114,7 +114,7 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
 
         generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, event.getLookupProvider(), fileHelper, List.of(new DDAdvancements())));
-        generator.addProvider(event.includeServer(), new DDWorldGeneration(packOutput, event.getLookupProvider()));
+        generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, event.getLookupProvider()));
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
