@@ -28,16 +28,16 @@ public class DDConfig {
     @SerialEntry
     public boolean geysersApplySlowFalling = false;
 
-    @SerialEntry("The minimum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
+    @SerialEntry(comment = "The minimum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMinWidth = 8;
 
-    @SerialEntry("The minimum inner height (not counting the frame) of the Otherside portal in order to light it successfully")
+    @SerialEntry(comment = "The minimum inner height (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMinHeight = 4;
 
-    @SerialEntry("The minimum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
+    @SerialEntry(comment = "The maximum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMaxWidth = 48;
 
-    @SerialEntry("The minimum inner height (not counting the frame) of the Otherside portal in order to light it successfully")
+    @SerialEntry(comment = "The maximum inner height (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMaxHeight = 24;
 
     @SerialEntry

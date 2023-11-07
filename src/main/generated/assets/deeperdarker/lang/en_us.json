@@ -163,6 +163,8 @@
   "config.deeperdarker.title": "Deeper and Darker",
   "config.deeperdarker.wardenHeartPulses.description": "Determines if the Heart of the Deep should emit a random pulsing sound.",
   "config.deeperdarker.wardenHeartPulses.title": "Heart of the Deep Pulses",
+  "death.attack.deeperdarker.bite": "%s was bitten by a Sculk Jaw",
+  "death.attack.deeperdarker.ring": "%s heard the ring of %s",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "enchantment.deeperdarker.catalysis": "Catalysis",
   "enchantment.deeperdarker.sculk_smite": "Sculk Smite",
