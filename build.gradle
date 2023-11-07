@@ -30,6 +30,12 @@ repositories {
 		name = "Ladysnake Mods"
 		url = 'https://maven.ladysnake.org/releases'
 	}
+	maven {
+		name 'Xander Maven'
+		url 'https://maven.isxander.dev/releases'
+	}
+	maven {	url = "https://oss.sonatype.org/content/repositories/snapshots" }
+	maven { url = "https://maven.terraformersmc.com/releases" }
 }
 
 loom {
@@ -68,8 +74,10 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation "net.kyrptonaught:customportalapi:${project.customportalapi_version}"
-	include "net.kyrptonaught:customportalapi:${project.customportalapi_version}"
+	include modImplementation("net.kyrptonaught:customportalapi:${project.customportalapi_version}")
+
+	modImplementation("dev.isxander.yacl:yet-another-config-lib-fabric:${project.yacl_version}")
+	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 	// Show Me Your Skin!
 	modImplementation "show-me-your-skin:show-me-your-skin:${project.show_me_your_skin_version}"

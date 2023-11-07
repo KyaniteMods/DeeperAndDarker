@@ -11,6 +11,7 @@
 		"homepage": "https://kyanitemods.dev/",
 		"sources": "https://github.com/KyaniteMods/DeeperAndDarker/tree/fabric-1.20"
 	},
+	"icon": "assets/deeperdarker/icon.png",
 	"license": "AGPL-3.0",
 	"environment": "*",
 	"entrypoints": {
@@ -22,6 +23,9 @@
 		],
 		"fabric-datagen": [
 			"com.kyanite.deeperdarker.util.DeeperDarkerDatagen"
+		],
+		"modmenu": [
+			"com.kyanite.deeperdarker.compat.ModMenuIntegration"
 		]
 	},
 	"mixins": [
