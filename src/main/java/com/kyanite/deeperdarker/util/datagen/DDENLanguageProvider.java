@@ -243,5 +243,29 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("biome." + OthersideBiomes.DEEPLANDS.location().getNamespace() + "." + OthersideBiomes.DEEPLANDS.location().getPath(), "Deeplands");
         translationBuilder.add("biome." + OthersideBiomes.ECHOING_FOREST.location().getNamespace() + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), "Echoing Forest");
         translationBuilder.add("biome." + OthersideBiomes.OVERCAST_COLUMNS.location().getNamespace() + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), "Overcast Columns");
+
+        translationBuilder.add("config.deeperdarker.title", "Deeper and Darker");
+        translationBuilder.add("config.deeperdarker.server.title", "Server");
+        translationBuilder.add("config.deeperdarker.client.title", "Client");
+        translationBuilder.add("config.deeperdarker.spawnSomethingFromAncientVaseChance.title", "Ancient Vase Mob Spawn Chance");
+        translationBuilder.add("config.deeperdarker.spawnSomethingFromAncientVaseChance.description", "Defines the chance of a mob (Stalker or Sculk Leech) spawning from an Ancient Vase.");
+        translationBuilder.add("config.deeperdarker.sculkLeechesFromAncientVaseChance.title", "Sculk Leech Spawn Chance");
+        translationBuilder.add("config.deeperdarker.sculkLeechesFromAncientVaseChance.description", "Defines the chance of Sculk Leeches spawning from an Ancient Vase if the setting above ends up being true. If a mob should spawn and this setting ends up being false, a Stalker will spawn.");
+        translationBuilder.add("config.deeperdarker.renderWardenHelmetHorns.title", "Render Warden Helmet Horns");
+        translationBuilder.add("config.deeperdarker.renderWardenHelmetHorns.description", "Determines if the horns in the Warden Helmet should be rendered.");
+        translationBuilder.add("config.deeperdarker.geysersApplySlowFalling.title", "Geysers Apply Slow Falling");
+        translationBuilder.add("config.deeperdarker.geysersApplySlowFalling.description", "Determines if stepping on a Gloomy Geyser grants the player Slow Falling.");
+        translationBuilder.add("config.deeperdarker.portalMinWidth.title", "Minimum Portal Width");
+        translationBuilder.add("config.deeperdarker.portalMinWidth.description", "Defines the minimum width (not counting the frame) for an Otherside portal to be valid.");
+        translationBuilder.add("config.deeperdarker.portalMinHeight.title", "Minimum Portal Height");
+        translationBuilder.add("config.deeperdarker.portalMinHeight.description", "Defines the minimum height (not counting the frame) for an Otherside portal to be valid.");
+        translationBuilder.add("config.deeperdarker.portalMaxWidth.title", "Maximum Portal Width");
+        translationBuilder.add("config.deeperdarker.portalMaxWidth.description", "Defines the maximum width (not counting the frame) for an Otherside portal to be valid.");
+        translationBuilder.add("config.deeperdarker.portalMaxHeight.title", "Maximum Portal Height");
+        translationBuilder.add("config.deeperdarker.portalMaxHeight.description", "Defines the maximum height (not counting the frame) for an Otherside portal to be valid.");
+        translationBuilder.add("config.deeperdarker.wardenHeartPulses.title", "Heart of the Deep Pulses");
+        translationBuilder.add("config.deeperdarker.wardenHeartPulses.description", "Determines if the Heart of the Deep should emit a random pulsing sound.");
+        translationBuilder.add("config.deeperdarker.changePhantomTextures.title", "Change Phantom Textures");
+        translationBuilder.add("config.deeperdarker.changePhantomTextures.description", "Determines if Phantoms should have a different texture in the Deeplands.");
     }
 }
