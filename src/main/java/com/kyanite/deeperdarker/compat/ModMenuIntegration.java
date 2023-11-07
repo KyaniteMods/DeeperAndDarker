@@ -99,7 +99,7 @@ public class ModMenuIntegration implements ModMenuApi {
                             newVal -> DDConfig.HANDLER.instance().portalMinHeight = newVal
                     )
                     .controller(opt -> IntegerFieldControllerBuilder.create(opt)
-                            .range(2, 128)
+                            .range(1, 128)
                             .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
                     .build();
 
