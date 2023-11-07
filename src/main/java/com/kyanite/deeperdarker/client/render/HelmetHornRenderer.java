@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.HelmetHornsModel;
 import com.kyanite.deeperdarker.compat.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DDConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.model.HeadedModel;
@@ -44,6 +45,7 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
     }
 
     public void render(PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int light, T livingEntity, float f, float g, float h, float j, float k, float l) {
+        if (!DDConfig.HANDLER.instance().renderWardenHelmetHorns) return;
         boolean hasShowMeYourSkin = FabricLoader.getInstance().isModLoaded("showmeyourskin");
         if (hasShowMeYourSkin) ShowMeYourSkinCompat.captureContext(EquipmentSlot.HEAD, livingEntity);
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);

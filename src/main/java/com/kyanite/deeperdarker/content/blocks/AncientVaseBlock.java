@@ -13,8 +13,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -72,8 +70,8 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
         if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
             RandomSource random = pLevel.getRandom();
-            if (random.nextFloat() < 0.16f) {
-                if (random.nextDouble() < 0.7f) {
+            if (random.nextFloat() < DDConfig.HANDLER.instance().spawnSomethingFromAncientVaseChance) {
+                if (random.nextDouble() < DDConfig.HANDLER.instance().sculkLeechesFromAncientVaseChance) {
                     for (int i = 0; i < random.nextInt(1, 4); i++) {
                         SculkLeech entity = DDEntities.SCULK_LEECH.create(pLevel);
                         assert entity != null;
