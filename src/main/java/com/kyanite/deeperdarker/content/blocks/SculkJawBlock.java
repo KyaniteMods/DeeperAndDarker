@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.entities.DDMobType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +34,7 @@ public class SculkJawBlock extends Block {
         if(pEntity instanceof Monster monster && monster.getMobType() == DDMobType.SCULK) return;
         if(pState.getValue(CAN_BITE) && pEntity instanceof LivingEntity entity) {
             pLevel.setBlock(pPos, pState.setValue(BITING, true), 3);
-            entity.hurt(pLevel.damageSources().magic(), 3);
+            entity.hurt(pLevel.damageSources().source(DDDamageTypes.BITE), 3);
             pLevel.scheduleTick(pPos, this, 35);
         }
     }
@@ -47,7 +48,7 @@ public class SculkJawBlock extends Block {
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        if(pEntity instanceof LivingEntity entity) entity.hurt(pLevel.damageSources().magic(), 3);
+        if(pEntity instanceof LivingEntity entity) entity.hurt(pLevel.damageSources().source(DDDamageTypes.BITE), 3);
     }
 
     @Override

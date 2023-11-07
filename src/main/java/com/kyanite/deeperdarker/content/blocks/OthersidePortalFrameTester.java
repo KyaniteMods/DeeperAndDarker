@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.google.common.collect.Sets;
 import com.kyanite.deeperdarker.util.DDConfig;
 import net.kyrptonaught.customportalapi.portal.frame.PortalFrameTester;
 import net.kyrptonaught.customportalapi.portal.frame.VanillaPortalAreaHelper;
@@ -15,8 +16,33 @@ import java.util.function.Predicate;
 
 public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
     @Override
+    public PortalFrameTester init(LevelAccessor world, BlockPos blockPos, Direction.Axis axis, Block... foundations) {
+        VALID_FRAME = Sets.newHashSet(foundations);
+        this.world = world;
+        this.axis = axis;
+        this.lowerCorner = this.getLowerCorner(blockPos, axis, Direction.Axis.Y);
+        this.foundPortalBlocks = 0;
+        if (lowerCorner == null) {
+            lowerCorner = blockPos;
+            width = height = 1;
+        } else {
+            this.width = this.getSize(axis, DDConfig.HANDLER.instance().portalMinWidth, DDConfig.HANDLER.instance().portalMaxWidth);
+            if (this.width > 0) {
+                this.height = this.getSize(Direction.Axis.Y, DDConfig.HANDLER.instance().portalMinHeight, DDConfig.HANDLER.instance().portalMaxHeight);
+                if (checkForValidFrame(axis, Direction.Axis.Y, width, height)) {
+                    countExistingPortalBlocks(axis, Direction.Axis.Y, width, height);
+                } else {
+                    lowerCorner = null;
+                    width = height = 1;
+                }
+            }
+        }
+        return this;
+    }
+
+    @Override
     public boolean isRequestedSize(int attemptWidth, int attemptHeight) {
-        return (this.width >= attemptWidth) && (this.height >= attemptHeight);
+        return (this.width >= DDConfig.HANDLER.instance().portalMinWidth) && (this.height >= DDConfig.HANDLER.instance().portalMinHeight);
     }
 
     @Override

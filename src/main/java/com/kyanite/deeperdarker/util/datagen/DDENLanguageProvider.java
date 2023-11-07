@@ -266,5 +266,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.wardenHeartPulses.description", "Determines if the Heart of the Deep should emit a random pulsing sound.");
         translationBuilder.add("config.deeperdarker.changePhantomTextures.title", "Change Phantom Textures");
         translationBuilder.add("config.deeperdarker.changePhantomTextures.description", "Determines if Phantoms should have a different texture in the Deeplands.");
+
+        translationBuilder.add("death.attack.deeperdarker.bite", "%s was bitten by a Sculk Jaw");
+        translationBuilder.add("death.attack.deeperdarker.ring", "%s heard the ring of %s");
     }
 }
