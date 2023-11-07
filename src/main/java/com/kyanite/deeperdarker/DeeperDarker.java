@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
+import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.DDFoliagePlacerTypes;
@@ -37,6 +38,8 @@ public class DeeperDarker implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		DDConfig.HANDLER.load();
+
 		DDCreativeTab.init();
 		DDItems.init();
 		DDBlocks.init();
