@@ -137,7 +137,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
                 this.rangedCooldown = 440;
             } else if(this.rangedCooldown < 0 && !level().isClientSide()) {
                 for(Player player : players) {
-                    player.hurt(DDDamageTypes.source(this.level(), DDDamageTypes.RING), 2);
+                    player.hurt(DDDamageTypes.source(this.level(), DDDamageTypes.RING, player, this), 2);
                 }
                 if(this.rangedCooldown % 40 == 0 && level() instanceof ServerLevel serverLevel) {
                     int spawn = this.random.nextIntBetweenInclusive(1, 3);

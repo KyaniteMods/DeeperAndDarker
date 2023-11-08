@@ -41,6 +41,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.title", "Noise Complaint");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.description", "Acquire a Sonorous Staff");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
         add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");
@@ -49,9 +51,6 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforced_echo_shard.description", "Reinforce an Echo Shard");
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
-        add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.title", "Noise Complaint");
-        add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.description", "Acquire a Sonorous Staff");
-
 
         add("itemGroup." + DeeperDarker.MOD_ID, "Deeper and Darker");
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
@@ -71,7 +70,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
-
+        add("death.attack.jaw", "%1$s was trapped by a jaw");
+        add("death.attack.ring", "%1$s heard the ring of %2$s");
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.getId().getPath() + ".desc", "Spreads sculk when mobs are killed.");
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.getId().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
