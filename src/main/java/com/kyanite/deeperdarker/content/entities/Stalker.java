@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
+import com.kyanite.deeperdarker.util.DDDamageTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -136,7 +137,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
                 this.rangedCooldown = 440;
             } else if(this.rangedCooldown < 0 && !level().isClientSide()) {
                 for(Player player : players) {
-                    player.hurt(this.damageSources().magic(), 2f);
+                    player.hurt(DDDamageTypes.source(this.level(), DDDamageTypes.RING), 2);
                 }
                 if(this.rangedCooldown % 40 == 0 && level() instanceof ServerLevel serverLevel) {
                     int spawn = this.random.nextIntBetweenInclusive(1, 3);
