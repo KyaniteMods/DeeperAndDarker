@@ -166,7 +166,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
+        translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");
         translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");
+        translationBuilder.add(DDEnchantments.SCULK_SMITE.getDescriptionId() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
