@@ -34,6 +34,7 @@ public class SculkJawBlock extends Block {
         if(pState.getValue(CAN_BITE) && pEntity instanceof LivingEntity entity) {
             pLevel.setBlock(pPos, pState.setValue(BITING, true), 3);
             entity.hurt(pLevel.damageSources().magic(), 3);
+            if (pEntity instanceof Player player) player.giveExperiencePoints(-4);
             pLevel.scheduleTick(pPos, this, 35);
         }
     }
