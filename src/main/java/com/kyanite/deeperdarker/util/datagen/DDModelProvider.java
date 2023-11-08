@@ -180,8 +180,8 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.create("flowers"), TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS)),
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS).withSuffix("_stem")));
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.GLOWING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
-        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        registerBloomingSculk(blockModelGenerators, DDBlocks.BLOOMING_SCULK);
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, BlockModelGenerators.TintState.NOT_TINTED);
+        registerBloomingSculkStone(blockModelGenerators);
         blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
         registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.BLOOMING_STEM);
     }
@@ -372,9 +372,9 @@ public class DDModelProvider extends FabricModelProvider {
         parentModel.create(child, textureMap, blockModelGenerators.modelOutput);
     }
 
-    private void registerBloomingSculk(BlockModelGenerators blockModelGenerators, Block block) {
-        TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_STONE)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block));
-        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_BOTTOM_TOP.create(block, textureMapping, blockModelGenerators.modelOutput)));
+    private void registerBloomingSculkStone(BlockModelGenerators blockModelGenerators) {
+        TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_STONE)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_SCULK_STONE, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_SCULK_STONE));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.BLOOMING_SCULK_STONE, ModelTemplates.CUBE_BOTTOM_TOP.create(DDBlocks.BLOOMING_SCULK_STONE, textureMapping, blockModelGenerators.modelOutput)));
     }
 
     private void registerBloomingStem(BlockModelGenerators blockModelGenerators, BloomingStemBlock block) {

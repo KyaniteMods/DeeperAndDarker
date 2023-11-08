@@ -52,7 +52,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.ECHO_CHEST_BOAT));
         entries.accept(new ItemStack(DDBlocks.GLOWING_FLOWERS));
         entries.accept(new ItemStack(DDBlocks.GLOWING_GRASS));
-        entries.accept(new ItemStack(DDBlocks.BLOOMING_SCULK));
+        entries.accept(new ItemStack(DDBlocks.BLOOMING_SCULK_STONE));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_MOSS_BLOCK));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_STEM));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE));

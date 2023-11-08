@@ -114,7 +114,7 @@ public class DDBlocks {
     public static final Block CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CHISELED_SCULK_STONE = register("chiseled_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE)));
 
-    public static final Block BLOOMING_SCULK = register("blooming_sculk", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f)));
+    public static final Block BLOOMING_SCULK_STONE = register("blooming_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f)));
     public static final Block BLOOMING_MOSS_BLOCK = register("blooming_moss_block", new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.SCULK)));
 
     public static final Block GLOOMSLATE = register("gloomslate", new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));

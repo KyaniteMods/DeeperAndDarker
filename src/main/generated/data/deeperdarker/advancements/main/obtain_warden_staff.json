@@ -1,12 +1,12 @@
 {
-  "parent": "deeperdarker:main/kill_warden",
+  "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
-    "reinforce_echo_shard": {
+    "warden_staff": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:reinforced_echo_shard"
+              "deeperdarker:sonorous_staff"
             ]
           }
         ]
@@ -17,21 +17,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.obtain_reinforce_echo_shard.description"
+      "translate": "advancements.deeperdarker.obtain_warden_Staff.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "deeperdarker:reinforced_echo_shard"
+      "item": "deeperdarker:sonorous_staff"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.obtain_reinforce_echo_shard.title"
+      "translate": "advancements.deeperdarker.obtain_warden_staff.title"
     }
   },
   "requirements": [
     [
-      "reinforce_echo_shard"
+      "warden_staff"
     ]
   ],
   "sends_telemetry_event": true

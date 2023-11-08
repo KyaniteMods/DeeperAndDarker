@@ -137,7 +137,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DDBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
         translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
-        translationBuilder.add(DDBlocks.BLOOMING_SCULK, "Blooming Sculk");
+        translationBuilder.add(DDBlocks.BLOOMING_SCULK_STONE, "Blooming Sculk Stone");
         translationBuilder.add(DDBlocks.BLOOMING_MOSS_BLOCK, "Blooming Moss Block");
         translationBuilder.add(DDBlocks.GLOWING_FLOWERS, "Glowing Flowers");
         translationBuilder.add(DDBlocks.GLOWING_GRASS, "Glowing Grass");
@@ -171,6 +171,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
+        translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");
@@ -235,12 +236,14 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.title", "Noise Complaint");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.description", "Acquire a Sonorous Staff");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.description", "Kill one of every Sculk monster");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.title", "Sculk Engineer");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforce_echo_shard.description", "Reinforce an Echo Shard");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforced_echo_shard.title", "Sculk Engineer");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforced_echo_shard.description", "Reinforce an Echo Shard");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
 

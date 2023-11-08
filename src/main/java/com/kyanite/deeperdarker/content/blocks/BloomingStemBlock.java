@@ -63,8 +63,8 @@ public class BloomingStemBlock extends Block {
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK)) return this.defaultBlockState();
-        return this.defaultBlockState().setValue(UP, aboveState.is(this)).setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK)).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
+        if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)) return this.defaultBlockState();
+        return this.defaultBlockState().setValue(UP, aboveState.is(this)).setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
     }
 
     @Override
@@ -88,7 +88,7 @@ public class BloomingStemBlock extends Block {
             return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
         }
 
-        if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK)) return pState.setValue(DOWN, true);
+        if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK_STONE)) return pState.setValue(DOWN, true);
         return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), pNeighborState.is(this));
     }
 
@@ -104,7 +104,7 @@ public class BloomingStemBlock extends Block {
         if (canSurvive(pLevel.getBlockState(pPos.below()))) return true;
         Set<BlockPos> connectedBloomingStems = this.getConnectedBloomingStems(pLevel, pPos);
         for (BlockPos pos : connectedBloomingStems) {
-            if (pLevel.getBlockState(pos).getValue(DOWN) && pLevel.getBlockState(pos.below()).is(DDBlocks.BLOOMING_SCULK)) return true;
+            if (pLevel.getBlockState(pos).getValue(DOWN) && pLevel.getBlockState(pos.below()).is(DDBlocks.BLOOMING_SCULK_STONE)) return true;
         }
         return false;
     }
@@ -124,6 +124,6 @@ public class BloomingStemBlock extends Block {
     }
 
     private boolean canSurvive(BlockState state) {
-        return state.is(this) || state.is(DDBlocks.BLOOMING_SCULK);
+        return state.is(this) || state.is(DDBlocks.BLOOMING_SCULK_STONE);
     }
 }

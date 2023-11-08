@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.Mirror;
@@ -53,6 +52,6 @@ public class BloomingFlowersBlock extends BushBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(DDBlocks.BLOOMING_SCULK) || pState.is(DDBlocks.BLOOMING_MOSS_BLOCK);
+        return pState.is(DDBlocks.BLOOMING_SCULK_STONE) || pState.is(DDBlocks.BLOOMING_MOSS_BLOCK);
     }
 }

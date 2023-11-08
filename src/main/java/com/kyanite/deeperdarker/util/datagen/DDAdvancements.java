@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.kyanite.deeperdarker.world.structures.DDStructures;
+import java.util.function.Consumer;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.FrameType;
@@ -15,12 +16,9 @@ import net.minecraft.advancements.critereon.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-
-import java.util.function.Consumer;
 
 public class DDAdvancements implements Consumer<Consumer<Advancement>> {
     @Override
@@ -107,6 +105,19 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         false
                 ).addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER))
                 .save(advancementConsumer, path("obtain_sculk_transmitter"));
+        
+        Advancement.Builder.advancement().parent(enterOtherside)
+                        .display(
+                                DDItems.SONOROUS_STAFF,
+                                Component.translatable(id + "obtain_warden_staff.title"),
+                                Component.translatable(id + "obtain_warden_Staff.description"),
+                                null,
+                                FrameType.TASK,
+                                true,
+                                true,
+                                false
+                        ).addCriterion("warden_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF))
+                        .save(advancementConsumer, path("obtain_warden_staff"));
 
         Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
@@ -151,15 +162,15 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
         Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
                 .display(
                         DDItems.REINFORCED_ECHO_SHARD,
-                        Component.translatable(id + "obtain_reinforce_echo_shard.title"),
-                        Component.translatable(id + "obtain_reinforce_echo_shard.description"),
+                        Component.translatable(id + "obtain_reinforced_echo_shard.title"),
+                        Component.translatable(id + "obtain_reinforced_echo_shard.description"),
                         null,
                         FrameType.TASK,
                         true,
                         true,
                         false
-                ).addCriterion("reinforce_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD))
-                .save(advancementConsumer, path("obtain_reinforce_echo_shard"));
+                ).addCriterion("reinforced_echo_shard", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.REINFORCED_ECHO_SHARD))
+                .save(advancementConsumer, path("obtain_reinforced_echo_shard"));
 
         Advancement.Builder.advancement().parent(obtainReinforcedEchoShard)
                 .display(
