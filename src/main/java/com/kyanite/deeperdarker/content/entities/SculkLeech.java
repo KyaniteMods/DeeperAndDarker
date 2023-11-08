@@ -61,10 +61,7 @@ public class SculkLeech extends Monster {
 
     @Override
     public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
-            this.attackState.start(this.tickCount);
-        } else {
-            super.handleEntityEvent(pId);
-        }
+        if(pId == 4) this.attackState.start(this.tickCount);
+        else super.handleEntityEvent(pId);
     }
 }
