@@ -146,7 +146,7 @@
   "block.deeperdarker.stripped_echo_log": "Stripped Echo Log",
   "block.deeperdarker.stripped_echo_wood": "Stripped Echo Wood",
   "block.deeperdarker.unlinked": "Unlinked transmitter",
-  "death.attack.jaw": "%1$s was trapped by a jaw",
+  "death.attack.jaw": "%1$s was devoured",
   "death.attack.ring": "%1$s heard the ring of %2$s",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "enchantment.deeperdarker.catalysis": "Catalysis",

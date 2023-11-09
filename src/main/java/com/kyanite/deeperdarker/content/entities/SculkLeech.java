@@ -50,6 +50,7 @@ public class SculkLeech extends Monster {
     @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
+        if (pEntity instanceof Player player) player.giveExperiencePoints(-4);
         return super.doHurtTarget(pEntity);
     }
 
@@ -60,10 +61,7 @@ public class SculkLeech extends Monster {
 
     @Override
     public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
-            this.attackState.start(this.tickCount);
-        } else {
-            super.handleEntityEvent(pId);
-        }
+        if(pId == 4) this.attackState.start(this.tickCount);
+        else super.handleEntityEvent(pId);
     }
 }
