@@ -133,6 +133,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.GLOOMY_CACTUS);
             event.accept(DDBlocks.SCULK_TENDRILS);
             event.accept(DDBlocks.SCULK_VINES);
+            event.accept(DDBlocks.GLOWING_ROOTS);
+            event.accept(DDBlocks.GLOWING_VINES);
 
             event.accept(DDItems.ECHO_SIGN);
             event.accept(DDItems.ECHO_HANGING_SIGN);

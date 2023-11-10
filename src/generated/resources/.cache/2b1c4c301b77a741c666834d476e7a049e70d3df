@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-06T13:11:21.3683441	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2023-11-10T17:19:09.1808516	Tags for minecraft:block mod id deeperdarker
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
 7bc8986cab053fefad0438a574d6ee6ae0f5a2b2 data/deeperdarker/tags/blocks/echo_sapling_placeable.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
@@ -18,7 +18,7 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/forge/tags/blocks/ores/lapis.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/forge/tags/blocks/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/forge/tags/blocks/stone.json
 353e05883557bd5ca39b3b73e78bb9ae3edd0795 data/minecraft/tags/blocks/ceiling_hanging_signs.json
-63b044bcc3280227ecffe48e242cddc200acd26c data/minecraft/tags/blocks/climbable.json
+314df731db028913e863dd08c26bae96af6482af data/minecraft/tags/blocks/climbable.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/blocks/coal_ores.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/blocks/copper_ores.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/blocks/diamond_ores.json
@@ -34,7 +34,7 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/blocks/lapis_ores.j
 65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/blocks/leaves.json
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/blocks/logs_that_burn.json
 f7e256dd1d5e6019b4d5f567311a3c83e0fcc213 data/minecraft/tags/blocks/mineable/axe.json
-7b8019698b80745368a00837d63c6265a4e8b120 data/minecraft/tags/blocks/mineable/hoe.json
+3f2e555f5694cd1e1421158bb6ceea922dc330c0 data/minecraft/tags/blocks/mineable/hoe.json
 64233959059c6b6d92305cd775cf39b7f4568548 data/minecraft/tags/blocks/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/blocks/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/blocks/needs_iron_tool.json
