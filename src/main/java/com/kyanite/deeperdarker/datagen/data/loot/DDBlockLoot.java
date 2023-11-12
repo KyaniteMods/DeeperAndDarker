@@ -2,6 +2,8 @@ package com.kyanite.deeperdarker.datagen.data.loot;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -152,20 +155,25 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.GLOWING_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         add(DDBlocks.GLOOMY_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS.get());
-        addVineAndPlant(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get());
-        addVineAndPlant(DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get());
-        addVineAndPlant(DDBlocks.GLOWING_ROOTS.get(), DDBlocks.GLOWING_ROOTS_PLANT.get());
-        addVineAndPlant(DDBlocks.GLOWING_VINES.get(), DDBlocks.GLOWING_VINES_PLANT.get());
+        addVineAndPlant(DDBlocks.SCULK_TENDRILS_PLANT.get(), DDBlocks.SCULK_TENDRILS.get());
+        addVineAndPlant(DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.SCULK_VINES.get());
+        addVineAndPlant(DDBlocks.GLOWING_ROOTS_PLANT.get(), DDBlocks.GLOWING_ROOTS.get());
+        add(DDBlocks.GLOWING_VINES_PLANT.get(), this::glowingVinesDrop);
+        add(DDBlocks.GLOWING_VINES.get(), this::glowingVinesDrop);
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK.get(), Blocks.SCULK);
         dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
     }
 
-    private void addVineAndPlant(Block vines, Block plant) {
-        LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vines, LootItem.lootTableItem(vines).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33f, 0.55f, 0.77f, 1.0f)));
-        add(vines, builder);
+    private void addVineAndPlant(Block plant, Block vine) {
+        LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vine, LootItem.lootTableItem(vine).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33f, 0.55f, 0.77f, 1.0f)));
         add(plant, builder);
+        add(vine, builder);
+    }
+
+    private LootTable.Builder glowingVinesDrop(Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES.get())).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingVinesPlantBlock.BERRIES, true))));
     }
 
     private void ancientVaseDrop(Block block) {
