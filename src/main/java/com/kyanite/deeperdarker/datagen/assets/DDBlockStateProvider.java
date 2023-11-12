@@ -151,6 +151,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
+        simpleBlock(DDBlocks.GLOWING_VINES.get(), models().cross(DDBlocks.GLOWING_VINES.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES)).renderType("cutout"));
+        simpleBlock(DDBlocks.GLOWING_VINES_PLANT.get(), models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout"));
 
         simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
