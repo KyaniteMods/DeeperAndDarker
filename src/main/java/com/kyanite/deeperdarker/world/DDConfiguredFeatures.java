@@ -47,6 +47,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_GLEAM_EXTRA = createKey("sculk_gleam_extra");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_TENDRILS = createKey("sculk_tendrils");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_VINES = createKey("sculk_vines");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_VINES = createKey("glowing_vines");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_STONE_GENERATION = createKey("sculk_stone_generation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");
@@ -112,6 +113,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, SCULK_GLEAM_EXTRA, DDFeatures.SCULK_GLEAM_BLOB.get());
         FeatureUtils.register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS.get());
         FeatureUtils.register(context, SCULK_VINES, DDFeatures.SCULK_VINES.get());
+        FeatureUtils.register(context, GLOWING_VINES, DDFeatures.GLOWING_VINES.get());
 
         FeatureUtils.register(context, SCULK_STONE_GENERATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.SCULK_STONE.get())));
         FeatureUtils.register(context, SURFACE_SCULK_STONE, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_REPLACEABLES, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SCULK.defaultBlockState(), 1).add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 2)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_STONE_GENERATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0, UniformInt.of(1, 2), 0.3f));

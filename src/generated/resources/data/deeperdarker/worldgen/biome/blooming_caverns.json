@@ -50,7 +50,8 @@
     [
       "deeperdarker:blooming_sculk_vegetation",
       "deeperdarker:sculk_tendrils",
-      "deeperdarker:sculk_vines"
+      "deeperdarker:sculk_vines",
+      "deeperdarker:glowing_vines"
     ]
   ],
   "has_precipitation": true,

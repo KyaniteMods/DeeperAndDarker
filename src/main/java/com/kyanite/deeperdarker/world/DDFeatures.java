@@ -14,6 +14,7 @@ public class DDFeatures {
     public static final RegistryObject<SculkStoneColumnFeature> SCULK_STONE_COLUMN = FEATURES.register("sculk_stone_column", () -> new SculkStoneColumnFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<GloomslateColumnFeature> GLOOMSLATE_COLUMN = FEATURES.register("gloomslate_column", () -> new GloomslateColumnFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<SculkGleamFeature> SCULK_GLEAM_BLOB = FEATURES.register("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
-    public static final RegistryObject<SculkVinesFeature> SCULK_VINES = FEATURES.register("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<SculkTendrilsFeature> SCULK_TENDRILS = FEATURES.register("sculk_tendrils", () -> new SculkTendrilsFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<SculkVinesFeature> SCULK_VINES = FEATURES.register("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
+    public static final RegistryObject<GlowingVinesFeature> GLOWING_VINES = FEATURES.register("glowing_vines", () -> new GlowingVinesFeature(NoneFeatureConfiguration.CODEC));
 }
