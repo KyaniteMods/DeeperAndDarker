@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class GlowingVinesBlock extends GrowingPlantHeadBlock {
-    private static final VoxelShape SHAPE = Block.box(4, 9, 4, 12, 16, 12);
+    private static final VoxelShape SHAPE = Block.box(1, 9, 1, 15, 16, 15);
 
     public GlowingVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.14);
