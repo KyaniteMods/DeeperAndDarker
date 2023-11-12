@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "deeperdarker:block/glowing_vines_plant"
+    "layer0": "deeperdarker:item/bloom_berries"
   }
 }

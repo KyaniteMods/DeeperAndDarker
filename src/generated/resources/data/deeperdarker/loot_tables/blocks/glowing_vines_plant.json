@@ -37,7 +37,7 @@
                   ]
                 }
               ],
-              "name": "deeperdarker:glowing_vines"
+              "name": "deeperdarker:bloom_berries"
             },
             {
               "type": "minecraft:item",
@@ -53,7 +53,7 @@
                   "enchantment": "minecraft:fortune"
                 }
               ],
-              "name": "deeperdarker:glowing_vines"
+              "name": "deeperdarker:bloom_berries"
             }
           ]
         }

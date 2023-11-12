@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -152,7 +153,9 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOWING_VINES.get(), models().cross(DDBlocks.GLOWING_VINES.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES)).renderType("cutout"));
-        simpleBlock(DDBlocks.GLOWING_VINES_PLANT.get(), models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout"));
+        ModelFile noBerries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout");
+        ModelFile berries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath() + "_berries", blockLoc(DDBlocks.GLOWING_VINES_PLANT, "berries")).renderType("cutout");
+        getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get()).partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel().partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
 
         simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));

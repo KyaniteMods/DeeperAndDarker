@@ -134,7 +134,6 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_TENDRILS);
             event.accept(DDBlocks.SCULK_VINES);
             event.accept(DDBlocks.GLOWING_ROOTS);
-            event.accept(DDBlocks.GLOWING_VINES);
 
             event.accept(DDItems.ECHO_SIGN);
             event.accept(DDItems.ECHO_HANGING_SIGN);
@@ -142,6 +141,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.ANCIENT_VASE);
             event.accept(DDBlocks.INFESTED_SCULK);
             event.accept(DDBlocks.SCULK_JAW);
+
+            event.accept(DDItems.BLOOM_BERRIES);
 
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);

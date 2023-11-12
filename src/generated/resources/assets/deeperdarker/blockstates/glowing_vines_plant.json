@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "berries=false": {
       "model": "deeperdarker:block/glowing_vines_plant"
+    },
+    "berries=true": {
+      "model": "deeperdarker:block/glowing_vines_plant_berries"
     }
   }
 }

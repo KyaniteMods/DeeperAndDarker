@@ -138,7 +138,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMY_CACTUS);
         blockItemModel(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, GENERATED);
         blockItemModel(DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, GENERATED);
-        blockItemModel(DDBlocks.GLOWING_VINES, DDBlocks.GLOWING_VINES_PLANT, GENERATED);
 
         blockModel(DDBlocks.ANCIENT_VASE);
         withExistingParent(DDBlocks.INFESTED_SCULK.getId().getPath(), mcLoc("block/sculk"));
@@ -149,6 +148,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
+
+        itemModel(DDItems.BLOOM_BERRIES, GENERATED);
 
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
