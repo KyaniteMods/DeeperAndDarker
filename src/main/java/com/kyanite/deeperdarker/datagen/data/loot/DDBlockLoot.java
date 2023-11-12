@@ -159,7 +159,6 @@ public class DDBlockLoot extends BlockLootSubProvider {
         addVineAndPlant(DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.SCULK_VINES.get());
         addVineAndPlant(DDBlocks.GLOWING_ROOTS_PLANT.get(), DDBlocks.GLOWING_ROOTS.get());
         add(DDBlocks.GLOWING_VINES_PLANT.get(), this::glowingVinesDrop);
-        add(DDBlocks.GLOWING_VINES.get(), this::glowingVinesDrop);
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK.get(), Blocks.SCULK);

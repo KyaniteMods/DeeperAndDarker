@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-12T11:38:56.533907	Loot Tables
+// 1.20.1	2023-11-12T13:34:50.7532913	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_tables/blocks/blooming_moss_block.json
 c209ce4d7dc1ed8f9a102cdb6e1361d06ecf276a data/deeperdarker/loot_tables/blocks/blooming_sculk_stone.json
@@ -66,7 +66,6 @@ a9d3aa407b960c0ccdd4b3be54ff8bde2edbdfcb data/deeperdarker/loot_tables/blocks/gl
 d6a5fa9f67b608b026c5a7a208ccda62fc0b4a51 data/deeperdarker/loot_tables/blocks/glowing_grass.json
 25cd565164187704cb5a0154523cc2edb2e6f686 data/deeperdarker/loot_tables/blocks/glowing_roots.json
 a73281e4529fcbc1c1dec68a70b5870fa08b2809 data/deeperdarker/loot_tables/blocks/glowing_roots_plant.json
-c200bdce893f4f15661ad5f0f8f5a17088d59887 data/deeperdarker/loot_tables/blocks/glowing_vines.json
 3b08944c15921ec6decb02d6e2d2e1414d6535d2 data/deeperdarker/loot_tables/blocks/glowing_vines_plant.json
 093754b11630f11059505b6ce473005a37c54e29 data/deeperdarker/loot_tables/blocks/infested_sculk.json
 ba1fa3ac422fadf264ad292830a461ded3f12cb1 data/deeperdarker/loot_tables/blocks/polished_gloomslate.json
