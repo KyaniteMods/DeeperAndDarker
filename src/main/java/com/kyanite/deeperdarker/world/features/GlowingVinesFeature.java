@@ -11,6 +11,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -56,7 +57,7 @@ public class GlowingVinesFeature extends Feature<NoneFeatureConfiguration> {
 
     private void placeVinesColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length) {
         for(int i = 0; i <= length; i++) {
-            if(level.isEmptyBlock(pos)) {
+            if(level.isEmptyBlock(pos) && !(level.getBlockState(pos).getBlock() instanceof LeavesBlock)) {
                 if(i == length || !level.isEmptyBlock(pos.below())) {
                     level.setBlock(pos, DDBlocks.GLOWING_VINES.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, 17, 25)), 3);
                     break;
