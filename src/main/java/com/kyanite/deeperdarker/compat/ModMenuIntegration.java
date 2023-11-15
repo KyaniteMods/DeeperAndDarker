@@ -116,6 +116,54 @@ public class ModMenuIntegration implements ModMenuApi {
                     ))
                     .build();
 
+            Option<Integer> generatedPortalWidth = Option.createBuilder(Integer.class)
+                    .name(Component.translatable("config.deeperdarker.generatedPortalWidth.title"))
+                    .binding(
+                            8,
+                            () -> DDConfig.HANDLER.getConfig().generatedPortalWidth,
+                            newVal -> DDConfig.HANDLER.getConfig().generatedPortalWidth = newVal
+                    )
+                    .controller(opt -> new IntegerFieldController(opt, 1, 128, value ->
+                            value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))
+                    ))
+                    .build();
+
+            Option<Integer> generatedPortalHeight = Option.<Integer>createBuilder(Integer.class)
+                    .name(Component.translatable("config.deeperdarker.generatedPortalHeight.title"))
+                    .binding(
+                            4,
+                            () -> DDConfig.HANDLER.getConfig().generatedPortalHeight,
+                            newVal -> DDConfig.HANDLER.getConfig().generatedPortalHeight = newVal
+                    )
+                    .controller(opt -> new IntegerFieldController(opt, 2, 128, value ->
+                            value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))
+                    ))
+                    .build();
+
+            Option<Integer> portalMinSearchHeight = Option.createBuilder(Integer.class)
+                    .name(Component.translatable("config.deeperdarker.portalMinSearchHeight.title"))
+                    .binding(
+                            Math.min(2, DDConfig.HANDLER.getConfig().portalMaxSearchHeight),
+                            () -> DDConfig.HANDLER.getConfig().portalMinSearchHeight,
+                            newVal -> DDConfig.HANDLER.getConfig().portalMinSearchHeight = newVal
+                    )
+                    .controller(opt -> new IntegerFieldController(opt, 0, 127, value ->
+                            value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))
+                    ))
+                    .build();
+
+            Option<Integer> portalMaxSearchHeight = Option.<Integer>createBuilder(Integer.class)
+                    .name(Component.translatable("config.deeperdarker.portalMaxSearchHeight.title"))
+                    .binding(
+                            122,
+                            () -> DDConfig.HANDLER.getConfig().portalMaxSearchHeight,
+                            newVal -> DDConfig.HANDLER.getConfig().portalMaxSearchHeight = newVal
+                    )
+                    .controller(opt -> new IntegerFieldController(opt, 0, 127, value ->
+                            value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))
+                    ))
+                    .build();
+
             Option<Boolean> wardenHeartPulses = Option.createBuilder(Boolean.class)
                     .name(Component.translatable("config.deeperdarker.wardenHeartPulses.title"))
                     .binding(
@@ -136,7 +184,7 @@ public class ModMenuIntegration implements ModMenuApi {
                     .controller(TickBoxController::new)
                     .build();
 
-            Screen screen1 = YetAnotherConfigLib.createBuilder()
+            return YetAnotherConfigLib.createBuilder()
                     .title(Component.translatable("config.deeperdarker.title"))
                     .category(ConfigCategory.createBuilder()
                             .name(Component.translatable("config.deeperdarker.title"))
@@ -149,6 +197,10 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(portalMinHeight)
                                     .option(portalMaxWidth)
                                     .option(portalMaxHeight)
+                                    .option(generatedPortalWidth)
+                                    .option(generatedPortalHeight)
+                                    .option(portalMinSearchHeight)
+                                    .option(portalMaxSearchHeight)
                                     .build())
                             .group(OptionGroup.createBuilder()
                                     .name(Component.translatable("config.deeperdarker.client.title"))
@@ -157,10 +209,8 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(changePhantomTextures)
                                     .build())
                             .build())
-                    .save(() -> DDConfig.HANDLER.save())
+                    .save(DDConfig::saveHandler)
                     .build().generateScreen(screen);
-
-            return screen1;
         };
     }
 }
