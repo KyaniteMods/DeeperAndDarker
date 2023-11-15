@@ -5,13 +5,9 @@ import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.*;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 import java.text.DecimalFormat;
-import java.util.Locale;
-import java.util.UUID;
 
 public class ModMenuIntegration implements ModMenuApi {
     @Override
@@ -129,6 +125,58 @@ public class ModMenuIntegration implements ModMenuApi {
                             .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
                     .build();
 
+            Option<Integer> generatedPortalWidth = Option.<Integer>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.generatedPortalWidth.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.generatedPortalWidth.description")))
+                    .binding(
+                            8,
+                            () -> DDConfig.HANDLER.instance().generatedPortalWidth,
+                            newVal -> DDConfig.HANDLER.instance().generatedPortalWidth = newVal
+                    )
+                    .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                            .range(1, 128)
+                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
+            Option<Integer> generatedPortalHeight = Option.<Integer>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.generatedPortalHeight.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.generatedPortalHeight.description")))
+                    .binding(
+                            4,
+                            () -> DDConfig.HANDLER.instance().generatedPortalHeight,
+                            newVal -> DDConfig.HANDLER.instance().generatedPortalHeight = newVal
+                    )
+                    .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                            .range(2, 128)
+                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
+            Option<Integer> portalMinSearchHeight = Option.<Integer>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.portalMinSearchHeight.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.portalMinSearchHeight.description")))
+                    .binding(
+                            Math.min(2, DDConfig.HANDLER.instance().portalMaxSearchHeight),
+                            () -> DDConfig.HANDLER.instance().portalMinSearchHeight,
+                            newVal -> DDConfig.HANDLER.instance().portalMinSearchHeight = newVal
+                    )
+                    .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                            .range(0, 127)
+                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
+            Option<Integer> portalMaxSearchHeight = Option.<Integer>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.portalMaxSearchHeight.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.portalMaxSearchHeight.description")))
+                    .binding(
+                            122,
+                            () -> DDConfig.HANDLER.instance().portalMaxSearchHeight,
+                            newVal -> DDConfig.HANDLER.instance().portalMaxSearchHeight = newVal
+                    )
+                    .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                            .range(0, 127)
+                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
             Option<Boolean> wardenHeartPulses = Option.<Boolean>createBuilder()
                     .name(Component.translatable("config.deeperdarker.wardenHeartPulses.title"))
                     .description(OptionDescription.of(Component.translatable("config.deeperdarker.wardenHeartPulses.description")))
@@ -151,7 +199,7 @@ public class ModMenuIntegration implements ModMenuApi {
                     .controller(TickBoxControllerBuilder::create)
                     .build();
 
-            Screen screen1 = YetAnotherConfigLib.createBuilder()
+            return YetAnotherConfigLib.createBuilder()
                     .title(Component.translatable("config.deeperdarker.title"))
                     .category(ConfigCategory.createBuilder()
                             .name(Component.translatable("config.deeperdarker.title"))
@@ -164,6 +212,10 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(portalMinHeight)
                                     .option(portalMaxWidth)
                                     .option(portalMaxHeight)
+                                    .option(generatedPortalWidth)
+                                    .option(generatedPortalHeight)
+                                    .option(portalMinSearchHeight)
+                                    .option(portalMaxSearchHeight)
                                     .build())
                             .group(OptionGroup.createBuilder()
                                     .name(Component.translatable("config.deeperdarker.client.title"))
@@ -172,10 +224,8 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(changePhantomTextures)
                                     .build())
                             .build())
-                    .save(() -> DDConfig.HANDLER.save())
+                    .save(DDConfig::saveHandler)
                     .build().generateScreen(screen);
-
-            return screen1;
         };
     }
 }

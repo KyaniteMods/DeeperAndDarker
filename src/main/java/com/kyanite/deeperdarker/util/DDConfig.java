@@ -16,6 +16,18 @@ public class DDConfig {
                     .build())
             .build();
 
+    public static void saveHandler() {
+        HANDLER.save();
+        DeeperDarker.PORTAL_LINK.portalSearchYBottom = HANDLER.instance().portalMinSearchHeight;
+        DeeperDarker.PORTAL_LINK.portalSearchYTop = HANDLER.instance().portalMaxSearchHeight;
+    }
+
+    public static void loadHandler() {
+        HANDLER.load();
+        DeeperDarker.PORTAL_LINK.portalSearchYBottom = HANDLER.instance().portalMinSearchHeight;
+        DeeperDarker.PORTAL_LINK.portalSearchYTop = HANDLER.instance().portalMaxSearchHeight;
+    }
+
     @SerialEntry(comment = "Chance of either sculk leeches or stalkers spawning.")
     public float spawnSomethingFromAncientVaseChance = 0.16f;
 
@@ -39,6 +51,18 @@ public class DDConfig {
 
     @SerialEntry(comment = "The maximum inner height (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMaxHeight = 24;
+
+    @SerialEntry(comment = "The lowest Y coordinate to search to generate an Otherside portal")
+    public int portalMinSearchHeight = 2;
+
+    @SerialEntry(comment = "The highest Y coordinate to search to generate an Otherside portal")
+    public int portalMaxSearchHeight = 126 - this.portalMinHeight;
+
+    @SerialEntry(comment = "The width of Otherside portals generated when traveling through dimensions and no portal is available")
+    public int generatedPortalWidth = 8;
+
+    @SerialEntry(comment = "The height of Otherside portals generated when traveling through dimensions and no portal is available")
+    public int generatedPortalHeight = 4;
 
     @SerialEntry
     public boolean wardenHeartPulses = true;

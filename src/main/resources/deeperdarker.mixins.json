@@ -4,10 +4,10 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ContainerMenuMixin",
+    "DefaultAttributeRegistryAccessor",
     "PhantomMixin",
     "VibrationListenerMixin",
-    "WardenMixin",
-    "DefaultAttributeRegistryAccessor"
+    "WardenMixin"
   ],
   "client": [
     "PhantomRendererMixin",
@@ -16,5 +16,5 @@
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }

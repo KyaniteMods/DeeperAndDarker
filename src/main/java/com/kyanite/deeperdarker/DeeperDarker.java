@@ -33,9 +33,20 @@ public class DeeperDarker implements ModInitializer {
 
 	public static final boolean SHOW_ME_YOUR_SKIN = FabricLoader.getInstance().isModLoaded("showmeyourskin");
 
+	public static final PortalLink PORTAL_LINK = CustomPortalBuilder.beginPortal()
+			.customFrameTester(OTHERSIDE_FRAME_TESTER)
+			.frameBlock(Blocks.REINFORCED_DEEPSLATE)
+			.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
+			.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
+			.tintColor(5, 98, 93)
+			.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+			.forcedSize(8, 4)
+			.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
+			.registerPortal();
+
 	@Override
 	public void onInitialize() {
-		DDConfig.HANDLER.load();
+		DDConfig.loadHandler();
 
 		DDCreativeTab.init();
 		DDItems.init();
@@ -49,18 +60,6 @@ public class DeeperDarker implements ModInitializer {
 		DDEffects.init();
 
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
-
-		PortalLink portalLink = CustomPortalBuilder.beginPortal()
-				.customFrameTester(OTHERSIDE_FRAME_TESTER)
-				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
-				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-				.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
-				.tintColor(5, 98, 93)
-				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-				.forcedSize(8, 4)
-				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
-				.setPortalSearchYRange(0, 115)
-				.registerPortal();
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
