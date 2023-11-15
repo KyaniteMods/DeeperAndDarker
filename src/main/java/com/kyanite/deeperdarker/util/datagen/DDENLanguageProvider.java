@@ -276,6 +276,14 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.wardenHeartPulses.description", "Determines if the Heart of the Deep should emit a random pulsing sound.");
         translationBuilder.add("config.deeperdarker.changePhantomTextures.title", "Change Phantom Textures");
         translationBuilder.add("config.deeperdarker.changePhantomTextures.description", "Determines if Phantoms should have a different texture in the Deeplands.");
+        translationBuilder.add("config.deeperdarker.portalMinSearchHeight.title", "Minimum Portal Search Height");
+        translationBuilder.add("config.deeperdarker.portalMinSearchHeight.description", "Defines the lowest Y coordinate to search to generate an Otherside portal. We recommend that you set this to a value greater than or equal to 0 and less than the maximum portal search height.");
+        translationBuilder.add("config.deeperdarker.portalMaxSearchHeight.title", "Maximum Portal Search Height");
+        translationBuilder.add("config.deeperdarker.portalMaxSearchHeight.description", "Defines the highest Y coordinate to search to generate an Otherside portal. We recommend that you set this to a value greater than or equal to 0 and less than or equal to (126 - the generated portal's height).");
+        translationBuilder.add("config.deeperdarker.generatedPortalWidth.title", "Generated Portal Width");
+        translationBuilder.add("config.deeperdarker.generatedPortalWidth.description", "The width of Otherside portals generated when traveling through dimensions and no portal is available. Making this too large may cause problems.");
+        translationBuilder.add("config.deeperdarker.generatedPortalHeight.title", "Generated Portal Height");
+        translationBuilder.add("config.deeperdarker.generatedPortalHeight.description", "The height of Otherside portals generated when traveling through dimensions and no portal is available. Making this too large may cause problems.");
 
         translationBuilder.add("death.attack.deeperdarker.bite", "%s was bitten by a Sculk Jaw");
         translationBuilder.add("death.attack.deeperdarker.ring", "%s heard the ring of %s");

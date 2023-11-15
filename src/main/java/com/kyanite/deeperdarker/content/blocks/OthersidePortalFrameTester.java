@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.google.common.collect.Sets;
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDConfig;
 import net.kyrptonaught.customportalapi.portal.frame.PortalFrameTester;
 import net.kyrptonaught.customportalapi.portal.frame.VanillaPortalAreaHelper;
@@ -58,39 +59,29 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
 
     @Override
     public void createPortal(Level world, BlockPos pos, BlockState frameBlock, Direction.Axis axis) {
+        DeeperDarker.LOGGER.info(pos.toShortString());
         Direction.Axis rotatedAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-        for (int i = -1; i < DDConfig.HANDLER.instance().portalMinHeight + 1; i++) {
+        for (int i = -1; i < DDConfig.HANDLER.instance().generatedPortalHeight + 1; i++) {
             world.setBlockAndUpdate(pos.above(i).relative(axis, -1), frameBlock);
-            world.setBlockAndUpdate(pos.above(i).relative(axis, DDConfig.HANDLER.instance().portalMinWidth), frameBlock);
+            world.setBlockAndUpdate(pos.above(i).relative(axis, DDConfig.HANDLER.instance().generatedPortalWidth), frameBlock);
             if (i >= 0) {
-                fillAirAroundPortal(world, pos.above(i).relative(axis, -1).relative(rotatedAxis, 1));
-                fillAirAroundPortal(world, pos.above(i).relative(axis, DDConfig.HANDLER.instance().portalMinWidth).relative(rotatedAxis, 1));
-                fillAirAroundPortal(world, pos.above(i).relative(axis, -1).relative(rotatedAxis, -1));
-                fillAirAroundPortal(world, pos.above(i).relative(axis, DDConfig.HANDLER.instance().portalMinWidth).relative(rotatedAxis, -1));
+                for (int j = 0; j < DDConfig.HANDLER.instance().generatedPortalWidth; j++) {
+                    fillAirAroundPortal(world, pos.above(i).relative(axis, -1).relative(rotatedAxis, -1));
+                    fillAirAroundPortal(world, pos.above(i).relative(axis, -1).relative(rotatedAxis, 1));
+                }
             }
         }
-        for (int i = -1; i < DDConfig.HANDLER.instance().portalMinWidth + 1; i++) {
+        for (int i = -1; i < DDConfig.HANDLER.instance().generatedPortalWidth + 1; i++) {
             world.setBlockAndUpdate(pos.above(-1).relative(axis, i), frameBlock);
-            world.setBlockAndUpdate(pos.above(DDConfig.HANDLER.instance().portalMinHeight).relative(axis, i), frameBlock);
-
-            fillAirAroundPortal(world, pos.above(DDConfig.HANDLER.instance().portalMinHeight).relative(axis, i).relative(rotatedAxis, 1));
-            fillAirAroundPortal(world, pos.above(DDConfig.HANDLER.instance().portalMinHeight).relative(axis, i).relative(rotatedAxis, -1));
+            world.setBlockAndUpdate(pos.above(DDConfig.HANDLER.instance().generatedPortalHeight).relative(axis, i), frameBlock);
         }
-        for (int i = 0; i < DDConfig.HANDLER.instance().portalMinWidth; i++) {
-            placeLandingPad(world, pos.below().relative(axis, i).relative(rotatedAxis, 1), frameBlock);
-            placeLandingPad(world, pos.below().relative(axis, i).relative(rotatedAxis, -1), frameBlock);
+        for (int i = 0; i < DDConfig.HANDLER.instance().generatedPortalWidth; i++) {
+            placeLandingPad(world, pos.above(-1).relative(axis, i).relative(rotatedAxis, -1), frameBlock);
+            placeLandingPad(world, pos.above(-1).relative(axis, i).relative(rotatedAxis, 1), frameBlock);
         }
-
-        for (int i = 0; i < DDConfig.HANDLER.instance().portalMinWidth; i++) {
-            for (int j = 0; j < DDConfig.HANDLER.instance().portalMinHeight; j++) {
-                fillAirAroundPortal(world, pos.relative(axis, i).above(j).relative(rotatedAxis, 1));
-                fillAirAroundPortal(world, pos.relative(axis, i).above(j).relative(rotatedAxis, -1));
-            }
-        }
-        //inits this instance based off of the newly created portal;
         this.lowerCorner = pos;
-        this.width = DDConfig.HANDLER.instance().portalMinWidth;
-        this.height = DDConfig.HANDLER.instance().portalMinHeight;
+        this.width = DDConfig.HANDLER.instance().generatedPortalWidth;
+        this.height = DDConfig.HANDLER.instance().generatedPortalHeight;
         this.axis = axis;
         this.world = world;
         this.foundPortalBlocks = this.width * this.height;
