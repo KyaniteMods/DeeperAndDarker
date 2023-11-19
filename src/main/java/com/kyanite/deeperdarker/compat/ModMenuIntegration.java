@@ -73,6 +73,19 @@ public class ModMenuIntegration implements ModMenuApi {
                     .controller(TickBoxControllerBuilder::create)
                     .build();
 
+            Option<Double> geyserLaunchVelocity = Option.<Double>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.geyserLaunchVelocity.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.geyserLaunchVelocity.description")))
+                    .binding(
+                            2.5,
+                            () -> DDConfig.HANDLER.instance().geyserLaunchVelocity,
+                            newVal -> DDConfig.HANDLER.instance().geyserLaunchVelocity = newVal
+                    )
+                    .controller(opt -> DoubleFieldControllerBuilder.create(opt)
+                            .range(0.0, 32767.0)
+                            .formatValue(value -> value == 69.0 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
             Option<Integer> portalMinWidth = Option.<Integer>createBuilder()
                     .name(Component.translatable("config.deeperdarker.portalMinWidth.title"))
                     .description(OptionDescription.of(Component.translatable("config.deeperdarker.portalMinWidth.description")))
@@ -208,6 +221,7 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(spawnSomethingFromAncientVaseChance)
                                     .option(sculkLeechesFromAncientVaseChance)
                                     .option(geysersApplySlowFalling)
+                                    .option(geyserLaunchVelocity)
                                     .option(portalMinWidth)
                                     .option(portalMinHeight)
                                     .option(portalMaxWidth)
