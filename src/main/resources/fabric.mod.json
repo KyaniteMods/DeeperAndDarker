@@ -35,7 +35,8 @@
 		"fabricloader": ">=0.14.21",
 		"minecraft": "~1.19.2",
 		"java": ">=17",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"yet-another-config-lib": "*"
 	},
 	"suggests": {
 		"another-mod": "*"
