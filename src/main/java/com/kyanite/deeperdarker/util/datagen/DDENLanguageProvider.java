@@ -275,7 +275,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.generatedPortalHeight.title", "Generated Portal Height");
         translationBuilder.add("config.deeperdarker.generatedPortalHeight.description", "The height of Otherside portals generated when traveling through dimensions and no portal is available. Making this too large may cause problems.");
 
-        translationBuilder.add("death.attack.deeperdarker.bite", "%s was bitten by a Sculk Jaw");
-        translationBuilder.add("death.attack.deeperdarker.ring", "%s heard the ring of %s");
+        translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
+        translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");
     }
 }
