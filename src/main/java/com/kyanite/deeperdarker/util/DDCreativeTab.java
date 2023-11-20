@@ -169,6 +169,7 @@ public class DDCreativeTab {
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
 
             event.accept(DDItems.SCULK_TRANSMITTER);
+            event.accept(DDItems.SONOROUS_STAFF);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 
             event.accept(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
