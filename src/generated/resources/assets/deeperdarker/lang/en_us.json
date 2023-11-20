@@ -151,7 +151,7 @@
   "block.deeperdarker.stripped_echo_wood": "Stripped Echo Wood",
   "block.deeperdarker.unlinked": "Unlinked transmitter",
   "death.attack.jaw": "%1$s was devoured",
-  "death.attack.ring": "%1$s heard the Stalker's ring",
+  "death.attack.ring": "%1$s heard the dissonant ring of %2$s",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "enchantment.deeperdarker.catalysis": "Catalysis",
   "enchantment.deeperdarker.catalysis.desc": "Spreads sculk when mobs are killed.",
