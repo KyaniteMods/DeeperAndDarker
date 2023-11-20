@@ -45,7 +45,7 @@ public class DDItems {
     public static final Item WARDEN_BOOTS = register("warden_boots", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final Item SONOROUS_STAFF = register("sonorous_staff", new WardenStaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item SONOROUS_STAFF = register("sonorous_staff", new SonorousStaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static final Item SCULK_CENTIPEDE_SPAWN_EGG = register("sculk_centipede_spawn_egg", new SpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));
     public static final Item SCULK_LEECH_SPAWN_EGG = register("sculk_leech_spawn_egg", new SpawnEggItem(DDEntities.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Properties()));
