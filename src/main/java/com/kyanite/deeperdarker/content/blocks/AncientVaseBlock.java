@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.Stalker;
+import com.kyanite.deeperdarker.util.DDConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
