@@ -252,6 +252,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("biome." + OthersideBiomes.DEEPLANDS.location().getNamespace() + "." + OthersideBiomes.DEEPLANDS.location().getPath(), "Deeplands");
         translationBuilder.add("biome." + OthersideBiomes.ECHOING_FOREST.location().getNamespace() + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), "Echoing Forest");
         translationBuilder.add("biome." + OthersideBiomes.OVERCAST_COLUMNS.location().getNamespace() + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), "Overcast Columns");
+        translationBuilder.add("biome." + OthersideBiomes.BLOOMING_CAVERNS.location().getNamespace() + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), "Blooming Caverns");
 
         translationBuilder.add("config.deeperdarker.title", "Deeper and Darker");
         translationBuilder.add("config.deeperdarker.server.title", "Server");

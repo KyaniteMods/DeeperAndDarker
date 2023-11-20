@@ -1,4 +1,4 @@
-// 1.20	2023-11-20T14:39:30.109697965	Deeper and Darker/Block Loot Tables
+// 1.20	2023-11-20T15:45:29.494334423	Deeper and Darker/Block Loot Tables
 9da81cff96f591867c050dc195a59591c0570c6b data/deeperdarker/loot_tables/blocks/echo_fence.json
 59c27f1afefc9c217c2b98237b2d4012f428ad87 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
@@ -68,9 +68,9 @@ c0d7dcbd4bc4ff13f0594a55c93f5481ec716e31 data/deeperdarker/loot_tables/blocks/ec
 e3157eea1f415865e488673a6289a3a5755eaff9 data/deeperdarker/loot_tables/blocks/echo_wood.json
 2567fce7d132638e816ddb4eaaccaf6c82e85ea6 data/deeperdarker/loot_tables/blocks/gloomslate_tiles.json
 2f796bd061ded54d6e74eccc35de8771db933e9d data/deeperdarker/loot_tables/blocks/echo_planks.json
-c7b8ac5153b4122274a04ca0863d045069e9416a data/deeperdarker/loot_tables/blocks/gloomslate_stairs.json
 e361dd8f0a40c2714631def7f329b411d9e7ee5a data/deeperdarker/loot_tables/blocks/crystallized_amber.json
 05d9a873cae36db28f11a27606de09fa82b539ab data/deeperdarker/loot_tables/blocks/sculk_stone_tile_wall.json
+c7b8ac5153b4122274a04ca0863d045069e9416a data/deeperdarker/loot_tables/blocks/gloomslate_stairs.json
 444ee2b8b48675db101a101eb52a7627428edaef data/deeperdarker/loot_tables/blocks/gloomslate_emerald_ore.json
 598aeffe7e9b37f67b091e58c27a420b4577a4f3 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone_stairs.json
 308edb568daa74e0641993005bf1f0bf6d018ab1 data/deeperdarker/loot_tables/blocks/gloomslate_brick_slab.json
