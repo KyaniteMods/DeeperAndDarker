@@ -72,8 +72,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
-        add("death.attack.jaw", "%1$s was devoured");
-        add("death.attack.ring", "%1$s heard the dissonant ring of %2$s");
+        add("death.attack.deeperdarker.bite", "%s was devoured");
+        add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.getId().getPath() + ".desc", "Spreads sculk when mobs are killed.");
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.getId().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
