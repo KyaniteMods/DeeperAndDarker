@@ -17,4 +17,6 @@ public class DDFeatures {
     public static final RegistryObject<SculkTendrilsFeature> SCULK_TENDRILS = FEATURES.register("sculk_tendrils", () -> new SculkTendrilsFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<SculkVinesFeature> SCULK_VINES = FEATURES.register("sculk_vines", () -> new SculkVinesFeature(NoneFeatureConfiguration.CODEC));
     public static final RegistryObject<GlowingVinesFeature> GLOWING_VINES = FEATURES.register("glowing_vines", () -> new GlowingVinesFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<BloomingStemFeature> BLOOMING_STEM = FEATURES.register("blooming_stem", () -> new BloomingStemFeature(NoneFeatureConfiguration.CODEC));
 }

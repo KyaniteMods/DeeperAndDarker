@@ -59,6 +59,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_DIAMOND = createKey("gloomslate_diamond");
 
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
+    public static final ResourceKey<PlacedFeature> BLOOMING_PLANT = createKey("blooming_plant");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -105,6 +106,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.get().defaultBlockState(), BlockPos.ZERO)));
+        PlacementUtils.register(context, BLOOMING_PLANT, features.getOrThrow(DDConfiguredFeatures.PLANT_BLOOMING), CountOnEveryLayerPlacement.of(4), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.BLOOMING_STEM.get().defaultBlockState(), BlockPos.ZERO)));
     }
 
     private static List<PlacementModifier> countPlacement(int attempts, PlacementModifier heightRange) {

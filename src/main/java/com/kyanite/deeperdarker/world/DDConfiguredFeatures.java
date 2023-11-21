@@ -88,6 +88,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_DIAMOND = createKey("ore_gloomslate_diamond");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_ECHO = createKey("tree_echo");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -154,6 +155,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, ORE_GLOOMSLATE_DIAMOND, Feature.ORE, new OreConfiguration(DIAMOND_TARGET_LIST, 7, 0.6f));
 
         FeatureUtils.register(context, TREE_ECHO, Feature.TREE, createEcho().build());
+        FeatureUtils.register(context, PLANT_BLOOMING, DDFeatures.BLOOMING_STEM.get());
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createEcho() {
