@@ -43,7 +43,7 @@ public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
                 branchDirection = Direction.values()[random.nextIntBetweenInclusive(2, 5)];
                 branchBlockPos.move(branchDirection);
 
-                level.setBlock(branchBlockPos, stemPlacement(branchDirection, branchDirection.getOpposite(), branchDirection), 3);
+                level.setBlock(branchBlockPos, stemPlacement(branchDirection, branchDirection.getOpposite(), null), 3);
                 probability /= 2;
             }
 
