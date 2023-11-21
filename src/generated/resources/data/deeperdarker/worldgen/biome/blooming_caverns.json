@@ -49,10 +49,9 @@
     [],
     [
       "deeperdarker:blooming_sculk_vegetation",
-      "deeperdarker:sculk_tendrils",
-      "deeperdarker:sculk_vines",
       "deeperdarker:blooming_plant",
-      "deeperdarker:glowing_vines"
+      "deeperdarker:glowing_vines",
+      "deeperdarker:sculk_vines_caverns"
     ]
   ],
   "has_precipitation": true,

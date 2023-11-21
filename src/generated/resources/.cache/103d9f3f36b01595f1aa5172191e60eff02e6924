@@ -1,8 +1,8 @@
-// 1.20.1	2023-11-21T13:34:33.4869121	Registries
+// 1.20.1	2023-11-21T14:45:12.6053878	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 67f8cd0621b1c3614da8c1910f6b7bcb61660293 data/deeperdarker/dimension_type/otherside.json
-ae9dc35ea44b4d7caa96756ebe2c21222df3476b data/deeperdarker/worldgen/biome/blooming_caverns.json
+d215b65d058e1a6fdaa7b27c472982fcacd74821 data/deeperdarker/worldgen/biome/blooming_caverns.json
 4491dd6887a8760b77f9a28406c3e4c0535b108d data/deeperdarker/worldgen/biome/deeplands.json
 bd2c433caf3a3f7dfff3668a68dbdf56fa994df5 data/deeperdarker/worldgen/biome/echoing_forest.json
 06d29b9291ed3a63be90750a8c6f182e0c168b7b data/deeperdarker/worldgen/biome/overcast_columns.json
@@ -82,6 +82,7 @@ ce21acbb6c41dff7c5c2484ad56ae38328ab8bc4 data/deeperdarker/worldgen/placed_featu
 9e7b0e834e64b10028033879a82f3ecc70cea008 data/deeperdarker/worldgen/placed_feature/sculk_stone_column.json
 1c8848dc3a0abc0e5f314c553e13232ddd42dbc1 data/deeperdarker/worldgen/placed_feature/sculk_tendrils.json
 937a0b115c2368339f410eddb37cc6747e0453a9 data/deeperdarker/worldgen/placed_feature/sculk_vines.json
+b76ec202988b0b3d258ab73fe3f480253e5da1c7 data/deeperdarker/worldgen/placed_feature/sculk_vines_caverns.json
 3e06ed9f713470b016e873e16ae132db6e047c0d data/deeperdarker/worldgen/placed_feature/soul_sand.json
 0d9ba5c4e71c5c783c9ec34bcafb545419fa9582 data/deeperdarker/worldgen/placed_feature/soul_soil.json
 f7672526cd82d29a8ae5c9547070bb9de5e97e6f data/deeperdarker/worldgen/placed_feature/surface_gloomslate.json
