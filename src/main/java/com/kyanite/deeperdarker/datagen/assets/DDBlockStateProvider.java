@@ -51,6 +51,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
             if(direction == Direction.UP) builder.part().modelFile(vertical).rotationX(0).uvLock(true).addModel().condition(value, true);
             if(direction == Direction.DOWN) builder.part().modelFile(vertical).rotationX(180).uvLock(true).addModel().condition(value, true);
         });
+        simpleBlock(DDBlocks.BLOOM_PLANKS.get());
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
         stairsBlock(DDBlocks.SCULK_STONE_STAIRS.get(), blockLoc(DDBlocks.SCULK_STONE));
