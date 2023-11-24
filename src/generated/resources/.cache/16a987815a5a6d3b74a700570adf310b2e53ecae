@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-21T18:50:25.427263	Block States: deeperdarker
+// 1.20.1	2023-11-24T15:11:08.8843455	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 165980177c5adcf470b9a08fe401e3bb1a4966f0 assets/deeperdarker/blockstates/blooming_moss_block.json
 c90869597c5f9312912c741c7edfc5974762efd9 assets/deeperdarker/blockstates/blooming_sculk_stone.json
@@ -78,6 +78,7 @@ f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polishe
 65ee0b17417cefc06f60fd584d5cd1092c1725e7 assets/deeperdarker/blockstates/polished_sculk_stone_slab.json
 a1292f9331c5de779bca4b9d6d6bcb1b76d9d14e assets/deeperdarker/blockstates/polished_sculk_stone_stairs.json
 754419158ebf6f0643ad68f8106ba1013f62536e assets/deeperdarker/blockstates/polished_sculk_stone_wall.json
+3e9e166955e144752c33bd4a20fd7cc883e6a017 assets/deeperdarker/blockstates/potted_blooming_stem.json
 81d1daeb0a66ccdbba5cc0d3f76fe53d83155b26 assets/deeperdarker/blockstates/potted_echo_sapling.json
 ca868477f2e49646a2df560a202f718fcfa27eff assets/deeperdarker/blockstates/sculk_gleam.json
 f0e5b3e2e6cb4328468067311dbde98da8b51054 assets/deeperdarker/blockstates/sculk_grime.json

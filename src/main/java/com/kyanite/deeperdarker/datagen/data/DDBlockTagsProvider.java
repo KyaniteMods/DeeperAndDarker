@@ -65,7 +65,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
                 DDBlocks.GLOOMSLATE_SLAB.get(), DDBlocks.COBBLED_GLOOMSLATE_SLAB.get(), DDBlocks.POLISHED_GLOOMSLATE_SLAB.get(), DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), DDBlocks.GLOOMSLATE_TILE_SLAB.get(), DDBlocks.SMOOTH_GLOOMSLATE_SLAB.get(), DDBlocks.CUT_GLOOMSLATE_SLAB.get());
         tag(BlockTags.WALLS).add(DDBlocks.SCULK_STONE_WALL.get(), DDBlocks.COBBLED_SCULK_STONE_WALL.get(), DDBlocks.POLISHED_SCULK_STONE_WALL.get(), DDBlocks.SCULK_STONE_BRICK_WALL.get(), DDBlocks.SCULK_STONE_TILE_WALL.get(), DDBlocks.SMOOTH_SCULK_STONE_WALL.get(), DDBlocks.CUT_SCULK_STONE_WALL.get(), DDBlocks.SCULK_GRIME_BRICK_WALL.get(),
                 DDBlocks.GLOOMSLATE_WALL.get(), DDBlocks.COBBLED_GLOOMSLATE_WALL.get(), DDBlocks.POLISHED_GLOOMSLATE_WALL.get(), DDBlocks.GLOOMSLATE_BRICK_WALL.get(), DDBlocks.GLOOMSLATE_TILE_WALL.get(), DDBlocks.SMOOTH_GLOOMSLATE_WALL.get(), DDBlocks.CUT_GLOOMSLATE_WALL.get());
-        tag(BlockTags.FLOWER_POTS).add(DDBlocks.POTTED_ECHO_SAPLING.get());
+        tag(BlockTags.FLOWER_POTS).add(DDBlocks.POTTED_ECHO_SAPLING.get(), DDBlocks.POTTED_BLOOMING_STEM.get());
 
         tag(BlockTags.COAL_ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.GLOOMSLATE_COAL_ORE.get());
         tag(BlockTags.IRON_ORES).add(DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.GLOOMSLATE_IRON_ORE.get());

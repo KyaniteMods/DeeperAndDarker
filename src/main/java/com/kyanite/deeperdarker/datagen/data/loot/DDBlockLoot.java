@@ -59,6 +59,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
 
         dropSelf(DDBlocks.BLOOMING_STEM.get());
         dropSelf(DDBlocks.BLOOM_PLANKS.get());
+        dropPottedContents(DDBlocks.POTTED_BLOOMING_STEM.get());
 
         add(DDBlocks.SCULK_STONE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS.get());

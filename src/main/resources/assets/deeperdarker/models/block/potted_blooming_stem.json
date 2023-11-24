@@ -1,0 +1,34 @@
+{
+	"ambientocclusion": false,
+	"textures": {
+		"stem": "deeperdarker:block/blooming_stem_thin",
+		"particle": "block/flower_pot",
+		"flowerpot": "block/flower_pot"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 6, 11],
+			"faces": {
+				"north": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"east": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"south": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"west": {"uv": [5, 10, 11, 16], "texture": "#flowerpot"},
+				"up": {"uv": [5, 5, 11, 11], "texture": "#flowerpot"},
+				"down": {"uv": [5, 5, 6, 11], "texture": "#flowerpot", "cullface": "down"}
+			}
+		},
+		{
+			"from": [6, 5, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [0, 5, 4, 16], "texture": "#stem"},
+				"east": {"uv": [0, 5, 4, 16], "texture": "#stem"},
+				"south": {"uv": [0, 5, 4, 16], "texture": "#stem"},
+				"west": {"uv": [0, 5, 4, 16], "texture": "#stem"},
+				"up": {"uv": [4, 5, 8, 9], "texture": "#stem", "cullface": "up"},
+				"down": {"uv": [4, 5, 8, 9], "texture": "#stem"}
+			}
+		}
+	]
+}
