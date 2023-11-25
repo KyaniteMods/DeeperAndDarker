@@ -39,6 +39,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockItemModel(DDBlocks.ECHO_SAPLING, DDBlocks.ECHO_SAPLING, GENERATED);
 
         blockModel(DDBlocks.BLOOMING_STEM, "inventory");
+        blockModel(DDBlocks.STRIPPED_BLOOMING_STEM, "inventory");
         blockModel(DDBlocks.BLOOM_PLANKS);
 
         blockModel(DDBlocks.SCULK_STONE);

@@ -41,16 +41,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.ECHO_WALL_HANGING_SIGN.get(), models().sign(DDBlocks.ECHO_HANGING_SIGN.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
         simpleBlock(DDBlocks.POTTED_ECHO_SAPLING.get(), models().withExistingParent(DDBlocks.POTTED_ECHO_SAPLING.getId().getPath(), mcLoc("flower_pot_cross")).texture("plant", blockLoc(DDBlocks.ECHO_SAPLING)).renderType("cutout"));
 
-        RegistryObject<Block> block = DDBlocks.BLOOMING_STEM;
-        ModelFile stem = models().withExistingParent(block.getId().getPath(), modLoc("stem")).texture("stem", blockLoc(block));
-        ModelFile horizontal = models().withExistingParent(block.getId().getPath() + "_horizontal", modLoc("stem_horizontal")).texture("stem", blockLoc(block));
-        ModelFile vertical = models().withExistingParent(block.getId().getPath() + "_vertical", modLoc("stem_vertical")).texture("stem", blockLoc(block));
-        MultiPartBlockStateBuilder builder = getMultipartBuilder(block.get()).part().modelFile(stem).addModel().end();
-        PipeBlock.PROPERTY_BY_DIRECTION.forEach((direction, value) -> {
-            if(direction.getAxis().isHorizontal()) builder.part().modelFile(horizontal).rotationY((((int) direction.toYRot()) + 270) % 360).uvLock(true).addModel().condition(value, true);
-            if(direction == Direction.UP) builder.part().modelFile(vertical).rotationX(0).uvLock(true).addModel().condition(value, true);
-            if(direction == Direction.DOWN) builder.part().modelFile(vertical).rotationX(180).uvLock(true).addModel().condition(value, true);
-        });
+        stemBlock(DDBlocks.BLOOMING_STEM);
+        stemBlock(DDBlocks.STRIPPED_BLOOMING_STEM);
         simpleBlock(DDBlocks.BLOOM_PLANKS.get());
         simpleBlock(DDBlocks.POTTED_BLOOMING_STEM.get(), models().getExistingFile(blockLoc(DDBlocks.POTTED_BLOOMING_STEM)));
 
@@ -164,6 +156,19 @@ public class DDBlockStateProvider extends BlockStateProvider {
         ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
         ModelFile jawBiting = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath() + "_biting", blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW, "biting"));
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel().partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
+    }
+
+    private void stemBlock(RegistryObject<Block> block) {
+        ModelFile stem = models().withExistingParent(block.getId().getPath(), modLoc("stem")).texture("stem", blockLoc(block));
+        ModelFile horizontal = models().withExistingParent(block.getId().getPath() + "_horizontal", modLoc("stem_horizontal")).texture("stem", blockLoc(block));
+        ModelFile vertical = models().withExistingParent(block.getId().getPath() + "_vertical", modLoc("stem_vertical")).texture("stem", blockLoc(block));
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block.get()).part().modelFile(stem).addModel().end();
+        PipeBlock.PROPERTY_BY_DIRECTION.forEach((direction, value) -> {
+            if(direction.getAxis().isHorizontal()) builder.part().modelFile(horizontal).rotationY((((int) direction.toYRot()) + 270) % 360).uvLock(true).addModel().condition(value, true);
+            if(direction == Direction.UP) builder.part().modelFile(vertical).rotationX(0).uvLock(true).addModel().condition(value, true);
+            if(direction == Direction.DOWN) builder.part().modelFile(vertical).rotationX(180).uvLock(true).addModel().condition(value, true);
+        });
+        models().singleTexture(block.getId().getPath() + "_inventory", modLoc("stem_inventory"), "stem", blockLoc(block));
     }
 
     private void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {

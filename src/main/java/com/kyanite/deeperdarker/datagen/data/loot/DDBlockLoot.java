@@ -58,6 +58,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropPottedContents(DDBlocks.POTTED_ECHO_SAPLING.get());
 
         dropSelf(DDBlocks.BLOOMING_STEM.get());
+        dropSelf(DDBlocks.STRIPPED_BLOOMING_STEM.get());
         dropSelf(DDBlocks.BLOOM_PLANKS.get());
         dropPottedContents(DDBlocks.POTTED_BLOOMING_STEM.get());
 

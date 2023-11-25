@@ -1,7 +1,6 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"stem": "deeperdarker:block/blooming_stem",
 		"particle": "#stem"
 	},
 	"elements": [

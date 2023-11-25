@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-24T15:04:07.9095054	Loot Tables
+// 1.20.1	2023-11-25T16:56:54.2944321	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_tables/blocks/blooming_moss_block.json
 c209ce4d7dc1ed8f9a102cdb6e1361d06ecf276a data/deeperdarker/loot_tables/blocks/blooming_sculk_stone.json
@@ -118,6 +118,7 @@ f72669b8c37430acdb6b9cbbe46d2645af4e77b0 data/deeperdarker/loot_tables/blocks/sm
 31c1087052b2387ea9ec083ac6a3cb5f41be6170 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone_slab.json
 6763966cb3da5587d5ad090280746925de5a6c71 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone_stairs.json
 14cd933018316035044faf316a82b687a40a5943 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone_wall.json
+d43bfada9c0be7c041e6af15639f1d45aa9edec9 data/deeperdarker/loot_tables/blocks/stripped_blooming_stem.json
 7a7c0a1ec189c2be4fd8c34184f052ac229c841d data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
 79e2c7005ef09e9018e98290690f534fe596263f data/deeperdarker/loot_tables/blocks/stripped_echo_wood.json
 1758d1bc9f54c92794ed886024b16611f47c00e9 data/deeperdarker/loot_tables/chests/ancient_temple_apex.json

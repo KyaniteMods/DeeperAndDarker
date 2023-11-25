@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -19,6 +20,8 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class BloomingStemBlock extends Block {
@@ -59,8 +62,8 @@ public class BloomingStemBlock extends Block {
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return this.defaultBlockState();
-        return this.defaultBlockState().setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
+        if(checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return this.defaultBlockState();
+        return this.defaultBlockState().setValue(DOWN, checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())).setValue(NORTH, checkState(northState)).setValue(EAST, checkState(eastState)).setValue(SOUTH, checkState(southState)).setValue(WEST, checkState(westState));
     }
 
     @Override
@@ -85,8 +88,17 @@ public class BloomingStemBlock extends Block {
         }
 
         if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return pState.setValue(DOWN, true);
-        if(pDirection.getAxis().isHorizontal() && pNeighborState.is(this) && canSurvive(pLevel.getBlockState(pNeighborPos.below()))) return pState;
-        return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), pNeighborState.is(this));
+        if(pDirection.getAxis().isHorizontal() && checkState(pNeighborState) && canSurvive(pLevel.getBlockState(pNeighborPos.below()))) return pState;
+        return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), checkState(pNeighborState));
+    }
+
+    @Override
+    public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+        if(toolAction == ToolActions.AXE_STRIP && state.is(DDBlocks.BLOOMING_STEM.get())) {
+            return DDBlocks.STRIPPED_BLOOMING_STEM.get().defaultBlockState().setValue(UP, state.getValue(UP)).setValue(DOWN, state.getValue(DOWN)).setValue(NORTH, state.getValue(NORTH)).setValue(EAST, state.getValue(EAST)).setValue(SOUTH, state.getValue(SOUTH)).setValue(WEST, state.getValue(WEST));
+        }
+
+        return super.getToolModifiedState(state, context, toolAction, simulate);
     }
 
     @Override
@@ -101,13 +113,17 @@ public class BloomingStemBlock extends Block {
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos pos = pPos.relative(direction);
             BlockState state = pLevel.getBlockState(pos);
-            if(state.is(this) && pState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction)) && canSurvive(pLevel.getBlockState(pos.below()))) return true;
+            if(checkState(state) && pState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction)) && canSurvive(pLevel.getBlockState(pos.below()))) return true;
         }
 
         return false;
     }
 
     private boolean canSurvive(BlockState state) {
-        return state.is(this) || state.is(DDBlocks.BLOOMING_SCULK_STONE.get());
+        return checkState(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE.get());
+    }
+
+    private boolean checkState(BlockState state) {
+        return state.is(DDBlocks.BLOOMING_STEM.get()) || state.is(DDBlocks.STRIPPED_BLOOMING_STEM.get());
     }
 }

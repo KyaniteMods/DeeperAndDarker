@@ -32,6 +32,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.ECHO_BUTTON);
 
             event.accept(DDBlocks.BLOOMING_STEM);
+            event.accept(DDBlocks.STRIPPED_BLOOMING_STEM);
+            event.accept(DDBlocks.BLOOM_PLANKS);
 
             event.accept(DDBlocks.SCULK_STONE);
             event.accept(DDBlocks.SCULK_STONE_STAIRS);
