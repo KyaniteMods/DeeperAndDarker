@@ -34,6 +34,12 @@ public class DDCreativeTab {
             event.accept(DDBlocks.BLOOMING_STEM);
             event.accept(DDBlocks.STRIPPED_BLOOMING_STEM);
             event.accept(DDBlocks.BLOOM_PLANKS);
+            event.accept(DDBlocks.BLOOM_STAIRS);
+            event.accept(DDBlocks.BLOOM_SLAB);
+            event.accept(DDBlocks.BLOOM_FENCE);
+            event.accept(DDBlocks.BLOOM_FENCE_GATE);
+            event.accept(DDBlocks.BLOOM_PRESSURE_PLATE);
+            event.accept(DDBlocks.BLOOM_BUTTON);
 
             event.accept(DDBlocks.SCULK_STONE);
             event.accept(DDBlocks.SCULK_STONE_STAIRS);

@@ -166,6 +166,7 @@ public class DeeperDarker {
         public static void clientSetup(final FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDBlocks.ECHO);
+                Sheets.addWoodType(DDBlocks.BLOOM);
                 ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
                 ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() ? 1 : 0);
             });

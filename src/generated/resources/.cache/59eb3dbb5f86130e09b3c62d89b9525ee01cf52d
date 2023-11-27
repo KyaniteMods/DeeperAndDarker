@@ -1,9 +1,15 @@
-// 1.20.1	2023-11-25T16:56:54.2944321	Loot Tables
+// 1.20.1	2023-11-26T19:17:11.8089108	Loot Tables
 f4fe1f635cb6e3e68f5aaae0488de719277f01f2 data/deeperdarker/loot_tables/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_tables/blocks/blooming_moss_block.json
 c209ce4d7dc1ed8f9a102cdb6e1361d06ecf276a data/deeperdarker/loot_tables/blocks/blooming_sculk_stone.json
 18b211bff5cec0e373e6c336bb3f27cad8c1ed81 data/deeperdarker/loot_tables/blocks/blooming_stem.json
+cd8462a3764efd113c4579159486d669a0fa3240 data/deeperdarker/loot_tables/blocks/bloom_button.json
+89bd0a8f08e15d8ec686c89d43de3e3171ec9c15 data/deeperdarker/loot_tables/blocks/bloom_fence.json
+9eafeb38920e4da54360c4bd36ff69a7cd45eaa3 data/deeperdarker/loot_tables/blocks/bloom_fence_gate.json
 f16391d5b6089197b7da9fc50250a3ce8b137d18 data/deeperdarker/loot_tables/blocks/bloom_planks.json
+81069aa507d300f9a13b9f56bf5b3030ff8b30a9 data/deeperdarker/loot_tables/blocks/bloom_pressure_plate.json
+0c98e6e9c7211be13f831efe6294ba82868372b3 data/deeperdarker/loot_tables/blocks/bloom_slab.json
+7de348f9a6396f08841afc67a66df2828171f171 data/deeperdarker/loot_tables/blocks/bloom_stairs.json
 55589564f7ea5847138db468199d54cd1142b139 data/deeperdarker/loot_tables/blocks/chiseled_gloomslate.json
 c29aeb5add1d38dc94087bd93c15ff08dab7a74d data/deeperdarker/loot_tables/blocks/chiseled_sculk_stone.json
 debbc9e18c6194b29378fce6394766e7864f9ee7 data/deeperdarker/loot_tables/blocks/cobbled_gloomslate.json

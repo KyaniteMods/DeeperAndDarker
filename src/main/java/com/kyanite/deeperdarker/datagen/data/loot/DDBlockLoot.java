@@ -60,6 +60,12 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.BLOOMING_STEM.get());
         dropSelf(DDBlocks.STRIPPED_BLOOMING_STEM.get());
         dropSelf(DDBlocks.BLOOM_PLANKS.get());
+        dropSelf(DDBlocks.BLOOM_STAIRS.get());
+        add(DDBlocks.BLOOM_SLAB.get(), this::createSlabItemTable);
+        dropSelf(DDBlocks.BLOOM_FENCE.get());
+        dropSelf(DDBlocks.BLOOM_FENCE_GATE.get());
+        dropSelf(DDBlocks.BLOOM_PRESSURE_PLATE.get());
+        dropSelf(DDBlocks.BLOOM_BUTTON.get());
         dropPottedContents(DDBlocks.POTTED_BLOOMING_STEM.get());
 
         add(DDBlocks.SCULK_STONE.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE.get()));

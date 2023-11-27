@@ -41,6 +41,12 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.BLOOMING_STEM, "inventory");
         blockModel(DDBlocks.STRIPPED_BLOOMING_STEM, "inventory");
         blockModel(DDBlocks.BLOOM_PLANKS);
+        blockModel(DDBlocks.BLOOM_STAIRS);
+        blockModel(DDBlocks.BLOOM_SLAB);
+        blockModel(DDBlocks.BLOOM_FENCE, "inventory");
+        blockModel(DDBlocks.BLOOM_FENCE_GATE);
+        blockModel(DDBlocks.BLOOM_PRESSURE_PLATE);
+        blockModel(DDBlocks.BLOOM_BUTTON, "inventory");
 
         blockModel(DDBlocks.SCULK_STONE);
         blockModel(DDBlocks.SCULK_STONE_STAIRS);

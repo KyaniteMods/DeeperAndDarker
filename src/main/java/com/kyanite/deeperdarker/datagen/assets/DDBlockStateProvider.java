@@ -44,6 +44,12 @@ public class DDBlockStateProvider extends BlockStateProvider {
         stemBlock(DDBlocks.BLOOMING_STEM);
         stemBlock(DDBlocks.STRIPPED_BLOOMING_STEM);
         simpleBlock(DDBlocks.BLOOM_PLANKS.get());
+        stairsBlock(DDBlocks.BLOOM_STAIRS.get(), blockLoc(DDBlocks.BLOOM_PLANKS));
+        slabBlock(DDBlocks.BLOOM_SLAB.get(), blockLoc(DDBlocks.BLOOM_PLANKS), blockLoc(DDBlocks.BLOOM_PLANKS));
+        fenceBlock(DDBlocks.BLOOM_FENCE, blockLoc(DDBlocks.BLOOM_PLANKS));
+        fenceGateBlock(DDBlocks.BLOOM_FENCE_GATE.get(), blockLoc(DDBlocks.BLOOM_PLANKS));
+        pressurePlateBlock(DDBlocks.BLOOM_PRESSURE_PLATE.get(), blockLoc(DDBlocks.BLOOM_PLANKS));
+        buttonBlock(DDBlocks.BLOOM_BUTTON, blockLoc(DDBlocks.BLOOM_PLANKS));
         simpleBlock(DDBlocks.POTTED_BLOOMING_STEM.get(), models().getExistingFile(blockLoc(DDBlocks.POTTED_BLOOMING_STEM)));
 
         simpleBlock(DDBlocks.SCULK_STONE.get());
