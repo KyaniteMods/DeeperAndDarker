@@ -156,6 +156,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
+        itemModel(DDItems.BLOOM_BOAT, GENERATED);
+        itemModel(DDItems.BLOOM_CHEST_BOAT, GENERATED);
 
         itemModel(DDItems.BLOOM_BERRIES, GENERATED);
 

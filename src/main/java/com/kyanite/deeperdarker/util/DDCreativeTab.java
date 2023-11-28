@@ -158,6 +158,8 @@ public class DDCreativeTab {
             event.accept(DDItems.SOUL_ELYTRA);
             event.accept(DDItems.ECHO_BOAT);
             event.accept(DDItems.ECHO_CHEST_BOAT);
+            event.accept(DDItems.BLOOM_BOAT);
+            event.accept(DDItems.BLOOM_CHEST_BOAT);
 
             event.accept(DDItems.WARDEN_SHOVEL);
             event.accept(DDItems.WARDEN_PICKAXE);

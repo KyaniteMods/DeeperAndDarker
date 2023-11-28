@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-26T19:17:11.7958167	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2023-11-28T17:41:19.4795616	Tags for minecraft:item mod id deeperdarker
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/items/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/forge/tags/items/armors/boots.json
@@ -16,8 +16,8 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/forge/tags/items/ores/lapis.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/forge/tags/items/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/forge/tags/items/stone.json
 fdb484f4a210e2dd05f467df98f15fd1f3a73196 data/minecraft/tags/items/axes.json
-46a970866e0f7a97eb38ae9eb6b564804fd8bf61 data/minecraft/tags/items/boats.json
-fed577a93949a2c8794141b01cf67a4303f6b5d0 data/minecraft/tags/items/chest_boats.json
+828ad83b431bb94c090ae2c19a590f9f05e876ea data/minecraft/tags/items/boats.json
+228936f18b279028fc9028a3e9fd11dbc0674eab data/minecraft/tags/items/chest_boats.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/items/coal_ores.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/items/copper_ores.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/items/diamond_ores.json

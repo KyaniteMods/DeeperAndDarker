@@ -37,7 +37,7 @@ public class DDBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        return DDItems.ECHO_BOAT.get();
+        return this.entityData.get(WOOD_TYPE).equals("echo") ? DDItems.ECHO_BOAT.get() : DDItems.BLOOM_BOAT.get();
     }
 
     @Override

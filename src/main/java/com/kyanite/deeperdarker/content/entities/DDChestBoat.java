@@ -38,7 +38,7 @@ public class DDChestBoat extends ChestBoat {
 
     @Override
     public Item getDropItem() {
-        return DDItems.ECHO_CHEST_BOAT.get();
+        return this.entityData.get(WOOD_TYPE).equals("echo") ? DDItems.ECHO_CHEST_BOAT.get() : DDItems.BLOOM_CHEST_BOAT.get();
     }
 
     @Override

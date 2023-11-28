@@ -32,6 +32,8 @@ public class DDItems {
     public static final RegistryObject<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
     public static final RegistryObject<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
+    public static final RegistryObject<Item> BLOOM_BOAT = ITEMS.register("bloom_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
+    public static final RegistryObject<Item> BLOOM_CHEST_BOAT = ITEMS.register("bloom_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
 
     public static final RegistryObject<Item> SCULK_BONE = ITEMS.register("sculk_bone", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SOUL_DUST = ITEMS.register("soul_dust", () -> new Item(new Item.Properties()));
