@@ -1,7 +1,8 @@
-// 1.20	2023-11-20T15:45:29.486630748	Deeper and Darker/Tags for minecraft:block
+// 1.20	2023-11-30T11:45:21.087047886	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 fc4746e6361c4738f8d49d9736180f693b5d89f6 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
+8cc5aac19c24c87678696e75feac8c660984492a data/minecraft/tags/blocks/occludes_vibration_signals.json
 8787510abc7136bd0e101f9597e4c972f261ec32 data/minecraft/tags/blocks/standing_signs.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/small_dripleaf_placeable.json
 54e721fa91171d8189efd956079c77fd11abc938 data/deeperdarker/tags/blocks/gloomslate_replaceable.json

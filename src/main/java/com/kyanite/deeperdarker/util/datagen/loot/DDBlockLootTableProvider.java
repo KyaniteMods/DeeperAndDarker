@@ -147,6 +147,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         ancientVaseDrop();
 
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
+
+        dropSelf(DDBlocks.SOUNDPROOF_GLASS);
     }
 
     private void addVineAndPlant(Block vines, Block plant) {

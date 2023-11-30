@@ -184,6 +184,8 @@ public class DDModelProvider extends FabricModelProvider {
         registerBloomingSculkStone(blockModelGenerators);
         blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
         registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.BLOOMING_STEM);
+
+        blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
     }
 
     @Override

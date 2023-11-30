@@ -41,7 +41,7 @@ public class DDConfig {
     public boolean geysersApplySlowFalling = false;
 
     @SerialEntry
-    public double geyserLaunchVelocity = 2.5;
+    public float geyserLaunchVelocity = 2.5f;
 
     @SerialEntry(comment = "The minimum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMinWidth = 8;

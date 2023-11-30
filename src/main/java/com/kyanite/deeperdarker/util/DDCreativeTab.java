@@ -148,6 +148,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.GLOOMY_GEYSER));
         entries.accept(new ItemStack(DDBlocks.CRYSTALLIZED_AMBER));
         entries.accept(new ItemStack(DDBlocks.ANCIENT_VASE));
+        entries.accept(new ItemStack(DDBlocks.SOUNDPROOF_GLASS));
         entries.accept(new ItemStack(DDItems.SCULK_TRANSMITTER));
         entries.accept(new ItemStack(DDItems.SCULK_SNAPPER_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SHATTERED_SPAWN_EGG));
