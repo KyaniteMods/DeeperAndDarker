@@ -1,12 +1,22 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -15,6 +25,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -63,8 +75,8 @@ public class BloomingStemBlock extends Block {
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        if(belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)) return this.defaultBlockState();
-        return this.defaultBlockState().setValue(UP, aboveState.is(this)).setValue(DOWN, belowState.is(this) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this));
+        if(checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)) return this.defaultBlockState();
+        return this.defaultBlockState().setValue(UP, checkState(aboveState)).setValue(DOWN, checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)).setValue(NORTH, checkState(northState)).setValue(EAST, checkState(eastState)).setValue(SOUTH, checkState(southState)).setValue(WEST, checkState(westState));
     }
 
     @Override
@@ -89,7 +101,7 @@ public class BloomingStemBlock extends Block {
         }
 
         if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK_STONE)) return pState.setValue(DOWN, true);
-        return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), pNeighborState.is(this));
+        return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), checkState(pNeighborState));
     }
 
     @Override
@@ -114,9 +126,9 @@ public class BloomingStemBlock extends Block {
     }
 
     private Set<BlockPos> getConnectedBloomingStems(LevelReader pLevel, BlockPos pPos, Set<BlockPos> stemPositions) {
-        if (pLevel.getBlockState(pPos).is(this)) stemPositions.add(pPos);
+        if (checkState(pLevel.getBlockState(pPos))) stemPositions.add(pPos);
         for (Direction direction : Direction.values()) {
-            if (pLevel.getBlockState(pPos.relative(direction)).is(this) && !stemPositions.contains(pPos.relative(direction))) {
+            if (checkState(pLevel.getBlockState(pPos.relative(direction))) && !stemPositions.contains(pPos.relative(direction))) {
                 this.getConnectedBloomingStems(pLevel, pPos.relative(direction), stemPositions);
             }
         }
@@ -124,6 +136,28 @@ public class BloomingStemBlock extends Block {
     }
 
     private boolean canSurvive(BlockState state) {
-        return state.is(this) || state.is(DDBlocks.BLOOMING_SCULK_STONE);
+        return checkState(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE);
+    }
+
+    private boolean checkState(BlockState state) {
+        return state.is(DDBlocks.BLOOMING_STEM) || state.is(DDBlocks.STRIPPED_BLOOMING_STEM);
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        ItemStack stack = player.getItemInHand(interactionHand);
+        BlockState strippedBlockState = DDBlocks.STRIPPED_BLOOMING_STEM.defaultBlockState().setValue(UP, state.getValue(UP)).setValue(DOWN, state.getValue(DOWN)).setValue(NORTH, state.getValue(NORTH)).setValue(EAST, state.getValue(EAST)).setValue(SOUTH, state.getValue(SOUTH)).setValue(WEST, state.getValue(WEST));
+        if (stack.is(ItemTags.AXES)) {
+            level.playSound(player, blockPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, stack);
+            }
+            level.setBlock(blockPos, strippedBlockState, 11);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, strippedBlockState));
+            stack.hurtAndBreak(1, player, lambdaPlayer -> lambdaPlayer.broadcastBreakEvent(interactionHand));
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        return super.use(state, level, blockPos, player, interactionHand, blockHitResult);
     }
 }

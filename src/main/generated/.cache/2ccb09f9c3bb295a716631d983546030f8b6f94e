@@ -1,4 +1,4 @@
-// 1.20	2023-12-01T16:44:47.449823601	Deeper and Darker/Block Loot Tables
+// 1.20	2023-12-01T17:52:50.380974292	Deeper and Darker/Block Loot Tables
 9da81cff96f591867c050dc195a59591c0570c6b data/deeperdarker/loot_tables/blocks/echo_fence.json
 59c27f1afefc9c217c2b98237b2d4012f428ad87 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
@@ -75,6 +75,7 @@ e361dd8f0a40c2714631def7f329b411d9e7ee5a data/deeperdarker/loot_tables/blocks/cr
 05d9a873cae36db28f11a27606de09fa82b539ab data/deeperdarker/loot_tables/blocks/sculk_stone_tile_wall.json
 444ee2b8b48675db101a101eb52a7627428edaef data/deeperdarker/loot_tables/blocks/gloomslate_emerald_ore.json
 598aeffe7e9b37f67b091e58c27a420b4577a4f3 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone_stairs.json
+0f3afdb1185acb22cd58eb43587996fe5c4d5b44 data/deeperdarker/loot_tables/blocks/stripped_blooming_stem.json
 308edb568daa74e0641993005bf1f0bf6d018ab1 data/deeperdarker/loot_tables/blocks/gloomslate_brick_slab.json
 375e7e0bf3d80ca26ff80d3b8c53f5ec9e7403bc data/deeperdarker/loot_tables/blocks/cobbled_gloomslate.json
 416e54c0b57bd9a644b343c7181cbb5118552d5a data/deeperdarker/loot_tables/blocks/echo_hanging_sign.json

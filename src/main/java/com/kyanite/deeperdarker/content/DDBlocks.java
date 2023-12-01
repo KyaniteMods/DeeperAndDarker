@@ -83,6 +83,7 @@ public class DDBlocks {
     public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", createFlowerPot(ECHO_SAPLING));
 
     public static final Block BLOOMING_STEM = register("blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).sound(SoundType.WOOD).ignitedByLava().noOcclusion()));
+    public static final Block STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.copy(BLOOMING_STEM)));
 
     public static final Block POTTED_BLOOMING_STEM = registerWithoutItem("potted_blooming_stem", createFlowerPot(BLOOMING_STEM));
 

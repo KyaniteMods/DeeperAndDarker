@@ -1,4 +1,4 @@
-// 1.20	2023-12-01T16:44:47.442002355	Deeper and Darker/Tags for minecraft:block
+// 1.20	2023-12-01T17:52:50.373832758	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 fc4746e6361c4738f8d49d9736180f693b5d89f6 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
@@ -11,7 +11,7 @@ d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.js
 68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/blocks/lapis_ores.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/sniffer_diggable_block.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/blocks/leaves.json
-5a3f4a2577dceb7a300746568cda0b9e800f9702 data/minecraft/tags/blocks/mineable/axe.json
+fb5667c1f1b3843f608c3e2ce13a30358aa3513a data/minecraft/tags/blocks/mineable/axe.json
 8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data/minecraft/tags/blocks/wooden_slabs.json
 6054ab281c7c10b93158604532da69bced56e992 data/minecraft/tags/blocks/logs_that_burn.json
 cf0fad197fd904acee9b676ffdf675297222de53 data/minecraft/tags/blocks/wooden_stairs.json

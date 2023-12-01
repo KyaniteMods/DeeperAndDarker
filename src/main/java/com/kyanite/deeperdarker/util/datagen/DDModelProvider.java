@@ -199,7 +199,12 @@ public class DDModelProvider extends FabricModelProvider {
         registerBloomingSculkStone(blockModelGenerators);
         blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
         registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.BLOOMING_STEM);
-        blockModelGenerators.delegateItemModel(DDBlocks.BLOOMING_STEM, ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"));
+        registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.STRIPPED_BLOOMING_STEM);
+
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"),
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_STEM)));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"),
+                new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BLOOMING_STEM)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
     }
@@ -251,6 +256,8 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, ResourceLocation.DEFAULT_NAMESPACE + ":broken", "_broken");
+        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM.asItem()));
+        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM.asItem()));
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SHATTERED_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_LEECH_SPAWN_EGG);
@@ -391,6 +398,19 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplate parentModel = new ModelTemplate(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
 
         parentModel.create(child, textureMap, blockModelGenerators.modelOutput);
+    }
+
+    @SafeVarargs
+    private static void registerParented(ItemModelGenerators itemModelGenerators, ResourceLocation parent, ResourceLocation child, Tuple<TextureSlot, ResourceLocation> ... textures) {
+        List<TextureSlot> textureKeys = new ArrayList<>();
+        TextureMapping textureMap = new TextureMapping();
+        for (Tuple<TextureSlot, ResourceLocation> pair : textures) {
+            textureKeys.add(pair.getA());
+            textureMap.put(pair.getA(), pair.getB());
+        }
+        ModelTemplate parentModel = new ModelTemplate(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
+
+        parentModel.create(child, textureMap, itemModelGenerators.output);
     }
 
     private void registerBloomingSculkStone(BlockModelGenerators blockModelGenerators) {

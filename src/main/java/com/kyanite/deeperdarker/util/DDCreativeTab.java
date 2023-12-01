@@ -12,8 +12,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class DDCreativeTab {
-    private static final CreativeModeTab.Builder ITEM_GROUP_BUILDER =
-        FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
+    private static final CreativeModeTab.Builder ITEM_GROUP_BUILDER = FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
         entries.accept(new ItemStack(DDItems.WARDEN_HELMET));
         entries.accept(new ItemStack(DDItems.WARDEN_CHESTPLATE));
         entries.accept(new ItemStack(DDItems.WARDEN_LEGGINGS));
@@ -56,6 +55,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.BLOOMING_SCULK_STONE));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_MOSS_BLOCK));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_STEM));
+        entries.accept(new ItemStack(DDBlocks.STRIPPED_BLOOMING_STEM));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_STAIRS));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_SLAB));
