@@ -266,73 +266,73 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
     }
 
-    private static void registerButton(BlockModelGenerators BlockModelGenerators, Block block, Block planks) {
+    private static void registerButton(BlockModelGenerators blockModelGenerators, Block block, Block planks) {
         ResourceLocation buttonModel = ModelTemplates.BUTTON.create(block, TexturedModel.CUBE.get(planks).getMapping(),
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation buttonPressedModel = ModelTemplates.BUTTON_PRESSED.create(block, TexturedModel.CUBE.get(planks).getMapping(),
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
 
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, buttonModel, buttonPressedModel));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createButton(block, buttonModel, buttonPressedModel));
     }
 
-    private static void registerFenceGate(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {
+    private static void registerFenceGate(BlockModelGenerators blockModelGenerators, Block block, Block textureSource) {
         TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
         ResourceLocation fenceGateOpenModel = ModelTemplates.FENCE_GATE_OPEN.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation fenceGateModel = ModelTemplates.FENCE_GATE_CLOSED.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation wallFenceGateOpenModel = ModelTemplates.FENCE_GATE_WALL_OPEN.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
+                blockModelGenerators.modelOutput);
         ResourceLocation wallFenceGateModel = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(block, textureMap,
-                BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFenceGate(block, fenceGateOpenModel, fenceGateModel, wallFenceGateOpenModel, wallFenceGateModel, true));
+                blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFenceGate(block, fenceGateOpenModel, fenceGateModel, wallFenceGateOpenModel, wallFenceGateModel, true));
     }
 
-    private static void registerFence(BlockModelGenerators BlockModelGenerators, Block block, Block textureSource) {
+    private static void registerFence(BlockModelGenerators blockModelGenerators, Block block, Block textureSource) {
         TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
-        ResourceLocation fencePost = ModelTemplates.FENCE_POST.create(block, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation fenceSide = ModelTemplates.FENCE_SIDE.create(block, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFence(block, fencePost, fenceSide));
+        ResourceLocation fencePost = ModelTemplates.FENCE_POST.create(block, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation fenceSide = ModelTemplates.FENCE_SIDE.create(block, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createFence(block, fencePost, fenceSide));
     }
 
-    private static void registerPressurePlate(BlockModelGenerators BlockModelGenerators, Block pressurePlate, Block textureSource) {
+    private static void registerPressurePlate(BlockModelGenerators blockModelGenerators, Block pressurePlate, Block textureSource) {
         TextureMapping textureMap = TextureMapping.defaultTexture(textureSource);
-        ResourceLocation upModel = ModelTemplates.PRESSURE_PLATE_UP.create(pressurePlate, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation downModel = ModelTemplates.PRESSURE_PLATE_DOWN.create(pressurePlate, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(pressurePlate, upModel, downModel));
+        ResourceLocation upModel = ModelTemplates.PRESSURE_PLATE_UP.create(pressurePlate, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation downModel = ModelTemplates.PRESSURE_PLATE_DOWN.create(pressurePlate, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createPressurePlate(pressurePlate, upModel, downModel));
     }
 
-    private static void registerSlabWithCubeAll(BlockModelGenerators BlockModelGenerators, Block slab, Block textureSource) {
+    private static void registerSlabWithCubeAll(BlockModelGenerators blockModelGenerators, Block slab, Block textureSource) {
         ResourceLocation ResourceLocation = ModelLocationUtils.getModelLocation(textureSource);
         TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
-        ResourceLocation ResourceLocation2 = ModelTemplates.SLAB_BOTTOM.create(slab, texturedModel.getMapping(), BlockModelGenerators.modelOutput);
-        ResourceLocation ResourceLocation3 = ModelTemplates.SLAB_TOP.create(slab, texturedModel.getMapping(), BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, ResourceLocation2, ResourceLocation3, ResourceLocation));
+        ResourceLocation ResourceLocation2 = ModelTemplates.SLAB_BOTTOM.create(slab, texturedModel.getMapping(), blockModelGenerators.modelOutput);
+        ResourceLocation ResourceLocation3 = ModelTemplates.SLAB_TOP.create(slab, texturedModel.getMapping(), blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSlab(slab, ResourceLocation2, ResourceLocation3, ResourceLocation));
     }
 
-    private static void registerStairs(BlockModelGenerators BlockModelGenerators, Block stairs, Block textureSource) {
+    private static void registerStairs(BlockModelGenerators blockModelGenerators, Block stairs, Block textureSource) {
         TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
         TextureMapping textureMap = texturedModel.getMapping();
-        ResourceLocation innerModel = ModelTemplates.STAIRS_INNER.create(stairs, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation regularModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, innerModel, regularModel, outerModel));
+        ResourceLocation innerModel = ModelTemplates.STAIRS_INNER.create(stairs, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation regularModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createStairs(stairs, innerModel, regularModel, outerModel));
     }
 
-    private static void registerWall(BlockModelGenerators BlockModelGenerators, Block wall, Block textureSource) {
+    private static void registerWall(BlockModelGenerators blockModelGenerators, Block wall, Block textureSource) {
         TexturedModel texturedModel = TexturedModel.CUBE.get(textureSource);
         TextureMapping textureMap = texturedModel.getMapping();
-        ResourceLocation postModel = ModelTemplates.WALL_POST.create(wall, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation sideModel = ModelTemplates.WALL_LOW_SIDE.create(wall, textureMap, BlockModelGenerators.modelOutput);
-        ResourceLocation sideTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, textureMap, BlockModelGenerators.modelOutput);
-        BlockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createWall(wall, postModel, sideModel, sideTallModel));
+        ResourceLocation postModel = ModelTemplates.WALL_POST.create(wall, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation sideModel = ModelTemplates.WALL_LOW_SIDE.create(wall, textureMap, blockModelGenerators.modelOutput);
+        ResourceLocation sideTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, textureMap, blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createWall(wall, postModel, sideModel, sideTallModel));
     }
 
-    private static void registerSculkJaw(BlockModelGenerators BlockModelGenerators, Block sculkJaw) {
-        ResourceLocation sculkJawModel = ModelTemplates.CUBE_TOP.create(sculkJaw, TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw)).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), BlockModelGenerators.modelOutput);
-        ResourceLocation sculkJawBitingModel = ModelTemplates.CUBE_TOP.create(ModelLocationUtils.getModelLocation(sculkJaw, "_biting"), TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw, "_biting")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), BlockModelGenerators.modelOutput);
+    private static void registerSculkJaw(BlockModelGenerators blockModelGenerators, Block sculkJaw) {
+        ResourceLocation sculkJawModel = ModelTemplates.CUBE_TOP.create(sculkJaw, TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw)).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), blockModelGenerators.modelOutput);
+        ResourceLocation sculkJawBitingModel = ModelTemplates.CUBE_TOP.create(ModelLocationUtils.getModelLocation(sculkJaw, "_biting"), TextureMapping.singleSlot(TextureSlot.TOP, TextureMapping.getBlockTexture(sculkJaw, "_biting")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(sculkJaw, "_side")), blockModelGenerators.modelOutput);
 
-        BlockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.SCULK_JAW).with(BlockModelGenerators.createBooleanModelDispatch(
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.SCULK_JAW).with(BlockModelGenerators.createBooleanModelDispatch(
                 SculkJawBlock.BITING, sculkJawBitingModel, sculkJawModel)));
     }
 
