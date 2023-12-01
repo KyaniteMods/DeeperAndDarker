@@ -138,6 +138,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOOMY_SCULK, "Gloomy Sculk");
         translationBuilder.add(DDBlocks.GLOOMY_GEYSER, "Gloomy Geyser");
         translationBuilder.add(DDBlocks.POTTED_ECHO_SAPLING, "Potted Echo Sapling");
+        translationBuilder.add(DDBlocks.POTTED_BLOOMING_STEM, "Potted Blooming Stem");
         translationBuilder.add(DDBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DDBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
         translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");

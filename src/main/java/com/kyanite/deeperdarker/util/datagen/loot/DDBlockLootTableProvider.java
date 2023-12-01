@@ -47,6 +47,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.ECHO_SIGN);
         dropSelf(DDBlocks.ECHO_HANGING_SIGN);
         dropPottedContents(DDBlocks.POTTED_ECHO_SAPLING);
+        dropPottedContents(DDBlocks.POTTED_BLOOMING_STEM);
 
         dropSelf(DDBlocks.BLOOMING_STEM);
 
