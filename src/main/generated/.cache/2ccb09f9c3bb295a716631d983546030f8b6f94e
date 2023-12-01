@@ -1,4 +1,4 @@
-// 1.20	2023-12-01T15:15:11.754305903	Deeper and Darker/Block Loot Tables
+// 1.20	2023-12-01T16:03:17.121559807	Deeper and Darker/Block Loot Tables
 9da81cff96f591867c050dc195a59591c0570c6b data/deeperdarker/loot_tables/blocks/echo_fence.json
 59c27f1afefc9c217c2b98237b2d4012f428ad87 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
@@ -47,7 +47,6 @@ c59b55ca5a9dc254eb6b396f2316d27920ac803f data/deeperdarker/loot_tables/blocks/bl
 83207688854f505e103483be82c1324df1daecb0 data/deeperdarker/loot_tables/blocks/cut_sculk_stone_stairs.json
 142efc2d66f4e45aaeff6777c0345eae8e1aa0dd data/deeperdarker/loot_tables/blocks/cut_gloomslate_slab.json
 d8fb027e62efba2130b141562e053ae68ee55760 data/deeperdarker/loot_tables/blocks/polished_sculk_stone_wall.json
-c6668faac8b5d9ef6630770f951cee45674f1fff data/deeperdarker/loot_tables/blocks/glowing_vines.json
 900c1bed10fea7e9613916545275bb2d28a8a8a1 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone.json
 97abbbb9bfb0c7729b1a999fc67d914b3759aeb8 data/deeperdarker/loot_tables/blocks/cut_gloomslate_wall.json
 2e23386eeb17276231ef0f7fc695e66cf227361c data/deeperdarker/loot_tables/blocks/cut_gloomslate.json
@@ -108,7 +107,7 @@ fac28cf1ae6e13e7a5931b99c9b50ed3abc5d0a0 data/deeperdarker/loot_tables/blocks/co
 d375c4bb020a515e5e1f4aebdfd52622e7ffd721 data/deeperdarker/loot_tables/blocks/sculk_stone_coal_ore.json
 ad89bb35566635c9480487dee395fb0df0a4ac1c data/deeperdarker/loot_tables/blocks/gloomslate_diamond_ore.json
 74279d77b794654f82caa5f056a7d0f12865310c data/deeperdarker/loot_tables/blocks/cut_sculk_stone_slab.json
-c6668faac8b5d9ef6630770f951cee45674f1fff data/deeperdarker/loot_tables/blocks/glowing_vines_plant.json
+4c371750329e282f2d4e21bb989a4206a123d22d data/deeperdarker/loot_tables/blocks/glowing_vines_plant.json
 ca4313bd7ac88f77fac1c3729406609f2e264ad6 data/deeperdarker/loot_tables/blocks/gloomslate_tile_wall.json
 ed7a358314bb8fb063323fe18ee1f2ce5f34211b data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone.json
 ebd25273cdf04dfcf9f1ccba9c863882a87d0b1d data/deeperdarker/loot_tables/blocks/sculk_grime_brick_stairs.json
