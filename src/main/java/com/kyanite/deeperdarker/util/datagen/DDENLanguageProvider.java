@@ -147,6 +147,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOWING_FLOWERS, "Glowing Flowers");
         translationBuilder.add(DDBlocks.GLOWING_GRASS, "Glowing Grass");
         translationBuilder.add(DDBlocks.BLOOMING_STEM, "Blooming Stem");
+        translationBuilder.add(DDBlocks.STRIPPED_BLOOMING_STEM, "Stripped Blooming Stem");
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
 
