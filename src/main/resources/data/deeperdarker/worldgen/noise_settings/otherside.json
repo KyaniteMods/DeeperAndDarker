@@ -191,7 +191,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "deeperdarker:blooming_sculk"
+                  "Name": "deeperdarker:blooming_sculk_stone"
                 }
               }
             },

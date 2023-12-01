@@ -2,8 +2,10 @@ package com.kyanite.deeperdarker.util.datagen.loot;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -16,6 +18,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -141,8 +144,10 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         add(DDBlocks.GLOOMY_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS);
-        addVineAndPlant(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT);
-        addVineAndPlant(DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT);
+        addVineAndPlant(DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_TENDRILS);
+        addVineAndPlant(DDBlocks.SCULK_VINES_PLANT, DDBlocks.SCULK_VINES);
+        addVineAndPlant(DDBlocks.GLOWING_ROOTS_PLANT, DDBlocks.GLOWING_ROOTS);
+        add(DDBlocks.GLOWING_VINES_PLANT, this::glowingVinesDrop);
 
         ancientVaseDrop();
 
@@ -151,10 +156,14 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
     }
 
-    private void addVineAndPlant(Block vines, Block plant) {
-        LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vines, LootItem.lootTableItem(vines).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33f, 0.55f, 0.77f, 1.0f)));
-        add(vines, builder);
+    private void addVineAndPlant(Block plant, Block vine) {
+        LootTable.Builder builder = createSilkTouchOrShearsDispatchTable(vine, LootItem.lootTableItem(vine).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 0.33f, 0.55f, 0.77f, 1.0f)));
         add(plant, builder);
+        add(vine, builder);
+    }
+
+    private LootTable.Builder glowingVinesDrop(Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(DDItems.BLOOM_BERRIES)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GlowingVinesPlantBlock.BERRIES, true))));
     }
 
     private void ancientVaseDrop() {

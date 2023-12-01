@@ -22,6 +22,7 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
         WorldGenLevel level = pContext.level();
         BlockPos origin = pContext.origin();
         RandomSource random = pContext.random();
+
         if(level.isEmptyBlock(origin)) {
             BlockState state = level.getBlockState(origin.above());
             if(state.is(Blocks.SCULK) || state.is(DDBlocks.SCULK_STONE)) {

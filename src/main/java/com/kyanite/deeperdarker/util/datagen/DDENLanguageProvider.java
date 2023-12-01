@@ -129,6 +129,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_TENDRILS, "Sculk Tendrils");
         translationBuilder.add(DDBlocks.SCULK_VINES_PLANT, "Sculk Vines Plant");
         translationBuilder.add(DDBlocks.SCULK_VINES, "Sculk Vines");
+        translationBuilder.add(DDBlocks.GLOWING_ROOTS_PLANT, "Glowing Roots Plant");
+        translationBuilder.add(DDBlocks.GLOWING_ROOTS, "Glowing Roots");
+        translationBuilder.add(DDBlocks.GLOWING_VINES_PLANT, "Glowing Vines Plant");
+        translationBuilder.add(DDBlocks.GLOWING_VINES, "Glowing Vines");
         translationBuilder.add(DDBlocks.GLOOMY_CACTUS, "Gloomy Cactus");
         translationBuilder.add(DDBlocks.GLOOMY_GRASS, "Gloomy Grass");
         translationBuilder.add(DDBlocks.GLOOMY_SCULK, "Gloomy Sculk");
@@ -142,6 +146,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOWING_FLOWERS, "Glowing Flowers");
         translationBuilder.add(DDBlocks.GLOWING_GRASS, "Glowing Grass");
         translationBuilder.add(DDBlocks.BLOOMING_STEM, "Blooming Stem");
+        translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
 
         translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
@@ -172,7 +177,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
-        translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
+        translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");

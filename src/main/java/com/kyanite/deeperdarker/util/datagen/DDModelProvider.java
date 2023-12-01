@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -138,6 +139,19 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_ROOTS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_ROOTS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_VINES, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+
+        ModelTemplates.CROSS.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_VINES_PLANT), TextureMapping.cross(TextureMapping.getBlockTexture(DDBlocks.GLOWING_VINES_PLANT)), blockModelGenerators.modelOutput);
+        ModelTemplates.CROSS.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_VINES_PLANT, "_berries"), TextureMapping.cross(TextureMapping.getBlockTexture(DDBlocks.GLOWING_VINES_PLANT).withSuffix("_berries")), blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(DDBlocks.GLOWING_VINES_PLANT)
+                        .with(PropertyDispatch.property(GlowingVinesPlantBlock.BERRIES)
+                                .select(false, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_VINES_PLANT)))
+                                .select(true, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_VINES_PLANT, "_berries")))
+                        )
+        );
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_CACTUS);
         blockModelGenerators.delegateItemModel(DDBlocks.GLOOMY_CACTUS, ModelLocationUtils.getModelLocation(DDBlocks.GLOOMY_CACTUS));
@@ -208,8 +222,10 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.SCULK_BONE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BALL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TENDRILS.asItem()), TextureMapping.layer0(DDBlocks.SCULK_TENDRILS_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT), itemModelGenerator.output);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_ROOTS.asItem()), TextureMapping.layer0(DDBlocks.GLOWING_ROOTS_PLANT), itemModelGenerator.output);
         ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_BUTTON.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_FENCE.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_STONE), itemModelGenerator.output);
