@@ -25,6 +25,8 @@ public class DDItems {
     public static final Item SOUL_ELYTRA = register("soul_elytra", new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON)));
     public static final Item ECHO_BOAT = register("echo_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
     public static final Item ECHO_CHEST_BOAT = register("echo_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
+    public static final Item BLOOM_BOAT = register("bloom_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
+    public static final Item BLOOM_CHEST_BOAT = register("bloom_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
 
     public static final Item SCULK_BONE = register("sculk_bone", new Item(new Item.Properties()));
     public static final Item SOUL_DUST = register("soul_dust", new Item(new Item.Properties()));

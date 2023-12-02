@@ -43,6 +43,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
         add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
         add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
+        getOrCreateTagBuilder(ItemTags.BOATS).setReplace(false).add(DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT);
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).setReplace(false).add(DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT);
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
         getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD);
         getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE);
