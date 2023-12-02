@@ -306,6 +306,12 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.generatedPortalHeight.description", "The height of Otherside portals generated when traveling through dimensions and no portal is available. Making this too large may cause problems.");
         translationBuilder.add("config.deeperdarker.geyserLaunchVelocity.title", "Gloomy Geyser Launch Velocity");
         translationBuilder.add("config.deeperdarker.geyserLaunchVelocity.description", "Defines the velocity applied when a player is launched by a Gloomy Geyser.");
+        translationBuilder.add("config.deeperdarker.sonorousStaffRange.title", "Sonorous Staff Range");
+        translationBuilder.add("config.deeperdarker.sonorousStaffRange.description", "Determines the range of the Sonorous Staff's sonic boom.");
+        translationBuilder.add("config.deeperdarker.sonorousStaffDamage.title", "Sonorous Staff Damage");
+        translationBuilder.add("config.deeperdarker.sonorousStaffDamage.description", "Determines the damage of the Sonorous Staff's sonic boom.");
+        translationBuilder.add("config.deeperdarker.sonorousStaffKnockback.title", "Sonorous Staff Knockback");
+        translationBuilder.add("config.deeperdarker.sonorousStaffKnockback.description", "Determines the knockback of the Sonorous Staff's sonic boom applied to living entities.");
 
         translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
         translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");

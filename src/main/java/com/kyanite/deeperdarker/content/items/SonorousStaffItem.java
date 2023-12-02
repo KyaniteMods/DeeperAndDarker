@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.util.DDConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -21,10 +22,6 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class SonorousStaffItem extends Item {
-    public static int range = 40;
-    public static float damage = 10f;
-    public static double knockback = 1;
-
     public SonorousStaffItem(Properties pProperties) {
         super(pProperties);
     }
@@ -35,7 +32,7 @@ public class SonorousStaffItem extends Item {
         pPlayer.getCooldowns().addCooldown(this, 40);
 
         Vec3 eyePos = pPlayer.getEyePosition();
-        for (int i = 0; i < range; i++) {
+        for (int i = 0; i < DDConfig.HANDLER.instance().sonorousStaffRange; i++) {
             Vec3 particleSpawnPos = eyePos.add(pPlayer.getForward().x * i, pPlayer.getForward().y * i, pPlayer.getForward().z * i);
             BlockPos hitBlockPos = new BlockPos((int) particleSpawnPos.x, (int) particleSpawnPos.y, (int) particleSpawnPos.z);
             BlockState hitBlock = pLevel.getBlockState(hitBlockPos);
@@ -46,15 +43,15 @@ public class SonorousStaffItem extends Item {
                 List<Entity> targets = pLevel.getEntitiesOfClass(Entity.class, aabb);
                 for (Entity target : targets) {
                     if (target != pPlayer) {
-                        target.hurt(pLevel.damageSources().sonicBoom(pPlayer), damage);
+                        target.hurt(pLevel.damageSources().sonicBoom(pPlayer), DDConfig.HANDLER.instance().sonorousStaffDamage);
                         if (target instanceof LivingEntity livingEntity) {
                             double horizontalResistance = 0.5 * (1 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
                             double verticalResistance = 2.5 * (1 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                            target.push(pPlayer.getForward().x * knockback * horizontalResistance, pPlayer.getForward().y * knockback * verticalResistance, pPlayer.getForward().z * knockback * horizontalResistance);
+                            target.push(pPlayer.getForward().x * DDConfig.HANDLER.instance().sonorousStaffKnockback * horizontalResistance, pPlayer.getForward().y * DDConfig.HANDLER.instance().sonorousStaffKnockback * verticalResistance, pPlayer.getForward().z * DDConfig.HANDLER.instance().sonorousStaffKnockback * horizontalResistance);
                         }
                     }
                 }
-            } else i = range;
+            } else i = DDConfig.HANDLER.instance().sonorousStaffRange;
         }
 
         pPlayer.playSound(SoundEvents.WARDEN_SONIC_BOOM);
