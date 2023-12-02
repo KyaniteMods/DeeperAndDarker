@@ -41,8 +41,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE);
         add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_BUTTON);
         add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
-        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
-        add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
+        getOrCreateTagBuilder(ItemTags.SIGNS).add(DDItems.ECHO_SIGN, DDItems.BLOOM_SIGN);
+        getOrCreateTagBuilder(ItemTags.SIGNS).add(DDItems.ECHO_HANGING_SIGN, DDItems.BLOOM_HANGING_SIGN);
         getOrCreateTagBuilder(ItemTags.BOATS).setReplace(false).add(DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT);
         getOrCreateTagBuilder(ItemTags.CHEST_BOATS).setReplace(false).add(DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT);
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);

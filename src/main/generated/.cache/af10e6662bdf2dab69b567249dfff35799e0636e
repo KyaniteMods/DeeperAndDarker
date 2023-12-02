@@ -1,9 +1,9 @@
-// 1.20	2023-12-02T14:38:53.192425831	Deeper and Darker/Tags for minecraft:block
+// 1.20	2023-12-02T14:59:42.744100018	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
 8cc5aac19c24c87678696e75feac8c660984492a data/minecraft/tags/blocks/occludes_vibration_signals.json
-8787510abc7136bd0e101f9597e4c972f261ec32 data/minecraft/tags/blocks/standing_signs.json
+227fb9539d14556e5c2e9cffc940f6206c661864 data/minecraft/tags/blocks/standing_signs.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/small_dripleaf_placeable.json
 54e721fa91171d8189efd956079c77fd11abc938 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
 5eab59aeb251bf0914609c90236404b844d1e7d3 data/minecraft/tags/blocks/wooden_fences.json
@@ -29,13 +29,13 @@ c17d1bdd759702765aa934b86f1f6d3b593b821f data/minecraft/tags/blocks/coal_ores.js
 c042d2921526d56ca039457fd44638d0e03ff543 data/minecraft/tags/blocks/fence_gates.json
 9041fa0da99c531922bff22ba8602e0606f2c64e data/minecraft/tags/blocks/needs_stone_tool.json
 d0b222d759fe0c881261b06d778a3563df87b7db data/minecraft/tags/blocks/wooden_doors.json
-7deab72452d2449237ab9a436b203f0e79034c37 data/minecraft/tags/blocks/wall_hanging_signs.json
+16d1c4e7f628724284544b2abd6295c237c194f9 data/minecraft/tags/blocks/wall_hanging_signs.json
 d261c7115ff67087a4ab55ee4e23427f048b674f data/deeperdarker/tags/blocks/sculk_replaceables.json
 783d8a06847c7f58ece96fec08a1e8cef46f8092 data/deeperdarker/tags/blocks/infiniburn_otherside.json
 ff40d8809c92d939be84a59496819c8b2e01722f data/minecraft/tags/blocks/flower_pots.json
 b65a380e7891bc0ba008af53d6626d525db6b9f3 data/minecraft/tags/blocks/mineable/pickaxe.json
 a80782ad2aab1d6a87e5125ec63b62424ee43dcc data/minecraft/tags/blocks/slabs.json
-12e8918117d16b5db99ad05f804eb63b5389e861 data/minecraft/tags/blocks/ceiling_hanging_signs.json
+0886c50ff2d1e9e415463ed6ca735e1a51630cf0 data/minecraft/tags/blocks/ceiling_hanging_signs.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/sniffer_egg_hatch_boost.json
 c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/blocks/iron_ores.json
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data/minecraft/tags/blocks/diamond_ores.json
@@ -49,4 +49,4 @@ c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/blocks/saplings.jso
 91cc0adf830b0dda4cb501792e044b1e90172f5e data/minecraft/tags/blocks/stairs.json
 9edd5da50aadc42014ac27f1996f8d34d127ced7 data/deeperdarker/tags/blocks/echo_soil.json
 67efbd918b7c82e42584c44101410841f8a430c3 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
-ad4068cbc07d6695e52fe55e47e251e2a62b6c33 data/minecraft/tags/blocks/wall_signs.json
+be4784405d5aff6778c2efdaa68d73434ddab3d2 data/minecraft/tags/blocks/wall_signs.json

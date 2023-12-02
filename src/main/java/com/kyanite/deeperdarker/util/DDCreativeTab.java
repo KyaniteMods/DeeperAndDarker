@@ -44,8 +44,8 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.ECHO_TRAPDOOR));
         entries.accept(new ItemStack(DDBlocks.ECHO_PRESSURE_PLATE));
         entries.accept(new ItemStack(DDBlocks.ECHO_BUTTON));
-        entries.accept(new ItemStack(DDBlocks.ECHO_SIGN));
-        entries.accept(new ItemStack(DDBlocks.ECHO_HANGING_SIGN));
+        entries.accept(new ItemStack(DDItems.ECHO_SIGN));
+        entries.accept(new ItemStack(DDItems.ECHO_HANGING_SIGN));
         entries.accept(new ItemStack(DDItems.ECHO_BOAT));
         entries.accept(new ItemStack(DDItems.ECHO_CHEST_BOAT));
         entries.accept(new ItemStack(DDBlocks.ECHO_LEAVES));
@@ -65,6 +65,10 @@ public class DDCreativeTab {
 //        entries.accept(new ItemStack(DDBlocks.BLOOM_TRAPDOOR));
         entries.accept(new ItemStack(DDBlocks.BLOOM_PRESSURE_PLATE));
         entries.accept(new ItemStack(DDBlocks.BLOOM_BUTTON));
+        entries.accept(new ItemStack(DDItems.BLOOM_SIGN));
+        entries.accept(new ItemStack(DDItems.BLOOM_HANGING_SIGN));
+        entries.accept(new ItemStack(DDItems.BLOOM_BOAT));
+        entries.accept(new ItemStack(DDItems.BLOOM_CHEST_BOAT));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_STAIRS));
         entries.accept(new ItemStack(DDBlocks.SCULK_STONE_SLAB));

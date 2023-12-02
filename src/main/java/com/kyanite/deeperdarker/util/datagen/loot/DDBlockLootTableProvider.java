@@ -60,6 +60,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 //        dropSelf(DDBlocks.BLOOM_TRAPDOOR);
         dropSelf(DDBlocks.BLOOM_PRESSURE_PLATE);
         dropSelf(DDBlocks.BLOOM_BUTTON);
+        dropSelf(DDBlocks.BLOOM_SIGN);
+        dropSelf(DDBlocks.BLOOM_HANGING_SIGN);
 
         add(DDBlocks.SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS);

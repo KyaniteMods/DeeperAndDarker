@@ -56,13 +56,13 @@ public class DDBlocks {
             return pState.is(DDTags.Blocks.ECHO_SOIL);
         }
     });
+
     public static final Block ECHO_SIGN = registerWithoutItem("echo_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
         }
     });
-
     public static final Block ECHO_WALL_SIGN = registerWithoutItem("echo_wall_sign", new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).dropsLike(ECHO_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
@@ -95,6 +95,31 @@ public class DDBlocks {
 //    public static final Block BLOOM_TRAPDOOR = register("bloom_trapdoor", new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO_SET));
     public static final Block BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final Block BLOOM_BUTTON = register("bloom_button", new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BLOOM_SET, 30, true));
+
+    public static final Block BLOOM_SIGN = registerWithoutItem("bloom_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block BLOOM_WALL_SIGN = registerWithoutItem("bloom_wall_sign", new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).dropsLike(BLOOM_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block BLOOM_HANGING_SIGN = registerWithoutItem("bloom_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block BLOOM_WALL_HANGING_SIGN = registerWithoutItem("bloom_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(BLOOM_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
 
     public static final Block POTTED_BLOOMING_STEM = registerWithoutItem("potted_blooming_stem", createFlowerPot(BLOOMING_STEM));
 

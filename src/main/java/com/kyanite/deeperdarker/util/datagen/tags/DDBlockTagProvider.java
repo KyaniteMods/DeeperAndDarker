@@ -47,10 +47,10 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES);
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(DDBlocks.ECHO_SAPLING);
-        getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN);
-        getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN);
-        getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN);
-        getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN);
+        getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN, DDBlocks.BLOOM_SIGN);
+        getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN, DDBlocks.BLOOM_WALL_SIGN);
+        getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN, DDBlocks.BLOOM_HANGING_SIGN);
+        getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN);
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(DDBlocks.POTTED_ECHO_SAPLING, DDBlocks.POTTED_BLOOMING_STEM);
 
         getOrCreateTagBuilder(BlockTags.STAIRS).add(DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS, DDBlocks.SCULK_GRIME_BRICK_STAIRS,

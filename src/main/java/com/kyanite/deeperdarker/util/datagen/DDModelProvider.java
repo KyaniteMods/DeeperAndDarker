@@ -214,6 +214,8 @@ public class DDModelProvider extends FabricModelProvider {
 //        blockModelGenerators.createOrientableTrapdoor(DDBlocks.BLOOM_TRAPDOOR);
         registerPressurePlate(blockModelGenerators, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_PLANKS);
         registerButton(blockModelGenerators, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_PLANKS);
+        blockModelGenerators.createHangingSign(DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN);
+        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN);
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
     }

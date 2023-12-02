@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "deeperdarker:echo_sign"
+    "deeperdarker:echo_sign",
+    "deeperdarker:bloom_sign",
+    "deeperdarker:echo_hanging_sign",
+    "deeperdarker:bloom_hanging_sign"
   ]
 }

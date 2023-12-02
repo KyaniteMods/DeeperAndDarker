@@ -159,6 +159,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.BLOOM_BUTTON, "Bloom Button");
         translationBuilder.add(DDItems.BLOOM_BOAT, "Bloom Boat");
         translationBuilder.add(DDItems.BLOOM_CHEST_BOAT, "Bloom Boat with Chest");
+        translationBuilder.add(DDBlocks.BLOOM_SIGN, "Bloom Sign");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BLOOM_WALL_SIGN)), "Bloom Wall Sign");
+        translationBuilder.add(DDBlocks.BLOOM_HANGING_SIGN, "Bloom Hanging Sign");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BLOOM_WALL_HANGING_SIGN)), "Bloom Wall Hanging Sign");
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
 

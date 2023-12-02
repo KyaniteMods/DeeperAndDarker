@@ -126,9 +126,9 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 //        doorBuilder(DDBlocks.BLOOM_DOOR, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
         fenceGateBuilder(DDBlocks.BLOOM_FENCE_GATE, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
         fenceBuilder(DDBlocks.BLOOM_FENCE, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-//        hangingSign(exporter, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_PLANKS);
+        hangingSign(exporter, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_PLANKS);
         pressurePlate(exporter, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_PLANKS);
-//        signBuilder(DDBlocks.BLOOM_SIGN, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS));
+        signBuilder(DDBlocks.BLOOM_SIGN, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS));
         slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_PLANKS);
         stairBuilder(DDBlocks.BLOOM_STAIRS, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
 //        trapdoorBuilder(DDBlocks.BLOOM_TRAPDOOR, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
