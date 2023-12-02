@@ -91,6 +91,30 @@ public class DDBlocks {
     public static final RegistryObject<FenceGateBlock> BLOOM_FENCE_GATE = register("bloom_fence_gate", () -> new FlammableFenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), BLOOM, 20, 5));
     public static final RegistryObject<PressurePlateBlock> BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final RegistryObject<ButtonBlock> BLOOM_BUTTON = register("bloom_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BLOOM_SET, 30, true));
+    public static final RegistryObject<StandingSignBlock> BLOOM_SIGN = BLOCKS.register("bloom_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final RegistryObject<WallSignBlock> BLOOM_WALL_SIGN = BLOCKS.register("bloom_wall_sign", () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(BLOOM_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final RegistryObject<CeilingHangingSignBlock> BLOOM_HANGING_SIGN = BLOCKS.register("bloom_hanging_sign", () -> new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final RegistryObject<WallHangingSignBlock> BLOOM_WALL_HANGING_SIGN = BLOCKS.register("bloom_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(BLOOM_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
     public static final RegistryObject<Block> POTTED_BLOOMING_STEM = BLOCKS.register("potted_blooming_stem", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOOMING_STEM, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
 
     public static final RegistryObject<Block> SCULK_STONE = register("sculk_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).sound(DDSounds.SCULK_STONE).mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops()));

@@ -55,10 +55,10 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON.get(), DDBlocks.BLOOM_BUTTON.get());
         tag(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES.get());
         tag(BlockTags.SAPLINGS).add(DDBlocks.ECHO_SAPLING.get());
-        tag(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN.get());
-        tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get());
-        tag(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN.get());
-        tag(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN.get());
+        tag(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN.get(), DDBlocks.BLOOM_SIGN.get());
+        tag(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN.get(), DDBlocks.BLOOM_WALL_SIGN.get());
+        tag(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN.get(), DDBlocks.BLOOM_HANGING_SIGN.get());
+        tag(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN.get(), DDBlocks.BLOOM_WALL_HANGING_SIGN.get());
         tag(BlockTags.STAIRS).add(DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get(), DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_GRIME_BRICK_STAIRS.get(),
                 DDBlocks.GLOOMSLATE_STAIRS.get(), DDBlocks.COBBLED_GLOOMSLATE_STAIRS.get(), DDBlocks.POLISHED_GLOOMSLATE_STAIRS.get(), DDBlocks.GLOOMSLATE_BRICK_STAIRS.get(), DDBlocks.GLOOMSLATE_TILE_STAIRS.get(), DDBlocks.SMOOTH_GLOOMSLATE_STAIRS.get(), DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         tag(BlockTags.SLABS).add(DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_GRIME_BRICK_SLAB.get(),

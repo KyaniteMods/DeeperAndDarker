@@ -154,6 +154,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModelWithSuffix(DDItems.SOUL_ELYTRA, GENERATED, "broken");
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
+        itemModel(DDItems.BLOOM_SIGN, GENERATED);
+        itemModel(DDItems.BLOOM_HANGING_SIGN, GENERATED);
         itemModel(DDItems.ECHO_BOAT, GENERATED);
         itemModel(DDItems.ECHO_CHEST_BOAT, GENERATED);
         itemModel(DDItems.BLOOM_BOAT, GENERATED);
