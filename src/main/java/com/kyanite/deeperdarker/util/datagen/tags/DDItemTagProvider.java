@@ -28,21 +28,22 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
+        add(DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
         getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
 
-        add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
-        add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON);
+        add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);
+        add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS);
+        add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB, DDBlocks.BLOOM_SLAB);
+        add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE, DDBlocks.BLOOM_FENCE);
+        add(ItemTags.FENCE_GATES, DDBlocks.ECHO_FENCE_GATE, DDBlocks.BLOOM_FENCE_GATE);
         add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR);
-        add(ItemTags.FENCE_GATES, DDBlocks.ECHO_FENCE_GATE);
-        add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE);
-        add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
-        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
-        add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS);
-        add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB);
-        add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS);
-        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
-        add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE);
         add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR);
+        add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE);
+        add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_BUTTON);
+        add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
+        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
+        add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
+        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
         getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD);
         getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE);
         getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE);

@@ -17,7 +17,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.GLOWING_GRASS, DDBlocks.GLOOMY_GRASS);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDBlocks.GLOWING_GRASS, DDBlocks.GLOOMY_GRASS);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.GLOWING_FLOWERS, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.GLOWING_ROOTS, DDBlocks.GLOWING_ROOTS_PLANT, DDBlocks.GLOWING_VINES, DDBlocks.GLOWING_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE, DDBlocks.COBBLED_SCULK_STONE, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE_TILES, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.CUT_SCULK_STONE, DDBlocks.CHISELED_SCULK_STONE,
                 DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS,
@@ -36,15 +36,15 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM);
-        getOrCreateTagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS);
-        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS);
-        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB);
-        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(DDBlocks.ECHO_FENCE);
-        getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE);
-        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(DDBlocks.ECHO_DOOR);
-        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(DDBlocks.ECHO_TRAPDOOR);
-        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(DDBlocks.ECHO_PRESSURE_PLATE);
-        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON);
+        getOrCreateTagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);
+        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS);
+        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB, DDBlocks.BLOOM_SLAB);
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(DDBlocks.ECHO_FENCE, DDBlocks.BLOOM_FENCE);
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE, DDBlocks.BLOOM_FENCE_GATE);
+        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(DDBlocks.ECHO_DOOR); // TODO: add bloom door
+        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(DDBlocks.ECHO_TRAPDOOR); // TODO: add bloom trapdoor
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE);
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON);
         getOrCreateTagBuilder(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES);
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(DDBlocks.ECHO_SAPLING);
         getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN);

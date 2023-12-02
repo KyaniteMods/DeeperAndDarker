@@ -36,19 +36,19 @@ public class DDModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.woodProvider(DDBlocks.ECHO_LOG).log(DDBlocks.ECHO_LOG).wood(DDBlocks.ECHO_WOOD);
         blockModelGenerators.woodProvider(DDBlocks.STRIPPED_ECHO_LOG).log(DDBlocks.STRIPPED_ECHO_LOG).wood(DDBlocks.STRIPPED_ECHO_WOOD);
-        registerButton(blockModelGenerators, DDBlocks.ECHO_BUTTON, DDBlocks.ECHO_PLANKS);
-        blockModelGenerators.createDoor(DDBlocks.ECHO_DOOR);
-        registerFenceGate(blockModelGenerators, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_PLANKS);
-        registerFence(blockModelGenerators, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_PLANKS);
-        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN);
         blockModelGenerators.family(DDBlocks.ECHO_LEAVES);
         blockModelGenerators.family(DDBlocks.ECHO_PLANKS);
+        registerStairs(blockModelGenerators, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_PLANKS);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
+        registerFence(blockModelGenerators, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_PLANKS);
+        registerFenceGate(blockModelGenerators, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_PLANKS);
+        blockModelGenerators.createDoor(DDBlocks.ECHO_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(DDBlocks.ECHO_TRAPDOOR);
         registerPressurePlate(blockModelGenerators, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_PLANKS);
+        registerButton(blockModelGenerators, DDBlocks.ECHO_BUTTON, DDBlocks.ECHO_PLANKS);
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.ECHO_SAPLING, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createHangingSign(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN);
-        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
-        registerStairs(blockModelGenerators, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_PLANKS);
-        blockModelGenerators.createOrientableTrapdoor(DDBlocks.ECHO_TRAPDOOR);
+        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN);
 
         blockModelGenerators.family(DDBlocks.SCULK_STONE);
         registerStairs(blockModelGenerators, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE);
@@ -205,6 +205,15 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_STEM)));
         registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"),
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BLOOMING_STEM)));
+        blockModelGenerators.family(DDBlocks.BLOOM_PLANKS);
+        registerStairs(blockModelGenerators, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_PLANKS);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_PLANKS);
+        registerFence(blockModelGenerators, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_PLANKS);
+        registerFenceGate(blockModelGenerators, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_PLANKS);
+//        blockModelGenerators.createDoor(DDBlocks.BLOOM_DOOR);
+//        blockModelGenerators.createOrientableTrapdoor(DDBlocks.BLOOM_TRAPDOOR);
+        registerPressurePlate(blockModelGenerators, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_PLANKS);
+        registerButton(blockModelGenerators, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_PLANKS);
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
     }
@@ -258,6 +267,8 @@ public class DDModelProvider extends FabricModelProvider {
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, ResourceLocation.DEFAULT_NAMESPACE + ":broken", "_broken");
         registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM.asItem()));
         registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM.asItem()));
+        ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BLOOM_BUTTON.asItem()), TextureMapping.cube(DDBlocks.BLOOM_PLANKS), itemModelGenerator.output);
+        ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BLOOM_FENCE.asItem()), TextureMapping.cube(DDBlocks.BLOOM_PLANKS), itemModelGenerator.output);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SHATTERED_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_LEECH_SPAWN_EGG);

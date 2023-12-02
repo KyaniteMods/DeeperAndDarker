@@ -1,20 +1,20 @@
-// 1.20	2023-12-01T17:52:50.373832758	Deeper and Darker/Tags for minecraft:block
+// 1.20	2023-12-02T12:18:14.513467638	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
-fc4746e6361c4738f8d49d9736180f693b5d89f6 data/minecraft/tags/blocks/wooden_pressure_plates.json
+cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
 8cc5aac19c24c87678696e75feac8c660984492a data/minecraft/tags/blocks/occludes_vibration_signals.json
 8787510abc7136bd0e101f9597e4c972f261ec32 data/minecraft/tags/blocks/standing_signs.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/small_dripleaf_placeable.json
 54e721fa91171d8189efd956079c77fd11abc938 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
-666498abb0b9ee22c5239c4a897b6f03923b6ec6 data/minecraft/tags/blocks/wooden_fences.json
+5eab59aeb251bf0914609c90236404b844d1e7d3 data/minecraft/tags/blocks/wooden_fences.json
 9db339876ebf24af66c66fdb249cb14a52ea00d5 data/minecraft/tags/blocks/inside_step_sound_blocks.json
 68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/blocks/lapis_ores.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/sniffer_diggable_block.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/blocks/leaves.json
-fb5667c1f1b3843f608c3e2ce13a30358aa3513a data/minecraft/tags/blocks/mineable/axe.json
-8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data/minecraft/tags/blocks/wooden_slabs.json
+6d659b5ab9b1e5554d4da68a371c4ac2b0011ab0 data/minecraft/tags/blocks/mineable/axe.json
+ae9c334183d842387136550980a4c8d4b6b80b9f data/minecraft/tags/blocks/wooden_slabs.json
 6054ab281c7c10b93158604532da69bced56e992 data/minecraft/tags/blocks/logs_that_burn.json
-cf0fad197fd904acee9b676ffdf675297222de53 data/minecraft/tags/blocks/wooden_stairs.json
+d66ce7e40de1eb71f66df7115f2b61edce3c22d5 data/minecraft/tags/blocks/wooden_stairs.json
 12e80d1d7b3fdf52b069977aa315c093b01ffa8a data/deeperdarker/tags/blocks/transmittable.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/dirt.json
 b6cd38fb1954467956ee5d37c5187872f9a7f29d data/minecraft/tags/blocks/mineable/hoe.json
@@ -26,7 +26,7 @@ f05849880cdbeeabfa8cf9a677718a7ea229b91a data/minecraft/tags/blocks/wooden_trapd
 c17d1bdd759702765aa934b86f1f6d3b593b821f data/minecraft/tags/blocks/coal_ores.json
 9db339876ebf24af66c66fdb249cb14a52ea00d5 data/minecraft/tags/blocks/flowers.json
 9c99f3fca688d15e8c69a80246820100bbbf3065 data/minecraft/tags/blocks/emerald_ores.json
-3a2de920aa00b902f0ba269ab2b6a1caacaf4405 data/minecraft/tags/blocks/fence_gates.json
+c042d2921526d56ca039457fd44638d0e03ff543 data/minecraft/tags/blocks/fence_gates.json
 9041fa0da99c531922bff22ba8602e0606f2c64e data/minecraft/tags/blocks/needs_stone_tool.json
 d0b222d759fe0c881261b06d778a3563df87b7db data/minecraft/tags/blocks/wooden_doors.json
 7deab72452d2449237ab9a436b203f0e79034c37 data/minecraft/tags/blocks/wall_hanging_signs.json
@@ -40,8 +40,8 @@ a80782ad2aab1d6a87e5125ec63b62424ee43dcc data/minecraft/tags/blocks/slabs.json
 c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/blocks/iron_ores.json
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data/minecraft/tags/blocks/diamond_ores.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data/deeperdarker/tags/blocks/echo_logs.json
-a79df4671755271345962c0aa23680929668ccea data/minecraft/tags/blocks/planks.json
-0b611850fa88d0382e3e8016186b458466af19fb data/minecraft/tags/blocks/wooden_buttons.json
+a97e3cb5a044bff5590dbf6589d9c5e6b6889a35 data/minecraft/tags/blocks/planks.json
+ef12e7da95cf6e7a6bf88e613b377516840dbc51 data/minecraft/tags/blocks/wooden_buttons.json
 7d11d6c5ad2aae4b705302ecc42367df04d9e005 data/minecraft/tags/blocks/needs_iron_tool.json
 c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/blocks/saplings.json
 633ef27c79c15ddc51b4f7893b8ebdbc6d155237 data/minecraft/tags/blocks/copper_ores.json

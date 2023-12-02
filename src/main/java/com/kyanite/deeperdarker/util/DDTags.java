@@ -28,6 +28,9 @@ public class DDTags {
         public static final TagKey<Item> ECHO_LOGS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
 
+        public static final TagKey<Item> BLOOMING_STEMS = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_stems"));
+
         public static final TagKey<Item> DAMPENS_VIBRATIONS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "dampens_vibrations"));
     }
