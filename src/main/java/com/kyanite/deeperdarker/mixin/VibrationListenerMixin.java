@@ -10,6 +10,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -25,6 +26,7 @@ public class VibrationListenerMixin {
         }
     }
 
+    @Unique
     private boolean hasArmorThatDampensVibrations(LivingEntity entity) {
         for (ItemStack itemStack : entity.getArmorSlots()) {
             if (itemStack.is(DDTags.Items.DAMPENS_VIBRATIONS)) {
