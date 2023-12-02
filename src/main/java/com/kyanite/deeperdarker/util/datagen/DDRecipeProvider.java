@@ -132,8 +132,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_PLANKS);
         stairBuilder(DDBlocks.BLOOM_STAIRS, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
 //        trapdoorBuilder(DDBlocks.BLOOM_TRAPDOOR, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-//        woodenBoat(exporter, DDItems.BLOOM_BOAT, DDBlocks.BLOOM_PLANKS);
-//        chestBoat(exporter, DDItems.BLOOM_CHEST_BOAT, DDBlocks.BLOOM_PLANKS);
+        woodenBoat(exporter, DDItems.BLOOM_BOAT, DDBlocks.BLOOM_PLANKS);
+        chestBoat(exporter, DDItems.BLOOM_CHEST_BOAT, DDBlocks.BLOOM_PLANKS);
         
 
         // Sculk Stone
