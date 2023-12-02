@@ -28,17 +28,20 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
 
-        add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON);
-        add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR);
-        add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE);
-        add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
-        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
         add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS);
-        add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB);
         add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS);
-        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
-        add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE);
+        add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB);
+        add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE);
+        add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR);
         add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR);
+        add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE);
+        add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON);
+        getOrCreateTagBuilder(ItemTags.BOATS).add(DDItems.ECHO_BOAT);
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT);
+        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
+        add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
+        add(ItemTags.SAPLINGS, DDBlocks.ECHO_SAPLING);
+        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
 
         add(ItemTags.WALLS,
                 DDBlocks.SCULK_STONE_WALL,
@@ -102,7 +105,5 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.EMERALD_ORES, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE);
         add(ItemTags.LAPIS_ORES, DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
         add(ItemTags.DIAMOND_ORES, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
-
-        add(ItemTags.SAPLINGS, DDBlocks.ECHO_SAPLING);
     }
 }
