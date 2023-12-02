@@ -312,6 +312,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.sonorousStaffDamage.description", "Determines the damage of the Sonorous Staff's sonic boom.");
         translationBuilder.add("config.deeperdarker.sonorousStaffKnockback.title", "Sonorous Staff Knockback");
         translationBuilder.add("config.deeperdarker.sonorousStaffKnockback.description", "Determines the knockback of the Sonorous Staff's sonic boom applied to living entities.");
+        translationBuilder.add("config.deeperdarker.sonorousStaffCooldown.title", "Sonorous Staff Cooldown");
+        translationBuilder.add("config.deeperdarker.sonorousStaffCooldown.description", "Determines the cooldown of the Sonorous Staff before the player can use it again.");
 
         translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
         translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");

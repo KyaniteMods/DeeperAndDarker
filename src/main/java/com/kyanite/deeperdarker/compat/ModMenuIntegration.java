@@ -233,6 +233,19 @@ public class ModMenuIntegration implements ModMenuApi {
                             .formatValue(value -> value == 69.0 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
                     .build();
 
+            Option<Integer> sonorousStaffCooldown = Option.<Integer>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.sonorousStaffCooldown.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.sonorousStaffCooldown.description")))
+                    .binding(
+                            40,
+                            () -> DDConfig.HANDLER.instance().sonorousStaffCooldown,
+                            newVal -> DDConfig.HANDLER.instance().sonorousStaffCooldown = newVal
+                    )
+                    .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                            .range(0, 32767)
+                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
             Option<Boolean> wardenHeartPulses = Option.<Boolean>createBuilder()
                     .name(Component.translatable("config.deeperdarker.wardenHeartPulses.title"))
                     .description(OptionDescription.of(Component.translatable("config.deeperdarker.wardenHeartPulses.description")))
@@ -276,6 +289,7 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(sonorousStaffRange)
                                     .option(sonorousStaffDamage)
                                     .option(sonorousStaffKnockback)
+                                    .option(sonorousStaffCooldown)
                                     .build())
                             .group(OptionGroup.createBuilder()
                                     .name(Component.translatable("config.deeperdarker.client.title"))

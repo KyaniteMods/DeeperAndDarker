@@ -77,6 +77,9 @@ public class DDConfig {
     public double sonorousStaffKnockback = 1.0;
 
     @SerialEntry
+    public int sonorousStaffCooldown = 40;
+
+    @SerialEntry
     public boolean wardenHeartPulses = true;
 
     @SerialEntry

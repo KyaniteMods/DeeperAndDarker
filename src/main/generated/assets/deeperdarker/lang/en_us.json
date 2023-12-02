@@ -190,6 +190,8 @@
   "config.deeperdarker.sculkLeechesFromAncientVaseChance.description": "Defines the chance of Sculk Leeches spawning from an Ancient Vase if the setting above ends up being true. If a mob should spawn and this setting ends up being false, a Stalker will spawn.",
   "config.deeperdarker.sculkLeechesFromAncientVaseChance.title": "Sculk Leech Spawn Chance",
   "config.deeperdarker.server.title": "Server",
+  "config.deeperdarker.sonorousStaffCooldown.description": "Determines the cooldown of the Sonorous Staff before the player can use it again.",
+  "config.deeperdarker.sonorousStaffCooldown.title": "Sonorous Staff Cooldown",
   "config.deeperdarker.sonorousStaffDamage.description": "Determines the damage of the Sonorous Staff's sonic boom.",
   "config.deeperdarker.sonorousStaffDamage.title": "Sonorous Staff Damage",
   "config.deeperdarker.sonorousStaffKnockback.description": "Determines the knockback of the Sonorous Staff's sonic boom applied to living entities.",

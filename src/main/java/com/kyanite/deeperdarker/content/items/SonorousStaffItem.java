@@ -29,7 +29,7 @@ public class SonorousStaffItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
-        pPlayer.getCooldowns().addCooldown(this, 40);
+        pPlayer.getCooldowns().addCooldown(this, DDConfig.HANDLER.instance().sonorousStaffCooldown);
 
         Vec3 eyePos = pPlayer.getEyePosition();
         for (int i = 0; i < DDConfig.HANDLER.instance().sonorousStaffRange; i++) {
