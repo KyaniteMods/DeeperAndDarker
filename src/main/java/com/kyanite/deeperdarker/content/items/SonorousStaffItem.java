@@ -5,8 +5,10 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +32,7 @@ public class SonorousStaffItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
-        pPlayer.getCooldowns().addCooldown(this, 200);
+        pPlayer.getCooldowns().addCooldown(this, 40);
 
         Vec3 eyePos = pPlayer.getEyePosition();
         for (int i = 0; i < range; i++) {
@@ -41,13 +43,15 @@ public class SonorousStaffItem extends Item {
                 if(pLevel.isClientSide()) pLevel.addParticle(ParticleTypes.SONIC_BOOM, particleSpawnPos.x, particleSpawnPos.y, particleSpawnPos.z, 1, 0, 0);
 
                 AABB aabb = new AABB(hitBlockPos).inflate(0.4);
-                List<LivingEntity> targets = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
-                for (LivingEntity target : targets) {
+                List<Entity> targets = pLevel.getEntitiesOfClass(Entity.class, aabb);
+                for (Entity target : targets) {
                     if (target != pPlayer) {
                         target.hurt(pLevel.damageSources().sonicBoom(pPlayer), damage);
-                        double horizontalResistance = 0.5 * (1 - target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                        double verticalResistance = 2.5 * (1 - target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                        target.push(pPlayer.getForward().x * knockback * horizontalResistance, pPlayer.getForward().y * knockback * verticalResistance, pPlayer.getForward().z * knockback * horizontalResistance);
+                        if (target instanceof LivingEntity livingEntity) {
+                            double horizontalResistance = 0.5 * (1 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                            double verticalResistance = 2.5 * (1 - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                            target.push(pPlayer.getForward().x * knockback * horizontalResistance, pPlayer.getForward().y * knockback * verticalResistance, pPlayer.getForward().z * knockback * horizontalResistance);
+                        }
                     }
                 }
             } else i = range;
