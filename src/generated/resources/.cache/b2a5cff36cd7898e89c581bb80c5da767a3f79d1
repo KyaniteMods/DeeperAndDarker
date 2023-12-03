@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-02T16:00:33.880938	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2023-12-03T14:12:42.6344881	Tags for minecraft:item mod id deeperdarker
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/items/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/forge/tags/items/armors/boots.json
@@ -40,9 +40,9 @@ dff5da60a5f06c5c4f35c4f271b7c50221dd704d data/minecraft/tags/items/shovels.json
 7a7e3ff463f91e4438ef607af19ff3fcc34f183d data/minecraft/tags/items/swords.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/items/walls.json
 88f459cee731c19448a25731c1b827b73e0d250d data/minecraft/tags/items/wooden_buttons.json
-69b7a2070c82cd4b9e8d452aa206ed9ea7a0a4fe data/minecraft/tags/items/wooden_doors.json
+39fbe102f3d81b28399a10256c82260dc79c4653 data/minecraft/tags/items/wooden_doors.json
 64df223e6c00d8aa85e665727225a6f458e876a7 data/minecraft/tags/items/wooden_fences.json
 fdf385486288865b84ce0014957ead68d8a2e069 data/minecraft/tags/items/wooden_pressure_plates.json
 e393a06b04acf4377285594bb65c749eb0c7f08d data/minecraft/tags/items/wooden_slabs.json
 84c4c90a338f2b74ef2c7f6c262d8fedcdf60340 data/minecraft/tags/items/wooden_stairs.json
-9bb6eed01ef4f5caad00e08825cc9e78b1947e69 data/minecraft/tags/items/wooden_trapdoors.json
+037b4dd15b09210bd95105d7b9a9bc1333967be7 data/minecraft/tags/items/wooden_trapdoors.json

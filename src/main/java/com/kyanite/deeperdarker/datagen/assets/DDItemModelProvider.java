@@ -45,6 +45,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.BLOOM_SLAB);
         blockModel(DDBlocks.BLOOM_FENCE, "inventory");
         blockModel(DDBlocks.BLOOM_FENCE_GATE);
+        itemModel(DDBlocks.BLOOM_DOOR, GENERATED).renderType("translucent");
+        blockModel(DDBlocks.BLOOM_TRAPDOOR, "bottom");
         blockModel(DDBlocks.BLOOM_PRESSURE_PLATE);
         blockModel(DDBlocks.BLOOM_BUTTON, "inventory");
 

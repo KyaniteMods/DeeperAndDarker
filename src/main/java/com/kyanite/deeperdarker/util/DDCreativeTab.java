@@ -38,6 +38,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.BLOOM_SLAB);
             event.accept(DDBlocks.BLOOM_FENCE);
             event.accept(DDBlocks.BLOOM_FENCE_GATE);
+            event.accept(DDBlocks.BLOOM_DOOR);
+            event.accept(DDBlocks.BLOOM_TRAPDOOR);
             event.accept(DDBlocks.BLOOM_PRESSURE_PLATE);
             event.accept(DDBlocks.BLOOM_BUTTON);
 

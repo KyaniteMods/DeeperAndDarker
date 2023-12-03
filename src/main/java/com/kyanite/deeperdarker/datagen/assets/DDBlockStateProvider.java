@@ -48,6 +48,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         slabBlock(DDBlocks.BLOOM_SLAB.get(), blockLoc(DDBlocks.BLOOM_PLANKS), blockLoc(DDBlocks.BLOOM_PLANKS));
         fenceBlock(DDBlocks.BLOOM_FENCE, blockLoc(DDBlocks.BLOOM_PLANKS));
         fenceGateBlock(DDBlocks.BLOOM_FENCE_GATE.get(), blockLoc(DDBlocks.BLOOM_PLANKS));
+        doorBlockWithRenderType(DDBlocks.BLOOM_DOOR.get(), blockLoc(DDBlocks.BLOOM_DOOR, "bottom"), blockLoc(DDBlocks.BLOOM_DOOR, "top"), "cutout");
+        trapdoorBlockWithRenderType(DDBlocks.BLOOM_TRAPDOOR.get(), blockLoc(DDBlocks.BLOOM_TRAPDOOR), true, "cutout");
         pressurePlateBlock(DDBlocks.BLOOM_PRESSURE_PLATE.get(), blockLoc(DDBlocks.BLOOM_PLANKS));
         buttonBlock(DDBlocks.BLOOM_BUTTON, blockLoc(DDBlocks.BLOOM_PLANKS));
         signBlock(DDBlocks.BLOOM_SIGN.get(), DDBlocks.BLOOM_WALL_SIGN.get(), blockLoc(DDBlocks.BLOOM_PLANKS));

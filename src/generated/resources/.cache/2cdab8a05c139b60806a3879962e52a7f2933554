@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-02T16:00:33.8819366	Item Models: deeperdarker
+// 1.20.1	2023-12-03T14:12:42.6344881	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
 f2108fa9acd703168e4f624814814d262e868c9b assets/deeperdarker/models/item/blooming_sculk_stone.json
@@ -7,6 +7,7 @@ f7f3d2c00b77bce5d3a8b071d45e277e04beb685 assets/deeperdarker/models/item/bloom_b
 78656ecfdb0da07acd453b550a76da16c1598d67 assets/deeperdarker/models/item/bloom_boat.json
 996c2447684c566aa1f4a07af3ad2680a61ddcde assets/deeperdarker/models/item/bloom_button.json
 8b44c9ff7dee4b04c620b337f8b95d7bd9d9acc5 assets/deeperdarker/models/item/bloom_chest_boat.json
+72321fe89541f8a5be8055428a4b48f01f4f357c assets/deeperdarker/models/item/bloom_door.json
 30269392c69a1c670dd0fc9425ff8415ce25c0b9 assets/deeperdarker/models/item/bloom_fence.json
 57f666948807e017e04c9571e2f60a8b8c5e7fa5 assets/deeperdarker/models/item/bloom_fence_gate.json
 4a81c85e9cdacd03d503a97928d0f29e46c760ed assets/deeperdarker/models/item/bloom_hanging_sign.json
@@ -15,6 +16,7 @@ f7f3d2c00b77bce5d3a8b071d45e277e04beb685 assets/deeperdarker/models/item/bloom_b
 ae5b1e191bf200456b12885845b505d1cb6c1000 assets/deeperdarker/models/item/bloom_sign.json
 af8b8bbbaca9930eb1246f64c31c877fc8c99107 assets/deeperdarker/models/item/bloom_slab.json
 41b8bc24926a217fd729382dce49ddcf07b7728f assets/deeperdarker/models/item/bloom_stairs.json
+11a1669ceefc9c9165efe20ff0311b7dbf6ec3a6 assets/deeperdarker/models/item/bloom_trapdoor.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
 0eb658806d9c4c3faa4843fa00fd273b3d44dbdc assets/deeperdarker/models/item/cobbled_gloomslate.json

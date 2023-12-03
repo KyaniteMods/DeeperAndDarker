@@ -64,6 +64,8 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.BLOOM_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.BLOOM_FENCE.get());
         dropSelf(DDBlocks.BLOOM_FENCE_GATE.get());
+        add(DDBlocks.BLOOM_DOOR.get(), this::createDoorTable);
+        dropSelf(DDBlocks.BLOOM_TRAPDOOR.get());
         dropSelf(DDBlocks.BLOOM_PRESSURE_PLATE.get());
         dropSelf(DDBlocks.BLOOM_BUTTON.get());
         dropSelf(DDBlocks.BLOOM_SIGN.get());
