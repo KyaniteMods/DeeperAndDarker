@@ -22,7 +22,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-        tag(BlockTags.MINEABLE_WITH_AXE).addTags(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_BUTTON.get(),
+        tag(BlockTags.MINEABLE_WITH_AXE).addTags(DDTags.Blocks.ECHO_LOGS, DDTags.Blocks.BLOOM_STEMS).add(DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_BUTTON.get(),
                 DDBlocks.BLOOMING_STEM.get(), DDBlocks.STRIPPED_BLOOMING_STEM.get(), DDBlocks.BLOOM_PLANKS.get(), DDBlocks.BLOOM_STAIRS.get(), DDBlocks.BLOOM_SLAB.get(), DDBlocks.BLOOM_FENCE.get(), DDBlocks.BLOOM_FENCE_GATE.get(), DDBlocks.BLOOM_DOOR.get(), DDBlocks.BLOOM_TRAPDOOR.get(), DDBlocks.BLOOM_PRESSURE_PLATE.get(), DDBlocks.BLOOM_BUTTON.get(),
                 DDBlocks.GLOWING_GRASS.get(), DDBlocks.GLOOMY_GRASS.get());
         tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.GLOWING_FLOWERS.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.GLOWING_ROOTS.get(), DDBlocks.GLOWING_ROOTS_PLANT.get(), DDBlocks.GLOWING_VINES.get(), DDBlocks.GLOWING_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
@@ -100,6 +100,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
 
         tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
         tag(DDTags.Blocks.ECHO_SAPLING_PLACEABLE).add(DDBlocks.ECHO_SOIL.get(), DDBlocks.SCULK_GRIME.get(), Blocks.SCULK);
+        tag(DDTags.Blocks.BLOOM_STEMS).add(DDBlocks.BLOOMING_STEM.get(), DDBlocks.STRIPPED_BLOOMING_STEM.get());
         tag(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.GLOOMSLATE_REPLACEABLE).add(DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get());

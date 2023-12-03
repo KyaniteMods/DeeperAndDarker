@@ -62,6 +62,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(Tags.Blocks.ORES_DIAMOND, Tags.Items.ORES_DIAMOND);
 
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
+        copy(DDTags.Blocks.BLOOM_STEMS, DDTags.Items.BLOOM_STEMS);
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get(), DDItems.BLOOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get(), DDItems.BLOOM_CHEST_BOAT.get());

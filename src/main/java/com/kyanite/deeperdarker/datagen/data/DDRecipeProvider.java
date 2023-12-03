@@ -34,6 +34,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
     private void addCraftingRecipes(Consumer<FinishedRecipe> writer) {
         woodenRecipes(writer, DDTags.Items.ECHO_LOGS, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
+        woodenRecipes(writer, DDTags.Items.BLOOM_STEMS, DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDItems.BLOOM_SIGN, DDItems.BLOOM_HANGING_SIGN, DDItems.BLOOM_BOAT, DDItems.BLOOM_CHEST_BOAT);
 
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE.get());
@@ -294,7 +295,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), category, result).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(writer, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
     }
 
-    private void woodenRecipes(Consumer<FinishedRecipe> writer, TagKey<Item> logs, RegistryObject<RotatedPillarBlock> strippedLog, RegistryObject<Block> planks, RegistryObject<StairBlock> stairs, RegistryObject<SlabBlock> slabs, RegistryObject<FenceBlock> fence, RegistryObject<FenceGateBlock> fenceGate, RegistryObject<DoorBlock> door, RegistryObject<TrapDoorBlock> trapDoor, RegistryObject<PressurePlateBlock> pressurePlate, RegistryObject<ButtonBlock> button, RegistryObject<Item> sign, RegistryObject<Item> hangingSign, RegistryObject<Item> boat, RegistryObject<Item> chestBoat) {
+    private void woodenRecipes(Consumer<FinishedRecipe> writer, TagKey<Item> logs, RegistryObject<? extends Block> strippedLog, RegistryObject<Block> planks, RegistryObject<StairBlock> stairs, RegistryObject<SlabBlock> slabs, RegistryObject<FenceBlock> fence, RegistryObject<FenceGateBlock> fenceGate, RegistryObject<DoorBlock> door, RegistryObject<TrapDoorBlock> trapDoor, RegistryObject<PressurePlateBlock> pressurePlate, RegistryObject<ButtonBlock> button, RegistryObject<Item> sign, RegistryObject<Item> hangingSign, RegistryObject<Item> boat, RegistryObject<Item> chestBoat) {
         planksFromLogs(writer, planks.get(), logs, 4);
         stairBuilder(stairs.get(), Ingredient.of(planks.get())).unlockedBy("has_planks", has(planks.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, slabs.get(), planks.get());
