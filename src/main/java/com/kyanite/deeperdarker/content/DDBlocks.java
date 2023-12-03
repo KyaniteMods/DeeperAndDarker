@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.content.blocks.flammable.*;
 import com.kyanite.deeperdarker.content.blocks.vegetation.*;
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
-import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -51,7 +50,7 @@ public class DDBlocks {
     public static final RegistryObject<SaplingBlock> ECHO_SAPLING = register("echo_sapling", () -> new SaplingBlock(new EchoTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)) {
         @Override
         protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-            return pState.is(DDTags.Blocks.ECHO_SAPLING_PLACEABLE);
+            return pState.is(DDBlocks.ECHO_SOIL.get()) || pState.is(DDBlocks.SCULK_GRIME.get());
         }
     });
     public static final RegistryObject<StandingSignBlock> ECHO_SIGN = BLOCKS.register("echo_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO) {

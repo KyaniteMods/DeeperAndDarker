@@ -99,7 +99,6 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.ORES_DIAMOND).add(DDBlocks.SCULK_STONE_DIAMOND_ORE.get(), DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
         tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
-        tag(DDTags.Blocks.ECHO_SAPLING_PLACEABLE).add(DDBlocks.ECHO_SOIL.get(), DDBlocks.SCULK_GRIME.get(), Blocks.SCULK);
         tag(DDTags.Blocks.BLOOM_STEMS).add(DDBlocks.BLOOMING_STEM.get(), DDBlocks.STRIPPED_BLOOMING_STEM.get());
         tag(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME.get());
