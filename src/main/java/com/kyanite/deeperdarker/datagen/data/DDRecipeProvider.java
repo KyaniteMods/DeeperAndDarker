@@ -34,6 +34,8 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
     private void addCraftingRecipes(Consumer<FinishedRecipe> writer) {
         woodenRecipes(writer, DDTags.Items.ECHO_LOGS, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
+        woodFromLogs(writer, DDBlocks.ECHO_WOOD.get(), DDBlocks.ECHO_LOG.get());
+        woodFromLogs(writer, DDBlocks.STRIPPED_ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get());
         woodenRecipes(writer, DDTags.Items.BLOOM_STEMS, DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDItems.BLOOM_SIGN, DDItems.BLOOM_HANGING_SIGN, DDItems.BLOOM_BOAT, DDItems.BLOOM_CHEST_BOAT);
 
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_STONE.get())).unlockedBy("has_sculk_stone", has(DDBlocks.SCULK_STONE.get())).save(writer);
