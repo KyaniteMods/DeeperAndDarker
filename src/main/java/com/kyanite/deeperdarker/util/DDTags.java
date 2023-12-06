@@ -12,6 +12,9 @@ public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = TagKey.create(
                     Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
+
+        public static final TagKey<Block> BLOOMING_STEMS = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_stems"));
         public static final TagKey<Block> ECHO_SOIL = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_soil"));
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_stone_replaceables"));

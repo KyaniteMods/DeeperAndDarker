@@ -17,7 +17,9 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(DDTags.Blocks.ECHO_LOGS)
+                .addTag(DDTags.Blocks.BLOOMING_STEMS).add(
                 DDBlocks.ECHO_PLANKS,
                 DDBlocks.ECHO_STAIRS,
                 DDBlocks.ECHO_SLAB,
