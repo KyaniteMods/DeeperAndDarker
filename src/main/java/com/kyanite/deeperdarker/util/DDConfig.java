@@ -35,6 +35,9 @@ public class DDConfig {
     public boolean geysersApplySlowFalling = false;
 
     @ConfigEntry
+    public float geyserLaunchVelocity = 2.5f;
+
+    @ConfigEntry
     public int portalMinWidth = 8;
 
     @ConfigEntry

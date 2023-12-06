@@ -35,7 +35,7 @@ public class GeyserBlock extends Block {
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof ExperienceOrb) return;
 //        pEntity.hurt(pLevel.damageSources().hotFloor(), 2);
-        pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), 2.5, pEntity.getDeltaMovement().z());
+        pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), DDConfig.HANDLER.getConfig().geyserLaunchVelocity, pEntity.getDeltaMovement().z());
 
         if (!pLevel.isClientSide() && DDConfig.HANDLER.getConfig().geysersApplySlowFalling && pEntity instanceof Player player) {
             player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 125));

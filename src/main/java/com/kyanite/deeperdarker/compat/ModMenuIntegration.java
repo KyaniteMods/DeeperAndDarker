@@ -68,6 +68,18 @@ public class ModMenuIntegration implements ModMenuApi {
                     .controller(TickBoxController::new)
                     .build();
 
+            Option<Float> geyserLaunchVelocity = Option.createBuilder(Float.class)
+                    .name(Component.translatable("config.deeperdarker.geyserLaunchVelocity.title"))
+                    .binding(
+                            2.5f,
+                            () -> DDConfig.HANDLER.getConfig().geyserLaunchVelocity,
+                            newVal -> DDConfig.HANDLER.getConfig().geyserLaunchVelocity = newVal
+                    )
+                    .controller(opt -> new FloatSliderController(opt, 0.0f, 32767.0f, 0.25f, value ->
+                        value == 69.0f ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))
+                    ))
+                    .build();
+
             Option<Integer> portalMinWidth = Option.createBuilder(Integer.class)
                     .name(Component.translatable("config.deeperdarker.portalMinWidth.title"))
                     .binding(
