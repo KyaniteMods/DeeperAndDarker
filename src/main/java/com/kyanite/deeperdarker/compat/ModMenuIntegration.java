@@ -82,7 +82,8 @@ public class ModMenuIntegration implements ModMenuApi {
                             newVal -> DDConfig.HANDLER.instance().geyserLaunchVelocity = newVal
                     )
                     .controller(opt -> FloatSliderControllerBuilder.create(opt)
-                            .range(0.0f, 32767.0f)
+                            .range(0.0f, 127.0f)
+                            .step(0.25f)
                             .formatValue(value -> value == 69.0f ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
                     .build();
 
