@@ -30,8 +30,6 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 DDBlocks.ECHO_PRESSURE_PLATE,
                 DDBlocks.ECHO_BUTTON,
 
-                DDBlocks.BLOOMING_STEM,
-                DDBlocks.STRIPPED_BLOOMING_STEM,
                 DDBlocks.BLOOM_PLANKS,
                 DDBlocks.BLOOM_PLANKS,
                 DDBlocks.BLOOM_STAIRS,
@@ -123,6 +121,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(DDBlocks.SOUNDPROOF_GLASS);
 
         getOrCreateTagBuilder(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
+        getOrCreateTagBuilder(DDTags.Blocks.BLOOMING_STEMS).add(DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
         getOrCreateTagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, Blocks.SCULK);
         getOrCreateTagBuilder(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME);
         getOrCreateTagBuilder(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME);
