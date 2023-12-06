@@ -210,8 +210,8 @@ public class DDModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_PLANKS);
         registerFence(blockModelGenerators, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_PLANKS);
         registerFenceGate(blockModelGenerators, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_PLANKS);
-//        blockModelGenerators.createDoor(DDBlocks.BLOOM_DOOR);
-//        blockModelGenerators.createOrientableTrapdoor(DDBlocks.BLOOM_TRAPDOOR);
+        blockModelGenerators.createDoor(DDBlocks.BLOOM_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(DDBlocks.BLOOM_TRAPDOOR);
         registerPressurePlate(blockModelGenerators, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_PLANKS);
         registerButton(blockModelGenerators, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_PLANKS);
         blockModelGenerators.createHangingSign(DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN);

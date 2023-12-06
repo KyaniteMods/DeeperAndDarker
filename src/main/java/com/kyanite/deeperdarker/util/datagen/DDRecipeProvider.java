@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -105,37 +106,12 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         // Wood stuff
             // Echo
-        planksFromLogs(exporter, DDBlocks.ECHO_PLANKS, DDTags.Items.ECHO_LOGS, 4);
+        woodRecipes(exporter, DDBlocks.ECHO_PLANKS, DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.ECHO_WOOD, 3).define('L', DDBlocks.ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_ECHO_WOOD, 3).define('L', DDBlocks.STRIPPED_ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(exporter);
-        oneToOneConversionRecipe(exporter, DDBlocks.ECHO_BUTTON, DDBlocks.ECHO_PLANKS, "wooden_button");
-        doorBuilder(DDBlocks.ECHO_DOOR, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
-        fenceGateBuilder(DDBlocks.ECHO_FENCE_GATE, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
-        fenceBuilder(DDBlocks.ECHO_FENCE, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
-        hangingSign(exporter, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_PLANKS);
-        pressurePlate(exporter, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_PLANKS);
-        signBuilder(DDBlocks.ECHO_SIGN, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS));
-        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_PLANKS);
-        stairBuilder(DDBlocks.ECHO_STAIRS, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
-        trapdoorBuilder(DDBlocks.ECHO_TRAPDOOR, Ingredient.of(DDBlocks.ECHO_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_PLANKS), FabricRecipeProvider.has(DDBlocks.ECHO_PLANKS)).save(exporter);
-        woodenBoat(exporter, DDItems.ECHO_BOAT, DDBlocks.ECHO_PLANKS);
-        chestBoat(exporter, DDItems.ECHO_CHEST_BOAT, DDBlocks.ECHO_PLANKS);
             // Bloom
-        planksFromLogs(exporter, DDBlocks.BLOOM_PLANKS, DDTags.Items.BLOOMING_STEMS, 4);
-        oneToOneConversionRecipe(exporter, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_PLANKS, "wooden_button");
-//        doorBuilder(DDBlocks.BLOOM_DOOR, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-        fenceGateBuilder(DDBlocks.BLOOM_FENCE_GATE, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-        fenceBuilder(DDBlocks.BLOOM_FENCE, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-        hangingSign(exporter, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_PLANKS);
-        pressurePlate(exporter, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_PLANKS);
-        signBuilder(DDBlocks.BLOOM_SIGN, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS));
-        slab(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_PLANKS);
-        stairBuilder(DDBlocks.BLOOM_STAIRS, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-//        trapdoorBuilder(DDBlocks.BLOOM_TRAPDOOR, Ingredient.of(DDBlocks.BLOOM_PLANKS)).unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BLOOM_PLANKS), FabricRecipeProvider.has(DDBlocks.BLOOM_PLANKS)).save(exporter);
-        woodenBoat(exporter, DDItems.BLOOM_BOAT, DDBlocks.BLOOM_PLANKS);
-        chestBoat(exporter, DDItems.BLOOM_CHEST_BOAT, DDBlocks.BLOOM_PLANKS);
+        woodRecipes(exporter, DDBlocks.BLOOM_PLANKS, DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDItems.BLOOM_SIGN, DDItems.BLOOM_HANGING_SIGN, DDItems.BLOOM_BOAT, DDItems.BLOOM_CHEST_BOAT);
         
-
         // Sculk Stone
         stairBuilder(DDBlocks.SCULK_STONE_STAIRS, Ingredient.of(DDBlocks.SCULK_STONE));
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE);
@@ -266,6 +242,22 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         oreSmelting(exporter, List.of(DDBlocks.GLOOMY_CACTUS), RecipeCategory.MISC, DDBlocks.GLOOMY_CACTUS, 1.0f, 200, "orange_dye");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SOUNDPROOF_GLASS, 16).define('S', DDItems.SOUL_DUST).define('C', DDItems.SOUL_CRYSTAL).define('G', Blocks.GLASS).pattern("SCS").pattern("CGC").pattern("SCS").unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(exporter);
+    }
+
+    private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
+        planksFromLogs(exporter, planks, logs, 4);
+        stairBuilder(stairs, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
+        slab(exporter, RecipeCategory.BUILDING_BLOCKS, slab, planks);
+        fenceBuilder(fence, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
+        fenceGateBuilder(fenceGate, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
+        doorBuilder(door, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
+        trapdoorBuilder(trapdoor, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
+        pressurePlate(exporter, pressurePlate, planks);
+        oneToOneConversionRecipe(exporter, button, planks, "wooden_button");
+        signBuilder(sign, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks));
+        hangingSign(exporter, hangingSign, planks);
+        woodenBoat(exporter, boat, planks);
+        chestBoat(exporter, chestBoat, planks);
     }
 
     private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {

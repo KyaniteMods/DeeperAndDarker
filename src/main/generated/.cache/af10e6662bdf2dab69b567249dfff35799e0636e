@@ -1,4 +1,4 @@
-// 1.20	2023-12-02T14:59:42.744100018	Deeper and Darker/Tags for minecraft:block
+// 1.20	2023-12-06T18:20:17.613841223	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
@@ -22,13 +22,13 @@ b6cd38fb1954467956ee5d37c5187872f9a7f29d data/minecraft/tags/blocks/mineable/hoe
 f8f8972f11f509b5637d5f1c157784358b95f3be data/minecraft/tags/blocks/climbable.json
 4c32a9c25e5ffe915daac210388a352a9e6cae02 data/minecraft/tags/blocks/portals.json
 f2d96eca233658a77cfb0767972a39f37e7876ea data/minecraft/tags/blocks/redstone_ores.json
-f05849880cdbeeabfa8cf9a677718a7ea229b91a data/minecraft/tags/blocks/wooden_trapdoors.json
+4a9162ba15f49cfbb81cea9ea0a02ca157f62b93 data/minecraft/tags/blocks/wooden_trapdoors.json
 c17d1bdd759702765aa934b86f1f6d3b593b821f data/minecraft/tags/blocks/coal_ores.json
 9db339876ebf24af66c66fdb249cb14a52ea00d5 data/minecraft/tags/blocks/flowers.json
 9c99f3fca688d15e8c69a80246820100bbbf3065 data/minecraft/tags/blocks/emerald_ores.json
 c042d2921526d56ca039457fd44638d0e03ff543 data/minecraft/tags/blocks/fence_gates.json
 9041fa0da99c531922bff22ba8602e0606f2c64e data/minecraft/tags/blocks/needs_stone_tool.json
-d0b222d759fe0c881261b06d778a3563df87b7db data/minecraft/tags/blocks/wooden_doors.json
+a9c1654ee56da28dba12343d88ab69fb8cc80fee data/minecraft/tags/blocks/wooden_doors.json
 16d1c4e7f628724284544b2abd6295c237c194f9 data/minecraft/tags/blocks/wall_hanging_signs.json
 d261c7115ff67087a4ab55ee4e23427f048b674f data/deeperdarker/tags/blocks/sculk_replaceables.json
 783d8a06847c7f58ece96fec08a1e8cef46f8092 data/deeperdarker/tags/blocks/infiniburn_otherside.json

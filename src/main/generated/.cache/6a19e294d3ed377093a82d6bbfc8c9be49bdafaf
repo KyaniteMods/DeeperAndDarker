@@ -1,4 +1,4 @@
-// 1.20	2023-12-02T14:59:42.755184602	Deeper and Darker/Tags for minecraft:item
+// 1.20	2023-12-06T18:20:17.624528641	Deeper and Darker/Tags for minecraft:item
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/items/wooden_pressure_plates.json
 7e86841155ecc8045b7ba4b53a96700cd5c1e359 data/minecraft/tags/items/swords.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
@@ -8,7 +8,7 @@ bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/items/leaves.json
 adb1df6145940121287a6045adc1138a302fab23 data/minecraft/tags/items/boats.json
 5853dd3bde739be76992a2067a4a916e9f14659f data/minecraft/tags/items/walls.json
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data/minecraft/tags/items/diamond_ores.json
-f05849880cdbeeabfa8cf9a677718a7ea229b91a data/minecraft/tags/items/wooden_trapdoors.json
+4a9162ba15f49cfbb81cea9ea0a02ca157f62b93 data/minecraft/tags/items/wooden_trapdoors.json
 953e4026d30ecfec24b27b5b1da6b2fa72ddc1b5 data/minecraft/tags/items/chest_boats.json
 c042d2921526d56ca039457fd44638d0e03ff543 data/minecraft/tags/items/fence_gates.json
 d65f46144dce454913a48c30b6512068f6d4932b data/minecraft/tags/items/pickaxes.json
@@ -23,7 +23,7 @@ ae9c334183d842387136550980a4c8d4b6b80b9f data/minecraft/tags/items/wooden_slabs.
 9c99f3fca688d15e8c69a80246820100bbbf3065 data/minecraft/tags/items/emerald_ores.json
 71326fd94f7d965ac3116ce400a7d20013f325d9 data/minecraft/tags/items/wooden_buttons.json
 c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/items/iron_ores.json
-d0b222d759fe0c881261b06d778a3563df87b7db data/minecraft/tags/items/wooden_doors.json
+a9c1654ee56da28dba12343d88ab69fb8cc80fee data/minecraft/tags/items/wooden_doors.json
 68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/items/lapis_ores.json
 fc41c07637cbc170370ad88ef4529ed7abda1395 data/minecraft/tags/items/signs.json
 ed7aa5cbfb388747192f4eba2210e4463510e836 data/minecraft/tags/items/shovels.json

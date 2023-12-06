@@ -36,8 +36,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB, DDBlocks.BLOOM_SLAB);
         add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE, DDBlocks.BLOOM_FENCE);
         add(ItemTags.FENCE_GATES, DDBlocks.ECHO_FENCE_GATE, DDBlocks.BLOOM_FENCE_GATE);
-        add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR);
-        add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR);
+        add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR, DDBlocks.BLOOM_DOOR);
+        add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR, DDBlocks.BLOOM_TRAPDOOR);
         add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE);
         add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_BUTTON);
         add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);

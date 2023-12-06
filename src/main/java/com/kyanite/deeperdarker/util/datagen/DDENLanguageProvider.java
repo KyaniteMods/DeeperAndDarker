@@ -153,8 +153,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.BLOOM_SLAB, "Bloom Slab");
         translationBuilder.add(DDBlocks.BLOOM_FENCE, "Bloom Fence");
         translationBuilder.add(DDBlocks.BLOOM_FENCE_GATE, "Bloom Fence Gate");
-//        translationBuilder.add(DDBlocks.BLOOM_DOOR, "Bloom Door");
-//        translationBuilder.add(DDBlocks.BLOOM_TRAPDOOR, "Bloom Trapdoor");
+        translationBuilder.add(DDBlocks.BLOOM_DOOR, "Bloom Door");
+        translationBuilder.add(DDBlocks.BLOOM_TRAPDOOR, "Bloom Trapdoor");
         translationBuilder.add(DDBlocks.BLOOM_PRESSURE_PLATE, "Bloom Pressure Plate");
         translationBuilder.add(DDBlocks.BLOOM_BUTTON, "Bloom Button");
         translationBuilder.add(DDItems.BLOOM_BOAT, "Bloom Boat");

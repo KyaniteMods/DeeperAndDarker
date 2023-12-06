@@ -91,8 +91,8 @@ public class DDBlocks {
     public static final Block BLOOM_SLAB = register("bloom_slab", new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_FENCE = register("bloom_fence", new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_FENCE_GATE = register("bloom_fence_gate", new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), BLOOM));
-//    public static final Block BLOOM_DOOR = register("bloom_door", new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO_SET));
-//    public static final Block BLOOM_TRAPDOOR = register("bloom_trapdoor", new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO_SET));
+    public static final Block BLOOM_DOOR = register("bloom_door", new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
+    public static final Block BLOOM_TRAPDOOR = register("bloom_trapdoor", new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final Block BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final Block BLOOM_BUTTON = register("bloom_button", new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BLOOM_SET, 30, true));
 

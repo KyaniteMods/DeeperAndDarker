@@ -61,8 +61,8 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.BLOOM_SLAB));
         entries.accept(new ItemStack(DDBlocks.BLOOM_FENCE));
         entries.accept(new ItemStack(DDBlocks.BLOOM_FENCE_GATE));
-//        entries.accept(new ItemStack(DDBlocks.BLOOM_DOOR));
-//        entries.accept(new ItemStack(DDBlocks.BLOOM_TRAPDOOR));
+        entries.accept(new ItemStack(DDBlocks.BLOOM_DOOR));
+        entries.accept(new ItemStack(DDBlocks.BLOOM_TRAPDOOR));
         entries.accept(new ItemStack(DDBlocks.BLOOM_PRESSURE_PLATE));
         entries.accept(new ItemStack(DDBlocks.BLOOM_BUTTON));
         entries.accept(new ItemStack(DDItems.BLOOM_SIGN));

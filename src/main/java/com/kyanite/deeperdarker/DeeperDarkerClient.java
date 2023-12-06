@@ -46,6 +46,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.POTTED_ECHO_SAPLING,
                 DDBlocks.GLOWING_FLOWERS,
                 DDBlocks.GLOWING_GRASS);
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 DDBlocks.CRYSTALLIZED_AMBER,
                 DDBlocks.SOUNDPROOF_GLASS);

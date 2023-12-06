@@ -56,8 +56,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.BLOOM_SLAB);
         dropSelf(DDBlocks.BLOOM_FENCE);
         dropSelf(DDBlocks.BLOOM_FENCE_GATE);
-//        dropSelf(DDBlocks.BLOOM_DOOR);
-//        dropSelf(DDBlocks.BLOOM_TRAPDOOR);
+        add(DDBlocks.BLOOM_DOOR, this::createDoorTable);
+        dropSelf(DDBlocks.BLOOM_TRAPDOOR);
         dropSelf(DDBlocks.BLOOM_PRESSURE_PLATE);
         dropSelf(DDBlocks.BLOOM_BUTTON);
         dropSelf(DDBlocks.BLOOM_SIGN);

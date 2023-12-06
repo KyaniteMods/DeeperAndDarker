@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "deeperdarker:echo_door"
+    "deeperdarker:echo_door",
+    "deeperdarker:bloom_door"
   ]
 }
