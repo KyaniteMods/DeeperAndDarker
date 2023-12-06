@@ -1,18 +1,20 @@
-// 1.19.2	2023-11-19T20:50:27.181497841	Tags for minecraft:item
+// 1.19.2	2023-12-06T19:50:00.935416225	Tags for minecraft:item
 fc4746e6361c4738f8d49d9736180f693b5d89f6 data/minecraft/tags/items/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
 67465033f6856e41a88bd8895a6406aa84188ee8 data/minecraft/tags/items/logs_that_burn.json
 6bd8bfd25fac6809d51b20040e5aafc2cf79c96b data/deeperdarker/tags/items/dampens_vibrations.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/items/leaves.json
+dce63ae58a64e342ee05ee1e2776d3b8f80ab585 data/minecraft/tags/items/boats.json
 5853dd3bde739be76992a2067a4a916e9f14659f data/minecraft/tags/items/walls.json
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data/minecraft/tags/items/diamond_ores.json
 f05849880cdbeeabfa8cf9a677718a7ea229b91a data/minecraft/tags/items/wooden_trapdoors.json
+54612adf2538af202d81560775692e81bffc32a4 data/minecraft/tags/items/chest_boats.json
 a79df4671755271345962c0aa23680929668ccea data/minecraft/tags/items/planks.json
 a80782ad2aab1d6a87e5125ec63b62424ee43dcc data/minecraft/tags/items/slabs.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data/deeperdarker/tags/items/echo_logs.json
 666498abb0b9ee22c5239c4a897b6f03923b6ec6 data/minecraft/tags/items/wooden_fences.json
-8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data/minecraft/tags/items/wooden_slabs.json
 cf0fad197fd904acee9b676ffdf675297222de53 data/minecraft/tags/items/wooden_stairs.json
+8e66882b02bccb405f9f39eb2da3772f2b3cdf14 data/minecraft/tags/items/wooden_slabs.json
 91cc0adf830b0dda4cb501792e044b1e90172f5e data/minecraft/tags/items/stairs.json
 9c99f3fca688d15e8c69a80246820100bbbf3065 data/minecraft/tags/items/emerald_ores.json
 0b611850fa88d0382e3e8016186b458466af19fb data/minecraft/tags/items/wooden_buttons.json

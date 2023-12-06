@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-19T20:50:27.182267984	Models
+// 1.19.2	2023-12-06T19:50:00.935727001	Models
 6c8b6bde6791bc8d489d956702d652b0a96d8eaa assets/deeperdarker/models/block/cut_gloomslate_stairs.json
 2ffe2f7cebcf09c0f3eb69b2160667771e346348 assets/deeperdarker/models/item/cut_gloomslate.json
 dd81e51c8bb9e30ba902b28ff01a426e252a1634 assets/deeperdarker/blockstates/cut_gloomslate_slab.json
@@ -433,8 +433,8 @@ ad7931d84518c11197577050228d842d4de206ab assets/deeperdarker/models/item/cut_scu
 1ec0a9360252a2a2a0930427a3fa42f9a29c7717 assets/deeperdarker/models/block/otherside_portal_ns.json
 3d17c3dc7cb5cd4507d1008365ce98a5befb5a4a assets/deeperdarker/models/item/warden_carapace.json
 e1499e862614d08e78a6bb2334698332573fe61c assets/deeperdarker/models/block/sculk_stone_gold_ore.json
-3ae6d68450b87654e83ae76ee06f787a1ea7feda assets/deeperdarker/blockstates/echo_slab.json
 40a3d843e4538b7e65d6fa9938c60809832b2b07 assets/deeperdarker/blockstates/polished_gloomslate_stairs.json
+3ae6d68450b87654e83ae76ee06f787a1ea7feda assets/deeperdarker/blockstates/echo_slab.json
 898398acdbab63db6ae71334597e7db0c381ea63 assets/deeperdarker/blockstates/stripped_echo_wood.json
 7fa6b2d8c37ca5af719a2aeea3c2c4311b735068 assets/deeperdarker/models/item/soul_elytra_broken.json
 e896444521a03d57778ed008c21d815d70cdddac assets/deeperdarker/blockstates/cobbled_gloomslate_wall.json

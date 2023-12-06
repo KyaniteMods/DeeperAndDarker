@@ -75,7 +75,7 @@ public class ModMenuIntegration implements ModMenuApi {
                             () -> DDConfig.HANDLER.getConfig().geyserLaunchVelocity,
                             newVal -> DDConfig.HANDLER.getConfig().geyserLaunchVelocity = newVal
                     )
-                    .controller(opt -> new FloatSliderController(opt, 0.0f, 32767.0f, 0.25f, value ->
+                    .controller(opt -> new FloatSliderController(opt, 0.0f, 127.0f, 0.25f, value ->
                         value == 69.0f ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))
                     ))
                     .build();
@@ -205,6 +205,7 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(spawnSomethingFromAncientVaseChance)
                                     .option(sculkLeechesFromAncientVaseChance)
                                     .option(geysersApplySlowFalling)
+                                    .option(geyserLaunchVelocity)
                                     .option(portalMinWidth)
                                     .option(portalMinHeight)
                                     .option(portalMaxWidth)

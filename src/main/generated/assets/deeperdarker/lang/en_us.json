@@ -145,6 +145,8 @@
   "config.deeperdarker.generatedPortalHeight.title": "Generated Portal Height",
   "config.deeperdarker.generatedPortalWidth.description": "The width of Otherside portals generated when traveling through dimensions and no portal is available. Making this too large may cause problems.",
   "config.deeperdarker.generatedPortalWidth.title": "Generated Portal Width",
+  "config.deeperdarker.geyserLaunchVelocity.description": "Defines the velocity applied when a player is launched by a Gloomy Geyser.",
+  "config.deeperdarker.geyserLaunchVelocity.title": "Gloomy Geyser Launch Velocity",
   "config.deeperdarker.geysersApplySlowFalling.description": "Determines if stepping on a Gloomy Geyser grants the player Slow Falling.",
   "config.deeperdarker.geysersApplySlowFalling.title": "Geysers Apply Slow Falling",
   "config.deeperdarker.portalMaxHeight.description": "Defines the maximum height (not counting the frame) for an Otherside portal to be valid.",
