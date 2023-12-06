@@ -64,7 +64,7 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
             if (item == DDItems.WARDEN_HELMET) {
                 if (livingEntity.isBaby()) {
                     matrixStack.scale(1.3425f, 1.3425f, 1.3425f);
-                    matrixStack.translate(0.0f, -0.803125f, 0.0f);
+                    matrixStack.translate(0.0f, -0.803125f, 0.0f); // the Y may seem extremely random, but it's actually -1.60625f / 2.0f. now where does -1.60625f come from? -3.2125f / 2.0f, of course.
                 } else {
                     matrixStack.scale(1.25f, 1.25f, 1.25f);
                     matrixStack.translate(0.0f, -0.825f, 0.0f);
@@ -72,7 +72,7 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
                 if (bl) {
                     matrixStack.translate(0.0f, -0.1f, 0.0f);
                 }
-                HelmetHornsModel<T> hornsModel = new HelmetHornsModel<T>(this.modelLoader.bakeLayer(DDModelLayers.WARDEN_HELMET));
+                HelmetHornsModel<T> hornsModel = new HelmetHornsModel<>(this.modelLoader.bakeLayer(DDModelLayers.WARDEN_HELMET));
                 if (hasShowMeYourSkin && ShowMeYourSkinCompat.armorTransparency(matrixStack, vertexConsumerProvider, light, hornsModel, TEXTURE, 1.0f, 1.0f, 1.0f)) return;
                 RenderType renderLayer = RenderType.armorCutoutNoCull(TEXTURE);
                 RenderType glintRenderLayer = RenderType.armorEntityGlint();
