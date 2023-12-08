@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -38,7 +39,7 @@ public class WardenHeartItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if(RandomSource.create().nextFloat() < 0.012f) {
+        if(DeeperDarkerConfig.wardenHeartPulses && RandomSource.create().nextFloat() < 0.012f) {
             pEntity.playSound(SoundEvents.WARDEN_HEARTBEAT, 1.7f, 1f);
         }
     }

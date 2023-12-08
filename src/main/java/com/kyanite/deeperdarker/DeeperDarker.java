@@ -13,6 +13,7 @@ import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
+import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.client.model.BoatModel;
@@ -52,7 +53,9 @@ import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -86,6 +89,8 @@ public class DeeperDarker {
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -147,8 +152,8 @@ public class DeeperDarker {
 
             if(event.getLevel() instanceof ServerLevel level) {
                 RandomSource random = level.getRandom();
-                if(random.nextFloat() < 0.16f) {
-                    if(random.nextFloat() < 0.6875f) {
+                if(random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
+                    if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
                         }
