@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.util.DDConfig;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -16,7 +17,7 @@ public class HeartOfTheDeepItem extends Item {
     @Override
     public void inventoryTick(ItemStack pItemStack, Level pLevel, Entity pEntity, int i, boolean bl) {
         if(RandomSource.create().nextFloat() < 0.012f && DDConfig.HANDLER.instance().wardenHeartPulses) {
-            pEntity.playSound(SoundEvents.WARDEN_HEARTBEAT, 1.7f, 1f);
+            pLevel.playSound(pEntity, pEntity.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
         }
     }
 }
