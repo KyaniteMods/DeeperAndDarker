@@ -79,12 +79,16 @@ public class SculkSnapperAnimation {
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -2.5f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
 
     public static final AnimationDefinition SIT = AnimationDefinition.Builder.withLength(2f).looping()
+            .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f, -2.3f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(-12.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("jaw", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(-10f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(1f, KeyframeAnimations.degreeVec(-17.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(2f, KeyframeAnimations.degreeVec(-10f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("legs", new AnimationChannel(AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f, -2.3f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("left_front_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
                     new Keyframe(0f, KeyframeAnimations.posVec(0f, 2f, -1f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("left_front_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
