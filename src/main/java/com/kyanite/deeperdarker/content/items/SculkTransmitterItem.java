@@ -118,7 +118,7 @@ public class SculkTransmitterItem extends Item {
     }
 
     private boolean canConnect(Level level, BlockPos target) {
-        return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
+        return level.isLoaded(target) && level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
     }
 
     private void actionBarMessage(Player player, String key, SoundEvent sound) {
