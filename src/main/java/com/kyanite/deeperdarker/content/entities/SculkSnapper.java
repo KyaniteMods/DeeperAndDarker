@@ -99,7 +99,7 @@ public class SculkSnapper extends TamableAnimal {
         super.tick();
 
         if(this.isTame() && this.getOwner() != null) {
-            if(this.getOwner().distanceTo(this) < 6 && this.random.nextFloat() < 0.0004f) {
+            if(this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.0003f) {
                 List<Enchantment> enchantments = new ArrayList<>();
                 ForgeRegistries.ENCHANTMENTS.forEach(enchant -> {
                     if(!enchant.isCurse()) enchantments.add(enchant);
