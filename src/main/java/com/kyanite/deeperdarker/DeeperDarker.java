@@ -160,6 +160,8 @@ public class DeeperDarker {
                     } else {
                         DDEntities.STALKER.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
                     }
+                    level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 3);
+                    event.setCanceled(true);
                 }
             }
         }
