@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.content.entities.Stalker;
 import com.kyanite.deeperdarker.util.DDConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
@@ -66,8 +67,6 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
         return Stream.of(BASE, OUTLINE, RIM).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
     }
 
-
-
     @Override
     public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pBlockPos, BlockState pBlockState,
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
@@ -86,6 +85,8 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                 } else if (pLevel instanceof ServerLevel serverLevel) {
                     DDEntities.STALKER.spawn(serverLevel, pBlockPos, MobSpawnType.TRIGGERED);
                 }
+                pPlayer.awardStat(Stats.BLOCK_MINED.get(this));
+                return;
             }
         }
         super.playerDestroy(pLevel, pPlayer, pBlockPos, pBlockState, pBlockEntity, pItemStack);
