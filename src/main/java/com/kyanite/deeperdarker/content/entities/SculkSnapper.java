@@ -133,6 +133,16 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
+    public void setTame(boolean pTamed) {
+        super.setTame(pTamed);
+        System.out.println(pTamed);
+        if(pTamed) {
+            this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16);
+            this.setHealth(16f);
+        }
+    }
+
+    @Override
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
         if(this.isFood(stack) && !this.isTame()) {
