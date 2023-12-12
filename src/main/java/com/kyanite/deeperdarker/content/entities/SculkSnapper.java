@@ -135,7 +135,6 @@ public class SculkSnapper extends TamableAnimal {
     @Override
     public void setTame(boolean pTamed) {
         super.setTame(pTamed);
-        System.out.println(pTamed);
         if(pTamed) {
             this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16);
             this.setHealth(16f);
