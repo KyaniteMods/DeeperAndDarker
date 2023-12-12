@@ -91,9 +91,4 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
         }
         super.playerDestroy(pLevel, pPlayer, pBlockPos, pBlockState, pBlockEntity, pItemStack);
     }
-
-    @Override
-    public void spawnAfterBreak(BlockState pState, ServerLevel pLevel, BlockPos pPos, ItemStack pStack, boolean pDropExperience) {
-        super.spawnAfterBreak(pState, pLevel, pPos, pStack, pDropExperience);
-    }
 }
