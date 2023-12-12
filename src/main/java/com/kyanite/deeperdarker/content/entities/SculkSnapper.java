@@ -35,6 +35,7 @@ import java.util.List;
 public class SculkSnapper extends TamableAnimal {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
+    public final AnimationState sitState = new AnimationState();
 
     public SculkSnapper(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -43,12 +44,13 @@ public class SculkSnapper extends TamableAnimal {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.1, true));
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 0.9, 8, 2, false));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.5));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 7));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.1, true));
+        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 0.9, 8, 2, false));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1));
+        this.goalSelector.addGoal(5, new RandomStrollGoal(this, 0.5));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 7));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
@@ -72,6 +74,17 @@ public class SculkSnapper extends TamableAnimal {
     @Override
     public MobType getMobType() {
         return DDMobType.SCULK;
+    }
+
+    @Override
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        if(this.isInvulnerableTo(pSource)) return false;
+        if(!this.level().isClientSide) {
+            this.setInSittingPose(false);
+            this.setOrderedToSit(false);
+        }
+
+        return super.hurt(pSource, pAmount);
     }
 
     @Override
@@ -101,7 +114,14 @@ public class SculkSnapper extends TamableAnimal {
         }
 
         if(level().isClientSide()) {
-            if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
+            if(this.isInSittingPose() && !this.sitState.isStarted()) {
+                this.idleState.stop();
+                this.sitState.start(this.tickCount);
+            }
+            if(!this.isInSittingPose() && this.sitState.isStarted()) {
+                this.sitState.stop();
+            }
+            if(!this.idleState.isStarted() && !this.attackState.isStarted() && !this.sitState.isStarted()) {
                 this.idleState.start(this.tickCount);
             }
         }
@@ -127,14 +147,28 @@ public class SculkSnapper extends TamableAnimal {
             return InteractionResult.SUCCESS;
         }
 
-        if(!stack.getEnchantmentTags().isEmpty() && isTame() && this.getHealth() < this.getMaxHealth()) {
-            this.usePlayerItem(pPlayer, pHand, stack);
-            if(!level().isClientSide()) {
-                this.heal(getMaxHealth());
-                this.gameEvent(GameEvent.EAT, this);
+        if(this.isTame()) {
+            if(!stack.getEnchantmentTags().isEmpty() && this.getHealth() < this.getMaxHealth()) {
+                this.usePlayerItem(pPlayer, pHand, stack);
+                if(!level().isClientSide()) {
+                    this.heal(getMaxHealth());
+                    this.gameEvent(GameEvent.EAT, this);
+                }
+
+                return InteractionResult.SUCCESS;
             }
 
-            return InteractionResult.SUCCESS;
+            InteractionResult interact = super.mobInteract(pPlayer, pHand);
+            if (!interact.consumesAction() && this.isOwnedBy(pPlayer)) {
+                this.setInSittingPose(!this.isInSittingPose());
+                this.setOrderedToSit(!this.isOrderedToSit());
+                this.jumping = false;
+                this.navigation.stop();
+                this.setTarget(null);
+                return InteractionResult.SUCCESS;
+            } else {
+                return interact;
+            }
         }
 
         return InteractionResult.PASS;
