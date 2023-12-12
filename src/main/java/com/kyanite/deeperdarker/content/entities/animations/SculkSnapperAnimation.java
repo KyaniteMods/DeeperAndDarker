@@ -78,64 +78,27 @@ public class SculkSnapperAnimation {
             .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -2.5f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
 
-    public static final AnimationDefinition SNIFF = AnimationDefinition.Builder.withLength(1.5f)
-            .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(-2.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+    public static final AnimationDefinition SIT = AnimationDefinition.Builder.withLength(2f).looping()
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(25.14f, -19.47f, -7.35f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1f, KeyframeAnimations.degreeVec(21.23f, 12.47f, 13.8f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1.5f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(-12.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("jaw", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(-40f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1f, KeyframeAnimations.degreeVec(-32.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(1.5f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -2.5f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
-
-    public static final AnimationDefinition DIG = AnimationDefinition.Builder.withLength(3f)
-            .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(17.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(10f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("jaw", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.0833f, KeyframeAnimations.degreeVec(-32.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.POSITION,
-                    new Keyframe(0f, KeyframeAnimations.posVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.0833f, KeyframeAnimations.posVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.posVec(0f, -18f, -7f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.0833f, KeyframeAnimations.degreeVec(40f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
-
-    public static final AnimationDefinition EMERGE = AnimationDefinition.Builder.withLength(0.75f)
-            .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(-27.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(-2.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(10f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("jaw", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(-32.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5833f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.75f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(-10f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(1f, KeyframeAnimations.degreeVec(-17.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
+                    new Keyframe(2f, KeyframeAnimations.degreeVec(-10f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("left_front_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f, 2f, -1f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("left_front_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(-77.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(-45f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("right_front_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(0f, 2f, -1f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("right_front_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(-62.29f, -0.13f, 2.32f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(-45f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("left_back_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(1f, 0.4f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("left_back_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(37.5f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(-90f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("right_back_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
+                    new Keyframe(0f, KeyframeAnimations.posVec(-1f, 0.4f, 0f), AnimationChannel.Interpolations.LINEAR)))
             .addAnimation("right_back_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(30f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.POSITION,
-                    new Keyframe(0f, KeyframeAnimations.posVec(0f, -18f, 18f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.5f, KeyframeAnimations.posVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("root", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                    new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -2.5f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
+                    new Keyframe(0f, KeyframeAnimations.degreeVec(-90f, 0f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
 }
