@@ -131,7 +131,11 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
         super.tick();
 
-        if(this.getPose() == Pose.EMERGING && ++emergingTime > 70) this.setPose(Pose.STANDING);
+        if(this.getPose() == Pose.EMERGING) {
+            if(++emergingTime > 70) this.setPose(Pose.STANDING);
+            this.setTarget(null);
+        }
+
         List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
         if(!players.isEmpty()) {
             this.rangedCooldown--;
