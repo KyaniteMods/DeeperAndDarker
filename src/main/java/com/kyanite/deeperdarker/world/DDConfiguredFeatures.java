@@ -47,6 +47,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_GLEAM_EXTRA = createKey("sculk_gleam_extra");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_TENDRILS = createKey("sculk_tendrils");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_VINES = createKey("sculk_vines");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_ROOTS = createKey("glowing_roots");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_VINES = createKey("glowing_vines");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_STONE_GENERATION = createKey("sculk_stone_generation");
@@ -114,6 +115,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, SCULK_GLEAM_EXTRA, DDFeatures.SCULK_GLEAM_BLOB.get());
         FeatureUtils.register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS.get());
         FeatureUtils.register(context, SCULK_VINES, DDFeatures.SCULK_VINES.get());
+        FeatureUtils.register(context, GLOWING_ROOTS, DDFeatures.GLOWING_ROOTS.get());
         FeatureUtils.register(context, GLOWING_VINES, DDFeatures.GLOWING_VINES.get());
 
         FeatureUtils.register(context, SCULK_STONE_GENERATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.SCULK_STONE.get())));
