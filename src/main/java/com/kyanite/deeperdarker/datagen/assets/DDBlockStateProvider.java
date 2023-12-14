@@ -158,6 +158,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOWING_VINES.get(), models().cross(DDBlocks.GLOWING_VINES.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES)).renderType("cutout"));
+        simpleBlock(DDBlocks.GLOWING_ROOTS.get(), models().cross(DDBlocks.GLOWING_ROOTS.getId().getPath(), blockLoc(DDBlocks.GLOWING_ROOTS)).renderType("cutout"));
+        simpleBlock(DDBlocks.GLOWING_ROOTS_PLANT.get(), models().cross(DDBlocks.GLOWING_ROOTS_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_ROOTS_PLANT)).renderType("cutout"));
         ModelFile noBerries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout");
         ModelFile berries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath() + "_berries", blockLoc(DDBlocks.GLOWING_VINES_PLANT, "berries")).renderType("cutout");
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get()).partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel().partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();

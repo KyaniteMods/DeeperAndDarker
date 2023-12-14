@@ -9,7 +9,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class GlowingRootsPlantBlock extends GrowingPlantBodyBlock {
-    private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 16, 12);
+    private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 16, 13);
 
     public GlowingRootsPlantBlock(Properties pProperties) {
         super(pProperties, Direction.UP, SHAPE, false);
