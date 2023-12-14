@@ -10,10 +10,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class GlowingRootsBlock extends GrowingPlantHeadBlock {
-    private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 15, 12);
+    private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 5, 13);
 
     public GlowingRootsBlock(Properties properties) {
-        super(properties, Direction.UP, SHAPE, false, 0.13);
+        super(properties, Direction.UP, SHAPE, false, 0.05);
     }
 
     @Override
