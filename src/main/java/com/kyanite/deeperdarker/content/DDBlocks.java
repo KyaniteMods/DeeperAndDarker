@@ -225,7 +225,7 @@ public class DDBlocks {
     public static final Block SCULK_VINES = register("sculk_vines", new SculkVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak().randomTicks()));
     public static final Block SCULK_VINES_PLANT = registerWithoutItem("sculk_vines_plant", new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak()));
     public static final Block GLOWING_ROOTS = register("glowing_roots", new GlowingRootsBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
-    public static final Block GLOWING_ROOTS_PLANT = register("glowing_roots_plant", new GlowingRootsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final Block GLOWING_ROOTS_PLANT = registerWithoutItem("glowing_roots_plant", new GlowingRootsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final Block GLOWING_VINES = registerWithoutItem("glowing_vines", new GlowingVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).noLootTable()));
     public static final Block GLOWING_VINES_PLANT = registerWithoutItem("glowing_vines_plant", new GlowingVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).lightLevel(state -> state.getValue(GlowingVinesPlantBlock.BERRIES) ? 14 : 0).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
 
