@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -33,11 +34,10 @@ public class WardenArmorItem extends ArmorItem {
         return this == DDItems.WARDEN_LEGGINGS && slot == EquipmentSlot.LEGS ? this.LEGGINGS_MODIFIERS : super.getDefaultAttributeModifiers(slot);
     }
 
-
     @Override
-    public void onUseTick(Level level, LivingEntity user, ItemStack itemStack, int i) {
-        if (!level.isClientSide()) {
-            if (user.getItemBySlot(EquipmentSlot.HEAD).is(DDItems.WARDEN_HELMET)) {
+    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int slot, boolean bl) {
+        if (!level.isClientSide() && entity instanceof LivingEntity user) {
+            if (slot == EquipmentSlot.HEAD.getIndex() && itemStack.is(DDItems.WARDEN_HELMET)) {
                 if (user.hasEffect(MobEffects.BLINDNESS)) user.removeEffect(MobEffects.BLINDNESS);
                 if (user.hasEffect(MobEffects.DARKNESS)) user.removeEffect(MobEffects.DARKNESS);
             }
