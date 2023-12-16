@@ -41,7 +41,7 @@ public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
 
         BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(origin.getX(), origin.getY(), origin.getZ());
         Direction direction = Direction.UP;
-        Direction nextDirection = randomDirection(random);
+        Direction nextDirection = Direction.UP;
 
         for(int i = 0; i < length; i++) {
             if(!level.getBlockState(blockPos).isAir()) break;
