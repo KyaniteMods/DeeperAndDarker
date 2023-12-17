@@ -3,12 +3,14 @@ package com.kyanite.deeperdarker.world;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -46,6 +48,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
 
     public static final ResourceKey<PlacedFeature> BLOOMING_MOSS = createKey("blooming_moss");
+    public static final ResourceKey<PlacedFeature> BLOOMING_POOLS = createKey("blooming_pools");
 
     public static final ResourceKey<PlacedFeature> GLOOMY_SCULK = createKey("gloomy_sculk");
     public static final ResourceKey<PlacedFeature> MAGMA = createKey("magma");
@@ -95,6 +98,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, BLOOMING_MOSS, features.getOrThrow(DDConfiguredFeatures.ORE_BLOOMING_MOSS), countPlacement(19, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, BLOOMING_POOLS, features.getOrThrow(DDConfiguredFeatures.BLOOMING_POOL), CountPlacement.of(10), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
 
         PlacementUtils.register(context, GLOOMY_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMY_SCULK), countPlacement(96, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(32))));
         PlacementUtils.register(context, MAGMA, features.getOrThrow(DDConfiguredFeatures.ORE_MAGMA), countPlacement(128, PlacementUtils.FULL_RANGE));
