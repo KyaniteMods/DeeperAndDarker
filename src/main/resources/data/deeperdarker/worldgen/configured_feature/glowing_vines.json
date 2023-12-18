@@ -1,4 +1,27 @@
 {
-  "type": "deeperdarker:glowing_vines",
-  "config": {}
+  "type": "deeperdarker:vine",
+  "config": {
+    "doubleHeight": 0.12,
+    "height": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 24,
+        "min_inclusive": 6
+      }
+    },
+    "placeable": "deeperdarker:glowing_vine_placeable",
+    "plant": {
+      "Name": "deeperdarker:glowing_vines_plant",
+      "Properties": {
+        "berries": "false"
+      }
+    },
+    "reducedHeight": 0.125,
+    "vine": {
+      "Name": "deeperdarker:glowing_vines",
+      "Properties": {
+        "age": "0"
+      }
+    }
+  }
 }
