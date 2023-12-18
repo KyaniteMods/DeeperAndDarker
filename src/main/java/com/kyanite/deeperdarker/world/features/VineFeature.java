@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
+import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,27 +10,25 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class GlowingVinesFeature extends Feature<NoneFeatureConfiguration> {
-    public GlowingVinesFeature(Codec<NoneFeatureConfiguration> pCodec) {
+public class VineFeature extends Feature<VineFeatureConfiguration> {
+    public VineFeature(Codec<VineFeatureConfiguration> pCodec) {
         super(pCodec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
+    public boolean place(FeaturePlaceContext<VineFeatureConfiguration> pContext) {
         WorldGenLevel level = pContext.level();
         BlockPos origin = pContext.origin();
         if(level.isEmptyBlock(origin)) {
             BlockState state = level.getBlockState(origin.above());
-            if(state.is(Blocks.SCULK) || state.is(DDBlocks.SCULK_STONE.get())) {
-                this.placeVines(level, pContext.random(), origin);
+            if(state.is(pContext.config().tag())) {
+                this.placeVines(pContext, level, pContext.random(), origin);
                 return true;
             }
         }
@@ -37,35 +36,35 @@ public class GlowingVinesFeature extends Feature<NoneFeatureConfiguration> {
         return false;
     }
 
-    private void placeVines(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeVines(FeaturePlaceContext<VineFeatureConfiguration> context, LevelAccessor level, RandomSource random, BlockPos pos) {
         BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; i++) {
             blockPos.setWithOffset(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(2) - random.nextInt(7), random.nextInt(8) - random.nextInt(8));
             if(level.isEmptyBlock(blockPos)) {
                 BlockState state = level.getBlockState(blockPos.above());
-                if(state.is(Blocks.SCULK) || state.is(DDBlocks.SCULK_STONE.get())) {
-                    int length = Mth.nextInt(random, 6, 24);
-                    if(random.nextFloat() < 0.12f) length *= 2;
-                    if(random.nextFloat() < 0.125f) length = 1;
+                if(state.is(context.config().tag())) {
+                    int length = context.config().height().sample(random);
+                    if(random.nextFloat() < context.config().doubleChance()) length *= 2;
+                    if(random.nextFloat() < context.config().reducedChance()) length = 1;
 
-                    placeVinesColumn(level, random, blockPos, length);
+                    placeVinesColumn(context, level, random, blockPos, length);
                 }
             }
         }
     }
 
-    private void placeVinesColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length) {
+    private void placeVinesColumn(FeaturePlaceContext<VineFeatureConfiguration> context, LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length) {
         for(int i = 0; i <= length; i++) {
             if(level.isEmptyBlock(pos) && !(level.getBlockState(pos).getBlock() instanceof LeavesBlock)) {
                 if(i == length || !level.isEmptyBlock(pos.below())) {
-                    level.setBlock(pos, DDBlocks.GLOWING_VINES.get().defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, 17, 25)), 3);
+                    level.setBlock(pos, context.config().vine().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, 17, 25)), 3);
                     break;
                 }
 
-                BlockState vines = DDBlocks.GLOWING_VINES_PLANT.get().defaultBlockState();
-                if(random.nextFloat() < 0.25f) vines = vines.setValue(GlowingVinesPlantBlock.BERRIES, true);
-                level.setBlock(pos, vines, 3);
+                BlockState plant = context.config().plant();
+                if(plant.is(DDBlocks.GLOWING_VINES_PLANT.get()) && random.nextFloat() < 0.25f) plant = plant.setValue(GlowingVinesPlantBlock.BERRIES, true);
+                level.setBlock(pos, plant, 3);
             }
 
             pos.move(Direction.DOWN);

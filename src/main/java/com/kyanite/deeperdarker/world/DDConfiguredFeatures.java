@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.world;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -115,9 +116,10 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.GLOOMSLATE_COLUMN.get());
         FeatureUtils.register(context, SCULK_GLEAM_EXTRA, DDFeatures.SCULK_GLEAM_BLOB.get());
         FeatureUtils.register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS.get());
-        FeatureUtils.register(context, SCULK_VINES, DDFeatures.SCULK_VINES.get());
+        FeatureUtils.register(context, SCULK_VINES, DDFeatures.VINE.get(), new VineFeatureConfiguration(DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState(), DDBlocks.SCULK_VINES.get().defaultBlockState(), DDTags.Blocks.SCULK_VINE_PLACEABLE, UniformInt.of(1, 8), 0.2f, 0.25f));
         FeatureUtils.register(context, GLOWING_ROOTS, DDFeatures.GLOWING_ROOTS.get());
         FeatureUtils.register(context, GLOWING_VINES, DDFeatures.GLOWING_VINES.get());
+        FeatureUtils.register(context, GLOWING_VINES, DDFeatures.VINE.get(), new VineFeatureConfiguration(DDBlocks.GLOWING_VINES_PLANT.get().defaultBlockState(), DDBlocks.GLOWING_VINES.get().defaultBlockState(), DDTags.Blocks.GLOWING_VINE_PLACEABLE, UniformInt.of(6, 24), 0.12f, 0.125f));
 
         FeatureUtils.register(context, SCULK_STONE_GENERATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.SCULK_STONE.get())));
         FeatureUtils.register(context, SURFACE_SCULK_STONE, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_REPLACEABLES, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SCULK.defaultBlockState(), 1).add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 2)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_STONE_GENERATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0, UniformInt.of(1, 2), 0.3f));

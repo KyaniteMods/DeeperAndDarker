@@ -21,6 +21,9 @@ public class DDTags {
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
         public static final TagKey<Block> BLOOMING_POOL_REPLACEABLE = tag("blooming_pool_replaceable");
 
+        public static final TagKey<Block> SCULK_VINE_PLACEABLE = tag("sculk_vine_placeable");
+        public static final TagKey<Block> GLOWING_VINE_PLACEABLE = tag("glowing_vine_placeable");
+
         public static final TagKey<Block> TRANSMITTABLE = tag("transmittable");
         public static final TagKey<Block> INFINIBURN_OTHERSIDE = tag("infiniburn_otherside");
 
