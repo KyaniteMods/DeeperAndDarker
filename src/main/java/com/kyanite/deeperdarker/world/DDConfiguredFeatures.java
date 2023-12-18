@@ -34,6 +34,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_VINES = createKey("sculk_vines");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_ROOTS = createKey("glowing_roots");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_VINES = createKey("glowing_vines");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_VINES_SHORT = createKey("glowing_vines_short");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_STONE_GENERATION = createKey("sculk_stone_generation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");

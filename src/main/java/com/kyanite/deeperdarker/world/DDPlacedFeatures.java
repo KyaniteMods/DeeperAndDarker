@@ -28,6 +28,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_VINES_CAVERNS = createKey("sculk_vines_caverns");
     public static final ResourceKey<PlacedFeature> GLOWING_ROOTS = createKey("glowing_roots");
     public static final ResourceKey<PlacedFeature> GLOWING_VINES = createKey("glowing_vines");
+    public static final ResourceKey<PlacedFeature> GLOWING_VINES_SHORT = createKey("glowing_vines_short");
 
     public static final ResourceKey<PlacedFeature> SURFACE_SCULK_STONE = createKey("surface_sculk_stone");
     public static final ResourceKey<PlacedFeature> SCULK_DECORATION = createKey("sculk_decoration");
@@ -77,6 +78,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_VINES_CAVERNS, features.getOrThrow(DDConfiguredFeatures.SCULK_VINES), countPlacement(56, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, GLOWING_ROOTS, features.getOrThrow(DDConfiguredFeatures.GLOWING_ROOTS), countPlacement(58, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, GLOWING_VINES, features.getOrThrow(DDConfiguredFeatures.GLOWING_VINES), countPlacement(64, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, GLOWING_VINES_SHORT, features.getOrThrow(DDConfiguredFeatures.GLOWING_VINES_SHORT), countPlacement(192, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, SURFACE_SCULK_STONE, features.getOrThrow(DDConfiguredFeatures.SURFACE_SCULK_STONE), countPlacement(55, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_DECORATION, features.getOrThrow(DDConfiguredFeatures.SCULK_PATCH), countPlacement(86, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
