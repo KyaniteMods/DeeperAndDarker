@@ -118,7 +118,7 @@ public class OthersideBiomes {
                 .temperature(-0.3f)
                 .downfall(0.2f)
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .waterColor(0x1f86a5)
+                        .waterColor(0x27b0d9)
                         .waterFogColor(0x216888)
                         .fogColor(0x1a2f40)
                         .skyColor(calculateSkyColor(-0.3f))
