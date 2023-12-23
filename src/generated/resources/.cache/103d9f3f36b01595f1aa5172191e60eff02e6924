@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-20T00:25:41.7400779	Registries
+// 1.20.1	2023-12-22T18:42:21.2231355	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 67f8cd0621b1c3614da8c1910f6b7bcb61660293 data/deeperdarker/dimension_type/otherside.json
@@ -8,7 +8,7 @@ bd2c433caf3a3f7dfff3668a68dbdf56fa994df5 data/deeperdarker/worldgen/biome/echoin
 06d29b9291ed3a63be90750a8c6f182e0c168b7b data/deeperdarker/worldgen/biome/overcast_columns.json
 5df9b477f5858b1cf8e0d3d0db7bff27a7a07d97 data/deeperdarker/worldgen/configured_feature/blooming_pool.json
 e7bebee214c738b7a13868c0fd4e804954087c04 data/deeperdarker/worldgen/configured_feature/blooming_sculk_patch.json
-befb8dd1022d3e0e0bea6f211800fe3c8b63bb2e data/deeperdarker/worldgen/configured_feature/blooming_sculk_vegetation.json
+97ed3584ea072e20778c14293a3c7723cd17e590 data/deeperdarker/worldgen/configured_feature/blooming_sculk_vegetation.json
 5097028f5c8ae5e294126d6df771e3126d4fbd07 data/deeperdarker/worldgen/configured_feature/gloomslate_column.json
 ba29dfa84f2bebe688044c6e89b6c1d38dbaf0c6 data/deeperdarker/worldgen/configured_feature/gloomslate_generation.json
 5d330f021ad1e22b038b08bfd79b49f5da654254 data/deeperdarker/worldgen/configured_feature/gloomy_sculk_patch.json

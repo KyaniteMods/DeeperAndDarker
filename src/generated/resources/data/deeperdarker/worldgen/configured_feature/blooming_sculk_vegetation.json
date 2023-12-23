@@ -15,7 +15,10 @@
         },
         {
           "data": {
-            "Name": "deeperdarker:glowing_grass"
+            "Name": "deeperdarker:glowing_grass",
+            "Properties": {
+              "waterlogged": "false"
+            }
           },
           "weight": 1
         }
