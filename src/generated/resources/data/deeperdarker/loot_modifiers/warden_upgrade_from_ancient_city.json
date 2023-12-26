@@ -6,7 +6,7 @@
       "loot_table_id": "minecraft:chests/ancient_city"
     },
     {
-      "chance": 0.6,
+      "chance": 0.45,
       "condition": "minecraft:random_chance"
     }
   ],
