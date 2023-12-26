@@ -42,7 +42,7 @@ public class AddItemModifier extends LootModifier {
         for(LootItemCondition condition : conditions) {
             if(!condition.test(context)) return generatedLoot;
         }
-        RandomSource random = RandomSource.create();
+        RandomSource random = context.getRandom();
         generatedLoot.add(new ItemStack(item, random.nextInt(min, max + 1)));
         return generatedLoot;
     }
