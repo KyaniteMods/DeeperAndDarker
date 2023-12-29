@@ -13,6 +13,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class WardenArmorItem extends ArmorItem {
     private final Multimap<Attribute, AttributeModifier> LEGGINGS_MODIFIERS;
@@ -28,6 +29,7 @@ public class WardenArmorItem extends ArmorItem {
         this.LEGGINGS_MODIFIERS = builder.build();
     }
 
+    @NotNull
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
         return this == DDItems.WARDEN_LEGGINGS && slot == EquipmentSlot.LEGS ? this.LEGGINGS_MODIFIERS : super.getDefaultAttributeModifiers(slot);
@@ -42,10 +44,5 @@ public class WardenArmorItem extends ArmorItem {
                 if (user.hasEffect(MobEffects.DARKNESS)) user.removeEffect(MobEffects.DARKNESS);
             }
         }
-    }
-
-    @Override
-    public EquipmentSlot getEquipmentSlot() {
-        return this.type.getSlot();
     }
 }
