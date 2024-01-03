@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
-import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
+import com.kyanite.deeperdarker.content.blocks.entity.DDHangingSignBlockEntity;
+import com.kyanite.deeperdarker.content.blocks.entity.DDSignBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
