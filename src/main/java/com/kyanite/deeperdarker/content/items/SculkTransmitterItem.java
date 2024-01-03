@@ -7,6 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
@@ -96,7 +98,7 @@ public class SculkTransmitterItem extends Item {
         MenuProvider menu = level.getBlockState(linkedBlockPos).getMenuProvider(level, linkedBlockPos);
         if(menu != null) {
             player.playSound(DDSounds.TRANSMITTER_OPEN.get(), 1, 1);
-            player.openMenu(menu);
+            if(player instanceof ServerPlayer serverPlayer) NetworkHooks.openScreen(serverPlayer, menu);
             if(level.getBlockEntity(linkedBlockPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
         }
 
