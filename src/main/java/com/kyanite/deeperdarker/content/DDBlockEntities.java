@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -16,6 +17,7 @@ import com.mojang.datafixers.types.Type;
 public class DDBlockEntities {
     public static final BlockEntityType<DDHangingSignBlockEntity> HANGING_SIGN;
     public static final BlockEntityType<DDSignBlockEntity> SIGN;
+    public static final BlockEntityType<CrystallizedAmberBlockEntity> CRYSTALLIZED_AMBER;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -27,6 +29,10 @@ public class DDBlockEntities {
                 DDSignBlockEntity::new,
                 DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN,
                 DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN
+        ));
+        CRYSTALLIZED_AMBER = create("crystallized_amber", FabricBlockEntityTypeBuilder.create(
+                CrystallizedAmberBlockEntity::new,
+                DDBlocks.CRYSTALLIZED_AMBER
         ));
     }
 
