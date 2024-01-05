@@ -60,7 +60,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCULK_DIAMOND = createKey("ore_sculk_diamond");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_BLOOMING_MOSS = createKey("ore_blooming_moss");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOMING_POOL = createKey("blooming_pool");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WATER_EDGE_BLOOMING = createKey("water_edge_blooming");
 
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_GLOOMY_SCULK = createKey("ore_gloomy_sculk");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MAGMA = createKey("ore_magma");
