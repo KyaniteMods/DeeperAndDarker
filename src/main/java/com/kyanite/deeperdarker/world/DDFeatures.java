@@ -17,6 +17,7 @@ public class DDFeatures {
     public static final Feature<?> SCULK_GLEAM_BLOB = register("sculk_gleam_blob", new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<?> SCULK_TENDRILS = register("sculk_tendrils", new SculkTendrilsFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<?> GLOWING_ROOTS = register("glowing_roots", new GlowingRootsFeature(NoneFeatureConfiguration.CODEC));
+    public static final Feature<?> POOL = register("pool", new OthersidePoolFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<?> BLOOMING_STEM = register("blooming_stem", new BloomingStemFeature(NoneFeatureConfiguration.CODEC));
 
     private static Feature<?> register(String id, Feature<?> feature) {
