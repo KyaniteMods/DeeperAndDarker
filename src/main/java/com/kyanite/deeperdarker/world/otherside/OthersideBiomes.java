@@ -104,7 +104,8 @@ public class OthersideBiomes {
         mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER.get(), 1, 1, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.BLOOMING_WATER_EDGE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, DDPlacedFeatures.BLOOMING_WATER_EDGE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, DDPlacedFeatures.BLOOMING_POOL);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.BLOOMING_SCULK_VEGETATION);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DDPlacedFeatures.BLOOMING_MOSS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.BLOOMING_PLANT);

@@ -77,6 +77,7 @@ public class DDConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_BLOOMING_MOSS = createKey("ore_blooming_moss");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WATER_EDGE_BLOOMING = createKey("water_edge_blooming");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> POOL_BLOOMING = createKey("pool_blooming");
 
     public static final ResourceKey<ConfiguredFeature<?,?>> ORE_GLOOMY_SCULK = createKey("ore_gloomy_sculk");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MAGMA = createKey("ore_magma");
@@ -147,6 +148,7 @@ public class DDConfiguredFeatures {
 
         FeatureUtils.register(context, ORE_BLOOMING_MOSS, Feature.ORE, new OreConfiguration(BLOOMING_MOSS_TARGET_LIST, 40));
         FeatureUtils.register(context, WATER_EDGE_BLOOMING, Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.BLOOMING_POOL_REPLACEABLE, BlockStateProvider.simple(DDBlocks.BLOOMING_SCULK_STONE.get()), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BLOOMING_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(4), 0.8f, 3, 0f, UniformInt.of(2, 5), 0.3f));
+        FeatureUtils.register(context, POOL_BLOOMING, DDFeatures.POOL.get());
 
         FeatureUtils.register(context, ORE_GLOOMY_SCULK, Feature.ORE, new OreConfiguration(GLOOMY_SCULK_TARGET_LIST, 64));
         FeatureUtils.register(context, ORE_MAGMA, Feature.ORE, new OreConfiguration(MAGMA_TARGET_LIST, 64));

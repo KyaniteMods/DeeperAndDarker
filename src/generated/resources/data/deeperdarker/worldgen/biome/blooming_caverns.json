@@ -27,7 +27,10 @@
   },
   "features": [
     [],
-    [],
+    [
+      "deeperdarker:blooming_water_edge",
+      "deeperdarker:blooming_pool"
+    ],
     [],
     [],
     [],
@@ -48,7 +51,6 @@
     [],
     [],
     [
-      "deeperdarker:blooming_water_edge",
       "deeperdarker:blooming_sculk_vegetation",
       "deeperdarker:blooming_plant",
       "deeperdarker:glowing_roots",
