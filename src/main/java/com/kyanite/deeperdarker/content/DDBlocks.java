@@ -196,7 +196,6 @@ public class DDBlocks {
     public static final Block OTHERSIDE_PORTAL = registerWithoutItem("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
     // the blox
-
     public static final Block BIOSCULK_LOG = register("biosculk_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_BLACK : MapColor.COLOR_ORANGE)));
     public static final Block BIOSCULK_WOOD = register("biosculk_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_ORANGE)));
     public static final Block STRIPPED_BIOSCULK_LOG = register("stripped_biosculk_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_BLACK)));
