@@ -1,8 +1,11 @@
 package com.kyanite.deeperdarker.client.render;
 
+import com.google.common.collect.ImmutableMap;
 import com.ibm.icu.impl.coll.BOCSU;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.entities.DDBoatLike;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
@@ -29,36 +32,45 @@ import java.util.Map;
 
 @SuppressWarnings("NullableProblems")
 public class DDBoatRenderer extends EntityRenderer {
-    private  ListModel<Boat> MODEL;
     private final boolean HAS_CHEST;
 
-    public DDBoatRenderer(EntityRendererProvider.Context ctx, boolean chest) {
-        super(ctx);
-        this.MODEL = createBoatModel(ctx, chest);
-        this.HAS_CHEST = chest;
+    private final Map<String, ListModel<Boat>> BOAT_RESOURCES;
+    private final Map<String, ModelLayerLocation> chestBoatModels;
+    private final Map<String, ModelLayerLocation> boatModels;
+
+    public DDBoatRenderer(EntityRendererProvider.Context pContext, boolean pChestBoat) {
+        super(pContext);
+        this.HAS_CHEST = pChestBoat;
+        this.chestBoatModels = Map.of(DDBlocks.ECHO.name(), DDModelLayers.ECHO_CHEST_BOAT, DDBlocks.BIOSCULK.name(), DDModelLayers.BIOSCULK_CHEST_BOAT);
+        this.boatModels = Map.of(DDBlocks.ECHO.name(), DDModelLayers.ECHO_BOAT, DDBlocks.BIOSCULK.name(), DDModelLayers.BIOSCULK_BOAT);
+        this.BOAT_RESOURCES = ImmutableMap.of(
+                DDBlocks.ECHO.name(), this.createBoatModel(pContext, DDBlocks.ECHO.name()),
+                DDBlocks.BIOSCULK.name(), this.createBoatModel(pContext, DDBlocks.BIOSCULK.name())
+        );
     }
 
-    private static String getTexture(boolean chest) {
+    private static String getTexture(String type, boolean chest) {
         if (chest) {
-            return "textures/entity/chest_boat/echo.png";
+            return "textures/entity/chest_boat/" + type + ".png";
         }
-        return "textures/entity/boat/echo.png";
+        return "textures/entity/boat/" + type + ".png";
     }
 
-    private static ResourceLocation getTextureId(boolean chest) {
-        return new ResourceLocation(DeeperDarker.MOD_ID, getTexture(chest));
+    private static ResourceLocation getTextureId(String type, boolean chest) {
+        return new ResourceLocation(DeeperDarker.MOD_ID, getTexture(type, chest));
     }
 
-    private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, boolean chestBoat) {
-        ModelLayerLocation entityModelLayer = chestBoat ? DDModelLayers.ECHO_CHEST_BOAT :
-                DDModelLayers.ECHO_BOAT;
+    private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, String type) {
+        ModelLayerLocation entityModelLayer = this.HAS_CHEST ? this.chestBoatModels.get(type) :
+                this.boatModels.get(type);
         ModelPart modelPart = context.bakeLayer(entityModelLayer);
-        return chestBoat ? new ChestBoatModel(modelPart) : new BoatModel(modelPart);
+        return this.HAS_CHEST ? new ChestBoatModel(modelPart) : new BoatModel(modelPart);
     }
 
     @Override
     public void render(Entity entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
         Boat boatEntity = (Boat)entity;
+        ListModel<Boat> model = this.BOAT_RESOURCES.get(((DDBoatLike)boatEntity).getWoodType());
         poseStack.pushPose();
         poseStack.translate(0.0f, 0.375f, 0.0f);
         poseStack.mulPose(Axis.YP.rotationDegrees(180.0f - f));
@@ -75,12 +87,12 @@ public class DDBoatRenderer extends EntityRenderer {
         }
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
-        MODEL.setupAnim(boatEntity, g, 0.0f, -0.1f, 0.0f, 0.0f);
-        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(MODEL.renderType(getTextureId(HAS_CHEST)));
-        MODEL.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
-            if (!boatEntity.isUnderWater()) {
+        model.setupAnim(boatEntity, g, 0.0f, -0.1f, 0.0f, 0.0f);
+        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureId(new ResourceLocation(((DDBoatLike)boatEntity).getWoodType()).getPath(), HAS_CHEST)));
+        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+        if (!boatEntity.isUnderWater()) {
             VertexConsumer vertexConsumer2 = multiBufferSource.getBuffer(RenderType.waterMask());
-            if (MODEL instanceof WaterPatchModel waterPatchModel) {
+            if (model instanceof WaterPatchModel waterPatchModel) {
                 waterPatchModel.waterPatch().render(poseStack, vertexConsumer2, i, OverlayTexture.NO_OVERLAY);
             }
         }
@@ -90,6 +102,6 @@ public class DDBoatRenderer extends EntityRenderer {
 
     @Override
     public ResourceLocation getTextureLocation(Entity entity) {
-        return getTextureId(HAS_CHEST);
+        return getTextureId((entity instanceof DDBoatLike boat) ? boat.getWoodType() : "echo", HAS_CHEST);
     }
 }

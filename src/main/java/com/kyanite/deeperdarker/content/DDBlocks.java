@@ -33,6 +33,8 @@ import net.minecraft.world.level.material.PushReaction;
 public class DDBlocks {
     private static final BlockSetType ECHO_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
     public static final WoodType ECHO = WoodType.register(new WoodType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), ECHO_SET, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
+    private static final BlockSetType BIOSCULK_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "biosculk").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final WoodType BIOSCULK = WoodType.register(new WoodType(new ResourceLocation(DeeperDarker.MOD_ID, "biosculk").toString(), BIOSCULK_SET, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
 
     public static final Block ECHO_LOG = register("echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_WOOD = register("echo_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE)));
@@ -185,6 +187,49 @@ public class DDBlocks {
 
     public static final Block OTHERSIDE_PORTAL = registerWithoutItem("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
+    // the blox
+
+    public static final Block BIOSCULK_LOG = register("biosculk_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_BLACK : MapColor.COLOR_ORANGE)));
+    public static final Block BIOSCULK_WOOD = register("biosculk_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_ORANGE)));
+    public static final Block STRIPPED_BIOSCULK_LOG = register("stripped_biosculk_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block STRIPPED_BIOSCULK_WOOD = register("stripped_biosculk_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block BIOSCULK_PLANKS = register("biosculk_planks", new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block BIOSCULK_STAIRS = register("biosculk_stairs", new StairBlock(ECHO_PLANKS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block BIOSCULK_SLAB = register("biosculk_slab", new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block BIOSCULK_FENCE = register("biosculk_fence", new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block BIOSCULK_FENCE_GATE = register("biosculk_fence_gate", new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.COLOR_BLACK), BIOSCULK));
+    public static final Block BIOSCULK_DOOR = register("biosculk_door", new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).mapColor(MapColor.COLOR_BLACK), BIOSCULK_SET));
+    public static final Block BIOSCULK_TRAPDOOR = register("biosculk_trapdoor", new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_BLACK), BIOSCULK_SET));
+    public static final Block BIOSCULK_PRESSURE_PLATE = register("biosculk_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.COLOR_BLACK), BIOSCULK_SET));
+    public static final Block BIOSCULK_BUTTON = register("biosculk_button", new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BIOSCULK_SET, 30, true));
+    public static final Block BIOSCULK_LEAVES = register("biosculk_leaves", new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).mapColor(MapColor.COLOR_ORANGE)));
+
+    public static final Block BIOSCULK_SIGN = registerWithoutItem("biosculk_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_BLACK), BIOSCULK) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+
+    public static final Block BIOSCULK_WALL_SIGN = registerWithoutItem("biosculk_wall_sign", new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).dropsLike(BIOSCULK_SIGN).mapColor(MapColor.COLOR_BLACK), BIOSCULK) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block BIOSCULK_HANGING_SIGN = registerWithoutItem("biosculk_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_BLACK), BIOSCULK) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block BIOSCULK_WALL_HANGING_SIGN = registerWithoutItem("biosculk_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(BIOSCULK_HANGING_SIGN).mapColor(MapColor.COLOR_BLACK), BIOSCULK) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
+
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(
                 PushReaction.DESTROY);
@@ -209,5 +254,7 @@ public class DDBlocks {
         DeeperDarker.LOGGER.debug("Registering blocks");
         StrippableBlockRegistry.register(ECHO_LOG, STRIPPED_ECHO_LOG);
         StrippableBlockRegistry.register(ECHO_WOOD, STRIPPED_ECHO_WOOD);
+        StrippableBlockRegistry.register(BIOSCULK_LOG, STRIPPED_BIOSCULK_LOG);
+        StrippableBlockRegistry.register(BIOSCULK_WOOD, STRIPPED_BIOSCULK_WOOD);
     }
 }

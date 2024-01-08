@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "deeperdarker:block/biosculk_door_bottom",
+    "top": "deeperdarker:block/biosculk_door_top"
+  }
+}

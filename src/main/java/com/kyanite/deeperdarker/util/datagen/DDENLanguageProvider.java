@@ -287,5 +287,27 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.STALKER_EAR, "Stalker Ear");
         translationBuilder.add(DDItems.EARBUD, "Earbud");
         translationBuilder.add(DDItems.EARBUDS, "Earbuds");
+        
+        // Blocks ...(same thing I wrote above)
+        translationBuilder.add(DDBlocks.BIOSCULK_LOG, "Biosculk Log");
+        translationBuilder.add(DDBlocks.BIOSCULK_WOOD, "Biosculk Wood");
+        translationBuilder.add(DDBlocks.STRIPPED_BIOSCULK_LOG, "Stripped Biosculk Log");
+        translationBuilder.add(DDBlocks.STRIPPED_BIOSCULK_WOOD, "Stripped Biosculk Wood");
+        translationBuilder.add(DDBlocks.BIOSCULK_BUTTON, "Biosculk Button");
+        translationBuilder.add(DDBlocks.BIOSCULK_DOOR, "Biosculk Door");
+        translationBuilder.add(DDBlocks.BIOSCULK_FENCE_GATE, "Biosculk Fence Gate");
+        translationBuilder.add(DDBlocks.BIOSCULK_FENCE, "Biosculk Fence");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BIOSCULK_WALL_HANGING_SIGN)), "Biosculk Wall Hanging Sign");
+        translationBuilder.add(DDBlocks.BIOSCULK_HANGING_SIGN, "Biosculk Hanging Sign");
+        translationBuilder.add(DDBlocks.BIOSCULK_LEAVES, "Biosculk Leaves");
+        translationBuilder.add(DDBlocks.BIOSCULK_PLANKS, "Biosculk Planks");
+        translationBuilder.add(DDBlocks.BIOSCULK_STAIRS, "Biosculk Stairs");
+        translationBuilder.add(DDBlocks.BIOSCULK_PRESSURE_PLATE, "Biosculk Pressure Plate");
+        translationBuilder.add(DDBlocks.BIOSCULK_SIGN, "Biosculk Sign");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BIOSCULK_WALL_SIGN)), "Biosculk Wall Sign");
+        translationBuilder.add(DDBlocks.BIOSCULK_SLAB, "Biosculk Slab");
+        translationBuilder.add(DDBlocks.BIOSCULK_TRAPDOOR, "Biosculk Trapdoor");
+        translationBuilder.add(DDItems.BIOSCULK_BOAT, "Biosculk Boat");
+        translationBuilder.add(DDItems.BIOSCULK_CHEST_BOAT, "Biosculk Boat with Chest");
     }
 }

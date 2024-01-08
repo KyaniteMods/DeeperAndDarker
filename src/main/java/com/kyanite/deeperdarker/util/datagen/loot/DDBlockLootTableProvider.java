@@ -13,6 +13,7 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
@@ -142,6 +143,28 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         ancientVaseDrop(DDBlocks.ANCIENT_VASE);
 
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
+
+        // the blocks of the cool update
+        dropSelf(DDBlocks.BIOSCULK_LOG);
+        dropSelf(DDBlocks.BIOSCULK_WOOD);
+        dropSelf(DDBlocks.STRIPPED_BIOSCULK_LOG);
+        dropSelf(DDBlocks.STRIPPED_BIOSCULK_WOOD);
+        dropSelf(DDBlocks.BIOSCULK_PLANKS);
+        dropSelf(DDBlocks.BIOSCULK_STAIRS);
+        add(DDBlocks.BIOSCULK_SLAB, this::createSlabItemTable);
+        dropSelf(DDBlocks.BIOSCULK_FENCE);
+        dropSelf(DDBlocks.BIOSCULK_FENCE_GATE);
+        add(DDBlocks.BIOSCULK_DOOR, this::createDoorTable);
+        dropSelf(DDBlocks.BIOSCULK_TRAPDOOR);
+        dropSelf(DDBlocks.BIOSCULK_PRESSURE_PLATE);
+        dropSelf(DDBlocks.BIOSCULK_BUTTON);
+        add(DDBlocks.BIOSCULK_LEAVES, this::createBiosculkLeavesDrops);
+        dropSelf(DDBlocks.BIOSCULK_SIGN);
+        dropSelf(DDBlocks.BIOSCULK_HANGING_SIGN);
+    }
+
+    public LootTable.Builder createBiosculkLeavesDrops(Block block) {
+        return BlockLootSubProvider.createSilkTouchOrShearsDispatchTable(block, ((LootPoolSingletonContainer.Builder)this.applyExplosionDecay(block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f))))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, BlockLootSubProvider.NORMAL_LEAVES_STICK_CHANCES)));
     }
 
     private void addVineAndPlant(Block vines, Block plant) {

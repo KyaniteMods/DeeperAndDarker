@@ -180,6 +180,22 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));
         ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_ECHO_SAPLING, TextureMapping.plant(DDBlocks.ECHO_SAPLING), blockModelGenerators.modelOutput);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
+
+        // af
+        blockModelGenerators.woodProvider(DDBlocks.BIOSCULK_LOG).log(DDBlocks.BIOSCULK_LOG).wood(DDBlocks.BIOSCULK_WOOD);
+        blockModelGenerators.woodProvider(DDBlocks.STRIPPED_BIOSCULK_LOG).log(DDBlocks.STRIPPED_BIOSCULK_LOG).wood(DDBlocks.STRIPPED_BIOSCULK_WOOD);
+        registerButton(blockModelGenerators, DDBlocks.BIOSCULK_BUTTON, DDBlocks.BIOSCULK_PLANKS);
+        blockModelGenerators.createDoor(DDBlocks.BIOSCULK_DOOR);
+        registerFenceGate(blockModelGenerators, DDBlocks.BIOSCULK_FENCE_GATE, DDBlocks.BIOSCULK_PLANKS);
+        registerFence(blockModelGenerators, DDBlocks.BIOSCULK_FENCE, DDBlocks.BIOSCULK_PLANKS);
+        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_BIOSCULK_LOG, DDBlocks.BIOSCULK_HANGING_SIGN, DDBlocks.BIOSCULK_WALL_HANGING_SIGN);
+        blockModelGenerators.family(DDBlocks.BIOSCULK_LEAVES);
+        blockModelGenerators.family(DDBlocks.BIOSCULK_PLANKS);
+        registerPressurePlate(blockModelGenerators, DDBlocks.BIOSCULK_PRESSURE_PLATE, DDBlocks.BIOSCULK_PLANKS);
+        blockModelGenerators.createHangingSign(DDBlocks.BIOSCULK_PLANKS, DDBlocks.BIOSCULK_SIGN, DDBlocks.BIOSCULK_WALL_SIGN);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.BIOSCULK_SLAB, DDBlocks.BIOSCULK_PLANKS);
+        registerStairs(blockModelGenerators, DDBlocks.BIOSCULK_STAIRS, DDBlocks.BIOSCULK_PLANKS);
+        blockModelGenerators.createOrientableTrapdoor(DDBlocks.BIOSCULK_TRAPDOOR);
     }
 
     @Override
@@ -207,6 +223,8 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT), itemModelGenerator.output);
         ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_BUTTON.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_FENCE.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
+        ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BIOSCULK_BUTTON.asItem()), TextureMapping.cube(DDBlocks.BIOSCULK_PLANKS), itemModelGenerator.output);
+        ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BIOSCULK_FENCE.asItem()), TextureMapping.cube(DDBlocks.BIOSCULK_PLANKS), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_STONE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.COBBLED_SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.COBBLED_SCULK_STONE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.POLISHED_SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.POLISHED_SCULK_STONE), itemModelGenerator.output);
@@ -224,6 +242,8 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_GLOOMSLATE), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.BIOSCULK_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.BIOSCULK_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, ResourceLocation.DEFAULT_NAMESPACE + ":broken", "_broken");
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);

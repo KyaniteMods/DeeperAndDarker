@@ -12,6 +12,8 @@ public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = TagKey.create(
                     Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
+        public static final TagKey<Block> BIOSCULK_LOGS = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "biosculk_logs"));
         public static final TagKey<Block> ECHO_SOIL = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_soil"));
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_stone_replaceables"));
@@ -27,7 +29,8 @@ public class DDTags {
     public static class Items {
         public static final TagKey<Item> ECHO_LOGS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
-
+        public static final TagKey<Item> BIOSCULK_LOGS = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "biosculk_logs"));
         public static final TagKey<Item> DAMPENS_VIBRATIONS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "dampens_vibrations"));
     }

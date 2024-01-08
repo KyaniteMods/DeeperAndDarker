@@ -28,24 +28,27 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
+        add(DDTags.Items.BIOSCULK_LOGS, DDBlocks.BIOSCULK_LOG, DDBlocks.BIOSCULK_WOOD, DDBlocks.STRIPPED_BIOSCULK_LOG, DDBlocks.STRIPPED_BIOSCULK_WOOD);
         getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
 
-        add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS);
-        add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS);
-        add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB);
-        add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE);
-        add(ItemTags.FENCE_GATES, DDBlocks.ECHO_FENCE_GATE);
-        add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR);
-        add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR);
-        add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE);
-        add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON);
-        getOrCreateTagBuilder(ItemTags.BOATS).add(DDItems.ECHO_BOAT);
-        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT);
-        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN);
-        add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN);
-        add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
+        add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS, DDBlocks.BIOSCULK_PLANKS);
+        add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS, DDBlocks.BIOSCULK_STAIRS);
+        add(ItemTags.WOODEN_SLABS, DDBlocks.ECHO_SLAB, DDBlocks.BIOSCULK_SLAB);
+        add(ItemTags.WOODEN_FENCES, DDBlocks.ECHO_FENCE, DDBlocks.BIOSCULK_FENCE);
+        add(ItemTags.FENCE_GATES, DDBlocks.ECHO_FENCE_GATE, DDBlocks.BIOSCULK_FENCE_GATE);
+        add(ItemTags.WOODEN_DOORS, DDBlocks.ECHO_DOOR, DDBlocks.BIOSCULK_DOOR);
+        add(ItemTags.WOODEN_TRAPDOORS, DDBlocks.ECHO_TRAPDOOR, DDBlocks.BIOSCULK_TRAPDOOR);
+        add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BIOSCULK_PRESSURE_PLATE);
+        add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON, DDBlocks.BIOSCULK_BUTTON);
+        getOrCreateTagBuilder(ItemTags.BOATS).add(DDItems.ECHO_BOAT, DDItems.BIOSCULK_BOAT);
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT, DDItems.BIOSCULK_CHEST_BOAT);
+        add(ItemTags.SIGNS, DDBlocks.ECHO_SIGN, DDBlocks.BIOSCULK_SIGN);
+        add(ItemTags.HANGING_SIGNS, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.BIOSCULK_HANGING_SIGN);
+        add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES, DDBlocks.BIOSCULK_LEAVES);
         add(ItemTags.SAPLINGS, DDBlocks.ECHO_SAPLING);
-        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS);
+        getOrCreateTagBuilder(ItemTags.BOATS).setReplace(false).add(DDItems.ECHO_BOAT, DDItems.BIOSCULK_BOAT);
+        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).setReplace(false).add(DDItems.ECHO_CHEST_BOAT, DDItems.BIOSCULK_CHEST_BOAT);
+        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS).addTag(DDTags.Items.BIOSCULK_LOGS);
         getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD);
         getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE);
         getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE);

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "deeperdarker:echo_wall_sign"
+    "deeperdarker:echo_wall_sign",
+    "deeperdarker:biosculk_wall_sign"
   ]
 }

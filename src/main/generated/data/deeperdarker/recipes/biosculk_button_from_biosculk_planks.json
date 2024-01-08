@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "deeperdarker:biosculk_planks"
+    }
+  ],
+  "result": {
+    "item": "deeperdarker:biosculk_button"
+  }
+}

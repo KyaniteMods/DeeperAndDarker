@@ -57,6 +57,10 @@ public class DDItems {
     public static final Item STALKER_EAR = register("stalker_ear", new Item(new Item.Properties().stacksTo(33)));
     public static final Item EARBUD = register("earbud", new Item(new Item.Properties().stacksTo(3)));
     public static final Item EARBUDS = register("earbuds", new EarbudsItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final Item BIOSCULK_SIGN = register("biosculk_sign", new SignItem(new Item.Properties().stacksTo(16), DDBlocks.BIOSCULK_SIGN, DDBlocks.BIOSCULK_WALL_SIGN));
+    public static final Item BIOSCULK_HANGING_SIGN = register("biosculk_hanging_sign", new HangingSignItem(DDBlocks.BIOSCULK_HANGING_SIGN, DDBlocks.BIOSCULK_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
+    public static final Item BIOSCULK_BOAT = register("biosculk_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BIOSCULK));
+    public static final Item BIOSCULK_CHEST_BOAT = register("biosculk_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BIOSCULK));
 
 
     public static Item register(String id, Item item) {

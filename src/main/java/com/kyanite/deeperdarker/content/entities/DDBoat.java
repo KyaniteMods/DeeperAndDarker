@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.nbt.CompoundTag;
@@ -13,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("NullableProblems")
-public class DDBoat extends Boat {
+public class DDBoat extends Boat implements DDBoatLike {
     private static final EntityDataAccessor<String> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.STRING);
 
     public DDBoat(EntityType<? extends Boat> pEntityType, Level pLevel) {
@@ -37,7 +38,10 @@ public class DDBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        return DDItems.ECHO_BOAT;
+        return switch (this.getWoodType()) {
+            case (DeeperDarker.MOD_ID + ":biosculk") -> DDItems.BIOSCULK_BOAT;
+            default -> DDItems.ECHO_BOAT;
+        };
     }
 
     @Override
@@ -52,6 +56,7 @@ public class DDBoat extends Boat {
         this.setWoodType(pCompound.getString("Type"));
     }
 
+    @Override
     public String getWoodType() {
         return this.entityData.get(WOOD_TYPE);
     }

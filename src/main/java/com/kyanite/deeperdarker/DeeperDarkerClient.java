@@ -51,7 +51,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.SCULK_VINES,
                 DDBlocks.GLOOMY_CACTUS,
                 DDBlocks.GLOOMY_GRASS,
-                DDBlocks.POTTED_ECHO_SAPLING);
+                DDBlocks.POTTED_ECHO_SAPLING,
+                DDBlocks.BIOSCULK_DOOR,
+                DDBlocks.BIOSCULK_TRAPDOOR);
         BlockRenderLayerMap.INSTANCE.putBlock(DDBlocks.CRYSTALLIZED_AMBER, RenderType.translucent());
 
         BlockEntityRenderers.register(DDBlockEntities.HANGING_SIGN, HangingSignRenderer::new);
@@ -61,6 +63,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.WARDEN_HELMET, HelmetHornsModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_BOAT, BoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_CHEST_BOAT, ChestBoatModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BIOSCULK_BOAT, BoatModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BIOSCULK_CHEST_BOAT, ChestBoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_SNAPPER, SculkSnapperModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED, ShatteredModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_LEECH, SculkLeechModel::createBodyModel);

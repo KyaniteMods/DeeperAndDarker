@@ -19,9 +19,13 @@ public class DDBlockEntities {
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
-                DDHangingSignBlockEntity::new, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN));
+                DDHangingSignBlockEntity::new,
+                DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN,
+                DDBlocks.BIOSCULK_HANGING_SIGN, DDBlocks.BIOSCULK_WALL_HANGING_SIGN));
         SIGN = create("sign", FabricBlockEntityTypeBuilder.create(
-                DDSignBlockEntity::new, DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN));
+                DDSignBlockEntity::new,
+                DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN,
+                DDBlocks.BIOSCULK_SIGN, DDBlocks.BIOSCULK_WALL_SIGN));
     }
 
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, FabricBlockEntityTypeBuilder<T> builder) {
