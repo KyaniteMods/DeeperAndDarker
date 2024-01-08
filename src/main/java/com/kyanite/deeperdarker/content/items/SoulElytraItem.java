@@ -42,7 +42,7 @@ public class SoulElytraItem extends ElytraItem implements FabricElytraItem {
         FabricElytraItem.super.doVanillaElytraTick(entity, chestStack);
         if (entity instanceof Player player && player.getCooldowns().getCooldownPercent(this.asItem(), 0.0f) == 0.0f && player.isCrouching()) {
             player.getCooldowns().addCooldown(this.asItem(), 600);
-            player.addDeltaMovement(player.getViewVector(0.0f).multiply(2.0, 2.0, 2.0));
+            player.addDeltaMovement(player.getViewVector(0.0f).multiply(100.0, 100.0, 100.0));
             if (entity.level().isClientSide()) {
                 Vec3 particlePos = player.getPosition(0.0f).add(player.getViewVector(0.0f).reverse());
                 entity.level().addParticle(ParticleTypes.SONIC_BOOM, particlePos.x, particlePos.y, particlePos.z, 1.0, 0.0, 0.0);
