@@ -16,6 +16,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.toasts.TutorialToast;
 import net.minecraft.client.model.BoatModel;
@@ -26,6 +27,9 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -109,6 +113,12 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime());
                 drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37, 0, 0, 0, 12, Mth.floor(32 * f), 32, 32);
                 drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37 + Mth.floor(32 * f), 0, 12, Mth.floor(32 * f), 12, Mth.ceil(32 * (1.0f - f)), 32, 32);
+                if (f == 0.0f && client.player.isFallFlying()) {
+                    for (BlockPos blockPos : BlockPos.betweenClosed(client.player.getOnPos(), client.player.getOnPos().below(5))) {
+                        if (client.player.level().getBlockState(blockPos).isAir()) continue;
+                        drawContext.drawString(client.font, Component.translatable(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", client.options.keyShift.getTranslatedKeyMessage()).setStyle(Style.EMPTY.withColor(ChatFormatting.YELLOW)), 20, client.getWindow().getGuiScaledHeight() - 37, 0);
+                    }
+                }
             }
         });
     }

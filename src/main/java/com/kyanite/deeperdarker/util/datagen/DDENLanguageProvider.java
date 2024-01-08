@@ -193,6 +193,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
+        translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", "Press %s to Boost");
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
 
