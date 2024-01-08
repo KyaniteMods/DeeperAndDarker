@@ -53,6 +53,12 @@ public class DDItems {
     public static final Item ECHO_SIGN = register("echo_sign", new SignItem(new Item.Properties().stacksTo(16), DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN));
     public static final Item ECHO_HANGING_SIGN = register("echo_hanging_sign", new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
 
+    // Items that will be in the mod forever in every single update.
+    public static final Item STALKER_EAR = register("stalker_ear", new Item(new Item.Properties().stacksTo(33)));
+    public static final Item EARBUD = register("earbud", new Item(new Item.Properties().stacksTo(3)));
+    public static final Item EARBUDS = register("earbuds", new EarbudsItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+
+
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);
     }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "deeperdarker:stalker_ear"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "E",
+    "S"
+  ],
+  "result": {
+    "item": "deeperdarker:earbud"
+  },
+  "show_notification": true
+}

@@ -247,6 +247,13 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.SOUL_ELYTRA).define('B', DDItems.SCULK_BONE).define('D', DDItems.SOUL_DUST).define('E', Items.ELYTRA).define('S', DDItems.SOUL_CRYSTAL).pattern("BDB").pattern("DED").pattern("BSB").unlockedBy(FabricRecipeProvider.getHasName(Items.ELYTRA), FabricRecipeProvider.has(Items.ELYTRA)).save(exporter);
 
         oreSmelting(exporter, List.of(DDBlocks.GLOOMY_CACTUS), RecipeCategory.MISC, DDBlocks.GLOOMY_CACTUS, 1.0f, 200, "orange_dye");
+
+        aprilFoolsRecipes(exporter);
+    }
+
+    private static void aprilFoolsRecipes(Consumer<FinishedRecipe> exporter) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.EARBUD, 1).define('E', DDItems.STALKER_EAR).define('S', Items.STICK).pattern("E").pattern("S").unlockedBy(FabricRecipeProvider.getHasName(DDItems.STALKER_EAR), FabricRecipeProvider.has(DDItems.STALKER_EAR)).save(exporter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.EARBUDS, 1).define('E', DDItems.EARBUD).pattern("EE").unlockedBy(FabricRecipeProvider.getHasName(DDItems.EARBUD), FabricRecipeProvider.has(DDItems.EARBUD)).save(exporter);
     }
 
     private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {

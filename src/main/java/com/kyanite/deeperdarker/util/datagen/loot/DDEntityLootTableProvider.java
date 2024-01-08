@@ -36,7 +36,7 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
         biConsumer.accept(id("sculk_snapper"), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_DUST).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))));
         biConsumer.accept(id("shattered"), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SCULK_BONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))));
         biConsumer.accept(id("shriek_worm"), LootTable.lootTable());
-        biConsumer.accept(id("stalker"), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
+        biConsumer.accept(id("stalker"), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(DDItems.STALKER_EAR)).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
     }
 
     private static ResourceLocation id(String entity) {

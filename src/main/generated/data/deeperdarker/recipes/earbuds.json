@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "deeperdarker:earbud"
+    }
+  },
+  "pattern": [
+    "EE"
+  ],
+  "result": {
+    "item": "deeperdarker:earbuds"
+  },
+  "show_notification": true
+}

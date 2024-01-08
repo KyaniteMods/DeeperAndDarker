@@ -150,6 +150,9 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.SHRIEK_WORM_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.STALKER_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SCULK_CENTIPEDE_SPAWN_EGG));
+        entries.accept(new ItemStack(DDItems.STALKER_EAR));
+        entries.accept(new ItemStack(DDItems.EARBUD));
+        entries.accept(new ItemStack(DDItems.EARBUDS));
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;

@@ -281,5 +281,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
         translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");
+
+        // Items that will be in the mod forever in every single update.
+        translationBuilder.add(DDItems.STALKER_EAR, "Stalker Ear");
+        translationBuilder.add(DDItems.EARBUD, "Earbud");
+        translationBuilder.add(DDItems.EARBUDS, "Earbuds");
     }
 }
