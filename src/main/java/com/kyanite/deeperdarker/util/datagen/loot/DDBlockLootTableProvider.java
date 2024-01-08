@@ -2,21 +2,26 @@ package com.kyanite.deeperdarker.util.datagen.loot;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.SculkTNTBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -161,6 +166,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.BIOSCULK_LEAVES, this::createBiosculkLeavesDrops);
         dropSelf(DDBlocks.BIOSCULK_SIGN);
         dropSelf(DDBlocks.BIOSCULK_HANGING_SIGN);
+
+        this.add(DDBlocks.SCULK_TNT, LootTable.lootTable().withPool(this.applyExplosionCondition(DDBlocks.SCULK_TNT, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(DDBlocks.SCULK_TNT).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.SCULK_TNT).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SculkTNTBlock.UNSTABLE, false)))))));
     }
 
     public LootTable.Builder createBiosculkLeavesDrops(Block block) {

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "deeperdarker:sculk_tnt",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "unstable": "false"
+              }
+            }
+          ],
+          "name": "deeperdarker:sculk_tnt"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

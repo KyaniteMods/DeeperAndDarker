@@ -171,6 +171,7 @@ public class DDCreativeTab {
             entries.accept(new ItemStack(DDBlocks.BIOSCULK_TRAPDOOR));
             entries.accept(new ItemStack(DDItems.BIOSCULK_BOAT));
             entries.accept(new ItemStack(DDItems.BIOSCULK_CHEST_BOAT));
+            entries.accept(new ItemStack(DDBlocks.SCULK_TNT));
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;

@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -55,6 +56,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_DIAMOND = createKey("gloomslate_diamond");
 
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
+    public static final ResourceKey<PlacedFeature> BIOSCULK_TREE = createKey("biosculk_tree");
 
     public static void init(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -97,6 +99,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.defaultBlockState(), BlockPos.ZERO)));
+        PlacementUtils.register(context, BIOSCULK_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_BIOSCULK), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.SCULK)));
     }
 
     private static List<PlacementModifier> countPlacement(int attempts, PlacementModifier heightRange) {

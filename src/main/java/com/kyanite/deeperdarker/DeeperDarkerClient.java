@@ -10,6 +10,8 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.mojang.authlib.minecraft.client.MinecraftClient;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -22,10 +24,13 @@ import net.minecraft.client.gui.components.toasts.TutorialToast;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.TntMinecartRenderer;
+import net.minecraft.client.renderer.entity.TntRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -33,8 +38,10 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 
 public class DeeperDarkerClient implements ClientModInitializer {
 
@@ -80,6 +87,27 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.SHRIEK_WORM, ShriekWormRenderer::new);
         EntityRendererRegistry.register(DDEntities.STALKER, StalkerRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_CENTIPEDE, SculkCentipedeRenderer::new);
+        EntityRendererRegistry.register(DDEntities.SCULK_TNT, (ctx) -> new TntRenderer(ctx) {
+            @Override
+            public void render(PrimedTnt primedTnt, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
+                poseStack.pushPose();
+                poseStack.translate(0.0f, 0.5f, 0.0f);
+                int j = primedTnt.getFuse();
+                if ((float)j - g + 1.0f < 10.0f) {
+                    float h = 1.0f - ((float)j - g + 1.0f) / 10.0f;
+                    h = Mth.clamp(h, 0.0f, 1.0f);
+                    h *= h;
+                    h *= h;
+                    float k = 1.0f + h * 0.3f;
+                    poseStack.scale(k, k, k);
+                }
+                poseStack.mulPose(Axis.YP.rotationDegrees(-90.0f));
+                poseStack.translate(-0.5f, -0.5f, 0.5f);
+                poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
+                TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, DDBlocks.SCULK_TNT.defaultBlockState(), poseStack, multiBufferSource, i, j / 5 % 2 == 0);
+                poseStack.popPose();
+            }
+        });
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {

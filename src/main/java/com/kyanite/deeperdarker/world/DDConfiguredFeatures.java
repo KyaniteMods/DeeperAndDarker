@@ -68,6 +68,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_DIAMOND = createKey("ore_gloomslate_diamond");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_ECHO = createKey("tree_echo");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_BIOSCULK = createKey("tree_biosculk");
 
     public static void init() {
 

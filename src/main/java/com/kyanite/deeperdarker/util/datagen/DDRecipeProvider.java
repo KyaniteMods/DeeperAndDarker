@@ -7,10 +7,7 @@ import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -18,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -247,6 +245,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         woodRecipes(exporter, DDBlocks.BIOSCULK_PLANKS, DDTags.Items.BIOSCULK_LOGS, DDBlocks.BIOSCULK_STAIRS, DDBlocks.BIOSCULK_SLAB, DDBlocks.BIOSCULK_FENCE, DDBlocks.BIOSCULK_FENCE_GATE, DDBlocks.BIOSCULK_DOOR, DDBlocks.BIOSCULK_TRAPDOOR, DDBlocks.BIOSCULK_PRESSURE_PLATE, DDBlocks.BIOSCULK_BUTTON, DDItems.BIOSCULK_SIGN, DDItems.BIOSCULK_HANGING_SIGN, DDItems.BIOSCULK_BOAT, DDItems.BIOSCULK_CHEST_BOAT);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.BIOSCULK_WOOD, 3).define('L', DDBlocks.BIOSCULK_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BIOSCULK_LOG), FabricRecipeProvider.has(DDBlocks.BIOSCULK_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_BIOSCULK_WOOD, 3).define('L', DDBlocks.STRIPPED_BIOSCULK_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BIOSCULK_LOG), FabricRecipeProvider.has(DDBlocks.BIOSCULK_LOG)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDBlocks.SCULK_TNT, 2).requires(Blocks.TNT, 1).requires(DDItems.SOUL_CRYSTAL, 1).unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(exporter);
     }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {

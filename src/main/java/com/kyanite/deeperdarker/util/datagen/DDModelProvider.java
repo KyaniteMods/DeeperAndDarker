@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.ibm.icu.impl.Pair;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
@@ -10,8 +9,6 @@ import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.block.model.ItemModelGenerator;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -196,6 +193,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.BIOSCULK_SLAB, DDBlocks.BIOSCULK_PLANKS);
         registerStairs(blockModelGenerators, DDBlocks.BIOSCULK_STAIRS, DDBlocks.BIOSCULK_PLANKS);
         blockModelGenerators.createOrientableTrapdoor(DDBlocks.BIOSCULK_TRAPDOOR);
+        blockModelGenerators.createTrivialBlock(DDBlocks.SCULK_TNT, TexturedModel.CUBE_TOP_BOTTOM);
     }
 
     @Override

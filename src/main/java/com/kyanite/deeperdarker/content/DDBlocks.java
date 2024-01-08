@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.blocks.*;
 import com.kyanite.deeperdarker.content.blocks.vegetation.*;
+import com.kyanite.deeperdarker.content.entities.SculkPrimedTNT;
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -14,11 +15,16 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -26,8 +32,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
@@ -229,6 +237,8 @@ public class DDBlocks {
             return new DDHangingSignBlockEntity(pPos, pState);
         }
     });
+
+    public static final Block SCULK_TNT = register("sculk_tnt", new SculkTNTBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(

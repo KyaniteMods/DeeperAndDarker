@@ -7,6 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 public class DDEntities {
@@ -19,6 +20,8 @@ public class DDEntities {
     public static final EntityType<Shattered> SHATTERED = register("shattered", EntityType.Builder.of(Shattered::new, MobCategory.MONSTER).sized(0.8f, 2.125f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shattered").toString()));
     public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", EntityType.Builder.of(ShriekWorm::new, MobCategory.MONSTER).sized(1.0f, 5.7f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shriek_worm").toString()));
     public static final EntityType<Stalker> STALKER = register("stalker", EntityType.Builder.of(Stalker::new, MobCategory.MONSTER).sized(1f, 4.4f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shriek_worm").toString()));
+
+    public static final EntityType<SculkPrimedTNT> SCULK_TNT = register("sculk_tnt", EntityType.Builder.<SculkPrimedTNT>of(SculkPrimedTNT::new, MobCategory.MISC).sized(0.98f, 0.98f).fireImmune().clientTrackingRange(10).updateInterval(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_tnt").toString()));
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
