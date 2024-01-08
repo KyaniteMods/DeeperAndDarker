@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.items;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DDConfig;
 import net.fabricmc.fabric.api.entity.event.v1.FabricElytraItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -41,8 +42,8 @@ public class SoulElytraItem extends ElytraItem implements FabricElytraItem {
     public void doVanillaElytraTick(LivingEntity entity, ItemStack chestStack) {
         FabricElytraItem.super.doVanillaElytraTick(entity, chestStack);
         if (entity instanceof Player player && player.getCooldowns().getCooldownPercent(this.asItem(), 0.0f) == 0.0f && player.isCrouching()) {
-            player.getCooldowns().addCooldown(this.asItem(), 600);
-            player.addDeltaMovement(player.getViewVector(0.0f).multiply(2.0, 2.0, 2.0));
+            player.getCooldowns().addCooldown(this.asItem(), DDConfig.HANDLER.instance().soulElytraCooldown);
+            player.addDeltaMovement(player.getViewVector(0.0f).multiply(DDConfig.HANDLER.instance().soulElytraBoostStrength, DDConfig.HANDLER.instance().soulElytraBoostStrength, DDConfig.HANDLER.instance().soulElytraBoostStrength));
             if (entity.level().isClientSide()) {
                 Vec3 particlePos = player.getPosition(0.0f).add(player.getViewVector(0.0f).reverse());
                 entity.level().addParticle(ParticleTypes.SONIC_BOOM, particlePos.x, particlePos.y, particlePos.z, 1.0, 0.0, 0.0);

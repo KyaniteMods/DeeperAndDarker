@@ -318,6 +318,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.sonorousStaffKnockback.description", "Determines the knockback of the Sonorous Staff's sonic boom applied to living entities.");
         translationBuilder.add("config.deeperdarker.sonorousStaffCooldown.title", "Sonorous Staff Cooldown");
         translationBuilder.add("config.deeperdarker.sonorousStaffCooldown.description", "Determines the cooldown of the Sonorous Staff before the player can use it again.");
+        translationBuilder.add("config.deeperdarker.soulElytraCooldown.title", "Soul Elytra Cooldown");
+        translationBuilder.add("config.deeperdarker.soulElytraCooldown.description", "Determines the cooldown of the boost provided when crouching while wearing Soul Elytra.");
+        translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.title", "Soul Elytra Boost Strength");
+        translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.description", "Determines the strength of the boost provided when crouching while wearing Soul Elytra.");
 
         translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
         translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");

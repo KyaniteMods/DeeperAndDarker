@@ -80,6 +80,12 @@ public class DDConfig {
     public int sonorousStaffCooldown = 40;
 
     @SerialEntry
+    public int soulElytraCooldown = 600;
+
+    @SerialEntry
+    public double soulElytraBoostStrength = 2.0;
+
+    @SerialEntry
     public boolean wardenHeartPulses = true;
 
     @SerialEntry

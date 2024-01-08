@@ -268,6 +268,33 @@ public class ModMenuIntegration implements ModMenuApi {
                     .controller(TickBoxControllerBuilder::create)
                     .build();
 
+            Option<Integer> soulElytraCooldown = Option.<Integer>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.soulElytraCooldown.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.soulElytraCooldown.description")))
+                    .binding(
+                            600,
+                            () -> DDConfig.HANDLER.instance().soulElytraCooldown,
+                            newVal -> DDConfig.HANDLER.instance().soulElytraCooldown = newVal
+                    )
+                    .controller(opt -> IntegerFieldControllerBuilder.create(opt)
+                            .range(0, 32767)
+                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
+            Option<Double> soulElytraBoostStrength = Option.<Double>createBuilder()
+                    .name(Component.translatable("config.deeperdarker.soulElytraBoostStrength.title"))
+                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.soulElytraBoostStrength.description")))
+                    .binding(
+                            1.0,
+                            () -> DDConfig.HANDLER.instance().soulElytraBoostStrength,
+                            newVal -> DDConfig.HANDLER.instance().soulElytraBoostStrength = newVal
+                    )
+                    .controller(opt -> DoubleSliderControllerBuilder.create(opt)
+                            .range(0.0, 128.0)
+                            .step(0.5)
+                            .formatValue(value -> value == 69.0 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
+                    .build();
+
             return YetAnotherConfigLib.createBuilder()
                     .title(Component.translatable("config.deeperdarker.title"))
                     .category(ConfigCategory.createBuilder()
@@ -290,6 +317,8 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(sonorousStaffDamage)
                                     .option(sonorousStaffKnockback)
                                     .option(sonorousStaffCooldown)
+                                    .option(soulElytraCooldown)
+                                    .option(soulElytraBoostStrength)
                                     .build())
                             .group(OptionGroup.createBuilder()
                                     .name(Component.translatable("config.deeperdarker.client.title"))
