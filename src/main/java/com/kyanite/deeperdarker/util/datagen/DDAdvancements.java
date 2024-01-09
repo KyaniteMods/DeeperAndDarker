@@ -110,7 +110,7 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
                         .display(
                                 DDItems.SONOROUS_STAFF,
                                 Component.translatable(id + "obtain_warden_staff.title"),
-                                Component.translatable(id + "obtain_warden_Staff.description"),
+                                Component.translatable(id + "obtain_warden_staff.description"),
                                 null,
                                 FrameType.TASK,
                                 true,
