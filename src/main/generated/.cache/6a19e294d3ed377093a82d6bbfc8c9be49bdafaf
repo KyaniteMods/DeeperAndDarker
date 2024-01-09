@@ -1,8 +1,8 @@
-// 1.20	2024-01-08T00:12:41.140413843	Deeper and Darker/Tags for minecraft:item
+// 1.20	2024-01-09T12:44:33.385150988	Deeper and Darker/Tags for minecraft:item
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/items/wooden_pressure_plates.json
 7e86841155ecc8045b7ba4b53a96700cd5c1e359 data/minecraft/tags/items/swords.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
-67465033f6856e41a88bd8895a6406aa84188ee8 data/minecraft/tags/items/logs_that_burn.json
+38ded78c250c70dbbce8f730046e74d9784ef8da data/minecraft/tags/items/logs_that_burn.json
 6bd8bfd25fac6809d51b20040e5aafc2cf79c96b data/deeperdarker/tags/items/dampens_vibrations.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/items/leaves.json
 adb1df6145940121287a6045adc1138a302fab23 data/minecraft/tags/items/boats.json
@@ -25,7 +25,7 @@ ae9c334183d842387136550980a4c8d4b6b80b9f data/minecraft/tags/items/wooden_slabs.
 c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/items/iron_ores.json
 a9c1654ee56da28dba12343d88ab69fb8cc80fee data/minecraft/tags/items/wooden_doors.json
 68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/items/lapis_ores.json
-fc41c07637cbc170370ad88ef4529ed7abda1395 data/minecraft/tags/items/signs.json
+227fb9539d14556e5c2e9cffc940f6206c661864 data/minecraft/tags/items/signs.json
 ed7aa5cbfb388747192f4eba2210e4463510e836 data/minecraft/tags/items/shovels.json
 0a07e9bd73f18c4a5fdd58fd08a08b2718041682 data/minecraft/tags/items/trimmable_armor.json
 c17d1bdd759702765aa934b86f1f6d3b593b821f data/minecraft/tags/items/coal_ores.json
@@ -33,4 +33,5 @@ decd179c945b9efde8460c8d6f887d935895a56b data/deeperdarker/tags/items/blooming_s
 f2d96eca233658a77cfb0767972a39f37e7876ea data/minecraft/tags/items/redstone_ores.json
 633ef27c79c15ddc51b4f7893b8ebdbc6d155237 data/minecraft/tags/items/copper_ores.json
 cd824c2c5df9dd9ae11e32a8d9b2287999afdb5e data/minecraft/tags/items/hoes.json
+0886c50ff2d1e9e415463ed6ca735e1a51630cf0 data/minecraft/tags/items/hanging_signs.json
 c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/items/saplings.json

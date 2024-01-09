@@ -34,6 +34,7 @@ public class DDModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+        createGildedLog(blockModelGenerators, DDBlocks.ENRICHED_ECHO_LOG, DDBlocks.ECHO_LOG);
         blockModelGenerators.woodProvider(DDBlocks.ECHO_LOG).log(DDBlocks.ECHO_LOG).wood(DDBlocks.ECHO_WOOD);
         blockModelGenerators.woodProvider(DDBlocks.STRIPPED_ECHO_LOG).log(DDBlocks.STRIPPED_ECHO_LOG).wood(DDBlocks.STRIPPED_ECHO_WOOD);
         blockModelGenerators.family(DDBlocks.ECHO_LEAVES);
@@ -231,6 +232,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.KYANITE_PASTE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_CARAPACE, ModelTemplates.FLAT_ITEM);
@@ -279,6 +281,11 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SHRIEK_WORM_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.STALKER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
+    }
+
+    private static void createGildedLog(BlockModelGenerators blockModelGenerators, Block gildedLog, Block normalLog) {
+        ResourceLocation resourceLocation = ModelTemplates.CUBE_COLUMN.create(gildedLog, TextureMapping.column(TextureMapping.getBlockTexture(gildedLog), TextureMapping.getBlockTexture(normalLog).withSuffix("_top")), blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createAxisAlignedPillarBlock(gildedLog, resourceLocation));
     }
 
     private static void registerButton(BlockModelGenerators blockModelGenerators, Block block, Block planks) {

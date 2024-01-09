@@ -19,6 +19,8 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class DDItems {
+    public static final Item KYANITE_PASTE = register("kyanite_paste", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+
     public static final Item GRIME_BALL = register("grime_ball", new Item(new Item.Properties()));
     public static final Item GRIME_BRICK = register("grime_brick", new Item(new Item.Properties()));
 

@@ -24,6 +24,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.WARDEN_HOE));
         entries.accept(new ItemStack(DDItems.SONOROUS_STAFF));
         entries.accept(new ItemStack(DDItems.SOUL_ELYTRA));
+        entries.accept(new ItemStack(DDItems.KYANITE_PASTE));
         entries.accept(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         entries.accept(new ItemStack(DDItems.REINFORCED_ECHO_SHARD));
         entries.accept(new ItemStack(DDItems.WARDEN_CARAPACE));
@@ -31,6 +32,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.SOUL_CRYSTAL));
         entries.accept(new ItemStack(DDItems.SOUL_DUST));
         entries.accept(new ItemStack(DDItems.SCULK_BONE));
+        entries.accept(new ItemStack(DDBlocks.ENRICHED_ECHO_LOG));
         entries.accept(new ItemStack(DDBlocks.ECHO_LOG));
         entries.accept(new ItemStack(DDBlocks.ECHO_WOOD));
         entries.accept(new ItemStack(DDBlocks.STRIPPED_ECHO_LOG));

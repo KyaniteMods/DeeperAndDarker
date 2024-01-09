@@ -92,13 +92,27 @@
       "height_rand_b": 2
     },
     "trunk_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "deeperdarker:echo_log",
-        "Properties": {
-          "axis": "y"
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "deeperdarker:echo_log",
+            "Properties": {
+              "axis": "y"
+            }
+          },
+          "weight": 400
+        },
+        {
+          "data": {
+            "Name": "deeperdarker:gilded_echo_log",
+            "Properties": {
+              "axis": "y"
+            }
+          },
+          "weight": 1
         }
-      }
+      ]
     }
   }
 }

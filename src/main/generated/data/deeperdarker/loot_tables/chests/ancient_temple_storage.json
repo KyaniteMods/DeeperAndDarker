@@ -179,6 +179,17 @@
           ],
           "name": "minecraft:diamond",
           "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "deeperdarker:enriched_echo_log"
         }
       ],
       "rolls": {

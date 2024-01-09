@@ -5,6 +5,8 @@
   "mixins": [
     "ContainerMenuMixin",
     "DefaultAttributeRegistryAccessor",
+    "EnrichedEchoLogBurnedMixin",
+    "EnrichedEchoLogItemBurnedMixin",
     "PhantomMixin",
     "VibrationListenerMixin",
     "WardenMixin"

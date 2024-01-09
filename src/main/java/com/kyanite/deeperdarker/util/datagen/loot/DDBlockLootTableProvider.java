@@ -29,6 +29,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        dropSelf(DDBlocks.ENRICHED_ECHO_LOG);
         dropSelf(DDBlocks.ECHO_LOG);
         dropSelf(DDBlocks.ECHO_WOOD);
         dropSelf(DDBlocks.STRIPPED_ECHO_LOG);

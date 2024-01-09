@@ -20,29 +20,30 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .addTag(DDTags.Blocks.ECHO_LOGS)
                 .addTag(DDTags.Blocks.BLOOMING_STEMS).add(
-                DDBlocks.ECHO_PLANKS,
-                DDBlocks.ECHO_STAIRS,
-                DDBlocks.ECHO_SLAB,
-                DDBlocks.ECHO_FENCE,
-                DDBlocks.ECHO_FENCE_GATE,
-                DDBlocks.ECHO_DOOR,
-                DDBlocks.ECHO_TRAPDOOR,
-                DDBlocks.ECHO_PRESSURE_PLATE,
-                DDBlocks.ECHO_BUTTON,
+                        DDBlocks.ENRICHED_ECHO_LOG,
+                        DDBlocks.ECHO_PLANKS,
+                        DDBlocks.ECHO_STAIRS,
+                        DDBlocks.ECHO_SLAB,
+                        DDBlocks.ECHO_FENCE,
+                        DDBlocks.ECHO_FENCE_GATE,
+                        DDBlocks.ECHO_DOOR,
+                        DDBlocks.ECHO_TRAPDOOR,
+                        DDBlocks.ECHO_PRESSURE_PLATE,
+                        DDBlocks.ECHO_BUTTON,
 
-                DDBlocks.BLOOM_PLANKS,
-                DDBlocks.BLOOM_PLANKS,
-                DDBlocks.BLOOM_STAIRS,
-                DDBlocks.BLOOM_FENCE,
-                DDBlocks.BLOOM_FENCE_GATE,
-                DDBlocks.BLOOM_DOOR,
-                DDBlocks.BLOOM_TRAPDOOR,
-                DDBlocks.BLOOM_PRESSURE_PLATE,
-                DDBlocks.BLOOM_BUTTON,
+                        DDBlocks.BLOOM_PLANKS,
+                        DDBlocks.BLOOM_PLANKS,
+                        DDBlocks.BLOOM_STAIRS,
+                        DDBlocks.BLOOM_FENCE,
+                        DDBlocks.BLOOM_FENCE_GATE,
+                        DDBlocks.BLOOM_DOOR,
+                        DDBlocks.BLOOM_TRAPDOOR,
+                        DDBlocks.BLOOM_PRESSURE_PLATE,
+                        DDBlocks.BLOOM_BUTTON,
 
-                DDBlocks.GLOWING_GRASS,
-                DDBlocks.GLOOMY_GRASS
-        );
+                        DDBlocks.GLOWING_GRASS,
+                        DDBlocks.GLOOMY_GRASS
+                );
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(
                 DDBlocks.ECHO_LEAVES,
@@ -76,7 +77,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.SCULK_STONE_COPPER_ORE, DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_IRON_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE, DDBlocks.CRYSTALLIZED_AMBER);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM).add(DDBlocks.ENRICHED_ECHO_LOG);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB, DDBlocks.BLOOM_SLAB);

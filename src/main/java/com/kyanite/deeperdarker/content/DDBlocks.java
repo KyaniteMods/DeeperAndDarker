@@ -7,7 +7,9 @@ import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.mixin.content.registry.FireBlockMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -36,6 +38,7 @@ public class DDBlocks {
     private static final BlockSetType BLOOM_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "bloom").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
     public static final WoodType BLOOM = WoodType.register(new WoodType(new ResourceLocation(DeeperDarker.MOD_ID, "bloom").toString(), BLOOM_SET, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
 
+    public static final Block ENRICHED_ECHO_LOG = register("enriched_echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_LOG = register("echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_WOOD = register("echo_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block STRIPPED_ECHO_LOG = register("stripped_echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_LIGHT_GRAY)));
@@ -261,5 +264,25 @@ public class DDBlocks {
         DeeperDarker.LOGGER.debug("Registering blocks");
         StrippableBlockRegistry.register(ECHO_LOG, STRIPPED_ECHO_LOG);
         StrippableBlockRegistry.register(ECHO_WOOD, STRIPPED_ECHO_WOOD);
+
+        FlammableBlockRegistry.getDefaultInstance().add(ENRICHED_ECHO_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_WOOD, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ECHO_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ECHO_WOOD, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_LEAVES, 30, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_STAIRS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_FENCE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_FENCE_GATE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_SLAB, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ECHO_PLANKS, 5, 20);
+
+        FlammableBlockRegistry.getDefaultInstance().add(BLOOMING_STEM, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_BLOOMING_STEM, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(BLOOM_STAIRS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BLOOM_FENCE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BLOOM_FENCE_GATE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BLOOM_SLAB, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(BLOOM_PLANKS, 5, 20);
     }
 }
