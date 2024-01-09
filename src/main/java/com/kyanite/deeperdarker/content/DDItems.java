@@ -19,8 +19,6 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class DDItems {
-    public static final Item KYANITE_PASTE = register("kyanite_paste", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
-
     public static final Item GRIME_BALL = register("grime_ball", new Item(new Item.Properties()));
     public static final Item GRIME_BRICK = register("grime_brick", new Item(new Item.Properties()));
 
@@ -47,6 +45,18 @@ public class DDItems {
     public static final Item WARDEN_CHESTPLATE = register("warden_chestplate", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_LEGGINGS = register("warden_leggings", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_BOOTS = register("warden_boots", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
+
+
+    public static final Item RESONARIUM_PASTE = register("resonarium_paste", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_HELMET = register("resonarium_helmet", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_CHESTPLATE = register("resonarium_chestplate", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_LEGGINGS = register("resonarium_leggings", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_BOOTS = register("resonarium_boots", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_SHOVEL = register("resonarium_shovel", new ShovelItem(DDTiers.RESONARIUM, 1.5f, -3, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_PICKAXE = register("resonarium_pickaxe", new PickaxeItem(DDTiers.RESONARIUM, 1, -2.8f, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_AXE = register("resonarium_axe", new AxeItem(DDTiers.RESONARIUM, 5, -3, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_HOE = register("resonarium_hoe", new HoeItem(DDTiers.RESONARIUM, -4, 0, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_SWORD = register("resonarium_sword", new SwordItem(DDTiers.RESONARIUM, 3, -2.4f, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item SONOROUS_STAFF = register("sonorous_staff", new SonorousStaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));

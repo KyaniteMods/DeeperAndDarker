@@ -17,7 +17,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.obtain_warden_Staff.description"
+      "translate": "advancements.deeperdarker.obtain_warden_staff.description"
     },
     "frame": "task",
     "hidden": false,

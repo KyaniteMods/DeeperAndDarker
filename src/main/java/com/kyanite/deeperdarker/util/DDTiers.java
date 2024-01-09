@@ -1,12 +1,14 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.content.DDItems;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 
 public enum DDTiers implements Tier {
-    WARDEN(5, 2519, 10, 5, 18, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD));
+    RESONARIUM(3, 1669, 8.0f, 3.0f, 23, Ingredient.of(Items.IRON_INGOT)),
+    WARDEN(5, 2519, 10.0f, 5.0f, 18, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD));
 
     private final int level;
     private final int durability;

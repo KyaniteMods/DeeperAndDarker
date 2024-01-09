@@ -24,7 +24,16 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.WARDEN_HOE));
         entries.accept(new ItemStack(DDItems.SONOROUS_STAFF));
         entries.accept(new ItemStack(DDItems.SOUL_ELYTRA));
-        entries.accept(new ItemStack(DDItems.KYANITE_PASTE));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_PASTE));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_HELMET));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_CHESTPLATE));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_LEGGINGS));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_BOOTS));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_SWORD));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_PICKAXE));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_AXE));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_SHOVEL));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_HOE));
         entries.accept(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         entries.accept(new ItemStack(DDItems.REINFORCED_ECHO_SHARD));
         entries.accept(new ItemStack(DDItems.WARDEN_CARAPACE));

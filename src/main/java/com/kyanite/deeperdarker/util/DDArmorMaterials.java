@@ -7,12 +7,19 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.EnumMap;
 
 @SuppressWarnings("NullableProblems")
 public enum DDArmorMaterials implements ArmorMaterial {
+    RESONARIUM("resonarium", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), protectionValue -> {
+        protectionValue.put(ArmorItem.Type.BOOTS, 2);
+        protectionValue.put(ArmorItem.Type.LEGGINGS, 6);
+        protectionValue.put(ArmorItem.Type.CHESTPLATE, 7);
+        protectionValue.put(ArmorItem.Type.HELMET, 3);
+    }), 23, SoundEvents.ARMOR_EQUIP_IRON, 1.0f, 0.234375f, Ingredient.of(Items.IRON_INGOT)),
     WARDEN("warden", 40, Util.make(new EnumMap<>(ArmorItem.Type.class), protectionValue -> {
         protectionValue.put(ArmorItem.Type.BOOTS, 4);
         protectionValue.put(ArmorItem.Type.LEGGINGS, 7);

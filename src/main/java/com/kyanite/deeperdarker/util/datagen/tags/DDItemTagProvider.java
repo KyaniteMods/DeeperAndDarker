@@ -53,6 +53,10 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.HOES).setReplace(false).add(DDItems.WARDEN_HOE);
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR).setReplace(false).add(
+                DDItems.RESONARIUM_HELMET,
+                DDItems.RESONARIUM_CHESTPLATE,
+                DDItems.RESONARIUM_LEGGINGS,
+                DDItems.RESONARIUM_BOOTS,
                 DDItems.WARDEN_HELMET,
                 DDItems.WARDEN_CHESTPLATE,
                 DDItems.WARDEN_LEGGINGS,

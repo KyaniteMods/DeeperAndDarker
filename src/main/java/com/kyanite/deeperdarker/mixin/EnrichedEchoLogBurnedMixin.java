@@ -20,7 +20,7 @@ public class EnrichedEchoLogBurnedMixin {
     @Inject(method = "checkBurnOut", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void deeperdarker$dropKyanitePasteWhenEchoLogBurns(Level level, BlockPos blockPos, int i, RandomSource randomSource, int j, CallbackInfo ci, int k, BlockState blockState) {
         if (blockState.is(DDBlocks.ENRICHED_ECHO_LOG)) {
-            level.addFreshEntity(new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), new ItemStack(DDItems.KYANITE_PASTE)));
+            level.addFreshEntity(new ItemEntity(level, blockPos.getX(), blockPos.getY(), blockPos.getZ(), new ItemStack(DDItems.RESONARIUM_PASTE)));
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "deeperdarker:item/kyanite_paste"
+    "layer0": "deeperdarker:item/resonarium_paste"
   }
 }

@@ -167,7 +167,16 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
 
-        translationBuilder.add(DDItems.KYANITE_PASTE, "Kyanite Paste");
+        translationBuilder.add(DDItems.RESONARIUM_PASTE, "Resonarium Paste");
+        translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
+        translationBuilder.add(DDItems.RESONARIUM_CHESTPLATE, "Resonarium Chestplate");
+        translationBuilder.add(DDItems.RESONARIUM_LEGGINGS, "Resonarium Leggings");
+        translationBuilder.add(DDItems.RESONARIUM_BOOTS, "Resonarium Boots");
+        translationBuilder.add(DDItems.RESONARIUM_SWORD, "Resonarium Sword");
+        translationBuilder.add(DDItems.RESONARIUM_PICKAXE, "Resonarium Pickaxe");
+        translationBuilder.add(DDItems.RESONARIUM_AXE, "Resonarium Axe");
+        translationBuilder.add(DDItems.RESONARIUM_SHOVEL, "Resonarium Shovel");
+        translationBuilder.add(DDItems.RESONARIUM_HOE, "Resonarium Hoe");
         translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
         translationBuilder.add(DDItems.WARDEN_CHESTPLATE, "Warden Chestplate");
         translationBuilder.add(DDItems.WARDEN_LEGGINGS, "Warden Leggings");

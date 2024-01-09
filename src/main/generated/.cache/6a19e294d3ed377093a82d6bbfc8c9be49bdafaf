@@ -1,4 +1,4 @@
-// 1.20	2024-01-09T12:44:33.385150988	Deeper and Darker/Tags for minecraft:item
+// 1.20	2024-01-09T17:48:53.438297181	Deeper and Darker/Tags for minecraft:item
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/items/wooden_pressure_plates.json
 7e86841155ecc8045b7ba4b53a96700cd5c1e359 data/minecraft/tags/items/swords.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
@@ -27,7 +27,7 @@ a9c1654ee56da28dba12343d88ab69fb8cc80fee data/minecraft/tags/items/wooden_doors.
 68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/items/lapis_ores.json
 227fb9539d14556e5c2e9cffc940f6206c661864 data/minecraft/tags/items/signs.json
 ed7aa5cbfb388747192f4eba2210e4463510e836 data/minecraft/tags/items/shovels.json
-0a07e9bd73f18c4a5fdd58fd08a08b2718041682 data/minecraft/tags/items/trimmable_armor.json
+f2521fab86014c2d039a60414b3efa7183521e88 data/minecraft/tags/items/trimmable_armor.json
 c17d1bdd759702765aa934b86f1f6d3b593b821f data/minecraft/tags/items/coal_ores.json
 decd179c945b9efde8460c8d6f887d935895a56b data/deeperdarker/tags/items/blooming_stems.json
 f2d96eca233658a77cfb0767972a39f37e7876ea data/minecraft/tags/items/redstone_ores.json

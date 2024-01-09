@@ -6,10 +6,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -241,6 +238,16 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         oreSmelting(exporter, Collections.singletonList(DDBlocks.GLOOMY_CACTUS), RecipeCategory.MISC, DDBlocks.GLOOMY_CACTUS, 1.0f, 200, "orange_dye");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SOUNDPROOF_GLASS, 16).define('S', DDItems.SOUL_DUST).define('C', DDItems.SOUL_CRYSTAL).define('G', Blocks.GLASS).pattern("SCS").pattern("CGC").pattern("SCS").unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(exporter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET, 1).requires(Items.IRON_HELMET).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE, 1).requires(Items.IRON_CHESTPLATE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS, 1).requires(Items.IRON_LEGGINGS).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS, 1).requires(Items.IRON_BOOTS).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD, 1).requires(Items.IRON_SWORD).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_PICKAXE, 1).requires(Items.IRON_PICKAXE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_AXE, 1).requires(Items.IRON_AXE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_SHOVEL, 1).requires(Items.IRON_SHOVEL).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HOE, 1).requires(Items.IRON_HOE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
     }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
