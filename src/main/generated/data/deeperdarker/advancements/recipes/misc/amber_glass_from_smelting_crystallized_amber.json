@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crystallized_amber": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:crystallized_amber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:amber_glass_from_smelting_crystallized_amber"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_crystallized_amber",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:amber_glass_from_smelting_crystallized_amber"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -168,6 +168,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.BIOSCULK_HANGING_SIGN);
 
         this.add(DDBlocks.SCULK_TNT, LootTable.lootTable().withPool(this.applyExplosionCondition(DDBlocks.SCULK_TNT, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(DDBlocks.SCULK_TNT).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.SCULK_TNT).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SculkTNTBlock.UNSTABLE, false)))))));
+        dropSelf(DDBlocks.AMBER_GLASS);
     }
 
     public LootTable.Builder createBiosculkLeavesDrops(Block block) {

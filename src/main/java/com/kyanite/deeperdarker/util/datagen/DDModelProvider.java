@@ -194,6 +194,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerStairs(blockModelGenerators, DDBlocks.BIOSCULK_STAIRS, DDBlocks.BIOSCULK_PLANKS);
         blockModelGenerators.createOrientableTrapdoor(DDBlocks.BIOSCULK_TRAPDOOR);
         blockModelGenerators.createTrivialBlock(DDBlocks.SCULK_TNT, TexturedModel.CUBE_TOP_BOTTOM);
+        blockModelGenerators.family(DDBlocks.AMBER_GLASS);
     }
 
     @Override

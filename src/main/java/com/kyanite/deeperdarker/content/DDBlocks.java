@@ -238,6 +238,7 @@ public class DDBlocks {
     });
 
     public static final Block SCULK_TNT = register("sculk_tnt", new SculkTNTBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));
+    public static final Block AMBER_GLASS = register("amber_glass", new Block(BlockBehaviour.Properties.copy(CRYSTALLIZED_AMBER)));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(

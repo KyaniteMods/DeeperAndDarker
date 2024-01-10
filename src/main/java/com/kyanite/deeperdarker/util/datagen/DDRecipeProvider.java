@@ -246,6 +246,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.BIOSCULK_WOOD, 3).define('L', DDBlocks.BIOSCULK_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BIOSCULK_LOG), FabricRecipeProvider.has(DDBlocks.BIOSCULK_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_BIOSCULK_WOOD, 3).define('L', DDBlocks.STRIPPED_BIOSCULK_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BIOSCULK_LOG), FabricRecipeProvider.has(DDBlocks.BIOSCULK_LOG)).save(exporter);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDBlocks.SCULK_TNT, 2).requires(Blocks.TNT, 1).requires(DDItems.SOUL_CRYSTAL, 1).unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(exporter);
+        oreSmelting(exporter, List.of(DDBlocks.CRYSTALLIZED_AMBER), RecipeCategory.MISC, DDBlocks.AMBER_GLASS, 1.0f, 200, "amber_glass");
     }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {

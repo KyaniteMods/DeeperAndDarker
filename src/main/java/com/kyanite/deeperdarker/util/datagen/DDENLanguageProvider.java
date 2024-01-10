@@ -310,5 +310,6 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.BIOSCULK_BOAT, "Biosculk Boat");
         translationBuilder.add(DDItems.BIOSCULK_CHEST_BOAT, "Biosculk Boat with Chest");
         translationBuilder.add(DDBlocks.SCULK_TNT, "Sculk TNT");
+        translationBuilder.add(DDBlocks.AMBER_GLASS, "Amber Glass");
     }
 }
