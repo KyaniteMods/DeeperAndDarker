@@ -2,13 +2,17 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class SoulElytraItem extends ElytraItem {
@@ -30,5 +34,13 @@ public class SoulElytraItem extends ElytraItem {
     @Override
     public boolean isValidRepairItem(@NotNull ItemStack pToRepair, ItemStack pRepair) {
         return pRepair.is(DDItems.SOUL_CRYSTAL.get());
+    }
+
+    @Override
+    public void onArmorTick(ItemStack stack, Level level, Player player) {
+        if(level.isClientSide() && player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
+            float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
+            player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra_cooldown", (int) Math.ceil(percent * 30)), true);
+        }
     }
 }

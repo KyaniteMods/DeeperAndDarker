@@ -25,9 +25,10 @@ public class PacketSoulElytraBoost {
         context.get().enqueueWork(() -> {
             ServerPlayer player = context.get().getSender();
             Level level = context.get().getSender().level();
-            if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA.get())) {
+            if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA.get()) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
                 level.addFreshEntity(rocket);
+                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA.get(), 600);
             }
         });
 

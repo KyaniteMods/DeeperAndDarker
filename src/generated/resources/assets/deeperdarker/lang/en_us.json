@@ -202,6 +202,7 @@
   "item.deeperdarker.soul_crystal": "Soul Crystal",
   "item.deeperdarker.soul_dust": "Soul Dust",
   "item.deeperdarker.soul_elytra": "Soul Elytra",
+  "item.deeperdarker.soul_elytra_cooldown": "Boost available in %1$s",
   "item.deeperdarker.soul_elytra_equipped": "Press %1$s to boost",
   "item.deeperdarker.stalker_spawn_egg": "Stalker Spawn Egg",
   "item.deeperdarker.warden_axe": "Warden Axe",
