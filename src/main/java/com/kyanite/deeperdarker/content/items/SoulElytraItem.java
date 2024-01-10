@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -40,7 +41,7 @@ public class SoulElytraItem extends ElytraItem {
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(level.isClientSide() && player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
             float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
-            player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * 30)), true);
+            player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * DeeperDarkerConfig.soulElytraCooldown / 20)), true);
         }
     }
 }

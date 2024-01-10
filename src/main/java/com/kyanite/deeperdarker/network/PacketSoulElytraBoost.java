@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.network;
 
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
@@ -28,7 +29,7 @@ public class PacketSoulElytraBoost {
             if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA.get()) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
                 level.addFreshEntity(rocket);
-                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA.get(), 600);
+                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA.get(), DeeperDarkerConfig.soulElytraCooldown);
             }
         });
 
