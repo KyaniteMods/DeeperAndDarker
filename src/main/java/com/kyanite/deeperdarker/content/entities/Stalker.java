@@ -116,6 +116,15 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     @Override
     public void tick() {
+        if (!this.isDeadOrDying() && !this.hasCustomName() && level().getRandom().nextDouble() < (0.00001 * (this.getMaxHealth() - (this.getHealth() - 1)))) {
+            List<Player> players = level().getNearbyPlayers(TargetingConditions.forNonCombat().range(50), this, this.getBoundingBox().inflate(10, 8, 10));
+            this.kill();
+            if (this.isDeadOrDying()) {
+                for (Player player : players) {
+                    player.sendSystemMessage(Component.translatable("death.stalker.too_much_noise", this.getName()));
+                }
+            }
+        }
         if(level() instanceof ServerLevel level) {
             Ticker.tick(level, this.vibrationData, this.vibrationUser);
         }
@@ -123,7 +132,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         super.tick();
 
         if(this.getPose() == Pose.EMERGING && ++emergingTime > 70) this.setPose(Pose.STANDING);
-
         List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
         if(!players.isEmpty()) {
             this.rangedCooldown--;

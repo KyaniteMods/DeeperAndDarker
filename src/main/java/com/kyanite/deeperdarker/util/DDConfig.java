@@ -44,10 +44,10 @@ public class DDConfig {
     public float geyserLaunchVelocity = 2.5f;
 
     @SerialEntry(comment = "The minimum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
-    public int portalMinWidth = 8;
+    public int portalMinWidth = 6;
 
     @SerialEntry(comment = "The minimum inner height (not counting the frame) of the Otherside portal in order to light it successfully")
-    public int portalMinHeight = 4;
+    public int portalMinHeight = 3;
 
     @SerialEntry(comment = "The maximum inner width (not counting the frame) of the Otherside portal in order to light it successfully")
     public int portalMaxWidth = 48;

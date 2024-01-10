@@ -195,6 +195,7 @@
   "config.deeperdarker.wardenHeartPulses.title": "Heart of the Deep Pulses",
   "death.attack.deeperdarker.bite": "%s was devoured",
   "death.attack.deeperdarker.ring": "%s was given a deadly case of tinnitus by %s",
+  "death.stalker.too_much_noise": "%s had too much for their sensitive little ears and just died",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "enchantment.deeperdarker.catalysis": "Catalysis",
   "enchantment.deeperdarker.catalysis.desc": "Spreads sculk when mobs are killed.",
