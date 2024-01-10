@@ -91,7 +91,7 @@ public class ModMenuIntegration implements ModMenuApi {
                     .name(Component.translatable("config.deeperdarker.portalMinWidth.title"))
                     .description(OptionDescription.of(Component.translatable("config.deeperdarker.portalMinWidth.description")))
                     .binding(
-                            8,
+                            6,
                             () -> DDConfig.HANDLER.instance().portalMinWidth,
                             newVal -> DDConfig.HANDLER.instance().portalMinWidth = newVal
                     )
@@ -104,7 +104,7 @@ public class ModMenuIntegration implements ModMenuApi {
                     .name(Component.translatable("config.deeperdarker.portalMinHeight.title"))
                     .description(OptionDescription.of(Component.translatable("config.deeperdarker.portalMinHeight.description")))
                     .binding(
-                            4,
+                            3,
                             () -> DDConfig.HANDLER.instance().portalMinHeight,
                             newVal -> DDConfig.HANDLER.instance().portalMinHeight = newVal
                     )
