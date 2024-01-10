@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "deeperdarker:heart_of_the_deep"
+    },
+    {
+      "item": "deeperdarker:warden_carapace"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "minecraft:reinforced_deepslate"
+  }
+}

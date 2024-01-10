@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_heart_of_the_deep": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:heart_of_the_deep"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:reinforced_deepslate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_heart_of_the_deep",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:reinforced_deepslate"
+    ]
+  },
+  "sends_telemetry_event": false
+}
