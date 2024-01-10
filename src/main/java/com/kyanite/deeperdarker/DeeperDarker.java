@@ -180,7 +180,7 @@ public class DeeperDarker {
             if(!event.getSlot().isArmor()) return;
             if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
             if(event.getEntity() instanceof Player player) {
-                player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra_equipped", Keybinds.BOOST.getTranslatedKeyMessage()), true);
+                player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", Keybinds.BOOST.getTranslatedKeyMessage()), true);
             }
         }
     }

@@ -40,7 +40,7 @@ public class SoulElytraItem extends ElytraItem {
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(level.isClientSide() && player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
             float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
-            player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra_cooldown", (int) Math.ceil(percent * 30)), true);
+            player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * 30)), true);
         }
     }
 }
