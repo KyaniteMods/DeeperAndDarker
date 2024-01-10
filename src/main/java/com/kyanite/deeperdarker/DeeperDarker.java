@@ -93,6 +93,7 @@ public class DeeperDarker {
 
         MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
+        eventBus.addListener(DeeperDarkerConfig::loadConfigs);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerAttributes);
