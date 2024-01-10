@@ -31,6 +31,7 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -38,6 +39,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
@@ -55,6 +57,7 @@ import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -169,6 +172,15 @@ public class DeeperDarker {
                     level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 3);
                     event.setCanceled(true);
                 }
+            }
+        }
+
+        @SubscribeEvent
+        public static void equipmentChangeEvent(final LivingEquipmentChangeEvent event) {
+            if(!event.getSlot().isArmor()) return;
+            if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
+            if(event.getEntity() instanceof Player player) {
+                player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra_equipped", Keybinds.BOOST.getTranslatedKeyMessage()), true);
             }
         }
     }
