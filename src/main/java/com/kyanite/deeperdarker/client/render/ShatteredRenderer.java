@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 public class ShatteredRenderer extends MobRenderer<Shattered, ShatteredModel> {
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "shattered"), "main");
     private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shattered.png");
+    private static final ResourceLocation TEXTURE_FUNNY = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shattered_funny.png");
 
     public ShatteredRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new ShatteredModel(pContext.bakeLayer(MODEL)), 0.5f);
@@ -19,6 +20,6 @@ public class ShatteredRenderer extends MobRenderer<Shattered, ShatteredModel> {
 
     @Override
     public ResourceLocation getTextureLocation(Shattered pEntity) {
-        return TEXTURE;
+        return pEntity.hasCustomName() && "JustJussi".equals(pEntity.getName().getString()) ? TEXTURE_FUNNY : TEXTURE;
     }
 }
