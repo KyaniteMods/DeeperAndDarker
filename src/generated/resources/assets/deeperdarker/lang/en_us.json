@@ -222,6 +222,8 @@
   "item.minecraft.tipped_arrow.effect.long_sculk_affinity": "Arrow of Sculk Affinity",
   "item.minecraft.tipped_arrow.effect.sculk_affinity": "Arrow of Sculk Affinity",
   "itemGroup.deeperdarker": "Deeper and Darker",
+  "key.categories.deeperdarker": "Deeper and Darker",
+  "key.deeperdarker.boost": "Boost Soul Elytra",
   "subtitles.ambient.otherside.additions": "Warden dreams",
   "subtitles.ambient.portal.groan": "The Otherside forebodes",
   "subtitles.entity.shattered.ambient": "Shattered growls",

@@ -69,6 +69,9 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
         add("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade", "Warden Upgrade");
 
+        add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
+        add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
+
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.DEEPLANDS.location().getPath(), convertToName(OthersideBiomes.DEEPLANDS.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));

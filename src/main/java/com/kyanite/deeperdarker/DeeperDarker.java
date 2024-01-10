@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
@@ -12,6 +13,8 @@ import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
+import com.kyanite.deeperdarker.network.Messages;
+import com.kyanite.deeperdarker.network.PacketSoulElytraBoost;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
@@ -44,6 +47,8 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeAdvancementProvider;
@@ -90,6 +95,7 @@ public class DeeperDarker {
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
 
+        Messages.registerMessages(MOD_ID + "_network");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
     }
 
@@ -191,6 +197,11 @@ public class DeeperDarker {
         }
 
         @SubscribeEvent
+        public static void registerKeybinds(final RegisterKeyMappingsEvent event) {
+            event.register(Keybinds.BOOST);
+        }
+
+        @SubscribeEvent
         public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(DDBlockEntities.CRYSTALLIZED_AMBER.get(), CrystallizedAmberBlockRenderer::new);
         }
@@ -222,6 +233,14 @@ public class DeeperDarker {
                 renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
                 renderer.addLayer(new WardenHelmetRenderer<>(renderer, event.getEntityModels()));
             }
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    public static class LockoutTwoClient {
+        @SubscribeEvent
+        public static void keyInput(final InputEvent.Key event) {
+            if(Keybinds.BOOST.consumeClick()) Messages.INSTANCE.sendToServer(new PacketSoulElytraBoost());
         }
     }
 }
