@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:warden_can_listen",
+    "minecraft:jukebox_play"
+  ]
+}

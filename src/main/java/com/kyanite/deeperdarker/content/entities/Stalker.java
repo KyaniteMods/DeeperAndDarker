@@ -1,16 +1,20 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -116,15 +120,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     @Override
     public void tick() {
-        if (!this.isDeadOrDying() && !this.hasCustomName() && level().getRandom().nextDouble() < (0.00001 * (this.getMaxHealth() - (this.getHealth() - 1)))) {
-            List<Player> players = level().getNearbyPlayers(TargetingConditions.forNonCombat().range(50), this, this.getBoundingBox().inflate(10, 8, 10));
-            this.kill();
-            if (this.isDeadOrDying()) {
-                for (Player player : players) {
-                    player.sendSystemMessage(Component.translatable("death.stalker.too_much_noise", this.getName()));
-                }
-            }
-        }
         if(level() instanceof ServerLevel level) {
             Ticker.tick(level, this.vibrationData, this.vibrationUser);
         }
@@ -271,7 +266,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
         @Override
         public TagKey<GameEvent> getListenableEvents() {
-            return GameEventTags.WARDEN_CAN_LISTEN;
+            return DDTags.GameEvents.STALKER_CAN_LISTEN;
         }
 
         @Override
@@ -281,7 +276,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
         @Override
         public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
+            if(!isNoAi() && !isDeadOrDying() && (!getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) || pGameEvent == GameEvent.JUKEBOX_PLAY) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
                 if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
@@ -300,6 +295,19 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
             if(getTarget() != null) setTarget(null);
             disturbanceLocation = pPos;
+            if (pGameEvent == GameEvent.JUKEBOX_PLAY && !Stalker.this.hasCustomName()) {
+                List<Player> players = pLevel.getNearbyPlayers(TargetingConditions.forNonCombat().range(50), Stalker.this, Stalker.this.getBoundingBox().inflate(10, 8, 10));
+                Stalker.this.kill();
+                if (Stalker.this.isDeadOrDying()) {
+                    for (Player player : players) {
+                        player.sendSystemMessage(Component.translatable("death.stalker.too_much_noise", Stalker.this.getName()));
+                    }
+                }
+            } else {
+                System.out.println("Is dead or dying: " + Stalker.this.isDeadOrDying());
+                System.out.println("Game event: " + pGameEvent.getName());
+                System.out.println("Has custom name: " + Stalker.this.hasCustomName());
+            }
         }
     }
 }

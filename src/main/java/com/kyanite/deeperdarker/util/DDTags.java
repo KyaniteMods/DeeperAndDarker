@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class DDTags {
     public static class Blocks {
@@ -33,6 +34,11 @@ public class DDTags {
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "biosculk_logs"));
         public static final TagKey<Item> DAMPENS_VIBRATIONS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "dampens_vibrations"));
+    }
+
+    public static class GameEvents {
+        public static final TagKey<GameEvent> STALKER_CAN_LISTEN = TagKey.create(
+                Registries.GAME_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, "stalker_can_listen"));
     }
 
     public static class Biomes {

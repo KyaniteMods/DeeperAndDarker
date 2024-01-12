@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.util.datagen.loot.DDBlockLootTableProvider;
 import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
 import com.kyanite.deeperdarker.util.datagen.loot.DDEntityLootTableProvider;
 import com.kyanite.deeperdarker.util.datagen.tags.DDBlockTagProvider;
+import com.kyanite.deeperdarker.util.datagen.tags.DDGameEventTagProvider;
 import com.kyanite.deeperdarker.util.datagen.tags.DDItemTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -21,6 +22,7 @@ public class DeeperDarkerDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(DDBlockLootTableProvider::new);
         pack.addProvider(DDBlockTagProvider::new);
         pack.addProvider(DDItemTagProvider::new);
+        pack.addProvider(DDGameEventTagProvider::new);
         pack.addProvider(DDENLanguageProvider::new);
         pack.addProvider(DDEntityLootTableProvider::new);
         pack.addProvider(DDAdvancementProvider::new);
