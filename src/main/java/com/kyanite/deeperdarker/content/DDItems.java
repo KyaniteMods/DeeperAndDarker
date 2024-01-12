@@ -63,6 +63,7 @@ public class DDItems {
     public static final Item BIOSCULK_HANGING_SIGN = register("biosculk_hanging_sign", new HangingSignItem(DDBlocks.BIOSCULK_HANGING_SIGN, DDBlocks.BIOSCULK_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
     public static final Item BIOSCULK_BOAT = register("biosculk_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BIOSCULK));
     public static final Item BIOSCULK_CHEST_BOAT = register("biosculk_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BIOSCULK));
+    public static final Item WARDEN_FLINT_AND_STEEL = register("warden_flint_and_steel", new FlintAndSteelItem(new Item.Properties().durability(64).rarity(Rarity.EPIC)));
 
 
     public static Item register(String id, Item item) {
@@ -89,7 +90,8 @@ public class DDItems {
                 new ResourceLocation("item/empty_slot_pickaxe"),
                 new ResourceLocation("item/empty_slot_axe"),
                 new ResourceLocation("item/empty_slot_shovel"),
-                new ResourceLocation("item/empty_slot_hoe"));
+                new ResourceLocation("item/empty_slot_hoe"),
+                new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_flint_and_steel"));
     }
 
     private static List<ResourceLocation> getWardenEmptyAdditionsSlotTextures() {
