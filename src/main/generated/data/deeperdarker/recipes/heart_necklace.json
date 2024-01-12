@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": {
+      "item": "deeperdarker:heart_of_the_deep"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "S S",
+    " H "
+  ],
+  "result": {
+    "item": "deeperdarker:heart_necklace"
+  },
+  "show_notification": true
+}

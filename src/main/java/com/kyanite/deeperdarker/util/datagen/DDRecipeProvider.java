@@ -256,6 +256,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDBlocks.SCULK_TNT, 2).requires(Blocks.TNT, 1).requires(DDItems.SOUL_CRYSTAL, 1).unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(exporter);
         oreSmelting(exporter, List.of(DDBlocks.CRYSTALLIZED_AMBER), RecipeCategory.MISC, DDBlocks.AMBER_GLASS, 1.0f, 200, "amber_glass");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.REINFORCED_DEEPSLATE, 3).requires(Blocks.DEEPSLATE, 2).requires(DDItems.HEART_OF_THE_DEEP).requires(DDItems.WARDEN_CARAPACE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.HEART_OF_THE_DEEP), FabricRecipeProvider.has(DDItems.HEART_OF_THE_DEEP)).save(exporter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.HEART_NECKLACE).define('S', Items.STRING).define('H', DDItems.HEART_OF_THE_DEEP).pattern(" S ").pattern("S S").pattern(" H ").unlockedBy(FabricRecipeProvider.getHasName(DDItems.HEART_OF_THE_DEEP), FabricRecipeProvider.has(DDItems.HEART_OF_THE_DEEP)).save(exporter);
     }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {

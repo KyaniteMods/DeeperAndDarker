@@ -5,10 +5,11 @@
   "mixins": [
     "ContainerMenuMixin",
     "DefaultAttributeRegistryAccessor",
+    "HeartNecklaceSpeedMixin",
     "PhantomMixin",
     "VibrationListenerMixin",
-    "WardenMixin",
-    "WardenHelmetImmunityMixin"
+    "WardenHelmetImmunityMixin",
+    "WardenMixin"
   ],
   "client": [
     "PhantomRendererMixin",

@@ -24,6 +24,7 @@ public class DDCreativeTab {
             entries.accept(new ItemStack(DDItems.WARDEN_SHOVEL));
             entries.accept(new ItemStack(DDItems.WARDEN_HOE));
             entries.accept(new ItemStack(DDItems.WARDEN_FLINT_AND_STEEL));
+            entries.accept(new ItemStack(DDItems.HEART_NECKLACE));
             entries.accept(new ItemStack(DDItems.SOUL_ELYTRA));
             entries.accept(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
             entries.accept(new ItemStack(DDItems.REINFORCED_ECHO_SHARD));

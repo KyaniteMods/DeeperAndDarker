@@ -312,6 +312,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_TNT, "Sculk TNT");
         translationBuilder.add(DDBlocks.AMBER_GLASS, "Amber Glass");
         translationBuilder.add(DDItems.WARDEN_FLINT_AND_STEEL, "Warden Flint and Steel");
+        translationBuilder.add(DDItems.HEART_NECKLACE, "Heart Necklace");
 
         // April Fools Death
         translationBuilder.add("death.stalker.too_much_noise", "%s had too much for their sensitive little ears and just died");
