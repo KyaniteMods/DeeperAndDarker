@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:resonarium_pickaxe"
+        "recipe": "deeperdarker:iron_chestplate_to_resonarium_chestplate_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:resonarium_pickaxe"
+      "deeperdarker:iron_chestplate_to_resonarium_chestplate_upgrade"
     ]
   },
   "sends_telemetry_event": false

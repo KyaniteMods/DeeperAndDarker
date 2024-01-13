@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:resonarium_axe"
+        "recipe": "deeperdarker:iron_boots_to_resonarium_boots_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:resonarium_axe"
+      "deeperdarker:iron_boots_to_resonarium_boots_upgrade"
     ]
   },
   "sends_telemetry_event": false

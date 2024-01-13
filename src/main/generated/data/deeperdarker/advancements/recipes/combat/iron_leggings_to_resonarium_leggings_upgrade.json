@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:resonarium_shovel"
+        "recipe": "deeperdarker:iron_leggings_to_resonarium_leggings_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:resonarium_shovel"
+      "deeperdarker:iron_leggings_to_resonarium_leggings_upgrade"
     ]
   },
   "sends_telemetry_event": false

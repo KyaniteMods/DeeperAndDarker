@@ -80,6 +80,60 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 Ingredient.of(new ItemStack(DDItems.REINFORCED_ECHO_SHARD)),
                 RecipeCategory.COMBAT,
                 DDItems.WARDEN_HOE);
+        SmithingTransformRecipeBuilder IRON_HELMET_TO_RESONARIUM_HELMET_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_HELMET)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_HELMET);
+        SmithingTransformRecipeBuilder IRON_CHESTPLATE_TO_RESONARIUM_CHESTPLATE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_CHESTPLATE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_CHESTPLATE);
+        SmithingTransformRecipeBuilder IRON_LEGGINGS_TO_RESONARIUM_LEGGINGS_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_LEGGINGS)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_LEGGINGS);
+        SmithingTransformRecipeBuilder IRON_BOOTS_TO_RESONARIUM_BOOTS_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_BOOTS)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_BOOTS);
+        SmithingTransformRecipeBuilder IRON_SWORD_TO_RESONARIUM_SWORD_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_SWORD)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_SWORD);
+        SmithingTransformRecipeBuilder IRON_PICKAXE_TO_RESONARIUM_PICKAXE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_PICKAXE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_PICKAXE);
+        SmithingTransformRecipeBuilder IRON_AXE_TO_RESONARIUM_AXE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_AXE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_AXE);
+        SmithingTransformRecipeBuilder IRON_SHOVEL_TO_RESONARIUM_SHOVEL_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_SHOVEL)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_SHOVEL);
+        SmithingTransformRecipeBuilder IRON_HOE_TO_RESONARIUM_HOE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
+                Ingredient.of(new ItemStack(Items.AIR)),
+                Ingredient.of(new ItemStack(Items.IRON_HOE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                RecipeCategory.COMBAT,
+                DDItems.RESONARIUM_HOE);
 
         NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
@@ -90,6 +144,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
+        IRON_HELMET_TO_RESONARIUM_HELMET_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_CHESTPLATE_TO_RESONARIUM_CHESTPLATE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_LEGGINGS_TO_RESONARIUM_LEGGINGS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_BOOTS_TO_RESONARIUM_BOOTS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_SWORD_TO_RESONARIUM_SWORD_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_PICKAXE_TO_RESONARIUM_PICKAXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_AXE_TO_RESONARIUM_AXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_SHOVEL_TO_RESONARIUM_SHOVEL_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_HOE_TO_RESONARIUM_HOE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
         NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_helmet_to_warden_helmet_upgrade"));
         NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_chestplate_to_warden_chestplate_upgrade"));
         NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_leggings_to_warden_leggings_upgrade"));
@@ -99,6 +162,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_axe_to_warden_axe_upgrade"));
         NETHERITE_SHOVEL_TO_WARDEN_SHOVEL_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_shovel_to_warden_shovel_upgrade"));
         NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_hoe_to_warden_hoe_upgrade"));
+        IRON_HELMET_TO_RESONARIUM_HELMET_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_helmet_to_resonarium_helmet_upgrade"));
+        IRON_CHESTPLATE_TO_RESONARIUM_CHESTPLATE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_chestplate_to_resonarium_chestplate_upgrade"));
+        IRON_LEGGINGS_TO_RESONARIUM_LEGGINGS_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_leggings_to_resonarium_leggings_upgrade"));
+        IRON_BOOTS_TO_RESONARIUM_BOOTS_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_boots_to_resonarium_boots_upgrade"));
+        IRON_SWORD_TO_RESONARIUM_SWORD_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_sword_to_resonarium_sword_upgrade"));
+        IRON_PICKAXE_TO_RESONARIUM_PICKAXE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_pickaxe_to_resonarium_pickaxe_upgrade"));
+        IRON_AXE_TO_RESONARIUM_AXE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_axe_to_resonarium_axe_upgrade"));
+        IRON_SHOVEL_TO_RESONARIUM_SHOVEL_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_shovel_to_resonarium_shovel_upgrade"));
+        IRON_HOE_TO_RESONARIUM_HOE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "iron_hoe_to_resonarium_hoe_upgrade"));
 
         // Wood stuff
             // Echo
@@ -239,15 +311,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SOUNDPROOF_GLASS, 16).define('S', DDItems.SOUL_DUST).define('C', DDItems.SOUL_CRYSTAL).define('G', Blocks.GLASS).pattern("SCS").pattern("CGC").pattern("SCS").unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(exporter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET, 1).requires(Items.IRON_HELMET).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE, 1).requires(Items.IRON_CHESTPLATE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS, 1).requires(Items.IRON_LEGGINGS).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS, 1).requires(Items.IRON_BOOTS).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD, 1).requires(Items.IRON_SWORD).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_PICKAXE, 1).requires(Items.IRON_PICKAXE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_AXE, 1).requires(Items.IRON_AXE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_SHOVEL, 1).requires(Items.IRON_SHOVEL).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HOE, 1).requires(Items.IRON_HOE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET, 1).requires(Items.IRON_HELMET).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE, 1).requires(Items.IRON_CHESTPLATE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS, 1).requires(Items.IRON_LEGGINGS).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS, 1).requires(Items.IRON_BOOTS).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD, 1).requires(Items.IRON_SWORD).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_PICKAXE, 1).requires(Items.IRON_PICKAXE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_AXE, 1).requires(Items.IRON_AXE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_SHOVEL, 1).requires(Items.IRON_SHOVEL).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HOE, 1).requires(Items.IRON_HOE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
     }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {

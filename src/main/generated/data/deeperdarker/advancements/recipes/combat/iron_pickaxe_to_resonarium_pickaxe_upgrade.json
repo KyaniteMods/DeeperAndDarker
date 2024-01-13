@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:resonarium_hoe"
+        "recipe": "deeperdarker:iron_pickaxe_to_resonarium_pickaxe_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:resonarium_hoe"
+      "deeperdarker:iron_pickaxe_to_resonarium_pickaxe_upgrade"
     ]
   },
   "sends_telemetry_event": false

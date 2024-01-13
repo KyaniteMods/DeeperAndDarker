@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:resonarium_chestplate"
+        "recipe": "deeperdarker:iron_hoe_to_resonarium_hoe_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:resonarium_chestplate"
+      "deeperdarker:iron_hoe_to_resonarium_hoe_upgrade"
     ]
   },
   "sends_telemetry_event": false

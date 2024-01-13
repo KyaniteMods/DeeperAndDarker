@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:resonarium_leggings"
+        "recipe": "deeperdarker:iron_helmet_to_resonarium_helmet_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:resonarium_leggings"
+      "deeperdarker:iron_helmet_to_resonarium_helmet_upgrade"
     ]
   },
   "sends_telemetry_event": false
