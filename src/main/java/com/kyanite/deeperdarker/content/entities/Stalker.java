@@ -276,7 +276,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
         @Override
         public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
-            if(!isNoAi() && !isDeadOrDying() && (!getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) || pGameEvent == GameEvent.JUKEBOX_PLAY) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
+            if(!isNoAi() && !isDeadOrDying() && (!getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) || (pGameEvent == GameEvent.JUKEBOX_PLAY && !Stalker.this.hasCustomName())) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
                 if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
