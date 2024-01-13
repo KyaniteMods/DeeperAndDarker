@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 public class DDRecipeProvider extends FabricRecipeProvider {
     public DDRecipeProvider(FabricDataOutput output) {
@@ -26,7 +24,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+    public void buildRecipes(RecipeOutput exporter) {
         SmithingTransformRecipeBuilder NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
                 Ingredient.of(new ItemStack(Items.NETHERITE_HELMET)),
@@ -246,7 +244,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         aprilFoolsRecipes(exporter);
     }
 
-    private static void aprilFoolsRecipes(Consumer<FinishedRecipe> exporter) {
+    private static void aprilFoolsRecipes(RecipeOutput exporter) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.EARBUD, 1).define('E', DDItems.STALKER_EAR).define('S', Items.STICK).pattern("E").pattern("S").unlockedBy(FabricRecipeProvider.getHasName(DDItems.STALKER_EAR), FabricRecipeProvider.has(DDItems.STALKER_EAR)).save(exporter);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.EARBUDS, 1).define('E', DDItems.EARBUD).pattern("EE").unlockedBy(FabricRecipeProvider.getHasName(DDItems.EARBUD), FabricRecipeProvider.has(DDItems.EARBUD)).save(exporter);
 
@@ -259,7 +257,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.HEART_NECKLACE).define('S', Items.STRING).define('H', DDItems.HEART_OF_THE_DEEP).pattern(" S ").pattern("S S").pattern(" H ").unlockedBy(FabricRecipeProvider.getHasName(DDItems.HEART_OF_THE_DEEP), FabricRecipeProvider.has(DDItems.HEART_OF_THE_DEEP)).save(exporter);
     }
 
-    private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
+    private static void woodRecipes(RecipeOutput exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
         planksFromLogs(exporter, planks, logs, 4);
         stairBuilder(stairs, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
         slab(exporter, RecipeCategory.BUILDING_BLOCKS, slab, planks);
@@ -275,7 +273,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         chestBoat(exporter, chestBoat, planks);
     }
 
-    private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
+    private static void registerStairsSlabsAndWalls(RecipeOutput exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
         stairBuilder(stairs, Ingredient.of(stone)).unlockedBy(getHasName(stone), has(stone)).save(exporter);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, stone);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, originalStone);

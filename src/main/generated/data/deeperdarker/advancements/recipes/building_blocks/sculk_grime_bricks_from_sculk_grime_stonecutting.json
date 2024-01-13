@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_sculk_grime",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sculk_grime"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:sculk_grime_bricks_from_sculk_grime_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cobbled_gloomslate",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cobbled_gloomslate"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:polished_gloomslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

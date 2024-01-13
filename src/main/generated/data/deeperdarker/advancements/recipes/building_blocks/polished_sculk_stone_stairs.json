@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_polished_sculk_stone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_polished_sculk_stone"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:polished_sculk_stone_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -8,9 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
@@ -23,6 +21,7 @@ import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class SculkTNTBlock extends TntBlock {
@@ -50,11 +49,12 @@ public class SculkTNTBlock extends TntBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+    public @NotNull BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
         if (!level.isClientSide() && !player.isCreative() && blockState.getValue(UNSTABLE)) {
             explode(level, blockPos);
         }
-        super.playerWillDestroy(level, blockPos, blockState, player);
+
+        return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class SculkTNTBlock extends TntBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player2, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    public @NotNull InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player2, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         ItemStack itemStack = player2.getItemInHand(interactionHand);
         if (itemStack.is(DDItems.HEART_OF_THE_DEEP)) {
             explode(level, blockPos, player2);

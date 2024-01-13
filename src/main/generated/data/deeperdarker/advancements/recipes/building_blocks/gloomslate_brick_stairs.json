@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gloomslate_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gloomslate_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:gloomslate_brick_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

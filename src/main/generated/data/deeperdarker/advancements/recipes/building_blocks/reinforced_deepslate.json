@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_heart_of_the_deep",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_heart_of_the_deep"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:reinforced_deepslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_earbud",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_earbud"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:earbuds"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

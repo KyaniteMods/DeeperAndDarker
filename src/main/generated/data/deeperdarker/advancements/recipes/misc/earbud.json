@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_stalker_ear",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_stalker_ear"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:earbud"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

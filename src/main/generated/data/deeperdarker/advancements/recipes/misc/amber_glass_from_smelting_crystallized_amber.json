@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_crystallized_amber",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_crystallized_amber"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:amber_glass_from_smelting_crystallized_amber"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

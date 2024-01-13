@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
@@ -10,17 +9,14 @@ import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -303,10 +299,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
                         player.sendSystemMessage(Component.translatable("death.stalker.too_much_noise", Stalker.this.getName()));
                     }
                 }
-            } else {
-                System.out.println("Is dead or dying: " + Stalker.this.isDeadOrDying());
-                System.out.println("Game event: " + pGameEvent.getName());
-                System.out.println("Has custom name: " + Stalker.this.hasCustomName());
             }
         }
     }

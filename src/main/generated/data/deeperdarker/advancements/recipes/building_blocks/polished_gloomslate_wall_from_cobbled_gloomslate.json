@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cobbled_gloomslate",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cobbled_gloomslate"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:polished_gloomslate_wall_from_cobbled_gloomslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

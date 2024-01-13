@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cobbled_gloomslate",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cobbled_gloomslate"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:gloomslate_brick_stairs_from_cobbled_gloomslate_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

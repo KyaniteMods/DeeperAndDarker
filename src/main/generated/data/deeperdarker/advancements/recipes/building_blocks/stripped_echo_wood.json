@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_echo_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_echo_log"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:stripped_echo_wood"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

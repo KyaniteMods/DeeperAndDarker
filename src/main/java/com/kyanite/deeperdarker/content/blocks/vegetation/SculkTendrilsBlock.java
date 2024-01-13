@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -13,9 +14,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
     private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 15, 12);
+    public static final MapCodec<SculkTendrilsBlock> CODEC = simpleCodec(SculkTendrilsBlock::new);
 
     public SculkTendrilsBlock(Properties properties) {
         super(properties, Direction.UP, SHAPE, false, 0.1);
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

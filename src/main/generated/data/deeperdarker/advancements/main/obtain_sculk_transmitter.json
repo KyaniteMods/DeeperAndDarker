@@ -15,16 +15,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.obtain_sculk_transmitter.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "deeperdarker:sculk_transmitter"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.obtain_sculk_transmitter.title"
     }

@@ -24,6 +24,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
         translationBuilder.add("upgrade.deeperdarker.warden_upgrade", "Warden Upgrade");
+        translationBuilder.add(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
         translationBuilder.add(DDBlocks.ECHO_LOG, "Echo Log");
         translationBuilder.add(DDBlocks.ECHO_WOOD, "Echo Wood");
         translationBuilder.add(DDBlocks.STRIPPED_ECHO_LOG, "Stripped Echo Log");
