@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:sculk_stone_brick_slab_from_sculk_stone_bricks_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

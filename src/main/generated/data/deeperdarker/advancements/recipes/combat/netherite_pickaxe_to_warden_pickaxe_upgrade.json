@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_pickaxe_to_warden_pickaxe_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

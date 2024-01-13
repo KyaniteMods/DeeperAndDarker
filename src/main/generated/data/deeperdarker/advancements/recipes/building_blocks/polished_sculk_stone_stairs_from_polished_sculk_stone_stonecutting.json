@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:polished_sculk_stone_stairs_from_polished_sculk_stone_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

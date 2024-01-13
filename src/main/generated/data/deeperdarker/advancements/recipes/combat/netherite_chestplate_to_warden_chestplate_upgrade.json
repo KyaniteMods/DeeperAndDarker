@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_chestplate_to_warden_chestplate_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

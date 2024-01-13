@@ -29,7 +29,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "root.title"),
                         Component.translatable(id + "root.description"),
                         new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/advancements/root.png"),
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         false,
                         false,
                         false
@@ -42,7 +42,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "find_ancient_city.title"),
                         Component.translatable(id + "find_ancient_city.description"),
                         null,
-                        FrameType.GOAL,
+                        AdvancementType.GOAL,
                         true,
                         true,
                         false
@@ -56,7 +56,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "kill_warden.title"),
                         Component.translatable(id + "kill_warden.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false
@@ -70,7 +70,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "enter_otherside.title"),
                         Component.translatable(id + "enter_otherside.description"),
                         null,
-                        FrameType.GOAL,
+                        AdvancementType.GOAL,
                         true,
                         true,
                         false
@@ -83,7 +83,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "find_ancient_temple.title"),
                         Component.translatable(id + "find_ancient_temple.description"),
                         null,
-                        FrameType.GOAL,
+                        AdvancementType.GOAL,
                         true,
                         true,
                         false
@@ -97,7 +97,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "obtain_sculk_transmitter.title"),
                         Component.translatable(id + "obtain_sculk_transmitter.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
@@ -110,7 +110,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "explore_otherside.title"),
                         Component.translatable(id + "explore_otherside.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false)
@@ -120,14 +120,14 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                 .requirements(AdvancementRequirements.Strategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(advancementConsumer, path("explore_otherside"));
-        
+
         Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
                         DDItems.WARDEN_SWORD,
                         Component.translatable(id + "kill_all_sculk_mobs.title"),
                         Component.translatable(id + "kill_all_sculk_mobs.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false)
@@ -149,7 +149,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "obtain_reinforce_echo_shard.title"),
                         Component.translatable(id + "obtain_reinforce_echo_shard.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
@@ -162,7 +162,7 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                         Component.translatable(id + "warden_armor.title"),
                         Component.translatable(id + "warden_armor.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false

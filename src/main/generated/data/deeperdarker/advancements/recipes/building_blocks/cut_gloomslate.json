@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:cut_gloomslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

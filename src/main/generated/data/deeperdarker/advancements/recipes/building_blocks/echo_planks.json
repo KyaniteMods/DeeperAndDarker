@@ -28,6 +28,5 @@
     "recipes": [
       "deeperdarker:echo_planks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

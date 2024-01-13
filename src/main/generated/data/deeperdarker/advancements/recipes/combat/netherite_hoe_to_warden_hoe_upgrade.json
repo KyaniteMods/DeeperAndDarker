@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_hoe_to_warden_hoe_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

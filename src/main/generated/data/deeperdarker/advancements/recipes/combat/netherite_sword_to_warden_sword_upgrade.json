@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_sword_to_warden_sword_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

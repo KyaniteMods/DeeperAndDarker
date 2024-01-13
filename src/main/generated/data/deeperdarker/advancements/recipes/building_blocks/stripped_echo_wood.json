@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:stripped_echo_wood"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

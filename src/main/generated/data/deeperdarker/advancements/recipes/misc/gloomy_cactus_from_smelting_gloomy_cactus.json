@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:gloomy_cactus_from_smelting_gloomy_cactus"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

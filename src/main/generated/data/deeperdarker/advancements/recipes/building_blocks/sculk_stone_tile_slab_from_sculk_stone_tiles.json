@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:sculk_stone_tile_slab_from_sculk_stone_tiles"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

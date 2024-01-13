@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_shovel_to_warden_shovel_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

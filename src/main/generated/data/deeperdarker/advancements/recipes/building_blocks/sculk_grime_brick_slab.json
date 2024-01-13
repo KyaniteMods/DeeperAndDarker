@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:sculk_grime_brick_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:cobbled_sculk_stone_wall_from_cobbled_sculk_stone_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

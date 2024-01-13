@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:echo_fence"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

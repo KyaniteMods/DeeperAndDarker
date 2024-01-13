@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:polished_sculk_stone_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

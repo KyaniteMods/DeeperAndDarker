@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:cut_gloomslate_wall_from_cut_gloomslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

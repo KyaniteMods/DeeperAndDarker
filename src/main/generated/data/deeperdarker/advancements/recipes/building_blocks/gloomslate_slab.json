@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:gloomslate_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

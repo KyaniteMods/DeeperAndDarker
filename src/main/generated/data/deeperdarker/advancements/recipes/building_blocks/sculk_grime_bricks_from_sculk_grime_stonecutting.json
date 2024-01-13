@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:sculk_grime_bricks_from_sculk_grime_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

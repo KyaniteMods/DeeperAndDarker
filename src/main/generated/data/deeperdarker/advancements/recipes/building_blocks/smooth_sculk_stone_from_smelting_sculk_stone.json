@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:smooth_sculk_stone_from_smelting_sculk_stone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

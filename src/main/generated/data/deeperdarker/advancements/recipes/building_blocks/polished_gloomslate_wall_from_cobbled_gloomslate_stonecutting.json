@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:polished_gloomslate_wall_from_cobbled_gloomslate_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

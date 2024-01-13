@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:cobbled_gloomslate_stairs_from_cobbled_gloomslate_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:cobbled_gloomslate_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

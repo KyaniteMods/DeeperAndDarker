@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:chiseled_sculk_stone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:gloomslate_brick_wall_from_cobbled_gloomslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

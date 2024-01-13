@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_axe_to_warden_axe_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

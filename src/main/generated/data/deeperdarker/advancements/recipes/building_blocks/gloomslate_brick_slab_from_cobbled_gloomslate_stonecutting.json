@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:gloomslate_brick_slab_from_cobbled_gloomslate_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

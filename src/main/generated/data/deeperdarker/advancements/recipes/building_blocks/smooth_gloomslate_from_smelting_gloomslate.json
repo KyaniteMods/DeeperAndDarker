@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:smooth_gloomslate_from_smelting_gloomslate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

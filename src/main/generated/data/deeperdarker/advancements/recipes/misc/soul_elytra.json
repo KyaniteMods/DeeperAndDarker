@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:soul_elytra"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -1,9 +1,11 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.blocks.vegetation.SculkVinesPlantBlock;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.Stalker;
 import com.kyanite.deeperdarker.util.DDConfig;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
@@ -41,10 +43,16 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     private static final VoxelShape BASE = Block.box(3, 0, 3, 13, 1, 13);
     private static final VoxelShape OUTLINE = Block.box(2, 1, 2, 14, 13, 14);
     private static final VoxelShape RIM = Block.box(4, 13, 4, 12, 16, 12);
+    public static final MapCodec<AncientVaseBlock> CODEC = simpleCodec(AncientVaseBlock::new);
 
     public AncientVaseBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE));
+    }
+
+    @Override
+    protected MapCodec<? extends FallingBlock> codec() {
+        return CODEC;
     }
 
     @Override

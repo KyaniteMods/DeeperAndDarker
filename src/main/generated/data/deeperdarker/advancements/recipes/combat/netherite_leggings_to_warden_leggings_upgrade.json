@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_leggings_to_warden_leggings_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

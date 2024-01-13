@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_helmet_to_warden_helmet_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

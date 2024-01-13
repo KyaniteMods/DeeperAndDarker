@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:sculk_grime"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

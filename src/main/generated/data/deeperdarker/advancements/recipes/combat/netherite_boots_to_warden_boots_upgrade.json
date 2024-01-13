@@ -30,6 +30,5 @@
     "recipes": [
       "deeperdarker:netherite_boots_to_warden_boots_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

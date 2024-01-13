@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:echo_button_from_echo_planks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
