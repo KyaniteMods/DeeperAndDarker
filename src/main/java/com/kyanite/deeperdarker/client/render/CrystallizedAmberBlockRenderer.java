@@ -36,7 +36,7 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
             entityRenderer.render(leech, 0, 0, 0, 0, pPartialTick, pPoseStack, pBuffer, pPackedLight);
         } else {
             pPoseStack.scale(0.6f, 0.6f, 0.6f);
-            itemRenderer.renderStatic(pBlockEntity.getFossilizedLoot(), ItemDisplayContext.FIXED, pPackedLight, pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
+            itemRenderer.renderStatic(pBlockEntity.getLoot(), ItemDisplayContext.FIXED, pPackedLight, pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), 0);
         }
 
         pPoseStack.popPose();
