@@ -39,10 +39,17 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
+    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pMovedByPiston) {
+        if(pState.getValue(FOSSILIZED) && !pState.is(pOldState.getBlock()) && pLevel.getBlockEntity(pPos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+            blockEntity.generateLoot(pLevel);
+        }
+    }
+
+    @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
-        if(pState.getValue(FOSSILIZED) && pState.getBlock() != pNewState.getBlock() && pLevel.getBlockEntity(pPos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+        if(pState.getValue(FOSSILIZED) && !pNewState.is(pState.getBlock()) && pLevel.getBlockEntity(pPos) instanceof CrystallizedAmberBlockEntity blockEntity) {
             if(blockEntity.fossilizedEntity && pLevel instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pPos, MobSpawnType.TRIGGERED);
-            else popResource(pLevel, pPos, blockEntity.getFossilizedLoot());
+            else popResource(pLevel, pPos, blockEntity.getLoot());
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
