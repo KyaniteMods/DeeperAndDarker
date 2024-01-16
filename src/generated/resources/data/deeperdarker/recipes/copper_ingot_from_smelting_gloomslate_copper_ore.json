@@ -5,7 +5,7 @@
   "experience": 0.7,
   "group": "copper_ingot",
   "ingredient": {
-    "item": "deeperdarker:sculk_stone_copper_ore"
+    "item": "deeperdarker:gloomslate_copper_ore"
   },
-  "result": "minecraft:raw_copper"
+  "result": "minecraft:copper_ingot"
 }

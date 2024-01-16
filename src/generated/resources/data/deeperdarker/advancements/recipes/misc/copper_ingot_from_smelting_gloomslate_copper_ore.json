@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sculk_stone_iron_ore": {
+    "has_gloomslate_copper_ore": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:sculk_stone_iron_ore"
+              "deeperdarker:gloomslate_copper_ore"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:raw_iron_from_smelting_sculk_stone_iron_ore"
+        "recipe": "deeperdarker:copper_ingot_from_smelting_gloomslate_copper_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_sculk_stone_iron_ore",
+      "has_gloomslate_copper_ore",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:raw_iron_from_smelting_sculk_stone_iron_ore"
+      "deeperdarker:copper_ingot_from_smelting_gloomslate_copper_ore"
     ]
   },
   "sends_telemetry_event": false

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:raw_gold_from_smelting_gloomslate_gold_ore"
+        "recipe": "deeperdarker:gold_ingot_from_blasting_gloomslate_gold_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:raw_gold_from_smelting_gloomslate_gold_ore"
+      "deeperdarker:gold_ingot_from_blasting_gloomslate_gold_ore"
     ]
   },
   "sends_telemetry_event": false

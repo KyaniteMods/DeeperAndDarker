@@ -3,9 +3,9 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "group": "copper_ingot",
+  "group": "iron_ingot",
   "ingredient": {
-    "item": "deeperdarker:sculk_stone_copper_ore"
+    "item": "deeperdarker:sculk_stone_iron_ore"
   },
-  "result": "minecraft:raw_copper"
+  "result": "minecraft:iron_ingot"
 }

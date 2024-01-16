@@ -1,11 +1,11 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:blasting",
   "category": "misc",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 1.0,
   "group": "gold_ingot",
   "ingredient": {
     "item": "deeperdarker:gloomslate_gold_ore"
   },
-  "result": "minecraft:raw_gold"
+  "result": "minecraft:gold_ingot"
 }
