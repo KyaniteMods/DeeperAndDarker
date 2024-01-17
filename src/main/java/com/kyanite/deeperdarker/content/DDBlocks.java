@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -29,6 +30,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
@@ -41,6 +44,10 @@ public class DDBlocks {
     public static final Block ECHO_WOOD = register("echo_wood", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block STRIPPED_ECHO_LOG = register("stripped_echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final Block STRIPPED_ECHO_WOOD = register("stripped_echo_wood", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block STRIPPED_ECHO_LOG_PYRAMID = register("stripped_echo_log_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_LIGHT_GRAY), null));
+    public static final Block STRIPPED_ECHO_WOOD_PYRAMID = register("stripped_echo_wood_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_LIGHT_GRAY), null));
+    public static final Block ECHO_LOG_PYRAMID = register("echo_log_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).mapColor(state -> state.getValue(PyramidBlock.FACING) == Direction.DOWN ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE), STRIPPED_ECHO_LOG_PYRAMID));
+    public static final Block ECHO_WOOD_PYRAMID = register("echo_wood_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE), STRIPPED_ECHO_WOOD_PYRAMID));
     public static final Block ECHO_PLANKS = register("echo_planks", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final Block ECHO_STAIRS = register("echo_stairs", new StairBlock(ECHO_PLANKS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final Block ECHO_SLAB = register("echo_slab", new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_LIGHT_GRAY)));
@@ -193,6 +200,10 @@ public class DDBlocks {
     public static final Block BIOSCULK_WOOD = register("biosculk_wood", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_ORANGE)));
     public static final Block STRIPPED_BIOSCULK_LOG = register("stripped_biosculk_log", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_BLACK)));
     public static final Block STRIPPED_BIOSCULK_WOOD = register("stripped_biosculk_wood", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block STRIPPED_BIOSCULK_LOG_PYRAMID = register("stripped_biosculk_log_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_BLACK), null));
+    public static final Block STRIPPED_BIOSCULK_WOOD_PYRAMID = register("stripped_biosculk_wood_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_BLACK), null));
+    public static final Block BIOSCULK_LOG_PYRAMID = register("biosculk_log_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).mapColor(state -> state.getValue(PyramidBlock.FACING) == Direction.DOWN ? MapColor.COLOR_BLACK : MapColor.COLOR_ORANGE), STRIPPED_BIOSCULK_LOG_PYRAMID));
+    public static final Block BIOSCULK_WOOD_PYRAMID = register("biosculk_wood_pyramid", new PyramidBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_ORANGE), STRIPPED_BIOSCULK_WOOD_PYRAMID));
     public static final Block BIOSCULK_PLANKS = register("biosculk_planks", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_BLACK)));
     public static final Block BIOSCULK_STAIRS = register("biosculk_stairs", new StairBlock(ECHO_PLANKS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_BLACK)));
     public static final Block BIOSCULK_SLAB = register("biosculk_slab", new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_BLACK)));

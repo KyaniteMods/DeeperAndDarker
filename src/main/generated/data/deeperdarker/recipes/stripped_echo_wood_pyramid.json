@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "W": {
+      "item": "deeperdarker:stripped_echo_wood"
+    }
+  },
+  "pattern": [
+    " W ",
+    "WWW"
+  ],
+  "result": {
+    "item": "deeperdarker:stripped_echo_wood_pyramid"
+  }
+}

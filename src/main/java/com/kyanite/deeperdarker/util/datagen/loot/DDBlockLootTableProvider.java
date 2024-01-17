@@ -36,6 +36,10 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.ECHO_WOOD);
         dropSelf(DDBlocks.STRIPPED_ECHO_LOG);
         dropSelf(DDBlocks.STRIPPED_ECHO_WOOD);
+        dropSelf(DDBlocks.ECHO_LOG_PYRAMID);
+        dropSelf(DDBlocks.ECHO_WOOD_PYRAMID);
+        dropSelf(DDBlocks.STRIPPED_ECHO_LOG_PYRAMID);
+        dropSelf(DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID);
         dropSelf(DDBlocks.ECHO_PLANKS);
         dropSelf(DDBlocks.ECHO_STAIRS);
         add(DDBlocks.ECHO_SLAB, this::createSlabItemTable);
@@ -154,6 +158,10 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.BIOSCULK_WOOD);
         dropSelf(DDBlocks.STRIPPED_BIOSCULK_LOG);
         dropSelf(DDBlocks.STRIPPED_BIOSCULK_WOOD);
+        dropSelf(DDBlocks.BIOSCULK_LOG_PYRAMID);
+        dropSelf(DDBlocks.BIOSCULK_WOOD_PYRAMID);
+        dropSelf(DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID);
+        dropSelf(DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID);
         dropSelf(DDBlocks.BIOSCULK_PLANKS);
         dropSelf(DDBlocks.BIOSCULK_STAIRS);
         add(DDBlocks.BIOSCULK_SLAB, this::createSlabItemTable);

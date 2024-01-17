@@ -179,8 +179,48 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
 
         // af
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.ECHO_LOG_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.ECHO_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.ECHO_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.ECHO_LOG).withSuffix("_top")));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.ECHO_LOG_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.ECHO_LOG_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.ECHO_WOOD_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.ECHO_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.ECHO_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.ECHO_LOG)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.ECHO_WOOD_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.ECHO_WOOD_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_ECHO_LOG_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_ECHO_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_ECHO_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_ECHO_LOG).withSuffix("_top")));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.STRIPPED_ECHO_LOG_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_ECHO_LOG_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_ECHO_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_ECHO_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_ECHO_LOG)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
         blockModelGenerators.woodProvider(DDBlocks.BIOSCULK_LOG).log(DDBlocks.BIOSCULK_LOG).wood(DDBlocks.BIOSCULK_WOOD);
         blockModelGenerators.woodProvider(DDBlocks.STRIPPED_BIOSCULK_LOG).log(DDBlocks.STRIPPED_BIOSCULK_LOG).wood(DDBlocks.STRIPPED_BIOSCULK_WOOD);
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.BIOSCULK_LOG_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.BIOSCULK_LOG).withSuffix("_top")));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.BIOSCULK_LOG_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.BIOSCULK_LOG_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.BIOSCULK_WOOD_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.BIOSCULK_LOG)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.BIOSCULK_WOOD_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.BIOSCULK_WOOD_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BIOSCULK_LOG).withSuffix("_top")));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/pyramid"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID),
+                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.UP, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BIOSCULK_LOG)),
+                new Tuple<>(TextureSlot.DOWN, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BIOSCULK_LOG)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID)).with(BlockModelGenerators.createFacingDispatch()));
         registerButton(blockModelGenerators, DDBlocks.BIOSCULK_BUTTON, DDBlocks.BIOSCULK_PLANKS);
         blockModelGenerators.createDoor(DDBlocks.BIOSCULK_DOOR);
         registerFenceGate(blockModelGenerators, DDBlocks.BIOSCULK_FENCE_GATE, DDBlocks.BIOSCULK_PLANKS);

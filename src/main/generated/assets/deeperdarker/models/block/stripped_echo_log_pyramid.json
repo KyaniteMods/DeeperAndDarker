@@ -1,0 +1,8 @@
+{
+  "parent": "deeperdarker:block/pyramid",
+  "textures": {
+    "down": "deeperdarker:block/stripped_echo_log_top",
+    "particle": "deeperdarker:block/stripped_echo_log",
+    "up": "deeperdarker:block/stripped_echo_log"
+  }
+}

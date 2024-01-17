@@ -29,6 +29,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ECHO_WOOD, "Echo Wood");
         translationBuilder.add(DDBlocks.STRIPPED_ECHO_LOG, "Stripped Echo Log");
         translationBuilder.add(DDBlocks.STRIPPED_ECHO_WOOD, "Stripped Echo Wood");
+        translationBuilder.add(DDBlocks.ECHO_LOG_PYRAMID, "Echo Log Pyramid");
+        translationBuilder.add(DDBlocks.ECHO_WOOD_PYRAMID, "Echo Wood Pyramid");
+        translationBuilder.add(DDBlocks.STRIPPED_ECHO_LOG_PYRAMID, "Stripped Echo Log Pyramid");
+        translationBuilder.add(DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID, "Stripped Echo Wood Pyramid");
         translationBuilder.add(DDBlocks.ECHO_BUTTON, "Echo Button");
         translationBuilder.add(DDBlocks.ECHO_DOOR, "Echo Door");
         translationBuilder.add(DDBlocks.ECHO_FENCE_GATE, "Echo Fence Gate");
@@ -294,6 +298,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.BIOSCULK_WOOD, "Biosculk Wood");
         translationBuilder.add(DDBlocks.STRIPPED_BIOSCULK_LOG, "Stripped Biosculk Log");
         translationBuilder.add(DDBlocks.STRIPPED_BIOSCULK_WOOD, "Stripped Biosculk Wood");
+        translationBuilder.add(DDBlocks.BIOSCULK_LOG_PYRAMID, "Biosculk Log Pyramid");
+        translationBuilder.add(DDBlocks.BIOSCULK_WOOD_PYRAMID, "Biosculk Wood Pyramid");
+        translationBuilder.add(DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID, "Stripped Biosculk Log Pyramid");
+        translationBuilder.add(DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID, "Stripped Biosculk Wood Pyramid");
         translationBuilder.add(DDBlocks.BIOSCULK_BUTTON, "Biosculk Button");
         translationBuilder.add(DDBlocks.BIOSCULK_DOOR, "Biosculk Door");
         translationBuilder.add(DDBlocks.BIOSCULK_FENCE_GATE, "Biosculk Fence Gate");

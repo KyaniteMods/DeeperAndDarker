@@ -29,6 +29,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void addTags(HolderLookup.Provider arg) {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         add(DDTags.Items.BIOSCULK_LOGS, DDBlocks.BIOSCULK_LOG, DDBlocks.BIOSCULK_WOOD, DDBlocks.STRIPPED_BIOSCULK_LOG, DDBlocks.STRIPPED_BIOSCULK_WOOD);
+        add(DDTags.Items.ECHO_PYRAMIDS, DDBlocks.ECHO_LOG_PYRAMID, DDBlocks.ECHO_WOOD_PYRAMID, DDBlocks.STRIPPED_ECHO_LOG_PYRAMID, DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID);
+        add(DDTags.Items.BIOSCULK_PYRAMIDS, DDBlocks.BIOSCULK_LOG_PYRAMID, DDBlocks.BIOSCULK_WOOD_PYRAMID, DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID, DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID);
         getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
 
         add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS, DDBlocks.BIOSCULK_PLANKS);

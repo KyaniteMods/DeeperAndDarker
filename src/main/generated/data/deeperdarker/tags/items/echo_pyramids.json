@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "deeperdarker:echo_log_pyramid",
+    "deeperdarker:echo_wood_pyramid",
+    "deeperdarker:stripped_echo_log_pyramid",
+    "deeperdarker:stripped_echo_wood_pyramid"
+  ]
+}

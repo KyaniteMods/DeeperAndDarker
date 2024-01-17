@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": {
+      "item": "deeperdarker:echo_log"
+    }
+  },
+  "pattern": [
+    " L ",
+    "LLL"
+  ],
+  "result": {
+    "item": "deeperdarker:echo_log_pyramid"
+  }
+}

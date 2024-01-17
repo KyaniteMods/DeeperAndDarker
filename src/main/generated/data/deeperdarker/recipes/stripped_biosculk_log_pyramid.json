@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": {
+      "item": "deeperdarker:stripped_biosculk_log"
+    }
+  },
+  "pattern": [
+    " L ",
+    "LLL"
+  ],
+  "result": {
+    "item": "deeperdarker:stripped_biosculk_log_pyramid"
+  }
+}

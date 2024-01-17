@@ -37,6 +37,10 @@ public class DDCreativeTab {
             entries.accept(new ItemStack(DDBlocks.ECHO_WOOD));
             entries.accept(new ItemStack(DDBlocks.STRIPPED_ECHO_LOG));
             entries.accept(new ItemStack(DDBlocks.STRIPPED_ECHO_WOOD));
+            entries.accept(new ItemStack(DDBlocks.ECHO_LOG_PYRAMID));
+            entries.accept(new ItemStack(DDBlocks.ECHO_WOOD_PYRAMID));
+            entries.accept(new ItemStack(DDBlocks.STRIPPED_ECHO_LOG_PYRAMID));
+            entries.accept(new ItemStack(DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID));
             entries.accept(new ItemStack(DDBlocks.ECHO_BUTTON));
             entries.accept(new ItemStack(DDBlocks.ECHO_DOOR));
             entries.accept(new ItemStack(DDBlocks.ECHO_FENCE_GATE));
@@ -159,6 +163,10 @@ public class DDCreativeTab {
             entries.accept(new ItemStack(DDBlocks.BIOSCULK_WOOD));
             entries.accept(new ItemStack(DDBlocks.STRIPPED_BIOSCULK_LOG));
             entries.accept(new ItemStack(DDBlocks.STRIPPED_BIOSCULK_WOOD));
+            entries.accept(new ItemStack(DDBlocks.BIOSCULK_LOG_PYRAMID));
+            entries.accept(new ItemStack(DDBlocks.BIOSCULK_WOOD_PYRAMID));
+            entries.accept(new ItemStack(DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID));
+            entries.accept(new ItemStack(DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID));
             entries.accept(new ItemStack(DDBlocks.BIOSCULK_BUTTON));
             entries.accept(new ItemStack(DDBlocks.BIOSCULK_DOOR));
             entries.accept(new ItemStack(DDBlocks.BIOSCULK_FENCE_GATE));

@@ -17,7 +17,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).addTag(DDTags.Blocks.BIOSCULK_LOGS).addTag(DDTags.Blocks.ECHO_PYRAMIDS).addTag(DDTags.Blocks.BIOSCULK_PYRAMIDS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE, DDBlocks.COBBLED_SCULK_STONE, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE_TILES, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.CUT_SCULK_STONE, DDBlocks.CHISELED_SCULK_STONE,
                 DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS,
@@ -73,6 +73,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         getOrCreateTagBuilder(DDTags.Blocks.BIOSCULK_LOGS).add(DDBlocks.BIOSCULK_LOG, DDBlocks.BIOSCULK_WOOD, DDBlocks.STRIPPED_BIOSCULK_LOG, DDBlocks.STRIPPED_BIOSCULK_WOOD);
+        getOrCreateTagBuilder(DDTags.Blocks.ECHO_PYRAMIDS).add(DDBlocks.ECHO_LOG_PYRAMID, DDBlocks.ECHO_WOOD_PYRAMID, DDBlocks.STRIPPED_ECHO_LOG_PYRAMID, DDBlocks.STRIPPED_ECHO_WOOD_PYRAMID);
+        getOrCreateTagBuilder(DDTags.Blocks.BIOSCULK_PYRAMIDS).add(DDBlocks.BIOSCULK_LOG_PYRAMID, DDBlocks.BIOSCULK_WOOD_PYRAMID, DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID, DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID);
         getOrCreateTagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, Blocks.SCULK);
         getOrCreateTagBuilder(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME);
         getOrCreateTagBuilder(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME);

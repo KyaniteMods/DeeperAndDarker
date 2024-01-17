@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "deeperdarker:block/echo_wood_pyramid",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "deeperdarker:block/echo_wood_pyramid",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "deeperdarker:block/echo_wood_pyramid"
+    },
+    "facing=south": {
+      "model": "deeperdarker:block/echo_wood_pyramid",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "deeperdarker:block/echo_wood_pyramid",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "deeperdarker:block/echo_wood_pyramid",
+      "y": 270
+    }
+  }
+}

@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "#deeperdarker:echo_logs",
+    "#deeperdarker:biosculk_logs",
+    "#deeperdarker:echo_pyramids",
+    "#deeperdarker:biosculk_pyramids",
     "deeperdarker:echo_planks",
     "deeperdarker:echo_stairs",
     "deeperdarker:echo_slab",

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "W": {
+      "item": "deeperdarker:biosculk_wood"
+    }
+  },
+  "pattern": [
+    " W ",
+    "WWW"
+  ],
+  "result": {
+    "item": "deeperdarker:biosculk_wood_pyramid"
+  }
+}
