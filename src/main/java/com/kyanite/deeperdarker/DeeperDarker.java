@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
+import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.*;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
@@ -29,8 +31,10 @@ import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -40,12 +44,17 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -157,21 +166,46 @@ public class DeeperDarker {
     public static class DeeperDarkerEvents {
         @SubscribeEvent
         public static void breakEvent(final BlockEvent.BreakEvent event) {
-            if(!event.getState().is(DDBlocks.ANCIENT_VASE.get())) return;
-            if(event.getPlayer().getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) return;
+            boolean silktouch = event.getPlayer().getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0;
+            Level level = (Level) event.getLevel();
+            BlockState state = event.getState();
+            BlockPos pos = event.getPos();
 
-            if(event.getLevel() instanceof ServerLevel level) {
-                RandomSource random = level.getRandom();
-                if(random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
-                    if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
-                        for(int i = 0; i < random.nextInt(1, 4); i++) {
-                            DDEntities.SCULK_LEECH.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
-                        }
-                    } else {
-                        DDEntities.STALKER.get().spawn(level, event.getPos(), MobSpawnType.TRIGGERED);
-                    }
-                    level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 3);
+            if(state.is(DDBlocks.CRYSTALLIZED_AMBER.get()) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+                if(!silktouch && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+                    if(blockEntity.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+                    else Block.popResource(level, pos, blockEntity.getLoot());
+                } else if(silktouch && !level.isClientSide() && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+                    CompoundTag tag = new CompoundTag();
+                    tag.put("item", blockEntity.getLoot().save(new CompoundTag()));
+                    tag.putBoolean("leech", blockEntity.fossilizedEntity);
+
+                    ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER.get());
+                    BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER.get(), tag);
+                    Block.popResource(level, pos, stack);
+
+                    level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     event.setCanceled(true);
+                }
+                return;
+            }
+
+            if(silktouch) return;
+
+            if(state.is(DDBlocks.ANCIENT_VASE.get())) {
+                if(level instanceof ServerLevel serverLevel) {
+                    RandomSource random = serverLevel.getRandom();
+                    if(random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
+                        if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
+                            for(int i = 0; i < random.nextInt(1, 4); i++) {
+                                DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+                            }
+                        } else {
+                            DDEntities.STALKER.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+                        }
+                        serverLevel.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                        event.setCanceled(true);
+                    }
                 }
             }
         }
