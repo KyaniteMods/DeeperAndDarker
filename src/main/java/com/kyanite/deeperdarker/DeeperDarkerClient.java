@@ -70,6 +70,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         BlockEntityRenderers.register(DDBlockEntities.HANGING_SIGN, HangingSignRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SIGN, SignRenderer::new);
+        BlockEntityRenderers.register(DDBlockEntities.CRYSTALLIZED_AMBER, CrystallizedAmberBlockRenderer::new);
 
         DeeperDarker.LOGGER.info("Registering models");
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.WARDEN_HELMET, HelmetHornsModel::getTexturedModelData);
