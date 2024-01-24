@@ -284,7 +284,7 @@ public class DeeperDarker {
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
-    public static class LockoutTwoClient {
+    public static class DeeperDarkerForgeClient {
         @SubscribeEvent
         public static void keyInput(final InputEvent.Key event) {
             if(Keybinds.BOOST.consumeClick()) Messages.INSTANCE.sendToServer(new PacketSoulElytraBoost());
