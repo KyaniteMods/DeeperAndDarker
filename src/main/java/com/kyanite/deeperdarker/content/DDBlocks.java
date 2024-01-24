@@ -82,17 +82,17 @@ public class DDBlocks {
     private static final BlockSetType BLOOM_SET = BlockSetType.register(new BlockSetType("bloom"));
     public static final WoodType BLOOM = WoodType.register(new WoodType("bloom", BLOOM_SET));
     public static final RegistryObject<Block> BLOOMING_STEM = register("blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).sound(SoundType.WOOD).mapColor(MapColor.COLOR_CYAN).ignitedByLava().noOcclusion()));
-    public static final RegistryObject<Block> STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.copy(BLOOMING_STEM.get())));
+    public static final RegistryObject<Block> STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.copy(BLOOMING_STEM.get()).mapColor(MapColor.GLOW_LICHEN)));
     public static final RegistryObject<Block> BLOOM_PLANKS = register("bloom_planks", () -> new FlammableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final RegistryObject<StairBlock> BLOOM_STAIRS = register("bloom_stairs", () -> new FlammableStairBlock(() -> BLOOM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final RegistryObject<SlabBlock> BLOOM_SLAB = register("bloom_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final RegistryObject<FenceBlock> BLOOM_FENCE = register("bloom_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final RegistryObject<FenceGateBlock> BLOOM_FENCE_GATE = register("bloom_fence_gate", () -> new FlammableFenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), BLOOM, 20, 5));
-    public static final RegistryObject<DoorBlock> BLOOM_DOOR = register("bloom_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM_SET));
-    public static final RegistryObject<TrapDoorBlock> BLOOM_TRAPDOOR = register("bloom_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM_SET));
+    public static final RegistryObject<DoorBlock> BLOOM_DOOR = register("bloom_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
+    public static final RegistryObject<TrapDoorBlock> BLOOM_TRAPDOOR = register("bloom_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final RegistryObject<PressurePlateBlock> BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final RegistryObject<ButtonBlock> BLOOM_BUTTON = register("bloom_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BLOOM_SET, 30, true));
-    public static final RegistryObject<StandingSignBlock> BLOOM_SIGN = BLOCKS.register("bloom_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+    public static final RegistryObject<StandingSignBlock> BLOOM_SIGN = BLOCKS.register("bloom_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.GLOW_LICHEN), BLOOM) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
