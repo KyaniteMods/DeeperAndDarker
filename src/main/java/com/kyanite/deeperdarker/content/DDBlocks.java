@@ -89,7 +89,7 @@ public class DDBlocks {
     public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", createFlowerPot(ECHO_SAPLING));
 
     public static final Block BLOOMING_STEM = register("blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).mapColor(MapColor.COLOR_CYAN).sound(SoundType.WOOD).ignitedByLava().noOcclusion()));
-    public static final Block STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.copy(BLOOMING_STEM)));
+    public static final Block STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.copy(BLOOMING_STEM).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_PLANKS = register("bloom_planks", new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_STAIRS = register("bloom_stairs", new StairBlock(BLOOM_PLANKS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_SLAB = register("bloom_slab", new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).mapColor(MapColor.GLOW_LICHEN)));
@@ -100,7 +100,7 @@ public class DDBlocks {
     public static final Block BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN), BLOOM_SET));
     public static final Block BLOOM_BUTTON = register("bloom_button", new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BLOOM_SET, 30, true));
 
-    public static final Block BLOOM_SIGN = registerWithoutItem("bloom_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), BLOOM) {
+    public static final Block BLOOM_SIGN = registerWithoutItem("bloom_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.GLOW_LICHEN), BLOOM) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
