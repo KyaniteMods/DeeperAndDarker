@@ -35,7 +35,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
 
         int amberLength = (int) (columnHeight * 0.35f);
         int gapSize = 0;
-        boolean incomplete = random.nextFloat() < 0.3f;
+        boolean incomplete = random.nextFloat() < 0.333f;
         if(amberLength > 9) gapSize = BiasedToBottomInt.of(2, amberLength - 7).sample(random);
         int gapStart = (amberLength - gapSize) / 2;
         int gapPlacement = 0;
