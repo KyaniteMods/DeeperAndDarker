@@ -22,10 +22,10 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = pContext.origin();
         RandomSource random = pContext.random();
         int columnHeight = 0;
-        while(true) {
-            BlockPos pos = new BlockPos(origin.getX(), origin.getY() + columnHeight + 1, origin.getZ());
-            if(level.getBlockState(pos.below()).isAir()) columnHeight++;
-            else break;
+        BlockPos.MutableBlockPos blockPos = origin.mutable();
+        while(level.getBlockState(blockPos).isAir()) {
+            columnHeight++;
+            blockPos.move(0, 1, 0);
         }
 
         if(anyObstruction(level, origin, columnHeight)) return false;
@@ -40,6 +40,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         int gapStart = (amberLength - gapSize) / 2;
         int gapPlacement = 0;
 
+        blockPos = origin.mutable();
         for(int i = 1; i < columnHeight + 1; i++) {
             int newY = origin.getY() + i - 1;
             float percentageToTop = i / ((float) columnHeight + 1);
@@ -129,14 +130,14 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos blockPos = spread(bottom ? pos.below() : pos.above(), i, loop);
 
         if(bottom) {
-            while(!level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && blockPos.getY() > 0) {
+            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && blockPos.getY() > 0) {
                 level.setBlock(blockPos, DDBlocks.GLOOMSLATE.defaultBlockState(), 3);
                 blockPos = blockPos.below();
             }
             return;
         }
 
-        while(!level.getBlockState(blockPos).is(DDBlocks.GLOOMY_SCULK) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && blockPos.getY() < 127) {
+        while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMY_SCULK) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && blockPos.getY() < 127) {
             level.setBlock(blockPos, DDBlocks.GLOOMSLATE.defaultBlockState(), 3);
             blockPos = blockPos.above();
         }
