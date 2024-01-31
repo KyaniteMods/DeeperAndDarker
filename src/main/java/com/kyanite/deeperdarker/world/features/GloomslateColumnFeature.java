@@ -23,8 +23,8 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = pContext.random();
 
         int columnHeight = 0;
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(origin.getX(), origin.getY() + 1, origin.getZ());
-        while(level.getBlockState(blockPos.below()).isAir()) {
+        BlockPos.MutableBlockPos blockPos = origin.mutable();
+        while(level.getBlockState(blockPos).isAir()) {
             columnHeight++;
             blockPos.move(0, 1, 0);
         }
@@ -41,7 +41,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         int gapStart = (amberLength - gapSize) / 2;
         int gapPlacement = 0;
 
-        blockPos.set(origin.getX(), origin.getY(), origin.getZ());
+        blockPos = origin.mutable();
         for(int i = 1; i < columnHeight + 1; i++) {
             float percentageToTop = i / ((float) columnHeight + 1);
 
@@ -101,7 +101,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
     private void placeSection(WorldGenLevel level, RandomSource random, BlockPos pos, double baseHeight, int iteration, int loop, double multiplier, boolean bottom) {
         float p = random.nextFloat();
         for(int j = 0; j < baseHeight; j++) {
-            BlockPos location = spread(bottom ? pos.above(j) : pos.below(j), iteration, loop); // no
+            BlockPos location = spread(bottom ? pos.above(j) : pos.below(j), iteration, loop);
 
             if(iteration > 3 && multiplier > 1) return;
             if(j == baseHeight - 2 && j != 0  && p < 0.1f) level.setBlock(location, DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 3);
@@ -131,14 +131,14 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos blockPos = spread(bottom ? pos.below() : pos.above(), i, loop);
 
         if(bottom) {
-            while(!level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && !level.isOutsideBuildHeight(blockPos)) {
+            while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && !level.isOutsideBuildHeight(blockPos)) {
                 level.setBlock(blockPos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
                 blockPos = blockPos.below();
             }
             return;
         }
 
-        while(!level.getBlockState(blockPos).is(DDBlocks.GLOOMY_SCULK.get()) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && !level.isOutsideBuildHeight(blockPos)) {
+        while(!level.getBlockState(blockPos).is(DDBlocks.SCULK_STONE.get()) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMY_SCULK.get()) && !level.getBlockState(blockPos).is(DDBlocks.GLOOMSLATE.get()) && !level.getBlockState(blockPos).is(Blocks.DEEPSLATE) && !level.isOutsideBuildHeight(blockPos)) {
             level.setBlock(blockPos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
             blockPos = blockPos.above();
         }

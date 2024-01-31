@@ -22,8 +22,8 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = pContext.random();
 
         int columnHeight = 0;
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(origin.getX(), origin.getY() + 1, origin.getZ());
-        while(level.getBlockState(blockPos.below()).isAir()) {
+        BlockPos.MutableBlockPos blockPos = origin.mutable();
+        while(level.getBlockState(blockPos).isAir()) {
             columnHeight++;
             blockPos.move(0, 1, 0);
         }
@@ -33,7 +33,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         level.setBlock(origin.below(), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
         level.setBlock(origin.above(columnHeight), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
 
-        blockPos.set(origin.getX(), origin.getY(), origin.getZ());
+        blockPos = origin.mutable();
         for(int i = 1; i < columnHeight + 1; i++) {
             level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
             blockPos.move(0, 1, 0);
