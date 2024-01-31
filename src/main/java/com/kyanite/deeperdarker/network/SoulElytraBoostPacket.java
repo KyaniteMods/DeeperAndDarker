@@ -12,11 +12,11 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class PacketSoulElytraBoost {
-    public PacketSoulElytraBoost(ByteBuf buf) {
+public class SoulElytraBoostPacket {
+    public SoulElytraBoostPacket(ByteBuf buf) {
     }
 
-    public PacketSoulElytraBoost() {
+    public SoulElytraBoostPacket() {
     }
 
     public void toBytes(ByteBuf buf) {
