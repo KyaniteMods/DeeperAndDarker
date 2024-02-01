@@ -1,12 +1,15 @@
 package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
+import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -51,8 +54,12 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
                 else if(amberLength > 9 && incomplete) {
                     if(gapPlacement < gapStart || gapPlacement > gapStart + gapSize) level.setBlock(pos, DDBlocks.GLOOMSLATE.defaultBlockState(), 3);
                     gapPlacement++;
+                } else {
+                    boolean fossil = random.nextFloat() < 0.3f;
+                    BlockState amber = DDBlocks.CRYSTALLIZED_AMBER.defaultBlockState();
+                    level.setBlock(blockPos, fossil ? amber.setValue(CrystallizedAmberBlock.FOSSILIZED, true) : amber, 3);
+                    if(fossil && level.getBlockEntity(blockPos) instanceof CrystallizedAmberBlockEntity blockEntity) blockEntity.generateFossil(level.getLevel(), blockPos);
                 }
-                else level.setBlock(pos, DDBlocks.CRYSTALLIZED_AMBER.defaultBlockState(), 3);
             } else if(amberLength > 6 && !incomplete && percentageToTop >= 0.3f && percentageToTop <= 0.7f) {
                 level.setBlock(pos, DDBlocks.GLOOMY_SCULK.defaultBlockState(), 3);
             } else {

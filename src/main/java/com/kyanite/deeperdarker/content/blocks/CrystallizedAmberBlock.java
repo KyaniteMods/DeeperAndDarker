@@ -17,6 +17,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -65,19 +66,22 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
-        if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
-            if(!EnchantmentHelper.hasSilkTouch(player.getMainHandItem()) && blockState.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
-                if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, blockPos, MobSpawnType.TRIGGERED);
-                else Block.popResource(level, blockPos, crystallizedAmber.getLoot());
-            } else if(EnchantmentHelper.hasSilkTouch(player.getMainHandItem()) && !level.isClientSide() && blockState.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
+        if(state.is(DDBlocks.CRYSTALLIZED_AMBER) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
+            if(!EnchantmentHelper.hasSilkTouch(itemStack) && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+                if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+                else Block.popResource(level, pos, crystallizedAmber.getLoot());
+            } else if(EnchantmentHelper.hasSilkTouch(itemStack) && !level.isClientSide() && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 CompoundTag tag = new CompoundTag();
                 tag.put("item", crystallizedAmber.getLoot().save(new CompoundTag()));
                 tag.putBoolean("leech", crystallizedAmber.fossilizedEntity);
+                tag.putFloat("rotation", crystallizedAmber.rotation);
 
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
                 BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
-                Block.popResource(level, blockPos, stack);
+                Block.popResource(level, pos, stack);
+
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
             }
         }
     }
