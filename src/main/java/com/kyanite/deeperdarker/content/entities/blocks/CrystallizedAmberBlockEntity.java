@@ -34,7 +34,7 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         if(fossilizedEntity || loot != ItemStack.EMPTY) return;
 
         RandomSource random = RandomSource.create(pos.asLong());
-        if(random.nextFloat() < 0.5f) fossilizedEntity = true;
+        if(random.nextFloat() < 0.1f) fossilizedEntity = true;
         rotation = random.nextFloat() * 180;
         if(fossilizedEntity) return;
 
