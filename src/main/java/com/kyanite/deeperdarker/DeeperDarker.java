@@ -180,6 +180,7 @@ public class DeeperDarker {
                     CompoundTag tag = new CompoundTag();
                     tag.put("item", blockEntity.getLoot().save(new CompoundTag()));
                     tag.putBoolean("leech", blockEntity.fossilizedEntity);
+                    tag.putFloat("rotation", blockEntity.rotation);
 
                     ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER.get());
                     BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER.get(), tag);
