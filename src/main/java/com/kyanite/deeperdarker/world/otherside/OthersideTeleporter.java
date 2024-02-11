@@ -139,26 +139,32 @@ public class OthersideTeleporter implements ITeleporter {
         }
 
         if(d0 == -1) {
-            finalPos = new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 36, this.level.getHeight() - 28), pos.getZ()).immutable();
+            finalPos = new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 16, this.level.getHeight() - 20), pos.getZ()).immutable();
             Direction direction1 = direction.getClockWise();
             if(!worldBorder.isWithinBounds(finalPos)) {
                 return Optional.empty();
             }
 
-            int c = 0;
-            BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(finalPos.getX(), finalPos.getY(), finalPos.getZ());
+            int yDiff = 0;
+            BlockPos.MutableBlockPos blockPos = finalPos.mutable();
             while(!this.level.getBlockState(blockPos).isAir() && !this.level.isOutsideBuildHeight(blockPos)) {
                 blockPos.move(0, 1, 0);
-                c++;
+                yDiff++;
             }
             if(!this.level.isOutsideBuildHeight(blockPos)) finalPos = blockPos;
             else {
-                blockPos.move(0, -c, 0);
+                blockPos.move(0, -yDiff, 0);
                 while(!this.level.getBlockState(blockPos).isAir() && !this.level.isOutsideBuildHeight(blockPos)) {
                     blockPos.move(0, -1, 0);
                 }
                 if(!this.level.isOutsideBuildHeight(blockPos)) finalPos = blockPos;
             }
+
+            blockPos = finalPos.mutable();
+            while(this.level.getBlockState(blockPos.below()).isAir()) {
+                blockPos.move(0, -1, 0);
+            }
+            finalPos = blockPos;
 
             for(int i = -PORTAL_BASE; i < PORTAL_BASE + 1; i++) {
                 for(int j = 0; j < PORTAL_WIDTH; j++) {
