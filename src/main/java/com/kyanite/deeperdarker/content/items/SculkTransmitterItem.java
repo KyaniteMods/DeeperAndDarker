@@ -34,7 +34,7 @@ public class SculkTransmitterItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         if (pContext.getPlayer() == null) return InteractionResult.FAIL;
-        if(pContext.getItemInHand().hasTag()) {
+        if(pContext.getItemInHand().hasTag() && pPlayer.getMainHandItem().getTag().getByte("linked") == 1) {
             return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
         }
 
@@ -50,7 +50,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(pPlayer.getMainHandItem().hasTag()) {
+        if(pPlayer.getMainHandItem().hasTag() && pPlayer.getMainHandItem().getTag().getByte("linked") == 1) {
             transmit(pLevel, pPlayer, pUsedHand, null);
         }
 
@@ -59,7 +59,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) {
+        if(pStack.hasTag()  && pStack.getTag().getByte("linked") == 1) {
             int[] pos = pStack.getTag().getIntArray("blockPos");
             pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", pLevel.getBlockState(new BlockPos(pos[0], pos[1], pos[2])).getBlock().getName()).withStyle(ChatFormatting.GRAY));
             pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos[0], pos[1], pos[2]).withStyle(ChatFormatting.GRAY));
