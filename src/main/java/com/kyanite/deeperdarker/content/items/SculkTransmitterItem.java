@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 
@@ -34,7 +33,7 @@ public class SculkTransmitterItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         if (pContext.getPlayer() == null) return InteractionResult.FAIL;
-        if(pContext.getItemInHand().hasTag() && pPlayer.getMainHandItem().getTag().getByte("linked") == 1) {
+        if(pContext.getItemInHand().hasTag() && pContext.getItemInHand().getTag().getByte("linked") == 1) {
             return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
         }
 
