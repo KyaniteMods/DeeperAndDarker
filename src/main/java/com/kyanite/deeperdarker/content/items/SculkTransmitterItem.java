@@ -96,7 +96,7 @@ public class SculkTransmitterItem extends Item {
 
         MenuProvider menu = level.getBlockState(linkedBlockPos).getMenuProvider(level, linkedBlockPos);
         if(menu != null) {
-            if(level.isClientSide())
+            if(!level.isClientSide())
                 player.playNotifySound(DDSounds.TRANSMITTER_OPEN, SoundSource.PLAYERS, 1.0f, 1.0f);
             player.openMenu(menu);
             if(level.getBlockEntity(linkedBlockPos) instanceof ChestBlockEntity chestBlockEntity) chestBlockEntity.startOpen(player);
