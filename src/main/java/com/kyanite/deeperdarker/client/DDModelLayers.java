@@ -23,6 +23,7 @@ public class DDModelLayers {
     public static ModelLayerLocation SHRIEK_WORM;
     public static ModelLayerLocation STALKER;
     public static ModelLayerLocation SCULK_CENTIPEDE;
+    public static ModelLayerLocation HONEYBOUND_TOTEM;
 
     private static ModelLayerLocation registerMain(String id) {
         return register(id, "main");
@@ -62,5 +63,6 @@ public class DDModelLayers {
         SHRIEK_WORM = registerMain("shriek_worm");
         STALKER = registerMain("stalker");
         SCULK_CENTIPEDE = registerMain("sculk_centipede");
+        HONEYBOUND_TOTEM = registerMain("honeybound_totem");
     }
 }

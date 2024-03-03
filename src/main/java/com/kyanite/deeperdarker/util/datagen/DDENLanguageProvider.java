@@ -204,6 +204,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.SHRIEK_WORM, "Shriek Worm");
         translationBuilder.add(DDEntities.STALKER, "Stalker");
         translationBuilder.add(DDEntities.SCULK_CENTIPEDE, "Sculk Centipede");
+        translationBuilder.add(DDEntities.HONEYBOUND_TOTEM, "Honeybound Totem");
 
         translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
@@ -322,6 +323,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.AMBER_GLASS, "Amber Glass");
         translationBuilder.add(DDItems.WARDEN_FLINT_AND_STEEL, "Warden Flint and Steel");
         translationBuilder.add(DDItems.HEART_NECKLACE, "Heart Necklace");
+        translationBuilder.add(DDItems.HONEYBOUND_TOTEM, "Honeybound Totem");
 
         // April Fools Death
         translationBuilder.add("death.stalker.too_much_noise", "%s had too much for their sensitive little ears and just died");

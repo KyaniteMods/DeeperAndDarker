@@ -22,6 +22,7 @@ public class DDEntities {
     public static final EntityType<Stalker> STALKER = register("stalker", EntityType.Builder.of(Stalker::new, MobCategory.MONSTER).sized(1f, 4.4f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "shriek_worm").toString()));
 
     public static final EntityType<SculkPrimedTNT> SCULK_TNT = register("sculk_tnt", EntityType.Builder.<SculkPrimedTNT>of(SculkPrimedTNT::new, MobCategory.MISC).sized(0.98f, 0.98f).fireImmune().clientTrackingRange(10).updateInterval(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_tnt").toString()));
+    public static final EntityType<HoneyboundTotem> HONEYBOUND_TOTEM = register("honeybound_totem", EntityType.Builder.of(HoneyboundTotem::new, MobCategory.MISC).sized(0.985f, 2.0f).fireImmune().clientTrackingRange(10).updateInterval(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "honeybound_totem").toString()));
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");

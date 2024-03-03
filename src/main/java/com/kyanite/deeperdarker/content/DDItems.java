@@ -65,6 +65,7 @@ public class DDItems {
     public static final Item BIOSCULK_CHEST_BOAT = register("biosculk_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BIOSCULK));
     public static final Item WARDEN_FLINT_AND_STEEL = register("warden_flint_and_steel", new FlintAndSteelItem(new Item.Properties().durability(64).rarity(Rarity.EPIC)));
     public static final Item HEART_NECKLACE = register("heart_necklace", new HeartNecklaceItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final Item HONEYBOUND_TOTEM = register("honeybound_totem", new HoneyboundTotemItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
 
     public static Item register(String id, Item item) {
