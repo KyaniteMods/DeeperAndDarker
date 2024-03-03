@@ -29,7 +29,6 @@ public class HoneyboundTotemModel<T extends HoneyboundTotem> extends Model {
     }
 
     public void setupAnim(T entity, float netHeadYaw, float headPitch) {
-        this.bone.xRot = headPitch * ((float)Math.PI / 180f);
         this.bone.yRot = netHeadYaw * ((float)Math.PI / 180f);
     }
 
