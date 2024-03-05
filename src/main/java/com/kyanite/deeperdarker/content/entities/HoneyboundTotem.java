@@ -56,10 +56,9 @@ public class HoneyboundTotem extends Entity {
         return this.getEntityData().get(DATA_HONEY_AMOUNT);
     }
 
-    public boolean setHoneyAmount(byte amount) {
-        if (this.getHoneyAmount() + amount > this.getMaxHoneyAmount() || this.getHoneyAmount() + amount < 0) return false;
+    public void setHoneyAmount(byte amount) {
+        if (amount < 0) amount = (byte)-amount;
         this.getEntityData().set(DATA_HONEY_AMOUNT, (byte)(amount % 4));
-        return true;
     }
 
     public long getHoneyTime() {

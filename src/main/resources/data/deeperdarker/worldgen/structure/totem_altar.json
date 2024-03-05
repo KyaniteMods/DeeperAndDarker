@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#deeperdarker:has_structure/totem_altar",
+  "max_distance_from_center": 80,
+  "size": 1,
+  "spawn_overrides": {},
+  "start_height": {
+    "type": "uniform",
+    "min_inclusive": {
+      "above_bottom": 10
+    },
+    "max_inclusive": {
+      "below_top": 10
+    }
+  },
+  "start_pool": "deeperdarker:totem_altar/totem_altar",
+  "step": "underground_structures",
+  "use_expansion_hack": false
+}
