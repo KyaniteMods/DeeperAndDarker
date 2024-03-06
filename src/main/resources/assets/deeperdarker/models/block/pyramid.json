@@ -3331,6 +3331,13 @@
 			}
 		}
 	],
+	"display": {
+		"gui": {
+			"rotation": [-45, 180, 45],
+			"translation": [0, 1.5, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
+	},
 	"groups": [
 		{
 			"name": "pyramid",
