@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class DDTags {
     public static class Blocks {
@@ -43,5 +44,10 @@ public class DDTags {
 
     public static class Biomes {
         public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/ancient_temple"));
+    }
+
+    public static class Structures {
+        public static final TagKey<Structure> WARDEN_HEART_PULSES = TagKey.create(
+                Registries.STRUCTURE, new ResourceLocation(DeeperDarker.MOD_ID, "warden_heart_pulses"));
     }
 }
