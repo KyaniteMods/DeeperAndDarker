@@ -4,8 +4,12 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -42,5 +46,10 @@ public class EarbudsItem extends Item implements Equipable {
             Minecraft.getInstance().options.getSoundSourceOptionInstance(SoundSource.WEATHER).set(1.0);
             Minecraft.getInstance().options.save();
         }
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        return this.swapWithEquipmentSlot(this, level, player, interactionHand);
     }
 }
