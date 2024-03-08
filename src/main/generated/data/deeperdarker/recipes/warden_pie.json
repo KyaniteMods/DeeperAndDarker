@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": {
+      "item": "deeperdarker:heart_of_the_deep"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "IHI",
+    " I "
+  ],
+  "result": {
+    "item": "deeperdarker:warden_pie"
+  }
+}

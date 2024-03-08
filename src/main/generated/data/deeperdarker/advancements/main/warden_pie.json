@@ -1,0 +1,33 @@
+{
+  "parent": "deeperdarker:main/kill_warden",
+  "criteria": {
+    "warden_pie": {
+      "conditions": {
+        "item": {
+          "items": [
+            "deeperdarker:warden_pie"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.deeperdarker.warden_pie.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "item": "deeperdarker:warden_pie"
+    },
+    "title": {
+      "translate": "advancements.deeperdarker.warden_pie.title"
+    }
+  },
+  "requirements": [
+    [
+      "warden_pie"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
