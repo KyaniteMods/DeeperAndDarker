@@ -293,7 +293,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.STALKER_EAR, "Stalker Ear");
         translationBuilder.add(DDItems.EARBUD, "Earbud");
         translationBuilder.add(DDItems.EARBUDS, "Earbuds");
-        
+
         // Blocks ...(same thing I wrote above)
         translationBuilder.add(DDBlocks.BIOSCULK_LOG, "Biosculk Log");
         translationBuilder.add(DDBlocks.BIOSCULK_WOOD, "Biosculk Wood");
@@ -324,6 +324,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.WARDEN_FLINT_AND_STEEL, "Warden Flint and Steel");
         translationBuilder.add(DDItems.HEART_NECKLACE, "Heart Necklace");
         translationBuilder.add(DDItems.HONEYBOUND_TOTEM, "Honeybound Totem");
+        translationBuilder.add(DDItems.WARDEN_PIE, "Warden Pie");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_pie.title", "March 14");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_pie.description", "Use Warden Pie for something that may or may not be eating");
 
         // April Fools Death
         translationBuilder.add("death.stalker.too_much_noise", "%s had too much for their sensitive little ears and just died");

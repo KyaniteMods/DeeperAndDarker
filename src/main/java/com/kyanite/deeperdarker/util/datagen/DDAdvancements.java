@@ -169,6 +169,19 @@ public class DDAdvancements implements Consumer<Consumer<AdvancementHolder>> {
                 ).addCriterion("warden_armor", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.WARDEN_HELMET, DDItems.WARDEN_CHESTPLATE, DDItems.WARDEN_LEGGINGS, DDItems.WARDEN_BOOTS))
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(advancementConsumer, path("warden_armor"));
+
+        Advancement.Builder.advancement().parent(killWarden)
+                .display(
+                        DDItems.WARDEN_PIE,
+                        Component.translatable(id + "warden_pie.title"),
+                        Component.translatable(id + "warden_pie.description"),
+                        null,
+                        AdvancementType.CHALLENGE,
+                        true,
+                        true,
+                        false
+                ).addCriterion("warden_pie", ConsumeItemTrigger.TriggerInstance.usedItem(DDItems.WARDEN_PIE))
+                .save(advancementConsumer, path("warden_pie"));
     }
 
     private String path(String name) {

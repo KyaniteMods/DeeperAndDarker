@@ -264,6 +264,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.BIOSCULK_WOOD_PYRAMID).define('W', DDBlocks.BIOSCULK_WOOD).pattern(" W ").pattern("WWW").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.BIOSCULK_WOOD), FabricRecipeProvider.has(DDBlocks.BIOSCULK_WOOD)).save(exporter);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_BIOSCULK_LOG_PYRAMID).define('L', DDBlocks.STRIPPED_BIOSCULK_LOG).pattern(" L ").pattern("LLL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.STRIPPED_BIOSCULK_LOG), FabricRecipeProvider.has(DDBlocks.STRIPPED_BIOSCULK_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_BIOSCULK_WOOD_PYRAMID).define('W', DDBlocks.STRIPPED_BIOSCULK_WOOD).pattern(" W ").pattern("WWW").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.STRIPPED_BIOSCULK_WOOD), FabricRecipeProvider.has(DDBlocks.STRIPPED_BIOSCULK_WOOD)).save(exporter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, DDItems.WARDEN_PIE).define('H', DDItems.HEART_OF_THE_DEEP).define('I', Items.IRON_INGOT).pattern("IHI").pattern(" I ").unlockedBy(FabricRecipeProvider.getHasName(DDItems.HEART_OF_THE_DEEP), FabricRecipeProvider.has(DDItems.HEART_OF_THE_DEEP)).save(exporter);
     }
 
     private static void woodRecipes(RecipeOutput exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {

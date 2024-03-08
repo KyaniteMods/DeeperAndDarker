@@ -1,4 +1,4 @@
-// 1.20.4	2024-03-03T18:29:30.186751528	Deeper and Darker/Advancements
+// 1.20.4	2024-03-07T23:30:54.034482996	Deeper and Darker/Advancements
 55e0598df7fed42ae97e08f4b0a1a67f6782649e data/deeperdarker/advancements/main/explore_otherside.json
 6b60e15d7540e9847c1c1477d573daffb394a08c data/deeperdarker/advancements/main/enter_otherside.json
 dce009da9a59d8bf0a658f3d8c82543bff8ba809 data/deeperdarker/advancements/main/find_ancient_temple.json
@@ -6,6 +6,7 @@ dce009da9a59d8bf0a658f3d8c82543bff8ba809 data/deeperdarker/advancements/main/fin
 98ae2082410c3f6d313f6bd0b1c2e8b459b7e1f8 data/deeperdarker/advancements/main/warden_armor.json
 79932da94c0246933fd0e33a1d32ed541bfc02e3 data/deeperdarker/advancements/main/obtain_reinforce_echo_shard.json
 1b59f11f856e6e8797efba5ee35d17958d0253d5 data/deeperdarker/advancements/main/kill_warden.json
+aef1b7288748e469f45f01a2957b72d5ec71968b data/deeperdarker/advancements/main/warden_pie.json
 bd67f446dc762d5d1ad07e8d63b15e4ead2a9282 data/deeperdarker/advancements/main/root.json
 d48633e959707420f3a5cc2f28305d4bf418e339 data/deeperdarker/advancements/main/find_ancient_city.json
 44e4d8d59fea19536eb202552af6dce1397f9058 data/deeperdarker/advancements/main/kill_all_sculk_mobs.json

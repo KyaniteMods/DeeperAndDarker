@@ -10,6 +10,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 
 import java.util.List;
@@ -66,6 +67,7 @@ public class DDItems {
     public static final Item WARDEN_FLINT_AND_STEEL = register("warden_flint_and_steel", new FlintAndSteelItem(new Item.Properties().durability(64).rarity(Rarity.EPIC)));
     public static final Item HEART_NECKLACE = register("heart_necklace", new HeartNecklaceItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final Item HONEYBOUND_TOTEM = register("honeybound_totem", new HoneyboundTotemItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final Item WARDEN_PIE = register("warden_pie", new Item(new Item.Properties().stacksTo(1).food(new FoodProperties.Builder().nutrition(8).saturationMod(1.3f).meat().build())));
 
 
     public static Item register(String id, Item item) {
