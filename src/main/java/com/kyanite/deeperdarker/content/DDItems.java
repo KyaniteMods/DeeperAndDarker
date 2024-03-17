@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.items.*;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
@@ -108,5 +109,13 @@ public class DDItems {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering items");
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.ECHO_SAPLING.asItem(), 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.ECHO_LEAVES.asItem(), 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.GLOWING_FLOWERS.asItem(), 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.GLOWING_ROOTS.asItem(), 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(BLOOM_BERRIES, 0.3f);
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.SCULK_TENDRILS.asItem(), 0.5f);
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.GLOWING_GRASS.asItem(), 0.5f);
+        CompostingChanceRegistry.INSTANCE.add(DDBlocks.SCULK_VINES.asItem(), 0.5f);
     }
 }
