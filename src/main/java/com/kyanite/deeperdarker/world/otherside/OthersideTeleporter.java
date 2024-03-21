@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.world.otherside;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
+import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,8 +30,8 @@ import java.util.function.Function;
 
 public class OthersideTeleporter implements ITeleporter {
     private static final int PORTAL_BASE = 2;
-    private static final int PORTAL_WIDTH = 6;
-    private static final int PORTAL_HEIGHT = 3;
+    private static final int PORTAL_WIDTH = DeeperDarkerConfig.othersidePortalWidth;
+    private static final int PORTAL_HEIGHT = DeeperDarkerConfig.othersidePortalHeight;
     private final ServerLevel level;
 
     public OthersideTeleporter(ServerLevel level) {
