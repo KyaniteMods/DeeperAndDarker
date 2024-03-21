@@ -28,14 +28,13 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems, DataFlowIssue")
 public class SculkTransmitterItem extends Item {
-
     public SculkTransmitterItem(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
-        if(pContext.getItemInHand().hasTag()) {
+        if(isLinked(pContext.getItemInHand())) {
             return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
         }
 
@@ -51,16 +50,13 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(pPlayer.getMainHandItem().hasTag()) {
-            transmit(pLevel, pPlayer, pUsedHand, null);
-        }
-
+        if(isLinked(pPlayer.getMainHandItem())) transmit(pLevel, pPlayer, pUsedHand, null);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) {
+        if(isLinked(pStack)) {
             int[] pos = pStack.getTag().getIntArray("blockPos");
             pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", pLevel.getBlockState(new BlockPos(pos[0], pos[1], pos[2])).getBlock().getName()).withStyle(ChatFormatting.GRAY));
             pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos[0], pos[1], pos[2]).withStyle(ChatFormatting.GRAY));
@@ -106,14 +102,17 @@ public class SculkTransmitterItem extends Item {
     }
 
     private void formConnection(ItemStack stack, BlockPos pos) {
-        CompoundTag tag = new CompoundTag();
+        CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
             stack.removeTagKey("blockPos");
             return;
         }
 
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
-        stack.setTag(tag);
+    }
+
+    private boolean isLinked(ItemStack stack) {
+        return stack.hasTag() && stack.getTag().contains("blockPos");
     }
 
     private boolean canConnect(Level level, BlockPos target) {
