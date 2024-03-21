@@ -74,8 +74,8 @@ dependencies {
 }
 
 mixin {
-    add sourceSets.main, 'mixins.deeperdarker.refmap.json'
-    config 'mixins.deeperdarker.json'
+    add sourceSets.main, "mixins." + mod_id + ".refmap.json"
+    config "mixins." + mod_id + ".json"
 }
 
 tasks.named('processResources', ProcessResources).configure {
