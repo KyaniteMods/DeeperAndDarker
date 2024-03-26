@@ -45,8 +45,9 @@ public class DDBoatRenderer extends BoatRenderer {
 
     @Override
     public Pair<ResourceLocation, ListModel<Boat>> getModelWithLocation(Boat boat) {
-        if(boat instanceof DDBoat ddBoat) return BOAT_RESOURCES.get(ddBoat.getWoodType());
-        if(boat instanceof DDChestBoat ddChestBoat) return BOAT_RESOURCES.get(ddChestBoat.getWoodType());
-        return BOAT_RESOURCES.get("echo");
+        Pair<ResourceLocation, ListModel<Boat>> model = null;
+        if(boat instanceof DDBoat ddBoat) model = BOAT_RESOURCES.get(ddBoat.getWoodType());
+        if(boat instanceof DDChestBoat ddChestBoat) model = BOAT_RESOURCES.get(ddChestBoat.getWoodType());
+        return model == null ? BOAT_RESOURCES.get("bloom") : model;
     }
 }
