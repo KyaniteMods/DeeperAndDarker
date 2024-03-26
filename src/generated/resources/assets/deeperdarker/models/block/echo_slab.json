@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "deeperdarker:block/echo_planks",
-    "side": "deeperdarker:block/echo_planks",
-    "top": "deeperdarker:block/echo_planks"
-  }
-}

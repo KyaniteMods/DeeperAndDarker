@@ -1,8 +1,0 @@
-{
-  "parent": "deeperdarker:block/flowers",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "flowers": "deeperdarker:block/glowing_flowers",
-    "stem": "deeperdarker:block/glowing_flowers_stem"
-  }
-}

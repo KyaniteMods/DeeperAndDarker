@@ -1,8 +1,8 @@
 {
   "pack": {
     "description": {
-      "text": "${mod_id} resources"
+      "text": "Deeper and Darker resources"
     },
-    "pack_format": 15
+    "pack_format": 22
   }
 }
