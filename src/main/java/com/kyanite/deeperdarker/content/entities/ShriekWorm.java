@@ -17,6 +17,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -118,6 +119,9 @@ public class ShriekWorm extends Monster {
                 level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), getRandomX(1), getY() + 1, getRandomZ(1), sX, sY, sZ);
             }
         }
+
+        if(asleep) setBoundingBox(new AABB(this.position().x - 0.5, this.position().y, this.position().z - 0.5, this.position().x + 0.5, this.position().y + 1.6, this.position().z + 0.5));
+        else setBoundingBox(new AABB(this.position().x - 0.5, this.position().y, this.position().z - 0.5, this.position().x + 0.5, this.position().y + 5.7, this.position().z + 0.5));
 
         /*if(this.descendState.isStarted()) {
             this.entityData.set(IDLE_TIMER, this.entityData.get(IDLE_TIMER) - 1);
