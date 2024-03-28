@@ -33,6 +33,9 @@ public class DDBlocks {
     // TODO: Echo Sapling
     public static final DeferredBlock<StandingSignBlock> ECHO_SIGN = BLOCKS.register("echo_sign", () -> new StandingSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<WallSignBlock> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new WallSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).lootFrom(ECHO_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final DeferredBlock<CeilingHangingSignBlock> ECHO_HANGING_SIGN = BLOCKS.register("echo_hanging_sign", () -> new CeilingHangingSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final DeferredBlock<WallHangingSignBlock> ECHO_WALL_HANGING_SIGN = BLOCKS.register("echo_wall_hanging_sign", () -> new WallHangingSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(ECHO_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    // TODO: Potted Echo Sapling
 
     // Bloom wood set
     private static final BlockSetType BLOOM_SET = BlockSetType.register(new BlockSetType("bloom"));
@@ -50,6 +53,8 @@ public class DDBlocks {
     public static final DeferredBlock<ButtonBlock> BLOOM_BUTTON = BLOCKS.register("bloom_button", () -> new ButtonBlock(BLOOM_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<StandingSignBlock> BLOOM_SIGN = BLOCKS.register("bloom_sign", () -> new StandingSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<WallSignBlock> BLOOM_WALL_SIGN = BLOCKS.register("bloom_wall_sign", () -> new WallSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).lootFrom(BLOOM_SIGN).mapColor(MapColor.GLOW_LICHEN)));
+    public static final DeferredBlock<CeilingHangingSignBlock> BLOOM_HANGING_SIGN = BLOCKS.register("bloom_hanging_sign", () -> new CeilingHangingSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final DeferredBlock<WallHangingSignBlock> BLOOM_WALL_HANGING_SIGN = BLOCKS.register("bloom_wall_hanging_sign", () -> new WallHangingSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(BLOOM_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)));
 
     // TODO: Sculk Stone, Ores
 

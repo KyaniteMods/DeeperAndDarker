@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import net.minecraft.data.DataGenerator;
@@ -17,6 +18,7 @@ public class DDDataGenerators {
 
             generator.addProvider(true, new DDENLanguageProvider(output));
             generator.addProvider(true, new DDItemModelProvider(output, helper));
+            generator.addProvider(true, new DDBlockStateProvider(output, helper));
 
         }
         catch (RuntimeException exception) {

@@ -80,6 +80,7 @@ public class DDItems {
     public static final Supplier<BlockItem> ECHO_BUTTON = ITEMS.registerSimpleBlockItem(DDBlocks.ECHO_BUTTON);
     public static final Supplier<BlockItem> ECHO_LEAVES = ITEMS.registerSimpleBlockItem(DDBlocks.ECHO_LEAVES);
     //TODO: Echo Sign, Hanging Sign, Boat, Chest Boat
+    // public static final Supplier<SignItem> ECHO_SIGN = ITEMS
 
     // Bloom wood set
     //TODO: Blooming Stem, Stripped Blooming Stem

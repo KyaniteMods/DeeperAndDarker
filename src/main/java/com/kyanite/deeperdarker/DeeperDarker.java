@@ -25,7 +25,7 @@ public class DeeperDarker {
         eventBus.addListener(FMLClientSetupEvent.class, (fmlClientSetupEvent -> {
             fmlClientSetupEvent.enqueueWork(() -> {
                 ModList.get().getModContainerById(MODID).ifPresent(modContainer -> {
-                    logger.info("Loaded {}, using version {}", modContainer.getModInfo().getDisplayName(), modContainer.getModInfo().getVersion());
+                    logger.info("Loaded {} version {}", modContainer.getModInfo().getDisplayName(), modContainer.getModInfo().getVersion());
                 });
             });
         }));

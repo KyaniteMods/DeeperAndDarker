@@ -22,6 +22,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         item(DDItems.SCULK_BONE.get());
         item(DDItems.SOUL_DUST.get());
         item(DDItems.SOUL_CRYSTAL.get());
+
+        
     }
 
     private void item(Item item) {
