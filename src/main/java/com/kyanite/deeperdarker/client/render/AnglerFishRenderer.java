@@ -18,6 +18,7 @@ public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel>
 
     public AnglerFishRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new AnglerFishModel(pContext.bakeLayer(MODEL)), 0.4f);
+        this.addLayer(new AnglerFishGlowRenderer(this));
     }
 
 
