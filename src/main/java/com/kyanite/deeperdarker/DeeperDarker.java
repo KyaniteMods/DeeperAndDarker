@@ -44,6 +44,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -149,6 +150,7 @@ public class DeeperDarker {
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(DDEntities.ANGLER_FISH.get(), AnglerFish.createAttributesSupplier());
         event.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipede.createAttributes());
         event.put(DDEntities.SCULK_LEECH.get(), SculkLeech.createAttributes());
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
@@ -158,6 +160,7 @@ public class DeeperDarker {
     }
 
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+        event.register(DDEntities.ANGLER_FISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
@@ -235,6 +238,7 @@ public class DeeperDarker {
             BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
             EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
             EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+            EntityRenderers.register(DDEntities.ANGLER_FISH.get(), AnglerFishRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
@@ -259,6 +263,7 @@ public class DeeperDarker {
             event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
             event.registerLayerDefinition(DDBoatRenderer.BLOOM_BOAT_MODEL, BoatModel::createBodyModel);
             event.registerLayerDefinition(DDBoatRenderer.BLOOM_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+            event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createBodyModel);
             event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
             event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
             event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);

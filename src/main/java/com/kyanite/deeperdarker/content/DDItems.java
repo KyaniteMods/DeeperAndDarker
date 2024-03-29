@@ -66,6 +66,7 @@ public class DDItems {
     public static final RegistryObject<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> SONOROUS_STAFF = ITEMS.register("sonorous_staff", () -> new SonorousStaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> ANGLER_FISH_SPAWN_EGG = ITEMS.register("angler_fish_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));
     public static final RegistryObject<Item> SCULK_CENTIPEDE_SPAWN_EGG = ITEMS.register("sculk_centipede_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));
     public static final RegistryObject<Item> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Properties()));
     public static final RegistryObject<Item> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new ForgeSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xd1d6b6, 0x1d726f, new Item.Properties()));

@@ -190,6 +190,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         // itemModel(DDItems.SONOROUS_STAFF, GENERATED);
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
+        spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
