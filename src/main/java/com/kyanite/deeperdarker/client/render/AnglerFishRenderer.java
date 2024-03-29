@@ -9,15 +9,18 @@ import com.mojang.math.Axis;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
-public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/angler_fish.png");
+public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel> implements RenderLayerParent<AnglerFish, AnglerFishModel> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/angler_fish/angler_fish.png");
+    private static final ResourceLocation EMISSIVE_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/angler_fish/angler_fish_bioluminescent_layer.png");
 
     public AnglerFishRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new AnglerFishModel(pContext.bakeLayer(DDModelLayers.ANGLER_FISH)), 0.4f);
+        this.addLayer(new AnglerFishEmissiveLayer<>(this, EMISSIVE_TEXTURE));
     }
 
 
