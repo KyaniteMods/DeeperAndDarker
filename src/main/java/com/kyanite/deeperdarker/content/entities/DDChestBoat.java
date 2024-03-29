@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.nbt.CompoundTag;
@@ -33,12 +34,12 @@ public class DDChestBoat extends ChestBoat {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(WOOD_TYPE, "echo");
+        this.entityData.define(WOOD_TYPE, DDBlocks.ECHO.name());
     }
 
     @Override
     public Item getDropItem() {
-        return this.entityData.get(WOOD_TYPE).equals("echo") ? DDItems.ECHO_CHEST_BOAT.get() : DDItems.BLOOM_CHEST_BOAT.get();
+        return this.entityData.get(WOOD_TYPE).equals(DDBlocks.BLOOM.name()) ? DDItems.BLOOM_CHEST_BOAT.get() : DDItems.ECHO_CHEST_BOAT.get();
     }
 
     @Override
