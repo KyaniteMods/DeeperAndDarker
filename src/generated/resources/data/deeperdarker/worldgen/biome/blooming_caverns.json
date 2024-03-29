@@ -68,6 +68,12 @@
     "misc": [],
     "monster": [
       {
+        "type": "deeperdarker:angler_fish",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 6
+      },
+      {
         "type": "deeperdarker:sculk_snapper",
         "maxCount": 2,
         "minCount": 1,

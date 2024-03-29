@@ -1,8 +1,8 @@
-// 1.20.1	2024-01-06T18:09:35.1430196	Registries
+// 1.20.1	2024-03-29T12:37:01.6518821	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 67f8cd0621b1c3614da8c1910f6b7bcb61660293 data/deeperdarker/dimension_type/otherside.json
-77fa1d6c4e5f29aaa620ea412ff7be9fe06d2c78 data/deeperdarker/worldgen/biome/blooming_caverns.json
+9b2c458e9a8d4dff2acd71cfcd27dcd84dcb01d4 data/deeperdarker/worldgen/biome/blooming_caverns.json
 4491dd6887a8760b77f9a28406c3e4c0535b108d data/deeperdarker/worldgen/biome/deeplands.json
 bd2c433caf3a3f7dfff3668a68dbdf56fa994df5 data/deeperdarker/worldgen/biome/echoing_forest.json
 06d29b9291ed3a63be90750a8c6f182e0c168b7b data/deeperdarker/worldgen/biome/overcast_columns.json

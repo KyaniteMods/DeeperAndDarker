@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -15,6 +17,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 
 @SuppressWarnings("NullableProblems")
 public class AnglerFish extends AbstractFish {
@@ -61,6 +65,10 @@ public class AnglerFish extends AbstractFish {
 
     public boolean validTarget(LivingEntity entity) {
         return entity != null && entity.isInWater();
+    }
+
+    public static boolean checkSpawnRules(EntityType<? extends LivingEntity> pType, ServerLevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        return pLevel.getBlockState(pPos).is(Blocks.WATER);
     }
 
     @Override
