@@ -72,6 +72,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_CHEST_BOAT, ChestBoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOM_BOAT, BoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOM_CHEST_BOAT, ChestBoatModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ANGLER_FISH, AnglerFishModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_SNAPPER, SculkSnapperModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED, ShatteredModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_LEECH, SculkLeechModel::createBodyModel);
@@ -81,6 +82,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer(ctx, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer(ctx, true));
+        EntityRendererRegistry.register(DDEntities.ANGLER_FISH, AnglerFishRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
         EntityRendererRegistry.register(DDEntities.SHATTERED, ShatteredRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_LEECH, SculkLeechRenderer::new);

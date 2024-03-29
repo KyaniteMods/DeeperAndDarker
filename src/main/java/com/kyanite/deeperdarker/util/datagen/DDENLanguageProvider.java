@@ -197,6 +197,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
         translationBuilder.add(DDItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
         translationBuilder.add(DDItems.SCULK_TRANSMITTER, "Sculk Transmitter");
+        translationBuilder.add(DDItems.ANGLER_FISH_SPAWN_EGG, "Angler Fish Spawn Egg");
         translationBuilder.add(DDItems.SCULK_SNAPPER_SPAWN_EGG, "Sculk Snapper Spawn Egg");
         translationBuilder.add(DDItems.SHATTERED_SPAWN_EGG, "Shattered Spawn Egg");
         translationBuilder.add(DDItems.SCULK_LEECH_SPAWN_EGG, "Sculk Leech Spawn Egg");
@@ -233,6 +234,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(DDEntities.BOAT, "Boat");
         translationBuilder.add(DDEntities.CHEST_BOAT, "Boat with Chest");
+        translationBuilder.add(DDEntities.ANGLER_FISH, "Angler Fish");
         translationBuilder.add(DDEntities.SCULK_SNAPPER, "Sculk Snapper");
         translationBuilder.add(DDEntities.SHATTERED, "Shattered");
         translationBuilder.add(DDEntities.SCULK_LEECH, "Sculk Leech");

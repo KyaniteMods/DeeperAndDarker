@@ -7,12 +7,14 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 public class DDEntities {
     public static final EntityType<DDBoat> BOAT = register("boat", EntityType.Builder.<DDBoat>of(DDBoat::new, MobCategory.MISC).sized(1.375f, 0.5625f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "boat").toString()));
     public static final EntityType<DDChestBoat> CHEST_BOAT = register("chest_boat", EntityType.Builder.<DDChestBoat>of(DDChestBoat::new, MobCategory.MISC).sized(1.375f, 0.5625f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "chest_boat").toString()));
 
+    public static final EntityType<AnglerFish> ANGLER_FISH = register("angler_fish", EntityType.Builder.of(AnglerFish::new, MobCategory.WATER_CREATURE).sized(0.7f, 0.4f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "angler_fish").toString()));
     public static final EntityType<SculkCentipede> SCULK_CENTIPEDE = register("sculk_centipede", EntityType.Builder.of(SculkCentipede::new, MobCategory.MONSTER).sized(1f, 0.2f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_centipede").toString()));
     public static final EntityType<SculkLeech> SCULK_LEECH = register("sculk_leech", EntityType.Builder.of(SculkLeech::new, MobCategory.MONSTER).sized(0.42f, 0.2f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_leech").toString()));
     public static final EntityType<SculkSnapper> SCULK_SNAPPER = register("sculk_snapper", EntityType.Builder.of(SculkSnapper::new, MobCategory.MONSTER).sized(0.65f, 0.65f).clientTrackingRange(10).build(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_snapper").toString()));
@@ -27,6 +29,7 @@ public class DDEntities {
     }
 
     private static void registerAttributes() {
+        DefaultAttributeRegistryAccessor.getRegistry().put(ANGLER_FISH, AnglerFish.createAttributeSupplier());
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_SNAPPER, SculkSnapper.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SHATTERED, Shattered.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_LEECH, SculkLeech.createAttributes());
@@ -41,6 +44,7 @@ public class DDEntities {
     }
 
     public static void registerSpawnPlacements() {
+        SpawnPlacements.register(DDEntities.ANGLER_FISH, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, WaterAnimal::checkSurfaceWaterAnimalSpawnRules);
         SpawnPlacements.register(SCULK_SNAPPER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(SHATTERED, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(SCULK_LEECH, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);

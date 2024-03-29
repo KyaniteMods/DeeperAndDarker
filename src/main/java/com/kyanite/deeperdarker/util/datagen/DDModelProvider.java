@@ -284,6 +284,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BLOOM_FENCE.asItem()), TextureMapping.cube(DDBlocks.BLOOM_PLANKS), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        registerSpawnEgg(itemModelGenerator, DDItems.ANGLER_FISH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SHATTERED_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_LEECH_SPAWN_EGG);

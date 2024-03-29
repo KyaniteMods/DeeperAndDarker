@@ -17,6 +17,7 @@ public class DDModelLayers {
     public static ModelLayerLocation ECHO_CHEST_BOAT;
     public static ModelLayerLocation BLOOM_BOAT;
     public static ModelLayerLocation BLOOM_CHEST_BOAT;
+    public static ModelLayerLocation ANGLER_FISH;
     public static ModelLayerLocation SCULK_SNAPPER;
     public static ModelLayerLocation SHATTERED;
     public static ModelLayerLocation SCULK_LEECH;
@@ -56,6 +57,7 @@ public class DDModelLayers {
         ECHO_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
         BLOOM_BOAT = createBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());
         BLOOM_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());
+        ANGLER_FISH = registerMain("angler_fish");
         SCULK_SNAPPER = registerMain("sculk_snapper");
         SHATTERED = registerMain("shattered");
         SCULK_LEECH = registerMain("sculk_leech");

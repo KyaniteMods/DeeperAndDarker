@@ -177,6 +177,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.ANCIENT_VASE));
         entries.accept(new ItemStack(DDBlocks.SOUNDPROOF_GLASS));
         entries.accept(new ItemStack(DDItems.SCULK_TRANSMITTER));
+        entries.accept(new ItemStack(DDItems.ANGLER_FISH_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SCULK_SNAPPER_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SHATTERED_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SCULK_LEECH_SPAWN_EGG));
