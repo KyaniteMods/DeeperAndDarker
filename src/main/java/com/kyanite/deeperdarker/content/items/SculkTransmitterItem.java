@@ -56,8 +56,8 @@ public class SculkTransmitterItem extends Item {
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
-    private InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos) {
-        int[] pos = player.getMainHandItem().getTag().getIntArray("blockPos");
+    public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos) {
+        int[] pos = transmitter.getTag().getIntArray("blockPos");
         BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
 
         if(!level.isLoaded(linkedPos)) {
@@ -95,7 +95,15 @@ public class SculkTransmitterItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
-    private void formConnection(Level level, ItemStack stack, BlockPos pos) {
+    public static boolean isLinked(ItemStack stack) {
+        return stack.hasTag() && stack.getTag().contains("blockPos");
+    }
+
+    private static boolean canConnect(Level level, BlockPos target) {
+        return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
+    }
+
+    private static void formConnection(Level level, ItemStack stack, BlockPos pos) {
         CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
             stack.removeTagKey("blockPos");
@@ -106,15 +114,7 @@ public class SculkTransmitterItem extends Item {
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
     }
 
-    private boolean isLinked(ItemStack stack) {
-        return stack.hasTag() && stack.getTag().contains("blockPos");
-    }
-
-    private boolean canConnect(Level level, BlockPos target) {
-        return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
-    }
-
-    private void actionBarMessage(Player player, String key, RegistryObject<SoundEvent> sound) {
+    private static void actionBarMessage(Player player, String key, RegistryObject<SoundEvent> sound) {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
         player.playSound(sound.get());
     }

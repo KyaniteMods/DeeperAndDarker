@@ -18,6 +18,7 @@ import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
+import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
@@ -249,6 +250,7 @@ public class DeeperDarker {
         @SubscribeEvent
         public static void registerKeybinds(final RegisterKeyMappingsEvent event) {
             event.register(Keybinds.BOOST);
+            event.register(Keybinds.TRANSMIT);
         }
 
         @SubscribeEvent
@@ -292,6 +294,7 @@ public class DeeperDarker {
         @SubscribeEvent
         public static void keyInput(final InputEvent.Key event) {
             if(Keybinds.BOOST.consumeClick()) Messages.INSTANCE.sendToServer(new SoulElytraBoostPacket());
+            if(Keybinds.TRANSMIT.consumeClick()) Messages.INSTANCE.sendToServer(new UseTransmitterPacket());
         }
     }
 }

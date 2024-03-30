@@ -16,5 +16,6 @@ public class Messages {
         INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(DeeperDarker.MOD_ID, channel), () -> "1.0", s -> true, s -> true);
         INSTANCE.registerMessage(nextID(), SoulElytraBoostPacket.class, SoulElytraBoostPacket::toBytes, SoulElytraBoostPacket::new, SoulElytraBoostPacket::handle);
         INSTANCE.registerMessage(nextID(), SoulElytraClientPacket.class, SoulElytraClientPacket::toBytes, SoulElytraClientPacket::new, SoulElytraClientPacket::handle);
+        INSTANCE.registerMessage(nextID(), UseTransmitterPacket.class, UseTransmitterPacket::toBytes, UseTransmitterPacket::new, UseTransmitterPacket::handle);
     }
 }

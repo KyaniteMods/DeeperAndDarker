@@ -13,10 +13,10 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class SoulElytraBoostPacket {
-    public SoulElytraBoostPacket(ByteBuf buf) {
+    public SoulElytraBoostPacket() {
     }
 
-    public SoulElytraBoostPacket() {
+    public SoulElytraBoostPacket(ByteBuf buf) {
     }
 
     public void toBytes(ByteBuf buf) {
@@ -25,7 +25,7 @@ public class SoulElytraBoostPacket {
     public void handle(Supplier<NetworkEvent.Context> context) {
         context.get().enqueueWork(() -> {
             ServerPlayer player = context.get().getSender();
-            Level level = context.get().getSender().level();
+            Level level = player.level();
             if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA.get()) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
                 level.addFreshEntity(rocket);

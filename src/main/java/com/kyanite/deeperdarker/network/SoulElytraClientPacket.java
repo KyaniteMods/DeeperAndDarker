@@ -10,10 +10,10 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class SoulElytraClientPacket {
-    public SoulElytraClientPacket(ByteBuf buf) {
+    public SoulElytraClientPacket() {
     }
 
-    public SoulElytraClientPacket() {
+    public SoulElytraClientPacket(ByteBuf buf) {
     }
 
     public void toBytes(ByteBuf buf) {

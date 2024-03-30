@@ -73,6 +73,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
+        add("key." + DeeperDarker.MOD_ID + ".transmit", "Use Sculk Transmitter");
 
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.DEEPLANDS.location().getPath(), convertToName(OthersideBiomes.DEEPLANDS.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
