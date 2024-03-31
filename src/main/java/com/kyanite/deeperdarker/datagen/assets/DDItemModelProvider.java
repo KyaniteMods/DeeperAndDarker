@@ -187,7 +187,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
-        // itemModel(DDItems.SONOROUS_STAFF, GENERATED);
+         itemModel(DDItems.SONOROUS_STAFF, HANDHELD);
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);
