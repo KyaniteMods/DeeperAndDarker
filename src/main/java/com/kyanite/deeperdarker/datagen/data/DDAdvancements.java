@@ -51,8 +51,8 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
         Advancement.Builder.advancement().parent(findAncientTemple).display(DDItems.SCULK_TRANSMITTER.get(), Component.translatable(id + "obtain_sculk_transmitter.title"), Component.translatable(id + "obtain_sculk_transmitter.description"), null, FrameType.TASK, true, true, false)
                 .addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER.get())).save(saver, path("obtain_sculk_transmitter"), existingFileHelper);
 
-        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SONOROUS_STAFF.get(), Component.translatable(id + "obtain_warden_staff.title"), Component.translatable(id + "obtain_warden_staff.description"), null, FrameType.TASK, true, true, false)
-                .addCriterion("warden_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF.get())).save(saver, path("obtain_warden_staff"), existingFileHelper);
+        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SONOROUS_STAFF.get(), Component.translatable(id + "obtain_sonorous_staff.title"), Component.translatable(id + "obtain_sonorous_staff.description"), null, FrameType.TASK, true, true, false)
+                .addCriterion("sonorous_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF.get())).save(saver, path("obtain_sonorous_staff"), existingFileHelper);
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_BOOTS.get(), Component.translatable(id + "explore_otherside.title"), Component.translatable(id + "explore_otherside.description"), null, FrameType.CHALLENGE, true, true, false)
                 .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(OthersideBiomes.DEEPLANDS)))

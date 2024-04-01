@@ -42,8 +42,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
         add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
-        add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.title", "Noise Complaint");
-        add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.description", "Acquire a Sonorous Staff");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_sonorous_staff.title", "Noise Complaint");
+        add("advancements." + DeeperDarker.MOD_ID + ".obtain_sonorous_staff.description", "Acquire a Sonorous Staff");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
         add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");
