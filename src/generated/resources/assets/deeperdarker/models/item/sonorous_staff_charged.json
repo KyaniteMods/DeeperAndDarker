@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "deeperdarker:item/sonorous_staff"
+    "layer0": "deeperdarker:item/sonorous_staff_charged"
   }
 }
