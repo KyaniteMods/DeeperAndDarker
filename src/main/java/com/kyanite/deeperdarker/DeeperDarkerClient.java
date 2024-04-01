@@ -109,6 +109,10 @@ public class DeeperDarkerClient implements ClientModInitializer {
             SoulElytraItem.isFlyEnabled(itemStack) ? 0 : 1
         );
 
+        ItemProperties.register(DDItems.SONOROUS_STAFF, new ResourceLocation(DeeperDarker.MOD_ID, "charge"), (itemStack, worldClient, livingEntity, i) ->
+            livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0f : 0
+        );
+
         ClientTickEvents.START_WORLD_TICK.register(world -> {
             Minecraft client = Minecraft.getInstance();
             if (client.player == null) return;

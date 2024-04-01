@@ -24,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
 
@@ -252,7 +253,6 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BALL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.SONOROUS_STAFF, ModelTemplates.FLAT_ITEM);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TENDRILS.asItem()), TextureMapping.layer0(DDBlocks.SCULK_TENDRILS_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_ROOTS.asItem()), TextureMapping.layer0(DDBlocks.GLOWING_ROOTS_PLANT), itemModelGenerator.output);
@@ -277,7 +277,10 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
-        registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, ResourceLocation.DEFAULT_NAMESPACE + ":broken", "_broken");
+        registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, List.of(Triple.of(ResourceLocation.DEFAULT_NAMESPACE + ":broken", 1, BuiltInRegistries.ITEM.getKey(DDItems.SOUL_ELYTRA).withSuffix("_broken").withPrefix("item/"))));
+        registerGeneratedWithPredicate(itemModelGenerator, DDItems.SONOROUS_STAFF, List.of(
+                Triple.of(DeeperDarker.MOD_ID + ":charge", 0.001, BuiltInRegistries.ITEM.getKey(DDItems.SONOROUS_STAFF).withSuffix("_charging").withPrefix("item/")),
+                Triple.of(DeeperDarker.MOD_ID + ":charge", 1, BuiltInRegistries.ITEM.getKey(DDItems.SONOROUS_STAFF).withSuffix("_charged").withPrefix("item/"))));
         registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM.asItem()));
         registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM.asItem()));
         ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BLOOM_BUTTON.asItem()), TextureMapping.cube(DDBlocks.BLOOM_PLANKS), itemModelGenerator.output);
@@ -368,23 +371,25 @@ public class DDModelProvider extends FabricModelProvider {
                 SculkJawBlock.BITING, sculkJawBitingModel, sculkJawModel)));
     }
 
-    private static void registerGeneratedWithPredicate(ItemModelGenerators itemModelGenerator, Item item, String predicate, String suffix) {
-        ResourceLocation withPredicate = ModelTemplates.FLAT_ITEM.create(BuiltInRegistries.ITEM.getKey(item).withSuffix(suffix).withPrefix("item/"), TextureMapping.layer0(BuiltInRegistries.ITEM.getKey(item).withSuffix(suffix).withPrefix("item/")), itemModelGenerator.output);
+    private static void registerGeneratedWithPredicate(ItemModelGenerators itemModelGenerator, Item item, List<Triple<String, Number, ResourceLocation>> predicates) {
         JsonObject withoutPredicateJsonObject = ModelTemplates.FLAT_ITEM.createBaseTemplate(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"),
                 Map.of(TextureSlot.LAYER0, BuiltInRegistries.ITEM.getKey(item).withPrefix("item/")));
         JsonArray overrides = new JsonArray();
-        JsonObject override = new JsonObject();
-        JsonObject predicateJson = new JsonObject();
-        predicateJson.addProperty(predicate, 1);
-        override.add("predicate", predicateJson);
-        override.addProperty("model", BuiltInRegistries.ITEM.getKey(item).withSuffix(suffix).withPrefix("item/").toString());
-        overrides.add(override);
+        for (Triple<String, Number, ResourceLocation> predicateTriple : predicates) {
+            ModelTemplates.FLAT_ITEM.create(predicateTriple.getRight(), TextureMapping.layer0(predicateTriple.getRight()), itemModelGenerator.output);
+            JsonObject predicateJson = new JsonObject();
+            JsonObject override = new JsonObject();
+            predicateJson.addProperty(predicateTriple.getLeft(), predicateTriple.getMiddle());
+            override.add("predicate", predicateJson);
+            override.addProperty("model", predicateTriple.getRight().toString());
+            overrides.add(override);
+        }
         withoutPredicateJsonObject.add("overrides", overrides);
         itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> withoutPredicateJsonObject);
     }
 
     private static void registerSculkTransmitter(ItemModelGenerators itemModelGenerator, SculkTransmitterItem item) {
-        registerGeneratedWithPredicate(itemModelGenerator, item, DeeperDarker.MOD_ID + ":linked", "_on");
+        registerGeneratedWithPredicate(itemModelGenerator, item, List.of(Triple.of(DeeperDarker.MOD_ID + ":linked", 1, BuiltInRegistries.ITEM.getKey(item).withSuffix("_on").withPrefix("item/"))));
     }
 
     private static void registerSpawnEgg(ItemModelGenerators itemModelGenerator, Item item) {
