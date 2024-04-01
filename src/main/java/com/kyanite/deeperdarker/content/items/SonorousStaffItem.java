@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -22,6 +23,7 @@ import java.util.List;
 @SuppressWarnings("NullableProblems")
 public class SonorousStaffItem extends Item {
     public double dropOffFactor = 1/3.0;
+    private boolean charged;
 
     public SonorousStaffItem(Properties pProperties) {
         super(pProperties);
@@ -69,6 +71,16 @@ public class SonorousStaffItem extends Item {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
         pPlayer.startUsingItem(pUsedHand);
         return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if(pEntity instanceof Player player) charged = player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 668;
+    }
+
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        return charged;
     }
 
     @Override
