@@ -1,7 +1,7 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
-    "warden_staff": {
+    "sonorous_staff": {
       "conditions": {
         "items": [
           {
@@ -17,7 +17,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.obtain_warden_staff.description"
+      "translate": "advancements.deeperdarker.obtain_sonorous_staff.description"
     },
     "frame": "task",
     "hidden": false,
@@ -27,12 +27,12 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.obtain_warden_staff.title"
+      "translate": "advancements.deeperdarker.obtain_sonorous_staff.title"
     }
   },
   "requirements": [
     [
-      "warden_staff"
+      "sonorous_staff"
     ]
   ],
   "sends_telemetry_event": true

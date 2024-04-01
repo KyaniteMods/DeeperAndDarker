@@ -275,8 +275,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.description", "Acquire a Sculk Transmitter");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.title", "Noise Complaint");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_warden_staff.description", "Acquire a Sonorous Staff");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sonorous_staff.title", "Noise Complaint");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sonorous_staff.description", "Acquire a Sonorous Staff");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");

@@ -4,7 +4,7 @@
     {
       "model": "deeperdarker:item/sculk_transmitter_on",
       "predicate": {
-        "deeperdarker:linked": 1.0
+        "deeperdarker:linked": 1
       }
     }
   ],

@@ -4,7 +4,7 @@
     {
       "model": "deeperdarker:item/soul_elytra_broken",
       "predicate": {
-        "minecraft:broken": 1.0
+        "minecraft:broken": 1
       }
     }
   ],

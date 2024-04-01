@@ -109,15 +109,15 @@ public class DDAdvancements implements Consumer<Consumer<Advancement>> {
         Advancement.Builder.advancement().parent(enterOtherside)
                         .display(
                                 DDItems.SONOROUS_STAFF,
-                                Component.translatable(id + "obtain_warden_staff.title"),
-                                Component.translatable(id + "obtain_warden_staff.description"),
+                                Component.translatable(id + "obtain_sonorous_staff.title"),
+                                Component.translatable(id + "obtain_sonorous_staff.description"),
                                 null,
                                 FrameType.TASK,
                                 true,
                                 true,
                                 false
-                        ).addCriterion("warden_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF))
-                        .save(advancementConsumer, path("obtain_warden_staff"));
+                        ).addCriterion("sonorous_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF))
+                        .save(advancementConsumer, path("obtain_sonorous_staff"));
 
         Advancement.Builder.advancement().parent(enterOtherside)
                 .display(

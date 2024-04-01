@@ -10,7 +10,7 @@
     {
       "model": "deeperdarker:item/sonorous_staff_charged",
       "predicate": {
-        "deeperdarker:charge": 1.0
+        "deeperdarker:charge": 1
       }
     }
   ],
