@@ -1,6 +1,20 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
+    "angler_fish": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:angler_fish"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "phantom": {
       "conditions": {
         "entity": [
@@ -136,6 +150,9 @@
     ],
     [
       "warden"
+    ],
+    [
+      "angler_fish"
     ],
     [
       "sculk_centipede"
