@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -155,6 +156,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_JAW);
 
         itemModelWithSuffix(DDItems.SOUL_ELYTRA, GENERATED, "broken");
+        itemModel(DDItems.SOUL_ELYTRA, GENERATED).override().model(getModel(DDItems.SOUL_ELYTRA, "broken")).predicate(new ResourceLocation("broken"), 1).end();
         itemModel(DDItems.ECHO_SIGN, GENERATED);
         itemModel(DDItems.ECHO_HANGING_SIGN, GENERATED);
         itemModel(DDItems.BLOOM_SIGN, GENERATED);
@@ -187,8 +189,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
+        itemModel(DDItems.SCULK_TRANSMITTER, GENERATED).override().model(getModel(DDItems.SCULK_TRANSMITTER, "on")).predicate(new ResourceLocation(DeeperDarker.MOD_ID, "linked"), 1).end();
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charged");
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charging");
+        itemModel(DDItems.SONOROUS_STAFF, HANDHELD).override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(new ResourceLocation(DeeperDarker.MOD_ID, "charge"), 0.001f).end().override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(new ResourceLocation(DeeperDarker.MOD_ID, "charge"), 1).end();
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);
@@ -222,5 +226,9 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     public void itemModelWithSuffix(RegistryObject<?> item, ModelFile modelFile, String suffix) {
         getBuilder(item.getId().getPath() + "_" + suffix).parent(modelFile).texture("layer0", "item/" + item.getId().getPath() + "_" + suffix);
+    }
+
+    private ModelFile.ExistingModelFile getModel(RegistryObject<?> item, String suffix) {
+        return new ModelFile.ExistingModelFile(modLoc("item/" + item.getId().getPath() + "_" + suffix), existingFileHelper);
     }
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-31T22:17:05.5946628	Item Models: deeperdarker
+// 1.20.1	2024-03-31T22:58:49.2418789	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -127,6 +127,7 @@ e95d7689a6be15bf680edb1555a406663ae62acf assets/deeperdarker/models/item/sculk_s
 22c1896061ae2e9ee8871a1f769d1262b62c0530 assets/deeperdarker/models/item/sculk_stone_tile_wall.json
 a71c8b14b5e81663a9802d02da7ebe84c176e094 assets/deeperdarker/models/item/sculk_stone_wall.json
 9dd7f9949be123d91bbfd61aa9e838972edccbba assets/deeperdarker/models/item/sculk_tendrils.json
+e14eb939c301a0c9dc4c350616a0dafc6d07b753 assets/deeperdarker/models/item/sculk_transmitter.json
 b456f6dcb2e3009eb3828b3a389c14a93a2d4e71 assets/deeperdarker/models/item/sculk_transmitter_on.json
 826d5e09ad2e18070d74add221ff22017abadb39 assets/deeperdarker/models/item/sculk_vines.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shattered_spawn_egg.json
@@ -139,10 +140,12 @@ a486e0567f9d7ed81cc982dc986042fa09f181d8 assets/deeperdarker/models/item/smooth_
 a1f22e43599c4d3bbd8648c65b9ad06dbb5e9c31 assets/deeperdarker/models/item/smooth_sculk_stone_slab.json
 ecdd52a3fde66627f40bb6f2727b1f39e8227cda assets/deeperdarker/models/item/smooth_sculk_stone_stairs.json
 ae8bb988e24dd1b2fc704b8e6b9e0e2bd9768190 assets/deeperdarker/models/item/smooth_sculk_stone_wall.json
+c5b48884c507d9617c9304e175ff096b8ea107da assets/deeperdarker/models/item/sonorous_staff.json
 b2ae613daab1455a4ca75d5a9236e890273ff98d assets/deeperdarker/models/item/sonorous_staff_charged.json
 94253382ef867d3a104f61fd254dcf2c4d27ac1f assets/deeperdarker/models/item/sonorous_staff_charging.json
 276ee6aa65e11bc12857f29c799269d6fa1d05e2 assets/deeperdarker/models/item/soul_crystal.json
 dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_dust.json
+81292e1dcd08c5acb8510858c469222853fdf9ab assets/deeperdarker/models/item/soul_elytra.json
 7fa6b2d8c37ca5af719a2aeea3c2c4311b735068 assets/deeperdarker/models/item/soul_elytra_broken.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/stalker_spawn_egg.json
 0fa27e2285f8c3bb629d19749e635c0f0e2b9a57 assets/deeperdarker/models/item/stripped_blooming_stem.json
