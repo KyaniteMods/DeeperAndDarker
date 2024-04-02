@@ -7,6 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -85,7 +86,7 @@ public class SculkTransmitterItem extends Item {
         MenuProvider menu = level.getBlockState(linkedPos).getMenuProvider(level, linkedPos);
         if(menu != null && !level.isClientSide()) {
             player.playSound(DDSounds.TRANSMITTER_OPEN, 1, 1);
-            player.openMenu(menu);
+            if(player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
             if(level.getBlockEntity(linkedPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
         }
 
@@ -100,9 +101,10 @@ public class SculkTransmitterItem extends Item {
         return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
     }
 
-    private static void formConnection(Level level, ItemStack stack, BlockPos pos) {
+    public static void formConnection(Level level, ItemStack stack, BlockPos pos) {
         CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
+            stack.removeTagKey("block");
             stack.removeTagKey("blockPos");
             return;
         }
@@ -111,7 +113,7 @@ public class SculkTransmitterItem extends Item {
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
     }
 
-    private static void actionBarMessage(Player player, String key, SoundEvent sound) {
+    public static void actionBarMessage(Player player, String key, SoundEvent sound) {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
         player.playSound(sound);
     }
