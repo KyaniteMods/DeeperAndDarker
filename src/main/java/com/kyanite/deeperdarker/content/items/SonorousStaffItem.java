@@ -80,7 +80,7 @@ public class SonorousStaffItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return charged;
+        return super.isFoil(pStack) || charged;
     }
 
     @Override
