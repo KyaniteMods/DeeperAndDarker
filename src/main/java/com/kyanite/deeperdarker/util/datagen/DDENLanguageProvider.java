@@ -339,5 +339,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
         translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");
+
+        translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
+        translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
+        translationBuilder.add("key." + DeeperDarker.MOD_ID + ".transmit", "Use Sculk Transmitter");
     }
 }

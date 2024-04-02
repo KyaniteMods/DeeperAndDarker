@@ -1,13 +1,14 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
+import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
@@ -101,5 +102,7 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.withPool(poolBuilder);
 			}
 		});
+
+		Messages.registerMessages();
 	}
 }

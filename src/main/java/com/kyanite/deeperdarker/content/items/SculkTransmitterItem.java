@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -19,13 +18,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.List;
 
-@SuppressWarnings("NullableProblems")
+@SuppressWarnings("NullableProblems, DataFlowIssue")
 public class SculkTransmitterItem extends Item {
     public SculkTransmitterItem(Properties pProperties) {
         super(pProperties);
@@ -33,96 +31,100 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
-        if (pContext.getPlayer() == null) return InteractionResult.FAIL;
-        if(pContext.getItemInHand().hasTag()) {
-            return transmit(pContext.getLevel(), pContext.getPlayer(), pContext.getHand(), pContext.getClickedPos());
-        }
+        Level level = pContext.getLevel();
+        Player player = pContext.getPlayer();
+        ItemStack stack = pContext.getItemInHand();
+        BlockPos clickedPos = pContext.getClickedPos();
 
-        if(!canConnect(pContext.getLevel(), pContext.getClickedPos())) {
-            actionBarMessage(pContext.getPlayer(), "not_transmittable", DDSounds.TRANSMITTER_ERROR);
+        if(isLinked(stack)) return transmit(level, player, stack, clickedPos);
+        if(!canConnect(level, clickedPos)) {
+            actionBarMessage(player, "not_transmittable", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
         }
 
-        actionBarMessage(pContext.getPlayer(), "linked", DDSounds.TRANSMITTER_LINK);
-        formConnection(pContext.getItemInHand(), pContext.getClickedPos());
+        actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
+        formConnection(level, stack, clickedPos);
         return InteractionResult.SUCCESS;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(pPlayer.getMainHandItem().hasTag()) {
-            transmit(pLevel, pPlayer, pUsedHand, null);
-        }
-
+        if(isLinked(pPlayer.getMainHandItem())) transmit(pLevel, pPlayer, pPlayer.getMainHandItem(), null);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
-    @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if(pStack.hasTag()) {
-            int[] pos = pStack.getTag().getIntArray("blockPos");
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", pLevel.getBlockState(new BlockPos(pos[0], pos[1], pos[2])).getBlock().getName()).withStyle(ChatFormatting.GRAY));
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos[0], pos[1], pos[2]).withStyle(ChatFormatting.GRAY));
+    public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos) {
+        int[] pos = transmitter.getTag().getIntArray("blockPos");
+        BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
+
+        if(!level.isLoaded(linkedPos)) {
+            actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
+            return InteractionResult.FAIL;
         }
-        else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
-
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-    }
-
-    private InteractionResult transmit(Level level, Player player, InteractionHand hand, BlockPos clickedPos) {
-        int[] pos = player.getMainHandItem().getTag().getIntArray("blockPos");
-        BlockPos linkedBlockPos = new BlockPos(pos[0], pos[1], pos[2]);
-        ItemStack transmitter = player.getItemInHand(hand);
 
         if(player.isCrouching()) {
             if(clickedPos != null && canConnect(level, clickedPos)) {
                 actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
-                formConnection(transmitter, clickedPos);
+                formConnection(level, transmitter, clickedPos);
                 return InteractionResult.SUCCESS;
             }
 
             actionBarMessage(player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
-            formConnection(transmitter, null);
+            formConnection(level, transmitter, null);
             return InteractionResult.FAIL;
         }
 
-        if(!canConnect(level, linkedBlockPos)) {
+        if(!canConnect(level, linkedPos)) {
             actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
-            formConnection(transmitter, null);
+            formConnection(level, transmitter, null);
             return InteractionResult.FAIL;
         }
 
         level.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
 
-        MenuProvider menu = level.getBlockState(linkedBlockPos).getMenuProvider(level, linkedBlockPos);
-        if(menu != null) {
-            player.playNotifySound(DDSounds.TRANSMITTER_OPEN, SoundSource.PLAYERS, 1.0f, 1.0f);
+        MenuProvider menu = level.getBlockState(linkedPos).getMenuProvider(level, linkedPos);
+        if(menu != null && !level.isClientSide()) {
+            player.playSound(DDSounds.TRANSMITTER_OPEN, 1, 1);
             player.openMenu(menu);
-            if(level.getBlockEntity(linkedBlockPos) instanceof ChestBlockEntity chestBlockEntity) chestBlockEntity.startOpen(player);
+            if(level.getBlockEntity(linkedPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
         }
 
         return InteractionResult.SUCCESS;
     }
 
-    private void formConnection(ItemStack stack, BlockPos pos) {
-        CompoundTag tag = new CompoundTag();
+    public static boolean isLinked(ItemStack stack) {
+        return stack.hasTag() && stack.getTag().contains("blockPos");
+    }
+
+    private static boolean canConnect(Level level, BlockPos target) {
+        return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
+    }
+
+    private static void formConnection(Level level, ItemStack stack, BlockPos pos) {
+        CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
             stack.removeTagKey("blockPos");
-            stack.removeTagKey("linked");
             return;
         }
 
-        tag.putBoolean("linked", true);
+        tag.putString("block", level.getBlockState(pos).getBlock().getDescriptionId());
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
-        stack.setTag(tag);
     }
 
-    private boolean canConnect(Level level, BlockPos target) {
-        return level.isLoaded(target) && level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
-    }
-
-    private void actionBarMessage(Player player, String key, SoundEvent sound) {
+    private static void actionBarMessage(Player player, String key, SoundEvent sound) {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
-        player.playNotifySound(sound, SoundSource.PLAYERS, 1.0f, 1.0f);
+        player.playSound(sound);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if(isLinked(pStack)) {
+            int[] pos = pStack.getTag().getIntArray("blockPos");
+            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(pStack.getTag().getString("block"))).withStyle(ChatFormatting.GRAY));
+            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos[0], pos[1], pos[2]).withStyle(ChatFormatting.GRAY));
+        }
+        else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
+
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }
