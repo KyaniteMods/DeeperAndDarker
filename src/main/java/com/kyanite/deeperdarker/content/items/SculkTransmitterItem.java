@@ -103,9 +103,10 @@ public class SculkTransmitterItem extends Item {
         return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
     }
 
-    private static void formConnection(Level level, ItemStack stack, BlockPos pos) {
+    public static void formConnection(Level level, ItemStack stack, BlockPos pos) {
         CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
+            stack.removeTagKey("block");
             stack.removeTagKey("blockPos");
             return;
         }
@@ -114,7 +115,7 @@ public class SculkTransmitterItem extends Item {
         tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
     }
 
-    private static void actionBarMessage(Player player, String key, RegistryObject<SoundEvent> sound) {
+    public static void actionBarMessage(Player player, String key, RegistryObject<SoundEvent> sound) {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
         player.playSound(sound.get());
     }
