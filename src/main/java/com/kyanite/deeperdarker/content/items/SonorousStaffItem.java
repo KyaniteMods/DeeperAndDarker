@@ -23,7 +23,6 @@ import java.util.List;
 @SuppressWarnings("NullableProblems")
 public class SonorousStaffItem extends Item {
     public double dropOffFactor = 1/3.0;
-    private boolean charged;
 
     public SonorousStaffItem(Properties pProperties) {
         super(pProperties);
@@ -75,12 +74,14 @@ public class SonorousStaffItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if(pEntity instanceof Player player) charged = player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 668;
+        if(pEntity instanceof Player player) {
+            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 668);
+        }
     }
 
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return super.isFoil(pStack) || charged;
+        return super.isFoil(pStack) || (pStack.hasTag() && pStack.getTag().getBoolean("charged"));
     }
 
     @Override
