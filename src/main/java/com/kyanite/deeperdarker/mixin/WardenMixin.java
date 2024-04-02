@@ -26,7 +26,7 @@ public class WardenMixin extends Monster {
     }
 
     @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)
-    public void canTargetEntity(Entity target, CallbackInfoReturnable<? super Boolean> cir) {
+    public void canTargetEntity(Entity target, CallbackInfoReturnable<Boolean> cir) {
         if(target instanceof LivingEntity entity && entity.getMobType() == DDMobType.SCULK) cir.setReturnValue(false);
     }
 }

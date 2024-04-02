@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.*;
+import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
@@ -231,7 +232,7 @@ public class DeeperDarker {
                 Sheets.addWoodType(DDBlocks.ECHO);
                 Sheets.addWoodType(DDBlocks.BLOOM);
                 ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
-                ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> pStack.hasTag() && pStack.getTag().contains("blockPos") ? 1 : 0);
+                ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> SculkTransmitterItem.isLinked(pStack) ? 1 : 0);
                 ItemProperties.register(DDItems.SONOROUS_STAFF.get(), new ResourceLocation(MOD_ID, "charge"), (pStack, pLevel, pEntity, pSeed) -> pEntity != null && pEntity.getUseItem() == pStack ? (pStack.getUseDuration() - pEntity.getUseItemRemainingTicks()) / 668f : 0);
             });
 
