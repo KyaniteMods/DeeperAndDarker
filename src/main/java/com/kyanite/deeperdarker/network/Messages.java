@@ -13,12 +13,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class Messages {
-    public static ServerPlayNetworking INSTANCE;
-    private static int ID;
-    private static int nextID() {
-        return ID++;
-    }
-
     public static void registerMessages() {
         ServerPlayNetworking.registerGlobalReceiver(SoulElytraBoostPacket.TYPE, (packet, player, responseSender) -> {
             Level level = player.level();
@@ -36,13 +30,5 @@ public class Messages {
                 }
             }
         });
-    }
-
-    public static void registerServerMessages() {
-//        INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(DeeperDarker.MOD_ID, channel), () -> "1.0", s -> true, s -> true);
-//        INSTANCE.registerMessage(nextID(), UseTransmitterPacket.class, UseTransmitterPacket::toBytes, UseTransmitterPacket::new, UseTransmitterPacket::handle);
-    }
-
-    public static void registerClientMessages(String channel) {
     }
 }
