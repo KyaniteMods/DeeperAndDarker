@@ -163,6 +163,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         ModelFile noBerries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout");
         ModelFile berries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath() + "_berries", blockLoc(DDBlocks.GLOWING_VINES_PLANT, "berries")).renderType("cutout");
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get()).partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel().partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
+        simpleBlock(DDBlocks.ICE_LILY.get(), models().withExistingParent(DDBlocks.ICE_LILY.getId().getPath(), modLoc("block/ice_waterlily")).texture("texture", blockLoc(DDBlocks.ICE_LILY)).texture("flower", modLoc("block/lily_flower")));
 
         simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
@@ -200,10 +201,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
     }
 
     private ResourceLocation blockLoc(RegistryObject<? extends Block> block) {
-        return super.modLoc("block/" + block.getId().getPath());
+        return modLoc("block/" + block.getId().getPath());
     }
 
     public ResourceLocation blockLoc(RegistryObject<? extends Block> block, String suffix) {
-        return super.modLoc("block/" + block.getId().getPath() + "_" + suffix);
+        return modLoc("block/" + block.getId().getPath() + "_" + suffix);
     }
 }

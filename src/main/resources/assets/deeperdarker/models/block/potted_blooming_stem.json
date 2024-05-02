@@ -1,5 +1,4 @@
 {
-	"ambientocclusion": false,
 	"textures": {
 		"stem": "deeperdarker:block/blooming_stem_thin",
 		"particle": "block/flower_pot",

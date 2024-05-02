@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-13T22:04:05.2810196	Block States: deeperdarker
+// 1.20.1	2024-04-04T16:14:06.0700519	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 165980177c5adcf470b9a08fe401e3bb1a4966f0 assets/deeperdarker/blockstates/blooming_moss_block.json
 c90869597c5f9312912c741c7edfc5974762efd9 assets/deeperdarker/blockstates/blooming_sculk_stone.json
@@ -83,6 +83,7 @@ e3a2b0ee80440e02561977fb683ed85c20c7213a assets/deeperdarker/blockstates/gloomsl
 492742abf210fad9519bfb387e29cf341f356725 assets/deeperdarker/blockstates/glowing_roots_plant.json
 5a2d32aa1f0af899e4dfebaf457b36cfbb5659a3 assets/deeperdarker/blockstates/glowing_vines.json
 99c4c0123d3b835f9d50ca2d4edeedbc828b7d8c assets/deeperdarker/blockstates/glowing_vines_plant.json
+8d04af6163b6c126405fc108d9cf9cb0139e4f6f assets/deeperdarker/blockstates/ice_lily.json
 59b37cfc48b764ed52f057a40cda85004285aaee assets/deeperdarker/blockstates/infested_sculk.json
 6197329be084d0e4d3258707fbf338c36432af98 assets/deeperdarker/blockstates/polished_gloomslate.json
 20951991cf554e2bc584faa8491c276f52468f82 assets/deeperdarker/blockstates/polished_gloomslate_slab.json
@@ -304,6 +305,7 @@ fbc8c2c19c6917fd79691ae0a115990c5939ff86 assets/deeperdarker/models/block/glowin
 a247b355f294e030d5b6f4efa7156577660b5364 assets/deeperdarker/models/block/glowing_vines.json
 7cc7abb0216eda8a5a839b4156e2a8ce70865420 assets/deeperdarker/models/block/glowing_vines_plant.json
 e639060500e1d49a0d9a50f95fc67f24e706dd33 assets/deeperdarker/models/block/glowing_vines_plant_berries.json
+c5897e10739d01f15a2c6343dd05717d62966086 assets/deeperdarker/models/block/ice_lily.json
 b9d3122e7eb15851e9dc6d930601aff03629ce89 assets/deeperdarker/models/block/polished_gloomslate.json
 fb8457ff93c35f23a65ae63a157ada04bbf08244 assets/deeperdarker/models/block/polished_gloomslate_slab.json
 185ddb561f46d2b73feb370ef7faf2b6ac5ecd5a assets/deeperdarker/models/block/polished_gloomslate_slab_top.json
