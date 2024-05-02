@@ -102,6 +102,7 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GLOWING_VINES);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GLOWING_VINES_SHORT);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_VINES_CAVERNS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.ICE_LILY);
         addSculkOres(biomeBuilder);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)

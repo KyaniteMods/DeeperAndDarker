@@ -56,7 +56,8 @@
       "deeperdarker:glowing_roots",
       "deeperdarker:glowing_vines",
       "deeperdarker:glowing_vines_short",
-      "deeperdarker:sculk_vines_caverns"
+      "deeperdarker:sculk_vines_caverns",
+      "deeperdarker:ice_lily"
     ]
   ],
   "has_precipitation": true,
