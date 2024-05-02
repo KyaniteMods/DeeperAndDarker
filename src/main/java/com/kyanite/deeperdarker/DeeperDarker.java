@@ -234,7 +234,7 @@ public class DeeperDarker {
                 Sheets.addWoodType(DDBlocks.BLOOM);
                 ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
                 ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> SculkTransmitterItem.isLinked(pStack) ? 1 : 0);
-                ItemProperties.register(DDItems.SONOROUS_STAFF.get(), new ResourceLocation(MOD_ID, "charge"), (pStack, pLevel, pEntity, pSeed) -> pEntity != null && pEntity.getUseItem() == pStack ? (pStack.getUseDuration() - pEntity.getUseItemRemainingTicks()) / 668f : 0);
+                ItemProperties.register(DDItems.SONOROUS_STAFF.get(), new ResourceLocation(MOD_ID, "charge"), (pStack, pLevel, pEntity, pSeed) -> pEntity != null && pEntity.getUseItem() == pStack ? (pStack.getUseDuration() - pEntity.getUseItemRemainingTicks()) / 123f : 0);
             });
 
             BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);

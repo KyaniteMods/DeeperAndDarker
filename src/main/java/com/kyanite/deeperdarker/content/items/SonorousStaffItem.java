@@ -33,8 +33,8 @@ public class SonorousStaffItem extends Item {
         if(!(pLivingEntity instanceof Player player)) return;
 
         int timeUsed = getUseDuration(pStack) - pTimeCharged;
-        int damage = (int) Math.min(50, Math.round(Math.pow(timeUsed, 3/5.0)));
-        int range = (int) Math.min(50, Math.round(Math.pow(timeUsed, 3/4.0))) + 2;
+        int damage = (int) Math.round(50 / (1 + 16 / Math.exp(0.06 * timeUsed)));
+        int range = (int) Math.min(40, Math.round(3 * Math.log(timeUsed + 1)));
 
         Vec3 eyePos = player.getEyePosition();
         Vec3 facing = player.getForward();
@@ -75,7 +75,7 @@ public class SonorousStaffItem extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(pEntity instanceof Player player) {
-            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 668);
+            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 123);
         }
     }
 
