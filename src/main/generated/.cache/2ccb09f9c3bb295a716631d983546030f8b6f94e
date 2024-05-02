@@ -1,4 +1,4 @@
-// 1.20	2024-05-01T15:21:36.072688557	Deeper and Darker/Block Loot Tables
+// 1.20	2024-05-03T17:33:18.805283665	Deeper and Darker/Block Loot Tables
 9da81cff96f591867c050dc195a59591c0570c6b data/deeperdarker/loot_tables/blocks/echo_fence.json
 59c27f1afefc9c217c2b98237b2d4012f428ad87 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
@@ -82,8 +82,8 @@ f3b7af7924b7f132f15307e2f9eb4d39d7d15088 data/deeperdarker/loot_tables/blocks/bl
 444ee2b8b48675db101a101eb52a7627428edaef data/deeperdarker/loot_tables/blocks/gloomslate_emerald_ore.json
 598aeffe7e9b37f67b091e58c27a420b4577a4f3 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone_stairs.json
 0f3afdb1185acb22cd58eb43587996fe5c4d5b44 data/deeperdarker/loot_tables/blocks/stripped_blooming_stem.json
-308edb568daa74e0641993005bf1f0bf6d018ab1 data/deeperdarker/loot_tables/blocks/gloomslate_brick_slab.json
 2ee9261a65aca7bb40adf58d2ce42f74e679f0a4 data/deeperdarker/loot_tables/blocks/bloom_hanging_sign.json
+308edb568daa74e0641993005bf1f0bf6d018ab1 data/deeperdarker/loot_tables/blocks/gloomslate_brick_slab.json
 375e7e0bf3d80ca26ff80d3b8c53f5ec9e7403bc data/deeperdarker/loot_tables/blocks/cobbled_gloomslate.json
 416e54c0b57bd9a644b343c7181cbb5118552d5a data/deeperdarker/loot_tables/blocks/echo_hanging_sign.json
 097f61034d2c53785e6b5b93d1e675d1038b7e63 data/deeperdarker/loot_tables/blocks/polished_sculk_stone.json
@@ -115,6 +115,7 @@ fac28cf1ae6e13e7a5931b99c9b50ed3abc5d0a0 data/deeperdarker/loot_tables/blocks/co
 6af4dc80d42d509ff4e22fb0720f64489b68e935 data/deeperdarker/loot_tables/blocks/gloomy_grass.json
 1129bc25e930947838e7f77c09af77778ae75996 data/deeperdarker/loot_tables/blocks/sculk_tendrils.json
 2efc1f157f1b1b6f8b21c24ed0a5508346dcb8ed data/deeperdarker/loot_tables/blocks/sculk_stone_wall.json
+06359f047944990eea76469c2b21645e870335c3 data/deeperdarker/loot_tables/blocks/ice_lily.json
 ffef2b98d2930d63ff8230089f1bd32a681f154b data/deeperdarker/loot_tables/blocks/bloom_slab.json
 9fa0129edc3687b4370d1ec1a98527034361c47b data/deeperdarker/loot_tables/blocks/echo_sapling.json
 d375c4bb020a515e5e1f4aebdfd52622e7ffd721 data/deeperdarker/loot_tables/blocks/sculk_stone_coal_ore.json

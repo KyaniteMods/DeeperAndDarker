@@ -162,6 +162,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         addVineAndPlant(DDBlocks.SCULK_VINES_PLANT, DDBlocks.SCULK_VINES);
         addVineAndPlant(DDBlocks.GLOWING_ROOTS_PLANT, DDBlocks.GLOWING_ROOTS);
         add(DDBlocks.GLOWING_VINES_PLANT, this::glowingVinesDrop);
+        dropSelf(DDBlocks.ICE_LILY);
 
         ancientVaseDrop();
 

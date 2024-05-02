@@ -76,6 +76,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.ECHO_SOIL, DDBlocks.SCULK_GRIME);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.SCULK_STONE_COPPER_ORE, DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_IRON_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE, DDBlocks.CRYSTALLIZED_AMBER);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.GLOWING_FLOWERS, DDBlocks.GLOOMY_GRASS, DDBlocks.ICE_LILY);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM).add(DDBlocks.ENRICHED_ECHO_LOG);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);

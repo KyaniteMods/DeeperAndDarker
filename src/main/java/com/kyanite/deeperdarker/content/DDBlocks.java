@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.PushReaction;
 
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
@@ -231,6 +232,7 @@ public class DDBlocks {
     public static final Block GLOWING_ROOTS_PLANT = registerWithoutItem("glowing_roots_plant", new GlowingRootsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final Block GLOWING_VINES = registerWithoutItem("glowing_vines", new GlowingVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).noLootTable()));
     public static final Block GLOWING_VINES_PLANT = registerWithoutItem("glowing_vines_plant", new GlowingVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).lightLevel(state -> state.getValue(GlowingVinesPlantBlock.BERRIES) ? 14 : 0).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final Block ICE_LILY = registerWithoutItem("ice_lily", new IceLilyBlock(BlockBehaviour.Properties.of().lightLevel(state -> 7).sound(SoundType.LILY_PAD).noOcclusion().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY)));
 
     public static final Block ANCIENT_VASE = register("ancient_vase", new AncientVaseBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE)));
 

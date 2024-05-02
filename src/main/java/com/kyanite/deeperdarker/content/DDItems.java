@@ -29,6 +29,7 @@ public class DDItems {
     public static final Item BLOOM_BOAT = register("bloom_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
     public static final Item BLOOM_CHEST_BOAT = register("bloom_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
 
+    public static final Item ICE_LILY = register("ice_lily", new PlaceOnWaterBlockItem(DDBlocks.ICE_LILY, new Item.Properties()));
     public static final Item SCULK_BONE = register("sculk_bone", new Item(new Item.Properties()));
     public static final Item SOUL_DUST = register("soul_dust", new Item(new Item.Properties()));
     public static final Item SOUL_CRYSTAL = register("soul_crystal", new Item(new Item.Properties()));

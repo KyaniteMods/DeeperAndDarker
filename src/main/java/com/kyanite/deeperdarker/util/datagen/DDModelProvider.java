@@ -218,6 +218,10 @@ public class DDModelProvider extends FabricModelProvider {
         registerButton(blockModelGenerators, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_PLANKS);
         blockModelGenerators.createHangingSign(DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN);
         blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ICE_LILY);
+        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/ice_waterlily"), ModelLocationUtils.getModelLocation(DDBlocks.ICE_LILY),
+                new Tuple<>(TextureSlot.create("flower"), new ResourceLocation(DeeperDarker.MOD_ID, "block/lily_flower")),
+                new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
     }
@@ -287,6 +291,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BLOOM_FENCE.asItem()), TextureMapping.cube(DDBlocks.BLOOM_PLANKS), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDItems.ICE_LILY), TextureMapping.layer0(DDBlocks.ICE_LILY), itemModelGenerator.output);
         registerSpawnEgg(itemModelGenerator, DDItems.ANGLER_FISH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SHATTERED_SPAWN_EGG);
