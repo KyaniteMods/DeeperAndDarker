@@ -21,10 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -58,6 +55,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_PATCH = createKey("sculk_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOMING_SCULK_VEGETATION = createKey("blooming_sculk_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOMING_SCULK_PATCH = createKey("blooming_sculk_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ICE_LILY = createKey("patch_ice_lily");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMSLATE_GENERATION = createKey("gloomslate_generation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_GLOOMSLATE = createKey("surface_gloomslate");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GLOOMY_SCULK_VEGETATION = createKey("gloomy_sculk_vegetation");
@@ -129,6 +127,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, SCULK_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_REPLACEABLES, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(Blocks.SCULK.defaultBlockState(), 6).add(DDBlocks.SCULK_STONE.get().defaultBlockState(), 2).add(DDBlocks.SCULK_GRIME.get().defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_DECORATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.2f, UniformInt.of(2, 3), 0.3f));
         FeatureUtils.register(context, BLOOMING_SCULK_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOWING_FLOWERS.get().defaultBlockState(), 1).add(DDBlocks.GLOWING_GRASS.get().defaultBlockState(), 1))));
         FeatureUtils.register(context, BLOOMING_SCULK_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE, BlockStateProvider.simple(DDBlocks.BLOOMING_SCULK_STONE.get()), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(BLOOMING_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.1f, UniformInt.of(1, 2), 0.5f));
+        FeatureUtils.register(context, PATCH_ICE_LILY, Feature.RANDOM_PATCH, new RandomPatchConfiguration(16, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.ICE_LILY.get())))));
         FeatureUtils.register(context, GLOOMSLATE_GENERATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DDBlocks.GLOOMSLATE.get())));
         FeatureUtils.register(context, SURFACE_GLOOMSLATE, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMSLATE_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 4).add(DDBlocks.GLOOMSLATE.get().defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GLOOMSLATE_GENERATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0, ConstantInt.of(2), 0.3f));
         FeatureUtils.register(context, GLOOMY_SCULK_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.get().defaultBlockState(), 9).add(DDBlocks.GLOOMY_CACTUS.get().defaultBlockState(), 1))));
