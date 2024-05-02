@@ -42,6 +42,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
@@ -201,7 +202,7 @@ public class DeeperDarker {
             if(state.is(DDBlocks.ANCIENT_VASE.get())) {
                 if(level instanceof ServerLevel serverLevel) {
                     RandomSource random = serverLevel.getRandom();
-                    if(random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
+                    if(level.getDifficulty() != Difficulty.PEACEFUL && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
                         if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
                             for(int i = 0; i < random.nextInt(1, 4); i++) {
                                 DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
