@@ -69,6 +69,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDBlocks.BLOOMING_MOSS_BLOCK));
         entries.accept(new ItemStack(DDBlocks.BLOOMING_STEM));
         entries.accept(new ItemStack(DDBlocks.STRIPPED_BLOOMING_STEM));
+        entries.accept(new ItemStack(DDItems.ICE_LILY));
         entries.accept(new ItemStack(DDBlocks.BLOOM_PLANKS));
         entries.accept(new ItemStack(DDBlocks.BLOOM_STAIRS));
         entries.accept(new ItemStack(DDBlocks.BLOOM_SLAB));
