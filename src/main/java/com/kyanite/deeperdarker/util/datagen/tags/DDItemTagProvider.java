@@ -30,6 +30,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         add(DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
         getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
+        getOrCreateTagBuilder(DDTags.Items.AVOIDS_SNIFFING).add(DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
 
         add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);
         add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS);

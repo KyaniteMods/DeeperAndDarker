@@ -8,6 +8,7 @@
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
     "PhantomMixin",
+    "ResonariumSneakMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],

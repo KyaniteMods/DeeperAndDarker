@@ -40,6 +40,9 @@ public class DDTags {
 
         public static final TagKey<Item> DAMPENS_VIBRATIONS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "dampens_vibrations"));
+
+        public static final TagKey<Item> AVOIDS_SNIFFING = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "avoids_sniffing"));
     }
 
     public static class Biomes {
