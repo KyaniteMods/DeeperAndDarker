@@ -343,6 +343,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".millipede.title", "Millipede");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".millipede.author", "Pedro Ricardo");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".clouds.title", "Clouds");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".clouds.author", "Pedro Ricardo");
 
         translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
