@@ -4,12 +4,17 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.decoration.Painting;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class DDCreativeTab {
     private static final CreativeModeTab.Builder ITEM_GROUP_BUILDER = FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
@@ -185,6 +190,12 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.SHRIEK_WORM_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.STALKER_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SCULK_CENTIPEDE_SPAWN_EGG));
+        for (Holder<PaintingVariant> variant : BuiltInRegistries.PAINTING_VARIANT.getTagOrEmpty(DDTags.Paintings.ANCIENT)) {
+            ItemStack itemStack = new ItemStack(Items.PAINTING);
+            CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
+            Painting.storeVariant(compoundTag, variant);
+            entries.accept(itemStack);
+        }
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;

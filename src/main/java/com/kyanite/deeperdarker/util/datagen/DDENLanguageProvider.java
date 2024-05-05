@@ -338,8 +338,11 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.title", "Soul Elytra Boost Strength");
         translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.description", "Determines the strength of the boost provided when crouching while wearing Soul Elytra.");
 
-        translationBuilder.add("death.attack.deeperdarker.bite", "%s was devoured");
-        translationBuilder.add("death.attack.deeperdarker.ring", "%s was given a deadly case of tinnitus by %s");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");
+
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
 
         translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
