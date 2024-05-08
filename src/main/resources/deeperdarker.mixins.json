@@ -9,7 +9,7 @@
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
     "NoAncientPaintingInGroupMixin",
-    "ObfuscateAncientPaintingNameMixin",
+    "PaintingItemMixin",
     "PhantomMixin",
     "ResonariumSneakMixin",
     "VibrationListenerMixin",

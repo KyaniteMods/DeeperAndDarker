@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.util.DDTags;
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -9,8 +8,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.item.HangingEntityItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -25,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(HangingEntityItem.class)
-public class ObfuscateAncientPaintingNameMixin {
+public class PaintingItemMixin {
     @Unique
     private static TooltipFlag storedTooltipFlag;
     @Unique
@@ -49,5 +46,12 @@ public class ObfuscateAncientPaintingNameMixin {
             storedTooltipFlag = null;
         }
         return component;
+    }
+
+    @WrapOperation(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;shrink(I)V"))
+    private void deeperdarker$decrementStackOnServer(ItemStack instance, int i, Operation<Void> original, @Local(ordinal = 0) Level level) {
+        if (!level.isClientSide()) {
+            original.call(instance, i);
+        }
     }
 }

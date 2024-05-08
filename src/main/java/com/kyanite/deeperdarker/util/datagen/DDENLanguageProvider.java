@@ -347,6 +347,14 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".millipede.author", "Pedro Ricardo");
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".clouds.title", "Clouds");
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".clouds.author", "Pedro Ricardo");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".ooze.title", "Ooze");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".ooze.author", "Pedro Ricardo");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".adventure.title", "Adventure");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".adventure.author", "Pedro Ricardo");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".echoer.title", "Echoer");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".echoer.author", "Pedro Ricardo");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".carrot.title", "Back to Your Roots");
+        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".carrot.author", "Pedro Ricardo");
 
         translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");

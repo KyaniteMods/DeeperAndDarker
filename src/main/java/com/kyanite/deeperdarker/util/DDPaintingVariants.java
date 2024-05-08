@@ -12,6 +12,10 @@ public class DDPaintingVariants {
     public static final ResourceKey<PaintingVariant> ABSTRACTION = create("abstraction", new PaintingVariant(32, 32));
     public static final ResourceKey<PaintingVariant> MILLIPEDE = create("millipede", new PaintingVariant(32, 32));
     public static final ResourceKey<PaintingVariant> CLOUDS = create("clouds", new PaintingVariant(64, 16));
+    public static final ResourceKey<PaintingVariant> OOZE = create("ooze", new PaintingVariant(16, 16));
+    public static final ResourceKey<PaintingVariant> ADVENTURE = create("adventure", new PaintingVariant(64, 16));
+    public static final ResourceKey<PaintingVariant> ECHOER = create("echoer", new PaintingVariant(16, 16));
+    public static final ResourceKey<PaintingVariant> CARROT = create("carrot", new PaintingVariant(32, 16));
 
     private static ResourceKey<PaintingVariant> create(String string, PaintingVariant paintingVariant) {
         ResourceKey<PaintingVariant> resourceKey = ResourceKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(DeeperDarker.MOD_ID, string));
