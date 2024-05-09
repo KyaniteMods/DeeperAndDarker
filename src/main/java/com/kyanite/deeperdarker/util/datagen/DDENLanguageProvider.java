@@ -325,8 +325,6 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.generatedPortalHeight.description", "The height of Otherside portals generated when traveling through dimensions and no portal is available. Making this too large may cause problems.");
         translationBuilder.add("config.deeperdarker.geyserLaunchVelocity.title", "Gloomy Geyser Launch Velocity");
         translationBuilder.add("config.deeperdarker.geyserLaunchVelocity.description", "Defines the velocity applied when a player is launched by a Gloomy Geyser.");
-        translationBuilder.add("config.deeperdarker.sonorousStaffRange.title", "Sonorous Staff Range");
-        translationBuilder.add("config.deeperdarker.sonorousStaffRange.description", "Determines the range of the Sonorous Staff's sonic boom.");
         translationBuilder.add("config.deeperdarker.sonorousStaffDamage.title", "Sonorous Staff Damage");
         translationBuilder.add("config.deeperdarker.sonorousStaffDamage.description", "Determines the damage of the Sonorous Staff's sonic boom.");
         translationBuilder.add("config.deeperdarker.sonorousStaffKnockback.title", "Sonorous Staff Knockback");
@@ -334,9 +332,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("config.deeperdarker.sonorousStaffCooldown.title", "Sonorous Staff Cooldown");
         translationBuilder.add("config.deeperdarker.sonorousStaffCooldown.description", "Determines the cooldown of the Sonorous Staff before the player can use it again.");
         translationBuilder.add("config.deeperdarker.soulElytraCooldown.title", "Soul Elytra Cooldown");
-        translationBuilder.add("config.deeperdarker.soulElytraCooldown.description", "Determines the cooldown of the boost provided when crouching while wearing Soul Elytra.");
+        translationBuilder.add("config.deeperdarker.soulElytraCooldown.description", "Determines the cooldown of the boost provided when boosting with Soul Elytra.");
         translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.title", "Soul Elytra Boost Strength");
-        translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.description", "Determines the strength of the boost provided when crouching while wearing Soul Elytra.");
+        translationBuilder.add("config.deeperdarker.soulElytraBoostStrength.description", "Determines the strength of the boost provided when boosting with Soul Elytra.");
 
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");

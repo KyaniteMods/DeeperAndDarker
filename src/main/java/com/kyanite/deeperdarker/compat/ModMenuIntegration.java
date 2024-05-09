@@ -191,20 +191,6 @@ public class ModMenuIntegration implements ModMenuApi {
                             .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
                     .build();
 
-            Option<Integer> sonorousStaffRange = Option.<Integer>createBuilder()
-                    .name(Component.translatable("config.deeperdarker.sonorousStaffRange.title"))
-                    .description(OptionDescription.of(Component.translatable("config.deeperdarker.sonorousStaffRange.description")))
-                    .binding(
-                            40,
-                            () -> DDConfig.HANDLER.instance().sonorousStaffRange,
-                            newVal -> DDConfig.HANDLER.instance().sonorousStaffRange = newVal
-                    )
-                    .controller(opt -> IntegerSliderControllerBuilder.create(opt)
-                            .range(1, 128)
-                            .step(1)
-                            .formatValue(value -> value == 69 ? Component.literal(value + "... nice") : Component.literal(String.valueOf(value))))
-                    .build();
-
             Option<Float> sonorousStaffDamage = Option.<Float>createBuilder()
                     .name(Component.translatable("config.deeperdarker.sonorousStaffDamage.title"))
                     .description(OptionDescription.of(Component.translatable("config.deeperdarker.sonorousStaffDamage.description")))
@@ -313,7 +299,6 @@ public class ModMenuIntegration implements ModMenuApi {
                                     .option(generatedPortalHeight)
                                     .option(portalMinSearchHeight)
                                     .option(portalMaxSearchHeight)
-                                    .option(sonorousStaffRange)
                                     .option(sonorousStaffDamage)
                                     .option(sonorousStaffKnockback)
                                     .option(sonorousStaffCooldown)

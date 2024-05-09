@@ -68,9 +68,6 @@ public class DDConfig {
     public int generatedPortalHeight = 4;
 
     @SerialEntry
-    public int sonorousStaffRange = 40;
-
-    @SerialEntry
     public float sonorousStaffDamage = 10.0f;
 
     @SerialEntry
