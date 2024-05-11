@@ -36,23 +36,24 @@ import java.util.stream.Stream;
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty SAFE = BooleanProperty.create("safe");
     private static final VoxelShape BASE = Block.box(3, 0, 3, 13, 1, 13);
     private static final VoxelShape OUTLINE = Block.box(2, 1, 2, 14, 13, 14);
     private static final VoxelShape RIM = Block.box(4, 13, 4, 12, 16, 12);
 
     public AncientVaseBlock(Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE).setValue(SAFE, Boolean.FALSE));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(WATERLOGGED);
+        pBuilder.add(WATERLOGGED).add(SAFE);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(WATERLOGGED, pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER);
+        return this.defaultBlockState().setValue(WATERLOGGED, pContext.getLevel().getFluidState(pContext.getClickedPos()).getType() == Fluids.WATER).setValue(SAFE, true);
     }
 
     @Override
@@ -70,7 +71,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
         if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
             RandomSource random = pLevel.getRandom();
-            if (pLevel.getDifficulty() != Difficulty.PEACEFUL && random.nextFloat() < DDConfig.HANDLER.instance().spawnSomethingFromAncientVaseChance) {
+            if (!pBlockState.getValue(SAFE) && pLevel.getDifficulty() != Difficulty.PEACEFUL && random.nextFloat() < DDConfig.HANDLER.instance().spawnSomethingFromAncientVaseChance) {
                 if (random.nextDouble() < DDConfig.HANDLER.instance().sculkLeechesFromAncientVaseChance) {
                     for (int i = 0; i < random.nextInt(1, 4); i++) {
                         SculkLeech entity = DDEntities.SCULK_LEECH.create(pLevel);
