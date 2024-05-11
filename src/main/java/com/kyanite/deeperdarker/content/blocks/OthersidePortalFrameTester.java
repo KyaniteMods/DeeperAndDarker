@@ -10,8 +10,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -59,7 +61,6 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
 
     @Override
     public void createPortal(Level world, BlockPos pos, BlockState frameBlock, Direction.Axis axis) {
-        DeeperDarker.LOGGER.info(pos.toShortString());
         Direction.Axis rotatedAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
         for (int i = -1; i < DDConfig.HANDLER.instance().generatedPortalHeight + 1; i++) {
             world.setBlockAndUpdate(pos.above(i).relative(axis, -1), frameBlock);
@@ -92,5 +93,45 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
     @Override
     public boolean isValidFrame() {
         return this.lowerCorner != null && this.width >= DDConfig.HANDLER.instance().portalMinWidth && this.width <= DDConfig.HANDLER.instance().portalMaxWidth && this.height >= DDConfig.HANDLER.instance().portalMinHeight && this.height <= DDConfig.HANDLER.instance().portalMaxHeight;
+    }
+
+    @Override
+    protected BlockPos getLowerCorner(BlockPos blockPos, Direction.Axis axis1, Direction.Axis axis2) {
+        if (!validStateInsidePortal(world.getBlockState(blockPos), VALID_FRAME))
+            return null;
+        return getLimitForAxis(getLimitForAxis(blockPos, axis1), axis2);
+    }
+
+    @Override
+    protected BlockPos getLimitForAxis(BlockPos blockPos, Direction.Axis axis) {
+        if (blockPos == null || axis == null) return null;
+        int offset = 1;
+        while (validStateInsidePortal(world.getBlockState(blockPos.relative(axis, -offset)), VALID_FRAME)) {
+            offset++;
+            if (offset > 20) return null;
+            if ((axis.equals(Direction.Axis.Y) && blockPos.getY() - offset < world.getMinBuildHeight()) ||
+                    (!axis.equals(Direction.Axis.Y) && !world.getWorldBorder().isWithinBounds(blockPos.relative(axis, -offset))))
+                return null;
+        }
+        return blockPos.relative(axis, -(offset - 1));
+    }
+
+    @Override
+    protected int getSize(Direction.Axis axis, int minSize, int maxSize) {
+        for (int i = 1; i <= maxSize; i++) {
+            BlockState blockState = this.world.getBlockState(this.lowerCorner.relative(axis, i));
+            if (!validStateInsidePortal(blockState, VALID_FRAME)) {
+                if (VALID_FRAME.contains(blockState.getBlock())) {
+                    return i >= minSize ? i : 0;
+
+                }
+                break;
+            }
+        }
+        return 0;
+    }
+
+    public static boolean validStateInsidePortal(BlockState blockState, HashSet<Block> foundations) {
+        return PortalFrameTester.validStateInsidePortal(blockState, foundations) || blockState.is(Blocks.SCULK_VEIN);
     }
 }

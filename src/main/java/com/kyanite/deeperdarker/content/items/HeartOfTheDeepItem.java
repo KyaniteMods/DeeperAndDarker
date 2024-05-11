@@ -1,33 +1,22 @@
 package com.kyanite.deeperdarker.content.items;
 
-import com.google.common.base.Stopwatch;
-import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDTags;
-import com.kyanite.deeperdarker.world.structures.DDStructures;
-import com.mojang.datafixers.util.Pair;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.Util;
-import net.minecraft.commands.arguments.ResourceOrTagKeyArgument;
+import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
+import net.kyrptonaught.customportalapi.portal.PortalPlacer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.block.Blocks;
 
 public class HeartOfTheDeepItem extends Item {
     public HeartOfTheDeepItem(Properties properties) {
@@ -46,5 +35,13 @@ public class HeartOfTheDeepItem extends Item {
                 }
             }
         }
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext useOnContext) {
+        if (useOnContext.getLevel().getBlockState(useOnContext.getClickedPos()).is(Blocks.SCULK_VEIN) && PortalPlacer.attemptPortalLight(useOnContext.getLevel(), useOnContext.getClickedPos(), PortalIgnitionSource.ItemUseSource(useOnContext.getItemInHand().getItem()).withPlayer(useOnContext.getPlayer()))) {
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.PASS;
     }
 }
