@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.content.entities.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
-import com.kyanite.deeperdarker.datagen.data.loot.DDChestLoot;
+import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -39,7 +39,7 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
 
     public void generateLoot(Level level) {
         if(fossilizedEntity) return;
-        LootTable table = level.getServer().getLootData().getLootTable(DDChestLoot.CRYSTALLIZED_AMBER);
+        LootTable table = level.getServer().getLootData().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
         List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
         this.loot = list.get(0);
         this.setChanged();
