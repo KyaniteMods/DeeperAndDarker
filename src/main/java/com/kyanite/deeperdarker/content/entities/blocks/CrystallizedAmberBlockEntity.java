@@ -39,8 +39,8 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         if(fossilizedEntity) return;
 
         LootTable table = level.getServer().getLootData().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
-        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).withParameter(LootContextParams.BLOCK_ENTITY, this).create(LootContextParamSets.CHEST));
-        this.loot = list.get(0);
+        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
+        this.loot = list.isEmpty() ? ItemStack.EMPTY : list.get(0);
         this.setChanged();
     }
 
