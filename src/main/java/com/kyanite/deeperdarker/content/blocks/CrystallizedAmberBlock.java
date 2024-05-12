@@ -4,16 +4,22 @@ import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +30,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class CrystallizedAmberBlock extends BaseEntityBlock {
@@ -84,5 +92,19 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
                 level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
             }
         }
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
+        if (itemStack.hasTag() && itemStack.getTag().contains("BlockEntityTag")) {
+            CompoundTag tag = itemStack.getTag().getCompound("BlockEntityTag");
+            if (tag.contains("leech") && tag.getBoolean("leech")) {
+                list.add(ComponentUtils.wrapInSquareBrackets(DDEntities.SCULK_LEECH.getDescription().copy()).withStyle(ChatFormatting.GRAY));
+            } else if (tag.contains("item")) {
+                ItemStack stack = ItemStack.of(tag.getCompound("item"));
+                list.add(stack.getDisplayName().copy().withStyle(ChatFormatting.GRAY));
+            }
+        }
+        super.appendHoverText(itemStack, blockGetter, list, tooltipFlag);
     }
 }
