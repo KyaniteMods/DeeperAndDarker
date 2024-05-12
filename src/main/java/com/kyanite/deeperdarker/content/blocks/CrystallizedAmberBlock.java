@@ -67,7 +67,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
-        if(state.is(DDBlocks.CRYSTALLIZED_AMBER) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
+        if(state.is(DDBlocks.CRYSTALLIZED_AMBER) && blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
             if(!EnchantmentHelper.hasSilkTouch(itemStack) && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                 else Block.popResource(level, pos, crystallizedAmber.getLoot());
