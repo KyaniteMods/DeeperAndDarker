@@ -26,7 +26,7 @@ public class DDStructures {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.ANCIENT_TEMPLE), 7, ConstantHeight.of(VerticalAnchor.absolute(18)), false));
+        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Misc.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.ANCIENT_TEMPLE), 7, ConstantHeight.of(VerticalAnchor.absolute(18)), false));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {

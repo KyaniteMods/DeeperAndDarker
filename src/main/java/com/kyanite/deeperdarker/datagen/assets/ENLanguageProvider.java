@@ -84,6 +84,21 @@ public class ENLanguageProvider extends LanguageProvider {
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.getId().getPath() + ".desc", "Spreads sculk when mobs are killed.");
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.getId().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
+        add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
+        add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
+        add("painting." + DeeperDarker.MOD_ID + ".adventure.title", "Adventure");
+        add("painting." + DeeperDarker.MOD_ID + ".adventure.author", "Pedro Ricardo");
+        add("painting." + DeeperDarker.MOD_ID + ".carrot.title", "Carrot");
+        add("painting." + DeeperDarker.MOD_ID + ".carrot.author", "Pedro Ricardo");
+        add("painting." + DeeperDarker.MOD_ID + ".clouds.title", "Clouds");
+        add("painting." + DeeperDarker.MOD_ID + ".clouds.author", "Pedro Ricardo");
+        add("painting." + DeeperDarker.MOD_ID + ".echoer.title", "Echoer");
+        add("painting." + DeeperDarker.MOD_ID + ".echoer.author", "Pedro Ricardo");
+        add("painting." + DeeperDarker.MOD_ID + ".millipede.title", "Millipede");
+        add("painting." + DeeperDarker.MOD_ID + ".millipede.author", "Pedro Ricardo");
+        add("painting." + DeeperDarker.MOD_ID + ".ooze.title", "Ooze");
+        add("painting." + DeeperDarker.MOD_ID + ".ooze.author", "Pedro Ricardo");
+
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");

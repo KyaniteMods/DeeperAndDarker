@@ -6,6 +6,8 @@
   "refmap": "mixins.deeperdarker.refmap.json",
   "mixins": [
     "ContainerMenuMixin",
+    "HangingEntityItemMixin",
+    "PaintingMixin",
     "PhantomMixin",
     "PhantomRendererMixin",
     "VibrationListenerMixin",

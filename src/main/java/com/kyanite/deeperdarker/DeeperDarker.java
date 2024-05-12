@@ -97,6 +97,7 @@ public class DeeperDarker {
         DDBlocks.BLOCKS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
+        AncientPaintingVariants.PAINTINGS.register(eventBus);
         DDEffects.EFFECTS.register(eventBus);
         DDPotions.POTIONS.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
