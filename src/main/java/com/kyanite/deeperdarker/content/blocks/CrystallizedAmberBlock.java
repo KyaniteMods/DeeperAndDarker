@@ -75,18 +75,20 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
-        if(state.is(DDBlocks.CRYSTALLIZED_AMBER) && blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
+        if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
             if(!EnchantmentHelper.hasSilkTouch(itemStack) && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                 else Block.popResource(level, pos, crystallizedAmber.getLoot());
-            } else if(EnchantmentHelper.hasSilkTouch(itemStack) && !level.isClientSide() && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
-                CompoundTag tag = new CompoundTag();
-                tag.put("item", crystallizedAmber.getLoot().save(new CompoundTag()));
-                tag.putBoolean("leech", crystallizedAmber.fossilizedEntity);
-                tag.putFloat("rotation", crystallizedAmber.rotation);
-
+            } else if(EnchantmentHelper.hasSilkTouch(itemStack) && !level.isClientSide()) {
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
-                BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
+                if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+                    CompoundTag tag = new CompoundTag();
+                    tag.put("item", crystallizedAmber.getLoot().save(new CompoundTag()));
+                    tag.putBoolean("leech", crystallizedAmber.fossilizedEntity);
+                    tag.putFloat("rotation", crystallizedAmber.rotation);
+                    BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
+                }
+
                 Block.popResource(level, pos, stack);
 
                 level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
