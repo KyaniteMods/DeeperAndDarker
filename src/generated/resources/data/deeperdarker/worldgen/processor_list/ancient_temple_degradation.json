@@ -505,6 +505,7 @@
             "block_state": {
               "Name": "deeperdarker:ancient_vase",
               "Properties": {
+                "safe": "false",
                 "waterlogged": "false"
               }
             },

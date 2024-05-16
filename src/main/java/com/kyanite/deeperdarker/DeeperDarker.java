@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.content.blocks.AncientVaseBlock;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.*;
@@ -203,7 +204,7 @@ public class DeeperDarker {
             if(state.is(DDBlocks.ANCIENT_VASE.get())) {
                 if(level instanceof ServerLevel serverLevel) {
                     RandomSource random = serverLevel.getRandom();
-                    if(level.getDifficulty() != Difficulty.PEACEFUL && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
+                    if(level.getDifficulty() != Difficulty.PEACEFUL && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
                         if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
                             for(int i = 0; i < random.nextInt(1, 4); i++) {
                                 DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
