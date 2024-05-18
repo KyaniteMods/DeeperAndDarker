@@ -263,6 +263,8 @@
   "subtitles.item.transmitter.link": "Transmitter links",
   "subtitles.item.transmitter.open": "Transmitter transmits",
   "subtitles.item.transmitter.unlink": "Transmitter unlinks",
+  "tooltips.deeperdarker.crystallized_amber.item": "Contains %s",
+  "tooltips.deeperdarker.crystallized_amber.leech": "Contains Sculk Leech",
   "tooltips.deeperdarker.sculk_transmitter.linked": "Linked to %1$s",
   "tooltips.deeperdarker.sculk_transmitter.location": "Located at %1$s, %2$s, %3$s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
