@@ -4,6 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -61,6 +63,11 @@ public class AnglerFish extends AbstractFish {
     public void handleEntityEvent(byte pId) {
         if(pId == 4) this.attackState.start(this.tickCount);
         else super.handleEntityEvent(pId);
+    }
+
+    @Override
+    protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        return InteractionResult.PASS;
     }
 
     public boolean validTarget(LivingEntity entity) {
