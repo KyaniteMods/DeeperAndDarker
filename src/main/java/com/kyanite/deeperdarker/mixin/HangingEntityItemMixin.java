@@ -27,7 +27,7 @@ public abstract class HangingEntityItemMixin {
     private EntityType<? extends HangingEntity> type;
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
-    public void appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag isAdvanced, CallbackInfo ci) {
+    public void deeperdarker_appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag isAdvanced, CallbackInfo ci) {
         if(this.type == EntityType.PAINTING) {
             CompoundTag tag = stack.getTag();
             if(tag != null && tag.contains("EntityTag", 10)) {

@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = { AbstractFurnaceMenu.class, BeaconMenu.class, BrewingStandMenu.class, CartographyTableMenu.class, ChestMenu.class, CraftingMenu.class, DispenserMenu.class, EnchantmentMenu.class, GrindstoneMenu.class, HopperMenu.class, ItemCombinerMenu.class, LoomMenu.class, ShulkerBoxMenu.class, StonecutterMenu.class })
 public class ContainerMenuMixin {
     @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
-    public void stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
+    public void deeperdarker_stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
         ItemStack transmitter = ItemStack.EMPTY;
         if(player.getMainHandItem().is(DDItems.SCULK_TRANSMITTER.get()) && SculkTransmitterItem.isLinked(player.getMainHandItem())) {
             transmitter = player.getMainHandItem();
