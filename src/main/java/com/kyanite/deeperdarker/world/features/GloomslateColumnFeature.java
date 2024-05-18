@@ -54,7 +54,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
                     if(gapPlacement < gapStart || gapPlacement > gapStart + gapSize) level.setBlock(blockPos, DDBlocks.GLOOMSLATE.get().defaultBlockState(), 3);
                     gapPlacement++;
                 } else {
-                    boolean fossil = random.nextFloat() < 0.3f;
+                    boolean fossil = random.nextFloat() < 0.4f;
                     BlockState amber = DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState();
                     level.setBlock(blockPos, fossil ? amber.setValue(CrystallizedAmberBlock.FOSSILIZED, true) : amber, 3);
                     if(fossil && level.getBlockEntity(blockPos) instanceof CrystallizedAmberBlockEntity blockEntity) blockEntity.generateFossil(level.getLevel(), blockPos);
