@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 
 public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<CrystallizedAmberBlockEntity> {
@@ -29,7 +30,8 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
         pPoseStack.pushPose();
         pPoseStack.translate(0.5f, 0.5f, 0.5f);
         pPoseStack.mulPose(Axis.XP.rotationDegrees(-40f));
-        pPoseStack.mulPose(Axis.YP.rotationDegrees(pBlockEntity.rotation));
+        RandomSource random = RandomSource.create(pBlockEntity.getBlockPos().asLong() / (pBlockEntity.getBlockPos().getX() + pBlockEntity.getBlockPos().getZ()));
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(random.nextFloat() * 180f));
         if(pBlockEntity.fossilizedEntity) {
             pPoseStack.scale(0.9f, 0.9f, 0.9f);
             SculkLeech leech = new SculkLeech(DDEntities.SCULK_LEECH.get(), pBlockEntity.getLevel());

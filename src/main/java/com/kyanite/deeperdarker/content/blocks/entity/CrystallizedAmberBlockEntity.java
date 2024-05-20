@@ -34,9 +34,11 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         if(fossilizedEntity || loot != ItemStack.EMPTY) return;
 
         RandomSource random = RandomSource.create(pos.asLong());
-        if(random.nextFloat() < 0.15f) fossilizedEntity = true;
         rotation = random.nextFloat() * 180;
-        if(fossilizedEntity) return;
+        if(random.nextFloat() < 0.15f) {
+            fossilizedEntity = true;
+            return;
+        }
 
         LootTable table = level.getServer().getLootData().getLootTable(DDChestLoot.CRYSTALLIZED_AMBER);
         List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).withParameter(LootContextParams.BLOCK_ENTITY, this).create(LootContextParamSets.CHEST));
@@ -58,7 +60,6 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         CompoundTag tag = new CompoundTag();
         tag.put("item", this.loot.save(new CompoundTag()));
         tag.putBoolean("leech", this.fossilizedEntity);
-        tag.putFloat("rotation", this.rotation);
         return tag;
     }
 
@@ -66,13 +67,11 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     public void load(CompoundTag pTag) {
         if(pTag.contains("item")) this.loot = ItemStack.of(pTag.getCompound("item"));
         if(pTag.contains("leech")) this.fossilizedEntity = pTag.getBoolean("leech");
-        if(pTag.contains("rotation")) this.rotation = pTag.getFloat("rotation");
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("item", this.loot.save(new CompoundTag()));
         pTag.putBoolean("leech", this.fossilizedEntity);
-        pTag.putFloat("rotation", this.rotation);
     }
 }
