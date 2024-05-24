@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -36,6 +37,7 @@ public class SculkSnapper extends TamableAnimal {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
     public final AnimationState sitState = new AnimationState();
+    private int droppedBooks;
 
     public SculkSnapper(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -99,7 +101,7 @@ public class SculkSnapper extends TamableAnimal {
         super.tick();
 
         if(this.isTame() && this.getOwner() != null) {
-            if(this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.0003f) {
+            if(droppedBooks < 16 && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
                 List<Enchantment> enchantments = new ArrayList<>();
                 ForgeRegistries.ENCHANTMENTS.forEach(enchant -> {
                     if(!enchant.isCurse()) enchantments.add(enchant);
@@ -108,8 +110,9 @@ public class SculkSnapper extends TamableAnimal {
                 Enchantment enchantment2 = enchantments.get(this.random.nextInt(enchantments.size()));
 
                 ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment1, this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
-                if(this.random.nextFloat() < 0.2f) EnchantedBookItem.addEnchantment(book, new EnchantmentInstance(enchantment2, 1));
-                if(!book.isEmpty()) this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
+                if(this.random.nextFloat() < 0.2f) EnchantedBookItem.addEnchantment(book, new EnchantmentInstance(enchantment2, BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random)));
+                this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
+                droppedBooks++;
             }
         }
 
