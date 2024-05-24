@@ -16,10 +16,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -150,5 +147,6 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 }
             }
         });
+        LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(entity -> !entity.getItemBySlot(EquipmentSlot.CHEST).is(DDItems.SOUL_ELYTRA));
     }
 }
