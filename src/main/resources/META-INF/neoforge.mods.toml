@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="${forge_version_range}"
+loaderVersion="${loader_version_range}"
 license="${mod_license}"
 issueTrackerURL="https://github.com/KyaniteMods/DeeperAndDarker/issues"
 
@@ -7,21 +7,24 @@ issueTrackerURL="https://github.com/KyaniteMods/DeeperAndDarker/issues"
     modId="${mod_id}"
     version="${mod_version}"
     displayName="${mod_name}"
-    logoFile="banner.png"
     authors="${mod_authors}"
     credits="${mod_credits}"
+    logoFile="banner.png"
     description='''${mod_description}'''
+
+[[mixins]]
+    config="${mod_id}.mixins.json"
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
-    mandatory=true
+    type="required"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="forge"
-    mandatory=true
-    versionRange="${forge_version_range}"
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version_range}"
     ordering="NONE"
     side="BOTH"
