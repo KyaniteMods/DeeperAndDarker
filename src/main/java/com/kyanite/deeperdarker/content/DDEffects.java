@@ -9,5 +9,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class DDEffects {
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, DeeperDarker.MOD_ID);
-    public static final DeferredHolder<MobEffect, MobEffect> SCULK_AFFINITY = EFFECTS.register("sculk_affinity", () -> new MobEffect(MobEffectCategory.BENEFICIAL, 0x00ffd0));
+    public static final DeferredHolder<MobEffect, MobEffect> SCULK_AFFINITY = EFFECTS.register("sculk_affinity", () -> new DDMobEffect(MobEffectCategory.BENEFICIAL, 0x00ffd0));
+
+    public static class DDMobEffect extends MobEffect {
+        public DDMobEffect(MobEffectCategory pCategory, int pColor) {
+            super(pCategory, pColor);
+        }
+    }
 }
