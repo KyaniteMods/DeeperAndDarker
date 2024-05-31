@@ -17,7 +17,6 @@ import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
-import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
@@ -61,7 +60,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.network.PacketDistributor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -82,6 +80,9 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -114,7 +115,6 @@ public class DeeperDarker {
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
 
-        Messages.registerMessages(MOD_ID + "_network");
         container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
     }
 
@@ -147,6 +147,14 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, lookupProvider));
+    }
+
+    public void registerPayloads(final RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar("1.0");
+
+        registrar.playToServer(SoulElytraBoostPacket.TYPE, SoulElytraBoostPacket.STREAM_CODEC, SoulElytraBoostPacket::handle);
+        registrar.playToClient(SoulElytraClientPacket.TYPE, SoulElytraClientPacket.STREAM_CODEC, SoulElytraClientPacket::handle);
+        registrar.playToServer(UseTransmitterPacket.TYPE, UseTransmitterPacket.STREAM_CODEC, UseTransmitterPacket::handle);
     }
 
     private void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
@@ -226,7 +234,7 @@ public class DeeperDarker {
         public static void equipmentChangeEvent(final LivingEquipmentChangeEvent event) {
             if(!event.getSlot().isArmor()) return;
             if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
-            if(event.getEntity() instanceof ServerPlayer player) Messages.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SoulElytraClientPacket());
+            if(event.getEntity() instanceof ServerPlayer player) PacketDistributor.sendToPlayer(player, new SoulElytraClientPacket(true));
         }
     }
 
@@ -301,8 +309,8 @@ public class DeeperDarker {
     public static class DeeperDarkerForgeClient {
         @SubscribeEvent
         public static void keyInput(final InputEvent.Key event) {
-            if(Keybinds.BOOST.consumeClick()) Messages.INSTANCE.sendToServer(new SoulElytraBoostPacket());
-            if(Keybinds.TRANSMIT.consumeClick()) Messages.INSTANCE.sendToServer(new UseTransmitterPacket());
+            if(Keybinds.BOOST.consumeClick()) PacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
+            if(Keybinds.TRANSMIT.consumeClick()) PacketDistributor.sendToServer(new UseTransmitterPacket(true));
         }
     }
 }

@@ -1,27 +1,35 @@
 package com.kyanite.deeperdarker.network;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Supplier;
+public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload {
+    public static final StreamCodec<ByteBuf, UseTransmitterPacket> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.BOOL, UseTransmitterPacket::bool,
+            UseTransmitterPacket::new
+    );
 
-public class UseTransmitterPacket {
-    public UseTransmitterPacket() {
+    public static final ResourceLocation ID = new ResourceLocation(DeeperDarker.MOD_ID, "use_transmitter");
+    public static final CustomPacketPayload.Type<UseTransmitterPacket> TYPE = new CustomPacketPayload.Type<>(ID);
+
+    @Override
+    public @NotNull CustomPacketPayload.Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public UseTransmitterPacket(ByteBuf buf) {
-    }
-
-    public void toBytes(ByteBuf buf) {
-    }
-
-    public void handle(Supplier<NetworkEvent.Context> context) {
-        context.get().enqueueWork(() -> {
-            ServerPlayer player = context.get().getSender();
+    public void handle(IPayloadContext context) {
+        context.enqueueWork(() -> {
+            Player player = context.player();
             for(ItemStack stack : player.getInventory().items) {
                 if(stack.is(DDItems.SCULK_TRANSMITTER.get()) && SculkTransmitterItem.isLinked(stack)) {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null);
@@ -29,7 +37,5 @@ public class UseTransmitterPacket {
                 }
             }
         });
-
-        context.get().setPacketHandled(true);
     }
 }
