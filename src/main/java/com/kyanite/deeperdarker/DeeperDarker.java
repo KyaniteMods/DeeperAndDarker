@@ -36,6 +36,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.nbt.CompoundTag;
@@ -47,7 +48,7 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -60,38 +61,36 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeAdvancementProvider;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.common.data.AdvancementProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
 @Mod(DeeperDarker.MOD_ID)
 public class DeeperDarker {
     public static final String MOD_ID = "deeperdarker";
 
-    public DeeperDarker() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+    public DeeperDarker(IEventBus eventBus, ModContainer container) {
         DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         DDItems.ITEMS.register(eventBus);
         DDSounds.SOUND_EVENTS.register(eventBus);
@@ -106,7 +105,6 @@ public class DeeperDarker {
         OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
-        MinecraftForge.EVENT_BUS.register(this);
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
         eventBus.addListener(DeeperDarkerConfig::loadConfigs);
         eventBus.addListener(this::commonSetup);
@@ -115,7 +113,7 @@ public class DeeperDarker {
         eventBus.addListener(this::registerSpawnPlacements);
 
         Messages.registerMessages(MOD_ID + "_network");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
+        container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -134,6 +132,7 @@ public class DeeperDarker {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         // assets
         generator.addProvider(event.includeClient(), new ENLanguageProvider(packOutput));
@@ -142,15 +141,15 @@ public class DeeperDarker {
         generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
 
         // data
-        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, event.getLookupProvider(), fileHelper);
+        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, event.getLookupProvider(), blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
 
-        generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, event.getLookupProvider(), fileHelper, List.of(new DDAdvancements())));
-        generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, event.getLookupProvider()));
-        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput));
-        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput));
-        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput));
+        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, fileHelper, List.of(new DDAdvancements())));
+        generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, lookupProvider));
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
@@ -164,13 +163,13 @@ public class DeeperDarker {
     }
 
     private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        event.register(DDEntities.ANGLER_FISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(DDEntities.SHATTERED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(DDEntities.ANGLER_FISH.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(DDEntities.SHATTERED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID)
+    @EventBusSubscriber(modid = MOD_ID)
     public static class DeeperDarkerEvents {
         @SubscribeEvent
         public static void breakEvent(final BlockEvent.BreakEvent event) {
@@ -226,7 +225,7 @@ public class DeeperDarker {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class DeeperDarkerClient {
         @SubscribeEvent
         public static void clientSetup(final FMLClientSetupEvent event) {
@@ -293,7 +292,7 @@ public class DeeperDarker {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
     public static class DeeperDarkerForgeClient {
         @SubscribeEvent
         public static void keyInput(final InputEvent.Key event) {

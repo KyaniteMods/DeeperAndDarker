@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,7 +14,7 @@ public class DDDamageTypes {
     public static final ResourceKey<DamageType> BITE = createKey("bite");
     public static final ResourceKey<DamageType> RING = createKey("ring");
 
-    public static void bootstrap(BootstapContext<DamageType> context) {
+    public static void bootstrap(BootstrapContext<DamageType> context) {
         context.register(BITE, new DamageType(DeeperDarker.MOD_ID + ".bite", 0.1f));
         context.register(RING, new DamageType(DeeperDarker.MOD_ID + ".ring", 0.1f));
     }

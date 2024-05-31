@@ -7,11 +7,13 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
@@ -205,31 +207,31 @@ public class DDItemModelProvider extends ItemModelProvider {
         spawnEggModel(DDItems.STALKER_SPAWN_EGG);
     }
 
-    private void spawnEggModel(RegistryObject<Item> egg) {
+    private void spawnEggModel(DeferredItem<Item> egg) {
         withExistingParent(egg.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
-    public void blockModel(RegistryObject<? extends Block> block) {
+    public void blockModel(DeferredBlock<? extends Block> block) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath()));
     }
 
-    public void blockModel(RegistryObject<? extends Block> block, String suffix) {
+    public void blockModel(DeferredBlock<? extends Block> block, String suffix) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath() + "_" + suffix));
     }
 
-    public void blockItemModel(RegistryObject<?> block, RegistryObject<?> textureBlock, ModelFile modelFile) {
+    public void blockItemModel(DeferredBlock<?> block, DeferredBlock<?> textureBlock, ModelFile modelFile) {
         getBuilder(block.getId().getPath()).parent(modelFile).texture("layer0", "block/" + textureBlock.getId().getPath());
     }
 
-    public ItemModelBuilder itemModel(RegistryObject<?> item, ModelFile modelFile) {
+    public ItemModelBuilder itemModel(DeferredHolder<?, ?> item, ModelFile modelFile) {
         return getBuilder(item.getId().getPath()).parent(modelFile).texture("layer0", "item/" + item.getId().getPath());
     }
 
-    public void itemModelWithSuffix(RegistryObject<?> item, ModelFile modelFile, String suffix) {
+    public void itemModelWithSuffix(DeferredItem<?> item, ModelFile modelFile, String suffix) {
         getBuilder(item.getId().getPath() + "_" + suffix).parent(modelFile).texture("layer0", "item/" + item.getId().getPath() + "_" + suffix);
     }
 
-    private ModelFile.ExistingModelFile getModel(RegistryObject<?> item, String suffix) {
+    private ModelFile.ExistingModelFile getModel(DeferredItem<?> item, String suffix) {
         return new ModelFile.ExistingModelFile(modLoc("item/" + item.getId().getPath() + "_" + suffix), existingFileHelper);
     }
 }

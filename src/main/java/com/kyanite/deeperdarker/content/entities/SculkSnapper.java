@@ -74,11 +74,6 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
-    }
-
-    @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
         if(this.isInvulnerableTo(pSource)) return false;
         if(!this.level().isClientSide) {

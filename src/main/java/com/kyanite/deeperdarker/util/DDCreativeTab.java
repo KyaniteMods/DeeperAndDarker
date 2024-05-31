@@ -7,13 +7,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class DDCreativeTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, DeeperDarker.MOD_ID);
-    public static final RegistryObject<CreativeModeTab> DEEPER_DARKER = CREATIVE_MODE_TABS.register("deeper_darker", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + DeeperDarker.MOD_ID)).icon(() -> new ItemStack(DDBlocks.ECHO_LOG.get())).build());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DEEPER_DARKER = CREATIVE_MODE_TABS.register("deeper_darker", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + DeeperDarker.MOD_ID)).icon(() -> new ItemStack(DDBlocks.ECHO_LOG.get())).build());
 
     public static void buildCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if(event.getTab() == DEEPER_DARKER.get()) {

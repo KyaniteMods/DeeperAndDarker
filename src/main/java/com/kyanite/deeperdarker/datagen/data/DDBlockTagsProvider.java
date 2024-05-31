@@ -7,9 +7,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -86,7 +86,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.GLOWING_VINES.get(), DDBlocks.GLOWING_VINES_PLANT.get());
         tag(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL.get());
 
-        tag(Tags.Blocks.STONE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get());
+        tag(Tags.Blocks.STONES).add(DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get());
         tag(Tags.Blocks.ORES).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.SCULK_STONE_IRON_ORE.get(), DDBlocks.SCULK_STONE_COPPER_ORE.get(), DDBlocks.SCULK_STONE_GOLD_ORE.get(), DDBlocks.SCULK_STONE_REDSTONE_ORE.get(), DDBlocks.SCULK_STONE_EMERALD_ORE.get(), DDBlocks.SCULK_STONE_LAPIS_ORE.get(), DDBlocks.SCULK_STONE_DIAMOND_ORE.get(),
                 DDBlocks.GLOOMSLATE_COAL_ORE.get(), DDBlocks.GLOOMSLATE_IRON_ORE.get(), DDBlocks.GLOOMSLATE_COPPER_ORE.get(), DDBlocks.GLOOMSLATE_GOLD_ORE.get(), DDBlocks.GLOOMSLATE_REDSTONE_ORE.get(), DDBlocks.GLOOMSLATE_EMERALD_ORE.get(), DDBlocks.GLOOMSLATE_LAPIS_ORE.get(), DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
         tag(Tags.Blocks.ORES_COAL).add(DDBlocks.SCULK_STONE_COAL_ORE.get(), DDBlocks.GLOOMSLATE_COAL_ORE.get());

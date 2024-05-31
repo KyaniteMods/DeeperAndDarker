@@ -85,7 +85,7 @@ public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
             dir++;
         }
 
-        list.add(0, Direction.UP);
+        list.addFirst(Direction.UP);
         return list.get(dir);
     }
 

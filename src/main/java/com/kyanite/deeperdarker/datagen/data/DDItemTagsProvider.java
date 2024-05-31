@@ -10,8 +10,8 @@ import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -50,7 +50,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
-        copy(Tags.Blocks.STONE, Tags.Items.STONE);
+        copy(Tags.Blocks.STONES, Tags.Items.STONES);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
         copy(Tags.Blocks.ORES_IRON, Tags.Items.ORES_IRON);
@@ -72,10 +72,10 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.HOES).add(DDItems.WARDEN_HOE.get());
         tag(ItemTags.SWORDS).add(DDItems.WARDEN_SWORD.get());
 
-        tag(Tags.Items.ARMORS_HELMETS).add(DDItems.WARDEN_HELMET.get());
-        tag(Tags.Items.ARMORS_CHESTPLATES).add(DDItems.WARDEN_CHESTPLATE.get());
-        tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.WARDEN_LEGGINGS.get());
-        tag(Tags.Items.ARMORS_BOOTS).add(DDItems.WARDEN_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR).add(DDItems.WARDEN_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(DDItems.WARDEN_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(DDItems.WARDEN_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(DDItems.WARDEN_BOOTS.get());
 
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
     }

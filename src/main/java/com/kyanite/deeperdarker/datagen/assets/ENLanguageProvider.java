@@ -11,8 +11,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.SmithingTemplateItem;
 import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
-import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ENLanguageProvider extends LanguageProvider {
     public ENLanguageProvider(PackOutput output) {
@@ -128,13 +128,13 @@ public class ENLanguageProvider extends LanguageProvider {
         DDEnchantments.ENCHANTMENTS.getEntries().forEach(effect -> add(effect, "enchantment"));
     }
 
-    private void add(RegistryObject<?> entry, String prefix) {
+    private void add(DeferredHolder<?, ?> entry, String prefix) {
         if(filter(entry)) return;
         String key = entry.getId().getPath();
         add(prefix + "." + DeeperDarker.MOD_ID + "." + key, convertToName(key));
     }
 
-    private boolean filter(RegistryObject<?> entry) {
+    private boolean filter(DeferredHolder<?, ?> entry) {
         return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat || entry.get() instanceof SmithingTemplateItem;
     }
 

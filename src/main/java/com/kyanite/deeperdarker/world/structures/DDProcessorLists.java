@@ -5,7 +5,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.*;
 public class DDProcessorLists {
     public static final ResourceKey<StructureProcessorList> ANCIENT_TEMPLE_DEGRADATION = createKey("ancient_temple_degradation");
 
-    public static void bootstrap(BootstapContext<StructureProcessorList> context) {
+    public static void bootstrap(BootstrapContext<StructureProcessorList> context) {
         ProcessorRule rule1 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_BRICKS, 0.12f), AlwaysTrueTest.INSTANCE, Blocks.CRACKED_DEEPSLATE_BRICKS.defaultBlockState());
         ProcessorRule rule2 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_BRICKS, 0.09f), AlwaysTrueTest.INSTANCE, Blocks.POLISHED_DEEPSLATE.defaultBlockState());
         ProcessorRule rule3 = new ProcessorRule(new RandomBlockMatchTest(Blocks.DEEPSLATE_BRICKS, 0.07f), AlwaysTrueTest.INSTANCE, Blocks.COBBLED_DEEPSLATE.defaultBlockState());

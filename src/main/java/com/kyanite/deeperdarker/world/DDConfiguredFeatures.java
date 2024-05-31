@@ -7,7 +7,7 @@ import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -93,7 +93,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_ECHO = createKey("tree_echo");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         List<OreConfiguration.TargetBlockState> INFESTED_SCULK_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.INFESTED_SCULK.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> SCULK_JAW_TARGET_LIST = List.of(OreConfiguration.target(SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_JAW.get().defaultBlockState()));

@@ -5,7 +5,7 @@ import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class DDStructures {
     public static final ResourceKey<Structure> ANCIENT_TEMPLE = createKey("ancient_temple");
 
-    public static void bootstrap(BootstapContext<Structure> context) {
+    public static void bootstrap(BootstrapContext<Structure> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 

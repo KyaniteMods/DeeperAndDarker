@@ -2,7 +2,10 @@ package com.kyanite.deeperdarker.content.entities;
 
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -41,11 +44,6 @@ public class SculkCentipede extends Monster implements NeutralMob {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 20).add(Attributes.ATTACK_DAMAGE, 3).add(Attributes.MOVEMENT_SPEED, 0.2).build();
-    }
-
-    @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
     }
 
     @Override

@@ -5,18 +5,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.block.SculkSpreader;
 
 @SuppressWarnings("NullableProblems")
 public class CatalysisEnchantment extends Enchantment {
-    public CatalysisEnchantment(Rarity pRarity, EquipmentSlot... pApplicableSlots) {
-        super(pRarity, EnchantmentCategory.WEAPON, pApplicableSlots);
+    public CatalysisEnchantment(EnchantmentDefinition pDefinition) {
+        super(pDefinition);
     }
 
     @Override
@@ -32,21 +30,6 @@ public class CatalysisEnchantment extends Enchantment {
                 CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(player, pTarget, pTarget.damageSources().playerAttack(player));
             }
         }
-    }
-
-    @Override
-    public int getMinCost(int pLevel) {
-        return pLevel * 20;
-    }
-
-    @Override
-    public int getMaxCost(int pLevel) {
-        return (int) (getMinCost(pLevel) * 1.5);
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 3;
     }
 
     @Override

@@ -8,11 +8,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class DDBlockStateProvider extends BlockStateProvider {
     public DDBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -172,7 +172,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel().partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
     }
 
-    private void stemBlock(RegistryObject<Block> block) {
+    private void stemBlock(DeferredBlock<Block> block) {
         ModelFile stem = models().withExistingParent(block.getId().getPath(), modLoc("stem")).texture("stem", blockLoc(block));
         ModelFile horizontal = models().withExistingParent(block.getId().getPath() + "_horizontal", modLoc("stem_horizontal")).texture("stem", blockLoc(block));
         ModelFile vertical = models().withExistingParent(block.getId().getPath() + "_vertical", modLoc("stem_vertical")).texture("stem", blockLoc(block));
@@ -185,26 +185,26 @@ public class DDBlockStateProvider extends BlockStateProvider {
         models().singleTexture(block.getId().getPath() + "_inventory", modLoc("stem_inventory"), "stem", blockLoc(block));
     }
 
-    private void fenceBlock(RegistryObject<FenceBlock> block, ResourceLocation texture) {
+    private void fenceBlock(DeferredBlock<FenceBlock> block, ResourceLocation texture) {
         super.fenceBlock(block.get(), texture);
         models().fenceInventory(block.getId().getPath() + "_inventory", texture);
     }
 
-    public void buttonBlock(RegistryObject<ButtonBlock> block, ResourceLocation texture) {
+    public void buttonBlock(DeferredBlock<ButtonBlock> block, ResourceLocation texture) {
         super.buttonBlock(block.get(), texture);
         models().buttonInventory(block.getId().getPath() + "_inventory", texture);
     }
 
-    public void wallBlock(RegistryObject<WallBlock> block, ResourceLocation texture) {
+    public void wallBlock(DeferredBlock<WallBlock> block, ResourceLocation texture) {
         super.wallBlock(block.get(), texture);
         models().wallInventory(block.getId().getPath() + "_inventory", texture);
     }
 
-    private ResourceLocation blockLoc(RegistryObject<? extends Block> block) {
+    private ResourceLocation blockLoc(DeferredBlock<? extends Block> block) {
         return modLoc("block/" + block.getId().getPath());
     }
 
-    public ResourceLocation blockLoc(RegistryObject<? extends Block> block, String suffix) {
+    public ResourceLocation blockLoc(DeferredBlock<? extends Block> block, String suffix) {
         return modLoc("block/" + block.getId().getPath() + "_" + suffix);
     }
 }

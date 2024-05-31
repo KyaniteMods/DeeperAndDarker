@@ -109,11 +109,6 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
-    }
-
-    @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
         return super.doHurtTarget(pEntity);

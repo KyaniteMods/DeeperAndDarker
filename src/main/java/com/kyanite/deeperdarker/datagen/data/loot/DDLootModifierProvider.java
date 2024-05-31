@@ -3,16 +3,19 @@ package com.kyanite.deeperdarker.datagen.data.loot;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.loot.AddItemModifier;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.common.loot.LootTableIdCondition;
+import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
+
+import java.util.concurrent.CompletableFuture;
 
 public class DDLootModifierProvider extends GlobalLootModifierProvider {
-    public DDLootModifierProvider(PackOutput output) {
-        super(output, DeeperDarker.MOD_ID);
+    public DDLootModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, DeeperDarker.MOD_ID);
     }
 
     @Override
