@@ -7,9 +7,11 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ToolActions;
+import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("NullableProblems")
 public class RotatedFlammableBlock extends RotatedPillarBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
@@ -31,7 +33,7 @@ public class RotatedFlammableBlock extends RotatedPillarBlock {
     }
 
     @Override
-    public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
+    public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
         if(toolAction == ToolActions.AXE_STRIP) {
             if(state.is(DDBlocks.ECHO_LOG.get())) return DDBlocks.STRIPPED_ECHO_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             if(state.is(DDBlocks.ECHO_WOOD.get())) return DDBlocks.STRIPPED_ECHO_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));

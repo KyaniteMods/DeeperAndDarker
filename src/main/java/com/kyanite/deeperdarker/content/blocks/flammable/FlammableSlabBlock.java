@@ -6,6 +6,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+@SuppressWarnings("NullableProblems")
 public class FlammableSlabBlock extends SlabBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;

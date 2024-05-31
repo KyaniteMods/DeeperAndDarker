@@ -6,13 +6,12 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.function.Supplier;
-
+@SuppressWarnings("NullableProblems")
 public class FlammableStairBlock extends StairBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableStairBlock(Supplier<BlockState> state, Properties properties, int flammability, int spread) {
+    public FlammableStairBlock(BlockState state, Properties properties, int flammability, int spread) {
         super(state, properties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;

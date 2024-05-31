@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -21,8 +22,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-@SuppressWarnings({"deprecation", "NullableProblems"})
+@SuppressWarnings("NullableProblems")
 public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<AncientVaseBlock> CODEC = simpleCodec(AncientVaseBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty SAFE = BooleanProperty.create("safe");
     private static final VoxelShape BASE = Block.box(3, 0, 3, 13, 1, 13);
@@ -32,6 +34,11 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     public AncientVaseBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(SAFE, false));
+    }
+
+    @Override
+    protected MapCodec<? extends FallingBlock> codec() {
+        return CODEC;
     }
 
     @Override

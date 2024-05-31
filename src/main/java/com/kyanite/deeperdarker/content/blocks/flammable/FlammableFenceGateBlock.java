@@ -7,12 +7,13 @@ import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
+@SuppressWarnings("NullableProblems")
 public class FlammableFenceGateBlock extends FenceGateBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableFenceGateBlock(Properties properties, WoodType woodType, int flammability, int spread) {
-        super(properties, woodType);
+    public FlammableFenceGateBlock(WoodType woodType, Properties properties, int flammability, int spread) {
+        super(woodType, properties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;
     }

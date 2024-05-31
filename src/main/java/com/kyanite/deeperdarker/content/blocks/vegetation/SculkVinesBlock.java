@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -12,6 +13,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class SculkVinesBlock extends GrowingPlantHeadBlock {
+    public static final MapCodec<SculkVinesBlock> CODEC = simpleCodec(SculkVinesBlock::new);
     private static final VoxelShape SHAPE = Block.box(4, 9, 4, 12, 16, 12);
 
     public SculkVinesBlock(Properties pProperties) {
@@ -21,6 +23,11 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     @Override
     public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
         return silkTouchLevel == 0 ? 1 : 0;
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

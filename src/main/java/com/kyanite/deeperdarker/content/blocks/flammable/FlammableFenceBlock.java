@@ -6,6 +6,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+@SuppressWarnings("NullableProblems")
 public class FlammableFenceBlock extends FenceBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;

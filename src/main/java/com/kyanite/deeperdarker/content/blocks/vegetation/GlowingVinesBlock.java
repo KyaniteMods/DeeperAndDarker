@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
@@ -10,10 +11,16 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class GlowingVinesBlock extends GrowingPlantHeadBlock {
+    public static final MapCodec<GlowingVinesBlock> CODEC = simpleCodec(GlowingVinesBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 9, 1, 15, 16, 15);
 
     public GlowingVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.14);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

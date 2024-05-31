@@ -6,6 +6,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+@SuppressWarnings("NullableProblems")
 public class FlammableLeavesBlock extends LeavesBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
