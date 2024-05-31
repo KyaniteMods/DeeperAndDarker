@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.content.items;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -13,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -60,7 +63,7 @@ public class SonorousStaffItem extends Item {
         }
 
         player.playSound(SoundEvents.WARDEN_SONIC_BOOM);
-        pStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(player.getUsedItemHand()));
+        pStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
         player.awardStat(Stats.ITEM_USED.get(this));
         player.getCooldowns().addCooldown(this, 20);
     }
@@ -75,13 +78,17 @@ public class SonorousStaffItem extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(pEntity instanceof Player player) {
-            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 123);
+            CompoundTag tag;
+            if(pStack.has(DataComponents.CUSTOM_DATA)) tag = pStack.get(DataComponents.CUSTOM_DATA).copyTag();
+            else tag = new CompoundTag();
+            tag.putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 123);
+            pStack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
         }
     }
 
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return super.isFoil(pStack) || (pStack.hasTag() && pStack.getTag().getBoolean("charged"));
+        return super.isFoil(pStack) || (pStack.has(DataComponents.CUSTOM_DATA) && pStack.get(DataComponents.CUSTOM_DATA).copyTag().getBoolean("charged"));
     }
 
     @Override
