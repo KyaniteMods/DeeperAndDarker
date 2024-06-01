@@ -69,5 +69,7 @@ public class DDConfigModel {
         public boolean wardenHeartPulses = true;
 
         public boolean changePhantomTextures = true;
+
+        public boolean paintingFix = true;
     }
 }

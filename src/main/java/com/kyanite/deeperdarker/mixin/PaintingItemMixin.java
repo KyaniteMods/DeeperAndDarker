@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.mixin;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -50,7 +51,7 @@ public class PaintingItemMixin {
 
     @WrapOperation(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;shrink(I)V"))
     private void deeperdarker$decrementStackOnServer(ItemStack instance, int i, Operation<Void> original, @Local(ordinal = 0) Level level) {
-        if (!level.isClientSide()) {
+        if (!level.isClientSide() || !DeeperDarker.CONFIG.client.paintingFix()) {
             original.call(instance, i);
         }
     }

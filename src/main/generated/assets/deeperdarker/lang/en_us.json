@@ -283,6 +283,8 @@
   "text.config.deeperdarker.category.server": "Server",
   "text.config.deeperdarker.option.client.changePhantomTextures": "Change Phantom Textures",
   "text.config.deeperdarker.option.client.changePhantomTextures.tooltip": "Determines if Phantoms should have a\ndifferent texture in the Deeplands.",
+  "text.config.deeperdarker.option.client.paintingFix": "Fix Ancient Paintings",
+  "text.config.deeperdarker.option.client.paintingFix.tooltip": "Fixes desync that happens upon placing ancient\npaintings in places where they do not fit.",
   "text.config.deeperdarker.option.client.renderWardenHelmetHorns": "Render Warden Helmet Horns",
   "text.config.deeperdarker.option.client.renderWardenHelmetHorns.tooltip": "Determines if the horns in the Warden\nHelmet should be rendered.",
   "text.config.deeperdarker.option.client.wardenHeartPulses": "Heart of the Deep Pulses",
