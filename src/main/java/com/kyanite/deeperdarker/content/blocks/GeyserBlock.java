@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.util.DDConfig;
+import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -33,9 +33,9 @@ public class GeyserBlock extends Block {
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof ExperienceOrb) return;
 //        pEntity.hurt(pLevel.damageSources().hotFloor(), 2);
-        pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), DDConfig.HANDLER.instance().geyserLaunchVelocity, pEntity.getDeltaMovement().z());
+        pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), DeeperDarker.CONFIG.server.geyserLaunchVelocity(), pEntity.getDeltaMovement().z());
 
-        if (!pLevel.isClientSide() && DDConfig.HANDLER.instance().geysersApplySlowFalling && pEntity instanceof Player player) {
+        if (!pLevel.isClientSide() && DeeperDarker.CONFIG.server.geysersApplySlowFalling() && pEntity instanceof Player player) {
             player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 125));
         }
 

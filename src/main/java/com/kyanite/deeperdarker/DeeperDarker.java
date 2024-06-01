@@ -46,10 +46,10 @@ public class DeeperDarker implements ModInitializer {
 			.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
 			.registerPortal();
 
+	public static final DDConfig CONFIG = DDConfig.createAndLoad();
+
 	@Override
 	public void onInitialize() {
-		DDConfig.loadHandler();
-
 		DDCreativeTab.init();
 		DDItems.init();
 		DDBlocks.init();

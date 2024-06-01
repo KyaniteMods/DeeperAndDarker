@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
-import com.kyanite.deeperdarker.util.DDConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
@@ -71,8 +71,8 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
         if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
             RandomSource random = pLevel.getRandom();
-            if (!pBlockState.getValue(SAFE) && pLevel.getDifficulty() != Difficulty.PEACEFUL && random.nextFloat() < DDConfig.HANDLER.instance().spawnSomethingFromAncientVaseChance) {
-                if (random.nextDouble() < DDConfig.HANDLER.instance().sculkLeechesFromAncientVaseChance) {
+            if (!pBlockState.getValue(SAFE) && pLevel.getDifficulty() != Difficulty.PEACEFUL && random.nextFloat() < DeeperDarker.CONFIG.server.spawnSomethingFromAncientVaseChance()) {
+                if (random.nextDouble() < DeeperDarker.CONFIG.server.sculkLeechesFromAncientVaseChance()) {
                     for (int i = 0; i < random.nextInt(1, 4); i++) {
                         SculkLeech entity = DDEntities.SCULK_LEECH.create(pLevel);
                         assert entity != null;

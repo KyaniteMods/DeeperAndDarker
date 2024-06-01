@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.google.common.collect.Sets;
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.util.DDConfig;
 import net.kyrptonaught.customportalapi.portal.frame.PortalFrameTester;
 import net.kyrptonaught.customportalapi.portal.frame.VanillaPortalAreaHelper;
 import net.minecraft.core.BlockPos;
@@ -29,9 +28,9 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
             lowerCorner = blockPos;
             width = height = 1;
         } else {
-            this.width = this.getSize(axis, DDConfig.HANDLER.instance().portalMinWidth, DDConfig.HANDLER.instance().portalMaxWidth);
+            this.width = this.getSize(axis, DeeperDarker.CONFIG.server.portalMinWidth(), DeeperDarker.CONFIG.server.portalMaxWidth());
             if (this.width > 0) {
-                this.height = this.getSize(Direction.Axis.Y, DDConfig.HANDLER.instance().portalMinHeight, DDConfig.HANDLER.instance().portalMaxHeight);
+                this.height = this.getSize(Direction.Axis.Y, DeeperDarker.CONFIG.server.portalMinHeight(), DeeperDarker.CONFIG.server.portalMaxHeight());
                 if (checkForValidFrame(axis, Direction.Axis.Y, width, height)) {
                     countExistingPortalBlocks(axis, Direction.Axis.Y, width, height);
                 } else {
@@ -45,7 +44,7 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
 
     @Override
     public boolean isRequestedSize(int attemptWidth, int attemptHeight) {
-        return (this.width >= DDConfig.HANDLER.instance().portalMinWidth) && (this.height >= DDConfig.HANDLER.instance().portalMinHeight);
+        return (this.width >= DeeperDarker.CONFIG.server.portalMinWidth()) && (this.height >= DeeperDarker.CONFIG.server.portalMinHeight());
     }
 
     @Override
@@ -62,27 +61,27 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
     @Override
     public void createPortal(Level world, BlockPos pos, BlockState frameBlock, Direction.Axis axis) {
         Direction.Axis rotatedAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-        for (int i = -1; i < DDConfig.HANDLER.instance().generatedPortalHeight + 1; i++) {
+        for (int i = -1; i < DeeperDarker.CONFIG.server.generatedPortalHeight() + 1; i++) {
             world.setBlockAndUpdate(pos.above(i).relative(axis, -1), frameBlock);
-            world.setBlockAndUpdate(pos.above(i).relative(axis, DDConfig.HANDLER.instance().generatedPortalWidth), frameBlock);
+            world.setBlockAndUpdate(pos.above(i).relative(axis, DeeperDarker.CONFIG.server.generatedPortalWidth()), frameBlock);
             if (i >= 0) {
-                for (int j = 0; j < DDConfig.HANDLER.instance().generatedPortalWidth; j++) {
+                for (int j = 0; j < DeeperDarker.CONFIG.server.generatedPortalWidth(); j++) {
                     fillAirAroundPortal(world, pos.above(i).relative(axis, -1).relative(rotatedAxis, -1));
                     fillAirAroundPortal(world, pos.above(i).relative(axis, -1).relative(rotatedAxis, 1));
                 }
             }
         }
-        for (int i = -1; i < DDConfig.HANDLER.instance().generatedPortalWidth + 1; i++) {
+        for (int i = -1; i < DeeperDarker.CONFIG.server.generatedPortalWidth() + 1; i++) {
             world.setBlockAndUpdate(pos.above(-1).relative(axis, i), frameBlock);
-            world.setBlockAndUpdate(pos.above(DDConfig.HANDLER.instance().generatedPortalHeight).relative(axis, i), frameBlock);
+            world.setBlockAndUpdate(pos.above(DeeperDarker.CONFIG.server.generatedPortalHeight()).relative(axis, i), frameBlock);
         }
-        for (int i = 0; i < DDConfig.HANDLER.instance().generatedPortalWidth; i++) {
+        for (int i = 0; i < DeeperDarker.CONFIG.server.generatedPortalWidth(); i++) {
             placeLandingPad(world, pos.above(-1).relative(axis, i).relative(rotatedAxis, -1), frameBlock);
             placeLandingPad(world, pos.above(-1).relative(axis, i).relative(rotatedAxis, 1), frameBlock);
         }
         this.lowerCorner = pos;
-        this.width = DDConfig.HANDLER.instance().generatedPortalWidth;
-        this.height = DDConfig.HANDLER.instance().generatedPortalHeight;
+        this.width = DeeperDarker.CONFIG.server.generatedPortalWidth();
+        this.height = DeeperDarker.CONFIG.server.generatedPortalHeight();
         this.axis = axis;
         this.world = world;
         this.foundPortalBlocks = this.width * this.height;
@@ -92,7 +91,7 @@ public class OthersidePortalFrameTester extends VanillaPortalAreaHelper {
 
     @Override
     public boolean isValidFrame() {
-        return this.lowerCorner != null && this.width >= DDConfig.HANDLER.instance().portalMinWidth && this.width <= DDConfig.HANDLER.instance().portalMaxWidth && this.height >= DDConfig.HANDLER.instance().portalMinHeight && this.height <= DDConfig.HANDLER.instance().portalMaxHeight;
+        return this.lowerCorner != null && this.width >= DeeperDarker.CONFIG.server.portalMinWidth() && this.width <= DeeperDarker.CONFIG.server.portalMaxWidth() && this.height >= DeeperDarker.CONFIG.server.portalMinHeight() && this.height <= DeeperDarker.CONFIG.server.portalMaxHeight();
     }
 
     @Override

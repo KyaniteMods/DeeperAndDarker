@@ -23,9 +23,6 @@
 		],
 		"fabric-datagen": [
 			"com.kyanite.deeperdarker.util.DeeperDarkerDatagen"
-		],
-		"modmenu": [
-			"com.kyanite.deeperdarker.compat.ModMenuIntegration"
 		]
 	},
 	"mixins": [
@@ -36,7 +33,7 @@
 		"minecraft": "~1.20",
 		"java": ">=17",
 		"fabric-api": "*",
-		"yet_another_config_lib_v3": "*"
+		"owo": "*"
 	},
 	"suggests": {
 		"another-mod": "*"
