@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
@@ -44,6 +45,11 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     public AncientVaseBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE).setValue(SAFE, Boolean.FALSE));
+    }
+
+    @Override
+    protected MapCodec<? extends FallingBlock> codec() {
+        return null;
     }
 
     @Override

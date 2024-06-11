@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_sculk_stone_gold_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sculk_stone_gold_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:gold_ingot_from_smelting_sculk_stone_gold_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_warden_upgrade_smithing_template",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_warden_upgrade_smithing_template"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:netherite_shovel_to_warden_shovel_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

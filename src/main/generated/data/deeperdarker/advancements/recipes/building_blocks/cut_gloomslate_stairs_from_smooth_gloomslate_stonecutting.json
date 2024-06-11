@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_smooth_gloomslate",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_smooth_gloomslate"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:cut_gloomslate_stairs_from_smooth_gloomslate_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

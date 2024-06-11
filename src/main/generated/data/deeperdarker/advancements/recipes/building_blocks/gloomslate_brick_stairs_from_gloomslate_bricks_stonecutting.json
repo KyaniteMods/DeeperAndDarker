@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gloomslate_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gloomslate_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:gloomslate_brick_stairs_from_gloomslate_bricks_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cut_sculk_stone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cut_sculk_stone"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:cut_sculk_stone_slab_from_cut_sculk_stone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

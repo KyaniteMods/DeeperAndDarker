@@ -1,5 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -21,9 +23,15 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class IceLilyBlock extends BushBlock {
     private static final VoxelShape LILY_PAD = Block.box(1, 0, 1, 15, 1.5, 15);
     private static final VoxelShape FLOWER = Block.box(5, 0, 5, 11, 12, 11);
+    private static final MapCodec<IceLilyBlock> CODEC = simpleCodec(IceLilyBlock::new);
 
     public IceLilyBlock(Properties pProperties) {
         super(pProperties);
+    }
+
+    @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return CODEC;
     }
 
     @Override

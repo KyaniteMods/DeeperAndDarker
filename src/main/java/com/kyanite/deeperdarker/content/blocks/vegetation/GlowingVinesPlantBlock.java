@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -31,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     public static final BooleanProperty BERRIES = BlockStateProperties.BERRIES;
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
+    private static final MapCodec<GlowingVinesPlantBlock> CODEC = simpleCodec(GlowingVinesPlantBlock::new);
 
     public GlowingVinesPlantBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false);
@@ -62,8 +64,13 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return !pState.getValue(BERRIES);
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantBodyBlock> codec() {
+        return CODEC;
     }
 
     @Override

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_gloomslate_coal_ore",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_gloomslate_coal_ore"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:coal_from_smelting_gloomslate_coal_ore"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

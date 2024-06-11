@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_sculk_grime_bricks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sculk_grime_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:sculk_grime_brick_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

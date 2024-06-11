@@ -25,7 +25,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+    public void buildRecipes(RecipeOutput exporter) {
         SmithingTransformRecipeBuilder NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)),
                 Ingredient.of(new ItemStack(Items.NETHERITE_HELMET)),
@@ -322,7 +322,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 //        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, DDItems.RESONARIUM_HOE, 1).requires(Items.IRON_HOE).requires(DDItems.RESONARIUM_PASTE).unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE)).save(exporter);
     }
 
-    private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
+    private static void woodRecipes(RecipeOutput exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
         planksFromLogs(exporter, planks, logs, 4);
         stairBuilder(stairs, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
         slab(exporter, RecipeCategory.BUILDING_BLOCKS, slab, planks);
@@ -338,7 +338,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         chestBoat(exporter, chestBoat, planks);
     }
 
-    private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
+    private static void registerStairsSlabsAndWalls(RecipeOutput exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
         stairBuilder(stairs, Ingredient.of(stone)).unlockedBy(getHasName(stone), has(stone)).save(exporter);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, stone);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, originalStone);

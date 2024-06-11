@@ -77,11 +77,6 @@ public class AnglerFish extends AbstractFish {
         }
 
         @Override
-        protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-            return pAttackTarget.getBbWidth() + 1;
-        }
-
-        @Override
         public boolean canUse() {
             return super.canUse() && this.fish.validTarget(this.fish.getTarget());
         }

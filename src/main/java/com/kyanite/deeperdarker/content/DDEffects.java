@@ -12,7 +12,7 @@ public class DDEffects {
     public static final MobEffect SCULK_AFFINITY = Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(
             DeeperDarker.MOD_ID, "sculk_affinity"), new MobEffect(MobEffectCategory.BENEFICIAL, 0x00ffd0) {
         @Override
-        public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+        public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
             return true;
         }
     });

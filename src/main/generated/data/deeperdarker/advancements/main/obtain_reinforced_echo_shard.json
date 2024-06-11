@@ -15,16 +15,12 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.obtain_reinforced_echo_shard.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "deeperdarker:reinforced_echo_shard"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.obtain_reinforced_echo_shard.title"
     }
