@@ -82,7 +82,7 @@ dependencies {
 	modImplementation("nl.enjarai:cicada-lib:${project.cicada_version}") {
 		exclude group: "net.fabricmc.fabric-api"
 	}
-	annotationProcessor("com.github.LlamaLad7.mixinextras:mixinextras-fabric:${project.mixin_extras_version}")
+	//annotationProcessor("com.github.LlamaLad7.mixinextras:mixinextras-fabric:${project.mixin_extras_version}")
 
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
