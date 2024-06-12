@@ -22,6 +22,7 @@ public class DDEntities {
     public static final EntityType<Shattered> SHATTERED = register("shattered", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Shattered::new).dimensions(EntityDimensions.fixed(0.8f, 2.125f)).trackRangeBlocks(10).build());
     public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", FabricEntityTypeBuilder.create(MobCategory.MONSTER, ShriekWorm::new).dimensions(EntityDimensions.fixed(1.0f, 5.7f)).trackRangeBlocks(10).build());
     public static final EntityType<Stalker> STALKER = register("stalker", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Stalker::new).dimensions(EntityDimensions.fixed(1f, 4.4f)).trackRangeBlocks(10).build());
+    public static final EntityType<OvercastVessel> OVERCAST_VESSEL = register("overcast_vessel", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastVessel::new).dimensions(EntityDimensions.fixed(3.0f, 3.0f)).trackRangeBlocks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -37,6 +38,7 @@ public class DDEntities {
         DefaultAttributeRegistryAccessor.getRegistry().put(SHRIEK_WORM, ShriekWorm.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(STALKER, Stalker.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(OVERCAST_VESSEL, OvercastVessel.createAttributes());
     }
 
     private static EntityType register(String name, EntityType entity) {
