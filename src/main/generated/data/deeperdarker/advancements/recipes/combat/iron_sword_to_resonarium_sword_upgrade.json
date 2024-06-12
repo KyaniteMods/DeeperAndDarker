@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_resonarium_paste",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_resonarium_paste"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:iron_sword_to_resonarium_sword_upgrade"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
