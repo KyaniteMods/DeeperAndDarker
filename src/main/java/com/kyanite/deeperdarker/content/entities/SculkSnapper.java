@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDSounds;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
@@ -26,7 +28,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class SculkSnapper extends TamableAnimal {
 
     public SculkSnapper(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.setTame(false, false);
     }
 
     @Override
@@ -98,14 +100,14 @@ public class SculkSnapper extends TamableAnimal {
         if(this.isTame() && this.getOwner() != null) {
             if(droppedBooks < 16 && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
                 List<Enchantment> enchantments = new ArrayList<>();
-                ForgeRegistries.ENCHANTMENTS.forEach(enchant -> {
+                BuiltInRegistries.ENCHANTMENT.forEach(enchant -> {
                     if(!enchant.isCurse()) enchantments.add(enchant);
                 });
                 Enchantment enchantment1 = enchantments.remove(this.random.nextInt(enchantments.size()));
                 Enchantment enchantment2 = enchantments.get(this.random.nextInt(enchantments.size()));
 
                 ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment1, this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
-                if(this.random.nextFloat() < 0.2f) EnchantedBookItem.addEnchantment(book, new EnchantmentInstance(enchantment2, BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random)));
+                if(this.random.nextFloat() < 0.2f) book.enchant(enchantment2, BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random));
                 this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
                 droppedBooks++;
             }
@@ -127,13 +129,12 @@ public class SculkSnapper extends TamableAnimal {
 
     @Override
     public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.NETHERITE_CHESTPLATE) && !pStack.getEnchantmentTags().isEmpty();
+        return pStack.is(Items.NETHERITE_CHESTPLATE) && pStack.has(DataComponents.ENCHANTMENTS);
     }
 
     @Override
-    public void setTame(boolean pTamed) {
-        super.setTame(pTamed);
-        if(pTamed) {
+    protected void applyTamingSideEffects() {
+        if(this.isTame()) {
             this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16);
             this.setHealth(16f);
         }
@@ -155,7 +156,7 @@ public class SculkSnapper extends TamableAnimal {
         }
 
         if(this.isTame()) {
-            if(!stack.getEnchantmentTags().isEmpty() && this.getHealth() < this.getMaxHealth()) {
+            if(stack.has(DataComponents.ENCHANTMENTS) && this.getHealth() < this.getMaxHealth()) {
                 this.usePlayerItem(pPlayer, pHand, stack);
                 if(!level().isClientSide()) {
                     this.heal(getMaxHealth());

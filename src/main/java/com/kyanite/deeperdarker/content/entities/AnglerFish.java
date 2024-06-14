@@ -61,6 +61,11 @@ public class AnglerFish extends AbstractFish {
     }
 
     @Override
+    public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
+        return getAttackBoundingBox().inflate(1).intersects(pEntity.getBoundingBox());
+    }
+
+    @Override
     protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         return InteractionResult.PASS;
     }
@@ -84,11 +89,6 @@ public class AnglerFish extends AbstractFish {
         public AnglerFishAttackGoal(AnglerFish fish, double speedModifier, boolean followIfNotSeen) {
             super(fish, speedModifier, followIfNotSeen);
             this.fish = fish;
-        }
-
-        @Override
-        protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-            return pAttackTarget.getBbWidth() + 1;
         }
 
         @Override

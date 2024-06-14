@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.content.entities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -19,7 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation, NullableProblems")
@@ -39,12 +38,7 @@ public class ShriekWorm extends Monster {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 0, true) {
-            @Override
-            protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-                return 25.0 + pAttackTarget.getBbWidth();
-            }
-        });
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 0, true));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
@@ -141,6 +135,11 @@ public class ShriekWorm extends Monster {
     }
 
     @Override
+    public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
+        return getAttackBoundingBox().inflate(6, 0, 6).intersects(pEntity.getBoundingBox());
+    }
+
+    @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
         if(pKey.equals(DATA_POSE)) {
             if(this.getPose() == Pose.EMERGING) this.emergeState.start(this.tickCount);
@@ -150,10 +149,11 @@ public class ShriekWorm extends Monster {
         super.onSyncedDataUpdated(pKey);
     }
 
+    @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        if(pReason == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
-        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
+        if(pSpawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 
     @Override

@@ -5,10 +5,11 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import com.kyanite.deeperdarker.util.DDDamageTypes;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerBossEvent;
@@ -37,7 +38,7 @@ import net.minecraft.world.level.gameevent.EntityPositionSource;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -62,20 +63,15 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
         this.vibrationUser = new Stalker.VibrationUser();
         this.vibrationData = new VibrationSystem.Data();
-        this.setPathfindingMalus(BlockPathTypes.LAVA, 8);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, 8);
-        this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0);
+        this.setPathfindingMalus(PathType.LAVA, 8);
+        this.setPathfindingMalus(PathType.POWDER_SNOW, 8);
+        this.setPathfindingMalus(PathType.UNPASSABLE_RAIL, 0);
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true) {
-            @Override
-            protected double getAttackReachSqr(LivingEntity pAttackTarget) {
-                return 8.0 + pAttackTarget.getBbWidth();
-            }
-        });
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true));
         this.goalSelector.addGoal(2, new DisturbanceGoal(this, 1.1));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.9));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.4));
@@ -184,6 +180,11 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
+    public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
+        return getAttackBoundingBox().inflate(2.8, 1, 2.8).intersects(pEntity.getBoundingBox());
+    }
+
+    @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
         if(pKey.equals(DATA_POSE)) {
             if(this.getPose() == Pose.EMERGING) this.emergeState.start(this.tickCount);
@@ -205,10 +206,11 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         this.bossEvent.removePlayer(pServerPlayer);
     }
 
+    @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        if(pReason == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
-        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
+        if(pSpawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 
     @Override
@@ -270,7 +272,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
+        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, GameEvent.Context pContext) {
             if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
                 if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
@@ -280,11 +282,11 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, Entity pEntity, Entity pPlayerEntity, float pDistance) {
+        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, @Nullable Entity pEntity, @Nullable Entity pPlayerEntity, float pDistance) {
             if(isDeadOrDying()) return;
             playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
             if(pEntity != null && canTargetEntity(pEntity)) {
-                if(pEntity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
+                if(pEntity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
                 return;
             }
 

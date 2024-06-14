@@ -31,9 +31,9 @@ public class DDBoat extends Boat {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(WOOD_TYPE, DDBlocks.ECHO.name());
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(WOOD_TYPE, DDBlocks.ECHO.name());
     }
 
     @Override
