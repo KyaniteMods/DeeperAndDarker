@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
@@ -29,8 +31,9 @@ public class ContainerMenuMixin {
         }
 
         if(!transmitter.isEmpty()) {
-            String block = transmitter.getTag().getString("block");
-            int[] pos = transmitter.getTag().getIntArray("blockPos");
+            CompoundTag tag = transmitter.get(DataComponents.CUSTOM_DATA).copyTag();
+            String block = tag.getString("block");
+            int[] pos = tag.getIntArray("blockPos");
             BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
 
             if(player.level().getBlockState(linkedPos).getBlock().getDescriptionId().equals(block)) {
