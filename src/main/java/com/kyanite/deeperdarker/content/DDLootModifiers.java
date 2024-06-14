@@ -11,5 +11,5 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 public class DDLootModifiers {
     public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS, DeeperDarker.MOD_ID);
 
-    public static final DeferredHolder<MapCodec<?>, MapCodec<AddItemModifier>> ADD = LOOT_MODIFIERS.register("add", AddItemModifier.CODEC);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<AddItemModifier>> ADD = LOOT_MODIFIERS.register("add", () -> AddItemModifier.CODEC);
 }
