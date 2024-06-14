@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.content.blocks.entity.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.entity.DDSignBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.flammable.*;
 import com.kyanite.deeperdarker.content.blocks.vegetation.*;
-import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
+import com.kyanite.deeperdarker.world.trees.DDTreeGrowers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -37,16 +37,16 @@ public class DDBlocks {
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 5));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 5));
     public static final DeferredBlock<Block> ECHO_PLANKS = register("echo_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
-    public static final DeferredBlock<StairBlock> ECHO_STAIRS = register("echo_stairs", () -> new FlammableStairBlock(() -> ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
+    public static final DeferredBlock<StairBlock> ECHO_STAIRS = register("echo_stairs", () -> new FlammableStairBlock(ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
     public static final DeferredBlock<SlabBlock> ECHO_SLAB = register("echo_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
     public static final DeferredBlock<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
-    public static final DeferredBlock<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FlammableFenceGateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.COLOR_LIGHT_GRAY), ECHO, 20, 5));
+    public static final DeferredBlock<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FlammableFenceGateBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
     public static final DeferredBlock<DoorBlock> ECHO_DOOR = register("echo_door", () -> new DoorBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<TrapDoorBlock> ECHO_TRAPDOOR = register("echo_trapdoor", () -> new TrapDoorBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<PressurePlateBlock> ECHO_PRESSURE_PLATE = register("echo_pressure_plate", () -> new PressurePlateBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<ButtonBlock> ECHO_BUTTON = register("echo_button", () -> new ButtonBlock(ECHO_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
     public static final DeferredBlock<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new FlammableLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).mapColor(MapColor.COLOR_PURPLE), 60, 30));
-    public static final DeferredBlock<SaplingBlock> ECHO_SAPLING = register("echo_sapling", () -> new SaplingBlock(new EchoTreeGrower(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)) {
+    public static final DeferredBlock<SaplingBlock> ECHO_SAPLING = register("echo_sapling", () -> new SaplingBlock(DDTreeGrowers.ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)) {
         @Override
         protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
             return pState.is(DDBlocks.ECHO_SOIL.get()) || pState.is(DDBlocks.SCULK_GRIME.get());
@@ -83,10 +83,10 @@ public class DDBlocks {
     public static final DeferredBlock<Block> BLOOMING_STEM = register("blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).sound(SoundType.WOOD).mapColor(MapColor.COLOR_CYAN).ignitedByLava().noOcclusion()));
     public static final DeferredBlock<Block> STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.ofFullCopy(BLOOMING_STEM.get()).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<Block> BLOOM_PLANKS = register("bloom_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
-    public static final DeferredBlock<StairBlock> BLOOM_STAIRS = register("bloom_stairs", () -> new FlammableStairBlock(() -> BLOOM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
+    public static final DeferredBlock<StairBlock> BLOOM_STAIRS = register("bloom_stairs", () -> new FlammableStairBlock(BLOOM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final DeferredBlock<SlabBlock> BLOOM_SLAB = register("bloom_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final DeferredBlock<FenceBlock> BLOOM_FENCE = register("bloom_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).mapColor(MapColor.GLOW_LICHEN), 20, 5));
-    public static final DeferredBlock<FenceGateBlock> BLOOM_FENCE_GATE = register("bloom_fence_gate", () -> new FlammableFenceGateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), BLOOM, 20, 5));
+    public static final DeferredBlock<FenceGateBlock> BLOOM_FENCE_GATE = register("bloom_fence_gate", () -> new FlammableFenceGateBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final DeferredBlock<DoorBlock> BLOOM_DOOR = register("bloom_door", () -> new DoorBlock(BLOOM_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<TrapDoorBlock> BLOOM_TRAPDOOR = register("bloom_trapdoor", () -> new TrapDoorBlock(BLOOM_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<PressurePlateBlock> BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", () -> new PressurePlateBlock(BLOOM_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN)));
