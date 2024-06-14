@@ -93,10 +93,10 @@ public class DeeperDarker {
     public static final String MOD_ID = "deeperdarker";
 
     public DeeperDarker(IEventBus eventBus, ModContainer container) {
-        DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
-        DDItems.ITEMS.register(eventBus);
         DDSounds.SOUND_EVENTS.register(eventBus);
         DDBlocks.BLOCKS.register(eventBus);
+        DDItems.ITEMS.register(eventBus);
+        DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
         AncientPaintingVariants.PAINTINGS.register(eventBus);

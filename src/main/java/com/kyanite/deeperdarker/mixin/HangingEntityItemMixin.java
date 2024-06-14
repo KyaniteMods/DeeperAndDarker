@@ -13,10 +13,10 @@ import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.HangingEntityItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,21 +32,21 @@ public abstract class HangingEntityItemMixin {
     private EntityType<? extends HangingEntity> type;
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
-    public void deeperdarker_appendHoverText(ItemStack stack, Level level, List<Component> tooltips, TooltipFlag isAdvanced, CallbackInfo ci) {
+    public void deeperdarker_appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if(this.type == EntityType.PAINTING) {
             CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
             if(!tag.isEmpty() && tag.contains("EntityTag", 10)) {
                 CompoundTag entityTag = tag.getCompound("EntityTag");
                 Holder<PaintingVariant> paintingVariant = loadVariant(entityTag);
                 if(paintingVariant.is(DDTags.Misc.ANCIENT_PAINTING)) {
-                    tooltips.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "title")).withStyle(ChatFormatting.YELLOW));
-                    tooltips.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "author")).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.OBFUSCATED));
-                    tooltips.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(paintingVariant.value().getWidth(), 16), Mth.positiveCeilDiv(paintingVariant.value().getHeight(), 16)));
+                    tooltipComponents.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "title")).withStyle(ChatFormatting.YELLOW));
+                    tooltipComponents.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "author")).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.OBFUSCATED));
+                    tooltipComponents.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(paintingVariant.value().getWidth(), 16), Mth.positiveCeilDiv(paintingVariant.value().getHeight(), 16)));
 
                     ci.cancel();
                 }
-            } else if(isAdvanced.isCreative()) {
-                tooltips.add(TOOLTIP_RANDOM_VARIANT);
+            } else if(tooltipFlag.isCreative()) {
+                tooltipComponents.add(TOOLTIP_RANDOM_VARIANT);
             }
         }
     }
