@@ -6,12 +6,13 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -20,7 +21,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().hasTag());
+        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().has(DataComponents.CUSTOM_DATA));
     }
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
@@ -71,12 +71,12 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        if(pStack.hasTag()) {
-            CompoundTag tag = pStack.getOrCreateTag();
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        if(pStack.has(DataComponents.CUSTOM_DATA)) {
+            CompoundTag tag = pStack.get(DataComponents.CUSTOM_DATA).copyTag();
             if(tag.contains("BlockEntityTag")) tag = tag.getCompound("BlockEntityTag");
-            if(tag.contains("leech") && tag.getBoolean("leech")) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-            else if(tag.contains("item")) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.of(tag.getCompound("item")).getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+            if(tag.contains("leech") && tag.getBoolean("leech")) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+            else if(tag.contains("item")) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parse(pContext.registries(), tag.getCompound("item")).get().getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         }
     }
 }

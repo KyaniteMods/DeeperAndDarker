@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.bus.api.ICancellableEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
@@ -117,7 +118,7 @@ public class OthersidePortalBlock extends Block {
     }
 
     public static boolean trySpawningPortal(LevelAccessor world, BlockPos pos, OthersidePortalShape portal) {
-        return NeoForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), portal));
+        return NeoForge.EVENT_BUS.post(new PortalSpawnEvent(world, pos, world.getBlockState(pos), portal)).isCanceled();
     }
 
     public OthersidePortalShape isPortal(LevelAccessor level, BlockPos pos) {
@@ -130,7 +131,7 @@ public class OthersidePortalBlock extends Block {
         }
     }
 
-    public static class PortalSpawnEvent extends BlockEvent {
+    public static class PortalSpawnEvent extends BlockEvent implements ICancellableEvent {
         private final OthersidePortalShape size;
 
         public PortalSpawnEvent(LevelAccessor level, BlockPos pos, BlockState state, OthersidePortalShape size) {
