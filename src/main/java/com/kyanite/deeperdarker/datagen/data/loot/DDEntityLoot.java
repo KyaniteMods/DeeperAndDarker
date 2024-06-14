@@ -13,7 +13,7 @@ import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
@@ -36,6 +36,6 @@ public class DDEntityLoot extends EntityLootSubProvider {
 
     @Override
     protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
-        return DDEntities.ENTITIES.getEntries().stream().map(RegistryObject::get);
+        return DDEntities.ENTITIES.getEntries().stream().map(DeferredHolder::get);
     }
 }
