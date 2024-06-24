@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-04T16:04:51.8042794	Item Models: deeperdarker
+// 1.20.1	2024-06-17T14:29:08.1929221	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -96,6 +96,16 @@ ceca42e3aadb0cadd907d918dfa0d3a88944f465 assets/deeperdarker/models/item/polishe
 b3a17670ce04497d99b6b8ee3dda60ed1e330885 assets/deeperdarker/models/item/polished_sculk_stone_stairs.json
 bdc3ad08e38c745a346717a9719044e0db544588 assets/deeperdarker/models/item/polished_sculk_stone_wall.json
 8864938ba857d68c957e39e40fe9f7117f72e31e assets/deeperdarker/models/item/reinforced_echo_shard.json
+898e24490c0414bee4afe3948a2737a56e32d1e7 assets/deeperdarker/models/item/resonarium.json
+71024a2f8123c05a27ee21b5f5fb59a3a09ecf80 assets/deeperdarker/models/item/resonarium_axe.json
+918f37e4eef3a3e99b7be8d427c3bf47a324e46f assets/deeperdarker/models/item/resonarium_boots.json
+3a48ed1c333611fcdb30501672fac5161b64f19b assets/deeperdarker/models/item/resonarium_chestplate.json
+9df928778ad73e9d6de7db6b22d0ed4d3b12a500 assets/deeperdarker/models/item/resonarium_helmet.json
+5149734d531ed0c01d770df8e01548cf33f72fca assets/deeperdarker/models/item/resonarium_hoe.json
+c2b39a118b3315f27e56bf0bed7d11dfca096297 assets/deeperdarker/models/item/resonarium_leggings.json
+6b9906209e176d83260edda3108b7d15f342e449 assets/deeperdarker/models/item/resonarium_pickaxe.json
+a4a65d437afaa5e174b2119c748ba99eb995ef3b assets/deeperdarker/models/item/resonarium_shovel.json
+50a72ba3d144f141d159f832cbbcc419a6c25ece assets/deeperdarker/models/item/resonarium_sword.json
 18121c23d9e0f562f3d6394f3f7930858df5c802 assets/deeperdarker/models/item/sculk_bone.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sculk_centipede_spawn_egg.json
 f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
