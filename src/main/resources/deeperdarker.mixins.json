@@ -1,9 +1,8 @@
 {
   "required": true,
-  "minVersion": "0.8",
+  "minVersion": "0.8.3",
   "package": "com.kyanite.deeperdarker.mixin",
   "compatibilityLevel": "JAVA_21",
-  "refmap": "deeperdarker.mixins.refmap.json",
   "mixins": [
     "ContainerMenuMixin",
     "HangingEntityItemMixin",
