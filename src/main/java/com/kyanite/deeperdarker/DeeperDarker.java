@@ -36,6 +36,7 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.nbt.CompoundTag;
@@ -53,6 +54,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -186,10 +188,11 @@ public class DeeperDarker {
     public static class DeeperDarkerEvents {
         @SubscribeEvent
         public static void breakEvent(final BlockEvent.BreakEvent event) {
-            boolean silktouch = event.getPlayer().getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0;
             Level level = (Level) event.getLevel();
             BlockState state = event.getState();
             BlockPos pos = event.getPos();
+            HolderLookup.RegistryLookup<Enchantment> lookup = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+            boolean silktouch = event.getPlayer().getMainHandItem().getEnchantmentLevel(lookup.getOrThrow(Enchantments.SILK_TOUCH)) > 0;
 
             if(state.is(DDBlocks.CRYSTALLIZED_AMBER.get()) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
                 if(!silktouch && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
@@ -245,9 +248,9 @@ public class DeeperDarker {
             event.enqueueWork(() -> {
                 Sheets.addWoodType(DDBlocks.ECHO);
                 Sheets.addWoodType(DDBlocks.BLOOM);
-                ItemProperties.register(DDItems.SOUL_ELYTRA.get(), new ResourceLocation("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
-                ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), new ResourceLocation(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> SculkTransmitterItem.isLinked(pStack) ? 1 : 0);
-                ItemProperties.register(DDItems.SONOROUS_STAFF.get(), new ResourceLocation(MOD_ID, "charge"), (pStack, pLevel, pEntity, pSeed) -> pEntity != null && pEntity.getUseItem() == pStack ? (pStack.getUseDuration() - pEntity.getUseItemRemainingTicks()) / 123f : 0);
+                ItemProperties.register(DDItems.SOUL_ELYTRA.get(), ResourceLocation.withDefaultNamespace("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
+                ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), ResourceLocation.fromNamespaceAndPath(MOD_ID, "linked"), (pStack, pLevel, pEntity, pSeed) -> SculkTransmitterItem.isLinked(pStack) ? 1 : 0);
+                ItemProperties.register(DDItems.SONOROUS_STAFF.get(), ResourceLocation.fromNamespaceAndPath(MOD_ID, "charge"), (pStack, pLevel, pEntity, pSeed) -> pEntity != null && pEntity.getUseItem() == pStack ? (pStack.getUseDuration(pEntity) - pEntity.getUseItemRemainingTicks()) / 123f : 0);
             });
 
             BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
