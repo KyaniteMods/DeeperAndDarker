@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public class AnglerFishGlowRenderer extends EyesLayer<AnglerFish, AnglerFishModel> {
-    private static final RenderType FISH_GLOW = RenderType.entityTranslucentEmissive(new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/angler_fish_glow.png"));
+    private static final RenderType FISH_GLOW = RenderType.entityTranslucentEmissive(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "textures/entity/angler_fish_glow.png"));
 
     public AnglerFishGlowRenderer(RenderLayerParent<AnglerFish, AnglerFishModel> pRenderer) {
         super(pRenderer);

@@ -10,8 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class SculkSnapperRenderer extends MobRenderer<SculkSnapper, SculkSnapperModel> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_snapper_layer"), "main");
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/sculk_snapper.png");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "sculk_snapper_layer"), "main");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "textures/entity/sculk_snapper.png");
 
     public SculkSnapperRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new SculkSnapperModel(pContext.bakeLayer(MODEL)), 0.5f);

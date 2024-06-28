@@ -19,8 +19,8 @@ import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("NullableProblems")
 public class WardenHelmetRenderer<E extends LivingEntity, M extends HumanoidModel<E>> extends RenderLayer<E, M> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "warden"), "3");
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_layer_3.png");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "warden"), "3");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "textures/models/armor/warden_layer_3.png");
     private final EntityModelSet model;
 
     public WardenHelmetRenderer(RenderLayerParent<E, M> renderer, EntityModelSet modelSet) {
@@ -37,7 +37,7 @@ public class WardenHelmetRenderer<E extends LivingEntity, M extends HumanoidMode
             pPoseStack.scale(1, 1, 1);
             this.getParentModel().getHead().translateAndRotate(pPoseStack);
             WardenHelmetModel<E> helmetModel = new WardenHelmetModel<>(this.model.bakeLayer(MODEL));
-            helmetModel.renderToBuffer(pPoseStack, pBuffer.getBuffer(RenderType.armorCutoutNoCull(TEXTURE)), pPackedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            helmetModel.renderToBuffer(pPoseStack, pBuffer.getBuffer(RenderType.armorCutoutNoCull(TEXTURE)), pPackedLight, OverlayTexture.NO_OVERLAY);
 
             pPoseStack.popPose();
         }

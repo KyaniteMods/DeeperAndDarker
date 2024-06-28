@@ -21,7 +21,7 @@ import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("NullableProblems")
 public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>> extends ElytraLayer<E, M> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/soul_elytra.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "textures/entity/soul_elytra.png");
     private final ElytraModel<E> model;
 
     public SoulElytraRenderer(RenderLayerParent<E, M> pRenderer, EntityModelSet pModelSet) {
@@ -37,8 +37,8 @@ public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>
             pMatrixStack.translate(0, 0, 0.125f);
             this.getParentModel().copyPropertiesTo(this.model);
             this.model.setupAnim(pLivingEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false, itemStack.hasFoil());
-            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false);
+            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY);
             pMatrixStack.popPose();
         }
     }

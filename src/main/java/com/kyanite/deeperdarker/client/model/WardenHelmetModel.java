@@ -35,8 +35,8 @@ public class WardenHelmetModel<E extends LivingEntity> extends EntityModel<E> im
     }
 
     @Override
-    public void renderToBuffer(PoseStack pPoseStack, VertexConsumer pBuffer, int pPackedLight, int pPackedOverlay, float pRed, float pGreen, float pBlue, float pAlpha) {
-        head.getChild("root").render(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pRed, pGreen, pBlue, pAlpha);
+    public void renderToBuffer(PoseStack pPoseStack, VertexConsumer pBuffer, int pPackedLight, int pPackedOverlay, int pColor) {
+        head.getChild("root").render(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pColor);
     }
 
     @Override
