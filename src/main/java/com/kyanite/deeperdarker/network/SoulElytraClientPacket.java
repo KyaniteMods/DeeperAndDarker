@@ -18,7 +18,7 @@ public record SoulElytraClientPacket(boolean bool) implements CustomPacketPayloa
             SoulElytraClientPacket::new
     );
 
-    public static final ResourceLocation ID = new ResourceLocation(DeeperDarker.MOD_ID, "soul_elytra_client");
+    public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "soul_elytra_client");
     public static final CustomPacketPayload.Type<SoulElytraClientPacket> TYPE = new CustomPacketPayload.Type<>(ID);
 
     @Override
