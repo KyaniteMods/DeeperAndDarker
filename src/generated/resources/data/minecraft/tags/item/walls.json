@@ -1,0 +1,19 @@
+{
+  "values": [
+    "deeperdarker:sculk_stone_wall",
+    "deeperdarker:cobbled_sculk_stone_wall",
+    "deeperdarker:polished_sculk_stone_wall",
+    "deeperdarker:sculk_stone_brick_wall",
+    "deeperdarker:sculk_stone_tile_wall",
+    "deeperdarker:smooth_sculk_stone_wall",
+    "deeperdarker:cut_sculk_stone_wall",
+    "deeperdarker:sculk_grime_brick_wall",
+    "deeperdarker:gloomslate_wall",
+    "deeperdarker:cobbled_gloomslate_wall",
+    "deeperdarker:polished_gloomslate_wall",
+    "deeperdarker:gloomslate_brick_wall",
+    "deeperdarker:gloomslate_tile_wall",
+    "deeperdarker:smooth_gloomslate_wall",
+    "deeperdarker:cut_gloomslate_wall"
+  ]
+}

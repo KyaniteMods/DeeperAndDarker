@@ -20,10 +20,12 @@ import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
+import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.mojang.logging.LogUtils;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
@@ -85,6 +87,7 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.slf4j.Logger;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -93,6 +96,7 @@ import java.util.concurrent.CompletableFuture;
 @Mod(DeeperDarker.MOD_ID)
 public class DeeperDarker {
     public static final String MOD_ID = "deeperdarker";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public DeeperDarker(IEventBus eventBus, ModContainer container) {
         DDSounds.SOUND_EVENTS.register(eventBus);
@@ -101,10 +105,10 @@ public class DeeperDarker {
         DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
-        AncientPaintingVariants.PAINTINGS.register(eventBus);
         DDEffects.EFFECTS.register(eventBus);
         DDPotions.POTIONS.register(eventBus);
         DDEnchantments.ENCHANTMENTS.register(eventBus);
+        DDArmorMaterials.ARMOR_MATERIALS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
         OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
@@ -113,21 +117,20 @@ public class DeeperDarker {
         eventBus.addListener(DeeperDarkerConfig::loadConfigs);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
-        eventBus.addListener(this::registerBrewingRecipes);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
 
         container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
     }
 
-    private void commonSetup(FMLCommonSetupEvent event) {
+    private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(DDBlocks.ECHO_SAPLING.getId(), DDBlocks.POTTED_ECHO_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(DDBlocks.BLOOMING_STEM.getId(), DDBlocks.POTTED_BLOOMING_STEM);
         });
     }
 
-    private void generateData(GatherDataEvent event) {
+    private void generateData(final GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
@@ -159,15 +162,7 @@ public class DeeperDarker {
         registrar.playToServer(UseTransmitterPacket.TYPE, UseTransmitterPacket.STREAM_CODEC, UseTransmitterPacket::handle);
     }
 
-    private void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
-        PotionBrewing.Builder builder = event.getBuilder();
-        builder.addMix(Potions.AWKWARD, DDItems.SOUL_CRYSTAL.get(), DDPotions.SCULK_AFFINITY);
-        builder.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY);
-        builder.addMix(DDPotions.SCULK_AFFINITY, Items.REDSTONE, DDPotions.LONG_SCULK_AFFINITY);
-        builder.addMix(Potions.LONG_INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.LONG_SCULK_AFFINITY);
-    }
-
-    private void registerAttributes(EntityAttributeCreationEvent event) {
+    private void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(DDEntities.ANGLER_FISH.get(), AnglerFish.createAttributesSupplier());
         event.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipede.createAttributes());
         event.put(DDEntities.SCULK_LEECH.get(), SculkLeech.createAttributes());
@@ -177,7 +172,7 @@ public class DeeperDarker {
         event.put(DDEntities.STALKER.get(), Stalker.createAttributes());
     }
 
-    private void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+    private void registerSpawnPlacements(final SpawnPlacementRegisterEvent event) {
         event.register(DDEntities.ANGLER_FISH.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
@@ -186,6 +181,15 @@ public class DeeperDarker {
 
     @EventBusSubscriber(modid = MOD_ID)
     public static class DeeperDarkerEvents {
+        @SubscribeEvent
+        public static void registerBrewingRecipes(final RegisterBrewingRecipesEvent event) {
+            PotionBrewing.Builder builder = event.getBuilder();
+            builder.addMix(Potions.AWKWARD, DDItems.SOUL_CRYSTAL.get(), DDPotions.SCULK_AFFINITY);
+            builder.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY);
+            builder.addMix(DDPotions.SCULK_AFFINITY, Items.REDSTONE, DDPotions.LONG_SCULK_AFFINITY);
+            builder.addMix(Potions.LONG_INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.LONG_SCULK_AFFINITY);
+        }
+
         @SubscribeEvent
         public static void breakEvent(final BlockEvent.BreakEvent event) {
             Level level = (Level) event.getLevel();

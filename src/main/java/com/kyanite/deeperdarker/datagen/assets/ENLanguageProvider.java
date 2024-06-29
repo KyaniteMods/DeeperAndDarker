@@ -83,8 +83,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
         add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.BITE.location().getPath(), "%1$s was devoured");
         add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.RING.location().getPath(), "%1$s was given a deadly case of tinnitus by %2$s");
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.getId().getPath() + ".desc", "Spreads sculk when mobs are killed.");
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.getId().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath() + ".desc", "Spreads sculk when mobs are killed.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");

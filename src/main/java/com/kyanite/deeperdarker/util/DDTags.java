@@ -30,7 +30,7 @@ public class DDTags {
         public static final TagKey<Block> INFINIBURN_OTHERSIDE = tag("infiniburn_otherside");
 
         private static TagKey<Block> tag(String name) {
-            return BlockTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
         }
     }
 
@@ -41,14 +41,14 @@ public class DDTags {
         public static final TagKey<Item> DAMPENS_VIBRATIONS = tag("dampens_vibrations");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation(DeeperDarker.MOD_ID, name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
         }
     }
 
     public static class Misc {
-        public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/ancient_temple"));
-        public static final TagKey<EntityType<?>> SCULK = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "sculk"));
-        public static final TagKey<EntityType<?>> SENSITIVE_TO_SCULK_SMITE = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "sensitive_to_sculk_smite"));
-        public static final TagKey<PaintingVariant> ANCIENT_PAINTING = TagKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(DeeperDarker.MOD_ID, "ancient_painting"));
+        public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "has_structure/ancient_temple"));
+        public static final TagKey<EntityType<?>> SCULK = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "sculk"));
+        public static final TagKey<EntityType<?>> SENSITIVE_TO_SCULK_SMITE = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "sensitive_to_sculk_smite"));
+        public static final TagKey<PaintingVariant> ANCIENT_PAINTING = TagKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "ancient_painting"));
     }
 }

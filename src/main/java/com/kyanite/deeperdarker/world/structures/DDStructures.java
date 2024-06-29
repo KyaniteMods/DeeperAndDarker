@@ -34,6 +34,6 @@ public class DDStructures {
     }
 
     private static ResourceKey<Structure> createKey(String name) {
-        return ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
     }
 }

@@ -41,7 +41,8 @@ public abstract class PaintingMixin extends HangingEntity {
 
             ItemEntity itemEntity = this.spawnAtLocation(Items.PAINTING);
             CompoundTag tag = itemEntity.getItem().getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY).copyTag();
-            Painting.storeVariant(tag, getVariant());
+            // TODO: fix paintings
+//            Painting.storeVariant(tag, getVariant());
             cir.cancel();
         }
     }
@@ -50,7 +51,7 @@ public abstract class PaintingMixin extends HangingEntity {
     public void deeperdarker_getPickResult(CallbackInfoReturnable<ItemStack> cir) {
         if(getVariant().is(DDTags.Misc.ANCIENT_PAINTING)) {
             CompoundTag tag = cir.getReturnValue().getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY).copyTag();
-            Painting.storeVariant(tag, getVariant());
+//            Painting.storeVariant(tag, getVariant());
         }
     }
 }

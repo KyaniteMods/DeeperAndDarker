@@ -57,6 +57,6 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMITTER_UNLINK = register("item.transmitter.unlink");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String sound) {
-        return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, sound)));
+        return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, sound)));
     }
 }

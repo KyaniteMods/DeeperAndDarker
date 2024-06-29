@@ -4,10 +4,15 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,6 +20,11 @@ import org.jetbrains.annotations.NotNull;
 public class SoulElytraItem extends ElytraItem {
     public SoulElytraItem(Properties pProperties) {
         super(pProperties);
+    }
+
+    public static ItemAttributeModifiers createAttributes() {
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "armor.soul");
+        return ItemAttributeModifiers.builder().add(Attributes.ARMOR, new AttributeModifier(location, 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST).build();
     }
 
     @Override

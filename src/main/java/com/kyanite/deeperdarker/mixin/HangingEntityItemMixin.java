@@ -41,7 +41,7 @@ public abstract class HangingEntityItemMixin {
                 if(paintingVariant.is(DDTags.Misc.ANCIENT_PAINTING)) {
                     tooltipComponents.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "title")).withStyle(ChatFormatting.YELLOW));
                     tooltipComponents.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "author")).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.OBFUSCATED));
-                    tooltipComponents.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(paintingVariant.value().getWidth(), 16), Mth.positiveCeilDiv(paintingVariant.value().getHeight(), 16)));
+                    tooltipComponents.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(paintingVariant.value().width(), 16), Mth.positiveCeilDiv(paintingVariant.value().height(), 16)));
 
                     ci.cancel();
                 }

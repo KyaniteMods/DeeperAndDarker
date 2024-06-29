@@ -34,7 +34,7 @@ public class DDBlocks {
 
     private static final BlockSetType ECHO_SET = BlockSetType.register(new BlockSetType("echo"));
     public static final WoodType ECHO = WoodType.register(new WoodType("echo", ECHO_SET));
-    public static final TreeGrower ECHO_TREE = new TreeGrower("echo", Optional.empty(), Optional.of(DDConfiguredFeatures.TREE_ECHO), Optional.empty());
+//    public static final TreeGrower ECHO_TREE = new TreeGrower("echo", Optional.empty(), Optional.of(DDConfiguredFeatures.TREE_ECHO), Optional.empty());
 
     public static final DeferredBlock<RotatedPillarBlock> ECHO_LOG = register("echo_log", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE), 5, 5));
     public static final DeferredBlock<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE), 5, 5));
@@ -50,7 +50,7 @@ public class DDBlocks {
     public static final DeferredBlock<PressurePlateBlock> ECHO_PRESSURE_PLATE = register("echo_pressure_plate", () -> new PressurePlateBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<ButtonBlock> ECHO_BUTTON = register("echo_button", () -> new ButtonBlock(ECHO_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
     public static final DeferredBlock<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new FlammableLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).mapColor(MapColor.COLOR_PURPLE), 60, 30));
-    public static final DeferredBlock<SaplingBlock> ECHO_SAPLING = register("echo_sapling", () -> new SaplingBlock(ECHO_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)) {
+    public static final DeferredBlock<SaplingBlock> ECHO_SAPLING = register("echo_sapling", () -> new SaplingBlock(TreeGrower.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)) {
         @Override
         protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
             return pState.is(DDBlocks.ECHO_SOIL.get()) || pState.is(DDBlocks.SCULK_GRIME.get());

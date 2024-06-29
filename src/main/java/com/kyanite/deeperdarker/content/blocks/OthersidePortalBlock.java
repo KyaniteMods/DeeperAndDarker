@@ -7,7 +7,6 @@ import com.kyanite.deeperdarker.world.otherside.OthersideTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -20,20 +19,25 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Portal;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.ICancellableEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class OthersidePortalBlock extends Block {
+public class OthersidePortalBlock extends Block implements Portal {
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
     protected static final VoxelShape X_AXIS_AABB = Block.box(0, 0, 6, 16, 16, 10);
     protected static final VoxelShape Z_AXIS_AABB = Block.box(6, 0, 0, 10, 16, 16);
@@ -70,26 +74,7 @@ public class OthersidePortalBlock extends Block {
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        if(!pEntity.isPassenger() && !pEntity.isVehicle() && pEntity.canChangeDimensions()) {
-            if(pEntity.isOnPortalCooldown()) {
-                pEntity.setPortalCooldown();
-            } else {
-                if(!pLevel.isClientSide && !pPos.equals(pEntity.portalEntrancePos)) pEntity.portalEntrancePos = pPos.immutable();
-
-                MinecraftServer server = pLevel.getServer();
-                if(server == null) return;
-                if(pLevel.dimension() != OthersideDimension.OTHERSIDE_LEVEL && pLevel.dimension() != Level.OVERWORLD) return;
-
-                ResourceKey<Level> destination = pLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL ? Level.OVERWORLD : OthersideDimension.OTHERSIDE_LEVEL;
-                ServerLevel destWorld = server.getLevel(destination);
-                if(destWorld != null && !pEntity.isPassenger()) {
-                    pLevel.getProfiler().push("portal");
-                    pEntity.setPortalCooldown();
-                    pEntity.changeDimension(destWorld, new OthersideTeleporter(destWorld));
-                    pLevel.getProfiler().pop();
-                }
-            }
-        }
+        if(pEntity.canUsePortal(false)) pEntity.setAsInsidePortal(this, pPos);
     }
 
     @Override
@@ -128,6 +113,22 @@ public class OthersidePortalBlock extends Block {
         } else {
             OthersidePortalShape portalZ = new OthersidePortalShape(level, pos, Direction.Axis.Z);
             return portalZ.isValid() && portalZ.numPortalBlocks == 0 ? portalZ : null;
+        }
+    }
+
+    @Nullable
+    @Override
+    public DimensionTransition getPortalDestination(ServerLevel pLevel, Entity pEntity, BlockPos pPos) {
+        ResourceKey<Level> level = pLevel.dimension() == Level.OVERWORLD ? OthersideDimension.OTHERSIDE_LEVEL : Level.OVERWORLD;
+        ServerLevel destLevel = pLevel.getServer().getLevel(level);
+        if(destLevel == null) {
+            return null;
+        } else {
+            boolean isOtherside = destLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL;
+            WorldBorder worldBorder = destLevel.getWorldBorder();
+            double scale = DimensionType.getTeleportationScale(pLevel.dimensionType(), destLevel.dimensionType());
+            BlockPos blockpos = worldBorder.clampToBounds(pEntity.getX() * scale, pEntity.getY(), pEntity.getZ() * scale);
+            return OthersideTeleporter.getExitPortal(destLevel, pEntity, pPos, blockpos, isOtherside, worldBorder);
         }
     }
 

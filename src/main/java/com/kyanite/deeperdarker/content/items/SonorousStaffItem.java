@@ -35,7 +35,7 @@ public class SonorousStaffItem extends Item {
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
         if(!(pLivingEntity instanceof Player player)) return;
 
-        int timeUsed = getUseDuration(pStack) - pTimeCharged;
+        int timeUsed = getUseDuration(pStack, player) - pTimeCharged;
         int damage = (int) Math.round(50 / (1 + 16 / Math.exp(0.06 * timeUsed)));
         int range = (int) Math.min(40, Math.round(3 * Math.log(timeUsed + 1)));
 
@@ -81,7 +81,7 @@ public class SonorousStaffItem extends Item {
             CompoundTag tag;
             if(pStack.has(DataComponents.CUSTOM_DATA)) tag = pStack.get(DataComponents.CUSTOM_DATA).copyTag();
             else tag = new CompoundTag();
-            tag.putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 123);
+            tag.putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 123);
             pStack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
         }
     }
@@ -92,7 +92,7 @@ public class SonorousStaffItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack pStack) {
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
         return 72000;
     }
 

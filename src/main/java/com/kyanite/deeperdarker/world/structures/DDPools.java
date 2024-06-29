@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 public class DDPools {
@@ -35,10 +36,10 @@ public class DDPools {
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name, Holder<StructureProcessorList> processor) {
-        return (projection) -> new SinglePoolElement(Either.left(new ResourceLocation(DeeperDarker.MOD_ID, name)), processor, projection) {};
+        return (projection) -> new SinglePoolElement(Either.left(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name)), processor, projection, Optional.empty()) {};
     }
 
     public static ResourceKey<StructureTemplatePool> createKey(String name) {
-        return ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
     }
 }

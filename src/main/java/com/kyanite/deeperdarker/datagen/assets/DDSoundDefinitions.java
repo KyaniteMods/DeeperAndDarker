@@ -55,6 +55,6 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
     }
 
     protected static SoundDefinition.Sound sound(String location) {
-        return sound(new ResourceLocation(DeeperDarker.MOD_ID, location));
+        return sound(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, location));
     }
 }
