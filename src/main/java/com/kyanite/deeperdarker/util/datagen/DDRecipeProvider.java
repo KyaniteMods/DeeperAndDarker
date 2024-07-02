@@ -17,7 +17,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.Collections;
-import java.util.function.Consumer;
 
 public class DDRecipeProvider extends FabricRecipeProvider {
     public DDRecipeProvider(FabricDataOutput output) {
@@ -83,55 +82,55 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         SmithingTransformRecipeBuilder IRON_HELMET_TO_RESONARIUM_HELMET_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_HELMET)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_HELMET);
         SmithingTransformRecipeBuilder IRON_CHESTPLATE_TO_RESONARIUM_CHESTPLATE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_CHESTPLATE)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_CHESTPLATE);
         SmithingTransformRecipeBuilder IRON_LEGGINGS_TO_RESONARIUM_LEGGINGS_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_LEGGINGS)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_LEGGINGS);
         SmithingTransformRecipeBuilder IRON_BOOTS_TO_RESONARIUM_BOOTS_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_BOOTS)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_BOOTS);
         SmithingTransformRecipeBuilder IRON_SWORD_TO_RESONARIUM_SWORD_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_SWORD)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_SWORD);
         SmithingTransformRecipeBuilder IRON_PICKAXE_TO_RESONARIUM_PICKAXE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_PICKAXE)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_PICKAXE);
         SmithingTransformRecipeBuilder IRON_AXE_TO_RESONARIUM_AXE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_AXE)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_AXE);
         SmithingTransformRecipeBuilder IRON_SHOVEL_TO_RESONARIUM_SHOVEL_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_SHOVEL)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_SHOVEL);
         SmithingTransformRecipeBuilder IRON_HOE_TO_RESONARIUM_HOE_UPGRADE = SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(new ItemStack(Items.AIR)),
                 Ingredient.of(new ItemStack(Items.IRON_HOE)),
-                Ingredient.of(new ItemStack(DDItems.RESONARIUM_PASTE)),
+                Ingredient.of(new ItemStack(DDItems.RESONARIUM)),
                 RecipeCategory.COMBAT,
                 DDItems.RESONARIUM_HOE);
 
@@ -144,15 +143,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         NETHERITE_PICKAXE_TO_WARDEN_PICKAXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         NETHERITE_AXE_TO_WARDEN_AXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
         NETHERITE_HOE_TO_WARDEN_HOE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE));
-        IRON_HELMET_TO_RESONARIUM_HELMET_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_CHESTPLATE_TO_RESONARIUM_CHESTPLATE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_LEGGINGS_TO_RESONARIUM_LEGGINGS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_BOOTS_TO_RESONARIUM_BOOTS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_SWORD_TO_RESONARIUM_SWORD_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_PICKAXE_TO_RESONARIUM_PICKAXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_AXE_TO_RESONARIUM_AXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_SHOVEL_TO_RESONARIUM_SHOVEL_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
-        IRON_HOE_TO_RESONARIUM_HOE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM_PASTE), FabricRecipeProvider.has(DDItems.RESONARIUM_PASTE));
+        IRON_HELMET_TO_RESONARIUM_HELMET_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_CHESTPLATE_TO_RESONARIUM_CHESTPLATE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_LEGGINGS_TO_RESONARIUM_LEGGINGS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_BOOTS_TO_RESONARIUM_BOOTS_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_SWORD_TO_RESONARIUM_SWORD_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_PICKAXE_TO_RESONARIUM_PICKAXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_AXE_TO_RESONARIUM_AXE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_SHOVEL_TO_RESONARIUM_SHOVEL_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
+        IRON_HOE_TO_RESONARIUM_HOE_UPGRADE.unlocks(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM));
         NETHERITE_HELMET_TO_WARDEN_HELMET_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_helmet_to_warden_helmet_upgrade"));
         NETHERITE_CHESTPLATE_TO_WARDEN_CHESTPLATE_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_chestplate_to_warden_chestplate_upgrade"));
         NETHERITE_LEGGINGS_TO_WARDEN_LEGGINGS_UPGRADE.save(exporter, new ResourceLocation(DeeperDarker.MOD_ID, "netherite_leggings_to_warden_leggings_upgrade"));

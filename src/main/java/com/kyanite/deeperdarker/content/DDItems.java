@@ -49,7 +49,7 @@ public class DDItems {
     public static final Item WARDEN_BOOTS = register("warden_boots", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
 
 
-    public static final Item RESONARIUM_PASTE = register("resonarium_paste", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM = register("resonarium", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item RESONARIUM_HELMET = register("resonarium_helmet", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item RESONARIUM_CHESTPLATE = register("resonarium_chestplate", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item RESONARIUM_LEGGINGS = register("resonarium_leggings", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));

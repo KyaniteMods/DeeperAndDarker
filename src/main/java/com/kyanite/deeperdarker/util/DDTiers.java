@@ -4,11 +4,12 @@ import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 public enum DDTiers implements Tier {
-    RESONARIUM(3, 1669, 8.0f, 3.0f, 23, Ingredient.of(Items.IRON_INGOT)),
-    WARDEN(5, 2519, 10.0f, 5.0f, 18, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD));
+    RESONARIUM(3, 1193, 8, 3, 15, DDItems.RESONARIUM),
+    WARDEN(5, 2519, 10.0f, 5.0f, 18, DDItems.REINFORCED_ECHO_SHARD);
 
     private final int level;
     private final int durability;
@@ -17,13 +18,13 @@ public enum DDTiers implements Tier {
     private final int enchantmentValue;
     private final Ingredient repairIngredient;
 
-    DDTiers(int level, int durability, float speed, float damage, int enchantmentValue, Ingredient repairIngredient) {
+    DDTiers(int level, int durability, float speed, float damage, int enchantmentValue, ItemLike repairIngredient) {
         this.level = level;
         this.durability = durability;
         this.speed = speed;
         this.damage = damage;
         this.enchantmentValue = enchantmentValue;
-        this.repairIngredient = repairIngredient;
+        this.repairIngredient = Ingredient.of(repairIngredient);
     }
 
     @Override

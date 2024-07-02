@@ -19,7 +19,7 @@ public abstract class EnrichedEchoLogItemBurnedMixin {
     @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;onDestroyed(Lnet/minecraft/world/entity/item/ItemEntity;)V"))
     private void deeperdarker$dropKyanitePasteWhenEchoLogItemBurns(DamageSource damageSource, float f, CallbackInfoReturnable<Boolean> cir) {
         if (damageSource.is(DamageTypeTags.IS_FIRE) && this.getItem().is(DDBlocks.ENRICHED_ECHO_LOG.asItem())) {
-            ((ItemEntity)(Object)this).level().addFreshEntity(new ItemEntity(((ItemEntity)(Object)this).level(), ((ItemEntity)(Object)this).getX(), ((ItemEntity)(Object)this).getY(), ((ItemEntity)(Object)this).getZ(), new ItemStack(DDItems.RESONARIUM_PASTE, this.getItem().getCount())));
+            ((ItemEntity)(Object)this).level().addFreshEntity(new ItemEntity(((ItemEntity)(Object)this).level(), ((ItemEntity)(Object)this).getX(), ((ItemEntity)(Object)this).getY(), ((ItemEntity)(Object)this).getZ(), new ItemStack(DDItems.RESONARIUM, this.getItem().getCount())));
         }
     }
 }
