@@ -47,11 +47,11 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.BOATS).setReplace(false).add(DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT);
         getOrCreateTagBuilder(ItemTags.CHEST_BOATS).setReplace(false).add(DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT);
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM.asItem()).add(DDBlocks.ENRICHED_ECHO_LOG.asItem());
-        getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD);
-        getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE);
-        getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE);
-        getOrCreateTagBuilder(ItemTags.SHOVELS).setReplace(false).add(DDItems.WARDEN_SHOVEL);
-        getOrCreateTagBuilder(ItemTags.HOES).setReplace(false).add(DDItems.WARDEN_HOE);
+        getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD, DDItems.RESONARIUM_SWORD);
+        getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE, DDItems.RESONARIUM_PICKAXE);
+        getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE, DDItems.RESONARIUM_AXE);
+        getOrCreateTagBuilder(ItemTags.SHOVELS).setReplace(false).add(DDItems.WARDEN_SHOVEL, DDItems.RESONARIUM_SHOVEL);
+        getOrCreateTagBuilder(ItemTags.HOES).setReplace(false).add(DDItems.WARDEN_HOE, DDItems.RESONARIUM_HOE);
 
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR).setReplace(false).add(
                 DDItems.RESONARIUM_HELMET,

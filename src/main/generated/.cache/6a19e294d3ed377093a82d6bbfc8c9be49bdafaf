@@ -1,6 +1,6 @@
-// 1.20	2024-05-31T23:04:48.297899275	Deeper and Darker/Tags for minecraft:item
+// 1.20.4	2024-07-02T17:38:28.797218675	Deeper and Darker/Tags for minecraft:item
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/items/wooden_pressure_plates.json
-7e86841155ecc8045b7ba4b53a96700cd5c1e359 data/minecraft/tags/items/swords.json
+0798dcd46f923bbbe9fa58f204156231818b56d7 data/minecraft/tags/items/swords.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
 38ded78c250c70dbbce8f730046e74d9784ef8da data/minecraft/tags/items/logs_that_burn.json
 6bd8bfd25fac6809d51b20040e5aafc2cf79c96b data/deeperdarker/tags/items/dampens_vibrations.json
@@ -11,9 +11,9 @@ adb1df6145940121287a6045adc1138a302fab23 data/minecraft/tags/items/boats.json
 4a9162ba15f49cfbb81cea9ea0a02ca157f62b93 data/minecraft/tags/items/wooden_trapdoors.json
 953e4026d30ecfec24b27b5b1da6b2fa72ddc1b5 data/minecraft/tags/items/chest_boats.json
 c042d2921526d56ca039457fd44638d0e03ff543 data/minecraft/tags/items/fence_gates.json
-d65f46144dce454913a48c30b6512068f6d4932b data/minecraft/tags/items/pickaxes.json
+82cf4ce2374080a7a56b6dcdb1aa4768c8e12e98 data/minecraft/tags/items/pickaxes.json
 a97e3cb5a044bff5590dbf6589d9c5e6b6889a35 data/minecraft/tags/items/planks.json
-6bce9ad38a9bf2b71fd1ead9ef7ade2b0b3b6ea2 data/minecraft/tags/items/axes.json
+73fb4dd9e0fa52c4333922e7e91553d2e94d4b83 data/minecraft/tags/items/axes.json
 a80782ad2aab1d6a87e5125ec63b62424ee43dcc data/minecraft/tags/items/slabs.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data/deeperdarker/tags/items/echo_logs.json
 5eab59aeb251bf0914609c90236404b844d1e7d3 data/minecraft/tags/items/wooden_fences.json
@@ -27,12 +27,12 @@ c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/items/iron_ores.jso
 a9c1654ee56da28dba12343d88ab69fb8cc80fee data/minecraft/tags/items/wooden_doors.json
 68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/items/lapis_ores.json
 227fb9539d14556e5c2e9cffc940f6206c661864 data/minecraft/tags/items/signs.json
-ed7aa5cbfb388747192f4eba2210e4463510e836 data/minecraft/tags/items/shovels.json
+ce131fce800b85c77d9f1bdc824889ef8d032e43 data/minecraft/tags/items/shovels.json
 f2521fab86014c2d039a60414b3efa7183521e88 data/minecraft/tags/items/trimmable_armor.json
 c17d1bdd759702765aa934b86f1f6d3b593b821f data/minecraft/tags/items/coal_ores.json
 decd179c945b9efde8460c8d6f887d935895a56b data/deeperdarker/tags/items/blooming_stems.json
 f2d96eca233658a77cfb0767972a39f37e7876ea data/minecraft/tags/items/redstone_ores.json
 633ef27c79c15ddc51b4f7893b8ebdbc6d155237 data/minecraft/tags/items/copper_ores.json
-cd824c2c5df9dd9ae11e32a8d9b2287999afdb5e data/minecraft/tags/items/hoes.json
+facea6a369bd674371aa8ec4809d60e036a2a22c data/minecraft/tags/items/hoes.json
 0886c50ff2d1e9e415463ed6ca735e1a51630cf0 data/minecraft/tags/items/hanging_signs.json
 c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/items/saplings.json
