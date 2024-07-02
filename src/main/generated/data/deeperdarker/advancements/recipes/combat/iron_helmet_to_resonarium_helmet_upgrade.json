@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_resonarium_paste": {
+    "has_resonarium": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:resonarium_paste"
+              "deeperdarker:resonarium"
             ]
           }
         ]
@@ -23,7 +23,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_resonarium_paste"
+      "has_resonarium"
     ]
   ],
   "rewards": {

@@ -168,7 +168,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
         translationBuilder.add(DDBlocks.ICE_LILY, "Ice Lily");
 
-        translationBuilder.add(DDItems.RESONARIUM, "Resonarium Paste");
+        translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
         translationBuilder.add(DDItems.RESONARIUM_CHESTPLATE, "Resonarium Chestplate");
         translationBuilder.add(DDItems.RESONARIUM_LEGGINGS, "Resonarium Leggings");

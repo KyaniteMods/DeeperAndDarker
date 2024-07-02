@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "deeperdarker:resonarium_paste"
+    "item": "deeperdarker:resonarium"
   },
   "base": {
     "item": "minecraft:iron_chestplate"
