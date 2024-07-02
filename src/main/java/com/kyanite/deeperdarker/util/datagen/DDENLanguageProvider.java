@@ -24,6 +24,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
         translationBuilder.add("upgrade.deeperdarker.warden_upgrade", "Warden Upgrade");
+        translationBuilder.add(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, "Smithing Template");
         translationBuilder.add(DDBlocks.ENRICHED_ECHO_LOG, "Enriched Echo Log");
         translationBuilder.add(DDBlocks.ECHO_LOG, "Echo Log");
         translationBuilder.add(DDBlocks.ECHO_WOOD, "Echo Wood");
@@ -187,6 +188,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.WARDEN_AXE, "Warden Axe");
         translationBuilder.add(DDItems.WARDEN_SHOVEL, "Warden Shovel");
         translationBuilder.add(DDItems.WARDEN_HOE, "Warden Hoe");
+        translationBuilder.add("item." + DeeperDarker.MOD_ID + ".perks.immunity", "Immunity to:");
+        translationBuilder.add("item." + DeeperDarker.MOD_ID + ".perks.dampens_vibrations", "Dampens vibrations");
         translationBuilder.add(DDItems.REINFORCED_ECHO_SHARD, "Reinforced Echo Shard");
         translationBuilder.add(DDItems.WARDEN_CARAPACE, "Warden Carapace");
         translationBuilder.add(DDItems.HEART_OF_THE_DEEP, "Heart of the Deep");

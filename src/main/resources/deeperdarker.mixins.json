@@ -5,6 +5,7 @@
   "mixins": [
     "AncientPaintingMixin",
     "ContainerMenuMixin",
+    "DampensVibrationsTooltipMixin",
     "DefaultAttributeRegistryAccessor",
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
