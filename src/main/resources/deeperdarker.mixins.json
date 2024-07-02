@@ -8,7 +8,6 @@
     "DefaultAttributeRegistryAccessor",
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
-    "MobRotationAccessor",
     "NoAncientPaintingInGroupMixin",
     "PaintingItemMixin",
     "PhantomMixin",
