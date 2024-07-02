@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_resonarium_paste"
+      "has_resonarium_paste",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:iron_boots_to_resonarium_boots_upgrade"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
