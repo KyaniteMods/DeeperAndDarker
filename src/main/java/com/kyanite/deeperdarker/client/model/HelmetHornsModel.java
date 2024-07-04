@@ -36,8 +36,8 @@ public class HelmetHornsModel<T extends LivingEntity> extends EntityModel<T> imp
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int j, float f, float g, float h, float k) {
-        this.head.render(poseStack, vertexConsumer, i, j, f, g, h, k);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int light, int overlay, int color) {
+        this.head.render(poseStack, vertexConsumer, light, overlay, color);
     }
 
     @Override

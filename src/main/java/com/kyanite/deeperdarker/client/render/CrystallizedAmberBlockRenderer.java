@@ -2,8 +2,8 @@ package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
-import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
+import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;

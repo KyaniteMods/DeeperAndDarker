@@ -1,14 +1,12 @@
 package com.kyanite.deeperdarker.client.render;
 
 import com.google.common.collect.ImmutableMap;
-import com.ibm.icu.impl.coll.BOCSU;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.entities.DDBoatLike;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Axis;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -25,14 +23,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.vehicle.Boat;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import org.joml.Quaternionf;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("NullableProblems")
-public class DDBoatRenderer extends EntityRenderer {
+public class DDBoatRenderer<T extends Entity> extends EntityRenderer<T> {
     private final boolean HAS_CHEST;
 
     private final Map<String, ListModel<Boat>> BOAT_RESOURCES;
@@ -58,7 +54,7 @@ public class DDBoatRenderer extends EntityRenderer {
     }
 
     private static ResourceLocation getTextureId(String type, boolean chest) {
-        return new ResourceLocation(DeeperDarker.MOD_ID, getTexture(type, chest));
+        return DeeperDarker.id(getTexture(type, chest));
     }
 
     private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, String type) {
@@ -69,7 +65,7 @@ public class DDBoatRenderer extends EntityRenderer {
     }
 
     @Override
-    public void render(Entity entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
+    public void render(T entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
         Boat boatEntity = (Boat)entity;
         ListModel<Boat> model = this.BOAT_RESOURCES.get(((DDBoatLike)boatEntity).getWoodType());
         poseStack.pushPose();
@@ -89,8 +85,8 @@ public class DDBoatRenderer extends EntityRenderer {
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
         model.setupAnim(boatEntity, g, 0.0f, -0.1f, 0.0f, 0.0f);
-        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureId(new ResourceLocation(((DDBoatLike)boatEntity).getWoodType()).getPath(), HAS_CHEST)));
-        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureId(ResourceLocation.parse(((DDBoatLike)boatEntity).getWoodType()).getPath(), HAS_CHEST)));
+        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
             if (!boatEntity.isUnderWater()) {
             VertexConsumer vertexConsumer2 = multiBufferSource.getBuffer(RenderType.waterMask());
             if (model instanceof WaterPatchModel waterPatchModel) {

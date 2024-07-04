@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
 
 public class HeartOfTheDeepItem extends Item {
     public HeartOfTheDeepItem(Properties properties) {
@@ -24,7 +25,7 @@ public class HeartOfTheDeepItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack pItemStack, Level pLevel, Entity pEntity, int i, boolean bl) {
+    public void inventoryTick(@NotNull ItemStack pItemStack, @NotNull Level pLevel, @NotNull Entity pEntity, int i, boolean bl) {
         if (pLevel instanceof ServerLevel serverLevel) {
             BlockPos pos = serverLevel.findNearestMapStructure(DDTags.Structures.WARDEN_HEART_PULSES, pEntity.blockPosition(), 100, false);
             if (pos != null) {
@@ -38,7 +39,7 @@ public class HeartOfTheDeepItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext useOnContext) {
+    public @NotNull InteractionResult useOn(UseOnContext useOnContext) {
         if (useOnContext.getLevel().getBlockState(useOnContext.getClickedPos()).is(Blocks.SCULK_VEIN) && PortalPlacer.attemptPortalLight(useOnContext.getLevel(), useOnContext.getClickedPos(), PortalIgnitionSource.ItemUseSource(useOnContext.getItemInHand().getItem()).withPlayer(useOnContext.getPlayer()))) {
             return InteractionResult.SUCCESS;
         }

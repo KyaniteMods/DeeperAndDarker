@@ -9,15 +9,18 @@ import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.Util;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 
+import java.util.concurrent.CompletableFuture;
+
 public class DDENLanguageProvider extends FabricLanguageProvider {
-    public DDENLanguageProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public DDENLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add("itemGroup.deeperdarker", "Deeper and Darker");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
@@ -213,10 +216,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
 
-        translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
-        translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");
-        translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");
-        translationBuilder.add(DDEnchantments.SCULK_SMITE.getDescriptionId() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
+        translationBuilder.addEnchantment(DDEnchantments.CATALYSIS, "Catalysis");
+        translationBuilder.add(Util.makeDescriptionId("enchantment", DDEnchantments.CATALYSIS.location()) + ".desc", "Spreads sculk when mobs are killed.");
+        translationBuilder.addEnchantment(DDEnchantments.SCULK_SMITE, "Sculk Smite");
+        translationBuilder.add(Util.makeDescriptionId("enchantment", DDEnchantments.SCULK_SMITE.location()) + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");

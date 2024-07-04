@@ -26,7 +26,7 @@ public class OthersideBiomes {
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
 
     public static ResourceKey<Biome> createKey(String name) {
-        return ResourceKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.BIOME, DeeperDarker.id(name));
     }
 
     private static Biome deeplands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {

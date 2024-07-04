@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("NullableProblems")
 public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>> extends ElytraLayer<E, M> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/soul_elytra.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/soul_elytra.png");
     private final ElytraModel<E> model;
 
     public SoulElytraRenderer(RenderLayerParent<E, M> pRenderer, EntityModelSet pModelSet) {
@@ -43,10 +43,10 @@ public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>
             if (DeeperDarker.SHOW_ME_YOUR_SKIN) {
                 vertexConsumer = ShowMeYourSkinCompat.enableElytraTransparency1(pBuffer, TEXTURE, false, itemStack.hasFoil(), pLivingEntity);
             } else {
-                vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false, itemStack.hasFoil());
+                vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), itemStack.hasFoil());
             }
             float transparency = DeeperDarker.SHOW_ME_YOUR_SKIN ? ShowMeYourSkinCompat.getElytraTransparency(1.0f, pLivingEntity) : 1.0f;
-            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, transparency);
+            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, (((int)(transparency * 255.0f)) << 24) | 0xFFFFFF);
             pMatrixStack.popPose();
         }
     }

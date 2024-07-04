@@ -24,7 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/models/armor/warden_horns.png");
 
     private final float scaleX;
     private final float scaleY;
@@ -75,9 +75,9 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
                 if (hasShowMeYourSkin && ShowMeYourSkinCompat.armorTransparency(matrixStack, vertexConsumerProvider, light, hornsModel, TEXTURE, 1.0f, 1.0f, 1.0f)) return;
                 RenderType renderLayer = RenderType.armorCutoutNoCull(TEXTURE);
                 RenderType glintRenderLayer = RenderType.armorEntityGlint();
-                hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(renderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+                hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(renderLayer), light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
                 if (isFoil(item, itemStack, hasShowMeYourSkin)) {
-                    hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(glintRenderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+                    hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(glintRenderLayer), light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
                 }
             }
             matrixStack.popPose();

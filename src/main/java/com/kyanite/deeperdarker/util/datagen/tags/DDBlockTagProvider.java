@@ -1,10 +1,10 @@
 package com.kyanite.deeperdarker.util.datagen.tags;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 

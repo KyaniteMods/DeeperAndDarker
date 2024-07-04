@@ -4,22 +4,23 @@ import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -55,7 +56,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().hasTag());
+        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().has(DataComponents.BLOCK_ENTITY_DATA));
     }
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
@@ -82,14 +83,14 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
         if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
-            if(!EnchantmentHelper.hasSilkTouch(itemStack) && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+            if(!EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER) && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                 else Block.popResource(level, pos, crystallizedAmber.getLoot());
-            } else if(EnchantmentHelper.hasSilkTouch(itemStack) && !level.isClientSide()) {
+            } else if(EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER) && !level.isClientSide()) {
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                     CompoundTag tag = new CompoundTag();
-                    tag.put("item", crystallizedAmber.getLoot().save(new CompoundTag()));
+                    tag.put("item", crystallizedAmber.getLoot().save(level.registryAccess()));
                     tag.putBoolean("leech", crystallizedAmber.fossilizedEntity);
                     tag.putFloat("rotation", crystallizedAmber.rotation);
                     BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
@@ -103,16 +104,15 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
-        if (itemStack.hasTag() && itemStack.getTag().contains("BlockEntityTag")) {
-            CompoundTag tag = itemStack.getTag().getCompound("BlockEntityTag");
-            if (tag.contains("leech") && tag.getBoolean("leech")) {
-                list.add(ComponentUtils.wrapInSquareBrackets(DDEntities.SCULK_LEECH.getDescription().copy()).withStyle(ChatFormatting.GRAY));
-            } else if (tag.contains("item")) {
-                ItemStack stack = ItemStack.of(tag.getCompound("item"));
-                list.add(stack.getDisplayName().copy().withStyle(ChatFormatting.GRAY));
-            }
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
+        CompoundTag tag = itemStack.getOrDefault(DataComponents.BLOCK_ENTITY_DATA, CustomData.EMPTY).copyTag();
+        HolderLookup.Provider provider = context.registries();
+        if (tag.contains("leech") && tag.getBoolean("leech")) {
+            list.add(ComponentUtils.wrapInSquareBrackets(DDEntities.SCULK_LEECH.getDescription().copy()).withStyle(ChatFormatting.GRAY));
+        } else if (tag.contains("item") && provider != null) {
+            ItemStack stack = ItemStack.parse(provider, tag.getCompound("item")).orElse(ItemStack.EMPTY);
+            list.add(stack.getDisplayName().copy().withStyle(ChatFormatting.GRAY));
         }
-        super.appendHoverText(itemStack, blockGetter, list, tooltipFlag);
+        super.appendHoverText(itemStack, context, list, tooltipFlag);
     }
 }

@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.client.model.AnglerFishModel;
 import com.kyanite.deeperdarker.content.entities.AnglerFish;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -15,8 +14,8 @@ import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
 public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel> implements RenderLayerParent<AnglerFish, AnglerFishModel> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/angler_fish/angler_fish.png");
-    private static final ResourceLocation EMISSIVE_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/angler_fish/angler_fish_bioluminescent_layer.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/angler_fish/angler_fish.png");
+    private static final ResourceLocation EMISSIVE_TEXTURE = DeeperDarker.id("textures/entity/angler_fish/angler_fish_bioluminescent_layer.png");
 
     public AnglerFishRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new AnglerFishModel(pContext.bakeLayer(DDModelLayers.ANGLER_FISH)), 0.4f);
@@ -30,8 +29,8 @@ public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel>
     }
 
     @Override
-    protected void setupRotations(AnglerFish pEntityLiving, PoseStack pPoseStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks) {
-        super.setupRotations(pEntityLiving, pPoseStack, pAgeInTicks, pRotationYaw, pPartialTicks);
+    protected void setupRotations(AnglerFish pEntityLiving, PoseStack pPoseStack, float bob, float yBodyRot, float partialTick, float scale) {
+        super.setupRotations(pEntityLiving, pPoseStack, bob, yBodyRot, partialTick, scale);
         float f = 1f;
         float f1 = 1f;
         if (!pEntityLiving.isInWater()) {
@@ -39,7 +38,7 @@ public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel>
             f1 = 1.7f;
         }
 
-        float f2 = f * 4.3f * Mth.sin(f1 * 0.6f * pAgeInTicks);
+        float f2 = f * 4.3f * Mth.sin(f1 * 0.6f * pEntityLiving.tickCount);
         pPoseStack.mulPose(Axis.YP.rotationDegrees(f2));
         pPoseStack.translate(0, 0, -0.4f);
         if (!pEntityLiving.isInWater()) {

@@ -1,0 +1,10 @@
+
+#Client only settings, mostly things related to rendering
+[client]
+	#EXPERIMENTAL: Enable the NeoForge block rendering pipeline - fixes the lighting of custom models.
+	experimentalForgeLightPipelineEnabled = false
+	#When enabled, NeoForge will show any warnings that occurred during loading.
+	showLoadWarnings = true
+	#Set to true to use a combined DEPTH_STENCIL attachment instead of two separate ones.
+	useCombinedDepthStencilAttachment = false
+

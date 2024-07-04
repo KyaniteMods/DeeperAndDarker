@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = { AbstractFurnaceMenu.class, BeaconMenu.class, BrewingStandMenu.class, CartographyTableMenu.class, ChestMenu.class, CraftingMenu.class, DispenserMenu.class, EnchantmentMenu.class, GrindstoneMenu.class, HopperMenu.class, ItemCombinerMenu.class, LoomMenu.class, ShulkerBoxMenu.class, StonecutterMenu.class })
 public class ContainerMenuMixin {
     @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
-    public void stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
+    public void deeperdarker_stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
         ItemStack transmitter = ItemStack.EMPTY;
         if(player.getMainHandItem().is(DDItems.SCULK_TRANSMITTER) && SculkTransmitterItem.isLinked(player.getMainHandItem())) {
             transmitter = player.getMainHandItem();
@@ -29,8 +31,9 @@ public class ContainerMenuMixin {
         }
 
         if(!transmitter.isEmpty()) {
-            String block = transmitter.getTag().getString("block");
-            int[] pos = transmitter.getTag().getIntArray("blockPos");
+            CompoundTag tag = transmitter.get(DataComponents.CUSTOM_DATA).copyTag();
+            String block = tag.getString("block");
+            int[] pos = tag.getIntArray("blockPos");
             BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
 
             if(player.level().getBlockState(linkedPos).getBlock().getDescriptionId().equals(block)) {

@@ -1,6 +1,9 @@
 package com.kyanite.deeperdarker.util;
 
-import io.wispforest.owo.config.annotation.*;
+import io.wispforest.owo.config.annotation.Config;
+import io.wispforest.owo.config.annotation.Modmenu;
+import io.wispforest.owo.config.annotation.Nest;
+import io.wispforest.owo.config.annotation.RangeConstraint;
 
 @Modmenu(modId = "deeperdarker")
 @Config(name = "deeperdarker", wrapperName = "DDConfig")

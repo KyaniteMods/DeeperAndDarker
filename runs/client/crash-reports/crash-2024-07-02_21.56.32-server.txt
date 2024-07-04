@@ -1,0 +1,148 @@
+---- Minecraft Crash Report ----
+// On the bright side, I bought you a teddy bear!
+
+Time: 2024-07-02 21:56:32
+Description: Ticking entity
+
+java.lang.NullPointerException: Cannot invoke "net.minecraft.world.item.component.CustomData.copyTag()" because the return value of "net.minecraft.world.item.ItemStack.get(net.minecraft.core.component.DataComponentType)" is null
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.inventory.ChestMenu.handler$zza000$deeperdarker$stillValid(ChestMenu.java:534) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:mixin,re:classloading,pl:mixin:APP:deeperdarker.mixins.json:ContainerMenuMixin from mod deeperdarker,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.inventory.ChestMenu.stillValid(ChestMenu.java) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:mixin,re:classloading,pl:mixin:APP:deeperdarker.mixins.json:ContainerMenuMixin from mod deeperdarker,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerPlayer.tick(ServerPlayer.java:519) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:775) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.level.Level.guardEntityTick(Level.java:604) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:421) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:401) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1052) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:932) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:113) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:713) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:267) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.inventory.ChestMenu.handler$zza000$deeperdarker$stillValid(ChestMenu.java:534) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:mixin,re:classloading,pl:mixin:APP:deeperdarker.mixins.json:ContainerMenuMixin from mod deeperdarker,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.inventory.ChestMenu.stillValid(ChestMenu.java) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:mixin,re:classloading,pl:mixin:APP:deeperdarker.mixins.json:ContainerMenuMixin from mod deeperdarker,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerPlayer.tick(ServerPlayer.java:519) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:775) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.level.Level.guardEntityTick(Level.java:604) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:421) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+-- Entity being ticked --
+Details:
+	Entity Type: minecraft:player (net.minecraft.server.level.ServerPlayer)
+	Entity ID: 14
+	Entity Name: Dev
+	Entity's Exact location: 7.60, -60.00, 0.11
+	Entity's Block location: World: (7,-60,0), Section: (at 7,4,0 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Entity's Momentum: 0.00, -0.08, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: null
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.level.Level.guardEntityTick(Level.java:604) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:421) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:401) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1052) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:932) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:113) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:713) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:267) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; [ServerPlayer['Dev'/14, l='ServerLevel[New World]', x=7.60, y=-60.00, z=0.11]]
+	Chunk stats: 2601
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,-60,0), Section: (at 0,4,0 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 1844 game time, 1844 day time
+	Level name: New World
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Commands: true
+	Level weather: Rain time: 159521 (now: false), thunder time: 72456 (now: false)
+	Known server brands: neoforge
+	Removed feature flags: 
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+	Loaded entity count: 99
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.level.ServerLevel.fillReportDetails(ServerLevel.java:1740) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1055) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:932) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:113) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:713) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:267) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21
+	Minecraft Version ID: 1.21
+	Operating System: Linux (amd64) version 6.5.0-41-generic
+	Java Version: 21.0.3, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 443802304 bytes (423 MiB) / 968884224 bytes (924 MiB) up to 4156555264 bytes (3964 MiB)
+	CPUs: 12
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz
+	Identifier: Intel64 Family 6 Model 165 Stepping 3
+	Microarchitecture: Comet Lake
+	Frequency (GHz): 2.90
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: Device
+	Graphics card #0 vendor: NVIDIA Corporation (0x10de)
+	Graphics card #0 VRAM (MiB): 288.00
+	Graphics card #0 deviceId: 0x2882
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MiB): 9973.81
+	Virtual memory used (MiB): 16517.27
+	Swap memory total (MiB): 2048.00
+	Swap memory used (MiB): 2047.64
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 48258.14, total: 202433.80
+	Space in storage for workdir (MiB): available: 48258.14, total: 202433.80
+	JVM Flags: 0 total; 
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/14, l='ServerLevel[New World]', x=7.60, y=-60.00, z=0.11]]
+	Active Data Packs: vanilla, mod_data, mod/deeperdarker, mod/neoforge
+	Available Data Packs: bundle, trade_rebalance, vanilla, mod/deeperdarker, mod/neoforge, mod_data
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Experimental
+	World Seed: -8060801889908897153
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'neoforge'; Server brand changed to 'neoforge'
+	Launched Version: 21.0.31-beta
+	ModLauncher: 11.0.3+main.0f24dec3
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher services: 
+		sponge-mixin-0.13.4+mixin.0.8.5.jar mixin PLUGINSERVICE 
+		loader-4.0.6.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.6.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.6.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.3.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.3.jar mixin-synthetic-package TRANSFORMATIONSERVICE 
+		modlauncher-11.0.3.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		neoforge-21.0.31-beta.jar                         |Minecraft                     |minecraft                     |1.21                |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		main                                              |Deeper and Darker             |deeperdarker                  |1.3.0               |Manifest: NOSIGNATURE
+		neoforge-21.0.31-beta.jar                         |NeoForge                      |neoforge                      |21.0.31-beta        |Manifest: NOSIGNATURE
+	Crash Report UUID: 81618799-aa77-402d-9bee-75130e370314
+	FML: 4.0.6
+	NeoForge: 21.0.31-beta

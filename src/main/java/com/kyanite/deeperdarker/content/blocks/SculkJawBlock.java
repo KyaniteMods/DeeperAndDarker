@@ -1,13 +1,12 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDDamageTypes;
-import com.kyanite.deeperdarker.content.entities.DDMobType;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -31,7 +30,7 @@ public class SculkJawBlock extends Block {
     @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof Player player && (player.isCreative() || player.isCrouching())) return;
-        if(pEntity instanceof Monster monster && monster.getMobType() == DDMobType.SCULK) return;
+        if(pEntity instanceof LivingEntity entity && entity.getType().is(DDTags.EntityTypes.SCULK)) return;
         if(pState.getValue(CAN_BITE) && pEntity instanceof LivingEntity entity) {
             pLevel.setBlock(pPos, pState.setValue(BITING, true), 3);
             entity.hurt(pLevel.damageSources().source(DDDamageTypes.BITE), 3);

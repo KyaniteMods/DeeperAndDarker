@@ -21,7 +21,7 @@ public class DDFeatures {
     public static final Feature<?> BLOOMING_STEM = register("blooming_stem", new BloomingStemFeature(NoneFeatureConfiguration.CODEC));
 
     private static Feature<?> register(String id, Feature<?> feature) {
-        return Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, id), feature);
+        return Registry.register(BuiltInRegistries.FEATURE, DeeperDarker.id(id), feature);
     }
 
     public static void init() {

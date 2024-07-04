@@ -1,0 +1,104 @@
+[02jul.2024 21:59:04.558] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, 21.0.31-beta, --assetIndex, asset-index, --assetsDir, /home/pedro/.gradle/caches/minecraft/assets/1.21, --gameDir, ., --fml.neoForgeVersion, 21.0.31-beta, --fml.fmlVersion, 4.0.6, --fml.mcVersion, 1.21, --fml.neoFormVersion, 20240613.152323]
+[02jul.2024 21:59:04.560] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Amazon.com Inc. OpenJDK 64-Bit Server VM 21.0.3+9-LTS
+[02jul.2024 21:59:04.562] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.3+main.0f24dec3 starting: java version 21.0.3 by Amazon.com Inc.; OS Linux arch amd64 version 6.5.0-41-generic
+[02jul.2024 21:59:04.706] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[02jul.2024 21:59:04.852] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[02jul.2024 21:59:05.084] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[02jul.2024 21:59:05.219] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/pedro/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.13.4+mixin.0.8.5/8adf0cff1795a169141b9e16ad7b9f6e2527a990/sponge-mixin-0.13.4+mixin.0.8.5.jar%23123!/ Service=ModLauncher Env=CLIENT
+[02jul.2024 21:59:05.467] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.31-beta.jar" [locator: neoforge devenv provider ([/home/pedro/IdeaProjects/DeeperAndDarker/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.31-beta/neoforge-21.0.31-beta.jar])]
+[02jul.2024 21:59:05.479] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.31-beta.jar" [locator: neoforge devenv provider ([/home/pedro/IdeaProjects/DeeperAndDarker/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.31-beta/neoforge-21.0.31-beta.jar])]
+[02jul.2024 21:59:05.492] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "main" [locator: userdev mods and services, reader: mod manifest]
+[02jul.2024 21:59:05.504] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file "neoforge-21.0.31-beta.jar" [locator: userdev mods and services, reader: mod manifest]
+[02jul.2024 21:59:05.515] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found gamelibrary file "mixinextras-neoforge-0.3.5.jar" [locator: userdev mods and services, reader: mod manifest]
+[02jul.2024 21:59:05.549] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 4060/PCIe/SSE2 GL version 4.6.0 NVIDIA 545.29.06, NVIDIA Corporation
+[02jul.2024 21:59:05.642] [main/WARN] [net.neoforged.jarjar.selection.JarSelector/]: Attempted to select a dependency jar for JarJar which was passed in as source: mixinextras-neoforge-0.3.5.jar. Using Mod File: /home/pedro/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-neoforge/0.3.5/ef3ffcf309dae656517b2f120189b1c9b21737dd/mixinextras-neoforge-0.3.5.jar
+[02jul.2024 21:59:05.643] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[02jul.2024 21:59:05.832] [main/INFO] [net.neoforged.fml.loading.FMLServiceProvider/CORE]: Loading coremod script-engine for [neoforge]
+[02jul.2024 21:59:06.751] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[02jul.2024 21:59:06.760] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, 21.0.31-beta, --gameDir, ., --assetsDir, /home/pedro/.gradle/caches/minecraft/assets/1.21, --assetIndex, asset-index]
+[02jul.2024 21:59:08.717] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 484 milliseconds
+[02jul.2024 21:59:10.085] [pool-7-thread-1/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.3.5).
+[02jul.2024 21:59:15.342] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[02jul.2024 21:59:15.343] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[02jul.2024 21:59:15.347] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[02jul.2024 21:59:15.349] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[02jul.2024 21:59:15.351] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[02jul.2024 21:59:15.469] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/pedro/IdeaProjects/DeeperAndDarker/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.31-beta/neoforge-21.0.31-beta.jar%23178!/assets/.mcassetsroot' uses unexpected schema
+[02jul.2024 21:59:15.470] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/pedro/IdeaProjects/DeeperAndDarker/.gradle/repositories/ng_dummy_ng/net/neoforged/neoforge/21.0.31-beta/neoforge-21.0.31-beta.jar%23178!/data/.mcassetsroot' uses unexpected schema
+[02jul.2024 21:59:15.497] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[02jul.2024 21:59:15.506] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[02jul.2024 21:59:15.596] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
+[02jul.2024 21:59:15.876] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.0.31-beta, for MC 1.21
+[02jul.2024 21:59:17.182] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[02jul.2024 21:59:17.378] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/deeperdarker, mod/neoforge
+[02jul.2024 21:59:17.481] [Worker-Main-4/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
+[02jul.2024 21:59:17.604] [Worker-Main-6/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
+[02jul.2024 21:59:19.577] [Render thread/ERROR] [net.minecraft.client.sounds.SoundManager/]: Missing subtitle translation{key='subtitles.entity.leech.hurt', args=[]} for sound event: deeperdarker:entity.leech.hurt
+[02jul.2024 21:59:19.579] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[02jul.2024 21:59:19.579] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[02jul.2024 21:59:19.604] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device Áudio interno Estéreo analógico
+[02jul.2024 21:59:19.605] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[02jul.2024 21:59:19.840] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[02jul.2024 21:59:19.854] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[02jul.2024 21:59:19.854] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[02jul.2024 21:59:19.855] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[02jul.2024 21:59:19.856] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[02jul.2024 21:59:19.860] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[02jul.2024 21:59:19.860] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[02jul.2024 21:59:19.861] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[02jul.2024 21:59:19.861] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[02jul.2024 21:59:19.961] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[02jul.2024 21:59:19.963] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[02jul.2024 21:59:19.964] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[02jul.2024 21:59:19.964] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[02jul.2024 21:59:19.965] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[02jul.2024 21:59:20.017] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[02jul.2024 21:59:24.592] [Worker-Main-2/ERROR] [net.minecraft.tags.TagLoader/]: Couldn't load tag deeperdarker:treasure as it is missing following references: 
+	deeperdarker:catalysis (from mod/deeperdarker)
+[02jul.2024 21:59:24.606] [Worker-Main-2/ERROR] [net.minecraft.tags.TagLoader/]: Couldn't load tag deeperdarker:ancient_painting as it is missing following references: 
+	deeperdarker:abstraction (from mod/deeperdarker)
+	deeperdarker:adventure (from mod/deeperdarker)
+	deeperdarker:carrot (from mod/deeperdarker)
+	deeperdarker:clouds (from mod/deeperdarker)
+	deeperdarker:echoer (from mod/deeperdarker)
+	deeperdarker:millipede (from mod/deeperdarker)
+	deeperdarker:ooze (from mod/deeperdarker)
+[02jul.2024 21:59:24.880] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1290 recipes
+[02jul.2024 21:59:25.093] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1403 advancements
+[02jul.2024 21:59:25.869] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21
+[02jul.2024 21:59:25.870] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[02jul.2024 21:59:26.114] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[02jul.2024 21:59:26.389] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[02jul.2024 21:59:26.476] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[02jul.2024 21:59:26.478] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 356 ms
+[02jul.2024 21:59:26.578] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[02jul.2024 21:59:26.578] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[02jul.2024 21:59:27.247] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:4634bb1b] logged in with entity id 14 at (7.601691656053518, -60.0, 0.11276898267842111)
+[02jul.2024 21:59:27.305] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[02jul.2024 21:59:27.456] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 2 advancements
+[02jul.2024 22:01:19.578] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[02jul.2024 22:01:19.594] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[02jul.2024 22:01:19.621] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[02jul.2024 22:01:19.630] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[02jul.2024 22:01:19.639] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/deeperdarker:otherside
+[02jul.2024 22:01:25.828] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[02jul.2024 22:01:25.838] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[02jul.2024 22:01:25.857] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[02jul.2024 22:01:25.867] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[02jul.2024 22:01:25.878] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/deeperdarker:otherside
+[02jul.2024 22:01:26.385] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[02jul.2024 22:01:26.386] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[02jul.2024 22:01:26.395] [Server thread/INFO] [net.minecraft.server.network.ServerCommonPacketListenerImpl/]: Stopping singleplayer server as player logged out
+[02jul.2024 22:01:26.447] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[02jul.2024 22:01:26.447] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[02jul.2024 22:01:26.447] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[02jul.2024 22:01:27.053] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[02jul.2024 22:01:27.091] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[02jul.2024 22:01:27.096] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[02jul.2024 22:01:27.101] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/deeperdarker:otherside
+[02jul.2024 22:01:27.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[02jul.2024 22:01:27.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[02jul.2024 22:01:27.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[02jul.2024 22:01:27.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (otherside): All chunks are saved
+[02jul.2024 22:01:27.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[02jul.2024 22:01:27.742] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

@@ -1,0 +1,234 @@
+---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 2024-07-02 21:44:30
+Description: mouseClicked event handler
+
+java.lang.IllegalStateException: Failed to load registries due to above errors
+	at TRANSFORMER/minecraft@1.21/net.minecraft.resources.RegistryDataLoader.load(RegistryDataLoader.java:154) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.resources.RegistryDataLoader.load(RegistryDataLoader.java:118) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.WorldLoader.loadLayer(WorldLoader.java:76) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.WorldLoader.loadAndReplaceLayer(WorldLoader.java:82) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.WorldLoader.load(WorldLoader.java:35) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.CreateWorldScreen.openFresh(CreateWorldScreen.java:123) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList.loadLevels(WorldSelectionList.java:201) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList.<init>(WorldSelectionList.java:111) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.SelectWorldScreen.init(SelectWorldScreen.java:40) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.init(Screen.java:337) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.setScreen(Minecraft.java:1066) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.TitleScreen.lambda$createNormalMenuOptions$7(TitleScreen.java:167) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.Button.onPress(Button.java:41) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.AbstractButton.onClick(AbstractButton.java:47) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/neoforge@21.0.31-beta/net.neoforged.neoforge.client.extensions.IAbstractWidgetExtension.onClick(IAbstractWidgetExtension.java:36) ~[neoforge-21.0.31-beta.jar%23179!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.AbstractWidget.mouseClicked(AbstractWidget.java:163) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.events.ContainerEventHandler.mouseClicked(ContainerEventHandler.java:52) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.TitleScreen.mouseClicked(TitleScreen.java:366) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$onPress$0(MouseHandler.java:103) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:469) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.onPress(MouseHandler.java:100) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$4(MouseHandler.java:212) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:98) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$5(MouseHandler.java:212) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFWMouseButtonCallbackI.callback(GLFWMouseButtonCallbackI.java:43) ~[lwjgl-glfw-3.3.3.jar%23159!/:build 5] {}
+	at MC-BOOTSTRAP/org.lwjgl@3.3.3+5/org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.3.jar%23171!/:build 5] {}
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3438) ~[lwjgl-glfw-3.3.3.jar%23159!/:build 5] {}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.pollEvents(RenderSystem.java:134) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:143) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.platform.Window.updateDisplay(Window.java:294) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.runTick(Minecraft.java:1226) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.run(Minecraft.java:816) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.NeoForgeClientUserdevLaunchHandler.runService(NeoForgeClientUserdevLaunchHandler.java:23) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21/net.minecraft.resources.RegistryDataLoader.load(RegistryDataLoader.java:154) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.resources.RegistryDataLoader.load(RegistryDataLoader.java:118) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.WorldLoader.loadLayer(WorldLoader.java:76) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.WorldLoader.loadAndReplaceLayer(WorldLoader.java:82) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.WorldLoader.load(WorldLoader.java:35) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.CreateWorldScreen.openFresh(CreateWorldScreen.java:123) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList.loadLevels(WorldSelectionList.java:201) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.WorldSelectionList.<init>(WorldSelectionList.java:111) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.worldselection.SelectWorldScreen.init(SelectWorldScreen.java:40) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.init(Screen.java:337) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.setScreen(Minecraft.java:1066) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.TitleScreen.lambda$createNormalMenuOptions$7(TitleScreen.java:167) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.Button.onPress(Button.java:41) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.AbstractButton.onClick(AbstractButton.java:47) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/neoforge@21.0.31-beta/net.neoforged.neoforge.client.extensions.IAbstractWidgetExtension.onClick(IAbstractWidgetExtension.java:36) ~[neoforge-21.0.31-beta.jar%23179!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.AbstractWidget.mouseClicked(AbstractWidget.java:163) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.components.events.ContainerEventHandler.mouseClicked(ContainerEventHandler.java:52) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.TitleScreen.mouseClicked(TitleScreen.java:366) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$onPress$0(MouseHandler.java:103) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:469) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.onPress(MouseHandler.java:100) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$4(MouseHandler.java:212) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:98) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$5(MouseHandler.java:212) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFWMouseButtonCallbackI.callback(GLFWMouseButtonCallbackI.java:43) ~[lwjgl-glfw-3.3.3.jar%23159!/:build 5] {}
+	at MC-BOOTSTRAP/org.lwjgl@3.3.3+5/org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.3.jar%23171!/:build 5] {}
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3438) ~[lwjgl-glfw-3.3.3.jar%23159!/:build 5] {}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.pollEvents(RenderSystem.java:134) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:143) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+-- Affected screen --
+Details:
+	Screen name: net.minecraft.client.gui.screens.TitleScreen
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:469) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.onPress(MouseHandler.java:100) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$4(MouseHandler.java:212) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:98) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.MouseHandler.lambda$setup$5(MouseHandler.java:212) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFWMouseButtonCallbackI.callback(GLFWMouseButtonCallbackI.java:43) ~[lwjgl-glfw-3.3.3.jar%23159!/:build 5] {}
+	at MC-BOOTSTRAP/org.lwjgl@3.3.3+5/org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.3.jar%23171!/:build 5] {}
+	at MC-BOOTSTRAP/org.lwjgl.glfw@3.3.3+5/org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3438) ~[lwjgl-glfw-3.3.3.jar%23159!/:build 5] {}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.pollEvents(RenderSystem.java:134) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:143) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/com.mojang.blaze3d.platform.Window.updateDisplay(Window.java:294) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.runTick(Minecraft.java:1226) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.run(Minecraft.java:816) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.NeoForgeClientUserdevLaunchHandler.runService(NeoForgeClientUserdevLaunchHandler.java:23) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?] {}
+
+
+-- Uptime --
+Details:
+	JVM uptime: 25.137s
+	Wall uptime: 9.626s
+	High-res time: 22.052s
+	Client ticks: 144 ticks / 7.200s
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.fillReport(Minecraft.java:2410) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.emergencySaveAndCrash(Minecraft.java:877) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.run(Minecraft.java:834) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.0.31-beta.jar%23178!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.NeoForgeClientUserdevLaunchHandler.runService(NeoForgeClientUserdevLaunchHandler.java:23) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.6/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.6.jar%23131!/:4.0] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.3/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.3.jar%23111!/:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, mod_resources, mod/deeperdarker, mod/neoforge
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21
+	Minecraft Version ID: 1.21
+	Operating System: Linux (amd64) version 6.5.0-41-generic
+	Java Version: 21.0.3, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 106102048 bytes (101 MiB) / 637534208 bytes (608 MiB) up to 4156555264 bytes (3964 MiB)
+	CPUs: 12
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz
+	Identifier: Intel64 Family 6 Model 165 Stepping 3
+	Microarchitecture: Comet Lake
+	Frequency (GHz): 2.90
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: Device
+	Graphics card #0 vendor: NVIDIA Corporation (0x10de)
+	Graphics card #0 VRAM (MiB): 288.00
+	Graphics card #0 deviceId: 0x2882
+	Graphics card #0 versionInfo: unknown
+	Virtual memory max (MiB): 9973.81
+	Virtual memory used (MiB): 16478.25
+	Swap memory total (MiB): 2048.00
+	Swap memory used (MiB): 2047.95
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 48295.61, total: 202433.80
+	Space in storage for workdir (MiB): available: 48295.61, total: 202433.80
+	JVM Flags: 0 total; 
+	Launched Version: 21.0.31-beta
+	Backend library: LWJGL version 3.3.3+5
+	Backend API: NVIDIA GeForce RTX 4060/PCIe/SSE2 GL version 4.6.0 NVIDIA 545.29.06, NVIDIA Corporation
+	Window size: 854x480
+	GFLW Platform: x11
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Is Modded: Definitely; Client brand changed to 'neoforge'
+	Universe: 400921fb54442d18
+	Type: Client (map_client.txt)
+	Graphics mode: fancy
+	Render Distance: 12/12 chunks
+	Resource Packs: vanilla, mod_resources, mod/deeperdarker, mod/neoforge
+	Current Language: en_us
+	Locale: pt_BR
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 12x Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz
+	ModLauncher: 11.0.3+main.0f24dec3
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher services: 
+		sponge-mixin-0.13.4+mixin.0.8.5.jar mixin PLUGINSERVICE 
+		loader-4.0.6.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.6.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.6.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.3.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.3.jar mixin-synthetic-package TRANSFORMATIONSERVICE 
+		modlauncher-11.0.3.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		neoforge-21.0.31-beta.jar                         |Minecraft                     |minecraft                     |1.21                |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		main                                              |Deeper and Darker             |deeperdarker                  |1.3.0               |Manifest: NOSIGNATURE
+		neoforge-21.0.31-beta.jar                         |NeoForge                      |neoforge                      |21.0.31-beta        |Manifest: NOSIGNATURE
+	Crash Report UUID: 416b289c-b5ff-4e54-850f-4f99810368b1
+	FML: 4.0.6
+	NeoForge: 21.0.31-beta

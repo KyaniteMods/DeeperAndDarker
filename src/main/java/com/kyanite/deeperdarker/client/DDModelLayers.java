@@ -39,7 +39,7 @@ public class DDModelLayers {
     }
 
     private static ModelLayerLocation create(String id, String layer) {
-        return new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, id), layer);
+        return new ModelLayerLocation(DeeperDarker.id(id), layer);
     }
 
     public static ModelLayerLocation createBoat(String type) {
@@ -53,10 +53,10 @@ public class DDModelLayers {
     public static void init() {
         DeeperDarker.LOGGER.info("Initializing model layers");
         WARDEN_HELMET = registerMain("warden_helmet");
-        ECHO_BOAT = createBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
-        ECHO_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
-        BLOOM_BOAT = createBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());
-        BLOOM_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());
+        ECHO_BOAT = createBoat(ResourceLocation.parse(DDBlocks.ECHO.name()).getPath());
+        ECHO_CHEST_BOAT = createChestBoat(ResourceLocation.parse(DDBlocks.ECHO.name()).getPath());
+        BLOOM_BOAT = createBoat(ResourceLocation.parse(DDBlocks.BLOOM.name()).getPath());
+        BLOOM_CHEST_BOAT = createChestBoat(ResourceLocation.parse(DDBlocks.BLOOM.name()).getPath());
         ANGLER_FISH = registerMain("angler_fish");
         SCULK_SNAPPER = registerMain("sculk_snapper");
         SHATTERED = registerMain("shattered");

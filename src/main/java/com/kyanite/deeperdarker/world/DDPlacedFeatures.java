@@ -6,7 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -68,7 +68,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
     public static final ResourceKey<PlacedFeature> BLOOMING_PLANT = createKey("blooming_plant");
 
-    public static void init(BootstapContext<PlacedFeature> context) {
+    public static void init(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
         PlacementUtils.register(context, SCULK_STONE_COLUMN, features.getOrThrow(DDConfiguredFeatures.SCULK_STONE_COLUMN), countPlacement(14, PlacementUtils.FULL_RANGE));
@@ -131,6 +131,6 @@ public class DDPlacedFeatures {
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, DeeperDarker.id(name));
     }
 }

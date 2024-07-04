@@ -39,11 +39,11 @@ public class DDItems {
     public static final Item RESONARIUM = register("resonarium", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
 
-    public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
-    public static final Item WARDEN_PICKAXE = register("warden_pickaxe", new PickaxeItem(DDTiers.WARDEN, 1, -2.8f, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
-    public static final Item WARDEN_AXE = register("warden_axe", new AxeItem(DDTiers.WARDEN, 5, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
-    public static final Item WARDEN_HOE = register("warden_hoe", new HoeItem(DDTiers.WARDEN, -4, 0, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
-    public static final Item WARDEN_SWORD = register("warden_sword", new SwordItem(DDTiers.WARDEN, 3, -2.4f, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
+    public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.WARDEN, 1.5f, -3)).rarity(Rarity.RARE).fireResistant()));
+    public static final Item WARDEN_PICKAXE = register("warden_pickaxe", new PickaxeItem(DDTiers.WARDEN, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.WARDEN, 1, -2.8f)).rarity(Rarity.RARE).fireResistant()));
+    public static final Item WARDEN_AXE = register("warden_axe", new AxeItem(DDTiers.WARDEN, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.WARDEN, 5, -3)).rarity(Rarity.RARE).fireResistant()));
+    public static final Item WARDEN_HOE = register("warden_hoe", new HoeItem(DDTiers.WARDEN, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.WARDEN, -4, 0)).rarity(Rarity.RARE).fireResistant()));
+    public static final Item WARDEN_SWORD = register("warden_sword", new SwordItem(DDTiers.WARDEN, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.WARDEN, 3, -2.4f)).rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_HELMET = register("warden_helmet", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.RARE).fireResistant(), List.of(MobEffects.BLINDNESS, MobEffects.DARKNESS)));
     public static final Item WARDEN_CHESTPLATE = register("warden_chestplate", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_LEGGINGS = register("warden_leggings", new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
@@ -53,11 +53,11 @@ public class DDItems {
     public static final Item RESONARIUM_CHESTPLATE = register("resonarium_chestplate", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item RESONARIUM_LEGGINGS = register("resonarium_leggings", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item RESONARIUM_BOOTS = register("resonarium_boots", new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
-    public static final Item RESONARIUM_SHOVEL = register("resonarium_shovel", new ShovelItem(DDTiers.RESONARIUM, 1.5f, -3, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
-    public static final Item RESONARIUM_PICKAXE = register("resonarium_pickaxe", new PickaxeItem(DDTiers.RESONARIUM, 1, -2.8f, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
-    public static final Item RESONARIUM_AXE = register("resonarium_axe", new AxeItem(DDTiers.RESONARIUM, 5, -3, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
-    public static final Item RESONARIUM_HOE = register("resonarium_hoe", new HoeItem(DDTiers.RESONARIUM, -4, 0, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
-    public static final Item RESONARIUM_SWORD = register("resonarium_sword", new SwordItem(DDTiers.RESONARIUM, 3, -2.4f, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_SHOVEL = register("resonarium_shovel", new ShovelItem(DDTiers.RESONARIUM, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.RESONARIUM, 1.5f, -3)).rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_PICKAXE = register("resonarium_pickaxe", new PickaxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.RESONARIUM, 1, -2.8f)).rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_AXE = register("resonarium_axe", new AxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.RESONARIUM, 5, -3)).rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_HOE = register("resonarium_hoe", new HoeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.RESONARIUM, -4, 0)).rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM_SWORD = register("resonarium_sword", new SwordItem(DDTiers.RESONARIUM, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.RESONARIUM, 3, -2.4f)).rarity(Rarity.UNCOMMON).fireResistant()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item SONOROUS_STAFF = register("sonorous_staff", new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
@@ -75,37 +75,37 @@ public class DDItems {
     public static final Item BLOOM_SIGN = register("bloom_sign", new SignItem(new Item.Properties().stacksTo(16), DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN));
     public static final Item BLOOM_HANGING_SIGN = register("bloom_hanging_sign", new HangingSignItem(DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
 
-    public static final Item BLOOM_BERRIES = register("bloom_berries", new ItemNameBlockItem(DDBlocks.GLOWING_VINES, new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1f).effect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f).build())));
+    public static final Item BLOOM_BERRIES = register("bloom_berries", new ItemNameBlockItem(DDBlocks.GLOWING_VINES, new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).effect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f).build())));
 
     public static Item register(String id, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);
+        return Registry.register(BuiltInRegistries.ITEM, DeeperDarker.id(id), item);
     }
 
     private static Item createWardenUpgradeSmithingTemplate() {
         return new SmithingTemplateItem(
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(DeeperDarker.MOD_ID, "warden_upgrade"))).withStyle(ChatFormatting.GRAY),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.base_slot_description"))),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.additions_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("upgrade", DeeperDarker.id("warden_upgrade"))).withStyle(ChatFormatting.GRAY),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.base_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.additions_slot_description"))),
                 getWardenEmptyBaseSlotTextures(),
                 getWardenEmptyAdditionsSlotTextures());
     }
 
     private static List<ResourceLocation> getWardenEmptyBaseSlotTextures() {
-        return List.of(new ResourceLocation("item/empty_armor_slot_helmet"),
-                new ResourceLocation("item/empty_armor_slot_chestplate"),
-                new ResourceLocation("item/empty_armor_slot_leggings"),
-                new ResourceLocation("item/empty_armor_slot_boots"),
-                new ResourceLocation("item/empty_slot_sword"),
-                new ResourceLocation("item/empty_slot_pickaxe"),
-                new ResourceLocation("item/empty_slot_axe"),
-                new ResourceLocation("item/empty_slot_shovel"),
-                new ResourceLocation("item/empty_slot_hoe"));
+        return List.of(ResourceLocation.withDefaultNamespace("item/empty_armor_slot_helmet"),
+                ResourceLocation.withDefaultNamespace("item/empty_armor_slot_chestplate"),
+                ResourceLocation.withDefaultNamespace("item/empty_armor_slot_leggings"),
+                ResourceLocation.withDefaultNamespace("item/empty_armor_slot_boots"),
+                ResourceLocation.withDefaultNamespace("item/empty_slot_sword"),
+                ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe"),
+                ResourceLocation.withDefaultNamespace("item/empty_slot_axe"),
+                ResourceLocation.withDefaultNamespace("item/empty_slot_shovel"),
+                ResourceLocation.withDefaultNamespace("item/empty_slot_hoe"));
     }
 
     private static List<ResourceLocation> getWardenEmptyAdditionsSlotTextures() {
-        return List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_reinforced_echo_shard"));
+        return List.of(DeeperDarker.id("item/empty_slot_reinforced_echo_shard"));
     }
 
     public static void init() {

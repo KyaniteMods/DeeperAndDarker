@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
+import com.mojang.datafixers.types.Type;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
@@ -12,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import com.mojang.datafixers.types.Type;
 
 public class DDBlockEntities {
     public static final BlockEntityType<DDHangingSignBlockEntity> HANGING_SIGN;
@@ -20,25 +20,25 @@ public class DDBlockEntities {
     public static final BlockEntityType<CrystallizedAmberBlockEntity> CRYSTALLIZED_AMBER;
 
     static {
-        HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
+        HANGING_SIGN = create("hanging_sign", BlockEntityType.Builder.of(
                 DDHangingSignBlockEntity::new,
                 DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN,
                 DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN
         ));
-        SIGN = create("sign", FabricBlockEntityTypeBuilder.create(
+        SIGN = create("sign", BlockEntityType.Builder.of(
                 DDSignBlockEntity::new,
                 DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN,
                 DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN
         ));
-        CRYSTALLIZED_AMBER = create("crystallized_amber", FabricBlockEntityTypeBuilder.create(
+        CRYSTALLIZED_AMBER = create("crystallized_amber", BlockEntityType.Builder.of(
                 CrystallizedAmberBlockEntity::new,
                 DDBlocks.CRYSTALLIZED_AMBER
         ));
     }
 
-    private static <T extends BlockEntity> BlockEntityType<T> create(String id, FabricBlockEntityTypeBuilder<T> builder) {
+    private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id);
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, id), builder.build(type));
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, DeeperDarker.id(id), builder.build(type));
     }
 
     public static void init() {

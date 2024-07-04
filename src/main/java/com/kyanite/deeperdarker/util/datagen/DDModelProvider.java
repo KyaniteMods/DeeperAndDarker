@@ -26,7 +26,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.apache.commons.lang3.tuple.Triple;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class DDModelProvider extends FabricModelProvider {
     public DDModelProvider(FabricDataOutput output) {
@@ -160,7 +163,7 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOOMY_GRASS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.family(DDBlocks.GLOOMY_SCULK);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLOOMY_GEYSER);
-        ModelTemplates.CUBE_BOTTOM_TOP.create(DDBlocks.GLOOMY_GEYSER, TextureMapping.singleSlot(TextureSlot.TOP, new ResourceLocation(DeeperDarker.MOD_ID, "block/gloomy_geyser")).put(TextureSlot.SIDE, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)).put(TextureSlot.BOTTOM, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)),
+        ModelTemplates.CUBE_BOTTOM_TOP.create(DDBlocks.GLOOMY_GEYSER, TextureMapping.singleSlot(TextureSlot.TOP, DeeperDarker.id("block/gloomy_geyser")).put(TextureSlot.SIDE, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)).put(TextureSlot.BOTTOM, TexturedModel.CUBE.get(DDBlocks.GLOOMY_SCULK).getMapping().get(TextureSlot.ALL)),
                 blockModelGenerators.modelOutput);
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ANCIENT_VASE);
@@ -193,7 +196,7 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_BLOOMING_STEM);
 
-        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/flowers"), ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS),
+        registerParented(blockModelGenerators, DeeperDarker.id("block/flowers"), ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS),
                 new Tuple<>(TextureSlot.create("flowers"), TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS)),
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS).withSuffix("_stem")));
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.GLOWING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
@@ -203,9 +206,9 @@ public class DDModelProvider extends FabricModelProvider {
         registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.BLOOMING_STEM);
         registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.STRIPPED_BLOOMING_STEM);
 
-        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"),
+        registerParented(blockModelGenerators, DeeperDarker.id("stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.BLOOMING_STEM).withSuffix("_inventory"),
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.BLOOMING_STEM)));
-        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"),
+        registerParented(blockModelGenerators, DeeperDarker.id("stem_inventory").withPrefix("block/"), ModelLocationUtils.getModelLocation(DDBlocks.STRIPPED_BLOOMING_STEM).withSuffix("_inventory"),
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.STRIPPED_BLOOMING_STEM)));
         blockModelGenerators.family(DDBlocks.BLOOM_PLANKS);
         registerStairs(blockModelGenerators, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_PLANKS);
@@ -219,8 +222,8 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createHangingSign(DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN);
         blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ICE_LILY);
-        registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/ice_waterlily"), ModelLocationUtils.getModelLocation(DDBlocks.ICE_LILY),
-                new Tuple<>(TextureSlot.create("flower"), new ResourceLocation(DeeperDarker.MOD_ID, "block/lily_flower")),
+        registerParented(blockModelGenerators, DeeperDarker.id("block/ice_waterlily"), ModelLocationUtils.getModelLocation(DDBlocks.ICE_LILY),
+                new Tuple<>(TextureSlot.create("flower"), DeeperDarker.id("block/lily_flower")),
                 new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
@@ -399,7 +402,7 @@ public class DDModelProvider extends FabricModelProvider {
 
     private static void registerSpawnEgg(ItemModelGenerators itemModelGenerator, Item item) {
         JsonObject model = new JsonObject();
-        model.addProperty("parent", new ResourceLocation("template_spawn_egg").withPrefix("item/").toString());
+        model.addProperty("parent", ResourceLocation.withDefaultNamespace("template_spawn_egg").withPrefix("item/").toString());
         itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
     }
 
@@ -411,7 +414,7 @@ public class DDModelProvider extends FabricModelProvider {
             String string = trimMaterial.name(armor.getMaterial());
             ResourceLocation identifier4 = itemModelGenerators.getItemModelForTrimMaterial(armorModelIdentifier, string);
             String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
-            ResourceLocation trimOverlayIdentifier = new ResourceLocation(DeeperDarker.MOD_ID, string2).withPrefix("trims/items/");
+            ResourceLocation trimOverlayIdentifier = DeeperDarker.id(string2).withPrefix("trims/items/");
             itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
         }
     }
@@ -461,9 +464,9 @@ public class DDModelProvider extends FabricModelProvider {
     }
 
     private void registerBloomingStem(BlockModelGenerators blockModelGenerators, BloomingStemBlock block) {
-        ResourceLocation stemModel = new ResourceLocation(DeeperDarker.MOD_ID, "block/stem");
-        ResourceLocation stemHorizontalModel = new ResourceLocation(DeeperDarker.MOD_ID, "block/stem_horizontal");
-        ResourceLocation stemVerticalModel = new ResourceLocation(DeeperDarker.MOD_ID, "block/stem_vertical");
+        ResourceLocation stemModel = DeeperDarker.id("block/stem");
+        ResourceLocation stemHorizontalModel = DeeperDarker.id("block/stem_horizontal");
+        ResourceLocation stemVerticalModel = DeeperDarker.id("block/stem_vertical");
 
         ResourceLocation bloomingStemModel = ModelLocationUtils.getModelLocation(block);
         ResourceLocation bloomingStemHorizontalModel = ModelLocationUtils.getModelLocation(block).withSuffix("_horizontal");

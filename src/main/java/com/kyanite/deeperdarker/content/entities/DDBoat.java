@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.nbt.CompoundTag;
@@ -32,9 +31,9 @@ public class DDBoat extends Boat implements DDBoatLike {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(WOOD_TYPE, "deeperdarker:echo");
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        this.entityData.set(WOOD_TYPE, "deeperdarker:echo");
     }
 
     @Override

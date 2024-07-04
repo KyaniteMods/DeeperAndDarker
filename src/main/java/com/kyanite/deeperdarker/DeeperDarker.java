@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = new ResourceLocation(MOD_ID, "otherside");
+	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = id("otherside");
 
 	public static final boolean SHOW_ME_YOUR_SKIN = FabricLoader.getInstance().isModLoaded("showmeyourskin");
 
@@ -39,7 +39,7 @@ public class DeeperDarker implements ModInitializer {
 			.customFrameTester(OTHERSIDE_FRAME_TESTER)
 			.frameBlock(Blocks.REINFORCED_DEEPSLATE)
 			.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-			.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
+			.destDimID(DeeperDarker.id("otherside"))
 			.tintColor(5, 98, 93)
 			.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
 			.forcedSize(8, 4)
@@ -56,7 +56,6 @@ public class DeeperDarker implements ModInitializer {
 		DDFeatures.init();
 		DDSounds.init();
 		DDPotions.init();
-		DDEnchantments.init();
 		DDEntities.init();
 		DDBlockEntities.init();
 		DDEffects.init();
@@ -64,8 +63,8 @@ public class DeeperDarker implements ModInitializer {
 
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable() == key) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
 								UniformGenerator.between(1.0f, 3.0f))));
@@ -74,8 +73,8 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable() == key) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.HEART_OF_THE_DEEP));
 
@@ -83,8 +82,8 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY == key) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE)
 								.when(LootItemRandomChanceCondition.randomChance(0.2f)));
@@ -93,8 +92,8 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
+			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY == key) {
 				LootPool.Builder poolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE))
 							.when(LootItemRandomChanceCondition.randomChance(0.2f));
@@ -104,5 +103,9 @@ public class DeeperDarker implements ModInitializer {
 		});
 
 		Messages.registerMessages();
+	}
+
+	public static ResourceLocation id(String path) {
+		return ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, path);
 	}
 }

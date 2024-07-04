@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -75,7 +76,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     @Override
     public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pBlockPos, BlockState pBlockState,
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
-        if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
+        if (!EnchantmentHelper.hasTag(pPlayer.getMainHandItem(), DDTags.Enchantments.PREVENTS_ANCIENT_VASE_SPAWNS)) {
             RandomSource random = pLevel.getRandom();
             if (!pBlockState.getValue(SAFE) && pLevel.getDifficulty() != Difficulty.PEACEFUL && random.nextFloat() < DeeperDarker.CONFIG.server.spawnSomethingFromAncientVaseChance()) {
                 if (random.nextDouble() < DeeperDarker.CONFIG.server.sculkLeechesFromAncientVaseChance()) {

@@ -1,10 +1,8 @@
 package com.kyanite.deeperdarker.compat;
 
-import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.model.HelmetHornsModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -51,7 +49,7 @@ public class ShowMeYourSkinCompat {
                 if (t > 0) {
                     VertexConsumer vertexConsumer = vertexConsumers.getBuffer(
                             ModRenderLayers.ARMOR_TRANSLUCENT_NO_CULL.apply(texture));
-                    model.renderToBuffer(matrices, vertexConsumer, light, OverlayTexture.NO_OVERLAY, red, green, blue, t);
+                    model.renderToBuffer(matrices, vertexConsumer, light, OverlayTexture.NO_OVERLAY, (((int)(t * 255.0f)) << 24) | (((int)(red * 255.0f)) << 16) | (((int)(green * 255.0f)) << 8) | ((int)(blue * 255.0f)));
                 }
 
                 matrices.popPose();
@@ -84,7 +82,7 @@ public class ShowMeYourSkinCompat {
             }
         }
 
-        return ItemRenderer.getArmorFoilBuffer(buffer, enableElytraTransparency2(texture, entity), solid, hideSoulElytraGlint(hasGlint, entity));
+        return ItemRenderer.getArmorFoilBuffer(buffer, enableElytraTransparency2(texture, entity), hideSoulElytraGlint(hasGlint, entity));
     }
 
     public static RenderType enableElytraTransparency2(ResourceLocation texture, LivingEntity entity) {

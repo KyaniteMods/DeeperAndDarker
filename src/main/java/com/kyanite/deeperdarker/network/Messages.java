@@ -11,21 +11,21 @@ import net.minecraft.world.level.Level;
 
 public class Messages {
     public static void registerMessages() {
-        ServerPlayNetworking.registerGlobalReceiver(SoulElytraBoostPacket.TYPE, (packet, player, responseSender) -> {
-            Level level = player.level();
-            if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA)) {
-                FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
-                level.addFreshEntity(rocket);
-                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA, DeeperDarker.CONFIG.server.soulElytraCooldown());
-            }
-        });
-        ServerPlayNetworking.registerGlobalReceiver(UseTransmitterPacket.TYPE, (packet, player, responseSender) -> {
-            for(ItemStack stack : player.getInventory().items) {
-                if(stack.is(DDItems.SCULK_TRANSMITTER) && SculkTransmitterItem.isLinked(stack)) {
-                    SculkTransmitterItem.transmit(player.level(), player, stack, null);
-                    break;
-                }
-            }
-        });
+//        ServerPlayNetworking.registerGlobalReceiver(SoulElytraBoostPacket.TYPE, (packet, player, responseSender) -> {
+//            Level level = player.level();
+//            if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA)) {
+//                FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
+//                level.addFreshEntity(rocket);
+//                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA, DeeperDarker.CONFIG.server.soulElytraCooldown());
+//            }
+//        });
+//        ServerPlayNetworking.registerGlobalReceiver(UseTransmitterPacket.TYPE, (packet, player, responseSender) -> {
+//            for(ItemStack stack : player.getInventory().items) {
+//                if(stack.is(DDItems.SCULK_TRANSMITTER) && SculkTransmitterItem.isLinked(stack)) {
+//                    SculkTransmitterItem.transmit(player.level(), player, stack, null);
+//                    break;
+//                }
+//            }
+//        });
     }
 }

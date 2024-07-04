@@ -4,23 +4,22 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 
 public class DDPaintingVariants {
-    public static final ResourceKey<PaintingVariant> ABSTRACTION = create("abstraction", new PaintingVariant(32, 32));
-    public static final ResourceKey<PaintingVariant> MILLIPEDE = create("millipede", new PaintingVariant(32, 32));
-    public static final ResourceKey<PaintingVariant> CLOUDS = create("clouds", new PaintingVariant(64, 16));
-    public static final ResourceKey<PaintingVariant> OOZE = create("ooze", new PaintingVariant(16, 16));
-    public static final ResourceKey<PaintingVariant> ADVENTURE = create("adventure", new PaintingVariant(64, 16));
-    public static final ResourceKey<PaintingVariant> ECHOER = create("echoer", new PaintingVariant(16, 16));
-    public static final ResourceKey<PaintingVariant> CARROT = create("carrot", new PaintingVariant(32, 16));
+    public static final ResourceKey<PaintingVariant> ABSTRACTION = create("abstraction");
+    public static final ResourceKey<PaintingVariant> ADVENTURE = create("adventure");
+    public static final ResourceKey<PaintingVariant> CARROT = create("carrot");
+    public static final ResourceKey<PaintingVariant> CLOUDS = create("clouds");
+    public static final ResourceKey<PaintingVariant> ECHOER = create("echoer");
+    public static final ResourceKey<PaintingVariant> MILLIPEDE = create("millipede");
+    public static final ResourceKey<PaintingVariant> OOZE = create("ooze");
 
-    private static ResourceKey<PaintingVariant> create(String string, PaintingVariant paintingVariant) {
-        ResourceKey<PaintingVariant> resourceKey = ResourceKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(DeeperDarker.MOD_ID, string));
-        Registry.register(BuiltInRegistries.PAINTING_VARIANT, resourceKey, paintingVariant);
-        return resourceKey;
+    private static ResourceKey<PaintingVariant> create(String name) {
+        return ResourceKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
     }
 
     public static void init() {
