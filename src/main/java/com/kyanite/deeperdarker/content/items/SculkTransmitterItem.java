@@ -52,7 +52,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(isLinked(pPlayer.getMainHandItem())) transmit(pLevel, pPlayer, pPlayer.getMainHandItem(), null);
+        if(isLinked(pPlayer.getItemInHand(pUsedHand))) transmit(pLevel, pPlayer, pPlayer.getItemInHand(pUsedHand), null);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
@@ -61,7 +61,7 @@ public class SculkTransmitterItem extends Item {
             if(clickedPos != null && canConnect(level, clickedPos)) {
                 actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
                 formConnection(level, transmitter, clickedPos);
-                return InteractionResult.SUCCESS;
+                return InteractionResult.sidedSuccess(false);
             }
 
             actionBarMessage(player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
@@ -93,7 +93,7 @@ public class SculkTransmitterItem extends Item {
             if(level.getBlockEntity(linkedPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
         }
 
-        return InteractionResult.SUCCESS;
+        return InteractionResult.sidedSuccess(false);
     }
 
     public static boolean isLinked(ItemStack stack) {
