@@ -55,9 +55,6 @@ public class SculkTransmitterItem extends Item {
     }
 
     public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos) {
-        int[] pos = transmitter.getTag().getIntArray("blockPos");
-        BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
-
         if(player.isCrouching()) {
             if(clickedPos != null && canConnect(level, clickedPos)) {
                 actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
@@ -69,6 +66,10 @@ public class SculkTransmitterItem extends Item {
             formConnection(level, transmitter, null);
             return InteractionResult.FAIL;
         }
+
+        if (!transmitter.hasTag()) return InteractionResult.FAIL;
+        int[] pos = transmitter.getTag().getIntArray("blockPos");
+        BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
 
         if(!level.isLoaded(linkedPos)) {
             actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
