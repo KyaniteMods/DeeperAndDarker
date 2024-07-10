@@ -3,11 +3,11 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.145'
+    id 'net.neoforged.gradle.userdev' version '7.0.153'
 }
 tasks.named('wrapper', Wrapper).configure { distributionType = Wrapper.DistributionType.BIN }
 
-version = "forge-" + minecraft_version + "-" + mod_version
+version = mod_version
 group = mod_group_id
 base { archivesName = mod_id }
 
@@ -78,7 +78,6 @@ publishing {
 }
 
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
-
 idea {
     module {
         downloadSources = true

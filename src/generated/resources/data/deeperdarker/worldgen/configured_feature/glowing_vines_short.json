@@ -4,10 +4,8 @@
     "doubleHeight": 0.1,
     "height": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 5,
-        "min_inclusive": 1
-      }
+      "max_inclusive": 5,
+      "min_inclusive": 1
     },
     "placeable": "deeperdarker:glowing_vine_placeable",
     "plant": {

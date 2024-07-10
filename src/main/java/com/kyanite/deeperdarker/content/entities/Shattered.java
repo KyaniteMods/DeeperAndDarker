@@ -38,16 +38,16 @@ import java.util.function.BiConsumer;
 public class Shattered extends Monster implements DisturbanceListener, VibrationSystem {
     public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    private final DynamicGameEventListener<VibrationSystem.Listener> dynamicGameEventListener;
-    private final VibrationSystem.User vibrationUser;
-    private final VibrationSystem.Data vibrationData;
+    private final DynamicGameEventListener<Listener> dynamicGameEventListener;
+    private final User vibrationUser;
+    private final Data vibrationData;
     public BlockPos disturbanceLocation;
 
     public Shattered(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
-        this.vibrationUser = new Shattered.VibrationUser();
-        this.vibrationData = new VibrationSystem.Data();
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new Listener(this));
+        this.vibrationUser = new VibrationUser();
+        this.vibrationData = new Data();
         this.setPathfindingMalus(PathType.LAVA, 8);
         this.setPathfindingMalus(PathType.POWDER_SNOW, 8);
         this.setPathfindingMalus(PathType.UNPASSABLE_RAIL, 0);
@@ -148,7 +148,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         return this.vibrationUser;
     }
 
-    class VibrationUser implements VibrationSystem.User {
+    class VibrationUser implements User {
         private final PositionSource positionSource = new EntityPositionSource(Shattered.this, Shattered.this.getEyeHeight());
 
         @Override

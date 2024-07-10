@@ -14,8 +14,10 @@ import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.data.*;
-import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
+import com.kyanite.deeperdarker.datagen.data.DDBlockTagsProvider;
+import com.kyanite.deeperdarker.datagen.data.DDItemTagsProvider;
+import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
+import com.kyanite.deeperdarker.datagen.data.DDRegistriesGenerator;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
@@ -24,7 +26,6 @@ import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
-import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -76,12 +77,11 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
-import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -89,7 +89,6 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.slf4j.Logger;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
@@ -110,7 +109,7 @@ public class DeeperDarker {
         DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDArmorMaterials.ARMOR_MATERIALS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
-        OthersideDimension.POI.register(eventBus);
+//        OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
@@ -147,10 +146,10 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
 
-        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, fileHelper, List.of(new DDAdvancements())));
+//        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, fileHelper, List.of(new DDAdvancements())));
         generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, lookupProvider));
+//        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, lookupProvider));
     }
 
@@ -172,11 +171,11 @@ public class DeeperDarker {
         event.put(DDEntities.STALKER.get(), Stalker.createAttributes());
     }
 
-    private void registerSpawnPlacements(final SpawnPlacementRegisterEvent event) {
-        event.register(DDEntities.ANGLER_FISH.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-        event.register(DDEntities.SHATTERED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+    private void registerSpawnPlacements(final RegisterSpawnPlacementsEvent event) {
+        event.register(DDEntities.ANGLER_FISH.get(), SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(DDEntities.SHATTERED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     @EventBusSubscriber(modid = MOD_ID)

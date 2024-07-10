@@ -20,7 +20,7 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
     );
 
     public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "use_transmitter");
-    public static final CustomPacketPayload.Type<UseTransmitterPacket> TYPE = new CustomPacketPayload.Type<>(ID);
+    public static final Type<UseTransmitterPacket> TYPE = new Type<>(ID);
 
     @Override
     public @NotNull CustomPacketPayload.Type<? extends CustomPacketPayload> type() {

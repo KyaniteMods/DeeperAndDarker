@@ -17,13 +17,13 @@ public class AncientPaintingVariants {
     public static final ResourceKey<PaintingVariant> OOZE = create("ooze");
 
     public static void bootstrap(BootstrapContext<PaintingVariant> context) {
-        context.register(ABSTRACTION, new PaintingVariant(32, 32, ABSTRACTION.location()));
-        context.register(ADVENTURE, new PaintingVariant(64, 16, ADVENTURE.location()));
-        context.register(CARROT, new PaintingVariant(32, 16, CARROT.location()));
-        context.register(CLOUDS, new PaintingVariant(64, 16, CLOUDS.location()));
-        context.register(ECHOER, new PaintingVariant(16, 16, ECHOER.location()));
-        context.register(MILLIPEDE, new PaintingVariant(32, 32, MILLIPEDE.location()));
-        context.register(OOZE, new PaintingVariant(16, 16, OOZE.location()));
+        context.register(ABSTRACTION, new PaintingVariant(2, 2, ABSTRACTION.location()));
+        context.register(ADVENTURE, new PaintingVariant(4, 1, ADVENTURE.location()));
+        context.register(CARROT, new PaintingVariant(2, 1, CARROT.location()));
+        context.register(CLOUDS, new PaintingVariant(4, 1, CLOUDS.location()));
+        context.register(ECHOER, new PaintingVariant(1, 1, ECHOER.location()));
+        context.register(MILLIPEDE, new PaintingVariant(2, 2, MILLIPEDE.location()));
+        context.register(OOZE, new PaintingVariant(1, 1, OOZE.location()));
     }
 
     private static ResourceKey<PaintingVariant> create(String name) {

@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.content.blocks.entity.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.entity.DDSignBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.flammable.*;
 import com.kyanite.deeperdarker.content.blocks.vegetation.*;
-import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -25,7 +24,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 @SuppressWarnings("NullableProblems")

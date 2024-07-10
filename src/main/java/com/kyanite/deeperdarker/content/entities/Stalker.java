@@ -51,18 +51,18 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     public final AnimationState ringAttackState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
-    private final DynamicGameEventListener<VibrationSystem.Listener> dynamicGameEventListener;
-    private final VibrationSystem.User vibrationUser;
-    private final VibrationSystem.Data vibrationData;
+    private final DynamicGameEventListener<Listener> dynamicGameEventListener;
+    private final User vibrationUser;
+    private final Data vibrationData;
     public BlockPos disturbanceLocation;
     private int emergingTime;
     private int rangedCooldown = 440;
 
     public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
-        this.vibrationUser = new Stalker.VibrationUser();
-        this.vibrationData = new VibrationSystem.Data();
+        this.dynamicGameEventListener = new DynamicGameEventListener<>(new Listener(this));
+        this.vibrationUser = new VibrationUser();
+        this.vibrationData = new Data();
         this.setPathfindingMalus(PathType.LAVA, 8);
         this.setPathfindingMalus(PathType.POWDER_SNOW, 8);
         this.setPathfindingMalus(PathType.UNPASSABLE_RAIL, 0);
@@ -248,7 +248,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         return this.vibrationUser;
     }
 
-    class VibrationUser implements VibrationSystem.User {
+    class VibrationUser implements User {
         private final PositionSource positionSource = new EntityPositionSource(Stalker.this, Stalker.this.getEyeHeight());
 
         @Override
