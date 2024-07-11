@@ -1,0 +1,6 @@
+// 1.21	2024-07-11T18:05:40.1702722	Global Loot Modifiers : deeperdarker
+38940295b1b7b8305775ff1a2ea178d85c4fb244 data/deeperdarker/loot_modifiers/warden_carapace_from_ancient_city.json
+04b2b12c4727adc512024cdabfc9e57a4f83674a data/deeperdarker/loot_modifiers/warden_carapace_from_warden.json
+9703affbd6e9b85312e69ae2abee3138a9619082 data/deeperdarker/loot_modifiers/warden_heart_from_warden.json
+fb54b0ff6388f67c131fcfa5fe71be3fc1f4684c data/deeperdarker/loot_modifiers/warden_upgrade_from_ancient_city.json
+fa274e3f4d42757d7491988058466c3d4f2169d3 data/neoforge/loot_modifiers/global_loot_modifiers.json

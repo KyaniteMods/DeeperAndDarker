@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +16,7 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 @SuppressWarnings("NullableProblems")
 public class AddItemModifier extends LootModifier {
     public static final MapCodec<AddItemModifier> CODEC = RecordCodecBuilder.mapCodec(instance -> codecStart(instance).and(instance.group(
-            ItemStack.ITEM_NON_AIR_CODEC.fieldOf("item").forGetter(modifier -> Holder.direct(modifier.item)),
+            BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(modifier -> modifier.item),
             Codec.INT.fieldOf("min").forGetter(modifier -> modifier.min),
             Codec.INT.fieldOf("max").forGetter(modifier -> modifier.max)
     )).apply(instance, AddItemModifier::new));
@@ -26,16 +26,16 @@ public class AddItemModifier extends LootModifier {
     private final int max;
 
     public AddItemModifier(LootItemCondition[] conditionsIn, Item item) {
-        this(conditionsIn, Holder.direct(item), 1, 1);
+        this(conditionsIn, item, 1, 1);
     }
 
     public AddItemModifier(LootItemCondition[] conditionsIn, Item item, int max) {
-        this(conditionsIn, Holder.direct(item), 1, max);
+        this(conditionsIn, item, 1, max);
     }
 
-    public AddItemModifier(LootItemCondition[] conditionsIn, Holder<Item> item, int min, int max) {
+    public AddItemModifier(LootItemCondition[] conditionsIn, Item item, int min, int max) {
         super(conditionsIn);
-        this.item = item.value();
+        this.item = item;
         this.min = min;
         this.max = max;
     }
