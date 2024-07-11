@@ -14,10 +14,7 @@ import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.data.DDBlockTagsProvider;
-import com.kyanite.deeperdarker.datagen.data.DDItemTagsProvider;
-import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
-import com.kyanite.deeperdarker.datagen.data.DDRegistriesGenerator;
+import com.kyanite.deeperdarker.datagen.data.*;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
@@ -77,6 +74,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
@@ -89,6 +87,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
@@ -146,7 +145,7 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
 
-//        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, fileHelper, List.of(new DDAdvancements())));
+        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, event.getLookupProvider(), fileHelper, List.of(new DDAdvancements())));
         generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, lookupProvider));
 //        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, lookupProvider));
