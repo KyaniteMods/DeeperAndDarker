@@ -7,7 +7,7 @@
   "start_height": {
     "absolute": 18
   },
-  "start_pool": "deeperdarker:ancient_temple/starts",
+  "start_pool": "deeperdarker:ancient_temple/basement",
   "step": "underground_structures",
   "use_expansion_hack": false
 }

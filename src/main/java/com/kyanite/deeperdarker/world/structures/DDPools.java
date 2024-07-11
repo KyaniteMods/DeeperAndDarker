@@ -18,13 +18,13 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class DDPools {
-    public static final ResourceKey<StructureTemplatePool> ANCIENT_TEMPLE = createKey("ancient_temple/starts");
+    public static final ResourceKey<StructureTemplatePool> TEMPLE_START = createKey("ancient_temple/basement");
 
     public static void bootstrap(BootstrapContext<StructureTemplatePool> context) {
         Holder<StructureTemplatePool> empty = context.lookup(Registries.TEMPLATE_POOL).getOrThrow(Pools.EMPTY);
         Holder<StructureProcessorList> degradation = context.lookup(Registries.PROCESSOR_LIST).getOrThrow(DDProcessorLists.ANCIENT_TEMPLE_DEGRADATION);
 
-        context.register(ANCIENT_TEMPLE, new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/basement/center_0", degradation), 1), Pair.of(location("ancient_temple/basement/center_1", degradation), 1), Pair.of(location("ancient_temple/basement/center_2", degradation), 1), Pair.of(location("ancient_temple/basement/center_3", degradation), 1)), StructureTemplatePool.Projection.RIGID));
+        context.register(TEMPLE_START, new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/basement/center_0", degradation), 1), Pair.of(location("ancient_temple/basement/center_1", degradation), 1), Pair.of(location("ancient_temple/basement/center_2", degradation), 1), Pair.of(location("ancient_temple/basement/center_3", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         context.register(createKey("ancient_temple/basement/aisles"), new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/basement/aisles/secret_aisle", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_0", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_1", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_2", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_3", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_4", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_5", degradation), 1), Pair.of(location("ancient_temple/basement/aisles/aisle_6", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         context.register(createKey("ancient_temple/basement/corners"), new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/basement/corners/corner_0", degradation), 3), Pair.of(location("ancient_temple/basement/corners/corner_1", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         context.register(createKey("ancient_temple/basement/rooms"), new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/basement/rooms/portal_0", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/portal_1", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/throne", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/room_0", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/room_1", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/room_2", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/room_3", degradation), 1), Pair.of(location("ancient_temple/basement/rooms/room_4", degradation), 1)), StructureTemplatePool.Projection.RIGID));
@@ -36,7 +36,7 @@ public class DDPools {
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name, Holder<StructureProcessorList> processor) {
-        return (projection) -> new SinglePoolElement(Either.left(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name)), processor, projection, Optional.empty()) {};
+        return projection -> new SinglePoolElement(Either.left(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name)), processor, projection, Optional.empty()) {};
     }
 
     public static ResourceKey<StructureTemplatePool> createKey(String name) {

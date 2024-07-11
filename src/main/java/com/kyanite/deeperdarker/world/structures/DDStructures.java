@@ -17,8 +17,6 @@ import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 
-import java.util.Map;
-
 public class DDStructures {
     public static final ResourceKey<Structure> ANCIENT_TEMPLE = createKey("ancient_temple");
 
@@ -26,11 +24,11 @@ public class DDStructures {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Misc.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.ANCIENT_TEMPLE), 7, ConstantHeight.of(VerticalAnchor.absolute(18)), false));
+        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Misc.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.TEMPLE_START), 7, ConstantHeight.of(VerticalAnchor.absolute(18)), false));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {
-        return new Structure.StructureSettings(biomes, Map.of(), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, TerrainAdjustment.NONE);
+        return new Structure.StructureSettings.Builder(biomes).generationStep(GenerationStep.Decoration.UNDERGROUND_STRUCTURES).terrainAdapation(TerrainAdjustment.NONE).build();
     }
 
     private static ResourceKey<Structure> createKey(String name) {
