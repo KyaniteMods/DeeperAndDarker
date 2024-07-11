@@ -24,6 +24,7 @@ import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -109,7 +110,7 @@ public class DeeperDarker {
         DDEnchantments.ENCHANTMENTS.register(eventBus);
         DDArmorMaterials.ARMOR_MATERIALS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
-//        OthersideDimension.POI.register(eventBus);
+        OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         eventBus.addListener(DDCreativeTab::buildCreativeTab);

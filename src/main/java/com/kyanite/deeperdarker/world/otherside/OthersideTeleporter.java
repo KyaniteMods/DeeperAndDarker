@@ -31,8 +31,8 @@ public class OthersideTeleporter {
     private static final int PORTAL_WIDTH = DeeperDarkerConfig.othersidePortalWidth;
     private static final int PORTAL_HEIGHT = DeeperDarkerConfig.othersidePortalHeight;
 
-    public static DimensionTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, boolean isOtherside, WorldBorder worldBorder) {
-        Optional<BlockPos> closestPos = destLevel.getPortalForcer().findClosestPortalPosition(exitPos, isOtherside, worldBorder);
+    public static DimensionTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, boolean isOtherside, WorldBorder destBorder) {
+        Optional<BlockPos> closestPos = destLevel.getPortalForcer().findClosestPortalPosition(exitPos, isOtherside, destBorder);
         BlockUtil.FoundRectangle portal;
         DimensionTransition.PostDimensionTransition transition;
         if(closestPos.isPresent()) {

@@ -121,15 +121,13 @@ public class OthersidePortalBlock extends Block implements Portal {
     public DimensionTransition getPortalDestination(ServerLevel pLevel, Entity pEntity, BlockPos pPos) {
         ResourceKey<Level> level = pLevel.dimension() == Level.OVERWORLD ? OthersideDimension.OTHERSIDE_LEVEL : Level.OVERWORLD;
         ServerLevel destLevel = pLevel.getServer().getLevel(level);
-        if(destLevel == null) {
-            return null;
-        } else {
-            boolean isOtherside = destLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL;
-            WorldBorder worldBorder = destLevel.getWorldBorder();
-            double scale = DimensionType.getTeleportationScale(pLevel.dimensionType(), destLevel.dimensionType());
-            BlockPos blockpos = worldBorder.clampToBounds(pEntity.getX() * scale, pEntity.getY(), pEntity.getZ() * scale);
-            return OthersideTeleporter.getExitPortal(destLevel, pEntity, pPos, blockpos, isOtherside, worldBorder);
-        }
+        if(destLevel == null) return null;
+
+        boolean isOtherside = destLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL;
+        WorldBorder destBorder = destLevel.getWorldBorder();
+        double scale = DimensionType.getTeleportationScale(pLevel.dimensionType(), destLevel.dimensionType());
+        BlockPos destPos = destBorder.clampToBounds(pEntity.getX() * scale, pEntity.getY(), pEntity.getZ() * scale);
+        return OthersideTeleporter.getExitPortal(destLevel, pEntity, pPos, destPos, isOtherside, destBorder);
     }
 
     public static class PortalSpawnEvent extends BlockEvent implements ICancellableEvent {
