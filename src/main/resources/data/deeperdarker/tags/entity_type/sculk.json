@@ -4,8 +4,9 @@
     "deeperdarker:sculk_centipede",
     "deeperdarker:sculk_leech",
     "deeperdarker:sculk_snapper",
+    "deeperdarker:shattered",
     "deeperdarker:shriek_worm",
     "deeperdarker:stalker",
-    "deeperdarker:warden"
+    "minecraft:warden"
   ]
 }
