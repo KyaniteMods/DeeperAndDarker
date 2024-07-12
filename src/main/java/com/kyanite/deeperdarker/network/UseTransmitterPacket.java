@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.network;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -31,7 +30,7 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
         context.enqueueWork(() -> {
             Player player = context.player();
             for(ItemStack stack : player.getInventory().items) {
-                if(stack.is(DDItems.SCULK_TRANSMITTER.get()) && SculkTransmitterItem.isLinked(stack)) {
+                if(SculkTransmitterItem.isLinked(stack)) {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null);
                     break;
                 }
