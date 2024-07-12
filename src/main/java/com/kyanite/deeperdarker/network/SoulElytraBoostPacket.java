@@ -22,7 +22,7 @@ public record SoulElytraBoostPacket(boolean bool) implements CustomPacketPayload
             SoulElytraBoostPacket::new
     );
 
-    public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "soul_elytra_boost");
+    public static final ResourceLocation ID = DeeperDarker.rl("soul_elytra_boost");
     public static final Type<SoulElytraBoostPacket> TYPE = new Type<>(ID);
 
     @Override

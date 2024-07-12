@@ -192,10 +192,10 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
         itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
-        itemModel(DDItems.SCULK_TRANSMITTER, GENERATED).override().model(getModel(DDItems.SCULK_TRANSMITTER, "on")).predicate(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "linked"), 1).end();
+        itemModel(DDItems.SCULK_TRANSMITTER, GENERATED).override().model(getModel(DDItems.SCULK_TRANSMITTER, "on")).predicate(DeeperDarker.rl("linked"), 1).end();
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charged");
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charging");
-        itemModel(DDItems.SONOROUS_STAFF, HANDHELD).override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "charge"), 0.001f).end().override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "charge"), 1).end();
+        itemModel(DDItems.SONOROUS_STAFF, HANDHELD).override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(DeeperDarker.rl("charge"), 0.001f).end().override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(DeeperDarker.rl("charge"), 1).end();
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);

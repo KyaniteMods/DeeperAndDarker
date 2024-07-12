@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 
 public class AncientPaintingVariants {
@@ -27,6 +26,6 @@ public class AncientPaintingVariants {
     }
 
     private static ResourceKey<PaintingVariant> create(String name) {
-        return ResourceKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.PAINTING_VARIANT, DeeperDarker.rl(name));
     }
 }

@@ -296,7 +296,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), category, result).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(output, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), category, result).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
     }
 
     private void woodenRecipes(RecipeOutput output, TagKey<Item> logs, DeferredBlock<? extends Block> strippedLog, DeferredBlock<Block> planks, DeferredBlock<StairBlock> stairs, DeferredBlock<SlabBlock> slabs, DeferredBlock<FenceBlock> fence, DeferredBlock<FenceGateBlock> fenceGate, DeferredBlock<DoorBlock> door, DeferredBlock<TrapDoorBlock> trapDoor, DeferredBlock<PressurePlateBlock> pressurePlate, DeferredBlock<ButtonBlock> button, DeferredItem<Item> sign, DeferredItem<Item> hangingSign, DeferredItem<Item> boat, DeferredItem<Item> chestBoat) {
@@ -320,11 +320,11 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void oreSmelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, RecipeOutput output) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, getSmeltingRecipeName(result)  + "_" + getItemName(ingredient)));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, DeeperDarker.rl(getSmeltingRecipeName(result)  + "_" + getItemName(ingredient)));
     }
 
     private void oreBlasting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, RecipeOutput output) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, experience, 100).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, getBlastingRecipeName(result) + "_" + getItemName(ingredient)));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, experience, 100).group(group).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, DeeperDarker.rl(getBlastingRecipeName(result) + "_" + getItemName(ingredient)));
     }
 
     private void stonecuttingRecipe(RecipeOutput output, ItemLike ingredient, ItemLike result) {

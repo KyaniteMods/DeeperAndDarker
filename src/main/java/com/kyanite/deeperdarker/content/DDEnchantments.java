@@ -10,7 +10,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -59,6 +58,6 @@ public class DDEnchantments {
     }
 
     private static ResourceKey<Enchantment> create(String name) {
-        return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.ENCHANTMENT, DeeperDarker.rl(name));
     }
 }

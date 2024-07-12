@@ -23,7 +23,7 @@ public class SoulElytraItem extends ElytraItem {
     }
 
     public static ItemAttributeModifiers createAttributes() {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "armor.soul");
+        ResourceLocation location = DeeperDarker.rl("armor.soul");
         return ItemAttributeModifiers.builder().add(Attributes.ARMOR, new AttributeModifier(location, 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST).build();
     }
 

@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.common.util.DeferredSoundType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -57,6 +56,6 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMITTER_UNLINK = register("item.transmitter.unlink");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String sound) {
-        return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, sound)));
+        return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(DeeperDarker.rl(sound)));
     }
 }

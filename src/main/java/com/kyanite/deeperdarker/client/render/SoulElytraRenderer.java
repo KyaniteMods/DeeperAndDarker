@@ -21,7 +21,7 @@ import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("NullableProblems")
 public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>> extends ElytraLayer<E, M> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "textures/entity/soul_elytra.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/soul_elytra.png");
     private final ElytraModel<E> model;
 
     public SoulElytraRenderer(RenderLayerParent<E, M> pRenderer, EntityModelSet pModelSet) {

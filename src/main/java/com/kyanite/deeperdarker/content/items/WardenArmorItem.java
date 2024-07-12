@@ -25,7 +25,7 @@ public class WardenArmorItem extends ArmorItem {
     }
 
     public static ItemAttributeModifiers createAttributes() {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "armor.warden");
+        ResourceLocation location = DeeperDarker.rl("armor.warden");
         return ItemAttributeModifiers.builder()
                 .add(Attributes.ARMOR, new AttributeModifier(location, DDArmorMaterials.WARDEN.value().getDefense(Type.LEGGINGS), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.LEGS)
                 .add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(location, DDArmorMaterials.WARDEN.value().toughness(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.LEGS)

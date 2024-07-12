@@ -10,7 +10,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Musics;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -37,7 +36,7 @@ public class OthersideBiomes {
     }
 
     public static ResourceKey<Biome> createKey(String name) {
-        return ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.BIOME, DeeperDarker.rl(name));
     }
 
     private static Biome deeplands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {

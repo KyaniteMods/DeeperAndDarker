@@ -5,7 +5,6 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
@@ -20,6 +19,6 @@ public class DDStructureSets {
     }
 
     static ResourceKey<StructureSet> createKey(String name) {
-        return ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.STRUCTURE_SET, DeeperDarker.rl(name));
     }
 }

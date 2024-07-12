@@ -19,7 +19,7 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
             UseTransmitterPacket::new
     );
 
-    public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "use_transmitter");
+    public static final ResourceLocation ID = DeeperDarker.rl("use_transmitter");
     public static final Type<UseTransmitterPacket> TYPE = new Type<>(ID);
 
     @Override

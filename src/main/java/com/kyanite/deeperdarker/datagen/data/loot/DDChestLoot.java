@@ -7,7 +7,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -166,6 +165,6 @@ public record DDChestLoot(HolderLookup.Provider registries) implements LootTable
     }
 
     private static ResourceKey<LootTable> register(String name) {
-        return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl(name));
     }
 }

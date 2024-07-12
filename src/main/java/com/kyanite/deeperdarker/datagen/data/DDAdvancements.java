@@ -30,7 +30,7 @@ public class DDAdvancements implements AdvancementProvider.AdvancementGenerator 
         HolderGetter<Structure> structures = registries.lookupOrThrow(Registries.STRUCTURE);
         String id = "advancements." + DeeperDarker.MOD_ID + ".";
 
-        AdvancementHolder root = Advancement.Builder.advancement().display(Blocks.SCULK, Component.translatable(id + "root.title"), Component.translatable(id + "root.description"), ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "textures/gui/advancements/root.png"), AdvancementType.TASK, false, false, false)
+        AdvancementHolder root = Advancement.Builder.advancement().display(Blocks.SCULK, Component.translatable(id + "root.title"), Component.translatable(id + "root.description"), DeeperDarker.rl("textures/gui/advancements/root.png"), AdvancementType.TASK, false, false, false)
                 .addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(Biomes.DEEP_DARK)))).save(saver, path("root"), existingFileHelper);
 
         AdvancementHolder findAncientCity = Advancement.Builder.advancement().parent(root).display(Blocks.DEEPSLATE_TILES, Component.translatable(id + "find_ancient_city.title"), Component.translatable(id + "find_ancient_city.description"), null, AdvancementType.GOAL, true, true, false)
@@ -87,6 +87,6 @@ public class DDAdvancements implements AdvancementProvider.AdvancementGenerator 
     }
 
     private ResourceLocation path(String name) {
-        return ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "main/" + name);
+        return DeeperDarker.rl("main/" + name);
     }
 }

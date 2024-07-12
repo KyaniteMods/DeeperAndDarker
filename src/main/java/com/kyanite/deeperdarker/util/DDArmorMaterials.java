@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
@@ -27,6 +26,6 @@ public class DDArmorMaterials extends ArmorMaterials {
         map.put(ArmorItem.Type.BODY, 11);
     });
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> WARDEN = ARMOR_MATERIALS.register("warden", () -> new ArmorMaterial(
-            WARDEN_DEFENSE, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "warden"))), 4, 0.1f)
+            WARDEN_DEFENSE, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), List.of(new ArmorMaterial.Layer(DeeperDarker.rl("warden"))), 4, 0.1f)
     );
 }

@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -50,7 +49,7 @@ public class DDItems {
             Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade").withStyle(ChatFormatting.GRAY),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description"),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description"),
-            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, "item/empty_slot_shard"))
+            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
     ));
 
     public static final DeferredItem<Item> WARDEN_SHOVEL = ITEMS.register("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.WARDEN, 1.5f, -3)).rarity(Rarity.RARE).fireResistant()));
