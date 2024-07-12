@@ -14,9 +14,9 @@ import net.minecraft.world.level.block.SculkSpreader;
 import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("NullableProblems")
-public record CatalysisEnvironment(boolean bool) implements EnchantmentEntityEffect {
+public record CatalysisEnvironment(boolean dropXp) implements EnchantmentEntityEffect {
     public static final MapCodec<CatalysisEnvironment> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(Codec.BOOL.fieldOf("bool").forGetter(CatalysisEnvironment::bool)).apply(instance, CatalysisEnvironment::new)
+            instance -> instance.group(Codec.BOOL.fieldOf("drop_xp").forGetter(CatalysisEnvironment::dropXp)).apply(instance, CatalysisEnvironment::new)
     );
 
     @Override
@@ -28,7 +28,7 @@ public record CatalysisEnvironment(boolean bool) implements EnchantmentEntityEff
                 for(int i = 0; i < (int) (10 * pEnchantmentLevel * 0.9); i++) {
                     spreader.updateCursors(target.level(), target.blockPosition(), target.getRandom(), true);
                 }
-                target.skipDropExperience();
+                if(!dropXp) target.skipDropExperience();
             }
         }
     }

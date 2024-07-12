@@ -83,7 +83,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
         add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.BITE.location().getPath(), "%1$s was devoured");
         add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.RING.location().getPath(), "%1$s was given a deadly case of tinnitus by %2$s");
-//        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath() + ".desc", "Spreads sculk when mobs are killed.");
+
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath(), convertToName(DDEnchantments.CATALYSIS.location().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath() + ".desc", "Spreads sculk when mobs are killed.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath(), convertToName(DDEnchantments.SCULK_SMITE.location().getPath()));
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
@@ -125,7 +128,6 @@ public class ENLanguageProvider extends LanguageProvider {
         DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));
         DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
         DDEffects.EFFECTS.getEntries().forEach(effect -> add(effect, "effect"));
-        DDEnchantments.ENCHANTMENTS.getEntries().forEach(effect -> add(effect, "enchantment"));
     }
 
     private void add(DeferredHolder<?, ?> entry, String prefix) {
