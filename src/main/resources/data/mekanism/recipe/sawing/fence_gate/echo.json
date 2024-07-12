@@ -14,7 +14,7 @@
     "count": 4,
     "item": "minecraft:stick"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

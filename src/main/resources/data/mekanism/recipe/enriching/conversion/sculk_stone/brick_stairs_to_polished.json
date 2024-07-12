@@ -8,7 +8,7 @@
   "output": {
     "item": "deeperdarker:polished_sculk_stone_stairs"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

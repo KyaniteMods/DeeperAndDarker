@@ -9,7 +9,7 @@
     "count": 5,
     "item": "deeperdarker:echo_planks"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

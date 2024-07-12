@@ -8,7 +8,7 @@
   "output": {
     "item": "deeperdarker:cobbled_sculk_stone_wall"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

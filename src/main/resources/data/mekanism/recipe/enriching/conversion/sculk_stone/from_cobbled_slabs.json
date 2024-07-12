@@ -8,7 +8,7 @@
   "output": {
     "item": "deeperdarker:sculk_stone_slab"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "mekanism"

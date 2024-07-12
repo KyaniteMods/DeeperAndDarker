@@ -23,7 +23,7 @@
       "item": "deeperdarker:cobbled_sculk_stone"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "create"

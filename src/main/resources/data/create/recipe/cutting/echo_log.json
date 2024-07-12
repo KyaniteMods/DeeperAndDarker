@@ -11,7 +11,7 @@
       "item": "deeperdarker:stripped_echo_log"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
       "modid": "create"
