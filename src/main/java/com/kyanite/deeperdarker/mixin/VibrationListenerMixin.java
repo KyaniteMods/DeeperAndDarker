@@ -19,11 +19,10 @@ public class VibrationListenerMixin {
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
     public void deeperdarker_handleGameEvent(ServerLevel level, Holder<GameEvent> gameEvent, GameEvent.Context context, Vec3 pos, CallbackInfoReturnable<Boolean> cir) {
         if(context.sourceEntity() instanceof LivingEntity entity) {
-            GameEvent event = gameEvent.value();
             if(entity.getType().is(DDTags.Misc.SCULK)) cir.setReturnValue(false);
             if(entity.hasEffect(DDEffects.SCULK_AFFINITY)) cir.setReturnValue(false);
-            if(entity.getItemBySlot(EquipmentSlot.FEET).is(DDTags.Items.DAMPENS_VIBRATIONS) && (event.equals(GameEvent.STEP.value()) || event.equals(GameEvent.HIT_GROUND.value()) || event.equals(GameEvent.SWIM.value()) || event.equals(GameEvent.SPLASH.value()))) cir.setReturnValue(false);
-            if(entity.getItemBySlot(EquipmentSlot.CHEST).is(DDTags.Items.DAMPENS_VIBRATIONS) && (event.equals(GameEvent.BLOCK_PLACE.value()) || event.equals(GameEvent.BLOCK_DESTROY.value()) || event.equals(GameEvent.BLOCK_OPEN.value()) || event.equals(GameEvent.BLOCK_CLOSE.value()) || event.equals(GameEvent.CONTAINER_OPEN.value()) || event.equals(GameEvent.CONTAINER_CLOSE.value()) || event.equals(GameEvent.BLOCK_ACTIVATE.value()))) cir.setReturnValue(false);
+            if(entity.getItemBySlot(EquipmentSlot.CHEST).is(DDTags.Items.DAMPENS_VIBRATIONS) && gameEvent.is(DDTags.Misc.CHEST_VIBRATIONS)) cir.setReturnValue(false);
+            if(entity.getItemBySlot(EquipmentSlot.FEET).is(DDTags.Items.DAMPENS_VIBRATIONS) && gameEvent.is(DDTags.Misc.FEET_VIBRATIONS)) cir.setReturnValue(false);
         }
     }
 }
