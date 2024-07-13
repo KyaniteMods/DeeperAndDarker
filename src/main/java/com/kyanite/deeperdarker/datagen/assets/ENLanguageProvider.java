@@ -70,6 +70,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", "Press %s to boost");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", "Boost available in %s");
+        add("item." + DeeperDarker.MOD_ID + ".warden_upgrade_smithing_template", "Smithing Template");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
