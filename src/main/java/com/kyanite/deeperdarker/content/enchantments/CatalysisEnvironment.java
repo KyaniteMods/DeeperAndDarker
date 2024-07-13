@@ -3,11 +3,13 @@ package com.kyanite.deeperdarker.content.enchantments;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.Optionull;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.level.block.SculkSpreader;
@@ -21,14 +23,21 @@ public record CatalysisEnvironment(boolean dropXp) implements EnchantmentEntityE
 
     @Override
     public void apply(ServerLevel pLevel, int pEnchantmentLevel, EnchantedItemInUse pItem, Entity pEntity, Vec3 pOrigin) {
-        if(pEntity instanceof LivingEntity target) {
-            if(target.isDeadOrDying()) {
+        if (pEntity instanceof LivingEntity target) {
+            if (target.isDeadOrDying() && !target.wasExperienceConsumed()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
-                spreader.addCursors(new BlockPos((int) (target.position().x + 0.5 * Direction.UP.getNormal().getX()), (int) (target.position().y + 0.5 * Direction.UP.getNormal().getY()), (int) (target.position().z + 0.5 * Direction.UP.getNormal().getZ())), 20);
-                for(int i = 0; i < (int) (10 * pEnchantmentLevel * 0.9); i++) {
-                    spreader.updateCursors(target.level(), target.blockPosition(), target.getRandom(), true);
+                Entity attacker = Optionull.map(target.getLastDamageSource(), DamageSource::getEntity);
+                if (!(attacker instanceof Player)) return;
+
+                BlockPos pos = new BlockPos((int) pOrigin.x, (int) pOrigin.y, (int) pOrigin.z);
+                for (int i = 0; i < 3 * pEnchantmentLevel; i++) {
+                    spreader.addCursors(pos, target.getExperienceReward(pLevel, attacker));
                 }
-                if(!dropXp) target.skipDropExperience();
+                for (int i = 0; i < 8 * pEnchantmentLevel; i++) {
+                    spreader.updateCursors(pLevel, pos, pLevel.getRandom(), true);
+                }
+
+                if (!dropXp) target.skipDropExperience();
             }
         }
     }
