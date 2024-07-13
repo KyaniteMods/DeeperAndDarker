@@ -24,7 +24,7 @@ public abstract class ItemStackMixin {
     public abstract boolean is(TagKey<Item> tag);
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
-    public void deeperdarker_getTooltipLines(Item.TooltipContext tooltipContext, @Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
+    public void getTooltipLines(Item.TooltipContext tooltipContext, @Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir) {
         List<Component> components = cir.getReturnValue();
         if(this.is(DDTags.Items.DAMPENS_VIBRATIONS)) components.add(Component.translatable("item." + DeeperDarker.MOD_ID + ".dampens_vibrations").withStyle(ChatFormatting.BLUE));
     }

@@ -34,7 +34,7 @@ public abstract class PaintingMixin extends HangingEntity {
     public abstract Holder<PaintingVariant> getVariant();
 
     @Inject(method = "dropItem", at = @At("HEAD"), cancellable = true)
-    public void deeperdarker_dropItem(Entity entity, CallbackInfo cir) {
+    public void dropItem(Entity entity, CallbackInfo cir) {
         if(getVariant().is(DDTags.Misc.ANCIENT_PAINTING) && this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             this.playSound(SoundEvents.PAINTING_BREAK, 1, 1);
             if(entity instanceof Player player && player.getAbilities().instabuild) return;
@@ -48,7 +48,7 @@ public abstract class PaintingMixin extends HangingEntity {
     }
 
     @Inject(method = "getPickResult", at = @At("RETURN"))
-    public void deeperdarker_getPickResult(CallbackInfoReturnable<ItemStack> cir) {
+    public void getPickResult(CallbackInfoReturnable<ItemStack> cir) {
         if(getVariant().is(DDTags.Misc.ANCIENT_PAINTING)) {
             CompoundTag tag = cir.getReturnValue().getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY).copyTag();
 //            Painting.storeVariant(tag, getVariant());

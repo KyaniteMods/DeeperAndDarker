@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PhantomRenderer.class)
 public class PhantomRendererMixin {
     @Inject(method = "getTextureLocation", at = @At("HEAD"), cancellable = true)
-    public void deeperdarker_getTextureLocation(Phantom entity, CallbackInfoReturnable<ResourceLocation> cir) {
+    public void getTextureLocation(Phantom entity, CallbackInfoReturnable<ResourceLocation> cir) {
         if(entity.level().getBiome(entity.blockPosition()).is(OthersideBiomes.DEEPLANDS.location())) {
             cir.setReturnValue(DeeperDarker.rl("textures/entity/sculk_phantom.png"));
         }

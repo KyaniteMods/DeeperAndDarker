@@ -19,7 +19,7 @@ public class WardenMixin extends Monster {
     }
 
     @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)
-    public void deeperdarker_canTargetEntity(Entity target, CallbackInfoReturnable<Boolean> cir) {
+    public void canTargetEntity(Entity target, CallbackInfoReturnable<Boolean> cir) {
         if(target instanceof LivingEntity entity && entity.getType().is(DDTags.Misc.SCULK)) cir.setReturnValue(false);
     }
 }
