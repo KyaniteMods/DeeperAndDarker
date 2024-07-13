@@ -3,11 +3,10 @@ package com.kyanite.deeperdarker.mixin;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import net.minecraft.world.entity.decoration.Painting;
@@ -24,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mixin(HangingEntityItem.class)
 public abstract class HangingEntityItemMixin {
@@ -32,26 +32,23 @@ public abstract class HangingEntityItemMixin {
     private EntityType<? extends HangingEntity> type;
 
     @Inject(method = "appendHoverText", at = @At("HEAD"), cancellable = true)
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
-        if(this.type == EntityType.PAINTING) {
-            CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-            if(!tag.isEmpty() && tag.contains("EntityTag", 10)) {
-                CompoundTag entityTag = tag.getCompound("EntityTag");
-                Holder<PaintingVariant> paintingVariant = loadVariant(entityTag);
-                if(paintingVariant.is(DDTags.Misc.ANCIENT_PAINTING)) {
-                    tooltipComponents.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "title")).withStyle(ChatFormatting.YELLOW));
-                    tooltipComponents.add(Component.translatable(paintingVariant.unwrapKey().get().location().toLanguageKey("painting", "author")).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.OBFUSCATED));
-                    tooltipComponents.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(paintingVariant.value().width(), 16), Mth.positiveCeilDiv(paintingVariant.value().height(), 16)));
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltips, TooltipFlag tooltipFlag, CallbackInfo ci) {
+        HolderLookup.Provider registries = context.registries();
 
-                    ci.cancel();
-                }
-            } else if(tooltipFlag.isCreative()) {
-                tooltipComponents.add(TOOLTIP_RANDOM_VARIANT);
+        if(this.type == EntityType.PAINTING && registries != null) {
+            CustomData data = stack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY);
+            if(data.isEmpty()) return;
+            Optional<Holder<PaintingVariant>> result = data.read(registries.createSerializationContext(NbtOps.INSTANCE), Painting.VARIANT_MAP_CODEC).result();
+            if(result.isEmpty()) return;
+            Holder<PaintingVariant> variant = result.get();
+
+            if(variant.is(DDTags.Misc.ANCIENT_PAINTING)) {
+                tooltips.add(Component.translatable(variant.getKey().location().toLanguageKey("painting", "title")).withStyle(ChatFormatting.YELLOW));
+                tooltips.add(Component.translatable(variant.getKey().location().toLanguageKey("painting", "author")).withStyle(ChatFormatting.GRAY, ChatFormatting.OBFUSCATED));
+                tooltips.add(Component.translatable("painting.dimensions", variant.value().width(), variant.value().height()));
+
+                ci.cancel();
             }
         }
-    }
-
-    private Holder<PaintingVariant> loadVariant(CompoundTag tag) {
-        return Painting.VARIANT_CODEC.decode(NbtOps.INSTANCE, tag).getOrThrow().getFirst();
     }
 }

@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.AncientPaintingVariants;
+import com.kyanite.deeperdarker.content.AncientPaintings;
 import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.util.DDDamageTypes;
 import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
@@ -28,7 +28,7 @@ public class DDRegistriesGenerator extends DatapackBuiltinEntriesProvider {
             .add(Registries.DAMAGE_TYPE, DDDamageTypes::bootstrap)
             .add(Registries.DIMENSION_TYPE, OthersideDimension::bootstrap)
             .add(Registries.ENCHANTMENT, DDEnchantments::bootstrap)
-            .add(Registries.PAINTING_VARIANT, AncientPaintingVariants::bootstrap)
+            .add(Registries.PAINTING_VARIANT, AncientPaintings::bootstrap)
             .add(Registries.PLACED_FEATURE, DDPlacedFeatures::bootstrap)
             .add(Registries.PROCESSOR_LIST, DDProcessorLists::bootstrap)
             .add(Registries.STRUCTURE, DDStructures::bootstrap)

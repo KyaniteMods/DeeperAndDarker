@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -33,25 +34,35 @@ public abstract class PaintingMixin extends HangingEntity {
     @Shadow
     public abstract Holder<PaintingVariant> getVariant();
 
+    @Shadow
+    public abstract void setVariant(Holder<PaintingVariant> variant);
+
     @Inject(method = "dropItem", at = @At("HEAD"), cancellable = true)
     public void dropItem(Entity entity, CallbackInfo cir) {
         if(getVariant().is(DDTags.Misc.ANCIENT_PAINTING) && this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             this.playSound(SoundEvents.PAINTING_BREAK, 1, 1);
             if(entity instanceof Player player && player.getAbilities().instabuild) return;
 
+            CompoundTag tag = new CompoundTag();
+            Painting.VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getVariant()).ifSuccess(tag1 -> tag.merge((CompoundTag) tag1));
+            tag.putString("id", "minecraft:painting");
+
             ItemEntity itemEntity = this.spawnAtLocation(Items.PAINTING);
-            CompoundTag tag = itemEntity.getItem().getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY).copyTag();
-            // TODO: fix paintings
-//            Painting.storeVariant(tag, getVariant());
+            itemEntity.getItem().set(DataComponents.ENTITY_DATA, CustomData.of(tag));
             cir.cancel();
         }
     }
 
-    @Inject(method = "getPickResult", at = @At("RETURN"))
+    @Inject(method = "getPickResult", at = @At("RETURN"), cancellable = true)
     public void getPickResult(CallbackInfoReturnable<ItemStack> cir) {
         if(getVariant().is(DDTags.Misc.ANCIENT_PAINTING)) {
             CompoundTag tag = cir.getReturnValue().getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY).copyTag();
-//            Painting.storeVariant(tag, getVariant());
+            Painting.VARIANT_CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), this.getVariant()).ifSuccess(tag1 -> tag.merge((CompoundTag) tag1));
+            tag.putString("id", "minecraft:painting");
+
+            ItemStack stack = new ItemStack(Items.PAINTING);
+            stack.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
+            cir.setReturnValue(stack);
         }
     }
 }

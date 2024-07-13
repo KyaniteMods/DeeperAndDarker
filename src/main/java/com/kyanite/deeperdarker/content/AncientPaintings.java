@@ -6,7 +6,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 
-public class AncientPaintingVariants {
+public class AncientPaintings {
     public static final ResourceKey<PaintingVariant> ABSTRACTION = create("abstraction");
     public static final ResourceKey<PaintingVariant> ADVENTURE = create("adventure");
     public static final ResourceKey<PaintingVariant> CARROT = create("carrot");
