@@ -60,11 +60,14 @@ public class ENLanguageProvider extends LanguageProvider {
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
         add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
+
         add("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", "Contains %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech", "Contains Sculk Leech");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
+
+        add("item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", "Press %1$s to boost");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", "Boost available in %1$s");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");

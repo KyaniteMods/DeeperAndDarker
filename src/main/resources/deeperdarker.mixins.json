@@ -6,6 +6,7 @@
   "mixins": [
     "ContainerMenuMixin",
     "HangingEntityItemMixin",
+    "ItemStackMixin",
     "PaintingMixin",
     "PhantomRendererMixin",
     "VibrationListenerMixin",
