@@ -25,6 +25,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("unused")
 @Mixin(Painting.class)
 public abstract class PaintingMixin extends HangingEntity {
     protected PaintingMixin(EntityType<? extends HangingEntity> pEntityType, Level pLevel) {
