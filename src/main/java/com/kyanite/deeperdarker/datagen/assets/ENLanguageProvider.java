@@ -63,13 +63,13 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", "Contains %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech", "Contains Sculk Leech");
-        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
-        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
+        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %s");
+        add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %s, %s, %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
         add("item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
-        add("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", "Press %1$s to boost");
-        add("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", "Boost available in %1$s");
+        add("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", "Press %s to boost");
+        add("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", "Boost available in %s");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
@@ -84,8 +84,8 @@ public class ENLanguageProvider extends LanguageProvider {
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));
         add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
-        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.BITE.location().getPath(), "%1$s was devoured");
-        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.RING.location().getPath(), "%1$s was given a deadly case of tinnitus by %2$s");
+        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.BITE.location().getPath(), "%s was devoured");
+        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.RING.location().getPath(), "%s was given a deadly case of tinnitus by %s");
 
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath(), convertToName(DDEnchantments.CATALYSIS.location().getPath()));
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath() + ".desc", "Spreads sculk when mobs are killed.");
