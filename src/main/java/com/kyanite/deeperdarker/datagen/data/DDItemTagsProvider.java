@@ -66,16 +66,16 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get(), DDItems.BLOOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get(), DDItems.BLOOM_CHEST_BOAT.get());
-        tag(ItemTags.SHOVELS).add(DDItems.WARDEN_SHOVEL.get());
-        tag(ItemTags.PICKAXES).add(DDItems.WARDEN_PICKAXE.get());
-        tag(ItemTags.AXES).add(DDItems.WARDEN_AXE.get());
-        tag(ItemTags.HOES).add(DDItems.WARDEN_HOE.get());
-        tag(ItemTags.SWORDS).add(DDItems.WARDEN_SWORD.get());
+        tag(ItemTags.SHOVELS).add(DDItems.RESONARIUM_HOE.get(), DDItems.WARDEN_SHOVEL.get());
+        tag(ItemTags.PICKAXES).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());
+        tag(ItemTags.AXES).add(DDItems.RESONARIUM_AXE.get(), DDItems.WARDEN_AXE.get());
+        tag(ItemTags.HOES).add(DDItems.RESONARIUM_HOE.get(), DDItems.WARDEN_HOE.get());
+        tag(ItemTags.SWORDS).add(DDItems.RESONARIUM_SWORD.get(), DDItems.WARDEN_SWORD.get());
 
-        tag(ItemTags.HEAD_ARMOR).add(DDItems.WARDEN_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(DDItems.WARDEN_CHESTPLATE.get());
-        tag(ItemTags.LEG_ARMOR).add(DDItems.WARDEN_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(DDItems.WARDEN_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR).add(DDItems.RESONARIUM_HELMET.get(), DDItems.WARDEN_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.WARDEN_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(DDItems.RESONARIUM_LEGGINGS.get(), DDItems.WARDEN_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(DDItems.RESONARIUM_BOOTS.get(), DDItems.WARDEN_BOOTS.get());
 
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
     }

@@ -174,6 +174,16 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
 
+        itemModel(DDItems.RESONARIUM_SHOVEL, HANDHELD);
+        itemModel(DDItems.RESONARIUM_PICKAXE, HANDHELD);
+        itemModel(DDItems.RESONARIUM_AXE, HANDHELD);
+        itemModel(DDItems.RESONARIUM_HOE, HANDHELD);
+        itemModel(DDItems.RESONARIUM_SWORD, HANDHELD);
+        itemModel(DDItems.RESONARIUM_HELMET, GENERATED);
+        itemModel(DDItems.RESONARIUM_CHESTPLATE, GENERATED);
+        itemModel(DDItems.RESONARIUM_LEGGINGS, GENERATED);
+        itemModel(DDItems.RESONARIUM_BOOTS, GENERATED);
+
         itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
@@ -187,6 +197,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.SCULK_BONE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
         itemModel(DDItems.SOUL_CRYSTAL, GENERATED);
+        itemModel(DDItems.RESONARIUM, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);

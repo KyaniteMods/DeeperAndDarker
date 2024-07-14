@@ -39,6 +39,7 @@ public class DDItems {
     public static final DeferredItem<Item> SCULK_BONE = ITEMS.registerSimpleItem("sculk_bone");
     public static final DeferredItem<Item> SOUL_DUST = ITEMS.registerSimpleItem("soul_dust");
     public static final DeferredItem<Item> SOUL_CRYSTAL = ITEMS.registerSimpleItem("soul_crystal");
+    public static final DeferredItem<Item> RESONARIUM = ITEMS.registerSimpleItem("resonarium");
     public static final DeferredItem<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new WardenHeartItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).fireResistant()));
     public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.register("reinforced_echo_shard", () -> new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
@@ -51,6 +52,16 @@ public class DDItems {
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description"),
             SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
     ));
+
+    public static final DeferredItem<Item> RESONARIUM_SHOVEL = ITEMS.register("resonarium_shovel", () -> new ShovelItem(DDTiers.RESONARIUM, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.RESONARIUM, 1.5f, -3))));
+    public static final DeferredItem<Item> RESONARIUM_PICKAXE = ITEMS.register("resonarium_pickaxe", () -> new PickaxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.RESONARIUM, 1, -2.8f))));
+    public static final DeferredItem<Item> RESONARIUM_AXE = ITEMS.register("resonarium_axe", () -> new AxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.RESONARIUM, 5, -3))));
+    public static final DeferredItem<Item> RESONARIUM_HOE = ITEMS.register("resonarium_hoe", () -> new HoeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.RESONARIUM, -4, 0))));
+    public static final DeferredItem<Item> RESONARIUM_SWORD = ITEMS.register("resonarium_sword", () -> new SwordItem(DDTiers.RESONARIUM, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.RESONARIUM, 3, -2.4f))));
+    public static final DeferredItem<Item> RESONARIUM_HELMET = ITEMS.register("resonarium_helmet", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(30))));
+    public static final DeferredItem<Item> RESONARIUM_CHESTPLATE = ITEMS.register("resonarium_chestplate", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
+    public static final DeferredItem<Item> RESONARIUM_LEGGINGS = ITEMS.register("resonarium_leggings", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(30))));
+    public static final DeferredItem<Item> RESONARIUM_BOOTS = ITEMS.register("resonarium_boots", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(30))));
 
     public static final DeferredItem<Item> WARDEN_SHOVEL = ITEMS.register("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.WARDEN, 1.5f, -3)).rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<Item> WARDEN_PICKAXE = ITEMS.register("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.WARDEN, 1, -2.8f)).rarity(Rarity.RARE).fireResistant()));

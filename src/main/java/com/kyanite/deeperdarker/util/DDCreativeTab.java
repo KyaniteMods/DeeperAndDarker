@@ -165,6 +165,16 @@ public class DDCreativeTab {
             event.accept(DDItems.BLOOM_BOAT);
             event.accept(DDItems.BLOOM_CHEST_BOAT);
 
+            event.accept(DDItems.RESONARIUM_SHOVEL);
+            event.accept(DDItems.RESONARIUM_PICKAXE);
+            event.accept(DDItems.RESONARIUM_AXE);
+            event.accept(DDItems.RESONARIUM_HOE);
+            event.accept(DDItems.RESONARIUM_SWORD);
+            event.accept(DDItems.RESONARIUM_HELMET);
+            event.accept(DDItems.RESONARIUM_CHESTPLATE);
+            event.accept(DDItems.RESONARIUM_LEGGINGS);
+            event.accept(DDItems.RESONARIUM_BOOTS);
+
             event.accept(DDItems.WARDEN_SHOVEL);
             event.accept(DDItems.WARDEN_PICKAXE);
             event.accept(DDItems.WARDEN_AXE);
@@ -178,6 +188,7 @@ public class DDCreativeTab {
             event.accept(DDItems.SCULK_BONE);
             event.accept(DDItems.SOUL_DUST);
             event.accept(DDItems.SOUL_CRYSTAL);
+            event.accept(DDItems.RESONARIUM);
             event.accept(DDItems.HEART_OF_THE_DEEP);
             event.accept(DDItems.WARDEN_CARAPACE);
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
