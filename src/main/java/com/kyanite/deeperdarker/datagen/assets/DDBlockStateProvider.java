@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import net.minecraft.core.Direction;
@@ -165,11 +166,17 @@ public class DDBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get()).partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel().partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
         simpleBlock(DDBlocks.ICE_LILY.get(), models().withExistingParent(DDBlocks.ICE_LILY.getId().getPath(), modLoc("block/ice_waterlily")).texture("texture", blockLoc(DDBlocks.ICE_LILY)).texture("flower", modLoc("block/lily_flower")));
 
-        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
         ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
         ModelFile jawBiting = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath() + "_biting", blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW, "biting"));
-        getVariantBuilder(DDBlocks.SCULK_JAW.get()).partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel().partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
+        getVariantBuilder(DDBlocks.SCULK_JAW.get())
+                .partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel()
+                .partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
+
+        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
+        getVariantBuilder(DDBlocks.OTHERSIDE_PORTAL.get())
+                .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.X).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ns"))).addModel()
+                .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.Z).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ew"))).addModel();
     }
 
     private void stemBlock(DeferredBlock<Block> block) {
