@@ -150,10 +150,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMSLATE_LAPIS_ORE.get());
         simpleBlock(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
-        horizontalBlock(DDBlocks.GLOWING_FLOWERS.get(), models().withExistingParent(DDBlocks.GLOWING_FLOWERS.getId().getPath(), modLoc("flowers")).texture("flowers", blockLoc(DDBlocks.GLOWING_FLOWERS)).texture("stem", blockLoc(DDBlocks.GLOWING_FLOWERS, "stem")).renderType("cutout"));
+        horizontalBlock(DDBlocks.GLOWING_FLOWERS.get(), models().getExistingFile(blockLoc(DDBlocks.GLOWING_FLOWERS)));
         simpleBlock(DDBlocks.GLOWING_GRASS.get(), models().cross(DDBlocks.GLOWING_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOWING_GRASS)).renderType("cutout"));
         simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
-        simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().withExistingParent(DDBlocks.GLOOMY_CACTUS.getId().getPath(), modLoc("block/cube_cactus")).texture("side", blockLoc(DDBlocks.GLOOMY_CACTUS, "side")).texture("top", blockLoc(DDBlocks.GLOOMY_CACTUS, "top")));
+        simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().getExistingFile(blockLoc(DDBlocks.GLOOMY_CACTUS)));
         simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(DDBlocks.SCULK_TENDRILS.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
         simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
@@ -164,7 +164,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         ModelFile noBerries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout");
         ModelFile berries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath() + "_berries", blockLoc(DDBlocks.GLOWING_VINES_PLANT, "berries")).renderType("cutout");
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get()).partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel().partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
-        simpleBlock(DDBlocks.ICE_LILY.get(), models().withExistingParent(DDBlocks.ICE_LILY.getId().getPath(), modLoc("block/ice_waterlily")).texture("texture", blockLoc(DDBlocks.ICE_LILY)).texture("flower", modLoc("block/lily_flower")));
+        simpleBlock(DDBlocks.ICE_LILY.get(), models().getExistingFile(blockLoc(DDBlocks.ICE_LILY)));
 
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
         ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
@@ -173,7 +173,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
                 .partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel()
                 .partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
 
-        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().withExistingParent(DDBlocks.ANCIENT_VASE.getId().getPath(), modLoc("block/vase")).texture("vase", blockLoc(DDBlocks.ANCIENT_VASE)));
+        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().getExistingFile(blockLoc(DDBlocks.ANCIENT_VASE)));
         getVariantBuilder(DDBlocks.OTHERSIDE_PORTAL.get())
                 .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.X).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ns"))).addModel()
                 .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.Z).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ew"))).addModel();

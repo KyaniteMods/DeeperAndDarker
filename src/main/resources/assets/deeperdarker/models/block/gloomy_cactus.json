@@ -2,6 +2,8 @@
 	"parent": "block/block",
 	"render_type": "cutout",
 	"textures": {
+		"side": "deeperdarker:block/gloomy_cactus_side",
+		"top": "deeperdarker:block/gloomy_cactus_top",
 		"particle": "#top"
 	},
 	"elements": [

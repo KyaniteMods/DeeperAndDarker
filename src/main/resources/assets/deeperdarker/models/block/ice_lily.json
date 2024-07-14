@@ -2,6 +2,8 @@
 	"parent": "block/block",
 	"render_type": "cutout",
 	"textures": {
+		"flower": "deeperdarker:block/lily_flower",
+		"texture": "deeperdarker:block/ice_lily",
 		"particle": "#texture"
 	},
 	"elements": [

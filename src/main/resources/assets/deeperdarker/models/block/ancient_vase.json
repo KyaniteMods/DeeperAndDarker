@@ -3,6 +3,7 @@
 	"render_type": "cutout",
 	"texture_size": [48, 48],
 	"textures": {
+		"vase": "deeperdarker:block/ancient_vase",
 		"particle": "#vase"
 	},
 	"elements": [

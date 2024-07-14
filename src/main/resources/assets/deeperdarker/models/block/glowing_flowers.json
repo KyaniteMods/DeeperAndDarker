@@ -1,6 +1,9 @@
 {
 	"ambientocclusion": false,
+	"render_type": "cutout",
 	"textures": {
+		"flowers": "deeperdarker:block/glowing_flowers",
+		"stem": "deeperdarker:block/glowing_flowers_stem",
 		"particle": "#flowers"
 	},
 	"elements": [
