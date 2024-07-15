@@ -8,7 +8,7 @@ import com.kyanite.deeperdarker.util.DDDamageTypes;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -53,9 +53,6 @@ public class ENLanguageProvider extends LanguageProvider {
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
         add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
 
-        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper and Darker");
-        add("item." + DeeperDarker.MOD_ID + "." + DDItems.BLOOM_BERRIES.getId().getPath(), convertToName(DDItems.BLOOM_BERRIES.getId().getPath()));
-
         add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
@@ -68,10 +65,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %s, %s, %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
+        add("itemGroup." + DeeperDarker.MOD_ID, "Deeper and Darker");
         add("item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", "Press %s to boost");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", "Boost available in %s");
-        add("item." + DeeperDarker.MOD_ID + ".warden_upgrade_smithing_template", "Smithing Template");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");
@@ -130,7 +127,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
-        DDItems.ITEMS.getEntries().stream().filter(item -> !(item.get() instanceof BlockItem)).forEach(item -> add(item, "item"));
+        DDItems.ITEMS.getEntries().forEach(item -> add(item, "item"));
         DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
         DDEffects.EFFECTS.getEntries().forEach(effect -> add(effect, "effect"));
     }
@@ -142,7 +139,8 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private boolean filter(DeferredHolder<?, ?> entry) {
-        return entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat || entry.get() instanceof SmithingTemplateItem;
+        if(entry.get() instanceof ItemNameBlockItem) return false;
+        return entry.get() instanceof BlockItem || entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat;
     }
 
     private String convertToName(String key) {
@@ -158,6 +156,7 @@ public class ENLanguageProvider extends LanguageProvider {
         if(name.contains("Chest ")) name = name.replace("Chest ", "") + " With Chest";
         if(name.contains("Lapis")) name = name.replace("Lapis", "Lapis Lazuli");
         if(name.contains("Of The")) name = name.replace("Of The", "of the");
+        if(name.contains("Smithing")) name = "Smithing Template";
         if(name.contains("With")) name = name.replace("With", "with");
 
         return name;
