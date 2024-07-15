@@ -144,6 +144,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_VINES);
             event.accept(DDBlocks.GLOWING_ROOTS);
             event.accept(DDItems.ICE_LILY);
+            event.accept(DDBlocks.LILY_FLOWER);
 
             event.accept(DDItems.ECHO_SIGN);
             event.accept(DDItems.ECHO_HANGING_SIGN);

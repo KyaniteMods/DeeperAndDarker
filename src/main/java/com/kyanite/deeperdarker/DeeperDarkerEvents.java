@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.AncientVaseBlock;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
+import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
@@ -25,8 +26,10 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -39,6 +42,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -77,7 +81,7 @@ public class DeeperDarkerEvents {
         HolderLookup.RegistryLookup<Enchantment> lookup = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
         boolean silktouch = event.getPlayer().getMainHandItem().getEnchantmentLevel(lookup.getOrThrow(Enchantments.SILK_TOUCH)) > 0;
 
-        if(state.is(DDBlocks.CRYSTALLIZED_AMBER.get()) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+        if(state.is(DDBlocks.CRYSTALLIZED_AMBER) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
             if(!silktouch && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 if(blockEntity.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                 else Block.popResource(level, pos, blockEntity.getLoot());
@@ -98,7 +102,23 @@ public class DeeperDarkerEvents {
 
         if(silktouch) return;
 
-        if(state.is(DDBlocks.ANCIENT_VASE.get())) {
+        if(state.is(DDBlocks.ICE_LILY)) {
+            if(state.getValue(IceLilyBlock.HAS_FLOWER)) return;
+
+            CompoundTag tag = new CompoundTag();
+            tag.putBoolean("has_flower", false);
+            tag.putString("id", "deeperdarker:ice_lily");
+
+            ItemStack stack = new ItemStack(DDBlocks.ICE_LILY);
+            stack.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
+            stack.set(DataComponents.ITEM_NAME, Component.translatable("block." + DeeperDarker.MOD_ID + ".flowerless_ice_lily"));
+            Block.popResource(level, pos, stack);
+
+            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            event.setCanceled(true);
+        }
+
+        if(state.is(DDBlocks.ANCIENT_VASE)) {
             if(level instanceof ServerLevel serverLevel) {
                 RandomSource random = serverLevel.getRandom();
                 if(level.getDifficulty() != Difficulty.PEACEFUL && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {

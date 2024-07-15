@@ -165,6 +165,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         addNetherVinesDropTable(DDBlocks.GLOWING_ROOTS.get(), DDBlocks.GLOWING_ROOTS_PLANT.get());
         add(DDBlocks.GLOWING_VINES_PLANT.get(), this::glowingVinesDrop);
         dropSelf(DDBlocks.ICE_LILY.get());
+        dropSelf(DDBlocks.LILY_FLOWER.get());
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK.get(), Blocks.SCULK);

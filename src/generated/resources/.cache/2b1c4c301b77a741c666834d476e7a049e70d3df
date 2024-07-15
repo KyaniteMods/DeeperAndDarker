@@ -1,4 +1,4 @@
-// 1.21	2024-07-09T22:13:00.7403356	Tags for minecraft:block mod id deeperdarker
+// 1.21	2024-07-14T15:45:08.2810948	Tags for minecraft:block mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/block/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/block/ores/copper.json
@@ -48,6 +48,7 @@ b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/block/redstone_ores
 194ada896e5d1f6d6cac977e3e771bc784d9911b data/minecraft/tags/block/saplings.json
 7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/block/slabs.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/small_dripleaf_placeable.json
+06b286c7c79571755f7b5149b31787b00d449c4b data/minecraft/tags/block/small_flowers.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_diggable_block.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_egg_hatch_boost.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/block/stairs.json
