@@ -1,8 +1,11 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,6 +22,11 @@ public class LilyFlowerBlock extends FlowerBlock {
     public LilyFlowerBlock(Holder<MobEffect> effect, float seconds, Properties properties) {
         super(effect, seconds, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
+        return state.is(DDBlocks.BLOOMING_SCULK_STONE) || super.mayPlaceOn(state, level, pos);
     }
 
     @Override
