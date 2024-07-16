@@ -101,17 +101,16 @@ public class SculkSnapper extends TamableAnimal {
 
         if(this.isTame() && this.getOwner() != null) {
             if(droppedBooks < 16 && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
-
                 Registry<Enchantment> registry = this.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT);
                 List<Enchantment> enchantments = new ArrayList<>();
-                registry.forEach(enchant -> {
-                    if(!enchant.effects().has(EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !enchant.effects().has(EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) enchantments.add(enchant);
+                registry.forEach(enchantment -> {
+                    if(!enchantment.effects().has(EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !enchantment.effects().has(EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) enchantments.add(enchantment);
                 });
                 Enchantment enchantment1 = enchantments.remove(this.random.nextInt(enchantments.size()));
                 Enchantment enchantment2 = enchantments.get(this.random.nextInt(enchantments.size()));
 
-                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(registry.createIntrusiveHolder(enchantment1), this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
-                if(this.random.nextFloat() < 0.2f) book.enchant(registry.createIntrusiveHolder(enchantment2), BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random));
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(registry.wrapAsHolder(enchantment1), this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
+                if(this.random.nextFloat() < 0.2f) book.enchant(registry.wrapAsHolder(enchantment2), BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random));
                 this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
                 droppedBooks++;
             }
