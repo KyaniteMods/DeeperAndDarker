@@ -17,6 +17,7 @@ public class DDTags {
         public static final TagKey<Block> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Block> BLOOM_STEMS = tag("bloom_stems");
 
+        public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = tag("otherside_carver_replaceables");
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = tag("sculk_stone_replaceables");
         public static final TagKey<Block> SCULK_REPLACEABLES = tag("sculk_replaceables");
         public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = tag("gloomslate_replaceable");

@@ -1,5 +1,10 @@
 {
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "deeperdarker:cave",
+      "deeperdarker:low_cave"
+    ]
+  },
   "downfall": 0.2,
   "effects": {
     "fog_color": 4663576,

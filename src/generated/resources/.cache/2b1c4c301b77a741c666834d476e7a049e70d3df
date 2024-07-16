@@ -1,4 +1,4 @@
-// 1.21	2024-07-14T15:45:08.2810948	Tags for minecraft:block mod id deeperdarker
+// 1.21	2024-07-16T00:10:50.1086171	Tags for minecraft:block mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/block/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/block/ores/copper.json
@@ -16,6 +16,7 @@ d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/block/stones.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/block/gloomy_sculk_replaceable.json
 ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/block/glowing_vine_placeable.json
 8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/block/infiniburn_otherside.json
+16fc775f3d68d0ec1accc58f8fcfd10c571706ad data/deeperdarker/tags/block/otherside_carver_replaceables.json
 4b3a3834715a617924c94f9d91ae043b2f4c9d63 data/deeperdarker/tags/block/sculk_replaceables.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/block/sculk_stone_replaceables.json
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json

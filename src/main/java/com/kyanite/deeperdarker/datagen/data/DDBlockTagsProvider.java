@@ -101,6 +101,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
 
         tag(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG.get(), DDBlocks.ECHO_WOOD.get(), DDBlocks.STRIPPED_ECHO_LOG.get(), DDBlocks.STRIPPED_ECHO_WOOD.get());
         tag(DDTags.Blocks.BLOOM_STEMS).add(DDBlocks.BLOOMING_STEM.get(), DDBlocks.STRIPPED_BLOOMING_STEM.get());
+        tag(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES).add(Blocks.WATER, Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get(), DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.BLOOMING_SCULK_STONE.get(), DDBlocks.BLOOMING_MOSS_BLOCK.get());
         tag(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.GLOOMSLATE_REPLACEABLE).add(DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get());
