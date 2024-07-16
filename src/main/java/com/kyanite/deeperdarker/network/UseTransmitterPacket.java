@@ -29,8 +29,8 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
     public void handle(IPayloadContext context) {
         context.enqueueWork(() -> {
             Player player = context.player();
-            for(ItemStack stack : player.getInventory().items) {
-                if(SculkTransmitterItem.isLinked(stack)) {
+            for (ItemStack stack : player.getInventory().items) {
+                if (SculkTransmitterItem.isLinked(stack)) {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null);
                     break;
                 }

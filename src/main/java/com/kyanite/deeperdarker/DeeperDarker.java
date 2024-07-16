@@ -14,7 +14,6 @@ import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
-import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.logging.LogUtils;

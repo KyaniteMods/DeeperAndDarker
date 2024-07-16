@@ -221,6 +221,7 @@
   "item.deeperdarker.soul_elytra": "Soul Elytra",
   "item.deeperdarker.soul_elytra.cooldown": "Boost available in %s",
   "item.deeperdarker.soul_elytra.equipped": "Press %s to boost",
+  "item.deeperdarker.soul_elytra.no_cooldown": "Boost disabled",
   "item.deeperdarker.stalker_spawn_egg": "Stalker Spawn Egg",
   "item.deeperdarker.warden_axe": "Warden Axe",
   "item.deeperdarker.warden_boots": "Warden Boots",

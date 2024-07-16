@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.content.DDItems;
-import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
