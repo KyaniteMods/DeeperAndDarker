@@ -21,8 +21,8 @@ public class VibrationListenerMixin {
         if(context.sourceEntity() instanceof LivingEntity entity) {
             if(entity.getMobType().equals(DDMobType.SCULK)) cir.setReturnValue(false);
             if(entity.hasEffect(DDEffects.SCULK_AFFINITY.get())) cir.setReturnValue(false);
-            if(entity.getItemBySlot(EquipmentSlot.FEET).is(DDTags.Items.DAMPENS_VIBRATIONS) && (event.equals(GameEvent.STEP) || event.equals(GameEvent.HIT_GROUND) || event.equals(GameEvent.SWIM) || event.equals(GameEvent.SPLASH))) cir.setReturnValue(false);
-            if(entity.getItemBySlot(EquipmentSlot.CHEST).is(DDTags.Items.DAMPENS_VIBRATIONS) && (event.equals(GameEvent.BLOCK_PLACE) || event.equals(GameEvent.BLOCK_DESTROY) || event.equals(GameEvent.BLOCK_OPEN) || event.equals(GameEvent.BLOCK_CLOSE) || event.equals(GameEvent.CONTAINER_OPEN) || event.equals(GameEvent.CONTAINER_CLOSE) || event.equals(GameEvent.BLOCK_ACTIVATE))) cir.setReturnValue(false);
+            if(entity.getItemBySlot(EquipmentSlot.CHEST).is(DDTags.Items.DAMPENS_VIBRATIONS) && event.is(DDTags.Misc.CHEST_VIBRATIONS)) cir.setReturnValue(false);
+            if(entity.getItemBySlot(EquipmentSlot.FEET).is(DDTags.Items.DAMPENS_VIBRATIONS) && event.is(DDTags.Misc.FEET_VIBRATIONS)) cir.setReturnValue(false);
         }
     }
 }
