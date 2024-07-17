@@ -26,6 +26,14 @@ public abstract class ItemStackMixin {
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
     public void deeperdarker_getTooltipLines(Player player, TooltipFlag isAdvanced, CallbackInfoReturnable<List<Component>> cir) {
         List<Component> components = cir.getReturnValue();
-        if(this.is(DDTags.Items.DAMPENS_VIBRATIONS)) components.add(Component.translatable("item." + DeeperDarker.MOD_ID + ".dampens_vibrations").withStyle(ChatFormatting.BLUE));
+        if(this.is(DDTags.Items.DAMPENS_VIBRATIONS)) {
+            int index = 0;
+            for(Component component : components) {
+                if(component.getString().contains("Durability")) break;
+                if(component.getString().contains("warden_boots")) break;
+                index++;
+            }
+            components.add(index, Component.translatable("item." + DeeperDarker.MOD_ID + ".dampens_vibrations").withStyle(ChatFormatting.BLUE));
+        }
     }
 }
