@@ -21,7 +21,7 @@ public class SculkSmiteEnchantment extends DamageEnchantment {
 
     @Override
     public int getMinCost(int pEnchantmentLevel) {
-        return 5 + (pEnchantmentLevel - 1) * 8;
+        return pEnchantmentLevel * 8 - 3;
     }
 
     @Override
