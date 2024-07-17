@@ -9,48 +9,44 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.EnumMap;
 
 @SuppressWarnings("NullableProblems")
 public enum DDArmorMaterials implements ArmorMaterial {
-    RESONARIUM("resonarium", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), protectionValue -> {
-        protectionValue.put(ArmorItem.Type.BOOTS, 2);
-        protectionValue.put(ArmorItem.Type.LEGGINGS, 6);
-        protectionValue.put(ArmorItem.Type.CHESTPLATE, 7);
-        protectionValue.put(ArmorItem.Type.HELMET, 3);
-    }), 23, SoundEvents.ARMOR_EQUIP_IRON, 1.0f, 0.234375f, Ingredient.of(Items.IRON_INGOT)),
-    WARDEN("warden", 40, Util.make(new EnumMap<>(ArmorItem.Type.class), protectionValue -> {
-        protectionValue.put(ArmorItem.Type.BOOTS, 4);
-        protectionValue.put(ArmorItem.Type.LEGGINGS, 7);
-        protectionValue.put(ArmorItem.Type.CHESTPLATE, 9);
-        protectionValue.put(ArmorItem.Type.HELMET, 4);
-    }), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.1f, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD));
+    RESONARIUM("resonarium", 30, new int[] {2, 6, 7, 3}, 10, SoundEvents.ARMOR_EQUIP_IRON, 1, 0, DDItems.RESONARIUM),
+    WARDEN("warden", 40, new int[] {4, 7, 9, 4}, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.1f, DDItems.REINFORCED_ECHO_SHARD);
 
     private final String name;
     private final int durabilityMultiplier;
-    private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
+    private final EnumMap<ArmorItem.Type, Integer> defensePoints;
     private final int enchantmentValue;
     private final SoundEvent sound;
     private final float toughness;
     private final float knockbackResistance;
     private final Ingredient repairIngredient;
-    private static final EnumMap<ArmorItem.Type, Integer> DURABILITY_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (durabilityValue) -> {
-        durabilityValue.put(ArmorItem.Type.BOOTS, 13);
-        durabilityValue.put(ArmorItem.Type.LEGGINGS, 15);
-        durabilityValue.put(ArmorItem.Type.CHESTPLATE, 16);
-        durabilityValue.put(ArmorItem.Type.HELMET, 11);
+    private static final EnumMap<ArmorItem.Type, Integer> DURABILITY_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 13);
+        map.put(ArmorItem.Type.LEGGINGS, 15);
+        map.put(ArmorItem.Type.CHESTPLATE, 16);
+        map.put(ArmorItem.Type.HELMET, 11);
     });
 
-    DDArmorMaterials(String name, int durability, EnumMap<ArmorItem.Type, Integer> protection, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Ingredient repairIngredient) {
+    DDArmorMaterials(String name, int durability, int[] defensePoints, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, ItemLike repairIngredient) {
         this.name = name;
         this.durabilityMultiplier = durability;
-        this.protectionFunctionForType = protection;
+        this.defensePoints = Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+            map.put(ArmorItem.Type.BOOTS, defensePoints[0]);
+            map.put(ArmorItem.Type.LEGGINGS, defensePoints[1]);
+            map.put(ArmorItem.Type.CHESTPLATE, defensePoints[2]);
+            map.put(ArmorItem.Type.HELMET, defensePoints[3]);
+        });
         this.enchantmentValue = enchantmentValue;
         this.sound = sound;
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
-        this.repairIngredient = repairIngredient;
+        this.repairIngredient = Ingredient.of(repairIngredient);
     }
 
     @Override
@@ -60,7 +56,7 @@ public enum DDArmorMaterials implements ArmorMaterial {
 
     @Override
     public int getDefenseForType(ArmorItem.Type type) {
-        return this.protectionFunctionForType.get(type);
+        return this.defensePoints.get(type);
     }
 
     @Override
@@ -80,7 +76,7 @@ public enum DDArmorMaterials implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return this.name;
+        return DeeperDarker.MOD_ID + ":" + this.name;
     }
 
     @Override
