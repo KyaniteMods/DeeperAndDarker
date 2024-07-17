@@ -151,6 +151,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockItemModel(DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, GENERATED);
         blockItemModel(DDBlocks.GLOWING_ROOTS, DDBlocks.GLOWING_ROOTS_PLANT, GENERATED);
         blockItemModel(DDBlocks.ICE_LILY, DDBlocks.ICE_LILY, GENERATED);
+        blockItemModel(DDBlocks.LILY_FLOWER, DDBlocks.LILY_FLOWER, GENERATED);
 
         blockModel(DDBlocks.ANCIENT_VASE);
         withExistingParent(DDBlocks.INFESTED_SCULK.getId().getPath(), mcLoc("block/sculk"));

@@ -10,6 +10,7 @@ import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
@@ -224,6 +225,7 @@ public class DDBlocks {
     public static final RegistryObject<GlowingVinesBlock> GLOWING_VINES = BLOCKS.register("glowing_vines", () -> new GlowingVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).noLootTable()));
     public static final RegistryObject<GlowingVinesPlantBlock> GLOWING_VINES_PLANT = BLOCKS.register("glowing_vines_plant", () -> new GlowingVinesPlantBlock(BlockBehaviour.Properties.of().lightLevel(state -> state.getValue(GlowingVinesPlantBlock.BERRIES) ? 14 : 0).sound(SoundType.CAVE_VINES).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final RegistryObject<Block> ICE_LILY = BLOCKS.register("ice_lily", () -> new IceLilyBlock(BlockBehaviour.Properties.of().lightLevel(state -> 7).sound(SoundType.LILY_PAD).noOcclusion().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<Block> LILY_FLOWER = BLOCKS.register("lily_flower", () -> new LilyFlowerBlock(() -> MobEffects.GLOWING, 6, BlockBehaviour.Properties.of().lightLevel(state -> 7).noCollission().instabreak().sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final RegistryObject<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks().mapColor(MapColor.COLOR_BLACK)));

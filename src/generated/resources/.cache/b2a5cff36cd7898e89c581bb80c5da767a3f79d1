@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-17T14:29:08.1772973	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2024-07-17T13:51:02.0816932	Tags for minecraft:item mod id deeperdarker
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/items/bloom_stems.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/items/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
@@ -24,6 +24,7 @@ dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/items/copper_ores.j
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/items/diamond_ores.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/items/emerald_ores.json
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/items/fence_gates.json
+81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/items/flowers.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/items/gold_ores.json
 50da908af11841337ebd0926055c570946b9674e data/minecraft/tags/items/hanging_signs.json
 ee4ac82aede1cc887b0af174d32884fa1ced9c60 data/minecraft/tags/items/hoes.json
@@ -37,6 +38,7 @@ b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/items/redstone_ores
 23fd7d687d86cbfbac57702944adb1f694b6b1f6 data/minecraft/tags/items/shovels.json
 3e9990c4b2c8755d00aeb71aa8bfee092a771fdb data/minecraft/tags/items/signs.json
 7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/items/slabs.json
+06b286c7c79571755f7b5149b31787b00d449c4b data/minecraft/tags/items/small_flowers.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/items/stairs.json
 df25b6646f8e4aea4f5aa3634dc892c62e1ec0e5 data/minecraft/tags/items/swords.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/items/walls.json

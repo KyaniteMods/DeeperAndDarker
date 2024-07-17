@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -166,7 +167,10 @@ public class DDBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get())
                 .partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel()
                 .partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
-        simpleBlock(DDBlocks.ICE_LILY.get(), models().getExistingFile(blockLoc(DDBlocks.ICE_LILY)));
+        getVariantBuilder(DDBlocks.ICE_LILY.get())
+                .partialState().with(IceLilyBlock.HAS_FLOWER, true).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY))).addModel()
+                .partialState().with(IceLilyBlock.HAS_FLOWER, false).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY, "flowerless"))).addModel();
+        simpleBlock(DDBlocks.LILY_FLOWER.get(), models().cross(DDBlocks.LILY_FLOWER.getId().getPath(), blockLoc(DDBlocks.LILY_FLOWER)).renderType("cutout"));
 
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
         ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));

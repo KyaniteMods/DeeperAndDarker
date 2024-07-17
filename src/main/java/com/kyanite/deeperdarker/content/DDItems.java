@@ -21,6 +21,8 @@ public class DDItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DeeperDarker.MOD_ID);
 
     public static final RegistryObject<Item> ICE_LILY = ITEMS.register("ice_lily", () -> new PlaceOnWaterBlockItem(DDBlocks.ICE_LILY.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LILY_FLOWER = ITEMS.register("lily_flower", () -> new LilyFlowerItem(DDBlocks.LILY_FLOWER.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> ECHO_SIGN = ITEMS.register("echo_sign", () -> new SignItem(new Item.Properties().stacksTo(16), DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get()));
     public static final RegistryObject<Item> ECHO_HANGING_SIGN = ITEMS.register("echo_hanging_sign", () -> new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN.get(), DDBlocks.ECHO_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> BLOOM_SIGN = ITEMS.register("bloom_sign", () -> new SignItem(new Item.Properties().stacksTo(16), DDBlocks.BLOOM_SIGN.get(), DDBlocks.BLOOM_WALL_SIGN.get()));
