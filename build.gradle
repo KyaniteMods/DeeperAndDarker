@@ -7,7 +7,7 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = "forge-" + minecraft_version + "-" + mod_version
+version = "forge-${minecraft_version}-${mod_version}"
 group = mod_group_id
 
 base { archivesName = mod_id }
