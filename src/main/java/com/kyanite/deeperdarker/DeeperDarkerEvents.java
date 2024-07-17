@@ -29,7 +29,6 @@ import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -94,7 +93,6 @@ public class DeeperDarkerEvents {
 
             ItemStack stack = new ItemStack(DDBlocks.ICE_LILY.get());
             stack.setTag(tag);
-            stack.setHoverName(Component.translatable("block." + DeeperDarker.MOD_ID + ".flowerless_ice_lily"));
             Block.popResource(level, pos, stack);
 
             level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);

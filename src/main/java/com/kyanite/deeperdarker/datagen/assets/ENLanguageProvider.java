@@ -58,10 +58,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
         add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
-        add("block." + DeeperDarker.MOD_ID + ".flowerless_ice_lily", "Flowerless Ice Lily");
 
         add("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", "Contains %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech", "Contains Sculk Leech");
+        add("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless", "Flowerless");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %s, %s, %s");
         add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
