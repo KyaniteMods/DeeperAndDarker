@@ -1,6 +1,7 @@
-// 1.20.1	2024-07-17T13:51:02.0878107	Registries
+// 1.20.1	2024-07-17T16:12:16.1213518	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
+15881d75b17d8e2c97fd9a222b284aa19b999fe4 data/deeperdarker/dimension/otherside.json
 67f8cd0621b1c3614da8c1910f6b7bcb61660293 data/deeperdarker/dimension_type/otherside.json
 897e2034f77e7e2272cdb8d8e508e731ecfcfa16 data/deeperdarker/worldgen/biome/blooming_caverns.json
 4491dd6887a8760b77f9a28406c3e4c0535b108d data/deeperdarker/worldgen/biome/deeplands.json
@@ -53,6 +54,7 @@ b8c3bd59a4e59f1077d06e8f598c08387b66a40b data/deeperdarker/worldgen/configured_f
 8d9c10bf4c7aa2ff2fa6f7aa8c3b646ab05433b9 data/deeperdarker/worldgen/configured_feature/surface_sculk_stone.json
 853f5d90238319461c608dc077bc999afe6b8bcb data/deeperdarker/worldgen/configured_feature/tree_echo.json
 5df9b477f5858b1cf8e0d3d0db7bff27a7a07d97 data/deeperdarker/worldgen/configured_feature/water_edge_blooming.json
+8c5ca4b878dc35e7594e4aea2e31c49276a63328 data/deeperdarker/worldgen/noise_settings/otherside.json
 34fb9a5e22128132e9fb0b0a7700008873e4ac41 data/deeperdarker/worldgen/placed_feature/blooming_moss.json
 86e9199652b2f2b45db99b8aba845e0c841ee88c data/deeperdarker/worldgen/placed_feature/blooming_plant.json
 7a014f12c936a2ce55cd0df3b6e7d66934996c63 data/deeperdarker/worldgen/placed_feature/blooming_pool.json

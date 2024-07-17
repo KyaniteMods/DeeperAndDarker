@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.world.DDPlacedFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.otherside.gen.OthersideGeneration;
 import com.kyanite.deeperdarker.world.structures.DDPools;
 import com.kyanite.deeperdarker.world.structures.DDProcessorLists;
 import com.kyanite.deeperdarker.world.structures.DDStructureSets;
@@ -25,6 +26,8 @@ public class DDRegistriesGenerator extends DatapackBuiltinEntriesProvider {
             .add(Registries.CONFIGURED_FEATURE, DDConfiguredFeatures::bootstrap)
             .add(Registries.DAMAGE_TYPE, DDDamageTypes::bootstrap)
             .add(Registries.DIMENSION_TYPE, OthersideDimension::bootstrap)
+            .add(Registries.LEVEL_STEM, OthersideGeneration::levelBootstrap)
+            .add(Registries.NOISE_SETTINGS, OthersideGeneration::noiseBootstrap)
             .add(Registries.PLACED_FEATURE, DDPlacedFeatures::bootstrap)
             .add(Registries.PROCESSOR_LIST, DDProcessorLists::bootstrap)
             .add(Registries.STRUCTURE, DDStructures::bootstrap)
