@@ -4,12 +4,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.Optionull;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.level.block.SculkSpreader;
@@ -27,7 +28,7 @@ public record CatalysisEnvironment(boolean dropXp) implements EnchantmentEntityE
             if (target.isDeadOrDying() && !target.wasExperienceConsumed()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
                 Entity attacker = Optionull.map(target.getLastDamageSource(), DamageSource::getEntity);
-                if (!(attacker instanceof Player)) return;
+                if (!(attacker instanceof ServerPlayer serverPlayer)) return;
 
                 BlockPos pos = new BlockPos((int) pOrigin.x, (int) pOrigin.y, (int) pOrigin.z);
                 for (int i = 0; i < 3 * pEnchantmentLevel; i++) {
@@ -38,6 +39,7 @@ public record CatalysisEnvironment(boolean dropXp) implements EnchantmentEntityE
                 }
 
                 if (!dropXp) target.skipDropExperience();
+                CriteriaTriggers.KILL_MOB_NEAR_SCULK_CATALYST.trigger(serverPlayer, target, target.damageSources().playerAttack(serverPlayer));
             }
         }
     }
