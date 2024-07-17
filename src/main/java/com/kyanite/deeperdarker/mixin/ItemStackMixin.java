@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
     @Shadow

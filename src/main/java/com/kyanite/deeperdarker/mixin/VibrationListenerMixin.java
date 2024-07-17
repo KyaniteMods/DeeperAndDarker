@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("unused")
 @Mixin(VibrationSystem.Listener.class)
 public class VibrationListenerMixin {
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)

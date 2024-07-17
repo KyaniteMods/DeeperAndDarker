@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("unused")
 @Mixin(PhantomRenderer.class)
 public class PhantomRendererMixin {
     @Inject(method = "getTextureLocation", at = @At("HEAD"), cancellable = true)

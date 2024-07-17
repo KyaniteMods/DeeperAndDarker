@@ -23,6 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("unused")
 @Mixin(HangingEntityItem.class)
 public abstract class HangingEntityItemMixin {
     private static final Component TOOLTIP_RANDOM_VARIANT = Component.translatable("painting.random").withStyle(ChatFormatting.GRAY);
