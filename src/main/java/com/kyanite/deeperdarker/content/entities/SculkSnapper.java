@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -101,7 +102,7 @@ public class SculkSnapper extends TamableAnimal {
         super.tick();
 
         if(this.isTame() && this.getOwner() != null) {
-            if(droppedBooks < 16 && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
+            if(droppedBooks < DeeperDarkerConfig.snapperDropLimit && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
                 List<Enchantment> enchantments = new ArrayList<>();
                 ForgeRegistries.ENCHANTMENTS.forEach(enchant -> {
                     if(!enchant.isCurse()) enchantments.add(enchant);
