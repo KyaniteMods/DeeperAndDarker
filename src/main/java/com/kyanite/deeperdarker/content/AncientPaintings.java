@@ -6,7 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class AncientPaintingVariants {
+public class AncientPaintings {
     public static final DeferredRegister<PaintingVariant> PAINTINGS = DeferredRegister.create(ForgeRegistries.PAINTING_VARIANTS, DeeperDarker.MOD_ID);
 
     public static final RegistryObject<PaintingVariant> ABSTRACTION = PAINTINGS.register("abstraction", () -> new PaintingVariant(32, 32));
