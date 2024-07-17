@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -26,10 +27,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.apache.commons.lang3.tuple.Triple;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class DDModelProvider extends FabricModelProvider {
     public DDModelProvider(FabricDataOutput output) {
@@ -221,7 +219,11 @@ public class DDModelProvider extends FabricModelProvider {
         registerButton(blockModelGenerators, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_PLANKS);
         blockModelGenerators.createHangingSign(DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN);
         blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN);
-        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ICE_LILY);
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.ICE_LILY)
+                .with(PropertyDispatch.property(IceLilyBlock.HAS_FLOWER)
+                        .select(true, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.ICE_LILY)))
+                        .select(false, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.ICE_LILY, "_flowerless")))));
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.LILY_FLOWER, BlockModelGenerators.TintState.NOT_TINTED);
         registerParented(blockModelGenerators, DeeperDarker.id("block/ice_waterlily"), ModelLocationUtils.getModelLocation(DDBlocks.ICE_LILY),
                 new Tuple<>(TextureSlot.create("flower"), DeeperDarker.id("block/lily_flower")),
                 new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));

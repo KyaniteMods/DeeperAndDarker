@@ -1,4 +1,4 @@
-// 1.20.4	2024-07-02T19:17:35.100590634	Deeper and Darker/Tags for minecraft:block
+// 1.20.4	2024-08-03T18:43:57.725530145	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
@@ -40,6 +40,7 @@ ff40d8809c92d939be84a59496819c8b2e01722f data/minecraft/tags/blocks/flower_pots.
 b65a380e7891bc0ba008af53d6626d525db6b9f3 data/minecraft/tags/blocks/mineable/pickaxe.json
 c18b5e57cf5423c00702ffa47031869105a2d805 data/deeperdarker/tags/blocks/glooming_pool_replaceable.json
 a80782ad2aab1d6a87e5125ec63b62424ee43dcc data/minecraft/tags/blocks/slabs.json
+27d929e8f638322d6649a87dc2fecb13d4a25fd5 data/minecraft/tags/blocks/small_flowers.json
 0886c50ff2d1e9e415463ed6ca735e1a51630cf0 data/minecraft/tags/blocks/ceiling_hanging_signs.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/sniffer_egg_hatch_boost.json
 c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/blocks/iron_ores.json
