@@ -3,10 +3,12 @@ package com.kyanite.deeperdarker.util.datagen.loot;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +18,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.functions.SetNbtFunction;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -163,6 +167,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         addVineAndPlant(DDBlocks.GLOWING_ROOTS_PLANT, DDBlocks.GLOWING_ROOTS);
         add(DDBlocks.GLOWING_VINES_PLANT, this::glowingVinesDrop);
         dropSelf(DDBlocks.ICE_LILY);
+        add(DDBlocks.ICE_LILY, this::iceLilyDrop);
+        dropSelf(DDBlocks.LILY_FLOWER);
 
         ancientVaseDrop();
 
@@ -183,5 +189,17 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     private void ancientVaseDrop() {
         add(DDBlocks.ANCIENT_VASE, LootTable.lootTable().withPool(LootPool.lootPool().when(HAS_SILK_TOUCH).setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(DDBlocks.ANCIENT_VASE))).withPool(LootPool.lootPool().when(HAS_NO_SILK_TOUCH).setRolls(UniformGenerator.between(1, 3)).add(EmptyLootItem.emptyItem().setWeight(20)).add(LootItem.lootTableItem(Blocks.SAND).setWeight(11).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))).add(LootItem.lootTableItem(Items.STRING).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 9)))).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(9).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 8)))).add(LootItem.lootTableItem(Items.GOLD_INGOT).setWeight(6).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 5)))).add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 8)))).add(LootItem.lootTableItem(Items.GOLDEN_APPLE).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Items.EMERALD).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))).add(LootItem.lootTableItem(Items.DIAMOND).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Items.BOOK).setWeight(2).apply(EnchantRandomlyFunction.randomApplicableEnchantment())).add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE).setWeight(1)).add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).setWeight(1))).withPool(LootPool.lootPool().when(HAS_NO_SILK_TOUCH).setRolls(ConstantValue.exactly(2)).add(LootItem.lootTableItem(Blocks.COBWEB).setWeight(13).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Items.REDSTONE).setWeight(7).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))).add(LootItem.lootTableItem(Items.STICK).setWeight(7).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Items.ROTTEN_FLESH).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))).add(LootItem.lootTableItem(Items.STRING).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4)))).add(LootItem.lootTableItem(Items.LAPIS_LAZULI).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 6)))).add(LootItem.lootTableItem(Blocks.SAND).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
+    }
+
+    private LootTable.Builder iceLilyDrop(Block block) {
+        CompoundTag noFlower = new CompoundTag();
+        noFlower.putBoolean("has_flower", false);
+//        CompoundTag flower = new CompoundTag();
+//        flower.putBoolean("has_flower", true);
+        return LootTable.lootTable().withPool(
+                LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+                        .add(LootItem.lootTableItem(DDItems.ICE_LILY)
+                                .apply(SetNbtFunction.setTag(noFlower).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IceLilyBlock.HAS_FLOWER, false))))
+                        ));
     }
 }

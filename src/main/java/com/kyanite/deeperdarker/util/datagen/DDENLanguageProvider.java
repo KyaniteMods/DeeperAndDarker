@@ -168,6 +168,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
         translationBuilder.add(DDBlocks.ICE_LILY, "Ice Lily");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.ICE_LILY).withPrefix("flowerless_")), "Flowerless Ice Lily");
+        translationBuilder.add(DDBlocks.LILY_FLOWER, "Lily Flower");
+        translationBuilder.add(DDItems.LILY_FLOWER, "Lily Flower");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
