@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.SoundDefinition;
 import net.minecraftforge.common.data.SoundDefinitionsProvider;
@@ -55,6 +54,6 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
     }
 
     protected static SoundDefinition.Sound sound(String location) {
-        return sound(new ResourceLocation(DeeperDarker.MOD_ID, location));
+        return sound(DeeperDarker.rl(location));
     }
 }

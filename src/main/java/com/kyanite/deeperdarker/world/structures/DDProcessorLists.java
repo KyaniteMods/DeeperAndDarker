@@ -7,7 +7,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -52,6 +51,6 @@ public class DDProcessorLists {
     }
 
     private static ResourceKey<StructureProcessorList> createKey(String name) {
-        return ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.PROCESSOR_LIST, DeeperDarker.rl(name));
     }
 }

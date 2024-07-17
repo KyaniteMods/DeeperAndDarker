@@ -23,12 +23,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.BiConsumer;
 
 public class DDChestLoot implements LootTableSubProvider {
-    public static final ResourceLocation ANCIENT_TEMPLE_BASEMENT = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_basement");
-    public static final ResourceLocation ANCIENT_TEMPLE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_secret");
-    public static final ResourceLocation ANCIENT_TEMPLE_STORAGE = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_storage");
-    public static final ResourceLocation ANCIENT_TEMPLE_FOUNTAIN = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_fountain");
-    public static final ResourceLocation ANCIENT_TEMPLE_APEX = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_apex");
-    public static final ResourceLocation CRYSTALLIZED_AMBER = new ResourceLocation(DeeperDarker.MOD_ID, "chests/crystallized_amber");
+    public static final ResourceLocation ANCIENT_TEMPLE_BASEMENT = DeeperDarker.rl("chests/ancient_temple_basement");
+    public static final ResourceLocation ANCIENT_TEMPLE_SECRET = DeeperDarker.rl("chests/ancient_temple_secret");
+    public static final ResourceLocation ANCIENT_TEMPLE_STORAGE = DeeperDarker.rl("chests/ancient_temple_storage");
+    public static final ResourceLocation ANCIENT_TEMPLE_FOUNTAIN = DeeperDarker.rl("chests/ancient_temple_fountain");
+    public static final ResourceLocation ANCIENT_TEMPLE_APEX = DeeperDarker.rl("chests/ancient_temple_apex");
+    public static final ResourceLocation CRYSTALLIZED_AMBER = DeeperDarker.rl("chests/crystallized_amber");
 
     @Override
     public void generate(@NotNull BiConsumer<ResourceLocation, LootTable.Builder> consumer) {

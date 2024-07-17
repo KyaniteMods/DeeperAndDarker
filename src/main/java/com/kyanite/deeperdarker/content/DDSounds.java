@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -57,6 +56,6 @@ public class DDSounds {
     public static final RegistryObject<SoundEvent> TRANSMITTER_UNLINK = register("item.transmitter.unlink");
 
     private static RegistryObject<SoundEvent> register(String sound) {
-        return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, sound)));
+        return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(DeeperDarker.rl(sound)));
     }
 }

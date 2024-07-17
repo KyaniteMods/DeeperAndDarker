@@ -30,7 +30,7 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
     public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
         String id = "advancements." + DeeperDarker.MOD_ID + ".";
 
-        Advancement root = Advancement.Builder.advancement().display(Blocks.SCULK, Component.translatable(id + "root.title"), Component.translatable(id + "root.description"), new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/advancements/root.png"), FrameType.TASK, false, false, false)
+        Advancement root = Advancement.Builder.advancement().display(Blocks.SCULK, Component.translatable(id + "root.title"), Component.translatable(id + "root.description"), DeeperDarker.rl("textures/gui/advancements/root.png"), FrameType.TASK, false, false, false)
                 .addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.inBiome(Biomes.DEEP_DARK))).save(saver, path("root"), existingFileHelper);
 
         Advancement findAncientCity = Advancement.Builder.advancement().parent(root).display(Blocks.DEEPSLATE_TILES, Component.translatable(id + "find_ancient_city.title"), Component.translatable(id + "find_ancient_city.description"), null, FrameType.GOAL, true, true, false)
@@ -82,6 +82,6 @@ public class DDAdvancements implements ForgeAdvancementProvider.AdvancementGener
     }
 
     private ResourceLocation path(String name) {
-        return new ResourceLocation(DeeperDarker.MOD_ID, "main/" + name);
+        return DeeperDarker.rl("main/" + name);
     }
 }

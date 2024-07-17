@@ -10,8 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class StalkerRenderer extends MobRenderer<Stalker, StalkerModel> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "stalker_layer"), "main");
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/stalker.png");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("stalker_layer"), "main");
+    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/stalker.png");
 
     public StalkerRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new StalkerModel(pContext.bakeLayer(MODEL)), 1);

@@ -19,8 +19,8 @@ import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("NullableProblems")
 public class WardenHelmetRenderer<E extends LivingEntity, M extends HumanoidModel<E>> extends RenderLayer<E, M> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "warden"), "3");
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_layer_3.png");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("warden"), "3");
+    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/models/armor/warden_layer_3.png");
     private final EntityModelSet model;
 
     public WardenHelmetRenderer(RenderLayerParent<E, M> renderer, EntityModelSet modelSet) {
