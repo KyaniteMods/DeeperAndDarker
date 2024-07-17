@@ -10,8 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -50,17 +49,17 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if(pState.getValue(BERRIES)) {
-            Block.popResource(pLevel, pPos, new ItemStack(DDItems.BLOOM_BERRIES.get()));
-            pLevel.playSound(null, pPos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1, Mth.randomBetween(pLevel.random, 0.8f, 1.2f));
-            BlockState newState = pState.setValue(BERRIES, false);
-            pLevel.setBlock(pPos, newState, 2);
-            pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, newState));
-            return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if(state.getValue(BERRIES)) {
+            Block.popResource(level, pos, new ItemStack(DDItems.BLOOM_BERRIES.get()));
+            level.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1, Mth.randomBetween(level.getRandom(), 0.8f, 1.2f));
+            BlockState newState = state.setValue(BERRIES, false);
+            level.setBlock(pos, newState, 2);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
 
     @Override
