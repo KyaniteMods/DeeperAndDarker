@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDDamageTypes;
+import com.kyanite.deeperdarker.world.DDCarvers;
 import com.kyanite.deeperdarker.world.DDConfiguredFeatures;
 import com.kyanite.deeperdarker.world.DDPlacedFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
@@ -23,6 +24,7 @@ import java.util.concurrent.CompletableFuture;
 public class DDRegistriesGenerator extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.BIOME, OthersideBiomes::bootstrap)
+            .add(Registries.CONFIGURED_CARVER, DDCarvers::bootstrap)
             .add(Registries.CONFIGURED_FEATURE, DDConfiguredFeatures::bootstrap)
             .add(Registries.DAMAGE_TYPE, DDDamageTypes::bootstrap)
             .add(Registries.DIMENSION_TYPE, OthersideDimension::bootstrap)

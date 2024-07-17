@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-17T13:51:02.0777075	Tags for minecraft:block mod id deeperdarker
+// 1.20.1	2024-07-17T16:16:42.816595	Tags for minecraft:block mod id deeperdarker
 4def6c04349da9777fc48313256495659524feb1 data/deeperdarker/tags/blocks/blooming_pool_replaceable.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/blocks/bloom_stems.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/blocks/echo_logs.json
@@ -6,6 +6,7 @@
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/blocks/glowing_vine_placeable.json
 8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/blocks/infiniburn_otherside.json
+16fc775f3d68d0ec1accc58f8fcfd10c571706ad data/deeperdarker/tags/blocks/otherside_carver_replaceables.json
 4b3a3834715a617924c94f9d91ae043b2f4c9d63 data/deeperdarker/tags/blocks/sculk_replaceables.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/blocks/sculk_vine_placeable.json
