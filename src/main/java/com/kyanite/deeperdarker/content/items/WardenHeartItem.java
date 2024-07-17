@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;

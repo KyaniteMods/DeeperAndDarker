@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.world.otherside;
 
+import com.kyanite.deeperdarker.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
-import com.kyanite.deeperdarker.util.DeeperDarkerConfig;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
