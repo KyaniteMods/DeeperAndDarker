@@ -128,6 +128,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.item.transmitter.open", "Transmitter transmits");
         add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
 
+        add("tag.item." + DeeperDarker.MOD_ID + ".bloom_stems", "Blooming Stems");
+        add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
+        add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
+
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().forEach(item -> add(item, "item"));
         DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
