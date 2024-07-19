@@ -16,9 +16,9 @@
     }
   },
   "pattern": [
-    "BDB",
+    "BSB",
     "DED",
-    "BSB"
+    "B B"
   ],
   "result": {
     "count": 1,

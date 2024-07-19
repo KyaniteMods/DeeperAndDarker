@@ -116,13 +116,19 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA.get())
                 .define('S', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('B', DDItems.SCULK_BONE.get()).define('E', Items.ELYTRA)
-                .pattern("BDB").pattern("DED").pattern("BSB")
+                .pattern("BSB").pattern("DED").pattern("B B")
                 .unlockedBy("has_elytra", has(Items.ELYTRA)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE.get()).define('E', Items.ECHO_SHARD)
                 .pattern("PCP").pattern("CEC").pattern("PCP")
-                .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(output);
+                .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE.get())).save(output);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.SCULK);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
+                .define('B', DDItems.SCULK_BONE).define('H', DDItems.HEART_OF_THE_DEEP).define('R', Items.REDSTONE).define('S', DDItems.REINFORCED_ECHO_SHARD).define('G', Items.GLOWSTONE_DUST)
+                .pattern(" RS").pattern(" HG").pattern("B  ")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE), has(DDItems.SCULK_BONE))
+                .unlockedBy(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD))
+                .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
     }
 
     private void addCookingRecipes(RecipeOutput output) {

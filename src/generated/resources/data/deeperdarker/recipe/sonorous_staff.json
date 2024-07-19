@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "deeperdarker:sculk_bone"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "H": {
+      "item": "deeperdarker:heart_of_the_deep"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "deeperdarker:reinforced_echo_shard"
+    }
+  },
+  "pattern": [
+    " RS",
+    " HG",
+    "B  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:sonorous_staff"
+  }
+}
