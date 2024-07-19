@@ -1,4 +1,4 @@
-// 1.21	2024-07-16T00:18:32.9159165	Registries
+// 1.21	2024-07-19T12:45:32.8915827	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 15881d75b17d8e2c97fd9a222b284aa19b999fe4 data/deeperdarker/dimension/otherside.json
@@ -111,7 +111,7 @@ b76ec202988b0b3d258ab73fe3f480253e5da1c7 data/deeperdarker/worldgen/placed_featu
 f7672526cd82d29a8ae5c9547070bb9de5e97e6f data/deeperdarker/worldgen/placed_feature/surface_gloomslate.json
 4121bc1a914770058ee57bd355aef36b55bc2cfa data/deeperdarker/worldgen/placed_feature/surface_sculk_stone.json
 9fcc2562a92e1fdba73076e083a9f2cddf68052e data/deeperdarker/worldgen/processor_list/ancient_temple_degradation.json
-4ef315a28c5f97bd5e0f32e12cde14af9d3c6076 data/deeperdarker/worldgen/structure/ancient_temple.json
+c5587c8d8d08f65a19a99acd990b6c364498932e data/deeperdarker/worldgen/structure/ancient_temple.json
 5531900d4c117383f9f6e85932b7eadb371a18ca data/deeperdarker/worldgen/structure_set/ancient_temples.json
 3a4cebd37b0a138ef1be1a09b2f199037622c535 data/deeperdarker/worldgen/template_pool/ancient_temple/basement.json
 caad2e0fbe3036a10814ffee38770e6664c61c74 data/deeperdarker/worldgen/template_pool/ancient_temple/basement/aisles.json
