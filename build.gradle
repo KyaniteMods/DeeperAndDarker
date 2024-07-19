@@ -43,10 +43,19 @@ configurations { runtimeClasspath.extendsFrom localRuntime }
 
 repositories {
     mavenLocal()
+    maven { url = "https://modmaven.dev" }
+    maven { url = "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
+    localRuntime "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
 }
 
 tasks.withType(ProcessResources).configureEach {
