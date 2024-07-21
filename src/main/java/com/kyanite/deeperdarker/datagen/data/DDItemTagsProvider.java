@@ -69,11 +69,14 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get(), DDItems.BLOOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get(), DDItems.BLOOM_CHEST_BOAT.get());
-        tag(ItemTags.SHOVELS).add(DDItems.RESONARIUM_HOE.get(), DDItems.WARDEN_SHOVEL.get());
+        tag(ItemTags.CLUSTER_MAX_HARVESTABLES).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());
+        tag(ItemTags.SHOVELS).add(DDItems.RESONARIUM_SHOVEL.get(), DDItems.WARDEN_SHOVEL.get());
         tag(ItemTags.PICKAXES).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());
         tag(ItemTags.AXES).add(DDItems.RESONARIUM_AXE.get(), DDItems.WARDEN_AXE.get());
         tag(ItemTags.HOES).add(DDItems.RESONARIUM_HOE.get(), DDItems.WARDEN_HOE.get());
         tag(ItemTags.SWORDS).add(DDItems.RESONARIUM_SWORD.get(), DDItems.WARDEN_SWORD.get());
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
 
         tag(ItemTags.HEAD_ARMOR).add(DDItems.RESONARIUM_HELMET.get(), DDItems.WARDEN_HELMET.get());
         tag(ItemTags.CHEST_ARMOR).add(DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.WARDEN_CHESTPLATE.get());
