@@ -69,7 +69,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get(), DDItems.BLOOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get(), DDItems.BLOOM_CHEST_BOAT.get());
-        tag(ItemTags.SHOVELS).add(DDItems.RESONARIUM_HOE.get(), DDItems.WARDEN_SHOVEL.get());
+        tag(ItemTags.SHOVELS).add(DDItems.RESONARIUM_SHOVEL.get(), DDItems.WARDEN_SHOVEL.get());
         tag(ItemTags.PICKAXES).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());
         tag(ItemTags.AXES).add(DDItems.RESONARIUM_AXE.get(), DDItems.WARDEN_AXE.get());
         tag(ItemTags.HOES).add(DDItems.RESONARIUM_HOE.get(), DDItems.WARDEN_HOE.get());
