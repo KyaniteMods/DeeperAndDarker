@@ -12,12 +12,7 @@ import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
@@ -26,13 +21,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 
 public class DeeperDarkerClient implements ClientModInitializer {
 
@@ -130,10 +120,10 @@ public class DeeperDarkerClient implements ClientModInitializer {
 //        });
 //
 //        HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
-//            ResourceLocation texture = DeeperDarker.id("textures/gui/soul_elytra_overlay_large.png");
+//            ResourceLocation texture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/soul_elytra_overlay_large.png");
 //
 //            Minecraft client = Minecraft.getInstance();
-//            if (client.player == null) return;
+//            if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
 //            ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
 //            if (itemStack.is(DDItems.SOUL_ELYTRA)) {
 //                float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime());

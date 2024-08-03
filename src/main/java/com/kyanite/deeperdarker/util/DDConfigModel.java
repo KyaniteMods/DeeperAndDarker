@@ -56,7 +56,7 @@ public class DDConfigModel {
         @RangeConstraint(min = 1.0, max = 32767.0)
         public int sonorousStaffCooldown = 40;
 
-        @RangeConstraint(min = 1.0, max = 32767.0)
+        @RangeConstraint(min = -1.0, max = 32767.0)
         public int soulElytraCooldown = 600;
 
         @RangeConstraint(min = 1.0, max = 128.0)

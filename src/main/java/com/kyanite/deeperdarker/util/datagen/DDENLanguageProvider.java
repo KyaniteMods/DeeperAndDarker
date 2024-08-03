@@ -216,6 +216,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", "Press %s to Boost");
+        translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled", "Boost disabled");
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
 
@@ -343,7 +344,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffCooldown", "Sonorous Staff Cooldown");
         translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffCooldown.tooltip", "Determines the cooldown of the Sonorous Staff\nbefore the player can use it again.");
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraCooldown", "Soul Elytra Cooldown");
-        translationBuilder.add("text.config.deeperdarker.option.server.soulElytraCooldown.tooltip", "Determines the cooldown of the boost provided when\nboosting with Soul Elytra.");
+        translationBuilder.add("text.config.deeperdarker.option.server.soulElytraCooldown.tooltip", "Determines the cooldown of the boost provided when\nboosting with Soul Elytra. Set to -1 to disable boost.");
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength", "Soul Elytra Boost Strength");
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength.tooltip", "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.");
 
