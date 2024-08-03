@@ -134,7 +134,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             ResourceLocation texture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/soul_elytra_overlay_large.png");
 
             Minecraft client = Minecraft.getInstance();
-            if (client.player == null) return;
+            if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
             ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
             if (itemStack.is(DDItems.SOUL_ELYTRA)) {
                 float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime());
