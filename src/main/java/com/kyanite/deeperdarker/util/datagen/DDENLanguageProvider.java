@@ -347,6 +347,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraCooldown.tooltip", "Determines the cooldown of the boost provided when\nboosting with Soul Elytra. Set to -1 to disable boost.");
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength", "Soul Elytra Boost Strength");
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength.tooltip", "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.");
+        translationBuilder.add("text.config.deeperdarker.option.server.snapperDropLimit", "Sculk Snapper Drop Limit");
+        translationBuilder.add("text.config.deeperdarker.option.server.snapperDropLimit.tooltip", "Determines the maximum amount of books dropped\nby each Sculk Snapper. Set to -1 for infinite books.");
 
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");
