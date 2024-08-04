@@ -5,9 +5,16 @@
   "size": 7,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": 18
+    "type": "minecraft:uniform",
+    "max_inclusive": {
+      "above_bottom": 28
+    },
+    "min_inclusive": {
+      "above_bottom": 18
+    }
   },
   "start_pool": "deeperdarker:ancient_temple/starts",
   "step": "underground_structures",
+  "terrain_adaptation": "beard_box",
   "use_expansion_hack": false
 }
