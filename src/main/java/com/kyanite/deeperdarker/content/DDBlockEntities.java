@@ -38,7 +38,8 @@ public class DDBlockEntities {
         ));
         SKULL = create("skull", FabricBlockEntityTypeBuilder.create(
                 DDSkullBlockEntity::new,
-                DDBlocks.SHATTERED_HEAD
+                DDBlocks.SHATTERED_HEAD,
+                DDBlocks.SHATTERED_WALL_HEAD
         ));
     }
 

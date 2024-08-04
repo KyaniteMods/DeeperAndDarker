@@ -1,4 +1,4 @@
-// 1.20.4	2024-08-04T14:53:45.282087426	Deeper and Darker/Block Loot Tables
+// 1.20.4	2024-08-04T16:27:50.158296964	Deeper and Darker/Block Loot Tables
 9da81cff96f591867c050dc195a59591c0570c6b data/deeperdarker/loot_tables/blocks/echo_fence.json
 59c27f1afefc9c217c2b98237b2d4012f428ad87 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
@@ -56,8 +56,8 @@ d8fb027e62efba2130b141562e053ae68ee55760 data/deeperdarker/loot_tables/blocks/po
 900c1bed10fea7e9613916545275bb2d28a8a8a1 data/deeperdarker/loot_tables/blocks/smooth_sculk_stone.json
 97abbbb9bfb0c7729b1a999fc67d914b3759aeb8 data/deeperdarker/loot_tables/blocks/cut_gloomslate_wall.json
 2e23386eeb17276231ef0f7fc695e66cf227361c data/deeperdarker/loot_tables/blocks/cut_gloomslate.json
-6bdd575f26271566303421811769317b05744138 data/deeperdarker/loot_tables/blocks/sculk_vines.json
 db7b3451d49d7d14cd059381b80d33d04926869d data/deeperdarker/loot_tables/blocks/sculk_stone_brick_wall.json
+6bdd575f26271566303421811769317b05744138 data/deeperdarker/loot_tables/blocks/sculk_vines.json
 6b97713194c9060298cfcb3a8d29234e477829eb data/deeperdarker/loot_tables/blocks/gloomslate_gold_ore.json
 709855c8b216975c4a524bae7ef1d36134075ef9 data/deeperdarker/loot_tables/blocks/gloomslate_brick_wall.json
 12f8278becba6140e8bee12c9e73ab47e31d69f1 data/deeperdarker/loot_tables/blocks/cobbled_gloomslate_stairs.json
