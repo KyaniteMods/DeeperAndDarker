@@ -8,6 +8,7 @@ import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class DDTags {
@@ -58,5 +59,10 @@ public class DDTags {
     public static class Structures {
         public static final TagKey<Structure> WARDEN_HEART_PULSES = TagKey.create(
                 Registries.STRUCTURE, new ResourceLocation(DeeperDarker.MOD_ID, "warden_heart_pulses"));
+    }
+
+    public static class GameEvents {
+        public static final TagKey<GameEvent> CHEST_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, "chest_vibrations"));
+        public static final TagKey<GameEvent> FEET_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, "feet_vibrations"));
     }
 }
