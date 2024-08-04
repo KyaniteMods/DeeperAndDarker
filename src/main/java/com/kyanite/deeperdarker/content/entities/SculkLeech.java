@@ -20,8 +20,8 @@ import net.minecraft.world.level.Level;
 public class SculkLeech extends Monster {
     public final AnimationState attackState = new AnimationState();
 
-    public SculkLeech(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public SculkLeech(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Override
@@ -37,20 +37,20 @@ public class SculkLeech extends Monster {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
         return DDSounds.LEECH_HURT.get();
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        if (pEntity instanceof Player player) player.giveExperiencePoints(-4);
-        return super.doHurtTarget(pEntity);
+        if (entity instanceof Player player) player.giveExperiencePoints(-4);
+        return super.doHurtTarget(entity);
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) this.attackState.start(this.tickCount);
-        else super.handleEntityEvent(pId);
+    public void handleEntityEvent(byte id) {
+        if(id == 4) this.attackState.start(this.tickCount);
+        else super.handleEntityEvent(id);
     }
 }

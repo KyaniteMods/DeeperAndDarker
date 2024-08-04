@@ -13,12 +13,12 @@ public class SculkLeechRenderer extends MobRenderer<SculkLeech, SculkLeechModel>
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("sculk_leech_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/sculk_leech.png");
 
-    public SculkLeechRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new SculkLeechModel(pContext.bakeLayer(MODEL)), 0.4f);
+    public SculkLeechRenderer(EntityRendererProvider.Context context) {
+        super(context, new SculkLeechModel(context.bakeLayer(MODEL)), 0.4f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SculkLeech pEntity) {
+    public ResourceLocation getTextureLocation(SculkLeech entity) {
         return TEXTURE;
     }
 }

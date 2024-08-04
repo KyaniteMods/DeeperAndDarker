@@ -11,8 +11,8 @@ public class FlammableLeavesBlock extends LeavesBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableLeavesBlock(Properties pProperties, int flammability, int spread) {
-        super(pProperties);
+    public FlammableLeavesBlock(Properties properties, int flammability, int spread) {
+        super(properties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;
     }

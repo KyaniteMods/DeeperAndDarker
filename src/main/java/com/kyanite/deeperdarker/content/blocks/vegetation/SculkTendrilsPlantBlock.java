@@ -13,8 +13,8 @@ public class SculkTendrilsPlantBlock extends GrowingPlantBodyBlock {
     public static final MapCodec<SculkTendrilsPlantBlock> CODEC = simpleCodec(SculkTendrilsPlantBlock::new);
     private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 16, 12);
 
-    public SculkTendrilsPlantBlock(Properties pProperties) {
-        super(pProperties, Direction.UP, SHAPE, false);
+    public SculkTendrilsPlantBlock(Properties properties) {
+        super(properties, Direction.UP, SHAPE, false);
     }
 
     protected @NotNull GrowingPlantHeadBlock getHeadBlock() {

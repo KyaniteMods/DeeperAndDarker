@@ -17,12 +17,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 public class DDItemTagsProvider extends ItemTagsProvider {
-    public DDItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, TagsProvider<Block> blockTags, ExistingFileHelper existingFileHelper) {
-        super(output, lookup, blockTags.contentsGetter(), DeeperDarker.MOD_ID, existingFileHelper);
+    public DDItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, TagsProvider<Block> blockTags, ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, blockTags.contentsGetter(), DeeperDarker.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);

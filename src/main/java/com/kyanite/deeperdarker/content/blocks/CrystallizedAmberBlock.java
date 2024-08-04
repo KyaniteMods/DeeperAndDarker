@@ -29,8 +29,8 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     public static final MapCodec<CrystallizedAmberBlock> CODEC = simpleCodec(CrystallizedAmberBlock::new);
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
 
-    public CrystallizedAmberBlock(Properties pProperties) {
-        super(pProperties);
+    public CrystallizedAmberBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FOSSILIZED, false));
     }
 
@@ -40,43 +40,43 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FOSSILIZED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FOSSILIZED);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().has(DataComponents.CUSTOM_DATA));
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FOSSILIZED, context.getItemInHand().has(DataComponents.CUSTOM_DATA));
     }
 
-    public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
-        return pAdjacentBlockState.is(this);
+    public boolean skipRendering(BlockState state, BlockState adjacentState, Direction direction) {
+        return adjacentState.is(this);
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
+    public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pMovedByPiston) {
-        if(pState.getValue(FOSSILIZED) && !pState.is(pOldState.getBlock()) && pLevel.getBlockEntity(pPos) instanceof CrystallizedAmberBlockEntity blockEntity) {
-            blockEntity.generateFossil(pLevel, pPos);
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        if(state.getValue(FOSSILIZED) && !state.is(oldState.getBlock()) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+            blockEntity.generateFossil(level, pos);
         }
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new CrystallizedAmberBlockEntity(pPos, pState);
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new CrystallizedAmberBlockEntity(pos, state);
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        if(pStack.has(DataComponents.CUSTOM_DATA)) {
-            CompoundTag tag = pStack.get(DataComponents.CUSTOM_DATA).copyTag();
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if(stack.has(DataComponents.CUSTOM_DATA)) {
+            CompoundTag tag = stack.get(DataComponents.CUSTOM_DATA).copyTag();
             if(tag.contains("BlockEntityTag")) tag = tag.getCompound("BlockEntityTag");
-            if(tag.contains("leech") && tag.getBoolean("leech")) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-            else if(tag.contains("item")) pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parse(pContext.registries(), tag.getCompound("item")).get().getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+            if(tag.contains("leech") && tag.getBoolean("leech")) tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+            else if(tag.contains("item")) tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parse(context.registries(), tag.getCompound("item")).get().getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         }
     }
 }

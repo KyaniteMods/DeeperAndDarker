@@ -15,15 +15,15 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 import org.jetbrains.annotations.NotNull;
 
 public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
-    public OthersidePoolFeature(Codec<NoneFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public OthersidePoolFeature(Codec<NoneFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(@NotNull FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        BlockPos origin = pContext.origin();
-        WorldGenLevel level = pContext.level();
-        RandomSource random = pContext.random();
+    public boolean place(@NotNull FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        BlockPos origin = context.origin();
+        WorldGenLevel level = context.level();
+        RandomSource random = context.random();
 
         if(origin.getY() <= level.getMinBuildHeight() + 4) return false;
 

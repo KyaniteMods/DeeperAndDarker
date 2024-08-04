@@ -32,8 +32,8 @@ public class ShriekWorm extends Monster {
     private int idleTime;
     private boolean asleep;
 
-    public ShriekWorm(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public ShriekWorm(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Override
@@ -57,14 +57,14 @@ public class ShriekWorm extends Monster {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
         return DDSounds.SHRIEK_WORM_HURT.get();
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(pEntity);
+        return super.doHurtTarget(entity);
     }
 
     @Override
@@ -124,36 +124,36 @@ public class ShriekWorm extends Monster {
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
+    public void handleEntityEvent(byte id) {
+        if(id == 4) {
             this.idleState.stop();
             this.asleepState.stop();
             this.attackState.start(this.tickCount);
         } else {
-            super.handleEntityEvent(pId);
+            super.handleEntityEvent(id);
         }
     }
 
     @Override
-    public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
-        return getAttackBoundingBox().inflate(6, 0, 6).intersects(pEntity.getBoundingBox());
+    public boolean isWithinMeleeAttackRange(LivingEntity entity) {
+        return getAttackBoundingBox().inflate(6, 0, 6).intersects(entity.getBoundingBox());
     }
 
     @Override
-    public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
-        if(pKey.equals(DATA_POSE)) {
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        if(key.equals(DATA_POSE)) {
             if(this.getPose() == Pose.EMERGING) this.emergeState.start(this.tickCount);
             if(this.getPose() == Pose.STANDING) this.emergeState.stop();
         }
 
-        super.onSyncedDataUpdated(pKey);
+        super.onSyncedDataUpdated(key);
     }
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
-        if(pSpawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
-        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, SpawnGroupData spawnGroupData) {
+        if(spawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
     @Override

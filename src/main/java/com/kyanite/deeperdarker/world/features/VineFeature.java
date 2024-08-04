@@ -17,18 +17,18 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 public class VineFeature extends Feature<VineFeatureConfiguration> {
-    public VineFeature(Codec<VineFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public VineFeature(Codec<VineFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<VineFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
+    public boolean place(FeaturePlaceContext<VineFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
         if(level.isEmptyBlock(origin)) {
             BlockState state = level.getBlockState(origin.above());
-            if(state.is(pContext.config().tag())) {
-                this.placeVines(pContext, level, pContext.random(), origin);
+            if(state.is(context.config().tag())) {
+                this.placeVines(context, level, context.random(), origin);
                 return true;
             }
         }

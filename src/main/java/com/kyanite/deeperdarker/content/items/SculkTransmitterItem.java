@@ -29,16 +29,16 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems, DataFlowIssue")
 public class SculkTransmitterItem extends Item {
-    public SculkTransmitterItem(Properties pProperties) {
-        super(pProperties);
+    public SculkTransmitterItem(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext pContext) {
-        Level level = pContext.getLevel();
-        Player player = pContext.getPlayer();
-        ItemStack stack = pContext.getItemInHand();
-        BlockPos clickedPos = pContext.getClickedPos();
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        Player player = context.getPlayer();
+        ItemStack stack = context.getItemInHand();
+        BlockPos clickedPos = context.getClickedPos();
 
         if (isLinked(stack)) return transmit(level, player, stack, clickedPos);
         if (!canConnect(level, clickedPos)) {
@@ -51,9 +51,9 @@ public class SculkTransmitterItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if (isLinked(pPlayer.getMainHandItem())) transmit(pLevel, pPlayer, pPlayer.getMainHandItem(), null);
-        return super.use(pLevel, pPlayer, pUsedHand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        if (isLinked(player.getMainHandItem())) transmit(level, player, player.getMainHandItem(), null);
+        return super.use(level, player, usedHand);
     }
 
     public static InteractionResult transmit(Level level, Player player, ItemStack stack, BlockPos clickedPos) {
@@ -110,16 +110,16 @@ public class SculkTransmitterItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        if (isLinked(pStack)) {
-            Transmitter transmitter = pStack.get(DDDataComponents.TRANSMITTER);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if (isLinked(stack)) {
+            Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
             BlockPos pos = transmitter.linkedPos().get().pos();
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(transmitter.savedBlock())).withStyle(ChatFormatting.GRAY));
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos.getX(), pos.getY(), pos.getZ()).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(transmitter.savedBlock())).withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos.getX(), pos.getY(), pos.getZ()).withStyle(ChatFormatting.GRAY));
         } else {
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
         }
 
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

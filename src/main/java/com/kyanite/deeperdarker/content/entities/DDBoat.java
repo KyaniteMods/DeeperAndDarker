@@ -17,8 +17,8 @@ import net.minecraft.world.level.Level;
 public class DDBoat extends Boat {
     private static final EntityDataAccessor<String> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.STRING);
 
-    public DDBoat(EntityType<? extends Boat> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public DDBoat(EntityType<? extends Boat> entityType, Level level) {
+        super(entityType, level);
     }
 
     public DDBoat(Level level, double x, double y, double z, String woodType) {
@@ -31,9 +31,9 @@ public class DDBoat extends Boat {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-        super.defineSynchedData(pBuilder);
-        pBuilder.define(WOOD_TYPE, DDBlocks.ECHO.name());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WOOD_TYPE, DDBlocks.ECHO.name());
     }
 
     @Override
@@ -42,15 +42,15 @@ public class DDBoat extends Boat {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag pCompound) {
-        super.addAdditionalSaveData(pCompound);
-        pCompound.putString("Type", this.getWoodType());
+    protected void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putString("Type", this.getWoodType());
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-        this.setWoodType(pCompound.getString("Type"));
+    protected void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        this.setWoodType(tag.getString("Type"));
     }
 
     public String getWoodType() {

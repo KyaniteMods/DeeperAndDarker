@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @SuppressWarnings("unused")
 @Mixin(Warden.class)
 public class WardenMixin extends Monster {
-    public WardenMixin(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public WardenMixin(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Inject(method = "canTargetEntity", at = @At("HEAD"), cancellable = true)

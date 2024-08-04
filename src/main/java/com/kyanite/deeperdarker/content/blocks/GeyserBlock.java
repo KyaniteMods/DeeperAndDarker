@@ -13,26 +13,26 @@ import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("NullableProblems")
 public class GeyserBlock extends Block {
-    public GeyserBlock(Properties pProperties) {
-        super(pProperties);
+    public GeyserBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(pRandom.nextInt(50) == 0) {
-            pLevel.playLocalSound(pPos.getX() + 0.5, pPos.getY() + 0.5, pPos.getZ() + 0.5, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.5f + pRandom.nextFloat() * 0.5f, pRandom.nextFloat() * 0.1f + 0.85f, false);
-            pLevel.addParticle(ParticleTypes.LAVA, pPos.getX() + 0.5, pPos.getY() + 0.5, pPos.getZ() + 0.5, pRandom.nextFloat() / 2.0f, 5.0e-5d, pRandom.nextFloat() / 2f);
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if(random.nextInt(50) == 0) {
+            level.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.5f + random.nextFloat() * 0.5f, random.nextFloat() * 0.1f + 0.85f, false);
+            level.addParticle(ParticleTypes.LAVA, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, random.nextFloat() / 2.0f, 5.0e-5d, random.nextFloat() / 2f);
         }
     }
 
     @Override
-    public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if(pEntity instanceof ExperienceOrb) return;
-//        pEntity.hurt(pLevel.damageSources().hotFloor(), 2);
-        pEntity.setDeltaMovement(pEntity.getDeltaMovement().x(), 2.5, pEntity.getDeltaMovement().z());
-        if(pLevel.isClientSide()) {
-            pLevel.playLocalSound( pPos.getX() + 0.5, pPos.getY() + 0.5, pPos.getZ() + 0.5, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 2 + pLevel.random.nextFloat(), pLevel.random.nextFloat() * 0.7f + 0.6f, false);
-            pLevel.addParticle(ParticleTypes.LARGE_SMOKE, pPos.getX(), pPos.getY(), pPos.getZ(), 0.05, 0.5, 0.05);
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        if(entity instanceof ExperienceOrb) return;
+//        entity.hurt(level.damageSources().hotFloor(), 2);
+        entity.setDeltaMovement(entity.getDeltaMovement().x(), 2.5, entity.getDeltaMovement().z());
+        if(level.isClientSide()) {
+            level.playLocalSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 2 + level.random.nextFloat(), level.random.nextFloat() * 0.7f + 0.6f, false);
+            level.addParticle(ParticleTypes.LARGE_SMOKE, pos.getX(), pos.getY(), pos.getZ(), 0.05, 0.5, 0.05);
         }
     }
 }

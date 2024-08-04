@@ -25,8 +25,8 @@ public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(RandomSource pRandom) {
-        return pRandom.nextIntBetweenInclusive(1, 2);
+    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
+        return random.nextIntBetweenInclusive(1, 2);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected boolean canGrowInto(BlockState pState) {
-        return pState.isAir();
+    protected boolean canGrowInto(BlockState state) {
+        return state.isAir();
     }
 }

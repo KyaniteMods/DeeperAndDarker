@@ -28,8 +28,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @SuppressWarnings("unused")
 @Mixin(Painting.class)
 public abstract class PaintingMixin extends HangingEntity {
-    protected PaintingMixin(EntityType<? extends HangingEntity> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    protected PaintingMixin(EntityType<? extends HangingEntity> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Shadow

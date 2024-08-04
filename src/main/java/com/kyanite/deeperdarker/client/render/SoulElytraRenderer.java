@@ -24,22 +24,22 @@ public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/soul_elytra.png");
     private final ElytraModel<E> model;
 
-    public SoulElytraRenderer(RenderLayerParent<E, M> pRenderer, EntityModelSet pModelSet) {
-        super(pRenderer, pModelSet);
-        this.model = new ElytraModel<>(pModelSet.bakeLayer(ModelLayers.ELYTRA));
+    public SoulElytraRenderer(RenderLayerParent<E, M> renderer, EntityModelSet modelSet) {
+        super(renderer, modelSet);
+        this.model = new ElytraModel<>(modelSet.bakeLayer(ModelLayers.ELYTRA));
     }
 
     @Override
-    public void render(PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight, E pLivingEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTicks, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-        ItemStack itemStack = pLivingEntity.getItemBySlot(EquipmentSlot.CHEST);
+    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, E livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+        ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
         if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {
-            pMatrixStack.pushPose();
-            pMatrixStack.translate(0, 0, 0.125f);
+            poseStack.pushPose();
+            poseStack.translate(0, 0, 0.125f);
             this.getParentModel().copyPropertiesTo(this.model);
-            this.model.setupAnim(pLivingEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(pBuffer, RenderType.armorCutoutNoCull(TEXTURE), false);
-            this.model.renderToBuffer(pMatrixStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY);
-            pMatrixStack.popPose();
+            this.model.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(buffer, RenderType.armorCutoutNoCull(TEXTURE), false);
+            this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
+            poseStack.popPose();
         }
     }
 }

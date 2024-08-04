@@ -13,12 +13,12 @@ public class StalkerRenderer extends MobRenderer<Stalker, StalkerModel> {
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("stalker_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/stalker.png");
 
-    public StalkerRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new StalkerModel(pContext.bakeLayer(MODEL)), 1);
+    public StalkerRenderer(EntityRendererProvider.Context context) {
+        super(context, new StalkerModel(context.bakeLayer(MODEL)), 1);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Stalker pEntity) {
+    public ResourceLocation getTextureLocation(Stalker entity) {
         return TEXTURE;
     }
 }

@@ -27,8 +27,8 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     public float rotation;
     private ItemStack loot = ItemStack.EMPTY;
 
-    public CrystallizedAmberBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(DDBlockEntities.CRYSTALLIZED_AMBER.get(), pPos, pBlockState);
+    public CrystallizedAmberBlockEntity(BlockPos pos, BlockState blockState) {
+        super(DDBlockEntities.CRYSTALLIZED_AMBER.get(), pos, blockState);
     }
 
     public void generateFossil(Level level, BlockPos pos) {
@@ -57,24 +57,24 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = new CompoundTag();
-        tag.put("item", this.loot.saveOptional(pRegistries));
+        tag.put("item", this.loot.saveOptional(registries));
         tag.putBoolean("leech", this.fossilizedEntity);
         return tag;
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
-        if(pTag.contains("item")) this.loot = ItemStack.parseOptional(pRegistries, pTag.getCompound("item"));
-        if(pTag.contains("leech")) this.fossilizedEntity = pTag.getBoolean("leech");
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        if(tag.contains("item")) this.loot = ItemStack.parseOptional(registries, tag.getCompound("item"));
+        if(tag.contains("leech")) this.fossilizedEntity = tag.getBoolean("leech");
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(pTag, pRegistries);
-        pTag.put("item", this.loot.saveOptional(pRegistries));
-        pTag.putBoolean("leech", this.fossilizedEntity);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        tag.put("item", this.loot.saveOptional(registries));
+        tag.putBoolean("leech", this.fossilizedEntity);
     }
 }

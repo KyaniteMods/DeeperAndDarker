@@ -14,12 +14,11 @@ import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("NullableProblems")
 public class SoulElytraItem extends ElytraItem {
-    public SoulElytraItem(Properties pProperties) {
-        super(pProperties);
+    public SoulElytraItem(Properties properties) {
+        super(properties);
     }
 
     public static ItemAttributeModifiers createAttributes() {
@@ -28,14 +27,14 @@ public class SoulElytraItem extends ElytraItem {
     }
 
     @Override
-    public boolean isValidRepairItem(@NotNull ItemStack pToRepair, ItemStack pRepair) {
-        return pRepair.is(DDItems.SOUL_CRYSTAL.get());
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
+        return repair.is(DDItems.SOUL_CRYSTAL.get());
     }
 
     @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if(pSlotId == 38 && pEntity instanceof Player player) {
-            if(pLevel.isClientSide() && player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        if(slotId == 38 && entity instanceof Player player) {
+            if(level.isClientSide() && player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
                 player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * DeeperDarkerConfig.soulElytraCooldown / 20)), true);
             }

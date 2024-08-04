@@ -42,39 +42,39 @@ public class OthersidePortalBlock extends Block implements Portal {
     protected static final VoxelShape X_AXIS_AABB = Block.box(0, 0, 6, 16, 16, 10);
     protected static final VoxelShape Z_AXIS_AABB = Block.box(6, 0, 0, 10, 16, 16);
 
-    public OthersidePortalBlock(Properties pProperties) {
-        super(pProperties);
+    public OthersidePortalBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(AXIS);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(AXIS);
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        if(pState.getValue(AXIS) == Direction.Axis.X) return X_AXIS_AABB;
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        if(state.getValue(AXIS) == Direction.Axis.X) return X_AXIS_AABB;
         return Z_AXIS_AABB;
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
-        Direction.Axis facingAxis = pDirection.getAxis();
-        Direction.Axis axis = pState.getValue(AXIS);
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        Direction.Axis facingAxis = direction.getAxis();
+        Direction.Axis axis = state.getValue(AXIS);
         boolean flag = axis != facingAxis && facingAxis.isHorizontal();
-        return !flag && !pNeighborState.is(this) && !(new OthersidePortalShape(pLevel, pPos, axis)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
+        return !flag && !neighborState.is(this) && !(new OthersidePortalShape(level, pos, axis)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(pRandom.nextFloat() < 0.0007) {
-            pLevel.playLocalSound(pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, DDSounds.PORTAL_GROAN.get(), SoundSource.BLOCKS, 0.2f, pRandom.nextFloat() * 0.2f + 0.9f, false);
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if(random.nextFloat() < 0.0007) {
+            level.playLocalSound(pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, DDSounds.PORTAL_GROAN.get(), SoundSource.BLOCKS, 0.2f, random.nextFloat() * 0.2f + 0.9f, false);
         }
     }
 
     @Override
-    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        if(pEntity.canUsePortal(false)) pEntity.setAsInsidePortal(this, pPos);
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity pEntity) {
+        if(pEntity.canUsePortal(false)) pEntity.setAsInsidePortal(this, pos);
     }
 
     @Override
@@ -118,16 +118,16 @@ public class OthersidePortalBlock extends Block implements Portal {
 
     @Nullable
     @Override
-    public DimensionTransition getPortalDestination(ServerLevel pLevel, Entity pEntity, BlockPos pPos) {
-        ResourceKey<Level> level = pLevel.dimension() == Level.OVERWORLD ? OthersideDimension.OTHERSIDE_LEVEL : Level.OVERWORLD;
-        ServerLevel destLevel = pLevel.getServer().getLevel(level);
-        if(destLevel == null) return null;
+    public DimensionTransition getPortalDestination(ServerLevel level, Entity pEntity, BlockPos pos) {
+        ResourceKey<Level> destLevel = level.dimension() == Level.OVERWORLD ? OthersideDimension.OTHERSIDE_LEVEL : Level.OVERWORLD;
+        ServerLevel destServerLevel = level.getServer().getLevel(destLevel);
+        if(destServerLevel == null) return null;
 
-        boolean isOtherside = destLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL;
-        WorldBorder destBorder = destLevel.getWorldBorder();
-        double scale = DimensionType.getTeleportationScale(pLevel.dimensionType(), destLevel.dimensionType());
+        boolean isOtherside = destServerLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL;
+        WorldBorder destBorder = destServerLevel.getWorldBorder();
+        double scale = DimensionType.getTeleportationScale(level.dimensionType(), destServerLevel.dimensionType());
         BlockPos destPos = destBorder.clampToBounds(pEntity.getX() * scale, pEntity.getY(), pEntity.getZ() * scale);
-        return OthersideTeleporter.getExitPortal(destLevel, pEntity, pPos, destPos, isOtherside, destBorder);
+        return OthersideTeleporter.getExitPortal(destServerLevel, pEntity, pos, destPos, isOtherside, destBorder);
     }
 
     public static class PortalSpawnEvent extends BlockEvent implements ICancellableEvent {

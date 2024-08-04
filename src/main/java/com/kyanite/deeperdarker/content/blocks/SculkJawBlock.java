@@ -23,40 +23,40 @@ public class SculkJawBlock extends Block {
     public static final BooleanProperty BITING = BooleanProperty.create("biting");
     public static final BooleanProperty CAN_BITE = BooleanProperty.create("can_bite");
 
-    public SculkJawBlock(Properties pProperties) {
-        super(pProperties);
+    public SculkJawBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(BITING, false).setValue(CAN_BITE, true));
     }
 
     @Override
-    public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if(pEntity instanceof Player player && (player.isCreative() || player.isCrouching())) return;
-        if(pEntity instanceof Monster monster && monster.getType().is(DDTags.Misc.SCULK)) return;
-        if(pState.getValue(CAN_BITE) && pEntity instanceof LivingEntity entity) {
-            pLevel.setBlock(pPos, pState.setValue(BITING, true), 3);
-            entity.hurt(DDDamageTypes.source(pLevel, DDDamageTypes.BITE, entity, null), 3);
-            if (pEntity instanceof Player player) player.giveExperiencePoints(-4);
-            pLevel.scheduleTick(pPos, this, 35);
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        if(entity instanceof Player player && (player.isCreative() || player.isCrouching())) return;
+        if(entity instanceof Monster monster && monster.getType().is(DDTags.Misc.SCULK)) return;
+        if(state.getValue(CAN_BITE) && entity instanceof LivingEntity living) {
+            level.setBlock(pos, state.setValue(BITING, true), 3);
+            living.hurt(DDDamageTypes.source(level, DDDamageTypes.BITE, living, null), 3);
+            if (living instanceof Player player) player.giveExperiencePoints(-4);
+            level.scheduleTick(pos, this, 35);
         }
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(pState.getValue(BITING)) pLevel.setBlock(pPos, pState.setValue(BITING, false), 3);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(state.getValue(BITING)) level.setBlock(pos, state.setValue(BITING, false), 3);
     }
 
     @Override
-    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        if(pEntity instanceof LivingEntity entity) entity.hurt(DDDamageTypes.source(pLevel, DDDamageTypes.BITE, entity, null), 3);
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if(entity instanceof LivingEntity living) living.hurt(DDDamageTypes.source(level, DDDamageTypes.BITE, living, null), 3);
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return pState.getValue(BITING) ? Block.box(0, 0, 0, 0, 0, 0) : super.getCollisionShape(pState, pLevel, pPos, pContext);
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return state.getValue(BITING) ? Block.box(0, 0, 0, 0, 0, 0) : super.getCollisionShape(state, level, pos, context);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(BITING, CAN_BITE);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(BITING, CAN_BITE);
     }
 }

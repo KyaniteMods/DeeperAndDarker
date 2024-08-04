@@ -51,8 +51,8 @@ public class SculkLeechModel extends HierarchicalModel<SculkLeech> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack pPoseStack, VertexConsumer pBuffer, int pPackedLight, int pPackedOverlay, int pColor) {
-		root.getChild("root").render(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pColor);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
+		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
 	}
 
 	@Override

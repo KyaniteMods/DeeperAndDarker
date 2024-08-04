@@ -26,8 +26,8 @@ import net.minecraft.world.level.block.Blocks;
 public class AnglerFish extends AbstractFish {
     public final AnimationState attackState = new AnimationState();
 
-    public AnglerFish(EntityType<? extends AbstractFish> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public AnglerFish(EntityType<? extends AbstractFish> entityType, Level level) {
+        super(entityType, level);
     }
 
     public static AttributeSupplier createAttributesSupplier() {
@@ -49,24 +49,24 @@ public class AnglerFish extends AbstractFish {
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(pEntity);
+        return super.doHurtTarget(entity);
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) this.attackState.start(this.tickCount);
-        else super.handleEntityEvent(pId);
+    public void handleEntityEvent(byte id) {
+        if(id == 4) this.attackState.start(this.tickCount);
+        else super.handleEntityEvent(id);
     }
 
     @Override
-    public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
-        return getAttackBoundingBox().inflate(1).intersects(pEntity.getBoundingBox());
+    public boolean isWithinMeleeAttackRange(LivingEntity entity) {
+        return getAttackBoundingBox().inflate(1).intersects(entity.getBoundingBox());
     }
 
     @Override
-    protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         return InteractionResult.PASS;
     }
 
@@ -74,8 +74,8 @@ public class AnglerFish extends AbstractFish {
         return entity != null && entity.isInWater();
     }
 
-    public static boolean checkSpawnRules(EntityType<? extends LivingEntity> pType, ServerLevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
-        return pLevel.getBlockState(pPos).is(Blocks.WATER);
+    public static boolean checkSpawnRules(EntityType<? extends LivingEntity> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return level.getBlockState(pos).is(Blocks.WATER);
     }
 
     @Override

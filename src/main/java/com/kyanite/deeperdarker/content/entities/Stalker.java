@@ -58,8 +58,8 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     private int emergingTime;
     private int rangedCooldown = 440;
 
-    public Stalker(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public Stalker(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new Listener(this));
         this.vibrationUser = new VibrationUser();
         this.vibrationData = new Data();
@@ -84,8 +84,8 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    public void setCustomName(@Nullable Component pName) {
-        super.setCustomName(pName);
+    public void setCustomName(Component name) {
+        super.setCustomName(name);
         this.bossEvent.setName(this.getDisplayName());
     }
 
@@ -100,14 +100,14 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
         return DDSounds.STALKER_HURT.get();
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(pEntity);
+        return super.doHurtTarget(entity);
     }
 
     @Override
@@ -170,53 +170,53 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
+    public void handleEntityEvent(byte id) {
+        if(id == 4) {
             this.idleState.stop();
             this.attackState.start(this.tickCount);
         } else {
-            super.handleEntityEvent(pId);
+            super.handleEntityEvent(id);
         }
     }
 
     @Override
-    public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
-        return getAttackBoundingBox().inflate(2.8, 1, 2.8).intersects(pEntity.getBoundingBox());
+    public boolean isWithinMeleeAttackRange(LivingEntity entity) {
+        return getAttackBoundingBox().inflate(2.8, 1, 2.8).intersects(entity.getBoundingBox());
     }
 
     @Override
-    public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
-        if(pKey.equals(DATA_POSE)) {
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        if(key.equals(DATA_POSE)) {
             if(this.getPose() == Pose.EMERGING) this.emergeState.start(this.tickCount);
             if(this.getPose() == Pose.STANDING) this.emergeState.stop();
         }
 
-        super.onSyncedDataUpdated(pKey);
+        super.onSyncedDataUpdated(key);
     }
 
     @Override
-    public void startSeenByPlayer(ServerPlayer pServerPlayer) {
-        super.startSeenByPlayer(pServerPlayer);
-        this.bossEvent.addPlayer(pServerPlayer);
+    public void startSeenByPlayer(ServerPlayer serverPlayer) {
+        super.startSeenByPlayer(serverPlayer);
+        this.bossEvent.addPlayer(serverPlayer);
     }
 
     @Override
-    public void stopSeenByPlayer(ServerPlayer pServerPlayer) {
-        super.stopSeenByPlayer(pServerPlayer);
-        this.bossEvent.removePlayer(pServerPlayer);
+    public void stopSeenByPlayer(ServerPlayer serverPlayer) {
+        super.stopSeenByPlayer(serverPlayer);
+        this.bossEvent.removePlayer(serverPlayer);
     }
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable SpawnGroupData pSpawnGroupData) {
-        if(pSpawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
-        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, SpawnGroupData spawnGroupData) {
+        if(spawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
 
     @Override
-    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
+    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> listenerConsumer) {
         if(this.level() instanceof ServerLevel level) {
-            pListenerConsumer.accept(this.dynamicGameEventListener, level);
+            listenerConsumer.accept(this.dynamicGameEventListener, level);
         }
     }
 
@@ -272,9 +272,9 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, GameEvent.Context pContext) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
-                if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
+        public boolean canReceiveVibration(ServerLevel level, BlockPos pPos, Holder<GameEvent> gameEvent, GameEvent.Context context) {
+            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(pPos)) {
+                if(context.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
                 return false;
@@ -282,11 +282,11 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, @Nullable Entity pEntity, @Nullable Entity pPlayerEntity, float pDistance) {
+        public void onReceiveVibration(ServerLevel level, BlockPos pPos, Holder<GameEvent> gameEvent, @Nullable Entity entity, @Nullable Entity playerEntity, float distance) {
             if(isDeadOrDying()) return;
             playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
-            if(pEntity != null && canTargetEntity(pEntity)) {
-                if(pEntity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
+            if(entity != null && canTargetEntity(entity)) {
+                if(entity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
                 return;
             }
 

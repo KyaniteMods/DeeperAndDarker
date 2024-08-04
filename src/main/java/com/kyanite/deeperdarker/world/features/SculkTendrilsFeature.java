@@ -15,16 +15,16 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class SculkTendrilsFeature extends Feature<NoneFeatureConfiguration> {
-    public SculkTendrilsFeature(Codec<NoneFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public SculkTendrilsFeature(Codec<NoneFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
         if(isValidPlacementLocation(level, origin)) {
-            RandomSource random = pContext.random();
+            RandomSource random = context.random();
             int width = 8;
             int height = 4;
             int maxHeight = 8;

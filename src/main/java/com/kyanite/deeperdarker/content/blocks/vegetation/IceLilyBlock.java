@@ -39,8 +39,8 @@ public class IceLilyBlock extends BushBlock {
     private static final VoxelShape LILY_PAD = Block.box(1, 0, 1, 15, 1.5, 15);
     private static final VoxelShape FLOWER = Block.box(5, 0, 5, 11, 12, 11);
 
-    public IceLilyBlock(Properties pProperties) {
-        super(pProperties);
+    public IceLilyBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(HAS_FLOWER, true));
     }
 
@@ -70,23 +70,23 @@ public class IceLilyBlock extends BushBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        FluidState fluidState = pLevel.getFluidState(pPos);
-        FluidState fluidStateAbove = pLevel.getFluidState(pPos.above());
-        return (fluidState.getType() == Fluids.WATER || pState.getBlock() instanceof IceBlock) && fluidStateAbove.getType() == Fluids.EMPTY;
+    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
+        FluidState fluidState = level.getFluidState(pos);
+        FluidState fluidStateAbove = level.getFluidState(pos.above());
+        return (fluidState.getType() == Fluids.WATER || state.getBlock() instanceof IceBlock) && fluidStateAbove.getType() == Fluids.EMPTY;
     }
 
     @Override
-    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        super.entityInside(pState, pLevel, pPos, pEntity);
-        if (pLevel instanceof ServerLevel && pEntity instanceof Boat) {
-            pLevel.destroyBlock(new BlockPos(pPos), true, pEntity);
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity pEntity) {
+        super.entityInside(state, level, pos, pEntity);
+        if (level instanceof ServerLevel && pEntity instanceof Boat) {
+            level.destroyBlock(new BlockPos(pos), true, pEntity);
         }
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return mayPlaceOn(pLevel.getBlockState(pPos.below()), pLevel, pPos.below());
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return mayPlaceOn(level.getBlockState(pos.below()), level, pos.below());
     }
 
     @Override
@@ -95,12 +95,12 @@ public class IceLilyBlock extends BushBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return pState.getValue(HAS_FLOWER) ? Shapes.or(LILY_PAD, FLOWER) : LILY_PAD;
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return state.getValue(HAS_FLOWER) ? Shapes.or(LILY_PAD, FLOWER) : LILY_PAD;
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return LILY_PAD;
     }
 }

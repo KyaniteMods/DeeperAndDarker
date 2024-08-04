@@ -14,8 +14,8 @@ public class GlowingVinesBlock extends GrowingPlantHeadBlock {
     public static final MapCodec<GlowingVinesBlock> CODEC = simpleCodec(GlowingVinesBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 9, 1, 15, 16, 15);
 
-    public GlowingVinesBlock(Properties pProperties) {
-        super(pProperties, Direction.DOWN, SHAPE, false, 0.14);
+    public GlowingVinesBlock(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false, 0.14);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class GlowingVinesBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(RandomSource pRandom) {
-        return pRandom.nextIntBetweenInclusive(1, 3);
+    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
+        return random.nextIntBetweenInclusive(1, 3);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class GlowingVinesBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected boolean canGrowInto(BlockState pState) {
-        return pState.isAir();
+    protected boolean canGrowInto(BlockState state) {
+        return state.isAir();
     }
 }

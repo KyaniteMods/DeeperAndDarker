@@ -24,7 +24,7 @@ public class GlowingRootsBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(@NotNull RandomSource pRandom) {
+    protected int getBlocksToGrowWhenBonemealed(@NotNull RandomSource random) {
         return 1;
     }
 
@@ -34,7 +34,7 @@ public class GlowingRootsBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected boolean canGrowInto(BlockState pState) {
-        return pState.isAir();
+    protected boolean canGrowInto(BlockState state) {
+        return state.isAir();
     }
 }

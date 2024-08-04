@@ -23,19 +23,19 @@ public record CatalysisEnvironment(boolean dropXp) implements EnchantmentEntityE
     );
 
     @Override
-    public void apply(ServerLevel pLevel, int pEnchantmentLevel, EnchantedItemInUse pItem, Entity pEntity, Vec3 pOrigin) {
-        if (pEntity instanceof LivingEntity target) {
+    public void apply(ServerLevel level, int enchantmentLevel, EnchantedItemInUse item, Entity entity, Vec3 origin) {
+        if (entity instanceof LivingEntity target) {
             if (target.isDeadOrDying() && !target.wasExperienceConsumed()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
                 Entity attacker = Optionull.map(target.getLastDamageSource(), DamageSource::getEntity);
                 if (!(attacker instanceof ServerPlayer serverPlayer)) return;
 
-                BlockPos pos = new BlockPos((int) pOrigin.x, (int) pOrigin.y, (int) pOrigin.z);
-                for (int i = 0; i < 3 * pEnchantmentLevel; i++) {
-                    spreader.addCursors(pos, target.getExperienceReward(pLevel, attacker));
+                BlockPos pos = new BlockPos((int) origin.x, (int) origin.y, (int) origin.z);
+                for (int i = 0; i < 3 * enchantmentLevel; i++) {
+                    spreader.addCursors(pos, target.getExperienceReward(level, attacker));
                 }
-                for (int i = 0; i < 8 * pEnchantmentLevel; i++) {
-                    spreader.updateCursors(pLevel, pos, pLevel.getRandom(), true);
+                for (int i = 0; i < 8 * enchantmentLevel; i++) {
+                    spreader.updateCursors(level, pos, level.getRandom(), true);
                 }
 
                 if (!dropXp) target.skipDropExperience();

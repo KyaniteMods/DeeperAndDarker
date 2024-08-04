@@ -43,8 +43,8 @@ public class SculkSnapper extends TamableAnimal {
     public final AnimationState sitState = new AnimationState();
     private int droppedBooks;
 
-    public SculkSnapper(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public SculkSnapper(EntityType<? extends TamableAnimal> entityType, Level level) {
+        super(entityType, level);
         this.setTame(false, false);
     }
 
@@ -74,26 +74,26 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
         return DDSounds.SNAPPER_HURT.get();
     }
 
     @Override
-    public boolean hurt(DamageSource pSource, float pAmount) {
-        if(this.isInvulnerableTo(pSource)) return false;
+    public boolean hurt(DamageSource source, float amount) {
+        if(this.isInvulnerableTo(source)) return false;
         if(!this.level().isClientSide) {
             this.setInSittingPose(false);
             this.setOrderedToSit(false);
         }
 
-        return super.hurt(pSource, pAmount);
+        return super.hurt(source, amount);
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         level().broadcastEntityEvent(this, (byte) 4);
         this.playSound(DDSounds.SNAPPER_BITE.get());
-        return super.doHurtTarget(pEntity);
+        return super.doHurtTarget(entity);
     }
 
     @Override
@@ -132,8 +132,8 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.NETHERITE_CHESTPLATE) && pStack.has(DataComponents.ENCHANTMENTS);
+    public boolean isFood(ItemStack stack) {
+        return stack.is(Items.NETHERITE_CHESTPLATE) && stack.has(DataComponents.ENCHANTMENTS);
     }
 
     @Override
@@ -145,13 +145,13 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
-        ItemStack stack = pPlayer.getItemInHand(pHand);
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
         if(this.isFood(stack) && !this.isTame()) {
-            this.usePlayerItem(pPlayer, pHand, stack);
+            this.usePlayerItem(player, hand, stack);
             if(!level().isClientSide()) {
-                this.tame(pPlayer);
-                this.setOwnerUUID(pPlayer.getUUID());
+                this.tame(player);
+                this.setOwnerUUID(player.getUUID());
                 setTarget(null);
                 level().broadcastEntityEvent(this, (byte) 18);
             }
@@ -161,7 +161,7 @@ public class SculkSnapper extends TamableAnimal {
 
         if(this.isTame()) {
             if(stack.has(DataComponents.ENCHANTMENTS) && this.getHealth() < this.getMaxHealth()) {
-                this.usePlayerItem(pPlayer, pHand, stack);
+                this.usePlayerItem(player, hand, stack);
                 if(!level().isClientSide()) {
                     this.heal(getMaxHealth());
                     this.gameEvent(GameEvent.EAT, this);
@@ -170,8 +170,8 @@ public class SculkSnapper extends TamableAnimal {
                 return InteractionResult.SUCCESS;
             }
 
-            InteractionResult interact = super.mobInteract(pPlayer, pHand);
-            if (!interact.consumesAction() && this.isOwnedBy(pPlayer)) {
+            InteractionResult interact = super.mobInteract(player, hand);
+            if (!interact.consumesAction() && this.isOwnedBy(player)) {
                 this.setInSittingPose(!this.isInSittingPose());
                 this.setOrderedToSit(!this.isOrderedToSit());
                 this.jumping = false;
@@ -187,11 +187,11 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
+    public void handleEntityEvent(byte id) {
+        if(id == 4) {
             this.idleState.stop();
             this.attackState.start(this.tickCount);
-        } else if(pId == 18) {
+        } else if(id == 18) {
             for(int i = 0; i < 7; i++) {
                 double sX = this.random.nextGaussian() * 0.02;
                 double sY = this.random.nextGaussian() * 0.02;
@@ -199,13 +199,13 @@ public class SculkSnapper extends TamableAnimal {
                 this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1), this.getRandomY() + 0.5, this.getRandomZ(1), sX, sY, sZ);
             }
         } else {
-            super.handleEntityEvent(pId);
+            super.handleEntityEvent(id);
         }
     }
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
         return null;
     }
 }

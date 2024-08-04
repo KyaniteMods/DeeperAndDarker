@@ -14,8 +14,8 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     public static final MapCodec<SculkVinesBlock> CODEC = simpleCodec(SculkVinesBlock::new);
     private static final VoxelShape SHAPE = Block.box(4, 9, 4, 12, 16, 12);
 
-    public SculkVinesBlock(Properties pProperties) {
-        super(pProperties, Direction.DOWN, SHAPE, false, 0.1);
+    public SculkVinesBlock(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false, 0.1);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected int getBlocksToGrowWhenBonemealed(RandomSource pRandom) {
-        return pRandom.nextIntBetweenInclusive(1, 2);
+    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
+        return random.nextIntBetweenInclusive(1, 2);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SculkVinesBlock extends GrowingPlantHeadBlock {
     }
 
     @Override
-    protected boolean canGrowInto(BlockState pState) {
-        return pState.isAir();
+    protected boolean canGrowInto(BlockState state) {
+        return state.isAir();
     }
 }

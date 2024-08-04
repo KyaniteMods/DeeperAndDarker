@@ -29,7 +29,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.PathType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiConsumer;
 
@@ -42,8 +41,8 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     private final Data vibrationData;
     public BlockPos disturbanceLocation;
 
-    public Shattered(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public Shattered(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new Listener(this));
         this.vibrationUser = new VibrationUser();
         this.vibrationData = new Data();
@@ -77,14 +76,14 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
         return DDSounds.SHATTERED_HURT.get();
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(pEntity);
+        return super.doHurtTarget(entity);
     }
 
     @Override
@@ -103,19 +102,19 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
+    public void handleEntityEvent(byte id) {
+        if(id == 4) {
             this.idleState.stop();
             this.attackState.start(this.tickCount);
         } else {
-            super.handleEntityEvent(pId);
+            super.handleEntityEvent(id);
         }
     }
 
     @Override
-    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> pListenerConsumer) {
+    public void updateDynamicGameEventListener(BiConsumer<DynamicGameEventListener<?>, ServerLevel> listenerConsumer) {
         if(this.level() instanceof ServerLevel level) {
-            pListenerConsumer.accept(this.dynamicGameEventListener, level);
+            listenerConsumer.accept(this.dynamicGameEventListener, level);
         }
     }
 
@@ -171,9 +170,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, GameEvent.Context pContext) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
-                if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
+        public boolean canReceiveVibration(ServerLevel level, BlockPos pPos, Holder<GameEvent> gameEvent, GameEvent.Context context) {
+            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(pPos)) {
+                if(context.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
                 return false;
@@ -181,16 +180,16 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, @Nullable Entity pEntity, @Nullable Entity pPlayerEntity, float pDistance) {
+        public void onReceiveVibration(ServerLevel level, BlockPos pos, Holder<GameEvent> gameEvent, Entity entity, Entity playerEntity, float distance) {
             if(isDeadOrDying()) return;
             playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
-            if(pEntity != null && canTargetEntity(pEntity)) {
-                if(pEntity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
+            if(entity != null && canTargetEntity(entity)) {
+                if(entity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
                 return;
             }
 
             if(getTarget() != null) setTarget(null);
-            disturbanceLocation = pPos;
+            disturbanceLocation = pos;
         }
     }
 }

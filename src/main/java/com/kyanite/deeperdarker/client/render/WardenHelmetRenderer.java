@@ -29,17 +29,17 @@ public class WardenHelmetRenderer<E extends LivingEntity, M extends HumanoidMode
     }
 
     @Override
-    public void render(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, E pLivingEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTick, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-        ItemStack stack = pLivingEntity.getItemBySlot(EquipmentSlot.HEAD);
+    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, E livingEntity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+        ItemStack stack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);
         if(stack.is(DDItems.WARDEN_HELMET.get())) {
-            pPoseStack.pushPose();
+            poseStack.pushPose();
 
-            pPoseStack.scale(1, 1, 1);
-            this.getParentModel().getHead().translateAndRotate(pPoseStack);
+            poseStack.scale(1, 1, 1);
+            this.getParentModel().getHead().translateAndRotate(poseStack);
             WardenHelmetModel<E> helmetModel = new WardenHelmetModel<>(this.model.bakeLayer(MODEL));
-            helmetModel.renderToBuffer(pPoseStack, pBuffer.getBuffer(RenderType.armorCutoutNoCull(TEXTURE)), pPackedLight, OverlayTexture.NO_OVERLAY);
+            helmetModel.renderToBuffer(poseStack, bufferSource.getBuffer(RenderType.armorCutoutNoCull(TEXTURE)), packedLight, OverlayTexture.NO_OVERLAY);
 
-            pPoseStack.popPose();
+            poseStack.popPose();
         }
     }
 }

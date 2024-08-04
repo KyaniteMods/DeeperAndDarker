@@ -21,7 +21,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(BlockTags.MINEABLE_WITH_AXE).addTags(DDTags.Blocks.ECHO_LOGS, DDTags.Blocks.BLOOM_STEMS).add(DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_BUTTON.get(),
                 DDBlocks.BLOOMING_STEM.get(), DDBlocks.STRIPPED_BLOOMING_STEM.get(), DDBlocks.BLOOM_PLANKS.get(), DDBlocks.BLOOM_STAIRS.get(), DDBlocks.BLOOM_SLAB.get(), DDBlocks.BLOOM_FENCE.get(), DDBlocks.BLOOM_FENCE_GATE.get(), DDBlocks.BLOOM_DOOR.get(), DDBlocks.BLOOM_TRAPDOOR.get(), DDBlocks.BLOOM_PRESSURE_PLATE.get(), DDBlocks.BLOOM_BUTTON.get(),
                 DDBlocks.GLOWING_GRASS.get(), DDBlocks.GLOOMY_GRASS.get(), DDBlocks.ICE_LILY.get());

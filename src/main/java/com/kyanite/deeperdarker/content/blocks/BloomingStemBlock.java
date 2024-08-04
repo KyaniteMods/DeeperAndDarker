@@ -42,20 +42,20 @@ public class BloomingStemBlock extends Block {
             Block.box(0, 5, 5, 5, 11, 11)    // WEST
     };
 
-    public BloomingStemBlock(Properties pProperties) {
-        super(pProperties);
+    public BloomingStemBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, true).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        BlockPos pos = pContext.getClickedPos();
-        BlockGetter level = pContext.getLevel();
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockPos pos = context.getClickedPos();
+        BlockGetter level = context.getLevel();
 
         BlockState belowState = level.getBlockState(pos.below());
         BlockState northState = level.getBlockState(pos.north());
@@ -68,29 +68,29 @@ public class BloomingStemBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         VoxelShape shape = shapes[0];
 
-        if(pState.getValue(UP)) shape = Shapes.join(shape, shapes[1], BooleanOp.OR);
-        if(pState.getValue(DOWN)) shape = Shapes.join(shape, shapes[2], BooleanOp.OR);
-        if(pState.getValue(NORTH)) shape = Shapes.join(shape, shapes[3], BooleanOp.OR);
-        if(pState.getValue(EAST)) shape = Shapes.join(shape, shapes[4], BooleanOp.OR);
-        if(pState.getValue(SOUTH)) shape = Shapes.join(shape, shapes[5], BooleanOp.OR);
-        if(pState.getValue(WEST)) shape = Shapes.join(shape, shapes[6], BooleanOp.OR);
+        if(state.getValue(UP)) shape = Shapes.join(shape, shapes[1], BooleanOp.OR);
+        if(state.getValue(DOWN)) shape = Shapes.join(shape, shapes[2], BooleanOp.OR);
+        if(state.getValue(NORTH)) shape = Shapes.join(shape, shapes[3], BooleanOp.OR);
+        if(state.getValue(EAST)) shape = Shapes.join(shape, shapes[4], BooleanOp.OR);
+        if(state.getValue(SOUTH)) shape = Shapes.join(shape, shapes[5], BooleanOp.OR);
+        if(state.getValue(WEST)) shape = Shapes.join(shape, shapes[6], BooleanOp.OR);
 
         return shape;
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
-        if(!pState.canSurvive(pLevel, pPos)) {
-            pLevel.scheduleTick(pPos, this, 1);
-            return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if(!state.canSurvive(level, pos)) {
+            level.scheduleTick(pos, this, 1);
+            return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
         }
 
-        if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return pState.setValue(DOWN, true);
-        if(pDirection.getAxis().isHorizontal() && checkState(pNeighborState) && canSurvive(pLevel.getBlockState(pNeighborPos.below()))) return pState;
-        return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), checkState(pNeighborState));
+        if(direction == Direction.DOWN && neighborState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return state.setValue(DOWN, true);
+        if(direction.getAxis().isHorizontal() && checkState(neighborState) && canSurvive(level.getBlockState(neighborPos.below()))) return state;
+        return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), checkState(neighborState));
     }
 
     @Override
@@ -103,18 +103,18 @@ public class BloomingStemBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(!pState.canSurvive(pLevel, pPos)) pLevel.destroyBlock(pPos, true);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(!state.canSurvive(level, pos)) level.destroyBlock(pos, true);
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        BlockState below = pLevel.getBlockState(pPos.below());
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState below = level.getBlockState(pos.below());
         if(canSurvive(below)) return true;
         for(Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockPos pos = pPos.relative(direction);
-            BlockState state = pLevel.getBlockState(pos);
-            if(checkState(state) && pState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction)) && canSurvive(pLevel.getBlockState(pos.below()))) return true;
+            BlockPos relativePos = pos.relative(direction);
+            BlockState relativeState = level.getBlockState(relativePos);
+            if(checkState(relativeState) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction)) && canSurvive(level.getBlockState(pos.below()))) return true;
         }
 
         return false;

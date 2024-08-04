@@ -13,12 +13,12 @@ public class ShatteredRenderer extends MobRenderer<Shattered, ShatteredModel> {
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("shattered_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/shattered.png");
 
-    public ShatteredRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new ShatteredModel(pContext.bakeLayer(MODEL)), 0.5f);
+    public ShatteredRenderer(EntityRendererProvider.Context context) {
+        super(context, new ShatteredModel(context.bakeLayer(MODEL)), 0.5f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Shattered pEntity) {
+    public ResourceLocation getTextureLocation(Shattered entity) {
         return TEXTURE;
     }
 }

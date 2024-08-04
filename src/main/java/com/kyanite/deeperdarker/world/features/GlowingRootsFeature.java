@@ -14,15 +14,15 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class GlowingRootsFeature extends Feature<NoneFeatureConfiguration> {
-    public GlowingRootsFeature(Codec<NoneFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public GlowingRootsFeature(Codec<NoneFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
-        RandomSource random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
+        RandomSource random = context.random();
 
         if(!isValidPlacementLocation(level, origin)) return false;
 

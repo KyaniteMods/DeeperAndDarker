@@ -13,12 +13,12 @@ public class SculkSnapperRenderer extends MobRenderer<SculkSnapper, SculkSnapper
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("sculk_snapper_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/sculk_snapper.png");
 
-    public SculkSnapperRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new SculkSnapperModel(pContext.bakeLayer(MODEL)), 0.5f);
+    public SculkSnapperRenderer(EntityRendererProvider.Context context) {
+        super(context, new SculkSnapperModel(context.bakeLayer(MODEL)), 0.5f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SculkSnapper pEntity) {
+    public ResourceLocation getTextureLocation(SculkSnapper entity) {
         return TEXTURE;
     }
 }

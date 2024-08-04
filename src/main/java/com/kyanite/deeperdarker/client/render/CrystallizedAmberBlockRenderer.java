@@ -25,23 +25,23 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
     }
 
     @Override
-    public void render(CrystallizedAmberBlockEntity pBlockEntity, float pPartialTick, @NotNull PoseStack pPoseStack, @NotNull MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        if(!pBlockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
+    public void render(CrystallizedAmberBlockEntity blockEntity, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        if(!blockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
 
-        pPoseStack.pushPose();
-        pPoseStack.translate(0.5f, 0.5f, 0.5f);
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(-40f));
-        RandomSource random = RandomSource.create(pBlockEntity.getBlockPos().asLong() / (pBlockEntity.getBlockPos().getX() + pBlockEntity.getBlockPos().getZ()));
-        pPoseStack.mulPose(Axis.YP.rotationDegrees(random.nextFloat() * 180f));
-        if(pBlockEntity.fossilizedEntity) {
-            pPoseStack.scale(0.9f, 0.9f, 0.9f);
-            SculkLeech leech = new SculkLeech(DDEntities.SCULK_LEECH.get(), pBlockEntity.getLevel());
-            entityRenderer.render(leech, 0, 0, 0, 0, pPartialTick, pPoseStack, pBuffer, pPackedLight);
+        poseStack.pushPose();
+        poseStack.translate(0.5f, 0.5f, 0.5f);
+        poseStack.mulPose(Axis.XP.rotationDegrees(-40f));
+        RandomSource random = RandomSource.create(blockEntity.getBlockPos().asLong() / (blockEntity.getBlockPos().getX() + blockEntity.getBlockPos().getZ()));
+        poseStack.mulPose(Axis.YP.rotationDegrees(random.nextFloat() * 180f));
+        if(blockEntity.fossilizedEntity) {
+            poseStack.scale(0.9f, 0.9f, 0.9f);
+            SculkLeech leech = new SculkLeech(DDEntities.SCULK_LEECH.get(), blockEntity.getLevel());
+            entityRenderer.render(leech, 0, 0, 0, 0, partialTick, poseStack, bufferSource, packedLight);
         } else {
-            pPoseStack.scale(0.6f, 0.6f, 0.6f);
-            itemRenderer.renderStatic(pBlockEntity.getLoot(), ItemDisplayContext.FIXED, pPackedLight, pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), 0);
+            poseStack.scale(0.6f, 0.6f, 0.6f);
+            itemRenderer.renderStatic(blockEntity.getLoot(), ItemDisplayContext.FIXED, packedLight, packedOverlay, poseStack, bufferSource, blockEntity.getLevel(), 0);
         }
 
-        pPoseStack.popPose();
+        poseStack.popPose();
     }
 }

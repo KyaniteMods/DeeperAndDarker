@@ -16,20 +16,20 @@ import net.minecraft.world.level.Level;
 
 @SuppressWarnings("NullableProblems")
 public class WardenHeartItem extends Item {
-    public WardenHeartItem(Properties pProperties) {
-        super(pProperties);
+    public WardenHeartItem(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext pContext) {
-        if(pContext.getPlayer() != null) {
-            if(pContext.getPlayer().level().dimension() == OthersideDimension.OTHERSIDE_LEVEL || pContext.getPlayer().level().dimension() == Level.OVERWORLD) {
-                BlockPos clickedPos = pContext.getClickedPos().relative(pContext.getClickedFace());
+    public InteractionResult useOn(UseOnContext context) {
+        if(context.getPlayer() != null) {
+            if(context.getPlayer().level().dimension() == OthersideDimension.OTHERSIDE_LEVEL || context.getPlayer().level().dimension() == Level.OVERWORLD) {
+                BlockPos clickedPos = context.getClickedPos().relative(context.getClickedFace());
 
-                if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(pContext.getLevel(), clickedPos)) {
-                    pContext.getLevel().playSound(pContext.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
-                    if(!pContext.getPlayer().isCreative()) pContext.getPlayer().setItemInHand(pContext.getHand(), ItemStack.EMPTY);
-                    return InteractionResult.sidedSuccess(pContext.getLevel().isClientSide);
+                if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(context.getLevel(), clickedPos)) {
+                    context.getLevel().playSound(context.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
+                    if(!context.getPlayer().isCreative()) context.getPlayer().setItemInHand(context.getHand(), ItemStack.EMPTY);
+                    return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
                 } else return InteractionResult.FAIL;
             }
         }
@@ -38,9 +38,9 @@ public class WardenHeartItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if(DeeperDarkerConfig.wardenHeartPulses && RandomSource.create().nextFloat() < 0.012f) {
-            pLevel.playSound(pEntity, pEntity.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
+            level.playSound(entity, entity.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
         }
     }
 }

@@ -13,12 +13,12 @@ public class SculkCentipedeRenderer extends MobRenderer<SculkCentipede, SculkCen
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("sculk_centipede_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/sculk_centipede.png");
 
-    public SculkCentipedeRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new SculkCentipedeModel(pContext.bakeLayer(MODEL)), 0.6f);
+    public SculkCentipedeRenderer(EntityRendererProvider.Context context) {
+        super(context, new SculkCentipedeModel(context.bakeLayer(MODEL)), 0.6f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SculkCentipede pEntity) {
+    public ResourceLocation getTextureLocation(SculkCentipede entity) {
         return TEXTURE;
     }
 }

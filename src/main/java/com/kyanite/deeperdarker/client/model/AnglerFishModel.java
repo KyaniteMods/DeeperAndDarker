@@ -42,22 +42,22 @@ public class AnglerFishModel extends HierarchicalModel<AnglerFish> {
 	}
 
 	@Override
-	public void setupAnim(AnglerFish pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+	public void setupAnim(AnglerFish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		float f = 1;
 		float f1 = 1;
-		if (!pEntity.isInWater()) {
+		if (!entity.isInWater()) {
 			f = 1.3f;
 			f1 = 1.7f;
 		}
 
-		this.root.getChild("root").getChild("body").yRot = -f * 0.25f * Mth.sin(f1 * 0.6f * pAgeInTicks);
-		this.animate(pEntity.attackState, AnglerFishAnimation.BITE, pAgeInTicks);
+		this.root.getChild("root").getChild("body").yRot = -f * 0.25f * Mth.sin(f1 * 0.6f * ageInTicks);
+		this.animate(entity.attackState, AnglerFishAnimation.BITE, ageInTicks);
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack pPoseStack, VertexConsumer pBuffer, int pPackedLight, int pPackedOverlay, int pColor) {
-		root.getChild("root").render(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pColor);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
+		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
 	}
 
 	@Override

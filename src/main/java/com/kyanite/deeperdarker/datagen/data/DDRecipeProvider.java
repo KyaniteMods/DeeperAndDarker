@@ -22,16 +22,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.CompletableFuture;
 
 public class DDRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public DDRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
-        super(pOutput, pRegistries);
+    public DDRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
     @Override
-    protected void buildRecipes(@NotNull RecipeOutput pRecipeOutput) {
-        addCraftingRecipes(pRecipeOutput);
-        addCookingRecipes(pRecipeOutput);
-        addStonecuttingRecipes(pRecipeOutput);
-        addSmithingRecipes(pRecipeOutput);
+    protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
+        addCraftingRecipes(recipeOutput);
+        addCookingRecipes(recipeOutput);
+        addStonecuttingRecipes(recipeOutput);
+        addSmithingRecipes(recipeOutput);
     }
 
     private void addCraftingRecipes(RecipeOutput output) {

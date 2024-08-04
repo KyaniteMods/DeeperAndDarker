@@ -29,13 +29,15 @@ public class DDBoatRenderer extends BoatRenderer {
     private final Map<String, ModelLayerLocation> chestBoatModels;
     private final Map<String, ModelLayerLocation> boatModels;
 
-    public DDBoatRenderer(EntityRendererProvider.Context pContext, boolean pChestBoat) {
-        super(pContext, pChestBoat);
-        this.HAS_CHEST = pChestBoat;
+    public DDBoatRenderer(EntityRendererProvider.Context context, boolean chest) {
+        super(context, chest);
+        this.HAS_CHEST = chest;
         this.chestBoatModels = Map.of(DDBlocks.ECHO.name(), ECHO_CHEST_BOAT_MODEL, DDBlocks.BLOOM.name(), BLOOM_CHEST_BOAT_MODEL);
         this.boatModels = Map.of(DDBlocks.ECHO.name(), ECHO_BOAT_MODEL, DDBlocks.BLOOM.name(), BLOOM_BOAT_MODEL);
-        this.BOAT_RESOURCES = ImmutableMap.of(DDBlocks.ECHO.name(), Pair.of(DeeperDarker.rl("textures/entity/" + (pChestBoat ? "chest_boat" : "boat") + "/" + DDBlocks.ECHO.name() + ".png"), this.createBoatModel(pContext, DDBlocks.ECHO.name())),
-                DDBlocks.BLOOM.name(), Pair.of(DeeperDarker.rl("textures/entity/" + (pChestBoat ? "chest_boat" : "boat") + "/" + DDBlocks.BLOOM.name() + ".png"), this.createBoatModel(pContext, DDBlocks.BLOOM.name())));
+        this.BOAT_RESOURCES = ImmutableMap.of(
+                DDBlocks.ECHO.name(), Pair.of(DeeperDarker.rl("textures/entity/" + (chest ? "chest_boat" : "boat") + "/" + DDBlocks.ECHO.name() + ".png"), this.createBoatModel(context, DDBlocks.ECHO.name())),
+                DDBlocks.BLOOM.name(), Pair.of(DeeperDarker.rl("textures/entity/" + (chest ? "chest_boat" : "boat") + "/" + DDBlocks.BLOOM.name() + ".png"), this.createBoatModel(context, DDBlocks.BLOOM.name()))
+        );
     }
 
     private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, String boatType) {

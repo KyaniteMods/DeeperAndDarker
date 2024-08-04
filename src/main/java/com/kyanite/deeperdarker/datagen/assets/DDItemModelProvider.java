@@ -220,8 +220,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         spawnEggModel(DDItems.STALKER_SPAWN_EGG);
     }
 
-    private void spawnEggModel(DeferredItem<Item> egg) {
-        withExistingParent(egg.getId().getPath(), mcLoc("item/template_spawn_egg"));
+    private void spawnEggModel(DeferredItem<Item> item) {
+        withExistingParent(item.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     public void blockModel(DeferredBlock<? extends Block> block) {

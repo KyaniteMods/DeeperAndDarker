@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 public class AnglerFishGlowRenderer extends EyesLayer<AnglerFish, AnglerFishModel> {
     private static final RenderType FISH_GLOW = RenderType.entityTranslucentEmissive(DeeperDarker.rl("textures/entity/angler_fish_glow.png"));
 
-    public AnglerFishGlowRenderer(RenderLayerParent<AnglerFish, AnglerFishModel> pRenderer) {
-        super(pRenderer);
+    public AnglerFishGlowRenderer(RenderLayerParent<AnglerFish, AnglerFishModel> renderer) {
+        super(renderer);
     }
 
     @Override

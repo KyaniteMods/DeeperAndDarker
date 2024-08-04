@@ -25,8 +25,8 @@ public class SculkCentipede extends Monster implements NeutralMob {
     private int remainingAngerTime;
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 30);
 
-    public SculkCentipede(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public SculkCentipede(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
     }
 
     @Override
@@ -47,17 +47,17 @@ public class SculkCentipede extends Monster implements NeutralMob {
     }
 
     @Override
-    public boolean doHurtTarget(Entity pEntity) {
+    public boolean doHurtTarget(Entity entity) {
         level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(pEntity);
+        return super.doHurtTarget(entity);
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if(pId == 4) {
+    public void handleEntityEvent(byte id) {
+        if(id == 4) {
             this.attackState.start(this.tickCount);
         } else {
-            super.handleEntityEvent(pId);
+            super.handleEntityEvent(id);
         }
     }
 
@@ -67,8 +67,8 @@ public class SculkCentipede extends Monster implements NeutralMob {
     }
 
     @Override
-    public void setRemainingPersistentAngerTime(int pRemainingPersistentAngerTime) {
-        this.remainingAngerTime = pRemainingPersistentAngerTime;
+    public void setRemainingPersistentAngerTime(int remainingPersistentAngerTime) {
+        this.remainingAngerTime = remainingPersistentAngerTime;
     }
 
     @Override
@@ -77,8 +77,8 @@ public class SculkCentipede extends Monster implements NeutralMob {
     }
 
     @Override
-    public void setPersistentAngerTarget(UUID pPersistentAngerTarget) {
-        this.angerTarget = pPersistentAngerTarget;
+    public void setPersistentAngerTarget(UUID persistentAngerTarget) {
+        this.angerTarget = persistentAngerTarget;
     }
 
     @Override

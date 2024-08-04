@@ -33,14 +33,14 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     public static final BooleanProperty BERRIES = BlockStateProperties.BERRIES;
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
-    public GlowingVinesPlantBlock(Properties pProperties) {
-        super(pProperties, Direction.DOWN, SHAPE, false);
+    public GlowingVinesPlantBlock(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false);
         this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, false));
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(BERRIES);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(BERRIES);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
-        return !pState.getValue(BERRIES);
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        return !state.getValue(BERRIES);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-        pLevel.setBlock(pPos, pState.setValue(BERRIES, true), 2);
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        level.setBlock(pos, state.setValue(BERRIES, true), 2);
     }
 }

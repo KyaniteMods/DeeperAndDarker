@@ -11,8 +11,8 @@ public class FlammableSlabBlock extends SlabBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableSlabBlock(Properties pProperties, int flammability, int spread) {
-        super(pProperties);
+    public FlammableSlabBlock(Properties properties, int flammability, int spread) {
+        super(properties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;
     }

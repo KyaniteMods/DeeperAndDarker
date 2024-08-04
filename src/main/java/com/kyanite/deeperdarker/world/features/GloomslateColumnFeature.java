@@ -15,15 +15,15 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
-    public GloomslateColumnFeature(Codec<NoneFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public GloomslateColumnFeature(Codec<NoneFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
-        RandomSource random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
+        RandomSource random = context.random();
 
         int columnHeight = 0;
         BlockPos.MutableBlockPos blockPos = origin.mutable();

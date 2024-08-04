@@ -27,16 +27,16 @@ public class WardenHelmetModel<E extends LivingEntity> extends EntityModel<E> im
     }
 
     @Override
-    public void setupAnim(E pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-        pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30, 30);
-        pHeadPitch = Mth.clamp(pHeadPitch, -25, 45);
-        this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180f);
-        this.head.xRot = pHeadPitch * ((float)Math.PI / 180f);
+    public void setupAnim(E entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
+        headPitch = Mth.clamp(headPitch, -25, 45);
+        this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
+        this.head.xRot = headPitch * ((float)Math.PI / 180f);
     }
 
     @Override
-    public void renderToBuffer(PoseStack pPoseStack, VertexConsumer pBuffer, int pPackedLight, int pPackedOverlay, int pColor) {
-        head.getChild("root").render(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, pColor);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
+        head.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
     }
 
     @Override

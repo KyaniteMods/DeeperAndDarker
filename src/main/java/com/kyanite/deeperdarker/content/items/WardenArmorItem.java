@@ -34,9 +34,9 @@ public class WardenArmorItem extends ArmorItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if(pEntity instanceof ServerPlayer player) {
-            if(pStack.getEquipmentSlot() == EquipmentSlot.HEAD) {
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        if(entity instanceof ServerPlayer player) {
+            if(stack.getEquipmentSlot() == EquipmentSlot.HEAD) {
                 if(player.hasEffect(MobEffects.BLINDNESS)) player.removeEffect(MobEffects.BLINDNESS);
                 if(player.hasEffect(MobEffects.DARKNESS)) player.removeEffect(MobEffects.DARKNESS);
             }

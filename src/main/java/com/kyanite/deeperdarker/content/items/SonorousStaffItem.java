@@ -27,15 +27,15 @@ import java.util.List;
 public class SonorousStaffItem extends Item {
     public double dropOffFactor = 1/3.0;
 
-    public SonorousStaffItem(Properties pProperties) {
-        super(pProperties);
+    public SonorousStaffItem(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
-        if(!(pLivingEntity instanceof Player player)) return;
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
+        if(!(livingEntity instanceof Player player)) return;
 
-        int timeUsed = getUseDuration(pStack, player) - pTimeCharged;
+        int timeUsed = getUseDuration(stack, player) - timeCharged;
         int damage = (int) Math.round(50 / (1 + 16 / Math.exp(0.06 * timeUsed)));
         int range = (int) Math.min(40, Math.round(3 * Math.log(timeUsed + 1)));
 
@@ -44,18 +44,18 @@ public class SonorousStaffItem extends Item {
         for(int i = 0; i < range; i++) {
             Vec3 scanVec = eyePos.add(facing.scale(i));
             BlockPos targetPos = new BlockPos((int) scanVec.x, (int) scanVec.y, (int) scanVec.z);
-            BlockState targetState = pLevel.getBlockState(targetPos);
+            BlockState targetState = level.getBlockState(targetPos);
 
             if(!targetState.isAir() && targetState.canOcclude()) break;
-            if(pLevel.isClientSide() && i % 2 == 0) pLevel.addParticle(ParticleTypes.SONIC_BOOM, scanVec.x, scanVec.y, scanVec.z, 1, 0, 0);
+            if(level.isClientSide() && i % 2 == 0) level.addParticle(ParticleTypes.SONIC_BOOM, scanVec.x, scanVec.y, scanVec.z, 1, 0, 0);
 
             AABB aabb = new AABB(targetPos).inflate(0.4);
-            List<LivingEntity> targets = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
+            List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, aabb);
             for(LivingEntity entity : targets) {
                 if(entity.is(player)) continue;
 
                 int finalDamage = (int) (damage * (1 - dropOffFactor * Math.pow((double) i / range, 2)));
-                entity.hurt(pLevel.damageSources().sonicBoom(player), finalDamage);
+                entity.hurt(level.damageSources().sonicBoom(player), finalDamage);
                 double horizontalResistance = 1 - entity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
                 double verticalResistance = 1 - entity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
                 entity.push(facing.x * horizontalResistance, facing.y * verticalResistance, facing.z * horizontalResistance);
@@ -63,41 +63,41 @@ public class SonorousStaffItem extends Item {
         }
 
         player.playSound(SoundEvents.WARDEN_SONIC_BOOM);
-        pStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
         player.awardStat(Stats.ITEM_USED.get(this));
         player.getCooldowns().addCooldown(this, 20);
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        ItemStack stack = pPlayer.getItemInHand(pUsedHand);
-        pPlayer.startUsingItem(pUsedHand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        ItemStack stack = player.getItemInHand(usedHand);
+        player.startUsingItem(usedHand);
         return InteractionResultHolder.consume(stack);
     }
 
     @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if(pEntity instanceof Player player) {
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        if(entity instanceof Player player) {
             CompoundTag tag;
-            if(pStack.has(DataComponents.CUSTOM_DATA)) tag = pStack.get(DataComponents.CUSTOM_DATA).copyTag();
+            if(stack.has(DataComponents.CUSTOM_DATA)) tag = stack.get(DataComponents.CUSTOM_DATA).copyTag();
             else tag = new CompoundTag();
-            tag.putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 123);
-            pStack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+            tag.putBoolean("charged", player.getUseItem() == stack && stack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 123);
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
         }
     }
 
     @Override
-    public boolean isFoil(ItemStack pStack) {
-        return super.isFoil(pStack) || (pStack.has(DataComponents.CUSTOM_DATA) && pStack.get(DataComponents.CUSTOM_DATA).copyTag().getBoolean("charged"));
+    public boolean isFoil(ItemStack stack) {
+        return super.isFoil(stack) || (stack.has(DataComponents.CUSTOM_DATA) && stack.get(DataComponents.CUSTOM_DATA).copyTag().getBoolean("charged"));
     }
 
     @Override
-    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
+    public int getUseDuration(ItemStack stack, LivingEntity livingEntity) {
         return 72000;
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
+    public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
     }
 }

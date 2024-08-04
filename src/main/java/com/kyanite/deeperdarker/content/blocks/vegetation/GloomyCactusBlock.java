@@ -15,23 +15,23 @@ public class GloomyCactusBlock extends CactusBlock {
     private static final VoxelShape COLLISION_SHAPE = Block.box(1, 0, 1, 15, 13, 15);
     private static final VoxelShape OUTLINE_SHAPE = Block.box(1, 0, 1, 15, 14, 15);
 
-    public GloomyCactusBlock(Properties pProperties) {
-        super(pProperties);
+    public GloomyCactusBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        BlockState stateBelow = pLevel.getBlockState(pPos.below());
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState stateBelow = level.getBlockState(pos.below());
         return stateBelow.is(DDBlocks.GLOOMY_SCULK.get());
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return COLLISION_SHAPE;
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return OUTLINE_SHAPE;
     }
 }

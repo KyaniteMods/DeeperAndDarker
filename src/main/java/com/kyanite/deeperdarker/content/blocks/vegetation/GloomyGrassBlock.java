@@ -16,8 +16,8 @@ public class GloomyGrassBlock extends BushBlock {
     public static final MapCodec<GloomyGrassBlock> CODEC = simpleCodec(GloomyGrassBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 10, 15);
 
-    public GloomyGrassBlock(Properties pProperties) {
-        super(pProperties);
+    public GloomyGrassBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
@@ -26,18 +26,18 @@ public class GloomyGrassBlock extends BushBlock {
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        BlockState state = pLevel.getBlockState(pPos.below());
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState stateBelow = level.getBlockState(pos.below());
+        return stateBelow.is(DDBlocks.GLOOMY_SCULK.get());
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return state.is(DDBlocks.GLOOMY_SCULK.get());
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(DDBlocks.GLOOMY_SCULK.get());
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 }

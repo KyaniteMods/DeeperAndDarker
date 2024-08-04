@@ -13,8 +13,8 @@ public class GlowingRootsPlantBlock extends GrowingPlantBodyBlock {
     public static final MapCodec<GlowingRootsPlantBlock> CODEC = simpleCodec(GlowingRootsPlantBlock::new);
     private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 16, 13);
 
-    public GlowingRootsPlantBlock(Properties pProperties) {
-        super(pProperties, Direction.UP, SHAPE, false);
+    public GlowingRootsPlantBlock(Properties properties) {
+        super(properties, Direction.UP, SHAPE, false);
     }
 
     protected @NotNull GrowingPlantHeadBlock getHeadBlock() {

@@ -13,8 +13,8 @@ public class SculkVinesPlantBlock extends GrowingPlantBodyBlock {
     public static final MapCodec<SculkVinesPlantBlock> CODEC = simpleCodec(SculkVinesPlantBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
-    public SculkVinesPlantBlock(Properties pProperties) {
-        super(pProperties, Direction.DOWN, SHAPE, false);
+    public SculkVinesPlantBlock(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false);
     }
 
     @Override

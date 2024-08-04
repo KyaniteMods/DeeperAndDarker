@@ -16,33 +16,32 @@ public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel>
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("angler_fish_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/angler_fish.png");
 
-    public AnglerFishRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new AnglerFishModel(pContext.bakeLayer(MODEL)), 0.4f);
+    public AnglerFishRenderer(EntityRendererProvider.Context context) {
+        super(context, new AnglerFishModel(context.bakeLayer(MODEL)), 0.4f);
         this.addLayer(new AnglerFishGlowRenderer(this));
     }
 
-
     @Override
-    public ResourceLocation getTextureLocation(AnglerFish pEntity) {
+    public ResourceLocation getTextureLocation(AnglerFish entity) {
         return TEXTURE;
     }
 
     @Override
-    protected void setupRotations(AnglerFish pEntity, PoseStack pPoseStack, float pBob, float pYBodyRot, float pPartialTick, float pScale) {
-        super.setupRotations(pEntity, pPoseStack, pBob, pYBodyRot, pPartialTick, pScale);
+    protected void setupRotations(AnglerFish entity, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) {
+        super.setupRotations(entity, poseStack, bob, yBodyRot, partialTick, scale);
         float f = 1f;
         float f1 = 1f;
-        if (!pEntity.isInWater()) {
+        if (!entity.isInWater()) {
             f = 1.3f;
             f1 = 1.7f;
         }
 
-        float f2 = f * 4.3f * Mth.sin(f1 * 0.6f * pBob);
-        pPoseStack.mulPose(Axis.YP.rotationDegrees(f2));
-        pPoseStack.translate(0, 0, -0.4f);
-        if (!pEntity.isInWater()) {
-            pPoseStack.translate(0.2f, 0.1f, 0f);
-            pPoseStack.mulPose(Axis.ZP.rotationDegrees(90f));
+        float f2 = f * 4.3f * Mth.sin(f1 * 0.6f * bob);
+        poseStack.mulPose(Axis.YP.rotationDegrees(f2));
+        poseStack.translate(0, 0, -0.4f);
+        if (!entity.isInWater()) {
+            poseStack.translate(0.2f, 0.1f, 0f);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(90f));
         }
     }
 }

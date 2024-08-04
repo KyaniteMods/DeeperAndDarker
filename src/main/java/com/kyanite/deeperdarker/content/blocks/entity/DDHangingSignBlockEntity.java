@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class DDHangingSignBlockEntity extends HangingSignBlockEntity {
-    public DDHangingSignBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(pPos, pBlockState);
+    public DDHangingSignBlockEntity(BlockPos pos, BlockState blockState) {
+        super(pos, blockState);
     }
 
     @Override

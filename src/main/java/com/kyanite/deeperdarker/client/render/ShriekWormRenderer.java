@@ -13,12 +13,12 @@ public class ShriekWormRenderer extends MobRenderer<ShriekWorm, ShriekWormModel>
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("shriek_worm"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/shriek_worm.png");
 
-    public ShriekWormRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new ShriekWormModel(pContext.bakeLayer(MODEL)), 1.2f);
+    public ShriekWormRenderer(EntityRendererProvider.Context context) {
+        super(context, new ShriekWormModel(context.bakeLayer(MODEL)), 1.2f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ShriekWorm pEntity) {
+    public ResourceLocation getTextureLocation(ShriekWorm entity) {
         return TEXTURE;
     }
 }

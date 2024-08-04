@@ -16,8 +16,8 @@ public class RotatedFlammableBlock extends RotatedPillarBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public RotatedFlammableBlock(Properties pProperties, int flammability, int spread) {
-        super(pProperties);
+    public RotatedFlammableBlock(Properties properties, int flammability, int spread) {
+        super(properties);
         this.FLAMMABILITY = flammability;
         this.SPREAD = spread;
     }

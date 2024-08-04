@@ -22,15 +22,15 @@ public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
     private final List<Direction> DIRECTIONS = Arrays.stream(Direction.values()).filter(direction -> direction.get3DDataValue() > 0).toList();
     private final List<Direction> history = new ArrayList<>(Stream.generate(() -> Direction.UP).limit(5).toList());
 
-    public BloomingStemFeature(Codec<NoneFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public BloomingStemFeature(Codec<NoneFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
-        RandomSource random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
+        RandomSource random = context.random();
 
         if(!level.getBlockState(origin.below()).is(DDBlocks.BLOOMING_SCULK_STONE.get())) return false;
         if(!level.getBlockState(origin.above()).isAir()) return false;

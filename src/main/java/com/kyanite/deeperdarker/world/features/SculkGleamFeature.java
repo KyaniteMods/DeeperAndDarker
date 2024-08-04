@@ -13,15 +13,15 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
-    public SculkGleamFeature(Codec<NoneFeatureConfiguration> pCodec) {
-        super(pCodec);
+    public SculkGleamFeature(Codec<NoneFeatureConfiguration> codec) {
+        super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> pContext) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
-        RandomSource random = pContext.random();
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
+        RandomSource random = context.random();
 
         if(level.isEmptyBlock(origin)) {
             BlockState state = level.getBlockState(origin.above());
