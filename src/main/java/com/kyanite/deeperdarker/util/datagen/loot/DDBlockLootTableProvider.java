@@ -172,6 +172,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.ICE_LILY);
         add(DDBlocks.ICE_LILY, this::iceLilyDrop);
         dropSelf(DDBlocks.LILY_FLOWER);
+        dropSelf(DDBlocks.SHATTERED_HEAD);
 
         ancientVaseDrop();
 

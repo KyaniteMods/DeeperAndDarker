@@ -229,6 +229,7 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
+        blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithoutBlockItem(DDBlocks.SHATTERED_HEAD);
     }
 
     @Override
@@ -304,6 +305,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SHRIEK_WORM_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.STALKER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
+        ModelTemplates.SKULL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SHATTERED_HEAD.asItem()), TextureMapping.particle(DDBlocks.SHATTERED_HEAD), itemModelGenerator.output);
     }
 
     private static void createGildedLog(BlockModelGenerators blockModelGenerators, Block gildedLog, Block normalLog) {

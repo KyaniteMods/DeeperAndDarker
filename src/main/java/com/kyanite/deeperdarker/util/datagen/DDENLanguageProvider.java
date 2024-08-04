@@ -174,6 +174,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(Util.makeDescriptionId("tooltips", BuiltInRegistries.BLOCK.getKey(DDBlocks.ICE_LILY)) + ".flowerless", "Flowerless");
         translationBuilder.add(DDBlocks.LILY_FLOWER, "Lily Flower");
         translationBuilder.add(DDItems.LILY_FLOWER, "Lily Flower");
+        translationBuilder.add(DDBlocks.SHATTERED_HEAD, "Shattered Head");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");

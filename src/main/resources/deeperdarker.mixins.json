@@ -17,6 +17,7 @@
   ],
   "client": [
     "PhantomRendererMixin",
+    "ShatteredHeadRenderMixin",
     "ShowHangingSignScreenMixin",
     "ShowHangingSignScreenMixin$ClientAccessor"
   ],

@@ -227,6 +227,14 @@
     ],
     "subtitle": "subtitles.item.transmitter.unlink"
   },
+  "block.note_block.imitate.shattered": {
+    "sounds": [
+      "deeperdarker:entity/shattered/ambient1",
+      "deeperdarker:entity/shattered/ambient2",
+      "deeperdarker:entity/shattered/ambient3"
+    ],
+    "subtitle": "subtitles.entity.shattered.ambient"
+  },
   "ambience.otherside": {
     "sounds": [
       "deeperdarker:ambience/warden_dreaming1",

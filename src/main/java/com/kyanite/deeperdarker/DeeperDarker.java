@@ -15,7 +15,6 @@ import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
-import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
@@ -35,17 +34,6 @@ public class DeeperDarker implements ModInitializer {
 
 	public static final boolean SHOW_ME_YOUR_SKIN = FabricLoader.getInstance().isModLoaded("showmeyourskin");
 
-	public static final PortalLink PORTAL_LINK = CustomPortalBuilder.beginPortal()
-			.customFrameTester(OTHERSIDE_FRAME_TESTER)
-			.frameBlock(Blocks.REINFORCED_DEEPSLATE)
-			.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-			.destDimID(DeeperDarker.id("otherside"))
-			.tintColor(5, 98, 93)
-			.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-			.forcedSize(8, 4)
-			.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
-			.registerPortal();
-
 	public static final DDConfig CONFIG = DDConfig.createAndLoad();
 
 	@Override
@@ -60,6 +48,17 @@ public class DeeperDarker implements ModInitializer {
 		DDBlockEntities.init();
 		DDEffects.init();
 		DDPaintingVariants.init();
+
+		CustomPortalBuilder.beginPortal()
+				.customFrameTester(OTHERSIDE_FRAME_TESTER)
+				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
+				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
+				.destDimID(id("otherside"))
+				.tintColor(5, 98, 93)
+				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
+				.forcedSize(8, 4)
+				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
+				.registerPortal();
 
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 

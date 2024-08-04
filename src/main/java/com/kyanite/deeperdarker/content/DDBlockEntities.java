@@ -5,11 +5,11 @@ import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEn
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.mojang.datafixers.types.Type;
+import com.kyanite.deeperdarker.content.entities.blocks.DDSkullBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -18,6 +18,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<DDHangingSignBlockEntity> HANGING_SIGN;
     public static final BlockEntityType<DDSignBlockEntity> SIGN;
     public static final BlockEntityType<CrystallizedAmberBlockEntity> CRYSTALLIZED_AMBER;
+    public static final BlockEntityType<DDSkullBlockEntity> SKULL;
 
     static {
         HANGING_SIGN = create("hanging_sign", BlockEntityType.Builder.of(
@@ -33,6 +34,10 @@ public class DDBlockEntities {
         CRYSTALLIZED_AMBER = create("crystallized_amber", BlockEntityType.Builder.of(
                 CrystallizedAmberBlockEntity::new,
                 DDBlocks.CRYSTALLIZED_AMBER
+        ));
+        SKULL = create("skull", BlockEntityType.Builder.of(
+                DDSkullBlockEntity::new,
+                DDBlocks.SHATTERED_HEAD
         ));
     }
 
