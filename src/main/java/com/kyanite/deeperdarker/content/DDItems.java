@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.util.DDTiers;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -78,6 +79,8 @@ public class DDItems {
     public static final Item BLOOM_HANGING_SIGN = register("bloom_hanging_sign", new HangingSignItem(DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
 
     public static final Item BLOOM_BERRIES = register("bloom_berries", new ItemNameBlockItem(DDBlocks.GLOWING_VINES, new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).effect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f).build())));
+
+    public static final Item SHATTERED_HEAD = register("shattered_head", new StandingAndWallBlockItem(DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD, new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, DeeperDarker.id(id), item);

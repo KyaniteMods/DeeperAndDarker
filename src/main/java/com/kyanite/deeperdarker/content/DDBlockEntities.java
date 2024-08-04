@@ -37,7 +37,8 @@ public class DDBlockEntities {
         ));
         SKULL = create("skull", BlockEntityType.Builder.of(
                 DDSkullBlockEntity::new,
-                DDBlocks.SHATTERED_HEAD
+                DDBlocks.SHATTERED_HEAD,
+                DDBlocks.SHATTERED_WALL_HEAD
         ));
     }
 
