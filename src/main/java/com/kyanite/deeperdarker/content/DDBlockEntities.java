@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
+import com.kyanite.deeperdarker.content.entities.blocks.DDSkullBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
@@ -18,6 +19,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<DDHangingSignBlockEntity> HANGING_SIGN;
     public static final BlockEntityType<DDSignBlockEntity> SIGN;
     public static final BlockEntityType<CrystallizedAmberBlockEntity> CRYSTALLIZED_AMBER;
+    public static final BlockEntityType<DDSkullBlockEntity> SKULL;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -33,6 +35,10 @@ public class DDBlockEntities {
         CRYSTALLIZED_AMBER = create("crystallized_amber", FabricBlockEntityTypeBuilder.create(
                 CrystallizedAmberBlockEntity::new,
                 DDBlocks.CRYSTALLIZED_AMBER
+        ));
+        SKULL = create("skull", FabricBlockEntityTypeBuilder.create(
+                DDSkullBlockEntity::new,
+                DDBlocks.SHATTERED_HEAD
         ));
     }
 

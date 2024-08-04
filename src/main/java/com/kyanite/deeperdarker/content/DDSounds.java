@@ -50,6 +50,8 @@ public class DDSounds {
     public static final SoundEvent TRANSMITTER_OPEN = register("item.sculk_transmitter.open");
     public static final SoundEvent TRANSMITTER_UNLINK = register("item.sculk_transmitter.unlink");
 
+    public static final Holder.Reference<SoundEvent> NOTE_BLOCK_IMITATE_SHATTERED = registerReference("block.note_block.imitate.shattered");
+
     public static final Holder.Reference<SoundEvent> AMBIENT_OTHERSIDE_ADDITIONS = registerReference("ambience.otherside");
     public static final Holder.Reference<SoundEvent> MUSIC_ARRIVAL = registerReference("music.deeperdarker.arrival");
     public static final Holder.Reference<SoundEvent> MUSIC_BIOME_ECHOING_FOREST = registerReference("music.deeperdarker.echoing_forest");
