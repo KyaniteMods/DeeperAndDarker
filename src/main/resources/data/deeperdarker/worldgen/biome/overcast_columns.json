@@ -1,19 +1,24 @@
 {
-  "carvers": {},
+  "carvers": {
+    "air": [
+      "deeperdarker:cave",
+      "deeperdarker:low_cave"
+    ]
+  },
   "downfall": 0.2,
   "effects": {
     "fog_color": 4663576,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
-      "sound": "deeperdarker:ambience.otherside",
+      "sound": "deeperdarker:ambient.otherside.additions",
       "tick_delay": 6000
     },
     "music": {
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "deeperdarker:music.deeperdarker.overcast_columns"
+      "sound": "deeperdarker:music.otherside.overcast_columns"
     },
     "particle": {
       "options": {
