@@ -1,4 +1,4 @@
-// 1.21	2024-07-16T00:10:50.1086171	Tags for minecraft:block mod id deeperdarker
+// 1.21	2024-08-04T12:12:17.7582845	Tags for minecraft:block mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/block/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/block/ores/copper.json
@@ -43,6 +43,7 @@ d395a25aa3fe9b9eebdd889fdeaf79dca911933e data/minecraft/tags/block/mineable/axe.
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/block/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/block/needs_iron_tool.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/block/needs_stone_tool.json
+36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/minecraft/tags/block/occludes_vibration_signals.json
 e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/block/planks.json
 13a245a5893017869e72dad467448d97fbd2d6d1 data/minecraft/tags/block/portals.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/block/redstone_ores.json

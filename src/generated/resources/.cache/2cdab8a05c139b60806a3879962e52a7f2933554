@@ -1,4 +1,4 @@
-// 1.21	2024-07-14T16:12:38.3699696	Item Models: deeperdarker
+// 1.21	2024-08-04T12:12:17.7582845	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -159,6 +159,7 @@ b2ae613daab1455a4ca75d5a9236e890273ff98d assets/deeperdarker/models/item/sonorou
 dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_dust.json
 81292e1dcd08c5acb8510858c469222853fdf9ab assets/deeperdarker/models/item/soul_elytra.json
 7fa6b2d8c37ca5af719a2aeea3c2c4311b735068 assets/deeperdarker/models/item/soul_elytra_broken.json
+5a0f42248c24e18527a9261564d9dfd49d1333a1 assets/deeperdarker/models/item/soundproof_glass.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/stalker_spawn_egg.json
 0fa27e2285f8c3bb629d19749e635c0f0e2b9a57 assets/deeperdarker/models/item/stripped_blooming_stem.json
 04907d0efc2cb0e4a7521a64a3f88c16d28acf89 assets/deeperdarker/models/item/stripped_echo_log.json
