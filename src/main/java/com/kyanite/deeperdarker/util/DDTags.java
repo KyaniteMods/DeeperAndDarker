@@ -33,6 +33,7 @@ public class DDTags {
         public static final TagKey<Block> INFINIBURN_OTHERSIDE = TagKey.create(Registries.BLOCK, DeeperDarker.id("infiniburn_otherside"));
         public static final TagKey<Block> INCORRECT_FOR_RESONARIUM_TOOL = TagKey.create(Registries.BLOCK, DeeperDarker.id("incorrect_for_resonarium_tool"));
         public static final TagKey<Block> INCORRECT_FOR_WARDEN_TOOL = TagKey.create(Registries.BLOCK, DeeperDarker.id("incorrect_for_warden_tool"));
+        public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = TagKey.create(Registries.BLOCK, DeeperDarker.id("otherside_carver_replaceables"));
     }
 
     public static class Items {
