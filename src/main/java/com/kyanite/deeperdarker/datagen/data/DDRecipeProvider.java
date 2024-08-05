@@ -108,15 +108,23 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
         chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICK_SLAB.get())).unlockedBy("has_gloomslate_slab", has(DDBlocks.GLOOMSLATE_BRICK_SLAB.get())).save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME.get()).define('G', DDItems.GRIME_BALL.get()).pattern("GG").pattern("GG").unlockedBy("has_grime_ball", has(DDItems.GRIME_BALL.get())).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS.get()).define('G', DDItems.GRIME_BRICK.get()).pattern("GG").pattern("GG").unlockedBy("has_grime_brick", has(DDItems.GRIME_BRICK.get())).save(output);
+        twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME, DDItems.GRIME_BALL);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS.get())
+                .define('G', DDItems.GRIME_BRICK.get())
+                .pattern("GG").pattern("GG")
+                .unlockedBy("has_grime_brick", has(DDItems.GRIME_BRICK.get())).save(output);
         stairBuilder(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_GRIME_BRICKS.get())).unlockedBy("has_sculk_grime_bricks", has(DDBlocks.SCULK_GRIME_BRICKS.get())).save(output);
         slab(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), DDBlocks.SCULK_GRIME_BRICKS.get());
         wall(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_WALL.get(), DDBlocks.SCULK_GRIME_BRICKS.get());
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SOUNDPROOF_GLASS, 2)
+                .define('S', DDItems.SOUL_DUST).define('G', Items.GLASS)
+                .pattern(" S ").pattern("SGS").pattern(" S ")
+                .unlockedBy(getHasName(DDItems.SOUL_DUST), has(DDItems.SOUL_DUST)).save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA.get())
-                .define('S', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('B', DDItems.SCULK_BONE.get()).define('E', Items.ELYTRA)
-                .pattern("BSB").pattern("DED").pattern("B B")
+                .define('B', DDItems.SCULK_BONE.get()).define('C', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('E', Items.ELYTRA)
+                .pattern("BCB").pattern("DED").pattern("B B")
                 .unlockedBy("has_elytra", has(Items.ELYTRA)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE.get()).define('E', Items.ECHO_SHARD)
@@ -124,10 +132,10 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE.get())).save(output);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.SCULK);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
-                .define('B', DDItems.SCULK_BONE).define('H', DDItems.HEART_OF_THE_DEEP).define('R', Items.REDSTONE).define('S', DDItems.REINFORCED_ECHO_SHARD).define('G', Items.GLOWSTONE_DUST)
-                .pattern(" RS").pattern(" HG").pattern("B  ")
+                .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('H', DDItems.HEART_OF_THE_DEEP)
+                .pattern(" CH").pattern(" BC").pattern("B  ")
                 .unlockedBy(getHasName(DDItems.SCULK_BONE), has(DDItems.SCULK_BONE))
-                .unlockedBy(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD))
+                .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL), has(DDItems.SOUL_CRYSTAL))
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
     }
 

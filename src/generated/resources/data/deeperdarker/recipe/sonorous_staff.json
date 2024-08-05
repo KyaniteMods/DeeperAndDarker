@@ -5,22 +5,16 @@
     "B": {
       "item": "deeperdarker:sculk_bone"
     },
-    "G": {
-      "item": "minecraft:glowstone_dust"
+    "C": {
+      "item": "deeperdarker:soul_crystal"
     },
     "H": {
       "item": "deeperdarker:heart_of_the_deep"
-    },
-    "R": {
-      "item": "minecraft:redstone"
-    },
-    "S": {
-      "item": "deeperdarker:reinforced_echo_shard"
     }
   },
   "pattern": [
-    " RS",
-    " HG",
+    " CH",
+    " BC",
     "B  "
   ],
   "result": {
