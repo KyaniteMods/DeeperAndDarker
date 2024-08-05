@@ -33,6 +33,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -143,11 +144,14 @@ public class DeeperDarkerEvents {
 
     @SubscribeEvent
     public static void livingDamageEvent(final LivingDamageEvent.Pre event) {
+        if(event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
+
         AtomicReference<Float> incoming = new AtomicReference<>(event.getOriginalDamage());
         float reduction = incoming.get() / 4;
         event.getEntity().getArmorSlots().forEach(stack -> {
             if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
                 incoming.updateAndGet(f -> f - reduction);
+                stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), event.getEntity(), stack.getEquipmentSlot());
             }
         });
         event.setNewDamage(incoming.get());
@@ -157,7 +161,7 @@ public class DeeperDarkerEvents {
     public static void armorHurtEvent(final ArmorHurtEvent event) {
         event.getArmorMap().forEach((equipmentSlot, armorEntry) -> {
             if(event.getArmorItemStack(equipmentSlot).getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
-                armorEntry.newDamage = armorEntry.originalDamage * 4;
+                armorEntry.newDamage = 0;
             }
         });
     }
