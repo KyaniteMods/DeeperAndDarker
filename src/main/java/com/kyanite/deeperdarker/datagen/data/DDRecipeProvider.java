@@ -106,20 +106,31 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
         chiseledBuilder(RecipeCategory.BUILDING_BLOCKS, DDBlocks.CHISELED_GLOOMSLATE.get(), Ingredient.of(DDBlocks.GLOOMSLATE_BRICK_SLAB.get())).unlockedBy("has_gloomslate_slab", has(DDBlocks.GLOOMSLATE_BRICK_SLAB.get())).save(writer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME.get()).define('G', DDItems.GRIME_BALL.get()).pattern("GG").pattern("GG").unlockedBy("has_grime_ball", has(DDItems.GRIME_BALL.get())).save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS.get()).define('G', DDItems.GRIME_BRICK.get()).pattern("GG").pattern("GG").unlockedBy("has_grime_brick", has(DDItems.GRIME_BRICK.get())).save(writer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME.get())
+                .define('G', DDItems.GRIME_BALL.get())
+                .pattern("GG").pattern("GG")
+                .unlockedBy("has_grime_ball", has(DDItems.GRIME_BALL.get())).save(writer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS.get())
+                .define('G', DDItems.GRIME_BRICK.get())
+                .pattern("GG").pattern("GG")
+                .unlockedBy("has_grime_brick", has(DDItems.GRIME_BRICK.get())).save(writer);
         stairBuilder(DDBlocks.SCULK_GRIME_BRICK_STAIRS.get(), Ingredient.of(DDBlocks.SCULK_GRIME_BRICKS.get())).unlockedBy("has_sculk_grime_bricks", has(DDBlocks.SCULK_GRIME_BRICKS.get())).save(writer);
         slab(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), DDBlocks.SCULK_GRIME_BRICKS.get());
         wall(writer, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_WALL.get(), DDBlocks.SCULK_GRIME_BRICKS.get());
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SOUNDPROOF_GLASS.get(), 2)
+                .define('S', DDItems.SOUL_DUST.get()).define('G', Items.GLASS)
+                .pattern(" S ").pattern("SGS").pattern(" S ")
+                .unlockedBy(getHasName(DDItems.SOUL_DUST.get()), has(DDItems.SOUL_DUST.get())).save(writer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA.get())
                 .define('S', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('B', DDItems.SCULK_BONE.get()).define('E', Items.ELYTRA)
                 .pattern("BDB").pattern("DED").pattern("BSB")
-                .unlockedBy("has_elytra", has(Items.ELYTRA)).save(writer);
+                .unlockedBy(getHasName(Items.ELYTRA), has(Items.ELYTRA)).save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE.get()).define('E', Items.ECHO_SHARD)
                 .pattern("PCP").pattern("CEC").pattern("PCP")
-                .unlockedBy("has_warden_carapace", has(DDItems.WARDEN_CARAPACE.get())).save(writer);
+                .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE.get()), has(DDItems.WARDEN_CARAPACE.get())).save(writer);
         copySmithingTemplate(writer, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.SCULK);
     }
 
