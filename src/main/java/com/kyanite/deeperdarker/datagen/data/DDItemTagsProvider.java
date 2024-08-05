@@ -78,10 +78,12 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.DURABILITY_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
 
-        tag(ItemTags.HEAD_ARMOR).add(DDItems.RESONARIUM_HELMET.get(), DDItems.WARDEN_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.WARDEN_CHESTPLATE.get());
-        tag(ItemTags.LEG_ARMOR).add(DDItems.RESONARIUM_LEGGINGS.get(), DDItems.WARDEN_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(DDItems.RESONARIUM_BOOTS.get(), DDItems.WARDEN_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR).add(DDItems.WARDEN_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(DDItems.WARDEN_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(DDItems.WARDEN_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(DDItems.WARDEN_BOOTS.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(DDItems.RESONARIUM_HELMET.get(), DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.RESONARIUM_LEGGINGS.get(), DDItems.RESONARIUM_BOOTS.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE).add(DDItems.RESONARIUM_HELMET.get(), DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.RESONARIUM_LEGGINGS.get(), DDItems.RESONARIUM_BOOTS.get());
 
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
     }
