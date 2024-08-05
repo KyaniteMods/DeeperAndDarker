@@ -13,6 +13,7 @@ import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
+import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
@@ -36,6 +37,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -56,9 +58,13 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = DeeperDarker.MOD_ID)
@@ -133,6 +139,27 @@ public class DeeperDarkerEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void livingDamageEvent(final LivingDamageEvent.Pre event) {
+        AtomicReference<Float> incoming = new AtomicReference<>(event.getOriginalDamage());
+        float reduction = incoming.get() / 4;
+        event.getEntity().getArmorSlots().forEach(stack -> {
+            if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
+                incoming.updateAndGet(f -> f - reduction);
+            }
+        });
+        event.setNewDamage(incoming.get());
+    }
+
+    @SubscribeEvent
+    public static void armorHurtEvent(final ArmorHurtEvent event) {
+        event.getArmorMap().forEach((equipmentSlot, armorEntry) -> {
+            if(event.getArmorItemStack(equipmentSlot).getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
+                armorEntry.newDamage = armorEntry.originalDamage * 4;
+            }
+        });
     }
 
     @SubscribeEvent
