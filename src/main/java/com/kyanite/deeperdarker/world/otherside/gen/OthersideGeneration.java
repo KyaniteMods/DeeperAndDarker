@@ -35,10 +35,10 @@ public class OthersideGeneration {
 
     private static LevelStem levelStem(HolderGetter<Biome> biomes, HolderGetter<NoiseGeneratorSettings> noiseSettings, HolderGetter<DimensionType> dimensions) {
         NoiseBasedChunkGenerator chunkGenerator = new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(List.of(
-                Pair.of(Climate.parameters(-0.5f, -0.5f, 0f, 0f, 0f, 0f, 0f), biomes.getOrThrow(OthersideBiomes.DEEPLANDS)),
-                Pair.of(Climate.parameters(0.3f, 0.5f, 0f, 0.4f, 0f, 0f, 0f), biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST)),
-                Pair.of(Climate.parameters(-0.3f, 0.2f, 0f, 0.5f, 0f, 0f, 0f), biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS)),
-                Pair.of(Climate.parameters(0.6f, 0.2f, -0.4f, 0.2f, 0f, 0f, 0f), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))
+                Pair.of(Climate.parameters(-0.5f, -0.5f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.DEEPLANDS)),
+                Pair.of(Climate.parameters(0.3f, 0.5f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST)),
+                Pair.of(Climate.parameters(-0.3f, 0.2f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS)),
+                Pair.of(Climate.parameters(0.6f, 0.2f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))
         ))), noiseSettings.getOrThrow(OTHERSIDE_GENERATOR));
         return new LevelStem(dimensions.getOrThrow(OthersideDimension.OTHERSIDE), chunkGenerator);
     }

@@ -22,7 +22,7 @@
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
-            "erosion": 0.4,
+            "erosion": 0.0,
             "humidity": 0.5,
             "offset": 0.0,
             "temperature": 0.3,
@@ -34,7 +34,7 @@
           "parameters": {
             "continentalness": 0.0,
             "depth": 0.0,
-            "erosion": 0.5,
+            "erosion": 0.0,
             "humidity": 0.2,
             "offset": 0.0,
             "temperature": -0.3,
@@ -44,9 +44,9 @@
         {
           "biome": "deeperdarker:overcast_columns",
           "parameters": {
-            "continentalness": -0.4,
+            "continentalness": 0.0,
             "depth": 0.0,
-            "erosion": 0.2,
+            "erosion": 0.0,
             "humidity": 0.2,
             "offset": 0.0,
             "temperature": 0.6,
