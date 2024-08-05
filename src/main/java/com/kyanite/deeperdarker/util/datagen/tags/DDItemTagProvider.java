@@ -9,6 +9,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Arrays;
@@ -128,5 +129,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.DIAMOND_ORES, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
         add(ItemTags.SAPLINGS, DDBlocks.ECHO_SAPLING);
+
+        getOrCreateTagBuilder(DDTags.Items.PAINTINGS).add(Items.PAINTING);
     }
 }

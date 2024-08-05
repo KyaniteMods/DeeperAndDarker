@@ -1,4 +1,4 @@
-// 1.21	2024-08-12T15:39:32.1816774	Deeper and Darker/Tags for minecraft:item
+// 1.21	2024-08-12T17:06:09.384742294	Deeper and Darker/Tags for minecraft:item
 8793c7b135bd439d9ddbc1b7631addf273890f21 data/minecraft/tags/item/logs_that_burn.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/item/gold_ores.json
 e393a06b04acf4377285594bb65c749eb0c7f08d data/minecraft/tags/item/wooden_slabs.json
@@ -25,6 +25,7 @@ e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/item/planks.json
 64df223e6c00d8aa85e665727225a6f458e876a7 data/minecraft/tags/item/wooden_fences.json
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/item/fence_gates.json
 828ad83b431bb94c090ae2c19a590f9f05e876ea data/minecraft/tags/item/boats.json
+ef6a7182fa47d054f3a27b406fbb300f506c3763 data/deeperdarker/tags/item/paintings.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/item/lapis_ores.json
 037b4dd15b09210bd95105d7b9a9bc1333967be7 data/minecraft/tags/item/wooden_trapdoors.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/item/emerald_ores.json
