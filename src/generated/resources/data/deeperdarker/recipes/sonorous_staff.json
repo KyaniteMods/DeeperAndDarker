@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "equipment",
   "key": {
     "B": {
       "item": "deeperdarker:sculk_bone"
@@ -8,20 +8,17 @@
     "C": {
       "item": "deeperdarker:soul_crystal"
     },
-    "D": {
-      "item": "deeperdarker:soul_dust"
-    },
-    "E": {
-      "item": "minecraft:elytra"
+    "H": {
+      "item": "deeperdarker:heart_of_the_deep"
     }
   },
   "pattern": [
-    "BCB",
-    "DED",
-    "B B"
+    " CH",
+    " BC",
+    "B  "
   ],
   "result": {
-    "item": "deeperdarker:soul_elytra"
+    "item": "deeperdarker:sonorous_staff"
   },
   "show_notification": true
 }

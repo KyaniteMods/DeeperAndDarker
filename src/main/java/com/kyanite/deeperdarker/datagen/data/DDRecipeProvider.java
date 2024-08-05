@@ -124,14 +124,20 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy(getHasName(DDItems.SOUL_DUST.get()), has(DDItems.SOUL_DUST.get())).save(writer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA.get())
-                .define('S', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('B', DDItems.SCULK_BONE.get()).define('E', Items.ELYTRA)
-                .pattern("BDB").pattern("DED").pattern("BSB")
+                .define('B', DDItems.SCULK_BONE.get()).define('C', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('E', Items.ELYTRA)
+                .pattern("BCB").pattern("DED").pattern("B B")
                 .unlockedBy(getHasName(Items.ELYTRA), has(Items.ELYTRA)).save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE.get()).define('E', Items.ECHO_SHARD)
                 .pattern("PCP").pattern("CEC").pattern("PCP")
                 .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE.get()), has(DDItems.WARDEN_CARAPACE.get())).save(writer);
         copySmithingTemplate(writer, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.SCULK);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF.get())
+                .define('B', DDItems.SCULK_BONE.get()).define('C', DDItems.SOUL_CRYSTAL.get()).define('H', DDItems.HEART_OF_THE_DEEP.get())
+                .pattern(" CH").pattern(" BC").pattern("B  ")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE.get()), has(DDItems.SCULK_BONE.get()))
+                .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL.get()), has(DDItems.SOUL_CRYSTAL.get()))
+                .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP.get()), has(DDItems.HEART_OF_THE_DEEP.get())).save(writer);
     }
 
     private void addCookingRecipes(Consumer<FinishedRecipe> writer) {
