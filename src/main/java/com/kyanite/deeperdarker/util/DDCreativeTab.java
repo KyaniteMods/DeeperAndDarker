@@ -116,6 +116,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.GLOOMY_GEYSER);
             event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
+            event.accept(DDBlocks.SOUNDPROOF_GLASS);
 
             event.accept(DDBlocks.SCULK_STONE_COAL_ORE);
             event.accept(DDBlocks.SCULK_STONE_IRON_ORE);

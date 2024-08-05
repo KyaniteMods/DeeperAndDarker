@@ -85,6 +85,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SMALL_FLOWERS).add(DDBlocks.LILY_FLOWER.get());
         tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.GLOWING_FLOWERS.get(), DDBlocks.ICE_LILY.get());
         tag(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS.get(), DDBlocks.SCULK_TENDRILS_PLANT.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.GLOWING_VINES.get(), DDBlocks.GLOWING_VINES_PLANT.get());
+        tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(DDBlocks.SOUNDPROOF_GLASS.get());
         tag(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL.get());
 
         tag(Tags.Blocks.STONE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get());
