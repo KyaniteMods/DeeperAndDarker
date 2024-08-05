@@ -95,7 +95,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
         add("painting." + DeeperDarker.MOD_ID + ".adventure.title", "Adventure");
         add("painting." + DeeperDarker.MOD_ID + ".adventure.author", "Pedro Ricardo");
-        add("painting." + DeeperDarker.MOD_ID + ".carrot.title", "Carrot");
+        add("painting." + DeeperDarker.MOD_ID + ".carrot.title", "Back to Your Roots");
         add("painting." + DeeperDarker.MOD_ID + ".carrot.author", "Pedro Ricardo");
         add("painting." + DeeperDarker.MOD_ID + ".clouds.title", "Clouds");
         add("painting." + DeeperDarker.MOD_ID + ".clouds.author", "Pedro Ricardo");
