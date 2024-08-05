@@ -11,21 +11,21 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_reinforced_echo_shard": {
-      "conditions": {
-        "items": [
-          {
-            "items": "deeperdarker:reinforced_echo_shard"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_sculk_bone": {
       "conditions": {
         "items": [
           {
             "items": "deeperdarker:sculk_bone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soul_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:soul_crystal"
           }
         ]
       },
@@ -42,7 +42,7 @@
     [
       "has_the_recipe",
       "has_sculk_bone",
-      "has_reinforced_echo_shard",
+      "has_soul_crystal",
       "has_heart_of_the_deep"
     ]
   ],
