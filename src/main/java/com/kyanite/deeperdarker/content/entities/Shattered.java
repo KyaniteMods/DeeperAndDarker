@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
@@ -20,8 +21,10 @@ import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
 import net.minecraft.world.level.gameevent.EntityPositionSource;
@@ -108,6 +111,16 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
             if(!this.attackState.isStarted() && !this.idleState.isStarted()) {
                 this.idleState.start(this.tickCount);
             }
+        }
+    }
+
+    @Override
+    protected void dropCustomDeathLoot(DamageSource damageSource, int i, boolean bl) {
+        super.dropCustomDeathLoot(damageSource, i, bl);
+        Entity entity = damageSource.getEntity();
+        if (entity instanceof Creeper creeper && creeper.canDropMobsSkull()) {
+            creeper.increaseDroppedSkulls();
+            this.spawnAtLocation(DDItems.SHATTERED_HEAD);
         }
     }
 
