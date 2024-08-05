@@ -1,4 +1,4 @@
-// 1.20.4	2024-08-04T16:27:50.158955619	Deeper and Darker/Tags for minecraft:item
+// 1.20.4	2024-08-05T14:53:59.970117274	Deeper and Darker/Tags for minecraft:item
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/items/wooden_pressure_plates.json
 0798dcd46f923bbbe9fa58f204156231818b56d7 data/minecraft/tags/items/swords.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
@@ -15,6 +15,7 @@ c042d2921526d56ca039457fd44638d0e03ff543 data/minecraft/tags/items/fence_gates.j
 a97e3cb5a044bff5590dbf6589d9c5e6b6889a35 data/minecraft/tags/items/planks.json
 73fb4dd9e0fa52c4333922e7e91553d2e94d4b83 data/minecraft/tags/items/axes.json
 a80782ad2aab1d6a87e5125ec63b62424ee43dcc data/minecraft/tags/items/slabs.json
+28c2c761da7bac5fefe1df9ae8edf277cb9b2a76 data/deeperdarker/tags/items/paintings.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data/deeperdarker/tags/items/echo_logs.json
 5eab59aeb251bf0914609c90236404b844d1e7d3 data/minecraft/tags/items/wooden_fences.json
 d66ce7e40de1eb71f66df7115f2b61edce3c22d5 data/minecraft/tags/items/wooden_stairs.json

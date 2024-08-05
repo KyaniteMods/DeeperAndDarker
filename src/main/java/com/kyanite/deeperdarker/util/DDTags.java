@@ -46,6 +46,9 @@ public class DDTags {
 
         public static final TagKey<Item> AVOIDS_SNIFFING = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "avoids_sniffing"));
+
+        public static final TagKey<Item> PAINTINGS = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "paintings"));
     }
 
     public static class Biomes {

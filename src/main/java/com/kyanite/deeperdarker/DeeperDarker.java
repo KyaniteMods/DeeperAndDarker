@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
+import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.util.DDPaintingVariants;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -53,6 +54,7 @@ public class DeeperDarker implements ModInitializer {
 		DDBlockEntities.init();
 		DDEffects.init();
 		DDPaintingVariants.init();
+		DDLootItemFunctions.init();
 
 		CustomPortalBuilder.beginPortal()
 				.customFrameTester(OTHERSIDE_FRAME_TESTER)
