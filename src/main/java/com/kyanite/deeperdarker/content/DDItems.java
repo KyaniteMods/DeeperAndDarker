@@ -61,10 +61,10 @@ public class DDItems {
     public static final RegistryObject<Item> RESONARIUM_AXE = ITEMS.register("resonarium_axe", () -> new AxeItem(DDTiers.RESONARIUM, 5, -3, new Item.Properties()));
     public static final RegistryObject<Item> RESONARIUM_HOE = ITEMS.register("resonarium_hoe", () -> new HoeItem(DDTiers.RESONARIUM, -4, 0, new Item.Properties()));
     public static final RegistryObject<Item> RESONARIUM_SWORD = ITEMS.register("resonarium_sword", () -> new SwordItem(DDTiers.RESONARIUM, 3, -2.4f, new Item.Properties()));
-    public static final RegistryObject<Item> RESONARIUM_HELMET = ITEMS.register("resonarium_helmet", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties()));
-    public static final RegistryObject<Item> RESONARIUM_CHESTPLATE = ITEMS.register("resonarium_chestplate", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-    public static final RegistryObject<Item> RESONARIUM_LEGGINGS = ITEMS.register("resonarium_leggings", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-    public static final RegistryObject<Item> RESONARIUM_BOOTS = ITEMS.register("resonarium_boots", () -> new ArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> RESONARIUM_HELMET = ITEMS.register("resonarium_helmet", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> RESONARIUM_CHESTPLATE = ITEMS.register("resonarium_chestplate", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> RESONARIUM_LEGGINGS = ITEMS.register("resonarium_leggings", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> RESONARIUM_BOOTS = ITEMS.register("resonarium_boots", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> WARDEN_SHOVEL = ITEMS.register("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final RegistryObject<Item> WARDEN_PICKAXE = ITEMS.register("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, 1, -2.8f, new Item.Properties().rarity(Rarity.RARE).fireResistant()));

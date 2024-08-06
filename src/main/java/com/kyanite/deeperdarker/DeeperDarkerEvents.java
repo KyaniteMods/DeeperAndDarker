@@ -17,6 +17,7 @@ import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
+import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
@@ -32,10 +33,12 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -47,12 +50,15 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.network.PacketDistributor;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = DeeperDarker.MOD_ID)
@@ -115,6 +121,22 @@ public class DeeperDarkerEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void livingDamageEvent(final LivingDamageEvent event) {
+        if(event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
+
+        AtomicReference<Float> incoming = new AtomicReference<>(event.getAmount());
+        float reduction = incoming.get() / 4;
+        event.getEntity().getArmorSlots().forEach(stack -> {
+            if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().getName().equals(DDArmorMaterials.RESONARIUM.getName())) {
+                incoming.updateAndGet(f -> f - reduction);
+                int hurt = (int) (event.getAmount() / 1.5f) - (int) (event.getAmount() / 4);
+                stack.hurtAndBreak(hurt, event.getEntity(), entity -> entity.broadcastBreakEvent(stack.getEquipmentSlot()));
+            }
+        });
+        event.setAmount(incoming.get());
     }
 
     @SubscribeEvent
