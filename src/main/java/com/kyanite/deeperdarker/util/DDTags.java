@@ -8,6 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -48,6 +49,7 @@ public class DDTags {
 
     public static class Misc {
         public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, DeeperDarker.rl("has_structure/ancient_temple"));
+        public static final TagKey<Enchantment> RESONARIUM_EXCLUDES = TagKey.create(Registries.ENCHANTMENT, DeeperDarker.rl("resonarium_excludes"));
         public static final TagKey<EntityType<?>> SCULK = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.rl("sculk"));
         public static final TagKey<EntityType<?>> SENSITIVE_TO_SCULK_SMITE = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.rl("sensitive_to_sculk_smite"));
         public static final TagKey<GameEvent> CHEST_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, DeeperDarker.rl("chest_vibrations"));

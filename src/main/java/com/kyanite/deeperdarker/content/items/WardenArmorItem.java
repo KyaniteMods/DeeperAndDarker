@@ -16,7 +16,6 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class WardenArmorItem extends ArmorItem {
@@ -41,10 +40,5 @@ public class WardenArmorItem extends ArmorItem {
                 if(player.hasEffect(MobEffects.DARKNESS)) player.removeEffect(MobEffects.DARKNESS);
             }
         }
-    }
-
-    @Override
-    public @Nullable EquipmentSlot getEquipmentSlot(ItemStack stack) {
-        return this.type.getSlot();
     }
 }

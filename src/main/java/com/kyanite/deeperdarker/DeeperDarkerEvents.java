@@ -8,12 +8,15 @@ import com.kyanite.deeperdarker.content.blocks.AncientVaseBlock;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
+import com.kyanite.deeperdarker.content.items.ResonariumArmorItem;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
+import com.kyanite.deeperdarker.util.DDTags;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
@@ -25,6 +28,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -35,9 +39,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.StringUtil;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -46,7 +52,9 @@ import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -58,6 +66,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.event.AnvilUpdateEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -171,6 +180,84 @@ public class DeeperDarkerEvents {
         if(!event.getSlot().isArmor()) return;
         if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
         if(event.getEntity() instanceof ServerPlayer player) PacketDistributor.sendToPlayer(player, new SoulElytraClientPacket(true));
+    }
+
+    @SubscribeEvent
+    public static void anvilEvent(final AnvilUpdateEvent event) {
+        ItemStack input = event.getLeft();
+        ItemStack addition = event.getRight();
+
+        if(!(input.getItem() instanceof ResonariumArmorItem)) return;
+        if(addition.is(DDItems.RESONARIUM)) {
+            ItemStack output = input.copy();
+            int diff = Math.min(output.getDamageValue(), output.getMaxDamage() / 4);
+            int cost = 0;
+            for(int i = 0; diff > 0 && i < addition.getCount(); i++) {
+                int damage = output.getDamageValue() - diff;
+                output.setDamageValue(damage);
+                diff = Math.min(damage, output.getMaxDamage() / 4);
+                cost++;
+            }
+
+            event.setOutput(output);
+            event.setCost(nameCost(event.getName(), input, cost, output));
+            return;
+        }
+        if(!addition.is(Items.ENCHANTED_BOOK)) return;
+        boolean client = event.getPlayer().level().isClientSide;
+
+        ItemEnchantments inputEnchants = EnchantmentHelper.getEnchantmentsForCrafting(input);
+        ItemEnchantments bookEnchants = EnchantmentHelper.getEnchantmentsForCrafting(addition);
+        ItemEnchantments.Mutable finalEnchants = new ItemEnchantments.Mutable(inputEnchants);
+        int cost = 0;
+
+        boolean noChange = true;
+        for(Object2IntMap.Entry<Holder<Enchantment>> entry : bookEnchants.entrySet()) {
+            Holder<Enchantment> enchantment = entry.getKey();
+            Enchantment enchant = enchantment.value();
+            int level = entry.getIntValue();
+            int existingLevel = inputEnchants.getLevel(enchantment);
+            level = level == existingLevel ? level + 1 : Math.max(level, existingLevel);
+            level = Math.min(level, enchant.getMaxLevel());
+
+            if(enchant.canEnchant(input) && !enchantment.is(DDTags.Misc.RESONARIUM_EXCLUDES)) {
+                finalEnchants.set(enchantment, level);
+                cost += enchant.getAnvilCost() * level;
+                noChange = false;
+            }
+        }
+
+        if(noChange) {
+            event.setCanceled(true);
+            return;
+        }
+
+        int inputRepair = input.getOrDefault(DataComponents.REPAIR_COST, 0);
+        int additionRepair = addition.getOrDefault(DataComponents.REPAIR_COST, 0);
+        int newRepairCost = AnvilMenu.calculateIncreasedRepairCost(Math.max(inputRepair, additionRepair));
+        cost = Math.clamp(cost + inputRepair + additionRepair, 0, Integer.MAX_VALUE);
+
+        ItemStack output = input.copy();
+        output.set(DataComponents.REPAIR_COST, newRepairCost);
+        EnchantmentHelper.setEnchantments(output, finalEnchants.toImmutable());
+
+        cost = nameCost(event.getName(), input, cost, output);
+
+        event.setOutput(output);
+        event.setCost(cost / 2);
+    }
+
+    private static int nameCost(String name, ItemStack input, int cost, ItemStack output) {
+        if(name != null && !StringUtil.isBlank(name)) {
+            if(!name.equals(input.getHoverName().getString())) {
+                cost++;
+                output.set(DataComponents.CUSTOM_NAME, Component.literal(name));
+            }
+        } else if(input.has(DataComponents.CUSTOM_NAME)) {
+            cost++;
+            output.remove(DataComponents.CUSTOM_NAME);
+        }
+        return cost;
     }
 
     @EventBusSubscriber(modid = DeeperDarker.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

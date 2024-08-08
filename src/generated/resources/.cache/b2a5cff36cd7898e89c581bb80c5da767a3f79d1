@@ -1,4 +1,4 @@
-// 1.21	2024-08-05T13:01:01.1159861	Tags for minecraft:item mod id deeperdarker
+// 1.21	2024-08-07T01:06:53.6821658	Tags for minecraft:item mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/item/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/item/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/item/ores/copper.json
@@ -14,7 +14,7 @@ a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/item/dampens_vib
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/item/echo_logs.json
 743e0bd68d3bd18829be7dd9766c3d77d2e81061 data/minecraft/tags/item/axes.json
 828ad83b431bb94c090ae2c19a590f9f05e876ea data/minecraft/tags/item/boats.json
-cd0c284256799e44917e495727d6befdd3b4515c data/minecraft/tags/item/chest_armor.json
+1eec4d64020f6c39dd18198ce2e63fa970059d3f data/minecraft/tags/item/chest_armor.json
 228936f18b279028fc9028a3e9fd11dbc0674eab data/minecraft/tags/item/chest_boats.json
 35edf6af55dc15babf01a19e8a9bfeb683aa7d22 data/minecraft/tags/item/cluster_max_harvestables.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/item/coal_ores.json
@@ -22,19 +22,18 @@ dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/item/copper_ores.js
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/item/diamond_ores.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/item/emerald_ores.json
 d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/durability.json
-bcbe54e00ab437a22d1e7f8e23f0821381d9715c data/minecraft/tags/item/enchantable/equippable.json
-bf1cfb52598938e82f9e3d0596c5dbb4017d89e0 data/minecraft/tags/item/enchantable/vanishing.json
+d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/equippable.json
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/item/fence_gates.json
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/item/flowers.json
-a84781beeff4cf18e5532d7e95fe62956c365027 data/minecraft/tags/item/foot_armor.json
+8b122eeb8b60fbcbe24049d43d3235c9b324bb67 data/minecraft/tags/item/foot_armor.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/item/gold_ores.json
 50da908af11841337ebd0926055c570946b9674e data/minecraft/tags/item/hanging_signs.json
-7f61d04c47afdea03496a2ecf268e2a58e08514e data/minecraft/tags/item/head_armor.json
+c4b9a00d1f842ab62fc22c75515a5c0746dff69d data/minecraft/tags/item/head_armor.json
 ee4ac82aede1cc887b0af174d32884fa1ced9c60 data/minecraft/tags/item/hoes.json
 08b0595e3c0290061ed898dfbeb230d6c4f95eeb data/minecraft/tags/item/iron_ores.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/item/lapis_ores.json
 65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/item/leaves.json
-27cdfe38cacfb8862c0f8e357fb2d87ebe2c214a data/minecraft/tags/item/leg_armor.json
+451cd1095452cd449c647f17647283aad60bbefc data/minecraft/tags/item/leg_armor.json
 35edf6af55dc15babf01a19e8a9bfeb683aa7d22 data/minecraft/tags/item/pickaxes.json
 e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/item/planks.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/item/redstone_ores.json
