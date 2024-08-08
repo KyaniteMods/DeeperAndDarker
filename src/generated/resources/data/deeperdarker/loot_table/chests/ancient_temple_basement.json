@@ -230,6 +230,16 @@
           "type": "minecraft:item",
           "functions": [
             {
+              "function": "minecraft:enchant_randomly",
+              "options": "deeperdarker:catalysis"
+            }
+          ],
+          "name": "minecraft:book"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
               "add": false,
               "count": {
                 "type": "minecraft:uniform",

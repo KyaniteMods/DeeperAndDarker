@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.data.loot;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -52,7 +53,7 @@ public record DDChestLoot(HolderLookup.Provider registries) implements LootTable
                         .add(loot(Items.BOOK, 8, 1, 2).apply(EnchantRandomlyFunction.randomApplicableEnchantment(this.registries)))
                         .add(loot(Items.ENCHANTED_GOLDEN_APPLE, 3, 1, 2))
                         .add(loot(Items.MUSIC_DISC_OTHERSIDE, 2))
-//                        .add(loot(Items.BOOK, 1).apply(EnchantRandomlyFunction.randomEnchantment().withEnchantment(enchantments.getOrThrow(DDEnchantments.CATALYSIS))))
+                        .add(loot(Items.BOOK, 1).apply(EnchantRandomlyFunction.randomEnchantment().withEnchantment(enchantments.getOrThrow(DDEnchantments.CATALYSIS))))
                         .add(loot(DDItems.WARDEN_CARAPACE.get(), 1, 1, 2))
                 ).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(2))
                         .add(loot(Items.POTION, 10).apply(SetPotionFunction.setPotion(Potions.STRONG_STRENGTH)))

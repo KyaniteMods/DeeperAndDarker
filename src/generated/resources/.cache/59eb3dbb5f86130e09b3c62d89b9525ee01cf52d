@@ -1,4 +1,4 @@
-// 1.21	2024-08-04T12:12:17.7746411	Loot Tables
+// 1.21	2024-08-07T12:51:01.3993669	Loot Tables
 bc6179f8206f619874471f98bbf66966c53d7ab3 data/deeperdarker/loot_table/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_table/blocks/blooming_moss_block.json
 83d5214bb3d38ec9ae0d4f6323a2757cc8cd9cdd data/deeperdarker/loot_table/blocks/blooming_sculk_stone.json
@@ -135,7 +135,7 @@ d43bfada9c0be7c041e6af15639f1d45aa9edec9 data/deeperdarker/loot_table/blocks/str
 7a7c0a1ec189c2be4fd8c34184f052ac229c841d data/deeperdarker/loot_table/blocks/stripped_echo_log.json
 79e2c7005ef09e9018e98290690f534fe596263f data/deeperdarker/loot_table/blocks/stripped_echo_wood.json
 a57e6c735938615ba96681d571cefd04dd3a87c2 data/deeperdarker/loot_table/chests/ancient_temple_apex.json
-7f69d0005d353b72695da0e0f8aa655a3ccd9fc0 data/deeperdarker/loot_table/chests/ancient_temple_basement.json
+ba996a6695d45c4fd504a9dc63a9fe4f42390193 data/deeperdarker/loot_table/chests/ancient_temple_basement.json
 10cda5bf2f9ef8df638154ea2d43f43bc032dad2 data/deeperdarker/loot_table/chests/ancient_temple_fountain.json
 dca56509a07a2eb5f662869366315401c0c5910b data/deeperdarker/loot_table/chests/ancient_temple_secret.json
 d41eeae40507e3d59fd9b702052a93959069a3f9 data/deeperdarker/loot_table/chests/ancient_temple_storage.json

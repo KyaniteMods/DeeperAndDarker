@@ -1,9 +1,12 @@
 package com.kyanite.deeperdarker.datagen.data;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.structures.DDStructures;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderGetter;
@@ -44,27 +47,27 @@ public class DDAdvancements implements AdvancementProvider.AdvancementGenerator 
         AdvancementHolder enterOtherside = Advancement.Builder.advancement().parent(killWarden).display(Blocks.REINFORCED_DEEPSLATE, Component.translatable(id + "enter_otherside.title"), Component.translatable(id + "enter_otherside.description"), null, AdvancementType.TASK, true, true, false)
                 .addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL)).save(saver, path("enter_otherside"), existingFileHelper);
 
-//        AdvancementHolder findAncientTemple = Advancement.Builder.advancement()
-//                .parent(enterOtherside)
-//                .display(DDBlocks.CUT_SCULK_STONE.get(), Component.translatable(id + "find_ancient_temple.title"), Component.translatable(id + "find_ancient_temple.description"), null, AdvancementType.GOAL, true, true, false)
-//                .addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE))))
-//                .rewards(AdvancementRewards.Builder.experience(50))
-//                .save(saver, path("find_ancient_temple"), existingFileHelper);
+        AdvancementHolder findAncientTemple = Advancement.Builder.advancement()
+                .parent(enterOtherside)
+                .display(DDBlocks.CUT_SCULK_STONE.get(), Component.translatable(id + "find_ancient_temple.title"), Component.translatable(id + "find_ancient_temple.description"), null, AdvancementType.GOAL, true, true, false)
+                .addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE))))
+                .rewards(AdvancementRewards.Builder.experience(50))
+                .save(saver, path("find_ancient_temple"), existingFileHelper);
 
-        Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SCULK_TRANSMITTER.get(), Component.translatable(id + "obtain_sculk_transmitter.title"), Component.translatable(id + "obtain_sculk_transmitter.description"), null, AdvancementType.TASK, true, true, false)
+        Advancement.Builder.advancement().parent(findAncientTemple).display(DDItems.SCULK_TRANSMITTER.get(), Component.translatable(id + "obtain_sculk_transmitter.title"), Component.translatable(id + "obtain_sculk_transmitter.description"), null, AdvancementType.TASK, true, true, false)
                 .addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER.get())).save(saver, path("obtain_sculk_transmitter"), existingFileHelper);
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.SONOROUS_STAFF.get(), Component.translatable(id + "obtain_sonorous_staff.title"), Component.translatable(id + "obtain_sonorous_staff.description"), null, AdvancementType.TASK, true, true, false)
                 .addCriterion("sonorous_staff", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SONOROUS_STAFF.get())).save(saver, path("obtain_sonorous_staff"), existingFileHelper);
 
-//        Advancement.Builder.advancement().parent(enterOtherside)
-//                .display(DDItems.WARDEN_BOOTS.get(), Component.translatable(id + "explore_otherside.title"), Component.translatable(id + "explore_otherside.description"), null, AdvancementType.CHALLENGE, true, true, false)
-//                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.DEEPLANDS))))
-//                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST))))
-//                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS))))
-//                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))))
-//                .requirements(AdvancementRequirements.Strategy.AND).rewards(AdvancementRewards.Builder.experience(300))
-//                .save(saver, path("explore_otherside"), existingFileHelper);
+        Advancement.Builder.advancement().parent(enterOtherside)
+                .display(DDItems.WARDEN_BOOTS.get(), Component.translatable(id + "explore_otherside.title"), Component.translatable(id + "explore_otherside.description"), null, AdvancementType.CHALLENGE, true, true, false)
+                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.DEEPLANDS))))
+                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST))))
+                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS))))
+                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))))
+                .requirements(AdvancementRequirements.Strategy.AND).rewards(AdvancementRewards.Builder.experience(300))
+                .save(saver, path("explore_otherside"), existingFileHelper);
 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_SWORD.get(), Component.translatable(id + "kill_all_sculk_mobs.title"), Component.translatable(id + "kill_all_sculk_mobs.description"), null, AdvancementType.CHALLENGE, true, true, false)
                 .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))

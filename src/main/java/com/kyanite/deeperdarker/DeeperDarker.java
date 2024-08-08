@@ -100,11 +100,11 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
 
-        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, event.getLookupProvider(), fileHelper, List.of(new DDAdvancements())));
-        generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, lookupProvider));
+        CompletableFuture<HolderLookup.Provider> newLookup = generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider)).getRegistryProvider();
+        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, newLookup, fileHelper, List.of(new DDAdvancements())));
+        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, newLookup));
+        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, newLookup));
+        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, newLookup));
     }
 
     private void registerPayloads(final RegisterPayloadHandlersEvent event) {

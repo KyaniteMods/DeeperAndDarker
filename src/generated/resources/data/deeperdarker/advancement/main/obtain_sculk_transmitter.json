@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/enter_otherside",
+  "parent": "deeperdarker:main/find_ancient_temple",
   "criteria": {
     "sculk_transmitter": {
       "conditions": {
