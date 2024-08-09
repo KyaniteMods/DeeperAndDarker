@@ -23,9 +23,9 @@ public class DDPotions {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering potions");
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.registerPotionRecipe(Potions.AWKWARD, Ingredient.of(DDItems.SOUL_CRYSTAL), SCULK_AFFINITY));
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.registerPotionRecipe(Potions.INVISIBILITY, Ingredient.of(DDItems.SOUL_DUST), SCULK_AFFINITY));
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.registerPotionRecipe(SCULK_AFFINITY, Ingredient.of(Items.REDSTONE), LONG_SCULK_AFFINITY));
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.registerPotionRecipe(Potions.LONG_INVISIBILITY, Ingredient.of(DDItems.SOUL_DUST), LONG_SCULK_AFFINITY));
+        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.addMix(Potions.AWKWARD, DDItems.SOUL_CRYSTAL, SCULK_AFFINITY));
+        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST, SCULK_AFFINITY));
+        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.addMix(SCULK_AFFINITY, Items.REDSTONE, LONG_SCULK_AFFINITY));
+        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> builder.addMix(Potions.LONG_INVISIBILITY, DDItems.SOUL_DUST, LONG_SCULK_AFFINITY));
     }
 }

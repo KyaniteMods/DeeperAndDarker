@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -20,9 +21,8 @@ public class IceLilyItem extends PlaceOnWaterBlockItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
-        CompoundTag tag = pStack.getTag();
-        if(tag != null && tag.contains("has_flower")) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless").withStyle(ChatFormatting.GRAY));
-        super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
+    public void appendHoverText(ItemStack pStack, @NotNull TooltipContext pContext, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
+        if(pStack.getOrDefault(DDDataComponents.HAS_FLOWER, false)) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless").withStyle(ChatFormatting.GRAY));
+        super.appendHoverText(pStack, pContext, pTooltip, pFlag);
     }
 }

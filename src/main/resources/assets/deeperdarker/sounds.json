@@ -235,7 +235,7 @@
     ],
     "subtitle": "subtitles.entity.shattered.ambient"
   },
-  "ambience.otherside": {
+  "ambient.otherside.additions": {
     "sounds": [
       "deeperdarker:ambience/warden_dreaming1",
       "deeperdarker:ambience/warden_dreaming2",
@@ -243,17 +243,17 @@
     ],
     "subtitle": "subtitles.ambience.otherside"
   },
-  "music.deeperdarker.arrival": {
+  "music.otherside.deeplands": {
     "sounds": [
-      "deeperdarker:music/arrival"
+      "deeperdarker:music/deeplands"
     ]
   },
-  "music.deeperdarker.echoing_forest": {
+  "music.otherside.echoing_forest": {
     "sounds": [
       "deeperdarker:music/echoing_forest"
     ]
   },
-  "music.deeperdarker.overcast_columns": {
+  "music.otherside.overcast_columns": {
     "sounds": [
       "deeperdarker:music/overcast_columns"
     ]

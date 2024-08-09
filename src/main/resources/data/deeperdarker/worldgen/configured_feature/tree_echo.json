@@ -32,10 +32,8 @@
       "hanging_leaves_extension_chance": 0.4,
       "height": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 6,
-          "min_inclusive": 5
-        }
+        "max_inclusive": 6,
+        "min_inclusive": 5
       },
       "offset": 0,
       "radius": 4,
@@ -65,24 +63,18 @@
       "base_height": 7,
       "branch_count": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 3,
-          "min_inclusive": 2
-        }
+        "max_inclusive": 3,
+        "min_inclusive": 2
       },
       "branch_end_offset_from_top": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 0,
-          "min_inclusive": -1
-        }
+        "max_inclusive": 0,
+        "min_inclusive": -1
       },
       "branch_horizontal_length": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 3,
-          "min_inclusive": 2
-        }
+        "max_inclusive": 3,
+        "min_inclusive": 2
       },
       "branch_start_offset_from_top": {
         "max_inclusive": -3,
@@ -105,7 +97,7 @@
         },
         {
           "data": {
-            "Name": "deeperdarker:gilded_echo_log",
+            "Name": "deeperdarker:enriched_echo_log",
             "Properties": {
               "axis": "y"
             }
