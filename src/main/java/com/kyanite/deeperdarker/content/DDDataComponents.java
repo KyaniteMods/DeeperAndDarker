@@ -15,4 +15,8 @@ public class DDDataComponents {
     public static <T> DataComponentType<T> register(String id, DataComponentType<T> componentType) {
         return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, DeeperDarker.id(id), componentType);
     }
+
+    public static void init() {
+        DeeperDarker.LOGGER.debug("Registering data component types");
+    }
 }
