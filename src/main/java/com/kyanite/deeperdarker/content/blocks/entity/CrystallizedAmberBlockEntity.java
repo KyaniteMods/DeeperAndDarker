@@ -23,7 +23,6 @@ import java.util.List;
 
 public class CrystallizedAmberBlockEntity extends BlockEntity {
     public boolean fossilizedEntity;
-    public float rotation;
     private ItemStack loot = ItemStack.EMPTY;
 
     public CrystallizedAmberBlockEntity(BlockPos pPos, BlockState pBlockState) {
@@ -34,7 +33,6 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         if(fossilizedEntity || loot != ItemStack.EMPTY) return;
 
         RandomSource random = RandomSource.create(pos.asLong());
-        rotation = random.nextFloat() * 180;
         if(random.nextFloat() < 0.15f) {
             fossilizedEntity = true;
             return;

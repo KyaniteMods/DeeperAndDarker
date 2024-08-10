@@ -29,8 +29,9 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
 
         pPoseStack.pushPose();
         pPoseStack.translate(0.5f, 0.5f, 0.5f);
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(-40f));
-        RandomSource random = RandomSource.create(pBlockEntity.getBlockPos().asLong() / (pBlockEntity.getBlockPos().getX() + pBlockEntity.getBlockPos().getZ()));
+        RandomSource random = RandomSource.create(pBlockEntity.getBlockPos().asLong());
+        random.nextFloat();
+        pPoseStack.mulPose(Axis.XP.rotationDegrees(random.nextFloat() * 180f - 90));
         pPoseStack.mulPose(Axis.YP.rotationDegrees(random.nextFloat() * 180f));
         if(pBlockEntity.fossilizedEntity) {
             pPoseStack.scale(0.9f, 0.9f, 0.9f);
