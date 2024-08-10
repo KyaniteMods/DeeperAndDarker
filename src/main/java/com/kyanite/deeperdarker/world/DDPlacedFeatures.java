@@ -48,6 +48,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_EMERALD = createKey("sculk_emerald");
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
+
     public static final ResourceKey<PlacedFeature> BLOOMING_MOSS = createKey("blooming_moss");
     public static final ResourceKey<PlacedFeature> BLOOMING_WATER_EDGE = createKey("blooming_water_edge");
     public static final ResourceKey<PlacedFeature> BLOOMING_POOL = createKey("blooming_pool");
@@ -68,7 +69,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
     public static final ResourceKey<PlacedFeature> BLOOMING_PLANT = createKey("blooming_plant");
 
-    public static void init(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
         PlacementUtils.register(context, SCULK_STONE_COLUMN, features.getOrThrow(DDConfiguredFeatures.SCULK_STONE_COLUMN), countPlacement(14, PlacementUtils.FULL_RANGE));
