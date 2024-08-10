@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -24,7 +25,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import java.util.List;
 
-@SuppressWarnings("deprecation, NullableProblems")
+@SuppressWarnings("NullableProblems")
 public class CrystallizedAmberBlock extends BaseEntityBlock {
     public static final MapCodec<CrystallizedAmberBlock> CODEC = simpleCodec(CrystallizedAmberBlock::new);
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
@@ -73,7 +74,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if(stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
-            CompoundTag tag = stack.get(DataComponents.BLOCK_ENTITY_DATA).copyTag();
+            CompoundTag tag = stack.getOrDefault(DataComponents.BLOCK_ENTITY_DATA, CustomData.EMPTY).copyTag();
             if(tag.contains("BlockEntityTag")) {
                 System.out.println("tagging");
                 tag = tag.getCompound("BlockEntityTag");

@@ -79,7 +79,7 @@ public class SonorousStaffItem extends Item {
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if(entity instanceof Player player) {
             CompoundTag tag;
-            if(stack.has(DataComponents.CUSTOM_DATA)) tag = stack.get(DataComponents.CUSTOM_DATA).copyTag();
+            if(stack.has(DataComponents.CUSTOM_DATA)) tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
             else tag = new CompoundTag();
             tag.putBoolean("charged", player.getUseItem() == stack && stack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 123);
             stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
@@ -88,7 +88,7 @@ public class SonorousStaffItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return super.isFoil(stack) || (stack.has(DataComponents.CUSTOM_DATA) && stack.get(DataComponents.CUSTOM_DATA).copyTag().getBoolean("charged"));
+        return super.isFoil(stack) || (stack.has(DataComponents.CUSTOM_DATA) && stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBoolean("charged"));
     }
 
     @Override
