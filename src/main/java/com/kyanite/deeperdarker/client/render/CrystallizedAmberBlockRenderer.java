@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
+import org.jetbrains.annotations.NotNull;
 
 public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<CrystallizedAmberBlockEntity> {
     private final EntityRenderDispatcher entityRenderer;
@@ -24,7 +25,7 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
     }
 
     @Override
-    public void render(CrystallizedAmberBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+    public void render(CrystallizedAmberBlockEntity pBlockEntity, float pPartialTick, @NotNull PoseStack pPoseStack, @NotNull MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
         if(!pBlockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
 
         pPoseStack.pushPose();
