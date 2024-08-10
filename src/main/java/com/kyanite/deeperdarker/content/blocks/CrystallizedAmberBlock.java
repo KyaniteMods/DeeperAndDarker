@@ -46,7 +46,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FOSSILIZED, context.getItemInHand().has(DataComponents.CUSTOM_DATA));
+        return this.defaultBlockState().setValue(FOSSILIZED, context.getItemInHand().has(DataComponents.BLOCK_ENTITY_DATA));
     }
 
     public boolean skipRendering(BlockState state, BlockState adjacentState, Direction direction) {
@@ -72,11 +72,20 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if(stack.has(DataComponents.CUSTOM_DATA)) {
-            CompoundTag tag = stack.get(DataComponents.CUSTOM_DATA).copyTag();
-            if(tag.contains("BlockEntityTag")) tag = tag.getCompound("BlockEntityTag");
-            if(tag.contains("leech") && tag.getBoolean("leech")) tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-            else if(tag.contains("item")) tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parse(context.registries(), tag.getCompound("item")).get().getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+        if(stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
+            CompoundTag tag = stack.get(DataComponents.BLOCK_ENTITY_DATA).copyTag();
+            if(tag.contains("BlockEntityTag")) {
+                System.out.println("tagging");
+                tag = tag.getCompound("BlockEntityTag");
+            }
+            if(tag.contains("leech") && tag.getBoolean("leech")) {
+                System.out.println("leech");
+                tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+            }
+            else if(tag.contains("item")) {
+                System.out.println("item");
+                tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parseOptional(context.registries(), tag.getCompound("item")).getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+            }
         }
     }
 }
