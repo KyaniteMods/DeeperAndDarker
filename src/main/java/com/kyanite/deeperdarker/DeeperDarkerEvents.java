@@ -102,7 +102,7 @@ public class DeeperDarkerEvents {
                 else Block.popResource(level, pos, blockEntity.getLoot());
             } else if(silktouch && !level.isClientSide() && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 CompoundTag tag = new CompoundTag();
-                tag.put("item", blockEntity.getLoot().save(level.registryAccess()));
+                tag.put("item", blockEntity.getLoot().saveOptional(level.registryAccess()));
                 tag.putBoolean("leech", blockEntity.fossilizedEntity);
 
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER.get());
