@@ -6,7 +6,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffects;
 
 public class DDEffects {
     public static final MobEffect SCULK_AFFINITY = Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(

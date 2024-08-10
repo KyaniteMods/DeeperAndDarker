@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.content.DDDamageTypes;
+import com.kyanite.deeperdarker.util.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
