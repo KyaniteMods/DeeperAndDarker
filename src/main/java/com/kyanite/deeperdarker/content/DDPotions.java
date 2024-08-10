@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.crafting.Ingredient;
 
 public class DDPotions {
     public static final Holder<Potion> SCULK_AFFINITY = register("sculk_affinity", new Potion(new MobEffectInstance(
@@ -18,7 +17,7 @@ public class DDPotions {
             DDEffects.SCULK_AFFINITY, 9600)));
 
     private static Holder<Potion> register(String id, Potion potion) {
-        return Registry.registerForHolder(BuiltInRegistries.POTION, DeeperDarker.id(id), potion);
+        return Registry.registerForHolder(BuiltInRegistries.POTION, DeeperDarker.rl(id), potion);
     }
 
     public static void init() {

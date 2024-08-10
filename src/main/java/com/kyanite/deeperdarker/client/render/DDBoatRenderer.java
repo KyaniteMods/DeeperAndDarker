@@ -54,7 +54,7 @@ public class DDBoatRenderer<T extends Entity> extends EntityRenderer<T> {
     }
 
     private static ResourceLocation getTextureId(String type, boolean chest) {
-        return DeeperDarker.id(getTexture(type, chest));
+        return DeeperDarker.rl(getTexture(type, chest));
     }
 
     private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, String type) {

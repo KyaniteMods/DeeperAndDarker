@@ -10,6 +10,7 @@
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
     "NoAncientPaintingInGroupMixin",
+    "NoiseRouterDataAccessor",
     "PaintingItemMixin",
     "ResonariumSneakMixin",
     "VibrationListenerMixin",

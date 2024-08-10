@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.content.DDDamageTypes;
+import com.kyanite.deeperdarker.util.DDDamageTypes;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

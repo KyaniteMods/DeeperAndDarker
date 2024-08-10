@@ -22,13 +22,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.BiConsumer;
 
 public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
-    public static final ResourceKey<LootTable> ANGLER_FISH = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/angler_fish"));
-    public static final ResourceKey<LootTable> SCULK_CENTIPEDE = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/sculk_centipede"));
-    public static final ResourceKey<LootTable> SCULK_LEECH = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/sculk_leech"));
-    public static final ResourceKey<LootTable> SCULK_SNAPPER = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/sculk_snapper"));
-    public static final ResourceKey<LootTable> SHATTERED = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/shattered"));
-    public static final ResourceKey<LootTable> SHRIEK_WORM = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/shriek_worm"));
-    public static final ResourceKey<LootTable> STALKER = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("entities/stalker"));
+    public static final ResourceKey<LootTable> ANGLER_FISH = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/angler_fish"));
+    public static final ResourceKey<LootTable> SCULK_CENTIPEDE = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/sculk_centipede"));
+    public static final ResourceKey<LootTable> SCULK_LEECH = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/sculk_leech"));
+    public static final ResourceKey<LootTable> SCULK_SNAPPER = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/sculk_snapper"));
+    public static final ResourceKey<LootTable> SHATTERED = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/shattered"));
+    public static final ResourceKey<LootTable> SHRIEK_WORM = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/shriek_worm"));
+    public static final ResourceKey<LootTable> STALKER = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("entities/stalker"));
 
     private final HolderLookup.Provider provider;
 

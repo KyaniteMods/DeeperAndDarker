@@ -1,17 +1,5 @@
 package com.kyanite.deeperdarker.network;
 
-import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDItems;
-import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-
 public class Messages {
     public static void registerMessages() {
 //        ServerPlayNetworking.registerGlobalReceiver(SoulElytraBoostPacket.TYPE, (packet, player, responseSender) -> {

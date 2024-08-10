@@ -14,8 +14,8 @@ import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
 public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel> implements RenderLayerParent<AnglerFish, AnglerFishModel> {
-    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/angler_fish/angler_fish.png");
-    private static final ResourceLocation EMISSIVE_TEXTURE = DeeperDarker.id("textures/entity/angler_fish/angler_fish_bioluminescent_layer.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/angler_fish/angler_fish.png");
+    private static final ResourceLocation EMISSIVE_TEXTURE = DeeperDarker.rl("textures/entity/angler_fish/angler_fish_bioluminescent_layer.png");
 
     public AnglerFishRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new AnglerFishModel(pContext.bakeLayer(DDModelLayers.ANGLER_FISH)), 0.4f);

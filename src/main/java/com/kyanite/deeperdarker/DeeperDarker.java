@@ -5,7 +5,7 @@ import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
-import com.kyanite.deeperdarker.util.DDPaintingVariants;
+import com.kyanite.deeperdarker.content.AncientPaintings;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = id("otherside");
+	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = rl("otherside");
 
 	public static final boolean SHOW_ME_YOUR_SKIN = FabricLoader.getInstance().isModLoaded("showmeyourskin");
 
@@ -47,14 +47,13 @@ public class DeeperDarker implements ModInitializer {
 		DDEntities.init();
 		DDBlockEntities.init();
 		DDEffects.init();
-		DDPaintingVariants.init();
 		DDDataComponents.init();
 
 		CustomPortalBuilder.beginPortal()
 				.customFrameTester(OTHERSIDE_FRAME_TESTER)
 				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
 				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-				.destDimID(id("otherside"))
+				.destDimID(rl("otherside"))
 				.tintColor(5, 98, 93)
 				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
 				.forcedSize(8, 4)
@@ -105,7 +104,7 @@ public class DeeperDarker implements ModInitializer {
 		Messages.registerMessages();
 	}
 
-	public static ResourceLocation id(String path) {
+	public static ResourceLocation rl(String path) {
 		return ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID, path);
 	}
 }

@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -31,11 +30,11 @@ public class ShatteredHeadRenderMixin {
     @Unique
     private final ShatteredHeadModel shatteredHeadModel = new ShatteredHeadModel(Minecraft.getInstance().getEntityModels().bakeLayer(DDModelLayers.SHATTERED_HEAD));
     @Unique
-    private static final ResourceLocation shatteredTexture = DeeperDarker.id("textures/entity/shattered.png");
+    private static final ResourceLocation shatteredTexture = DeeperDarker.rl("textures/entity/shattered.png");
 
     @Inject(method = "method_3580", at = @At("TAIL"))
     private static void addModel(HashMap<SkullBlock.Type, ResourceLocation> hashMap, CallbackInfo ci) {
-        hashMap.put(ShatteredHeadBlock.SHATTERED, DeeperDarker.id("textures/entity/shattered.png"));
+        hashMap.put(ShatteredHeadBlock.SHATTERED, DeeperDarker.rl("textures/entity/shattered.png"));
     }
 
     @Inject(method = "createSkullRenderers", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;", shift = At.Shift.BEFORE))

@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
-import com.kyanite.deeperdarker.world.structures.DDStructures;
+import com.kyanite.deeperdarker.world.otherside.structures.DDStructures;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.*;
@@ -40,7 +40,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Blocks.SCULK,
                         Component.translatable(id + "root.title"),
                         Component.translatable(id + "root.description"),
-                        DeeperDarker.id("textures/gui/advancements/root.png"),
+                        DeeperDarker.rl("textures/gui/advancements/root.png"),
                         AdvancementType.TASK,
                         false,
                         false,
@@ -199,6 +199,6 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
     }
 
     private String path(String name) {
-        return DeeperDarker.id("main/" + name).toString();
+        return DeeperDarker.rl("main/" + name).toString();
     }
 }

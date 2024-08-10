@@ -83,16 +83,16 @@ public class DDItems {
     public static final Item SHATTERED_HEAD = register("shattered_head", new StandingAndWallBlockItem(DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD, new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 
     public static Item register(String id, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, DeeperDarker.id(id), item);
+        return Registry.register(BuiltInRegistries.ITEM, DeeperDarker.rl(id), item);
     }
 
     private static Item createWardenUpgradeSmithingTemplate() {
         return new SmithingTemplateItem(
-                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("upgrade", DeeperDarker.id("warden_upgrade"))).withStyle(ChatFormatting.GRAY),
-                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.base_slot_description"))),
-                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.additions_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.rl("smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.rl("smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("upgrade", DeeperDarker.rl("warden_upgrade"))).withStyle(ChatFormatting.GRAY),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.rl("smithing_template.warden_upgrade.base_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.rl("smithing_template.warden_upgrade.additions_slot_description"))),
                 getWardenEmptyBaseSlotTextures(),
                 getWardenEmptyAdditionsSlotTextures());
     }
@@ -110,7 +110,7 @@ public class DDItems {
     }
 
     private static List<ResourceLocation> getWardenEmptyAdditionsSlotTextures() {
-        return List.of(DeeperDarker.id("item/empty_slot_reinforced_echo_shard"));
+        return List.of(DeeperDarker.rl("item/empty_slot_reinforced_echo_shard"));
     }
 
     public static void init() {

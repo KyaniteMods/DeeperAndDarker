@@ -1,9 +1,6 @@
 package com.kyanite.deeperdarker.content.items;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -11,10 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
@@ -23,8 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -41,7 +34,7 @@ public class WardenArmorItem extends ArmorItem {
     }
 
     public static ItemAttributeModifiers createAttributes() {
-        ResourceLocation location = DeeperDarker.id("armor.warden");
+        ResourceLocation location = DeeperDarker.rl("armor.warden");
         return ItemAttributeModifiers.builder()
                 .add(Attributes.ARMOR, new AttributeModifier(location, DDArmorMaterials.WARDEN.value().getDefense(Type.LEGGINGS), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.LEGS)
                 .add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(location, DDArmorMaterials.WARDEN.value().toughness(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.LEGS)

@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.mojang.datafixers.types.Type;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSkullBlockEntity;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -44,7 +43,7 @@ public class DDBlockEntities {
 
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id);
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, DeeperDarker.id(id), builder.build(type));
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, DeeperDarker.rl(id), builder.build(type));
     }
 
     public static void init() {

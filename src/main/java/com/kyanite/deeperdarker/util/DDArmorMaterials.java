@@ -32,8 +32,8 @@ public class DDArmorMaterials {
     ), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), 4.0f, 0.1f);
 
     private static Holder<ArmorMaterial> register(String id, Map<ArmorItem.Type, Integer> defense, int enchantmentValue, Holder<SoundEvent> equipSound, Supplier<Ingredient> repairIngredient, float toughness, float knockbackResistance) {
-        ArmorMaterial armorMaterial = new ArmorMaterial(defense, enchantmentValue, equipSound, repairIngredient, List.of(new ArmorMaterial.Layer(DeeperDarker.id(id))), toughness, knockbackResistance);
-        return Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, DeeperDarker.id(id), armorMaterial);
+        ArmorMaterial armorMaterial = new ArmorMaterial(defense, enchantmentValue, equipSound, repairIngredient, List.of(new ArmorMaterial.Layer(DeeperDarker.rl(id))), toughness, knockbackResistance);
+        return Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, DeeperDarker.rl(id), armorMaterial);
     }
 
     public static void init() {

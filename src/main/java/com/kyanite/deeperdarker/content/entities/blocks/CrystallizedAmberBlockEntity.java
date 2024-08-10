@@ -59,7 +59,9 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         CompoundTag tag = new CompoundTag();
-        tag.put("item", this.loot.save(pRegistries));
+        if (!this.loot.isEmpty()) {
+            tag.put("item", this.loot.save(pRegistries));
+        }
         tag.putBoolean("leech", this.fossilizedEntity);
         return tag;
     }
@@ -74,7 +76,9 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         super.saveAdditional(pTag, pRegistries);
-        pTag.put("item", this.loot.save(pRegistries));
+        if (!this.loot.isEmpty()) {
+            pTag.put("item", this.loot.save(pRegistries));
+        }
         pTag.putBoolean("leech", this.fossilizedEntity);
     }
 }

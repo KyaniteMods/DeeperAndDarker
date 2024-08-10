@@ -31,6 +31,6 @@ public class ShatteredHeadBlockRenderer extends SkullBlockRenderer {
         Direction direction = wall ? blockState.getValue(WallSkullBlock.FACING) : null;
         int rotation = wall ? RotationSegment.convertToSegment(direction.getOpposite()) : blockState.getValue(SkullBlock.ROTATION);
         float yaw = RotationSegment.convertToDegrees(rotation);
-        renderSkull(direction, yaw, delta, poseStack, multiBufferSource, light, this.model, RenderType.entityTranslucent(DeeperDarker.id("textures/entity/shattered.png")));
+        renderSkull(direction, yaw, delta, poseStack, multiBufferSource, light, this.model, RenderType.entityTranslucent(DeeperDarker.rl("textures/entity/shattered.png")));
     }
 }

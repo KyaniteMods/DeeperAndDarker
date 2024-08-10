@@ -9,10 +9,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.CreativeModeTab;
@@ -209,7 +207,7 @@ public class DDCreativeTab {
     public static CreativeModeTab DEEPER_AND_DARKER;
 
     public static void init() {
-        DEEPER_AND_DARKER = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DeeperDarker.id("deeper_and_darker"), ITEM_GROUP_BUILDER.build());
+        DEEPER_AND_DARKER = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DeeperDarker.rl("deeper_and_darker"), ITEM_GROUP_BUILDER.build());
         DeeperDarker.LOGGER.debug("Registering creative tab");
     }
 }

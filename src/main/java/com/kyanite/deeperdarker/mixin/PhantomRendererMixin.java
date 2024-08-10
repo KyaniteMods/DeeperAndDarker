@@ -15,7 +15,7 @@ public class PhantomRendererMixin {
     @Inject(method = "getTextureLocation*", at = @At("HEAD"), cancellable = true)
     public void getTextureLocation(Phantom entity, CallbackInfoReturnable<ResourceLocation> cir) {
         if(entity.level().getBiome(entity.blockPosition()).is(OthersideBiomes.DEEPLANDS.location()) && DeeperDarker.CONFIG.client.changePhantomTextures()) {
-            cir.setReturnValue(DeeperDarker.id("textures/entity/sculk_phantom.png"));
+            cir.setReturnValue(DeeperDarker.rl("textures/entity/sculk_phantom.png"));
         }
     }
 }

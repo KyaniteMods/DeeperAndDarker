@@ -18,6 +18,7 @@ import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentTarget;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.AddValue;
+import net.minecraft.world.item.enchantment.effects.AllOf;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 
@@ -28,13 +29,19 @@ public class DDEnchantments {
     public static void bootstrap(BootstrapContext<Enchantment> context) {
         HolderGetter<Item> items = context.lookup(Registries.ITEM);
         HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
-        context.register(CATALYSIS, Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 4, 3, Enchantment.dynamicCost(10, 20), Enchantment.dynamicCost(15, 30), 3, EquipmentSlotGroup.MAINHAND))
-                .withEffect(EnchantmentEffectComponents.POST_ATTACK,
+        context.register(CATALYSIS, Enchantment.enchantment(
+                        Enchantment.definition(
+                                items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                                items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 4, 3,
+                                Enchantment.dynamicCost(10, 20), Enchantment.dynamicCost(15, 30), 3,
+                                EquipmentSlotGroup.MAINHAND
+                        ))
+                .withEffect(
+                        EnchantmentEffectComponents.POST_ATTACK,
                         EnchantmentTarget.ATTACKER,
                         EnchantmentTarget.VICTIM,
-                        new CatalysisEnvironment(true)
-                )
-                .build(CATALYSIS.location())
+                        AllOf.entityEffects(new CatalysisEnvironment(false))
+                ).build(CATALYSIS.location())
         );
         context.register(SCULK_SMITE, Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 5, 5, Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2, EquipmentSlotGroup.MAINHAND))
                 .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
@@ -44,6 +51,6 @@ public class DDEnchantments {
     }
 
     private static ResourceKey<Enchantment> create(String name) {
-        return ResourceKey.create(Registries.ENCHANTMENT, DeeperDarker.id(name));
+        return ResourceKey.create(Registries.ENCHANTMENT, DeeperDarker.rl(name));
     }
 }

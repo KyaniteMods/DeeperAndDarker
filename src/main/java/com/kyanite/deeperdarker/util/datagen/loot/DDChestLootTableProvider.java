@@ -27,12 +27,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.BiConsumer;
 
 public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
-    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_BASEMENT = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("chests/ancient_temple_basement"));
-    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_SECRET = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("chests/ancient_temple_secret"));
-    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_STORAGE = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("chests/ancient_temple_storage"));
-    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_APEX = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("chests/ancient_temple_apex"));
-    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_FOUNTAIN = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("chests/ancient_temple_fountain"));
-    public static final ResourceKey<LootTable> CRYSTALLIZED_AMBER = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.id("chests/crystallized_amber"));
+    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_BASEMENT = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("chests/ancient_temple_basement"));
+    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_SECRET = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("chests/ancient_temple_secret"));
+    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_STORAGE = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("chests/ancient_temple_storage"));
+    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_APEX = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("chests/ancient_temple_apex"));
+    public static final ResourceKey<LootTable> ANCIENT_TEMPLE_FOUNTAIN = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("chests/ancient_temple_fountain"));
+    public static final ResourceKey<LootTable> CRYSTALLIZED_AMBER = ResourceKey.create(Registries.LOOT_TABLE, DeeperDarker.rl("chests/crystallized_amber"));
 
     private final HolderLookup.Provider provider;
 

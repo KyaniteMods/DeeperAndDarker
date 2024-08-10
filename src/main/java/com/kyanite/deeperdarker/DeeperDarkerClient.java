@@ -92,7 +92,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             }
         });
 
-        ItemProperties.register(DDItems.SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
             SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
 
@@ -100,7 +100,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             SoulElytraItem.isFlyEnabled(itemStack) ? 0 : 1
         );
 
-        ItemProperties.register(DDItems.SONOROUS_STAFF, DeeperDarker.id("charge"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.SONOROUS_STAFF, DeeperDarker.rl("charge"), (itemStack, worldClient, livingEntity, i) ->
             livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 123.0f : 0
         );
 

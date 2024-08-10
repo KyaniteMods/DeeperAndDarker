@@ -38,7 +38,7 @@ public class DDEntities {
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {
-        return Registry.register(BuiltInRegistries.ENTITY_TYPE, DeeperDarker.id(name), entity);
+        return Registry.register(BuiltInRegistries.ENTITY_TYPE, DeeperDarker.rl(name), entity);
     }
 
     public static void registerSpawnPlacements() {

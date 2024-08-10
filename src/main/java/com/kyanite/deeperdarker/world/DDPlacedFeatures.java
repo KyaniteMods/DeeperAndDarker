@@ -9,7 +9,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -48,6 +47,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_EMERALD = createKey("sculk_emerald");
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
+
     public static final ResourceKey<PlacedFeature> BLOOMING_MOSS = createKey("blooming_moss");
     public static final ResourceKey<PlacedFeature> BLOOMING_WATER_EDGE = createKey("blooming_water_edge");
     public static final ResourceKey<PlacedFeature> BLOOMING_POOL = createKey("blooming_pool");
@@ -68,7 +68,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
     public static final ResourceKey<PlacedFeature> BLOOMING_PLANT = createKey("blooming_plant");
 
-    public static void init(BootstrapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
         PlacementUtils.register(context, SCULK_STONE_COLUMN, features.getOrThrow(DDConfiguredFeatures.SCULK_STONE_COLUMN), countPlacement(14, PlacementUtils.FULL_RANGE));
@@ -131,6 +131,6 @@ public class DDPlacedFeatures {
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, DeeperDarker.id(name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, DeeperDarker.rl(name));
     }
 }

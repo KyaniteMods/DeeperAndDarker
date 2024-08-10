@@ -13,7 +13,7 @@ public class DDDataComponents {
     public static final DataComponentType<Transmitter> TRANSMITTER = register("transmitter", DataComponentType.<Transmitter>builder().persistent(Transmitter.CODEC).networkSynchronized(Transmitter.STREAM_CODEC).build());
 
     public static <T> DataComponentType<T> register(String id, DataComponentType<T> componentType) {
-        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, DeeperDarker.id(id), componentType);
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, DeeperDarker.rl(id), componentType);
     }
 
     public static void init() {

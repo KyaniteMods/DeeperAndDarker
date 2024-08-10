@@ -51,16 +51,16 @@ public class DDSounds {
     public static final Holder.Reference<SoundEvent> NOTE_BLOCK_IMITATE_SHATTERED = registerReference("block.note_block.imitate.shattered");
 
     public static final Holder.Reference<SoundEvent> AMBIENT_OTHERSIDE_ADDITIONS = registerReference("ambient.otherside.additions");
-    public static final Holder.Reference<SoundEvent> MUSIC_ARRIVAL = registerReference("music.otherside.deeplands");
+    public static final Holder.Reference<SoundEvent> MUSIC_BIOME_DEEPLANDS = registerReference("music.otherside.deeplands");
     public static final Holder.Reference<SoundEvent> MUSIC_BIOME_ECHOING_FOREST = registerReference("music.otherside.echoing_forest");
     public static final Holder.Reference<SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = registerReference("music.otherside.overcast_columns");
 
     private static SoundEvent register(String id) {
-        return Registry.register(BuiltInRegistries.SOUND_EVENT, DeeperDarker.id(id), SoundEvent.createVariableRangeEvent(DeeperDarker.id(id)));
+        return Registry.register(BuiltInRegistries.SOUND_EVENT, DeeperDarker.rl(id), SoundEvent.createVariableRangeEvent(DeeperDarker.rl(id)));
     }
 
     private static Holder.Reference<SoundEvent> registerReference(String id) {
-        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, DeeperDarker.id(id), SoundEvent.createVariableRangeEvent(DeeperDarker.id(id)));
+        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, DeeperDarker.rl(id), SoundEvent.createVariableRangeEvent(DeeperDarker.rl(id)));
     }
 
     public static void init() {

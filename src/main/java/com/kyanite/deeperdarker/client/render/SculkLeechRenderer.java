@@ -10,8 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class SculkLeechRenderer extends MobRenderer<SculkLeech, SculkLeechModel> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.id("sculk_leech"), "main");
-    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/sculk_leech.png");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("sculk_leech"), "main");
+    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/sculk_leech.png");
 
     public SculkLeechRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new SculkLeechModel(pContext.bakeLayer(MODEL)), 0.4f);
