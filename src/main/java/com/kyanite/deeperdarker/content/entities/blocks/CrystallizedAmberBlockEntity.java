@@ -21,27 +21,33 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+@SuppressWarnings("NullableProblems")
 public class CrystallizedAmberBlockEntity extends BlockEntity {
     public boolean fossilizedEntity;
     public float rotation;
     private ItemStack loot = ItemStack.EMPTY;
+    private final Object lootTableLock = new Object();
 
     public CrystallizedAmberBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(DDBlockEntities.CRYSTALLIZED_AMBER, pPos, pBlockState);
     }
 
     public void generateFossil(Level level, BlockPos pos) {
-        if(fossilizedEntity || loot != ItemStack.EMPTY) return;
+        if(fossilizedEntity || !loot.isEmpty()) return;
 
         RandomSource random = RandomSource.create(pos.asLong());
-        if(random.nextFloat() < 0.1f) fossilizedEntity = true;
         rotation = random.nextFloat() * 180;
-        if(fossilizedEntity) return;
+        if(random.nextFloat() < 0.15f) {
+            fossilizedEntity = true;
+            return;
+        }
 
-        LootTable table = level.getServer().getLootData().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
-        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
-        this.loot = list.isEmpty() ? ItemStack.EMPTY : list.get(0);
-        this.setChanged();
+        synchronized (this.lootTableLock) {
+            LootTable table = level.getServer().getLootData().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
+            List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
+            this.loot = list.isEmpty() ? ItemStack.EMPTY : list.getFirst();
+            this.setChanged();
+        }
     }
 
     public ItemStack getLoot() {
@@ -56,7 +62,9 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     @Override
     public @NotNull CompoundTag getUpdateTag() {
         CompoundTag tag = new CompoundTag();
-        tag.put("item", this.loot.save(new CompoundTag()));
+        if (!this.loot.isEmpty()) {
+            tag.put("item", this.loot.save(new CompoundTag()));
+        }
         tag.putBoolean("leech", this.fossilizedEntity);
         tag.putFloat("rotation", this.rotation);
         return tag;
@@ -71,7 +79,9 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("item", this.loot.save(new CompoundTag()));
+        if (!this.loot.isEmpty()) {
+            pTag.put("item", this.loot.save(new CompoundTag()));
+        }
         pTag.putBoolean("leech", this.fossilizedEntity);
         pTag.putFloat("rotation", this.rotation);
     }
