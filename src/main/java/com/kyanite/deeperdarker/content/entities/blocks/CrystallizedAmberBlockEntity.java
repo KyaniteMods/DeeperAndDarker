@@ -26,13 +26,14 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     public boolean fossilizedEntity;
     public float rotation;
     private ItemStack loot = ItemStack.EMPTY;
+    private final Object lootTableLock = new Object();
 
     public CrystallizedAmberBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(DDBlockEntities.CRYSTALLIZED_AMBER, pPos, pBlockState);
     }
 
     public void generateFossil(Level level, BlockPos pos) {
-        if(fossilizedEntity || loot != ItemStack.EMPTY) return;
+        if(fossilizedEntity || !loot.isEmpty()) return;
 
         RandomSource random = RandomSource.create(pos.asLong());
         rotation = random.nextFloat() * 180;
@@ -41,10 +42,12 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
             return;
         }
 
-        LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
-        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
-        this.loot = list.isEmpty() ? ItemStack.EMPTY : list.getFirst();
-        this.setChanged();
+        synchronized (this.lootTableLock) {
+            LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
+            List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
+            this.loot = list.isEmpty() ? ItemStack.EMPTY : list.getFirst();
+            this.setChanged();
+        }
     }
 
     public ItemStack getLoot() {
