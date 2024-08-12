@@ -1,12 +1,11 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.enchantments.CatalysisEnvironment;
+import com.kyanite.deeperdarker.content.enchantments.CatalyzeEnvironment;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -23,12 +22,11 @@ import net.minecraft.world.item.enchantment.EnchantmentTarget;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.AddValue;
 import net.minecraft.world.item.enchantment.effects.AllOf;
-import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 
 public class DDEnchantments {
-    public static final MapCodec<CatalysisEnvironment> CATALYSIS_ENVIRONMENT = Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, DeeperDarker.rl("catalysis_environment"), CatalysisEnvironment.CODEC);
+    public static final MapCodec<CatalyzeEnvironment> CATALYZE_ENVIRONMENT = Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, DeeperDarker.rl("catalyze_environment"), CatalyzeEnvironment.CODEC);
 
     public static final ResourceKey<Enchantment> CATALYSIS = create("catalysis");
     public static final ResourceKey<Enchantment> SCULK_SMITE = create("sculk_smite");
@@ -47,7 +45,7 @@ public class DDEnchantments {
                         EnchantmentEffectComponents.POST_ATTACK,
                         EnchantmentTarget.ATTACKER,
                         EnchantmentTarget.VICTIM,
-                        AllOf.entityEffects(new CatalysisEnvironment(false))
+                        AllOf.entityEffects(new CatalyzeEnvironment(false))
                 ).build(CATALYSIS.location())
         );
         context.register(SCULK_SMITE, Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 5, 5, Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2, EquipmentSlotGroup.MAINHAND))

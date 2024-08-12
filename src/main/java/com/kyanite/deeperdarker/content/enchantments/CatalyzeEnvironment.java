@@ -14,9 +14,9 @@ import net.minecraft.world.level.block.SculkSpreader;
 import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("NullableProblems")
-public record CatalysisEnvironment(boolean bool) implements EnchantmentEntityEffect {
-    public static final MapCodec<CatalysisEnvironment> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(Codec.BOOL.fieldOf("bool").forGetter(CatalysisEnvironment::bool)).apply(instance, CatalysisEnvironment::new)
+public record CatalyzeEnvironment(boolean bool) implements EnchantmentEntityEffect {
+    public static final MapCodec<CatalyzeEnvironment> CODEC = RecordCodecBuilder.mapCodec(
+            instance -> instance.group(Codec.BOOL.fieldOf("bool").forGetter(CatalyzeEnvironment::bool)).apply(instance, CatalyzeEnvironment::new)
     );
 
     @Override
