@@ -49,6 +49,7 @@ public class DeeperDarker implements ModInitializer {
 		DDEffects.init();
 		DDDataComponents.init();
 		DDLootItemFunctions.init();
+		DDEnchantments.init();
 
 		CustomPortalBuilder.beginPortal()
 				.customFrameTester(OTHERSIDE_FRAME_TESTER)
