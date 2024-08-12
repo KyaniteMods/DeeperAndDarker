@@ -1,0 +1,23 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/corners/corner_0",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/corners/corner_1",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

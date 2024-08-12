@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deeperdarker:block/bloom_slab"
+    },
+    "type=double": {
+      "model": "deeperdarker:block/bloom_planks"
+    },
+    "type=top": {
+      "model": "deeperdarker:block/bloom_slab_top"
+    }
+  }
+}

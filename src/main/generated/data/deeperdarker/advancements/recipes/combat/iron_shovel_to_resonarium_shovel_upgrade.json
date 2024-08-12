@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_resonarium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:resonarium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:iron_shovel_to_resonarium_shovel_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_resonarium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:iron_shovel_to_resonarium_shovel_upgrade"
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "carvers": {
+    "air": "deeperdarker:cave"
+  },
+  "downfall": 0.2,
+  "effects": {
+    "fog_color": 1716032,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "deeperdarker:ambient.otherside.additions",
+      "tick_delay": 6000
+    },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "deeperdarker:music.deeperdarker.echoing_forest"
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:sculk_charge_pop"
+      },
+      "probability": 0.002
+    },
+    "sky_color": 8560639,
+    "water_color": 2601177,
+    "water_fog_color": 2189448
+  },
+  "features": [
+    [],
+    [
+      "deeperdarker:blooming_water_edge",
+      "deeperdarker:blooming_pool"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "deeperdarker:blooming_moss",
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
+      "deeperdarker:sculk_coal",
+      "deeperdarker:sculk_iron",
+      "deeperdarker:sculk_copper",
+      "deeperdarker:sculk_gold",
+      "deeperdarker:sculk_redstone",
+      "deeperdarker:sculk_emerald",
+      "deeperdarker:sculk_lapis",
+      "deeperdarker:sculk_diamond"
+    ],
+    [],
+    [],
+    [
+      "deeperdarker:blooming_sculk_vegetation",
+      "deeperdarker:blooming_plant",
+      "deeperdarker:glowing_roots",
+      "deeperdarker:glowing_vines",
+      "deeperdarker:glowing_vines_short",
+      "deeperdarker:sculk_vines_caverns",
+      "deeperdarker:ice_lily"
+    ]
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "deeperdarker:angler_fish",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 6
+      },
+      {
+        "type": "deeperdarker:sculk_snapper",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": -0.3
+}
