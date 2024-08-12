@@ -1,0 +1,77 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/portal_0",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/portal_1",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/throne",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/room_0",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/room_1",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/room_2",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/room_3",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/rooms/room_4",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

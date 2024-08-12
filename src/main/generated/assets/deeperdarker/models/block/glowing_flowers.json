@@ -1,0 +1,7 @@
+{
+  "parent": "deeperdarker:block/flowers",
+  "textures": {
+    "flowers": "deeperdarker:block/glowing_flowers",
+    "stem": "deeperdarker:block/glowing_flowers_stem"
+  }
+}
