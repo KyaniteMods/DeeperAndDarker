@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "deeperdarker:resonarium"
+  },
+  "base": {
+    "item": "minecraft:iron_shovel"
+  },
+  "result": {
+    "item": "deeperdarker:resonarium_shovel"
+  },
+  "template": []
+}

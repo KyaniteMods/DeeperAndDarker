@@ -1,0 +1,34 @@
+{
+  "parent": "deeperdarker:main/find_ancient_temple",
+  "criteria": {
+    "sculk_transmitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:sculk_transmitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.deeperdarker.obtain_sculk_transmitter.description"
+    },
+    "icon": {
+      "item": "deeperdarker:sculk_transmitter"
+    },
+    "title": {
+      "translate": "advancements.deeperdarker.obtain_sculk_transmitter.title"
+    }
+  },
+  "requirements": [
+    [
+      "sculk_transmitter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

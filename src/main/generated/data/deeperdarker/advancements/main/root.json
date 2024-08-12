@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "deep_dark": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "minecraft:deep_dark"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "deeperdarker:textures/gui/advancements/root.png",
+    "description": {
+      "translate": "advancements.deeperdarker.root.description"
+    },
+    "icon": {
+      "item": "minecraft:sculk"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.deeperdarker.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "deep_dark"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

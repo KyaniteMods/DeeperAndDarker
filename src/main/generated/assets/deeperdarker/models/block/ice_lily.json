@@ -1,0 +1,7 @@
+{
+  "parent": "deeperdarker:block/ice_waterlily",
+  "textures": {
+    "flower": "deeperdarker:block/lily_flower",
+    "texture": "deeperdarker:block/ice_lily"
+  }
+}
