@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.enchantments.CatalysisEnvironment;
+import com.kyanite.deeperdarker.content.enchantments.CatalyzeEnvironment;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -28,7 +28,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class DDEnchantments {
     public static final DeferredRegister<MapCodec<? extends EnchantmentEntityEffect>> ENCHANTMENT_EFFECTS = DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, DeeperDarker.MOD_ID);
-    public static final DeferredHolder<MapCodec<? extends EnchantmentEntityEffect>, MapCodec<CatalysisEnvironment>> CATALYSIZE_ENVIRONMENT = ENCHANTMENT_EFFECTS.register("catalysize_environment", () -> CatalysisEnvironment.CODEC);
+    public static final DeferredHolder<MapCodec<? extends EnchantmentEntityEffect>, MapCodec<CatalyzeEnvironment>> CATALYZE_ENVIRONMENT = ENCHANTMENT_EFFECTS.register("catalyze_environment", () -> CatalyzeEnvironment.CODEC);
 
     public static final ResourceKey<Enchantment> CATALYSIS = create("catalysis");
     public static final ResourceKey<Enchantment> SCULK_SMITE = create("sculk_smite");
@@ -47,13 +47,23 @@ public class DDEnchantments {
                         EnchantmentEffectComponents.POST_ATTACK,
                         EnchantmentTarget.ATTACKER,
                         EnchantmentTarget.VICTIM,
-                        AllOf.entityEffects(new CatalysisEnvironment(false))
+                        AllOf.entityEffects(new CatalyzeEnvironment(false))
                 ).build(CATALYSIS.location())
         );
-        context.register(SCULK_SMITE, Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 5, 5, Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2, EquipmentSlotGroup.MAINHAND))
+        context.register(SCULK_SMITE, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 5, 5,
+                        Enchantment.dynamicCost(5, 8),
+                        Enchantment.dynamicCost(25, 8), 2,
+                        EquipmentSlotGroup.MAINHAND
+                ))
                 .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
-                .withEffect(EnchantmentEffectComponents.DAMAGE, new AddValue(LevelBasedValue.constant(2.5f)), LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(DDTags.Misc.SENSITIVE_TO_SCULK_SMITE))))
-                .build(SCULK_SMITE.location())
+                .withEffect(
+                        EnchantmentEffectComponents.DAMAGE,
+                        new AddValue(LevelBasedValue.constant(2.5f)),
+                        LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(DDTags.Misc.SENSITIVE_TO_SCULK_SMITE)))
+                ).build(SCULK_SMITE.location())
         );
     }
 
