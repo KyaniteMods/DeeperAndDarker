@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
-import com.kyanite.deeperdarker.network.Messages;
+import com.kyanite.deeperdarker.network.DDNetworking;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
@@ -103,7 +103,8 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-		Messages.registerMessages();
+		DDNetworking.registerPayloadTypes();
+		DDNetworking.registerMessages();
 	}
 
 	public static ResourceLocation rl(String path) {

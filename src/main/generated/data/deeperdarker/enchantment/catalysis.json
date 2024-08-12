@@ -11,7 +11,7 @@
           "type": "minecraft:all_of",
           "effects": [
             {
-              "type": "deeperdarker:catalysis_environment",
+              "type": "deeperdarker:catalyze_environment",
               "bool": false
             }
           ]

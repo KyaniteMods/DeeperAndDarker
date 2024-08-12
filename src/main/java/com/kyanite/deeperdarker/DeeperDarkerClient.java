@@ -10,9 +10,17 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
+import com.kyanite.deeperdarker.network.DDNetworking;
+import com.kyanite.deeperdarker.network.SoulElytraBoostPayload;
+import com.kyanite.deeperdarker.network.UseTransmitterPayload;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
@@ -22,8 +30,13 @@ import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 
 public class DeeperDarkerClient implements ClientModInitializer {
 
@@ -104,42 +117,41 @@ public class DeeperDarkerClient implements ClientModInitializer {
             livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 123.0f : 0
         );
 
-        // TODO: fix packets
-//        ClientTickEvents.START_WORLD_TICK.register(world -> {
-//            Minecraft client = Minecraft.getInstance();
-//            if (client.player == null) return;
-//            ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
-//            if (itemStack.is(DDItems.SOUL_ELYTRA) && client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime()) == 0 && client.player.isFallFlying() && Keybinds.BOOST.isDown()) {
-//                ClientPlayNetworking.send(new SoulElytraBoostPacket(PacketByteBufs.empty()));
-//            }
-//        });
-//
-//        ClientTickEvents.START_WORLD_TICK.register(world -> {
-//            Minecraft client = Minecraft.getInstance();
-//            if (client.player == null) return;
-//            if (client.player.getInventory().hasAnyMatching(stack -> stack.is(DDItems.SCULK_TRANSMITTER)) && Keybinds.TRANSMIT.isDown()) {
-//                ClientPlayNetworking.send(new UseTransmitterPacket(PacketByteBufs.empty()));
-//            }
-//        });
-//
-//        HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
-//            ResourceLocation texture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/soul_elytra_overlay_large.png");
-//
-//            Minecraft client = Minecraft.getInstance();
-//            if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
-//            ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
-//            if (itemStack.is(DDItems.SOUL_ELYTRA)) {
-//                float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime());
-//                drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37, 0, 0, 0, 12, Mth.floor(32 * f), 32, 32);
-//                drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37 + Mth.floor(32 * f), 0, 12, Mth.floor(32 * f), 12, Mth.ceil(32 * (1.0f - f)), 32, 32);
-//                if (f == 0.0f && client.player.isFallFlying()) {
-//                    for (BlockPos blockPos : BlockPos.betweenClosed(client.player.getOnPos(), client.player.getOnPos().below(5))) {
-//                        if (client.player.level().getBlockState(blockPos).isAir()) continue;
-//                        drawContext.drawString(client.font, Component.translatable(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", Keybinds.BOOST.getTranslatedKeyMessage()).setStyle(Style.EMPTY.withColor(ChatFormatting.YELLOW)), 20, client.getWindow().getGuiScaledHeight() - 37, 0);
-//                    }
-//                }
-//            }
-//        });
+        ClientTickEvents.START_WORLD_TICK.register(world -> {
+            Minecraft client = Minecraft.getInstance();
+            if (client.player == null) return;
+            ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
+            if (itemStack.is(DDItems.SOUL_ELYTRA) && client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, (float)(Minecraft.getInstance().getFrameTimeNs() / 1000000000.0)) == 0 && client.player.isFallFlying() && Keybinds.BOOST.isDown()) {
+                ClientPlayNetworking.send(SoulElytraBoostPayload.INSTANCE);
+            }
+        });
+
+        ClientTickEvents.START_WORLD_TICK.register(world -> {
+            Minecraft client = Minecraft.getInstance();
+            if (client.player == null) return;
+            if (client.player.getInventory().hasAnyMatching(stack -> stack.is(DDItems.SCULK_TRANSMITTER)) && Keybinds.TRANSMIT.isDown()) {
+                ClientPlayNetworking.send(UseTransmitterPayload.INSTANCE);
+            }
+        });
+
+        HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
+            ResourceLocation texture = DeeperDarker.rl("textures/gui/soul_elytra_overlay_large.png");
+
+            Minecraft client = Minecraft.getInstance();
+            if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
+            ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
+            if (itemStack.is(DDItems.SOUL_ELYTRA)) {
+                float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, (float)(Minecraft.getInstance().getFrameTimeNs() / 1000000000.0));
+                drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37, 0, 0, 0, 12, Mth.floor(32 * f), 32, 32);
+                drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37 + Mth.floor(32 * f), 0, 12, Mth.floor(32 * f), 12, Mth.ceil(32 * (1.0f - f)), 32, 32);
+                if (f == 0.0f && client.player.isFallFlying()) {
+                    for (BlockPos blockPos : BlockPos.betweenClosed(client.player.getOnPos(), client.player.getOnPos().below(5))) {
+                        if (client.player.level().getBlockState(blockPos).isAir()) continue;
+                        drawContext.drawString(client.font, Component.translatable(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", Keybinds.BOOST.getTranslatedKeyMessage()).setStyle(Style.EMPTY.withColor(ChatFormatting.YELLOW)), 20, client.getWindow().getGuiScaledHeight() - 37, 0);
+                    }
+                }
+            }
+        });
         LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(entity -> !entity.getItemBySlot(EquipmentSlot.CHEST).is(DDItems.SOUL_ELYTRA));
     }
 }
