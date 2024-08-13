@@ -32,6 +32,7 @@ public abstract class ItemStackMixin {
             for(Component component : components) {
                 if(component.getString().contains("Durability")) break;
                 if(component.getString().contains("warden_boots")) break;
+                if(component.getString().contains("Deeper and Darker")) break;
                 index++;
             }
             components.add(index, Component.translatable("item." + DeeperDarker.MOD_ID + ".dampens_vibrations").withStyle(ChatFormatting.BLUE));
