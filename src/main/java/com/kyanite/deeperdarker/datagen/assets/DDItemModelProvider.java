@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -245,9 +246,12 @@ public class DDItemModelProvider extends ItemModelProvider {
     private void armorItemModel(DeferredItem<? extends ArmorItem> item) {
         ItemModelBuilder itemModel = itemModel(item, GENERATED);
         for(ItemModelGenerators.TrimModelData trimModel : ItemModelGenerators.GENERATED_TRIM_MODELS) {
+            ResourceLocation trimLoc = item.get() == DDItems.WARDEN_HELMET.get() ? modLoc("trims/items/warden_") : mcLoc("trims/items/");
+            ResourceLocation trimLayer = ResourceLocation.parse(trimLoc + item.get().getType().getName() + "_trim_" + trimModel.name());
+            existingFileHelper.trackGenerated(trimLayer, ModelProvider.TEXTURE);
             getBuilder(item.getId().getPath() + "_" + trimModel.name() + "_trim").parent(GENERATED)
                     .texture("layer0", "item/" + item.getId().getPath())
-                    .texture("layer1", mcLoc("trims/items/") + item.get().getType().getName() + "_trim_" + trimModel.name());
+                    .texture("layer1", trimLoc + item.get().getType().getName() + "_trim_" + trimModel.name());
 
             itemModel.override().model(getModel(item, trimModel.name() + "_trim")).predicate(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID, trimModel.itemModelIndex()).end();
         }

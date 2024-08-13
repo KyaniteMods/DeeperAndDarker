@@ -2,6 +2,6 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "deeperdarker:item/warden_helmet",
-    "layer1": "minecraft:trims/items/helmet_trim_lapis"
+    "layer1": "deeperdarker:trims/items/warden_helmet_trim_lapis"
   }
 }
