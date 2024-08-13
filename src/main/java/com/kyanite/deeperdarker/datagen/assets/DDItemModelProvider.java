@@ -4,7 +4,9 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -181,20 +183,20 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.RESONARIUM_AXE, HANDHELD);
         itemModel(DDItems.RESONARIUM_HOE, HANDHELD);
         itemModel(DDItems.RESONARIUM_SWORD, HANDHELD);
-        itemModel(DDItems.RESONARIUM_HELMET, GENERATED);
-        itemModel(DDItems.RESONARIUM_CHESTPLATE, GENERATED);
-        itemModel(DDItems.RESONARIUM_LEGGINGS, GENERATED);
-        itemModel(DDItems.RESONARIUM_BOOTS, GENERATED);
+        armorItemModel(DDItems.RESONARIUM_HELMET);
+        armorItemModel(DDItems.RESONARIUM_CHESTPLATE);
+        armorItemModel(DDItems.RESONARIUM_LEGGINGS);
+        armorItemModel(DDItems.RESONARIUM_BOOTS);
 
         itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
-        itemModel(DDItems.WARDEN_HELMET, GENERATED);
-        itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
-        itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
-        itemModel(DDItems.WARDEN_BOOTS, GENERATED);
+        armorItemModel(DDItems.WARDEN_HELMET);
+        armorItemModel(DDItems.WARDEN_CHESTPLATE);
+        armorItemModel(DDItems.WARDEN_LEGGINGS);
+        armorItemModel(DDItems.WARDEN_BOOTS);
 
         itemModel(DDItems.SCULK_BONE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
@@ -220,10 +222,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         spawnEggModel(DDItems.STALKER_SPAWN_EGG);
     }
 
-    private void spawnEggModel(DeferredItem<Item> item) {
-        withExistingParent(item.getId().getPath(), mcLoc("item/template_spawn_egg"));
-    }
-
     public void blockModel(DeferredBlock<? extends Block> block) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath()));
     }
@@ -242,6 +240,21 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     public void itemModelWithSuffix(DeferredItem<?> item, ModelFile modelFile, String suffix) {
         getBuilder(item.getId().getPath() + "_" + suffix).parent(modelFile).texture("layer0", "item/" + item.getId().getPath() + "_" + suffix);
+    }
+
+    private void armorItemModel(DeferredItem<? extends ArmorItem> item) {
+        ItemModelBuilder itemModel = itemModel(item, GENERATED);
+        for(ItemModelGenerators.TrimModelData trimModel : ItemModelGenerators.GENERATED_TRIM_MODELS) {
+            getBuilder(item.getId().getPath() + "_" + trimModel.name() + "_trim").parent(GENERATED)
+                    .texture("layer0", "item/" + item.getId().getPath())
+                    .texture("layer1", mcLoc("trims/items/") + item.get().getType().getName() + "_trim_" + trimModel.name());
+
+            itemModel.override().model(getModel(item, trimModel.name() + "_trim")).predicate(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID, trimModel.itemModelIndex()).end();
+        }
+    }
+
+    private void spawnEggModel(DeferredItem<Item> item) {
+        withExistingParent(item.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     private ModelFile.ExistingModelFile getModel(DeferredItem<?> item, String suffix) {
