@@ -248,7 +248,8 @@ public class DDItemModelProvider extends ItemModelProvider {
         Map<String, Float> trimModels = Map.of("quartz", 0.1F, "iron", 0.2F, "netherite", 0.3F, "redstone", 0.4F, "copper", 0.5F, "gold", 0.6F, "emerald", 0.7F, "diamond", 0.8F, "lapis", 0.9F, "amethyst", 1.0F);
 
         for(String material : trimModels.keySet()) {
-            ResourceLocation trimLayer = new ResourceLocation(mcLoc("trims/items/") + item.get().getType().getName() + "_trim_" + material);
+            ResourceLocation trimLoc = item.get() == DDItems.WARDEN_HELMET.get() ? modLoc("trims/items/warden_") : mcLoc("trims/items/");
+            ResourceLocation trimLayer = new ResourceLocation(trimLoc + item.get().getType().getName() + "_trim_" + material);
             existingFileHelper.trackGenerated(trimLayer, PackType.CLIENT_RESOURCES, ".png", "textures");
             getBuilder(item.getId().getPath() + "_" + material + "_trim").parent(GENERATED)
                     .texture("layer0", "item/" + item.getId().getPath())
