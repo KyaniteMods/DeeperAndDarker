@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-21T10:49:03.477768	Tags for minecraft:item mod id deeperdarker
+// 1.20.1	2024-08-13T15:44:53.2417839	Tags for minecraft:item mod id deeperdarker
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/items/bloom_stems.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/items/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/items/echo_logs.json
@@ -41,6 +41,7 @@ b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/items/redstone_ores
 06b286c7c79571755f7b5149b31787b00d449c4b data/minecraft/tags/items/small_flowers.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/items/stairs.json
 df25b6646f8e4aea4f5aa3634dc892c62e1ec0e5 data/minecraft/tags/items/swords.json
+748802094f3415d3943a84ef27d493a0025af235 data/minecraft/tags/items/trimmable_armor.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/items/walls.json
 88f459cee731c19448a25731c1b827b73e0d250d data/minecraft/tags/items/wooden_buttons.json
 39fbe102f3d81b28399a10256c82260dc79c4653 data/minecraft/tags/items/wooden_doors.json

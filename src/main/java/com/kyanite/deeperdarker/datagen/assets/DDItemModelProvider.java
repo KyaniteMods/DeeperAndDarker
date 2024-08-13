@@ -4,7 +4,10 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -12,6 +15,8 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Map;
 
 public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
@@ -179,19 +184,20 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.RESONARIUM_AXE, HANDHELD);
         itemModel(DDItems.RESONARIUM_HOE, HANDHELD);
         itemModel(DDItems.RESONARIUM_SWORD, HANDHELD);
-        itemModel(DDItems.RESONARIUM_HELMET, GENERATED);
-        itemModel(DDItems.RESONARIUM_CHESTPLATE, GENERATED);
-        itemModel(DDItems.RESONARIUM_LEGGINGS, GENERATED);
-        itemModel(DDItems.RESONARIUM_BOOTS, GENERATED);
+        armorItemModel(DDItems.RESONARIUM_HELMET);
+        armorItemModel(DDItems.RESONARIUM_CHESTPLATE);
+        armorItemModel(DDItems.RESONARIUM_LEGGINGS);
+        armorItemModel(DDItems.RESONARIUM_BOOTS);
+
         itemModel(DDItems.WARDEN_SHOVEL, HANDHELD);
         itemModel(DDItems.WARDEN_PICKAXE, HANDHELD);
         itemModel(DDItems.WARDEN_AXE, HANDHELD);
         itemModel(DDItems.WARDEN_HOE, HANDHELD);
         itemModel(DDItems.WARDEN_SWORD, HANDHELD);
-        itemModel(DDItems.WARDEN_HELMET, GENERATED);
-        itemModel(DDItems.WARDEN_CHESTPLATE, GENERATED);
-        itemModel(DDItems.WARDEN_LEGGINGS, GENERATED);
-        itemModel(DDItems.WARDEN_BOOTS, GENERATED);
+        armorItemModel(DDItems.WARDEN_HELMET);
+        armorItemModel(DDItems.WARDEN_CHESTPLATE);
+        armorItemModel(DDItems.WARDEN_LEGGINGS);
+        armorItemModel(DDItems.WARDEN_BOOTS);
 
         itemModel(DDItems.SCULK_BONE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
@@ -217,10 +223,6 @@ public class DDItemModelProvider extends ItemModelProvider {
         spawnEggModel(DDItems.STALKER_SPAWN_EGG);
     }
 
-    private void spawnEggModel(RegistryObject<Item> egg) {
-        withExistingParent(egg.getId().getPath(), mcLoc("item/template_spawn_egg"));
-    }
-
     public void blockModel(RegistryObject<? extends Block> block) {
         withExistingParent(block.getId().getPath(), modLoc("block/" + block.getId().getPath()));
     }
@@ -239,6 +241,25 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     public void itemModelWithSuffix(RegistryObject<?> item, ModelFile modelFile, String suffix) {
         getBuilder(item.getId().getPath() + "_" + suffix).parent(modelFile).texture("layer0", "item/" + item.getId().getPath() + "_" + suffix);
+    }
+
+    private void armorItemModel(RegistryObject<? extends ArmorItem> item) {
+        ItemModelBuilder itemModel = itemModel(item, GENERATED);
+        Map<String, Float> trimModels = Map.of("quartz", 0.1F, "iron", 0.2F, "netherite", 0.3F, "redstone", 0.4F, "copper", 0.5F, "gold", 0.6F, "emerald", 0.7F, "diamond", 0.8F, "lapis", 0.9F, "amethyst", 1.0F);
+
+        for(String material : trimModels.keySet()) {
+            ResourceLocation trimLayer = new ResourceLocation(mcLoc("trims/items/") + item.get().getType().getName() + "_trim_" + material);
+            existingFileHelper.trackGenerated(trimLayer, PackType.CLIENT_RESOURCES, ".png", "textures");
+            getBuilder(item.getId().getPath() + "_" + material + "_trim").parent(GENERATED)
+                    .texture("layer0", "item/" + item.getId().getPath())
+                    .texture("layer1", trimLayer);
+
+            itemModel.override().model(getModel(item, material + "_trim")).predicate(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID, trimModels.get(material)).end();
+        }
+    }
+
+    private void spawnEggModel(RegistryObject<Item> egg) {
+        withExistingParent(egg.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
     private ModelFile.ExistingModelFile getModel(RegistryObject<?> item, String suffix) {
