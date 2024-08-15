@@ -1,9 +1,12 @@
 package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,8 +27,12 @@ public class DampensVibrationsTooltipMixin {
         if(((ItemStack)(Object) this).is(DDTags.Items.DAMPENS_VIBRATIONS)) {
             int index = 0;
             for(Component component : components) {
-                if(component.getString().contains("Durability")) break;
-                if(component.getString().contains("warden_boots")) break;
+                if (component.getContents().type() == TranslatableContents.TYPE) {
+                    if (((TranslatableContents) component.getContents()).getKey().equals("item.durability")) break;
+                    if (((TranslatableContents) component.getContents()).getKey().equals("itemGroup.deeperdarker")) break;
+                } else {
+                    if (component.getString().equals(BuiltInRegistries.ITEM.getKey(((ItemStack)(Object) this).getItem()).toString())) break;
+                }
                 index++;
             }
             components.add(index, Component.translatable("item." + DeeperDarker.MOD_ID + ".perks.dampens_vibrations").withStyle(ChatFormatting.BLUE));
