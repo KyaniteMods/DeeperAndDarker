@@ -122,6 +122,7 @@ public class DeeperDarker {
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());
         event.put(DDEntities.SHATTERED.get(), Shattered.createAttributes());
         event.put(DDEntities.SHRIEK_WORM.get(), ShriekWorm.createAttributes());
+        event.put(DDEntities.SLUDGE.get(), Sludge.createAttributes());
         event.put(DDEntities.STALKER.get(), Stalker.createAttributes());
     }
 
@@ -130,6 +131,7 @@ public class DeeperDarker {
         event.register(DDEntities.SCULK_CENTIPEDE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DDEntities.SHATTERED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(DDEntities.SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static ResourceLocation rl(String path) {

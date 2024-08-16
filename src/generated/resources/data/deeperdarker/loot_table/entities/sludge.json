@@ -3,6 +3,18 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type_specific": {
+              "type": "minecraft:slime",
+              "size": 1
+            }
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
@@ -26,11 +38,11 @@
               "function": "minecraft:enchanted_count_increase"
             }
           ],
-          "name": "minecraft:string"
+          "name": "deeperdarker:resonarium"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "deeperdarker:entities/sculk_centipede"
+  "random_sequence": "deeperdarker:entities/sludge"
 }

@@ -1,4 +1,4 @@
-// 1.21	2024-08-13T16:20:54.2169989	Item Models: deeperdarker
+// 1.21	2024-08-16T00:11:29.7233953	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -184,6 +184,7 @@ b456f6dcb2e3009eb3828b3a389c14a93a2d4e71 assets/deeperdarker/models/item/sculk_t
 826d5e09ad2e18070d74add221ff22017abadb39 assets/deeperdarker/models/item/sculk_vines.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shattered_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shriek_worm_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sludge_spawn_egg.json
 a486e0567f9d7ed81cc982dc986042fa09f181d8 assets/deeperdarker/models/item/smooth_gloomslate.json
 41fe998b4bcdf450a042c53f50f6b124c11bf27c assets/deeperdarker/models/item/smooth_gloomslate_slab.json
 405be8a3845c30eda1385a6f712555e8fe39e8f0 assets/deeperdarker/models/item/smooth_gloomslate_stairs.json

@@ -282,6 +282,7 @@ public class DeeperDarkerEvents {
             EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
             EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
             EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
+            EntityRenderers.register(DDEntities.SLUDGE.get(), SludgeRenderer::new);
             EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
         }
 
@@ -308,6 +309,8 @@ public class DeeperDarkerEvents {
             event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
             event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
             event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
+            event.registerLayerDefinition(SludgeRenderer.MODEL, SludgeModel::createInnerBodyModel);
+            event.registerLayerDefinition(SludgeOuterLayer.OUTER_MODEL, SludgeModel::createOuterBodyModel);
             event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
             event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createBodyModel);
         }
