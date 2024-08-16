@@ -41,6 +41,7 @@ public class DDItems {
     public static final DeferredItem<Item> SOUL_DUST = ITEMS.registerSimpleItem("soul_dust");
     public static final DeferredItem<Item> SOUL_CRYSTAL = ITEMS.registerSimpleItem("soul_crystal");
     public static final DeferredItem<Item> RESONARIUM = ITEMS.registerSimpleItem("resonarium");
+    public static final DeferredItem<Item> RESONARIUM_PLATE = ITEMS.registerSimpleItem("resonarium_plate");
     public static final DeferredItem<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new WardenHeartItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).fireResistant()));
     public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.register("reinforced_echo_shard", () -> new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));

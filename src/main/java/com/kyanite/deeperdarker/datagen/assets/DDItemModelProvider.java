@@ -203,6 +203,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.SOUL_DUST, GENERATED);
         itemModel(DDItems.SOUL_CRYSTAL, GENERATED);
         itemModel(DDItems.RESONARIUM, GENERATED);
+        itemModel(DDItems.RESONARIUM_PLATE, GENERATED);
         itemModel(DDItems.HEART_OF_THE_DEEP, GENERATED);
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);

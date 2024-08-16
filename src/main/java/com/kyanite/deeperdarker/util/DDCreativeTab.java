@@ -191,6 +191,7 @@ public class DDCreativeTab {
             event.accept(DDItems.SOUL_DUST);
             event.accept(DDItems.SOUL_CRYSTAL);
             event.accept(DDItems.RESONARIUM);
+            event.accept(DDItems.RESONARIUM_PLATE);
             event.accept(DDItems.HEART_OF_THE_DEEP);
             event.accept(DDItems.WARDEN_CARAPACE);
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
