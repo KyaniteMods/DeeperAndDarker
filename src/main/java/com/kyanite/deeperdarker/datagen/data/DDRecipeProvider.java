@@ -301,6 +301,16 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void addSmithingRecipes(RecipeOutput output) {
+        resonariumSmithing(output, Items.IRON_SHOVEL, RecipeCategory.TOOLS, DDItems.RESONARIUM_SHOVEL.get());
+        resonariumSmithing(output, Items.IRON_PICKAXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_PICKAXE.get());
+        resonariumSmithing(output, Items.IRON_AXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_AXE.get());
+        resonariumSmithing(output, Items.IRON_HOE, RecipeCategory.TOOLS, DDItems.RESONARIUM_HOE.get());
+        resonariumSmithing(output, Items.IRON_SWORD, RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD.get());
+        resonariumSmithing(output, Items.IRON_HELMET, RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET.get());
+        resonariumSmithing(output, Items.IRON_CHESTPLATE, RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE.get());
+        resonariumSmithing(output, Items.IRON_LEGGINGS, RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS.get());
+        resonariumSmithing(output, Items.IRON_BOOTS, RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS.get());
+
         wardenSmithing(output, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, DDItems.WARDEN_SHOVEL.get());
         wardenSmithing(output, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, DDItems.WARDEN_PICKAXE.get());
         wardenSmithing(output, Items.NETHERITE_AXE, RecipeCategory.TOOLS, DDItems.WARDEN_AXE.get());
@@ -312,8 +322,12 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         wardenSmithing(output, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS.get());
     }
 
+    private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
+    }
+
     private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
     }
 
     private void woodenRecipes(RecipeOutput output, TagKey<Item> logs, DeferredBlock<? extends Block> strippedLog, DeferredBlock<Block> planks, DeferredBlock<StairBlock> stairs, DeferredBlock<SlabBlock> slabs, DeferredBlock<FenceBlock> fence, DeferredBlock<FenceGateBlock> fenceGate, DeferredBlock<DoorBlock> door, DeferredBlock<TrapDoorBlock> trapDoor, DeferredBlock<PressurePlateBlock> pressurePlate, DeferredBlock<ButtonBlock> button, DeferredItem<Item> sign, DeferredItem<Item> hangingSign, DeferredItem<Item> boat, DeferredItem<Item> chestBoat) {
