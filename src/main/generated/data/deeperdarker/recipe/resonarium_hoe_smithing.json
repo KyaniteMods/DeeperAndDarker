@@ -1,14 +1,14 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "deeperdarker:resonarium"
+    "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_axe"
+    "item": "minecraft:iron_hoe"
   },
   "result": {
     "count": 1,
-    "id": "deeperdarker:resonarium_axe"
+    "id": "deeperdarker:resonarium_hoe"
   },
   "template": []
 }

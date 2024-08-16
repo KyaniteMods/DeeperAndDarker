@@ -1,14 +1,14 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "deeperdarker:resonarium"
+    "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_pickaxe"
+    "item": "minecraft:iron_leggings"
   },
   "result": {
     "count": 1,
-    "id": "deeperdarker:resonarium_pickaxe"
+    "id": "deeperdarker:resonarium_leggings"
   },
   "template": []
 }
