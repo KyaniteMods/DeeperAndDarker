@@ -32,6 +32,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.SONOROUS_STAFF));
         entries.accept(new ItemStack(DDItems.SOUL_ELYTRA));
         entries.accept(new ItemStack(DDItems.RESONARIUM));
+        entries.accept(new ItemStack(DDItems.RESONARIUM_PLATE));
         entries.accept(new ItemStack(DDItems.RESONARIUM_HELMET));
         entries.accept(new ItemStack(DDItems.RESONARIUM_CHESTPLATE));
         entries.accept(new ItemStack(DDItems.RESONARIUM_LEGGINGS));
@@ -192,7 +193,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.SCULK_LEECH_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SHRIEK_WORM_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.STALKER_SPAWN_EGG));
-        entries.accept(DDItems.SLUDGE_SPAWN_EGG);
+        entries.accept(new ItemStack(DDItems.SLUDGE_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SCULK_CENTIPEDE_SPAWN_EGG));
         displayContext.holders().lookupOrThrow(Registries.PAINTING_VARIANT).get(DDTags.Paintings.ANCIENT).ifPresent(holders -> {
             for (Holder<PaintingVariant> holder : holders) {

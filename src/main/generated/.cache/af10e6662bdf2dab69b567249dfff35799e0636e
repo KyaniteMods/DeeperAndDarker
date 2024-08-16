@@ -1,4 +1,4 @@
-// 1.21	2024-08-16T20:31:03.311173175	Deeper and Darker/Tags for minecraft:block
+// 1.21	2024-08-16T21:20:43.817346314	Deeper and Darker/Tags for minecraft:block
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/block/coal_ores.json
 8793c7b135bd439d9ddbc1b7631addf273890f21 data/minecraft/tags/block/logs_that_burn.json
@@ -34,8 +34,8 @@ fdf385486288865b84ce0014957ead68d8a2e069 data/minecraft/tags/block/wooden_pressu
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/block/copper_ores.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/block/gloomslate_replaceable.json
 1ea4c81c2ab76027e0b0e2ae280e25f9445de8ca data/minecraft/tags/block/mineable/pickaxe.json
-e393a06b04acf4377285594bb65c749eb0c7f08d data/minecraft/tags/block/wooden_slabs.json
 3f2e555f5694cd1e1421158bb6ceea922dc330c0 data/minecraft/tags/block/mineable/hoe.json
+e393a06b04acf4377285594bb65c749eb0c7f08d data/minecraft/tags/block/wooden_slabs.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/block/mineable/shovel.json
 08b0595e3c0290061ed898dfbeb230d6c4f95eeb data/minecraft/tags/block/iron_ores.json
 16fc775f3d68d0ec1accc58f8fcfd10c571706ad data/deeperdarker/tags/block/otherside_carver_replaceables.json

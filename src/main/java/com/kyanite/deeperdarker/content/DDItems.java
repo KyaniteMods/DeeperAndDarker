@@ -36,10 +36,11 @@ public class DDItems {
     public static final Item SCULK_BONE = register("sculk_bone", new Item(new Item.Properties()));
     public static final Item SOUL_DUST = register("soul_dust", new Item(new Item.Properties()));
     public static final Item SOUL_CRYSTAL = register("soul_crystal", new Item(new Item.Properties()));
-    public static final Item HEART_OF_THE_DEEP = register("heart_of_the_deep", new HeartOfTheDeepItem(new Item.Properties().rarity(Rarity.EPIC).fireResistant().stacksTo(1)));
+    public static final Item HEART_OF_THE_DEEP = register("heart_of_the_deep", new HeartOfTheDeepItem(new Item.Properties().rarity(Rarity.RARE).fireResistant().stacksTo(1)));
     public static final Item WARDEN_CARAPACE = register("warden_carapace", new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item REINFORCED_ECHO_SHARD = register("reinforced_echo_shard", new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
-    public static final Item RESONARIUM = register("resonarium", new Item(new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+    public static final Item RESONARIUM = register("resonarium", new Item(new Item.Properties().fireResistant()));
+    public static final Item RESONARIUM_PLATE = register("resonarium_plate", new Item(new Item.Properties().fireResistant()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
 
     public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.WARDEN, 1.5f, -3)).rarity(Rarity.RARE).fireResistant()));
