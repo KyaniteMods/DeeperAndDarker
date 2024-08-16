@@ -304,6 +304,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_LEECH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SHRIEK_WORM_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.STALKER_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DDItems.SLUDGE_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
     }
 

@@ -81,6 +81,12 @@
         "maxCount": 2,
         "minCount": 1,
         "weight": 1
+      },
+      {
+        "type": "deeperdarker:sludge",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 6
       }
     ],
     "underground_water_creature": [],

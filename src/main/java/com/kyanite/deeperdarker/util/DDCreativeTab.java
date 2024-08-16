@@ -192,6 +192,7 @@ public class DDCreativeTab {
         entries.accept(new ItemStack(DDItems.SCULK_LEECH_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.SHRIEK_WORM_SPAWN_EGG));
         entries.accept(new ItemStack(DDItems.STALKER_SPAWN_EGG));
+        entries.accept(DDItems.SLUDGE_SPAWN_EGG);
         entries.accept(new ItemStack(DDItems.SCULK_CENTIPEDE_SPAWN_EGG));
         displayContext.holders().lookupOrThrow(Registries.PAINTING_VARIANT).get(DDTags.Paintings.ANCIENT).ifPresent(holders -> {
             for (Holder<PaintingVariant> holder : holders) {

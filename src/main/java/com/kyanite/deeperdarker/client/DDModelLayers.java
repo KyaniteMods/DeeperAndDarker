@@ -23,6 +23,8 @@ public class DDModelLayers {
     public static ModelLayerLocation SCULK_LEECH;
     public static ModelLayerLocation SHRIEK_WORM;
     public static ModelLayerLocation STALKER;
+    public static ModelLayerLocation SLUDGE;
+    public static ModelLayerLocation SLUDGE_OUTER;
     public static ModelLayerLocation SCULK_CENTIPEDE;
     public static ModelLayerLocation SHATTERED_HEAD;
 
@@ -64,6 +66,8 @@ public class DDModelLayers {
         SCULK_LEECH = registerMain("sculk_leech");
         SHRIEK_WORM = registerMain("shriek_worm");
         STALKER = registerMain("stalker");
+        SLUDGE = registerMain("sludge");
+        SLUDGE_OUTER = register("sludge", "outer");
         SCULK_CENTIPEDE = registerMain("sculk_centipede");
         SHATTERED_HEAD = registerMain("shattered_head");
     }
