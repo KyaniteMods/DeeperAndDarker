@@ -1,4 +1,4 @@
-// 1.20.4	2024-08-16T22:00:39.345662319	Deeper and Darker/Tags for minecraft:block
+// 1.20.4	2024-08-16T22:16:26.385175631	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
@@ -8,8 +8,8 @@ d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.js
 54e721fa91171d8189efd956079c77fd11abc938 data/deeperdarker/tags/blocks/gloomslate_replaceable.json
 5eab59aeb251bf0914609c90236404b844d1e7d3 data/minecraft/tags/blocks/wooden_fences.json
 9db339876ebf24af66c66fdb249cb14a52ea00d5 data/minecraft/tags/blocks/inside_step_sound_blocks.json
-68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/blocks/lapis_ores.json
 decd179c945b9efde8460c8d6f887d935895a56b data/deeperdarker/tags/blocks/blooming_stems.json
+68416f251307e15de956ea109943e17f0988f207 data/minecraft/tags/blocks/lapis_ores.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/sniffer_diggable_block.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/blocks/leaves.json
 9a6feb9a5887e60d3b0217373376132678bd5c06 data/minecraft/tags/blocks/mineable/axe.json
@@ -48,8 +48,8 @@ c26e65b7ac5b7349b7e5f94a143813f554bcd660 data/minecraft/tags/blocks/iron_ores.js
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data/minecraft/tags/blocks/diamond_ores.json
 9e9aed9133e0804ea76803e40cf08e5f785f2987 data/deeperdarker/tags/blocks/echo_logs.json
 a97e3cb5a044bff5590dbf6589d9c5e6b6889a35 data/minecraft/tags/blocks/planks.json
-ef12e7da95cf6e7a6bf88e613b377516840dbc51 data/minecraft/tags/blocks/wooden_buttons.json
 7d11d6c5ad2aae4b705302ecc42367df04d9e005 data/minecraft/tags/blocks/needs_iron_tool.json
+ef12e7da95cf6e7a6bf88e613b377516840dbc51 data/minecraft/tags/blocks/wooden_buttons.json
 c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/blocks/saplings.json
 633ef27c79c15ddc51b4f7893b8ebdbc6d155237 data/minecraft/tags/blocks/copper_ores.json
 5853dd3bde739be76992a2067a4a916e9f14659f data/minecraft/tags/blocks/walls.json
