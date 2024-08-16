@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_resonarium": {
+    "has_reinforced_echo_shard": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:resonarium"
+              "deeperdarker:reinforced_echo_shard"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:iron_axe_to_resonarium_axe_upgrade"
+        "recipe": "deeperdarker:warden_chestplate_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_resonarium"
+      "has_reinforced_echo_shard"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:iron_axe_to_resonarium_axe_upgrade"
+      "deeperdarker:warden_chestplate_smithing"
     ]
   }
 }

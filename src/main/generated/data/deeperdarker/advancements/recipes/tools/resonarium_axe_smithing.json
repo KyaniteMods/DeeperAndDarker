@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_resonarium": {
+    "has_resonarium_plate": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:resonarium"
+              "deeperdarker:resonarium_plate"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:iron_leggings_to_resonarium_leggings_upgrade"
+        "recipe": "deeperdarker:resonarium_axe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +23,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_resonarium"
+      "has_resonarium_plate"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:iron_leggings_to_resonarium_leggings_upgrade"
+      "deeperdarker:resonarium_axe_smithing"
     ]
   }
 }
