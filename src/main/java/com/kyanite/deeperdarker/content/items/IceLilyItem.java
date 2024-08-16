@@ -22,7 +22,7 @@ public class IceLilyItem extends PlaceOnWaterBlockItem {
 
     @Override
     public void appendHoverText(ItemStack pStack, @NotNull TooltipContext pContext, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
-        if(pStack.getOrDefault(DDDataComponents.HAS_FLOWER, false)) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless").withStyle(ChatFormatting.GRAY));
+        if(!pStack.getOrDefault(DDDataComponents.HAS_FLOWER, false)) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless").withStyle(ChatFormatting.GRAY));
         super.appendHoverText(pStack, pContext, pTooltip, pFlag);
     }
 }

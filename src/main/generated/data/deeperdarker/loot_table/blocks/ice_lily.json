@@ -9,14 +9,14 @@
           "functions": [
             {
               "components": {
-                "deeperdarker:has_flower": false
+                "deeperdarker:has_flower": true
               },
               "conditions": [
                 {
                   "block": "deeperdarker:ice_lily",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "has_flower": "false"
+                    "has_flower": "true"
                   }
                 }
               ],

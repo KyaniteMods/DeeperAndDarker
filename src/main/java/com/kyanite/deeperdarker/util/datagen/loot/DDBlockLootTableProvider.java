@@ -199,7 +199,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         return LootTable.lootTable().withPool(
                 LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
                         .add(LootItem.lootTableItem(DDItems.ICE_LILY)
-                                .apply(SetComponentsFunction.setComponent(DDDataComponents.HAS_FLOWER, false).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IceLilyBlock.HAS_FLOWER, false))))
+                                .apply(SetComponentsFunction.setComponent(DDDataComponents.HAS_FLOWER, true).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(IceLilyBlock.HAS_FLOWER, true))))
                         ));
     }
 }

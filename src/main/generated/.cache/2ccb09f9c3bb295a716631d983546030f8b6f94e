@@ -1,4 +1,4 @@
-// 1.21	2024-08-16T20:21:44.552361257	Deeper and Darker/Block Loot Tables
+// 1.21	2024-08-16T20:31:03.321972903	Deeper and Darker/Block Loot Tables
 0c85a2c69d84a0cbbd6b9cbe1b0a9bbf1932559c data/deeperdarker/loot_table/blocks/potted_echo_sapling.json
 2567fce7d132638e816ddb4eaaccaf6c82e85ea6 data/deeperdarker/loot_table/blocks/gloomslate_tiles.json
 a1b7c5836af1e26d14f13bc1c73f757a1970e75c data/deeperdarker/loot_table/blocks/sculk_stone_diamond_ore.json
@@ -52,7 +52,7 @@ ebd25273cdf04dfcf9f1ccba9c863882a87d0b1d data/deeperdarker/loot_table/blocks/scu
 87503af1971f11d4d5a09cb177666509896b9a4c data/deeperdarker/loot_table/blocks/echo_pressure_plate.json
 6115e8b203c1264cd57d973c8b47fb6065d2b7b5 data/deeperdarker/loot_table/blocks/stripped_echo_wood.json
 598aeffe7e9b37f67b091e58c27a420b4577a4f3 data/deeperdarker/loot_table/blocks/smooth_sculk_stone_stairs.json
-b6f8f3918cdcfa839d7fcdcf36ff9ea442d99f14 data/deeperdarker/loot_table/blocks/ice_lily.json
+5a90c4a7b58263b3c1c1e21a7167f87ccdce1487 data/deeperdarker/loot_table/blocks/ice_lily.json
 0201e1a74820cf03f6978de99713cd33342bf1ac data/deeperdarker/loot_table/blocks/sculk_grime_brick_wall.json
 b3c99b7688cec807189658baac9e92337fd49d1f data/deeperdarker/loot_table/blocks/crystallized_amber.json
 7493e25b1f03e7c2ca76b83294c0ec9b599e9378 data/deeperdarker/loot_table/blocks/bloom_planks.json
