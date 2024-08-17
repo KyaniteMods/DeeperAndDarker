@@ -127,6 +127,9 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .define('B', DDItems.SCULK_BONE.get()).define('C', DDItems.SOUL_CRYSTAL.get()).define('D', DDItems.SOUL_DUST.get()).define('E', Items.ELYTRA)
                 .pattern("BCB").pattern("DED").pattern("B B")
                 .unlockedBy(getHasName(Items.ELYTRA), has(Items.ELYTRA)).save(writer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDItems.RESONARIUM_PLATE.get())
+                .requires(DDItems.RESONARIUM.get(), 4).requires(Items.SCUTE, 4)
+                .unlockedBy(getHasName(DDItems.RESONARIUM.get()), has(DDItems.RESONARIUM.get())).save(writer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD.get())
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE.get()).define('E', Items.ECHO_SHARD)
                 .pattern("PCP").pattern("CEC").pattern("PCP")

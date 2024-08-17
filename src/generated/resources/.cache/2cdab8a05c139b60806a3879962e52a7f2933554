@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-17T18:06:34.3757389	Item Models: deeperdarker
+// 1.20.1	2024-08-17T18:28:34.7618425	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -145,6 +145,7 @@ fbccc0c9e8bb3387876b37703e43553b0ece75f6 assets/deeperdarker/models/item/resonar
 a929a878fe14fe928f45df4f049c203d09aa7c9d assets/deeperdarker/models/item/resonarium_leggings_quartz_trim.json
 aaef0891dcadef06bc2b7149020d1ddda5682dff assets/deeperdarker/models/item/resonarium_leggings_redstone_trim.json
 6b9906209e176d83260edda3108b7d15f342e449 assets/deeperdarker/models/item/resonarium_pickaxe.json
+4a04ea75e9ebbe9285ce12a27a9dfc19cd4bc76b assets/deeperdarker/models/item/resonarium_plate.json
 a4a65d437afaa5e174b2119c748ba99eb995ef3b assets/deeperdarker/models/item/resonarium_shovel.json
 50a72ba3d144f141d159f832cbbcc419a6c25ece assets/deeperdarker/models/item/resonarium_sword.json
 18121c23d9e0f562f3d6394f3f7930858df5c802 assets/deeperdarker/models/item/sculk_bone.json
