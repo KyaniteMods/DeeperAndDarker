@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-16T18:52:49.6483826	Loot Tables
+// 1.20.1	2024-08-17T18:06:34.3828951	Loot Tables
 986b2382300d2e3e0e6214835cb6180ec5da43ff data/deeperdarker/loot_tables/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_tables/blocks/blooming_moss_block.json
 c209ce4d7dc1ed8f9a102cdb6e1361d06ecf276a data/deeperdarker/loot_tables/blocks/blooming_sculk_stone.json
@@ -146,4 +146,5 @@ beb5ac3d6ae8227c63df8a0f8ac0a0de0f287553 data/deeperdarker/loot_tables/entities/
 b5b8202f3e257dbca9b0c340f0a4b906d4ecec49 data/deeperdarker/loot_tables/entities/sculk_snapper.json
 e36d227cc06c7781ec00e92144665dc3b56a507d data/deeperdarker/loot_tables/entities/shattered.json
 c19314214b5eec7e7bd4645fa937a0b9df9184ed data/deeperdarker/loot_tables/entities/shriek_worm.json
+8a2fa6e1fb8e33234552a2670317ae40abc756d5 data/deeperdarker/loot_tables/entities/sludge.json
 d9e5a5eeaf6b7f84de5c5aedbee0c136ef27ee07 data/deeperdarker/loot_tables/entities/stalker.json

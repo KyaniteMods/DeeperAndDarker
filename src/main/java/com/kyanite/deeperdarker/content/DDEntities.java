@@ -20,5 +20,6 @@ public class DDEntities {
     public static final RegistryObject<EntityType<SculkSnapper>> SCULK_SNAPPER = ENTITIES.register("sculk_snapper", () -> EntityType.Builder.of(SculkSnapper::new, MobCategory.MONSTER).sized(0.65f, 0.65f).clientTrackingRange(10).build(DeeperDarker.rl("sculk_snapper").toString()));
     public static final RegistryObject<EntityType<Shattered>> SHATTERED = ENTITIES.register("shattered", () -> EntityType.Builder.of(Shattered::new, MobCategory.MONSTER).sized(0.8f, 2.125f).clientTrackingRange(10).build(DeeperDarker.rl("shattered").toString()));
     public static final RegistryObject<EntityType<ShriekWorm>> SHRIEK_WORM = ENTITIES.register("shriek_worm", () -> EntityType.Builder.of(ShriekWorm::new, MobCategory.MONSTER).sized(1f, 5.7f).clientTrackingRange(10).build(DeeperDarker.rl("shriek_worm").toString()));
+    public static final RegistryObject<EntityType<Sludge>> SLUDGE = ENTITIES.register("sludge", () -> EntityType.Builder.of(Sludge::new, MobCategory.MONSTER).sized(2.04f, 2.04f).clientTrackingRange(10).build(DeeperDarker.rl("sludge").toString()));
     public static final RegistryObject<EntityType<Stalker>> STALKER = ENTITIES.register("stalker", () -> EntityType.Builder.of(Stalker::new, MobCategory.MONSTER).sized(1f, 4.4f).clientTrackingRange(10).build(DeeperDarker.rl("shriek_worm").toString()));
 }

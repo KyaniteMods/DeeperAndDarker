@@ -221,6 +221,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);
         spawnEggModel(DDItems.SHATTERED_SPAWN_EGG);
         spawnEggModel(DDItems.SHRIEK_WORM_SPAWN_EGG);
+        spawnEggModel(DDItems.SLUDGE_SPAWN_EGG);
         spawnEggModel(DDItems.STALKER_SPAWN_EGG);
     }
 
