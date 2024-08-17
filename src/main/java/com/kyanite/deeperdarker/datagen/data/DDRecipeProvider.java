@@ -302,6 +302,16 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> writer) {
+        resonariumSmithing(writer, Items.IRON_SHOVEL, RecipeCategory.TOOLS, DDItems.RESONARIUM_SHOVEL.get());
+        resonariumSmithing(writer, Items.IRON_PICKAXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_PICKAXE.get());
+        resonariumSmithing(writer, Items.IRON_AXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_AXE.get());
+        resonariumSmithing(writer, Items.IRON_HOE, RecipeCategory.TOOLS, DDItems.RESONARIUM_HOE.get());
+        resonariumSmithing(writer, Items.IRON_SWORD, RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD.get());
+        resonariumSmithing(writer, Items.IRON_HELMET, RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET.get());
+        resonariumSmithing(writer, Items.IRON_CHESTPLATE, RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE.get());
+        resonariumSmithing(writer, Items.IRON_LEGGINGS, RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS.get());
+        resonariumSmithing(writer, Items.IRON_BOOTS, RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS.get());
+
         wardenSmithing(writer, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, DDItems.WARDEN_SHOVEL.get());
         wardenSmithing(writer, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, DDItems.WARDEN_PICKAXE.get());
         wardenSmithing(writer, Items.NETHERITE_AXE, RecipeCategory.TOOLS, DDItems.WARDEN_AXE.get());
@@ -313,8 +323,12 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         wardenSmithing(writer, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS.get());
     }
 
+    private void resonariumSmithing(Consumer<FinishedRecipe> writer, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE.get()), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE.get()), has(DDItems.RESONARIUM_PLATE.get())).save(writer, DeeperDarker.rl(getItemName(result) + "_smithing"));
+    }
+
     private void wardenSmithing(Consumer<FinishedRecipe> writer, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), category, result).unlocks("has_reinforced_echo_shard", has(DDItems.REINFORCED_ECHO_SHARD.get())).save(writer, DeeperDarker.rl(getItemName(result) + "_smithing"));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD.get()), has(DDItems.REINFORCED_ECHO_SHARD.get())).save(writer, DeeperDarker.rl(getItemName(result) + "_smithing"));
     }
 
     private void woodenRecipes(Consumer<FinishedRecipe> writer, TagKey<Item> logs, RegistryObject<? extends Block> strippedLog, RegistryObject<Block> planks, RegistryObject<StairBlock> stairs, RegistryObject<SlabBlock> slabs, RegistryObject<FenceBlock> fence, RegistryObject<FenceGateBlock> fenceGate, RegistryObject<DoorBlock> door, RegistryObject<TrapDoorBlock> trapDoor, RegistryObject<PressurePlateBlock> pressurePlate, RegistryObject<ButtonBlock> button, RegistryObject<Item> sign, RegistryObject<Item> hangingSign, RegistryObject<Item> boat, RegistryObject<Item> chestBoat) {
