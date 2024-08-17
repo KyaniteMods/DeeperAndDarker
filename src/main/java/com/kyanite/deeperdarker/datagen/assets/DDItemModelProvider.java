@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.resources.ResourceLocation;
@@ -16,7 +17,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class DDItemModelProvider extends ItemModelProvider {
     private final ModelFile GENERATED = getExistingFile(mcLoc("item/generated"));
@@ -245,7 +246,18 @@ public class DDItemModelProvider extends ItemModelProvider {
 
     private void armorItemModel(RegistryObject<? extends ArmorItem> item) {
         ItemModelBuilder itemModel = itemModel(item, GENERATED);
-        Map<String, Float> trimModels = Map.of("quartz", 0.1F, "iron", 0.2F, "netherite", 0.3F, "redstone", 0.4F, "copper", 0.5F, "gold", 0.6F, "emerald", 0.7F, "diamond", 0.8F, "lapis", 0.9F, "amethyst", 1.0F);
+        LinkedHashMap<String, Float> trimModels = Util.make(new LinkedHashMap<>(), map -> {
+            map.put("quartz", 0.1f);
+            map.put("iron", 0.2f);
+            map.put("netherite", 0.3f);
+            map.put("redstone", 0.4f);
+            map.put("copper", 0.5f);
+            map.put("gold", 0.6f);
+            map.put("emerald", 0.7f);
+            map.put("diamond", 0.8f);
+            map.put("lapis", 0.9f);
+            map.put("amethyst", 1.0f);
+        });
 
         for(String material : trimModels.keySet()) {
             ResourceLocation trimLoc = item.get() == DDItems.WARDEN_HELMET.get() ? modLoc("trims/items/warden_") : mcLoc("trims/items/");
