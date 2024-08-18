@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.157'
+    id 'net.neoforged.gradle.userdev' version '7.0.161'
 }
 tasks.named('wrapper', Wrapper).configure { distributionType = Wrapper.DistributionType.BIN }
 
