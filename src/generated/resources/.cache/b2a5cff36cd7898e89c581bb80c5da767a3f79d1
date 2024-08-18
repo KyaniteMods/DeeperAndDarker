@@ -1,4 +1,4 @@
-// 1.21	2024-08-07T01:06:53.6821658	Tags for minecraft:item mod id deeperdarker
+// 1.21	2024-08-18T11:51:12.0368843	Tags for minecraft:item mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/item/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/item/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/item/ores/copper.json
@@ -12,6 +12,7 @@ d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/item/stones.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/item/bloom_stems.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/item/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/item/echo_logs.json
+67d9430b6b1ed45602512d2407b31668b9f3a55b data/deeperdarker/tags/item/scutes.json
 743e0bd68d3bd18829be7dd9766c3d77d2e81061 data/minecraft/tags/item/axes.json
 828ad83b431bb94c090ae2c19a590f9f05e876ea data/minecraft/tags/item/boats.json
 1eec4d64020f6c39dd18198ce2e63fa970059d3f data/minecraft/tags/item/chest_armor.json

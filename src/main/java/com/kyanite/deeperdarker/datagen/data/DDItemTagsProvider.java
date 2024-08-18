@@ -9,6 +9,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -84,5 +85,6 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
 
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
+        tag(DDTags.Items.SCUTES).add(Items.ARMADILLO_SCUTE, Items.TURTLE_SCUTE);
     }
 }

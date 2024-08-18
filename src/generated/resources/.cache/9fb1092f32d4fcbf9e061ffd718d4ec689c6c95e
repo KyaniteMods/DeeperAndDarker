@@ -1,4 +1,4 @@
-// 1.21	2024-08-16T11:46:36.4830106	Recipes
+// 1.21	2024-08-18T11:51:12.0430036	Recipes
 ff2b4eded29e6aee06a2b8a67ed2460d6b44574c data/deeperdarker/advancement/recipes/building_blocks/bloom_planks.json
 2b96f477889839f16134ded19ef45829d1ef94d3 data/deeperdarker/advancement/recipes/building_blocks/bloom_slab.json
 67da220cbe51e2cdd8ce24d17eacc2558e4ba816 data/deeperdarker/advancement/recipes/building_blocks/bloom_stairs.json
@@ -405,7 +405,7 @@ be6542eabb38d9fcdd0fea9fa1ccd2553d90f87a data/deeperdarker/recipe/resonarium_boo
 6d3cb988f6edd5e8e675933f83691d2d1ca6c2f7 data/deeperdarker/recipe/resonarium_hoe_smithing.json
 3f2c0f0e2d31e9e42b3e6863a398a4a864cb2aaa data/deeperdarker/recipe/resonarium_leggings_smithing.json
 5b2c87b65d696e62e9906809359dc9f4ee455857 data/deeperdarker/recipe/resonarium_pickaxe_smithing.json
-135a191f28dc80129f9f3232ee22c427ab28a711 data/deeperdarker/recipe/resonarium_plate.json
+9394987f100c35d0708706cc635206f87a48c74a data/deeperdarker/recipe/resonarium_plate.json
 b1df20d84a95613a694a2329f38a476e1a53c45e data/deeperdarker/recipe/resonarium_shovel_smithing.json
 cbb02ea3a026c28aeee73d0428192c536ef2f58c data/deeperdarker/recipe/resonarium_sword_smithing.json
 310e3d96b81ef08fdd74e4071066ace1864ff9db data/deeperdarker/recipe/sculk_grime.json

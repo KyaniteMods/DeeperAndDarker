@@ -127,7 +127,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("BCB").pattern("DED").pattern("B B")
                 .unlockedBy("has_elytra", has(Items.ELYTRA)).save(output);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDItems.RESONARIUM_PLATE)
-                .requires(DDItems.RESONARIUM, 4).requires(Items.ARMADILLO_SCUTE, 4)
+                .requires(DDItems.RESONARIUM, 4).requires(Ingredient.of(DDTags.Items.SCUTES), 4)
                 .unlockedBy(getHasName(DDItems.RESONARIUM), has(DDItems.RESONARIUM)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD)
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE).define('E', Items.ECHO_SHARD)

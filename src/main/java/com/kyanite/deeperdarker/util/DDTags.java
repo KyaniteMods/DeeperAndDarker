@@ -37,10 +37,10 @@ public class DDTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Item> BLOOM_STEMS = tag("bloom_stems");
-
+        public static final TagKey<Item> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Item> DAMPENS_VIBRATIONS = tag("dampens_vibrations");
+        public static final TagKey<Item> SCUTES = tag("scutes");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(DeeperDarker.rl(name));
