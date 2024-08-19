@@ -21,16 +21,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class GlowingGrassBlock extends BushBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 12, 14);
-    private static final MapCodec<GlowingGrassBlock> CODEC = simpleCodec(GlowingGrassBlock::new);
 
     public GlowingGrassBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
     }
 
     @Override

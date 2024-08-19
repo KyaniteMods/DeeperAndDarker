@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_soul_crystal"
+      "has_soul_crystal",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:soundproof_glass"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

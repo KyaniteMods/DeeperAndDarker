@@ -15,13 +15,17 @@
     }
   },
   "display": {
+    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.obtain_sonorous_staff.description"
     },
+    "frame": "task",
+    "hidden": false,
     "icon": {
       "item": "deeperdarker:sonorous_staff",
       "nbt": "{Damage:0}"
     },
+    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.obtain_sonorous_staff.title"
     }

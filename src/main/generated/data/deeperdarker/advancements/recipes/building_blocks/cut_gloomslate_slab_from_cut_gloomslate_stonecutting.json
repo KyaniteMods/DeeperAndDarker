@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cut_gloomslate"
+      "has_cut_gloomslate",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:cut_gloomslate_slab_from_cut_gloomslate_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomy_cactus"
+      "has_gloomy_cactus",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:gloomy_cactus_from_smelting_gloomy_cactus"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

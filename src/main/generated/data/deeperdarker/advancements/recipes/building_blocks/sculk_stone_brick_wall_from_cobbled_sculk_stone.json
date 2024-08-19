@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cobbled_sculk_stone"
+      "has_cobbled_sculk_stone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:sculk_stone_brick_wall_from_cobbled_sculk_stone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

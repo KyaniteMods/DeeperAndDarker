@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "deeperdarker:echo_fence_gate"
-  }
+  },
+  "show_notification": true
 }

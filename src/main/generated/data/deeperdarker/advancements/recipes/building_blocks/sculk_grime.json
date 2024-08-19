@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_grime_ball"
+      "has_grime_ball",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:sculk_grime"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

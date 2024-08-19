@@ -129,14 +129,17 @@
     }
   },
   "display": {
+    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.kill_all_sculk_mobs.description"
     },
     "frame": "challenge",
+    "hidden": false,
     "icon": {
       "item": "deeperdarker:warden_sword",
       "nbt": "{Damage:0}"
     },
+    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.kill_all_sculk_mobs.title"
     }

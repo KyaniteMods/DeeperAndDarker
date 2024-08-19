@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "deeperdarker:sculk_grime_bricks"
-  }
+  },
+  "show_notification": true
 }

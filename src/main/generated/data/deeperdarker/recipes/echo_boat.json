@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "deeperdarker:echo_boat"
-  }
+  },
+  "show_notification": true
 }

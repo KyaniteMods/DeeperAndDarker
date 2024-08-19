@@ -12,15 +12,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class GlowingVinesBlock extends GrowingPlantHeadBlock {
     private static final VoxelShape SHAPE = Block.box(1, 9, 1, 15, 16, 15);
-    private static final MapCodec<GlowingVinesBlock> CODEC = simpleCodec(GlowingVinesBlock::new);
 
     public GlowingVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.14);
-    }
-
-    @Override
-    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
-        return CODEC;
     }
 
     @Override

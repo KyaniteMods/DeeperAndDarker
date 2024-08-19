@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_echo_planks"
+      "has_echo_planks",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:echo_button_from_echo_planks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

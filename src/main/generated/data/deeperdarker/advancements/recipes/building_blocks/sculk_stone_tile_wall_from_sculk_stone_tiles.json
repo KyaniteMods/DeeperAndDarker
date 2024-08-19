@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sculk_stone_tiles"
+      "has_sculk_stone_tiles",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:sculk_stone_tile_wall_from_sculk_stone_tiles"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

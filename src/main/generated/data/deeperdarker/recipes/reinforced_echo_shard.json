@@ -19,5 +19,6 @@
   ],
   "result": {
     "item": "deeperdarker:reinforced_echo_shard"
-  }
+  },
+  "show_notification": true
 }

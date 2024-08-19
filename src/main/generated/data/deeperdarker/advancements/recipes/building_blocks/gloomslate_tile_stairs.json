@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate_tiles"
+      "has_gloomslate_tiles",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:gloomslate_tile_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

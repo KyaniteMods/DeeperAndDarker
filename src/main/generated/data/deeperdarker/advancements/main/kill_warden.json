@@ -17,13 +17,16 @@
     }
   },
   "display": {
+    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.kill_warden.description"
     },
     "frame": "challenge",
+    "hidden": false,
     "icon": {
       "item": "deeperdarker:heart_of_the_deep"
     },
+    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.kill_warden.title"
     }

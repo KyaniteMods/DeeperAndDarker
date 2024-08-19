@@ -26,43 +26,43 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
     }
 
     @Override
-    public void generateAdvancement(Consumer<AdvancementHolder> consumer) {
+    public void generateAdvancement(Consumer<Advancement> consumer) {
         String id = "advancements." + DeeperDarker.MOD_ID + ".";
 
-        AdvancementHolder root = Advancement.Builder.advancement()
+        Advancement root = Advancement.Builder.advancement()
                 .display(
                         Blocks.SCULK,
                         Component.translatable(id + "root.title"),
                         Component.translatable(id + "root.description"),
                         new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/advancements/root.png"),
-                        AdvancementType.TASK,
+                        FrameType.TASK,
                         false,
                         false,
                         false
-                ).addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(Biomes.DEEP_DARK)))
+                ).addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(Biomes.DEEP_DARK).build()))
                 .save(consumer, path("root"));
 
-        AdvancementHolder findAncientCity = Advancement.Builder.advancement().parent(root)
+        Advancement findAncientCity = Advancement.Builder.advancement().parent(root)
                 .display(
                         Blocks.DEEPSLATE_TILES,
                         Component.translatable(id + "find_ancient_city.title"),
                         Component.translatable(id + "find_ancient_city.description"),
                         null,
-                        AdvancementType.GOAL,
+                        FrameType.GOAL,
                         true,
                         true,
                         false
-                ).addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(BuiltinStructures.ANCIENT_CITY)))
+                ).addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setStructure(BuiltinStructures.ANCIENT_CITY).build()))
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("find_ancient_city"));
 
-        AdvancementHolder killWarden = Advancement.Builder.advancement().parent(findAncientCity)
+        Advancement killWarden = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.HEART_OF_THE_DEEP,
                         Component.translatable(id + "kill_warden.title"),
                         Component.translatable(id + "kill_warden.description"),
                         null,
-                        AdvancementType.CHALLENGE,
+                        FrameType.CHALLENGE,
                         true,
                         true,
                         false
@@ -70,30 +70,30 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(consumer, path("kill_warden"));
 
-        AdvancementHolder enterOtherside = Advancement.Builder.advancement().parent(killWarden)
+        Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden)
                 .display(
                         Blocks.REINFORCED_DEEPSLATE,
                         Component.translatable(id + "enter_otherside.title"),
                         Component.translatable(id + "enter_otherside.description"),
                         null,
-                        AdvancementType.GOAL,
+                        FrameType.GOAL,
                         true,
                         true,
                         false
                 ).addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL))
                 .save(consumer, path("enter_otherside"));
 
-        AdvancementHolder findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
+        Advancement findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
                         DDBlocks.CUT_SCULK_STONE,
                         Component.translatable(id + "find_ancient_temple.title"),
                         Component.translatable(id + "find_ancient_temple.description"),
                         null,
-                        AdvancementType.GOAL,
+                        FrameType.GOAL,
                         true,
                         true,
                         false
-                ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(DDStructures.ANCIENT_TEMPLE)))
+                ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setStructure(DDStructures.ANCIENT_TEMPLE).build()))
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("find_ancient_temple"));
 
@@ -103,7 +103,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "obtain_sculk_transmitter.title"),
                         Component.translatable(id + "obtain_sculk_transmitter.description"),
                         null,
-                        AdvancementType.TASK,
+                        FrameType.TASK,
                         true,
                         true,
                         false
@@ -116,7 +116,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "obtain_sonorous_staff.title"),
                         Component.translatable(id + "obtain_sonorous_staff.description"),
                         null,
-                        AdvancementType.TASK,
+                        FrameType.TASK,
                         true,
                         true,
                         false
@@ -129,15 +129,15 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "explore_otherside.title"),
                         Component.translatable(id + "explore_otherside.description"),
                         null,
-                        AdvancementType.CHALLENGE,
+                        FrameType.CHALLENGE,
                         true,
                         true,
                         false)
-                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.DEEPLANDS)))
-                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.ECHOING_FOREST)))
-                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.BLOOMING_CAVERNS)))
-                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(OthersideBiomes.OVERCAST_COLUMNS)))
-                .requirements(AdvancementRequirements.Strategy.AND)
+                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.DEEPLANDS).build()))
+                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ECHOING_FOREST).build()))
+                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.BLOOMING_CAVERNS).build()))
+                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.OVERCAST_COLUMNS).build()))
+                .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(consumer, path("explore_otherside"));
 
@@ -147,7 +147,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "kill_all_sculk_mobs.title"),
                         Component.translatable(id + "kill_all_sculk_mobs.description"),
                         null,
-                        AdvancementType.CHALLENGE,
+                        FrameType.CHALLENGE,
                         true,
                         true,
                         false)
@@ -160,17 +160,17 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED)))
                 .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM)))
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER)))
-                .requirements(AdvancementRequirements.Strategy.AND)
+                .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(consumer, path("kill_all_sculk_mobs"));
 
-        AdvancementHolder obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
+        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
                 .display(
                         DDItems.REINFORCED_ECHO_SHARD,
                         Component.translatable(id + "obtain_reinforced_echo_shard.title"),
                         Component.translatable(id + "obtain_reinforced_echo_shard.description"),
                         null,
-                        AdvancementType.TASK,
+                        FrameType.TASK,
                         true,
                         true,
                         false
@@ -183,7 +183,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "warden_armor.title"),
                         Component.translatable(id + "warden_armor.description"),
                         null,
-                        AdvancementType.CHALLENGE,
+                        FrameType.CHALLENGE,
                         true,
                         true,
                         false

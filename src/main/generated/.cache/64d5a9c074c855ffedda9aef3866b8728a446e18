@@ -1,7 +1,7 @@
-// 1.20.4	2024-08-16T23:05:14.724477972	Deeper and Darker/minecraft:chest Loot Table
+// 1.20.1	2024-08-18T22:38:55.069633763	Deeper and Darker/minecraft:chest Loot Table
 62b3292709976d169b8735b70df2129eea862a97 data/deeperdarker/loot_tables/chests/crystallized_amber.json
 5e82a08a0571e1227348a407182f9a8102011cbc data/deeperdarker/loot_tables/chests/ancient_temple_apex.json
-7297f9bdf7746a14cdaf61c0567b335bbce4ae3b data/deeperdarker/loot_tables/chests/ancient_temple_secret.json
+7a362b37a8aa21841fa31ac2b9f3e02784a02dab data/deeperdarker/loot_tables/chests/ancient_temple_secret.json
 5bf2e1703f8f750a41a08ddb691ba8d8ff702720 data/deeperdarker/loot_tables/chests/ancient_temple_fountain.json
 912ce13b4e8a91b4c9aa03c4c77b0ae26c1ec1bf data/deeperdarker/loot_tables/chests/ancient_temple_basement.json
 5d4ff0a4b436344f2435a17b283286ab87b2513c data/deeperdarker/loot_tables/chests/ancient_temple_storage.json

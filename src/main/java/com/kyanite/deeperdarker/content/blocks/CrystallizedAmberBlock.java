@@ -36,16 +36,10 @@ import java.util.List;
 @SuppressWarnings("deprecation, NullableProblems")
 public class CrystallizedAmberBlock extends BaseEntityBlock {
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
-    private static final MapCodec<CrystallizedAmberBlock> CODEC = simpleCodec(CrystallizedAmberBlock::new);
 
     public CrystallizedAmberBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FOSSILIZED, false));
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override

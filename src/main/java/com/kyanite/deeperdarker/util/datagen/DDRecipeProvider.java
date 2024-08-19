@@ -16,6 +16,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.Collections;
+import java.util.function.Consumer;
 
 public class DDRecipeProvider extends FabricRecipeProvider {
     public DDRecipeProvider(FabricDataOutput output) {
@@ -23,7 +24,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(RecipeOutput output) {
+    public void buildRecipes(Consumer<FinishedRecipe> output) {
         addSmithingRecipes(output);
 
         // Wood stuff
@@ -170,7 +171,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM)).save(output);
     }
 
-    private void addSmithingRecipes(RecipeOutput output) {
+    private void addSmithingRecipes(Consumer<FinishedRecipe> output) {
         resonariumSmithing(output, Items.IRON_SHOVEL, RecipeCategory.TOOLS, DDItems.RESONARIUM_SHOVEL);
         resonariumSmithing(output, Items.IRON_PICKAXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_PICKAXE);
         resonariumSmithing(output, Items.IRON_AXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_AXE);
@@ -192,15 +193,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         wardenSmithing(output, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS);
     }
 
-    private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
+    private void resonariumSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
     }
 
-    private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
+    private void wardenSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
     }
 
-    private static void woodRecipes(RecipeOutput exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
+    private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
         planksFromLogs(exporter, planks, logs, 4);
         stairBuilder(stairs, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
         slab(exporter, RecipeCategory.BUILDING_BLOCKS, slab, planks);
@@ -216,7 +217,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         chestBoat(exporter, chestBoat, planks);
     }
 
-    private static void registerStairsSlabsAndWalls(RecipeOutput exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
+    private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> exporter, ItemLike originalStone, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
         stairBuilder(stairs, Ingredient.of(stone)).unlockedBy(getHasName(stone), has(stone)).save(exporter);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, stone);
         stonecutterResultFromBase(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, originalStone);

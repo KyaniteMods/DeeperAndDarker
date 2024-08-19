@@ -30,14 +30,17 @@
     }
   },
   "display": {
+    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.warden_armor.description"
     },
     "frame": "challenge",
+    "hidden": false,
     "icon": {
       "item": "deeperdarker:warden_chestplate",
       "nbt": "{Damage:0}"
     },
+    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.warden_armor.title"
     }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_echo_shard"
+      "has_echo_shard",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:reinforced_echo_shard"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

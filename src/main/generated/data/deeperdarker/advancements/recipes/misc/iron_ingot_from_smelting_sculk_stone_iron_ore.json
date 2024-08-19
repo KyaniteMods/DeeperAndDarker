@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sculk_stone_iron_ore"
+      "has_sculk_stone_iron_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:iron_ingot_from_smelting_sculk_stone_iron_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

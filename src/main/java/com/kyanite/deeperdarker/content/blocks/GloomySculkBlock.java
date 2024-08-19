@@ -21,7 +21,7 @@ public class GloomySculkBlock extends SculkBlock implements BonemealableBlock, S
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
         return levelReader.getBlockState(blockPos.above()).isAir();
     }
 

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sculk_stone_bricks"
+      "has_sculk_stone_bricks",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:sculk_stone_brick_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

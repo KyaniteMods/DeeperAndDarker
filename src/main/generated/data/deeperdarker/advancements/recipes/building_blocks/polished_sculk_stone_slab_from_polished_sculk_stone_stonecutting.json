@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_polished_sculk_stone"
+      "has_polished_sculk_stone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:polished_sculk_stone_slab_from_polished_sculk_stone_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

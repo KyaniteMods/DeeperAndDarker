@@ -10,17 +10,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import org.jetbrains.annotations.NotNull;
 
 public class ShatteredHeadBlock extends SkullBlock {
-    public static final MapCodec<ShatteredHeadBlock> CODEC = simpleCodec(ShatteredHeadBlock::new);
-    public static final Type SHATTERED = new Type() {
-        {
-            TYPES.put("shattered", SHATTERED);
-        }
-
-        @Override
-        public @NotNull String getSerializedName() {
-            return "shattered";
-        }
-    };
+    public static final Type SHATTERED = new Type(){};
     public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("deeperdarker$SHATTERED");
 
     public ShatteredHeadBlock(Properties properties) {

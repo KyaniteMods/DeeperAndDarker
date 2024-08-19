@@ -13,5 +13,6 @@
   "result": {
     "count": 4,
     "item": "deeperdarker:cut_gloomslate"
-  }
+  },
+  "show_notification": true
 }

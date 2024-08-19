@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_resonarium"
+      "has_resonarium",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:resonarium_plate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

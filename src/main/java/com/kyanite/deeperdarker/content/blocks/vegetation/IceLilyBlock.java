@@ -41,7 +41,6 @@ public class IceLilyBlock extends BushBlock {
     public static final BooleanProperty HAS_FLOWER = BooleanProperty.create("has_flower");
     private static final VoxelShape LILY_PAD = Block.box(1, 0, 1, 15, 1.5, 15);
     private static final VoxelShape FLOWER = Block.box(5, 0, 5, 11, 12, 11);
-    private static final MapCodec<IceLilyBlock> CODEC = simpleCodec(IceLilyBlock::new);
 
     public IceLilyBlock(Properties pProperties) {
         super(pProperties);
@@ -69,11 +68,6 @@ public class IceLilyBlock extends BushBlock {
         CompoundTag tag = stack.getTag();
         if (tag == null || !tag.contains("has_flower")) return super.getStateForPlacement(pContext);
         return super.getStateForPlacement(pContext).setValue(HAS_FLOWER, false);
-    }
-
-    @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
     }
 
     @Override

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_grime_ball"
+      "has_grime_ball",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:grime_brick_from_smelting_grime_ball"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

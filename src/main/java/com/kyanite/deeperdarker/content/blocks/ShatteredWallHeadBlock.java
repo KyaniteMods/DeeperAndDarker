@@ -11,8 +11,6 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import org.jetbrains.annotations.NotNull;
 
 public class ShatteredWallHeadBlock extends WallSkullBlock {
-    public static final MapCodec<ShatteredWallHeadBlock> CODEC = simpleCodec(ShatteredWallHeadBlock::new);
-
     public ShatteredWallHeadBlock(Properties properties) {
         super(ShatteredHeadBlock.SHATTERED, properties);
     }

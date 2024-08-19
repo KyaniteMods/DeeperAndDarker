@@ -28,9 +28,9 @@ public class DampensVibrationsTooltipMixin {
         if(((ItemStack)(Object) this).is(DDTags.Items.DAMPENS_VIBRATIONS)) {
             int index = 0;
             for(Component component : components) {
-                if (component.getContents().type() == TranslatableContents.TYPE) {
-                    if (((TranslatableContents) component.getContents()).getKey().equals("item.durability")) break;
-                    if (((TranslatableContents) component.getContents()).getKey().equals("itemGroup.deeperdarker")) break;
+                if (component.getContents() instanceof TranslatableContents translatableContents) {
+                    if (translatableContents.getKey().equals("item.durability")) break;
+                    if (translatableContents.getKey().equals("itemGroup.deeperdarker")) break;
                 } else {
                     if (component.getString().equals(BuiltInRegistries.ITEM.getKey(((ItemStack)(Object) this).getItem()).toString())) break;
                 }

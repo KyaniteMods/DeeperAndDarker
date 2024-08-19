@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sculk_stone_emerald_ore"
+      "has_sculk_stone_emerald_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:emerald_from_smelting_sculk_stone_emerald_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate_gold_ore"
+      "has_gloomslate_gold_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:gold_ingot_from_smelting_gloomslate_gold_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_polished_gloomslate"
+      "has_polished_gloomslate",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:polished_gloomslate_stairs_from_polished_gloomslate_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -14,5 +14,6 @@
   "result": {
     "count": 4,
     "item": "deeperdarker:echo_stairs"
-  }
+  },
+  "show_notification": true
 }

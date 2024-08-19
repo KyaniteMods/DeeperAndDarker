@@ -48,11 +48,6 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     }
 
     @Override
-    protected MapCodec<? extends FallingBlock> codec() {
-        return null;
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(WATERLOGGED).add(SAFE);
     }

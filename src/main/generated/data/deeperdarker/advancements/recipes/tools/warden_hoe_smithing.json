@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_reinforced_echo_shard"
+      "has_reinforced_echo_shard",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:warden_hoe_smithing"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

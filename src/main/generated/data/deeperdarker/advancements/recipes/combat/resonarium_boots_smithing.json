@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_resonarium_plate"
+      "has_resonarium_plate",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:resonarium_boots_smithing"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

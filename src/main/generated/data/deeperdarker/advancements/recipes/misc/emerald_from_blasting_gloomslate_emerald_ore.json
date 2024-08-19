@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate_emerald_ore"
+      "has_gloomslate_emerald_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:emerald_from_blasting_gloomslate_emerald_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sculk_stone_brick_slab"
+      "has_sculk_stone_brick_slab",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:chiseled_sculk_stone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

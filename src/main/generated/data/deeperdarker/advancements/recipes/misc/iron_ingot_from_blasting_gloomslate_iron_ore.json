@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate_iron_ore"
+      "has_gloomslate_iron_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:iron_ingot_from_blasting_gloomslate_iron_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

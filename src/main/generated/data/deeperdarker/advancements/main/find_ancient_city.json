@@ -19,13 +19,16 @@
     }
   },
   "display": {
+    "announce_to_chat": true,
     "description": {
       "translate": "advancements.deeperdarker.find_ancient_city.description"
     },
     "frame": "goal",
+    "hidden": false,
     "icon": {
       "item": "minecraft:deepslate_tiles"
     },
+    "show_toast": true,
     "title": {
       "translate": "advancements.deeperdarker.find_ancient_city.title"
     }

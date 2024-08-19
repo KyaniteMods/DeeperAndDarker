@@ -32,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
 public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     public static final BooleanProperty BERRIES = BlockStateProperties.BERRIES;
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
-    private static final MapCodec<GlowingVinesPlantBlock> CODEC = simpleCodec(GlowingVinesPlantBlock::new);
 
     public GlowingVinesPlantBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false);
@@ -64,13 +63,8 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean bl) {
         return !pState.getValue(BERRIES);
-    }
-
-    @Override
-    protected MapCodec<? extends GrowingPlantBodyBlock> codec() {
-        return CODEC;
     }
 
     @Override

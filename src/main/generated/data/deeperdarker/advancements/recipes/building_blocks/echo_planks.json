@@ -20,13 +20,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_logs"
+      "has_logs",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:echo_planks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

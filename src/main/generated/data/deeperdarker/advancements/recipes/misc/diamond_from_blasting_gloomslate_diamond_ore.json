@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate_diamond_ore"
+      "has_gloomslate_diamond_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:diamond_from_blasting_gloomslate_diamond_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

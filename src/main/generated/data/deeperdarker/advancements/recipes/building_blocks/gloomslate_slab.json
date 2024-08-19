@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate"
+      "has_gloomslate",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:gloomslate_slab"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

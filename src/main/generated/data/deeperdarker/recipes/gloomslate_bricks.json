@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "deeperdarker:gloomslate_bricks"
-  }
+  },
+  "show_notification": true
 }

@@ -1,36 +1,42 @@
 package com.kyanite.deeperdarker.util;
 
-import com.mojang.serialization.Codec;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.kyanite.deeperdarker.DeeperDarker;
+import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;
 
 public class SetPaintingVariantFunction extends LootItemConditionalFunction {
-    public static final Codec<SetPaintingVariantFunction> CODEC = RecordCodecBuilder.create(instance -> SetPaintingVariantFunction.commonFields(instance).and(TagKey.codec(Registries.PAINTING_VARIANT).optionalFieldOf("tag").forGetter(function -> function.validPaintings)).apply(instance, SetPaintingVariantFunction::new));
     private final Optional<TagKey<PaintingVariant>> validPaintings;
 
-    protected SetPaintingVariantFunction(List<LootItemCondition> list, Optional<TagKey<PaintingVariant>> validPaintings) {
+    protected SetPaintingVariantFunction(LootItemCondition[] list, Optional<TagKey<PaintingVariant>> validPaintings) {
         super(list);
         this.validPaintings = validPaintings;
     }
 
     @Override
-    protected ItemStack run(ItemStack itemStack, LootContext lootContext) {
+    protected @NotNull ItemStack run(ItemStack itemStack, LootContext lootContext) {
         if (!itemStack.is(DDTags.Items.PAINTINGS)) return itemStack;
         Optional<HolderLookup.RegistryLookup<PaintingVariant>> lookup = lootContext.getLevel().registryAccess().lookup(Registries.PAINTING_VARIANT);
         if (lookup.isEmpty()) return itemStack;
@@ -51,7 +57,22 @@ public class SetPaintingVariantFunction extends LootItemConditionalFunction {
     }
 
     @Override
-    public LootItemFunctionType getType() {
+    public @NotNull LootItemFunctionType getType() {
         return DDLootItemFunctions.SET_PAINTING_VARIANT;
+    }
+
+    public static class Serializer
+            extends LootItemConditionalFunction.Serializer<SetPaintingVariantFunction> {
+        @Override
+        public void serialize(JsonObject jsonObject, SetPaintingVariantFunction copyNameFunction, JsonSerializationContext jsonSerializationContext) {
+            super.serialize(jsonObject, copyNameFunction, jsonSerializationContext);
+            copyNameFunction.validPaintings.ifPresent(paintingVariantTagKey -> jsonObject.addProperty("tag", paintingVariantTagKey.location().toString()));
+        }
+
+        @Override
+        public @NotNull SetPaintingVariantFunction deserialize(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext, LootItemCondition[] lootItemConditions) {
+            Optional<TagKey<PaintingVariant>> optional = jsonObject.has("tag") ? TagKey.codec(Registries.PAINTING_VARIANT).parse(JsonOps.INSTANCE, jsonObject.get("tag")).result() : Optional.empty();
+            return new SetPaintingVariantFunction(lootItemConditions, optional);
+        }
     }
 }

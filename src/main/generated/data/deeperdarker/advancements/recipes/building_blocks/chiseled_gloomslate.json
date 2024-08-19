@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_gloomslate_brick_slab"
+      "has_gloomslate_brick_slab",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:chiseled_gloomslate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

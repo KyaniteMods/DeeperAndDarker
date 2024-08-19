@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_stripped_logs"
+      "has_stripped_logs",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:bloom_hanging_sign"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

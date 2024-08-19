@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_smooth_gloomslate"
+      "has_smooth_gloomslate",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:cut_gloomslate_wall_from_smooth_gloomslate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

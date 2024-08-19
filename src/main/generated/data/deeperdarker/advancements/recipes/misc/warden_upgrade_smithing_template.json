@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_warden_upgrade_smithing_template"
+      "has_warden_upgrade_smithing_template",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:warden_upgrade_smithing_template"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

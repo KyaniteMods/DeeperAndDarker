@@ -20,13 +20,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_boat"
+      "has_boat",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:bloom_chest_boat"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

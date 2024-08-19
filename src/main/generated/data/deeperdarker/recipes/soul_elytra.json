@@ -22,5 +22,6 @@
   ],
   "result": {
     "item": "deeperdarker:soul_elytra"
-  }
+  },
+  "show_notification": true
 }

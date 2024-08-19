@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_sculk_stone_copper_ore"
+      "has_sculk_stone_copper_ore",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:copper_ingot_from_blasting_sculk_stone_copper_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

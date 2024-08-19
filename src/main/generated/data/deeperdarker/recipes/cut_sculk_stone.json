@@ -13,5 +13,6 @@
   "result": {
     "count": 4,
     "item": "deeperdarker:cut_sculk_stone"
-  }
+  },
+  "show_notification": true
 }

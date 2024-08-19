@@ -22,13 +22,14 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_cobbled_gloomslate"
+      "has_cobbled_gloomslate",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:gloomslate_brick_slab_from_cobbled_gloomslate"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

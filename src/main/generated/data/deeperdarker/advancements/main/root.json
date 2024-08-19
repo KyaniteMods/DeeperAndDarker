@@ -23,6 +23,8 @@
     "description": {
       "translate": "advancements.deeperdarker.root.description"
     },
+    "frame": "task",
+    "hidden": false,
     "icon": {
       "item": "minecraft:sculk"
     },
