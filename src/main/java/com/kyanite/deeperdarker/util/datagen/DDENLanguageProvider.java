@@ -215,12 +215,14 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_LEECH_SPAWN_EGG, "Sculk Leech Spawn Egg");
         translationBuilder.add(DDItems.SHRIEK_WORM_SPAWN_EGG, "Shriek Worm Spawn Egg");
         translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
+        translationBuilder.add(DDItems.SLUDGE_SPAWN_EGG, "Sludge Spawn Egg");
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", "Press %s to Boost");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled", "Boost disabled");
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
+        translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
 
         translationBuilder.addEnchantment(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(Util.makeDescriptionId("enchantment", DDEnchantments.CATALYSIS.location()) + ".desc", "Spreads sculk when mobs are killed.");
@@ -252,6 +254,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.SHATTERED, "Shattered");
         translationBuilder.add(DDEntities.SCULK_LEECH, "Sculk Leech");
         translationBuilder.add(DDEntities.SHRIEK_WORM, "Shriek Worm");
+        translationBuilder.add(DDEntities.SLUDGE, "Sludge");
         translationBuilder.add(DDEntities.STALKER, "Stalker");
         translationBuilder.add(DDEntities.SCULK_CENTIPEDE, "Sculk Centipede");
 
