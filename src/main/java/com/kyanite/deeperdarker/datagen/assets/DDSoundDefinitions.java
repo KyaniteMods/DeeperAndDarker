@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.SoundDefinition;
 import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
@@ -37,6 +38,7 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SHATTERED_AMBIENT, subtitle("entity.shattered.ambient").with(sound("entity/shattered/ambient1"), sound("entity/shattered/ambient2"), sound("entity/shattered/ambient3")));
         add(DDSounds.SHATTERED_DEATH, subtitle("entity.shattered.death").with(sound("entity/shattered/death")));
         add(DDSounds.SHATTERED_HURT, subtitle("entity.shattered.hurt").with(sound("entity/shattered/hurt1"), sound("entity/shattered/hurt2"), sound("entity/shattered/hurt3")));
+//        add(DDSounds.SHATTERED_NOTICES, subtitle("entity.warden.tendril_clicks").with(vanillaSound("entity/warden/tendril_clicks"), )
         add(DDSounds.SHRIEK_WORM_AMBIENT, subtitle("entity.shriek_worm.ambient").with(sound("entity/shriek_worm/ambient1"), sound("entity/shriek_worm/ambient2"), sound("entity/shriek_worm/ambient3")));
         add(DDSounds.SHRIEK_WORM_DEATH, subtitle("entity.shriek_worm.death").with(sound("entity/shriek_worm/death")));
         add(DDSounds.SHRIEK_WORM_HURT, subtitle("entity.shriek_worm.hurt").with(sound("entity/shriek_worm/hurt1"), sound("entity/shriek_worm/hurt2"), sound("entity/shriek_worm/hurt3")));
@@ -51,6 +53,10 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
 
     private SoundDefinition subtitle(String subtitle) {
         return definition().subtitle("subtitles." + subtitle);
+    }
+
+    protected static SoundDefinition.Sound vanillaSound(String location) {
+        return sound(ResourceLocation.fromNamespaceAndPath("minecraft", location));
     }
 
     protected static SoundDefinition.Sound sound(String location) {
