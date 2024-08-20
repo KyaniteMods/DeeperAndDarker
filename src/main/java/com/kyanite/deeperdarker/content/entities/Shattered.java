@@ -4,11 +4,11 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import com.kyanite.deeperdarker.util.DDTags;
+import java.util.function.BiConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -29,8 +29,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.PathType;
-
-import java.util.function.BiConsumer;
 
 @SuppressWarnings("NullableProblems")
 public class Shattered extends Monster implements DisturbanceListener, VibrationSystem {
@@ -182,7 +180,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         @Override
         public void onReceiveVibration(ServerLevel level, BlockPos pos, Holder<GameEvent> gameEvent, Entity entity, Entity playerEntity, float distance) {
             if(isDeadOrDying()) return;
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
+            playSound(DDSounds.SHATTERED_NOTICES.get(), 2, 1);
             if(entity != null && canTargetEntity(entity)) {
                 if(entity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
                 return;

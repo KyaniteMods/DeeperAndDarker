@@ -38,7 +38,7 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SHATTERED_AMBIENT, subtitle("entity.shattered.ambient").with(sound("entity/shattered/ambient1"), sound("entity/shattered/ambient2"), sound("entity/shattered/ambient3")));
         add(DDSounds.SHATTERED_DEATH, subtitle("entity.shattered.death").with(sound("entity/shattered/death")));
         add(DDSounds.SHATTERED_HURT, subtitle("entity.shattered.hurt").with(sound("entity/shattered/hurt1"), sound("entity/shattered/hurt2"), sound("entity/shattered/hurt3")));
-//        add(DDSounds.SHATTERED_NOTICES, subtitle("entity.warden.tendril_clicks").with(vanillaSound("entity/warden/tendril_clicks"), )
+        add(DDSounds.SHATTERED_NOTICES, subtitle("entity.shattered.notice").with(vanillaSound("mob/warden/tendril_clicks_1"), vanillaSound("mob/warden/tendril_clicks_2"), vanillaSound("mob/warden/tendril_clicks_3"), vanillaSound("mob/warden/tendril_clicks_4"), vanillaSound("mob/warden/tendril_clicks_5"), vanillaSound("mob/warden/tendril_clicks_6")));
         add(DDSounds.SHRIEK_WORM_AMBIENT, subtitle("entity.shriek_worm.ambient").with(sound("entity/shriek_worm/ambient1"), sound("entity/shriek_worm/ambient2"), sound("entity/shriek_worm/ambient3")));
         add(DDSounds.SHRIEK_WORM_DEATH, subtitle("entity.shriek_worm.death").with(sound("entity/shriek_worm/death")));
         add(DDSounds.SHRIEK_WORM_HURT, subtitle("entity.shriek_worm.hurt").with(sound("entity/shriek_worm/hurt1"), sound("entity/shriek_worm/hurt2"), sound("entity/shriek_worm/hurt3")));
