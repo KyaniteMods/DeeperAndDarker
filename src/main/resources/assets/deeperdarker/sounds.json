@@ -1,12 +1,20 @@
 {
-  "ambience.otherside_portal.groan": {
+  "ambient.otherside.additions": {
     "sounds": [
-      "deeperdarker:ambience/otherside_portal/groan1",
-      "deeperdarker:ambience/otherside_portal/groan2",
-      "deeperdarker:ambience/otherside_portal/groan3",
-      "deeperdarker:ambience/otherside_portal/groan4"
+      "deeperdarker:ambience/otherside/otherside1",
+      "deeperdarker:ambience/otherside/otherside2",
+      "deeperdarker:ambience/otherside/otherside3"
     ],
-    "subtitle": "subtitles.ambience.otherside_portal.groan"
+    "subtitle": "subtitles.ambient.otherside.additions"
+  },
+  "ambient.portal.groan": {
+    "sounds": [
+      "deeperdarker:ambience/portal/groan1",
+      "deeperdarker:ambience/portal/groan2",
+      "deeperdarker:ambience/portal/groan3",
+      "deeperdarker:ambience/portal/groan4"
+    ],
+    "subtitle": "subtitles.ambient.portal.groan"
   },
   "block.sculk_stone.break": {
     "sounds": [
@@ -62,47 +70,55 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
-  "block.ancient_vase.break": {
+  "block.vase.break": {
     "sounds": [
-      "deeperdarker:block/ancient_vase/break1",
-      "deeperdarker:block/ancient_vase/break2",
-      "deeperdarker:block/ancient_vase/break3",
-      "deeperdarker:block/ancient_vase/break4",
-      "deeperdarker:block/ancient_vase/break5"
+      "deeperdarker:block/vase/break1",
+      "deeperdarker:block/vase/break2",
+      "deeperdarker:block/vase/break3",
+      "deeperdarker:block/vase/break4",
+      "deeperdarker:block/vase/break5"
     ],
     "subtitle": "subtitles.block.generic.break"
   },
-  "block.ancient_vase.fall": {
+  "block.vase.fall": {
     "sounds": [
-      "deeperdarker:block/ancient_vase/step1",
-      "deeperdarker:block/ancient_vase/step2",
-      "deeperdarker:block/ancient_vase/step3"
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
     ]
   },
-  "block.ancient_vase.hit": {
+  "block.vase.hit": {
     "sounds": [
-      "deeperdarker:block/ancient_vase/step1",
-      "deeperdarker:block/ancient_vase/step2",
-      "deeperdarker:block/ancient_vase/step3"
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
     ],
     "subtitle": "subtitles.block.generic.hit"
   },
-  "block.ancient_vase.place": {
+  "block.vase.place": {
     "sounds": [
-      "deeperdarker:block/ancient_vase/place1",
-      "deeperdarker:block/ancient_vase/place2",
-      "deeperdarker:block/ancient_vase/place3",
-      "deeperdarker:block/ancient_vase/place4"
+      "deeperdarker:block/vase/place1",
+      "deeperdarker:block/vase/place2",
+      "deeperdarker:block/vase/place3",
+      "deeperdarker:block/vase/place4"
     ],
     "subtitle": "subtitles.block.generic.place"
   },
-  "block.ancient_vase.step": {
+  "block.vase.step": {
     "sounds": [
-      "deeperdarker:block/ancient_vase/step1",
-      "deeperdarker:block/ancient_vase/step2",
-      "deeperdarker:block/ancient_vase/step3"
+      "deeperdarker:block/vase/step1",
+      "deeperdarker:block/vase/step2",
+      "deeperdarker:block/vase/step3"
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.leech.hurt": {
+    "sounds": [
+      "deeperdarker:entity/sculk_leech/hurt1",
+      "deeperdarker:entity/sculk_leech/hurt2",
+      "deeperdarker:entity/sculk_leech/hurt3"
+    ],
+    "subtitle": "subtitles.entity.leech.hurt"
   },
   "entity.shattered.ambient": {
     "sounds": [
@@ -126,13 +142,16 @@
     ],
     "subtitle": "subtitles.entity.shattered.hurt"
   },
-  "entity.sculk_leech.hurt": {
+  "entity.shattered.notice": {
     "sounds": [
-      "deeperdarker:entity/sculk_leech/hurt1",
-      "deeperdarker:entity/sculk_leech/hurt2",
-      "deeperdarker:entity/sculk_leech/hurt3"
+      "mob/warden/tendril_clicks_1",
+      "mob/warden/tendril_clicks_2",
+      "mob/warden/tendril_clicks_3",
+      "mob/warden/tendril_clicks_4",
+      "mob/warden/tendril_clicks_5",
+      "mob/warden/tendril_clicks_6"
     ],
-    "subtitle": "subtitles.entity.sculk_leech.hurt"
+    "subtitle": "subtitles.entity.shattered.notice"
   },
   "entity.shriek_worm.ambient": {
     "sounds": [
@@ -156,29 +175,29 @@
     ],
     "subtitle": "subtitles.entity.shriek_worm.hurt"
   },
-  "entity.sculk_snapper.ambient": {
+  "entity.snapper.ambient": {
     "sounds": [
       "deeperdarker:entity/sculk_snapper/ambient"
     ],
-    "subtitle": "subtitles.entity.sculk_snapper.ambient"
+    "subtitle": "subtitles.entity.snapper.ambient"
   },
-  "entity.sculk_snapper.bite": {
+  "entity.snapper.bite": {
     "sounds": [
       "deeperdarker:entity/sculk_snapper/bite"
     ],
-    "subtitle": "subtitles.entity.sculk_snapper.bite"
+    "subtitle": "subtitles.entity.snapper.bite"
   },
-  "entity.sculk_snapper.hurt": {
+  "entity.snapper.hurt": {
     "sounds": [
       "deeperdarker:entity/sculk_snapper/hurt"
     ],
-    "subtitle": "subtitles.entity.sculk_snapper.hurt"
+    "subtitle": "subtitles.entity.snapper.hurt"
   },
-  "entity.sculk_snapper.sniff": {
+  "entity.snapper.sniff": {
     "sounds": [
       "deeperdarker:entity/sculk_snapper/sniff"
     ],
-    "subtitle": "subtitles.entity.sculk_snapper.sniff"
+    "subtitle": "subtitles.entity.snapper.sniff"
   },
   "entity.stalker.ambient": {
     "sounds": [
@@ -203,29 +222,44 @@
     ],
     "subtitle": "subtitles.entity.stalker.hurt"
   },
-  "item.sculk_transmitter.error": {
+  "item.transmitter.error": {
     "sounds": [
-      "deeperdarker:item/sculk_transmitter/error"
+      "deeperdarker:item/transmitter/error"
     ],
     "subtitle": "subtitles.item.transmitter.error"
   },
-  "item.sculk_transmitter.link": {
+  "item.transmitter.link": {
     "sounds": [
-      "deeperdarker:item/sculk_transmitter/link"
+      "deeperdarker:item/transmitter/link"
     ],
     "subtitle": "subtitles.item.transmitter.link"
   },
-  "item.sculk_transmitter.open": {
+  "item.transmitter.open": {
     "sounds": [
-      "deeperdarker:item/sculk_transmitter/open"
+      "deeperdarker:item/transmitter/open"
     ],
     "subtitle": "subtitles.item.transmitter.open"
   },
-  "item.sculk_transmitter.unlink": {
+  "item.transmitter.unlink": {
     "sounds": [
-      "deeperdarker:item/sculk_transmitter/unlink"
+      "deeperdarker:item/transmitter/unlink"
     ],
     "subtitle": "subtitles.item.transmitter.unlink"
+  },
+  "music.otherside.deeplands": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/deeplands"
+    ]
+  },
+  "music.otherside.echoing_forest": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/echoing_forest"
+    ]
+  },
+  "music.otherside.overcast_columns": {
+    "sounds": [
+      "deeperdarker:ambience/otherside/overcast_columns"
+    ]
   },
   "block.note_block.imitate.shattered": {
     "sounds": [
@@ -234,28 +268,5 @@
       "deeperdarker:entity/shattered/ambient3"
     ],
     "subtitle": "subtitles.entity.shattered.ambient"
-  },
-  "ambience.otherside": {
-    "sounds": [
-      "deeperdarker:ambience/warden_dreaming1",
-      "deeperdarker:ambience/warden_dreaming2",
-      "deeperdarker:ambience/warden_dreaming3"
-    ],
-    "subtitle": "subtitles.ambience.otherside"
-  },
-  "music.deeperdarker.arrival": {
-    "sounds": [
-      "deeperdarker:music/arrival"
-    ]
-  },
-  "music.deeperdarker.echoing_forest": {
-    "sounds": [
-      "deeperdarker:music/echoing_forest"
-    ]
-  },
-  "music.deeperdarker.overcast_columns": {
-    "sounds": [
-      "deeperdarker:music/overcast_columns"
-    ]
   }
 }

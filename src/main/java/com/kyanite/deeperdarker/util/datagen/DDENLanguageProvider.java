@@ -268,6 +268,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.shattered.ambient", "Shattered growls");
         translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
         translationBuilder.add("subtitles.entity.shattered.death", "Shattered dies");
+        translationBuilder.add("subtitles.entity.shattered.notice", "Shattered notices");
         translationBuilder.add("subtitles.entity.sculk_leech.hurt", "Sculk Leech hurts");
         translationBuilder.add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
         translationBuilder.add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
