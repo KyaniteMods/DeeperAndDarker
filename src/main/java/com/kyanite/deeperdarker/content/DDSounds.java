@@ -34,6 +34,7 @@ public class DDSounds {
     public static final SoundEvent SHATTERED_AMBIENT = register("entity.shattered.ambient");
     public static final SoundEvent SHATTERED_DEATH = register("entity.shattered.death");
     public static final SoundEvent SHATTERED_HURT = register("entity.shattered.hurt");
+    public static final SoundEvent SHATTERED_NOTICES = register("entity.shattered.notice");
 
     public static final SoundEvent SHRIEK_WORM_AMBIENT = register("entity.shriek_worm.ambient");
     public static final SoundEvent SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
