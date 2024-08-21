@@ -16,7 +16,6 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.BossEvent;
@@ -284,7 +283,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         @Override
         public void onReceiveVibration(ServerLevel level, BlockPos pPos, Holder<GameEvent> gameEvent, @Nullable Entity entity, @Nullable Entity playerEntity, float distance) {
             if(isDeadOrDying()) return;
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
+            playSound(DDSounds.STALKER_NOTICE.get(), 2, 1);
             if(entity != null && canTargetEntity(entity)) {
                 if(entity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
                 return;

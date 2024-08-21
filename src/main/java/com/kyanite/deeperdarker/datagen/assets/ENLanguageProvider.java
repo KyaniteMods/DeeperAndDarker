@@ -124,6 +124,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.entity.stalker.ambient", "Stalker chirps");
         add("subtitles.entity.stalker.death", "Stalker dies");
         add("subtitles.entity.stalker.hurt", "Stalker hurts");
+        add("subtitles.entity.stalker.notice", "Stalker notices");
         add("subtitles.item.transmitter.error", "Transmitter fails");
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.open", "Transmitter transmits");

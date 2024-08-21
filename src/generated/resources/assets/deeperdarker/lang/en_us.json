@@ -281,6 +281,7 @@
   "subtitles.entity.stalker.ambient": "Stalker chirps",
   "subtitles.entity.stalker.death": "Stalker dies",
   "subtitles.entity.stalker.hurt": "Stalker hurts",
+  "subtitles.entity.stalker.notice": "Stalker notices",
   "subtitles.item.transmitter.error": "Transmitter fails",
   "subtitles.item.transmitter.link": "Transmitter links",
   "subtitles.item.transmitter.open": "Transmitter transmits",

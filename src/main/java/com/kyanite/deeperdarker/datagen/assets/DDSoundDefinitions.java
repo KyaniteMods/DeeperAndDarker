@@ -38,13 +38,14 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SHATTERED_AMBIENT, subtitle("entity.shattered.ambient").with(sound("entity/shattered/ambient1"), sound("entity/shattered/ambient2"), sound("entity/shattered/ambient3")));
         add(DDSounds.SHATTERED_DEATH, subtitle("entity.shattered.death").with(sound("entity/shattered/death")));
         add(DDSounds.SHATTERED_HURT, subtitle("entity.shattered.hurt").with(sound("entity/shattered/hurt1"), sound("entity/shattered/hurt2"), sound("entity/shattered/hurt3")));
-        add(DDSounds.SHATTERED_NOTICES, subtitle("entity.shattered.notice").with(vanillaSound("mob/warden/tendril_clicks_1"), vanillaSound("mob/warden/tendril_clicks_2"), vanillaSound("mob/warden/tendril_clicks_3"), vanillaSound("mob/warden/tendril_clicks_4"), vanillaSound("mob/warden/tendril_clicks_5"), vanillaSound("mob/warden/tendril_clicks_6")));
+        add(DDSounds.SHATTERED_NOTICE, subtitle("entity.shattered.notice").with(mcSound("mob/warden/tendril_clicks_1"), mcSound("mob/warden/tendril_clicks_2"), mcSound("mob/warden/tendril_clicks_3"), mcSound("mob/warden/tendril_clicks_4"), mcSound("mob/warden/tendril_clicks_5"), mcSound("mob/warden/tendril_clicks_6")));
         add(DDSounds.SHRIEK_WORM_AMBIENT, subtitle("entity.shriek_worm.ambient").with(sound("entity/shriek_worm/ambient1"), sound("entity/shriek_worm/ambient2"), sound("entity/shriek_worm/ambient3")));
         add(DDSounds.SHRIEK_WORM_DEATH, subtitle("entity.shriek_worm.death").with(sound("entity/shriek_worm/death")));
         add(DDSounds.SHRIEK_WORM_HURT, subtitle("entity.shriek_worm.hurt").with(sound("entity/shriek_worm/hurt1"), sound("entity/shriek_worm/hurt2"), sound("entity/shriek_worm/hurt3")));
         add(DDSounds.STALKER_AMBIENT, subtitle("entity.stalker.ambient").with(sound("entity/stalker/ambient1"), sound("entity/stalker/ambient2"), sound("entity/stalker/ambient3")));
         add(DDSounds.STALKER_DEATH, subtitle("entity.stalker.death").with(sound("entity/stalker/death")));
         add(DDSounds.STALKER_HURT, subtitle("entity.stalker.hurt").with(sound("entity/stalker/hurt1"), sound("entity/stalker/hurt2"), sound("entity/stalker/hurt3"), sound("entity/stalker/hurt4")));
+        add(DDSounds.STALKER_NOTICE, subtitle("entity.stalker.notice").with(mcSound("mob/warden/tendril_clicks_1"), mcSound("mob/warden/tendril_clicks_2"), mcSound("mob/warden/tendril_clicks_3"), mcSound("mob/warden/tendril_clicks_4"), mcSound("mob/warden/tendril_clicks_5"), mcSound("mob/warden/tendril_clicks_6")));
         add(DDSounds.TRANSMITTER_ERROR, subtitle("item.transmitter.error").with(sound("item/transmitter/error")));
         add(DDSounds.TRANSMITTER_LINK, subtitle("item.transmitter.link").with(sound("item/transmitter/link")));
         add(DDSounds.TRANSMITTER_OPEN, subtitle("item.transmitter.open").with(sound("item/transmitter/open")));
@@ -55,11 +56,11 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         return definition().subtitle("subtitles." + subtitle);
     }
 
-    protected static SoundDefinition.Sound vanillaSound(String location) {
-        return sound(ResourceLocation.fromNamespaceAndPath("minecraft", location));
-    }
-
     protected static SoundDefinition.Sound sound(String location) {
         return sound(DeeperDarker.rl(location));
+    }
+
+    private static SoundDefinition.Sound mcSound(String location) {
+        return sound(ResourceLocation.withDefaultNamespace(location));
     }
 }

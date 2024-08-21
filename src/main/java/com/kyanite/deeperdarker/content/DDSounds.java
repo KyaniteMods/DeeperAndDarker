@@ -41,7 +41,7 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> SHATTERED_AMBIENT = register("entity.shattered.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> SHATTERED_DEATH = register("entity.shattered.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> SHATTERED_HURT = register("entity.shattered.hurt");
-    public static final DeferredHolder<SoundEvent, SoundEvent> SHATTERED_NOTICES = register("entity.shattered.notice");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHATTERED_NOTICE = register("entity.shattered.notice");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> SHRIEK_WORM_AMBIENT = register("entity.shriek_worm.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
@@ -50,6 +50,7 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_AMBIENT = register("entity.stalker.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_DEATH = register("entity.stalker.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_HURT = register("entity.stalker.hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_NOTICE = register("entity.stalker.notice");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMITTER_ERROR = register("item.transmitter.error");
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMITTER_LINK = register("item.transmitter.link");

@@ -222,6 +222,17 @@
     ],
     "subtitle": "subtitles.entity.stalker.hurt"
   },
+  "entity.stalker.notice": {
+    "sounds": [
+      "mob/warden/tendril_clicks_1",
+      "mob/warden/tendril_clicks_2",
+      "mob/warden/tendril_clicks_3",
+      "mob/warden/tendril_clicks_4",
+      "mob/warden/tendril_clicks_5",
+      "mob/warden/tendril_clicks_6"
+    ],
+    "subtitle": "subtitles.entity.stalker.notice"
+  },
   "item.transmitter.error": {
     "sounds": [
       "deeperdarker:item/transmitter/error"
