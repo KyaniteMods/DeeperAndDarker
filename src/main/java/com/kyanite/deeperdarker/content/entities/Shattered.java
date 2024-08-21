@@ -7,7 +7,6 @@ import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -186,7 +185,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         @Override
         public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, Entity pEntity, Entity pPlayerEntity, float pDistance) {
             if(isDeadOrDying()) return;
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
+            playSound(DDSounds.SHATTERED_NOTICE.get(), 2, 1);
             if(pEntity != null && canTargetEntity(pEntity)) {
                 if(pEntity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
                 return;
