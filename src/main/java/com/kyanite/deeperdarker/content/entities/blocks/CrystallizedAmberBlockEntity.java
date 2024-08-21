@@ -31,6 +31,7 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         super(DDBlockEntities.CRYSTALLIZED_AMBER, pPos, pBlockState);
     }
 
+    // maybe remove if crash isn't fixed? (Accessing LegacyRandomSource from multiple threads)
     public void generateFossil(Level level, BlockPos pos) {
         if(fossilizedEntity || !loot.isEmpty()) return;
 
@@ -41,12 +42,10 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
             return;
         }
 
-        synchronized (level.getRandom()) {
-            LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
-            List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST));
-            this.loot = list.isEmpty() ? ItemStack.EMPTY : list.getFirst();
-            this.setChanged();
-        }
+        LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
+        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST), pos.asLong());
+        this.loot = list.isEmpty() ? ItemStack.EMPTY : list.getFirst();
+        this.setChanged();
     }
 
     public ItemStack getLoot() {
