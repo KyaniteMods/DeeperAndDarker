@@ -49,6 +49,9 @@ public class DDTags {
 
         public static final TagKey<Item> PAINTINGS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "paintings"));
+
+        public static final TagKey<Item> SCUTES = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "scutes"));
     }
 
     public static class Biomes {
