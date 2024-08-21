@@ -1,10 +1,11 @@
-// 1.20.4	2024-08-16T23:05:14.725319174	Deeper and Darker/Tags for minecraft:item
+// 1.20.4	2024-08-21T10:41:16.966689407	Deeper and Darker/Tags for minecraft:item
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/items/wooden_pressure_plates.json
 0798dcd46f923bbbe9fa58f204156231818b56d7 data/minecraft/tags/items/swords.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/items/gold_ores.json
 38ded78c250c70dbbce8f730046e74d9784ef8da data/minecraft/tags/items/logs_that_burn.json
 6bd8bfd25fac6809d51b20040e5aafc2cf79c96b data/deeperdarker/tags/items/dampens_vibrations.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/items/leaves.json
+6d860d476a580d832fb07d257a741902e48549bc data/deeperdarker/tags/items/scutes.json
 adb1df6145940121287a6045adc1138a302fab23 data/minecraft/tags/items/boats.json
 5853dd3bde739be76992a2067a4a916e9f14659f data/minecraft/tags/items/walls.json
 43409a12b9ebe5704d633f0f1ac1cdc6d9aba9ab data/minecraft/tags/items/diamond_ores.json

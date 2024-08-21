@@ -131,5 +131,6 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.SAPLINGS, DDBlocks.ECHO_SAPLING);
 
         getOrCreateTagBuilder(DDTags.Items.PAINTINGS).add(Items.PAINTING);
+        getOrCreateTagBuilder(DDTags.Items.SCUTES).add(Items.SCUTE);
     }
 }
