@@ -52,6 +52,9 @@ public class DDTags {
 
         public static final TagKey<Item> PAINTINGS = TagKey.create(
                 Registries.ITEM, DeeperDarker.rl("paintings"));
+
+        public static final TagKey<Item> SCUTES = TagKey.create(
+                Registries.ITEM, DeeperDarker.rl("scutes"));
     }
 
     public static class Biomes {

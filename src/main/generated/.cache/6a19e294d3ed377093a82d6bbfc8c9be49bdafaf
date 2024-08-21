@@ -1,4 +1,4 @@
-// 1.21	2024-08-16T21:33:16.418830333	Deeper and Darker/Tags for minecraft:item
+// 1.21	2024-08-21T10:05:55.173448619	Deeper and Darker/Tags for minecraft:item
 8793c7b135bd439d9ddbc1b7631addf273890f21 data/minecraft/tags/item/logs_that_burn.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/item/gold_ores.json
 e393a06b04acf4377285594bb65c749eb0c7f08d data/minecraft/tags/item/wooden_slabs.json
@@ -33,6 +33,7 @@ b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/item/redstone_ores.
 84c4c90a338f2b74ef2c7f6c262d8fedcdf60340 data/minecraft/tags/item/wooden_stairs.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/item/walls.json
 65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/item/leaves.json
+67d9430b6b1ed45602512d2407b31668b9f3a55b data/deeperdarker/tags/item/scutes.json
 fdf385486288865b84ce0014957ead68d8a2e069 data/minecraft/tags/item/wooden_pressure_plates.json
 c6dc137cf9982b2edee44fbdd536af1e2608a78a data/minecraft/tags/item/hoes.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/item/diamond_ores.json
