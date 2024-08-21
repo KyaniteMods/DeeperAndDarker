@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
 import com.kyanite.deeperdarker.util.DDTags;
-import java.util.function.BiConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -24,8 +23,6 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.DynamicGameEventListener;
 import net.minecraft.world.level.gameevent.EntityPositionSource;
@@ -33,6 +30,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+
+import java.util.function.BiConsumer;
 
 @SuppressWarnings("NullableProblems")
 public class Shattered extends Monster implements DisturbanceListener, VibrationSystem {
@@ -202,15 +201,16 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, Entity pEntity, Entity pPlayerEntity, float pDistance) {            if(isDeadOrDying()) return;
-            playSound(DDSounds.SHATTERED_NOTICES, 2, 1);
-            if(pEntity != null && canTargetEntity(pEntity)) {
-                if(pEntity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
+        public void onReceiveVibration(ServerLevel level, BlockPos pos, GameEvent gameEvent, Entity entity, Entity playerEntity, float distance) {
+            if(isDeadOrDying()) return;
+            playSound(DDSounds.SHATTERED_NOTICE, 2, 1);
+            if(entity != null && canTargetEntity(entity)) {
+                if(entity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
                 return;
             }
 
             if(getTarget() != null) setTarget(null);
-            disturbanceLocation = pPos;
+            disturbanceLocation = pos;
         }
     }
 }

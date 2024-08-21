@@ -276,6 +276,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.stalker.ambient", "Stalker chirps");
         translationBuilder.add("subtitles.entity.stalker.hurt", "Stalker hurts");
         translationBuilder.add("subtitles.entity.stalker.death", "Stalker dies");
+        translationBuilder.add("subtitles.entity.stalker.notice", "Stalker notices");
 
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you towards the source...");

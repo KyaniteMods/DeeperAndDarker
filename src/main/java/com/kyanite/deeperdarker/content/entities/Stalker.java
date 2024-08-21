@@ -15,7 +15,6 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.BossEvent;
@@ -270,9 +269,9 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
-                if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
+        public boolean canReceiveVibration(ServerLevel level, BlockPos pPos, GameEvent gameEvent, GameEvent.Context context) {
+            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(pPos)) {
+                if(context.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
                 return false;
@@ -280,11 +279,11 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, Entity pEntity, Entity pPlayerEntity, float pDistance) {
+        public void onReceiveVibration(ServerLevel level, BlockPos pPos, GameEvent gameEvent, @Nullable Entity entity, @Nullable Entity playerEntity, float distance) {
             if(isDeadOrDying()) return;
-            playSound(SoundEvents.WARDEN_TENDRIL_CLICKS, 2, 1);
-            if(pEntity != null && canTargetEntity(pEntity)) {
-                if(pEntity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
+            playSound(DDSounds.STALKER_NOTICE, 2, 1);
+            if(entity != null && canTargetEntity(entity)) {
+                if(entity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
                 return;
             }
 
