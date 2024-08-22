@@ -23,9 +23,6 @@
 		],
 		"fabric-datagen": [
 			"com.kyanite.deeperdarker.util.DeeperDarkerDatagen"
-		],
-		"mm:early_risers": [
-			"com.kyanite.deeperdarker.DeeperDarkerEarlyRisers"
 		]
 	},
 	"mixins": [
