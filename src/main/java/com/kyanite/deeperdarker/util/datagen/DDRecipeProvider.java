@@ -169,6 +169,13 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDItems.RESONARIUM_PLATE)
                 .requires(DDItems.RESONARIUM, 4).requires(Ingredient.of(DDTags.Items.SCUTES), 4)
                 .unlockedBy(FabricRecipeProvider.getHasName(DDItems.RESONARIUM), FabricRecipeProvider.has(DDItems.RESONARIUM)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
+                .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('H', DDItems.HEART_OF_THE_DEEP)
+                .pattern(" CH").pattern(" BC").pattern("B  ")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE), has(DDItems.SCULK_BONE))
+                .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL), has(DDItems.SOUL_CRYSTAL))
+                .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
     }
 
     private void addSmithingRecipes(RecipeOutput output) {
