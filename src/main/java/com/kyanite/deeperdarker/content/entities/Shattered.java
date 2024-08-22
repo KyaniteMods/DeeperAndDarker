@@ -110,16 +110,6 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean bl) {
-        super.dropCustomDeathLoot(serverLevel, damageSource, bl);
-        Entity entity = damageSource.getEntity();
-        if (entity instanceof Creeper creeper && creeper.canDropMobsSkull()) {
-            creeper.increaseDroppedSkulls();
-            this.spawnAtLocation(DDItems.SHATTERED_HEAD);
-        }
-    }
-
-    @Override
     public void handleEntityEvent(byte pId) {
         if(pId == 4) {
             this.idleState.stop();
