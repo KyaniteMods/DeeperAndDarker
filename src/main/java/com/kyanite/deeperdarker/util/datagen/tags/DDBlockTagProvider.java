@@ -137,5 +137,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).forceAddTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
         getOrCreateTagBuilder(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES).add(Blocks.WATER, Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME, DDBlocks.GLOOMSLATE, DDBlocks.GLOOMY_SCULK, DDBlocks.BLOOMING_SCULK_STONE, DDBlocks.BLOOMING_MOSS_BLOCK);
+        getOrCreateTagBuilder(DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL);
+        getOrCreateTagBuilder(DDTags.Blocks.INCORRECT_FOR_WARDEN_TOOL);
     }
 }

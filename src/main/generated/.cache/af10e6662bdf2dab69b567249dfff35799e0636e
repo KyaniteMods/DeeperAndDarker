@@ -1,4 +1,4 @@
-// 1.21	2024-08-22T00:25:38.275397249	Deeper and Darker/Tags for minecraft:block
+// 1.21	2024-08-22T15:56:23.627715765	Deeper and Darker/Tags for minecraft:block
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/block/coal_ores.json
 8793c7b135bd439d9ddbc1b7631addf273890f21 data/minecraft/tags/block/logs_that_burn.json
@@ -20,8 +20,8 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/block/lapis_ores.js
 8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/block/infiniburn_otherside.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/block/redstone_ores.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/block/blooming_stems.json
-8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/small_dripleaf_placeable.json
 88f459cee731c19448a25731c1b827b73e0d250d data/minecraft/tags/block/wooden_buttons.json
+8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/small_dripleaf_placeable.json
 d7bbd65e82631f185774fecfb8cfba610d50f80e data/deeperdarker/tags/block/transmittable.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/block/needs_stone_tool.json
 fdf385486288865b84ce0014957ead68d8a2e069 data/minecraft/tags/block/wooden_pressure_plates.json
@@ -53,7 +53,9 @@ a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/block/sculk_ston
 4def6c04349da9777fc48313256495659524feb1 data/deeperdarker/tags/block/glooming_pool_replaceable.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/block/stairs.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/block/emerald_ores.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/deeperdarker/tags/block/incorrect_for_warden_tool.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_diggable_block.json
 ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/block/glowing_vine_placeable.json
 e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/block/planks.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/block/diamond_ores.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/deeperdarker/tags/block/incorrect_for_resonarium_tool.json
