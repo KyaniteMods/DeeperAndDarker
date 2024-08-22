@@ -272,6 +272,82 @@
       "deeperdarker:ambience/otherside/overcast_columns"
     ]
   },
+  "entity.sludge.death": {
+    "sounds": [
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
+    ],
+    "subtitle": "subtitles.entity.sludge.death"
+  },
+  "entity.sludge.death_small": {
+    "sounds": [
+      "mob/slime/small1",
+      "mob/slime/small2",
+      "mob/slime/small3",
+      "mob/slime/small4",
+      "mob/slime/small5"
+    ],
+    "subtitle": "subtitles.entity.sludge.death"
+  },
+  "entity.sludge.hurt": {
+    "sounds": [
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
+    ],
+    "subtitle": "subtitles.entity.sludge.hurt"
+  },
+  "entity.sludge.hurt_small": {
+    "sounds": [
+      "mob/slime/small1",
+      "mob/slime/small2",
+      "mob/slime/small3",
+      "mob/slime/small4",
+      "mob/slime/small5"
+    ],
+    "subtitle": "subtitles.entity.sludge.hurt"
+  },
+  "entity.sludge.jump": {
+    "sounds": [
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
+    ],
+    "subtitle": "subtitles.entity.sludge.squish"
+  },
+  "entity.sludge.jump_small": {
+    "sounds": [
+      "mob/slime/small1",
+      "mob/slime/small2",
+      "mob/slime/small3",
+      "mob/slime/small4",
+      "mob/slime/small5"
+    ],
+    "subtitle": "subtitles.entity.sludge.squish"
+  },
+  "entity.sludge.squish": {
+    "sounds": [
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
+    ],
+    "subtitle": "subtitles.entity.sludge.squish"
+  },
+  "entity.sludge.squish_small": {
+    "sounds": [
+      "mob/slime/small1",
+      "mob/slime/small2",
+      "mob/slime/small3",
+      "mob/slime/small4",
+      "mob/slime/small5"
+    ],
+    "subtitle": "subtitles.entity.sludge.squish"
+  },
   "block.note_block.imitate.shattered": {
     "sounds": [
       "deeperdarker:entity/shattered/ambient1",
