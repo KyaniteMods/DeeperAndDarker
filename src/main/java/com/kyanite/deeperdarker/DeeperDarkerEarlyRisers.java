@@ -21,7 +21,7 @@ public class DeeperDarkerEarlyRisers implements Runnable {
             Field field = Class.forName(type).getDeclaredField(mobHead);
             field.setAccessible(true);
             Object obj = field.get(null);
-            ClassTinkerers.enumBuilder(instrument, "Ljava/lang/String;", "L" + holder + ";", "L" + type + ";").addEnum("deeperdarker$SHATTERED", () -> new Object[]{"deeperdarker_shattered", Holder.direct(SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("deeperdarker", "block.note_block.imitate.shattered"))), obj}).build();
+            ClassTinkerers.enumBuilder(instrument, "Ljava/lang/String;", "L" + holder + ";", "L" + type + ";").addEnum("DEEPERDARKER_SHATTERED", () -> new Object[]{"deeperdarker_shattered", Holder.direct(SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("deeperdarker", "block.note_block.imitate.shattered"))), obj}).build();
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
