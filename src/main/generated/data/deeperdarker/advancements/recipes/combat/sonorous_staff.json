@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_heart_of_the_deep": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:heart_of_the_deep"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sculk_bone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:sculk_bone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soul_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:soul_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:sonorous_staff"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sculk_bone",
+      "has_soul_crystal",
+      "has_heart_of_the_deep"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:sonorous_staff"
+    ]
+  }
+}
