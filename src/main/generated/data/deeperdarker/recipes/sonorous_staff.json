@@ -19,5 +19,6 @@
   ],
   "result": {
     "item": "deeperdarker:sonorous_staff"
-  }
+  },
+  "show_notification": true
 }

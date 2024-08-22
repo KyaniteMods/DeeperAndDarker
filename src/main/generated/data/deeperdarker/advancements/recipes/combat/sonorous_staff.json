@@ -46,15 +46,16 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
       "has_sculk_bone",
       "has_soul_crystal",
-      "has_heart_of_the_deep"
+      "has_heart_of_the_deep",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:sonorous_staff"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
