@@ -87,7 +87,7 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 
-	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
+//	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
 
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.

@@ -219,7 +219,7 @@ public class DDCreativeTab {
                 entries.accept(itemStack);
             }
         });
-        entries.accept(DDItems.SHATTERED_HEAD);
+//        entries.accept(DDItems.SHATTERED_HEAD);
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;
