@@ -8,7 +8,9 @@ import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
@@ -16,17 +18,26 @@ import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
+import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.NbtPredicate;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.UUID;
 
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
@@ -103,6 +114,15 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.withPool(poolBuilder);
 			}
 		});
+
+        ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
+            if (entity.getType() == EntityType.PLAYER && entity.getUUID().equals(UUID.fromString("7bb71eb9-b55e-4071-9175-8ec2f42ddd79")) && entity.level().dimension().equals(OthersideDimension.OTHERSIDE_LEVEL)) {
+                double xm = Mth.randomBetween(entity.level().getRandom(), -0.2f, 0.2f);
+                double ym = Mth.randomBetween(entity.level().getRandom(), 0.3f, 0.7f);
+                double zm = Mth.randomBetween(entity.level().getRandom(), -0.2f, 0.2f);
+                entity.level().addFreshEntity(new ItemEntity(entity.level(), entity.getX(), entity.getY(), entity.getZ(), new ItemStack(DDItems.SHATTERED_HEAD), xm, ym, zm));
+            }
+        });
 
 		Messages.registerMessages();
 	}
