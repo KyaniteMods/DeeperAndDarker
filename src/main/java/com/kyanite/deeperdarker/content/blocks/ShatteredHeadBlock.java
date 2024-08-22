@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ShatteredHeadBlock extends SkullBlock {
     public static final Type SHATTERED = new Type(){};
-    public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("deeperdarker$SHATTERED");
+    public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("DEEPERDARKER_SHATTERED");
 
     public ShatteredHeadBlock(Properties properties) {
         super(SHATTERED, properties);
