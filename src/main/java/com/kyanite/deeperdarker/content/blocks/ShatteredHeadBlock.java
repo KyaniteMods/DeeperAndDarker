@@ -21,7 +21,7 @@ public class ShatteredHeadBlock extends SkullBlock {
             return "shattered";
         }
     };
-    public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("deeperdarker$SHATTERED");
+    public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("DEEPERDARKER_SHATTERED");
 
     public ShatteredHeadBlock(Properties properties) {
         super(SHATTERED, properties);
