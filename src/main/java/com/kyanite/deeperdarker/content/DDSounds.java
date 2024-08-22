@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.SoundType;
 
 public class DDSounds {
@@ -41,6 +42,15 @@ public class DDSounds {
     public static final SoundEvent SHRIEK_WORM_AMBIENT = register("entity.shriek_worm.ambient");
     public static final SoundEvent SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
     public static final SoundEvent SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
+
+    public static final SoundEvent SLUDGE_DEATH = register("entity.sludge.death");
+    public static final SoundEvent SLUDGE_HURT = register("entity.sludge.hurt");
+    public static final SoundEvent SLUDGE_JUMP = register("entity.sludge.jump");
+    public static final SoundEvent SLUDGE_SQUISH = register("entity.sludge.squish");
+    public static final SoundEvent SLUDGE_DEATH_SMALL = register("entity.sludge.death_small");
+    public static final SoundEvent SLUDGE_HURT_SMALL = register("entity.sludge.hurt_small");
+    public static final SoundEvent SLUDGE_JUMP_SMALL = register("entity.sludge.jump_small");
+    public static final SoundEvent SLUDGE_SQUISH_SMALL = register("entity.sludge.squish_small");
 
     public static final SoundEvent STALKER_AMBIENT = register("entity.stalker.ambient");
     public static final SoundEvent STALKER_DEATH = register("entity.stalker.death");
