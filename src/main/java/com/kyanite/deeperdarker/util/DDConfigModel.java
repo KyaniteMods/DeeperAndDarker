@@ -24,10 +24,10 @@ public class DDConfigModel {
         public float geyserLaunchVelocity = 2.5f;
 
         @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMinWidth = 8;
+        public int portalMinWidth = 2;
 
         @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMinHeight = 4;
+        public int portalMinHeight = 3;
 
         @RangeConstraint(min = 1.0, max = 128.0)
         public int portalMaxWidth = 48;
