@@ -74,8 +74,6 @@ import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = DeeperDarker.MOD_ID)
 public class DeeperDarkerEvents {
@@ -155,15 +153,19 @@ public class DeeperDarkerEvents {
     public static void livingDamageEvent(final LivingDamageEvent.Pre event) {
         if(event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
 
-        AtomicReference<Float> incoming = new AtomicReference<>(event.getOriginalDamage());
-        float reduction = incoming.get() / 4;
-        event.getEntity().getArmorSlots().forEach(stack -> {
+        float incoming = event.getOriginalDamage();
+        float reduction = incoming / 4;
+        boolean resonarium = false;
+
+        for(ItemStack stack : event.getEntity().getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
-                incoming.updateAndGet(f -> f - reduction);
+                resonarium = true;
+                incoming -= reduction;
                 stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), event.getEntity(), stack.getEquipmentSlot());
             }
-        });
-        event.setNewDamage(incoming.get());
+        }
+
+        if(resonarium) event.setNewDamage(incoming);
     }
 
     @SubscribeEvent
