@@ -7,8 +7,8 @@ assignees: ''
 ---
 
 **Minecraft Version**: 1.xx.x
-**Mod Version**: x.x.x
-**Mod Loader**: forge/fabric
+**Mod Version**: 1.x.x
+**Mod Loader**: neoforge/forge/fabric
 
 **Description**:
 Explanation of what the bug is and how it affects the game.
