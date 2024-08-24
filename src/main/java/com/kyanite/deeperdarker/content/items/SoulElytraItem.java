@@ -5,13 +5,13 @@ import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.content.DDItems;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ElytraItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -40,7 +40,7 @@ public class SoulElytraItem extends ElytraItem {
 
     @Override
     public void inventoryTick(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if(pEntity instanceof LocalPlayer player && pSlotId == 2) {
+        if(pLevel.isClientSide() && pEntity instanceof Player player && pSlotId == 2) {
             if(player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
                 player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * DeeperDarkerConfig.soulElytraCooldown / 20)), true);
