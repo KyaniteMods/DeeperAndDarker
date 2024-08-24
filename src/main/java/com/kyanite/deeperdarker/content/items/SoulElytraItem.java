@@ -33,8 +33,8 @@ public class SoulElytraItem extends ElytraItem {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if(slotId == 38 && entity instanceof Player player) {
-            if(level.isClientSide() && player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
+        if(level.isClientSide() && entity instanceof Player player && slotId == 38) {
+            if(player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
                 player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * DeeperDarkerConfig.soulElytraCooldown / 20)), true);
             }
