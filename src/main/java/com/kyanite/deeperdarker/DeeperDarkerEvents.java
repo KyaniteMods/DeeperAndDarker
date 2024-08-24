@@ -42,6 +42,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ArmorItem;
@@ -153,19 +154,18 @@ public class DeeperDarkerEvents {
     public static void livingDamageEvent(final LivingDamageEvent.Pre event) {
         if(event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
 
-        float incoming = event.getOriginalDamage();
+        LivingEntity entity = event.getEntity();
+        float incoming = event.getNewDamage();
         float reduction = incoming / 4;
-        boolean resonarium = false;
 
-        for(ItemStack stack : event.getEntity().getArmorSlots()) {
+        for(ItemStack stack : entity.getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
-                resonarium = true;
                 incoming -= reduction;
-                stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), event.getEntity(), stack.getEquipmentSlot());
+                stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), entity, armor.getEquipmentSlot());
             }
         }
 
-        if(resonarium) event.setNewDamage(incoming);
+        event.setNewDamage(incoming);
     }
 
     @SubscribeEvent
