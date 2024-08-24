@@ -40,6 +40,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ArmorItem;
@@ -68,7 +69,6 @@ import net.minecraftforge.network.PacketDistributor;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = DeeperDarker.MOD_ID)
@@ -137,16 +137,18 @@ public class DeeperDarkerEvents {
     public static void livingDamageEvent(final LivingDamageEvent event) {
         if(event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
 
-        AtomicReference<Float> incoming = new AtomicReference<>(event.getAmount());
-        float reduction = incoming.get() / 4;
-        event.getEntity().getArmorSlots().forEach(stack -> {
+        LivingEntity entity = event.getEntity();
+        float incoming = event.getAmount();
+        float reduction = incoming / 4;
+
+        for(ItemStack stack : entity.getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().getName().equals(DDArmorMaterials.RESONARIUM.getName())) {
-                incoming.updateAndGet(f -> f - reduction);
-                int hurt = (int) (event.getAmount() / 1.5f) - (int) (event.getAmount() / 4);
-                stack.hurtAndBreak(hurt, event.getEntity(), entity -> entity.broadcastBreakEvent(stack.getEquipmentSlot()));
+                incoming -= reduction;
+                stack.hurtAndBreak((int) event.getAmount(), entity, living -> living.broadcastBreakEvent(armor.getEquipmentSlot()));
             }
-        });
-        event.setAmount(incoming.get());
+        }
+
+        event.setAmount(incoming);
     }
 
     @SubscribeEvent
