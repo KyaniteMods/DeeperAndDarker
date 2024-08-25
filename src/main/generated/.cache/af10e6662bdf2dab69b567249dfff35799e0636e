@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-22T16:17:58.205633296	Deeper and Darker/Tags for minecraft:block
+// 1.20.1	2024-08-25T20:11:35.329782754	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.json
@@ -12,9 +12,10 @@ d97d51c03ecb15a82ab5251dc612d193d9cb7890 data/minecraft/tags/blocks/gold_ores.js
 decd179c945b9efde8460c8d6f887d935895a56b data/deeperdarker/tags/blocks/blooming_stems.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/sniffer_diggable_block.json
 bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/blocks/leaves.json
-9a6feb9a5887e60d3b0217373376132678bd5c06 data/minecraft/tags/blocks/mineable/axe.json
+125c4177da435ec7375c86273282bc6322dea5ee data/minecraft/tags/blocks/mineable/axe.json
 ae9c334183d842387136550980a4c8d4b6b80b9f data/minecraft/tags/blocks/wooden_slabs.json
-38ded78c250c70dbbce8f730046e74d9784ef8da data/minecraft/tags/blocks/logs_that_burn.json
+8cc5aac19c24c87678696e75feac8c660984492a data/c/tags/blocks/glass_blocks.json
+4f87b01e66e85185bfa93156cc62600e2e58ef3b data/minecraft/tags/blocks/logs_that_burn.json
 d66ce7e40de1eb71f66df7115f2b61edce3c22d5 data/minecraft/tags/blocks/wooden_stairs.json
 12e80d1d7b3fdf52b069977aa315c093b01ffa8a data/deeperdarker/tags/blocks/transmittable.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/dirt.json
@@ -54,6 +55,7 @@ c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/blocks/saplings.jso
 633ef27c79c15ddc51b4f7893b8ebdbc6d155237 data/minecraft/tags/blocks/copper_ores.json
 5853dd3bde739be76992a2067a4a916e9f14659f data/minecraft/tags/blocks/walls.json
 91cc0adf830b0dda4cb501792e044b1e90172f5e data/minecraft/tags/blocks/stairs.json
+8cc5aac19c24c87678696e75feac8c660984492a data/minecraft/tags/blocks/impermeable.json
 9edd5da50aadc42014ac27f1996f8d34d127ced7 data/deeperdarker/tags/blocks/echo_soil.json
 67efbd918b7c82e42584c44101410841f8a430c3 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
 be4784405d5aff6778c2efdaa68d73434ddab3d2 data/minecraft/tags/blocks/wall_signs.json
