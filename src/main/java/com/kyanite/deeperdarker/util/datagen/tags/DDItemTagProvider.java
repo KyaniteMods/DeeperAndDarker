@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
@@ -20,18 +20,28 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         super(output, completableFuture);
     }
 
-    public void add(TagKey<Item> tag, Block... blocks) {
-        for (Block block: Arrays.stream(blocks).toList()) {
-            getOrCreateTagBuilder(tag).setReplace(false).add(block.asItem());
+    public FabricTagProvider<Item>.FabricTagBuilder add(TagKey<Item> tag, Block... blocks) {
+        FabricTagBuilder builder = getOrCreateTagBuilder(tag).setReplace(false);
+        for (Block block : blocks) {
+            builder.add(block.asItem());
         }
+        return builder;
+    }
+
+    public FabricTagProvider<Item>.FabricTagBuilder add(TagKey<Item> tag, Item... items) {
+        FabricTagBuilder builder = getOrCreateTagBuilder(tag).setReplace(false);
+        for (Item item : items) {
+            builder.add(item);
+        }
+        return builder;
     }
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         add(DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         add(DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
-        getOrCreateTagBuilder(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS);
-        getOrCreateTagBuilder(DDTags.Items.AVOIDS_SNIFFING).add(DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
+        add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);
+        add(DDTags.Items.AVOIDS_SNIFFING, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
 
         add(ItemTags.PLANKS, DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);
         add(ItemTags.WOODEN_STAIRS, DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS);
@@ -43,18 +53,18 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.WOODEN_PRESSURE_PLATES, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE);
         add(ItemTags.WOODEN_BUTTONS, DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON, DDBlocks.BLOOM_BUTTON);
         add(ItemTags.LEAVES, DDBlocks.ECHO_LEAVES);
-        getOrCreateTagBuilder(ItemTags.SIGNS).setReplace(false).add(DDItems.ECHO_SIGN, DDItems.BLOOM_SIGN);
-        getOrCreateTagBuilder(ItemTags.HANGING_SIGNS).setReplace(false).add(DDItems.ECHO_HANGING_SIGN, DDItems.BLOOM_HANGING_SIGN);
-        getOrCreateTagBuilder(ItemTags.BOATS).setReplace(false).add(DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT);
-        getOrCreateTagBuilder(ItemTags.CHEST_BOATS).setReplace(false).add(DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT);
-        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).setReplace(false).addTag(DDTags.Items.ECHO_LOGS).add(DDBlocks.BLOOMING_STEM.asItem()).add(DDBlocks.ENRICHED_ECHO_LOG.asItem());
-        getOrCreateTagBuilder(ItemTags.SWORDS).setReplace(false).add(DDItems.WARDEN_SWORD, DDItems.RESONARIUM_SWORD);
-        getOrCreateTagBuilder(ItemTags.PICKAXES).setReplace(false).add(DDItems.WARDEN_PICKAXE, DDItems.RESONARIUM_PICKAXE);
-        getOrCreateTagBuilder(ItemTags.AXES).setReplace(false).add(DDItems.WARDEN_AXE, DDItems.RESONARIUM_AXE);
-        getOrCreateTagBuilder(ItemTags.SHOVELS).setReplace(false).add(DDItems.WARDEN_SHOVEL, DDItems.RESONARIUM_SHOVEL);
-        getOrCreateTagBuilder(ItemTags.HOES).setReplace(false).add(DDItems.WARDEN_HOE, DDItems.RESONARIUM_HOE);
+        add(ItemTags.SIGNS, DDItems.ECHO_SIGN, DDItems.BLOOM_SIGN);
+        add(ItemTags.HANGING_SIGNS, DDItems.ECHO_HANGING_SIGN, DDItems.BLOOM_HANGING_SIGN);
+        add(ItemTags.BOATS, DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT);
+        add(ItemTags.CHEST_BOATS, DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT);
+        add(ItemTags.LOGS_THAT_BURN, DDBlocks.BLOOMING_STEM, DDBlocks.ENRICHED_ECHO_LOG).addTag(DDTags.Items.ECHO_LOGS);
+        add(ItemTags.SWORDS, DDItems.WARDEN_SWORD, DDItems.RESONARIUM_SWORD);
+        add(ItemTags.PICKAXES, DDItems.WARDEN_PICKAXE, DDItems.RESONARIUM_PICKAXE);
+        add(ItemTags.AXES, DDItems.WARDEN_AXE, DDItems.RESONARIUM_AXE);
+        add(ItemTags.SHOVELS, DDItems.WARDEN_SHOVEL, DDItems.RESONARIUM_SHOVEL);
+        add(ItemTags.HOES, DDItems.WARDEN_HOE, DDItems.RESONARIUM_HOE);
 
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR).setReplace(false).add(
+        add(ItemTags.TRIMMABLE_ARMOR,
                 DDItems.RESONARIUM_HELMET,
                 DDItems.RESONARIUM_CHESTPLATE,
                 DDItems.RESONARIUM_LEGGINGS,
@@ -132,5 +142,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(DDTags.Items.PAINTINGS).add(Items.PAINTING);
         getOrCreateTagBuilder(DDTags.Items.SCUTES).add(Items.SCUTE);
+
+        add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES);
+        add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
     }
 }
