@@ -1,7 +1,7 @@
 {
   "values": [
-    "#deeperdarker:echo_logs",
     "deeperdarker:blooming_stem",
-    "deeperdarker:enriched_echo_log"
+    "deeperdarker:enriched_echo_log",
+    "#deeperdarker:echo_logs"
   ]
 }
