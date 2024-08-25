@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:gloomslate_tiles"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:gloomslate_bricks"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
+}

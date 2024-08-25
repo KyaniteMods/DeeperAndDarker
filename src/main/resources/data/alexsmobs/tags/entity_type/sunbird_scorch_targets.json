@@ -1,12 +1,12 @@
 {
+  "replace": false,
   "values": [
-    "deeperdarker:angler_fish",
+    "minecraft:phantom",
     "deeperdarker:sculk_centipede",
     "deeperdarker:sculk_leech",
     "deeperdarker:sculk_snapper",
     "deeperdarker:shattered",
     "deeperdarker:shriek_worm",
-    "deeperdarker:stalker",
-    "minecraft:warden"
+    "deeperdarker:stalker"
   ]
 }

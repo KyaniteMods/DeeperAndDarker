@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:polished_gloomslate_stairs"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:gloomslate_brick_stairs"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
+}
