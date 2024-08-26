@@ -12,7 +12,7 @@
     "NoAncientPaintingInGroupMixin",
     "NoiseRouterDataAccessor",
     "PaintingItemMixin",
-    "ResonariumSneakMixin",
+    "ResonariumDamageReductionMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],
