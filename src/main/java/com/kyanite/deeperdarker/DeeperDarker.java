@@ -12,6 +12,7 @@ import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.loot.v2.LootTableSource;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
@@ -77,41 +78,28 @@ public class DeeperDarker implements ModInitializer {
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.lootPool()
+			if (source == LootTableSource.DATA_PACK) return;
+
+			if (EntityType.WARDEN.getDefaultLootTable().equals(id)) {
+				LootPool.Builder carapacePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
 								UniformGenerator.between(1.0f, 3.0f))));
-
-				tableBuilder.withPool(poolBuilder);
-			}
-		});
-
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && EntityType.WARDEN.getDefaultLootTable().equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.lootPool()
+				LootPool.Builder heartPoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.HEART_OF_THE_DEEP));
 
-				tableBuilder.withPool(poolBuilder);
+				tableBuilder.withPool(carapacePoolBuilder);
+				tableBuilder.withPool(heartPoolBuilder);
 			}
-		});
-
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.lootPool()
+			if (BuiltInLootTables.ANCIENT_CITY.equals(id)) {
+				LootPool.Builder carapacePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE)
 								.when(LootItemRandomChanceCondition.randomChance(0.2f)));
-
-				tableBuilder.withPool(poolBuilder);
-			}
-		});
-
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && BuiltInLootTables.ANCIENT_CITY.equals(id)) {
-				LootPool.Builder poolBuilder = LootPool.lootPool()
+				LootPool.Builder wardenUpgradePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE))
-							.when(LootItemRandomChanceCondition.randomChance(0.2f));
+						.when(LootItemRandomChanceCondition.randomChance(0.2f));
 
-				tableBuilder.withPool(poolBuilder);
+				tableBuilder.withPool(carapacePoolBuilder);
+				tableBuilder.withPool(wardenUpgradePoolBuilder);
 			}
 		});
 
