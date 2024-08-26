@@ -93,6 +93,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         add(BlockTags.CLIMBABLE, DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.GLOWING_VINES, DDBlocks.GLOWING_VINES_PLANT);
         add(BlockTags.OCCLUDES_VIBRATION_SIGNALS, DDBlocks.SOUNDPROOF_GLASS);
         add(BlockTags.PORTALS, DDBlocks.OTHERSIDE_PORTAL);
+        add(BlockTags.IMPERMEABLE, DDBlocks.SOUNDPROOF_GLASS);
+        add(BlockTags.SNAPS_GOAT_HORN, DDBlocks.ECHO_LOG);
 
         add(BlockTags.COAL_ORES, DDBlocks.SCULK_STONE_COAL_ORE, DDBlocks.GLOOMSLATE_COAL_ORE);
         add(BlockTags.IRON_ORES, DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.GLOOMSLATE_IRON_ORE);
