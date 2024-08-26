@@ -31,6 +31,10 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_STEP = register("block.vase.step");
     public static final DeferredSoundType VASE = new DeferredSoundType(2, 1, VASE_BREAK, VASE_STEP, VASE_PLACE, VASE_HIT, VASE_FALL);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANGLER_FISH_DEATH = register("entity.angler_fish.death");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANGLER_FISH_FLOPS = register("entity.angler_fish.flop");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ANGLER_FISH_HURT = register("entity.angler_fish.hurt");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> LEECH_HURT = register("entity.leech.hurt");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> SNAPPER_AMBIENT = register("entity.snapper.ambient");

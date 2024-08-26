@@ -30,6 +30,9 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.VASE_HIT, subtitle("block.generic.hit").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
         add(DDSounds.VASE_PLACE, subtitle("block.generic.place").with(sound("block/vase/place1"), sound("block/vase/place2"), sound("block/vase/place3"), sound("block/vase/place4")));
         add(DDSounds.VASE_STEP, subtitle("block.generic.footsteps").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
+        add(DDSounds.ANGLER_FISH_DEATH, subtitle("entity.angler_fish.death").with(mcSound("entity/fish/hurt1"), mcSound("entity/fish/hurt2"), mcSound("entity/fish/hurt3"), mcSound("entity/fish/hurt4")));
+        add(DDSounds.ANGLER_FISH_FLOPS, subtitle("entity.angler_fish.flop").with(mcSound("entity/fish/flop1"), mcSound("entity/fish/flop2"), mcSound("entity/fish/flop3"), mcSound("entity/fish/flop4")));
+        add(DDSounds.ANGLER_FISH_HURT, subtitle("entity.angler_fish.hurt").with(mcSound("entity/fish/hurt1"), mcSound("entity/fish/hurt2"), mcSound("entity/fish/hurt3"), mcSound("entity/fish/hurt4")));
         add(DDSounds.LEECH_HURT, subtitle("entity.leech.hurt").with(sound("entity/sculk_leech/hurt1"), sound("entity/sculk_leech/hurt2"), sound("entity/sculk_leech/hurt3")));
         add(DDSounds.SNAPPER_AMBIENT, subtitle("entity.snapper.ambient").with(sound("entity/sculk_snapper/ambient")));
         add(DDSounds.SNAPPER_BITE, subtitle("entity.snapper.bite").with(sound("entity/sculk_snapper/bite")));

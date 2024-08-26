@@ -109,6 +109,9 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
+        add("subtitles.entity.angler_fish.death", "Angler Fish dies");
+        add("subtitles.entity.angler_fish.flop", "Angler Fish flops");
+        add("subtitles.entity.angler_fish.hurt", "Angler Fish hurts");
         add("subtitles.entity.leech.hurt", "Sculk Leech hurts");
         add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
         add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
