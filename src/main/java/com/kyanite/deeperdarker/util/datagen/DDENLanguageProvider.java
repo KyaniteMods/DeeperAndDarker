@@ -237,16 +237,6 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked", "Unlinked");
 
-        translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
-        translationBuilder.add("subtitles.entity.sculk_snapper.ambient", "Sculk Snapper breathes");
-        translationBuilder.add("subtitles.entity.sculk_snapper.bite", "Sculk Snapper bites");
-        translationBuilder.add("subtitles.entity.sculk_snapper.hurt", "Sculk Snapper hurts");
-        translationBuilder.add("subtitles.entity.sculk_snapper.sniff", "Sculk Snapper sniffs");
-        translationBuilder.add("subtitles.item.transmitter.error", "Transmitter fails");
-        translationBuilder.add("subtitles.item.transmitter.link", "Transmitter links");
-        translationBuilder.add("subtitles.item.transmitter.open", "Transmitter transmits");
-        translationBuilder.add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
-
         translationBuilder.add(DDEntities.BOAT, "Boat");
         translationBuilder.add(DDEntities.CHEST_BOAT, "Boat with Chest");
         translationBuilder.add(DDEntities.ANGLER_FISH, "Angler Fish");
@@ -267,12 +257,22 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.minecraft.splash_potion.effect.long_sculk_affinity", "Splash Potion of Sculk Affinity");
         translationBuilder.add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         translationBuilder.add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
+
+        translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
+        translationBuilder.add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
+        translationBuilder.add("subtitles.entity.snapper.bite", "Sculk Snapper bites");
+        translationBuilder.add("subtitles.entity.snapper.hurt", "Sculk Snapper hurts");
+        translationBuilder.add("subtitles.entity.snapper.sniff", "Sculk Snapper sniffs");
+        translationBuilder.add("subtitles.item.transmitter.error", "Transmitter fails");
+        translationBuilder.add("subtitles.item.transmitter.link", "Transmitter links");
+        translationBuilder.add("subtitles.item.transmitter.open", "Transmitter transmits");
+        translationBuilder.add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
         translationBuilder.add("subtitles.ambient.otherside.additions", "Warden dreams");
         translationBuilder.add("subtitles.entity.shattered.ambient", "Shattered growls");
         translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
         translationBuilder.add("subtitles.entity.shattered.death", "Shattered dies");
         translationBuilder.add("subtitles.entity.shattered.notice", "Shattered notices");
-        translationBuilder.add("subtitles.entity.sculk_leech.hurt", "Sculk Leech hurts");
+        translationBuilder.add("subtitles.entity.leech.hurt", "Sculk Leech hurts");
         translationBuilder.add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
         translationBuilder.add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
         translationBuilder.add("subtitles.entity.shriek_worm.death", "Shriek Worm dies");
