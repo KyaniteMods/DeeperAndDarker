@@ -1,4 +1,4 @@
-// 1.21	2024-08-25T21:56:22.770949532	Deeper and Darker/Tags for minecraft:block
+// 1.21	2024-08-26T00:02:39.36653403	Deeper and Darker/Tags for minecraft:block
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json
 3118ba01efdcb9cf8672fd7907db72240e17fc42 data/minecraft/tags/block/coal_ores.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/block/glass_blocks.json
@@ -6,6 +6,7 @@
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/block/fence_gates.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/block/echo_logs.json
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/block/walls.json
+36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/minecraft/tags/block/impermeable.json
 3e9990c4b2c8755d00aeb71aa8bfee092a771fdb data/minecraft/tags/block/standing_signs.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/block/needs_iron_tool.json
 1a8b7cd595fc8d49db1d8d890a9f27fc264eee13 data/minecraft/tags/block/flower_pots.json
@@ -20,8 +21,8 @@ c81b8261b8bb5aa40299dfd9b0baaadec1795936 data/minecraft/tags/block/lapis_ores.js
 481c6a80e73c7e64c107081fb6cc5470b56d5038 data/deeperdarker/tags/block/infiniburn_otherside.json
 f22dbbe57d56848af82a66bb784cec1ce92f4900 data/minecraft/tags/block/redstone_ores.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/block/blooming_stems.json
-8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/small_dripleaf_placeable.json
 88f459cee731c19448a25731c1b827b73e0d250d data/minecraft/tags/block/wooden_buttons.json
+8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/small_dripleaf_placeable.json
 a623e9d0f28dd027d00c487f057de468ce7bd4d3 data/deeperdarker/tags/block/transmittable.json
 82225e5320895289635f83ee6b2143eb761ca0ee data/c/tags/block/stones.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/block/needs_stone_tool.json
@@ -33,6 +34,7 @@ ae158fba1e4f8aef2162c4ca5b05fd555fb8135d data/minecraft/tags/block/inside_step_s
 1ae965400a37c9bf597284a80c5237e8a8bd6d28 data/minecraft/tags/block/wall_signs.json
 50da908af11841337ebd0926055c570946b9674e data/minecraft/tags/block/ceiling_hanging_signs.json
 25dfd866f43c34c73a1545527582a1f7b92bc826 data/minecraft/tags/block/copper_ores.json
+615016fb2f7bd4866e694de5e712cb29bb434032 data/minecraft/tags/block/snaps_goat_horn.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/block/gloomslate_replaceable.json
 64233959059c6b6d92305cd775cf39b7f4568548 data/minecraft/tags/block/mineable/pickaxe.json
 e393a06b04acf4377285594bb65c749eb0c7f08d data/minecraft/tags/block/wooden_slabs.json
@@ -56,7 +58,9 @@ a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/block/sculk_ston
 4def6c04349da9777fc48313256495659524feb1 data/deeperdarker/tags/block/glooming_pool_replaceable.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/block/stairs.json
 5cc89eb24e9f4c208b978f027d147180ee319939 data/minecraft/tags/block/emerald_ores.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/deeperdarker/tags/block/incorrect_for_warden_tool.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_diggable_block.json
 ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/block/glowing_vine_placeable.json
 e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/block/planks.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/deeperdarker/tags/block/incorrect_for_resonarium_tool.json
 2a4240a773b384de9c17b3642cba58461689bb0d data/minecraft/tags/block/diamond_ores.json
