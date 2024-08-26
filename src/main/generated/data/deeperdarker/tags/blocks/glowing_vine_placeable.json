@@ -1,7 +1,8 @@
 {
-  "replace": false,
   "values": [
-    "minecraft:sculk",
-    "deeperdarker:sculk_stone"
+    "deeperdarker:gloomslate",
+    "deeperdarker:sculk_stone",
+    "deeperdarker:cobbled_gloomslate",
+    "deeperdarker:cobbled_sculk_stone"
   ]
 }
