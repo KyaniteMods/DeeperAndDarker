@@ -355,5 +355,56 @@
       "deeperdarker:entity/shattered/ambient3"
     ],
     "subtitle": "subtitles.entity.shattered.ambient"
+  },
+  "entity.angler_fish.death": {
+    "sounds": [
+      {
+        "name": "entity/fish/hurt1",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/fish/hurt2",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/fish/hurt3",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/fish/hurt4",
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.entity.angler_fish.death"
+  },
+  "entity.angler_fish.flop": {
+    "sounds": [
+      {
+        "name": "entity/fish/flop1",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop2",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop3",
+        "volume": 0.3
+      },
+      {
+        "name": "entity/fish/flop4",
+        "volume": 0.3
+      }
+    ],
+    "subtitle": "subtitles.entity.angler_fish.flop"
+  },
+  "entity.angler_fish.hurt": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.angler_fish.hurt"
   }
 }
