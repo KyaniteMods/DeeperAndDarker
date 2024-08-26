@@ -41,6 +41,10 @@ public class DDSounds {
     public static final SoundEvent SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
     public static final SoundEvent SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
 
+    public static final SoundEvent ANGLER_FISH_HURT = register("entity.angler_fish.hurt");
+    public static final SoundEvent ANGLER_FISH_FLOP = register("entity.angler_fish.flop");
+    public static final SoundEvent ANGLER_FISH_DEATH = register("entity.angler_fish.death");
+
     public static final SoundEvent SLUDGE_DEATH = register("entity.sludge.death");
     public static final SoundEvent SLUDGE_HURT = register("entity.sludge.hurt");
     public static final SoundEvent SLUDGE_JUMP = register("entity.sludge.jump");

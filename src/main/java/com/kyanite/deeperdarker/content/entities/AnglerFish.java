@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +20,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class AnglerFish extends AbstractFish {
@@ -40,9 +43,21 @@ public class AnglerFish extends AbstractFish {
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Salmon.class, true));
     }
 
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return DDSounds.ANGLER_FISH_HURT;
+    }
+
     @Override
     protected SoundEvent getFlopSound() {
-        return SoundEvents.TROPICAL_FISH_FLOP;
+        return DDSounds.ANGLER_FISH_FLOP;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return DDSounds.ANGLER_FISH_DEATH;
     }
 
     @Override
