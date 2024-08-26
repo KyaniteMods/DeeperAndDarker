@@ -13,7 +13,7 @@
     "NoiseRouterDataAccessor",
     "PaintingItemMixin",
     "PhantomMixin",
-    "ResonariumSneakMixin",
+    "ResonariumDamageReductionMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],
