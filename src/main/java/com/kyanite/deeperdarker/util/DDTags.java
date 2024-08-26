@@ -47,9 +47,6 @@ public class DDTags {
         public static final TagKey<Item> DAMPENS_VIBRATIONS = TagKey.create(
                 Registries.ITEM, DeeperDarker.rl("dampens_vibrations"));
 
-        public static final TagKey<Item> AVOIDS_SNIFFING = TagKey.create(
-                Registries.ITEM, DeeperDarker.rl("avoids_sniffing"));
-
         public static final TagKey<Item> PAINTINGS = TagKey.create(
                 Registries.ITEM, DeeperDarker.rl("paintings"));
 

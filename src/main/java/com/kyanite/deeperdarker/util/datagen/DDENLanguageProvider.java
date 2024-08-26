@@ -384,5 +384,11 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".transmit", "Use Sculk Transmitter");
+
+        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
+        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".blooming_stems", "Blooming Stems");
+        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
+        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".paintings", "Paintings");
+        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
     }
 }
