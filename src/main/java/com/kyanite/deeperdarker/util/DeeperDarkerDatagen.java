@@ -20,6 +20,7 @@ import com.kyanite.deeperdarker.world.otherside.structures.DDStructureSets;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -34,8 +35,8 @@ public class DeeperDarkerDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(DDRecipeProvider::new);
         pack.addProvider(DDModelProvider::new);
         pack.addProvider(DDBlockLootTableProvider::new);
-        pack.addProvider(DDBlockTagProvider::new);
-        pack.addProvider(DDItemTagProvider::new);
+        final FabricTagProvider.BlockTagProvider blockTagProvider = pack.addProvider(DDBlockTagProvider::new);
+        pack.addProvider((output, registriesFuture) -> new DDItemTagProvider(output, registriesFuture, blockTagProvider));
         pack.addProvider(DDENLanguageProvider::new);
         pack.addProvider(DDEntityLootTableProvider::new);
         pack.addProvider(DDAdvancementProvider::new);

@@ -1,7 +1,5 @@
 {
   "values": [
-    "#minecraft:shulker_boxes",
-    "#minecraft:anvil",
     "minecraft:crafting_table",
     "minecraft:stonecutter",
     "minecraft:cartography_table",
@@ -11,6 +9,7 @@
     "minecraft:furnace",
     "minecraft:smoker",
     "minecraft:blast_furnace",
+    "minecraft:chipped_anvil",
     "minecraft:enchanting_table",
     "minecraft:brewing_stand",
     "minecraft:beacon",
@@ -19,6 +18,14 @@
     "minecraft:dispenser",
     "minecraft:dropper",
     "minecraft:hopper",
-    "minecraft:trapped_chest"
+    "minecraft:trapped_chest",
+    {
+      "id": "#minecraft:shulker_boxes",
+      "required": false
+    },
+    {
+      "id": "#minecraft:anvil",
+      "required": false
+    }
   ]
 }

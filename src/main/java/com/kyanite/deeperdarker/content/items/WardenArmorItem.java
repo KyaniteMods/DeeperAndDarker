@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
+import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -61,5 +63,10 @@ public class WardenArmorItem extends ArmorItem {
                 list.add(effect.value().getDisplayName().copy().withStyle(ChatFormatting.GREEN));
             }
         }
+    }
+
+    @Override
+    public boolean canBeEnchantedWith(ItemStack stack, Holder<Enchantment> enchantment, EnchantingContext context) {
+        return super.canBeEnchantedWith(stack, enchantment, context);
     }
 }
