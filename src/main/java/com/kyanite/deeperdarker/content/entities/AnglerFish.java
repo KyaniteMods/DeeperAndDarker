@@ -1,11 +1,12 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -44,8 +45,18 @@ public class AnglerFish extends AbstractFish {
     }
 
     @Override
+    protected SoundEvent getDeathSound() {
+        return DDSounds.ANGLER_FISH_DEATH.get();
+    }
+
+    @Override
     protected SoundEvent getFlopSound() {
-        return SoundEvents.TROPICAL_FISH_FLOP;
+        return DDSounds.ANGLER_FISH_FLOP.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return DDSounds.ANGLER_FISH_HURT.get();
     }
 
     @Override

@@ -112,6 +112,33 @@
     ],
     "subtitle": "subtitles.block.generic.footsteps"
   },
+  "entity.angler_fish.death": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.angler_fish.death"
+  },
+  "entity.angler_fish.flop": {
+    "sounds": [
+      "entity/fish/flop1",
+      "entity/fish/flop2",
+      "entity/fish/flop3",
+      "entity/fish/flop4"
+    ],
+    "subtitle": "subtitles.entity.angler_fish.flop"
+  },
+  "entity.angler_fish.hurt": {
+    "sounds": [
+      "entity/fish/hurt1",
+      "entity/fish/hurt2",
+      "entity/fish/hurt3",
+      "entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.angler_fish.hurt"
+  },
   "entity.leech.hurt": {
     "sounds": [
       "deeperdarker:entity/sculk_leech/hurt1",
