@@ -268,7 +268,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.shattered.ambient", "Shattered growls");
         translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
         translationBuilder.add("subtitles.entity.shattered.death", "Shattered dies");
-        translationBuilder.add("subtitles.entity.shattered.notice", "Shattered notices");
+        translationBuilder.add("subtitles.entity.shattered.notice", "Shattered takes notice");
         translationBuilder.add("subtitles.entity.leech.hurt", "Sculk Leech hurts");
         translationBuilder.add("subtitles.entity.shriek_worm.ambient", "Shriek Worm cries");
         translationBuilder.add("subtitles.entity.shriek_worm.hurt", "Shriek Worm hurts");
@@ -276,7 +276,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.stalker.ambient", "Stalker chirps");
         translationBuilder.add("subtitles.entity.stalker.hurt", "Stalker hurts");
         translationBuilder.add("subtitles.entity.stalker.death", "Stalker dies");
-        translationBuilder.add("subtitles.entity.stalker.notice", "Stalker notices");
+        translationBuilder.add("subtitles.entity.stalker.notice", "Stalker takes notice");
         translationBuilder.add("subtitles.entity.sludge.hurt", "Sludge hurts");
         translationBuilder.add("subtitles.entity.sludge.death", "Sludge dies");
         translationBuilder.add("subtitles.entity.sludge.squish", "Sludge squishes");
