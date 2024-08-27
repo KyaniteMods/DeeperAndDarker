@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.entities.DDBoat;
 import com.kyanite.deeperdarker.content.items.*;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTiers;
@@ -25,10 +26,10 @@ public class DDItems {
     public static final Item GRIME_BRICK = register("grime_brick", new Item(new Item.Properties()));
 
     public static final Item SOUL_ELYTRA = register("soul_elytra", new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON)));
-    public static final Item ECHO_BOAT = register("echo_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
-    public static final Item ECHO_CHEST_BOAT = register("echo_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
-    public static final Item BLOOM_BOAT = register("bloom_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
-    public static final Item BLOOM_CHEST_BOAT = register("bloom_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
+    public static final Item ECHO_BOAT = register("echo_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBoat.Type.ECHO));
+    public static final Item ECHO_CHEST_BOAT = register("echo_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBoat.Type.ECHO));
+    public static final Item BLOOM_BOAT = register("bloom_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBoat.Type.BLOOM));
+    public static final Item BLOOM_CHEST_BOAT = register("bloom_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBoat.Type.BLOOM));
 
     public static final Item ICE_LILY = register("ice_lily", new IceLilyItem(DDBlocks.ICE_LILY, new Item.Properties()));
     public static final Item LILY_FLOWER = register("lily_flower", new LilyFlowerItem(DDBlocks.LILY_FLOWER, new Item.Properties()));

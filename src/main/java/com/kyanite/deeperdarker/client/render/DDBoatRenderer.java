@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.client.render;
 import com.google.common.collect.ImmutableMap;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
-import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.entities.DDBoat;
 import com.kyanite.deeperdarker.content.entities.DDBoatLike;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -31,33 +31,29 @@ import java.util.Map;
 public class DDBoatRenderer<T extends Entity> extends EntityRenderer<T> {
     private final boolean HAS_CHEST;
 
-    private final Map<String, ListModel<Boat>> BOAT_RESOURCES;
-    private final Map<String, ModelLayerLocation> chestBoatModels;
-    private final Map<String, ModelLayerLocation> boatModels;
+    private final Map<DDBoat.Type, ListModel<Boat>> BOAT_RESOURCES;
+    private final Map<DDBoat.Type, ModelLayerLocation> chestBoatModels;
+    private final Map<DDBoat.Type, ModelLayerLocation> boatModels;
 
     public DDBoatRenderer(EntityRendererProvider.Context pContext, boolean pChestBoat) {
         super(pContext);
         this.HAS_CHEST = pChestBoat;
-        this.chestBoatModels = Map.of(DDBlocks.ECHO.name(), DDModelLayers.ECHO_CHEST_BOAT, DDBlocks.BLOOM.name(), DDModelLayers.BLOOM_CHEST_BOAT);
-        this.boatModels = Map.of(DDBlocks.ECHO.name(), DDModelLayers.ECHO_BOAT, DDBlocks.BLOOM.name(), DDModelLayers.BLOOM_BOAT);
+        this.chestBoatModels = Map.of(DDBoat.Type.ECHO, DDModelLayers.ECHO_CHEST_BOAT, DDBoat.Type.BLOOM, DDModelLayers.BLOOM_CHEST_BOAT);
+        this.boatModels = Map.of(DDBoat.Type.ECHO, DDModelLayers.ECHO_BOAT, DDBoat.Type.BLOOM, DDModelLayers.BLOOM_BOAT);
         this.BOAT_RESOURCES = ImmutableMap.of(
-                DDBlocks.ECHO.name(), this.createBoatModel(pContext, DDBlocks.ECHO.name()),
-                DDBlocks.BLOOM.name(), this.createBoatModel(pContext, DDBlocks.BLOOM.name())
+                DDBoat.Type.ECHO, this.createBoatModel(pContext, DDBoat.Type.ECHO),
+                DDBoat.Type.BLOOM, this.createBoatModel(pContext, DDBoat.Type.BLOOM)
         );
     }
 
-    private static String getTexture(String type, boolean chest) {
+    private static ResourceLocation getTexture(DDBoat.Type type, boolean chest) {
         if (chest) {
-            return "textures/entity/chest_boat/" + type + ".png";
+            return DeeperDarker.rl("textures/entity/chest_boat/" + type.getName() + ".png");
         }
-        return "textures/entity/boat/" + type + ".png";
+        return DeeperDarker.rl("textures/entity/boat/" + type.getName() + ".png");
     }
 
-    private static ResourceLocation getTextureId(String type, boolean chest) {
-        return DeeperDarker.rl(getTexture(type, chest));
-    }
-
-    private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, String type) {
+    private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, DDBoat.Type type) {
         ModelLayerLocation entityModelLayer = this.HAS_CHEST ? this.chestBoatModels.get(type) :
                 this.boatModels.get(type);
         ModelPart modelPart = context.bakeLayer(entityModelLayer);
@@ -85,7 +81,7 @@ public class DDBoatRenderer<T extends Entity> extends EntityRenderer<T> {
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
         model.setupAnim(boatEntity, g, 0.0f, -0.1f, 0.0f, 0.0f);
-        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureId(ResourceLocation.parse(((DDBoatLike)boatEntity).getWoodType()).getPath(), HAS_CHEST)));
+        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTexture(((DDBoatLike)boatEntity).getWoodType(), HAS_CHEST)));
         model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
             if (!boatEntity.isUnderWater()) {
             VertexConsumer vertexConsumer2 = multiBufferSource.getBuffer(RenderType.waterMask());
@@ -99,6 +95,6 @@ public class DDBoatRenderer<T extends Entity> extends EntityRenderer<T> {
 
     @Override
     public ResourceLocation getTextureLocation(Entity entity) {
-        return getTextureId((entity instanceof DDBoatLike boat) ? boat.getWoodType() : "echo", HAS_CHEST);
+        return getTexture((entity instanceof DDBoatLike boat) ? boat.getWoodType() : DDBoat.Type.ECHO, HAS_CHEST);
     }
 }

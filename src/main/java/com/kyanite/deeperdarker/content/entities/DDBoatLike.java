@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
 public interface DDBoatLike {
-    String getWoodType();
+    DDBoat.Type getWoodType();
+    void setWoodType(DDBoat.Type woodType);
 }

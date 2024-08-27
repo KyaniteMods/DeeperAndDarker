@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.nbt.CompoundTag;
@@ -22,25 +21,24 @@ public class DDChestBoat extends ChestBoat implements DDBoatLike {
         super(pEntityType, pLevel);
     }
 
-    public DDChestBoat(Level level, double x, double y, double z, String woodType) {
+    public DDChestBoat(Level level, double x, double y, double z) {
         this(DDEntities.CHEST_BOAT, level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;
         this.zo = z;
-        this.entityData.set(WOOD_TYPE, woodType);
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
-        this.entityData.set(WOOD_TYPE, "echo");
+        builder.define(WOOD_TYPE, DDBoat.Type.ECHO.getSerializedName());
     }
 
     @Override
     public Item getDropItem() {
         return switch (this.getWoodType()) {
-            case (DeeperDarker.MOD_ID + ":bloom") -> DDItems.BLOOM_CHEST_BOAT;
+            case DDBoat.Type.BLOOM -> DDItems.BLOOM_CHEST_BOAT;
             default -> DDItems.ECHO_CHEST_BOAT;
         };
     }
@@ -48,22 +46,23 @@ public class DDChestBoat extends ChestBoat implements DDBoatLike {
     @Override
     protected void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        pCompound.putString("Type", this.getWoodType());
+        pCompound.putString("Type", this.getWoodType().getSerializedName());
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        this.setWoodType(pCompound.getString("Type"));
+        this.setWoodType(DDBoat.Type.byName(pCompound.getString("Type")));
     }
 
     @Override
-    public String getWoodType() {
-        return this.entityData.get(WOOD_TYPE);
+    public DDBoat.Type getWoodType() {
+        return DDBoat.Type.byName(this.entityData.get(WOOD_TYPE));
     }
 
-    public void setWoodType(String woodType) {
-        this.entityData.set(WOOD_TYPE, woodType);
+    @Override
+    public void setWoodType(DDBoat.Type woodType) {
+        this.entityData.set(WOOD_TYPE, woodType.getSerializedName());
     }
 
     @Override
