@@ -1,4 +1,4 @@
-// 1.21	2024-08-26T00:02:39.36653403	Deeper and Darker/Tags for minecraft:block
+// 1.21	2024-08-27T11:35:58.614271743	Deeper and Darker/Tags for minecraft:block
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json
 3118ba01efdcb9cf8672fd7907db72240e17fc42 data/minecraft/tags/block/coal_ores.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/block/glass_blocks.json
@@ -61,6 +61,6 @@ a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/block/sculk_ston
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/deeperdarker/tags/block/incorrect_for_warden_tool.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_diggable_block.json
 ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/block/glowing_vine_placeable.json
-e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/block/planks.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/deeperdarker/tags/block/incorrect_for_resonarium_tool.json
+e2499ddae4cab1e6aa61231e63816d9fb72ac8f3 data/minecraft/tags/block/planks.json
 2a4240a773b384de9c17b3642cba58461689bb0d data/minecraft/tags/block/diamond_ores.json
