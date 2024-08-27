@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.content.entities.DDBoat;
+import com.kyanite.deeperdarker.content.entities.DDBoatLike;
 import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.BoatItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
@@ -25,13 +25,13 @@ import java.util.function.Predicate;
 @SuppressWarnings("NullableProblems")
 public class DDBoatItem extends BoatItem {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
-    private final String WOOD_TYPE;
+    private final DDBoat.Type WOOD_TYPE;
     private final boolean HAS_CHEST;
 
-    public DDBoatItem(boolean pHasChest, Properties pProperties, WoodType pType) {
-        super(pHasChest, Boat.Type.MANGROVE, pProperties);
-        this.WOOD_TYPE = pType.name();
-        this.HAS_CHEST = pHasChest;
+    public DDBoatItem(boolean hasChest, Properties properties, DDBoat.Type type) {
+        super(hasChest, Boat.Type.MANGROVE, properties);
+        this.WOOD_TYPE = type;
+        this.HAS_CHEST = hasChest;
     }
 
     @Override
@@ -56,6 +56,7 @@ public class DDBoatItem extends BoatItem {
 
             if(hitresult.getType() == HitResult.Type.BLOCK) {
                 Boat boat = getBoat(pLevel, hitresult);
+                ((DDBoatLike)boat).setWoodType(WOOD_TYPE);
                 boat.setYRot(pPlayer.getYRot());
                 if(!pLevel.noCollision(boat, boat.getBoundingBox())) {
                     return InteractionResultHolder.fail(itemstack);
@@ -78,6 +79,6 @@ public class DDBoatItem extends BoatItem {
     }
 
     private Boat getBoat(Level level, HitResult hitResult) {
-        return HAS_CHEST ? new DDChestBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z, WOOD_TYPE) : new DDBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z, WOOD_TYPE);
+        return HAS_CHEST ? new DDChestBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : new DDBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
     }
 }
