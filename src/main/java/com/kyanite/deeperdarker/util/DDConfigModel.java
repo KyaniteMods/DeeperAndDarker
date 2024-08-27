@@ -27,7 +27,7 @@ public class DDConfigModel {
         public int portalMinWidth = 2;
 
         @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMinHeight = 3;
+        public int portalMinHeight = 2;
 
         @RangeConstraint(min = 1.0, max = 128.0)
         public int portalMaxWidth = 48;
