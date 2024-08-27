@@ -51,7 +51,7 @@ public class AnglerFish extends AbstractFish {
 
     @Override
     protected SoundEvent getFlopSound() {
-        return DDSounds.ANGLER_FISH_FLOPS.get();
+        return DDSounds.ANGLER_FISH_FLOP.get();
     }
 
     @Override
