@@ -9,6 +9,7 @@
     "DefaultAttributeRegistryAccessor",
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
+    "ItemModelGeneratorAccessor",
     "NoAncientPaintingInGroupMixin",
     "NoiseRouterDataAccessor",
     "PaintingItemMixin",

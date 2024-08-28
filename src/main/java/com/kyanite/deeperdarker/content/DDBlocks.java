@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.DDTreeGrowers;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.core.BlockPos;
@@ -37,9 +38,9 @@ import net.minecraft.world.level.material.PushReaction;
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
     private static final BlockSetType ECHO_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), true, true, true, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-    public static final WoodType ECHO = WoodType.register(new WoodType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), ECHO_SET, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
+    public static final WoodType ECHO = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "echo"), ECHO_SET);
     private static final BlockSetType BLOOM_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "bloom").toString(), true, true, true, BlockSetType.PressurePlateSensitivity.EVERYTHING, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-    public static final WoodType BLOOM = WoodType.register(new WoodType(new ResourceLocation(DeeperDarker.MOD_ID, "bloom").toString(), BLOOM_SET, SoundType.WOOD, SoundType.HANGING_SIGN, SoundEvents.FENCE_GATE_CLOSE, SoundEvents.FENCE_GATE_OPEN));
+    public static final WoodType BLOOM = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "bloom"), BLOOM_SET);
 
     public static final Block ENRICHED_ECHO_LOG = register("enriched_echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_LOG = register("echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));

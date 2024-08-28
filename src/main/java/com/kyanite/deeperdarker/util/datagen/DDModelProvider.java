@@ -10,6 +10,7 @@ import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
+import com.kyanite.deeperdarker.mixin.ItemModelGeneratorAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
@@ -415,7 +416,7 @@ public class DDModelProvider extends FabricModelProvider {
         ResourceLocation armorModelIdentifier = ModelLocationUtils.getModelLocation(armor);
         ResourceLocation armorTextureIdentifier = TextureMapping.getItemTexture(armor);
         ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> itemModelGenerators.generateBaseArmorTrimTemplate(id, textures, armor.getMaterial()));
-        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGenerators.GENERATED_TRIM_MODELS) {
+        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGeneratorAccessor.generatedTrimModels()) {
             String string = trimMaterial.name(armor.getMaterial());
             ResourceLocation identifier4 = itemModelGenerators.getItemModelForTrimMaterial(armorModelIdentifier, string);
             String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
