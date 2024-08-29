@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://kyanitemods.dev/",
-		"sources": "https://github.com/KyaniteMods/DeeperAndDarker/tree/fabric-1.20.4-1.3.0"
+		"sources": "https://github.com/KyaniteMods/DeeperAndDarker"
 	},
 	"icon": "assets/deeperdarker/icon.png",
 	"license": "AGPL-3.0",
