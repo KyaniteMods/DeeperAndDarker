@@ -218,7 +218,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         trapdoorBuilder(trapdoor, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
         pressurePlate(exporter, pressurePlate, planks);
         oneToOneConversionRecipe(exporter, button, planks, "wooden_button");
-        signBuilder(sign, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks));
+        signBuilder(sign, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
         hangingSign(exporter, hangingSign, planks);
         woodenBoat(exporter, boat, planks);
         chestBoat(exporter, chestBoat, planks);
