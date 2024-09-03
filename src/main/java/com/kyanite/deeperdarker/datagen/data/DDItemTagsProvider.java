@@ -84,6 +84,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.DURABILITY_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
 
+        tag(DDTags.Items.RESONARIUM_ARMOR).add(DDItems.RESONARIUM_HELMET.get(), DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.RESONARIUM_LEGGINGS.get(), DDItems.RESONARIUM_BOOTS.get());
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
         tag(DDTags.Items.SCUTES).add(Items.ARMADILLO_SCUTE, Items.TURTLE_SCUTE);
     }
