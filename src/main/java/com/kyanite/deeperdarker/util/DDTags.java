@@ -38,6 +38,7 @@ public class DDTags {
         public static final TagKey<Item> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Item> BLOOM_STEMS = tag("bloom_stems");
 
+        public static final TagKey<Item> RESONARIUM_ARMOR = tag("resonarium_armor");
         public static final TagKey<Item> DAMPENS_VIBRATIONS = tag("dampens_vibrations");
 
         private static TagKey<Item> tag(String name) {

@@ -82,6 +82,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.ARMORS_LEGGINGS).add(DDItems.RESONARIUM_LEGGINGS.get(), DDItems.WARDEN_LEGGINGS.get());
         tag(Tags.Items.ARMORS_BOOTS).add(DDItems.RESONARIUM_BOOTS.get(), DDItems.WARDEN_BOOTS.get());
 
+        tag(DDTags.Items.RESONARIUM_ARMOR).add(DDItems.RESONARIUM_HELMET.get(), DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.RESONARIUM_LEGGINGS.get(), DDItems.RESONARIUM_BOOTS.get());
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
     }
 }

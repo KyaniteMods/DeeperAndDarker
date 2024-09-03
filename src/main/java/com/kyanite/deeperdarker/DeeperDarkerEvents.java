@@ -18,7 +18,7 @@ import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
-import com.kyanite.deeperdarker.util.DDArmorMaterials;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.Util;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
@@ -142,7 +142,7 @@ public class DeeperDarkerEvents {
         float reduction = incoming / 4;
 
         for(ItemStack stack : entity.getArmorSlots()) {
-            if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial().getName().equals(DDArmorMaterials.RESONARIUM.getName())) {
+            if(stack.getItem() instanceof ArmorItem armor && stack.is(DDTags.Items.RESONARIUM_ARMOR)) {
                 incoming -= reduction;
                 stack.hurtAndBreak((int) event.getAmount(), entity, living -> living.broadcastBreakEvent(armor.getEquipmentSlot()));
             }
