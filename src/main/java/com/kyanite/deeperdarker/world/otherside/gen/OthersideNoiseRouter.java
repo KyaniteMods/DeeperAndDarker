@@ -26,7 +26,7 @@ public class OthersideNoiseRouter {
                                                         DensityFunctions.yClampedGradient(104, 128, 1, 0),
                                                         DensityFunctions.add(
                                                                 DensityFunctions.constant(-0.85),
-                                                                nether3D
+                                                                DensityFunctions.noise(noise.getOrThrow(Noises.GRAVEL), 5, 5)
                                                         )
                                                 )
                                         )
