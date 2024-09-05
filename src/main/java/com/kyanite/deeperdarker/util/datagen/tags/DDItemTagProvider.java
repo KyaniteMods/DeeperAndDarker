@@ -89,6 +89,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.HOES, DDItems.RESONARIUM_HOE, DDItems.WARDEN_HOE);
         add(ItemTags.SWORDS, DDItems.RESONARIUM_SWORD, DDItems.WARDEN_SWORD);
 
+        add(DDTags.Items.RESONARIUM_ARMOR, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);
         add(DDTags.Items.SCUTES, Items.SCUTE);
 

@@ -49,6 +49,9 @@ public class DDTags {
 
         public static final TagKey<Item> SCUTES = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "scutes"));
+
+        public static final TagKey<Item> RESONARIUM_ARMOR = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "resonarium_armor"));
     }
 
     public static class Biomes {
