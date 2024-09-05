@@ -107,6 +107,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         add(DDTags.Blocks.ECHO_LOGS, DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         add(DDTags.Blocks.BLOOMING_STEMS, DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
+        add(DDTags.Blocks.ECHO_SOIL, DDBlocks.ECHO_SOIL, Blocks.SCULK);
         add(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES, Blocks.WATER, Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME, DDBlocks.GLOOMSLATE, DDBlocks.GLOOMY_SCULK, DDBlocks.BLOOMING_SCULK_STONE, DDBlocks.BLOOMING_MOSS_BLOCK);
         add(DDTags.Blocks.SCULK_STONE_REPLACEABLES, DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME);
         add(DDTags.Blocks.SCULK_REPLACEABLES, Blocks.SCULK, DDBlocks.SCULK_GRIME);
