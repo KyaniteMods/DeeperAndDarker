@@ -63,6 +63,6 @@ public class OthersideGeneration {
         SurfaceRules.RuleSource deepslateRoof = SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("deepslate_roof", VerticalAnchor.belowTop(12), VerticalAnchor.top())), SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y)));
         SurfaceRules.RuleSource gloomslate = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.OVERCAST_COLUMNS), SurfaceRules.state(DDBlocks.GLOOMSLATE.get().defaultBlockState()));
 
-        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 2), DDBlocks.SCULK_STONE.get().defaultBlockState(), DDBlocks.SCULK_GRIME.get().defaultBlockState(), OthersideNoiseRouter.otherside(densityFunction, noise), SurfaceRules.sequence(bedrockFloor, bedrockRoof, echoSoilLayer, biomeSurfaceLayer, deepslateFloor, deepslateRoof, gloomslate), List.of(), 17, false, false, true, false);
+        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 1), DDBlocks.SCULK_STONE.get().defaultBlockState(), DDBlocks.SCULK_GRIME.get().defaultBlockState(), OthersideNoiseRouter.otherside(densityFunction, noise), SurfaceRules.sequence(bedrockFloor, bedrockRoof, echoSoilLayer, biomeSurfaceLayer, deepslateFloor, deepslateRoof, gloomslate), List.of(), 17, false, false, true, false);
     }
 }
