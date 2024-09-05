@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:gloomy_cactus_from_smelting_gloomy_cactus"
+        "recipe": "minecraft:orange_dye_from_smelting_gloomy_cactus"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:gloomy_cactus_from_smelting_gloomy_cactus"
+      "minecraft:orange_dye_from_smelting_gloomy_cactus"
     ]
   }
 }
