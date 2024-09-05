@@ -1,11 +1,11 @@
 {
   "type": "minecraft:smelting",
-  "category": "blocks",
+  "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
   "group": "orange_dye",
   "ingredient": {
     "item": "deeperdarker:gloomy_cactus"
   },
-  "result": "deeperdarker:gloomy_cactus"
+  "result": "minecraft:orange_dye"
 }
