@@ -98,6 +98,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.DURABILITY_ENCHANTABLE, DDItems.SOUL_ELYTRA);
         add(ItemTags.EQUIPPABLE_ENCHANTABLE, DDItems.SOUL_ELYTRA);
 
+        add(DDTags.Items.RESONARIUM_ARMOR, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);
         add(DDTags.Items.SCUTES, Items.TURTLE_SCUTE, Items.ARMADILLO_SCUTE);
 

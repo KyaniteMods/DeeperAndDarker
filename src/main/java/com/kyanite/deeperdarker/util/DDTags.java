@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.PaintingVariant;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
@@ -52,6 +53,9 @@ public class DDTags {
 
         public static final TagKey<Item> SCUTES = TagKey.create(
                 Registries.ITEM, DeeperDarker.rl("scutes"));
+
+        public static final TagKey<Item> RESONARIUM_ARMOR = TagKey.create(
+                Registries.ITEM, DeeperDarker.rl("resonarium_armor"));
     }
 
     public static class Biomes {
