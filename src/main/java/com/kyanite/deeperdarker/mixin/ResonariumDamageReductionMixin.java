@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.mixin;
 
-import com.kyanite.deeperdarker.util.DDArmorMaterials;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,7 +21,7 @@ public class ResonariumDamageReductionMixin {
         float reduction = f / 4;
 
         for(ItemStack stack : ((LivingEntity)(Object) this).getArmorSlots()) {
-            if(stack.getItem() instanceof ArmorItem armor && armor.getMaterial() == DDArmorMaterials.RESONARIUM) {
+            if(stack.getItem() instanceof ArmorItem armor && stack.is(DDTags.Items.RESONARIUM_ARMOR)) {
                 incoming -= reduction;
                 stack.hurtAndBreak((int) (f / 1.5f), ((LivingEntity)(Object) this), living -> living.broadcastBreakEvent(armor.getEquipmentSlot()));
             }
