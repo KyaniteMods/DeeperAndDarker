@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-07T09:42:04.662879433	Deeper and Darker/Block Loot Tables
+// 1.20.1	2024-09-07T12:29:24.134786532	Deeper and Darker/Block Loot Tables
 9da81cff96f591867c050dc195a59591c0570c6b data/deeperdarker/loot_tables/blocks/echo_fence.json
 59c27f1afefc9c217c2b98237b2d4012f428ad87 data/deeperdarker/loot_tables/blocks/cobbled_sculk_stone_wall.json
 fff3d404e24cadaf0ab36e0e73bfec14f33bda53 data/deeperdarker/loot_tables/blocks/stripped_echo_log.json
@@ -21,8 +21,8 @@ ae5843a5e395413cd211822100e662747f244dc3 data/deeperdarker/loot_tables/blocks/bl
 fc982950f378464e4de39f62cd19fc1183498cb7 data/deeperdarker/loot_tables/blocks/echo_sign.json
 a43f951c133cf0907ac91b6db869351c0afafdcc data/deeperdarker/loot_tables/blocks/sculk_stone_bricks.json
 0e6eb6f82dbdb5f2766a3db94e06121a8cff8ce7 data/deeperdarker/loot_tables/blocks/sculk_stone_copper_ore.json
-0342dd2aaaeeafb436acc2c92828e977d1e65e2c data/deeperdarker/loot_tables/blocks/ancient_vase.json
 f44df4ad98480c43684eeef1642620dda898878c data/deeperdarker/loot_tables/blocks/sculk_stone_redstone_ore.json
+0342dd2aaaeeafb436acc2c92828e977d1e65e2c data/deeperdarker/loot_tables/blocks/ancient_vase.json
 41ad9f77a706273537a79523d1368994971728de data/deeperdarker/loot_tables/blocks/polished_sculk_stone_slab.json
 baa96be68d85a03c980802642478e61a7afa4032 data/deeperdarker/loot_tables/blocks/sculk_stone_gold_ore.json
 56092e8a9b5f36335c183107cc92543a34da815e data/deeperdarker/loot_tables/blocks/echo_log.json
