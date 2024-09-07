@@ -1,13 +1,17 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobbled_sculk_stone": {
+    "has_sculk_stone": {
       "conditions": {
         "items": [
           {
+<<<<<<<< HEAD:src/main/generated/data/deeperdarker/advancements/recipes/building_blocks/sculk_stone_brick_wall_from_cobbled_sculk_stone_stonecutting.json
             "items": [
               "deeperdarker:cobbled_sculk_stone"
             ]
+========
+            "items": "deeperdarker:sculk_stone"
+>>>>>>>> 84ce6d38 (Fixed brick and polished recipes):src/main/generated/data/deeperdarker/advancements/recipes/building_blocks/sculk_stone_brick_wall_from_sculk_stone_stonecutting.json
           }
         ]
       },
@@ -15,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sculk_stone_brick_wall_from_cobbled_sculk_stone_stonecutting"
+        "recipe": "minecraft:sculk_stone_brick_wall_from_sculk_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -23,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobbled_sculk_stone"
+      "has_sculk_stone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sculk_stone_brick_wall_from_cobbled_sculk_stone_stonecutting"
+      "minecraft:sculk_stone_brick_wall_from_sculk_stone_stonecutting"
     ]
   }
 }
