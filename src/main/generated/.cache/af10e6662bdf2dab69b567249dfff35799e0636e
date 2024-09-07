@@ -1,4 +1,4 @@
-// 1.20.4	2024-08-25T22:09:02.756960937	Deeper and Darker/Tags for minecraft:block
+// 1.20.4	2024-09-07T09:13:43.914738615	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 8136c4b039210c747d223076750bedbddd248f75 data/minecraft/tags/blocks/gold_ores.json
@@ -19,6 +19,7 @@ ae9c334183d842387136550980a4c8d4b6b80b9f data/minecraft/tags/blocks/wooden_slabs
 d66ce7e40de1eb71f66df7115f2b61edce3c22d5 data/minecraft/tags/blocks/wooden_stairs.json
 c68ad9adc57fb14bfdf82a01545a91295a4c2dec data/deeperdarker/tags/blocks/transmittable.json
 3e2a499ec74cac07f307450343cf7288b2e716c4 data/minecraft/tags/blocks/dirt.json
+d4e04f08a34e7b343de4a45a0f7cc18f3a3680cc data/minecraft/tags/blocks/snaps_goat_horn.json
 e7d286852623316abca69aa247d9bde684ae32d8 data/minecraft/tags/blocks/sword_efficient.json
 b6cd38fb1954467956ee5d37c5187872f9a7f29d data/minecraft/tags/blocks/mineable/hoe.json
 677275c42b6d25804eeed9834a522c3abcdfefbf data/minecraft/tags/blocks/mineable/shovel.json
@@ -55,5 +56,7 @@ c14f5a0df8cd3f2ac58d8173564a3f29c02b010c data/minecraft/tags/blocks/saplings.jso
 aa2aab143fe8a376a2fd04ac766a88ba1d1771b8 data/minecraft/tags/blocks/copper_ores.json
 5853dd3bde739be76992a2067a4a916e9f14659f data/minecraft/tags/blocks/walls.json
 91cc0adf830b0dda4cb501792e044b1e90172f5e data/minecraft/tags/blocks/stairs.json
+8cc5aac19c24c87678696e75feac8c660984492a data/minecraft/tags/blocks/impermeable.json
+9edd5da50aadc42014ac27f1996f8d34d127ced7 data/deeperdarker/tags/blocks/echo_soil.json
 67efbd918b7c82e42584c44101410841f8a430c3 data/deeperdarker/tags/blocks/sculk_stone_replaceables.json
 be4784405d5aff6778c2efdaa68d73434ddab3d2 data/minecraft/tags/blocks/wall_signs.json

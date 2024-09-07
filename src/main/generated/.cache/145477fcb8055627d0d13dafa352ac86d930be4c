@@ -1,4 +1,4 @@
-// 1.20.4	2024-08-25T22:09:02.763206539	Deeper and Darker/Registries
+// 1.20.4	2024-09-07T09:13:43.924588509	Deeper and Darker/Registries
 29516d8dbda2c02daf258bc847732da478f3ed5b data/deeperdarker/worldgen/biome/deeplands.json
 ec749b07053226a5e16dbb8d3e5edd32cd222ba1 data/deeperdarker/worldgen/placed_feature/gloomslate_copper.json
 cc0ab13e199295089d8269584cc7aa83b3595c9b data/deeperdarker/worldgen/placed_feature/echo_soil.json
@@ -78,8 +78,8 @@ beac5ffbea4ba9fcfa17cdec34fd04773d8f780d data/deeperdarker/worldgen/configured_f
 55de21b972747d0e0adfbec093daeded72ff66c4 data/deeperdarker/worldgen/placed_feature/glowing_vines_short.json
 7fea9d60ef7fb72a20a81a83fdd16324680a97a5 data/deeperdarker/worldgen/placed_feature/gloomslate_emerald.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
-947212897a389e4e4c38c7764e8791e68ea002b9 data/deeperdarker/worldgen/placed_feature/sculk_lapis.json
 4121bc1a914770058ee57bd355aef36b55bc2cfa data/deeperdarker/worldgen/placed_feature/surface_sculk_stone.json
+947212897a389e4e4c38c7764e8791e68ea002b9 data/deeperdarker/worldgen/placed_feature/sculk_lapis.json
 7d0febd476ef3b3f3eb1bb2ee44f09e0402d09a6 data/deeperdarker/worldgen/configured_feature/ore_infested_sculk.json
 ce21acbb6c41dff7c5c2484ad56ae38328ab8bc4 data/deeperdarker/worldgen/placed_feature/sculk_redstone.json
 cbbe834f408841543b0b750cf6f471311983a9b7 data/deeperdarker/worldgen/template_pool/ancient_temple/basement/corners.json
