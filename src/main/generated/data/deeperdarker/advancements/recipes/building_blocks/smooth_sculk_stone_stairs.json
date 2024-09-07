@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_echo_planks": {
+    "has_smooth_sculk_stone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:echo_planks"
+              "deeperdarker:smooth_sculk_stone"
             ]
           }
         ]
@@ -15,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:echo_sign"
+        "recipe": "deeperdarker:smooth_sculk_stone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_echo_planks"
+      "has_smooth_sculk_stone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:echo_sign"
+      "deeperdarker:smooth_sculk_stone_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

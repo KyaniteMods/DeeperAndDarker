@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_echo_planks": {
+    "has_sculk_grime_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:echo_planks"
+              "deeperdarker:sculk_grime_bricks"
             ]
           }
         ]
@@ -15,20 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:echo_sign"
+        "recipe": "deeperdarker:sculk_grime_brick_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_echo_planks"
+      "has_sculk_grime_bricks",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:echo_sign"
+      "deeperdarker:sculk_grime_brick_stairs"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
