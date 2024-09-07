@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobbled_gloomslate": {
+    "has_sculk_stone": {
       "conditions": {
         "items": [
           {
-            "items": "deeperdarker:cobbled_gloomslate"
+            "items": "deeperdarker:sculk_stone"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:gloomslate_bricks"
+        "recipe": "minecraft:sculk_stone_brick_wall_from_sculk_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobbled_gloomslate"
+      "has_sculk_stone"
     ]
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:gloomslate_bricks"
+      "minecraft:sculk_stone_brick_wall_from_sculk_stone_stonecutting"
     ]
   }
 }
