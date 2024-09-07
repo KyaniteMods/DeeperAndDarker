@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "ingredient": {
-    "item": "deeperdarker:cobbled_sculk_stone"
+    "item": "deeperdarker:sculk_stone"
   },
   "result": {
     "count": 1,

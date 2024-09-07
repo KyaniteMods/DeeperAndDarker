@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "deeperdarker:echo_planks"
-            ]
+            "items": "deeperdarker:echo_planks"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_echo_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_echo_planks"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:echo_sign"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

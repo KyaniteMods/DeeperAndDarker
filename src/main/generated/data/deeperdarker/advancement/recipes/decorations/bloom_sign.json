@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "deeperdarker:bloom_planks"
-            ]
+            "items": "deeperdarker:bloom_planks"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_bloom_planks",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_bloom_planks"
     ]
   ],
   "rewards": {
     "recipes": [
       "deeperdarker:bloom_sign"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

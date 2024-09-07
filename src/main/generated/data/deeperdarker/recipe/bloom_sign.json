@@ -17,7 +17,6 @@
   ],
   "result": {
     "count": 3,
-    "item": "deeperdarker:bloom_sign"
-  },
-  "show_notification": true
+    "id": "deeperdarker:bloom_sign"
+  }
 }
