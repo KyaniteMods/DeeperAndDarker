@@ -75,7 +75,7 @@ public enum DDArmorMaterials implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return DeeperDarker.MOD_ID + ":" + this.name;
+        return this.name;
     }
 
     @Override
