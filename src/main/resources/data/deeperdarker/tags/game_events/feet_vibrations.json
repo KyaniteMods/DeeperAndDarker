@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:step",
+    "minecraft:hit_ground",
+    "minecraft:swim",
+    "minecraft:splash"
+  ]
+}

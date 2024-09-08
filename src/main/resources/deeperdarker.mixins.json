@@ -1,0 +1,30 @@
+{
+  "required": true,
+  "package": "com.kyanite.deeperdarker.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AncientPaintingMixin",
+    "ContainerMenuMixin",
+    "DampensVibrationsTooltipMixin",
+    "DefaultAttributeRegistryAccessor",
+    "EnrichedEchoLogBurnedMixin",
+    "EnrichedEchoLogItemBurnedMixin",
+    "ItemModelGeneratorAccessor",
+    "NoAncientPaintingInGroupMixin",
+    "NoiseRouterDataAccessor",
+    "PaintingItemMixin",
+    "PhantomMixin",
+    "ResonariumDamageReductionMixin",
+    "VibrationListenerMixin",
+    "WardenMixin"
+  ],
+  "client": [
+    "PhantomRendererMixin",
+    "ShatteredHeadRenderMixin",
+    "ShowHangingSignScreenMixin",
+    "ShowHangingSignScreenMixin$ClientAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
