@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "deeperdarker:block/sculk_grime_bricks",
-    "side": "deeperdarker:block/sculk_grime_bricks",
-    "top": "deeperdarker:block/sculk_grime_bricks"
-  }
-}
