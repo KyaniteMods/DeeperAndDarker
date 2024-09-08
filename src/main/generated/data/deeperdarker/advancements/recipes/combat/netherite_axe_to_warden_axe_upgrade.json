@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:netherite_axe_to_warden_axe_upgrade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warden_upgrade_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:warden_upgrade_smithing_template"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_warden_upgrade_smithing_template"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:netherite_axe_to_warden_axe_upgrade"
+    ]
+  }
+}
