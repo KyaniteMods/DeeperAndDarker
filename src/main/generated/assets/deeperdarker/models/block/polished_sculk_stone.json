@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "deeperdarker:block/polished_sculk_stone"
+  }
+}

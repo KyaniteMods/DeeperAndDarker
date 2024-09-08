@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "deeperdarker:echo_log",
+    "deeperdarker:echo_wood",
+    "deeperdarker:stripped_echo_log",
+    "deeperdarker:stripped_echo_wood"
+  ]
+}

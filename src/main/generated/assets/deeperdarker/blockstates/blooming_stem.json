@@ -1,0 +1,67 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem"
+      }
+    },
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem_vertical",
+        "uvlock": true,
+        "x": 180
+      },
+      "when": {
+        "down": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem_vertical",
+        "uvlock": true
+      },
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem_horizontal",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem_horizontal",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem_horizontal",
+        "uvlock": true
+      },
+      "when": {
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "deeperdarker:block/blooming_stem_horizontal",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "east": "true"
+      }
+    }
+  ]
+}

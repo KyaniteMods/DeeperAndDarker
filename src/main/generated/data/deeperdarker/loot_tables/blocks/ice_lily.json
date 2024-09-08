@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "conditions": [
+                {
+                  "block": "deeperdarker:ice_lily",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "has_flower": "false"
+                  }
+                }
+              ],
+              "function": "minecraft:set_nbt",
+              "tag": "{has_flower:0b}"
+            }
+          ],
+          "name": "deeperdarker:ice_lily"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

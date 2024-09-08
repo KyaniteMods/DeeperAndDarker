@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "has_flower=false": {
+      "model": "deeperdarker:block/ice_lily_flowerless"
+    },
+    "has_flower=true": {
+      "model": "deeperdarker:block/ice_lily"
+    }
+  }
+}

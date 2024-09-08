@@ -1,0 +1,21 @@
+{
+  "feature": "deeperdarker:pool_blooming",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 2
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "deeperdarker:blooming_sculk_stone"
+        }
+      }
+    }
+  ]
+}

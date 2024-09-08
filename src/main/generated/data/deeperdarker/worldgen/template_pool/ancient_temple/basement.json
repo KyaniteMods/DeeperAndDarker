@@ -1,0 +1,41 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/center_0",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/center_1",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/center_2",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:ancient_temple/basement/center_3",
+        "processors": "deeperdarker:ancient_temple_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "deeperdarker:block/bloom_planks"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "deeperdarker:block/stem_inventory",
+  "textures": {
+    "stem": "deeperdarker:block/blooming_stem"
+  }
+}

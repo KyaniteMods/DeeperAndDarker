@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["create"]
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "deeperdarker:sculk_stone_copper_ore"
+    }
+  ],
+  "processingTime": 350,
+  "results": [
+    {
+      "count": 10,
+      "item": "create:crushed_raw_copper"
+    },
+    {
+      "chance": 0.75,
+      "item": "create:crushed_raw_copper"
+    },
+    {
+      "item": "create:experience_nugget"
+    },
+    {
+      "chance": 0.125,
+      "item": "deeperdarker:cobbled_sculk_stone"
+    }
+  ]
+}
