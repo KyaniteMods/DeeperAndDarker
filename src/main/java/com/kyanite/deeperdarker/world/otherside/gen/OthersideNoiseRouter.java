@@ -18,15 +18,12 @@ public class OthersideNoiseRouter {
                         DensityFunctions.mul(
                                 DensityFunctions.yClampedGradient(-8, 15, 0, 1),
                                 DensityFunctions.add(
-                                        DensityFunctions.constant(-2.5),
-                                        DensityFunctions.add(
-                                                DensityFunctions.constant(1.1),
-                                                DensityFunctions.mul(
-                                                        DensityFunctions.yClampedGradient(104, 128, 1, 0),
-                                                        DensityFunctions.add(
-                                                                DensityFunctions.constant(-0.85),
-                                                                DensityFunctions.noise(noise.getOrThrow(Noises.GRAVEL), 4, 9)
-                                                        )
+                                        DensityFunctions.constant(-1.4),
+                                        DensityFunctions.mul(
+                                                DensityFunctions.yClampedGradient(104, 128, 1, 0),
+                                                DensityFunctions.add(
+                                                        DensityFunctions.constant(-0.85),
+                                                        DensityFunctions.noise(noise.getOrThrow(Noises.GRAVEL), 4, 9)
                                                 )
                                         )
                                 )
