@@ -1,12 +1,12 @@
 {
   "type": "mekanism:crushing",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:cut_sculk_stone_stairs"
-    }
+    "count": 1,
+    "item": "deeperdarker:cut_sculk_stone_stairs"
   },
   "output": {
-    "item": "deeperdarker:polished_sculk_stone_stairs"
+    "count": 1,
+    "id": "deeperdarker:polished_sculk_stone_stairs"
   },
   "neoforge:conditions": [
     {

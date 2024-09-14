@@ -1,12 +1,12 @@
 {
   "type": "mekanism:crushing",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:cut_gloomslate"
-    }
+    "count": 1,
+    "item": "deeperdarker:cut_gloomslate"
   },
   "output": {
-    "item": "deeperdarker:polished_gloomslate"
+    "count": 1,
+    "id": "deeperdarker:polished_gloomslate"
   },
   "neoforge:conditions": [
     {

@@ -1,13 +1,12 @@
 {
   "type": "mekanism:sawing",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:echo_trapdoor"
-    }
+    "count": 1,
+    "item": "deeperdarker:echo_trapdoor"
   },
   "mainOutput": {
     "count": 3,
-    "item": "deeperdarker:echo_planks"
+    "id": "deeperdarker:echo_planks"
   },
   "neoforge:conditions": [
     {

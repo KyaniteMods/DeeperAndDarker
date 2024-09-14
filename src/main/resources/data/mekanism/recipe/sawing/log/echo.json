@@ -1,17 +1,17 @@
 {
   "type": "mekanism:sawing",
   "input": {
-    "ingredient": {
-      "tag": "deeperdarker:echo_logs"
-    }
+    "count": 1,
+    "tag": "deeperdarker:echo_logs"
   },
   "mainOutput": {
     "count": 6,
-    "item": "deeperdarker:echo_planks"
+    "id": "deeperdarker:echo_planks"
   },
   "secondaryChance": 0.25,
   "secondaryOutput": {
-    "item": "mekanism:sawdust"
+    "count": 1,
+    "id": "mekanism:sawdust"
   },
   "neoforge:conditions": [
     {

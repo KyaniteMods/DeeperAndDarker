@@ -1,12 +1,12 @@
 {
   "type": "mekanism:enriching",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:gloomslate_slab"
-    }
+    "count": 1,
+    "item": "deeperdarker:gloomslate_slab"
   },
   "output": {
-    "item": "deeperdarker:smooth_gloomslate_slab"
+    "count": 1,
+    "id": "deeperdarker:smooth_gloomslate_slab"
   },
   "neoforge:conditions": [
     {

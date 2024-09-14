@@ -1,16 +1,17 @@
 {
   "type": "mekanism:sawing",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:echo_chest_boat"
-    }
+    "count": 1,
+    "item": "deeperdarker:echo_chest_boat"
   },
   "mainOutput": {
-    "item": "deeperdarker:echo_boat"
+    "count": 1,
+    "id": "deeperdarker:echo_boat"
   },
   "secondaryChance": 1.0,
   "secondaryOutput": {
-    "item": "minecraft:chest"
+    "count": 1,
+    "id": "minecraft:chest"
   },
   "neoforge:conditions": [
     {
