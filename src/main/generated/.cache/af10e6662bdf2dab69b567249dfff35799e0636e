@@ -1,4 +1,4 @@
-// 1.21	2024-09-07T12:25:11.471664818	Deeper and Darker/Tags for minecraft:block
+// 1.21	2024-09-15T21:36:50.898165145	Deeper and Darker/Tags for minecraft:block
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json
 3118ba01efdcb9cf8672fd7907db72240e17fc42 data/minecraft/tags/block/coal_ores.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/block/glass_blocks.json
@@ -8,6 +8,7 @@
 e72a4292dc72ea8e75aa284e652feb7fd955f8b9 data/minecraft/tags/block/walls.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/minecraft/tags/block/impermeable.json
 3e9990c4b2c8755d00aeb71aa8bfee092a771fdb data/minecraft/tags/block/standing_signs.json
+453499b5116c2c24d57c28ec55db0211260f511d data/deeperdarker/tags/block/echo_soil.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/block/needs_iron_tool.json
 1a8b7cd595fc8d49db1d8d890a9f27fc264eee13 data/minecraft/tags/block/flower_pots.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/dirt.json

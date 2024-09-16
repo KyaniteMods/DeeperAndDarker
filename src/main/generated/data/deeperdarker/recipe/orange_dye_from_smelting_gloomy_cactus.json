@@ -7,11 +7,7 @@
   "ingredient": {
     "item": "deeperdarker:gloomy_cactus"
   },
-<<<<<<<< HEAD:src/main/generated/data/deeperdarker/recipe/gloomy_cactus_from_smelting_gloomy_cactus.json
   "result": {
-    "id": "deeperdarker:gloomy_cactus"
+    "id": "minecraft:orange_dye"
   }
-========
-  "result": "minecraft:orange_dye"
->>>>>>>> 19fa05f8 (Fixed gloomy cactus smelting into itself):src/main/generated/data/deeperdarker/recipe/orange_dye_from_smelting_gloomy_cactus.json
 }
