@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.world.features;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -21,37 +22,35 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = context.origin();
         RandomSource random = context.random();
 
+        if(!level.getBlockState(origin).isAir()) return false;
+
         int columnHeight = 0;
-        BlockPos.MutableBlockPos blockPos = origin.mutable();
-        while(level.getBlockState(blockPos).isAir()) {
+        BlockPos.MutableBlockPos pos = origin.below().mutable();
+
+        // extend down until a block is hit
+        while(level.getBlockState(pos).isAir() && pos.getY() > level.getMinBuildHeight()) {
+            level.setBlock(pos, Blocks.RED_STAINED_GLASS.defaultBlockState(), 3);
+            pos.move(Direction.DOWN);
             columnHeight++;
-            blockPos.move(0, 1, 0);
         }
+        BlockPos bottom = pos.immutable();
+        pos = origin.above().mutable();
 
-        if(anyObstruction(level, origin, columnHeight)) return false;
-        if(!level.getBlockState(origin.below()).is(Blocks.SCULK)) return false;
-        level.setBlock(origin.below(), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
-        level.setBlock(origin.above(columnHeight), DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
-
-        blockPos = origin.mutable();
-        for(int i = 1; i < columnHeight + 1; i++) {
-            level.setBlock(blockPos, DDBlocks.SCULK_STONE.get().defaultBlockState(), 3);
-            blockPos.move(0, 1, 0);
+        // extend up until a block is hit
+        while(level.getBlockState(pos).isAir() && pos.getY() < level.getMaxBuildHeight()) {
+            level.setBlock(pos, Blocks.BLUE_STAINED_GLASS.defaultBlockState(), 3);
+            pos.move(Direction.UP);
+            columnHeight++;
         }
+        BlockPos top = pos.immutable();
 
-        double multiplier = columnHeight * 0.35f < 7 ? 1.2 : 1;
-        columnBase(level, random, origin, columnHeight, multiplier, true);
-        columnBase(level, random, origin.above(columnHeight - 1), columnHeight, multiplier, false);
+        if(columnHeight < 5) return false;
+
+        level.setBlock(bottom, Blocks.LIME_WOOL.defaultBlockState(), 3);
+        level.setBlock(top, Blocks.LIME_WOOL.defaultBlockState(), 3);
+        level.setBlock(origin, Blocks.YELLOW_WOOL.defaultBlockState(), 3);
 
         return true;
-    }
-
-    private boolean anyObstruction(WorldGenLevel level, BlockPos pos, int distance) {
-        for(int i = 0; i < distance; i++) {
-            if(!level.getBlockState(pos.above(i)).is(Blocks.AIR)) return true;
-        }
-
-        return false;
     }
 
     private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight, double multiplier, boolean bottom) {
@@ -95,10 +94,10 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
             if(index > 3 && loop == 2 && i == 0) j++;
             else if(index > 3 && i != 1) j += 2;
             switch ((index + j) % 4) {
-                default -> basePos = basePos.north();
                 case 1 -> basePos = basePos.east();
                 case 2 -> basePos = basePos.south();
                 case 3 -> basePos = basePos.west();
+                default -> basePos = basePos.north();
             }
         }
 
