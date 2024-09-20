@@ -1,4 +1,4 @@
-// 1.20.4	2024-09-08T10:47:54.799876091	Deeper and Darker/Tags for minecraft:block
+// 1.20.4	2024-11-26T14:11:12.943133027	Deeper and Darker/Tags for minecraft:block
 5c4d99a8cd629fefa99a813cb5f238967692386d data/deeperdarker/tags/blocks/gloomy_sculk_replaceable.json
 cbbe5c9fb0b0fa2365b05e3bb3fac7eedc723461 data/minecraft/tags/blocks/wooden_pressure_plates.json
 8136c4b039210c747d223076750bedbddd248f75 data/minecraft/tags/blocks/gold_ores.json
@@ -15,6 +15,8 @@ bb4257bb3703345fa63da7b4c5bb02f9a1356e6a data/minecraft/tags/blocks/leaves.json
 b7fe0a68c2d4c9ded74320a34b7cd7e428dbc462 data/minecraft/tags/blocks/mineable/axe.json
 ae9c334183d842387136550980a4c8d4b6b80b9f data/minecraft/tags/blocks/wooden_slabs.json
 8cc5aac19c24c87678696e75feac8c660984492a data/c/tags/blocks/glass_blocks.json
+d344dfc7dc45ef2dc5db0ed7c1ecbd485299d2ff data/deeperdarker/tags/blocks/overcast_column_base.json
+a9ef05c7dff0a3b8dfc60b54519ca339cc65d0db data/deeperdarker/tags/blocks/deeplands_column_base.json
 67465033f6856e41a88bd8895a6406aa84188ee8 data/minecraft/tags/blocks/logs_that_burn.json
 d66ce7e40de1eb71f66df7115f2b61edce3c22d5 data/minecraft/tags/blocks/wooden_stairs.json
 c68ad9adc57fb14bfdf82a01545a91295a4c2dec data/deeperdarker/tags/blocks/transmittable.json
