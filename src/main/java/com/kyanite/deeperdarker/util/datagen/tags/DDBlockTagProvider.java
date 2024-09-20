@@ -120,6 +120,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         add(DDTags.Blocks.GLOWING_VINE_PLACEABLE, Blocks.SCULK, DDBlocks.SCULK_STONE);
         add(DDTags.Blocks.TRANSMITTABLE, Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST).addOptionalTag(BlockTags.SHULKER_BOXES).addOptionalTag(BlockTags.ANVIL);
         add(DDTags.Blocks.INFINIBURN_OTHERSIDE, DDBlocks.GLOOMSLATE).addOptionalTag(BlockTags.INFINIBURN_NETHER);
+        add(DDTags.Blocks.DEEPLANDS_COLUMN_BASE, Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME, DDBlocks.INFESTED_SCULK).addOptionalTag(ConventionalBlockTags.ORES);
+        add(DDTags.Blocks.OVERCAST_COLUMN_BASE, Blocks.MAGMA_BLOCK, Blocks.SOUL_SAND, Blocks.SOUL_SOIL, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMSLATE).addOptionalTag(ConventionalBlockTags.ORES);
 
         add(ConventionalBlockTags.GLASS_BLOCKS, DDBlocks.SOUNDPROOF_GLASS);
         add(ConventionalBlockTags.STONES, DDBlocks.GLOOMSLATE, DDBlocks.SCULK_STONE);

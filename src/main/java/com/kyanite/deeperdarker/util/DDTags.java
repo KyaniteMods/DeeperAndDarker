@@ -24,8 +24,10 @@ public class DDTags {
                 Registries.BLOCK, DeeperDarker.rl("echo_soil"));
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = TagKey.create(Registries.BLOCK, DeeperDarker.rl("sculk_stone_replaceables"));
         public static final TagKey<Block> SCULK_REPLACEABLES = TagKey.create(Registries.BLOCK, DeeperDarker.rl("sculk_replaceables"));
+        public static final TagKey<Block> DEEPLANDS_COLUMN_BASE = TagKey.create(Registries.BLOCK, DeeperDarker.rl("deeplands_column_base"));
         public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = TagKey.create(Registries.BLOCK, DeeperDarker.rl("gloomslate_replaceable"));
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = TagKey.create(Registries.BLOCK, DeeperDarker.rl("gloomy_sculk_replaceable"));
+        public static final TagKey<Block> OVERCAST_COLUMN_BASE = TagKey.create(Registries.BLOCK, DeeperDarker.rl("overcast_column_base"));
         public static final TagKey<Block> BLOOMING_POOL_REPLACEABLE = TagKey.create(Registries.BLOCK, DeeperDarker.rl("glooming_pool_replaceable"));
 
         public static final TagKey<Block> SCULK_VINE_PLACEABLE = TagKey.create(Registries.BLOCK, DeeperDarker.rl("sculk_vine_placeable"));
