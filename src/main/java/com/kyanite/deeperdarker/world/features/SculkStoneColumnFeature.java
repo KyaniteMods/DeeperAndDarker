@@ -7,9 +7,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.levelgen.Column;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+
+import java.util.Optional;
 
 public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
     public SculkStoneColumnFeature(Codec<NoneFeatureConfiguration> codec) {
@@ -23,34 +27,56 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = context.random();
 
         if(!level.getBlockState(origin).isAir()) return false;
+        Optional<Column> scan = Column.scan(level, origin, 64, BlockBehaviour.BlockStateBase::isAir, blockState -> !blockState.isAir());
+        if(scan.isEmpty() || !(scan.get() instanceof Column.Range column)) return false;
+        if(column.height() < 7) return false;
 
-        int columnHeight = 0;
-        BlockPos.MutableBlockPos pos = origin.below().mutable();
+        for(int x = -2; x <= 2; x++) {
+            for(int z = -2; z <= 2; z++) {
+                if(x == 0 && z == 0) continue;
 
-        // extend down until a block is hit
-        while(level.getBlockState(pos).isAir() && pos.getY() > level.getMinBuildHeight()) {
-            level.setBlock(pos, Blocks.RED_STAINED_GLASS.defaultBlockState(), 3);
-            pos.move(Direction.DOWN);
-            columnHeight++;
+                BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(origin.getX() + x, column.floor(), origin.getZ() + z);
+                boolean air = level.getBlockState(pos).isAir();
+                if(checkUnevenBase(level, pos, air, air ? Direction.DOWN : Direction.UP)) return false;
+
+                pos.setY(column.ceiling());
+                air = level.getBlockState(pos).isAir();
+                if(checkUnevenBase(level, pos, air, air ? Direction.UP : Direction.DOWN)) return false;
+            }
         }
-        BlockPos bottom = pos.immutable();
-        pos = origin.above().mutable();
 
-        // extend up until a block is hit
-        while(level.getBlockState(pos).isAir() && pos.getY() < level.getMaxBuildHeight()) {
-            level.setBlock(pos, Blocks.BLUE_STAINED_GLASS.defaultBlockState(), 3);
-            pos.move(Direction.UP);
-            columnHeight++;
+        int middle = column.floor() + column.height() / 2;
+        for(int i = column.floor() + 1; i < column.ceiling(); i++) {
+            if(i > middle) level.setBlock(origin.atY(i), Blocks.BLUE_STAINED_GLASS.defaultBlockState(), 3);
+            else level.setBlock(origin.atY(i), Blocks.RED_STAINED_GLASS.defaultBlockState(), 3);
         }
-        BlockPos top = pos.immutable();
 
-        if(columnHeight < 5) return false;
-
-        level.setBlock(bottom, Blocks.LIME_WOOL.defaultBlockState(), 3);
-        level.setBlock(top, Blocks.LIME_WOOL.defaultBlockState(), 3);
-        level.setBlock(origin, Blocks.YELLOW_WOOL.defaultBlockState(), 3);
+        level.setBlock(origin.atY(column.floor()), Blocks.BLUE_WOOL.defaultBlockState(), 3);
+        level.setBlock(origin.atY(column.ceiling()), Blocks.LIGHT_BLUE_WOOL.defaultBlockState(), 3);
+        level.setBlock(origin.atY(middle), Blocks.LIME_WOOL.defaultBlockState(), 3);
 
         return true;
+    }
+
+    public static boolean checkUnevenBase(WorldGenLevel level, BlockPos.MutableBlockPos pos, boolean air, Direction direction) {
+        int heightDiff = 0;
+        BlockPos comparePos = air ? pos : pos.relative(direction);
+
+        while(level.getBlockState(comparePos).isAir() == air) {
+            pos.move(direction);
+            comparePos = air ? pos : pos.relative(direction);
+            heightDiff++;
+            if(heightDiff > 4) return true;
+        }
+
+        // TODO: check if base is connected to column
+        /*while(heightDiff < 4 && air) {
+            pos.move(direction);
+            heightDiff++;
+            if(level.getBlockState(pos).isAir()) return true;
+        }*/
+
+        return false;
     }
 
     private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight, double multiplier, boolean bottom) {
