@@ -105,8 +105,10 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES).add(Blocks.WATER, Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get(), DDBlocks.GLOOMSLATE.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.BLOOMING_SCULK_STONE.get(), DDBlocks.BLOOMING_MOSS_BLOCK.get());
         tag(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get());
         tag(DDTags.Blocks.SCULK_REPLACEABLES).add(Blocks.SCULK, DDBlocks.SCULK_GRIME.get());
+        tag(DDTags.Blocks.DEEPLANDS_COLUMN_BASE).addTag(Tags.Blocks.ORES).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.SCULK_GRIME.get(), DDBlocks.INFESTED_SCULK.get());
         tag(DDTags.Blocks.GLOOMSLATE_REPLACEABLE).add(DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get());
         tag(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.GLOOMSLATE.get(), DDBlocks.SCULK_GRIME.get(), DDBlocks.ECHO_SOIL.get(), DDBlocks.GLOOMY_SCULK.get());
+        tag(DDTags.Blocks.OVERCAST_COLUMN_BASE).addTag(Tags.Blocks.ORES).add(Blocks.MAGMA_BLOCK, Blocks.SOUL_SAND, Blocks.SOUL_SOIL, DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMSLATE.get());
         tag(DDTags.Blocks.BLOOMING_POOL_REPLACEABLE).add(DDBlocks.BLOOMING_SCULK_STONE.get(), DDBlocks.BLOOMING_MOSS_BLOCK.get());
         tag(DDTags.Blocks.SCULK_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.ECHO_LEAVES.get());
         tag(DDTags.Blocks.GLOWING_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get());

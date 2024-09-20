@@ -21,8 +21,10 @@ public class DDTags {
         public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = tag("otherside_carver_replaceables");
         public static final TagKey<Block> SCULK_STONE_REPLACEABLES = tag("sculk_stone_replaceables");
         public static final TagKey<Block> SCULK_REPLACEABLES = tag("sculk_replaceables");
+        public static final TagKey<Block> DEEPLANDS_COLUMN_BASE = tag("deeplands_column_base");
         public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = tag("gloomslate_replaceable");
         public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = tag("gloomy_sculk_replaceable");
+        public static final TagKey<Block> OVERCAST_COLUMN_BASE = tag("overcast_column_base");
         public static final TagKey<Block> BLOOMING_POOL_REPLACEABLE = tag("blooming_pool_replaceable");
 
         public static final TagKey<Block> SCULK_VINE_PLACEABLE = tag("sculk_vine_placeable");

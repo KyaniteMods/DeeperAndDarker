@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,6 +31,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         Optional<Column> scan = Column.scan(level, origin, 64, BlockBehaviour.BlockStateBase::isAir, blockState -> !blockState.isAir());
         if(scan.isEmpty() || !(scan.get() instanceof Column.Range column)) return false;
         if(column.height() < 7) return false;
+        if(!level.getBlockState(origin.atY(column.floor())).is(DDTags.Blocks.DEEPLANDS_COLUMN_BASE) || !level.getBlockState(origin.atY(column.ceiling())).is(DDTags.Blocks.DEEPLANDS_COLUMN_BASE)) return false;
 
         for(int x = -2; x <= 2; x++) {
             for(int z = -2; z <= 2; z++) {
@@ -69,14 +71,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
             if(heightDiff > 4) return true;
         }
 
-        // TODO: check if base is connected to column
-        /*while(heightDiff < 4 && air) {
-            pos.move(direction);
-            heightDiff++;
-            if(level.getBlockState(pos).isAir()) return true;
-        }*/
-
-        return false;
+        return !level.getBlockState(pos).is(DDTags.Blocks.DEEPLANDS_COLUMN_BASE);
     }
 
     private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight, double multiplier, boolean bottom) {
