@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.world;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.world.features.*;
+import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
 import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,9 +12,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 public class DDFeatures {
     public static final Feature<VineFeatureConfiguration> VINE = register("vine", new VineFeature(VineFeatureConfiguration.CODEC));
-
-    public static final Feature<NoneFeatureConfiguration> SCULK_STONE_COLUMN = register("sculk_stone_column", new SculkStoneColumnFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<NoneFeatureConfiguration> GLOOMSLATE_COLUMN = register("gloomslate_column", new GloomslateColumnFeature(NoneFeatureConfiguration.CODEC));
+    public static final Feature<ColumnFeatureConfiguration> OTHERSIDE_COLUMN = register("otherside_column", new OthersideColumnFeature(ColumnFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> SCULK_GLEAM_BLOB = register("sculk_gleam_blob", new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> SCULK_TENDRILS = register("sculk_tendrils", new SculkTendrilsFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> GLOWING_ROOTS = register("glowing_roots", new GlowingRootsFeature(NoneFeatureConfiguration.CODEC));
