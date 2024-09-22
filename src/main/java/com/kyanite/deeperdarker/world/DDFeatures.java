@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.world;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.world.features.*;
+import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
 import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -13,9 +14,7 @@ public class DDFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, DeeperDarker.MOD_ID);
 
     public static final DeferredHolder<Feature<?>, VineFeature> VINE = FEATURES.register("vine", () -> new VineFeature(VineFeatureConfiguration.CODEC));
-
-    public static final DeferredHolder<Feature<?>, SculkStoneColumnFeature> SCULK_STONE_COLUMN = FEATURES.register("sculk_stone_column", () -> new SculkStoneColumnFeature(NoneFeatureConfiguration.CODEC));
-    public static final DeferredHolder<Feature<?>, GloomslateColumnFeature> GLOOMSLATE_COLUMN = FEATURES.register("gloomslate_column", () -> new GloomslateColumnFeature(NoneFeatureConfiguration.CODEC));
+    public static final DeferredHolder<Feature<?>, OthersideColumnFeature> OTHERSIDE_COLUMN = FEATURES.register("otherside_column", () -> new OthersideColumnFeature(ColumnFeatureConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, SculkGleamFeature> SCULK_GLEAM_BLOB = FEATURES.register("sculk_gleam_blob", () -> new SculkGleamFeature(NoneFeatureConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, SculkTendrilsFeature> SCULK_TENDRILS = FEATURES.register("sculk_tendrils", () -> new SculkTendrilsFeature(NoneFeatureConfiguration.CODEC));
     public static final DeferredHolder<Feature<?>, GlowingRootsFeature> GLOWING_ROOTS = FEATURES.register("glowing_roots", () -> new GlowingRootsFeature(NoneFeatureConfiguration.CODEC));

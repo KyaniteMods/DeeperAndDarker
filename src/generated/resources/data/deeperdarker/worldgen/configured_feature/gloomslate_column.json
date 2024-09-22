@@ -1,4 +1,16 @@
 {
-  "type": "deeperdarker:gloomslate_column",
-  "config": {}
+  "type": "deeperdarker:otherside_column",
+  "config": {
+    "block": {
+      "Name": "deeperdarker:gloomslate"
+    },
+    "columnBase": "deeperdarker:overcast_column_base",
+    "incompleteChance": 0.333,
+    "middleBlock": {
+      "Name": "deeperdarker:crystallized_amber",
+      "Properties": {
+        "fossilized": "false"
+      }
+    }
+  }
 }

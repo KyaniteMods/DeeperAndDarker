@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.world;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
 import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
@@ -112,8 +113,8 @@ public class DDConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> soulSoilTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.SOUL_SOIL.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> magmaTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.MAGMA_BLOCK.defaultBlockState()));
 
-        FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.SCULK_STONE_COLUMN.get());
-        FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.GLOOMSLATE_COLUMN.get());
+        FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.OTHERSIDE_COLUMN.get(), new ColumnFeatureConfiguration(DDBlocks.SCULK_STONE.get().defaultBlockState(), DDBlocks.SCULK_STONE.get().defaultBlockState(), DDTags.Blocks.DEEPLANDS_COLUMN_BASE, 0f));
+        FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.OTHERSIDE_COLUMN.get(), new ColumnFeatureConfiguration(DDBlocks.GLOOMSLATE.get().defaultBlockState(), DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState(), DDTags.Blocks.OVERCAST_COLUMN_BASE, 0.333f));
         FeatureUtils.register(context, SCULK_GLEAM_EXTRA, DDFeatures.SCULK_GLEAM_BLOB.get());
         FeatureUtils.register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS.get());
         FeatureUtils.register(context, SCULK_VINES, DDFeatures.VINE.get(), new VineFeatureConfiguration(DDBlocks.SCULK_VINES_PLANT.get().defaultBlockState(), DDBlocks.SCULK_VINES.get().defaultBlockState(), DDTags.Blocks.SCULK_VINE_PLACEABLE, UniformInt.of(1, 8), 0.2f, 0.25f));

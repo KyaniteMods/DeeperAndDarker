@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,17 +12,17 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.Column;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Optional;
 
-public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
-    public SculkStoneColumnFeature(Codec<NoneFeatureConfiguration> codec) {
+public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> {
+    public OthersideColumnFeature(Codec<ColumnFeatureConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
+    public boolean place(FeaturePlaceContext<ColumnFeatureConfiguration> context) {
+        ColumnFeatureConfiguration config = context.config();
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
         RandomSource random = context.random();
@@ -31,7 +31,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
         Optional<Column> scan = Column.scan(level, origin, 64, BlockBehaviour.BlockStateBase::isAir, blockState -> !blockState.isAir());
         if(scan.isEmpty() || !(scan.get() instanceof Column.Range column)) return false;
         if(column.height() < 7) return false;
-        if(!level.getBlockState(origin.atY(column.floor())).is(DDTags.Blocks.DEEPLANDS_COLUMN_BASE) || !level.getBlockState(origin.atY(column.ceiling())).is(DDTags.Blocks.DEEPLANDS_COLUMN_BASE)) return false;
+        if(!level.getBlockState(origin.atY(column.floor())).is(config.columnBase()) || !level.getBlockState(origin.atY(column.ceiling())).is(config.columnBase())) return false;
 
         for(int x = -2; x <= 2; x++) {
             for(int z = -2; z <= 2; z++) {
@@ -39,28 +39,22 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
 
                 BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(origin.getX() + x, column.floor(), origin.getZ() + z);
                 boolean air = level.getBlockState(pos).isAir();
-                if(checkUnevenBase(level, pos, air, air ? Direction.DOWN : Direction.UP)) return false;
+                if(checkUnevenBase(config, level, pos, air, air ? Direction.DOWN : Direction.UP)) return false;
 
                 pos.setY(column.ceiling());
                 air = level.getBlockState(pos).isAir();
-                if(checkUnevenBase(level, pos, air, air ? Direction.UP : Direction.DOWN)) return false;
+                if(checkUnevenBase(config, level, pos, air, air ? Direction.UP : Direction.DOWN)) return false;
             }
         }
 
-        int middle = column.floor() + column.height() / 2;
         for(int i = column.floor() + 1; i < column.ceiling(); i++) {
-            if(i > middle) level.setBlock(origin.atY(i), Blocks.BLUE_STAINED_GLASS.defaultBlockState(), 3);
-            else level.setBlock(origin.atY(i), Blocks.RED_STAINED_GLASS.defaultBlockState(), 3);
+            level.setBlock(origin.atY(i), config.block(), 3);
         }
-
-        level.setBlock(origin.atY(column.floor()), Blocks.BLUE_WOOL.defaultBlockState(), 3);
-        level.setBlock(origin.atY(column.ceiling()), Blocks.LIGHT_BLUE_WOOL.defaultBlockState(), 3);
-        level.setBlock(origin.atY(middle), Blocks.LIME_WOOL.defaultBlockState(), 3);
 
         return true;
     }
 
-    public static boolean checkUnevenBase(WorldGenLevel level, BlockPos.MutableBlockPos pos, boolean air, Direction direction) {
+    public static boolean checkUnevenBase(ColumnFeatureConfiguration config, WorldGenLevel level, BlockPos.MutableBlockPos pos, boolean air, Direction direction) {
         int heightDiff = 0;
         BlockPos comparePos = air ? pos : pos.relative(direction);
 
@@ -71,7 +65,7 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
             if(heightDiff > 4) return true;
         }
 
-        return !level.getBlockState(pos).is(DDTags.Blocks.DEEPLANDS_COLUMN_BASE);
+        return !level.getBlockState(pos).is(config.columnBase());
     }
 
     private void columnBase(WorldGenLevel level, RandomSource random, BlockPos origin, int columnHeight, double multiplier, boolean bottom) {
