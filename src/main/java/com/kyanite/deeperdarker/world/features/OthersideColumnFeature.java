@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.levelgen.Column;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -58,7 +57,7 @@ public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> 
 
             for(int i = 1; i <= height1; i++) {
                 BlockPos pos = origin.atY(column.floor() + i).relative(direction);
-                placeSection(level, direction, height2, height3, height4, i, pos);
+                placeSection(config, level, direction, height2, height3, height4, i, pos, Direction.DOWN);
             }
 
             height1 = random.nextInt((int) (column.height() / 3.33), (int) (column.height() / 2.5) + 1);
@@ -68,7 +67,7 @@ public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> 
 
             for(int i = height1; i > 0; i--) {
                 BlockPos pos = origin.atY(column.ceiling() - i).relative(direction);
-                placeSection(level, direction, height2, height3, height4, i, pos);
+                placeSection(config, level, direction, height2, height3, height4, i, pos, Direction.UP);
             }
         }
 
@@ -89,18 +88,41 @@ public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> 
         return !level.getBlockState(pos).is(config.columnBase());
     }
 
-    private void placeSection(WorldGenLevel level, Direction direction, int height2, int height3, int height4, int i, BlockPos pos) {
-        level.setBlock(pos, Blocks.RED_STAINED_GLASS.defaultBlockState(), 3);
+    private void placeSection(ColumnFeatureConfiguration config, WorldGenLevel level, Direction direction, int height2, int height3, int height4, int i, BlockPos pos, Direction stretchDirection) {
+        level.setBlock(pos, config.block(), 3);
         if(i > height2) return;
 
-        level.setBlock(pos.relative(direction.getClockWise()), Blocks.ORANGE_STAINED_GLASS.defaultBlockState(), 3);
+        level.setBlock(pos.relative(direction.getClockWise()), config.block(), 3);
         if(i > height3) return;
 
+        if(i == 1) {
+            stretchToTerrain(config, level, pos, stretchDirection);
+            stretchToTerrain(config, level, pos.relative(direction.getClockWise()), stretchDirection);
+        }
+
         pos = pos.relative(direction);
-        level.setBlock(pos, Blocks.YELLOW_STAINED_GLASS.defaultBlockState(), 3);
+        if(i == 1) {
+            stretchToTerrain(config, level, pos, stretchDirection);
+            stretchToTerrain(config, level, pos.relative(direction.getClockWise()), stretchDirection);
+            stretchToTerrain(config, level, pos.relative(direction.getCounterClockWise()), stretchDirection);
+        }
+
+        level.setBlock(pos, config.block(), 3);
         if(i > height4) return;
 
-        level.setBlock(pos.relative(direction.getClockWise()), Blocks.LIME_STAINED_GLASS.defaultBlockState(), 3);
-        level.setBlock(pos.relative(direction.getCounterClockWise()), Blocks.CYAN_STAINED_GLASS.defaultBlockState(), 3);
+        level.setBlock(pos.relative(direction.getClockWise()), config.block(), 3);
+        level.setBlock(pos.relative(direction.getCounterClockWise()), config.block(), 3);
+    }
+
+    private void stretchToTerrain(ColumnFeatureConfiguration config, WorldGenLevel level, BlockPos pos, Direction direction) {
+        BlockPos.MutableBlockPos pos2 = pos.relative(direction).mutable();
+        while((level.getBlockState(pos2).isAir() || level.getBlockState(pos2).is(config.baseReplaceable())) && pos2.getY() > level.getMinBuildHeight() && pos2.getY() < level.getMaxBuildHeight()) {
+            if(level.getBlockState(pos2).is(config.baseReplaceable())) {
+                level.setBlock(pos2, config.block(), 3);
+                break;
+            }
+            level.setBlock(pos2, config.block(), 3);
+            pos2.move(direction);
+        }
     }
 }

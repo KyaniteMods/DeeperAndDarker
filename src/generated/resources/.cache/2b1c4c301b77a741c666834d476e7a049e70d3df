@@ -1,4 +1,4 @@
-// 1.21	2024-09-20T17:23:35.0028677	Tags for minecraft:block mod id deeperdarker
+// 1.21	2024-09-27T16:44:43.3285872	Tags for minecraft:block mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/block/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/block/ores/copper.json
@@ -12,6 +12,7 @@ d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/block/stones.json
 4def6c04349da9777fc48313256495659524feb1 data/deeperdarker/tags/block/blooming_pool_replaceable.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/block/bloom_stems.json
 26c6e382ee88aa5ceb2dbc3be3407d577055645a data/deeperdarker/tags/block/deeplands_column_base.json
+95e1d3134e9669f8c331d9f9eb08f17c742dd1e6 data/deeperdarker/tags/block/deeplands_column_replaceable.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/block/echo_logs.json
 5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/block/gloomslate_replaceable.json
 1b524a72db2dc423a915068148fa9e921f2e46f5 data/deeperdarker/tags/block/gloomy_sculk_replaceable.json
@@ -19,6 +20,7 @@ ac89124de10dcfff814aa1d073803cec2f9bc838 data/deeperdarker/tags/block/glowing_vi
 8578e12406e1c266232a54a95ac849d05041d948 data/deeperdarker/tags/block/infiniburn_otherside.json
 16fc775f3d68d0ec1accc58f8fcfd10c571706ad data/deeperdarker/tags/block/otherside_carver_replaceables.json
 8abb1d7af65db4bb0406045cba4bca15fbbaa133 data/deeperdarker/tags/block/overcast_column_base.json
+5fc75620cbf33b6fbe8762687116de2f0df1bd34 data/deeperdarker/tags/block/overcast_column_replaceable.json
 4b3a3834715a617924c94f9d91ae043b2f4c9d63 data/deeperdarker/tags/block/sculk_replaceables.json
 a602a7264c375269e61c0ace10abfad2a27444f0 data/deeperdarker/tags/block/sculk_stone_replaceables.json
 603846420eb6d91e94f6409e765348644b6f95bb data/deeperdarker/tags/block/sculk_vine_placeable.json

@@ -1,6 +1,7 @@
 {
   "type": "deeperdarker:otherside_column",
   "config": {
+    "baseReplaceable": "deeperdarker:overcast_column_replaceable",
     "block": {
       "Name": "deeperdarker:gloomslate"
     },
