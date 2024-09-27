@@ -1,6 +1,7 @@
 {
   "type": "deeperdarker:otherside_column",
   "config": {
+    "baseReplaceable": "deeperdarker:deeplands_column_replaceable",
     "block": {
       "Name": "deeperdarker:sculk_stone"
     },
