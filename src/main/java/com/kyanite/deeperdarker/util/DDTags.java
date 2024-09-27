@@ -14,26 +14,45 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 public class DDTags {
     public static class Blocks {
         public static final TagKey<Block> ECHO_LOGS = TagKey.create(
-                    Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
-
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_logs"));
         public static final TagKey<Block> BLOOMING_STEMS = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_stems"));
+
+        public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "otherside_carver_replaceables"));
+        public static final TagKey<Block> SCULK_STONE_REPLACEABLES = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_stone_replaceables"));
+        public static final TagKey<Block> SCULK_REPLACEABLES = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_replaceables"));
+        public static final TagKey<Block> DEEPLANDS_COLUMN_REPLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "deeplands_column_replaceable"));
+        public static final TagKey<Block> DEEPLANDS_COLUMN_BASE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "deeplands_column_base"));
+
+        public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "gloomslate_replaceable"));
+        public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "gloomy_sculk_replaceable"));
+        public static final TagKey<Block> OVERCAST_COLUMN_REPLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "overcast_column_replaceable"));
+        public static final TagKey<Block> OVERCAST_COLUMN_BASE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "overcast_column_base"));
+
+        public static final TagKey<Block> BLOOMING_POOL_REPLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_pool_replaceable"));
+
+        public static final TagKey<Block> SCULK_VINE_PLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_vine_placeable"));
+        public static final TagKey<Block> GLOWING_VINE_PLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "glowing_vine_placeable"));
+
+        public static final TagKey<Block> TRANSMITTABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "transmittable"));
+        public static final TagKey<Block> INFINIBURN_OTHERSIDE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "infiniburn_otherside"));
+
         public static final TagKey<Block> ECHO_SOIL = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_soil"));
-        public static final TagKey<Block> SCULK_STONE_REPLACEABLES = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_stone_replaceables"));
-        public static final TagKey<Block> SCULK_REPLACEABLES = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_replaceables"));
-        public static final TagKey<Block> DEEPLANDS_COLUMN_BASE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "deeplands_column_base"));
-        public static final TagKey<Block> GLOOMSLATE_REPLACEABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "gloomslate_replaceable"));
-        public static final TagKey<Block> GLOOMY_SCULK_REPLACEABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "gloomy_sculk_replaceable"));
-        public static final TagKey<Block> OVERCAST_COLUMN_BASE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "overcast_column_base"));
-        public static final TagKey<Block> BLOOMING_POOL_REPLACEABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "glooming_pool_replaceable"));
-
-        public static final TagKey<Block> SCULK_VINE_PLACEABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_vine_placeable"));
-        public static final TagKey<Block> GLOWING_VINE_PLACEABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "glowing_vine_placeable"));
-
-        public static final TagKey<Block> TRANSMITTABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "transmittable"));
-        public static final TagKey<Block> INFINIBURN_OTHERSIDE = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "infiniburn_otherside"));
-        public static final TagKey<Block> OTHERSIDE_CARVER_REPLACEABLES = TagKey.create(Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "otherside_carver_replaceables"));
     }
 
     public static class Items {
