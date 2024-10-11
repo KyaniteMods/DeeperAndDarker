@@ -7,10 +7,13 @@ import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
 import net.minecraft.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.ai.village.poi.PoiManager;
+import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -20,6 +23,7 @@ import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.level.portal.PortalShape;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Comparator;
 import java.util.Optional;
 
 public class OthersideTeleporter {
@@ -31,12 +35,13 @@ public class OthersideTeleporter {
     private static final int PORTAL_WIDTH = DeeperDarkerConfig.othersidePortalWidth;
     private static final int PORTAL_HEIGHT = DeeperDarkerConfig.othersidePortalHeight;
 
-    public static DimensionTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, boolean isOtherside, WorldBorder destBorder) {
-        Optional<BlockPos> closestPos = destLevel.getPortalForcer().findClosestPortalPosition(exitPos, isOtherside, destBorder);
+    public static DimensionTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, WorldBorder destBorder) {
+        Optional<BlockPos> existingPortalPos = findClosestPortalPosition(destLevel, exitPos, destBorder);
         BlockUtil.FoundRectangle portal;
         DimensionTransition.PostDimensionTransition transition;
-        if(closestPos.isPresent()) {
-            BlockPos blockPos = closestPos.get();
+
+        if(existingPortalPos.isPresent()) {
+            BlockPos blockPos = existingPortalPos.get();
             BlockState destState = destLevel.getBlockState(blockPos);
             portal = BlockUtil.getLargestRectangleAround(
                     blockPos,
@@ -49,17 +54,27 @@ public class OthersideTeleporter {
             transition = DimensionTransition.PLAY_PORTAL_SOUND.then(entity1 -> entity1.placePortalTicket(blockPos));
         } else {
             Direction.Axis direction = entity.level().getBlockState(pos).getOptionalValue(OthersidePortalBlock.AXIS).orElse(Direction.Axis.X);
-            Optional<BlockUtil.FoundRectangle> rectangle = makePortal(destLevel, exitPos, direction);
-            if(rectangle.isEmpty()) {
-                DeeperDarker.LOGGER.error("Unable to create a portal, likely target out of worldborder");
+            Optional<BlockUtil.FoundRectangle> newPortal = makePortal(destLevel, exitPos, direction);
+            if(newPortal.isEmpty()) {
+                DeeperDarker.LOGGER.error("Unable to create a portal, likely target out of world border");
                 return null;
             }
 
-            portal = rectangle.get();
+            portal = newPortal.get();
             transition = DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
         }
 
         return getDimensionTransitionFromExit(entity, pos, portal, destLevel, transition);
+    }
+
+    private static Optional<BlockPos> findClosestPortalPosition(ServerLevel level, BlockPos exitPos, WorldBorder worldBorder) {
+        PoiManager poimanager = level.getPoiManager();
+        poimanager.ensureLoadedAndValid(level, exitPos, 128);
+        return poimanager.getInSquare(poi -> poi.is(OthersideDimension.OTHERSIDE_PORTAL), exitPos, 128, PoiManager.Occupancy.ANY)
+                .map(PoiRecord::getPos)
+                .filter(worldBorder::isWithinBounds)
+                .filter(pos -> level.getBlockState(pos).hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
+                .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(exitPos)).thenComparingInt(Vec3i::getY));
     }
 
     private static DimensionTransition getDimensionTransitionFromExit(Entity entity, BlockPos pos, BlockUtil.FoundRectangle rectangle, ServerLevel level, DimensionTransition.PostDimensionTransition postTransition) {
