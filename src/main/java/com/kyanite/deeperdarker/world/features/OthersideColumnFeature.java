@@ -1,5 +1,8 @@
 package com.kyanite.deeperdarker.world.features;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
+import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -7,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Column;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -45,14 +49,28 @@ public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> 
             }
         }
 
+        boolean incomplete = random.nextFloat() < config.incompleteChance();
+        boolean middle = !incomplete && random.nextFloat() < 0.5f;
         for(int i = column.floor() + 1; i < column.ceiling(); i++) {
-            level.setBlock(origin.atY(i), config.block(), 3);
+            if(incomplete && i - column.floor() > column.height() * 2 / 5.0 + 2 && i - column.floor() < 3 * column.height() / 5.0 - 2) continue;
+
+            BlockPos pos = origin.atY(i);
+            if(middle && i - column.floor() >= column.height() / 3.0 && i - column.floor() <= 2 * column.height() / 3.0 + 1) {
+                BlockState state = config.middleBlock();
+                boolean fossil = state.is(DDBlocks.CRYSTALLIZED_AMBER) && random.nextFloat() < 0.4f;
+
+                level.setBlock(pos, fossil ? state.setValue(CrystallizedAmberBlock.FOSSILIZED, true) : state, 3);
+                if(fossil && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) blockEntity.generateFossil(level.getLevel(), pos);
+            } else {
+                level.setBlock(pos, config.block(), 3);
+            }
         }
 
+        double multiplier = column.height() < 20 ? 1.2 : 1;
         for(Direction direction : Direction.Plane.HORIZONTAL) {
-            int height1 = random.nextInt((int) (column.height() / 3.33), (int) (column.height() / 2.7) + 1);
-            int height2 = random.nextInt((int) (0.61 * height1), (int) (0.67 * height1) + 1);
-            int height3 = random.nextInt((int) (0.41 * height1), (int) (0.47 * height1) + 1);
+            int height1 = random.nextInt((int) (column.height() / 3.0 * multiplier), (int) (column.height() / 2.5 * multiplier) + 1);
+            int height2 = random.nextInt((int) (0.62 * height1), (int) (0.69 * height1) + 1);
+            int height3 = random.nextInt((int) (0.41 * height1), (int) (0.48 * height1) + 1);
             int height4 = random.nextInt((int) (0.1 * height1), (int) (0.22 * height1) + 1);
 
             for(int i = 1; i <= height1; i++) {
@@ -60,8 +78,8 @@ public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> 
                 placeSection(config, level, direction, height2, height3, height4, i, pos, Direction.DOWN);
             }
 
-            height1 = random.nextInt((int) (column.height() / 3.33), (int) (column.height() / 2.5) + 1);
-            height2 = random.nextInt((int) (0.61 * height1), (int) (0.69 * height1) + 1);
+            height1 = random.nextInt((int) (column.height() / 3.0 * multiplier), (int) (column.height() / 2.5 * multiplier) + 1);
+            height2 = random.nextInt((int) (0.62 * height1), (int) (0.69 * height1) + 1);
             height3 = random.nextInt((int) (0.41 * height1), (int) (0.48 * height1) + 1);
             height4 = random.nextInt((int) (0.1 * height1), (int) (0.22 * height1) + 1);
 
