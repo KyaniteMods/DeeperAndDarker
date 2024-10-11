@@ -114,7 +114,7 @@ public class DDConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> soulSoilTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.SOUL_SOIL.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> magmaTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.MAGMA_BLOCK.defaultBlockState()));
 
-        FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.OTHERSIDE_COLUMN, new ColumnFeatureConfiguration(DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_STONE.defaultBlockState(), DDTags.Blocks.DEEPLANDS_COLUMN_BASE, DDTags.Blocks.DEEPLANDS_COLUMN_REPLACEABLE, 0f));
+        FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.OTHERSIDE_COLUMN, new ColumnFeatureConfiguration(DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_STONE.defaultBlockState(), DDTags.Blocks.DEEPLANDS_COLUMN_BASE, DDTags.Blocks.DEEPLANDS_COLUMN_REPLACEABLE, 0.1f));
         FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.OTHERSIDE_COLUMN, new ColumnFeatureConfiguration(DDBlocks.GLOOMSLATE.defaultBlockState(), DDBlocks.CRYSTALLIZED_AMBER.defaultBlockState(), DDTags.Blocks.OVERCAST_COLUMN_BASE, DDTags.Blocks.OVERCAST_COLUMN_REPLACEABLE, 0.333f));
         FeatureUtils.register(context, SCULK_GLEAM_EXTRA, DDFeatures.SCULK_GLEAM_BLOB);
         FeatureUtils.register(context, SCULK_TENDRILS, DDFeatures.SCULK_TENDRILS);
