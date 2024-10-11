@@ -6,7 +6,7 @@
       "Name": "deeperdarker:sculk_stone"
     },
     "columnBase": "deeperdarker:deeplands_column_base",
-    "incompleteChance": 0.0,
+    "incompleteChance": 0.1,
     "middleBlock": {
       "Name": "deeperdarker:sculk_stone"
     }
