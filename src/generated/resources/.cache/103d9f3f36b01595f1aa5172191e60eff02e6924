@@ -1,4 +1,4 @@
-// 1.21	2024-09-27T16:44:43.3352742	Registries
+// 1.21	2024-10-10T21:20:28.0250668	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 dede162345c14db637f3dd9a20ca9319e037ae9d data/deeperdarker/dimension/otherside.json
@@ -57,7 +57,7 @@ fc53b26d9b7805848d81c20fdc426b2fbad6ef7b data/deeperdarker/worldgen/configured_f
 c3cadcbe56faf51699411c61418e62470e8f6d20 data/deeperdarker/worldgen/configured_feature/sculk_decoration.json
 96f3ef8cd15afedd3241978ed2b2db5e16a3201b data/deeperdarker/worldgen/configured_feature/sculk_gleam_extra.json
 6cb0cb910352cdcc5d68c63401374a6c2384871f data/deeperdarker/worldgen/configured_feature/sculk_patch.json
-779771ce0c63106a5c895d9b9f280c84840bc72c data/deeperdarker/worldgen/configured_feature/sculk_stone_column.json
+2bc34aa95322b1e7f1f54af1ee9faebbd7412885 data/deeperdarker/worldgen/configured_feature/sculk_stone_column.json
 ee40c6672e01f7903cbd018effd3b9fb238b9dc8 data/deeperdarker/worldgen/configured_feature/sculk_stone_generation.json
 86da19b821a39e48a2b5e372c22674a76caee69a data/deeperdarker/worldgen/configured_feature/sculk_tendrils.json
 19ccfc43ca3b12473f3c09eccf4628e21a92b454 data/deeperdarker/worldgen/configured_feature/sculk_vines.json
