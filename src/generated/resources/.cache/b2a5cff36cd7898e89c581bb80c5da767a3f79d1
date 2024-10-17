@@ -1,4 +1,4 @@
-// 1.21	2024-09-03T18:26:51.3070092	Tags for minecraft:item mod id deeperdarker
+// 1.21	2024-10-17T10:27:49.2110636	Tags for minecraft:item mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/item/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/item/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/item/ores/copper.json
@@ -23,7 +23,7 @@ ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/item/coal_ores.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/item/copper_ores.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/item/diamond_ores.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/item/emerald_ores.json
-d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/durability.json
+7b02b576df083630e66072bf2d0f07f1e6ac4a26 data/minecraft/tags/item/enchantable/durability.json
 d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/equippable.json
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/item/fence_gates.json
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/item/flowers.json

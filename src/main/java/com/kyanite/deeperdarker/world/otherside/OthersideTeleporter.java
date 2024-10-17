@@ -36,7 +36,7 @@ public class OthersideTeleporter {
     private static final int PORTAL_HEIGHT = DeeperDarkerConfig.othersidePortalHeight;
 
     public static DimensionTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, WorldBorder destBorder) {
-        Optional<BlockPos> existingPortalPos = findClosestPortalPosition(destLevel, exitPos, destBorder);
+        Optional<BlockPos> existingPortalPos = findExistingPortal(destLevel, exitPos, destBorder);
         BlockUtil.FoundRectangle portal;
         DimensionTransition.PostDimensionTransition transition;
 
@@ -64,10 +64,10 @@ public class OthersideTeleporter {
             transition = DimensionTransition.PLAY_PORTAL_SOUND.then(DimensionTransition.PLACE_PORTAL_TICKET);
         }
 
-        return getDimensionTransitionFromExit(entity, pos, portal, destLevel, transition);
+        return transitionFromExit(entity, pos, portal, destLevel, transition);
     }
 
-    private static Optional<BlockPos> findClosestPortalPosition(ServerLevel level, BlockPos exitPos, WorldBorder worldBorder) {
+    private static Optional<BlockPos> findExistingPortal(ServerLevel level, BlockPos exitPos, WorldBorder worldBorder) {
         PoiManager poimanager = level.getPoiManager();
         poimanager.ensureLoadedAndValid(level, exitPos, 128);
         return poimanager.getInSquare(poi -> poi.is(OthersideDimension.OTHERSIDE_PORTAL), exitPos, 128, PoiManager.Occupancy.ANY)
@@ -77,23 +77,23 @@ public class OthersideTeleporter {
                 .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(exitPos)).thenComparingInt(Vec3i::getY));
     }
 
-    private static DimensionTransition getDimensionTransitionFromExit(Entity entity, BlockPos pos, BlockUtil.FoundRectangle rectangle, ServerLevel level, DimensionTransition.PostDimensionTransition postTransition) {
+    private static DimensionTransition transitionFromExit(Entity entity, BlockPos pos, BlockUtil.FoundRectangle rectangle, ServerLevel level, DimensionTransition.PostDimensionTransition postTransition) {
         BlockState state = entity.level().getBlockState(pos);
         Direction.Axis axis;
         Vec3 vec3;
         if(state.hasProperty(BlockStateProperties.HORIZONTAL_AXIS)) {
             axis = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
-            BlockUtil.FoundRectangle portal = BlockUtil.getLargestRectangleAround(pos, axis, MAX_WIDTH, Direction.Axis.Y, MAX_HEIGHT, p_351016_ -> entity.level().getBlockState(p_351016_) == state);
+            BlockUtil.FoundRectangle portal = BlockUtil.getLargestRectangleAround(pos, axis, MAX_WIDTH, Direction.Axis.Y, MAX_HEIGHT, blockPos -> entity.level().getBlockState(blockPos) == state);
             vec3 = entity.getRelativePortalPosition(axis, portal);
         } else {
             axis = Direction.Axis.X;
             vec3 = new Vec3(0.5, 0.0, 0.0);
         }
 
-        return createDimensionTransition(level, rectangle, axis, vec3, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), postTransition);
+        return createTransition(level, rectangle, axis, vec3, entity, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), postTransition);
     }
 
-    private static DimensionTransition createDimensionTransition(ServerLevel level, BlockUtil.FoundRectangle rectangle, Direction.Axis axis, Vec3 offset, Entity entity, Vec3 speed, float yRot, float xRot, DimensionTransition.PostDimensionTransition postTransition) {
+    private static DimensionTransition createTransition(ServerLevel level, BlockUtil.FoundRectangle rectangle, Direction.Axis axis, Vec3 offset, Entity entity, Vec3 speed, float yRot, float xRot, DimensionTransition.PostDimensionTransition postTransition) {
         BlockPos cornerPos = rectangle.minCorner;
         BlockState cornerState = level.getBlockState(cornerPos);
         Direction.Axis axis1 = cornerState.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);

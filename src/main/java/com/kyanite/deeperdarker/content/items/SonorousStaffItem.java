@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
@@ -84,6 +85,11 @@ public class SonorousStaffItem extends Item {
             tag.putBoolean("charged", player.getUseItem() == stack && stack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 123);
             stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
         }
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
+        return repairCandidate.is(DDItems.SOUL_CRYSTAL);
     }
 
     @Override
