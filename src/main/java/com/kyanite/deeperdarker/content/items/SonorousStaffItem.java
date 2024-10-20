@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -77,6 +78,11 @@ public class SonorousStaffItem extends Item {
         if(pEntity instanceof Player player) {
             pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 123);
         }
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack pStack, ItemStack pRepairCandidate) {
+        return pRepairCandidate.is(DDItems.SOUL_CRYSTAL.get());
     }
 
     @Override
