@@ -1,12 +1,12 @@
 {
   "type": "mekanism:enriching",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:sculk_stone_slab"
-    }
+    "count": 1,
+    "item": "deeperdarker:sculk_stone_slab"
   },
   "output": {
-    "item": "deeperdarker:smooth_sculk_stone_slab"
+    "count": 1,
+    "id": "deeperdarker:smooth_sculk_stone_slab"
   },
   "neoforge:conditions": [
     {

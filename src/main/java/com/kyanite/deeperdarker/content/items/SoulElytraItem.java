@@ -28,7 +28,7 @@ public class SoulElytraItem extends ElytraItem {
 
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return repair.is(DDItems.SOUL_CRYSTAL.get());
+        return repair.is(DDItems.SOUL_CRYSTAL);
     }
 
     @Override

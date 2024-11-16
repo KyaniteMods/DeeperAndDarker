@@ -1,12 +1,12 @@
 {
   "type": "mekanism:crushing",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:gloomslate_brick_wall"
-    }
+    "count": 1,
+    "item": "deeperdarker:gloomslate_brick_wall"
   },
   "output": {
-    "item": "deeperdarker:gloomslate_tile_wall"
+    "count": 1,
+    "id": "deeperdarker:gloomslate_tile_wall"
   },
   "neoforge:conditions": [
     {

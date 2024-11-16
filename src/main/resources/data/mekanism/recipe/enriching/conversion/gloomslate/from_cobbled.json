@@ -1,12 +1,12 @@
 {
   "type": "mekanism:enriching",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:cobbled_gloomslate"
-    }
+    "count": 1,
+    "item": "deeperdarker:cobbled_gloomslate"
   },
   "output": {
-    "item": "deeperdarker:gloomslate"
+    "count": 1,
+    "id": "deeperdarker:gloomslate"
   },
   "neoforge:conditions": [
     {

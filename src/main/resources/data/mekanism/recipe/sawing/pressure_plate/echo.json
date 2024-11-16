@@ -1,13 +1,12 @@
 {
   "type": "mekanism:sawing",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:echo_pressure_plate"
-    }
+    "count": 1,
+    "item": "deeperdarker:echo_pressure_plate"
   },
   "mainOutput": {
     "count": 2,
-    "item": "deeperdarker:echo_planks"
+    "id": "deeperdarker:echo_planks"
   },
   "neoforge:conditions": [
     {

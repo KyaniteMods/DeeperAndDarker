@@ -135,6 +135,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("tag.item." + DeeperDarker.MOD_ID + ".bloom_stems", "Blooming Stems");
         add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
+        add("tag.item." + DeeperDarker.MOD_ID + ".resonarium_armor", "Resonarium Armor");
         add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
         add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
 
@@ -159,8 +160,7 @@ public class ENLanguageProvider extends LanguageProvider {
         StringBuilder builder = new StringBuilder(key.substring(0, 1).toUpperCase() + key.substring(1));
         for(int i = 1; i < builder.length(); i++) {
             if(builder.charAt(i) == '_') {
-                builder.deleteCharAt(i);
-                builder.replace(i, i + 1, " " + Character.toUpperCase(builder.charAt(i)));
+                builder.replace(i, i + 2, " " + Character.toUpperCase(builder.charAt(i + 1)));
             }
         }
 

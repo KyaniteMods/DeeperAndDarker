@@ -1,12 +1,12 @@
 {
   "type": "mekanism:enriching",
   "input": {
-    "ingredient": {
-      "item": "deeperdarker:sculk_stone_tiles"
-    }
+    "count": 1,
+    "item": "deeperdarker:sculk_stone_tiles"
   },
   "output": {
-    "item": "deeperdarker:sculk_stone_bricks"
+    "count": 1,
+    "id": "deeperdarker:sculk_stone_bricks"
   },
   "neoforge:conditions": [
     {
