@@ -1,4 +1,4 @@
-// 1.21	2024-09-15T21:36:50.910515672	Deeper and Darker/Tags for minecraft:item
+// 1.21	2024-11-25T10:16:01.155701504	Deeper and Darker/Tags for minecraft:item
 743e0bd68d3bd18829be7dd9766c3d77d2e81061 data/minecraft/tags/item/axes.json
 4adde7471a4523d7ee963925555ed70433d69557 data/minecraft/tags/item/shovels.json
 677f91d5ee5aaf92dd65278bf0e2f328db679410 data/c/tags/item/dusts.json
@@ -9,7 +9,7 @@
 1eec4d64020f6c39dd18198ce2e63fa970059d3f data/minecraft/tags/item/chest_armor.json
 d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/equippable.json
 26d0eb582740f07e60c3ba36a243c24c73706146 data/minecraft/tags/item/coal_ores.json
-d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/durability.json
+7b02b576df083630e66072bf2d0f07f1e6ac4a26 data/minecraft/tags/item/enchantable/durability.json
 2b6778f0757a862b0176aa3278100562b22e5db9 data/minecraft/tags/item/iron_ores.json
 828ad83b431bb94c090ae2c19a590f9f05e876ea data/minecraft/tags/item/boats.json
 06b286c7c79571755f7b5149b31787b00d449c4b data/minecraft/tags/item/small_flowers.json
