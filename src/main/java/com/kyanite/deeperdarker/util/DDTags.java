@@ -48,6 +48,11 @@ public class DDTags {
         public static final TagKey<Block> GLOWING_VINE_PLACEABLE = TagKey.create(
                 Registries.BLOCK, DeeperDarker.rl("glowing_vine_placeable"));
 
+        public static final TagKey<Block> INCORRECT_FOR_WARDEN_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.rl("echo_soil"));
+        public static final TagKey<Block> INCORRECT_FOR_RESONARIUM_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.rl("echo_soil"));
+
         public static final TagKey<Block> TRANSMITTABLE = TagKey.create(
                 Registries.BLOCK, DeeperDarker.rl("transmittable"));
         public static final TagKey<Block> INFINIBURN_OTHERSIDE = TagKey.create(
