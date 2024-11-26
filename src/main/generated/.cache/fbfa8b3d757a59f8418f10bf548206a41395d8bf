@@ -1,9 +1,0 @@
-// 1.21	2024-11-25T10:16:01.154516316	Deeper and Darker/minecraft:entity Loot Table
-74ec71725f712b93bb52af675d04158ce74e646e data/deeperdarker/loot_table/entities/stalker.json
-ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_table/entities/shriek_worm.json
-ef0d0dccff84e86b336c64e7767f1ab6803ce7bd data/deeperdarker/loot_table/entities/sculk_centipede.json
-8e55dc1f39f277ffc568322847f6eeccd5724c5d data/deeperdarker/loot_table/entities/sludge.json
-02d2204aa9df48b4450056d31a164fe9b3bcd665 data/deeperdarker/loot_table/entities/sculk_snapper.json
-378d69263c4d0eb87b3c104cec23f338da6bd60b data/deeperdarker/loot_table/entities/sculk_leech.json
-ef017fe8afbc1e704a7cfb4818ece7ba018f9c91 data/deeperdarker/loot_table/entities/angler_fish.json
-97940ebb2507bc129efea9b3c1da8e1f94fe0019 data/deeperdarker/loot_table/entities/shattered.json
