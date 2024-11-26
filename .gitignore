@@ -40,3 +40,4 @@ replay_*.log
 *.hprof
 *.jfr
 /output/
+/src/main/generated/.cache/
