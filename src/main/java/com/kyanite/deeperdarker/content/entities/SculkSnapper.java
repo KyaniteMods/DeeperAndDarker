@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -134,6 +135,9 @@ public class SculkSnapper extends TamableAnimal {
 
     @Override
     public boolean isFood(ItemStack pStack) {
+        if (pStack.is(DDItems.GLEAM_GEL)) {
+            return true;
+        }
         return pStack.is(Items.NETHERITE_CHESTPLATE) && !pStack.getEnchantmentTags().isEmpty();
     }
 
