@@ -32,6 +32,7 @@
         "max_inclusive": 4,
         "min_inclusive": 2
       }
-    }
+    },
+    "use_alternate_block_chance": 0.1
   }
 }
