@@ -162,6 +162,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         add(DDBlocks.GLOOMY_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS);
+        dropWhenSilkTouch(DDBlocks.GLOOMY_GEYSER);
         addVineAndPlant(DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_TENDRILS);
         addVineAndPlant(DDBlocks.SCULK_VINES_PLANT, DDBlocks.SCULK_VINES);
         addVineAndPlant(DDBlocks.GLOWING_ROOTS_PLANT, DDBlocks.GLOWING_ROOTS);
