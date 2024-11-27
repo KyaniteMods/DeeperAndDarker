@@ -199,7 +199,7 @@ public class DDBlocks {
 
     public static final Block ECHO_SOIL = register("echo_soil", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block GLOOMY_SCULK = register("gloomy_sculk", new GloomySculkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(0.3f)));
-    public static final Block GLOOMY_GEYSER = register("gloomy_geyser", new GeyserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 9).noLootTable()));
+    public static final Block GLOOMY_GEYSER = register("gloomy_geyser", new GeyserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 9)));
     public static final Block CRYSTALLIZED_AMBER = register("crystallized_amber", new CrystallizedAmberBlock(BlockBehaviour.Properties.of().strength(0.3f, 3f).lightLevel(state -> 1).sound(SoundType.GLASS).mapColor(MapColor.COLOR_ORANGE).noOcclusion()));
     public static final Block SCULK_GLEAM = register("sculk_gleam", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 15).mapColor(MapColor.SAND)));
 
