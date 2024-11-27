@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.util.datagen.tags;
 
-import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -101,6 +100,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(DDTags.Items.RESONARIUM_ARMOR, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);
         add(DDTags.Items.SCUTES, Items.TURTLE_SCUTE, Items.ARMADILLO_SCUTE);
+
+        add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
 
         copy(ConventionalBlockTags.STONES, ConventionalItemTags.STONES);
         copy(ConventionalBlockTags.COBBLESTONES, ConventionalItemTags.STONES);
