@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import org.jetbrains.annotations.NotNull;
 
 public class ShatteredHeadBlock extends SkullBlock {
@@ -21,7 +20,6 @@ public class ShatteredHeadBlock extends SkullBlock {
             return "shattered";
         }
     };
-//    public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("DEEPERDARKER_SHATTERED");
 
     public ShatteredHeadBlock(Properties properties) {
         super(SHATTERED, properties);

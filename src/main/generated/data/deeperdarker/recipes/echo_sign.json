@@ -18,5 +18,6 @@
   "result": {
     "count": 3,
     "item": "deeperdarker:echo_sign"
-  }
+  },
+  "show_notification": true
 }
