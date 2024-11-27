@@ -17,6 +17,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3d;
+import org.joml.Vector3i;
 
 public class HeartOfTheDeepItem extends Item {
     public HeartOfTheDeepItem(Properties properties) {
@@ -25,13 +28,16 @@ public class HeartOfTheDeepItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack pItemStack, Level pLevel, Entity pEntity, int i, boolean bl) {
-        if (pLevel instanceof ServerLevel serverLevel) {
+        if (pLevel instanceof ServerLevel serverLevel && pEntity instanceof Player player && player.isHolding(stack -> stack == pItemStack)) {
             BlockPos pos = serverLevel.findNearestMapStructure(DDTags.Structures.WARDEN_HEART_PULSES, pEntity.blockPosition(), 100, false);
             if (pos != null) {
-                float probability = Mth.sqrt((float) pos.distSqr(pEntity.blockPosition())) == 0 ? 1 : (float) Mth.clamp(1.0f / (Math.log(Mth.sqrt((float) pos.distSqr(pEntity.blockPosition())) * 4.0f + 1)), 0.0f, 1.0f);
-                probability /= 5;
-                if (pEntity instanceof Player player && RandomSource.create().nextFloat() < probability) {
-                    player.playNotifySound(SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
+                Vec3 vec3i = pos.subtract(pEntity.getOnPos()).getCenter().normalize();
+                double dotProduct = pEntity.getLookAngle().dot(vec3i);
+                if (dotProduct >= 0) {
+                    float period = 10.0f / (float) dotProduct;
+                    if (pLevel.getGameTime() % Math.ceil(period) == 0) {
+                        player.playNotifySound(SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
+                    }
                 }
             }
         }
