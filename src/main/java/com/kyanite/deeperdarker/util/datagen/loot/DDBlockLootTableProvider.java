@@ -142,7 +142,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER);
         dropSelf(DDBlocks.SCULK_GLEAM);
         dropWhenSilkTouch(DDBlocks.POROUS_SCULK_GLEAM);
-        dropSelf(DDBlocks.GLEAM_GEL_BLOCK);
+        add(DDBlocks.GLEAM_GEL_BLOCK, createSilkTouchDispatchTable(DDBlocks.GLEAM_GEL_BLOCK, this.applyExplosionDecay(DDBlocks.GLEAM_GEL_BLOCK, LootItem.lootTableItem(DDItems.GLEAM_GEL).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0f, 1.0f))))));
         dropWhenSilkTouch(DDBlocks.SCULK_JAW);
 
         add(DDBlocks.SCULK_STONE_COAL_ORE, (block) -> this.createOreDrop(block, Items.COAL));

@@ -198,6 +198,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item." + DeeperDarker.MOD_ID + ".perks.immunity", "Immunity to:");
         translationBuilder.add("item." + DeeperDarker.MOD_ID + ".perks.dampens_vibrations", "Dampens Vibrations");
         translationBuilder.add(DDItems.REINFORCED_ECHO_SHARD, "Reinforced Echo Shard");
+        translationBuilder.add(DDItems.GLEAM_GEL, "Gleam Gel");
         translationBuilder.add(DDItems.WARDEN_CARAPACE, "Warden Carapace");
         translationBuilder.add(DDItems.HEART_OF_THE_DEEP, "Heart of the Deep");
         translationBuilder.add(DDItems.SOUL_CRYSTAL, "Soul Crystal");
