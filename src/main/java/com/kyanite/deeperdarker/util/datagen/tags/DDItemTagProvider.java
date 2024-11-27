@@ -93,6 +93,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);
         add(DDTags.Items.SCUTES, Items.SCUTE);
 
+        add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
+
         add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
     }

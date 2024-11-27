@@ -1,17 +1,13 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.entities.blocks.DDSkullBlockEntity;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import org.jetbrains.annotations.NotNull;
 
 public class ShatteredHeadBlock extends SkullBlock {
     public static final Type SHATTERED = new Type(){};
-//    public static final NoteBlockInstrument INSTRUMENT = NoteBlockInstrument.valueOf("DEEPERDARKER_SHATTERED");
 
     public ShatteredHeadBlock(Properties properties) {
         super(SHATTERED, properties);

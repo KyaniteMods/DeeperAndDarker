@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -241,7 +242,7 @@ public class DDBlocks {
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
 
-    public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of()/*.instrument(ShatteredHeadBlock.INSTRUMENT)*/.strength(1.0f).pushReaction(PushReaction.DESTROY)));
+    public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0f).pushReaction(PushReaction.DESTROY)));
     public static final Block SHATTERED_WALL_HEAD = registerWithoutItem("shattered_wall_head", new ShatteredWallHeadBlock(BlockBehaviour.Properties.of().strength(1.0f).dropsLike(SHATTERED_HEAD).pushReaction(PushReaction.DESTROY)));
 
     public static final Block OTHERSIDE_PORTAL = registerWithoutItem("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));

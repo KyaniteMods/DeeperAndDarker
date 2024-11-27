@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "item": "deeperdarker:gloomslate"
+    "item": "deeperdarker:cobbled_gloomslate"
   },
   "result": "deeperdarker:chiseled_gloomslate"
 }
