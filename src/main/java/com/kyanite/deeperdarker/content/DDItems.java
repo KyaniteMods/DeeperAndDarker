@@ -43,6 +43,7 @@ public class DDItems {
     public static final Item RESONARIUM = register("resonarium", new Item(new Item.Properties().fireResistant()));
     public static final Item RESONARIUM_PLATE = register("resonarium_plate", new Item(new Item.Properties().fireResistant()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
+    public static final Item GLEAM_GEL = register("gleam_gel", new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.4f).fast().effect(new MobEffectInstance(MobEffects.GLOWING, 140), 1.0f).build())));
 
     public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_PICKAXE = register("warden_pickaxe", new PickaxeItem(DDTiers.WARDEN, 1, -2.8f, new Item.Properties().rarity(Rarity.RARE).fireResistant()));

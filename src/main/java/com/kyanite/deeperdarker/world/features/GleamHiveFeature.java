@@ -11,10 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class GleamHiveFeature extends Feature<GleamHiveFeatureConfiguration> {
     public GleamHiveFeature(Codec<GleamHiveFeatureConfiguration> codec) {
@@ -24,6 +21,15 @@ public class GleamHiveFeature extends Feature<GleamHiveFeatureConfiguration> {
     @Override
     public boolean place(FeaturePlaceContext<GleamHiveFeatureConfiguration> context) {
         RandomSource random = context.random();
+        WorldGenLevel level = context.level();
+
+        if (level.getBlockState(context.origin().mutable().below()).isAir()) {
+            return false;
+        }
+
+        if (!level.getBlockState(context.origin().mutable()).isAir()) {
+            return false;
+        }
 
         int mainRadius = context.config().mainRadiusProvider().sample(random);
         int secondaryRadius = context.config().secondaryRadiusProvider().sample(random);
@@ -34,7 +40,16 @@ public class GleamHiveFeature extends Feature<GleamHiveFeatureConfiguration> {
         }
         BlockPos origin = context.origin().mutable().offset(0, mainRadius, 0);
         HashSet<BlockPos> set = generateBlob(context, origin, mainRadius);
-        set.addAll(generateBlob(context, origin.mutable().offset(context.random().nextInt(mainRadius), context.random().nextInt(mainRadius), context.random().nextInt(mainRadius)), secondaryRadius));
+
+        float i = 1.0f;
+        while (i > 1.0f/128.0f) {
+            if (context.random().nextFloat() < i) {
+                set.addAll(generateBlob(context, origin.mutable().offset(context.random().nextInt(mainRadius), context.random().nextInt(mainRadius), context.random().nextInt(mainRadius)), secondaryRadius));
+                i /= 4.0f;
+            } else {
+                break;
+            }
+        }
 
         HashSet<BlockPos> exposed = new HashSet<>();
         for (BlockPos pos : set) {
@@ -43,6 +58,7 @@ public class GleamHiveFeature extends Feature<GleamHiveFeatureConfiguration> {
             }
         }
         for (BlockPos pos : exposed) {
+            if (!canReplaceBlock(context.level().getBlockState(pos))) continue;
             boolean alternate = random.nextDouble() < context.config().useAlternateBlockChance();
             if (alternate) {
                 context.level().setBlock(pos, context.config().alternateOuterProvider().getState(random, pos), 2);

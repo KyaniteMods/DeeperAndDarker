@@ -83,7 +83,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOWING_ROOTS, features.getOrThrow(DDConfiguredFeatures.GLOWING_ROOTS), countPlacement(58, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, GLOWING_VINES, features.getOrThrow(DDConfiguredFeatures.GLOWING_VINES), countPlacement(64, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, GLOWING_VINES_SHORT, features.getOrThrow(DDConfiguredFeatures.GLOWING_VINES_SHORT), countPlacement(192, PlacementUtils.FULL_RANGE));
-        PlacementUtils.register(context, GLEAM_HIVE, features.getOrThrow(DDConfiguredFeatures.GLEAM_HIVE), countPlacement(16, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, GLEAM_HIVE, features.getOrThrow(DDConfiguredFeatures.GLEAM_HIVE), countPlacement(3, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, SURFACE_SCULK_STONE, features.getOrThrow(DDConfiguredFeatures.SURFACE_SCULK_STONE), countPlacement(55, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_DECORATION, features.getOrThrow(DDConfiguredFeatures.SCULK_PATCH), countPlacement(86, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
