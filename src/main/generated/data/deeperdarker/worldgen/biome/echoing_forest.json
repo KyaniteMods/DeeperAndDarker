@@ -35,7 +35,9 @@
       "minecraft:fossil_upper",
       "minecraft:fossil_lower"
     ],
-    [],
+    [
+      "deeperdarker:gleam_hive"
+    ],
     [],
     [
       "deeperdarker:echo_soil",

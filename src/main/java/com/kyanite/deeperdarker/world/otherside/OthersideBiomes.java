@@ -82,6 +82,7 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM_FOREST);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.ECHO_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DDPlacedFeatures.ECHO_SOIL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.GLEAM_HIVE);
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
