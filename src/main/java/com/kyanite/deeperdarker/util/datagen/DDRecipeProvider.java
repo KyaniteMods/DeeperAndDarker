@@ -131,6 +131,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .unlockedBy(getHasName(DDItems.SCULK_BONE), has(DDItems.SCULK_BONE))
                 .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL), has(DDItems.SOUL_CRYSTAL))
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
+
+        twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLEAM_GEL_BLOCK, DDItems.GLEAM_GEL);
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {
