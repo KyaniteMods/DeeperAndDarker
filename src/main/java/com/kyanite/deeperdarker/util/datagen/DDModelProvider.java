@@ -122,6 +122,7 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);
+        blockModelGenerators.family(DDBlocks.POROUS_SCULK_GLEAM);
 
         blockModelGenerators.family(DDBlocks.SCULK_STONE_COAL_ORE);
         blockModelGenerators.family(DDBlocks.SCULK_STONE_IRON_ORE);

@@ -141,6 +141,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK);
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER);
         dropSelf(DDBlocks.SCULK_GLEAM);
+        dropWhenSilkTouch(DDBlocks.POROUS_SCULK_GLEAM);
         dropWhenSilkTouch(DDBlocks.SCULK_JAW);
 
         add(DDBlocks.SCULK_STONE_COAL_ORE, (block) -> this.createOreDrop(block, Items.COAL));
