@@ -123,6 +123,14 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);
         blockModelGenerators.family(DDBlocks.POROUS_SCULK_GLEAM);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.GLEAM_GEL_BLOCK);
+        registerParented(blockModelGenerators, Blocks.HONEY_BLOCK, DDBlocks.GLEAM_GEL_BLOCK,
+                new Tuple<>(TextureSlot.UP, ModelLocationUtils.getModelLocation(DDBlocks.GLEAM_GEL_BLOCK)),
+                new Tuple<>(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(DDBlocks.GLEAM_GEL_BLOCK)),
+                new Tuple<>(TextureSlot.PARTICLE, ModelLocationUtils.getModelLocation(DDBlocks.GLEAM_GEL_BLOCK)),
+                new Tuple<>(TextureSlot.DOWN, ModelLocationUtils.getModelLocation(DDBlocks.GLEAM_GEL_BLOCK)));
+
+        blockModelGenerators.delegateItemModel(DDBlocks.GLEAM_GEL_BLOCK, ModelLocationUtils.getModelLocation(DDBlocks.GLEAM_GEL_BLOCK));
 
         blockModelGenerators.family(DDBlocks.SCULK_STONE_COAL_ORE);
         blockModelGenerators.family(DDBlocks.SCULK_STONE_IRON_ORE);

@@ -111,6 +111,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ECHO_SOIL, "Echo Soil");
         translationBuilder.add(DDBlocks.SCULK_GLEAM, "Sculk Gleam");
         translationBuilder.add(DDBlocks.POROUS_SCULK_GLEAM, "Porous Sculk Gleam");
+        translationBuilder.add(DDBlocks.GLEAM_GEL_BLOCK, "Gleam Gel Block");
         translationBuilder.add(DDBlocks.SCULK_JAW, "Sculk Jaw");
         translationBuilder.add(DDBlocks.SCULK_STONE_COAL_ORE, "Sculk Stone Coal Ore");
         translationBuilder.add(DDBlocks.SCULK_STONE_IRON_ORE, "Sculk Stone Iron Ore");

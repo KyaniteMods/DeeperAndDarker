@@ -204,6 +204,7 @@ public class DDBlocks {
     public static final Block CRYSTALLIZED_AMBER = register("crystallized_amber", new CrystallizedAmberBlock(BlockBehaviour.Properties.of().strength(0.3f, 3f).lightLevel(state -> 1).sound(SoundType.GLASS).mapColor(MapColor.COLOR_ORANGE).noOcclusion()));
     public static final Block SCULK_GLEAM = register("sculk_gleam", new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 15).mapColor(MapColor.SAND)));
     public static final Block POROUS_SCULK_GLEAM = register("porous_sculk_gleam", new Block(BlockBehaviour.Properties.copy(SCULK_GLEAM).lightLevel(state -> 9)));
+    public static final Block GLEAM_GEL_BLOCK = register("gleam_gel_block", new Block(BlockBehaviour.Properties.copy(SCULK_GLEAM).instabreak().noOcclusion()));
 
     public static final Block SCULK_STONE_COAL_ORE = register("sculk_stone_coal_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), UniformInt.of(1, 4)));
     public static final Block SCULK_STONE_IRON_ORE = register("sculk_stone_iron_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), ConstantInt.of(0)));

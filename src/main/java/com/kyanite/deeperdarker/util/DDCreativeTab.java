@@ -118,6 +118,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CRYSTALLIZED_AMBER);
         entries.accept(DDBlocks.SCULK_GLEAM);
         entries.accept(DDBlocks.POROUS_SCULK_GLEAM);
+        entries.accept(DDBlocks.GLEAM_GEL_BLOCK);
         entries.accept(DDBlocks.SOUNDPROOF_GLASS);
 
         entries.accept(DDBlocks.SCULK_STONE_COAL_ORE);
