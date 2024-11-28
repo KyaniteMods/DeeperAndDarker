@@ -65,6 +65,7 @@ public class DDSounds {
     public static final SoundEvent TRANSMITTER_LINK = register("item.transmitter.link");
     public static final SoundEvent TRANSMITTER_OPEN = register("item.transmitter.open");
     public static final SoundEvent TRANSMITTER_UNLINK = register("item.transmitter.unlink");
+    public static final SoundEvent SONOROUS_STAFF_SONIC_BOOM = register("item.sonorous_staff.sonic_boom");
 
     public static final Holder.Reference<SoundEvent> NOTE_BLOCK_IMITATE_SHATTERED = registerReference("block.note_block.imitate.shattered");
 
