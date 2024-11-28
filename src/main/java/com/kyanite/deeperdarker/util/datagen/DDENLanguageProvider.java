@@ -267,6 +267,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.item.transmitter.link", "Transmitter links");
         translationBuilder.add("subtitles.item.transmitter.open", "Transmitter transmits");
         translationBuilder.add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
+        translationBuilder.add("subtitles.item.sonorous_staff.sonic_boom", "Sonorous Staff booms");
         translationBuilder.add("subtitles.ambient.otherside.additions", "Warden dreams");
         translationBuilder.add("subtitles.entity.shattered.ambient", "Shattered growls");
         translationBuilder.add("subtitles.entity.shattered.hurt", "Shattered hurts");
