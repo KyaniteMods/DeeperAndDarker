@@ -406,5 +406,14 @@
       "entity/fish/hurt4"
     ],
     "subtitle": "subtitles.entity.angler_fish.hurt"
+  },
+  "item.sonorous_staff.sonic_boom": {
+    "sounds": [
+      "mob/warden/sonic_boom1",
+      "mob/warden/sonic_boom2",
+      "mob/warden/sonic_boom3",
+      "mob/warden/sonic_boom4"
+    ],
+    "subtitle": "subtitles.item.sonorous_staff.sonic_boom"
   }
 }
