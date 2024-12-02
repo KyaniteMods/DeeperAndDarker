@@ -318,7 +318,9 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.STALKER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SLUDGE_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
-        registerSpawnEgg(itemModelGenerator, DDItems.OVERCAST_POT_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DDItems.POTTY_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DDItems.POT_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DDItems.POTTER_SPAWN_EGG);
     }
 
     private static void createGildedLog(BlockModelGenerators blockModelGenerators, Block gildedLog, Block normalLog) {

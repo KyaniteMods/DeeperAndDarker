@@ -217,7 +217,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.STALKER_SPAWN_EGG, "Stalker Spawn Egg");
         translationBuilder.add(DDItems.SLUDGE_SPAWN_EGG, "Sludge Spawn Egg");
         translationBuilder.add(DDItems.SCULK_CENTIPEDE_SPAWN_EGG, "Sculk Centipede Spawn Egg");
-        translationBuilder.add(DDItems.OVERCAST_POT_SPAWN_EGG, "Overcast Pot Spawn Egg");
+        translationBuilder.add(DDItems.POTTY_SPAWN_EGG, "Potty Spawn Egg");
+        translationBuilder.add(DDItems.POT_SPAWN_EGG, "Pot Spawn Egg");
+        translationBuilder.add(DDItems.POTTER_SPAWN_EGG, "Potter Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", "Press %s to Boost");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled", "Boost disabled");
@@ -248,10 +250,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.STALKER, "Stalker");
         translationBuilder.add(DDEntities.SLUDGE, "Sludge");
         translationBuilder.add(DDEntities.SCULK_CENTIPEDE, "Sculk Centipede");
-        translationBuilder.add(DDEntities.OVERCAST_POT, "Overcast Pot");
-        translationBuilder.add(DDEntities.OVERCAST_POT.getDescriptionId() + ".potty", "Potty");
-        translationBuilder.add(DDEntities.OVERCAST_POT.getDescriptionId() + ".pot", "Pot");
-        translationBuilder.add(DDEntities.OVERCAST_POT.getDescriptionId() + ".potter", "Potter");
+        translationBuilder.add(DDEntities.POT, "Overcast Pot");
+        translationBuilder.add(DDEntities.POT.getDescriptionId() + ".potty", "Potty");
+        translationBuilder.add(DDEntities.POT.getDescriptionId() + ".pot", "Pot");
+        translationBuilder.add(DDEntities.POT.getDescriptionId() + ".potter", "Potter");
 
         translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
