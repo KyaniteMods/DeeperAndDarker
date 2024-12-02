@@ -3,6 +3,8 @@ package com.kyanite.deeperdarker.content.entities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -16,6 +18,7 @@ import net.minecraft.world.entity.animal.Salmon;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -80,7 +83,12 @@ public class AnglerFish extends AbstractFish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return null;
+        return new ItemStack(Items.WATER_BUCKET);
+    }
+
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
+        return InteractionResult.PASS;
     }
 
     static class AnglerFishAttackGoal extends MeleeAttackGoal {
