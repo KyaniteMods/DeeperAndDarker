@@ -23,6 +23,7 @@ public class DDEntities {
     public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", FabricEntityTypeBuilder.create(MobCategory.MONSTER, ShriekWorm::new).dimensions(EntityDimensions.fixed(1.0f, 5.7f)).trackRangeBlocks(10).build());
     public static final EntityType<Sludge> SLUDGE = register("sludge", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Sludge::new).dimensions(EntityDimensions.scalable(2.04f, 2.04f)).trackRangeBlocks(10).build());
     public static final EntityType<Stalker> STALKER = register("stalker", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Stalker::new).dimensions(EntityDimensions.fixed(1f, 4.4f)).trackRangeBlocks(10).build());
+    public static final EntityType<OvercastPot> OVERCAST_POT = register("overcast_pot", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.scalable(1.0f, 1.0f)).trackRangeBlocks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -39,6 +40,7 @@ public class DDEntities {
         DefaultAttributeRegistryAccessor.getRegistry().put(STALKER, Stalker.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SLUDGE, Sludge.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(OVERCAST_POT, OvercastPot.createAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {
@@ -54,5 +56,6 @@ public class DDEntities {
         SpawnPlacements.register(STALKER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(SLUDGE, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
         SpawnPlacements.register(SCULK_CENTIPEDE, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(OVERCAST_POT, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }
 }

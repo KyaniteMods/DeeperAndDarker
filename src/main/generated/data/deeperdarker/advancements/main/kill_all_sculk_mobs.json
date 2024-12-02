@@ -15,6 +15,20 @@
       },
       "trigger": "minecraft:player_killed_entity"
     },
+    "overcast_pot": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:overcast_pot"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "phantom": {
       "conditions": {
         "entity": [
@@ -171,6 +185,9 @@
     ],
     [
       "stalker"
+    ],
+    [
+      "overcast_pot"
     ]
   ],
   "rewards": {
