@@ -25,7 +25,7 @@ public class OvercastPot extends Monster {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new LeapAtTargetGoal(this, 0.4f));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.3, true));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.1, true));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.9));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.7));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 5));
@@ -41,7 +41,7 @@ public class OvercastPot extends Monster {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 20).add(Attributes.ATTACK_DAMAGE, 5).add(Attributes.MOVEMENT_SPEED, 0.6).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 40).add(Attributes.ATTACK_DAMAGE, 5).add(Attributes.MOVEMENT_SPEED, 0.3).build();
     }
 
     @Override
