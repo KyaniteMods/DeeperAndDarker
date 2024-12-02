@@ -31,6 +31,9 @@ public class DDModelLayers {
     public static ModelLayerLocation BLOOMING_GOLEM;
     public static ModelLayerLocation SHATTERED_HEAD;
     public static ModelLayerLocation SUNGLASSES;
+    public static ModelLayerLocation POTTY;
+    public static ModelLayerLocation POT;
+    public static ModelLayerLocation POTTER;
 
     private static ModelLayerLocation registerMain(String id) {
         return register(id, "main");
@@ -78,5 +81,8 @@ public class DDModelLayers {
         BLOOMING_GOLEM = registerMain("blooming_golem");
         SHATTERED_HEAD = registerMain("shattered_head");
         SUNGLASSES = registerMain("sunglasses");
+        POTTY = register("overcast_pot", "potty");
+        POT = register("overcast_pot", "pot");
+        POTTER = register("overcast_pot", "potter");
     }
 }

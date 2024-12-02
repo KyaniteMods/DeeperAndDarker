@@ -161,6 +161,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED)))
                 .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM)))
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER)))
+                .addCriterion("overcast_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.OVERCAST_POT)))
                 .addCriterion("sludge", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SLUDGE)))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(100))
