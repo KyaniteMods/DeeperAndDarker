@@ -23,7 +23,7 @@ public class DDEntities {
     public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", FabricEntityTypeBuilder.create(MobCategory.MONSTER, ShriekWorm::new).dimensions(EntityDimensions.fixed(1.0f, 5.7f)).trackRangeBlocks(10).build());
     public static final EntityType<Sludge> SLUDGE = register("sludge", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Sludge::new).dimensions(EntityDimensions.scalable(2.04f, 2.04f)).trackRangeBlocks(10).build());
     public static final EntityType<Stalker> STALKER = register("stalker", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Stalker::new).dimensions(EntityDimensions.fixed(1f, 4.4f)).trackRangeBlocks(10).build());
-    public static final EntityType<OvercastPot> OVERCAST_POT = register("overcast_pot", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.scalable(1.0f, 1.0f)).trackRangeBlocks(10).build());
+    public static final EntityType<OvercastPot> OVERCAST_POT = register("overcast_pot", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.fixed(0.85f, 1.2f)).trackRangeBlocks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
