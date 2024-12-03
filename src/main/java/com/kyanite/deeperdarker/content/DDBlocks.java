@@ -191,6 +191,7 @@ public class DDBlocks {
     public static final Block CUT_GLOOMSLATE_SLAB = register("cut_gloomslate_slab", new SlabBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE)));
     public static final Block CUT_GLOOMSLATE_WALL = register("cut_gloomslate_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE)));
     public static final Block CHISELED_GLOOMSLATE = register("chiseled_gloomslate", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE)));
+    public static final Block GLOOMSLATE_LIGHT = register("gloomslate_light", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE).lightLevel(state -> 15).mapColor(MapColor.SAND)));
 
     public static final Block SCULK_GRIME = register("sculk_grime", new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_BRICKS = register("sculk_grime_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));

@@ -112,6 +112,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CUT_GLOOMSLATE_SLAB);
         entries.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
         entries.accept(DDBlocks.CHISELED_GLOOMSLATE);
+        entries.accept(DDBlocks.GLOOMSLATE_LIGHT);
 
         entries.accept(DDBlocks.GLOOMY_SCULK);
         entries.accept(DDBlocks.GLOOMY_GEYSER);

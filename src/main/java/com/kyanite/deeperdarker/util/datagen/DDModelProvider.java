@@ -119,6 +119,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE);
         registerWall(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
         blockModelGenerators.family(DDBlocks.CHISELED_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_LIGHT);
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);

@@ -136,6 +136,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.CUT_GLOOMSLATE_SLAB, this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE);
+        dropSelf(DDBlocks.GLOOMSLATE_LIGHT);
 
         dropSelf(DDBlocks.ECHO_SOIL);
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK);
