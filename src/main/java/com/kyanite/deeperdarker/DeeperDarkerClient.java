@@ -117,7 +117,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOMING_GOLEM, BloomingGolemModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
-//        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POTTY, ShatteredHeadModel::createHeadModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POTTY, PottyModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POT, PotModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POTTER, PotterModel::createBodyModel);
 
