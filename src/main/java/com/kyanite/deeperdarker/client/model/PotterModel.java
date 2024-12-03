@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.client.model;
 
 import com.kyanite.deeperdarker.content.entities.OvercastPot;
 import com.kyanite.deeperdarker.content.entities.animations.PotterAnimation;
-import com.kyanite.deeperdarker.content.entities.animations.ShatteredAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HierarchicalModel;
