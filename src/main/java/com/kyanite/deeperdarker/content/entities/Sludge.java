@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -62,5 +63,10 @@ public class Sludge extends Slime {
             return DDSounds.SLUDGE_JUMP_SMALL;
         }
         return DDSounds.SLUDGE_JUMP;
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobType.SCULK;
     }
 }
