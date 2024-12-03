@@ -15,7 +15,21 @@
       },
       "trigger": "minecraft:player_killed_entity"
     },
-    "overcast_pot": {
+    "phantom": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:phantom"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "pot": {
       "conditions": {
         "entity": [
           {
@@ -29,14 +43,28 @@
       },
       "trigger": "minecraft:player_killed_entity"
     },
-    "phantom": {
+    "potter": {
       "conditions": {
         "entity": [
           {
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "type": "minecraft:phantom"
+              "type": "deeperdarker:potter"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "potty": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:potty"
             }
           }
         ]
@@ -107,6 +135,20 @@
             "entity": "this",
             "predicate": {
               "type": "deeperdarker:shriek_worm"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "sludge": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:sludge"
             }
           }
         ]
@@ -187,7 +229,16 @@
       "stalker"
     ],
     [
-      "overcast_pot"
+      "sludge"
+    ],
+    [
+      "potty"
+    ],
+    [
+      "pot"
+    ],
+    [
+      "potter"
     ]
   ],
   "rewards": {

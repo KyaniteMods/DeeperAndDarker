@@ -143,6 +143,23 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
 
         Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
+                        DDBlocks.GLOOMSLATE_BRICKS,
+                        Component.translatable(id + "kill_all_pots.title"),
+                        Component.translatable(id + "kill_all_pots.description"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false)
+                .addCriterion("potty", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTY)))
+                .addCriterion("pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POT)))
+                .addCriterion("potter", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTER)))
+                .requirements(RequirementsStrategy.AND)
+                .rewards(AdvancementRewards.Builder.experience(50))
+                .save(consumer, path("kill_all_pots"));
+
+        Advancement.Builder.advancement().parent(enterOtherside)
+                .display(
                         DDItems.WARDEN_SWORD,
                         Component.translatable(id + "kill_all_sculk_mobs.title"),
                         Component.translatable(id + "kill_all_sculk_mobs.description"),
