@@ -160,7 +160,9 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED)))
                 .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM)))
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER)))
-                .addCriterion("overcast_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POT)))
+                .addCriterion("potty", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTY)))
+                .addCriterion("pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POT)))
+                .addCriterion("potter", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTER)))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(consumer, path("kill_all_sculk_mobs"));
