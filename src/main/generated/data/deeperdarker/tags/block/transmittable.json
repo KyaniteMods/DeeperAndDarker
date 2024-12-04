@@ -1,5 +1,13 @@
 {
   "values": [
+    {
+      "id": "#minecraft:shulker_boxes",
+      "required": false
+    },
+    {
+      "id": "#minecraft:anvil",
+      "required": false
+    },
     "minecraft:crafting_table",
     "minecraft:stonecutter",
     "minecraft:cartography_table",
@@ -18,14 +26,6 @@
     "minecraft:dispenser",
     "minecraft:dropper",
     "minecraft:hopper",
-    "minecraft:trapped_chest",
-    {
-      "id": "#minecraft:shulker_boxes",
-      "required": false
-    },
-    {
-      "id": "#minecraft:anvil",
-      "required": false
-    }
+    "minecraft:trapped_chest"
   ]
 }

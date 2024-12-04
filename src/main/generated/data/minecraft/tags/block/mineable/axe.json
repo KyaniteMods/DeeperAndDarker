@@ -1,5 +1,7 @@
 {
   "values": [
+    "#deeperdarker:echo_logs",
+    "#deeperdarker:blooming_stems",
     "deeperdarker:echo_planks",
     "deeperdarker:echo_stairs",
     "deeperdarker:echo_slab",
@@ -22,8 +24,6 @@
     "deeperdarker:bloom_button",
     "deeperdarker:glowing_grass",
     "deeperdarker:gloomy_grass",
-    "deeperdarker:ice_lily",
-    "#deeperdarker:echo_logs",
-    "#deeperdarker:blooming_stems"
+    "deeperdarker:ice_lily"
   ]
 }

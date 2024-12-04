@@ -1,9 +1,9 @@
 {
   "values": [
-    "deeperdarker:gloomslate",
     {
       "id": "#minecraft:infiniburn_nether",
       "required": false
-    }
+    },
+    "deeperdarker:gloomslate"
   ]
 }
