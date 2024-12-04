@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "#c:ores",
+      "required": false
+    },
     "minecraft:magma_block",
     "minecraft:soul_sand",
     "minecraft:soul_soil",
     "deeperdarker:gloomy_sculk",
-    "deeperdarker:gloomslate",
-    {
-      "id": "#c:ores",
-      "required": false
-    }
+    "deeperdarker:gloomslate"
   ]
 }
