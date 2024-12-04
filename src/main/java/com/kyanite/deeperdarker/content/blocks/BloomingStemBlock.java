@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -34,10 +35,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @SuppressWarnings("deprecation, NullableProblems")
-public class BloomingStemBlock extends Block {
+public class BloomingStemBlock extends Block implements BonemealableBlock {
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
@@ -76,7 +78,6 @@ public class BloomingStemBlock extends Block {
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        if(checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)) return this.defaultBlockState();
         return this.defaultBlockState().setValue(UP, checkState(aboveState)).setValue(DOWN, checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)).setValue(NORTH, checkState(northState)).setValue(EAST, checkState(eastState)).setValue(SOUTH, checkState(southState)).setValue(WEST, checkState(westState));
     }
 
@@ -160,5 +161,36 @@ public class BloomingStemBlock extends Block {
         }
 
         return super.useItemOn(itemStack, state, level, blockPos, player, interactionHand, blockHitResult);
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+        return this.getBoneMealPos(levelReader, blockPos).isPresent();
+    }
+
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
+        serverLevel.setBlockAndUpdate(this.getBoneMealPos(serverLevel, blockPos).get(), this.defaultBlockState().setValue(DOWN, false));
+    }
+
+    private static final Direction[] GROWTH_DIRECTIONS = new Direction[]{Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
+
+    private Optional<BlockPos> getBoneMealPos(LevelReader levelReader, BlockPos pos) {
+        for (BlockPos blockPos : this.getConnectedBloomingStems(levelReader, pos).stream().sorted((pos1, pos2) -> {
+            if (pos1.getY() < pos2.getY()) return 1;
+            return pos1.getY() == pos2.getY() ? 0 : -1;
+        }).toList()) {
+            for (Direction direction : GROWTH_DIRECTIONS) {
+                if (levelReader.getBlockState(blockPos.relative(direction)).isAir()) {
+                    return Optional.of(blockPos.relative(direction));
+                }
+            }
+        }
+        return Optional.empty();
     }
 }
