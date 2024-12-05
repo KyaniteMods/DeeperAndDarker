@@ -296,7 +296,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.angler_fish.death", "Angler Fish dies");
 
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you towards the source...");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you toward the source...");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.title", "A Metropolis of Restless Souls");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.description", "Find an Ancient City");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
