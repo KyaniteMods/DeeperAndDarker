@@ -6,6 +6,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
@@ -201,6 +202,12 @@ public class SculkSnapper extends TamableAnimal {
         } else {
             super.handleEntityEvent(pId);
         }
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        this.setAge(Math.max(0, this.getAge()));
     }
 
     @Nullable
