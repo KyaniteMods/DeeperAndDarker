@@ -31,7 +31,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
 
         add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
-        add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you towards the source...");
+        add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you toward the source...");
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.title", "A Metropolis of Restless Souls");
         add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.description", "Find an Ancient City");
         add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
