@@ -1,3 +1,15 @@
 {
-  "type": "minecraft:entity"
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:angler_fish"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
 }

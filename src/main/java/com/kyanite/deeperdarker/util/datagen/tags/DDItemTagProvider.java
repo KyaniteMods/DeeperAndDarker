@@ -96,7 +96,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
 
-        add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES);
+        add(ItemTags.FISHES, DDItems.ANGLER_FISH, DDItems.COOKED_ANGLER_FISH);
+        add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES, DDItems.ANGLER_FISH, DDItems.COOKED_ANGLER_FISH);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
     }
 }

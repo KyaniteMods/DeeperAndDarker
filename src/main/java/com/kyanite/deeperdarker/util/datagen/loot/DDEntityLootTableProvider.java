@@ -40,7 +40,8 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
 
     @Override
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> biConsumer) {
-        biConsumer.accept(ANGLER_FISH, LootTable.lootTable());
+        biConsumer.accept(ANGLER_FISH, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(DDItems.ANGLER_FISH))));
         biConsumer.accept(SCULK_CENTIPEDE, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(Items.STRING)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))

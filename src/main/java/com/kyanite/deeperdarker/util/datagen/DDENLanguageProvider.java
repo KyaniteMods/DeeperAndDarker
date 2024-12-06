@@ -227,6 +227,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
+        translationBuilder.add(DDItems.ANGLER_FISH, "Raw Angler Fish");
+        translationBuilder.add(DDItems.COOKED_ANGLER_FISH, "Cooked Angler Fish");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");

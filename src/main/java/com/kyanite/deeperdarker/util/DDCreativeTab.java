@@ -162,6 +162,9 @@ public class DDCreativeTab {
 
         entries.accept(DDItems.BLOOM_BERRIES);
 
+        entries.accept(DDItems.ANGLER_FISH);
+        entries.accept(DDItems.COOKED_ANGLER_FISH);
+
         entries.accept(DDItems.GRIME_BALL);
         entries.accept(DDItems.GRIME_BRICK);
 
