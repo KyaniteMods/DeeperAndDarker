@@ -1,9 +1,11 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.simibubi.create.AllItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.*;
@@ -153,6 +155,11 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         wardenSmithing(output, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, DDItems.WARDEN_CHESTPLATE);
         wardenSmithing(output, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, DDItems.WARDEN_LEGGINGS);
         wardenSmithing(output, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS);
+
+        // Create
+        wardenSmithing(output, AllItems.NETHERITE_DIVING_HELMET, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_HELMET);
+        wardenSmithing(output, AllItems.NETHERITE_DIVING_BOOTS, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_BOOTS);
+        wardenSmithing(output, AllItems.NETHERITE_BACKTANK, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_BACKTANK);
     }
 
     private void resonariumSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
