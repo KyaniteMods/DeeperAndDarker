@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.util.datagen.loot;
 
+import com.kyanite.deeperdarker.compat.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
@@ -17,12 +18,12 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SetNbtFunction;
+import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -177,6 +178,19 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
 
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
+
+        add(DDCreateCompat.Blocks.WARDEN_BACKTANK, (block) -> {
+            LootTable.Builder builder = LootTable.lootTable();
+            LootItemCondition.Builder survivesExplosion = ExplosionCondition.survivesExplosion();
+            return builder.withPool(LootPool.lootPool()
+                    .when(survivesExplosion)
+                    .setRolls(ConstantValue.exactly(1))
+                    .add(LootItem.lootTableItem(DDCreateCompat.Items.WARDEN_BACKTANK)
+                            .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
+                                    .copy("VanillaTag", "{}", CopyNbtFunction.MergeStrategy.MERGE))
+                            .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
+                                    .copy("Air", "Air"))));
+        });
     }
 
     private void addVineAndPlant(Block plant, Block vine) {

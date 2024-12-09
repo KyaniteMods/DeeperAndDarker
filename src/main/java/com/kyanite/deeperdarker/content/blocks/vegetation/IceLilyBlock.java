@@ -71,7 +71,7 @@ public class IceLilyBlock extends BushBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+    public boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         FluidState fluidState = pLevel.getFluidState(pPos);
         FluidState fluidStateAbove = pLevel.getFluidState(pPos.above());
         return (fluidState.getType() == Fluids.WATER || pState.getBlock() instanceof IceBlock) && fluidStateAbove.getType() == Fluids.EMPTY;

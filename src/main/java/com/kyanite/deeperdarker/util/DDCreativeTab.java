@@ -1,9 +1,13 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.compat.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -214,6 +218,12 @@ public class DDCreativeTab {
             CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
             Painting.storeVariant(compoundTag, variant);
             entries.accept(itemStack);
+        }
+        if (FabricLoader.getInstance().isModLoaded("create")) {
+            ItemStack stack = new ItemStack(DDCreateCompat.Items.WARDEN_BACKTANK);
+            stack.getOrCreateTag().putInt("Air", BacktankUtil.maxAirWithoutEnchants());
+            entries.accept(stack);
+            entries.accept(DDCreateCompat.Items.WARDEN_DIVING_HELMET);
         }
 //        entries.accept(DDItems.SHATTERED_HEAD);
     }));
