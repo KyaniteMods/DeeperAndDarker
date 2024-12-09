@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.util.datagen.loot;
 
-import com.kyanite.deeperdarker.compat.DDCreateCompat;
+import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;

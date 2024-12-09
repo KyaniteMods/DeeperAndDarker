@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
+import com.kyanite.deeperdarker.compat.create.DDCreateCompatClient;
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
@@ -18,6 +19,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
@@ -71,6 +73,10 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.SIGN, SignRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.CRYSTALLIZED_AMBER, CrystallizedAmberBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SKULL, SkullBlockRenderer::new);
+
+        if (FabricLoader.getInstance().isModLoaded("create")) {
+            DDCreateCompatClient.init();
+        }
 
         DeeperDarker.LOGGER.info("Registering models");
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.WARDEN_HELMET, HelmetHornsModel::getTexturedModelData);
