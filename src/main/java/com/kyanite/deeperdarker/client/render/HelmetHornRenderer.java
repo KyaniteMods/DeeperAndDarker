@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.client.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.HelmetHornsModel;
-import com.kyanite.deeperdarker.compat.ShowMeYourSkinCompat;
+import com.kyanite.deeperdarker.compat.showmeyourskin.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.loader.api.FabricLoader;

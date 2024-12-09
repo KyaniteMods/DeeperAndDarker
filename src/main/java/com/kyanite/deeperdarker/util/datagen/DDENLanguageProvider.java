@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.compat.DDCreateCompat;
+import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.content.DDEntities;
@@ -405,6 +405,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         // Create
         translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET, "Warden Diving Helmet");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS, "Warden Diving Boots");
         translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK, "Warden Backtank");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE, "Warden Backtank Placeable");
     }
 }
