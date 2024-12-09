@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.compat.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.network.Messages;
@@ -59,6 +60,11 @@ public class DeeperDarker implements ModInitializer {
 		DDEffects.init();
 		AncientPaintings.init();
 		DDLootItemFunctions.init();
+		if (FabricLoader.getInstance().isModLoaded("create")) {
+			DDCreateCompat.Blocks.init();
+			DDCreateCompat.Items.init();
+			DDCreateCompat.REGISTRATE.register();
+		}
 
 		CustomPortalBuilder.beginPortal()
 				.customFrameTester(OTHERSIDE_FRAME_TESTER)

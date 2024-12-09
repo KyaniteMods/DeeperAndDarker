@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.util.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.compat.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
@@ -23,6 +24,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -241,6 +243,7 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
         blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
     @Override
@@ -324,6 +327,11 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.POTTY_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.POT_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.POTTER_SPAWN_EGG);
+
+        // Create
+        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_HELMET, ModelTemplates.FLAT_ITEM);
+        registerParented(itemModelGenerator, new ResourceLocation(DeeperDarker.MOD_ID, "block/warden_backtank/item"), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK));
+        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(Items.BARRIER), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE));
     }
 
     private static void createGildedLog(BlockModelGenerators blockModelGenerators, Block gildedLog, Block normalLog) {

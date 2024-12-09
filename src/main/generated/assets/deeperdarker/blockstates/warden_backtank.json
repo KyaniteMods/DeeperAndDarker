@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "deeperdarker:block/warden_backtank/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "deeperdarker:block/warden_backtank/block"
+    },
+    "facing=south": {
+      "model": "deeperdarker:block/warden_backtank/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "deeperdarker:block/warden_backtank/block",
+      "y": 270
+    }
+  }
+}

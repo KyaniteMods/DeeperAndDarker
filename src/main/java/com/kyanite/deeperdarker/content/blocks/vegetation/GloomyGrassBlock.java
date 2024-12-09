@@ -26,7 +26,7 @@ public class GloomyGrassBlock extends BushBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+    public boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         return pState.is(DDBlocks.GLOOMY_SCULK);
     }
 

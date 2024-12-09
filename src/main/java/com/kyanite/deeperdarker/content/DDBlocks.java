@@ -58,7 +58,7 @@ public class DDBlocks {
     public static final Block ECHO_LEAVES = register("echo_leaves", new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block ECHO_SAPLING = register("echo_sapling", new SaplingBlock(new EchoTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)) {
         @Override
-        protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        public boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
             return pState.is(DDTags.Blocks.ECHO_SOIL);
         }
     });
@@ -260,13 +260,13 @@ public class DDBlocks {
         return new FlowerPotBlock(block, properties);
     }
 
-    private static Block register(String name, Block block) {
+    public static Block register(String name, Block block) {
         Block registeredBlock = registerWithoutItem(name, block);
         DDItems.register(name, new BlockItem(block, new Item.Properties()));
         return registeredBlock;
     }
 
-    private static Block registerWithoutItem(String name, Block block) {
+    public static Block registerWithoutItem(String name, Block block) {
         return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, name), block);
     }
 

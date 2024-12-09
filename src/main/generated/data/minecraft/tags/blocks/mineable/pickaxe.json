@@ -83,6 +83,10 @@
     "deeperdarker:gloomslate_lapis_ore",
     "deeperdarker:gloomslate_diamond_ore",
     "deeperdarker:crystallized_amber",
-    "deeperdarker:ancient_vase"
+    "deeperdarker:ancient_vase",
+    {
+      "id": "deeperdarker:warden_backtank",
+      "required": false
+    }
   ]
 }

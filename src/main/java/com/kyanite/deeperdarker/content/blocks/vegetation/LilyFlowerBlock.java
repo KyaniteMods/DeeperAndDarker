@@ -23,7 +23,7 @@ public class LilyFlowerBlock extends FlowerBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+    public boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         return pState.is(DDBlocks.BLOOMING_SCULK_STONE) || super.mayPlaceOn(pState, pLevel, pPos);
     }
 

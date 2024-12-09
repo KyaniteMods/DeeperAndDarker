@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.util;
 
+import com.kyanite.deeperdarker.compat.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.util.datagen.*;
 import com.kyanite.deeperdarker.util.datagen.loot.DDBlockLootTableProvider;
@@ -17,10 +18,12 @@ import com.kyanite.deeperdarker.world.otherside.structures.DDPools;
 import com.kyanite.deeperdarker.world.otherside.structures.DDProcessorLists;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureSets;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructures;
+import io.github.fabricators_of_create.porting_lib.data.ExistingFileHelper;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.dimension.LevelStem;
