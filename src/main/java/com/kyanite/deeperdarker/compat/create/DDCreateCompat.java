@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.compat.create;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.compat.create.client.WardenBacktankInstance;
 import com.kyanite.deeperdarker.compat.create.client.WardenBacktankRenderer;
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
@@ -54,7 +55,7 @@ public class DDCreateCompat {
 
         static {
             BACKTANK = REGISTRATE.blockEntity("backtank", BacktankBlockEntity::new)
-                    .instance(() -> BacktankInstance::new)
+                    .instance(() -> WardenBacktankInstance::new)
                     .validBlock(() -> Blocks.WARDEN_BACKTANK)
                     .renderer(() -> WardenBacktankRenderer::new)
                     .register();
