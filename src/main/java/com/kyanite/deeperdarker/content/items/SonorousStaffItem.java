@@ -82,7 +82,7 @@ public class SonorousStaffItem extends Item {
             CompoundTag tag;
             if(stack.has(DataComponents.CUSTOM_DATA)) tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
             else tag = new CompoundTag();
-            tag.putBoolean("charged", player.getUseItem() == stack && stack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 123);
+            tag.putBoolean("charged", player.getUseItem() == stack && stack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 128);
             stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
         }
     }
