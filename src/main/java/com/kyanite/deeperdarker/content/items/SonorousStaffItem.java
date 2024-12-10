@@ -76,7 +76,7 @@ public class SonorousStaffItem extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(pEntity instanceof Player player) {
-            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 123);
+            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 128);
         }
     }
 
