@@ -1,11 +1,11 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -63,7 +63,7 @@ public class SonorousStaffItem extends Item {
             }
         }
 
-        player.playSound(SoundEvents.WARDEN_SONIC_BOOM);
+        player.playSound(DDSounds.STAFF_SONIC_BOOM.get());
         stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
         player.awardStat(Stats.ITEM_USED.get(this));
         player.getCooldowns().addCooldown(this, 20);

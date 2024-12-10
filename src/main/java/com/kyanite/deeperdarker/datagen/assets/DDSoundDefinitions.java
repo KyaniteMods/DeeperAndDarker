@@ -19,6 +19,7 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.MUSIC_BIOME_DEEPLANDS, definition().with(sound("ambience/otherside/deeplands")));
         add(DDSounds.MUSIC_BIOME_ECHOING_FOREST, definition().with(sound("ambience/otherside/echoing_forest")));
         add(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS, definition().with(sound("ambience/otherside/overcast_columns")));
+
         add(DDSounds.PORTAL_GROAN, subtitle("ambient.portal.groan").with(sound("ambience/portal/groan1"), sound("ambience/portal/groan2"), sound("ambience/portal/groan3"), sound("ambience/portal/groan4")));
         add(DDSounds.SCULK_STONE_BREAK, subtitle("block.generic.break").with(sound("block/sculk_stone/break1"), sound("block/sculk_stone/break2"), sound("block/sculk_stone/break3"), sound("block/sculk_stone/break4"), sound("block/sculk_stone/break5"), sound("block/sculk_stone/break6"), sound("block/sculk_stone/break7")));
         add(DDSounds.SCULK_STONE_FALL, definition().with(sound("block/sculk_stone/step1"), sound("block/sculk_stone/step2"), sound("block/sculk_stone/step3"), sound("block/sculk_stone/step4"), sound("block/sculk_stone/step5"), sound("block/sculk_stone/step6")));
@@ -30,6 +31,7 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.VASE_HIT, subtitle("block.generic.hit").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
         add(DDSounds.VASE_PLACE, subtitle("block.generic.place").with(sound("block/vase/place1"), sound("block/vase/place2"), sound("block/vase/place3"), sound("block/vase/place4")));
         add(DDSounds.VASE_STEP, subtitle("block.generic.footsteps").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
+
         add(DDSounds.ANGLER_FISH_DEATH, subtitle("entity.angler_fish.death").with(mcSound("entity/fish/hurt1"), mcSound("entity/fish/hurt2"), mcSound("entity/fish/hurt3"), mcSound("entity/fish/hurt4")));
         add(DDSounds.ANGLER_FISH_FLOP, subtitle("entity.angler_fish.flop").with(mcSound("entity/fish/flop1"), mcSound("entity/fish/flop2"), mcSound("entity/fish/flop3"), mcSound("entity/fish/flop4")));
         add(DDSounds.ANGLER_FISH_HURT, subtitle("entity.angler_fish.hurt").with(mcSound("entity/fish/hurt1"), mcSound("entity/fish/hurt2"), mcSound("entity/fish/hurt3"), mcSound("entity/fish/hurt4")));
@@ -49,10 +51,12 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.STALKER_DEATH, subtitle("entity.stalker.death").with(sound("entity/stalker/death")));
         add(DDSounds.STALKER_HURT, subtitle("entity.stalker.hurt").with(sound("entity/stalker/hurt1"), sound("entity/stalker/hurt2"), sound("entity/stalker/hurt3"), sound("entity/stalker/hurt4")));
         add(DDSounds.STALKER_NOTICE, subtitle("entity.stalker.notice").with(mcSound("mob/warden/tendril_clicks_1"), mcSound("mob/warden/tendril_clicks_2"), mcSound("mob/warden/tendril_clicks_3"), mcSound("mob/warden/tendril_clicks_4"), mcSound("mob/warden/tendril_clicks_5"), mcSound("mob/warden/tendril_clicks_6")));
+
         add(DDSounds.TRANSMITTER_ERROR, subtitle("item.transmitter.error").with(sound("item/transmitter/error")));
         add(DDSounds.TRANSMITTER_LINK, subtitle("item.transmitter.link").with(sound("item/transmitter/link")));
         add(DDSounds.TRANSMITTER_OPEN, subtitle("item.transmitter.open").with(sound("item/transmitter/open")));
         add(DDSounds.TRANSMITTER_UNLINK, subtitle("item.transmitter.unlink").with(sound("item/transmitter/unlink")));
+        add(DDSounds.STAFF_SONIC_BOOM, subtitle("item.sonorous_staff.sonic_boom").with(mcSound("mob/warden/sonic_boom1"), mcSound("mob/warden/sonic_boom2"), mcSound("mob/warden/sonic_boom3"), mcSound("mob/warden/sonic_boom4")));
     }
 
     private SoundDefinition subtitle(String subtitle) {

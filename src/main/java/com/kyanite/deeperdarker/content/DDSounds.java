@@ -61,6 +61,8 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMITTER_OPEN = register("item.transmitter.open");
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMITTER_UNLINK = register("item.transmitter.unlink");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> STAFF_SONIC_BOOM = register("item.sonorous_staff.sonic_boom");
+
     private static DeferredHolder<SoundEvent, SoundEvent> register(String sound) {
         return SOUND_EVENTS.register(sound, () -> SoundEvent.createVariableRangeEvent(DeeperDarker.rl(sound)));
     }

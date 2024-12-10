@@ -132,6 +132,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("subtitles.item.transmitter.link", "Transmitter links");
         add("subtitles.item.transmitter.open", "Transmitter transmits");
         add("subtitles.item.transmitter.unlink", "Transmitter unlinks");
+        add("subtitles.item.sonorous_staff.sonic_boom", "Staff booms");
 
         add("tag.item." + DeeperDarker.MOD_ID + ".bloom_stems", "Blooming Stems");
         add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
