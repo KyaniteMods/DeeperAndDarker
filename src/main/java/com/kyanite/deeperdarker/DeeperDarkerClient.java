@@ -117,7 +117,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         );
 
         ItemProperties.register(DDItems.SONOROUS_STAFF, DeeperDarker.rl("charge"), (itemStack, worldClient, livingEntity, i) ->
-            livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 123.0f : 0
+            livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 128.0f : 0
         );
 
         ClientTickEvents.START_WORLD_TICK.register(world -> {
