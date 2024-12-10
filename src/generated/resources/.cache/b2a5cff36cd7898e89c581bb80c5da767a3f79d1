@@ -1,4 +1,4 @@
-// 1.21	2024-12-10T14:51:37.7221959	Tags for minecraft:item mod id deeperdarker
+// 1.21	2024-12-10T15:29:03.9229172	Tags for minecraft:item mod id deeperdarker
 ece1a1e2a4a6f21c593a611ae9126ff341767989 data/c/tags/item/foods/cooked_fish.json
 47f7947e255ebbd71583d60670df2ea649e9d376 data/c/tags/item/foods/raw_fish.json
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/item/ores.json
@@ -11,6 +11,9 @@ a84d63160bb42d942778124d8368b9db10ef6ed2 data/c/tags/item/ores/gold.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/c/tags/item/ores/lapis.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/c/tags/item/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/item/stones.json
+df25b6646f8e4aea4f5aa3634dc892c62e1ec0e5 data/c/tags/item/tools/melee_weapon.json
+35edf6af55dc15babf01a19e8a9bfeb683aa7d22 data/c/tags/item/tools/mining_tool.json
+0e3397ceb6c7b735093668371c3fd0ad8d8410f0 data/c/tags/item/tools/ranged_weapon.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/item/bloom_stems.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/item/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/item/echo_logs.json

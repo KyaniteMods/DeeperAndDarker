@@ -86,6 +86,10 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.FISHES).add(DDItems.ANGLER_FISH.get(), DDItems.COOKED_ANGLER_FISH.get());
 
+        tag(Tags.Items.MINING_TOOL_TOOLS).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).add(DDItems.RESONARIUM_SWORD.get(), DDItems.WARDEN_SWORD.get());
+        tag(Tags.Items.RANGED_WEAPON_TOOLS).add(DDItems.SONOROUS_STAFF.get());
+
         tag(Tags.Items.FOODS_RAW_FISH).add(DDItems.ANGLER_FISH.get());
         tag(Tags.Items.FOODS_COOKED_FISH).add(DDItems.COOKED_ANGLER_FISH.get());
 
