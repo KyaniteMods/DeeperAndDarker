@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.content.DDItems;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -9,8 +8,8 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 public enum DDTiers implements Tier {
-    RESONARIUM(1193, 8, 3, BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 13, Ingredient.of(DDItems.RESONARIUM.get())),
-    WARDEN(2519, 10, 5, BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 18, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
+    RESONARIUM(1193, 8, 3, DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL, 13, Ingredient.of(DDItems.RESONARIUM.get())),
+    WARDEN(2519, 10, 5, DDTags.Blocks.INCORRECT_FOR_WARDEN_TOOL, 18, Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
 
     private final int durability;
     private final float speed;

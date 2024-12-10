@@ -120,5 +120,8 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
 
         tag(DDTags.Blocks.TRANSMITTABLE).addTags(BlockTags.SHULKER_BOXES, BlockTags.ANVIL).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST);
         tag(DDTags.Blocks.INFINIBURN_OTHERSIDE).addTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE.get());
+
+        tag(DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL);
+        tag(DDTags.Blocks.INCORRECT_FOR_WARDEN_TOOL);
     }
 }

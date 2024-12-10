@@ -30,12 +30,14 @@ public class DDTags {
         public static final TagKey<Block> OVERCAST_COLUMN_BASE = tag("overcast_column_base");
 
         public static final TagKey<Block> BLOOMING_POOL_REPLACEABLE = tag("blooming_pool_replaceable");
-
         public static final TagKey<Block> SCULK_VINE_PLACEABLE = tag("sculk_vine_placeable");
         public static final TagKey<Block> GLOWING_VINE_PLACEABLE = tag("glowing_vine_placeable");
 
         public static final TagKey<Block> TRANSMITTABLE = tag("transmittable");
         public static final TagKey<Block> INFINIBURN_OTHERSIDE = tag("infiniburn_otherside");
+
+        public static final TagKey<Block> INCORRECT_FOR_RESONARIUM_TOOL = tag("incorrect_for_resonarium_tool");
+        public static final TagKey<Block> INCORRECT_FOR_WARDEN_TOOL = tag("incorrect_for_warden_tool");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(DeeperDarker.rl(name));
