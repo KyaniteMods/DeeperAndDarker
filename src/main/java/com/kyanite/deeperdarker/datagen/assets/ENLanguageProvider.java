@@ -165,6 +165,7 @@ public class ENLanguageProvider extends LanguageProvider {
         }
 
         String name = builder.toString();
+        if(name.contains("Angler") && !name.contains("Cooked")) name = "Raw " + name;
         if(name.contains("Chest ")) name = name.replace("Chest ", "") + " With Chest";
         if(name.contains("Lapis")) name = name.replace("Lapis", "Lapis Lazuli");
         if(name.contains("Of The")) name = name.replace("Of The", "of the");

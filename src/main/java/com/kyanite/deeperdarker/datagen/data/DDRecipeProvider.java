@@ -151,6 +151,10 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         smelting(DDBlocks.GLOOMY_CACTUS, RecipeCategory.MISC, Items.ORANGE_DYE, 1f, output);
         smelting(DDItems.GRIME_BALL, RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.2f, output);
 
+        smelting(DDItems.ANGLER_FISH, RecipeCategory.FOOD, DDItems.COOKED_ANGLER_FISH, 0.35f, output);
+        smoking(DDItems.ANGLER_FISH, RecipeCategory.FOOD, DDItems.COOKED_ANGLER_FISH, 0.35f, output);
+        campfire(DDItems.ANGLER_FISH, RecipeCategory.FOOD, DDItems.COOKED_ANGLER_FISH, 0.35f, output);
+
         oreSmelting(DDBlocks.SCULK_STONE_COAL_ORE, RecipeCategory.MISC, Items.COAL, 0.1f, "coal", output);
         oreSmelting(DDBlocks.SCULK_STONE_IRON_ORE, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, "iron_ingot", output);
         oreSmelting(DDBlocks.SCULK_STONE_COPPER_ORE, RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, "copper_ingot", output);
@@ -348,6 +352,14 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
     private void smelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, RecipeOutput output) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, 200).unlockedBy(getHasName(ingredient), has(ingredient)).save(output);
+    }
+
+    private void smoking(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, RecipeOutput output) {
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), category, result, experience, 100).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, DeeperDarker.rl(getItemName(result) + "_from_smoking"));
+    }
+
+    private void campfire(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, RecipeOutput output) {
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), category, result, experience, 600).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, DeeperDarker.rl(getItemName(result) + "_from_campfire_cooking"));
     }
 
     private void oreSmelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, String group, RecipeOutput output) {

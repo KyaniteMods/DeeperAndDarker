@@ -31,7 +31,9 @@ public class DDEntityLoot extends EntityLootSubProvider {
 
     @Override
     public void generate() {
-        add(DDEntities.ANGLER_FISH.get(), LootTable.lootTable());
+        add(DDEntities.ANGLER_FISH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(DDItems.ANGLER_FISH.get()))
+        ));
         add(DDEntities.SCULK_CENTIPEDE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(Items.STRING)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
@@ -46,7 +48,6 @@ public class DDEntityLoot extends EntityLootSubProvider {
         ));
         add(DDEntities.SCULK_SNAPPER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(DDItems.SOUL_DUST)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));
@@ -65,7 +66,6 @@ public class DDEntityLoot extends EntityLootSubProvider {
         ));
         add(DDEntities.STALKER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL)
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));

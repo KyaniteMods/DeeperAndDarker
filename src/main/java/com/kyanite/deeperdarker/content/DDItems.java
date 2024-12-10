@@ -37,6 +37,9 @@ public class DDItems {
     public static final DeferredItem<Item> BLOOM_BOAT = ITEMS.register("bloom_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
     public static final DeferredItem<Item> BLOOM_CHEST_BOAT = ITEMS.register("bloom_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
 
+    public static final DeferredItem<Item> ANGLER_FISH = ITEMS.registerSimpleItem("angler_fish");
+    public static final DeferredItem<Item> COOKED_ANGLER_FISH = ITEMS.registerSimpleItem("cooked_angler_fish");
+
     public static final DeferredItem<Item> SCULK_BONE = ITEMS.registerSimpleItem("sculk_bone");
     public static final DeferredItem<Item> SOUL_DUST = ITEMS.registerSimpleItem("soul_dust");
     public static final DeferredItem<Item> SOUL_CRYSTAL = ITEMS.registerSimpleItem("soul_crystal");

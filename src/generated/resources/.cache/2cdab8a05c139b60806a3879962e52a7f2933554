@@ -1,5 +1,6 @@
-// 1.21	2024-08-16T00:22:12.7894662	Item Models: deeperdarker
+// 1.21	2024-12-10T14:40:49.3748635	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
+f881938170f499585ba6c7f76f57e4296cfc2007 assets/deeperdarker/models/item/angler_fish.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
 f2108fa9acd703168e4f624814814d262e868c9b assets/deeperdarker/models/item/blooming_sculk_stone.json
@@ -28,6 +29,7 @@ b41de6c19aba158e254d2214f6b1873c3c1fbbe2 assets/deeperdarker/models/item/cobbled
 1efdf671344a524233dc6025ce4ade7431e7e840 assets/deeperdarker/models/item/cobbled_sculk_stone_slab.json
 89328e616967e970f638a1a85dc99021c95ea9f0 assets/deeperdarker/models/item/cobbled_sculk_stone_stairs.json
 a83a97c9a52c6f16a0d4dd3fcb6f498389378b84 assets/deeperdarker/models/item/cobbled_sculk_stone_wall.json
+fb988a84fe20e735bcb0a7fcd41ed0d02331087b assets/deeperdarker/models/item/cooked_angler_fish.json
 4513ac649c72f03bed009ed8f09133c9f5359e6f assets/deeperdarker/models/item/crystallized_amber.json
 2ffe2f7cebcf09c0f3eb69b2160667771e346348 assets/deeperdarker/models/item/cut_gloomslate.json
 a0e036cb7665388047ccdc5176b8adf7498cceb7 assets/deeperdarker/models/item/cut_gloomslate_slab.json

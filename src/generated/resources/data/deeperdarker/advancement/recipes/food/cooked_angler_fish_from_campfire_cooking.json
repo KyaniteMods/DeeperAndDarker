@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_angler_fish": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:angler_fish"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:cooked_angler_fish_from_campfire_cooking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_angler_fish"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:cooked_angler_fish_from_campfire_cooking"
+    ]
+  }
+}

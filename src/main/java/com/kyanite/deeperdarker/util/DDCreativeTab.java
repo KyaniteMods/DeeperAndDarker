@@ -187,6 +187,9 @@ public class DDCreativeTab {
             event.accept(DDItems.WARDEN_LEGGINGS);
             event.accept(DDItems.WARDEN_BOOTS);
 
+            event.accept(DDItems.ANGLER_FISH);
+            event.accept(DDItems.COOKED_ANGLER_FISH);
+
             event.accept(DDItems.SCULK_BONE);
             event.accept(DDItems.SOUL_DUST);
             event.accept(DDItems.SOUL_CRYSTAL);

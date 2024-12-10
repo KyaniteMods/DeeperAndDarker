@@ -199,6 +199,9 @@ public class DDItemModelProvider extends ItemModelProvider {
         armorItemModel(DDItems.WARDEN_LEGGINGS);
         armorItemModel(DDItems.WARDEN_BOOTS);
 
+        itemModel(DDItems.ANGLER_FISH, GENERATED);
+        itemModel(DDItems.COOKED_ANGLER_FISH, GENERATED);
+
         itemModel(DDItems.SCULK_BONE, GENERATED);
         itemModel(DDItems.SOUL_DUST, GENERATED);
         itemModel(DDItems.SOUL_CRYSTAL, GENERATED);

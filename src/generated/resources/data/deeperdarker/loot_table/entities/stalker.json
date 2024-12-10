@@ -8,11 +8,6 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            },
-            {
               "count": {
                 "type": "minecraft:uniform",
                 "max": 1.0,
