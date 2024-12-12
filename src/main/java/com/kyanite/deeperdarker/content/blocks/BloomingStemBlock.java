@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -23,6 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class BloomingStemBlock extends Block {
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_25;
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
@@ -41,12 +43,12 @@ public class BloomingStemBlock extends Block {
 
     public BloomingStemBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(UP, false).setValue(DOWN, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
+        builder.add(AGE, UP, DOWN, NORTH, EAST, SOUTH, WEST);
     }
 
     @Override
@@ -55,10 +57,10 @@ public class BloomingStemBlock extends Block {
         BlockGetter level = context.getLevel();
 
         BlockState belowState = level.getBlockState(pos.below());
-        Direction clickedDir = context.getClickedFace();
+        Direction clickedFace = context.getClickedFace();
 
         if(validBase(belowState)) return this.defaultBlockState().setValue(DOWN, true);
-        return this.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(clickedDir.getOpposite()), true);
+        return this.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(clickedFace.getOpposite()), true);
     }
 
     @Override
@@ -94,6 +96,48 @@ public class BloomingStemBlock extends Block {
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if(!state.canSurvive(level, pos)) level.destroyBlock(pos, true);
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(state.getValue(AGE) >= 25) return;
+        if(!level.isEmptyBlock(pos.above())) return;
+        if(this.defaultBlockState().is(DDBlocks.STRIPPED_BLOOMING_STEM)) return;
+
+        int age = Math.min(25, state.getValue(AGE) + random.nextInt(1, 4));
+        state = state.setValue(AGE, age);
+        BlockState newState = this.defaultBlockState().setValue(AGE, age);
+        level.setBlock(pos, state, 3);
+
+        int connections = 0;
+        for(Direction direction : Direction.values()) {
+            if(state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) connections++;
+            if(connections == 2) return;
+        }
+
+        if(random.nextFloat() < 0.05f) return;
+        if(connections == 1) {
+            if(state.getValue(DOWN) && random.nextFloat() < 0.3f) { // turn
+                Direction d1 = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+
+                if(random.nextFloat() < 0.4f) { // branch
+                    Direction d2 = Direction.getRandom(random);
+                    if(random.nextFloat() < 0.5f) d2 = Direction.UP;
+                    else while(d2 == Direction.DOWN || d2 == d1) d2 = Direction.getRandom(random);
+
+                    if(level.isEmptyBlock(pos.relative(d2))) {
+                        level.setBlock(pos.relative(d2), newState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(d2.getOpposite()), true), 3);
+                    }
+                }
+
+                if(level.isEmptyBlock(pos.relative(d1))) {
+                    level.setBlock(pos.relative(d1), newState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(d1.getOpposite()), true), 3);
+                    return;
+                }
+            }
+
+            level.setBlock(pos.above(), newState.setValue(DOWN, true), 3);
+        }
     }
 
     @Override
