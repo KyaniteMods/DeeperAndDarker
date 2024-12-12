@@ -89,7 +89,7 @@ public class DDBlocks {
 
     public static final Block POTTED_ECHO_SAPLING = registerWithoutItem("potted_echo_sapling", createFlowerPot(ECHO_SAPLING));
 
-    public static final Block BLOOMING_STEM = register("blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).mapColor(MapColor.COLOR_CYAN).sound(SoundType.WOOD).ignitedByLava().noOcclusion()));
+    public static final Block BLOOMING_STEM = register("blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).randomTicks().sound(SoundType.WOOD).mapColor(MapColor.COLOR_CYAN).ignitedByLava().noOcclusion()));
     public static final Block STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", new BloomingStemBlock(BlockBehaviour.Properties.ofFullCopy(BLOOMING_STEM).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_PLANKS = register("bloom_planks", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN)));
     public static final Block BLOOM_STAIRS = register("bloom_stairs", new StairBlock(BLOOM_PLANKS.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN)));
