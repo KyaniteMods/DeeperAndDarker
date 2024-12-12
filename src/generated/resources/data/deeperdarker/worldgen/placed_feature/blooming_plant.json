@@ -15,6 +15,7 @@
         "state": {
           "Name": "deeperdarker:blooming_stem",
           "Properties": {
+            "age": "0",
             "down": "false",
             "east": "false",
             "north": "false",

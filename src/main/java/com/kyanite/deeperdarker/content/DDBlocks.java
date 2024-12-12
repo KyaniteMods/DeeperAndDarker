@@ -86,7 +86,7 @@ public class DDBlocks {
     private static final BlockSetType BLOOM_SET = BlockSetType.register(new BlockSetType("bloom"));
     public static final WoodType BLOOM = WoodType.register(new WoodType("bloom", BLOOM_SET));
     
-    public static final DeferredBlock<Block> BLOOMING_STEM = register("blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).sound(SoundType.WOOD).mapColor(MapColor.COLOR_CYAN).ignitedByLava().noOcclusion()));
+    public static final DeferredBlock<Block> BLOOMING_STEM = register("blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).randomTicks().sound(SoundType.WOOD).mapColor(MapColor.COLOR_CYAN).ignitedByLava().noOcclusion()));
     public static final DeferredBlock<Block> STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.ofFullCopy(BLOOMING_STEM.get()).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<Block> BLOOM_PLANKS = register("bloom_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
     public static final DeferredBlock<StairBlock> BLOOM_STAIRS = register("bloom_stairs", () -> new FlammableStairBlock(BLOOM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
