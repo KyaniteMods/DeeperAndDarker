@@ -1,4 +1,4 @@
-// 1.21	2024-12-10T14:40:49.385672	Loot Tables
+// 1.21	2024-12-11T18:41:22.4835993	Loot Tables
 bc6179f8206f619874471f98bbf66966c53d7ab3 data/deeperdarker/loot_table/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_table/blocks/blooming_moss_block.json
 83d5214bb3d38ec9ae0d4f6323a2757cc8cd9cdd data/deeperdarker/loot_table/blocks/blooming_sculk_stone.json
@@ -140,7 +140,7 @@ ba996a6695d45c4fd504a9dc63a9fe4f42390193 data/deeperdarker/loot_table/chests/anc
 dca56509a07a2eb5f662869366315401c0c5910b data/deeperdarker/loot_table/chests/ancient_temple_secret.json
 d41eeae40507e3d59fd9b702052a93959069a3f9 data/deeperdarker/loot_table/chests/ancient_temple_storage.json
 8b9e063819c0e102ee3fd7ab40399eef5e058871 data/deeperdarker/loot_table/chests/crystallized_amber.json
-5b27becca706d8ec58f7721d96367c6836be7397 data/deeperdarker/loot_table/entities/angler_fish.json
+99e143baaec84ab408adda35ff1c54f5d3528e29 data/deeperdarker/loot_table/entities/angler_fish.json
 226aef2b29ea57054b38d85828ea477615af4c8e data/deeperdarker/loot_table/entities/sculk_centipede.json
 16e997baffb2a28f36b004de081a88359674fc84 data/deeperdarker/loot_table/entities/sculk_leech.json
 74fe7bedc1ebec17d211b0f1f1c2166c5121ffcc data/deeperdarker/loot_table/entities/sculk_snapper.json
