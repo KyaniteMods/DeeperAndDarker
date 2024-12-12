@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.mojang.datafixers.types.Type;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSkullBlockEntity;
+import com.kyanite.deeperdarker.content.entities.blocks.*;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +19,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<DDSignBlockEntity> SIGN;
     public static final BlockEntityType<CrystallizedAmberBlockEntity> CRYSTALLIZED_AMBER;
     public static final BlockEntityType<DDSkullBlockEntity> SKULL;
+    public static final BlockEntityType<SculkJawBlockEntity> SCULK_JAW;
 
     static {
         HANGING_SIGN = create("hanging_sign", BlockEntityType.Builder.of(
@@ -38,6 +40,10 @@ public class DDBlockEntities {
                 DDSkullBlockEntity::new,
                 DDBlocks.SHATTERED_HEAD,
                 DDBlocks.SHATTERED_WALL_HEAD
+        ));
+        SCULK_JAW = create("sculk_jaw", BlockEntityType.Builder.of(
+                SculkJawBlockEntity::new,
+                DDBlocks.SCULK_JAW
         ));
     }
 
