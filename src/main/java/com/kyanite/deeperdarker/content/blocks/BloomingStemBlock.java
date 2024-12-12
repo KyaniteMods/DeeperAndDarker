@@ -1,52 +1,36 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import net.minecraft.advancements.CriteriaTriggers;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
-@SuppressWarnings("deprecation, NullableProblems")
-public class BloomingStemBlock extends Block implements BonemealableBlock {
+@SuppressWarnings("NullableProblems")
+public class BloomingStemBlock extends Block {
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
-    private static final VoxelShape[] shapes = {
-            Block.box(5, 5, 5, 11, 11, 11),  // CUBE
+    private static final VoxelShape[] SHAPES = {
+            Block.box(5, 5, 5, 11, 11, 11),  // CENTER
             Block.box(5, 11, 5, 11, 16, 11), // UP
             Block.box(5, 0, 5, 11, 5, 11),   // DOWN
             Block.box(5, 5, 0, 11, 11, 5),   // NORTH
@@ -55,141 +39,80 @@ public class BloomingStemBlock extends Block implements BonemealableBlock {
             Block.box(0, 5, 5, 5, 11, 11)    // WEST
     };
 
-    public BloomingStemBlock(Properties pProperties) {
-        super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, true).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
+    public BloomingStemBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        BlockPos pos = pContext.getClickedPos();
-        BlockGetter level = pContext.getLevel();
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockPos pos = context.getClickedPos();
+        BlockGetter level = context.getLevel();
 
-        BlockState aboveState = level.getBlockState(pos.above());
         BlockState belowState = level.getBlockState(pos.below());
         BlockState northState = level.getBlockState(pos.north());
         BlockState eastState = level.getBlockState(pos.east());
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        return this.defaultBlockState().setValue(UP, checkState(aboveState)).setValue(DOWN, checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE)).setValue(NORTH, checkState(northState)).setValue(EAST, checkState(eastState)).setValue(SOUTH, checkState(southState)).setValue(WEST, checkState(westState));
+        if(validBase(belowState)) return this.defaultBlockState().setValue(DOWN, true);
+        return this.defaultBlockState().setValue(NORTH, isStem(northState)).setValue(EAST, isStem(eastState)).setValue(SOUTH, isStem(southState)).setValue(WEST, isStem(westState));
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape shape = shapes[0];
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        VoxelShape shape = SHAPES[0];
 
-        if(pState.getValue(UP)) shape = Shapes.join(shape, shapes[1], BooleanOp.OR);
-        if(pState.getValue(DOWN)) shape = Shapes.join(shape, shapes[2], BooleanOp.OR);
-        if(pState.getValue(NORTH)) shape = Shapes.join(shape, shapes[3], BooleanOp.OR);
-        if(pState.getValue(EAST)) shape = Shapes.join(shape, shapes[4], BooleanOp.OR);
-        if(pState.getValue(SOUTH)) shape = Shapes.join(shape, shapes[5], BooleanOp.OR);
-        if(pState.getValue(WEST)) shape = Shapes.join(shape, shapes[6], BooleanOp.OR);
+        if(state.getValue(UP)) shape = Shapes.join(shape, SHAPES[1], BooleanOp.OR);
+        if(state.getValue(DOWN)) shape = Shapes.join(shape, SHAPES[2], BooleanOp.OR);
+        if(state.getValue(NORTH)) shape = Shapes.join(shape, SHAPES[3], BooleanOp.OR);
+        if(state.getValue(EAST)) shape = Shapes.join(shape, SHAPES[4], BooleanOp.OR);
+        if(state.getValue(SOUTH)) shape = Shapes.join(shape, SHAPES[5], BooleanOp.OR);
+        if(state.getValue(WEST)) shape = Shapes.join(shape, SHAPES[6], BooleanOp.OR);
 
         return shape;
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
-        if(!pState.canSurvive(pLevel, pPos)) {
-            pLevel.scheduleTick(pPos, this, 1);
-            return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if(!state.canSurvive(level, pos)) {
+            level.scheduleTick(pos, this, 1);
+            return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
         }
 
-        if(pDirection == Direction.DOWN && pNeighborState.is(DDBlocks.BLOOMING_SCULK_STONE)) return pState.setValue(DOWN, true);
-        return pState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(pDirection), checkState(pNeighborState));
+        if(direction == Direction.DOWN && neighborState.is(DDBlocks.BLOOMING_SCULK_STONE)) return state.setValue(DOWN, true);
+        if(direction.getAxis().isHorizontal() && isStem(neighborState) && validBase(level.getBlockState(neighborPos.below()))) return state;
+        return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), isStem(neighborState));
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if(!pState.canSurvive(pLevel, pPos)) {
-            pLevel.destroyBlock(pPos, true);
-        }
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(!state.canSurvive(level, pos)) level.destroyBlock(pos, true);
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        if (canSurvive(pLevel.getBlockState(pPos.below()))) return true;
-        Set<BlockPos> connectedBloomingStems = this.getConnectedBloomingStems(pLevel, pPos);
-        for (BlockPos pos : connectedBloomingStems) {
-            if (pLevel.getBlockState(pos).getValue(DOWN) && pLevel.getBlockState(pos.below()).is(DDBlocks.BLOOMING_SCULK_STONE)) return true;
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        if(validBase(level.getBlockState(pos.below()))) return true;
+
+        for(Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockState adjacent = level.getBlockState(pos.relative(direction));
+            BlockState belowAdjacent = level.getBlockState(pos.relative(direction).below());
+            if(isStem(adjacent) && validBase(belowAdjacent) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) return true;
         }
+
         return false;
     }
 
-    public Set<BlockPos> getConnectedBloomingStems(LevelReader pLevel, BlockPos pPos) {
-        return this.getConnectedBloomingStems(pLevel, pPos, new HashSet<>());
+    private boolean validBase(BlockState state) {
+        return isStem(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE);
     }
 
-    private Set<BlockPos> getConnectedBloomingStems(LevelReader pLevel, BlockPos pPos, Set<BlockPos> stemPositions) {
-        if (checkState(pLevel.getBlockState(pPos))) stemPositions.add(pPos);
-        for (Direction direction : Direction.values()) {
-            if (checkState(pLevel.getBlockState(pPos.relative(direction))) && !stemPositions.contains(pPos.relative(direction))) {
-                this.getConnectedBloomingStems(pLevel, pPos.relative(direction), stemPositions);
-            }
-        }
-        return stemPositions;
-    }
-
-    private boolean canSurvive(BlockState state) {
-        return checkState(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE);
-    }
-
-    private boolean checkState(BlockState state) {
-        return state.is(DDBlocks.BLOOMING_STEM) || state.is(DDBlocks.STRIPPED_BLOOMING_STEM);
-    }
-
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack stack = player.getItemInHand(interactionHand);
-        BlockState strippedBlockState = DDBlocks.STRIPPED_BLOOMING_STEM.defaultBlockState().setValue(UP, state.getValue(UP)).setValue(DOWN, state.getValue(DOWN)).setValue(NORTH, state.getValue(NORTH)).setValue(EAST, state.getValue(EAST)).setValue(SOUTH, state.getValue(SOUTH)).setValue(WEST, state.getValue(WEST));
-        if (stack.is(ItemTags.AXES)) {
-            level.playSound(player, blockPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, stack);
-            }
-            level.setBlock(blockPos, strippedBlockState, 11);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, strippedBlockState));
-            stack.hurtAndBreak(1, player, lambdaPlayer -> lambdaPlayer.broadcastBreakEvent(interactionHand));
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-
-        return super.use(state, level, blockPos, player, interactionHand, blockHitResult);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
-        return this.getBoneMealPos(levelReader, blockPos).isPresent();
-    }
-
-    @Override
-    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        serverLevel.setBlockAndUpdate(this.getBoneMealPos(serverLevel, blockPos).get(), this.defaultBlockState().setValue(DOWN, false));
-    }
-
-    private static final Direction[] GROWTH_DIRECTIONS = new Direction[]{Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
-
-    private Optional<BlockPos> getBoneMealPos(LevelReader levelReader, BlockPos pos) {
-        for (BlockPos blockPos : this.getConnectedBloomingStems(levelReader, pos).stream().sorted((pos1, pos2) -> {
-            if (pos1.getY() < pos2.getY()) return 1;
-            return pos1.getY() == pos2.getY() ? 0 : -1;
-        }).toList()) {
-            for (Direction direction : GROWTH_DIRECTIONS) {
-                if (levelReader.getBlockState(blockPos.relative(direction)).isAir()) {
-                    return Optional.of(blockPos.relative(direction));
-                }
-            }
-        }
-        return Optional.empty();
+    private boolean isStem(BlockState state) {
+        return state.is(DDTags.Blocks.BLOOMING_STEMS);
     }
 }
