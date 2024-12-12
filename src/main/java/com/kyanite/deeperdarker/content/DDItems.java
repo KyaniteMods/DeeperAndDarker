@@ -37,8 +37,8 @@ public class DDItems {
     public static final DeferredItem<Item> BLOOM_BOAT = ITEMS.register("bloom_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
     public static final DeferredItem<Item> BLOOM_CHEST_BOAT = ITEMS.register("bloom_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
 
-    public static final DeferredItem<Item> ANGLER_FISH = ITEMS.registerSimpleItem("angler_fish");
-    public static final DeferredItem<Item> COOKED_ANGLER_FISH = ITEMS.registerSimpleItem("cooked_angler_fish");
+    public static final DeferredItem<Item> ANGLER_FISH = ITEMS.registerSimpleItem("angler_fish", new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build()));
+    public static final DeferredItem<Item> COOKED_ANGLER_FISH = ITEMS.registerSimpleItem("cooked_angler_fish", new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()));
 
     public static final DeferredItem<Item> SCULK_BONE = ITEMS.registerSimpleItem("sculk_bone");
     public static final DeferredItem<Item> SOUL_DUST = ITEMS.registerSimpleItem("soul_dust");
@@ -46,8 +46,8 @@ public class DDItems {
     public static final DeferredItem<Item> RESONARIUM = ITEMS.registerSimpleItem("resonarium");
     public static final DeferredItem<Item> RESONARIUM_PLATE = ITEMS.registerSimpleItem("resonarium_plate");
     public static final DeferredItem<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new WardenHeartItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.register("warden_carapace", () -> new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.register("reinforced_echo_shard", () -> new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
+    public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.registerSimpleItem("warden_carapace", new Item.Properties().rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.registerSimpleItem("reinforced_echo_shard", new Item.Properties().rarity(Rarity.RARE).fireResistant());
 
     public static final DeferredItem<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
