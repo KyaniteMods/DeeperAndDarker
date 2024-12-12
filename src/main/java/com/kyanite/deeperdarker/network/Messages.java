@@ -5,24 +5,30 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
+import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class Messages {
-    public static void registerMessages() {
+    public static void registerReceivers() {
         ServerPlayNetworking.registerGlobalReceiver(SoulElytraBoostPacket.TYPE, (packet, player, responseSender) -> {
-            Level level = player.level();
+            ServerLevel level = player.serverLevel();
             if (DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) {
                 player.displayClientMessage(Component.translatable(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled").setStyle(Style.EMPTY.withColor(ChatFormatting.RED)), true);
                 return;
             }
             if(player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA) && DeeperDarker.CONFIG.server.soulElytraCooldown() != -1) {
-                FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
-                level.addFreshEntity(rocket);
+                Vec3 lookAngle = player.getLookAngle();
+                player.addDeltaMovement(lookAngle.multiply(1.5f, 1.5f, 1.5f));
+                responseSender.sendPacket(new ClientboundSetEntityMotionPacket(player));
+                lookAngle = lookAngle.reverse();
+                for (int i = 0; i < 5; i++) {
+                    level.sendParticles(ParticleTypes.SONIC_BOOM, player.getX() + lookAngle.x() * i, player.getY() + lookAngle.y() * i, player.getZ() + lookAngle.z() * i, 1, 0, 0, 0, 0);
+                }
                 player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA, DeeperDarker.CONFIG.server.soulElytraCooldown());
             }
         });

@@ -123,7 +123,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             Minecraft client = Minecraft.getInstance();
             if (client.player == null) return;
             ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
-            if (itemStack.is(DDItems.SOUL_ELYTRA) && client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime()) == 0 && client.player.isFallFlying() && Keybinds.BOOST.isDown()) {
+            if (itemStack.is(DDItems.SOUL_ELYTRA) && client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, 0.0f) == 0 && client.player.isFallFlying() && Keybinds.BOOST.isDown()) {
                 ClientPlayNetworking.send(new SoulElytraBoostPacket(PacketByteBufs.empty()));
             }
         });
