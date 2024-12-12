@@ -113,6 +113,6 @@ public class DeeperDarker implements ModInitializer {
             }
         });
 
-		Messages.registerMessages();
+		Messages.registerReceivers();
 	}
 }
