@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -32,8 +33,8 @@ public class BloomingStemBlock extends Block {
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
-    private static final VoxelShape[] shapes = {
-            Block.box(5, 5, 5, 11, 11, 11),  // CUBE
+    private static final VoxelShape[] SHAPES = {
+            Block.box(5, 5, 5, 11, 11, 11),  // CENTER
             Block.box(5, 11, 5, 11, 16, 11), // UP
             Block.box(5, 0, 5, 11, 5, 11),   // DOWN
             Block.box(5, 5, 0, 11, 11, 5),   // NORTH
@@ -44,7 +45,7 @@ public class BloomingStemBlock extends Block {
 
     public BloomingStemBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, true).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false));
     }
 
     @Override
@@ -63,20 +64,20 @@ public class BloomingStemBlock extends Block {
         BlockState southState = level.getBlockState(pos.south());
         BlockState westState = level.getBlockState(pos.west());
 
-        if(checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return this.defaultBlockState();
-        return this.defaultBlockState().setValue(DOWN, checkState(belowState) || belowState.is(DDBlocks.BLOOMING_SCULK_STONE.get())).setValue(NORTH, checkState(northState)).setValue(EAST, checkState(eastState)).setValue(SOUTH, checkState(southState)).setValue(WEST, checkState(westState));
+        if(validBase(belowState)) return this.defaultBlockState().setValue(DOWN, true);
+        return this.defaultBlockState().setValue(NORTH, isStem(northState)).setValue(EAST, isStem(eastState)).setValue(SOUTH, isStem(southState)).setValue(WEST, isStem(westState));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        VoxelShape shape = shapes[0];
+        VoxelShape shape = SHAPES[0];
 
-        if(state.getValue(UP)) shape = Shapes.join(shape, shapes[1], BooleanOp.OR);
-        if(state.getValue(DOWN)) shape = Shapes.join(shape, shapes[2], BooleanOp.OR);
-        if(state.getValue(NORTH)) shape = Shapes.join(shape, shapes[3], BooleanOp.OR);
-        if(state.getValue(EAST)) shape = Shapes.join(shape, shapes[4], BooleanOp.OR);
-        if(state.getValue(SOUTH)) shape = Shapes.join(shape, shapes[5], BooleanOp.OR);
-        if(state.getValue(WEST)) shape = Shapes.join(shape, shapes[6], BooleanOp.OR);
+        if(state.getValue(UP)) shape = Shapes.join(shape, SHAPES[1], BooleanOp.OR);
+        if(state.getValue(DOWN)) shape = Shapes.join(shape, SHAPES[2], BooleanOp.OR);
+        if(state.getValue(NORTH)) shape = Shapes.join(shape, SHAPES[3], BooleanOp.OR);
+        if(state.getValue(EAST)) shape = Shapes.join(shape, SHAPES[4], BooleanOp.OR);
+        if(state.getValue(SOUTH)) shape = Shapes.join(shape, SHAPES[5], BooleanOp.OR);
+        if(state.getValue(WEST)) shape = Shapes.join(shape, SHAPES[6], BooleanOp.OR);
 
         return shape;
     }
@@ -89,8 +90,8 @@ public class BloomingStemBlock extends Block {
         }
 
         if(direction == Direction.DOWN && neighborState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return state.setValue(DOWN, true);
-        if(direction.getAxis().isHorizontal() && checkState(neighborState) && canSurvive(level.getBlockState(neighborPos.below()))) return state;
-        return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), checkState(neighborState));
+        if(direction.getAxis().isHorizontal() && isStem(neighborState) && validBase(level.getBlockState(neighborPos.below()))) return state;
+        return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), isStem(neighborState));
     }
 
     @Override
@@ -109,22 +110,22 @@ public class BloomingStemBlock extends Block {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockState below = level.getBlockState(pos.below());
-        if(canSurvive(below)) return true;
+        if(validBase(level.getBlockState(pos.below()))) return true;
+
         for(Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockPos relativePos = pos.relative(direction);
-            BlockState relativeState = level.getBlockState(relativePos);
-            if(checkState(relativeState) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction)) && canSurvive(level.getBlockState(pos.below()))) return true;
+            BlockState adjacent = level.getBlockState(pos.relative(direction));
+            BlockState belowAdjacent = level.getBlockState(pos.relative(direction).below());
+            if(isStem(adjacent) && validBase(belowAdjacent) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) return true;
         }
 
         return false;
     }
 
-    private boolean canSurvive(BlockState state) {
-        return checkState(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE.get());
+    private boolean validBase(BlockState state) {
+        return isStem(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE.get());
     }
 
-    private boolean checkState(BlockState state) {
-        return state.is(DDBlocks.BLOOMING_STEM.get()) || state.is(DDBlocks.STRIPPED_BLOOMING_STEM.get());
+    private boolean isStem(BlockState state) {
+        return state.is(DDTags.Blocks.BLOOM_STEMS);
     }
 }
