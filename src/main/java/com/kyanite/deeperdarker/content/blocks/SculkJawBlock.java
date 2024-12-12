@@ -2,24 +2,31 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.entities.DDMobType;
+import com.kyanite.deeperdarker.content.entities.blocks.SculkJawBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation, NullableProblems")
-public class SculkJawBlock extends Block {
+public class SculkJawBlock extends BaseEntityBlock {
     public static final BooleanProperty BITING = BooleanProperty.create("biting");
     public static final BooleanProperty CAN_BITE = BooleanProperty.create("can_bite");
 
@@ -35,7 +42,7 @@ public class SculkJawBlock extends Block {
         if(pState.getValue(CAN_BITE) && pEntity instanceof LivingEntity entity) {
             pLevel.setBlock(pPos, pState.setValue(BITING, true), 3);
             entity.hurt(pLevel.damageSources().source(DDDamageTypes.BITE), 3);
-            if (pEntity instanceof Player player) player.giveExperiencePoints(-4);
+            if (pEntity instanceof Player player && pLevel.getBlockEntity(pPos) instanceof SculkJawBlockEntity jaw) jaw.stealExperienceFromPlayer(player, 4);
             pLevel.scheduleTick(pPos, this, 35);
         }
     }
@@ -48,6 +55,18 @@ public class SculkJawBlock extends Block {
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if(pEntity instanceof LivingEntity entity) entity.hurt(pLevel.damageSources().source(DDDamageTypes.BITE), 3);
+        if(pEntity instanceof Player player && pLevel.getBlockEntity(pPos) instanceof SculkJawBlockEntity jaw) jaw.stealExperienceFromPlayer(player, 4);
+    }
+
+    @Override
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        if (blockState.is(blockState2.getBlock())) {
+            return;
+        }
+        if (!level.isClientSide() && level.getBlockEntity(blockPos) instanceof SculkJawBlockEntity jaw) {
+            this.popExperience((ServerLevel) level, blockPos, jaw.getExperience());
+        }
+        super.onRemove(blockState, level, blockPos, blockState2, bl);
     }
 
     @Override
@@ -58,5 +77,15 @@ public class SculkJawBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(BITING, CAN_BITE);
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new SculkJawBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
     }
 }
