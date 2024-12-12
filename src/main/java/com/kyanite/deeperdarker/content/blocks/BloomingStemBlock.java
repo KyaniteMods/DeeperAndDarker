@@ -59,13 +59,10 @@ public class BloomingStemBlock extends Block {
         BlockGetter level = context.getLevel();
 
         BlockState belowState = level.getBlockState(pos.below());
-        BlockState northState = level.getBlockState(pos.north());
-        BlockState eastState = level.getBlockState(pos.east());
-        BlockState southState = level.getBlockState(pos.south());
-        BlockState westState = level.getBlockState(pos.west());
+        Direction clickedDir = context.getClickedFace();
 
         if(validBase(belowState)) return this.defaultBlockState().setValue(DOWN, true);
-        return this.defaultBlockState().setValue(NORTH, isStem(northState)).setValue(EAST, isStem(eastState)).setValue(SOUTH, isStem(southState)).setValue(WEST, isStem(westState));
+        return this.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(clickedDir.getOpposite()), true);
     }
 
     @Override
@@ -89,9 +86,13 @@ public class BloomingStemBlock extends Block {
             return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
         }
 
-        if(direction == Direction.DOWN && neighborState.is(DDBlocks.BLOOMING_SCULK_STONE.get())) return state.setValue(DOWN, true);
-        if(direction.getAxis().isHorizontal() && isStem(neighborState) && validBase(level.getBlockState(neighborPos.below()))) return state;
-        return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), isStem(neighborState));
+        if(isStem(neighborState) && neighborState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()))) {
+            return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), true);
+        }
+        if(!isStem(neighborState)) {
+            return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), false);
+        }
+        return state;
     }
 
     @Override
