@@ -9,9 +9,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -27,7 +29,7 @@ import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
-public class BloomingStemBlock extends Block {
+public class BloomingStemBlock extends Block implements BonemealableBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_25;
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
@@ -114,13 +116,13 @@ public class BloomingStemBlock extends Block {
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if(state.getValue(AGE) >= 25) return;
-        if(!level.isEmptyBlock(pos.above())) return;
-        if(this.defaultBlockState().is(DDBlocks.STRIPPED_BLOOMING_STEM.get())) return;
-
         int age = Math.min(25, state.getValue(AGE) + random.nextInt(1, 4));
         state = state.setValue(AGE, age);
         BlockState newState = this.defaultBlockState().setValue(AGE, age);
         level.setBlock(pos, state, 3);
+
+        if(!level.isEmptyBlock(pos.above())) return;
+        if(this.defaultBlockState().is(DDBlocks.STRIPPED_BLOOMING_STEM.get())) return;
 
         int connections = 0;
         for(Direction direction : Direction.values()) {
@@ -172,5 +174,38 @@ public class BloomingStemBlock extends Block {
 
     private boolean isStem(BlockState state) {
         return state.is(DDTags.Blocks.BLOOM_STEMS);
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        if(state.is(DDBlocks.STRIPPED_BLOOMING_STEM.get())) return false;
+        if(level.isEmptyBlock(pos.above())) return true;
+        if(!state.getValue(DOWN)) return false;
+        for(Direction direction : Direction.Plane.HORIZONTAL) {
+            if(level.isEmptyBlock(pos.relative(direction))) return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        BlockState newState = this.defaultBlockState().setValue(AGE, state.getValue(AGE));
+        if(level.isEmptyBlock(pos.above())) {
+            level.setBlock(pos.above(), newState.setValue(DOWN, true), 3);
+            return;
+        }
+
+        for(Direction direction : Direction.Plane.HORIZONTAL) {
+            if(level.isEmptyBlock(pos.relative(direction))) {
+                level.setBlock(pos.relative(direction), newState.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()), true), 3);
+                return;
+            }
+        }
     }
 }
