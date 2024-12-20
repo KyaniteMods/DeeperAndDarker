@@ -209,13 +209,13 @@ public class DDCreativeTab {
         entries.accept(DDItems.SHRIEK_WORM_SPAWN_EGG);
         entries.accept(DDItems.SLUDGE_SPAWN_EGG);
         entries.accept(DDItems.STALKER_SPAWN_EGG);
+        entries.accept(DDItems.SHATTERED_HEAD);
         for (Holder<PaintingVariant> variant : BuiltInRegistries.PAINTING_VARIANT.getTagOrEmpty(DDTags.Paintings.ANCIENT)) {
             ItemStack itemStack = new ItemStack(Items.PAINTING);
             CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
             Painting.storeVariant(compoundTag, variant);
             entries.accept(itemStack);
         }
-//        entries.accept(DDItems.SHATTERED_HEAD);
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;
