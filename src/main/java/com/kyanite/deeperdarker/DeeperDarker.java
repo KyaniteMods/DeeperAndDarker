@@ -98,15 +98,6 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-		ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
-			if (entity.getType() == EntityType.PLAYER && entity.getUUID().equals(UUID.fromString("7bb71eb9-b55e-4071-9175-8ec2f42ddd79")) && entity.level().dimension().equals(OthersideDimension.OTHERSIDE_LEVEL)) {
-				double xm = Mth.randomBetween(entity.level().getRandom(), -0.2f, 0.2f);
-				double ym = Mth.randomBetween(entity.level().getRandom(), 0.3f, 0.7f);
-				double zm = Mth.randomBetween(entity.level().getRandom(), -0.2f, 0.2f);
-				entity.level().addFreshEntity(new ItemEntity(entity.level(), entity.getX(), entity.getY(), entity.getZ(), new ItemStack(DDItems.SHATTERED_HEAD), xm, ym, zm));
-			}
-		});
-
 		DDNetworking.registerPayloadTypes();
 		DDNetworking.registerReceivers();
 	}

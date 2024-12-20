@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
@@ -152,6 +151,16 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     @Override
     public User getVibrationUser() {
         return this.vibrationUser;
+    }
+
+    @Override
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean recentlyHit) {
+        super.dropCustomDeathLoot(serverLevel, damageSource, recentlyHit);
+        Entity entity = damageSource.getEntity();
+        if (entity instanceof Creeper creeper && creeper.canDropMobsSkull()) {
+            creeper.increaseDroppedSkulls();
+            this.spawnAtLocation(DDItems.SHATTERED_HEAD);
+        }
     }
 
     class VibrationUser implements VibrationSystem.User {
