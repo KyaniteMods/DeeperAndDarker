@@ -222,6 +222,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.POTTY_SPAWN_EGG);
         entries.accept(DDItems.POT_SPAWN_EGG);
         entries.accept(DDItems.POTTER_SPAWN_EGG);
+        entries.accept(DDItems.SHATTERED_HEAD);
         for (Holder<PaintingVariant> variant : BuiltInRegistries.PAINTING_VARIANT.getTagOrEmpty(DDTags.Paintings.ANCIENT)) {
             ItemStack itemStack = new ItemStack(Items.PAINTING);
             CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
@@ -235,7 +236,6 @@ public class DDCreativeTab {
             entries.accept(DDCreateCompat.Items.WARDEN_DIVING_HELMET);
             entries.accept(DDCreateCompat.Items.WARDEN_DIVING_BOOTS);
         }
-//        entries.accept(DDItems.SHATTERED_HEAD);
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;
