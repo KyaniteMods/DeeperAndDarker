@@ -211,6 +211,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.SHRIEK_WORM_SPAWN_EGG);
         entries.accept(DDItems.SLUDGE_SPAWN_EGG);
         entries.accept(DDItems.STALKER_SPAWN_EGG);
+        entries.accept(DDItems.SHATTERED_HEAD);
         displayContext.holders().lookupOrThrow(Registries.PAINTING_VARIANT).get(DDTags.Paintings.ANCIENT).ifPresent(holders -> {
             for (Holder<PaintingVariant> holder : holders) {
                 CustomData customData = CustomData.EMPTY.update(displayContext.holders().createSerializationContext(NbtOps.INSTANCE), Painting.VARIANT_MAP_CODEC, holder).getOrThrow().update(compoundTag -> compoundTag.putString("id", "minecraft:painting"));
@@ -219,7 +220,6 @@ public class DDCreativeTab {
                 entries.accept(itemStack);
             }
         });
-//        entries.accept(DDItems.SHATTERED_HEAD);
     }));
 
     public static CreativeModeTab DEEPER_AND_DARKER;
