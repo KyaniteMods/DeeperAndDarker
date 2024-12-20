@@ -14,6 +14,7 @@
     "NoiseRouterDataAccessor",
     "PaintingItemMixin",
     "ResonariumDamageReductionMixin",
+    "StripBloomingStemMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],
