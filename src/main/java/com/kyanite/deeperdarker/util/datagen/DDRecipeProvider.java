@@ -137,6 +137,16 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.GLEAM_GEL_BLOCK, DDItems.GLEAM_GEL);
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDItems.ANGLER_FISH), RecipeCategory.FOOD, DDItems.COOKED_ANGLER_FISH, 0.35f, 200).unlockedBy(FabricRecipeProvider.getHasName(DDItems.ANGLER_FISH), FabricRecipeProvider.has(DDItems.ANGLER_FISH)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, DDBlocks.NOISE_CANCELER)
+                .define('S', Items.POLISHED_DEEPSLATE_SLAB)
+                .define('A', Items.AMETHYST_SHARD)
+                .define('H', DDItems.HEART_OF_THE_DEEP)
+                .define('R', Items.REDSTONE)
+                .pattern("SSS")
+                .pattern("AHA")
+                .pattern("SRS")
+                .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {

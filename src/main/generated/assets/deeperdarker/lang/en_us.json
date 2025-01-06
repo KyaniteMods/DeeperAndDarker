@@ -118,6 +118,7 @@
   "block.deeperdarker.infested_sculk": "Infested Sculk",
   "block.deeperdarker.lily_flower": "Lily Flower",
   "block.deeperdarker.linked": "Linked transmitter",
+  "block.deeperdarker.noise_canceler": "Noise Canceler",
   "block.deeperdarker.not_found": "The linked block is missing or unloaded",
   "block.deeperdarker.not_transmittable": "Cannot link to block",
   "block.deeperdarker.otherside_portal": "Otherside Portal",

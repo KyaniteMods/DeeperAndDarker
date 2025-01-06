@@ -84,6 +84,7 @@
     "deeperdarker:gloomslate_diamond_ore",
     "deeperdarker:crystallized_amber",
     "deeperdarker:ancient_vase",
+    "deeperdarker:noise_canceler",
     {
       "id": "deeperdarker:warden_backtank",
       "required": false

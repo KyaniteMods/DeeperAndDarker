@@ -181,6 +181,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
 
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
+        dropSelf(DDBlocks.NOISE_CANCELER);
 
         add(DDCreateCompat.Blocks.WARDEN_BACKTANK, (block) -> {
             LootTable.Builder builder = LootTable.lootTable();

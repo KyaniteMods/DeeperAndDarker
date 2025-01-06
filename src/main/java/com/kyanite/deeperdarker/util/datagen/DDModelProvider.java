@@ -179,6 +179,8 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ANCIENT_VASE);
         blockModelGenerators.delegateItemModel(DDBlocks.ANCIENT_VASE, ModelLocationUtils.getModelLocation(DDBlocks.ANCIENT_VASE));
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.NOISE_CANCELER);
+        blockModelGenerators.delegateItemModel(DDBlocks.NOISE_CANCELER, ModelLocationUtils.getModelLocation(DDBlocks.NOISE_CANCELER));
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.CRYSTALLIZED_AMBER);
         registerParented(blockModelGenerators, Blocks.HONEY_BLOCK, DDBlocks.CRYSTALLIZED_AMBER,
