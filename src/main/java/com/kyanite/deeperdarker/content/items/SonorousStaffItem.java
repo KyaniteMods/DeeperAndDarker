@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.BlockPos;
@@ -38,8 +39,8 @@ public class SonorousStaffItem extends Item {
         if(!(pLivingEntity instanceof Player player)) return;
 
         int timeUsed = getUseDuration(pStack, player) - pTimeCharged;
-        int damage = (int) Math.round(50 / (1 + 16 / Math.exp(0.06 * timeUsed)));
-        int range = (int) Math.min(40, Math.round(3 * Math.log(timeUsed + 1)));
+        int damage = (int) Math.round(DeeperDarker.CONFIG.server.sonorousStaffDamage() / (1 + 16 / Math.exp(0.06 * timeUsed)));
+        int range = (int) Math.min(DeeperDarker.CONFIG.server.sonorousStaffRange(), Math.round(3 * Math.log(timeUsed + 1)));
 
         Vec3 eyePos = player.getEyePosition();
         Vec3 facing = player.getForward();
@@ -60,14 +61,14 @@ public class SonorousStaffItem extends Item {
                 entity.hurt(pLevel.damageSources().sonicBoom(player), finalDamage);
                 double horizontalResistance = 1 - entity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
                 double verticalResistance = 1 - entity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-                entity.push(facing.x * horizontalResistance, facing.y * verticalResistance, facing.z * horizontalResistance);
+                entity.push(facing.x * horizontalResistance * DeeperDarker.CONFIG.server.sonorousStaffKnockback(), facing.y * verticalResistance * DeeperDarker.CONFIG.server.sonorousStaffKnockback(), facing.z * horizontalResistance * DeeperDarker.CONFIG.server.sonorousStaffKnockback());
             }
         }
 
         player.playSound(DDSounds.SONOROUS_STAFF_SONIC_BOOM);
         pStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
         player.awardStat(Stats.ITEM_USED.get(this));
-        player.getCooldowns().addCooldown(this, 20);
+        player.getCooldowns().addCooldown(this, DeeperDarker.CONFIG.server.sonorousStaffCooldown());
     }
 
     @Override
