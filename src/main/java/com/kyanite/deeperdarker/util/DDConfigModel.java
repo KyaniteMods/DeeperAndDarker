@@ -45,13 +45,16 @@ public class DDConfigModel {
         public int generatedPortalHeight = 4;
 
         @RangeConstraint(min = 1.0, max = 128.0)
-        public float sonorousStaffDamage = 10.0f;
+        public float sonorousStaffDamage = 50.0f;
 
         @RangeConstraint(min = 1.0, max = 128.0)
         public double sonorousStaffKnockback = 1.0;
 
-        @RangeConstraint(min = 1.0, max = 32767.0)
-        public int sonorousStaffCooldown = 40;
+        @RangeConstraint(min = 0.0, max = 32767.0)
+        public int sonorousStaffCooldown = 20;
+
+        @RangeConstraint(min = 1.0, max = 512.0)
+        public int sonorousStaffRange = 40;
 
         @RangeConstraint(min = -1.0, max = 32767.0)
         public int soulElytraCooldown = 600;
