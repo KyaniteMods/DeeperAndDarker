@@ -38,6 +38,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameType;
 
 public class DeeperDarkerClient implements ClientModInitializer {
 
@@ -143,9 +144,13 @@ public class DeeperDarkerClient implements ClientModInitializer {
         });
 
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
+            Minecraft client = Minecraft.getInstance();
+            if (client.options.hideGui || client.gameMode.getPlayerMode() == GameType.SPECTATOR) {
+                return;
+            }
+
             ResourceLocation texture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/soul_elytra_overlay_large.png");
 
-            Minecraft client = Minecraft.getInstance();
             if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
             ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
             if (itemStack.is(DDItems.SOUL_ELYTRA)) {
