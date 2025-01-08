@@ -140,13 +140,13 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         HudRenderCallback.EVENT.register((drawContext, tickDelta) -> {
             Minecraft client = Minecraft.getInstance();
-            if (client.options.hideGui || client.gameMode.getPlayerMode() == GameType.SPECTATOR) {
+            if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
+            if (client.options.hideGui || client.gameMode == null || client.gameMode.getPlayerMode() == GameType.SPECTATOR) {
                 return;
             }
 
             ResourceLocation texture = DeeperDarker.rl("textures/gui/soul_elytra_overlay_large.png");
 
-            if (client.player == null || DeeperDarker.CONFIG.server.soulElytraCooldown() == -1) return;
             ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
             if (itemStack.is(DDItems.SOUL_ELYTRA)) {
                 float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, (float)(Minecraft.getInstance().getFrameTimeNs() / 1000000000.0));
