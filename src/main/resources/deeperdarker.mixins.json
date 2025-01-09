@@ -19,6 +19,7 @@
     "WardenMixin"
   ],
   "client": [
+    "CancelNoiseClientMixin",
     "PhantomRendererMixin",
     "ShatteredHeadRenderMixin",
     "ShowHangingSignScreenMixin",
