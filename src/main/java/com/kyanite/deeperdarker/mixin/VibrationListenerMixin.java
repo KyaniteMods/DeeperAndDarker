@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.mixin;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEffects;
 import com.kyanite.deeperdarker.content.DDPoiTypes;
 import com.kyanite.deeperdarker.content.entities.DDMobType;
@@ -33,7 +34,7 @@ public class VibrationListenerMixin {
     @Inject(method = "isOccluded", at = @At("RETURN"), cancellable = true)
     private static void deeperdarker$occludeByNoiseCanceler(Level level, Vec3 vec3, Vec3 vec32, CallbackInfoReturnable<Boolean> cir) {
         if (level.isClientSide()) return;
-        if (((ServerLevel) level).getPoiManager().findClosestWithType(holder -> holder.value() == DDPoiTypes.NOISE_CANCELER, new BlockPos((int) vec3.x(), (int) vec3.y(), (int) vec3.z()), 16, PoiManager.Occupancy.ANY).isPresent()) cir.setReturnValue(true);
+        if (((ServerLevel) level).getPoiManager().findClosestWithType(holder -> holder.value() == DDPoiTypes.NOISE_CANCELER, new BlockPos((int) vec3.x(), (int) vec3.y(), (int) vec3.z()), DeeperDarker.CONFIG.server.noiseCancelerRadius(), PoiManager.Occupancy.ANY).isPresent()) cir.setReturnValue(true);
     }
 
     @Unique

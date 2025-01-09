@@ -64,6 +64,9 @@ public class DDConfigModel {
 
         @RangeConstraint(min = -1.0, max = 32.0)
         public int snapperDropLimit = 8;
+
+        @RangeConstraint(min = 0.0, max = 64.0)
+        public int noiseCancelerRadius = 16;
     }
 
     @Nest
@@ -77,5 +80,7 @@ public class DDConfigModel {
         public boolean changePhantomTextures = true;
 
         public boolean paintingFix = true;
+
+        public boolean noiseCancelerCancelsSounds = true;
     }
 }

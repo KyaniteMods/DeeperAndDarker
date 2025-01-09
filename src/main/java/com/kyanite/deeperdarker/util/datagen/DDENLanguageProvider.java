@@ -339,6 +339,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config.deeperdarker.option.client.changePhantomTextures.tooltip", "Determines if Phantoms should have a\ndifferent texture in the Deeplands.");
         translationBuilder.add("text.config.deeperdarker.option.client.paintingFix", "Fix Ancient Paintings");
         translationBuilder.add("text.config.deeperdarker.option.client.paintingFix.tooltip", "Fixes desync that happens upon placing ancient\npaintings in places where they do not fit.");
+        translationBuilder.add("text.config.deeperdarker.option.client.noiseCancelerCancelsSounds", "Noise Canceler Cancels Sounds");
+        translationBuilder.add("text.config.deeperdarker.option.client.noiseCancelerCancelsSounds.tooltip", "Makes the Noise Canceler also silence\nnearby sounds on the client.\nThis checks every block in a\nradius around the sound, which may be\nresource-intensive.");
         translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance", "Ancient Vase Mob Spawn Chance");
         translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance.tooltip", "Defines the chance of a mob (Stalker or\nSculk Leech) spawning from an Ancient Vase.");
         translationBuilder.add("text.config.deeperdarker.option.server.sculkLeechesFromAncientVaseChance", "Sculk Leech Spawn Chance");
@@ -375,6 +377,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength.tooltip", "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.");
         translationBuilder.add("text.config.deeperdarker.option.server.snapperDropLimit", "Sculk Snapper Drop Limit");
         translationBuilder.add("text.config.deeperdarker.option.server.snapperDropLimit.tooltip", "Determines the maximum amount of books dropped\nby each Sculk Snapper. Set to -1 for infinite books.");
+        translationBuilder.add("text.config.deeperdarker.option.server.noiseCancelerRadius", "Noise Canceler Radius");
+        translationBuilder.add("text.config.deeperdarker.option.server.noiseCancelerRadius.tooltip", "Determines the range in which\nNoise Cancelers function.");
 
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");
