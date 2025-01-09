@@ -4,14 +4,11 @@ import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.network.Messages;
+import com.kyanite.deeperdarker.util.*;
 import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDConfig;
-import com.kyanite.deeperdarker.util.DDCreativeTab;
-import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.world.DDFeatures;
-import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableSource;
 import net.fabricmc.loader.api.FabricLoader;
@@ -21,10 +18,7 @@ import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -34,8 +28,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.UUID;
 
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
@@ -60,6 +52,7 @@ public class DeeperDarker implements ModInitializer {
 		DDEffects.init();
 		AncientPaintings.init();
 		DDLootItemFunctions.init();
+		DDPoiTypes.init();
 		if (FabricLoader.getInstance().isModLoaded("create")) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();

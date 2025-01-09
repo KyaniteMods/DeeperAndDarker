@@ -1,11 +1,15 @@
 package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.DDEffects;
+import com.kyanite.deeperdarker.content.DDPoiTypes;
 import com.kyanite.deeperdarker.content.entities.DDMobType;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.phys.Vec3;
@@ -24,6 +28,12 @@ public class VibrationListenerMixin {
             if(entity.hasEffect(DDEffects.SCULK_AFFINITY)) cir.setReturnValue(false);
             if(entity.getMobType().equals(DDMobType.SCULK)) cir.setReturnValue(false);
         }
+    }
+
+    @Inject(method = "isOccluded", at = @At("RETURN"), cancellable = true)
+    private static void deeperdarker$occludeByNoiseCanceler(Level level, Vec3 vec3, Vec3 vec32, CallbackInfoReturnable<Boolean> cir) {
+        if (level.isClientSide()) return;
+        if (((ServerLevel) level).getPoiManager().findClosestWithType(holder -> holder.value() == DDPoiTypes.NOISE_CANCELER, new BlockPos((int) vec3.x(), (int) vec3.y(), (int) vec3.z()), 16, PoiManager.Occupancy.ANY).isPresent()) cir.setReturnValue(true);
     }
 
     @Unique
