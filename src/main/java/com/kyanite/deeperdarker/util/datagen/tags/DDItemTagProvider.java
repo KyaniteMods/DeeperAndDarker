@@ -96,6 +96,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
 
+        add(ItemTags.TRIMMABLE_ARMOR, DDItems.WARDEN_HELMET, DDItems.WARDEN_CHESTPLATE, DDItems.WARDEN_LEGGINGS, DDItems.WARDEN_BOOTS, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
+
         add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
     }
