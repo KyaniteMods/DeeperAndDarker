@@ -13,14 +13,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
-
 public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
-    private final List<Direction> DIRECTIONS = Arrays.stream(Direction.values()).filter(direction -> direction.get3DDataValue() > 0).toList();
-    private final List<Direction> history = new ArrayList<>(Stream.generate(() -> Direction.UP).limit(5).toList());
 
     public BloomingStemFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
@@ -33,65 +26,53 @@ public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = context.random();
 
         if(!level.getBlockState(origin.below()).is(DDBlocks.BLOOMING_SCULK_STONE.get())) return false;
-        if(!level.getBlockState(origin.above()).isAir()) return false;
+        if(!level.isEmptyBlock(origin) || !level.isEmptyBlock(origin.above())) return false;
 
-        int branches = random.nextIntBetweenInclusive(1, 2);
-        int length = random.nextIntBetweenInclusive(6, 20);
-        double probability = (double) branches / length;
+        int length = random.nextInt(6, 25);
 
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos(origin.getX(), origin.getY(), origin.getZ());
+        BlockPos.MutableBlockPos pos = origin.mutable();
         Direction direction = Direction.UP;
         Direction nextDirection = Direction.UP;
 
         for(int i = 0; i < length; i++) {
-            if(!level.getBlockState(blockPos).isAir()) break;
-            if(!level.getBlockState(blockPos.relative(nextDirection)).isAir()) break;
-            history.set(i % 5, direction);
+            BlockPos nextPos = pos.relative(nextDirection);
+            if(!level.isEmptyBlock(pos.above())) break;
+            if(!level.isEmptyBlock(nextPos)) break;
 
-            Direction branchDirection = null;
-            if(i > 6 && direction == Direction.UP && random.nextDouble() < probability) {
-                BlockPos.MutableBlockPos branchBlockPos = new BlockPos.MutableBlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-                branchDirection = Direction.values()[random.nextIntBetweenInclusive(2, 5)];
-                branchBlockPos.move(branchDirection);
+            BlockState state = DDBlocks.BLOOMING_STEM.get().defaultBlockState().setValue(BloomingStemBlock.AGE, 25).setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()), true).setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(nextDirection), true);
+            Direction previous = direction;
+            direction = nextDirection;
 
-                level.setBlock(branchBlockPos, stemPlacement(branchDirection, branchDirection.getOpposite(), null), 3);
-                probability /= 2;
+            if(previous == Direction.UP && random.nextFloat() < 0.3f) { // turn
+                nextDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+                /*if(random.nextFloat() < 0.4f) { // branch
+                    Direction branchDir = Direction.getRandom(random);
+                    if(random.nextFloat() < 0.5f) branchDir = Direction.UP;
+                    else while(branchDir == Direction.DOWN || branchDir == nextDirection) branchDir = Direction.getRandom(random);
+
+                    if(level.isEmptyBlock(nextPos.relative(branchDir))) {
+                        *//*Direction d3 = Direction.DOWN;
+                        if(branchDir == Direction.UP) {
+                            while(d3 == Direction.DOWN) d3 = Direction.getRandom(random);
+                        } else {
+                            d3 = Direction.UP;
+                        }*//*
+                        level.setBlock(nextPos.relative(branchDir), DDBlocks.BLOOMING_STEM.get().defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(branchDir.getOpposite()), true), 3);
+                        state = state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(branchDir), true);
+//                        branch(level, pos, branch, d3, length - growth, random);
+                    }
+                }*/
+            } else {
+                nextDirection = Direction.UP;
             }
 
-            level.setBlock(blockPos, stemPlacement(direction, nextDirection, branchDirection), 3);
-
-            direction = nextDirection;
-            if(nextDirection.getAxis().isHorizontal()) nextDirection = Direction.UP;
-            else nextDirection = randomDirection(random);
-            blockPos.move(direction);
+            level.setBlock(pos, state, 3);
+            pos.move(direction);
         }
 
-        level.setBlock(blockPos, stemPlacement(direction, direction.getOpposite(), null), 3);
+        BlockState state = DDBlocks.BLOOMING_STEM.get().defaultBlockState().setValue(BloomingStemBlock.AGE, 25).setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()), true);
+        level.setBlock(pos, state, 3);
+
         return true;
-    }
-
-    private Direction randomDirection(RandomSource random) {
-        List<Direction> list = new ArrayList<>(DIRECTIONS);
-        for(Direction d : history) {
-            list.remove(d);
-            list.remove(d.getOpposite());
-        }
-
-        int dir = 0;
-        float chance = 1 - 0.125f * list.size();
-        float f = random.nextFloat();
-        while(chance < f) {
-            chance += 0.125f;
-            dir++;
-        }
-
-        list.addFirst(Direction.UP);
-        return list.get(dir);
-    }
-
-    private BlockState stemPlacement(Direction direction, Direction nextDirection, Direction branchDirection) {
-        BlockState stem = DDBlocks.BLOOMING_STEM.get().defaultBlockState().setValue(BloomingStemBlock.DOWN, false).setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()), true).setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(nextDirection), true);
-        if(branchDirection == null) return stem;
-        else return stem.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(branchDirection), true);
     }
 }
