@@ -65,7 +65,7 @@ public class BloomingStemBlock extends Block implements BonemealableBlock {
         BlockState belowState = level.getBlockState(pos.below());
         Direction clickedFace = context.getClickedFace();
 
-        if(validBase(belowState)) return this.defaultBlockState().setValue(DOWN, true);
+        if(validBase(belowState) && clickedFace == Direction.UP) return this.defaultBlockState().setValue(DOWN, true);
         return this.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(clickedFace.getOpposite()), true);
     }
 
@@ -157,12 +157,12 @@ public class BloomingStemBlock extends Block implements BonemealableBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        if(validBase(level.getBlockState(pos.below()))) return true;
+        if(validBase(level.getBlockState(pos.below())) && state.getValue(DOWN)) return true;
 
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockState adjacent = level.getBlockState(pos.relative(direction));
             BlockState belowAdjacent = level.getBlockState(pos.relative(direction).below());
-            if(isStem(adjacent) && validBase(belowAdjacent) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) return true;
+            if(isStem(adjacent) && validBase(belowAdjacent) && adjacent.getValue(DOWN) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) return true;
         }
 
         return false;
