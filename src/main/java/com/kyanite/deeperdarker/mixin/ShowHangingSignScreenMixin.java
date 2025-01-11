@@ -16,13 +16,13 @@ public class ShowHangingSignScreenMixin {
     @Mixin(LocalPlayer.class)
     private interface ClientAccessor {
         @Accessor("minecraft")
-        Minecraft minecraft();
+        Minecraft deeperdarker$minecraft();
     }
 
     @Inject(method = "openTextEdit", at = @At("HEAD"), cancellable = true)
-    public void openTextEdit(SignBlockEntity sign, boolean front, CallbackInfo ci) {
+    public void deeperdarker$openDDSignTextEdit(SignBlockEntity sign, boolean front, CallbackInfo ci) {
         if (sign instanceof DDHangingSignBlockEntity hangingSignBlockEntity) {
-            ((ClientAccessor)((LocalPlayer)(Object)this)).minecraft().setScreen(new HangingSignEditScreen(hangingSignBlockEntity, front, ((ClientAccessor)((LocalPlayer)(Object)this)).minecraft().isTextFilteringEnabled()));
+            ((ClientAccessor)((LocalPlayer)(Object)this)).deeperdarker$minecraft().setScreen(new HangingSignEditScreen(hangingSignBlockEntity, front, ((ClientAccessor)((LocalPlayer)(Object)this)).deeperdarker$minecraft().isTextFilteringEnabled()));
             ci.cancel();
         }
     }

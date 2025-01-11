@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(VibrationSystem.Listener.class)
 public class VibrationListenerMixin {
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
-    public void handleGameEvent(ServerLevel level, GameEvent event, GameEvent.Context context, Vec3 vec3, CallbackInfoReturnable<Boolean> cir) {
+    public void deeperdarker$cancelVibrations(ServerLevel level, GameEvent event, GameEvent.Context context, Vec3 vec3, CallbackInfoReturnable<Boolean> cir) {
         if(context.sourceEntity() instanceof LivingEntity entity) {
             if(event.is(DDTags.GameEvents.FEET_VIBRATIONS) && hasArmorThatDampensVibrations(entity)) cir.setReturnValue(false);
             if(entity.hasEffect(DDEffects.SCULK_AFFINITY)) cir.setReturnValue(false);

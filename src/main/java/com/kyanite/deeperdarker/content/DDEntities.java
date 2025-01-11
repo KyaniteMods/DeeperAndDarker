@@ -8,7 +8,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 public class DDEntities {
@@ -34,17 +33,17 @@ public class DDEntities {
     }
 
     private static void registerAttributes() {
-        DefaultAttributeRegistryAccessor.getRegistry().put(ANGLER_FISH, AnglerFish.createAttributeSupplier());
-        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_SNAPPER, SculkSnapper.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(SHATTERED, Shattered.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_LEECH, SculkLeech.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(SHRIEK_WORM, ShriekWorm.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(STALKER, Stalker.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(SLUDGE, Sludge.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
-        DefaultAttributeRegistryAccessor.getRegistry().put(POTTY, OvercastPot.createAttributes(-10));
-        DefaultAttributeRegistryAccessor.getRegistry().put(POT, OvercastPot.createAttributes(0));
-        DefaultAttributeRegistryAccessor.getRegistry().put(POTTER, OvercastPot.createAttributes(10));
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(ANGLER_FISH, AnglerFish.createAttributeSupplier());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(SCULK_SNAPPER, SculkSnapper.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(SHATTERED, Shattered.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(SCULK_LEECH, SculkLeech.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(SHRIEK_WORM, ShriekWorm.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(STALKER, Stalker.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(SLUDGE, Sludge.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(POTTY, OvercastPot.createAttributes(-10));
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(POT, OvercastPot.createAttributes(0));
+        DefaultAttributeRegistryAccessor.deeperdarker$getRegistry().put(POTTER, OvercastPot.createAttributes(10));
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {

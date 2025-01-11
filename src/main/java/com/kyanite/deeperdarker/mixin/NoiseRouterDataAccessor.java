@@ -9,17 +9,17 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(NoiseRouterData.class)
 public interface NoiseRouterDataAccessor {
     @Accessor("SHIFT_X")
-    static ResourceKey<DensityFunction> shiftX() {
+    static ResourceKey<DensityFunction> deeperdarker$shiftX() {
         throw new IllegalStateException("Replaced by mixin");
     }
 
     @Accessor("SHIFT_Z")
-    static ResourceKey<DensityFunction> shiftZ() {
+    static ResourceKey<DensityFunction> deeperdarker$shiftZ() {
         throw new IllegalStateException("Replaced by mixin");
     }
 
     @Accessor("BASE_3D_NOISE_NETHER")
-    static ResourceKey<DensityFunction> base3dNoiseNether() {
+    static ResourceKey<DensityFunction> deeperdarker$base3dNoiseNether() {
         throw new IllegalStateException("Replaced by mixin");
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Mixin(ItemModelGenerators.class)
 public interface ItemModelGeneratorAccessor {
     @Accessor("GENERATED_TRIM_MODELS")
-    static List<ItemModelGenerators.TrimModelData> generatedTrimModels() {
+    static List<ItemModelGenerators.TrimModelData> deeperdarker$generatedTrimModels() {
         throw new IllegalStateException("Replaced by mixin");
     }
 }

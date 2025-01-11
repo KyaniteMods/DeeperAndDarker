@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(DefaultAttributes.class)
 public interface DefaultAttributeRegistryAccessor {
 	@Accessor("SUPPLIERS")
-	static Map<EntityType<? extends LivingEntity>, AttributeSupplier> getRegistry() {
+	static Map<EntityType<? extends LivingEntity>, AttributeSupplier> deeperdarker$getRegistry() {
 		throw new AssertionError("Mixin dummy method called directly!");
 	}
 }

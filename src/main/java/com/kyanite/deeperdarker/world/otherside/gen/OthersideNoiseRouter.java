@@ -7,12 +7,12 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 public class OthersideNoiseRouter {
     public static NoiseRouter otherside(HolderGetter<DensityFunction> density, HolderGetter<NormalNoise.NoiseParameters> noise) {
-        DensityFunction shiftX = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.shiftX()));
-        DensityFunction shiftZ = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.shiftZ()));
+        DensityFunction shiftX = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.deeperdarker$shiftX()));
+        DensityFunction shiftZ = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.deeperdarker$shiftZ()));
         DensityFunction temperature = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 2.5, noise.getOrThrow(Noises.TEMPERATURE));
         DensityFunction vegetation = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.6, noise.getOrThrow(Noises.VEGETATION));
 
-        DensityFunction nether3D = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.base3dNoiseNether()));
+        DensityFunction nether3D = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.deeperdarker$base3dNoiseNether()));
         DensityFunction finalDensity = DensityFunctions.mul(
                 DensityFunctions.constant(0.64),
                 DensityFunctions.interpolated(DensityFunctions.blendDensity(DensityFunctions.add(

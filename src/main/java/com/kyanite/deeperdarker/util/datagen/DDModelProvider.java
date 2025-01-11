@@ -443,7 +443,7 @@ public class DDModelProvider extends FabricModelProvider {
         ResourceLocation armorModelIdentifier = ModelLocationUtils.getModelLocation(armor);
         ResourceLocation armorTextureIdentifier = TextureMapping.getItemTexture(armor);
         ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> itemModelGenerators.generateBaseArmorTrimTemplate(id, textures, armor.getMaterial()));
-        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGeneratorAccessor.generatedTrimModels()) {
+        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGeneratorAccessor.deeperdarker$generatedTrimModels()) {
             String string = trimMaterial.name(armor.getMaterial());
             ResourceLocation identifier4 = itemModelGenerators.getItemModelForTrimMaterial(armorModelIdentifier, string);
             String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
