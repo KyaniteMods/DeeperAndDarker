@@ -48,7 +48,7 @@ public class DDNetworking {
             ServerPlayer player = ctx.player();
             for(ItemStack stack : player.getInventory().items) {
                 if(stack.is(DDItems.SCULK_TRANSMITTER) && SculkTransmitterItem.isLinked(stack)) {
-                    SculkTransmitterItem.transmit(player.level(), player, stack, null);
+                    SculkTransmitterItem.transmit(player.level(), player, stack, null, null);
                     break;
                 }
             }
