@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-09T19:24:08.7592081	Tags for minecraft:block mod id deeperdarker
+// 1.21.1	2025-01-10T18:37:48.861213	Tags for minecraft:block mod id deeperdarker
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/block/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/block/ores/copper.json
@@ -38,6 +38,7 @@ dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/block/copper_ores.j
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/block/flowers.json
 1a8b7cd595fc8d49db1d8d890a9f27fc264eee13 data/minecraft/tags/block/flower_pots.json
 a84d63160bb42d942778124d8368b9db10ef6ed2 data/minecraft/tags/block/gold_ores.json
+36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/minecraft/tags/block/impermeable.json
 ae158fba1e4f8aef2162c4ca5b05fd555fb8135d data/minecraft/tags/block/inside_step_sound_blocks.json
 08b0595e3c0290061ed898dfbeb230d6c4f95eeb data/minecraft/tags/block/iron_ores.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/block/lapis_ores.json
@@ -57,6 +58,7 @@ b87f41ec93385cf003a9e81713446620acd52b86 data/minecraft/tags/block/redstone_ores
 7ad41c3bc6a4b4e320a75ce5e25e9ee075ed3663 data/minecraft/tags/block/slabs.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/small_dripleaf_placeable.json
 06b286c7c79571755f7b5149b31787b00d449c4b data/minecraft/tags/block/small_flowers.json
+615016fb2f7bd4866e694de5e712cb29bb434032 data/minecraft/tags/block/snaps_goat_horn.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_diggable_block.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/sniffer_egg_hatch_boost.json
 8dfd3b492264b019307369b18d494910d7fe89e8 data/minecraft/tags/block/stairs.json
