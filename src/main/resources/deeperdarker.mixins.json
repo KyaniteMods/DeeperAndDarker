@@ -16,6 +16,7 @@
     "PaintingItemMixin",
     "PhantomMixin",
     "ResonariumDamageReductionMixin",
+    "SlotMixin",
     "StripBloomingStemMixin",
     "VibrationListenerMixin",
     "WardenMixin"
