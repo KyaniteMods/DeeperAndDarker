@@ -378,6 +378,7 @@
   "tooltips.deeperdarker.ice_lily.flowerless": "Flowerless",
   "tooltips.deeperdarker.sculk_transmitter.linked": "Linked to %1$s",
   "tooltips.deeperdarker.sculk_transmitter.location": "Located at %1$s, %2$s, %3$s",
+  "tooltips.deeperdarker.sculk_transmitter.location_advanced": "Dimension: %s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
   "upgrade.deeperdarker.warden_upgrade": "Warden Upgrade"
 }

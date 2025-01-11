@@ -5,24 +5,39 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ChunkLevel;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.TicketType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerListener;
+import net.minecraft.world.item.CompassItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 @SuppressWarnings("NullableProblems, DataFlowIssue")
 public class SculkTransmitterItem extends Item {
@@ -67,27 +82,50 @@ public class SculkTransmitterItem extends Item {
             return InteractionResult.FAIL;
         }
 
-        if (!transmitter.hasTag()) return InteractionResult.FAIL;
-        int[] pos = transmitter.getTag().getIntArray("blockPos");
-        BlockPos linkedPos = new BlockPos(pos[0], pos[1], pos[2]);
+        if (level.isClientSide()) return InteractionResult.sidedSuccess(false);
 
-        if(!level.isLoaded(linkedPos)) {
+        Optional<GlobalPos> globalLinkedPos = readGlobalPosition(transmitter.getOrCreateTag());
+        if (globalLinkedPos.isEmpty()) return InteractionResult.FAIL;
+        ServerLevel serverLevel = level.getServer().getLevel(globalLinkedPos.get().dimension());
+        BlockPos linkedPos = globalLinkedPos.get().pos();
+
+        if(!serverLevel.isLoaded(linkedPos)) {
+            ChunkPos chunkPos = new ChunkPos(linkedPos);
+            serverLevel.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
+        }
+
+        if(!canConnect(serverLevel, linkedPos)) {
             actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
+            formConnection(serverLevel, transmitter, null);
             return InteractionResult.FAIL;
         }
 
-        if(!canConnect(level, linkedPos)) {
-            actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
-            formConnection(level, transmitter, null);
-            return InteractionResult.FAIL;
-        }
+        serverLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
 
-        level.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
-
-        MenuProvider menu = level.getBlockState(linkedPos).getMenuProvider(level, linkedPos);
-        if(menu != null && !level.isClientSide()) {
+        MenuProvider menu = serverLevel.getBlockState(linkedPos).getMenuProvider(serverLevel, linkedPos);
+        if(menu != null && !serverLevel.isClientSide()) {
             player.playSound(DDSounds.TRANSMITTER_OPEN, 1, 1);
-            if(player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
+            if(player instanceof ServerPlayer serverPlayer) {
+                serverPlayer.openMenu(menu);
+                AbstractContainerMenu containerMenu = serverPlayer.containerMenu;
+                containerMenu.addSlotListener(new ContainerListener() {
+                    @Override
+                    public void slotChanged(AbstractContainerMenu abstractContainerMenu, int i, ItemStack itemStack) {
+                        if (!serverLevel.isClientSide()) {
+                            ChunkPos chunkPos = new ChunkPos(linkedPos);
+                            serverLevel.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
+                        }
+                    }
+
+                    @Override
+                    public void dataChanged(AbstractContainerMenu abstractContainerMenu, int i, int j) {
+                        if (!serverLevel.isClientSide()) {
+                            ChunkPos chunkPos = new ChunkPos(linkedPos);
+                            serverLevel.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
+                        }
+                    }
+                });
+            }
             if(level.getBlockEntity(linkedPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
         }
 
@@ -95,7 +133,7 @@ public class SculkTransmitterItem extends Item {
     }
 
     public static boolean isLinked(ItemStack stack) {
-        return stack.hasTag() && stack.getTag().contains("blockPos");
+        return readGlobalPosition(stack.getOrCreateTag()).isPresent();
     }
 
     private static boolean canConnect(Level level, BlockPos target) {
@@ -106,12 +144,36 @@ public class SculkTransmitterItem extends Item {
         CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
             stack.removeTagKey("block");
-            stack.removeTagKey("blockPos");
+            removeGlobalPosition(stack.getOrCreateTag());
             return;
         }
 
         tag.putString("block", level.getBlockState(pos).getBlock().getDescriptionId());
-        tag.putIntArray("blockPos", List.of(pos.getX(), pos.getY(), pos.getZ()));
+        writeGlobalPosition(tag, GlobalPos.of(level.dimension(), pos));
+    }
+
+    private static Optional<ResourceKey<Level>> getDimension(CompoundTag tag) {
+        if (!tag.contains("dimension")) return Optional.empty();
+        return Level.RESOURCE_KEY_CODEC.parse(NbtOps.INSTANCE, tag.get("dimension")).result();
+    }
+
+    public static Optional<GlobalPos> readGlobalPosition(CompoundTag tag) {
+        Optional<ResourceKey<Level>> dimension = getDimension(tag);
+        if (tag.contains("block_pos") && dimension.isPresent()) {
+            BlockPos blockPos = NbtUtils.readBlockPos(tag.getCompound("block_pos"));
+            return Optional.of(GlobalPos.of(dimension.get(), blockPos));
+        }
+        return Optional.empty();
+    }
+
+    public static void writeGlobalPosition(CompoundTag tag, GlobalPos pos) {
+        tag.put("block_pos", NbtUtils.writeBlockPos(pos.pos()));
+        Level.RESOURCE_KEY_CODEC.encodeStart(NbtOps.INSTANCE, pos.dimension()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(dimensionTag -> tag.put("dimension", dimensionTag));
+    }
+
+    public static void removeGlobalPosition(CompoundTag tag) {
+        tag.remove("block_pos");
+        tag.remove("dimension");
     }
 
     public static void actionBarMessage(Player player, String key, SoundEvent sound) {
@@ -122,9 +184,12 @@ public class SculkTransmitterItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if(isLinked(pStack)) {
-            int[] pos = pStack.getTag().getIntArray("blockPos");
+            GlobalPos pos = readGlobalPosition(pStack.getOrCreateTag()).get();
             pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(pStack.getTag().getString("block"))).withStyle(ChatFormatting.GRAY));
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos[0], pos[1], pos[2]).withStyle(ChatFormatting.GRAY));
+            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos.pos().getX(), pos.pos().getY(), pos.pos().getZ()).withStyle(ChatFormatting.GRAY));
+            if (pIsAdvanced.isAdvanced()) {
+                pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location_advanced", pos.dimension().location().toString()).withStyle(ChatFormatting.DARK_GRAY));
+            }
         }
         else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
