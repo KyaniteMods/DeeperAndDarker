@@ -17,10 +17,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerListener;
@@ -105,28 +102,8 @@ public class SculkTransmitterItem extends Item {
         MenuProvider menu = serverLevel.getBlockState(linkedPos).getMenuProvider(serverLevel, linkedPos);
         if(menu != null && !serverLevel.isClientSide()) {
             player.playSound(DDSounds.TRANSMITTER_OPEN, 1, 1);
-            if(player instanceof ServerPlayer serverPlayer) {
-                serverPlayer.openMenu(menu);
-                AbstractContainerMenu containerMenu = serverPlayer.containerMenu;
-                containerMenu.addSlotListener(new ContainerListener() {
-                    @Override
-                    public void slotChanged(AbstractContainerMenu abstractContainerMenu, int i, ItemStack itemStack) {
-                        if (!serverLevel.isClientSide()) {
-                            ChunkPos chunkPos = new ChunkPos(linkedPos);
-                            serverLevel.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
-                        }
-                    }
-
-                    @Override
-                    public void dataChanged(AbstractContainerMenu abstractContainerMenu, int i, int j) {
-                        if (!serverLevel.isClientSide()) {
-                            ChunkPos chunkPos = new ChunkPos(linkedPos);
-                            serverLevel.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
-                        }
-                    }
-                });
-            }
-            if(level.getBlockEntity(linkedPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
+            if(player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
+            if(level.getBlockEntity(linkedPos) instanceof Container container) container.startOpen(player);
         }
 
         return InteractionResult.sidedSuccess(false);
