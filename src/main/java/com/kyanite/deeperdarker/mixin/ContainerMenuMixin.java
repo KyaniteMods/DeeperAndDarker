@@ -5,8 +5,10 @@ import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.TicketType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.level.ChunkPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,7 +23,12 @@ public class ContainerMenuMixin {
             String block = stack.getTag().getString("block");
             GlobalPos pos = SculkTransmitterItem.readGlobalPosition(stack.getOrCreateTag()).get();
 
-            return !player.level().isClientSide() && player.getServer().getLevel(pos.dimension()).getBlockState(pos.pos()).getBlock().getDescriptionId().equals(block);
+            if (!player.level().isClientSide() && player.getServer().getLevel(pos.dimension()).getBlockState(pos.pos()).getBlock().getDescriptionId().equals(block)) {
+                ChunkPos chunkPos = new ChunkPos(pos.pos());
+                player.getServer().getLevel(pos.dimension()).getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
+                return true;
+            }
+            return false;
         })) {
             cir.setReturnValue(true);
             cir.cancel();
