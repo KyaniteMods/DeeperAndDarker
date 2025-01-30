@@ -138,7 +138,6 @@
   "block.deeperdarker.stripped_echo_log": "Bare echoin' log",
   "block.deeperdarker.stripped_echo_wood": "Bare echoin' timber",
   "block.deeperdarker.unlinked": "Courier set sail",
-  "config.deeperdarker.changePhantomTextures.description": "D't'rmines if flyin' devils'll look different in th' flatlands o' th' deep.",
   "config.deeperdarker.changePhantomTextures.title": "Change Flyin' Devil Textures",
   "config.deeperdarker.client.title": "Client",
   "config.deeperdarker.server.title": "Ship",
