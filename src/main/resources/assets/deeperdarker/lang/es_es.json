@@ -137,8 +137,6 @@
   "block.deeperdarker.stripped_echo_log": "Tronco resonante sin corteza",
   "block.deeperdarker.stripped_echo_wood": "Leño resonante sin corteza",
   "block.deeperdarker.unlinked": "Transmisor desvinculado",
-  "config.deeperdarker.sculkLeechesFromAncientVaseChance.description": "Define la probabilidad de que las sanguijuelas de Sculk aparezcan en un Jarrón Antiguo si el ajuste anterior termina siendo verdad. Si un mob debería aparecer y esta configuración termina siendo falsa, aparecerá un acechador.",
-  "config.deeperdarker.spawnSomethingFromAncientVaseChance.description": "Define la probabilidad de que un mob (Acechador o Sanguijuela de Sculk) aparezca en un jarrón antiguo.",
   "config.deeperdarker.title": "Deeper and Darker",
   "effect.deeperdarker.sculk_affinity": "Afinidad de sculk",
   "enchantment.deeperdarker.catalysis": "Catálisis",
