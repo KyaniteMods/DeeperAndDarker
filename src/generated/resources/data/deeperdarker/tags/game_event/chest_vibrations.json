@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:block_activate",
+    "minecraft:block_close",
+    "minecraft:block_deactivate",
+    "minecraft:block_destroy",
+    "minecraft:block_place",
+    "minecraft:container_close",
+    "minecraft:container_open"
+  ]
+}

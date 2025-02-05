@@ -1,5 +1,7 @@
 {
   "values": [
+    "minecraft:phantom",
+    "minecraft:warden",
     "deeperdarker:angler_fish",
     "deeperdarker:sculk_centipede",
     "deeperdarker:sculk_leech",
@@ -7,8 +9,6 @@
     "deeperdarker:shattered",
     "deeperdarker:shriek_worm",
     "deeperdarker:sludge",
-    "deeperdarker:stalker",
-    "minecraft:phantom",
-    "minecraft:warden"
+    "deeperdarker:stalker"
   ]
 }

@@ -99,6 +99,8 @@ public class DeeperDarker {
         DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(packOutput, lookupProvider, fileHelper));
+        generator.addProvider(event.includeServer(), new DDGameEventTagsProvider(packOutput, lookupProvider, fileHelper));
 
         CompletableFuture<HolderLookup.Provider> newLookup = generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider)).getRegistryProvider();
         generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, newLookup, fileHelper, List.of(new DDAdvancements())));
