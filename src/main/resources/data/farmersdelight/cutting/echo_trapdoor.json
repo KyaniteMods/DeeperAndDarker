@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "deeperdarker:echo_trapdoor"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "deeperdarker:echo_planks"
+      }
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}
