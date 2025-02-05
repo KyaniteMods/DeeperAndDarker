@@ -7,21 +7,21 @@
   ],
   "result": [
     {
-      "item": "deeperdarker:stripped_echo_wood"
+      "item": {
+        "count": 1,
+        "id": "deeperdarker:stripped_echo_wood"
+      }
     },
     {
-      "item": "farmersdelight:tree_bark"
+      "item": {
+        "count": 1,
+        "id": "farmersdelight:tree_bark"
+      }
     }
   ],
   "sound": "minecraft:item.axe.strip",
   "tool": {
     "type": "farmersdelight:tool_action",
     "action": "axe_strip"
-  },
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "farmersdelight"
-    }
-  ]
+  }
 }
