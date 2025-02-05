@@ -20,7 +20,7 @@ public class DDItems {
     public static final RegistryObject<Item> GRIME_BALL = ITEMS.register("grime_ball", () -> new Item(new Item.Properties().tab(DDCreativeTab.DEEPER_DARKER)));
     public static final RegistryObject<Item> GRIME_BRICK = ITEMS.register("grime_brick", () -> new Item(new Item.Properties().tab(DDCreativeTab.DEEPER_DARKER)));
 
-    public static final RegistryObject<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON).tab(DDCreativeTab.DEEPER_DARKER)));
+    public static final RegistryObject<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.EPIC).tab(DDCreativeTab.DEEPER_DARKER)));
     public static final RegistryObject<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1).tab(DDCreativeTab.DEEPER_DARKER), DDBlocks.ECHO));
     public static final RegistryObject<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1).tab(DDCreativeTab.DEEPER_DARKER), DDBlocks.ECHO));
 
