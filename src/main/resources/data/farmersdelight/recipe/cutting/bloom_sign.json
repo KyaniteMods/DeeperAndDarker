@@ -7,17 +7,14 @@
   ],
   "result": [
     {
-      "item": "deeperdarker:bloom_planks"
+      "item": {
+        "count": 1,
+        "id": "deeperdarker:bloom_planks"
+      }
     }
   ],
   "tool": {
     "type": "farmersdelight:tool_action",
     "action": "axe_dig"
-  },
-  "fabric:load_conditions": [
-    {
-      "condition": "fabric:all_mods_loaded",
-      "values": ["farmersdelight"]
-    }
-  ]
+  }
 }
