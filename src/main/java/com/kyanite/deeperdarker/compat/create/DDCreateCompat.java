@@ -40,9 +40,9 @@ public class DDCreateCompat {
     }
 
     public static class Items {
-        public static final Item WARDEN_DIVING_HELMET = DDItems.register("warden_diving_helmet", new DivingHelmetItem(DDArmorMaterials.WARDEN, new Item.Properties(), new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving")));
-        public static final Item WARDEN_DIVING_BOOTS = DDItems.register("warden_diving_boots", new DivingBootsItem(DDArmorMaterials.WARDEN, new Item.Properties(), new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving")));
-        public static final Item WARDEN_BACKTANK_PLACEABLE = DDItems.register("warden_backtank_placeable", new BacktankItem.BacktankBlockItem(Blocks.WARDEN_BACKTANK, () -> Items.WARDEN_BACKTANK, new Item.Properties()));
+        public static final Item WARDEN_DIVING_HELMET = DDItems.register("warden_diving_helmet", new DivingHelmetItem(DDArmorMaterials.WARDEN, new Item.Properties().fireResistant(), new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving")));
+        public static final Item WARDEN_DIVING_BOOTS = DDItems.register("warden_diving_boots", new DivingBootsItem(DDArmorMaterials.WARDEN, new Item.Properties().fireResistant(), new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving")));
+        public static final Item WARDEN_BACKTANK_PLACEABLE = DDItems.register("warden_backtank_placeable", new BacktankItem.BacktankBlockItem(Blocks.WARDEN_BACKTANK, () -> Items.WARDEN_BACKTANK, new Item.Properties().fireResistant()));
         public static final Item WARDEN_BACKTANK = DDItems.register("warden_backtank", new BacktankItem.Layered(DDArmorMaterials.WARDEN, new Item.Properties().fireResistant().durability(-1), new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving"), () -> (BacktankItem.BacktankBlockItem) WARDEN_BACKTANK_PLACEABLE));
 
         public static void init() {
