@@ -98,6 +98,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.POLISHED_GLOOMSLATE_STAIRS);
         entries.accept(DDBlocks.POLISHED_GLOOMSLATE_SLAB);
         entries.accept(DDBlocks.POLISHED_GLOOMSLATE_WALL);
+        entries.accept(DDBlocks.ENRICHED_CRACKED_GLOOMSLATE_BRICKS);
         entries.accept(DDBlocks.GLOOMSLATE_BRICKS);
         entries.accept(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
         entries.accept(DDBlocks.GLOOMSLATE_BRICK_SLAB);
@@ -116,6 +117,8 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
         entries.accept(DDBlocks.CHISELED_GLOOMSLATE);
         entries.accept(DDBlocks.GLOOMSLATE_LIGHT);
+        entries.accept(DDBlocks.BLOOMING_TUBE_LAMP);
+        entries.accept(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
         entries.accept(DDBlocks.NOISE_CANCELER);
 
         entries.accept(DDBlocks.GLOOMY_SCULK);
