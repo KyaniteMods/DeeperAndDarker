@@ -119,6 +119,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.GLOOMSLATE_LIGHT);
         entries.accept(DDBlocks.BLOOMING_TUBE_LAMP);
         entries.accept(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
+        entries.accept(DDBlocks.GLOOMSLATE_BRICK_FENCE);
         entries.accept(DDBlocks.NOISE_CANCELER);
 
         entries.accept(DDBlocks.GLOOMY_SCULK);

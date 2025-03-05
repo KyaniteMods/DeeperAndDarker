@@ -109,6 +109,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.CUT_GLOOMSLATE_SLAB, "Cut Gloomslate Slab");
         translationBuilder.add(DDBlocks.CUT_GLOOMSLATE_WALL, "Cut Gloomslate Wall");
         translationBuilder.add(DDBlocks.CHISELED_GLOOMSLATE, "Chiseled Gloomslate");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_BRICK_FENCE, "Gloomslate Brick Fence");
         translationBuilder.add(DDBlocks.GLOOMSLATE_LIGHT, "Gloomslate Light");
         translationBuilder.add(DDBlocks.ENRICHED_CRACKED_GLOOMSLATE_BRICKS, "Enriched Cracked Gloomslate Bricks");
         translationBuilder.add(DDBlocks.BLOOMING_TUBE_LAMP, "Blooming Tube Lamp");

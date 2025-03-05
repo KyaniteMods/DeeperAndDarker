@@ -147,6 +147,14 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("AHA")
                 .pattern("SRS")
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.BORDERED_BLOOMING_TUBE_LAMP)
+                .define('G', DDBlocks.GLOOMSLATE)
+                .define('L', DDBlocks.BLOOMING_TUBE_LAMP)
+                .pattern("GGG")
+                .pattern("GLG")
+                .pattern("GGG")
+                .unlockedBy(getHasName(DDBlocks.BLOOMING_TUBE_LAMP), has(DDBlocks.BLOOMING_TUBE_LAMP)).save(output);
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {

@@ -43,6 +43,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
         copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
+        copy(BlockTags.FENCES, ItemTags.FENCES);
         copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
         copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
         copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
