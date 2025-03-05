@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.util.datagen.tags;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -101,5 +102,6 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.FISHES, DDItems.ANGLER_FISH, DDItems.COOKED_ANGLER_FISH);
         add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES, DDItems.ANGLER_FISH, DDItems.COOKED_ANGLER_FISH);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
+        add(ConventionalItemTags.GLASS_BLOCKS, DDBlocks.SOUNDPROOF_GLASS.asItem());
     }
 }
