@@ -42,3 +42,4 @@ replay_*.log
 /output/
 /src/main/generated/.cache/
 /src/main/generated/
+!/src/main/generated/assets/deeperdarker/lang
