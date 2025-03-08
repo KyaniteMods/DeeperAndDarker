@@ -193,8 +193,8 @@ public class DDBlocks {
     public static final Block CHISELED_GLOOMSLATE = register("chiseled_gloomslate", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE)));
     public static final Block GLOOMSLATE_LIGHT = register("gloomslate_light", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE).lightLevel(state -> 15).mapColor(MapColor.SAND)));
     public static final Block ENRICHED_CRACKED_GLOOMSLATE_BRICKS = register("enriched_cracked_gloomslate_bricks", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS)));
-    public static final Block BLOOMING_TUBE_LAMP = register("blooming_tube_lamp", new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
-    public static final Block BORDERED_BLOOMING_TUBE_LAMP = register("bordered_blooming_tube_lamp", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE_LIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final Block LITE_BLOCK = register("lite_block", new Block(BlockBehaviour.Properties.copy(Blocks.SHROOMLIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final Block BORDERED_LITE_BLOCK = register("bordered_lite_block", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE_LIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final Block GLOOMSLATE_BRICK_FENCE = register("gloomslate_brick_fence", new FenceBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_BRICK_FENCE).mapColor(MapColor.TERRACOTTA_BROWN)));
 
     public static final Block SCULK_GRIME = register("sculk_grime", new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));

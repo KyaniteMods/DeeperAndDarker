@@ -123,8 +123,8 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.CHISELED_GLOOMSLATE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_LIGHT);
         blockModelGenerators.family(DDBlocks.ENRICHED_CRACKED_GLOOMSLATE_BRICKS);
-        blockModelGenerators.family(DDBlocks.BLOOMING_TUBE_LAMP);
-        blockModelGenerators.family(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
+        blockModelGenerators.family(DDBlocks.LITE_BLOCK);
+        blockModelGenerators.family(DDBlocks.BORDERED_LITE_BLOCK);
         registerFence(blockModelGenerators, DDBlocks.GLOOMSLATE_BRICK_FENCE, DDBlocks.GLOOMSLATE_BRICKS);
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
@@ -279,6 +279,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GLEAM_GEL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.LITE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_CARAPACE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.HEART_OF_THE_DEEP, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SOUL_CRYSTAL, ModelTemplates.FLAT_ITEM);

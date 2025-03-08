@@ -117,8 +117,8 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
         entries.accept(DDBlocks.CHISELED_GLOOMSLATE);
         entries.accept(DDBlocks.GLOOMSLATE_LIGHT);
-        entries.accept(DDBlocks.BLOOMING_TUBE_LAMP);
-        entries.accept(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
+        entries.accept(DDBlocks.LITE_BLOCK);
+        entries.accept(DDBlocks.BORDERED_LITE_BLOCK);
         entries.accept(DDBlocks.GLOOMSLATE_BRICK_FENCE);
         entries.accept(DDBlocks.NOISE_CANCELER);
 
@@ -211,6 +211,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.WARDEN_CARAPACE);
         entries.accept(DDItems.REINFORCED_ECHO_SHARD);
         entries.accept(DDItems.GLEAM_GEL);
+        entries.accept(DDItems.LITE);
 
         entries.accept(DDItems.SCULK_TRANSMITTER);
         entries.accept(DDItems.SONOROUS_STAFF);

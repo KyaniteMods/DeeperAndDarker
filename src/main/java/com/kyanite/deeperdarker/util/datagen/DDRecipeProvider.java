@@ -148,13 +148,18 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("SRS")
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.BORDERED_BLOOMING_TUBE_LAMP)
+        twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LITE_BLOCK, DDItems.LITE);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, DDItems.LITE, 4)
+                .requires(DDBlocks.LITE_BLOCK)
+                .unlockedBy(getHasName(DDItems.LITE), has(DDItems.LITE)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.BORDERED_LITE_BLOCK)
                 .define('G', DDBlocks.GLOOMSLATE)
-                .define('L', DDBlocks.BLOOMING_TUBE_LAMP)
+                .define('L', DDBlocks.LITE_BLOCK)
                 .pattern("GGG")
                 .pattern("GLG")
                 .pattern("GGG")
-                .unlockedBy(getHasName(DDBlocks.BLOOMING_TUBE_LAMP), has(DDBlocks.BLOOMING_TUBE_LAMP)).save(output);
+                .unlockedBy(getHasName(DDBlocks.LITE_BLOCK), has(DDBlocks.LITE_BLOCK)).save(output);
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {

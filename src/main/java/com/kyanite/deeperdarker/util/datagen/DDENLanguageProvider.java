@@ -112,8 +112,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOOMSLATE_BRICK_FENCE, "Gloomslate Brick Fence");
         translationBuilder.add(DDBlocks.GLOOMSLATE_LIGHT, "Gloomslate Light");
         translationBuilder.add(DDBlocks.ENRICHED_CRACKED_GLOOMSLATE_BRICKS, "Enriched Cracked Gloomslate Bricks");
-        translationBuilder.add(DDBlocks.BLOOMING_TUBE_LAMP, "Blooming Tube Lamp");
-        translationBuilder.add(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP, "Bordered Blooming Tube Lamp");
+        translationBuilder.add(DDBlocks.LITE_BLOCK, "Block of Lite");
+        translationBuilder.add(DDBlocks.BORDERED_LITE_BLOCK, "Bordered Block of Lite");
         translationBuilder.add(DDBlocks.ECHO_SOIL, "Echo Soil");
         translationBuilder.add(DDBlocks.SCULK_GLEAM, "Sculk Gleam");
         translationBuilder.add(DDBlocks.POROUS_SCULK_GLEAM, "Porous Sculk Gleam");
@@ -206,6 +206,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item." + DeeperDarker.MOD_ID + ".perks.dampens_vibrations", "Dampens Vibrations");
         translationBuilder.add(DDItems.REINFORCED_ECHO_SHARD, "Reinforced Echo Shard");
         translationBuilder.add(DDItems.GLEAM_GEL, "Gleam Gel");
+        translationBuilder.add(DDItems.LITE, "Lite");
         translationBuilder.add(DDItems.WARDEN_CARAPACE, "Warden Carapace");
         translationBuilder.add(DDItems.HEART_OF_THE_DEEP, "Heart of the Deep");
         translationBuilder.add(DDItems.SOUL_CRYSTAL, "Soul Crystal");
