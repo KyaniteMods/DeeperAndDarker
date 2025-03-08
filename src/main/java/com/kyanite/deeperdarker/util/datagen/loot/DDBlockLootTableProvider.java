@@ -138,7 +138,13 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE);
         dropSelf(DDBlocks.GLOOMSLATE_LIGHT);
-        dropOther(DDBlocks.ENRICHED_CRACKED_GLOOMSLATE_BRICKS, DDBlocks.COBBLED_GLOOMSLATE);
+        add(DDBlocks.ENRICHED_CRACKED_GLOOMSLATE_BRICKS, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(DDBlocks.COBBLED_GLOOMSLATE))
+                ).withPool(LootPool.lootPool()
+                        .add(EmptyLootItem.emptyItem().setWeight(4))
+                        .add(LootItem.lootTableItem(DDItems.LITE).setWeight(1))
+                ));
         dropSelf(DDBlocks.LITE_BLOCK);
         dropSelf(DDBlocks.BORDERED_LITE_BLOCK);
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_FENCE);
