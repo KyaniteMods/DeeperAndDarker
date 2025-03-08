@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "deeperdarker:block/gloomslate_bricks",
-    "side": "deeperdarker:block/gloomslate_bricks",
-    "top": "deeperdarker:block/gloomslate_bricks"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/honey_block",
-  "textures": {
-    "down": "deeperdarker:block/gleam_gel_block",
-    "particle": "deeperdarker:block/gleam_gel_block",
-    "side": "deeperdarker:block/gleam_gel_block",
-    "up": "deeperdarker:block/gleam_gel_block"
-  }
-}
