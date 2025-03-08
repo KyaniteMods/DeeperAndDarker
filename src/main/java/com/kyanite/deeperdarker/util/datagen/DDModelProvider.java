@@ -248,7 +248,9 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
-        blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
+
+        registerSkull(blockModelGenerators, DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
@@ -534,5 +536,13 @@ public class DDModelProvider extends FabricModelProvider {
                         .with(VariantProperties.UV_LOCK, true)
                         .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180));
         blockModelGenerators.blockStateOutput.accept(builder);
+    }
+
+    private void registerSkull(BlockModelGenerators blockModelGenerators, Block skull, Block wallSkull) {
+        ResourceLocation skullModel = ModelLocationUtils.decorateBlockModelLocation("skull");
+        ModelTemplates.SKULL_INVENTORY.create(ModelLocationUtils.getModelLocation(skull.asItem()), TextureMapping.particle(skull), blockModelGenerators.modelOutput);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(skull, skullModel));
+        blockModelGenerators.skipAutoItemBlock(wallSkull);
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(wallSkull, skullModel));
     }
 }
