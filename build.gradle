@@ -57,7 +57,9 @@ loom {
 }
 
 fabricApi {
-	configureDataGeneration()
+	configureDataGeneration({
+		modId = project.archives_base_name
+	})
 }
 
 configurations.configureEach {
