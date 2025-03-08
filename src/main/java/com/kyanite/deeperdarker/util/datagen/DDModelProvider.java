@@ -309,6 +309,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOOMSLATE_TILE_WALL.asItem()), TextureMapping.cube(DDBlocks.GLOOMSLATE_TILES), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SMOOTH_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.SMOOTH_GLOOMSLATE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_GLOOMSLATE), itemModelGenerator.output);
+        ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOOMSLATE_BRICK_FENCE.asItem()), TextureMapping.cube(DDBlocks.GLOOMSLATE_BRICKS), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
