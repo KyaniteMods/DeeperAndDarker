@@ -14,10 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +22,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -56,7 +52,11 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        if (isLinked(player.getMainHandItem())) transmit(level, player, player.getMainHandItem(), null);
+        ItemStack stack = player.getItemInHand(usedHand);
+        if (isLinked(stack)) {
+            transmit(level, player, stack, null);
+            return InteractionResultHolder.success(stack);
+        }
         return super.use(level, player, usedHand);
     }
 
@@ -95,7 +95,7 @@ public class SculkTransmitterItem extends Item {
         if (menu != null) {
             player.playNotifySound(DDSounds.TRANSMITTER_OPEN.get(), SoundSource.NEUTRAL, 1, 1);
             if (player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
-            if (linkedLevel.getBlockEntity(linkedPos) instanceof ChestBlockEntity chest) chest.startOpen(player);
+            if (linkedLevel.getBlockEntity(linkedPos) instanceof Container container) container.startOpen(player);
         }
 
         return InteractionResult.SUCCESS;
