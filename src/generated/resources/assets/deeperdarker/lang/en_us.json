@@ -301,6 +301,7 @@
   "tooltips.deeperdarker.crystallized_amber.leech": "Contains Sculk Leech",
   "tooltips.deeperdarker.sculk_transmitter.linked": "Linked to %s",
   "tooltips.deeperdarker.sculk_transmitter.location": "Located at %s, %s, %s",
+  "tooltips.deeperdarker.sculk_transmitter.location_level": "Dimension: %s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
   "upgrade.deeperdarker.warden_upgrade": "Warden Upgrade"
 }
