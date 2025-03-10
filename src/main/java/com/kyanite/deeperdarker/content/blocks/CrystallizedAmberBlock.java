@@ -76,15 +76,12 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
         if(stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
             CompoundTag tag = stack.getOrDefault(DataComponents.BLOCK_ENTITY_DATA, CustomData.EMPTY).copyTag();
             if(tag.contains("BlockEntityTag")) {
-                System.out.println("tagging");
                 tag = tag.getCompound("BlockEntityTag");
             }
             if(tag.contains("leech") && tag.getBoolean("leech")) {
-                System.out.println("leech");
                 tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
             }
             else if(tag.contains("item")) {
-                System.out.println("item");
                 tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parseOptional(context.registries(), tag.getCompound("item")).getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
             }
         }
