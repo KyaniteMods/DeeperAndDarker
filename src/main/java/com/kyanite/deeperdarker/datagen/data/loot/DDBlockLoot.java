@@ -194,7 +194,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(Items.BOOK).setWeight(2).apply(EnchantRandomlyFunction.randomApplicableEnchantment(this.registries)))
                         .add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE).setWeight(1))
                         .add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE.get()).setWeight(1))
-                ).withPool(LootPool.lootPool().when(doesNotHaveSilkTouch()).setRolls(ConstantValue.exactly(2))
+                ).withPool(LootPool.lootPool().when(doesNotHaveSilkTouch()).setRolls(UniformGenerator.between(1, 2))
                         .add(LootItem.lootTableItem(Blocks.COBWEB).setWeight(13).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
                         .add(LootItem.lootTableItem(Items.REDSTONE).setWeight(7).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6))))
                         .add(LootItem.lootTableItem(Items.STICK).setWeight(7).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
