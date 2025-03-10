@@ -51,9 +51,9 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -103,7 +103,7 @@ public class DeeperDarkerEvents {
                 BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER.get(), tag);
                 Block.popResource(level, pos, stack);
 
-                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                level.removeBlock(pos, false);
                 event.setCanceled(true);
             }
             return;
@@ -123,14 +123,14 @@ public class DeeperDarkerEvents {
             stack.set(DataComponents.ITEM_NAME, Component.translatable("block." + DeeperDarker.MOD_ID + ".flowerless_ice_lily"));
             Block.popResource(level, pos, stack);
 
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            level.removeBlock(pos, false);
             event.setCanceled(true);
         }
 
         if(state.is(DDBlocks.ANCIENT_VASE)) {
             if(level instanceof ServerLevel serverLevel) {
                 RandomSource random = serverLevel.getRandom();
-                if(level.getDifficulty() != Difficulty.PEACEFUL && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
+                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
                     if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
@@ -138,7 +138,7 @@ public class DeeperDarkerEvents {
                     } else {
                         DDEntities.STALKER.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                     }
-                    serverLevel.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                    serverLevel.removeBlock(pos, false);
                     event.setCanceled(true);
                 }
             }
