@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingGrassBlock;
+import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -74,8 +75,14 @@ public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
                             boolean above = i3 >= 4;
                             if(!above && level.getBlockState(pos.below()).is(DDBlocks.SCULK_STONE.get()) && random.nextFloat() < 0.1f) level.setBlock(pos, DDBlocks.GLOWING_GRASS.get().defaultBlockState().setValue(GlowingGrassBlock.WATERLOGGED, true), 2);
                             else level.setBlock(pos, above ? Blocks.CAVE_AIR.defaultBlockState() : Blocks.WATER.defaultBlockState(), 2);
+
                             if(above) {
-                                level.scheduleTick(pos, Blocks.CAVE_AIR, 0);
+                                if(level.isWaterAt(pos.below())) {
+                                    if(random.nextFloat() < 0.03f) level.setBlock(pos, DDBlocks.ICE_LILY.get().defaultBlockState(), 2);
+                                    else if(random.nextFloat() < 0.04f) level.setBlock(pos, DDBlocks.ICE_LILY.get().defaultBlockState().setValue(IceLilyBlock.HAS_FLOWER, false), 2);
+                                } else {
+                                    level.scheduleTick(pos, Blocks.CAVE_AIR, 0);
+                                }
                                 this.markAboveForPostProcessing(level, pos);
                             }
                         }
