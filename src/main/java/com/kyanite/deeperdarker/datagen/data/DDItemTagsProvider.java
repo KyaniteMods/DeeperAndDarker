@@ -24,6 +24,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+        copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
@@ -52,6 +53,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
+        copy(BlockTags.DIRT, ItemTags.DIRT);
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
         copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
 
