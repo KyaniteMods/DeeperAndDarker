@@ -51,6 +51,16 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> SHRIEK_WORM_DEATH = register("entity.shriek_worm.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> SHRIEK_WORM_HURT = register("entity.shriek_worm.hurt");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_ATTACK = register("entity.sludge.attack");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_DEATH = register("entity.sludge.death");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_HURT = register("entity.sludge.hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_JUMP = register("entity.sludge.jump");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_SQUISH = register("entity.sludge.squish");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_DEATH_SMALL = register("entity.sludge.death_small");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_HURT_SMALL = register("entity.sludge.hurt_small");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_JUMP_SMALL = register("entity.sludge.jump_small");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLUDGE_SQUISH_SMALL = register("entity.sludge.squish_small");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_AMBIENT = register("entity.stalker.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_DEATH = register("entity.stalker.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> STALKER_HURT = register("entity.stalker.hurt");
