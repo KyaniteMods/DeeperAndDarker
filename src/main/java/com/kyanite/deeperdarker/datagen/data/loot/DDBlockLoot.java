@@ -113,7 +113,13 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
         add(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_WALL.get());
-        dropOther(DDBlocks.ENRICHED_GLOOMSLATE_BRICKS.get(), DDBlocks.COBBLED_GLOOMSLATE.get());
+        add(DDBlocks.ENRICHED_GLOOMSLATE_BRICKS.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(DDBlocks.COBBLED_GLOOMSLATE)))
+                .withPool(LootPool.lootPool()
+                        .add(EmptyLootItem.emptyItem().setWeight(4))
+                        .add(LootItem.lootTableItem(DDItems.LITE))
+                )
+        );
         dropSelf(DDBlocks.GLOOMSLATE_TILES.get());
         dropSelf(DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
         add(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), this::createSlabItemTable);
