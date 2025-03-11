@@ -1,6 +1,8 @@
-// 1.21.1	2025-01-09T19:24:08.7672909	Tags for minecraft:item mod id deeperdarker
+// 1.21.1	2025-03-10T22:15:07.2069613	Tags for minecraft:item mod id deeperdarker
+d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/item/fences.json
 ece1a1e2a4a6f21c593a611ae9126ff341767989 data/c/tags/item/foods/cooked_fish.json
 47f7947e255ebbd71583d60670df2ea649e9d376 data/c/tags/item/foods/raw_fish.json
+36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/item/glass_blocks.json
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/item/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/item/ores/coal.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/c/tags/item/ores/copper.json
@@ -30,6 +32,7 @@ dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/item/copper_ores.js
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/item/emerald_ores.json
 7b02b576df083630e66072bf2d0f07f1e6ac4a26 data/minecraft/tags/item/enchantable/durability.json
 d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/equippable.json
+d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/minecraft/tags/item/fences.json
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/item/fence_gates.json
 95ef44b28e43c6e793182bea0ba759d458acff60 data/minecraft/tags/item/fishes.json
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/item/flowers.json

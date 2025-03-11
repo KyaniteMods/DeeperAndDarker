@@ -98,6 +98,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
             event.accept(DDBlocks.GLOOMSLATE_BRICK_SLAB);
             event.accept(DDBlocks.GLOOMSLATE_BRICK_WALL);
+            event.accept(DDBlocks.ENRICHED_GLOOMSLATE_BRICKS);
             event.accept(DDBlocks.GLOOMSLATE_TILES);
             event.accept(DDBlocks.GLOOMSLATE_TILE_STAIRS);
             event.accept(DDBlocks.GLOOMSLATE_TILE_SLAB);
@@ -110,12 +111,16 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CUT_GLOOMSLATE_STAIRS);
             event.accept(DDBlocks.CUT_GLOOMSLATE_SLAB);
             event.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
+            event.accept(DDBlocks.GLOOMSLATE_BRICK_FENCE);
             event.accept(DDBlocks.CHISELED_GLOOMSLATE);
 
             event.accept(DDBlocks.GLOOMY_SCULK);
             event.accept(DDBlocks.GLOOMY_GEYSER);
             event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
+            event.accept(DDBlocks.GLOOMSLATE_LIGHT);
+            event.accept(DDBlocks.BLOOMING_TUBE_LAMP);
+            event.accept(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
             event.accept(DDBlocks.SOUNDPROOF_GLASS);
 
             event.accept(DDBlocks.SCULK_STONE_COAL_ORE);

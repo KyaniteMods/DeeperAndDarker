@@ -105,6 +105,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMSLATE_BRICK_STAIRS);
         blockModel(DDBlocks.GLOOMSLATE_BRICK_SLAB);
         blockModel(DDBlocks.GLOOMSLATE_BRICK_WALL, "inventory");
+        blockModel(DDBlocks.ENRICHED_GLOOMSLATE_BRICKS);
         blockModel(DDBlocks.GLOOMSLATE_TILES);
         blockModel(DDBlocks.GLOOMSLATE_TILE_STAIRS);
         blockModel(DDBlocks.GLOOMSLATE_TILE_SLAB);
@@ -117,6 +118,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.CUT_GLOOMSLATE_STAIRS);
         blockModel(DDBlocks.CUT_GLOOMSLATE_SLAB);
         blockModel(DDBlocks.CUT_GLOOMSLATE_WALL, "inventory");
+        blockModel(DDBlocks.GLOOMSLATE_BRICK_FENCE, "inventory");
         blockModel(DDBlocks.CHISELED_GLOOMSLATE);
 
         blockModel(DDBlocks.SCULK_GRIME);
@@ -125,11 +127,15 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_GRIME_BRICK_SLAB);
         blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
 
+        blockModel(DDBlocks.SCULK_GLEAM);
+        blockModel(DDBlocks.GLOOMSLATE_LIGHT);
+        blockModel(DDBlocks.BLOOMING_TUBE_LAMP);
+        blockModel(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
+
         blockModel(DDBlocks.ECHO_SOIL);
         blockModel(DDBlocks.GLOOMY_SCULK);
         blockModel(DDBlocks.GLOOMY_GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
-        blockModel(DDBlocks.SCULK_GLEAM);
         blockModel(DDBlocks.SOUNDPROOF_GLASS);
 
         blockModel(DDBlocks.SCULK_STONE_COAL_ORE);

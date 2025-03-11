@@ -108,6 +108,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         stairsBlock(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
         slabBlock(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE_BRICKS), blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
         wallBlock(DDBlocks.GLOOMSLATE_BRICK_WALL, blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
+        simpleBlock(DDBlocks.ENRICHED_GLOOMSLATE_BRICKS.get());
         simpleBlock(DDBlocks.GLOOMSLATE_TILES.get());
         stairsBlock(DDBlocks.GLOOMSLATE_TILE_STAIRS.get(), blockLoc(DDBlocks.GLOOMSLATE_TILES));
         slabBlock(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), blockLoc(DDBlocks.GLOOMSLATE_TILES), blockLoc(DDBlocks.GLOOMSLATE_TILES));
@@ -120,6 +121,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         stairsBlock(DDBlocks.CUT_GLOOMSLATE_STAIRS.get(), blockLoc(DDBlocks.CUT_GLOOMSLATE));
         slabBlock(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), blockLoc(DDBlocks.CUT_GLOOMSLATE), blockLoc(DDBlocks.CUT_GLOOMSLATE));
         wallBlock(DDBlocks.CUT_GLOOMSLATE_WALL, blockLoc(DDBlocks.CUT_GLOOMSLATE));
+        fenceBlock(DDBlocks.GLOOMSLATE_BRICK_FENCE, blockLoc(DDBlocks.GLOOMSLATE_BRICKS));
         simpleBlock(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         simpleBlock(DDBlocks.SCULK_GRIME.get());
@@ -128,11 +130,15 @@ public class DDBlockStateProvider extends BlockStateProvider {
         slabBlock(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), blockLoc(DDBlocks.SCULK_GRIME_BRICKS), blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
         wallBlock(DDBlocks.SCULK_GRIME_BRICK_WALL, blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
 
+        simpleBlock(DDBlocks.SCULK_GLEAM.get());
+        simpleBlock(DDBlocks.GLOOMSLATE_LIGHT.get());
+        simpleBlock(DDBlocks.BLOOMING_TUBE_LAMP.get());
+        simpleBlock(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP.get());
+
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.GLOOMY_SCULK.get());
         simpleBlock(DDBlocks.GLOOMY_GEYSER.get(), models().cubeTop(DDBlocks.GLOOMY_GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOMY_SCULK), blockLoc(DDBlocks.GLOOMY_GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("translucent"));
-        simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.SOUNDPROOF_GLASS.get(), models().cubeAll(DDBlocks.SOUNDPROOF_GLASS.getId().getPath(), blockLoc(DDBlocks.SOUNDPROOF_GLASS)).renderType("translucent"));
 
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());

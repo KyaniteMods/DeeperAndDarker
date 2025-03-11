@@ -28,6 +28,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS);
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS);
         copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
+        copy(BlockTags.FENCES, ItemTags.FENCES);
         copy(BlockTags.FENCE_GATES, ItemTags.FENCE_GATES);
         copy(BlockTags.WOODEN_DOORS, ItemTags.WOODEN_DOORS);
         copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
@@ -64,6 +65,9 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(Tags.Blocks.ORES_EMERALD, Tags.Items.ORES_EMERALD);
         copy(Tags.Blocks.ORES_LAPIS, Tags.Items.ORES_LAPIS);
         copy(Tags.Blocks.ORES_DIAMOND, Tags.Items.ORES_DIAMOND);
+
+        copy(Tags.Blocks.FENCES, Tags.Items.FENCES);
+        copy(Tags.Blocks.GLASS_BLOCKS, Tags.Items.GLASS_BLOCKS);
 
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
         copy(DDTags.Blocks.BLOOM_STEMS, DDTags.Items.BLOOM_STEMS);

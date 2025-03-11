@@ -113,6 +113,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_STAIRS.get());
         add(DDBlocks.GLOOMSLATE_BRICK_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.GLOOMSLATE_BRICK_WALL.get());
+        dropOther(DDBlocks.ENRICHED_GLOOMSLATE_BRICKS.get(), DDBlocks.COBBLED_GLOOMSLATE.get());
         dropSelf(DDBlocks.GLOOMSLATE_TILES.get());
         dropSelf(DDBlocks.GLOOMSLATE_TILE_STAIRS.get());
         add(DDBlocks.GLOOMSLATE_TILE_SLAB.get(), this::createSlabItemTable);
@@ -125,6 +126,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.CUT_GLOOMSLATE_STAIRS.get());
         add(DDBlocks.CUT_GLOOMSLATE_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL.get());
+        dropSelf(DDBlocks.GLOOMSLATE_BRICK_FENCE.get());
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE.get());
 
         add(DDBlocks.SCULK_GRIME.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL.get(), UniformGenerator.between(2, 4)));
@@ -133,11 +135,15 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(DDBlocks.SCULK_GRIME_BRICK_SLAB.get(), this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL.get());
 
+        dropSelf(DDBlocks.SCULK_GLEAM.get());
+        dropSelf(DDBlocks.GLOOMSLATE_LIGHT.get());
+        dropSelf(DDBlocks.BLOOMING_TUBE_LAMP.get());
+        dropSelf(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP.get());
+
         dropSelf(DDBlocks.ECHO_SOIL.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_GEYSER.get());
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
-        dropSelf(DDBlocks.SCULK_GLEAM.get());
         dropSelf(DDBlocks.SOUNDPROOF_GLASS.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));

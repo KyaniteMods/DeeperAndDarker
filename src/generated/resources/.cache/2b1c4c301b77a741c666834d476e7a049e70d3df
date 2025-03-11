@@ -1,4 +1,5 @@
-// 1.21.1	2025-03-10T21:23:39.8054658	Tags for minecraft:block mod id deeperdarker
+// 1.21.1	2025-03-10T22:14:17.8475953	Tags for minecraft:block mod id deeperdarker
+d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/block/fences.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/block/glass_blocks.json
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/c/tags/block/ores/coal.json
@@ -35,6 +36,7 @@ dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/block/copper_ores.j
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/block/diamond_ores.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/block/dirt.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/block/emerald_ores.json
+d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/minecraft/tags/block/fences.json
 7dbce4cb80be16ec44f3472f112147a1d7ba8e61 data/minecraft/tags/block/fence_gates.json
 81a54dc6ee81c739615aa27a3e28b941ba65077e data/minecraft/tags/block/flowers.json
 1a8b7cd595fc8d49db1d8d890a9f27fc264eee13 data/minecraft/tags/block/flower_pots.json
@@ -47,7 +49,7 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/block/lapis_ores.js
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/block/logs_that_burn.json
 d395a25aa3fe9b9eebdd889fdeaf79dca911933e data/minecraft/tags/block/mineable/axe.json
 3f2e555f5694cd1e1421158bb6ceea922dc330c0 data/minecraft/tags/block/mineable/hoe.json
-64233959059c6b6d92305cd775cf39b7f4568548 data/minecraft/tags/block/mineable/pickaxe.json
+529f29ca5e15bf399b10b4ca9bb08c5f5ad542a6 data/minecraft/tags/block/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/block/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/block/needs_iron_tool.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/block/needs_stone_tool.json
