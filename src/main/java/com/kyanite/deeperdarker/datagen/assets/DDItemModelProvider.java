@@ -129,8 +129,8 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         blockModel(DDBlocks.SCULK_GLEAM);
         blockModel(DDBlocks.GLOOMSLATE_LIGHT);
-        blockModel(DDBlocks.BLOOMING_TUBE_LAMP);
-        blockModel(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
+        blockModel(DDBlocks.LITE_BLOCK);
+        blockModel(DDBlocks.BORDERED_LITE_BLOCK);
 
         blockModel(DDBlocks.ECHO_SOIL);
         blockModel(DDBlocks.GLOOMY_SCULK);

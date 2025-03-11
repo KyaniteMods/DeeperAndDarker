@@ -137,8 +137,8 @@ public class DDBlockLoot extends BlockLootSubProvider {
 
         dropSelf(DDBlocks.SCULK_GLEAM.get());
         dropSelf(DDBlocks.GLOOMSLATE_LIGHT.get());
-        dropSelf(DDBlocks.BLOOMING_TUBE_LAMP.get());
-        dropSelf(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP.get());
+        dropSelf(DDBlocks.LITE_BLOCK.get());
+        dropSelf(DDBlocks.BORDERED_LITE_BLOCK.get());
 
         dropSelf(DDBlocks.ECHO_SOIL.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());

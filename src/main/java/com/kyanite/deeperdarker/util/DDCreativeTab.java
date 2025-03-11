@@ -119,8 +119,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
             event.accept(DDBlocks.GLOOMSLATE_LIGHT);
-            event.accept(DDBlocks.BLOOMING_TUBE_LAMP);
-            event.accept(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP);
+            event.accept(DDBlocks.LITE_BLOCK);
+            event.accept(DDBlocks.BORDERED_LITE_BLOCK);
             event.accept(DDBlocks.SOUNDPROOF_GLASS);
 
             event.accept(DDBlocks.SCULK_STONE_COAL_ORE);

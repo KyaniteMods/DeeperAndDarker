@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "deeperdarker:block/blooming_tube_lamp"
+    "all": "deeperdarker:block/bordered_lite_block"
   }
 }

@@ -132,8 +132,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
         simpleBlock(DDBlocks.GLOOMSLATE_LIGHT.get());
-        simpleBlock(DDBlocks.BLOOMING_TUBE_LAMP.get());
-        simpleBlock(DDBlocks.BORDERED_BLOOMING_TUBE_LAMP.get());
+        simpleBlock(DDBlocks.LITE_BLOCK.get());
+        simpleBlock(DDBlocks.BORDERED_LITE_BLOCK.get());
 
         simpleBlock(DDBlocks.ECHO_SOIL.get());
         simpleBlock(DDBlocks.GLOOMY_SCULK.get());

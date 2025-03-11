@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-10T22:14:17.8475953	Tags for minecraft:block mod id deeperdarker
+// 1.21.1	2025-03-10T22:40:58.2494585	Tags for minecraft:block mod id deeperdarker
 d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/block/fences.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/block/glass_blocks.json
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
@@ -49,7 +49,7 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/block/lapis_ores.js
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/block/logs_that_burn.json
 d395a25aa3fe9b9eebdd889fdeaf79dca911933e data/minecraft/tags/block/mineable/axe.json
 3f2e555f5694cd1e1421158bb6ceea922dc330c0 data/minecraft/tags/block/mineable/hoe.json
-529f29ca5e15bf399b10b4ca9bb08c5f5ad542a6 data/minecraft/tags/block/mineable/pickaxe.json
+b43a888312205cdfa466a53ad3540a986bdd9dcd data/minecraft/tags/block/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/block/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/block/needs_iron_tool.json
 33d07a5e8b6e764033ad98c304357baa651ed25c data/minecraft/tags/block/needs_stone_tool.json

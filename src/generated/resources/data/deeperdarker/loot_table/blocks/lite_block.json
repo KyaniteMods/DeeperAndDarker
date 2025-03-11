@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "deeperdarker:bordered_blooming_tube_lamp"
+          "name": "deeperdarker:lite_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "deeperdarker:blocks/bordered_blooming_tube_lamp"
+  "random_sequence": "deeperdarker:blocks/lite_block"
 }

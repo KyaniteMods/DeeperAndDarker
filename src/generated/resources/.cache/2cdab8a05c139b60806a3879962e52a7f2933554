@@ -1,11 +1,10 @@
-// 1.21.1	2025-03-10T22:10:49.8080817	Item Models: deeperdarker
+// 1.21.1	2025-03-10T22:40:58.2604574	Item Models: deeperdarker
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
 f881938170f499585ba6c7f76f57e4296cfc2007 assets/deeperdarker/models/item/angler_fish.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
 f2108fa9acd703168e4f624814814d262e868c9b assets/deeperdarker/models/item/blooming_sculk_stone.json
 c35424ad127b66c351f775c4e6927d4702835814 assets/deeperdarker/models/item/blooming_stem.json
-d86f60e5c94162d533003454c5ef995aceaa563c assets/deeperdarker/models/item/blooming_tube_lamp.json
 f7f3d2c00b77bce5d3a8b071d45e277e04beb685 assets/deeperdarker/models/item/bloom_berries.json
 78656ecfdb0da07acd453b550a76da16c1598d67 assets/deeperdarker/models/item/bloom_boat.json
 996c2447684c566aa1f4a07af3ad2680a61ddcde assets/deeperdarker/models/item/bloom_button.json
@@ -20,7 +19,7 @@ ae5b1e191bf200456b12885845b505d1cb6c1000 assets/deeperdarker/models/item/bloom_s
 af8b8bbbaca9930eb1246f64c31c877fc8c99107 assets/deeperdarker/models/item/bloom_slab.json
 41b8bc24926a217fd729382dce49ddcf07b7728f assets/deeperdarker/models/item/bloom_stairs.json
 11a1669ceefc9c9165efe20ff0311b7dbf6ec3a6 assets/deeperdarker/models/item/bloom_trapdoor.json
-e5b6df61f2ddad55acd1d5edd4183f4e33355d21 assets/deeperdarker/models/item/bordered_blooming_tube_lamp.json
+ec07e744860dc11729428e7b5b748b82ae6b3866 assets/deeperdarker/models/item/bordered_lite_block.json
 bc192f3477fde8efde3aba14cdd0016b9b4c74cf assets/deeperdarker/models/item/chiseled_gloomslate.json
 89f7cacebe1029e9f27884b1aeba759b4f9c978f assets/deeperdarker/models/item/chiseled_sculk_stone.json
 0eb658806d9c4c3faa4843fa00fd273b3d44dbdc assets/deeperdarker/models/item/cobbled_gloomslate.json
@@ -95,6 +94,7 @@ d82066f9d896b14f9453c4586ea7759638386d6f assets/deeperdarker/models/item/heart_o
 6c3872c96a787c36e0f25a0666e44802e04d3287 assets/deeperdarker/models/item/ice_lily.json
 7f56809d8f87f9099524a6cfa4def4090fb1b6b0 assets/deeperdarker/models/item/infested_sculk.json
 df533159665996f24d631dedab9bbe903ceb5ed8 assets/deeperdarker/models/item/lily_flower.json
+66ba6f99fd3249ce2c93411fcd40e2e58c27a39d assets/deeperdarker/models/item/lite_block.json
 5e5af3cb2453907678556dcd859a2a0bc6c5527b assets/deeperdarker/models/item/polished_gloomslate.json
 dc2fc01abd02b4e3b368176b7f05540ce3365f57 assets/deeperdarker/models/item/polished_gloomslate_slab.json
 d1f45dbc6e65425d6ce3d2ea175a412da105cc17 assets/deeperdarker/models/item/polished_gloomslate_stairs.json

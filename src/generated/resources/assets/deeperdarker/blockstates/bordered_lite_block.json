@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "deeperdarker:block/bordered_lite_block"
+    }
+  }
+}

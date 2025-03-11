@@ -197,8 +197,8 @@ public class DDBlocks {
 
     public static final DeferredBlock<Block> SCULK_GLEAM = register("sculk_gleam", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 15).mapColor(MapColor.SAND)));
     public static final DeferredBlock<Block> GLOOMSLATE_LIGHT = register("gloomslate_light", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get()).lightLevel(state -> 15).mapColor(MapColor.SAND)));
-    public static final DeferredBlock<Block> BLOOMING_TUBE_LAMP = register("blooming_tube_lamp", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.VERDANT_FROGLIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
-    public static final DeferredBlock<Block> BORDERED_BLOOMING_TUBE_LAMP = register("bordered_blooming_tube_lamp", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE_LIGHT.get()).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final DeferredBlock<Block> LITE_BLOCK = register("lite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.VERDANT_FROGLIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final DeferredBlock<Block> BORDERED_LITE_BLOCK = register("bordered_lite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE_LIGHT.get()).mapColor(MapColor.COLOR_LIGHT_BLUE)));
 
     public static final DeferredBlock<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomySculkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final DeferredBlock<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 9).mapColor(MapColor.TERRACOTTA_BROWN)));
