@@ -184,6 +184,7 @@ public class DDItemModelProvider extends ItemModelProvider {
 
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
+        itemModel(DDItems.LITE, GENERATED);
 
         itemModel(DDItems.RESONARIUM_SHOVEL, HANDHELD);
         itemModel(DDItems.RESONARIUM_PICKAXE, HANDHELD);
