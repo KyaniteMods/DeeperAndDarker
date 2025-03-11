@@ -174,6 +174,7 @@ public class ENLanguageProvider extends LanguageProvider {
         if(name.equals("Angler Fish")) name = "Raw " + name;
         if(name.contains("Chest ")) name = name.replace("Chest ", "") + " With Chest";
         if(name.contains("Lapis")) name = name.replace("Lapis", "Lapis Lazuli");
+        if(name.contains("Lite Block")) name = name.replace("Lite Block", "Block of Lite");
         if(name.contains("Of The")) name = name.replace("Of The", "of the");
         if(name.contains("Smithing")) name = "Smithing Template";
         if(name.contains("With")) name = name.replace("With", "with");
