@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "deeperdarker:gloomslate_bricks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "GSG",
+    "GSG"
+  ],
+  "result": {
+    "count": 6,
+    "id": "deeperdarker:gloomslate_brick_fence"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": {
+      "item": "deeperdarker:gloomslate"
+    },
+    "L": {
+      "item": "deeperdarker:lite_block"
+    }
+  },
+  "pattern": [
+    " G ",
+    "GLG",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:bordered_lite_block"
+  }
+}
