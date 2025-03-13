@@ -1,0 +1,7 @@
+{
+  "type": "deeperdarker:gloomaze",
+  "biomes": "#deeperdarker:has_structure/gloomaze",
+  "spawn_overrides": {},
+  "step": "underground_structures",
+  "terrain_adaptation": "beard_box"
+}

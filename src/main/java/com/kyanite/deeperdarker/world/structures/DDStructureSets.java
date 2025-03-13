@@ -12,10 +12,13 @@ import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 
 public class DDStructureSets {
     public static final  ResourceKey<StructureSet> ANCIENT_TEMPLES = createKey("ancient_temples");
+    public static final  ResourceKey<StructureSet> GLOOMAZE = createKey("gloomaze");
 
     public static void bootstrap(BootstrapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
+
         context.register(ANCIENT_TEMPLES, new StructureSet(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 40510257)));
+        context.register(GLOOMAZE, new StructureSet(structures.getOrThrow(DDStructures.GLOOMAZE), new RandomSpreadStructurePlacement(16, 4, RandomSpreadType.LINEAR, 12794134)));
     }
 
     static ResourceKey<StructureSet> createKey(String name) {

@@ -16,6 +16,7 @@ import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.structures.CustomStructures;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -62,6 +63,8 @@ public class DeeperDarker {
         DDEnchantments.ENCHANTMENT_EFFECTS.register(eventBus);
         DDArmorMaterials.ARMOR_MATERIALS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
+        CustomStructures.PIECE_TYPE.register(eventBus);
+        CustomStructures.STRUCTURE_TYPE.register(eventBus);
         OthersideDimension.POI.register(eventBus);
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 

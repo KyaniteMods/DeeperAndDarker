@@ -58,6 +58,7 @@ public class DDTags {
 
     public static class Misc {
         public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, DeeperDarker.rl("has_structure/ancient_temple"));
+        public static final TagKey<Biome> HAS_GLOOMAZE = TagKey.create(Registries.BIOME, DeeperDarker.rl("has_structure/gloomaze"));
         public static final TagKey<Enchantment> RESONARIUM_EXCLUDES = TagKey.create(Registries.ENCHANTMENT, DeeperDarker.rl("resonarium_excludes"));
         public static final TagKey<EntityType<?>> SCULK = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.rl("sculk"));
         public static final TagKey<EntityType<?>> SENSITIVE_TO_SCULK_SMITE = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.rl("sensitive_to_sculk_smite"));
