@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.Keybinds;
+import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
@@ -59,10 +60,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.InputEvent;
-import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -208,6 +206,12 @@ public class DeeperDarkerEvents {
         @SubscribeEvent
         public static void registerDimensionEffects(final RegisterDimensionSpecialEffectsEvent event) {
             event.register(OthersideDimension.OTHERSIDE_EFFECTS, new DimensionSpecialEffects.NetherEffects());
+        }
+
+        @SubscribeEvent
+        public static void registerTransitionScreen(final RegisterDimensionTransitionScreenEvent event) {
+            event.registerIncomingEffect(OthersideDimension.OTHERSIDE_LEVEL, OthersideReceivingLevelScreen::new);
+            event.registerOutgoingEffect(OthersideDimension.OTHERSIDE_LEVEL, OthersideReceivingLevelScreen::new);
         }
 
         @SubscribeEvent
