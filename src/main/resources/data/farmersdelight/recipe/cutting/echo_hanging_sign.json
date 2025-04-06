@@ -5,16 +5,11 @@
       "item": "deeperdarker:echo_hanging_sign"
     }
   ],
-  "result": [
-    {
-      "item": {
-        "count": 1,
-        "id": "deeperdarker:echo_planks"
-      }
-    }
-  ],
+  "result": {
+    "item": "deeperdarker:echo_planks",
+    "count": 1
+  },
   "tool": {
-    "fabric:type": "farmersdelight:tool_action",
-    "action": "axe_dig"
+    "tag": "minecraft:axes"
   }
 }

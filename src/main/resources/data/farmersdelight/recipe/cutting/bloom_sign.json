@@ -5,16 +5,11 @@
       "item": "deeperdarker:bloom_sign"
     }
   ],
-  "result": [
-    {
-      "item": {
-        "count": 1,
-        "id": "deeperdarker:bloom_planks"
-      }
-    }
-  ],
+  "result": {
+    "item": "deeperdarker:bloom_planks",
+    "count": 1
+  },
   "tool": {
-    "fabric:type": "farmersdelight:tool_action",
-    "action": "axe_dig"
+    "tag": "minecraft:axes"
   }
 }
