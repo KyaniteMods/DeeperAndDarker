@@ -5,10 +5,12 @@
       "item": "deeperdarker:bloom_trapdoor"
     }
   ],
-  "result": {
-    "item": "deeperdarker:bloom_planks",
-    "count": 1
-  },
+  "result": [
+    {
+      "item": "deeperdarker:bloom_planks",
+      "count": 1
+    }
+  ],
   "tool": {
     "tag": "minecraft:axes"
   }

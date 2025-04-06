@@ -15,7 +15,6 @@
       "count": 1
     }
   ],
-  "sound": "minecraft:item.axe.strip",
   "tool": {
     "tag": "minecraft:axes"
   }

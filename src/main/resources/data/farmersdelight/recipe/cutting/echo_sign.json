@@ -5,10 +5,12 @@
       "item": "deeperdarker:echo_sign"
     }
   ],
-  "result": {
-    "item": "deeperdarker:echo_planks",
-    "count": 1
-  },
+  "result": [
+    {
+      "item": "deeperdarker:echo_planks",
+      "count": 1
+    }
+  ],
   "tool": {
     "tag": "minecraft:axes"
   }
