@@ -4,9 +4,14 @@
     "count": 1,
     "item": "deeperdarker:echo_pressure_plate"
   },
-  "mainOutput": {
-    "count": 2,
+  "main_output": {
+    "count": 1,
     "id": "deeperdarker:echo_planks"
+  },
+  "secondary_chance": 0.25,
+  "secondary_output": {
+    "count": 2,
+    "id": "mekanism:sawdust"
   },
   "neoforge:conditions": [
     {
