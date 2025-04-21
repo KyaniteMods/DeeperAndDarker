@@ -100,12 +100,12 @@ public class DeeperDarkerEvents {
 
         if(state.is(DDBlocks.CRYSTALLIZED_AMBER) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
             if(!silktouch && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
-                if(blockEntity.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+                if(blockEntity.hasLeech() && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                 else Block.popResource(level, pos, blockEntity.getLoot());
             } else if(silktouch && !level.isClientSide() && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 CompoundTag tag = new CompoundTag();
                 tag.put("item", blockEntity.getLoot().saveOptional(level.registryAccess()));
-                tag.putBoolean("leech", blockEntity.fossilizedEntity);
+                tag.putBoolean("leech", blockEntity.hasLeech());
 
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER.get());
                 BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER.get(), tag);

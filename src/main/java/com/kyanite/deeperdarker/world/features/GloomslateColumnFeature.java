@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
-import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -57,7 +56,7 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
                     boolean fossil = random.nextFloat() < 0.4f;
                     BlockState amber = DDBlocks.CRYSTALLIZED_AMBER.get().defaultBlockState();
                     level.setBlock(blockPos, fossil ? amber.setValue(CrystallizedAmberBlock.FOSSILIZED, true) : amber, 3);
-                    if(fossil && level.getBlockEntity(blockPos) instanceof CrystallizedAmberBlockEntity blockEntity) blockEntity.generateFossil(level.getLevel(), blockPos);
+                    if(fossil) level.scheduleTick(blockPos, DDBlocks.CRYSTALLIZED_AMBER.get(), 1);
                 }
             } else if(amberLength > 6 && !incomplete && percentageToTop >= 0.3f && percentageToTop <= 0.7f) {
                 level.setBlock(blockPos, DDBlocks.GLOOMY_SCULK.get().defaultBlockState(), 3);
@@ -124,10 +123,10 @@ public class GloomslateColumnFeature extends Feature<NoneFeatureConfiguration> {
             if(index > 3 && loop == 2 && i == 0) j++;
             else if(index > 3 && i != 1) j += 2;
             switch ((index + j) % 4) {
-                default -> basePos = basePos.north();
                 case 1 -> basePos = basePos.east();
                 case 2 -> basePos = basePos.south();
                 case 3 -> basePos = basePos.west();
+                default -> basePos = basePos.north();
             }
         }
 

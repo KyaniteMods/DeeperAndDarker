@@ -95,10 +95,10 @@ public class SculkStoneColumnFeature extends Feature<NoneFeatureConfiguration> {
             if(index > 3 && loop == 2 && i == 0) j++;
             else if(index > 3 && i != 1) j += 2;
             switch ((index + j) % 4) {
-                default -> basePos = basePos.north();
                 case 1 -> basePos = basePos.east();
                 case 2 -> basePos = basePos.south();
                 case 3 -> basePos = basePos.west();
+                default -> basePos = basePos.north();
             }
         }
 
