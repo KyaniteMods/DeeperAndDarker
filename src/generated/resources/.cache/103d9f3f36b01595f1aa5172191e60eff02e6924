@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-13T14:06:42.7826125	Registries
+// 1.21.1	2025-04-20T19:57:06.8652796	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 dede162345c14db637f3dd9a20ca9319e037ae9d data/deeperdarker/dimension/otherside.json
@@ -78,7 +78,7 @@ ec749b07053226a5e16dbb8d3e5edd32cd222ba1 data/deeperdarker/worldgen/placed_featu
 0686ede689680c5287b98008af9f5875dbbece6f data/deeperdarker/worldgen/placed_feature/gloomslate_diamond.json
 7fea9d60ef7fb72a20a81a83fdd16324680a97a5 data/deeperdarker/worldgen/placed_feature/gloomslate_emerald.json
 75664c1565d4bb2672085a02da46323eb122c056 data/deeperdarker/worldgen/placed_feature/gloomslate_gold.json
-bf9f314ece53b6c84ff286c845985d7c653e8307 data/deeperdarker/worldgen/placed_feature/gloomslate_iron.json
+e7cf93dadb6ee1268545305e27d42f65efbed958 data/deeperdarker/worldgen/placed_feature/gloomslate_iron.json
 368f5916970276f940d2d4c8fc8cb42bf90d4d7b data/deeperdarker/worldgen/placed_feature/gloomslate_lapis.json
 f459d9a62a2daf59c22373d51311fb6764c13c8f data/deeperdarker/worldgen/placed_feature/gloomslate_redstone.json
 81411f1b6adb7b44958af3921ac9ea0de1b64022 data/deeperdarker/worldgen/placed_feature/gloomy_sculk.json
@@ -96,7 +96,7 @@ e3ed2796f27d7c154d8d6bcaa3c5f47a13aeeba9 data/deeperdarker/worldgen/placed_featu
 6acc29be4c979ab3521ee5df34da1562475c8372 data/deeperdarker/worldgen/placed_feature/sculk_gleam.json
 67228b2e76b903649b06428aafbc4644c3a67872 data/deeperdarker/worldgen/placed_feature/sculk_gleam_forest.json
 9abe6dda528ff8d77bb5651c3646b92d87163065 data/deeperdarker/worldgen/placed_feature/sculk_gold.json
-a670a7b1571536e9bd6efb3f8af754889ade09b0 data/deeperdarker/worldgen/placed_feature/sculk_iron.json
+f9ca95fdff550128f8e681021cf2ead3e3f7ded5 data/deeperdarker/worldgen/placed_feature/sculk_iron.json
 25ccb921d6aacc892bac6798d7100bb80eebc8d0 data/deeperdarker/worldgen/placed_feature/sculk_jaw.json
 947212897a389e4e4c38c7764e8791e68ea002b9 data/deeperdarker/worldgen/placed_feature/sculk_lapis.json
 ce21acbb6c41dff7c5c2484ad56ae38328ab8bc4 data/deeperdarker/worldgen/placed_feature/sculk_redstone.json

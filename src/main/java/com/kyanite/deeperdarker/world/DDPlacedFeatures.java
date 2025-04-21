@@ -91,7 +91,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_JAW, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_JAW), countPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-92), VerticalAnchor.top())));
         PlacementUtils.register(context, ECHO_SOIL, features.getOrThrow(DDConfiguredFeatures.ORE_ECHO_SOIL), countPlacement(25, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SCULK_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
-        PlacementUtils.register(context, SCULK_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));
+        PlacementUtils.register(context, SCULK_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.top())));
         PlacementUtils.register(context, SCULK_COPPER, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_COPPER), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256))));
         PlacementUtils.register(context, SCULK_GOLD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_GOLD), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70))));
         PlacementUtils.register(context, SCULK_REDSTONE, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_REDSTONE), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64))));
@@ -108,7 +108,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SOUL_SAND, features.getOrThrow(DDConfiguredFeatures.ORE_SOUL_SAND), countPlacement(192, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SOUL_SOIL, features.getOrThrow(DDConfiguredFeatures.ORE_SOUL_SOIL), countPlacement(256, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, GLOOMSLATE_COAL, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COAL), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(64), VerticalAnchor.top())));
-        PlacementUtils.register(context, GLOOMSLATE_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(128))));
+        PlacementUtils.register(context, GLOOMSLATE_IRON, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_IRON), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.top())));
         PlacementUtils.register(context, GLOOMSLATE_COPPER, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_COPPER), countPlacement(5, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(24), VerticalAnchor.aboveBottom(256))));
         PlacementUtils.register(context, GLOOMSLATE_GOLD, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_GOLD), countPlacement(6, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-70), VerticalAnchor.aboveBottom(70))));
         PlacementUtils.register(context, GLOOMSLATE_REDSTONE, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_REDSTONE), countPlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(64))));
