@@ -11,9 +11,9 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -23,26 +23,35 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class CrystallizedAmberBlockEntity extends BlockEntity {
-    public boolean fossilizedEntity;
+    private boolean fossilizedEntity;
     private ItemStack loot = ItemStack.EMPTY;
 
     public CrystallizedAmberBlockEntity(BlockPos pos, BlockState blockState) {
         super(DDBlockEntities.CRYSTALLIZED_AMBER.get(), pos, blockState);
     }
 
-    public void generateFossil(Level level, BlockPos pos) {
-        if(fossilizedEntity || loot != ItemStack.EMPTY) return;
+    public void generateFossil(ServerLevel level, BlockPos pos) {
+        if(fossilizedEntity || !loot.isEmpty()) return;
 
-        RandomSource random = RandomSource.create(pos.asLong());
-        if(random.nextFloat() < 0.2f) {
-            fossilizedEntity = true;
-            return;
+        RandomSource random = new XoroshiroRandomSource(pos.asLong());
+        fossilizedEntity = random.nextFloat() < 0.2f;
+        if(!fossilizedEntity) {
+            LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLoot.CRYSTALLIZED_AMBER);
+            LootParams lootParams = new LootParams.Builder(level)
+                    .withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter())
+                    .withParameter(LootContextParams.BLOCK_ENTITY, this)
+                    .create(LootContextParamSets.CHEST);
+            List<ItemStack> list = table.getRandomItems(lootParams);
+
+            this.loot = list.getFirst();
         }
 
-        LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLoot.CRYSTALLIZED_AMBER);
-        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).withParameter(LootContextParams.BLOCK_ENTITY, this).create(LootContextParamSets.CHEST));
-        this.loot = list.getFirst();
         this.setChanged();
+        level.sendBlockUpdated(pos, this.getBlockState(), this.getBlockState(), 3);
+    }
+
+    public boolean hasLeech() {
+        return fossilizedEntity;
     }
 
     public ItemStack getLoot() {

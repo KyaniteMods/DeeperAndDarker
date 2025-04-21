@@ -9,6 +9,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -61,9 +63,14 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-        if(state.getValue(FOSSILIZED) && !state.is(oldState.getBlock()) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
-            blockEntity.generateFossil(level, pos);
+        if(state.getValue(FOSSILIZED) && !state.is(oldState.getBlock())) {
+            level.scheduleTick(pos, this, 0);
         }
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if(level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) blockEntity.generateFossil(level, pos);
     }
 
     @Override

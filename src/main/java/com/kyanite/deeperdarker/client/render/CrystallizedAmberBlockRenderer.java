@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
 import org.jetbrains.annotations.NotNull;
 
 public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<CrystallizedAmberBlockEntity> {
@@ -30,11 +31,11 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
 
         poseStack.pushPose();
         poseStack.translate(0.5f, 0.5f, 0.5f);
-        RandomSource random = RandomSource.create(blockEntity.getBlockPos().asLong());
+        RandomSource random = new XoroshiroRandomSource(blockEntity.getBlockPos().asLong());
         random.nextFloat();
         poseStack.mulPose(Axis.XP.rotationDegrees(random.nextFloat() * 180f - 90));
         poseStack.mulPose(Axis.YP.rotationDegrees(random.nextFloat() * 180f));
-        if(blockEntity.fossilizedEntity) {
+        if(blockEntity.hasLeech()) {
             poseStack.scale(0.9f, 0.9f, 0.9f);
             SculkLeech leech = new SculkLeech(DDEntities.SCULK_LEECH.get(), blockEntity.getLevel());
             entityRenderer.render(leech, 0, 0, 0, 0, partialTick, poseStack, bufferSource, packedLight);
