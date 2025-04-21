@@ -64,7 +64,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         if(state.getValue(FOSSILIZED) && !state.is(oldState.getBlock())) {
-            level.scheduleTick(pos, this, 0);
+            level.scheduleTick(pos, this, 1);
         }
     }
 
