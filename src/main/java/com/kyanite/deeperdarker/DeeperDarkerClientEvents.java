@@ -4,10 +4,8 @@ import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
-import com.kyanite.deeperdarker.content.DDBlockEntities;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.content.datacomponents.TempleTracker;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
@@ -23,6 +21,7 @@ import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -41,9 +40,13 @@ public class DeeperDarkerClientEvents {
         event.enqueueWork(() -> {
             Sheets.addWoodType(DDBlocks.ECHO);
             Sheets.addWoodType(DDBlocks.BLOOM);
-            ItemProperties.register(DDItems.SOUL_ELYTRA.get(), ResourceLocation.withDefaultNamespace("broken"), (pStack, pLevel, pEntity, pSeed) -> SoulElytraItem.isFlyEnabled(pStack) ? 0 : 1);
-            ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), DeeperDarker.rl("linked"), (pStack, pLevel, pEntity, pSeed) -> SculkTransmitterItem.isLinked(pStack) ? 1 : 0);
-            ItemProperties.register(DDItems.SONOROUS_STAFF.get(), DeeperDarker.rl("charge"), (pStack, pLevel, pEntity, pSeed) -> pEntity != null && pEntity.getUseItem() == pStack ? (pStack.getUseDuration(pEntity) - pEntity.getUseItemRemainingTicks()) / 128f : 0);
+            ItemProperties.register(DDItems.ANCIENT_COMPASS.get(), ResourceLocation.withDefaultNamespace("angle"), new CompassItemPropertyFunction((level, stack, entity) -> {
+                TempleTracker tracker = stack.get(DDDataComponents.TEMPLE_TRACKER);
+                return tracker != null ? tracker.linkedPos().orElse(null) : null;
+            }));
+            ItemProperties.register(DDItems.SOUL_ELYTRA.get(), ResourceLocation.withDefaultNamespace("broken"), (stack, pLevel, pEntity, seed) -> SoulElytraItem.isFlyEnabled(stack) ? 0 : 1);
+            ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), DeeperDarker.rl("linked"), (stack, level, entity, seed) -> SculkTransmitterItem.isLinked(stack) ? 1 : 0);
+            ItemProperties.register(DDItems.SONOROUS_STAFF.get(), DeeperDarker.rl("charge"), (stack, level, entity, seed) -> entity != null && entity.getUseItem() == stack ? (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 128f : 0);
         });
 
         BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);

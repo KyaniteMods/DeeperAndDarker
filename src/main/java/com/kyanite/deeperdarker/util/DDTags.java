@@ -12,6 +12,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class DDTags {
     public static class Blocks {
@@ -65,5 +66,6 @@ public class DDTags {
         public static final TagKey<GameEvent> CHEST_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, DeeperDarker.rl("chest_vibrations"));
         public static final TagKey<GameEvent> FEET_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, DeeperDarker.rl("feet_vibrations"));
         public static final TagKey<PaintingVariant> ANCIENT_PAINTING = TagKey.create(Registries.PAINTING_VARIANT, DeeperDarker.rl("ancient_painting"));
+        public static final TagKey<Structure> ANCIENT_TEMPLE = TagKey.create(Registries.STRUCTURE, DeeperDarker.rl("ancient_temple"));
     }
 }

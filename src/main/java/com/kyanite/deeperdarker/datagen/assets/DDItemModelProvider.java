@@ -181,10 +181,29 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.BLOOM_CHEST_BOAT, GENERATED);
 
         itemModel(DDItems.BLOOM_BERRIES, GENERATED);
-
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
         itemModel(DDItems.LITE, GENERATED);
+
+        for(int i = 0; i < 32; i++) {
+            itemModelWithSuffix(DDItems.ANCIENT_COMPASS, GENERATED, String.format("%02d", i));
+        }
+        String compassPath = DDItems.ANCIENT_COMPASS.getId().getPath();
+        ItemModelBuilder compass = getBuilder(compassPath).parent(GENERATED).texture("layer0", "item/" + compassPath + "_16");
+        for(int i = 0; i < 64; i++) {
+            if(i != 0 && i % 2 == 0) continue;
+            float angle = i / 64f;
+
+            ModelFile.ExistingModelFile model;
+            if(i == 0 || i == 63) {
+                model = new ModelFile.ExistingModelFile(modLoc("item/" + compassPath), existingFileHelper);
+            } else {
+                int index = (i + 33) / 2 % 32;
+                model = getModel(DDItems.ANCIENT_COMPASS, String.format("%02d", index));
+            }
+
+            compass.override().model(model).predicate(ResourceLocation.withDefaultNamespace("angle"), angle).end();
+        }
 
         itemModel(DDItems.RESONARIUM_SHOVEL, HANDHELD);
         itemModel(DDItems.RESONARIUM_PICKAXE, HANDHELD);

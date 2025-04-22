@@ -162,10 +162,11 @@ public class DDCreativeTab {
             event.accept(DDBlocks.SCULK_JAW);
 
             event.accept(DDItems.BLOOM_BERRIES);
-
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
             event.accept(DDItems.LITE);
+
+            event.accept(DDItems.ANCIENT_COMPASS);
 
             event.accept(DDItems.SOUL_ELYTRA);
             event.accept(DDItems.ECHO_BOAT);

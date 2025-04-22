@@ -1,0 +1,206 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "deeperdarker:item/ancient_compass",
+      "predicate": {
+        "minecraft:angle": 0.0
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_17",
+      "predicate": {
+        "minecraft:angle": 0.015625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_18",
+      "predicate": {
+        "minecraft:angle": 0.046875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_19",
+      "predicate": {
+        "minecraft:angle": 0.078125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_20",
+      "predicate": {
+        "minecraft:angle": 0.109375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_21",
+      "predicate": {
+        "minecraft:angle": 0.140625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_22",
+      "predicate": {
+        "minecraft:angle": 0.171875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_23",
+      "predicate": {
+        "minecraft:angle": 0.203125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_24",
+      "predicate": {
+        "minecraft:angle": 0.234375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_25",
+      "predicate": {
+        "minecraft:angle": 0.265625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_26",
+      "predicate": {
+        "minecraft:angle": 0.296875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_27",
+      "predicate": {
+        "minecraft:angle": 0.328125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_28",
+      "predicate": {
+        "minecraft:angle": 0.359375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_29",
+      "predicate": {
+        "minecraft:angle": 0.390625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_30",
+      "predicate": {
+        "minecraft:angle": 0.421875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_31",
+      "predicate": {
+        "minecraft:angle": 0.453125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_00",
+      "predicate": {
+        "minecraft:angle": 0.484375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_01",
+      "predicate": {
+        "minecraft:angle": 0.515625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_02",
+      "predicate": {
+        "minecraft:angle": 0.546875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_03",
+      "predicate": {
+        "minecraft:angle": 0.578125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_04",
+      "predicate": {
+        "minecraft:angle": 0.609375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_05",
+      "predicate": {
+        "minecraft:angle": 0.640625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_06",
+      "predicate": {
+        "minecraft:angle": 0.671875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_07",
+      "predicate": {
+        "minecraft:angle": 0.703125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_08",
+      "predicate": {
+        "minecraft:angle": 0.734375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_09",
+      "predicate": {
+        "minecraft:angle": 0.765625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_10",
+      "predicate": {
+        "minecraft:angle": 0.796875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_11",
+      "predicate": {
+        "minecraft:angle": 0.828125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_12",
+      "predicate": {
+        "minecraft:angle": 0.859375
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_13",
+      "predicate": {
+        "minecraft:angle": 0.890625
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_14",
+      "predicate": {
+        "minecraft:angle": 0.921875
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass_15",
+      "predicate": {
+        "minecraft:angle": 0.953125
+      }
+    },
+    {
+      "model": "deeperdarker:item/ancient_compass",
+      "predicate": {
+        "minecraft:angle": 0.984375
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "deeperdarker:item/ancient_compass_16"
+  }
+}

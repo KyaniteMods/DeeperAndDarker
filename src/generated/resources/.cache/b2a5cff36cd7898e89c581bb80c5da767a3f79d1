@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-10T22:34:44.2444829	Tags for minecraft:item mod id deeperdarker
+// 1.21.1	2025-04-21T20:37:17.0097013	Tags for minecraft:item mod id deeperdarker
 d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/item/fences.json
 ece1a1e2a4a6f21c593a611ae9126ff341767989 data/c/tags/item/foods/cooked_fish.json
 47f7947e255ebbd71583d60670df2ea649e9d376 data/c/tags/item/foods/raw_fish.json
@@ -27,6 +27,7 @@ bf1cfb52598938e82f9e3d0596c5dbb4017d89e0 data/deeperdarker/tags/item/resonarium_
 228936f18b279028fc9028a3e9fd11dbc0674eab data/minecraft/tags/item/chest_boats.json
 35edf6af55dc15babf01a19e8a9bfeb683aa7d22 data/minecraft/tags/item/cluster_max_harvestables.json
 ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/item/coal_ores.json
+82852a33aa949e68bdf77abbcb99a8941ec309f1 data/minecraft/tags/item/compasses.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/item/copper_ores.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/item/diamond_ores.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/item/dirt.json

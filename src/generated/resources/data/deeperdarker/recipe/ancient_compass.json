@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "deeperdarker:warden_carapace"
+    },
+    "C": {
+      "item": "minecraft:compass"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ACA",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:ancient_compass"
+  }
+}

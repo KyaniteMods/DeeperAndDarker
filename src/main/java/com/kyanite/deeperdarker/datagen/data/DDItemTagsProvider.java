@@ -74,6 +74,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
         copy(DDTags.Blocks.BLOOM_STEMS, DDTags.Items.BLOOM_STEMS);
 
+        tag(ItemTags.COMPASSES).add(DDItems.ANCIENT_COMPASS.get());
         tag(ItemTags.BOATS).add(DDItems.ECHO_BOAT.get(), DDItems.BLOOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(DDItems.ECHO_CHEST_BOAT.get(), DDItems.BLOOM_CHEST_BOAT.get());
         tag(ItemTags.CLUSTER_MAX_HARVESTABLES).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());

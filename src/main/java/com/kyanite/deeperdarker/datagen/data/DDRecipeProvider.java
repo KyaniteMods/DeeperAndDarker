@@ -142,10 +142,18 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern(" S ").pattern("SGS").pattern(" S ")
                 .unlockedBy(getHasName(DDItems.SOUL_DUST), has(DDItems.SOUL_DUST)).save(output);
 
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.ANCIENT_COMPASS)
+                .define('A', DDItems.WARDEN_CARAPACE).define('C', Items.COMPASS)
+                .pattern(" A ").pattern("ACA").pattern(" A ")
+                .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE))
+                .unlockedBy(getHasName(Items.COMPASS), has(Items.COMPASS)).save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA)
                 .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('D', DDItems.SOUL_DUST).define('E', Items.ELYTRA)
                 .pattern("BCB").pattern("DED").pattern("B B")
                 .unlockedBy(getHasName(Items.ELYTRA), has(Items.ELYTRA)).save(output);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDItems.RESONARIUM_PLATE)
                 .requires(DDItems.RESONARIUM, 4).requires(Ingredient.of(DDTags.Items.SCUTES), 4)
                 .unlockedBy(getHasName(DDItems.RESONARIUM), has(DDItems.RESONARIUM)).save(output);
@@ -154,6 +162,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("PCP").pattern("CEC").pattern("PCP")
                 .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE)).save(output);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, Blocks.SCULK);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
                 .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('H', DDItems.HEART_OF_THE_DEEP)
                 .pattern(" CH").pattern(" BC").pattern("B  ")
