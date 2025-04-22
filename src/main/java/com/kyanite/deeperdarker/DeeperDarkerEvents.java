@@ -121,8 +121,15 @@ public class DeeperDarkerEvents {
 
         if(state.is(DDBlocks.ANCIENT_VASE)) {
             if(level instanceof ServerLevel serverLevel) {
+                Player player = event.getPlayer();
+                double multiplier = 1;
+                if(player.hasEffect(DDEffects.SCULK_OMEN)) {
+                    multiplier = player.getEffect(DDEffects.SCULK_OMEN).getAmplifier() + 1.1;
+                    multiplier = Math.pow(multiplier, 8 / 9.0);
+                }
+
                 RandomSource random = serverLevel.getRandom();
-                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance) {
+                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance * multiplier) {
                     if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
@@ -130,6 +137,7 @@ public class DeeperDarkerEvents {
                     } else {
                         DDEntities.STALKER.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                     }
+
                     serverLevel.removeBlock(pos, false);
                     event.setCanceled(true);
                 }
