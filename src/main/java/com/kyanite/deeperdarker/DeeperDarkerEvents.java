@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.world.structures.DDStructures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -19,8 +20,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +38,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
@@ -41,6 +46,7 @@ import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @SuppressWarnings("unused")
@@ -53,6 +59,19 @@ public class DeeperDarkerEvents {
         builder.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY);
         builder.addMix(DDPotions.SCULK_AFFINITY, Items.REDSTONE, DDPotions.LONG_SCULK_AFFINITY);
         builder.addMix(Potions.LONG_INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.LONG_SCULK_AFFINITY);
+    }
+
+    @SubscribeEvent
+    public static void playerTickEvent(final PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if(player.level() instanceof ServerLevel level && player.hasEffect(MobEffects.BAD_OMEN)) {
+            StructureStart structureStart = level.structureManager().getStructureWithPieceAt(player.blockPosition(), structureHolder -> structureHolder.is(DDStructures.ANCIENT_TEMPLE));
+            if(!structureStart.isValid()) return;
+
+            int amplifier = player.getEffect(MobEffects.BAD_OMEN).getAmplifier();
+            player.removeEffect(MobEffects.BAD_OMEN);
+            player.addEffect(new MobEffectInstance(DDEffects.SCULK_OMEN, 18000, amplifier));
+        }
     }
 
     @SubscribeEvent

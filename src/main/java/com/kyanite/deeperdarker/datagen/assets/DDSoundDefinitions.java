@@ -21,6 +21,7 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS, definition().with(sound("ambience/otherside/overcast_columns")));
 
         add(DDSounds.PORTAL_GROAN, subtitle("ambient.portal.groan").with(sound("ambience/portal/groan1"), sound("ambience/portal/groan2"), sound("ambience/portal/groan3"), sound("ambience/portal/groan4")));
+        add(DDSounds.APPLY_EFFECT_SCULK_OMEN, subtitle("event.mob_effect.sculk_omen").with(sound("event/sculk_omen")));
 
         add(DDSounds.SCULK_STONE_BREAK, subtitle("block.generic.break").with(sound("block/sculk_stone/break1"), sound("block/sculk_stone/break2"), sound("block/sculk_stone/break3"), sound("block/sculk_stone/break4"), sound("block/sculk_stone/break5"), sound("block/sculk_stone/break6"), sound("block/sculk_stone/break7")));
         add(DDSounds.SCULK_STONE_FALL, definition().with(sound("block/sculk_stone/step1"), sound("block/sculk_stone/step2"), sound("block/sculk_stone/step3"), sound("block/sculk_stone/step4"), sound("block/sculk_stone/step5"), sound("block/sculk_stone/step6")));

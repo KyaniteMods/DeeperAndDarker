@@ -16,6 +16,7 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = register("music.otherside.overcast_columns");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> PORTAL_GROAN = register("ambient.portal.groan");
+    public static final DeferredHolder<SoundEvent, SoundEvent> APPLY_EFFECT_SCULK_OMEN = register("event.mob_effect.sculk_omen");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_STONE_BREAK = register("block.sculk_stone.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_STONE_FALL = register("block.sculk_stone.fall");

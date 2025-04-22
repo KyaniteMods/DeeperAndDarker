@@ -341,6 +341,12 @@
     ],
     "subtitle": "subtitles.entity.stalker.notice"
   },
+  "event.mob_effect.sculk_omen": {
+    "sounds": [
+      "deeperdarker:event/sculk_omen"
+    ],
+    "subtitle": "subtitles.event.mob_effect.sculk_omen"
+  },
   "item.sonorous_staff.sonic_boom": {
     "sounds": [
       "mob/warden/sonic_boom1",

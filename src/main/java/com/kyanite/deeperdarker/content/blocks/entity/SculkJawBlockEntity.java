@@ -24,7 +24,6 @@ public class SculkJawBlockEntity extends BlockEntity {
             experience += xp;
             player.giveExperiencePoints(-xp);
         }
-        System.out.println(experience);
     }
 
     public int storedXP() {
