@@ -92,6 +92,10 @@ public class ENLanguageProvider extends LanguageProvider {
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath() + ".desc", "Spreads sculk when mobs are killed.");
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath(), convertToName(DDEnchantments.SCULK_SMITE.location().getPath()));
         add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.VOLUME.location().getPath(), convertToName(DDEnchantments.VOLUME.location().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.VOLUME.location().getPath() + ".desc", "Increases damage from sonic blasts.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.REVERBERATION.location().getPath(), convertToName(DDEnchantments.REVERBERATION.location().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.REVERBERATION.location().getPath() + ".desc", "Increases the range of sonic blasts.");
 
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
@@ -144,6 +148,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
         add("tag.item." + DeeperDarker.MOD_ID + ".resonarium_armor", "Resonarium Armor");
         add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
+        add("tag.item." + DeeperDarker.MOD_ID + ".sonic_weapon", "Sonic Weapons");
         add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));

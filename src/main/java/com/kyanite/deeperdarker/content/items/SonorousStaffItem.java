@@ -1,10 +1,13 @@
 package com.kyanite.deeperdarker.content.items;
 
+import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -17,6 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -36,9 +40,13 @@ public class SonorousStaffItem extends Item {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
         if(!(livingEntity instanceof Player player)) return;
 
+        HolderLookup.RegistryLookup<Enchantment> lookup = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+        int volume = stack.getEnchantmentLevel(lookup.getOrThrow(DDEnchantments.VOLUME));
+        int reverberation = stack.getEnchantmentLevel(lookup.getOrThrow(DDEnchantments.REVERBERATION));
+
         int timeUsed = getUseDuration(stack, player) - timeCharged;
-        int damage = (int) Math.round(50 / (1 + 16 / Math.exp(0.06 * timeUsed)));
-        int range = (int) Math.min(40, Math.round(3 * Math.log(timeUsed + 1)));
+        int damage = (int) Math.round(50 * (volume / 4.0 + 1) / (1 + 16 / Math.exp(0.06 * timeUsed)));
+        int range = (int) Math.min(80, Math.round(4.5 * (2 * reverberation / 3.0 + 1) * Math.log(timeUsed + 1)));
 
         Vec3 eyePos = player.getEyePosition();
         Vec3 facing = player.getForward();
@@ -55,8 +63,9 @@ public class SonorousStaffItem extends Item {
             for(LivingEntity entity : targets) {
                 if(entity.is(player)) continue;
 
-                int finalDamage = (int) (damage * (1 - dropOffFactor * Math.pow((double) i / range, 2)));
+                int finalDamage = (int) Math.round(damage * (1 - dropOffFactor * Math.pow((double) i / range, 2)));
                 entity.hurt(level.damageSources().sonicBoom(player), finalDamage);
+
                 double horizontalResistance = 1 - entity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
                 double verticalResistance = 1 - entity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
                 entity.push(facing.x * horizontalResistance, facing.y * verticalResistance, facing.z * horizontalResistance);

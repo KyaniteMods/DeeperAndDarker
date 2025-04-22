@@ -32,14 +32,17 @@ public class DDEnchantments {
 
     public static final ResourceKey<Enchantment> CATALYSIS = create("catalysis");
     public static final ResourceKey<Enchantment> SCULK_SMITE = create("sculk_smite");
+    public static final ResourceKey<Enchantment> VOLUME = create("volume");
+    public static final ResourceKey<Enchantment> REVERBERATION = create("reverberation");
 
     public static void bootstrap(BootstrapContext<Enchantment> context) {
         HolderGetter<Item> items = context.lookup(Registries.ITEM);
         HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
+
         context.register(CATALYSIS, Enchantment.enchantment(
                 Enchantment.definition(
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 4, 3,
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        4, 3,
                         Enchantment.dynamicCost(10, 20), Enchantment.dynamicCost(15, 30), 3,
                         EquipmentSlotGroup.MAINHAND
                 ))
@@ -50,12 +53,11 @@ public class DDEnchantments {
                         AllOf.entityEffects(new CatalyzeEnvironment(false))
                 ).build(CATALYSIS.location())
         );
-        context.register(SCULK_SMITE, Enchantment.enchantment(
+        context.register(SCULK_SMITE,Enchantment.enchantment(
                 Enchantment.definition(
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE), 5, 5,
-                        Enchantment.dynamicCost(5, 8),
-                        Enchantment.dynamicCost(25, 8), 2,
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        5, 5,
+                        Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2,
                         EquipmentSlotGroup.MAINHAND
                 ))
                 .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
@@ -64,6 +66,24 @@ public class DDEnchantments {
                         new AddValue(LevelBasedValue.constant(2.5f)),
                         LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(DDTags.Misc.SENSITIVE_TO_SCULK_SMITE)))
                 ).build(SCULK_SMITE.location())
+        );
+        context.register(VOLUME, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(DDTags.Items.SONIC_WEAPON),
+                        5, 4,
+                        Enchantment.dynamicCost(10, 9),
+                        Enchantment.dynamicCost(45, 9), 3,
+                        EquipmentSlotGroup.MAINHAND
+                )).build(VOLUME.location())
+        );
+        context.register(REVERBERATION, Enchantment.enchantment(
+                Enchantment.definition(
+                        items.getOrThrow(DDTags.Items.SONIC_WEAPON),
+                        2, 3,
+                        Enchantment.dynamicCost(10, 8),
+                        Enchantment.dynamicCost(25, 8), 2,
+                        EquipmentSlotGroup.MAINHAND
+                )).build(REVERBERATION.location())
         );
     }
 

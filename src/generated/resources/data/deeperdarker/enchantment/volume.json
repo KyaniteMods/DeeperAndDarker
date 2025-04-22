@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 3,
+  "description": {
+    "translate": "enchantment.deeperdarker.volume"
+  },
+  "max_cost": {
+    "base": 45,
+    "per_level_above_first": 9
+  },
+  "max_level": 4,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 9
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#deeperdarker:sonic_weapon",
+  "weight": 5
+}

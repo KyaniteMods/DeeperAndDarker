@@ -50,6 +50,7 @@ public class DDTags {
         public static final TagKey<Item> ECHO_LOGS = tag("echo_logs");
         public static final TagKey<Item> RESONARIUM_ARMOR = tag("resonarium_armor");
         public static final TagKey<Item> DAMPENS_VIBRATIONS = tag("dampens_vibrations");
+        public static final TagKey<Item> SONIC_WEAPON = tag("sonic_weapon");
         public static final TagKey<Item> SCUTES = tag("scutes");
 
         private static TagKey<Item> tag(String name) {
