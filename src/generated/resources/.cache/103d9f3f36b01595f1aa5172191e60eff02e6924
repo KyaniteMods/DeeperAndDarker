@@ -1,7 +1,7 @@
-// 1.21.1	2025-04-21T23:13:28.9946998	Registries
+// 1.21.1	2025-04-23T00:57:30.2838132	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
-dede162345c14db637f3dd9a20ca9319e037ae9d data/deeperdarker/dimension/otherside.json
+3c6e3bbffeec5711562347608c8144021eb54cf5 data/deeperdarker/dimension/otherside.json
 0f715fda6f60117cf74eadf94c1590aea34761a3 data/deeperdarker/dimension_type/otherside.json
 ad453d5b708fe189495a8e5d4ce2531d9898a555 data/deeperdarker/enchantment/catalysis.json
 00e4d020f7dd84f8074fef2c6ba17b20f5327d66 data/deeperdarker/enchantment/reverberation.json
@@ -66,7 +66,7 @@ ee40c6672e01f7903cbd018effd3b9fb238b9dc8 data/deeperdarker/worldgen/configured_f
 701e77f912010dc9c4e69b27d70464f27055b504 data/deeperdarker/worldgen/configured_feature/surface_sculk_stone.json
 559869d2e75897fc342a5ce4e13bc6a1864c189d data/deeperdarker/worldgen/configured_feature/tree_echo.json
 333ebc366d7e8a080a71cde8f67a83af1f4daa8a data/deeperdarker/worldgen/configured_feature/water_edge_blooming.json
-c7afaaec2673ebacca18346132ad25008799155c data/deeperdarker/worldgen/noise_settings/otherside.json
+06bb9735722e27030192eeed60604a54e8165325 data/deeperdarker/worldgen/noise_settings/otherside.json
 34fb9a5e22128132e9fb0b0a7700008873e4ac41 data/deeperdarker/worldgen/placed_feature/blooming_moss.json
 c4020bc5fd1df4162e76204771b268958eb9c21a data/deeperdarker/worldgen/placed_feature/blooming_plant.json
 7a014f12c936a2ce55cd0df3b6e7d66934996c63 data/deeperdarker/worldgen/placed_feature/blooming_pool.json
