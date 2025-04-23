@@ -71,8 +71,7 @@ public class DDEnchantments {
                 Enchantment.definition(
                         items.getOrThrow(DDTags.Items.SONIC_WEAPON),
                         5, 4,
-                        Enchantment.dynamicCost(10, 9),
-                        Enchantment.dynamicCost(45, 9), 3,
+                        Enchantment.dynamicCost(10, 9), Enchantment.dynamicCost(45, 9), 3,
                         EquipmentSlotGroup.MAINHAND
                 )).build(VOLUME.location())
         );
@@ -80,8 +79,7 @@ public class DDEnchantments {
                 Enchantment.definition(
                         items.getOrThrow(DDTags.Items.SONIC_WEAPON),
                         2, 3,
-                        Enchantment.dynamicCost(10, 8),
-                        Enchantment.dynamicCost(25, 8), 2,
+                        Enchantment.dynamicCost(10, 8), Enchantment.dynamicCost(25, 8), 2,
                         EquipmentSlotGroup.MAINHAND
                 )).build(REVERBERATION.location())
         );
