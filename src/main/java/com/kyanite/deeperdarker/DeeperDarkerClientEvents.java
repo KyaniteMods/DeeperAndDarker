@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.Keybinds;
+import com.kyanite.deeperdarker.client.OthersidePortalOverlay;
 import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
@@ -72,6 +73,11 @@ public class DeeperDarkerClientEvents {
     public static void registerTransitionScreen(final RegisterDimensionTransitionScreenEvent event) {
         event.registerIncomingEffect(OthersideDimension.OTHERSIDE_LEVEL, OthersideReceivingLevelScreen::new);
         event.registerOutgoingEffect(OthersideDimension.OTHERSIDE_LEVEL, OthersideReceivingLevelScreen::new);
+    }
+
+    @SubscribeEvent
+    public static void registerGuiLayers(final RegisterGuiLayersEvent event) {
+        event.registerAboveAll(DeeperDarker.rl("otherside_portal"), new OthersidePortalOverlay());
     }
 
     @SubscribeEvent

@@ -57,6 +57,7 @@ public class DeeperDarker {
         DDItems.ITEMS.register(eventBus);
         DDCreativeTab.CREATIVE_MODE_TABS.register(eventBus);
         DDBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        DDDataAttachments.ATTACHMENTS.register(eventBus);
         DDEntities.ENTITIES.register(eventBus);
         DDEffects.EFFECTS.register(eventBus);
         DDPotions.POTIONS.register(eventBus);
