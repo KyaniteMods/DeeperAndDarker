@@ -237,11 +237,21 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
-        itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
-        itemModel(DDItems.SCULK_TRANSMITTER, GENERATED).override().model(getModel(DDItems.SCULK_TRANSMITTER, "on")).predicate(DeeperDarker.rl("linked"), 1).end();
+        String transmitterPath = DDItems.SCULK_TRANSMITTER.getId().getPath();
+        getBuilder(transmitterPath + "_on").parent(GENERATED)
+                .texture("layer0", "item/" + transmitterPath + "_on")
+                .texture("layer1", "item/" + transmitterPath);
+        getBuilder(transmitterPath).parent(GENERATED)
+                .texture("layer0", "item/" + transmitterPath + "_off")
+                .texture("layer1", "item/" + transmitterPath)
+                .override().model(getModel(DDItems.SCULK_TRANSMITTER, "on")).predicate(DeeperDarker.rl("linked"), 1).end();
+
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charged");
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charging");
-        itemModel(DDItems.SONOROUS_STAFF, HANDHELD).override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(DeeperDarker.rl("charge"), 0.001f).end().override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(DeeperDarker.rl("charge"), 1).end();
+        itemModel(DDItems.SONOROUS_STAFF, HANDHELD)
+                .override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(DeeperDarker.rl("charge"), 0.001f).end()
+                .override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(DeeperDarker.rl("charge"), 1).end();
+
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);

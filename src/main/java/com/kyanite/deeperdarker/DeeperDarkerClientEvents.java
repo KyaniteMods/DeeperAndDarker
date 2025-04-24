@@ -117,6 +117,11 @@ public class DeeperDarkerClientEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void registerColorHandlers(final RegisterColorHandlersEvent.Item event) {
+        event.register(new SculkTransmitterItem.Color(), DDItems.SCULK_TRANSMITTER);
+    }
+
     @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
     static class GameBus {
         @SubscribeEvent

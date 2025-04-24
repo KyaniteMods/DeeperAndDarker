@@ -92,6 +92,7 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(DDItems.SOUL_ELYTRA.get());
 
         tag(ItemTags.FISHES).add(DDItems.ANGLER_FISH.get(), DDItems.COOKED_ANGLER_FISH.get());
+        tag(ItemTags.DYEABLE).add(DDItems.SCULK_TRANSMITTER.get());
 
         tag(Tags.Items.MINING_TOOL_TOOLS).add(DDItems.RESONARIUM_PICKAXE.get(), DDItems.WARDEN_PICKAXE.get());
         tag(Tags.Items.MELEE_WEAPON_TOOLS).add(DDItems.RESONARIUM_SWORD.get(), DDItems.WARDEN_SWORD.get());

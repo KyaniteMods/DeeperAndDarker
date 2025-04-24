@@ -9,6 +9,7 @@
     }
   ],
   "textures": {
-    "layer0": "deeperdarker:item/sculk_transmitter"
+    "layer0": "deeperdarker:item/sculk_transmitter_off",
+    "layer1": "deeperdarker:item/sculk_transmitter"
   }
 }

@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "deeperdarker:item/sculk_transmitter_on"
+    "layer0": "deeperdarker:item/sculk_transmitter_on",
+    "layer1": "deeperdarker:item/sculk_transmitter"
   }
 }

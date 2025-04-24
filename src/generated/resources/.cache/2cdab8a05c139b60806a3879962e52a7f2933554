@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-21T19:00:44.985432	Item Models: deeperdarker
+// 1.21.1	2025-04-23T17:36:40.8974293	Item Models: deeperdarker
 b865d79a924f87a99520874abf7edca2ee9724db assets/deeperdarker/models/item/ancient_compass.json
 fdd23eeb4e7c3199a2a96c25010340cc3dcebb31 assets/deeperdarker/models/item/ancient_compass_00.json
 a73f0f617d25bfe9cd4864da3606103da8fb2d3e assets/deeperdarker/models/item/ancient_compass_01.json
@@ -221,8 +221,8 @@ e95d7689a6be15bf680edb1555a406663ae62acf assets/deeperdarker/models/item/sculk_s
 22c1896061ae2e9ee8871a1f769d1262b62c0530 assets/deeperdarker/models/item/sculk_stone_tile_wall.json
 a71c8b14b5e81663a9802d02da7ebe84c176e094 assets/deeperdarker/models/item/sculk_stone_wall.json
 9dd7f9949be123d91bbfd61aa9e838972edccbba assets/deeperdarker/models/item/sculk_tendrils.json
-e14eb939c301a0c9dc4c350616a0dafc6d07b753 assets/deeperdarker/models/item/sculk_transmitter.json
-b456f6dcb2e3009eb3828b3a389c14a93a2d4e71 assets/deeperdarker/models/item/sculk_transmitter_on.json
+e59662072ab39c2a756b8036b63c7971190c6527 assets/deeperdarker/models/item/sculk_transmitter.json
+44b706c62d14106693e60d31193ff3849d14eb81 assets/deeperdarker/models/item/sculk_transmitter_on.json
 826d5e09ad2e18070d74add221ff22017abadb39 assets/deeperdarker/models/item/sculk_vines.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shattered_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/shriek_worm_spawn_egg.json
