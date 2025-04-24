@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.enchantments.CatalyzeEnvironment;
+import com.kyanite.deeperdarker.content.misc.CatalyzeEnvironment;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.advancements.critereon.EntityPredicate;

@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.loot.AddItemModifier;
+import com.kyanite.deeperdarker.content.misc.AddItemModifier;
 import com.mojang.serialization.MapCodec;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;

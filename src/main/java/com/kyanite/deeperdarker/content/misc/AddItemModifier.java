@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.content.loot;
+package com.kyanite.deeperdarker.content.misc;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
