@@ -11,6 +11,7 @@ import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Mth;
+import net.neoforged.neoforge.client.model.data.ModelData;
 import org.jetbrains.annotations.NotNull;
 
 public class OthersidePortalOverlay implements LayeredDraw.Layer {
@@ -35,7 +36,7 @@ public class OthersidePortalOverlay implements LayeredDraw.Layer {
         RenderSystem.enableBlend();
         guiGraphics.setColor(1f, 1f, 1f, alpha);
 
-        TextureAtlasSprite atlas = minecraft.getBlockRenderer().getBlockModelShaper().getParticleIcon(DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState());
+        TextureAtlasSprite atlas = minecraft.getBlockRenderer().getBlockModelShaper().getBlockModel(DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState()).getParticleIcon(ModelData.EMPTY);
         guiGraphics.blit(0, 0, -90, guiGraphics.guiWidth(), guiGraphics.guiHeight(), atlas);
 
         RenderSystem.disableBlend();
