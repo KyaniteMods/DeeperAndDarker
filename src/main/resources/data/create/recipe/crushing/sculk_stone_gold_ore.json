@@ -9,19 +9,19 @@
   "results": [
     {
       "count": 3,
-      "item": "create:crushed_raw_gold"
+      "id": "create:crushed_raw_gold"
     },
     {
       "chance": 0.75,
-      "item": "create:crushed_raw_gold"
+      "id": "create:crushed_raw_gold"
     },
     {
       "count": 2,
-      "item": "create:experience_nugget"
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "deeperdarker:cobbled_sculk_stone"
+      "id": "deeperdarker:cobbled_sculk_stone"
     }
   ],
   "neoforge:conditions": [

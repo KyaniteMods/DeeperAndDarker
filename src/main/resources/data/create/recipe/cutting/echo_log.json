@@ -8,7 +8,7 @@
   "processingTime": 50,
   "results": [
     {
-      "item": "deeperdarker:stripped_echo_log"
+      "id": "deeperdarker:stripped_echo_log"
     }
   ],
   "neoforge:conditions": [
