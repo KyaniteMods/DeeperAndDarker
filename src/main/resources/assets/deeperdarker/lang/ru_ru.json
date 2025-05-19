@@ -341,7 +341,6 @@
   "text.config.deeperdarker.option.server.portalMinWidth.tooltip": "Определяет минимальную ширину (не считая рамки),\nкоторая должна быть допустимой для портала Потусторонья.",
   "text.config.deeperdarker.option.server.sculkLeechesFromAncientVaseChance": "Шанс появление скалковой пиявки",
   "text.config.deeperdarker.option.server.sculkLeechesFromAncientVaseChance.tooltip": "Определяет шанс появления скалковых пиявок\nиз древней вазы, если приведённая выше\nнастройка окажется верной. Если должен\nпоявиться моб, а эта настройка окажется\nложной, появится подражатель.",
-  "text.config.deeperdarker.option.server.snapperDropLimit": "Лимит дропа скалкового кусаки",
   "text.config.deeperdarker.option.server.snapperDropLimit.tooltip": "Определяет максимальное количество\nсбрасываемых книг каждым скалковым\nкусакой. Установите в -1 для бесконечных\nкниг.",
   "text.config.deeperdarker.option.server.sonorousStaffCooldown": "Перезарядка звучного посоха",
   "text.config.deeperdarker.option.server.sonorousStaffCooldown.tooltip": "Определяет время перезарядки\nзвучного посоха, прежде чем игрок\nсможет использовать его снова.",
