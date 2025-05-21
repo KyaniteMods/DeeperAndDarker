@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.datagen.data;
+package com.kyanite.deeperdarker.datagen.data.tags;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
