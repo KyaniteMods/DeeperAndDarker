@@ -99,7 +99,7 @@ public class DeeperDarkerEvents {
         data.oPortalIntensity = data.portalIntensity;
         float f = 0f;
 
-        if(player.portalProcess != null && player.portalProcess.isInsidePortalThisTick()) {
+        if(player.portalProcess != null && player.portalProcess.isInsidePortalThisTick() && player.portalProcess.isSamePortal(DDBlocks.OTHERSIDE_PORTAL.get())) {
             if(screen != null && !screen.isPauseScreen() && !(screen instanceof DeathScreen) && !(screen instanceof WinScreen)) {
                 if(screen instanceof AbstractContainerScreen) player.closeContainer();
                 minecraft.setScreen(null);
