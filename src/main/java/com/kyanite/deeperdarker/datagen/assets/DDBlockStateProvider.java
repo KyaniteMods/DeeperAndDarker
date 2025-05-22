@@ -131,6 +131,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         wallBlock(DDBlocks.SCULK_GRIME_BRICK_WALL, blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
+        simpleBlock(DDBlocks.POROUS_SCULK_GLEAM.get());
         simpleBlock(DDBlocks.GLOOMSLATE_LIGHT.get());
         simpleBlock(DDBlocks.LITE_BLOCK.get());
         simpleBlock(DDBlocks.BORDERED_LITE_BLOCK.get());

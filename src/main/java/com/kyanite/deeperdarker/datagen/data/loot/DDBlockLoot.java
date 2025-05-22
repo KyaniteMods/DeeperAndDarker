@@ -142,6 +142,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL.get());
 
         dropSelf(DDBlocks.SCULK_GLEAM.get());
+        dropSelf(DDBlocks.POROUS_SCULK_GLEAM.get());
         dropSelf(DDBlocks.GLOOMSLATE_LIGHT.get());
         dropSelf(DDBlocks.LITE_BLOCK.get());
         dropSelf(DDBlocks.BORDERED_LITE_BLOCK.get());

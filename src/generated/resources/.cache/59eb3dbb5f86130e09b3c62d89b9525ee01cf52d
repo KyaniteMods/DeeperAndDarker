@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-10T22:49:29.6113336	Loot Tables
+// 1.21.1	2025-05-21T19:01:59.240204	Loot Tables
 d40ff84e58275e6d9e8b003c6ce31abfa73b2d91 data/deeperdarker/loot_table/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_table/blocks/blooming_moss_block.json
 83d5214bb3d38ec9ae0d4f6323a2757cc8cd9cdd data/deeperdarker/loot_table/blocks/blooming_sculk_stone.json
@@ -94,6 +94,7 @@ ba1fa3ac422fadf264ad292830a461ded3f12cb1 data/deeperdarker/loot_table/blocks/pol
 6d8c4a05cb2b3c1c451581375c0bde8a14afaa99 data/deeperdarker/loot_table/blocks/polished_sculk_stone_slab.json
 cc7951a367414b5bfbc24e23b81f35727455cb43 data/deeperdarker/loot_table/blocks/polished_sculk_stone_stairs.json
 151b8e88190bb462308f88ead9c20c4566f6fb03 data/deeperdarker/loot_table/blocks/polished_sculk_stone_wall.json
+945aab7e20a84542c142482658c1f489c947ea7b data/deeperdarker/loot_table/blocks/porous_sculk_gleam.json
 d47b76e64e0eff957dd22fcb91bf14bf34d3cbf1 data/deeperdarker/loot_table/blocks/potted_blooming_stem.json
 1d713e2c3adcb4701f1195dd45c8408eb11609fd data/deeperdarker/loot_table/blocks/potted_echo_sapling.json
 dde8ba2c88b0b1fc99fb6fe4eeda2e052a4eb7fa data/deeperdarker/loot_table/blocks/sculk_gleam.json

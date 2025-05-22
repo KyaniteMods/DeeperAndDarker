@@ -118,6 +118,7 @@ public class DDCreativeTab {
             event.accept(DDBlocks.GLOOMY_GEYSER);
             event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
+            event.accept(DDBlocks.POROUS_SCULK_GLEAM);
             event.accept(DDBlocks.GLOOMSLATE_LIGHT);
             event.accept(DDBlocks.LITE_BLOCK);
             event.accept(DDBlocks.BORDERED_LITE_BLOCK);
@@ -164,6 +165,7 @@ public class DDCreativeTab {
             event.accept(DDItems.BLOOM_BERRIES);
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
+            event.accept(DDItems.GLEAM_GEL);
             event.accept(DDItems.LITE);
 
             event.accept(DDItems.ANCIENT_COMPASS);

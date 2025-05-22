@@ -128,6 +128,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
 
         blockModel(DDBlocks.SCULK_GLEAM);
+        blockModel(DDBlocks.POROUS_SCULK_GLEAM);
         blockModel(DDBlocks.GLOOMSLATE_LIGHT);
         blockModel(DDBlocks.LITE_BLOCK);
         blockModel(DDBlocks.BORDERED_LITE_BLOCK);
@@ -183,6 +184,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.BLOOM_BERRIES, GENERATED);
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
+        itemModel(DDItems.GLEAM_GEL, GENERATED);
         itemModel(DDItems.LITE, GENERATED);
 
         for(int i = 0; i < 32; i++) {

@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-10T22:40:58.2869712	Block States: deeperdarker
+// 1.21.1	2025-05-21T19:01:59.2452042	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 165980177c5adcf470b9a08fe401e3bb1a4966f0 assets/deeperdarker/blockstates/blooming_moss_block.json
 c90869597c5f9312912c741c7edfc5974762efd9 assets/deeperdarker/blockstates/blooming_sculk_stone.json
@@ -100,6 +100,7 @@ f2522b96b17c96a31a495c2ac09a40faa19aac00 assets/deeperdarker/blockstates/polishe
 65ee0b17417cefc06f60fd584d5cd1092c1725e7 assets/deeperdarker/blockstates/polished_sculk_stone_slab.json
 a1292f9331c5de779bca4b9d6d6bcb1b76d9d14e assets/deeperdarker/blockstates/polished_sculk_stone_stairs.json
 754419158ebf6f0643ad68f8106ba1013f62536e assets/deeperdarker/blockstates/polished_sculk_stone_wall.json
+c96d06ad418d69b15f6d0390a690c47aea51ae5b assets/deeperdarker/blockstates/porous_sculk_gleam.json
 3e9e166955e144752c33bd4a20fd7cc883e6a017 assets/deeperdarker/blockstates/potted_blooming_stem.json
 81d1daeb0a66ccdbba5cc0d3f76fe53d83155b26 assets/deeperdarker/blockstates/potted_echo_sapling.json
 ca868477f2e49646a2df560a202f718fcfa27eff assets/deeperdarker/blockstates/sculk_gleam.json
@@ -338,6 +339,7 @@ d79b7c90b34a2d89cdc77fa0e9d4cf31fefb1cf6 assets/deeperdarker/models/block/polish
 67b6737eff68d46ff2868bdfd426a71318c9eff9 assets/deeperdarker/models/block/polished_sculk_stone_wall_post.json
 ef3f2ab8e3363b5ee55f8996ebe43b4ea697600d assets/deeperdarker/models/block/polished_sculk_stone_wall_side.json
 ff0ad82277459bbd5d5be49a64a5b28c44e020c3 assets/deeperdarker/models/block/polished_sculk_stone_wall_side_tall.json
+7b6443ebf02df1a104683977596678ba50e64725 assets/deeperdarker/models/block/porous_sculk_gleam.json
 b538342302ff1db7d7edc39976d72b1e4924fa28 assets/deeperdarker/models/block/potted_echo_sapling.json
 65ede8a217bf1dcc9e87c36e986efbed307197c3 assets/deeperdarker/models/block/sculk.json
 e2e629dbec3aea754f099585071808b78f8c482a assets/deeperdarker/models/block/sculk_gleam.json
