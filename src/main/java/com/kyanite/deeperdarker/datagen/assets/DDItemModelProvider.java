@@ -137,6 +137,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMY_SCULK);
         blockModel(DDBlocks.GLOOMY_GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
+        blockModel(DDBlocks.GLEAM_GEL_BLOCK);
         blockModel(DDBlocks.SOUNDPROOF_GLASS);
 
         blockModel(DDBlocks.SCULK_STONE_COAL_ORE);

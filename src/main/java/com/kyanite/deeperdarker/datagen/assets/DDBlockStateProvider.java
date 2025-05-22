@@ -140,6 +140,7 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMY_SCULK.get());
         simpleBlock(DDBlocks.GLOOMY_GEYSER.get(), models().cubeTop(DDBlocks.GLOOMY_GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOMY_SCULK), blockLoc(DDBlocks.GLOOMY_GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("translucent"));
+        simpleBlock(DDBlocks.GLEAM_GEL_BLOCK.get(), models().cubeAll(DDBlocks.GLEAM_GEL_BLOCK.getId().getPath(), blockLoc(DDBlocks.GLEAM_GEL_BLOCK)).renderType("translucent"));
         simpleBlock(DDBlocks.SOUNDPROOF_GLASS.get(), models().cubeAll(DDBlocks.SOUNDPROOF_GLASS.getId().getPath(), blockLoc(DDBlocks.SOUNDPROOF_GLASS)).renderType("translucent"));
 
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());

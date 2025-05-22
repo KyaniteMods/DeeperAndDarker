@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-21T19:01:59.240204	Loot Tables
+// 1.21.1	2025-05-22T12:00:54.7038712	Loot Tables
 d40ff84e58275e6d9e8b003c6ce31abfa73b2d91 data/deeperdarker/loot_table/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_table/blocks/blooming_moss_block.json
 83d5214bb3d38ec9ae0d4f6323a2757cc8cd9cdd data/deeperdarker/loot_table/blocks/blooming_sculk_stone.json
@@ -51,6 +51,7 @@ fb49525bad89348583a68ee4bf34d9fa29dc8219 data/deeperdarker/loot_table/blocks/ech
 0dca4041018feaefe974810a2fabf3d8aaa5011e data/deeperdarker/loot_table/blocks/echo_trapdoor.json
 6d320a9b4ed6f707f12b3ffebd05288cc5cb834e data/deeperdarker/loot_table/blocks/echo_wood.json
 97bc9d84e2169b62465696c9e0f7beb1b37e2260 data/deeperdarker/loot_table/blocks/enriched_gloomslate_bricks.json
+1492d95b4f2f13ea5e5e65321f8b634d20383bf5 data/deeperdarker/loot_table/blocks/gleam_gel_block.json
 5f3a777c292e9db67126d990cba58055505289af data/deeperdarker/loot_table/blocks/gloomslate.json
 f3eed25ba3ded3f66f84b503acd7accf1637c83a data/deeperdarker/loot_table/blocks/gloomslate_bricks.json
 ad6d6e8ffb614c14b36528eedad96171c192ef5f data/deeperdarker/loot_table/blocks/gloomslate_brick_fence.json

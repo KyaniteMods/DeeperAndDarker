@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-21T19:01:59.2452042	Block States: deeperdarker
+// 1.21.1	2025-05-22T12:09:00.8571983	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 165980177c5adcf470b9a08fe401e3bb1a4966f0 assets/deeperdarker/blockstates/blooming_moss_block.json
 c90869597c5f9312912c741c7edfc5974762efd9 assets/deeperdarker/blockstates/blooming_sculk_stone.json
@@ -55,6 +55,7 @@ f02bb4fd5a5c7ee06dee2f869c347cb634e8c968 assets/deeperdarker/blockstates/echo_so
 55cc3ec07db6ec529cdbb67e5e47794befbcdcd1 assets/deeperdarker/blockstates/echo_wall_sign.json
 347e8596298d12b08a83e35e0280724d3f2fd3e0 assets/deeperdarker/blockstates/echo_wood.json
 887e6305f4d7863a547dbd93fb29956089a70ffc assets/deeperdarker/blockstates/enriched_gloomslate_bricks.json
+16280572d857ad1dbd8b86fcde41f524e2154c11 assets/deeperdarker/blockstates/gleam_gel_block.json
 6ba6097f9623c0535054278bff44b8690647262c assets/deeperdarker/blockstates/gloomslate.json
 68a6e6b94efe6f47ba2aaa52579fa0057f6f5671 assets/deeperdarker/blockstates/gloomslate_bricks.json
 ac7680d6d7485caa8648fcfe296aaa00bdf886bd assets/deeperdarker/blockstates/gloomslate_brick_fence.json
@@ -266,6 +267,7 @@ cb200837b466532c723eabc29c70240290f1031c assets/deeperdarker/models/block/echo_t
 30e9f92d08cf88d0a24486300ee6f7e45517b6d7 assets/deeperdarker/models/block/echo_wood.json
 8fa55b3c8464ec72f3f9d8774afd87698d7084e3 assets/deeperdarker/models/block/echo_wood_horizontal.json
 44554c19f1f896681ef587b1a44d7201a940c436 assets/deeperdarker/models/block/enriched_gloomslate_bricks.json
+0095b9285d94b95c1f6ab2b10190cf08871a9b9e assets/deeperdarker/models/block/gleam_gel_block.json
 5267d3a878e9e079becf607e31502b7b7e4da44f assets/deeperdarker/models/block/gloomslate.json
 ecddd2645af4624dc72e112c9ba0cf4f68c88ed7 assets/deeperdarker/models/block/gloomslate_bricks.json
 1bcb3a63c1d000987f867a113e09471b02e4e06e assets/deeperdarker/models/block/gloomslate_brick_fence_inventory.json
