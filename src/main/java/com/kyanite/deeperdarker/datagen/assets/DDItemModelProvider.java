@@ -128,7 +128,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
 
         blockModel(DDBlocks.SCULK_GLEAM);
-        blockModel(DDBlocks.POROUS_SCULK_GLEAM);
+        blockModel(DDBlocks.POROUS_SCULK_GLEAM, "0");
         blockModel(DDBlocks.GLOOMSLATE_LIGHT);
         blockModel(DDBlocks.LITE_BLOCK);
         blockModel(DDBlocks.BORDERED_LITE_BLOCK);

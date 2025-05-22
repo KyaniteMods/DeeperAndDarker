@@ -1,7 +1,25 @@
 {
   "variants": {
-    "": {
-      "model": "deeperdarker:block/porous_sculk_gleam"
+    "gel_level=0": {
+      "model": "deeperdarker:block/porous_sculk_gleam_0"
+    },
+    "gel_level=1": {
+      "model": "deeperdarker:block/porous_sculk_gleam_1"
+    },
+    "gel_level=2": {
+      "model": "deeperdarker:block/porous_sculk_gleam_2"
+    },
+    "gel_level=3": {
+      "model": "deeperdarker:block/porous_sculk_gleam_3"
+    },
+    "gel_level=4": {
+      "model": "deeperdarker:block/porous_sculk_gleam_4"
+    },
+    "gel_level=5": {
+      "model": "deeperdarker:block/porous_sculk_gleam_5"
+    },
+    "gel_level=6": {
+      "model": "deeperdarker:block/porous_sculk_gleam_6"
     }
   }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-22T12:00:54.6945813	Item Models: deeperdarker
+// 1.21.1	2025-05-22T17:54:03.3304761	Item Models: deeperdarker
 b865d79a924f87a99520874abf7edca2ee9724db assets/deeperdarker/models/item/ancient_compass.json
 fdd23eeb4e7c3199a2a96c25010340cc3dcebb31 assets/deeperdarker/models/item/ancient_compass_00.json
 a73f0f617d25bfe9cd4864da3606103da8fb2d3e assets/deeperdarker/models/item/ancient_compass_01.json
@@ -139,7 +139,7 @@ b35eb613e127b16f1916eb0eda7a413e397be030 assets/deeperdarker/models/item/polishe
 ceca42e3aadb0cadd907d918dfa0d3a88944f465 assets/deeperdarker/models/item/polished_sculk_stone_slab.json
 b3a17670ce04497d99b6b8ee3dda60ed1e330885 assets/deeperdarker/models/item/polished_sculk_stone_stairs.json
 bdc3ad08e38c745a346717a9719044e0db544588 assets/deeperdarker/models/item/polished_sculk_stone_wall.json
-f13f31731319236fb5c78c89a6e24385f10dde0a assets/deeperdarker/models/item/porous_sculk_gleam.json
+0f6277cad93052abf1d7a181ae95befd42746ba7 assets/deeperdarker/models/item/porous_sculk_gleam.json
 8864938ba857d68c957e39e40fe9f7117f72e31e assets/deeperdarker/models/item/reinforced_echo_shard.json
 898e24490c0414bee4afe3948a2737a56e32d1e7 assets/deeperdarker/models/item/resonarium.json
 71024a2f8123c05a27ee21b5f5fb59a3a09ecf80 assets/deeperdarker/models/item/resonarium_axe.json

@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
+import com.kyanite.deeperdarker.content.blocks.PorousSculkGleamBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
@@ -11,6 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -131,7 +133,11 @@ public class DDBlockStateProvider extends BlockStateProvider {
         wallBlock(DDBlocks.SCULK_GRIME_BRICK_WALL, blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
-        simpleBlock(DDBlocks.POROUS_SCULK_GLEAM.get());
+        getVariantBuilder(DDBlocks.POROUS_SCULK_GLEAM.get()).forAllStates(state -> {
+            int gelAmount = state.getValue(PorousSculkGleamBlock.GEL_LEVEL);
+            ModelFile model = models().cubeColumn(DDBlocks.POROUS_SCULK_GLEAM.getId().getPath() + "_" + gelAmount, blockLoc(DDBlocks.POROUS_SCULK_GLEAM, gelAmount + ""), blockLoc(DDBlocks.SCULK_GLEAM));
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
         simpleBlock(DDBlocks.GLOOMSLATE_LIGHT.get());
         simpleBlock(DDBlocks.LITE_BLOCK.get());
         simpleBlock(DDBlocks.BORDERED_LITE_BLOCK.get());
@@ -171,11 +177,13 @@ public class DDBlockStateProvider extends BlockStateProvider {
         crossBlock(DDBlocks.GLOWING_VINES);
         crossBlock(DDBlocks.GLOWING_ROOTS);
         crossBlock(DDBlocks.GLOWING_ROOTS_PLANT);
+
         ModelFile noBerries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout");
         ModelFile berries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath() + "_berries", blockLoc(DDBlocks.GLOWING_VINES_PLANT, "berries")).renderType("cutout");
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get())
                 .partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel()
                 .partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
+
         getVariantBuilder(DDBlocks.ICE_LILY.get())
                 .partialState().with(IceLilyBlock.HAS_FLOWER, true).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY))).addModel()
                 .partialState().with(IceLilyBlock.HAS_FLOWER, false).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY, "flowerless"))).addModel();
