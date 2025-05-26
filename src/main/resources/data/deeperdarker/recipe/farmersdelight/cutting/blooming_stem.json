@@ -1,0 +1,32 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "deeperdarker:blooming_stem"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "deeperdarker:stripped_blooming_stem"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "farmersdelight:tree_bark"
+      }
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:item_ability",
+    "action": "axe_dig"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ]
+}
