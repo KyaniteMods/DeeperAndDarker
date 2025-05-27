@@ -55,7 +55,7 @@ public class SculkSnapper extends TamableAnimal {
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.1, true));
         this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1, 8, 2));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(5, new RandomStrollGoal(this, 0.5));
+        this.goalSelector.addGoal(5, new RandomStrollGoal(this, 0.9));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 7));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
