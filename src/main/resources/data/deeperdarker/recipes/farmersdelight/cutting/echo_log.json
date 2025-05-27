@@ -7,15 +7,26 @@
   ],
   "result": [
     {
-      "item": "deeperdarker:stripped_echo_log",
-      "count": 1
+      "item": {
+        "id": "deeperdarker:stripped_echo_log",
+        "count": 1
+      }
     },
     {
-      "item": "farmersdelight:tree_bark",
-      "count": 1
+      "item": {
+        "id": "farmersdelight:tree_bark",
+        "count": 1
+      }
     }
   ],
   "tool": {
-    "tag": "minecraft:axes"
-  }
+    "fabric:type": "farmersdelight:item_ability",
+    "action": "axe_strip"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["farmersdelight"]
+    }
+  ]
 }
