@@ -57,6 +57,9 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
         copy(BlockTags.SMALL_FLOWERS, ItemTags.SMALL_FLOWERS);
 
+        copy(Tags.Blocks.STRIPPED_LOGS, Tags.Items.STRIPPED_LOGS);
+        copy(Tags.Blocks.STRIPPED_WOODS, Tags.Items.STRIPPED_WOODS);
+
         copy(Tags.Blocks.STONES, Tags.Items.STONES);
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.ORES_COAL, Tags.Items.ORES_COAL);
