@@ -18,7 +18,7 @@ public class WardenHelmetModel<E extends LivingEntity> extends EntityModel<E> im
         this.head = head;
     }
 
-    public static LayerDefinition createBodyModel() {
+    public static LayerDefinition createModel() {
         MeshDefinition mesh = new MeshDefinition();
         PartDefinition parts = mesh.getRoot();
         parts.addOrReplaceChild("root", CubeListBuilder.create().texOffs(0, 0).addBox(-11.95F, -13.25F, 0.0F, 8.0F, 10.0F, 0.05F, new CubeDeformation(0.0F)).texOffs(0, 0).mirror().addBox(3.95F, -13.25F, 0.0F, 8.0F, 10.0F, 0.05F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, -0.5F, 0.0F));

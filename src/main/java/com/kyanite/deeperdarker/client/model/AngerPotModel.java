@@ -33,7 +33,7 @@ public class AngerPotModel extends HierarchicalModel<OvercastPot> {
     @Override
     public void setupAnim(OvercastPot entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root.getAllParts().forEach(ModelPart::resetPose);
-        this.animateWalk(OvercastPotAnimation.ANGER_WALK, limbSwing, limbSwingAmount, 1f, 2.5f);
+        this.animateWalk(OvercastPotAnimation.ANGER_WALK, limbSwing, limbSwingAmount, 1f, 5f);
     }
 
     @Override

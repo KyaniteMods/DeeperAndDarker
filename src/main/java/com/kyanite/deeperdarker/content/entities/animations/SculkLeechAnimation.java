@@ -10,17 +10,18 @@ public class SculkLeechAnimation {
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -20f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(0.3333f, KeyframeAnimations.degreeVec(0f, 22.5f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, -20f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, -20f, 0f), AnimationChannel.Interpolations.LINEAR)
+            )).addAnimation("body", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, -12.5f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(0.3333f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, -12.5f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, -12.5f, 0f), AnimationChannel.Interpolations.LINEAR)
+            )).addAnimation("tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(0.3333f, KeyframeAnimations.degreeVec(0f, -40f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR)))
-            .addAnimation("back_tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR)
+            )).addAnimation("back_tail", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR),
                     new Keyframe(0.3333f, KeyframeAnimations.degreeVec(0f, -5f, 0f), AnimationChannel.Interpolations.LINEAR),
-                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR))).build();
+                    new Keyframe(0.6667f, KeyframeAnimations.degreeVec(0f, 17.5f, 0f), AnimationChannel.Interpolations.LINEAR)
+            )).build();
 }
