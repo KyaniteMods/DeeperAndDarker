@@ -16,6 +16,7 @@
       "id": "minecraft:emerald"
     },
     {
+      "chance": 0.75,
       "id": "create:experience_nugget"
     },
     {

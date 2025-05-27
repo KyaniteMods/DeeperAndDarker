@@ -12,10 +12,11 @@
       "id": "create:crushed_raw_gold"
     },
     {
-      "chance": 0.75,
+      "chance": 0.25,
       "id": "create:crushed_raw_gold"
     },
     {
+      "chance": 0.75,
       "count": 2,
       "id": "create:experience_nugget"
     },

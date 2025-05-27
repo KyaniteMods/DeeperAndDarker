@@ -8,14 +8,15 @@
   "processingTime": 250,
   "results": [
     {
-      "id": "minecraft:coal",
-      "count": 2
-    },
-    {
-      "chance": 0.75,
+      "count": 2,
       "id": "minecraft:coal"
     },
     {
+      "chance": 0.25,
+      "id": "minecraft:coal"
+    },
+    {
+      "chance": 0.75,
       "id": "create:experience_nugget"
     },
     {

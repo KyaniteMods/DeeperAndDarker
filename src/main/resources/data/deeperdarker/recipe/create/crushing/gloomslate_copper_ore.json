@@ -12,10 +12,11 @@
       "id": "create:crushed_raw_copper"
     },
     {
-      "chance": 0.75,
+      "chance": 0.25,
       "id": "create:crushed_raw_copper"
     },
     {
+      "chance": 0.75,
       "id": "create:experience_nugget"
     },
     {
