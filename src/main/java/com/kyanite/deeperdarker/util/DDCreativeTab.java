@@ -213,13 +213,16 @@ public class DDCreativeTab {
             event.accept(DDItems.SONOROUS_STAFF);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 
+            event.accept(DDItems.ANGER_POT_SPAWN_EGG);
             event.accept(DDItems.ANGLER_FISH_SPAWN_EGG);
+            event.accept(DDItems.FEAR_POT_SPAWN_EGG);
             event.accept(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
             event.accept(DDItems.SCULK_LEECH_SPAWN_EGG);
             event.accept(DDItems.SCULK_SNAPPER_SPAWN_EGG);
             event.accept(DDItems.SHATTERED_SPAWN_EGG);
             event.accept(DDItems.SHRIEK_WORM_SPAWN_EGG);
             event.accept(DDItems.SLUDGE_SPAWN_EGG);
+            event.accept(DDItems.SORROW_POT_SPAWN_EGG);
             event.accept(DDItems.STALKER_SPAWN_EGG);
         }
     }

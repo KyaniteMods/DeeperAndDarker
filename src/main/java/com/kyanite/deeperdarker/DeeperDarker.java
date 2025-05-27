@@ -128,6 +128,9 @@ public class DeeperDarker {
 
     private void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(DDEntities.ANGLER_FISH.get(), AnglerFish.createAttributesSupplier());
+        event.put(DDEntities.ANGER_POT.get(), OvercastPot.createAttributes(40));
+        event.put(DDEntities.FEAR_POT.get(), OvercastPot.createAttributes(30));
+        event.put(DDEntities.SORROW_POT.get(), OvercastPot.createAttributes(20));
         event.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipede.createAttributes());
         event.put(DDEntities.SCULK_LEECH.get(), SculkLeech.createAttributes());
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());

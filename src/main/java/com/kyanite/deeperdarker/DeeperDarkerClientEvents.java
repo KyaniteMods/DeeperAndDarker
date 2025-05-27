@@ -55,6 +55,9 @@ public class DeeperDarkerClientEvents {
         EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
         EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
         EntityRenderers.register(DDEntities.ANGLER_FISH.get(), AnglerFishRenderer::new);
+        EntityRenderers.register(DDEntities.ANGER_POT.get(), AngerPotRenderer::new);
+        EntityRenderers.register(DDEntities.FEAR_POT.get(), FearPotRenderer::new);
+        EntityRenderers.register(DDEntities.SORROW_POT.get(), SorrowPotRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
@@ -98,6 +101,9 @@ public class DeeperDarkerClientEvents {
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createBodyModel);
+        event.registerLayerDefinition(AngerPotRenderer.MODEL, AngerPotModel::createModel);
+        event.registerLayerDefinition(FearPotRenderer.MODEL, FearPotModel::createModel);
+        event.registerLayerDefinition(SorrowPotRenderer.MODEL, SorrowPotModel::createModel);
         event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
         event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
         event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);

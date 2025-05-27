@@ -19,7 +19,7 @@ public class DDEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        tag(DDTags.Misc.SCULK).add(EntityType.PHANTOM, EntityType.WARDEN, DDEntities.ANGLER_FISH.get(), DDEntities.SCULK_CENTIPEDE.get(), DDEntities.SCULK_LEECH.get(), DDEntities.SCULK_SNAPPER.get(), DDEntities.SHATTERED.get(), DDEntities.SHRIEK_WORM.get(), DDEntities.SLUDGE.get(), DDEntities.STALKER.get());
+        tag(DDTags.Misc.SCULK).add(EntityType.PHANTOM, EntityType.WARDEN, DDEntities.ANGLER_FISH.get(), DDEntities.ANGER_POT.get(), DDEntities.FEAR_POT.get(), DDEntities.SORROW_POT.get(), DDEntities.SCULK_CENTIPEDE.get(), DDEntities.SCULK_LEECH.get(), DDEntities.SCULK_SNAPPER.get(), DDEntities.SHATTERED.get(), DDEntities.SHRIEK_WORM.get(), DDEntities.SLUDGE.get(), DDEntities.STALKER.get());
         tag(DDTags.Misc.SENSITIVE_TO_SCULK_SMITE).addTag(DDTags.Misc.SCULK);
     }
 }

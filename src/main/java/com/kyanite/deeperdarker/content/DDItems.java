@@ -85,6 +85,9 @@ public class DDItems {
     public static final DeferredItem<Item> SONOROUS_STAFF = ITEMS.register("sonorous_staff", () -> new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
 
     public static final DeferredItem<Item> ANGLER_FISH_SPAWN_EGG = ITEMS.register("angler_fish_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));
+    public static final DeferredItem<Item> ANGER_POT_SPAWN_EGG = ITEMS.register("anger_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGER_POT, 0x211b1a, 0x8c3737, new Item.Properties()));
+    public static final DeferredItem<Item> FEAR_POT_SPAWN_EGG = ITEMS.register("fear_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.FEAR_POT, 0x211b1a, 0x783b68, new Item.Properties()));
+    public static final DeferredItem<Item> SORROW_POT_SPAWN_EGG = ITEMS.register("sorrow_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SORROW_POT, 0x211b1a, 0x6c5851, new Item.Properties()));
     public static final DeferredItem<Item> SCULK_CENTIPEDE_SPAWN_EGG = ITEMS.register("sculk_centipede_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));
     public static final DeferredItem<Item> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Properties()));
     public static final DeferredItem<Item> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xd1d6b6, 0x1d726f, new Item.Properties()));
