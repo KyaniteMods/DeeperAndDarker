@@ -36,7 +36,7 @@
 		"owo": "*"
 	},
 	"suggests": {
-		"farmersdelight": "<3.0.0"
+		"farmersdelight": "*"
 	},
 	"accessWidener": "deeperdarker.accesswidener"
 }

@@ -23,6 +23,9 @@
     "fabric:type": "farmersdelight:item_ability",
     "action": "axe_strip"
   },
+  "sound": {
+    "sound_id": "minecraft:item.axe.strip"
+  },
   "fabric:load_conditions": [
     {
       "condition": "fabric:all_mods_loaded",
