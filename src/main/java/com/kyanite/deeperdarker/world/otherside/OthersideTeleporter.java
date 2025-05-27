@@ -56,7 +56,7 @@ public class OthersideTeleporter {
             Direction.Axis direction = entity.level().getBlockState(pos).getOptionalValue(OthersidePortalBlock.AXIS).orElse(Direction.Axis.X);
             Optional<BlockUtil.FoundRectangle> newPortal = makePortal(destLevel, exitPos, direction);
             if(newPortal.isEmpty()) {
-                DeeperDarker.LOGGER.error("Unable to create a portal, likely target out of world border");
+                DeeperDarker.LOGGER.error("Unable to create a Otherside portal: target out of world border");
                 return null;
             }
 
@@ -70,7 +70,7 @@ public class OthersideTeleporter {
     private static Optional<BlockPos> findExistingPortal(ServerLevel level, BlockPos exitPos, WorldBorder worldBorder) {
         PoiManager poimanager = level.getPoiManager();
         poimanager.ensureLoadedAndValid(level, exitPos, 128);
-        return poimanager.getInSquare(poi -> poi.is(OthersideDimension.OTHERSIDE_PORTAL), exitPos, 128, PoiManager.Occupancy.ANY)
+        return poimanager.getInSquare(poi -> poi == OthersideDimension.OTHERSIDE_PORTAL.getDelegate(), exitPos, 128, PoiManager.Occupancy.ANY)
                 .map(PoiRecord::getPos)
                 .filter(worldBorder::isWithinBounds)
                 .filter(pos -> level.getBlockState(pos).hasProperty(BlockStateProperties.HORIZONTAL_AXIS))
@@ -111,87 +111,50 @@ public class OthersideTeleporter {
         return new DimensionTransition(level, vec32, vec3, yRot + (float)i, xRot, postTransition);
     }
 
-    public static Optional<BlockUtil.FoundRectangle> makePortal(ServerLevel level, BlockPos pos, Direction.Axis axis) {
+    public static Optional<BlockUtil.FoundRectangle> makePortal(ServerLevel level, BlockPos origin, Direction.Axis axis) {
         Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
-        double d0 = -1;
-        double d1 = -1;
         BlockPos finalPos = null;
-        BlockPos destPos = null;
         WorldBorder worldBorder = level.getWorldBorder();
-        int levelHeight = level.getHeight() - 1;
-        BlockPos.MutableBlockPos mutablePos = pos.mutable();
+        int levelHeight = level.getMaxBuildHeight() - PORTAL_HEIGHT - 1;
 
-        for(BlockPos.MutableBlockPos portalPos : BlockPos.spiralAround(pos, 16, Direction.EAST, Direction.SOUTH)) {
-            int min = Math.min(levelHeight, level.getHeight(Heightmap.Types.MOTION_BLOCKING, portalPos.getX(), portalPos.getZ()));
-            if(worldBorder.isWithinBounds(portalPos) && worldBorder.isWithinBounds(portalPos.move(direction, 1))) {
-                portalPos.move(direction.getOpposite(), 1);
+        for(BlockPos.MutableBlockPos pos : BlockPos.spiralAround(origin, 16, Direction.EAST, Direction.SOUTH)) {
+            if(worldBorder.isWithinBounds(pos) && worldBorder.isWithinBounds(pos.move(direction))) {
+                pos.move(direction.getOpposite());
 
-                for(int i = min; i >= 0; i--) {
-                    portalPos.setY(i);
-                    if(level.isEmptyBlock(portalPos)) {
-                        int y = i;
-                        while (i > 0 && level.isEmptyBlock(portalPos.move(Direction.DOWN))) i--;
+                for(int i = levelHeight; i > level.getMinBuildHeight(); i--) {
+                    pos.setY(i);
+                    if(!level.isEmptyBlock(pos)) continue;
 
-                        if(i + 4 <= levelHeight) {
-                            int j = y - i;
-                            if(j <= 0 || j >= 3) {
-                                portalPos.setY(i);
-                                if(checkRegionForPlacement(level, portalPos, mutablePos, direction, 0)) {
-                                    double d2 = pos.distSqr(portalPos);
-                                    if(checkRegionForPlacement(level, portalPos, mutablePos, direction, -1) && checkRegionForPlacement(level, portalPos, mutablePos, direction, 1) && (d0 == -1.0D || d0 > d2)) {
-                                        d0 = d2;
-                                        finalPos = portalPos.immutable();
-                                    }
+                    int ceilingY = i;
+                    while(i > level.getMinBuildHeight() && !Heightmap.Types.MOTION_BLOCKING.isOpaque().test(level.getBlockState(pos.move(Direction.DOWN)))) i--;
 
-                                    if(d0 == -1 && (d1 == -1 || d1 > d2)) {
-                                        d1 = d2;
-                                        destPos = portalPos.immutable();
-                                    }
-                                }
-                            }
+                    if(ceilingY - i > PORTAL_HEIGHT) {
+                        pos.setY(i);
+
+                        if(checkRegionForPlacement(level, pos, direction)) {
+                            finalPos = pos.immutable();
+                            break;
                         }
                     }
                 }
             }
+
+            if(finalPos != null) break;
         }
 
-        if(d0 == -1 && d1 != -1) {
-            finalPos = destPos;
-            d0 = d1;
-        }
+        BlockPos.MutableBlockPos mutablePos = origin.mutable();
 
-        if(d0 == -1) {
-            finalPos = new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 16, level.getHeight() - 20), pos.getZ()).immutable();
-            Direction direction1 = direction.getClockWise();
-            if(!worldBorder.isWithinBounds(finalPos)) {
-                return Optional.empty();
-            }
+        if(finalPos == null) {
+            if(!worldBorder.isWithinBounds(origin)) return Optional.empty();
 
-            int yDiff = 0;
-            BlockPos.MutableBlockPos blockPos = finalPos.mutable();
-            while(!level.getBlockState(blockPos).isAir() && !level.isOutsideBuildHeight(blockPos)) {
-                blockPos.move(0, 1, 0);
-                yDiff++;
-            }
-            if(!level.isOutsideBuildHeight(blockPos)) finalPos = blockPos;
-            else {
-                blockPos.move(0, -yDiff, 0);
-                while(!level.getBlockState(blockPos).isAir() && !level.isOutsideBuildHeight(blockPos)) {
-                    blockPos.move(0, -1, 0);
-                }
-                if(!level.isOutsideBuildHeight(blockPos)) finalPos = blockPos;
-            }
-
-            blockPos = finalPos.mutable();
-            while(level.getBlockState(blockPos.below()).isAir()) {
-                blockPos.move(0, -1, 0);
-            }
-            finalPos = blockPos;
+            if(origin.getY() < 0) finalPos = origin.atY(64);
+            else finalPos = origin.atY(Mth.clamp(origin.getY(), 16, levelHeight - 20));
+            Direction clockWise = direction.getClockWise();
 
             for(int i = -PORTAL_BASE; i < PORTAL_BASE + 1; i++) {
                 for(int j = 0; j < PORTAL_WIDTH; j++) {
                     for(int k = -1; k < PORTAL_HEIGHT; k++) {
-                        mutablePos.setWithOffset(finalPos, j * direction.getStepX() + i * direction1.getStepX(), k, j * direction.getStepZ() + i * direction1.getStepZ());
+                        mutablePos.setWithOffset(finalPos, j * direction.getStepX() + i * clockWise.getStepX(), k, j * direction.getStepZ() + i * clockWise.getStepZ());
                         if(k < 0 && (i == -PORTAL_BASE || i == PORTAL_BASE)) continue;
                         level.setBlockAndUpdate(mutablePos, k < 0 ? Blocks.REINFORCED_DEEPSLATE.defaultBlockState() : Blocks.AIR.defaultBlockState());
                     }
@@ -218,14 +181,12 @@ public class OthersideTeleporter {
         return Optional.of(new BlockUtil.FoundRectangle(finalPos.immutable(), 2, 3));
     }
 
-    private static boolean checkRegionForPlacement(ServerLevel level, BlockPos originalPos, BlockPos.MutableBlockPos offsetPos, Direction directionIn, int offsetScale) {
-        Direction direction = directionIn.getClockWise();
-
-        for(int i = -1; i < 3; i++) {
-            for(int j = -1; j < 4; j++) {
-                offsetPos.setWithOffset(originalPos, directionIn.getStepX() * i + direction.getStepX() * offsetScale, j, directionIn.getStepZ() * i + direction.getStepZ() * offsetScale);
-                if(j < 0 && !level.getBlockState(offsetPos).isAir()) return false;
-                if(j >= 0 && !level.isEmptyBlock(offsetPos)) return false;
+    private static boolean checkRegionForPlacement(ServerLevel level, BlockPos portalPos, Direction direction) {
+        for(int x = -1; x < PORTAL_WIDTH + 1; x++) {
+            for(int y = -1; y < PORTAL_HEIGHT + 1; y++) {
+                BlockPos pos = portalPos.offset(direction.getStepX() * x, y, direction.getStepZ() * x);
+                if(y < 0 && level.isEmptyBlock(pos)) return false;
+                if(y >= 0 && level.getBlockState(pos).blocksMotion()) return false;
             }
         }
 

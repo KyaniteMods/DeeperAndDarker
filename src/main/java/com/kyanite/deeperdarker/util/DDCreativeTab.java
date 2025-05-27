@@ -118,6 +118,8 @@ public class DDCreativeTab {
             event.accept(DDBlocks.GLOOMY_GEYSER);
             event.accept(DDBlocks.CRYSTALLIZED_AMBER);
             event.accept(DDBlocks.SCULK_GLEAM);
+            event.accept(DDBlocks.POROUS_SCULK_GLEAM);
+            event.accept(DDBlocks.GLEAM_GEL_BLOCK);
             event.accept(DDBlocks.GLOOMSLATE_LIGHT);
             event.accept(DDBlocks.LITE_BLOCK);
             event.accept(DDBlocks.BORDERED_LITE_BLOCK);
@@ -164,6 +166,7 @@ public class DDCreativeTab {
             event.accept(DDItems.BLOOM_BERRIES);
             event.accept(DDItems.GRIME_BALL);
             event.accept(DDItems.GRIME_BRICK);
+            event.accept(DDItems.GLEAM_GEL);
             event.accept(DDItems.LITE);
 
             event.accept(DDItems.ANCIENT_COMPASS);
@@ -210,13 +213,16 @@ public class DDCreativeTab {
             event.accept(DDItems.SONOROUS_STAFF);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 
+            event.accept(DDItems.ANGER_POT_SPAWN_EGG);
             event.accept(DDItems.ANGLER_FISH_SPAWN_EGG);
+            event.accept(DDItems.FEAR_POT_SPAWN_EGG);
             event.accept(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
             event.accept(DDItems.SCULK_LEECH_SPAWN_EGG);
             event.accept(DDItems.SCULK_SNAPPER_SPAWN_EGG);
             event.accept(DDItems.SHATTERED_SPAWN_EGG);
             event.accept(DDItems.SHRIEK_WORM_SPAWN_EGG);
             event.accept(DDItems.SLUDGE_SPAWN_EGG);
+            event.accept(DDItems.SORROW_POT_SPAWN_EGG);
             event.accept(DDItems.STALKER_SPAWN_EGG);
         }
     }

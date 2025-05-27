@@ -23,29 +23,34 @@ public class SculkGleamFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = context.origin();
         RandomSource random = context.random();
 
-        if(level.isEmptyBlock(origin)) {
-            BlockState state = level.getBlockState(origin.above());
-            if(state.is(Blocks.SCULK) || state.is(DDBlocks.SCULK_STONE.get())) {
-                level.setBlock(origin, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 3);
+        if(!level.isEmptyBlock(origin)) return false;
 
-                for(int i = 0; i < 1500; ++i) {
-                    BlockPos pos = origin.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
-                    if(level.getBlockState(pos).isAir()) {
-                        int j = 0;
+        BlockState aboveState = level.getBlockState(origin.above());
+        if(!aboveState.is(Blocks.SCULK) && !aboveState.is(DDBlocks.SCULK_STONE.get())) return false;
 
-                        for(Direction direction : Direction.values()) {
-                            if(level.getBlockState(pos.relative(direction)).is(DDBlocks.SCULK_GLEAM.get())) j++;
-                            if(j > 1) break;
-                        }
+        level.setBlock(origin, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 3);
 
-                        if(j == 1) level.setBlock(pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 3);
+        for(int i = 0; i < 1500; ++i) {
+            BlockPos pos = origin.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
+            if(level.getBlockState(pos).isAir()) {
+                int j = 0;
+
+                for(Direction direction : Direction.values()) {
+                    BlockState neighbor = level.getBlockState(pos.relative(direction));
+                    if(neighbor.is(DDBlocks.SCULK_GLEAM.get()) || neighbor.is(DDBlocks.POROUS_SCULK_GLEAM)) {
+                        if(level.getBlockState(pos.relative(direction).above()).is(DDBlocks.ECHO_LEAVES)) j++;
+                        j++;
                     }
+                    if(j > 1) break;
                 }
 
-                return true;
+                if(j == 1) {
+                    if(random.nextFloat() < 0.14f) level.setBlock(pos, DDBlocks.POROUS_SCULK_GLEAM.get().defaultBlockState(), 3);
+                    else level.setBlock(pos, DDBlocks.SCULK_GLEAM.get().defaultBlockState(), 3);
+                }
             }
         }
 
-        return false;
+        return true;
     }
 }

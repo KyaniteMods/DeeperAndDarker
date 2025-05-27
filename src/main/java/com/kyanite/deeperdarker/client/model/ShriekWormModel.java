@@ -17,7 +17,7 @@ public class ShriekWormModel extends HierarchicalModel<ShriekWorm> {
 		this.root = root;
 	}
 
-	public static LayerDefinition createBodyModel() {
+	public static LayerDefinition createModel() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
 

@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.datagen.data;
+package com.kyanite.deeperdarker.datagen.data.tags;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
@@ -25,7 +25,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE).addTags(DDTags.Blocks.ECHO_LOGS, DDTags.Blocks.BLOOM_STEMS).add(DDBlocks.ECHO_PLANKS.get(), DDBlocks.ECHO_STAIRS.get(), DDBlocks.ECHO_SLAB.get(), DDBlocks.ECHO_FENCE.get(), DDBlocks.ECHO_FENCE_GATE.get(), DDBlocks.ECHO_DOOR.get(), DDBlocks.ECHO_TRAPDOOR.get(), DDBlocks.ECHO_PRESSURE_PLATE.get(), DDBlocks.ECHO_BUTTON.get(),
                 DDBlocks.BLOOMING_STEM.get(), DDBlocks.STRIPPED_BLOOMING_STEM.get(), DDBlocks.BLOOM_PLANKS.get(), DDBlocks.BLOOM_STAIRS.get(), DDBlocks.BLOOM_SLAB.get(), DDBlocks.BLOOM_FENCE.get(), DDBlocks.BLOOM_FENCE_GATE.get(), DDBlocks.BLOOM_DOOR.get(), DDBlocks.BLOOM_TRAPDOOR.get(), DDBlocks.BLOOM_PRESSURE_PLATE.get(), DDBlocks.BLOOM_BUTTON.get(),
                 DDBlocks.GLOWING_GRASS.get(), DDBlocks.GLOOMY_GRASS.get(), DDBlocks.ICE_LILY.get());
-        tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.GLOWING_FLOWERS.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.GLOWING_ROOTS.get(), DDBlocks.GLOWING_ROOTS_PLANT.get(), DDBlocks.GLOWING_VINES.get(), DDBlocks.GLOWING_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
+        tag(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES.get(), DDBlocks.GLOOMY_SCULK.get(), DDBlocks.GLOOMY_GEYSER.get(), DDBlocks.SCULK_GLEAM.get(), DDBlocks.POROUS_SCULK_GLEAM.get(), DDBlocks.GLOWING_FLOWERS.get(), DDBlocks.SCULK_VINES.get(), DDBlocks.SCULK_VINES_PLANT.get(), DDBlocks.GLOWING_ROOTS.get(), DDBlocks.GLOWING_ROOTS_PLANT.get(), DDBlocks.GLOWING_VINES.get(), DDBlocks.GLOWING_VINES_PLANT.get(), DDBlocks.INFESTED_SCULK.get(), DDBlocks.SCULK_JAW.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE.get(), DDBlocks.COBBLED_SCULK_STONE.get(), DDBlocks.POLISHED_SCULK_STONE.get(), DDBlocks.SCULK_STONE_BRICKS.get(), DDBlocks.SCULK_STONE_TILES.get(), DDBlocks.SMOOTH_SCULK_STONE.get(), DDBlocks.CUT_SCULK_STONE.get(), DDBlocks.CHISELED_SCULK_STONE.get(),
                 DDBlocks.SCULK_STONE_STAIRS.get(), DDBlocks.COBBLED_SCULK_STONE_STAIRS.get(), DDBlocks.POLISHED_SCULK_STONE_STAIRS.get(), DDBlocks.SCULK_STONE_BRICK_STAIRS.get(), DDBlocks.SCULK_STONE_TILE_STAIRS.get(), DDBlocks.SMOOTH_SCULK_STONE_STAIRS.get(), DDBlocks.CUT_SCULK_STONE_STAIRS.get(),
                 DDBlocks.SCULK_STONE_SLAB.get(), DDBlocks.COBBLED_SCULK_STONE_SLAB.get(), DDBlocks.POLISHED_SCULK_STONE_SLAB.get(), DDBlocks.SCULK_STONE_BRICK_SLAB.get(), DDBlocks.SCULK_STONE_TILE_SLAB.get(), DDBlocks.SMOOTH_SCULK_STONE_SLAB.get(), DDBlocks.CUT_SCULK_STONE_SLAB.get(),

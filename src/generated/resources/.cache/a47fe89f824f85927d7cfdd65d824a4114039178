@@ -1,0 +1,6 @@
+// 1.21.1	2025-05-20T20:50:47.7137932	Tags for minecraft:enchantment mod id deeperdarker
+9464196fb4424df845d46cf9ae35ce0791b17be1 data/c/tags/enchantment/weapon_damage_enhancements.json
+956020b40231b56465cb87935abf3a5673212f04 data/deeperdarker/tags/enchantment/resonarium_excludes.json
+9464196fb4424df845d46cf9ae35ce0791b17be1 data/minecraft/tags/enchantment/exclusive_set/damage.json
+fa8fb81bef329a2d6bc782b395ba8449bde6b5bd data/minecraft/tags/enchantment/non_treasure.json
+e049e3f74fd7fbae16e1e40e713704798f306676 data/minecraft/tags/enchantment/treasure.json

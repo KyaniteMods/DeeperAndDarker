@@ -128,6 +128,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.SCULK_GRIME_BRICK_WALL, "inventory");
 
         blockModel(DDBlocks.SCULK_GLEAM);
+        blockModel(DDBlocks.POROUS_SCULK_GLEAM, "0");
         blockModel(DDBlocks.GLOOMSLATE_LIGHT);
         blockModel(DDBlocks.LITE_BLOCK);
         blockModel(DDBlocks.BORDERED_LITE_BLOCK);
@@ -136,6 +137,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         blockModel(DDBlocks.GLOOMY_SCULK);
         blockModel(DDBlocks.GLOOMY_GEYSER);
         blockModel(DDBlocks.CRYSTALLIZED_AMBER);
+        blockModel(DDBlocks.GLEAM_GEL_BLOCK);
         blockModel(DDBlocks.SOUNDPROOF_GLASS);
 
         blockModel(DDBlocks.SCULK_STONE_COAL_ORE);
@@ -183,6 +185,7 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.BLOOM_BERRIES, GENERATED);
         itemModel(DDItems.GRIME_BALL, GENERATED);
         itemModel(DDItems.GRIME_BRICK, GENERATED);
+        itemModel(DDItems.GLEAM_GEL, GENERATED);
         itemModel(DDItems.LITE, GENERATED);
 
         for(int i = 0; i < 32; i++) {
@@ -245,6 +248,9 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);
+        spawnEggModel(DDItems.ANGER_POT_SPAWN_EGG);
+        spawnEggModel(DDItems.FEAR_POT_SPAWN_EGG);
+        spawnEggModel(DDItems.SORROW_POT_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_LEECH_SPAWN_EGG);
         spawnEggModel(DDItems.SCULK_SNAPPER_SPAWN_EGG);

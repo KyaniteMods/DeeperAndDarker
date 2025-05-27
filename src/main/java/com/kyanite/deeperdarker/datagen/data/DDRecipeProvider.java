@@ -137,6 +137,11 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         slab(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
         wall(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, DDBlocks.GLEAM_GEL_BLOCK)
+                .define('G', DDItems.GLEAM_GEL)
+                .pattern("GGG").pattern("GGG").pattern("GGG")
+                .unlockedBy(getHasName(DDItems.GLEAM_GEL), has(DDItems.GLEAM_GEL)).save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SOUNDPROOF_GLASS, 2)
                 .define('S', DDItems.SOUL_DUST).define('G', Items.GLASS)
                 .pattern(" S ").pattern("SGS").pattern(" S ")
