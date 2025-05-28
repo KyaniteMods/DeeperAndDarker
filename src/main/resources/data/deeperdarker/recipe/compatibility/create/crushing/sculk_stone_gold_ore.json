@@ -2,25 +2,27 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "deeperdarker:gloomslate_diamond_ore"
+      "item": "deeperdarker:sculk_stone_gold_ore"
     }
   ],
-  "processingTime": 550,
+  "processingTime": 350,
   "results": [
     {
       "count": 3,
-      "item": "minecraft:diamond"
+      "id": "create:crushed_raw_gold"
     },
     {
       "chance": 0.25,
-      "item": "minecraft:diamond"
+      "id": "create:crushed_raw_gold"
     },
     {
-      "item": "create:experience_nugget"
+      "chance": 0.75,
+      "count": 2,
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "deeperdarker:cobbled_gloomslate"
+      "id": "deeperdarker:cobbled_sculk_stone"
     }
   ],
   "neoforge:conditions": [

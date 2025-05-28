@@ -2,25 +2,26 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "deeperdarker:gloomslate_lapis_ore"
+      "item": "deeperdarker:sculk_stone_redstone_ore"
     }
   ],
   "processingTime": 450,
   "results": [
     {
-      "count": 15,
-      "item": "minecraft:lapis_lazuli"
+      "count": 12,
+      "id": "minecraft:redstone"
     },
     {
       "chance": 0.5,
-      "item": "minecraft:lapis_lazuli"
+      "id": "minecraft:redstone"
     },
     {
-      "item": "create:experience_nugget"
+      "chance": 0.75,
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "deeperdarker:cobbled_gloomslate"
+      "id": "deeperdarker:cobbled_sculk_stone"
     }
   ],
   "neoforge:conditions": [

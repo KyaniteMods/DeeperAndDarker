@@ -2,25 +2,26 @@
   "type": "create:crushing",
   "ingredients": [
     {
-      "item": "deeperdarker:gloomslate_copper_ore"
+      "item": "deeperdarker:sculk_stone_copper_ore"
     }
   ],
   "processingTime": 350,
   "results": [
     {
       "count": 10,
-      "item": "create:crushed_raw_copper"
+      "id": "create:crushed_raw_copper"
+    },
+    {
+      "chance": 0.25,
+      "id": "create:crushed_raw_copper"
     },
     {
       "chance": 0.75,
-      "item": "create:crushed_raw_copper"
-    },
-    {
-      "item": "create:experience_nugget"
+      "id": "create:experience_nugget"
     },
     {
       "chance": 0.125,
-      "item": "deeperdarker:cobbled_gloomslate"
+      "id": "deeperdarker:cobbled_sculk_stone"
     }
   ],
   "neoforge:conditions": [
