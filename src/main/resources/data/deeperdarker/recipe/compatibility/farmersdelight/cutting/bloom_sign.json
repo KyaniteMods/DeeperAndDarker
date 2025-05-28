@@ -2,19 +2,19 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "deeperdarker:echo_door"
+      "item": "deeperdarker:bloom_sign"
     }
   ],
   "result": [
     {
       "item": {
         "count": 1,
-        "id": "deeperdarker:echo_planks"
+        "id": "deeperdarker:bloom_planks"
       }
     }
   ],
   "tool": {
-    "type": "farmersdelight:tool_action",
+    "type": "farmersdelight:item_ability",
     "action": "axe_dig"
   },
   "neoforge:conditions": [

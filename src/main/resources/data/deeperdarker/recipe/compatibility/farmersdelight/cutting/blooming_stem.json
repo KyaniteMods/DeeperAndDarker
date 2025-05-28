@@ -2,14 +2,14 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "deeperdarker:echo_log"
+      "item": "deeperdarker:blooming_stem"
     }
   ],
   "result": [
     {
       "item": {
         "count": 1,
-        "id": "deeperdarker:stripped_echo_log"
+        "id": "deeperdarker:stripped_blooming_stem"
       }
     },
     {
@@ -19,9 +19,11 @@
       }
     }
   ],
-  "sound": "minecraft:item.axe.strip",
+  "sound": {
+    "sound_id": "minecraft:item.axe.strip"
+  },
   "tool": {
-    "type": "farmersdelight:tool_action",
+    "type": "farmersdelight:item_ability",
     "action": "axe_strip"
   },
   "neoforge:conditions": [

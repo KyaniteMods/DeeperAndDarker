@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "deeperdarker:echo_hanging_sign"
+      "item": "deeperdarker:echo_door"
     }
   ],
   "result": [
@@ -14,7 +14,7 @@
     }
   ],
   "tool": {
-    "type": "farmersdelight:tool_action",
+    "type": "farmersdelight:item_ability",
     "action": "axe_dig"
   },
   "neoforge:conditions": [
