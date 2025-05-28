@@ -6,9 +6,12 @@ import com.kyanite.deeperdarker.datagen.assets.DDBlockStateProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
-import com.kyanite.deeperdarker.datagen.data.*;
+import com.kyanite.deeperdarker.datagen.data.DDAdvancements;
+import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
+import com.kyanite.deeperdarker.datagen.data.DDRegistriesGenerator;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootTableProvider;
+import com.kyanite.deeperdarker.datagen.data.tags.*;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
@@ -100,13 +103,15 @@ public class DeeperDarker {
         generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
 
         // data
+        CompletableFuture<HolderLookup.Provider> newLookup = generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider)).getRegistryProvider();
+
         DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new DDEnchantmentTagsProvider(packOutput, newLookup, fileHelper));
         generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(packOutput, lookupProvider, fileHelper));
         generator.addProvider(event.includeServer(), new DDGameEventTagsProvider(packOutput, lookupProvider, fileHelper));
+        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
 
-        CompletableFuture<HolderLookup.Provider> newLookup = generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider)).getRegistryProvider();
         generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, newLookup, fileHelper, List.of(new DDAdvancements())));
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, newLookup));
         generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, newLookup));
@@ -123,6 +128,9 @@ public class DeeperDarker {
 
     private void registerAttributes(final EntityAttributeCreationEvent event) {
         event.put(DDEntities.ANGLER_FISH.get(), AnglerFish.createAttributesSupplier());
+        event.put(DDEntities.ANGER_POT.get(), OvercastPot.createAttributes(40));
+        event.put(DDEntities.FEAR_POT.get(), OvercastPot.createAttributes(30));
+        event.put(DDEntities.SORROW_POT.get(), OvercastPot.createAttributes(20));
         event.put(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipede.createAttributes());
         event.put(DDEntities.SCULK_LEECH.get(), SculkLeech.createAttributes());
         event.put(DDEntities.SCULK_SNAPPER.get(), SculkSnapper.createAttributes());

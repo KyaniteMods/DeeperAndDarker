@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "deeperdarker:block/sculk_gleam",
+    "side": "deeperdarker:block/porous_sculk_gleam_4"
+  }
+}

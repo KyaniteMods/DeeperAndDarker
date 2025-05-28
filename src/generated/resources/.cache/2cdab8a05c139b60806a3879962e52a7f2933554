@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-21T19:00:44.985432	Item Models: deeperdarker
+// 1.21.1	2025-05-26T21:22:39.4877647	Item Models: deeperdarker
 b865d79a924f87a99520874abf7edca2ee9724db assets/deeperdarker/models/item/ancient_compass.json
 fdd23eeb4e7c3199a2a96c25010340cc3dcebb31 assets/deeperdarker/models/item/ancient_compass_00.json
 a73f0f617d25bfe9cd4864da3606103da8fb2d3e assets/deeperdarker/models/item/ancient_compass_01.json
@@ -33,6 +33,7 @@ a606a9da6de845fa8e9f138079399b5b44534044 assets/deeperdarker/models/item/ancient
 dbde21cb11fddfbf170745261da73835c0484cf9 assets/deeperdarker/models/item/ancient_compass_30.json
 1b87a376d7ea3f0689f6d1e8b84c55238aef0022 assets/deeperdarker/models/item/ancient_compass_31.json
 b36185a1f9e1c105ef9ef404ee0483eedd9ecd79 assets/deeperdarker/models/item/ancient_vase.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/anger_pot_spawn_egg.json
 f881938170f499585ba6c7f76f57e4296cfc2007 assets/deeperdarker/models/item/angler_fish.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/angler_fish_spawn_egg.json
 f2fe62e9aa1b817d10053a94259d530922d39562 assets/deeperdarker/models/item/blooming_moss_block.json
@@ -92,6 +93,9 @@ b5a9cdf24751c70817ae24a894270341e5e54793 assets/deeperdarker/models/item/echo_lo
 a3fe9f11354ab143f3d9469ff16446bf71f5062a assets/deeperdarker/models/item/echo_trapdoor.json
 8b8f911e14802b02812178623d0873681db5a26b assets/deeperdarker/models/item/echo_wood.json
 1702b5a615898e6e4d89cfcb382425dc8518ad34 assets/deeperdarker/models/item/enriched_gloomslate_bricks.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/fear_pot_spawn_egg.json
+fba944c1e90756cd8ea46b68907f8541a1c4f648 assets/deeperdarker/models/item/gleam_gel.json
+85df9d4c0a80a62e3227338706f149c521dfeb7c assets/deeperdarker/models/item/gleam_gel_block.json
 f584b7594997a162416c8df4cfbe071fab3fe7a1 assets/deeperdarker/models/item/gloomslate.json
 94092555047d0c6fdc197b0d178bfe2be09438ab assets/deeperdarker/models/item/gloomslate_bricks.json
 912ddc52daa055f583f5a093e80c9e4a58e3c69c assets/deeperdarker/models/item/gloomslate_brick_fence.json
@@ -137,6 +141,7 @@ b35eb613e127b16f1916eb0eda7a413e397be030 assets/deeperdarker/models/item/polishe
 ceca42e3aadb0cadd907d918dfa0d3a88944f465 assets/deeperdarker/models/item/polished_sculk_stone_slab.json
 b3a17670ce04497d99b6b8ee3dda60ed1e330885 assets/deeperdarker/models/item/polished_sculk_stone_stairs.json
 bdc3ad08e38c745a346717a9719044e0db544588 assets/deeperdarker/models/item/polished_sculk_stone_wall.json
+0f6277cad93052abf1d7a181ae95befd42746ba7 assets/deeperdarker/models/item/porous_sculk_gleam.json
 8864938ba857d68c957e39e40fe9f7117f72e31e assets/deeperdarker/models/item/reinforced_echo_shard.json
 898e24490c0414bee4afe3948a2737a56e32d1e7 assets/deeperdarker/models/item/resonarium.json
 71024a2f8123c05a27ee21b5f5fb59a3a09ecf80 assets/deeperdarker/models/item/resonarium_axe.json
@@ -238,6 +243,7 @@ ae8bb988e24dd1b2fc704b8e6b9e0e2bd9768190 assets/deeperdarker/models/item/smooth_
 c5b48884c507d9617c9304e175ff096b8ea107da assets/deeperdarker/models/item/sonorous_staff.json
 b2ae613daab1455a4ca75d5a9236e890273ff98d assets/deeperdarker/models/item/sonorous_staff_charged.json
 94253382ef867d3a104f61fd254dcf2c4d27ac1f assets/deeperdarker/models/item/sonorous_staff_charging.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sorrow_pot_spawn_egg.json
 276ee6aa65e11bc12857f29c799269d6fa1d05e2 assets/deeperdarker/models/item/soul_crystal.json
 dfa96b7647fd60a7cbf8f12e16e854cd0773ba0c assets/deeperdarker/models/item/soul_dust.json
 81292e1dcd08c5acb8510858c469222853fdf9ab assets/deeperdarker/models/item/soul_elytra.json

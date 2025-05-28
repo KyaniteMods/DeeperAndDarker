@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class ShriekWormRenderer extends MobRenderer<ShriekWorm, ShriekWormModel> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("shriek_worm"), "main");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("shriek_worm_layer"), "main");
     private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/shriek_worm.png");
 
     public ShriekWormRenderer(EntityRendererProvider.Context context) {

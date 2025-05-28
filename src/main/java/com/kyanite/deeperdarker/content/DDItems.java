@@ -29,6 +29,7 @@ public class DDItems {
     public static final DeferredItem<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new ItemNameBlockItem(DDBlocks.GLOWING_VINES.get(), new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f).build())));
     public static final DeferredItem<Item> GRIME_BALL = ITEMS.registerSimpleItem("grime_ball");
     public static final DeferredItem<Item> GRIME_BRICK = ITEMS.registerSimpleItem("grime_brick");
+    public static final DeferredItem<Item> GLEAM_GEL = ITEMS.registerSimpleItem("gleam_gel");
     public static final DeferredItem<Item> LITE = ITEMS.registerSimpleItem("lite");
 
     public static final DeferredItem<Item> ANCIENT_COMPASS = ITEMS.register("ancient_compass", () -> new AncientCompassItem(new Item.Properties().stacksTo(1)));
@@ -63,7 +64,7 @@ public class DDItems {
     public static final DeferredItem<Item> RESONARIUM_SHOVEL = ITEMS.register("resonarium_shovel", () -> new ShovelItem(DDTiers.RESONARIUM, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.RESONARIUM, 1.5f, -3))));
     public static final DeferredItem<Item> RESONARIUM_PICKAXE = ITEMS.register("resonarium_pickaxe", () -> new PickaxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.RESONARIUM, 1, -2.8f))));
     public static final DeferredItem<Item> RESONARIUM_AXE = ITEMS.register("resonarium_axe", () -> new AxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.RESONARIUM, 5, -3))));
-    public static final DeferredItem<Item> RESONARIUM_HOE = ITEMS.register("resonarium_hoe", () -> new HoeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.RESONARIUM, -4, 0))));
+    public static final DeferredItem<Item> RESONARIUM_HOE = ITEMS.register("resonarium_hoe", () -> new HoeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.RESONARIUM, -3, 0))));
     public static final DeferredItem<Item> RESONARIUM_SWORD = ITEMS.register("resonarium_sword", () -> new SwordItem(DDTiers.RESONARIUM, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.RESONARIUM, 3, -2.4f))));
     public static final DeferredItem<ResonariumArmorItem> RESONARIUM_HELMET = ITEMS.register("resonarium_helmet", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(30))));
     public static final DeferredItem<ResonariumArmorItem> RESONARIUM_CHESTPLATE = ITEMS.register("resonarium_chestplate", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
@@ -73,7 +74,7 @@ public class DDItems {
     public static final DeferredItem<Item> WARDEN_SHOVEL = ITEMS.register("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.WARDEN, 1.5f, -3)).rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<Item> WARDEN_PICKAXE = ITEMS.register("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.WARDEN, 1, -2.8f)).rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<Item> WARDEN_AXE = ITEMS.register("warden_axe", () -> new AxeItem(DDTiers.WARDEN, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.WARDEN, 5, -3)).rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_HOE = ITEMS.register("warden_hoe", () -> new HoeItem(DDTiers.WARDEN, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.WARDEN, -4, 0)).rarity(Rarity.RARE).fireResistant()));
+    public static final DeferredItem<Item> WARDEN_HOE = ITEMS.register("warden_hoe", () -> new HoeItem(DDTiers.WARDEN, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.WARDEN, -5, 0)).rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<Item> WARDEN_SWORD = ITEMS.register("warden_sword", () -> new SwordItem(DDTiers.WARDEN, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.WARDEN, 3, -2.4f)).rarity(Rarity.RARE).fireResistant()));
     public static final DeferredItem<WardenArmorItem> WARDEN_HELMET = ITEMS.register("warden_helmet", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
     public static final DeferredItem<WardenArmorItem> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
@@ -84,6 +85,9 @@ public class DDItems {
     public static final DeferredItem<Item> SONOROUS_STAFF = ITEMS.register("sonorous_staff", () -> new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
 
     public static final DeferredItem<Item> ANGLER_FISH_SPAWN_EGG = ITEMS.register("angler_fish_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));
+    public static final DeferredItem<Item> ANGER_POT_SPAWN_EGG = ITEMS.register("anger_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGER_POT, 0x211b1a, 0x8c3737, new Item.Properties()));
+    public static final DeferredItem<Item> FEAR_POT_SPAWN_EGG = ITEMS.register("fear_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.FEAR_POT, 0x211b1a, 0x783b68, new Item.Properties()));
+    public static final DeferredItem<Item> SORROW_POT_SPAWN_EGG = ITEMS.register("sorrow_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SORROW_POT, 0x211b1a, 0x6c5851, new Item.Properties()));
     public static final DeferredItem<Item> SCULK_CENTIPEDE_SPAWN_EGG = ITEMS.register("sculk_centipede_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));
     public static final DeferredItem<Item> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Properties()));
     public static final DeferredItem<Item> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xd1d6b6, 0x1d726f, new Item.Properties()));

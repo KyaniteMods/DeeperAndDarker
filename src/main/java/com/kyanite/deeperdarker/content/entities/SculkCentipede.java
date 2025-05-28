@@ -34,9 +34,8 @@ public class SculkCentipede extends Monster implements NeutralMob {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.3, true));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.9));
-        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 0.7));
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 5));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 5));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
         this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
