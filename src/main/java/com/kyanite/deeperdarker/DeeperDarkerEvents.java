@@ -66,6 +66,9 @@ public class DeeperDarkerEvents {
     @SubscribeEvent
     public static void registerBrewingRecipes(final RegisterBrewingRecipesEvent event) {
         PotionBrewing.Builder builder = event.getBuilder();
+
+        builder.addMix(Potions.AWKWARD, DDItems.GLEAM_GEL.get(), DDPotions.GLOWING);
+
         builder.addMix(Potions.AWKWARD, DDItems.SOUL_CRYSTAL.get(), DDPotions.SCULK_AFFINITY);
         builder.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY);
         builder.addMix(DDPotions.SCULK_AFFINITY, Items.REDSTONE, DDPotions.LONG_SCULK_AFFINITY);

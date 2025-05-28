@@ -21,6 +21,11 @@ public class ENLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("item.minecraft.tipped_arrow.effect.glowing", "Arrow of Glowing");
+        add("item.minecraft.potion.effect.glowing", "Potion of Glowing");
+        add("item.minecraft.splash_potion.effect.glowing", "Splash Potion of Glowing");
+        add("item.minecraft.lingering_potion.effect.glowing", "Lingering Potion of Glowing");
+
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
