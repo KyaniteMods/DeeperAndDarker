@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.world.features;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingGrassBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
+import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -27,6 +28,8 @@ public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = context.random();
 
         if(origin.getY() <= level.getMinBuildHeight() + 4) return false;
+        if(!level.getBiome(origin.south(14)).is(OthersideBiomes.BLOOMING_CAVERNS)) return false;
+        if(!level.getBiome(origin.east(14)).is(OthersideBiomes.BLOOMING_CAVERNS)) return false;
 
         origin = origin.below(4);
         boolean[] arr = new boolean[2048];
