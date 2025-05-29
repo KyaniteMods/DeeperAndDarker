@@ -37,7 +37,7 @@
             "erosion": 0.0,
             "humidity": 0.27,
             "offset": 0.0,
-            "temperature": -1.0,
+            "temperature": -0.9,
             "weirdness": 0.0
           }
         },
@@ -47,9 +47,9 @@
             "continentalness": 0.0,
             "depth": 0.0,
             "erosion": 0.0,
-            "humidity": 0.51,
+            "humidity": 0.55,
             "offset": 0.0,
-            "temperature": 0.85,
+            "temperature": 0.7,
             "weirdness": 0.0
           }
         }

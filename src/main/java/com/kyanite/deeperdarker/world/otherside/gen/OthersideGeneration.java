@@ -37,8 +37,8 @@ public class OthersideGeneration {
         NoiseBasedChunkGenerator chunkGenerator = new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(List.of(
                 Pair.of(Climate.parameters(0f, -0.83f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.DEEPLANDS)),
                 Pair.of(Climate.parameters(0.1f, 0.79f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST)),
-                Pair.of(Climate.parameters(-1f, 0.27f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS)),
-                Pair.of(Climate.parameters(0.85f, 0.51f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))
+                Pair.of(Climate.parameters(-0.9f, 0.27f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS)),
+                Pair.of(Climate.parameters(0.7f, 0.55f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))
         ))), noiseSettings.getOrThrow(OTHERSIDE_GENERATOR));
         return new LevelStem(dimensions.getOrThrow(OthersideDimension.OTHERSIDE), chunkGenerator);
     }
