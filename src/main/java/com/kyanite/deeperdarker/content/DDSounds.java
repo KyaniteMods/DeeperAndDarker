@@ -32,6 +32,8 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_GLEAM_STEP = register("block.sculk_gleam.step");
     public static final DeferredSoundType SCULK_GLEAM = new DeferredSoundType(1, 1, SCULK_GLEAM_BREAK, SCULK_GLEAM_STEP, SCULK_GLEAM_PLACE, SCULK_GLEAM_HIT, SCULK_GLEAM_FALL);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> POROUS_SCULK_GLEAM_SHEAR = register("block.porous_sculk_gleam.shear");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_BREAK = register("block.vase.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_FALL = register("block.vase.fall");
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_HIT = register("block.vase.hit");

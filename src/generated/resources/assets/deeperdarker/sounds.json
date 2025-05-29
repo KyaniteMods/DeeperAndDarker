@@ -16,6 +16,12 @@
     ],
     "subtitle": "subtitles.ambient.portal.groan"
   },
+  "block.porous_sculk_gleam.shear": {
+    "sounds": [
+      "deeperdarker:block/porous_sculk_gleam/gel_shear"
+    ],
+    "subtitle": "subtitles.block.porous_sculk_gleam.shear"
+  },
   "block.sculk_gleam.break": {
     "sounds": [
       "deeperdarker:block/sculk_gleam/break1",
