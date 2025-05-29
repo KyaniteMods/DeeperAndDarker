@@ -21,6 +21,11 @@ public class ENLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        add("item.minecraft.tipped_arrow.effect.glowing", "Arrow of Glowing");
+        add("item.minecraft.potion.effect.glowing", "Potion of Glowing");
+        add("item.minecraft.splash_potion.effect.glowing", "Splash Potion of Glowing");
+        add("item.minecraft.lingering_potion.effect.glowing", "Lingering Potion of Glowing");
+
         add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
         add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
@@ -114,6 +119,7 @@ public class ENLanguageProvider extends LanguageProvider {
 
         add("subtitles.ambient.otherside.additions", "Warden dreams");
         add("subtitles.ambient.portal.groan", "The Otherside forebodes");
+        add("subtitles.block.porous_sculk_gleam.shear", "Shears scrape");
         add("subtitles.event.mob_effect.sculk_omen", "Warden looms nearby");
         add("subtitles.entity.angler_fish.death", "Angler Fish dies");
         add("subtitles.entity.angler_fish.flop", "Angler Fish flops");

@@ -1,6 +1,20 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
+    "anger_pot": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:anger_pot"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "angler_fish": {
       "conditions": {
         "entity": [
@@ -9,6 +23,20 @@
             "entity": "this",
             "predicate": {
               "type": "deeperdarker:angler_fish"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "fear_pot": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:fear_pot"
             }
           }
         ]
@@ -99,6 +127,20 @@
       },
       "trigger": "minecraft:player_killed_entity"
     },
+    "sorrow_pot": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:sorrow_pot"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "stalker": {
       "conditions": {
         "entity": [
@@ -149,7 +191,13 @@
       "warden"
     ],
     [
+      "anger_pot"
+    ],
+    [
       "angler_fish"
+    ],
+    [
+      "fear_pot"
     ],
     [
       "sculk_centipede"
@@ -165,6 +213,9 @@
     ],
     [
       "shriek_worm"
+    ],
+    [
+      "sorrow_pot"
     ],
     [
       "stalker"

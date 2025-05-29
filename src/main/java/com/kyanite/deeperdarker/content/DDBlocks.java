@@ -195,7 +195,8 @@ public class DDBlocks {
     public static final DeferredBlock<FenceBlock> GLOOMSLATE_BRICK_FENCE = register("gloomslate_brick_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE_BRICKS.get())));
     public static final DeferredBlock<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get())));
 
-    public static final DeferredBlock<Block> SCULK_GLEAM = register("sculk_gleam", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 15).mapColor(MapColor.SAND)));
+    public static final DeferredBlock<Block> SCULK_GLEAM = register("sculk_gleam", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).sound(DDSounds.SCULK_GLEAM).lightLevel(state -> 15).mapColor(MapColor.SAND)));
+    public static final DeferredBlock<Block> POROUS_SCULK_GLEAM = register("porous_sculk_gleam", () -> new PorousSculkGleamBlock(BlockBehaviour.Properties.ofFullCopy(SCULK_GLEAM.get()).randomTicks().lightLevel(state -> state.getValue(PorousSculkGleamBlock.GEL_LEVEL) + 5)));
     public static final DeferredBlock<Block> GLOOMSLATE_LIGHT = register("gloomslate_light", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get()).lightLevel(state -> 15).mapColor(MapColor.SAND)));
     public static final DeferredBlock<Block> LITE_BLOCK = register("lite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.VERDANT_FROGLIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final DeferredBlock<Block> BORDERED_LITE_BLOCK = register("bordered_lite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE_LIGHT.get()).mapColor(MapColor.COLOR_LIGHT_BLUE)));
@@ -203,7 +204,8 @@ public class DDBlocks {
     public static final DeferredBlock<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomySculkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final DeferredBlock<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 9).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final DeferredBlock<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new CrystallizedAmberBlock(BlockBehaviour.Properties.of().strength(0.3f, 3f).lightLevel(state -> 1).sound(SoundType.GLASS).mapColor(MapColor.COLOR_ORANGE).noOcclusion()));
-    public static final DeferredBlock<Block> SOUNDPROOF_GLASS = register("soundproof_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)) {});
+    public static final DeferredBlock<Block> GLEAM_GEL_BLOCK = register("gleam_gel_block", () -> new GleamGelBlock(BlockBehaviour.Properties.of().sound(SoundType.HONEY_BLOCK).noCollission().mapColor(MapColor.SNOW)));
+    public static final DeferredBlock<Block> SOUNDPROOF_GLASS = register("soundproof_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)));
 
     public static final DeferredBlock<Block> SCULK_STONE_COAL_ORE = register("sculk_stone_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 4), BlockBehaviour.Properties.ofFullCopy(SCULK_STONE.get())));
     public static final DeferredBlock<Block> SCULK_STONE_IRON_ORE = register("sculk_stone_iron_ore", () -> new DropExperienceBlock(ConstantInt.of(0), BlockBehaviour.Properties.ofFullCopy(SCULK_STONE.get())));

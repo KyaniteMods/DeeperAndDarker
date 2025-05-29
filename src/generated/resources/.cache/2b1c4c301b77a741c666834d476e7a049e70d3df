@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-10T22:40:58.2494585	Tags for minecraft:block mod id deeperdarker
+// 1.21.1	2025-05-27T18:56:06.6848497	Tags for minecraft:block mod id deeperdarker
 d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/block/fences.json
 36b8911f5ec2b8857f3b836d034dc9e784b1d4e0 data/c/tags/block/glass_blocks.json
 9d236ad52ffab14efb6405a34d837dafff77e363 data/c/tags/block/ores.json
@@ -11,6 +11,8 @@ a84d63160bb42d942778124d8368b9db10ef6ed2 data/c/tags/block/ores/gold.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/c/tags/block/ores/lapis.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/c/tags/block/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/block/stones.json
+07eba88207449539859066bc0dc38f9f739d6025 data/c/tags/block/stripped_logs.json
+49a960decb3fd012fd047cacdbffd9de61e08361 data/c/tags/block/stripped_woods.json
 4def6c04349da9777fc48313256495659524feb1 data/deeperdarker/tags/block/blooming_pool_replaceable.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/block/bloom_stems.json
 26c6e382ee88aa5ceb2dbc3be3407d577055645a data/deeperdarker/tags/block/deeplands_column_base.json
@@ -48,7 +50,7 @@ e85880d9acf64424927082c80e9af7c9f50de52f data/minecraft/tags/block/lapis_ores.js
 65c3a4802e5e6412bef926f01f45d3e81de4c779 data/minecraft/tags/block/leaves.json
 752c867b12898f827516ba241d49038161772f49 data/minecraft/tags/block/logs_that_burn.json
 d395a25aa3fe9b9eebdd889fdeaf79dca911933e data/minecraft/tags/block/mineable/axe.json
-3f2e555f5694cd1e1421158bb6ceea922dc330c0 data/minecraft/tags/block/mineable/hoe.json
+da530e9e70a9f921a5653af1e2599aa577943055 data/minecraft/tags/block/mineable/hoe.json
 b43a888312205cdfa466a53ad3540a986bdd9dcd data/minecraft/tags/block/mineable/pickaxe.json
 f7b6f4235356ecc4395d064f20adbb6abb2fb51a data/minecraft/tags/block/mineable/shovel.json
 6349c914702ba9732f2266363153bb5d75633878 data/minecraft/tags/block/needs_iron_tool.json

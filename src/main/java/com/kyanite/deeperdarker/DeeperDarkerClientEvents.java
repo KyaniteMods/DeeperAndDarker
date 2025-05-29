@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.Keybinds;
+import com.kyanite.deeperdarker.client.OthersidePortalOverlay;
 import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
@@ -54,6 +55,9 @@ public class DeeperDarkerClientEvents {
         EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
         EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
         EntityRenderers.register(DDEntities.ANGLER_FISH.get(), AnglerFishRenderer::new);
+        EntityRenderers.register(DDEntities.ANGER_POT.get(), AngerPotRenderer::new);
+        EntityRenderers.register(DDEntities.FEAR_POT.get(), FearPotRenderer::new);
+        EntityRenderers.register(DDEntities.SORROW_POT.get(), SorrowPotRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
         EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
@@ -75,6 +79,11 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
+    public static void registerGuiLayers(final RegisterGuiLayersEvent event) {
+        event.registerAboveAll(DeeperDarker.rl("otherside_portal"), new OthersidePortalOverlay());
+    }
+
+    @SubscribeEvent
     public static void registerKeybinds(final RegisterKeyMappingsEvent event) {
         event.register(Keybinds.BOOST);
         event.register(Keybinds.TRANSMIT);
@@ -91,16 +100,19 @@ public class DeeperDarkerClientEvents {
         event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
-        event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createBodyModel);
-        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
-        event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
-        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
-        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
-        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
-        event.registerLayerDefinition(SludgeRenderer.MODEL, SludgeModel::createInnerBodyModel);
-        event.registerLayerDefinition(SludgeOuterLayer.OUTER_MODEL, SludgeModel::createOuterBodyModel);
-        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
-        event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createBodyModel);
+        event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createModel);
+        event.registerLayerDefinition(AngerPotRenderer.MODEL, AngerPotModel::createModel);
+        event.registerLayerDefinition(FearPotRenderer.MODEL, FearPotModel::createModel);
+        event.registerLayerDefinition(SorrowPotRenderer.MODEL, SorrowPotModel::createModel);
+        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createModel);
+        event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createModel);
+        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createModel);
+        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createModel);
+        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createModel);
+        event.registerLayerDefinition(SludgeRenderer.MODEL, SludgeModel::createInnerModel);
+        event.registerLayerDefinition(SludgeOuterLayer.OUTER_MODEL, SludgeModel::createOuterModel);
+        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createModel);
+        event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createModel);
     }
 
     @SubscribeEvent

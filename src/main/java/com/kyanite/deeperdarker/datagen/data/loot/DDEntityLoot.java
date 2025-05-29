@@ -37,6 +37,9 @@ public class DDEntityLoot extends EntityLootSubProvider {
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                 )
         ));
+        add(DDEntities.ANGER_POT.get(), LootTable.lootTable());
+        add(DDEntities.FEAR_POT.get(), LootTable.lootTable());
+        add(DDEntities.SORROW_POT.get(), LootTable.lootTable());
         add(DDEntities.SCULK_CENTIPEDE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(Items.STRING)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))

@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-21T23:13:28.9946998	Tags for minecraft:item mod id deeperdarker
+// 1.21.1	2025-05-27T18:56:06.6848497	Tags for minecraft:item mod id deeperdarker
 d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/item/fences.json
 ece1a1e2a4a6f21c593a611ae9126ff341767989 data/c/tags/item/foods/cooked_fish.json
 47f7947e255ebbd71583d60670df2ea649e9d376 data/c/tags/item/foods/raw_fish.json
@@ -13,6 +13,8 @@ a84d63160bb42d942778124d8368b9db10ef6ed2 data/c/tags/item/ores/gold.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/c/tags/item/ores/lapis.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/c/tags/item/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/item/stones.json
+07eba88207449539859066bc0dc38f9f739d6025 data/c/tags/item/stripped_logs.json
+49a960decb3fd012fd047cacdbffd9de61e08361 data/c/tags/item/stripped_woods.json
 df25b6646f8e4aea4f5aa3634dc892c62e1ec0e5 data/c/tags/item/tools/melee_weapon.json
 35edf6af55dc15babf01a19e8a9bfeb683aa7d22 data/c/tags/item/tools/mining_tool.json
 0e3397ceb6c7b735093668371c3fd0ad8d8410f0 data/c/tags/item/tools/ranged_weapon.json

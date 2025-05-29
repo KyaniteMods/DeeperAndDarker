@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.assets;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.OthersidePortalBlock;
+import com.kyanite.deeperdarker.content.blocks.PorousSculkGleamBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
@@ -11,6 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -36,8 +38,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         trapdoorBlockWithRenderType(DDBlocks.ECHO_TRAPDOOR.get(), blockLoc(DDBlocks.ECHO_TRAPDOOR), true, "cutout");
         pressurePlateBlock(DDBlocks.ECHO_PRESSURE_PLATE.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         buttonBlock(DDBlocks.ECHO_BUTTON, blockLoc(DDBlocks.ECHO_PLANKS));
-        simpleBlock(DDBlocks.ECHO_LEAVES.get(), models().cubeAll(DDBlocks.ECHO_LEAVES.getId().getPath(), blockLoc(DDBlocks.ECHO_LEAVES)).renderType("cutout"));
-        simpleBlock(DDBlocks.ECHO_SAPLING.get(), models().cross(DDBlocks.ECHO_SAPLING.getId().getPath(), blockLoc(DDBlocks.ECHO_SAPLING)).renderType("cutout"));
+        cubeWithRenderType(DDBlocks.ECHO_LEAVES, "cutout");
+        crossBlock(DDBlocks.ECHO_SAPLING);
         signBlock(DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get(), blockLoc(DDBlocks.ECHO_PLANKS));
         simpleBlock(DDBlocks.ECHO_HANGING_SIGN.get(), models().sign(DDBlocks.ECHO_HANGING_SIGN.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
         simpleBlock(DDBlocks.ECHO_WALL_HANGING_SIGN.get(), models().sign(DDBlocks.ECHO_HANGING_SIGN.getId().getPath(), blockLoc(DDBlocks.STRIPPED_ECHO_LOG)));
@@ -131,6 +133,11 @@ public class DDBlockStateProvider extends BlockStateProvider {
         wallBlock(DDBlocks.SCULK_GRIME_BRICK_WALL, blockLoc(DDBlocks.SCULK_GRIME_BRICKS));
 
         simpleBlock(DDBlocks.SCULK_GLEAM.get());
+        getVariantBuilder(DDBlocks.POROUS_SCULK_GLEAM.get()).forAllStates(state -> {
+            int gelAmount = state.getValue(PorousSculkGleamBlock.GEL_LEVEL);
+            ModelFile model = models().cubeColumn(DDBlocks.POROUS_SCULK_GLEAM.getId().getPath() + "_" + gelAmount, blockLoc(DDBlocks.POROUS_SCULK_GLEAM, gelAmount + ""), blockLoc(DDBlocks.SCULK_GLEAM));
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
         simpleBlock(DDBlocks.GLOOMSLATE_LIGHT.get());
         simpleBlock(DDBlocks.LITE_BLOCK.get());
         simpleBlock(DDBlocks.BORDERED_LITE_BLOCK.get());
@@ -139,7 +146,8 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMY_SCULK.get());
         simpleBlock(DDBlocks.GLOOMY_GEYSER.get(), models().cubeTop(DDBlocks.GLOOMY_GEYSER.getId().getPath(), blockLoc(DDBlocks.GLOOMY_SCULK), blockLoc(DDBlocks.GLOOMY_GEYSER)));
         simpleBlock(DDBlocks.CRYSTALLIZED_AMBER.get(), models().withExistingParent(DDBlocks.CRYSTALLIZED_AMBER.getId().getPath(), mcLoc("block/honey_block")).texture("particle", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("down", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "outer")).texture("up", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).texture("side", blockLoc(DDBlocks.CRYSTALLIZED_AMBER, "inner")).renderType("translucent"));
-        simpleBlock(DDBlocks.SOUNDPROOF_GLASS.get(), models().cubeAll(DDBlocks.SOUNDPROOF_GLASS.getId().getPath(), blockLoc(DDBlocks.SOUNDPROOF_GLASS)).renderType("translucent"));
+        cubeWithRenderType(DDBlocks.GLEAM_GEL_BLOCK, "translucent");
+        cubeWithRenderType(DDBlocks.SOUNDPROOF_GLASS, "translucent");
 
         simpleBlock(DDBlocks.SCULK_STONE_COAL_ORE.get());
         simpleBlock(DDBlocks.SCULK_STONE_IRON_ORE.get());
@@ -159,25 +167,27 @@ public class DDBlockStateProvider extends BlockStateProvider {
         simpleBlock(DDBlocks.GLOOMSLATE_DIAMOND_ORE.get());
 
         horizontalBlock(DDBlocks.GLOWING_FLOWERS.get(), models().getExistingFile(blockLoc(DDBlocks.GLOWING_FLOWERS)));
-        simpleBlock(DDBlocks.GLOWING_GRASS.get(), models().cross(DDBlocks.GLOWING_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOWING_GRASS)).renderType("cutout"));
-        simpleBlock(DDBlocks.GLOOMY_GRASS.get(), models().cross(DDBlocks.GLOOMY_GRASS.getId().getPath(), blockLoc(DDBlocks.GLOOMY_GRASS)).renderType("cutout"));
+        crossBlock(DDBlocks.GLOWING_GRASS);
+        crossBlock(DDBlocks.GLOOMY_GRASS);
         simpleBlock(DDBlocks.GLOOMY_CACTUS.get(), models().getExistingFile(blockLoc(DDBlocks.GLOOMY_CACTUS)));
-        simpleBlock(DDBlocks.SCULK_TENDRILS.get(), models().cross(DDBlocks.SCULK_TENDRILS.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS)).renderType("cutout"));
-        simpleBlock(DDBlocks.SCULK_TENDRILS_PLANT.get(), models().cross(DDBlocks.SCULK_TENDRILS_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_TENDRILS_PLANT)).renderType("cutout"));
-        simpleBlock(DDBlocks.SCULK_VINES.get(), models().cross(DDBlocks.SCULK_VINES.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES)).renderType("cutout"));
-        simpleBlock(DDBlocks.SCULK_VINES_PLANT.get(), models().cross(DDBlocks.SCULK_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.SCULK_VINES_PLANT)).renderType("cutout"));
-        simpleBlock(DDBlocks.GLOWING_VINES.get(), models().cross(DDBlocks.GLOWING_VINES.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES)).renderType("cutout"));
-        simpleBlock(DDBlocks.GLOWING_ROOTS.get(), models().cross(DDBlocks.GLOWING_ROOTS.getId().getPath(), blockLoc(DDBlocks.GLOWING_ROOTS)).renderType("cutout"));
-        simpleBlock(DDBlocks.GLOWING_ROOTS_PLANT.get(), models().cross(DDBlocks.GLOWING_ROOTS_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_ROOTS_PLANT)).renderType("cutout"));
+        crossBlock(DDBlocks.SCULK_TENDRILS);
+        crossBlock(DDBlocks.SCULK_TENDRILS_PLANT);
+        crossBlock(DDBlocks.SCULK_VINES);
+        crossBlock(DDBlocks.SCULK_VINES_PLANT);
+        crossBlock(DDBlocks.GLOWING_VINES);
+        crossBlock(DDBlocks.GLOWING_ROOTS);
+        crossBlock(DDBlocks.GLOWING_ROOTS_PLANT);
+
         ModelFile noBerries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath(), blockLoc(DDBlocks.GLOWING_VINES_PLANT)).renderType("cutout");
         ModelFile berries = models().cross(DDBlocks.GLOWING_VINES_PLANT.getId().getPath() + "_berries", blockLoc(DDBlocks.GLOWING_VINES_PLANT, "berries")).renderType("cutout");
         getVariantBuilder(DDBlocks.GLOWING_VINES_PLANT.get())
                 .partialState().with(GlowingVinesPlantBlock.BERRIES, false).modelForState().modelFile(noBerries).addModel()
                 .partialState().with(GlowingVinesPlantBlock.BERRIES, true).modelForState().modelFile(berries).addModel();
+
         getVariantBuilder(DDBlocks.ICE_LILY.get())
                 .partialState().with(IceLilyBlock.HAS_FLOWER, true).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY))).addModel()
                 .partialState().with(IceLilyBlock.HAS_FLOWER, false).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY, "flowerless"))).addModel();
-        simpleBlock(DDBlocks.LILY_FLOWER.get(), models().cross("lily_flower", blockLoc(DDBlocks.LILY_FLOWER)).renderType("cutout"));
+        crossBlock(DDBlocks.LILY_FLOWER);
 
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
         ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
@@ -190,6 +200,14 @@ public class DDBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(DDBlocks.OTHERSIDE_PORTAL.get())
                 .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.X).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ns"))).addModel()
                 .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.Z).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ew"))).addModel();
+    }
+
+    private void cubeWithRenderType(DeferredBlock<? extends Block> block, String renderType) {
+        simpleBlock(block.get(), models().cubeAll(block.getId().getPath(), blockLoc(block)).renderType(renderType));
+    }
+
+    private void crossBlock(DeferredBlock<? extends Block> block) {
+        simpleBlock(block.get(), models().cross(block.getId().getPath(), blockLoc(block)).renderType("cutout"));
     }
 
     private void stemBlock(DeferredBlock<Block> block) {
