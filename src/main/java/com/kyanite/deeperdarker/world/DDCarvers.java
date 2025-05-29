@@ -37,7 +37,7 @@ public class DDCarvers {
                 0.3f,
                 UniformHeight.of(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(32)),
                 UniformFloat.of(0.1f, 0.9f),
-                VerticalAnchor.aboveBottom(15),
+                VerticalAnchor.aboveBottom(16),
                 CarverDebugSettings.of(false, DDBlocks.ECHO_BUTTON.get().defaultBlockState()),
                 blocks.getOrThrow(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES),
                 UniformFloat.of(0.6f, 1.1f),
