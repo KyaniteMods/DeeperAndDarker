@@ -4,7 +4,7 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_axe"
+    "item": "minecraft:diamond_axe"
   },
   "result": {
     "count": 1,

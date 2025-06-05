@@ -19,9 +19,9 @@ public class DDArmorMaterials extends ArmorMaterials {
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, DeeperDarker.MOD_ID);
 
     private static final EnumMap<ArmorItem.Type, Integer> RESONARIUM_DEFENSE = Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.BOOTS, 2);
+        map.put(ArmorItem.Type.BOOTS, 3);
         map.put(ArmorItem.Type.LEGGINGS, 6);
-        map.put(ArmorItem.Type.CHESTPLATE, 7);
+        map.put(ArmorItem.Type.CHESTPLATE, 8);
         map.put(ArmorItem.Type.HELMET, 3);
         map.put(ArmorItem.Type.BODY, 11);
     });
@@ -34,9 +34,9 @@ public class DDArmorMaterials extends ArmorMaterials {
     });
 
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> RESONARIUM = ARMOR_MATERIALS.register("resonarium", () -> new ArmorMaterial(
-            RESONARIUM_DEFENSE, 10, SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(DDItems.RESONARIUM.get()), List.of(new ArmorMaterial.Layer(DeeperDarker.rl("resonarium"))), 1, 0
+            RESONARIUM_DEFENSE, 10, SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(DDItems.RESONARIUM.get()), List.of(new ArmorMaterial.Layer(DeeperDarker.rl("resonarium"))), 2f, 0f
     ));
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> WARDEN = ARMOR_MATERIALS.register("warden", () -> new ArmorMaterial(
-            WARDEN_DEFENSE, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), List.of(new ArmorMaterial.Layer(DeeperDarker.rl("warden"))), 4, 0.1f
+            WARDEN_DEFENSE, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()), List.of(new ArmorMaterial.Layer(DeeperDarker.rl("warden"))), 4f, 0.1f
     ));
 }

@@ -201,7 +201,7 @@ public class DeeperDarkerEvents {
         for(ItemStack stack : entity.getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && stack.is(DDTags.Items.RESONARIUM_ARMOR)) {
                 incoming -= reduction;
-                stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), entity, armor.getEquipmentSlot());
+                stack.hurtAndBreak((int) (event.getOriginalDamage() / 2f), entity, armor.getEquipmentSlot());
             }
         }
 

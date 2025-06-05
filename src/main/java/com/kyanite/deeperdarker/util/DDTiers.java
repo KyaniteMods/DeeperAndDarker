@@ -10,8 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public enum DDTiers implements Tier {
-    RESONARIUM(1193, 8, 3, DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL, 13, () -> Ingredient.of(DDItems.RESONARIUM.get())),
-    WARDEN(2519, 10, 5, DDTags.Blocks.INCORRECT_FOR_WARDEN_TOOL, 18, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
+    RESONARIUM(1601, 8.5f, 3f, DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL, 11, () -> Ingredient.of(DDItems.RESONARIUM.get())),
+    WARDEN(2519, 10f, 5f, DDTags.Blocks.INCORRECT_FOR_WARDEN_TOOL, 18, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD.get()));
 
     private final int durability;
     private final float speed;

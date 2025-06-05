@@ -4,7 +4,7 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_shovel"
+    "item": "minecraft:diamond_shovel"
   },
   "result": {
     "count": 1,

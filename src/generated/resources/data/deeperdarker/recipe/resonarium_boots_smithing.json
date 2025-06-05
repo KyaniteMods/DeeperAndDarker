@@ -4,7 +4,7 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_boots"
+    "item": "minecraft:diamond_boots"
   },
   "result": {
     "count": 1,
