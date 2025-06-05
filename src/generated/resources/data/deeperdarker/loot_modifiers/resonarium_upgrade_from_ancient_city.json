@@ -10,7 +10,7 @@
       "condition": "minecraft:random_chance"
     }
   ],
-  "item": "deeperdarker:warden_upgrade_smithing_template",
+  "item": "deeperdarker:resonarium_upgrade_smithing_template",
   "max": 1,
   "min": 1
 }

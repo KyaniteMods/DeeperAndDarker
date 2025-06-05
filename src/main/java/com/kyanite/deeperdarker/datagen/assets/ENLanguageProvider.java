@@ -76,6 +76,11 @@ public class ENLanguageProvider extends LanguageProvider {
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", "Press %s to boost");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", "Boost available in %s");
         add("item." + DeeperDarker.MOD_ID + ".soul_elytra.no_cooldown", "Boost disabled");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.applies_to", "Iron Equipment");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.ingredients", "Resonarium Plate");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.base_slot_description", "Add iron armor, weapon, or tool");
+        add("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.additions_slot_description", "Add Resonarium Plate");
+        add("upgrade." + DeeperDarker.MOD_ID + ".resonarium_upgrade", "Resonarium Upgrade");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");
         add("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description", "Add netherite armor, weapon, or tool");

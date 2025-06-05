@@ -52,6 +52,14 @@ public class DDItems {
     public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.registerSimpleItem("warden_carapace", new Item.Properties().rarity(Rarity.RARE).fireResistant());
     public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.registerSimpleItem("reinforced_echo_shard", new Item.Properties().rarity(Rarity.RARE).fireResistant());
 
+    public static final DeferredItem<Item> RESONARIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("resonarium_upgrade_smithing_template", () -> new SmithingTemplateItem(
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".resonarium_upgrade").withStyle(ChatFormatting.GRAY),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.base_slot_description"),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.additions_slot_description"),
+            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
+    ));
     public static final DeferredItem<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients").withStyle(ChatFormatting.BLUE),

@@ -133,6 +133,7 @@ public record DDChestLoot(HolderLookup.Provider registries) implements LootTable
                 .add(loot(DDBlocks.CRYSTALLIZED_AMBER.get(), 15, 1, 3))
                 .add(loot(Blocks.SCULK_SENSOR, 12, 1, 3))
                 .add(loot(Blocks.SCULK_CATALYST, 12, 1, 2))
+                .add(loot(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, 8))
                 .add(loot(Items.IRON_HELMET, 5).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(30, 40))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5f, 0.9f))))
                 .add(loot(Items.IRON_SWORD, 5).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(30, 40))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.3f, 0.6f))))
                 .add(loot(Items.DIAMOND_BOOTS, 4).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(30, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.4f, 0.7f))))

@@ -10,5 +10,7 @@
     "count": 1,
     "id": "deeperdarker:resonarium_axe"
   },
-  "template": []
+  "template": {
+    "item": "deeperdarker:resonarium_upgrade_smithing_template"
+  }
 }

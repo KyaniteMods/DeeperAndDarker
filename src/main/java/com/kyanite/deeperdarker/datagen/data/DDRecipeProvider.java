@@ -166,6 +166,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE).define('E', Items.ECHO_SHARD)
                 .pattern("PCP").pattern("CEC").pattern("PCP")
                 .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE)).save(output);
+        copySmithingTemplate(output, DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, DDItems.RESONARIUM);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, Blocks.SCULK);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
@@ -361,7 +362,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
     }
 
     private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {

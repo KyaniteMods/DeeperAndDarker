@@ -211,6 +211,7 @@ public class DDCreativeTab {
 
             event.accept(DDItems.SCULK_TRANSMITTER);
             event.accept(DDItems.SONOROUS_STAFF);
+            event.accept(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 
             event.accept(DDItems.ANGER_POT_SPAWN_EGG);

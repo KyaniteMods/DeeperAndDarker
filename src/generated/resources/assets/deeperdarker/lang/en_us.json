@@ -229,6 +229,7 @@
   "item.deeperdarker.resonarium_plate": "Resonarium Plate",
   "item.deeperdarker.resonarium_shovel": "Resonarium Shovel",
   "item.deeperdarker.resonarium_sword": "Resonarium Sword",
+  "item.deeperdarker.resonarium_upgrade_smithing_template": "Smithing Template",
   "item.deeperdarker.sculk_bone": "Sculk Bone",
   "item.deeperdarker.sculk_centipede_spawn_egg": "Sculk Centipede Spawn Egg",
   "item.deeperdarker.sculk_leech_spawn_egg": "Sculk Leech Spawn Egg",
@@ -237,6 +238,10 @@
   "item.deeperdarker.shattered_spawn_egg": "Shattered Spawn Egg",
   "item.deeperdarker.shriek_worm_spawn_egg": "Shriek Worm Spawn Egg",
   "item.deeperdarker.sludge_spawn_egg": "Sludge Spawn Egg",
+  "item.deeperdarker.smithing_template.resonarium_upgrade.additions_slot_description": "Add Resonarium Plate",
+  "item.deeperdarker.smithing_template.resonarium_upgrade.applies_to": "Iron Equipment",
+  "item.deeperdarker.smithing_template.resonarium_upgrade.base_slot_description": "Add iron armor, weapon, or tool",
+  "item.deeperdarker.smithing_template.resonarium_upgrade.ingredients": "Resonarium Plate",
   "item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description": "Add Reinforced Echo Shard",
   "item.deeperdarker.smithing_template.warden_upgrade.applies_to": "Netherite Equipment",
   "item.deeperdarker.smithing_template.warden_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
@@ -335,5 +340,6 @@
   "tooltips.deeperdarker.sculk_transmitter.location": "Located at %s, %s, %s",
   "tooltips.deeperdarker.sculk_transmitter.location_level": "Dimension: %s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
+  "upgrade.deeperdarker.resonarium_upgrade": "Resonarium Upgrade",
   "upgrade.deeperdarker.warden_upgrade": "Warden Upgrade"
 }

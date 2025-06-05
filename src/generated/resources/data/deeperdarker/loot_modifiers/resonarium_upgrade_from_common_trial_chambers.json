@@ -3,14 +3,14 @@
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/ancient_city"
+      "loot_table_id": "minecraft:chests/trial_chambers/reward_common"
     },
     {
-      "chance": 0.44721,
+      "chance": 0.28285,
       "condition": "minecraft:random_chance"
     }
   ],
-  "item": "deeperdarker:warden_upgrade_smithing_template",
+  "item": "deeperdarker:resonarium_upgrade_smithing_template",
   "max": 1,
   "min": 1
 }

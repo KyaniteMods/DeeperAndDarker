@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-26T21:22:39.4877647	Item Models: deeperdarker
+// 1.21.1	2025-05-31T16:12:16.1775502	Item Models: deeperdarker
 b865d79a924f87a99520874abf7edca2ee9724db assets/deeperdarker/models/item/ancient_compass.json
 fdd23eeb4e7c3199a2a96c25010340cc3dcebb31 assets/deeperdarker/models/item/ancient_compass_00.json
 a73f0f617d25bfe9cd4864da3606103da8fb2d3e assets/deeperdarker/models/item/ancient_compass_01.json
@@ -194,6 +194,7 @@ aaef0891dcadef06bc2b7149020d1ddda5682dff assets/deeperdarker/models/item/resonar
 4a04ea75e9ebbe9285ce12a27a9dfc19cd4bc76b assets/deeperdarker/models/item/resonarium_plate.json
 a4a65d437afaa5e174b2119c748ba99eb995ef3b assets/deeperdarker/models/item/resonarium_shovel.json
 50a72ba3d144f141d159f832cbbcc419a6c25ece assets/deeperdarker/models/item/resonarium_sword.json
+d50f5f986ce2dc9e87ad9b1d4c831c8a8f24f4af assets/deeperdarker/models/item/resonarium_upgrade_smithing_template.json
 18121c23d9e0f562f3d6394f3f7930858df5c802 assets/deeperdarker/models/item/sculk_bone.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/sculk_centipede_spawn_egg.json
 f59336e87979e26e0d145442c21358fd27e2dd22 assets/deeperdarker/models/item/sculk_gleam.json
