@@ -18,7 +18,6 @@ import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFu
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +31,7 @@ public class DDEntityLoot extends EntityLootSubProvider {
 
     @Override
     public void generate() {
-        add(DDEntities.ANGLER_FISH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.ANGLER_FISH.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DDItems.ANGLER_FISH.get())
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                 )
@@ -40,37 +39,37 @@ public class DDEntityLoot extends EntityLootSubProvider {
         add(DDEntities.ANGER_POT.get(), LootTable.lootTable());
         add(DDEntities.FEAR_POT.get(), LootTable.lootTable());
         add(DDEntities.SORROW_POT.get(), LootTable.lootTable());
-        add(DDEntities.SCULK_CENTIPEDE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.SCULK_CENTIPEDE.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(Items.STRING)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));
-        add(DDEntities.SCULK_LEECH.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.SCULK_LEECH.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DDItems.SOUL_DUST)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));
-        add(DDEntities.SCULK_SNAPPER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.SCULK_SNAPPER.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DDItems.SOUL_DUST)
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));
-        add(DDEntities.SHATTERED.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.SHATTERED.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DDItems.SCULK_BONE)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));
         add(DDEntities.SHRIEK_WORM.get(), LootTable.lootTable());
-        add(DDEntities.SLUDGE.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.SLUDGE.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DDItems.RESONARIUM)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 ).when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().subPredicate(SlimePredicate.sized(MinMaxBounds.Ints.exactly(1)))))
         ));
-        add(DDEntities.STALKER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+        add(DDEntities.STALKER.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL)
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
