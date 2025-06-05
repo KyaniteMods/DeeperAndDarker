@@ -33,7 +33,6 @@ public class DDItems {
     public static final DeferredItem<Item> LITE = ITEMS.registerSimpleItem("lite");
 
     public static final DeferredItem<Item> ANCIENT_COMPASS = ITEMS.register("ancient_compass", () -> new AncientCompassItem(new Item.Properties().stacksTo(1)));
-
     public static final DeferredItem<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON).attributes(SoulElytraItem.createAttributes())));
     public static final DeferredItem<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
     public static final DeferredItem<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
