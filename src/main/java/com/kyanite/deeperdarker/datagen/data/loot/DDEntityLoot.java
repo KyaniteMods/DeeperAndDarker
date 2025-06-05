@@ -18,6 +18,8 @@ import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFu
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
@@ -36,9 +38,9 @@ public class DDEntityLoot extends EntityLootSubProvider {
                         .apply(SmeltItemFunction.smelted().when(this.shouldSmeltLoot()))
                 )
         ));
-        add(DDEntities.ANGER_POT.get(), LootTable.lootTable());
-        add(DDEntities.FEAR_POT.get(), LootTable.lootTable());
-        add(DDEntities.SORROW_POT.get(), LootTable.lootTable());
+        add(DDEntities.ANGER_POT.get(), potLootTable(2));
+        add(DDEntities.FEAR_POT.get(), potLootTable(2));
+        add(DDEntities.SORROW_POT.get(), potLootTable(1));
         add(DDEntities.SCULK_CENTIPEDE.get(), LootTable.lootTable().withPool(LootPool.lootPool()
                 .add(LootItem.lootTableItem(Items.STRING)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
@@ -74,6 +76,20 @@ public class DDEntityLoot extends EntityLootSubProvider {
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0, 1)))
                 )
         ));
+    }
+
+    private static LootTable.Builder potLootTable(float max) {
+        NumberProvider rolls = max == 1 ? ConstantValue.exactly(1) : UniformGenerator.between(1, max);
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(rolls)
+                .add(LootItem.lootTableItem(DDItems.BRITTLE_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.DARK_HEART_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.LISTENER_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.SNAPPER_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.TEMPLE_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.TRANSMISSION_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.WARD_GLOOMSHERD))
+                .add(LootItem.lootTableItem(DDItems.WAYFINDER_GLOOMSHERD))
+        );
     }
 
     @Override
