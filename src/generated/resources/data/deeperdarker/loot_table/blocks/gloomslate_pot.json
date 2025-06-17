@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:dynamic",
+          "name": "minecraft:sherds"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "deeperdarker:blocks/gloomslate_pot"
+}

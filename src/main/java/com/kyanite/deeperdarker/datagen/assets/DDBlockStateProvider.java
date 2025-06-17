@@ -189,6 +189,9 @@ public class DDBlockStateProvider extends BlockStateProvider {
                 .partialState().with(IceLilyBlock.HAS_FLOWER, false).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.ICE_LILY, "flowerless"))).addModel();
         crossBlock(DDBlocks.LILY_FLOWER);
 
+        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().getExistingFile(blockLoc(DDBlocks.ANCIENT_VASE)));
+        simpleBlock(DDBlocks.GLOOMSLATE_POT.get(), models().getExistingFile(blockLoc(DDBlocks.GLOOMSLATE_POT)));
+
         simpleBlock(DDBlocks.INFESTED_SCULK.get(), cubeAll(Blocks.SCULK));
         ModelFile jaw = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath(), blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW));
         ModelFile jawBiting = models().cubeTop(DDBlocks.SCULK_JAW.getId().getPath() + "_biting", blockLoc(DDBlocks.SCULK_JAW, "side"), blockLoc(DDBlocks.SCULK_JAW, "biting"));
@@ -196,7 +199,6 @@ public class DDBlockStateProvider extends BlockStateProvider {
                 .partialState().with(SculkJawBlock.BITING, false).modelForState().modelFile(jaw).addModel()
                 .partialState().with(SculkJawBlock.BITING, true).modelForState().modelFile(jawBiting).addModel();
 
-        simpleBlock(DDBlocks.ANCIENT_VASE.get(), models().getExistingFile(blockLoc(DDBlocks.ANCIENT_VASE)));
         getVariantBuilder(DDBlocks.OTHERSIDE_PORTAL.get())
                 .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.X).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ns"))).addModel()
                 .partialState().with(OthersidePortalBlock.AXIS, Direction.Axis.Z).modelForState().modelFile(models().getExistingFile(blockLoc(DDBlocks.OTHERSIDE_PORTAL, "ew"))).addModel();

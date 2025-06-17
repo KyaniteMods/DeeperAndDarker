@@ -10,8 +10,10 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DecoratedPotBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
@@ -183,6 +185,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.LILY_FLOWER.get());
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
+        gloomslatePotDrop(DDBlocks.GLOOMSLATE_POT.get());
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK.get(), Blocks.SCULK);
         dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
     }
@@ -216,6 +219,14 @@ public class DDBlockLoot extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(Items.STRING).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4))))
                         .add(LootItem.lootTableItem(Items.LAPIS_LAZULI).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 6))))
                         .add(LootItem.lootTableItem(Blocks.SAND).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                )
+        );
+    }
+
+    private void gloomslatePotDrop(Block block) {
+        add(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(DynamicLoot.dynamicEntry(DecoratedPotBlock.SHERDS_DYNAMIC_DROP_ID))
                 )
         );
     }

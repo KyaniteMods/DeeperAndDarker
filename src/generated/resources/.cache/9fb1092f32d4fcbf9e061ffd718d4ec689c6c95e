@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-04T19:21:14.3260033	Recipes
+// 1.21.1	2025-06-05T19:17:01.0320741	Recipes
 ff2b4eded29e6aee06a2b8a67ed2460d6b44574c data/deeperdarker/advancement/recipes/building_blocks/bloom_planks.json
 2b96f477889839f16134ded19ef45829d1ef94d3 data/deeperdarker/advancement/recipes/building_blocks/bloom_slab.json
 67da220cbe51e2cdd8ce24d17eacc2558e4ba816 data/deeperdarker/advancement/recipes/building_blocks/bloom_stairs.json
@@ -356,6 +356,7 @@ a360db3c57ac84aa3151def8fba64d0798ecdeec data/deeperdarker/recipe/gloomslate_bri
 a535e518ca1889a9a93285284c1d635ebcdf58b1 data/deeperdarker/recipe/gloomslate_brick_wall_from_gloomslate_bricks_stonecutting.json
 12d9d3db3e733ecd60963ed1caa95b8767d1359d data/deeperdarker/recipe/gloomslate_brick_wall_from_polished_gloomslate_stonecutting.json
 f14e327fa741c26c3f514cb4e5152947607d0ea3 data/deeperdarker/recipe/gloomslate_light.json
+7984f1aca663e62deb9c1b3fbf118284f236ca28 data/deeperdarker/recipe/gloomslate_pot.json
 0d2f60da867b7a7d318204d77c3a2804eef70cda data/deeperdarker/recipe/gloomslate_slab.json
 eded052545d26eceef20088e9f6eaa0853472c29 data/deeperdarker/recipe/gloomslate_slab_from_gloomslate_stonecutting.json
 89f66e3f13cffb11819bb4d10d58dc9770634de8 data/deeperdarker/recipe/gloomslate_stairs.json

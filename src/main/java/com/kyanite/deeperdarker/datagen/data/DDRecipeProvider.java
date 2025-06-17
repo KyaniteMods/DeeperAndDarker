@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.data;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.misc.GloomslatePotRecipe;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -147,6 +148,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern(" S ").pattern("SGS").pattern(" S ")
                 .unlockedBy(getHasName(DDItems.SOUL_DUST), has(DDItems.SOUL_DUST)).save(output);
 
+        SpecialRecipeBuilder.special(GloomslatePotRecipe::new).save(output, DeeperDarker.rl("gloomslate_pot"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.ANCIENT_COMPASS)
                 .define('A', DDItems.WARDEN_CARAPACE).define('C', Items.COMPASS)

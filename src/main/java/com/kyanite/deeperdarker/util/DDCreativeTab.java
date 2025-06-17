@@ -160,6 +160,7 @@ public class DDCreativeTab {
             event.accept(DDItems.BLOOM_HANGING_SIGN);
 
             event.accept(DDBlocks.ANCIENT_VASE);
+            event.accept(DDBlocks.GLOOMSLATE_POT_ITEM);
             event.accept(DDBlocks.INFESTED_SCULK);
             event.accept(DDBlocks.SCULK_JAW);
 

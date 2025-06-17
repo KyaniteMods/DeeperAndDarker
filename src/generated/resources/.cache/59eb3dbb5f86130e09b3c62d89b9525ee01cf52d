@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-05T00:16:47.3025297	Loot Tables
+// 1.21.1	2025-06-14T21:38:27.9902725	Loot Tables
 d40ff84e58275e6d9e8b003c6ce31abfa73b2d91 data/deeperdarker/loot_table/blocks/ancient_vase.json
 006429d2ca86d8c54cd1448e51b2ffd95ef52b52 data/deeperdarker/loot_table/blocks/blooming_moss_block.json
 83d5214bb3d38ec9ae0d4f6323a2757cc8cd9cdd data/deeperdarker/loot_table/blocks/blooming_sculk_stone.json
@@ -66,6 +66,7 @@ e3ad9fede76e665433faa39e19541ca62db238c7 data/deeperdarker/loot_table/blocks/glo
 8a0fde49dace604d440b0166086666cb11aeec74 data/deeperdarker/loot_table/blocks/gloomslate_iron_ore.json
 e630cdce9ad690018b1ed2e89bec7701db05c5ff data/deeperdarker/loot_table/blocks/gloomslate_lapis_ore.json
 5a49e14ee273f64f71033571850e0a1dfa5d43d4 data/deeperdarker/loot_table/blocks/gloomslate_light.json
+c285394259e9c99a07051f7e1fc1c7cd2348df40 data/deeperdarker/loot_table/blocks/gloomslate_pot.json
 838a83e983e148aa9d8a1636aa5ace3da50bfac2 data/deeperdarker/loot_table/blocks/gloomslate_redstone_ore.json
 8aac2adc400c2b2b1980b56bdad414aff550f3c1 data/deeperdarker/loot_table/blocks/gloomslate_slab.json
 6bd7750bc2ef9b88071e84dbd531fd9e85c644f3 data/deeperdarker/loot_table/blocks/gloomslate_stairs.json

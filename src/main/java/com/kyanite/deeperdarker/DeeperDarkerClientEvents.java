@@ -31,6 +31,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @SuppressWarnings("unused")
@@ -68,6 +69,11 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
+    public static void registerMaterialAtlas(final RegisterMaterialAtlasesEvent event) {
+        event.register(GloomslatePotRenderer.GLOOMSLATE_POT, DeeperDarker.rl("gloomslate_pot"));
+    }
+
+    @SubscribeEvent
     public static void registerDimensionEffects(final RegisterDimensionSpecialEffectsEvent event) {
         event.register(OthersideDimension.OTHERSIDE_EFFECTS, new DimensionSpecialEffects.NetherEffects());
     }
@@ -90,16 +96,26 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
+    public static void registerExtensions(final RegisterClientExtensionsEvent event) {
+        event.registerItem(new GloomslatePotExtension(), DDBlocks.GLOOMSLATE_POT_ITEM.get());
+    }
+
+    @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(DDBlockEntities.CRYSTALLIZED_AMBER.get(), CrystallizedAmberBlockRenderer::new);
+        event.registerBlockEntityRenderer(DDBlockEntities.GLOOMSLATE_POT.get(), GloomslatePotRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(GloomslatePotRenderer.POT_BASE, GloomslatePotModel::createBaseLayer);
+        event.registerLayerDefinition(GloomslatePotRenderer.POT_SIDES, GloomslatePotModel::createSidesLayer);
+
         event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+
         event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createModel);
         event.registerLayerDefinition(AngerPotRenderer.MODEL, AngerPotModel::createModel);
         event.registerLayerDefinition(FearPotRenderer.MODEL, FearPotModel::createModel);
