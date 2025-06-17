@@ -33,6 +33,7 @@ public class GloomslatePotRenderer implements BlockEntityRenderer<GloomslatePotB
     public static final Material POT_SIDE_MATERIAL = createMaterial("gloomslate_pot_side");
 
     private static final Map<Item, String> PATTERNS = ImmutableMap.of(
+            DDItems.GLOOMSHERD.asItem(), "gloomslate_pot_side",
             DDItems.BRITTLE_GLOOMSHERD.asItem(), "brittle_pottery_pattern",
             DDItems.DARK_HEART_GLOOMSHERD.asItem(), "dark_heart_pottery_pattern",
             DDItems.LISTENER_GLOOMSHERD.asItem(), "listener_pottery_pattern",

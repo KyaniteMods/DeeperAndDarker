@@ -6,6 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "deeperdarker:gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
           "name": "deeperdarker:brittle_gloomsherd"
         },
         {

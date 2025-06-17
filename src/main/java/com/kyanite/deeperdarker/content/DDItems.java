@@ -74,6 +74,7 @@ public class DDItems {
     public static final DeferredItem<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> SONOROUS_STAFF = ITEMS.register("sonorous_staff", () -> new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
 
+    public static final DeferredItem<Item> GLOOMSHERD = ITEMS.registerSimpleItem("gloomsherd");
     public static final DeferredItem<Item> BRITTLE_GLOOMSHERD = ITEMS.registerSimpleItem("brittle_gloomsherd");
     public static final DeferredItem<Item> DARK_HEART_GLOOMSHERD = ITEMS.registerSimpleItem("dark_heart_gloomsherd");
     public static final DeferredItem<Item> LISTENER_GLOOMSHERD = ITEMS.registerSimpleItem("listener_gloomsherd");

@@ -212,6 +212,7 @@ public class DDCreativeTab {
             event.accept(DDItems.WARDEN_CARAPACE);
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
 
+            event.accept(DDItems.GLOOMSHERD);
             event.accept(DDItems.BRITTLE_GLOOMSHERD);
             event.accept(DDItems.DARK_HEART_GLOOMSHERD);
             event.accept(DDItems.LISTENER_GLOOMSHERD);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-14T19:51:55.302992	Item Models: deeperdarker
+// 1.21.1	2025-06-16T19:56:00.2444756	Item Models: deeperdarker
 b865d79a924f87a99520874abf7edca2ee9724db assets/deeperdarker/models/item/ancient_compass.json
 fdd23eeb4e7c3199a2a96c25010340cc3dcebb31 assets/deeperdarker/models/item/ancient_compass_00.json
 a73f0f617d25bfe9cd4864da3606103da8fb2d3e assets/deeperdarker/models/item/ancient_compass_01.json
@@ -98,6 +98,7 @@ a3fe9f11354ab143f3d9469ff16446bf71f5062a assets/deeperdarker/models/item/echo_tr
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/deeperdarker/models/item/fear_pot_spawn_egg.json
 fba944c1e90756cd8ea46b68907f8541a1c4f648 assets/deeperdarker/models/item/gleam_gel.json
 85df9d4c0a80a62e3227338706f149c521dfeb7c assets/deeperdarker/models/item/gleam_gel_block.json
+79753f61a4809d925f3af55e37e5043a077daa2d assets/deeperdarker/models/item/gloomsherd.json
 f584b7594997a162416c8df4cfbe071fab3fe7a1 assets/deeperdarker/models/item/gloomslate.json
 94092555047d0c6fdc197b0d178bfe2be09438ab assets/deeperdarker/models/item/gloomslate_bricks.json
 912ddc52daa055f583f5a093e80c9e4a58e3c69c assets/deeperdarker/models/item/gloomslate_brick_fence.json

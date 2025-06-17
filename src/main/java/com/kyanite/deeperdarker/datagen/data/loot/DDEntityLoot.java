@@ -81,6 +81,7 @@ public class DDEntityLoot extends EntityLootSubProvider {
     private static LootTable.Builder potLootTable(float max) {
         NumberProvider rolls = max == 1 ? ConstantValue.exactly(1) : UniformGenerator.between(1, max);
         return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(rolls)
+                .add(LootItem.lootTableItem(DDItems.GLOOMSHERD))
                 .add(LootItem.lootTableItem(DDItems.BRITTLE_GLOOMSHERD))
                 .add(LootItem.lootTableItem(DDItems.DARK_HEART_GLOOMSHERD))
                 .add(LootItem.lootTableItem(DDItems.LISTENER_GLOOMSHERD))
