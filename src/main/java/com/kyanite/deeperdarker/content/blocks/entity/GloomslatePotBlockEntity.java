@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks.entity;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
+import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -76,6 +77,12 @@ public class GloomslatePotBlockEntity extends BlockEntity implements ContainerSi
 
     public void setFromItem(ItemStack item) {
         this.applyComponentsFromItemStack(item);
+    }
+
+    public ItemStack getPotAsItem() {
+        ItemStack stack = DDBlocks.GLOOMSLATE_POT_ITEM.get().getDefaultInstance();
+        stack.applyComponents(this.collectComponents());
+        return stack;
     }
 
     public Direction getDirection() {

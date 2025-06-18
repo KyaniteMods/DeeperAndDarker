@@ -245,7 +245,7 @@ public class DDBlocks {
     public static final DeferredBlock<Block> LILY_FLOWER = BLOCKS.register("lily_flower", () -> new LilyFlowerBlock(MobEffects.GLOWING, 6f, BlockBehaviour.Properties.of().lightLevel(state -> 7).noCollission().instabreak().sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).mapColor(MapColor.DEEPSLATE)));
-    public static final DeferredBlock<Block> GLOOMSLATE_POT = BLOCKS.register("gloomslate_pot", () -> new GloomslatePotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final DeferredBlock<Block> GLOOMSLATE_POT = BLOCKS.register("gloomslate_pot", () -> new GloomslatePotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT).sound(SoundType.DECORATED_POT).mapColor(MapColor.TERRACOTTA_BROWN)));
     public static final DeferredItem<BlockItem> GLOOMSLATE_POT_ITEM = DDItems.ITEMS.registerSimpleBlockItem("gloomslate_pot", GLOOMSLATE_POT, new Item.Properties().component(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY));
     public static final DeferredBlock<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK)));
     public static final DeferredBlock<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJawBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).randomTicks().mapColor(MapColor.COLOR_BLACK)));

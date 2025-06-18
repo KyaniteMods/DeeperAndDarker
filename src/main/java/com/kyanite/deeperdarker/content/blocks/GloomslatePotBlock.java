@@ -1,10 +1,15 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.entity.GloomslatePotBlockEntity;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,14 +19,19 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
+import net.minecraft.world.level.block.entity.PotDecorations;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -34,10 +44,12 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
@@ -151,12 +163,46 @@ public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterlo
     }
 
     @Override
+    protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
+        BlockPos blockpos = hit.getBlockPos();
+        if(!level.isClientSide() && projectile.mayInteract(level, blockpos) && projectile.mayBreak(level)) {
+            level.destroyBlock(blockpos, true, projectile);
+        }
+    }
+
+    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return false;
     }
 
     @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        return level.getBlockEntity(pos) instanceof GloomslatePotBlockEntity blockEntity ? blockEntity.getPotAsItem() : super.getCloneItemStack(state, target, level, pos, player);
+    }
+
+    @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new GloomslatePotBlockEntity(pos, state);
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+
+        PotDecorations decorations = stack.getOrDefault(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY);
+        if(!decorations.equals(PotDecorations.EMPTY)) {
+            tooltipComponents.add(CommonComponents.EMPTY);
+            Stream.of(decorations.front(), decorations.left(), decorations.right(), decorations.back()).forEach(item -> tooltipComponents.add(new ItemStack(item.orElse(DDItems.GLOOMSHERD.get()), 1).getHoverName().plainCopy().withStyle(ChatFormatting.GRAY)));
+        }
     }
 }
