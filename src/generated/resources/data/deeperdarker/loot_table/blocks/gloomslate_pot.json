@@ -5,8 +5,46 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:dynamic",
-          "name": "minecraft:sherds"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:dynamic",
+              "conditions": [
+                {
+                  "condition": "minecraft:inverted",
+                  "term": {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                      "predicates": {
+                        "minecraft:enchantments": [
+                          {
+                            "enchantments": "minecraft:silk_touch",
+                            "levels": {
+                              "min": 1
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "name": "minecraft:sherds"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "function": "minecraft:copy_components",
+                  "include": [
+                    "minecraft:pot_decorations"
+                  ],
+                  "source": "block_entity"
+                }
+              ],
+              "name": "deeperdarker:gloomslate_pot"
+            }
+          ]
         }
       ],
       "rolls": 1.0
