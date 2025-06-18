@@ -74,14 +74,13 @@ public class DeeperDarker {
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
-        eventBus.addListener(DeeperDarkerConfig::loadConfigs);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerPayloads);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
 
-        container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
+        container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.CONFIG_SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

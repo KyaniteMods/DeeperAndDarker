@@ -39,7 +39,7 @@ public class WardenHeartItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if(DeeperDarkerConfig.wardenHeartPulses && RandomSource.create().nextFloat() < 0.012f) {
+        if(DeeperDarkerConfig.CONFIG.wardenHeartPulses.get() && RandomSource.create().nextFloat() < 0.012f) {
             level.playSound(entity, entity.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
         }
     }

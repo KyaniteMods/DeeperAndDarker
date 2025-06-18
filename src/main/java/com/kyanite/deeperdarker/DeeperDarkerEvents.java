@@ -174,8 +174,8 @@ public class DeeperDarkerEvents {
                 }
 
                 RandomSource random = serverLevel.getRandom();
-                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance * multiplier) {
-                    if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
+                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.CONFIG.fakeVaseChance.get() * multiplier) {
+                    if(random.nextDouble() < 1 - DeeperDarkerConfig.CONFIG.stalkerSpawnChance.get()) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                         }

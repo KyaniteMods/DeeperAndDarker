@@ -36,7 +36,7 @@ public record SoulElytraBoostPacket(boolean bool) implements CustomPacketPayload
             Player player = context.player();
             Level level = player.level();
 
-            if (DeeperDarkerConfig.soulElytraCooldown == -1) {
+            if (DeeperDarkerConfig.CONFIG.soulElytraCooldown.get() == -1) {
                 player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.no_cooldown"), true);
                 return;
             }
@@ -44,7 +44,7 @@ public record SoulElytraBoostPacket(boolean bool) implements CustomPacketPayload
             if (player.isFallFlying() && player.getInventory().armor.get(2).is(DDItems.SOUL_ELYTRA.get()) && !player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 FireworkRocketEntity rocket = new FireworkRocketEntity(level, new ItemStack(Items.FIREWORK_ROCKET), player);
                 level.addFreshEntity(rocket);
-                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA.get(), DeeperDarkerConfig.soulElytraCooldown);
+                player.getCooldowns().addCooldown(DDItems.SOUL_ELYTRA.get(), DeeperDarkerConfig.CONFIG.soulElytraCooldown.get());
             }
         });
     }
