@@ -33,7 +33,7 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber(modid = DeeperDarker.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = DeeperDarker.MOD_ID, value = Dist.CLIENT)
 public class DeeperDarkerClientEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
@@ -143,12 +143,9 @@ public class DeeperDarkerClientEvents {
         }
     }
 
-    @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
-    static class GameBus {
-        @SubscribeEvent
-        public static void keyInput(final InputEvent.Key event) {
-            if(Keybinds.BOOST.consumeClick()) PacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
-            else if(Keybinds.TRANSMIT.consumeClick()) PacketDistributor.sendToServer(new UseTransmitterPacket(true));
-        }
+    @SubscribeEvent
+    public static void keyInput(final InputEvent.Key event) {
+        if(Keybinds.BOOST.consumeClick()) PacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
+        else if(Keybinds.TRANSMIT.consumeClick()) PacketDistributor.sendToServer(new UseTransmitterPacket(true));
     }
 }
