@@ -157,6 +157,10 @@ public record DDChestLoot(HolderLookup.Provider registries) implements LootTable
                 .add(loot(Items.IRON_BOOTS, 3).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(20, 30))))
                 .add(loot(Items.EMERALD, 2))
                 .add(loot(Items.DIAMOND_AXE, 1))
+                .add(loot(DDItems.BRITTLE_GLOOMSHERD, 1))
+                .add(loot(DDItems.TEMPLE_GLOOMSHERD, 1))
+                .add(loot(DDItems.WARD_GLOOMSHERD, 1))
+                .add(loot(DDItems.WAYFINDER_GLOOMSHERD, 1))
         ));
     }
 

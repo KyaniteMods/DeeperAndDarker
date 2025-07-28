@@ -68,6 +68,22 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:diamond_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:brittle_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:temple_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:ward_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:wayfinder_gloomsherd"
         }
       ],
       "rolls": 1.0
