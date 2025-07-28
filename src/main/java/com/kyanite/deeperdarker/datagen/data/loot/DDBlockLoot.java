@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.datagen.data.loot;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.GloomslatePotBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -229,7 +230,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         add(block, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(DynamicLoot.dynamicEntry(DecoratedPotBlock.SHERDS_DYNAMIC_DROP_ID)
-                                .when(doesNotHaveSilkTouch())
+                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GloomslatePotBlock.CRACKED, true)))
                                 .otherwise(LootItem.lootTableItem(block).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.POT_DECORATIONS)))
                         )
                 )

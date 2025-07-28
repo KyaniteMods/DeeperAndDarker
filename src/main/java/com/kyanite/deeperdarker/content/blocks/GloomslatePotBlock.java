@@ -14,10 +14,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.EnchantmentTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -25,6 +28,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -47,6 +51,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -56,11 +61,12 @@ public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterlo
     public static final MapCodec<GloomslatePotBlock> CODEC = simpleCodec(GloomslatePotBlock::new);
     private static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty CRACKED = BlockStateProperties.CRACKED;
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
     public GloomslatePotBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(CRACKED, false));
     }
 
     @Override
@@ -70,12 +76,12 @@ public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterlo
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HORIZONTAL_FACING, WATERLOGGED);
+        builder.add(HORIZONTAL_FACING, WATERLOGGED, CRACKED);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection()).setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER);
+        return this.defaultBlockState().setValue(HORIZONTAL_FACING, context.getHorizontalDirection()).setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER).setValue(CRACKED, false);
     }
 
     @Override
@@ -143,6 +149,18 @@ public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterlo
     }
 
     @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        ItemStack stack = player.getMainHandItem();
+        BlockState newState = state;
+        if(stack.is(ItemTags.BREAKS_DECORATED_POTS) && !EnchantmentHelper.hasTag(stack, EnchantmentTags.PREVENTS_DECORATED_POT_SHATTERING)) {
+            newState = state.setValue(CRACKED, true);
+            level.setBlock(pos, newState, 4);
+        }
+
+        return super.playerWillDestroy(level, pos, newState, player);
+    }
+
+    @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         Containers.dropContentsOnDestroy(state, newState, level, pos);
         super.onRemove(state, level, pos, newState, movedByPiston);
@@ -164,10 +182,16 @@ public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterlo
 
     @Override
     protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
-        BlockPos blockpos = hit.getBlockPos();
-        if(!level.isClientSide() && projectile.mayInteract(level, blockpos) && projectile.mayBreak(level)) {
-            level.destroyBlock(blockpos, true, projectile);
+        BlockPos pos = hit.getBlockPos();
+        if(!level.isClientSide() && projectile.mayInteract(level, pos) && projectile.mayBreak(level)) {
+            level.setBlock(pos, state.setValue(CRACKED, true), 4);
+            level.destroyBlock(pos, true, projectile);
         }
+    }
+
+    @Override
+    public SoundType getSoundType(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity) {
+        return state.getValue(CRACKED) ? SoundType.DECORATED_POT_CRACKED : SoundType.DECORATED_POT;
     }
 
     @Override

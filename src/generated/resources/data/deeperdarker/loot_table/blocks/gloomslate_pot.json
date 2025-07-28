@@ -11,21 +11,10 @@
               "type": "minecraft:dynamic",
               "conditions": [
                 {
-                  "condition": "minecraft:inverted",
-                  "term": {
-                    "condition": "minecraft:match_tool",
-                    "predicate": {
-                      "predicates": {
-                        "minecraft:enchantments": [
-                          {
-                            "enchantments": "minecraft:silk_touch",
-                            "levels": {
-                              "min": 1
-                            }
-                          }
-                        ]
-                      }
-                    }
+                  "block": "deeperdarker:gloomslate_pot",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "cracked": "true"
                   }
                 }
               ],
