@@ -26,6 +26,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -172,7 +173,9 @@ public class GloomslatePotBlock extends BaseEntityBlock implements SimpleWaterlo
         if(lootBlockEntity instanceof GloomslatePotBlockEntity blockEntity) {
             params.withDynamicDrop(DecoratedPotBlock.SHERDS_DYNAMIC_DROP_ID, consumer -> {
                 for(Item item : blockEntity.getDecorations().ordered()) {
-                    consumer.accept(item.getDefaultInstance());
+                    ItemStack drop = new ItemStack(item);
+                    if(item == Items.BRICK) drop = new ItemStack(DDItems.GLOOMSHERD.get());
+                    consumer.accept(drop);
                 }
             });
         }
