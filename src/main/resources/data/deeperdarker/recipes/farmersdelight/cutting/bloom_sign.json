@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "deeperdarker:bloom_sign"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "id": "deeperdarker:bloom_planks",
+        "count": 1
+      }
+    }
+  ],
+  "tool": {
+    "fabric:type": "farmersdelight:item_ability",
+    "action": "axe_dig"
+  },
+  "fabric:load_conditions": [
+    {
+      "modid": "farmersdelight",
+      "condition": "fabric:mod_loaded"
+    }
+  ]
+}

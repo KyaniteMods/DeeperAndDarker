@@ -1,0 +1,35 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "deeperdarker:echo_log"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "id": "deeperdarker:stripped_echo_log",
+        "count": 1
+      }
+    },
+    {
+      "item": {
+        "id": "farmersdelight:tree_bark",
+        "count": 1
+      }
+    }
+  ],
+  "tool": {
+    "fabric:type": "farmersdelight:item_ability",
+    "action": "axe_strip"
+  },
+  "sound": {
+    "sound_id": "minecraft:item.axe.strip"
+  },
+  "fabric:load_conditions": [
+    {
+      "modid": "farmersdelight",
+      "condition": "fabric:mod_loaded"
+    }
+  ]
+}

@@ -56,6 +56,7 @@ sourceSets {
 	main {
 		resources {
 			srcDirs += [
+					'src/main/resources',
 					'src/main/generated'
 			]
 		}
@@ -96,6 +97,8 @@ dependencies {
 }
 
 processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
@@ -138,4 +141,8 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+//exclude duplicated files from generated etc
+tasks.withType(Copy).configureEach {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
