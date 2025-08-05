@@ -133,6 +133,7 @@ public record DDChestLoot(HolderLookup.Provider registries) implements LootTable
                 .add(loot(DDBlocks.CRYSTALLIZED_AMBER.get(), 15, 1, 3))
                 .add(loot(Blocks.SCULK_SENSOR, 12, 1, 3))
                 .add(loot(Blocks.SCULK_CATALYST, 12, 1, 2))
+                .add(loot(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, 8))
                 .add(loot(Items.IRON_HELMET, 5).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(30, 40))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5f, 0.9f))))
                 .add(loot(Items.IRON_SWORD, 5).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(30, 40))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.3f, 0.6f))))
                 .add(loot(Items.DIAMOND_BOOTS, 4).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(30, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.4f, 0.7f))))
@@ -145,17 +146,21 @@ public record DDChestLoot(HolderLookup.Provider registries) implements LootTable
         ));
 
         pOutput.accept(CRYSTALLIZED_AMBER, LootTable.lootTable().withPool(LootPool.lootPool()
-                .add(loot(Items.GOLD_INGOT, 8))
-                .add(loot(DDItems.SCULK_BONE.get(), 8))
-                .add(loot(DDItems.SOUL_DUST.get(), 8))
-                .add(loot(Items.IRON_INGOT, 7))
-                .add(loot(Items.QUARTZ, 7))
                 .add(loot(Items.AMETHYST_SHARD, 5))
-                .add(loot(Items.DIAMOND, 4))
-                .add(loot(Items.IRON_BOOTS, 4))
-                .add(loot(Items.IRON_BOOTS, 3).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(20, 30))))
+                .add(loot(Items.GOLD_INGOT, 5))
+                .add(loot(Items.IRON_INGOT, 5))
+                .add(loot(Items.QUARTZ, 5))
+                .add(loot(DDItems.SCULK_BONE.get(), 5))
+                .add(loot(DDItems.SOUL_DUST.get(), 5))
+                .add(loot(Items.DIAMOND, 3))
                 .add(loot(Items.EMERALD, 2))
+                .add(loot(Items.IRON_BOOTS, 2))
+                .add(loot(Items.IRON_BOOTS, 2).apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, UniformGenerator.between(20, 30))))
                 .add(loot(Items.DIAMOND_AXE, 1))
+                .add(loot(DDItems.BRITTLE_GLOOMSHERD, 1))
+                .add(loot(DDItems.TEMPLE_GLOOMSHERD, 1))
+                .add(loot(DDItems.WARD_GLOOMSHERD, 1))
+                .add(loot(DDItems.WAYFINDER_GLOOMSHERD, 1))
         ));
     }
 

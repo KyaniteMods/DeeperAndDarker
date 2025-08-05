@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.datagen.data;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.misc.GloomslatePotRecipe;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -137,11 +138,17 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         slab(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
         wall(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, DDBlocks.GLEAM_GEL_BLOCK)
+                .define('G', DDItems.GLEAM_GEL)
+                .pattern("GGG").pattern("GGG").pattern("GGG")
+                .unlockedBy(getHasName(DDItems.GLEAM_GEL), has(DDItems.GLEAM_GEL)).save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SOUNDPROOF_GLASS, 2)
                 .define('S', DDItems.SOUL_DUST).define('G', Items.GLASS)
                 .pattern(" S ").pattern("SGS").pattern(" S ")
                 .unlockedBy(getHasName(DDItems.SOUL_DUST), has(DDItems.SOUL_DUST)).save(output);
 
+        SpecialRecipeBuilder.special(GloomslatePotRecipe::new).save(output, DeeperDarker.rl("gloomslate_pot"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.ANCIENT_COMPASS)
                 .define('A', DDItems.WARDEN_CARAPACE).define('C', Items.COMPASS)
@@ -161,6 +168,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE).define('E', Items.ECHO_SHARD)
                 .pattern("PCP").pattern("CEC").pattern("PCP")
                 .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE)).save(output);
+        copySmithingTemplate(output, DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, DDItems.RESONARIUM);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, Blocks.SCULK);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
@@ -334,15 +342,15 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void addSmithingRecipes(RecipeOutput output) {
-        resonariumSmithing(output, Items.IRON_SHOVEL, RecipeCategory.TOOLS, DDItems.RESONARIUM_SHOVEL.get());
-        resonariumSmithing(output, Items.IRON_PICKAXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_PICKAXE.get());
-        resonariumSmithing(output, Items.IRON_AXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_AXE.get());
-        resonariumSmithing(output, Items.IRON_HOE, RecipeCategory.TOOLS, DDItems.RESONARIUM_HOE.get());
-        resonariumSmithing(output, Items.IRON_SWORD, RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD.get());
-        resonariumSmithing(output, Items.IRON_HELMET, RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET.get());
-        resonariumSmithing(output, Items.IRON_CHESTPLATE, RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE.get());
-        resonariumSmithing(output, Items.IRON_LEGGINGS, RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS.get());
-        resonariumSmithing(output, Items.IRON_BOOTS, RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS.get());
+        resonariumSmithing(output, Items.DIAMOND_SHOVEL, RecipeCategory.TOOLS, DDItems.RESONARIUM_SHOVEL.get());
+        resonariumSmithing(output, Items.DIAMOND_PICKAXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_PICKAXE.get());
+        resonariumSmithing(output, Items.DIAMOND_AXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_AXE.get());
+        resonariumSmithing(output, Items.DIAMOND_HOE, RecipeCategory.TOOLS, DDItems.RESONARIUM_HOE.get());
+        resonariumSmithing(output, Items.DIAMOND_SWORD, RecipeCategory.COMBAT, DDItems.RESONARIUM_SWORD.get());
+        resonariumSmithing(output, Items.DIAMOND_HELMET, RecipeCategory.COMBAT, DDItems.RESONARIUM_HELMET.get());
+        resonariumSmithing(output, Items.DIAMOND_CHESTPLATE, RecipeCategory.COMBAT, DDItems.RESONARIUM_CHESTPLATE.get());
+        resonariumSmithing(output, Items.DIAMOND_LEGGINGS, RecipeCategory.COMBAT, DDItems.RESONARIUM_LEGGINGS.get());
+        resonariumSmithing(output, Items.DIAMOND_BOOTS, RecipeCategory.COMBAT, DDItems.RESONARIUM_BOOTS.get());
 
         wardenSmithing(output, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, DDItems.WARDEN_SHOVEL.get());
         wardenSmithing(output, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, DDItems.WARDEN_PICKAXE.get());
@@ -356,7 +364,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
     }
 
     private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {

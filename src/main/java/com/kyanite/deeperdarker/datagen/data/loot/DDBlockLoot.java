@@ -2,18 +2,23 @@ package com.kyanite.deeperdarker.datagen.data.loot;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.GloomslatePotBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DecoratedPotBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -142,6 +147,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL.get());
 
         dropSelf(DDBlocks.SCULK_GLEAM.get());
+        dropSelf(DDBlocks.POROUS_SCULK_GLEAM.get());
         dropSelf(DDBlocks.GLOOMSLATE_LIGHT.get());
         dropSelf(DDBlocks.LITE_BLOCK.get());
         dropSelf(DDBlocks.BORDERED_LITE_BLOCK.get());
@@ -150,6 +156,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK.get());
         dropWhenSilkTouch(DDBlocks.GLOOMY_GEYSER.get());
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER.get());
+        dropSelf(DDBlocks.GLEAM_GEL_BLOCK.get());
         dropSelf(DDBlocks.SOUNDPROOF_GLASS.get());
 
         add(DDBlocks.SCULK_STONE_COAL_ORE.get(), (block) -> this.createOreDrop(block, Items.COAL));
@@ -181,6 +188,7 @@ public class DDBlockLoot extends BlockLootSubProvider {
         dropSelf(DDBlocks.LILY_FLOWER.get());
 
         ancientVaseDrop(DDBlocks.ANCIENT_VASE.get());
+        gloomslatePotDrop(DDBlocks.GLOOMSLATE_POT.get());
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK.get(), Blocks.SCULK);
         dropWhenSilkTouch(DDBlocks.SCULK_JAW.get());
     }
@@ -214,6 +222,17 @@ public class DDBlockLoot extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(Items.STRING).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4))))
                         .add(LootItem.lootTableItem(Items.LAPIS_LAZULI).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 6))))
                         .add(LootItem.lootTableItem(Blocks.SAND).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                )
+        );
+    }
+
+    private void gloomslatePotDrop(Block block) {
+        add(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(DynamicLoot.dynamicEntry(DecoratedPotBlock.SHERDS_DYNAMIC_DROP_ID)
+                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GloomslatePotBlock.CRACKED, true)))
+                                .otherwise(LootItem.lootTableItem(block).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.POT_DECORATIONS)))
+                        )
                 )
         );
     }

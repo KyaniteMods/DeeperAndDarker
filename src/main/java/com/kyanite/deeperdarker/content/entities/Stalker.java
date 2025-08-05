@@ -24,7 +24,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -73,8 +76,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true));
         this.goalSelector.addGoal(2, new DisturbanceGoal(this, 1.1));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.9));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.4));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 

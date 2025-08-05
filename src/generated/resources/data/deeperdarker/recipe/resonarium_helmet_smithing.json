@@ -4,11 +4,13 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_helmet"
+    "item": "minecraft:diamond_helmet"
   },
   "result": {
     "count": 1,
     "id": "deeperdarker:resonarium_helmet"
   },
-  "template": []
+  "template": {
+    "item": "deeperdarker:resonarium_upgrade_smithing_template"
+  }
 }

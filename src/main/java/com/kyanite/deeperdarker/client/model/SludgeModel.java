@@ -14,7 +14,7 @@ public class SludgeModel extends HierarchicalModel<Sludge> {
 		this.root = root;
 	}
 
-	public static LayerDefinition createInnerBodyModel() {
+	public static LayerDefinition createInnerModel() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
 
@@ -26,10 +26,12 @@ public class SludgeModel extends HierarchicalModel<Sludge> {
 		return LayerDefinition.create(mesh, 64, 32);
 	}
 
-	public static LayerDefinition createOuterBodyModel() {
+	public static LayerDefinition createOuterModel() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
+
 		parts.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
+
 		return LayerDefinition.create(mesh, 64, 32);
 	}
 

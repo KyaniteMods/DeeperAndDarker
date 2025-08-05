@@ -4,11 +4,13 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_boots"
+    "item": "minecraft:diamond_boots"
   },
   "result": {
     "count": 1,
     "id": "deeperdarker:resonarium_boots"
   },
-  "template": []
+  "template": {
+    "item": "deeperdarker:resonarium_upgrade_smithing_template"
+  }
 }

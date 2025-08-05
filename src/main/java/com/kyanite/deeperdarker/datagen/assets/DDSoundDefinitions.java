@@ -29,6 +29,14 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
         add(DDSounds.SCULK_STONE_PLACE, subtitle("block.generic.place").with(sound("block/sculk_stone/place1"), sound("block/sculk_stone/place2"), sound("block/sculk_stone/place3"), sound("block/sculk_stone/place4"), sound("block/sculk_stone/place5")));
         add(DDSounds.SCULK_STONE_STEP, subtitle("block.generic.footsteps").with(sound("block/sculk_stone/step1"), sound("block/sculk_stone/step2"), sound("block/sculk_stone/step3"), sound("block/sculk_stone/step4"), sound("block/sculk_stone/step5"), sound("block/sculk_stone/step6")));
 
+        add(DDSounds.SCULK_GLEAM_BREAK, subtitle("block.generic.break").with(sound("block/sculk_gleam/break1"), sound("block/sculk_gleam/break2"), sound("block/sculk_gleam/break3"), sound("block/sculk_gleam/break4"), sound("block/sculk_gleam/break5")));
+        add(DDSounds.SCULK_GLEAM_FALL, definition().with(mcSound("block/sculk/step1"), mcSound("block/sculk/step2"), mcSound("block/sculk/step3"), mcSound("block/sculk/step4"), mcSound("block/sculk/step5"), mcSound("block/sculk/step6")));
+        add(DDSounds.SCULK_GLEAM_HIT, subtitle("block.generic.hit").with(mcSound("block/sculk/step1"), mcSound("block/sculk/step2"), mcSound("block/sculk/step3"), mcSound("block/sculk/step4"), mcSound("block/sculk/step5"), mcSound("block/sculk/step6")));
+        add(DDSounds.SCULK_GLEAM_PLACE, subtitle("block.generic.place").with(sound("block/sculk_gleam/place1"), sound("block/sculk_gleam/place2"), sound("block/sculk_gleam/place3"), sound("block/sculk_gleam/place4")));
+        add(DDSounds.SCULK_GLEAM_STEP, subtitle("block.generic.footsteps").with(mcSound("block/sculk/step1"), mcSound("block/sculk/step2"), mcSound("block/sculk/step3"), mcSound("block/sculk/step4"), mcSound("block/sculk/step5"), mcSound("block/sculk/step6")));
+
+        add(DDSounds.POROUS_SCULK_GLEAM_SHEAR, subtitle("block.porous_sculk_gleam.shear").with(sound("block/porous_sculk_gleam/gel_shear")));
+
         add(DDSounds.VASE_BREAK, subtitle("block.generic.break").with(sound("block/vase/break1"), sound("block/vase/break2"), sound("block/vase/break3"), sound("block/vase/break4"), sound("block/vase/break5")));
         add(DDSounds.VASE_FALL, definition().with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));
         add(DDSounds.VASE_HIT, subtitle("block.generic.hit").with(sound("block/vase/step1"), sound("block/vase/step2"), sound("block/vase/step3")));

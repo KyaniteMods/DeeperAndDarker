@@ -15,8 +15,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 @SuppressWarnings("NullableProblems")
 public class GloomazePiece extends TemplateStructurePiece {
-    public GloomazePiece(StructureTemplateManager structureTemplateManager, String name, BlockPos structurePos) {
-        super(CustomStructures.GLOOMAZE_PIECE.get(), 0, structureTemplateManager, DeeperDarker.rl("gloomaze/" + name), name, makeSettings(), structurePos);
+    public GloomazePiece(StructureTemplateManager manager, String name, BlockPos structurePos) {
+        super(CustomStructures.GLOOMAZE_PIECE.get(), 0, manager, DeeperDarker.rl("gloomaze/" + name), name, makeSettings(), structurePos);
     }
 
     public GloomazePiece(StructurePieceSerializationContext context, CompoundTag tag) {
@@ -24,7 +24,7 @@ public class GloomazePiece extends TemplateStructurePiece {
     }
 
     private static StructurePlaceSettings makeSettings() {
-        return new StructurePlaceSettings().setIgnoreEntities(false).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
+        return new StructurePlaceSettings().setIgnoreEntities(false).addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
     }
 
     @Override

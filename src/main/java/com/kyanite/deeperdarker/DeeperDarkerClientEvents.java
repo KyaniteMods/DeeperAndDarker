@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.Keybinds;
+import com.kyanite.deeperdarker.client.OthersidePortalOverlay;
 import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
@@ -30,10 +31,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber(modid = DeeperDarker.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = DeeperDarker.MOD_ID, value = Dist.CLIENT)
 public class DeeperDarkerClientEvents {
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
@@ -48,19 +50,11 @@ public class DeeperDarkerClientEvents {
             ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), DeeperDarker.rl("linked"), (stack, level, entity, seed) -> SculkTransmitterItem.isLinked(stack) ? 1 : 0);
             ItemProperties.register(DDItems.SONOROUS_STAFF.get(), DeeperDarker.rl("charge"), (stack, level, entity, seed) -> entity != null && entity.getUseItem() == stack ? (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 128f : 0);
         });
+    }
 
-        BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
-        BlockEntityRenderers.register(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
-        EntityRenderers.register(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
-        EntityRenderers.register(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
-        EntityRenderers.register(DDEntities.ANGLER_FISH.get(), AnglerFishRenderer::new);
-        EntityRenderers.register(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
-        EntityRenderers.register(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
-        EntityRenderers.register(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
-        EntityRenderers.register(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
-        EntityRenderers.register(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
-        EntityRenderers.register(DDEntities.SLUDGE.get(), SludgeRenderer::new);
-        EntityRenderers.register(DDEntities.STALKER.get(), StalkerRenderer::new);
+    @SubscribeEvent
+    public static void registerMaterialAtlas(final RegisterMaterialAtlasesEvent event) {
+        event.register(GloomslatePotRenderer.GLOOMSLATE_POT, DeeperDarker.rl("gloomslate_pot"));
     }
 
     @SubscribeEvent
@@ -75,32 +69,71 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
+    public static void registerGuiLayers(final RegisterGuiLayersEvent event) {
+        event.registerAboveAll(DeeperDarker.rl("otherside_portal"), new OthersidePortalOverlay());
+    }
+
+    @SubscribeEvent
+    public static void registerColorHandlers(final RegisterColorHandlersEvent.Item event) {
+        event.register(new SculkTransmitterItem.Color(), DDItems.SCULK_TRANSMITTER);
+    }
+
+    @SubscribeEvent
     public static void registerKeybinds(final RegisterKeyMappingsEvent event) {
         event.register(Keybinds.BOOST);
         event.register(Keybinds.TRANSMIT);
     }
 
     @SubscribeEvent
+    public static void registerExtensions(final RegisterClientExtensionsEvent event) {
+        event.registerItem(new GloomslatePotExtension(), DDBlocks.GLOOMSLATE_POT_ITEM.get());
+    }
+
+    @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
+        event.registerBlockEntityRenderer(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
         event.registerBlockEntityRenderer(DDBlockEntities.CRYSTALLIZED_AMBER.get(), CrystallizedAmberBlockRenderer::new);
+        event.registerBlockEntityRenderer(DDBlockEntities.GLOOMSLATE_POT.get(), GloomslatePotRenderer::new);
+
+        event.registerEntityRenderer(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
+        event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+        event.registerEntityRenderer(DDEntities.ANGLER_FISH.get(), AnglerFishRenderer::new);
+        event.registerEntityRenderer(DDEntities.ANGER_POT.get(), AngerPotRenderer::new);
+        event.registerEntityRenderer(DDEntities.FEAR_POT.get(), FearPotRenderer::new);
+        event.registerEntityRenderer(DDEntities.SORROW_POT.get(), SorrowPotRenderer::new);
+        event.registerEntityRenderer(DDEntities.SCULK_CENTIPEDE.get(), SculkCentipedeRenderer::new);
+        event.registerEntityRenderer(DDEntities.SCULK_LEECH.get(), SculkLeechRenderer::new);
+        event.registerEntityRenderer(DDEntities.SCULK_SNAPPER.get(), SculkSnapperRenderer::new);
+        event.registerEntityRenderer(DDEntities.SHATTERED.get(), ShatteredRenderer::new);
+        event.registerEntityRenderer(DDEntities.SHRIEK_WORM.get(), ShriekWormRenderer::new);
+        event.registerEntityRenderer(DDEntities.SLUDGE.get(), SludgeRenderer::new);
+        event.registerEntityRenderer(DDEntities.STALKER.get(), StalkerRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(GloomslatePotRenderer.POT_BASE, GloomslatePotModel::createBaseLayer);
+        event.registerLayerDefinition(GloomslatePotRenderer.POT_SIDES, GloomslatePotModel::createSidesLayer);
+
         event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_BOAT_MODEL, BoatModel::createBodyModel);
         event.registerLayerDefinition(DDBoatRenderer.BLOOM_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
-        event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createBodyModel);
-        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createBodyModel);
-        event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createBodyModel);
-        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createBodyModel);
-        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createBodyModel);
-        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createBodyModel);
-        event.registerLayerDefinition(SludgeRenderer.MODEL, SludgeModel::createInnerBodyModel);
-        event.registerLayerDefinition(SludgeOuterLayer.OUTER_MODEL, SludgeModel::createOuterBodyModel);
-        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createBodyModel);
-        event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createBodyModel);
+
+        event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createModel);
+        event.registerLayerDefinition(AngerPotRenderer.MODEL, AngerPotModel::createModel);
+        event.registerLayerDefinition(FearPotRenderer.MODEL, FearPotModel::createModel);
+        event.registerLayerDefinition(SorrowPotRenderer.MODEL, SorrowPotModel::createModel);
+        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createModel);
+        event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createModel);
+        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createModel);
+        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createModel);
+        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createModel);
+        event.registerLayerDefinition(SludgeRenderer.MODEL, SludgeModel::createInnerModel);
+        event.registerLayerDefinition(SludgeOuterLayer.OUTER_MODEL, SludgeModel::createOuterModel);
+        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createModel);
+        event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createModel);
     }
 
     @SubscribeEvent
@@ -118,16 +151,8 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
-    public static void registerColorHandlers(final RegisterColorHandlersEvent.Item event) {
-        event.register(new SculkTransmitterItem.Color(), DDItems.SCULK_TRANSMITTER);
-    }
-
-    @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
-    static class GameBus {
-        @SubscribeEvent
-        public static void keyInput(final InputEvent.Key event) {
-            if(Keybinds.BOOST.consumeClick()) PacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
-            else if(Keybinds.TRANSMIT.consumeClick()) PacketDistributor.sendToServer(new UseTransmitterPacket(true));
-        }
+    public static void keyInput(final InputEvent.Key event) {
+        if(Keybinds.BOOST.consumeClick()) PacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
+        else if(Keybinds.TRANSMIT.consumeClick()) PacketDistributor.sendToServer(new UseTransmitterPacket(true));
     }
 }

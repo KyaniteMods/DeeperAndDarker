@@ -1,0 +1,16 @@
+{
+  "type": "pneumaticcraft:heat_properties",
+  "block": "deeperdarker:gloomy_geyser",
+  "heatCapacity": 10000,
+  "temperature": 2000,
+  "thermalResistance": 500,
+  "transforms": {
+    "cold": "deeperdarker:gloomy_sculk"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pneumaticcraft"
+    }
+  ]
+}

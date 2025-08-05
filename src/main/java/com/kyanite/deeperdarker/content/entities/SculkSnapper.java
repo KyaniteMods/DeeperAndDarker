@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.DeeperDarkerConfig;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
@@ -25,7 +26,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
@@ -55,7 +55,7 @@ public class SculkSnapper extends TamableAnimal {
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.1, true));
         this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1, 8, 2));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1));
-        this.goalSelector.addGoal(5, new RandomStrollGoal(this, 0.5));
+        this.goalSelector.addGoal(5, new RandomStrollGoal(this, 0.9));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 7));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
@@ -101,7 +101,7 @@ public class SculkSnapper extends TamableAnimal {
         super.tick();
 
         if(this.isTame() && this.getOwner() != null) {
-            if(droppedBooks < DeeperDarkerConfig.snapperDropLimit && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
+            if(droppedBooks < DeeperDarkerConfig.CONFIG.snapperDropLimit.get() && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
                 Registry<Enchantment> registry = this.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT);
                 List<Enchantment> enchantments = new ArrayList<>();
                 registry.forEach(enchantment -> {
@@ -133,7 +133,7 @@ public class SculkSnapper extends TamableAnimal {
 
     @Override
     public boolean isFood(ItemStack stack) {
-        return stack.is(Items.NETHERITE_CHESTPLATE) && stack.has(DataComponents.ENCHANTMENTS);
+        return stack.is(DDItems.GLEAM_GEL);
     }
 
     @Override
@@ -149,9 +149,8 @@ public class SculkSnapper extends TamableAnimal {
         ItemStack stack = player.getItemInHand(hand);
         if(this.isFood(stack) && !this.isTame()) {
             this.usePlayerItem(player, hand, stack);
-            if(!level().isClientSide()) {
+            if(!level().isClientSide() && random.nextFloat() < 0.2f) {
                 this.tame(player);
-                this.setOwnerUUID(player.getUUID());
                 setTarget(null);
                 level().broadcastEntityEvent(this, (byte) 18);
             }

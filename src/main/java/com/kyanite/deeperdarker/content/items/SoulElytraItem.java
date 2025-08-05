@@ -36,7 +36,7 @@ public class SoulElytraItem extends ElytraItem {
         if(level.isClientSide() && entity instanceof Player player && slotId == 38) {
             if(player.getCooldowns().isOnCooldown(DDItems.SOUL_ELYTRA.get())) {
                 float percent = player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA.get(), 0);
-                player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * DeeperDarkerConfig.soulElytraCooldown / 20)), true);
+                player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.cooldown", (int) Math.ceil(percent * DeeperDarkerConfig.CONFIG.soulElytraCooldown.get() / 20)), true);
             }
         }
     }

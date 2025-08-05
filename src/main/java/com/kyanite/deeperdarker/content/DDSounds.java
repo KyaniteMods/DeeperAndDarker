@@ -25,6 +25,15 @@ public class DDSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_STONE_STEP = register("block.sculk_stone.step");
     public static final DeferredSoundType SCULK_STONE = new DeferredSoundType(1, 1, SCULK_STONE_BREAK, SCULK_STONE_STEP, SCULK_STONE_PLACE, SCULK_STONE_HIT, SCULK_STONE_FALL);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_GLEAM_BREAK = register("block.sculk_gleam.break");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_GLEAM_FALL = register("block.sculk_gleam.fall");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_GLEAM_HIT = register("block.sculk_gleam.hit");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_GLEAM_PLACE = register("block.sculk_gleam.place");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SCULK_GLEAM_STEP = register("block.sculk_gleam.step");
+    public static final DeferredSoundType SCULK_GLEAM = new DeferredSoundType(1, 1, SCULK_GLEAM_BREAK, SCULK_GLEAM_STEP, SCULK_GLEAM_PLACE, SCULK_GLEAM_HIT, SCULK_GLEAM_FALL);
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> POROUS_SCULK_GLEAM_SHEAR = register("block.porous_sculk_gleam.shear");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_BREAK = register("block.vase.break");
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_FALL = register("block.vase.fall");
     public static final DeferredHolder<SoundEvent, SoundEvent> VASE_HIT = register("block.vase.hit");

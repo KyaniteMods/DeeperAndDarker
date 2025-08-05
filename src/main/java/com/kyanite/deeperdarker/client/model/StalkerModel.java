@@ -21,7 +21,7 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 		this.head = root.getChild("root").getChild("waist").getChild("body").getChild("head");
 	}
 
-	public static LayerDefinition createBodyModel() {
+	public static LayerDefinition createModel() {
 		MeshDefinition mesh = new MeshDefinition();
 		PartDefinition parts = mesh.getRoot();
 

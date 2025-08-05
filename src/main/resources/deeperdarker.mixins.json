@@ -6,11 +6,12 @@
   "mixins": [
     "ContainerMenuMixin",
     "HangingEntityItemMixin",
-    "ItemStackMixin",
     "PaintingMixin",
-    "PhantomRendererMixin",
     "VibrationListenerMixin",
     "WardenMixin"
+  ],
+  "client": [
+    "PhantomRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

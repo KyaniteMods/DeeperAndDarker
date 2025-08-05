@@ -1,14 +1,23 @@
 package com.kyanite.deeperdarker;
 
+import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.AncientVaseBlock;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
+import com.kyanite.deeperdarker.content.misc.PortalData;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.structures.DDStructures;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.DeathScreen;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.WinScreen;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -17,7 +26,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,6 +52,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.AddAttributeTooltipsEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -55,6 +68,9 @@ public class DeeperDarkerEvents {
     @SubscribeEvent
     public static void registerBrewingRecipes(final RegisterBrewingRecipesEvent event) {
         PotionBrewing.Builder builder = event.getBuilder();
+
+        builder.addMix(Potions.AWKWARD, DDItems.GLEAM_GEL.get(), DDPotions.GLOWING);
+
         builder.addMix(Potions.AWKWARD, DDItems.SOUL_CRYSTAL.get(), DDPotions.SCULK_AFFINITY);
         builder.addMix(Potions.INVISIBILITY, DDItems.SOUL_DUST.get(), DDPotions.SCULK_AFFINITY);
         builder.addMix(DDPotions.SCULK_AFFINITY, Items.REDSTONE, DDPotions.LONG_SCULK_AFFINITY);
@@ -64,6 +80,7 @@ public class DeeperDarkerEvents {
     @SubscribeEvent
     public static void playerTickEvent(final PlayerTickEvent.Post event) {
         Player player = event.getEntity();
+
         if(player.level() instanceof ServerLevel level && player.hasEffect(MobEffects.BAD_OMEN)) {
             StructureStart structureStart = level.structureManager().getStructureWithPieceAt(player.blockPosition(), structureHolder -> structureHolder.is(DDStructures.ANCIENT_TEMPLE));
             if(!structureStart.isValid()) return;
@@ -72,6 +89,36 @@ public class DeeperDarkerEvents {
             player.removeEffect(MobEffects.BAD_OMEN);
             player.addEffect(new MobEffectInstance(DDEffects.SCULK_OMEN, 18000, amplifier));
         }
+    }
+
+    @SubscribeEvent
+    public static void clientTickEvent(final ClientTickEvent.Post event) {
+        Minecraft minecraft = Minecraft.getInstance();
+        LocalPlayer player = minecraft.player;
+        Screen screen = minecraft.screen;
+
+        if(player == null) return;
+        if(screen instanceof OthersideReceivingLevelScreen) return;
+
+        PortalData data = player.getData(DDDataAttachments.PORTAL_DATA);
+        data.oPortalIntensity = data.portalIntensity;
+        float f = 0f;
+
+        if(player.portalProcess != null && player.portalProcess.isInsidePortalThisTick() && player.portalProcess.isSamePortal(DDBlocks.OTHERSIDE_PORTAL.get())) {
+            if(screen != null && !screen.isPauseScreen() && !(screen instanceof DeathScreen) && !(screen instanceof WinScreen)) {
+                if(screen instanceof AbstractContainerScreen) player.closeContainer();
+                minecraft.setScreen(null);
+            }
+
+            if(data.portalIntensity == 0) player.playSound(SoundEvents.PORTAL_TRIGGER, player.getRandom().nextFloat() * 0.4f + 0.8f, 0.25f);
+
+            f = 0.0125f;
+            player.portalProcess.setAsInsidePortalThisTick(false);
+        } else if(data.portalIntensity > 0) {
+            f = -0.05f;
+        }
+
+        data.portalIntensity = Mth.clamp(data.portalIntensity + f, 0f, 1f);
     }
 
     @SubscribeEvent
@@ -129,8 +176,8 @@ public class DeeperDarkerEvents {
                 }
 
                 RandomSource random = serverLevel.getRandom();
-                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance * multiplier) {
-                    if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
+                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.CONFIG.fakeVaseChance.get() * multiplier) {
+                    if(random.nextDouble() < 1 - DeeperDarkerConfig.CONFIG.stalkerSpawnChance.get()) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                         }
@@ -156,7 +203,7 @@ public class DeeperDarkerEvents {
         for(ItemStack stack : entity.getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && stack.is(DDTags.Items.RESONARIUM_ARMOR)) {
                 incoming -= reduction;
-                stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), entity, armor.getEquipmentSlot());
+                stack.hurtAndBreak((int) (event.getOriginalDamage() / 2f), entity, armor.getEquipmentSlot());
             }
         }
 
@@ -177,5 +224,12 @@ public class DeeperDarkerEvents {
         if(!event.getSlot().isArmor()) return;
         if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
         if(event.getEntity() instanceof ServerPlayer player) PacketDistributor.sendToPlayer(player, new SoulElytraClientPacket(true));
+    }
+
+    @SubscribeEvent
+    public static void attributeTooltipsEvent(final AddAttributeTooltipsEvent event) {
+        if(event.getStack().is(DDTags.Items.DAMPENS_VIBRATIONS)) {
+            event.addTooltipLines(Component.translatable("item." + DeeperDarker.MOD_ID + ".dampens_vibrations").withStyle(ChatFormatting.BLUE));
+        }
     }
 }

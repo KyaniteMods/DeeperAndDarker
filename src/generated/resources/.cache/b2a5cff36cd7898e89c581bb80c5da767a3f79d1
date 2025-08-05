@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-23T17:10:50.6918282	Tags for minecraft:item mod id deeperdarker
+// 1.21.1	2025-06-16T19:56:00.2571121	Tags for minecraft:item mod id deeperdarker
 d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/item/fences.json
 ece1a1e2a4a6f21c593a611ae9126ff341767989 data/c/tags/item/foods/cooked_fish.json
 47f7947e255ebbd71583d60670df2ea649e9d376 data/c/tags/item/foods/raw_fish.json
@@ -13,12 +13,15 @@ a84d63160bb42d942778124d8368b9db10ef6ed2 data/c/tags/item/ores/gold.json
 e85880d9acf64424927082c80e9af7c9f50de52f data/c/tags/item/ores/lapis.json
 b87f41ec93385cf003a9e81713446620acd52b86 data/c/tags/item/ores/redstone.json
 d88fb43be0304b77c90c64f924fa2b46c4eeea4a data/c/tags/item/stones.json
+07eba88207449539859066bc0dc38f9f739d6025 data/c/tags/item/stripped_logs.json
+49a960decb3fd012fd047cacdbffd9de61e08361 data/c/tags/item/stripped_woods.json
 df25b6646f8e4aea4f5aa3634dc892c62e1ec0e5 data/c/tags/item/tools/melee_weapon.json
 35edf6af55dc15babf01a19e8a9bfeb683aa7d22 data/c/tags/item/tools/mining_tool.json
 0e3397ceb6c7b735093668371c3fd0ad8d8410f0 data/c/tags/item/tools/ranged_weapon.json
 7d44281ae960cc3804e46c4d7ae2b88440d7a7cf data/deeperdarker/tags/item/bloom_stems.json
 a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/item/dampens_vibrations.json
 3254a070f3d679712b15610724ab74c5900e0204 data/deeperdarker/tags/item/echo_logs.json
+34e36f92288bd1b8dc21a617c153b4a75ef1c9fd data/deeperdarker/tags/item/gloomslate_sherds.json
 bf1cfb52598938e82f9e3d0596c5dbb4017d89e0 data/deeperdarker/tags/item/resonarium_armor.json
 67d9430b6b1ed45602512d2407b31668b9f3a55b data/deeperdarker/tags/item/scutes.json
 0e3397ceb6c7b735093668371c3fd0ad8d8410f0 data/deeperdarker/tags/item/sonic_weapon.json
@@ -32,7 +35,6 @@ ec4e45d46ce1593f9bb4b226a1e3d143bc0942c6 data/minecraft/tags/item/coal_ores.json
 dc2be5311ef04baad7565936ffafc6dcea324cf1 data/minecraft/tags/item/copper_ores.json
 84c6024e42063deecc27f59b5a97328b415f4a05 data/minecraft/tags/item/diamond_ores.json
 8c05a0f37456da64c198eca83b383a909c2fe23f data/minecraft/tags/item/dirt.json
-34b028178348216c66c780ada716912cc5ebf618 data/minecraft/tags/item/dyeable.json
 41a0ed1cf9fcf4b0f4e41d3155f010eb069e2edc data/minecraft/tags/item/emerald_ores.json
 7b02b576df083630e66072bf2d0f07f1e6ac4a26 data/minecraft/tags/item/enchantable/durability.json
 d0b6527a3244189c04b06295e1dc213419922973 data/minecraft/tags/item/enchantable/equippable.json

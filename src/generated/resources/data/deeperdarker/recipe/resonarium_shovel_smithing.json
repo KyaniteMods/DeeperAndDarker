@@ -4,11 +4,13 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_shovel"
+    "item": "minecraft:diamond_shovel"
   },
   "result": {
     "count": 1,
     "id": "deeperdarker:resonarium_shovel"
   },
-  "template": []
+  "template": {
+    "item": "deeperdarker:resonarium_upgrade_smithing_template"
+  }
 }
