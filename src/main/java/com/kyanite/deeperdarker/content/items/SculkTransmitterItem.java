@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDDataComponents;
-import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
 import com.kyanite.deeperdarker.util.DDTags;
