@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-22T18:11:54.2279098	Block States: deeperdarker
+// 1.21.1	2025-06-07T12:33:24.3968818	Block States: deeperdarker
 4394f02c270408be611b2f3ba7abfbfd658cb0ff assets/deeperdarker/blockstates/ancient_vase.json
 165980177c5adcf470b9a08fe401e3bb1a4966f0 assets/deeperdarker/blockstates/blooming_moss_block.json
 c90869597c5f9312912c741c7edfc5974762efd9 assets/deeperdarker/blockstates/blooming_sculk_stone.json
@@ -70,6 +70,7 @@ cc86bdb09e9612bac54d083cee8f7736ccb89370 assets/deeperdarker/blockstates/gloomsl
 62031bcac79f17d1b239b2030832850c090aec93 assets/deeperdarker/blockstates/gloomslate_iron_ore.json
 509f694c73b7bdd1960ad697f73cd232b8a6104f assets/deeperdarker/blockstates/gloomslate_lapis_ore.json
 680ae8ef5493693892edc70289858c17e0795f04 assets/deeperdarker/blockstates/gloomslate_light.json
+a1b544d0dd3f887b921434759dd331dab372a6f7 assets/deeperdarker/blockstates/gloomslate_pot.json
 f9cd571ac8150fa9b599a84f03b98b52d38df95a assets/deeperdarker/blockstates/gloomslate_redstone_ore.json
 5a8172db482268efcd1a4e8a7f6f5093e791f433 assets/deeperdarker/blockstates/gloomslate_slab.json
 60fd7761b884f57c0b02af7123bb52491589ae3d assets/deeperdarker/blockstates/gloomslate_stairs.json

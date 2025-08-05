@@ -245,6 +245,18 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charged");
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charging");
         itemModel(DDItems.SONOROUS_STAFF, HANDHELD).override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(DeeperDarker.rl("charge"), 0.001f).end().override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(DeeperDarker.rl("charge"), 1).end();
+
+        itemModel(DDItems.GLOOMSHERD, GENERATED);
+        itemModel(DDItems.BRITTLE_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.DARK_HEART_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.LISTENER_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.SNAPPER_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.TEMPLE_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.TRANSMISSION_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.WARD_GLOOMSHERD, GENERATED);
+        itemModel(DDItems.WAYFINDER_GLOOMSHERD, GENERATED);
+
+        itemModel(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, GENERATED);
         itemModel(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, GENERATED);
 
         spawnEggModel(DDItems.ANGLER_FISH_SPAWN_EGG);

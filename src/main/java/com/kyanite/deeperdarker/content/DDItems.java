@@ -33,7 +33,6 @@ public class DDItems {
     public static final DeferredItem<Item> LITE = ITEMS.registerSimpleItem("lite");
 
     public static final DeferredItem<Item> ANCIENT_COMPASS = ITEMS.register("ancient_compass", () -> new AncientCompassItem(new Item.Properties().stacksTo(1)));
-
     public static final DeferredItem<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON).attributes(SoulElytraItem.createAttributes())));
     public static final DeferredItem<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
     public static final DeferredItem<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
@@ -51,15 +50,6 @@ public class DDItems {
     public static final DeferredItem<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new WardenHeartItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).fireResistant()));
     public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.registerSimpleItem("warden_carapace", new Item.Properties().rarity(Rarity.RARE).fireResistant());
     public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.registerSimpleItem("reinforced_echo_shard", new Item.Properties().rarity(Rarity.RARE).fireResistant());
-
-    public static final DeferredItem<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
-            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
-            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
-            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade").withStyle(ChatFormatting.GRAY),
-            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description"),
-            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description"),
-            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
-    ));
 
     public static final DeferredItem<Item> RESONARIUM_SHOVEL = ITEMS.register("resonarium_shovel", () -> new ShovelItem(DDTiers.RESONARIUM, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.RESONARIUM, 1.5f, -3))));
     public static final DeferredItem<Item> RESONARIUM_PICKAXE = ITEMS.register("resonarium_pickaxe", () -> new PickaxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.RESONARIUM, 1, -2.8f))));
@@ -83,6 +73,33 @@ public class DDItems {
 
     public static final DeferredItem<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> SONOROUS_STAFF = ITEMS.register("sonorous_staff", () -> new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
+
+    public static final DeferredItem<Item> GLOOMSHERD = ITEMS.registerSimpleItem("gloomsherd");
+    public static final DeferredItem<Item> BRITTLE_GLOOMSHERD = ITEMS.registerSimpleItem("brittle_gloomsherd");
+    public static final DeferredItem<Item> DARK_HEART_GLOOMSHERD = ITEMS.registerSimpleItem("dark_heart_gloomsherd");
+    public static final DeferredItem<Item> LISTENER_GLOOMSHERD = ITEMS.registerSimpleItem("listener_gloomsherd");
+    public static final DeferredItem<Item> SNAPPER_GLOOMSHERD = ITEMS.registerSimpleItem("snapper_gloomsherd");
+    public static final DeferredItem<Item> TEMPLE_GLOOMSHERD = ITEMS.registerSimpleItem("temple_gloomsherd");
+    public static final DeferredItem<Item> TRANSMISSION_GLOOMSHERD = ITEMS.registerSimpleItem("transmission_gloomsherd");
+    public static final DeferredItem<Item> WARD_GLOOMSHERD = ITEMS.registerSimpleItem("ward_gloomsherd");
+    public static final DeferredItem<Item> WAYFINDER_GLOOMSHERD = ITEMS.registerSimpleItem("wayfinder_gloomsherd");
+
+    public static final DeferredItem<Item> RESONARIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("resonarium_upgrade_smithing_template", () -> new SmithingTemplateItem(
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".resonarium_upgrade").withStyle(ChatFormatting.GRAY),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.base_slot_description"),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.additions_slot_description"),
+            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
+    ));
+    public static final DeferredItem<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade").withStyle(ChatFormatting.GRAY),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description"),
+            Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description"),
+            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
+    ));
 
     public static final DeferredItem<Item> ANGLER_FISH_SPAWN_EGG = ITEMS.register("angler_fish_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));
     public static final DeferredItem<Item> ANGER_POT_SPAWN_EGG = ITEMS.register("anger_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGER_POT, 0x211b1a, 0x8c3737, new Item.Properties()));

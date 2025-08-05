@@ -11,6 +11,7 @@ import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.structures.DDStructures;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.DeathScreen;
 import net.minecraft.client.gui.screens.Screen;
@@ -51,6 +52,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.AddAttributeTooltipsEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
@@ -174,8 +176,8 @@ public class DeeperDarkerEvents {
                 }
 
                 RandomSource random = serverLevel.getRandom();
-                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.fakeVaseChance * multiplier) {
-                    if(random.nextDouble() < 1 - DeeperDarkerConfig.stalkerSpawnChance) {
+                if(level.getDifficulty() != Difficulty.PEACEFUL && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && !state.getValue(AncientVaseBlock.SAFE) && random.nextDouble() < DeeperDarkerConfig.CONFIG.fakeVaseChance.get() * multiplier) {
+                    if(random.nextDouble() < 1 - DeeperDarkerConfig.CONFIG.stalkerSpawnChance.get()) {
                         for(int i = 0; i < random.nextInt(1, 4); i++) {
                             DDEntities.SCULK_LEECH.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                         }
@@ -201,7 +203,7 @@ public class DeeperDarkerEvents {
         for(ItemStack stack : entity.getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && stack.is(DDTags.Items.RESONARIUM_ARMOR)) {
                 incoming -= reduction;
-                stack.hurtAndBreak((int) (event.getOriginalDamage() / 1.5f), entity, armor.getEquipmentSlot());
+                stack.hurtAndBreak((int) (event.getOriginalDamage() / 2f), entity, armor.getEquipmentSlot());
             }
         }
 
@@ -222,5 +224,12 @@ public class DeeperDarkerEvents {
         if(!event.getSlot().isArmor()) return;
         if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
         if(event.getEntity() instanceof ServerPlayer player) PacketDistributor.sendToPlayer(player, new SoulElytraClientPacket(true));
+    }
+
+    @SubscribeEvent
+    public static void attributeTooltipsEvent(final AddAttributeTooltipsEvent event) {
+        if(event.getStack().is(DDTags.Items.DAMPENS_VIBRATIONS)) {
+            event.addTooltipLines(Component.translatable("item." + DeeperDarker.MOD_ID + ".dampens_vibrations").withStyle(ChatFormatting.BLUE));
+        }
     }
 }

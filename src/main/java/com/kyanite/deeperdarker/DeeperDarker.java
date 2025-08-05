@@ -64,6 +64,7 @@ public class DeeperDarker {
         DDEntities.ENTITIES.register(eventBus);
         DDEffects.EFFECTS.register(eventBus);
         DDPotions.POTIONS.register(eventBus);
+        DDRecipes.RECIPE.register(eventBus);
         DDEnchantments.ENCHANTMENT_EFFECTS.register(eventBus);
         DDArmorMaterials.ARMOR_MATERIALS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
@@ -73,14 +74,13 @@ public class DeeperDarker {
         DDLootModifiers.LOOT_MODIFIERS.register(eventBus);
 
         eventBus.addListener(DDCreativeTab::buildCreativeTab);
-        eventBus.addListener(DeeperDarkerConfig::loadConfigs);
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::generateData);
         eventBus.addListener(this::registerPayloads);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
 
-        container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
+        container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.CONFIG_SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

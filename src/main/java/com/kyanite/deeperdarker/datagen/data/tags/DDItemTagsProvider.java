@@ -106,6 +106,8 @@ public class DDItemTagsProvider extends ItemTagsProvider {
         tag(DDTags.Items.RESONARIUM_ARMOR).add(DDItems.RESONARIUM_HELMET.get(), DDItems.RESONARIUM_CHESTPLATE.get(), DDItems.RESONARIUM_LEGGINGS.get(), DDItems.RESONARIUM_BOOTS.get());
         tag(DDTags.Items.DAMPENS_VIBRATIONS).add(DDItems.WARDEN_BOOTS.get());
         tag(DDTags.Items.SONIC_WEAPON).add(DDItems.SONOROUS_STAFF.get());
+
+        tag(DDTags.Items.GLOOMSLATE_SHERDS).add(DDItems.GLOOMSHERD.get(), DDItems.BRITTLE_GLOOMSHERD.get(), DDItems.DARK_HEART_GLOOMSHERD.get(), DDItems.LISTENER_GLOOMSHERD.get(), DDItems.SNAPPER_GLOOMSHERD.get(), DDItems.TEMPLE_GLOOMSHERD.get(), DDItems.TRANSMISSION_GLOOMSHERD.get(), DDItems.WARD_GLOOMSHERD.get(), DDItems.WAYFINDER_GLOOMSHERD.get());
         tag(DDTags.Items.SCUTES).add(Items.ARMADILLO_SCUTE, Items.TURTLE_SCUTE);
     }
 }

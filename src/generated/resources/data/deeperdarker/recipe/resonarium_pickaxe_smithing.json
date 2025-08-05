@@ -4,11 +4,13 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_pickaxe"
+    "item": "minecraft:diamond_pickaxe"
   },
   "result": {
     "count": 1,
     "id": "deeperdarker:resonarium_pickaxe"
   },
-  "template": []
+  "template": {
+    "item": "deeperdarker:resonarium_upgrade_smithing_template"
+  }
 }

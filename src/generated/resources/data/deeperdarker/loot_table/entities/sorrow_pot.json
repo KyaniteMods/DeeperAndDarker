@@ -1,4 +1,48 @@
 {
   "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:brittle_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:dark_heart_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:listener_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:snapper_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:temple_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:transmission_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:ward_gloomsherd"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:wayfinder_gloomsherd"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
   "random_sequence": "deeperdarker:entities/sorrow_pot"
 }

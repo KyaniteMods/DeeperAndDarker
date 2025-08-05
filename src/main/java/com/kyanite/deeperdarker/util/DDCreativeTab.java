@@ -160,6 +160,7 @@ public class DDCreativeTab {
             event.accept(DDItems.BLOOM_HANGING_SIGN);
 
             event.accept(DDBlocks.ANCIENT_VASE);
+            event.accept(DDBlocks.GLOOMSLATE_POT_ITEM);
             event.accept(DDBlocks.INFESTED_SCULK);
             event.accept(DDBlocks.SCULK_JAW);
 
@@ -169,29 +170,31 @@ public class DDCreativeTab {
             event.accept(DDItems.GLEAM_GEL);
             event.accept(DDItems.LITE);
 
-            event.accept(DDItems.ANCIENT_COMPASS);
+            event.accept(DDItems.RESONARIUM_SHOVEL);
+            event.accept(DDItems.RESONARIUM_PICKAXE);
+            event.accept(DDItems.RESONARIUM_AXE);
+            event.accept(DDItems.RESONARIUM_HOE);
+            event.accept(DDItems.WARDEN_SHOVEL);
+            event.accept(DDItems.WARDEN_PICKAXE);
+            event.accept(DDItems.WARDEN_AXE);
+            event.accept(DDItems.WARDEN_HOE);
 
+            event.accept(DDItems.ANCIENT_COMPASS);
             event.accept(DDItems.SOUL_ELYTRA);
             event.accept(DDItems.ECHO_BOAT);
             event.accept(DDItems.ECHO_CHEST_BOAT);
             event.accept(DDItems.BLOOM_BOAT);
             event.accept(DDItems.BLOOM_CHEST_BOAT);
 
-            event.accept(DDItems.RESONARIUM_SHOVEL);
-            event.accept(DDItems.RESONARIUM_PICKAXE);
-            event.accept(DDItems.RESONARIUM_AXE);
-            event.accept(DDItems.RESONARIUM_HOE);
+            event.accept(DDItems.SCULK_TRANSMITTER);
+            event.accept(DDItems.SONOROUS_STAFF);
             event.accept(DDItems.RESONARIUM_SWORD);
+            event.accept(DDItems.WARDEN_SWORD);
+
             event.accept(DDItems.RESONARIUM_HELMET);
             event.accept(DDItems.RESONARIUM_CHESTPLATE);
             event.accept(DDItems.RESONARIUM_LEGGINGS);
             event.accept(DDItems.RESONARIUM_BOOTS);
-
-            event.accept(DDItems.WARDEN_SHOVEL);
-            event.accept(DDItems.WARDEN_PICKAXE);
-            event.accept(DDItems.WARDEN_AXE);
-            event.accept(DDItems.WARDEN_HOE);
-            event.accept(DDItems.WARDEN_SWORD);
             event.accept(DDItems.WARDEN_HELMET);
             event.accept(DDItems.WARDEN_CHESTPLATE);
             event.accept(DDItems.WARDEN_LEGGINGS);
@@ -209,8 +212,17 @@ public class DDCreativeTab {
             event.accept(DDItems.WARDEN_CARAPACE);
             event.accept(DDItems.REINFORCED_ECHO_SHARD);
 
-            event.accept(DDItems.SCULK_TRANSMITTER);
-            event.accept(DDItems.SONOROUS_STAFF);
+            event.accept(DDItems.GLOOMSHERD);
+            event.accept(DDItems.BRITTLE_GLOOMSHERD);
+            event.accept(DDItems.DARK_HEART_GLOOMSHERD);
+            event.accept(DDItems.LISTENER_GLOOMSHERD);
+            event.accept(DDItems.SNAPPER_GLOOMSHERD);
+            event.accept(DDItems.TEMPLE_GLOOMSHERD);
+            event.accept(DDItems.TRANSMISSION_GLOOMSHERD);
+            event.accept(DDItems.WARD_GLOOMSHERD);
+            event.accept(DDItems.WAYFINDER_GLOOMSHERD);
+
+            event.accept(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE);
             event.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 
             event.accept(DDItems.ANGER_POT_SPAWN_EGG);

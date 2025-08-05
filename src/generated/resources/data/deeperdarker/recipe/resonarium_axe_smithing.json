@@ -4,11 +4,13 @@
     "item": "deeperdarker:resonarium_plate"
   },
   "base": {
-    "item": "minecraft:iron_axe"
+    "item": "minecraft:diamond_axe"
   },
   "result": {
     "count": 1,
     "id": "deeperdarker:resonarium_axe"
   },
-  "template": []
+  "template": {
+    "item": "deeperdarker:resonarium_upgrade_smithing_template"
+  }
 }
