@@ -102,7 +102,7 @@ public class SculkTransmitterItem extends Item {
     }
 
     public static boolean isLinked(ItemStack stack) {
-        return stack.is(DDItems.SCULK_TRANSMITTER) && stack.has(DDDataComponents.TRANSMITTER) && stack.get(DDDataComponents.TRANSMITTER).linkedPos().isPresent();
+        return stack.is(DDTags.Items.TRANSMITTER) && stack.has(DDDataComponents.TRANSMITTER) && stack.get(DDDataComponents.TRANSMITTER).linkedPos().isPresent();
     }
 
     private static boolean canConnect(Level level, BlockPos target) {
