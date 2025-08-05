@@ -187,6 +187,22 @@ public class DDCreativeTab {
             event.accept(DDItems.BLOOM_CHEST_BOAT);
 
             event.accept(DDItems.SCULK_TRANSMITTER);
+            event.accept(DDItems.WHITE_SCULK_TRANSMITTER);
+            event.accept(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER);
+            event.accept(DDItems.GRAY_SCULK_TRANSMITTER);
+            event.accept(DDItems.BLACK_SCULK_TRANSMITTER);
+            event.accept(DDItems.BROWN_SCULK_TRANSMITTER);
+            event.accept(DDItems.RED_SCULK_TRANSMITTER);
+            event.accept(DDItems.ORANGE_SCULK_TRANSMITTER);
+            event.accept(DDItems.YELLOW_SCULK_TRANSMITTER);
+            event.accept(DDItems.LIME_SCULK_TRANSMITTER);
+            event.accept(DDItems.GREEN_SCULK_TRANSMITTER);
+            event.accept(DDItems.CYAN_SCULK_TRANSMITTER);
+            event.accept(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER);
+            event.accept(DDItems.BLUE_SCULK_TRANSMITTER);
+            event.accept(DDItems.PURPLE_SCULK_TRANSMITTER);
+            event.accept(DDItems.MAGENTA_SCULK_TRANSMITTER);
+            event.accept(DDItems.PINK_SCULK_TRANSMITTER);
             event.accept(DDItems.SONOROUS_STAFF);
             event.accept(DDItems.RESONARIUM_SWORD);
             event.accept(DDItems.WARDEN_SWORD);

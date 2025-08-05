@@ -7,9 +7,7 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,11 +19,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -43,11 +39,6 @@ public class SculkTransmitterItem extends Item {
         Player player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
         BlockPos clickedPos = context.getClickedPos();
-
-        if(level.getBlockState(clickedPos).is(Blocks.WATER_CAULDRON)) {
-            stack.remove(DataComponents.DYED_COLOR);
-            return InteractionResult.SUCCESS;
-        }
 
         if (isLinked(stack)) return transmit(level, player, stack, clickedPos);
         if (!canConnect(level, clickedPos)) {
@@ -142,15 +133,5 @@ public class SculkTransmitterItem extends Item {
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    }
-
-    public static class Color implements ItemColor {
-        @Override
-        public int getColor(ItemStack stack, int tintIndex) {
-            if(stack.getItem() instanceof SculkTransmitterItem && tintIndex <= 0) {
-                return DyedItemColor.getOrDefault(stack, 0x29dfeb - 0xffffff);
-            }
-            return -1;
-        }
     }
 }

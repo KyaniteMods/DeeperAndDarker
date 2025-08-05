@@ -2,13 +2,13 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
-      "model": "deeperdarker:item/sculk_transmitter_linked",
+      "model": "deeperdarker:item/cyan_sculk_transmitter_linked",
       "predicate": {
         "deeperdarker:linked": 1.0
       }
     }
   ],
   "textures": {
-    "layer0": "deeperdarker:item/sculk_transmitter"
+    "layer0": "deeperdarker:item/cyan_sculk_transmitter"
   }
 }

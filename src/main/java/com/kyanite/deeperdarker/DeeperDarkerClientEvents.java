@@ -72,11 +72,6 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
-    public static void registerColorHandlers(final RegisterColorHandlersEvent.Item event) {
-        event.register(new SculkTransmitterItem.Color(), DDItems.SCULK_TRANSMITTER);
-    }
-
-    @SubscribeEvent
     public static void registerKeybinds(final RegisterKeyMappingsEvent event) {
         event.register(Keybinds.BOOST);
         event.register(Keybinds.TRANSMIT);
