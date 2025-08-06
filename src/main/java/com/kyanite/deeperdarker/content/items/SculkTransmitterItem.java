@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDDataComponents;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -15,11 +16,13 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -132,5 +135,27 @@ public class SculkTransmitterItem extends Item {
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    public static ItemLike getItemByColor(DyeColor color) {
+        if(color == null) return DDItems.SCULK_TRANSMITTER;
+        return switch(color) {
+            case WHITE -> DDItems.WHITE_SCULK_TRANSMITTER;
+            case ORANGE -> DDItems.ORANGE_SCULK_TRANSMITTER;
+            case MAGENTA -> DDItems.MAGENTA_SCULK_TRANSMITTER;
+            case LIGHT_BLUE -> DDItems.LIGHT_BLUE_SCULK_TRANSMITTER;
+            case YELLOW -> DDItems.YELLOW_SCULK_TRANSMITTER;
+            case LIME -> DDItems.LIME_SCULK_TRANSMITTER;
+            case PINK -> DDItems.PINK_SCULK_TRANSMITTER;
+            case GRAY -> DDItems.GRAY_SCULK_TRANSMITTER;
+            case LIGHT_GRAY -> DDItems.LIGHT_GRAY_SCULK_TRANSMITTER;
+            case CYAN -> DDItems.CYAN_SCULK_TRANSMITTER;
+            case PURPLE -> DDItems.PURPLE_SCULK_TRANSMITTER;
+            case BLUE -> DDItems.BLUE_SCULK_TRANSMITTER;
+            case BROWN -> DDItems.BROWN_SCULK_TRANSMITTER;
+            case GREEN -> DDItems.GREEN_SCULK_TRANSMITTER;
+            case RED -> DDItems.RED_SCULK_TRANSMITTER;
+            case BLACK -> DDItems.BLACK_SCULK_TRANSMITTER;
+        };
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-05T19:17:01.0320741	Recipes
+// 1.21.1	2025-08-05T19:20:43.4626398	Recipes
 ff2b4eded29e6aee06a2b8a67ed2460d6b44574c data/deeperdarker/advancement/recipes/building_blocks/bloom_planks.json
 2b96f477889839f16134ded19ef45829d1ef94d3 data/deeperdarker/advancement/recipes/building_blocks/bloom_slab.json
 67da220cbe51e2cdd8ce24d17eacc2558e4ba816 data/deeperdarker/advancement/recipes/building_blocks/bloom_stairs.json
@@ -476,6 +476,7 @@ a43c7212780ab4a2dacb546ef2c9119e91977a76 data/deeperdarker/recipe/sculk_stone_ti
 2939f713df0e925c26860a698eb05d28411feb34 data/deeperdarker/recipe/sculk_stone_tile_wall_from_sculk_stone_tiles_stonecutting.json
 5395590032aba9af793e289270fe79ed3b83d358 data/deeperdarker/recipe/sculk_stone_wall.json
 b325efbc76038f5fe2f0daa715eff6596b0316ee data/deeperdarker/recipe/sculk_stone_wall_from_sculk_stone_stonecutting.json
+32c8bd9ab3f471d70c92d0532c89ff1b9f537ced data/deeperdarker/recipe/sculk_transmitter_coloring.json
 40b02bb0be3af47c8eb14f47facefee3d286e415 data/deeperdarker/recipe/smooth_gloomslate.json
 f69c7456f7e51dccd53fb6ebec8ab712609f07e0 data/deeperdarker/recipe/smooth_gloomslate_slab.json
 c425cbf9ee375208c605a5afc11df9e0598bad4e data/deeperdarker/recipe/smooth_gloomslate_slab_from_smooth_gloomslate_stonecutting.json
