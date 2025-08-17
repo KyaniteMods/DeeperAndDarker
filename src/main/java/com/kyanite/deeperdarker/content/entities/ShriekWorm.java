@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
@@ -29,9 +30,9 @@ public class ShriekWorm extends Monster {
     public final AnimationState asleepState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
     public final AnimationState descendState = new AnimationState();
-    private int emergingTime;
+    private int emergeTime;
     private int idleTime;
-    private int descendTime;
+    private int descentTime;
     private int attackCooldown;
 
     public ShriekWorm(EntityType<? extends Monster> entityType, Level level) {
@@ -75,9 +76,9 @@ public class ShriekWorm extends Monster {
     public void tick() {
         super.tick();
 
-        if(this.getPose() == Pose.EMERGING && ++emergingTime > 80) this.setPose(Pose.STANDING);
-        if(this.getPose() == Pose.STANDING && ++idleTime == 1200) this.setPose(Pose.DIGGING);
-        if(this.getPose() == Pose.DIGGING && ++descendTime == 83) {
+        if(this.getPose() == Pose.EMERGING && ++emergeTime > 80) this.setPose(Pose.STANDING);
+        if(this.getPose() == Pose.STANDING && ++idleTime >= 1200) this.setPose(Pose.DIGGING);
+        if(this.getPose() == Pose.DIGGING && ++descentTime >= 83) {
             level().setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
             this.remove(RemovalReason.DISCARDED);
         }
@@ -130,6 +131,22 @@ public class ShriekWorm extends Monster {
         }
 
         super.onSyncedDataUpdated(key);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putInt("EmergeTime", this.emergeTime);
+        compound.putInt("IdleTime", this.idleTime);
+        compound.putInt("DescentTime", this.descentTime);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if(compound.contains("EmergeTime")) this.emergeTime = compound.getInt("EmergeTime");
+        if(compound.contains("IdleTime")) this.idleTime = compound.getInt("IdleTime");
+        if(compound.contains("DescentTime")) this.descentTime = compound.getInt("DescentTime");
     }
 
     @Override
