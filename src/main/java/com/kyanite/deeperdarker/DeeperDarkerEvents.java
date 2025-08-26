@@ -58,6 +58,7 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -224,6 +225,13 @@ public class DeeperDarkerEvents {
         if(!event.getSlot().isArmor()) return;
         if(!event.getTo().is(DDItems.SOUL_ELYTRA.get()) || event.getFrom().is(DDItems.SOUL_ELYTRA.get())) return;
         if(event.getEntity() instanceof ServerPlayer player) PacketDistributor.sendToPlayer(player, new SoulElytraClientPacket(true));
+    }
+
+    @SubscribeEvent
+    public static void useTotemEvent(final LivingUseTotemEvent event) {
+        MobEffectInstance effect = new MobEffectInstance(DDEffects.SCULK_AFFINITY, 600);
+        effect.getCures().clear();
+        event.getEntity().addEffect(effect);
     }
 
     @SubscribeEvent

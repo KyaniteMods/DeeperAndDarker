@@ -31,7 +31,7 @@ public class InfestedSculkBlock extends Block {
         if(entity instanceof Player player) {
             level.setBlock(pos, Blocks.SCULK.defaultBlockState(), 3);
             player.knockback(1.5, player.getX() - pos.getX(), player.getZ() - pos.getZ());
-            if(level instanceof ServerLevel serverLevel) DDEntities.SHRIEK_WORM.get().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+            if(level instanceof ServerLevel serverLevel) DDEntities.SHRIEK_WORM.get().spawn(serverLevel, null, pos, MobSpawnType.TRIGGERED, true, false);
         }
 
         if(level.isClientSide() && entity instanceof LivingEntity) {

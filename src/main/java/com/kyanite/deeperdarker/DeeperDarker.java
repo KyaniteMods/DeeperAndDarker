@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.datagen.assets.DDItemModelProvider;
 import com.kyanite.deeperdarker.datagen.assets.DDSoundDefinitions;
 import com.kyanite.deeperdarker.datagen.assets.ENLanguageProvider;
 import com.kyanite.deeperdarker.datagen.data.DDAdvancements;
+import com.kyanite.deeperdarker.datagen.data.DDDataMaps;
 import com.kyanite.deeperdarker.datagen.data.DDRecipeProvider;
 import com.kyanite.deeperdarker.datagen.data.DDRegistriesGenerator;
 import com.kyanite.deeperdarker.datagen.data.loot.DDLootModifierProvider;
@@ -113,6 +114,7 @@ public class DeeperDarker {
         generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
 
         generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, newLookup, fileHelper, List.of(new DDAdvancements())));
+        generator.addProvider(event.includeServer(), new DDDataMaps(packOutput, newLookup));
         generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, newLookup));
         generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, newLookup));
         generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, newLookup));
