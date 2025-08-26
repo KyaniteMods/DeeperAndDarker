@@ -240,11 +240,29 @@ public class DDItemModelProvider extends ItemModelProvider {
         itemModel(DDItems.WARDEN_CARAPACE, GENERATED);
         itemModel(DDItems.REINFORCED_ECHO_SHARD, GENERATED);
 
-        itemModelWithSuffix(DDItems.SCULK_TRANSMITTER, GENERATED, "on");
-        itemModel(DDItems.SCULK_TRANSMITTER, GENERATED).override().model(getModel(DDItems.SCULK_TRANSMITTER, "on")).predicate(DeeperDarker.rl("linked"), 1).end();
+        transmitterModel(DDItems.SCULK_TRANSMITTER);
+        transmitterModel(DDItems.WHITE_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.ORANGE_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.MAGENTA_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.YELLOW_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.LIME_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.PINK_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.GRAY_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.CYAN_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.PURPLE_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.BLUE_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.BROWN_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.GREEN_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.RED_SCULK_TRANSMITTER);
+        transmitterModel(DDItems.BLACK_SCULK_TRANSMITTER);
+
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charged");
         itemModelWithSuffix(DDItems.SONOROUS_STAFF, HANDHELD, "charging");
-        itemModel(DDItems.SONOROUS_STAFF, HANDHELD).override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(DeeperDarker.rl("charge"), 0.001f).end().override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(DeeperDarker.rl("charge"), 1).end();
+        itemModel(DDItems.SONOROUS_STAFF, HANDHELD)
+                .override().model(getModel(DDItems.SONOROUS_STAFF, "charging")).predicate(DeeperDarker.rl("charge"), 0.001f).end()
+                .override().model(getModel(DDItems.SONOROUS_STAFF, "charged")).predicate(DeeperDarker.rl("charge"), 1).end();
 
         itemModel(DDItems.GLOOMSHERD, GENERATED);
         itemModel(DDItems.BRITTLE_GLOOMSHERD, GENERATED);
@@ -304,6 +322,11 @@ public class DDItemModelProvider extends ItemModelProvider {
 
             itemModel.override().model(getModel(item, trimModel.name() + "_trim")).predicate(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID, trimModel.itemModelIndex()).end();
         }
+    }
+
+    private void transmitterModel(DeferredItem<Item> item) {
+        itemModelWithSuffix(item, GENERATED, "linked");
+        itemModel(item, GENERATED).override().model(getModel(item, "linked")).predicate(DeeperDarker.rl("linked"), 1).end();
     }
 
     private void spawnEggModel(DeferredItem<Item> item) {

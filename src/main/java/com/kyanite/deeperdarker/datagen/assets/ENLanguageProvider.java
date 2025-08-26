@@ -159,6 +159,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
         add("tag.item." + DeeperDarker.MOD_ID + ".resonarium_armor", "Resonarium Armor");
         add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
+        add("tag.item." + DeeperDarker.MOD_ID + ".transmitter", "Transmitter");
         add("tag.item." + DeeperDarker.MOD_ID + ".sonic_weapon", "Sonic Weapons");
         add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
 

@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "deeperdarker:item/brown_sculk_transmitter_linked",
+      "predicate": {
+        "deeperdarker:linked": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "deeperdarker:item/brown_sculk_transmitter"
+  }
+}

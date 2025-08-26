@@ -51,6 +51,7 @@ public class DDTags {
 
         public static final TagKey<Item> RESONARIUM_ARMOR = tag("resonarium_armor");
         public static final TagKey<Item> DAMPENS_VIBRATIONS = tag("dampens_vibrations");
+        public static final TagKey<Item> TRANSMITTER = tag("transmitter");
         public static final TagKey<Item> SONIC_WEAPON = tag("sonic_weapon");
 
         public static final TagKey<Item> GLOOMSLATE_SHERDS = tag("gloomslate_sherds");
