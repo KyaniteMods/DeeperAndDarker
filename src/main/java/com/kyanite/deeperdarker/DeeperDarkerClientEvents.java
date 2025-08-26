@@ -24,6 +24,7 @@ import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -31,6 +32,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 @SuppressWarnings("unused")
 @EventBusSubscriber(modid = DeeperDarker.MOD_ID, value = Dist.CLIENT)
@@ -40,14 +42,35 @@ public class DeeperDarkerClientEvents {
         event.enqueueWork(() -> {
             Sheets.addWoodType(DDBlocks.ECHO);
             Sheets.addWoodType(DDBlocks.BLOOM);
+
             ItemProperties.register(DDItems.ANCIENT_COMPASS.get(), ResourceLocation.withDefaultNamespace("angle"), new CompassItemPropertyFunction((level, stack, entity) -> {
                 TempleTracker tracker = stack.get(DDDataComponents.TEMPLE_TRACKER);
                 return tracker != null ? tracker.linkedPos().orElse(null) : null;
             }));
             ItemProperties.register(DDItems.SOUL_ELYTRA.get(), ResourceLocation.withDefaultNamespace("broken"), (stack, pLevel, pEntity, seed) -> SoulElytraItem.isFlyEnabled(stack) ? 0 : 1);
-            ItemProperties.register(DDItems.SCULK_TRANSMITTER.get(), DeeperDarker.rl("linked"), (stack, level, entity, seed) -> SculkTransmitterItem.isLinked(stack) ? 1 : 0);
+            registerTransmitterProperties(DDItems.SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.WHITE_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.ORANGE_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.MAGENTA_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.YELLOW_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.LIME_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.PINK_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.GRAY_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.CYAN_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.PURPLE_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.BLUE_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.BROWN_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.GREEN_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.RED_SCULK_TRANSMITTER);
+            registerTransmitterProperties(DDItems.BLACK_SCULK_TRANSMITTER);
             ItemProperties.register(DDItems.SONOROUS_STAFF.get(), DeeperDarker.rl("charge"), (stack, level, entity, seed) -> entity != null && entity.getUseItem() == stack ? (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 128f : 0);
         });
+    }
+
+    private static void registerTransmitterProperties(DeferredItem<Item> item) {
+        ItemProperties.register(item.get(), DeeperDarker.rl("linked"), (stack, level, entity, seed) -> SculkTransmitterItem.isLinked(stack) ? 1 : 0);
     }
 
     @SubscribeEvent

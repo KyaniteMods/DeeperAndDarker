@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.misc.GloomslatePotRecipe;
+import com.kyanite.deeperdarker.content.misc.SculkTransmitterColoring;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -170,6 +171,8 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy(getHasName(DDItems.WARDEN_CARAPACE), has(DDItems.WARDEN_CARAPACE)).save(output);
         copySmithingTemplate(output, DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, DDItems.RESONARIUM);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, Blocks.SCULK);
+
+        SpecialRecipeBuilder.special(SculkTransmitterColoring::new).save(output, DeeperDarker.rl("sculk_transmitter_coloring"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
                 .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('H', DDItems.HEART_OF_THE_DEEP)

@@ -1,10 +1,13 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -16,7 +19,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
@@ -28,9 +30,10 @@ public class ShriekWorm extends Monster {
     public final AnimationState asleepState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
     public final AnimationState descendState = new AnimationState();
-    private int emergingTime;
+    private int emergeTime;
     private int idleTime;
-    private boolean asleep;
+    private int descentTime;
+    private int attackCooldown;
 
     public ShriekWorm(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -38,7 +41,7 @@ public class ShriekWorm extends Monster {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 0, true));
+        this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 0, false));
         this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
@@ -63,7 +66,9 @@ public class ShriekWorm extends Monster {
 
     @Override
     public boolean doHurtTarget(Entity entity) {
+        this.idleTime = 0;
         this.level().broadcastEntityEvent(this, (byte) 4);
+        this.attackCooldown = 21;
         return super.doHurtTarget(entity);
     }
 
@@ -71,64 +76,31 @@ public class ShriekWorm extends Monster {
     public void tick() {
         super.tick();
 
-        if(this.getPose() == Pose.EMERGING && ++emergingTime > 80) this.setPose(Pose.STANDING);
-
-        if(this.getPose() == Pose.STANDING && !this.asleep) {
-            this.idleTime++;
-            if(this.idleTime > 200) {
-                this.idleTime = 0;
-                this.asleep = true;
-            }
+        if(this.getPose() == Pose.EMERGING && ++emergeTime > 80) this.setPose(Pose.STANDING);
+        if(this.getPose() == Pose.STANDING && ++idleTime >= 1200) this.setPose(Pose.DIGGING);
+        if(this.getPose() == Pose.DIGGING && ++descentTime >= 83) {
+            level().setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
+            this.remove(RemovalReason.DISCARDED);
         }
 
-        Player player = level().getNearestPlayer(this, 5);
-        if(player != null && !player.isDeadOrDying() && !player.isCreative()) {
-            this.asleep = false;
-        } else {
-            if(this.attackState.isStarted() && !this.idleState.isStarted()) {
-                this.attackState.stop();
-                this.idleState.start(this.tickCount);
-            }
-        }
+        if(this.attackCooldown > 0) this.attackCooldown--;
 
         if(level().isClientSide()) {
-            if(this.asleep && !this.asleepState.isStarted()) {
-                this.idleState.stop();
-                this.asleepState.start(this.tickCount);
+            if(this.getPose() == Pose.STANDING && this.attackCooldown == 1) {
+                this.attackState.stop();
+                this.idleState.startIfStopped(this.tickCount);
             }
-            if(!this.asleep && !this.idleState.isStarted() && !this.emergeState.isStarted() && !this.descendState.isStarted()) {
-                this.asleepState.stop();
-                this.idleState.start(this.tickCount);
-            }
-
-            if(this.getPose() == Pose.EMERGING) {
-                double sX = this.random.nextGaussian() * 0.02;
-                double sY = this.random.nextGaussian() * 0.02;
-                double sZ = this.random.nextGaussian() * 0.02;
-                level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), getRandomX(1), getY() + 1, getRandomZ(1), sX, sY, sZ);
-            }
+            if(isUnableToAttack()) level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, this.getBlockStateOn()), getRandomX(1), getY() + 0.2, getRandomZ(1), 0, 0, 0);
         }
-
-        if(asleep) setBoundingBox(new AABB(this.position().x - 0.5, this.position().y, this.position().z - 0.5, this.position().x + 0.5, this.position().y + 1.6, this.position().z + 0.5));
-        else setBoundingBox(new AABB(this.position().x - 0.5, this.position().y, this.position().z - 0.5, this.position().x + 0.5, this.position().y + 5.7, this.position().z + 0.5));
-
-        /*if(this.descendState.isStarted()) {
-            this.entityData.set(IDLE_TIMER, this.entityData.get(IDLE_TIMER) - 1);
-            if(this.entityData.get(IDLE_TIMER) <= -90) {
-                level().setBlock(this.getOnPos(), DDBlocks.INFESTED_SCULK.get().defaultBlockState(), 3);
-                // TODO: kill does not work... make it work (change descent chance once fixed)
-                this.kill();
-                this.remove(RemovalReason.KILLED);
-            }
-        }*/
     }
 
     @Override
     public void handleEntityEvent(byte id) {
         if(id == 4) {
+            this.idleTime = 0;
             this.idleState.stop();
-            this.asleepState.stop();
             this.attackState.start(this.tickCount);
+            this.attackCooldown = 21;
         } else {
             super.handleEntityEvent(id);
         }
@@ -136,17 +108,54 @@ public class ShriekWorm extends Monster {
 
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
-        return getAttackBoundingBox().inflate(6, 0, 6).intersects(entity.getBoundingBox());
+        return getAttackBoundingBox().inflate(3, 0, 3).intersects(entity.getBoundingBox());
+    }
+
+    @Override
+    public boolean canAttack(LivingEntity target) {
+        return !isUnableToAttack() && super.canAttack(target);
     }
 
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
         if(key.equals(DATA_POSE)) {
-            if(this.getPose() == Pose.EMERGING) this.emergeState.start(this.tickCount);
-            if(this.getPose() == Pose.STANDING) this.emergeState.stop();
+            if(this.getPose() == Pose.EMERGING) {
+                this.emergeState.start(this.tickCount);
+            } else if(this.getPose() == Pose.STANDING) {
+                this.emergeState.stop();
+                this.idleState.start(this.tickCount);
+            } else if(this.getPose() == Pose.DIGGING) {
+                this.idleState.stop();
+                this.descendState.start(this.tickCount);
+            }
         }
 
         super.onSyncedDataUpdated(key);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putInt("EmergeTime", this.emergeTime);
+        compound.putInt("IdleTime", this.idleTime);
+        compound.putInt("DescentTime", this.descentTime);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if(compound.contains("EmergeTime")) this.emergeTime = compound.getInt("EmergeTime");
+        if(compound.contains("IdleTime")) this.idleTime = compound.getInt("IdleTime");
+        if(compound.contains("DescentTime")) this.descentTime = compound.getInt("DescentTime");
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+        return isUnableToAttack() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || super.isInvulnerableTo(source);
+    }
+
+    private boolean isUnableToAttack() {
+        return this.hasPose(Pose.EMERGING) || this.hasPose(Pose.DIGGING);
     }
 
     @Nullable
@@ -169,5 +178,11 @@ public class ShriekWorm extends Monster {
     @Override
     public void knockback(double pStrength, double pX, double pZ) {
         this.setDeltaMovement(Vec3.ZERO);
+    }
+
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions hitbox = super.getDefaultDimensions(pose);
+        return isUnableToAttack() ? EntityDimensions.fixed(hitbox.width(), 1.5f) : hitbox;
     }
 }

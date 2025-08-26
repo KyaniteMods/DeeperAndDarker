@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-16T19:56:00.2571121	Tags for minecraft:item mod id deeperdarker
+// 1.21.1	2025-08-05T18:42:31.4775652	Tags for minecraft:item mod id deeperdarker
 d4d014e7f24e9e6fbaaba4946fba5346ded5219b data/c/tags/item/fences.json
 ece1a1e2a4a6f21c593a611ae9126ff341767989 data/c/tags/item/foods/cooked_fish.json
 47f7947e255ebbd71583d60670df2ea649e9d376 data/c/tags/item/foods/raw_fish.json
@@ -25,6 +25,7 @@ a84781beeff4cf18e5532d7e95fe62956c365027 data/deeperdarker/tags/item/dampens_vib
 bf1cfb52598938e82f9e3d0596c5dbb4017d89e0 data/deeperdarker/tags/item/resonarium_armor.json
 67d9430b6b1ed45602512d2407b31668b9f3a55b data/deeperdarker/tags/item/scutes.json
 0e3397ceb6c7b735093668371c3fd0ad8d8410f0 data/deeperdarker/tags/item/sonic_weapon.json
+fea38f540b2b962c6aaa526d1d24fe7075a986cf data/deeperdarker/tags/item/transmitter.json
 743e0bd68d3bd18829be7dd9766c3d77d2e81061 data/minecraft/tags/item/axes.json
 828ad83b431bb94c090ae2c19a590f9f05e876ea data/minecraft/tags/item/boats.json
 1eec4d64020f6c39dd18198ce2e63fa970059d3f data/minecraft/tags/item/chest_armor.json

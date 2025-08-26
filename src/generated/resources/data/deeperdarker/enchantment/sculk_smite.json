@@ -8,7 +8,11 @@
       {
         "effect": {
           "type": "minecraft:add",
-          "value": 2.5
+          "value": {
+            "type": "minecraft:linear",
+            "base": 2.5,
+            "per_level_above_first": 2.5
+          }
         },
         "requirements": {
           "condition": "minecraft:entity_properties",

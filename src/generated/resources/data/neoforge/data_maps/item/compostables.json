@@ -1,0 +1,52 @@
+{
+  "values": {
+    "deeperdarker:bloom_berries": {
+      "chance": 0.3
+    },
+    "deeperdarker:blooming_moss_block": {
+      "chance": 0.65
+    },
+    "deeperdarker:crystallized_amber": {
+      "chance": 0.65
+    },
+    "deeperdarker:echo_leaves": {
+      "chance": 0.3
+    },
+    "deeperdarker:echo_sapling": {
+      "chance": 0.3
+    },
+    "deeperdarker:gloomy_cactus": {
+      "chance": 0.5
+    },
+    "deeperdarker:gloomy_grass": {
+      "chance": 0.3
+    },
+    "deeperdarker:glowing_flowers": {
+      "chance": 0.3
+    },
+    "deeperdarker:glowing_grass": {
+      "chance": 0.3
+    },
+    "deeperdarker:glowing_roots": {
+      "chance": 0.5
+    },
+    "deeperdarker:ice_lily": {
+      "chance": 0.65
+    },
+    "deeperdarker:lily_flower": {
+      "chance": 0.65
+    },
+    "deeperdarker:porous_sculk_gleam": {
+      "chance": 0.65
+    },
+    "deeperdarker:sculk_gleam": {
+      "chance": 0.65
+    },
+    "deeperdarker:sculk_tendrils": {
+      "chance": 0.5
+    },
+    "deeperdarker:sculk_vines": {
+      "chance": 0.5
+    }
+  }
+}

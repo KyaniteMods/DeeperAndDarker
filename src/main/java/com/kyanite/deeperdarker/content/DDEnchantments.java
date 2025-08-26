@@ -53,7 +53,8 @@ public class DDEnchantments {
                         AllOf.entityEffects(new CatalyzeEnvironment(false))
                 ).build(CATALYSIS.location())
         );
-        context.register(SCULK_SMITE,Enchantment.enchantment(
+
+        context.register(SCULK_SMITE, Enchantment.enchantment(
                 Enchantment.definition(
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
                         5, 5,
@@ -63,10 +64,11 @@ public class DDEnchantments {
                 .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
                 .withEffect(
                         EnchantmentEffectComponents.DAMAGE,
-                        new AddValue(LevelBasedValue.constant(2.5f)),
+                        new AddValue(LevelBasedValue.perLevel(2.5f)),
                         LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(DDTags.Misc.SENSITIVE_TO_SCULK_SMITE)))
                 ).build(SCULK_SMITE.location())
         );
+
         context.register(VOLUME, Enchantment.enchantment(
                 Enchantment.definition(
                         items.getOrThrow(DDTags.Items.SONIC_WEAPON),
@@ -75,6 +77,7 @@ public class DDEnchantments {
                         EquipmentSlotGroup.MAINHAND
                 )).build(VOLUME.location())
         );
+
         context.register(REVERBERATION, Enchantment.enchantment(
                 Enchantment.definition(
                         items.getOrThrow(DDTags.Items.SONIC_WEAPON),
