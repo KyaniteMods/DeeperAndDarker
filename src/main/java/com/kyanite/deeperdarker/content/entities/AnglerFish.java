@@ -91,7 +91,7 @@ public class AnglerFish extends AbstractFish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     static class AnglerFishAttackGoal extends MeleeAttackGoal {
