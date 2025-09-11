@@ -54,6 +54,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.AddAttributeTooltipsEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -230,7 +231,7 @@ public class DeeperDarkerEvents {
     @SubscribeEvent
     public static void useTotemEvent(final LivingUseTotemEvent event) {
         MobEffectInstance effect = new MobEffectInstance(DDEffects.SCULK_AFFINITY, 600);
-        effect.getCures().clear();
+        effect.getCures().remove(EffectCures.PROTECTED_BY_TOTEM);
         event.getEntity().addEffect(effect);
     }
 
