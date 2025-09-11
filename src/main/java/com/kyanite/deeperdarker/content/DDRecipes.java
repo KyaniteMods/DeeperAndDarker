@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.misc.GloomslatePotRecipe;
-import com.kyanite.deeperdarker.content.misc.SculkTransmitterColoring;
+import com.kyanite.deeperdarker.content.recipes.GloomslatePotRecipe;
+import com.kyanite.deeperdarker.content.recipes.SculkTransmitterColoring;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;

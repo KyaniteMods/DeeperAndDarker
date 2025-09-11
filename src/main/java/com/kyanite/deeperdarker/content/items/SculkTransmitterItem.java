@@ -4,7 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDDataComponents;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
-import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
+import com.kyanite.deeperdarker.content.data.Transmitter;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.datacomponents.TempleTracker;
-import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
+import com.kyanite.deeperdarker.content.data.TempleTracker;
+import com.kyanite.deeperdarker.content.data.Transmitter;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.registries.DeferredHolder;

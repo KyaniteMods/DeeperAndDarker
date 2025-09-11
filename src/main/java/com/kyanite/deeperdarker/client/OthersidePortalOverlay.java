@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.client;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDDataAttachments;
-import com.kyanite.deeperdarker.content.misc.PortalData;
+import com.kyanite.deeperdarker.content.data.PlayerPortalData;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -21,7 +21,7 @@ public class OthersidePortalOverlay implements LayeredDraw.Layer {
         LocalPlayer player = minecraft.player;
         if(player == null) return;
 
-        PortalData data = player.getData(DDDataAttachments.PORTAL_DATA);
+        PlayerPortalData data = player.getData(DDDataAttachments.PORTAL_DATA);
         float alpha = Mth.lerp(deltaTracker.getGameTimeDeltaPartialTick(false), data.oPortalIntensity, data.portalIntensity);
         if(alpha <= 0) return;
 

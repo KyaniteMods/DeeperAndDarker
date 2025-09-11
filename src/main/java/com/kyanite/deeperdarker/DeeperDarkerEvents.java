@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.content.blocks.AncientVaseBlock;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
-import com.kyanite.deeperdarker.content.misc.PortalData;
+import com.kyanite.deeperdarker.content.data.PlayerPortalData;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -102,7 +102,7 @@ public class DeeperDarkerEvents {
         if(player == null) return;
         if(screen instanceof OthersideReceivingLevelScreen) return;
 
-        PortalData data = player.getData(DDDataAttachments.PORTAL_DATA);
+        PlayerPortalData data = player.getData(DDDataAttachments.PORTAL_DATA);
         data.oPortalIntensity = data.portalIntensity;
         float f = 0f;
 

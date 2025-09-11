@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.DDDataComponents;
 import com.kyanite.deeperdarker.content.DDSounds;
-import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
+import com.kyanite.deeperdarker.content.data.Transmitter;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

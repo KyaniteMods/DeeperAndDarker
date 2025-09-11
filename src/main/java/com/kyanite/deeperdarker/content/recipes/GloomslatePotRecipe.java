@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.content.misc;
+package com.kyanite.deeperdarker.content.recipes;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDRecipes;

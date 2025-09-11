@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
-import com.kyanite.deeperdarker.content.datacomponents.TempleTracker;
+import com.kyanite.deeperdarker.content.data.TempleTracker;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;

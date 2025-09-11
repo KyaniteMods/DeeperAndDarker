@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.content.DDDataComponents;
-import com.kyanite.deeperdarker.content.datacomponents.TempleTracker;
+import com.kyanite.deeperdarker.content.data.TempleTracker;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.core.BlockPos;
