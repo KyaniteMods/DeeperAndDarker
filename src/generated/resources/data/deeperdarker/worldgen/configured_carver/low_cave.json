@@ -36,7 +36,7 @@
       "min_inclusive": 0.6
     },
     "lava_level": {
-      "above_bottom": 15
+      "above_bottom": 16
     },
     "probability": 0.3,
     "replaceable": "#deeperdarker:otherside_carver_replaceables",

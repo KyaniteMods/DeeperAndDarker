@@ -8,8 +8,8 @@ public class OthersideNoiseRouter {
     public static NoiseRouter otherside(HolderGetter<DensityFunction> density, HolderGetter<NormalNoise.NoiseParameters> noise) {
         DensityFunction shiftX = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterData.SHIFT_X));
         DensityFunction shiftZ = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterData.SHIFT_Z));
-        DensityFunction temperature = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 2.5, noise.getOrThrow(Noises.TEMPERATURE));
-        DensityFunction vegetation = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.6, noise.getOrThrow(Noises.VEGETATION));
+        DensityFunction temperature = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 2.4, noise.getOrThrow(Noises.TEMPERATURE));
+        DensityFunction vegetation = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.5, noise.getOrThrow(Noises.VEGETATION));
 
         DensityFunction finalDensity = DensityFunctions.mul(
                 DensityFunctions.constant(0.64),
