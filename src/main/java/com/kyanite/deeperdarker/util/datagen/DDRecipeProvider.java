@@ -157,9 +157,9 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         wardenSmithing(output, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS);
 
         // Create
-        wardenSmithing(output, AllItems.NETHERITE_DIVING_HELMET, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_HELMET);
-        wardenSmithing(output, AllItems.NETHERITE_DIVING_BOOTS, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_BOOTS);
-        wardenSmithing(output, AllItems.NETHERITE_BACKTANK, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_BACKTANK);
+        wardenSmithing(output, AllItems.NETHERITE_DIVING_HELMET, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_HELMET.get());
+        wardenSmithing(output, AllItems.NETHERITE_DIVING_BOOTS, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get());
+        wardenSmithing(output, AllItems.NETHERITE_BACKTANK, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_BACKTANK.get());
     }
 
     private void resonariumSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {

@@ -393,9 +393,21 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
 
         // Create
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET, "Warden Diving Helmet");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS, "Warden Diving Boots");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK, "Warden Backtank");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE, "Warden Backtank Placeable");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), "Warden Diving Helmet");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get(), "Warden Diving Boots");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.get(), "Warden Backtank");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE.get(), "Warden Backtank Placeable");
+
+        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.behaviour1", "Provides _Pressurized_ _Air_ to Equipment that requires it.");
+        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.behaviour2", "_Collects_ _Pressurized_ _Air_ at a rate depending on the Rotational Speed.");
+        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.condition1", "When Worn");
+        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.condition2", "When placed, Powered by Kinetics");
+        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.summary", "A _Wearable_ _Tank_ for carrying Pressurized Air.");
+        translationBuilder.add("item.deeperdarker.warden_diving_boots.tooltip.behaviour1", "Wielder _descends_ more _quickly_ in liquids. Grants the ability to _walk_ and _jump_ underwater. Wielder also is no longer affected by _Mechanical_ _Belts_.");
+        translationBuilder.add("item.deeperdarker.warden_diving_boots.tooltip.condition1", "When Worn");
+        translationBuilder.add("item.deeperdarker.warden_diving_boots.tooltip.summary", "A pair of _heavy_ _boots_, allowing for better traversal of the Ocean floor, including Oceans made of Lava.");
+        translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.behaviour1", "Provides immunity to _Fire_ and _Lava_, slowly draining _Air Pressure_ from the Backtank. Also grants _improved vision_ in Lava");
+        translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.condition1", "When Worn (Full set)");
+        translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.summary", "Together with a _Netherite_ or _Warden Backtank_, this can protect you from _extreme heat_. To be effective, _Legs and Feet_ have to be covered in _Netherite_ or _Warden_.");
     }
 }

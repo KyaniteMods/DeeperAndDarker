@@ -313,10 +313,10 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_CENTIPEDE_SPAWN_EGG);
 
         // Create
-        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_HELMET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_BOOTS, ModelTemplates.FLAT_ITEM);
-        registerParented(itemModelGenerator, new ResourceLocation(DeeperDarker.MOD_ID, "block/warden_backtank/item"), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK));
-        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(Items.BARRIER), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE));
+        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+        registerParented(itemModelGenerator, new ResourceLocation(DeeperDarker.MOD_ID, "block/warden_backtank/item"), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK.get()));
+        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(Items.BARRIER), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE.get()));
     }
 
     private static void createGildedLog(BlockModelGenerators blockModelGenerators, Block gildedLog, Block normalLog) {

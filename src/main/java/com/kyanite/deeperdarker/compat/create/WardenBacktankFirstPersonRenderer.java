@@ -23,7 +23,7 @@ public class WardenBacktankFirstPersonRenderer {
 
     public static void clientTick() {
         Minecraft mc = Minecraft.getInstance();
-        rendererActive = mc.player != null && mc.player.getItemBySlot(EquipmentSlot.CHEST).is(DDCreateCompat.Items.WARDEN_BACKTANK);
+        rendererActive = mc.player != null && mc.player.getItemBySlot(EquipmentSlot.CHEST).is(DDCreateCompat.Items.WARDEN_BACKTANK.get());
     }
 
     public static boolean onRenderPlayerHand(PoseStack poseStack, MultiBufferSource buffer, int packedLight, AbstractClientPlayer player, HumanoidArm arm) {
