@@ -37,7 +37,10 @@ repositories {
 
 	maven { url = "https://mvn.devos.one/releases" } // Porting Lib releases
 	maven { url = "https://mvn.devos.one/snapshots" } // Create and several dependencies
-	maven { url = "https://maven.tterrag.com/" } // Flywheel
+	maven {
+		name "createmod maven"
+		url "https://maven.createmod.net/"
+	}
 	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
 	maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
 
@@ -91,7 +94,7 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 
-	modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_fabric_version}")
+	modImplementation("com.simibubi.create:create-fabric:${create_fabric_version}")
 
 //	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
 

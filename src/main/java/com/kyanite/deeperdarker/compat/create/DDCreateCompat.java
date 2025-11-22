@@ -1,19 +1,18 @@
 package com.kyanite.deeperdarker.compat.create;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.compat.create.client.WardenBacktankInstance;
+import com.kyanite.deeperdarker.compat.create.client.DDCreatePartialModels;
 import com.kyanite.deeperdarker.compat.create.client.WardenBacktankRenderer;
-import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
-import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.simibubi.create.content.equipment.armor.*;
-import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
+import dev.engine_room.flywheel.api.visualization.VisualizationContext;
+import dev.engine_room.flywheel.lib.model.Models;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -35,7 +34,6 @@ public class DDCreateCompat {
 
         public static void init() {
             DeeperDarker.LOGGER.debug("Registering blocks (Create)");
-            BlockStressDefaults.setDefaultImpact(BuiltInRegistries.BLOCK.getKey(WARDEN_BACKTANK), 4.0);
         }
     }
 
@@ -55,10 +53,15 @@ public class DDCreateCompat {
 
         static {
             BACKTANK = REGISTRATE.blockEntity("backtank", BacktankBlockEntity::new)
-                    .instance(() -> WardenBacktankInstance::new)
+                    .visual(() -> BlockEntities::backtank)
                     .validBlock(() -> Blocks.WARDEN_BACKTANK)
                     .renderer(() -> WardenBacktankRenderer::new)
                     .register();
+        }
+
+        public static <T extends KineticBlockEntity> SingleAxisRotatingVisual<T> backtank(VisualizationContext context, T blockEntity, float partialTick) {
+            var model = Models.partial(DDCreatePartialModels.SHAFT_MODEL);
+            return new SingleAxisRotatingVisual<>(context, blockEntity, partialTick, model);
         }
 
         public static void init() {

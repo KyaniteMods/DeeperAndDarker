@@ -348,6 +348,8 @@
   "text.config.deeperdarker.option.server.sonorousStaffDamage.tooltip": "Determines the damage of the Sonorous Staff's sonic\nboom.",
   "text.config.deeperdarker.option.server.sonorousStaffKnockback": "Sonorous Staff Knockback",
   "text.config.deeperdarker.option.server.sonorousStaffKnockback.tooltip": "Determines the knockback of the Sonorous Staff's\nsonic boom applied to living entities.",
+  "text.config.deeperdarker.option.server.sonorousStaffRange": "Sonorous Staff Range",
+  "text.config.deeperdarker.option.server.sonorousStaffRange.tooltip": "Determines the range of the Sonorous Staff's sonic\nboom.",
   "text.config.deeperdarker.option.server.soulElytraBoostStrength": "Soul Elytra Boost Strength",
   "text.config.deeperdarker.option.server.soulElytraBoostStrength.tooltip": "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.",
   "text.config.deeperdarker.option.server.soulElytraCooldown": "Soul Elytra Cooldown",
