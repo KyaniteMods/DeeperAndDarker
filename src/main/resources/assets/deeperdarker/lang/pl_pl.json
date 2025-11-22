@@ -154,6 +154,13 @@
   "item.minecraft.tipped_arrow.effect.sculk_affinity": "Strzała powinowactwa sculku",
   "itemGroup.deeperdarker": "Deeper and Darker",
   "key.categories.deeperdarker": "Deeper and Darker",
+  "painting.deeperdarker.abstraction.author": "Pedro Ricardo",
+  "painting.deeperdarker.adventure.author": "Pedro Ricardo",
+  "painting.deeperdarker.carrot.author": "Pedro Ricardo",
+  "painting.deeperdarker.clouds.author": "Pedro Ricardo",
+  "painting.deeperdarker.echoer.author": "Pedro Ricardo",
+  "painting.deeperdarker.millipede.author": "Pedro Ricardo",
+  "painting.deeperdarker.ooze.author": "Pedro Ricardo",
   "subtitles.ambience.otherside_portal.groan": "Druga Strona zwiastuje",
   "subtitles.ambient.otherside.additions": "Sny nadzorcy",
   "subtitles.entity.shattered.ambient": "Ryk rozbitka",
@@ -166,5 +173,8 @@
   "subtitles.entity.stalker.ambient": "Ćwierkanie prześladowcy",
   "subtitles.entity.stalker.death": "Śmierć Prześladowcy",
   "subtitles.entity.stalker.hurt": "Prześladowca cierpi",
+  "tag.item.deeperdarker.paintings": "Obrazy",
+  "text.config.deeperdarker.option.client.paintingFix": "Napraw starożytne obrazy",
+  "text.config.deeperdarker.option.client.paintingFix.tooltip": "Naprawia desynchronizację, która występuje\npodczas umieszczania starożytnych obrazów\nw miejscach, gdzie się nie mieszczą.",
   "text.config.deeperdarker.title": "Deeper and Darker"
 }
