@@ -5,6 +5,7 @@
   "mixins": [
     "AncientPaintingMixin",
     "ContainerMenuMixin",
+    "CreateBootsLavaSwimmingMixin",
     "DampensVibrationsTooltipMixin",
     "DefaultAttributeRegistryAccessor",
     "EnrichedEchoLogBurnedMixin",
