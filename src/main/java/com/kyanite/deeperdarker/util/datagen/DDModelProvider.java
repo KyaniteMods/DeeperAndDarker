@@ -292,6 +292,22 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.WHITE_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.ORANGE_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.MAGENTA_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.LIGHT_BLUE_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.YELLOW_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.LIME_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.PINK_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.GRAY_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.LIGHT_GRAY_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.CYAN_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.PURPLE_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.BLUE_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.BROWN_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.GREEN_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.RED_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.BLACK_SCULK_TRANSMITTER);
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, List.of(Triple.of(ResourceLocation.DEFAULT_NAMESPACE + ":broken", 1, BuiltInRegistries.ITEM.getKey(DDItems.SOUL_ELYTRA).withSuffix("_broken").withPrefix("item/"))));
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SONOROUS_STAFF, List.of(
                 Triple.of(DeeperDarker.MOD_ID + ":charge", 0.001, BuiltInRegistries.ITEM.getKey(DDItems.SONOROUS_STAFF).withSuffix("_charging").withPrefix("item/")),
@@ -412,7 +428,7 @@ public class DDModelProvider extends FabricModelProvider {
     }
 
     private static void registerSculkTransmitter(ItemModelGenerators itemModelGenerator, SculkTransmitterItem item) {
-        registerGeneratedWithPredicate(itemModelGenerator, item, List.of(Triple.of(DeeperDarker.MOD_ID + ":linked", 1, BuiltInRegistries.ITEM.getKey(item).withSuffix("_on").withPrefix("item/"))));
+        registerGeneratedWithPredicate(itemModelGenerator, item, List.of(Triple.of(DeeperDarker.MOD_ID + ":linked", 1, BuiltInRegistries.ITEM.getKey(item).withSuffix("_linked").withPrefix("item/"))));
     }
 
     private static void registerSpawnEgg(ItemModelGenerators itemModelGenerator, Item item) {

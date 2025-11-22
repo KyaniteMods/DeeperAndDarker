@@ -34,7 +34,7 @@ public class Messages {
         });
         ServerPlayNetworking.registerGlobalReceiver(UseTransmitterPacket.TYPE, (packet, player, responseSender) -> {
             for(ItemStack stack : player.getInventory().items) {
-                if(stack.is(DDItems.SCULK_TRANSMITTER) && SculkTransmitterItem.isLinked(stack)) {
+                if(stack.getItem() instanceof SculkTransmitterItem && SculkTransmitterItem.isLinked(stack)) {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null);
                     break;
                 }

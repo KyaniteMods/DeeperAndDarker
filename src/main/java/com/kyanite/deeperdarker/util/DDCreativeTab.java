@@ -201,6 +201,22 @@ public class DDCreativeTab {
         entries.accept(DDItems.REINFORCED_ECHO_SHARD);
 
         entries.accept(DDItems.SCULK_TRANSMITTER);
+        entries.accept(DDItems.WHITE_SCULK_TRANSMITTER);
+        entries.accept(DDItems.ORANGE_SCULK_TRANSMITTER);
+        entries.accept(DDItems.MAGENTA_SCULK_TRANSMITTER);
+        entries.accept(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER);
+        entries.accept(DDItems.YELLOW_SCULK_TRANSMITTER);
+        entries.accept(DDItems.LIME_SCULK_TRANSMITTER);
+        entries.accept(DDItems.PINK_SCULK_TRANSMITTER);
+        entries.accept(DDItems.GRAY_SCULK_TRANSMITTER);
+        entries.accept(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER);
+        entries.accept(DDItems.CYAN_SCULK_TRANSMITTER);
+        entries.accept(DDItems.PURPLE_SCULK_TRANSMITTER);
+        entries.accept(DDItems.BLUE_SCULK_TRANSMITTER);
+        entries.accept(DDItems.BROWN_SCULK_TRANSMITTER);
+        entries.accept(DDItems.GREEN_SCULK_TRANSMITTER);
+        entries.accept(DDItems.RED_SCULK_TRANSMITTER);
+        entries.accept(DDItems.BLACK_SCULK_TRANSMITTER);
         entries.accept(DDItems.SONOROUS_STAFF);
         entries.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
 

@@ -73,6 +73,9 @@ public class DDTags {
 
         public static final TagKey<Item> RESONARIUM_ARMOR = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "resonarium_armor"));
+
+        public static final TagKey<Item> SCULK_TRANSMITTERS = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_transmitters"));
     }
 
     public static class Biomes {

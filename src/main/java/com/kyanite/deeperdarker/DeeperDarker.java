@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
+import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.fabricmc.api.ModInitializer;
@@ -60,6 +61,7 @@ public class DeeperDarker implements ModInitializer {
 		DDEffects.init();
 		AncientPaintings.init();
 		DDLootItemFunctions.init();
+		DDRecipeSerializers.init();
 		if (FabricLoader.getInstance().isModLoaded("create")) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();

@@ -19,7 +19,7 @@ public class ContainerMenuMixin {
     @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
     public void stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
         if (player.getInventory().hasAnyMatching(stack -> {
-            if (stack.isEmpty() || !stack.is(DDItems.SCULK_TRANSMITTER) || !SculkTransmitterItem.isLinked(stack)) return false;
+            if (stack.isEmpty() || !(stack.getItem() instanceof SculkTransmitterItem) || !SculkTransmitterItem.isLinked(stack)) return false;
             String block = stack.getTag().getString("block");
             GlobalPos pos = SculkTransmitterItem.readGlobalPosition(stack.getOrCreateTag()).get();
 

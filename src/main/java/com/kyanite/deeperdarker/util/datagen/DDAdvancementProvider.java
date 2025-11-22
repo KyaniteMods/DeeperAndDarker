@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructures;
@@ -107,7 +108,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         true,
                         true,
                         false
-                ).addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(DDItems.SCULK_TRANSMITTER))
+                ).addCriterion("sculk_transmitter", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(DDTags.Items.SCULK_TRANSMITTERS).build()))
                 .save(consumer, path("obtain_sculk_transmitter"));
 
         Advancement.Builder.advancement().parent(enterOtherside)
