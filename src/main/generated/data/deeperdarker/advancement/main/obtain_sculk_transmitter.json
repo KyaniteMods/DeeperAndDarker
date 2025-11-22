@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "deeperdarker:sculk_transmitter"
+            "items": "#deeperdarker:sculk_transmitters"
           }
         ]
       },

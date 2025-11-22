@@ -65,6 +65,22 @@ public class DDItems {
     public static final Item RESONARIUM_SWORD = register("resonarium_sword", new SwordItem(DDTiers.RESONARIUM, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.RESONARIUM, 3, -2.4f)).rarity(Rarity.UNCOMMON).fireResistant()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item WHITE_SCULK_TRANSMITTER = register("white_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item ORANGE_SCULK_TRANSMITTER = register("orange_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item MAGENTA_SCULK_TRANSMITTER = register("magenta_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item LIGHT_BLUE_SCULK_TRANSMITTER = register("light_blue_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item YELLOW_SCULK_TRANSMITTER = register("yellow_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item LIME_SCULK_TRANSMITTER = register("lime_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item PINK_SCULK_TRANSMITTER = register("pink_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item GRAY_SCULK_TRANSMITTER = register("gray_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item LIGHT_GRAY_SCULK_TRANSMITTER = register("light_gray_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item CYAN_SCULK_TRANSMITTER = register("cyan_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item PURPLE_SCULK_TRANSMITTER = register("purple_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item BLUE_SCULK_TRANSMITTER = register("blue_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item BROWN_SCULK_TRANSMITTER = register("brown_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item GREEN_SCULK_TRANSMITTER = register("green_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item RED_SCULK_TRANSMITTER = register("red_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item BLACK_SCULK_TRANSMITTER = register("black_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item SONOROUS_STAFF = register("sonorous_staff", new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
 
     public static final Item ANGLER_FISH_SPAWN_EGG = register("angler_fish_spawn_egg", new SpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));

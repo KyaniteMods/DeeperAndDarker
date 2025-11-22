@@ -112,6 +112,54 @@ public class DeeperDarkerClient implements ClientModInitializer {
         ItemProperties.register(DDItems.SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
             SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
+        ItemProperties.register(DDItems.WHITE_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.ORANGE_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.MAGENTA_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.YELLOW_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.LIME_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.PINK_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.GRAY_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.CYAN_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.PURPLE_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.BLUE_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.BROWN_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.GREEN_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.RED_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
+        ItemProperties.register(DDItems.BLACK_SCULK_TRANSMITTER, DeeperDarker.rl("linked"), (itemStack, worldClient, livingEntity, i) ->
+                SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
+        );
 
         ItemProperties.register(DDItems.SOUL_ELYTRA, ResourceLocation.withDefaultNamespace("broken"), (itemStack, worldClient, livingEntity, i) ->
             SoulElytraItem.isFlyEnabled(itemStack) ? 0 : 1
@@ -133,7 +181,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         ClientTickEvents.START_WORLD_TICK.register(world -> {
             Minecraft client = Minecraft.getInstance();
             if (client.player == null) return;
-            if (client.player.getInventory().hasAnyMatching(stack -> stack.is(DDItems.SCULK_TRANSMITTER)) && Keybinds.TRANSMIT.isDown()) {
+            if (client.player.getInventory().hasAnyMatching(stack -> stack.getItem() instanceof SculkTransmitterItem) && Keybinds.TRANSMIT.isDown()) {
                 ClientPlayNetworking.send(UseTransmitterPayload.INSTANCE);
             }
         });

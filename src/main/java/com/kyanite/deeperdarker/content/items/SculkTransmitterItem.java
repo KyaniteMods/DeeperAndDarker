@@ -181,24 +181,23 @@ public class SculkTransmitterItem extends Item {
 
     // TODO turn into map
     public static Item fromColor(DyeColor color) {
-        return DDItems.SCULK_TRANSMITTER;
-//        return switch (color) {
-//            case WHITE -> DDItems.WHITE_SCULK_TRANSMITTER;
-//            case ORANGE -> DDItems.ORANGE_SCULK_TRANSMITTER;
-//            case MAGENTA -> DDItems.MAGENTA_SCULK_TRANSMITTER;
-//            case LIGHT_BLUE -> DDItems.LIGHT_BLUE_SCULK_TRANSMITTER;
-//            case YELLOW -> DDItems.YELLOW_SCULK_TRANSMITTER;
-//            case LIME -> DDItems.LIME_SCULK_TRANSMITTER;
-//            case PINK -> DDItems.PINK_SCULK_TRANSMITTER;
-//            case GRAY -> DDItems.GRAY_SCULK_TRANSMITTER;
-//            case LIGHT_GRAY -> DDItems.LIGHT_GRAY_SCULK_TRANSMITTER;
-//            case CYAN -> DDItems.CYAN_SCULK_TRANSMITTER;
-//            case PURPLE -> DDItems.PURPLE_SCULK_TRANSMITTER;
-//            case BLUE -> DDItems.BLUE_SCULK_TRANSMITTER;
-//            case BROWN -> DDItems.BROWN_SCULK_TRANSMITTER;
-//            case GREEN -> DDItems.GREEN_SCULK_TRANSMITTER;
-//            case RED -> DDItems.RED_SCULK_TRANSMITTER;
-//            case BLACK -> DDItems.BLACK_SCULK_TRANSMITTER;
-//        };
+        return switch (color) {
+            case WHITE -> DDItems.WHITE_SCULK_TRANSMITTER;
+            case ORANGE -> DDItems.ORANGE_SCULK_TRANSMITTER;
+            case MAGENTA -> DDItems.MAGENTA_SCULK_TRANSMITTER;
+            case LIGHT_BLUE -> DDItems.LIGHT_BLUE_SCULK_TRANSMITTER;
+            case YELLOW -> DDItems.YELLOW_SCULK_TRANSMITTER;
+            case LIME -> DDItems.LIME_SCULK_TRANSMITTER;
+            case PINK -> DDItems.PINK_SCULK_TRANSMITTER;
+            case GRAY -> DDItems.GRAY_SCULK_TRANSMITTER;
+            case LIGHT_GRAY -> DDItems.LIGHT_GRAY_SCULK_TRANSMITTER;
+            case CYAN -> DDItems.CYAN_SCULK_TRANSMITTER;
+            case PURPLE -> DDItems.PURPLE_SCULK_TRANSMITTER;
+            case BLUE -> DDItems.BLUE_SCULK_TRANSMITTER;
+            case BROWN -> DDItems.BROWN_SCULK_TRANSMITTER;
+            case GREEN -> DDItems.GREEN_SCULK_TRANSMITTER;
+            case RED -> DDItems.RED_SCULK_TRANSMITTER;
+            case BLACK -> DDItems.BLACK_SCULK_TRANSMITTER;
+        };
     }
 }

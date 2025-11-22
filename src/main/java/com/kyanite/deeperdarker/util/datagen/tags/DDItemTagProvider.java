@@ -101,6 +101,25 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);
         add(DDTags.Items.SCUTES, Items.TURTLE_SCUTE, Items.ARMADILLO_SCUTE);
         add(DDTags.Items.PAINTINGS, Items.PAINTING);
+        add(DDTags.Items.SCULK_TRANSMITTERS,
+                DDItems.SCULK_TRANSMITTER,
+                DDItems.WHITE_SCULK_TRANSMITTER,
+                DDItems.ORANGE_SCULK_TRANSMITTER,
+                DDItems.MAGENTA_SCULK_TRANSMITTER,
+                DDItems.LIGHT_BLUE_SCULK_TRANSMITTER,
+                DDItems.YELLOW_SCULK_TRANSMITTER,
+                DDItems.LIME_SCULK_TRANSMITTER,
+                DDItems.PINK_SCULK_TRANSMITTER,
+                DDItems.GRAY_SCULK_TRANSMITTER,
+                DDItems.LIGHT_GRAY_SCULK_TRANSMITTER,
+                DDItems.CYAN_SCULK_TRANSMITTER,
+                DDItems.PURPLE_SCULK_TRANSMITTER,
+                DDItems.BLUE_SCULK_TRANSMITTER,
+                DDItems.BROWN_SCULK_TRANSMITTER,
+                DDItems.GREEN_SCULK_TRANSMITTER,
+                DDItems.RED_SCULK_TRANSMITTER,
+                DDItems.BLACK_SCULK_TRANSMITTER
+        );
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
 
