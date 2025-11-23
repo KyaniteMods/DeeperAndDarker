@@ -162,6 +162,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
 
         add(DDBlocks.GLOOMY_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
+        add(DDBlocks.GLOWING_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
         dropSelf(DDBlocks.GLOOMY_CACTUS);
         dropWhenSilkTouch(DDBlocks.GLOOMY_GEYSER);
         addVineAndPlant(DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_TENDRILS);
@@ -171,6 +172,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.ICE_LILY);
         add(DDBlocks.ICE_LILY, this::iceLilyDrop);
         dropSelf(DDBlocks.LILY_FLOWER);
+        dropSelf(DDBlocks.GLOWING_FLOWERS);
         dropSelf(DDBlocks.SHATTERED_HEAD);
 
         ancientVaseDrop();
