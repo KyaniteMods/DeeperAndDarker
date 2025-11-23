@@ -20,6 +20,7 @@
     "ResonariumDamageReductionMixin",
     "SlotMixin",
     "StripBloomingStemMixin",
+    "TomsStorageCompatMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],

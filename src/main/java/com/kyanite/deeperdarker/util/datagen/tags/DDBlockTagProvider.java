@@ -133,7 +133,9 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .addOptional(new ResourceLocation("ironchest", "crystal_chest"))
                 .addOptional(new ResourceLocation("ironchest", "obsidian_chest"))
                 .addOptional(new ResourceLocation("ironchest", "netherite_chest"))
-                .addOptional(new ResourceLocation("ironchest", "christmas_chest"));
+                .addOptional(new ResourceLocation("ironchest", "christmas_chest"))
+                .addOptional(new ResourceLocation("toms_storage", "ts.storage_terminal"))
+                .addOptional(new ResourceLocation("toms_storage", "ts.crafting_terminal"));
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
         tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS);

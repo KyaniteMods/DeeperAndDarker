@@ -53,6 +53,17 @@ repositories {
 	maven { url = "https://maven.blamejared.com" } // JEI
 
 	maven { url = "https://maven.terraformersmc.com/releases" } // Mod Menu, EMI
+
+	exclusiveContent {
+		forRepository {
+			maven {
+				url "https://cursemaven.com"
+			}
+		}
+		filter {
+			includeGroup "curse.maven"
+		}
+	}
 }
 
 loom {
@@ -95,6 +106,8 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 
 	modImplementation("com.simibubi.create:create-fabric:${create_fabric_version}")
+
+	modCompileOnly "curse.maven:toms-storage-fabric-396826:6418134" // Tom's Simple Storage
 
 //	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
 
