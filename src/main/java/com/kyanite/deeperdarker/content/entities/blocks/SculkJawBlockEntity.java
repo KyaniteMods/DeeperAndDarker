@@ -39,6 +39,7 @@ public class SculkJawBlockEntity extends BlockEntity {
     }
 
     public void stealExperienceFromPlayer(Player player, int amount) {
+        amount = Math.min(player.totalExperience, amount);
         player.giveExperiencePoints(-amount);
         this.addExperience(amount);
     }
