@@ -18,18 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ContainerMenuMixin {
     @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
     public void stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
-        if (player.getInventory().hasAnyMatching(stack -> {
-            if (stack.isEmpty() || !(stack.getItem() instanceof SculkTransmitterItem) || !SculkTransmitterItem.isLinked(stack)) return false;
-            String block = stack.getTag().getString("block");
-            GlobalPos pos = SculkTransmitterItem.readGlobalPosition(stack.getOrCreateTag()).get();
-
-            if (!player.level().isClientSide() && player.getServer().getLevel(pos.dimension()).getBlockState(pos.pos()).getBlock().getDescriptionId().equals(block)) {
-                ChunkPos chunkPos = new ChunkPos(pos.pos());
-                player.getServer().getLevel(pos.dimension()).getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
-                return true;
-            }
-            return false;
-        })) {
+        if (player.level() instanceof ServerLevel serverLevel && SculkTransmitterItem.stillValid(player, serverLevel, null)) {
             cir.setReturnValue(true);
             cir.cancel();
         }

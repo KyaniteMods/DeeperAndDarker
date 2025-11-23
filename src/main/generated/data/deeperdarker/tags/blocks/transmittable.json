@@ -9,6 +9,18 @@
       "id": "#minecraft:anvil",
       "required": false
     },
+    {
+      "id": "#c:chests",
+      "required": false
+    },
+    {
+      "id": "#c:shulker_boxes",
+      "required": false
+    },
+    {
+      "id": "#c:wooden_barrels",
+      "required": false
+    },
     "minecraft:crafting_table",
     "minecraft:stonecutter",
     "minecraft:cartography_table",
@@ -27,6 +39,42 @@
     "minecraft:dispenser",
     "minecraft:dropper",
     "minecraft:hopper",
-    "minecraft:trapped_chest"
+    "minecraft:trapped_chest",
+    {
+      "id": "ironchest:copper_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:iron_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:gold_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:diamond_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:emerald_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:crystal_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:obsidian_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:netherite_chest",
+      "required": false
+    },
+    {
+      "id": "ironchest:christmas_chest",
+      "required": false
+    }
   ]
 }

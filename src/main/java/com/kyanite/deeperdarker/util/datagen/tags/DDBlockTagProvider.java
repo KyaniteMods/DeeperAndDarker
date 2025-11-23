@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -123,7 +124,16 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.SCULK_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.ECHO_LEAVES);
         tagBuilder(DDTags.Blocks.GLOWING_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE);
 
-        tagBuilder(DDTags.Blocks.TRANSMITTABLE).addOptionalTag(BlockTags.SHULKER_BOXES).addOptionalTag(BlockTags.ANVIL).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST);
+        tagBuilder(DDTags.Blocks.TRANSMITTABLE).addOptionalTag(BlockTags.SHULKER_BOXES).addOptionalTag(BlockTags.ANVIL).addOptionalTag(ConventionalBlockTags.CHESTS).addOptionalTag(ConventionalBlockTags.SHULKER_BOXES).addOptionalTag(ConventionalBlockTags.WOODEN_BARRELS).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST)
+                .addOptional(new ResourceLocation("ironchest", "copper_chest"))
+                .addOptional(new ResourceLocation("ironchest", "iron_chest"))
+                .addOptional(new ResourceLocation("ironchest", "gold_chest"))
+                .addOptional(new ResourceLocation("ironchest", "diamond_chest"))
+                .addOptional(new ResourceLocation("ironchest", "emerald_chest"))
+                .addOptional(new ResourceLocation("ironchest", "crystal_chest"))
+                .addOptional(new ResourceLocation("ironchest", "obsidian_chest"))
+                .addOptional(new ResourceLocation("ironchest", "netherite_chest"))
+                .addOptional(new ResourceLocation("ironchest", "christmas_chest"));
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
         tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS);

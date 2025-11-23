@@ -7,21 +7,26 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ChunkLevel;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.ContainerListener;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
@@ -30,6 +35,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -49,32 +55,32 @@ public class SculkTransmitterItem extends Item {
         ItemStack stack = pContext.getItemInHand();
         BlockPos clickedPos = pContext.getClickedPos();
 
-        if(isLinked(stack)) return transmit(level, player, stack, clickedPos);
+        if(isLinked(stack)) return transmit(level, player, stack, clickedPos, pContext.getHand());
         if(!canConnect(level, clickedPos)) {
-            actionBarMessage(player, "not_transmittable", DDSounds.TRANSMITTER_ERROR);
+            actionBarMessage(level, player, "not_transmittable", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
         }
 
-        actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
+        actionBarMessage(level, player, "linked", DDSounds.TRANSMITTER_LINK);
         formConnection(level, stack, clickedPos);
         return InteractionResult.SUCCESS;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(isLinked(pPlayer.getItemInHand(pUsedHand))) transmit(pLevel, pPlayer, pPlayer.getItemInHand(pUsedHand), null);
+        if(isLinked(pPlayer.getItemInHand(pUsedHand))) transmit(pLevel, pPlayer, pPlayer.getItemInHand(pUsedHand), null, pUsedHand);
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
-    public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos) {
+    public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos, @Nullable InteractionHand pUsedHand) {
         if(player.isCrouching()) {
-            if(clickedPos != null && canConnect(level, clickedPos)) {
-                actionBarMessage(player, "linked", DDSounds.TRANSMITTER_LINK);
+            if(canConnect(level, clickedPos)) {
+                actionBarMessage(level, player, "linked", DDSounds.TRANSMITTER_LINK);
                 formConnection(level, transmitter, clickedPos);
                 return InteractionResult.sidedSuccess(false);
             }
 
-            actionBarMessage(player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
+            actionBarMessage(level, player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
             formConnection(level, transmitter, null);
             return InteractionResult.FAIL;
         }
@@ -92,7 +98,7 @@ public class SculkTransmitterItem extends Item {
         }
 
         if(!canConnect(serverLevel, linkedPos)) {
-            actionBarMessage(player, "not_found", DDSounds.TRANSMITTER_ERROR);
+            actionBarMessage(level, player, "not_found", DDSounds.TRANSMITTER_ERROR);
             formConnection(serverLevel, transmitter, null);
             return InteractionResult.FAIL;
         }
@@ -100,10 +106,16 @@ public class SculkTransmitterItem extends Item {
         serverLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
 
         MenuProvider menu = serverLevel.getBlockState(linkedPos).getMenuProvider(serverLevel, linkedPos);
-        if(menu != null && !serverLevel.isClientSide()) {
-            player.playSound(DDSounds.TRANSMITTER_OPEN, 1, 1);
-            if(player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
-            if(level.getBlockEntity(linkedPos) instanceof Container container) container.startOpen(player);
+        if(menu != null) {
+            if (!serverLevel.isClientSide()) {
+                if(player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
+                if(level.getBlockEntity(linkedPos) instanceof Container container) container.startOpen(player);
+            }
+        } else {
+            serverLevel.getBlockState(linkedPos).use(serverLevel, player, pUsedHand == null ? InteractionHand.MAIN_HAND : pUsedHand, new BlockHitResult(linkedPos.getCenter(), Direction.SOUTH, linkedPos, false));
+        }
+        if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.connection.send(new ClientboundSoundPacket(new Holder.Direct<>(DDSounds.TRANSMITTER_OPEN), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0f, 1.0f, level.getRandom().nextLong()));
         }
 
         return InteractionResult.sidedSuccess(false);
@@ -153,9 +165,12 @@ public class SculkTransmitterItem extends Item {
         tag.remove("dimension");
     }
 
-    public static void actionBarMessage(Player player, String key, SoundEvent sound) {
+    public static void actionBarMessage(Level level, Player player, String key, SoundEvent sound) {
+        if (level.isClientSide()) return;
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
-        player.playSound(sound);
+        if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.connection.send(new ClientboundSoundPacket(new Holder.Direct<>(sound), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0f, 1.0f, level.getRandom().nextLong()));
+        }
     }
 
     @Override
@@ -171,6 +186,30 @@ public class SculkTransmitterItem extends Item {
         else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    public static boolean stillValid(Player player, ServerLevel level, BlockPos pos) {
+        if (pos == null) return false;
+        return player.getInventory().hasAnyMatching(stack -> {
+            if (stack.isEmpty() || !(stack.getItem() instanceof SculkTransmitterItem) || !SculkTransmitterItem.isLinked(stack)) return false;
+            String block = stack.getTag().getString("block");
+            GlobalPos globalPos = SculkTransmitterItem.readGlobalPosition(stack.getOrCreateTag()).get();
+
+            // position needs to be checked roughly due to double chests and other large containers, but is still checked for security.
+            if (level.dimension().equals(globalPos.dimension()) && globalPos.pos().distSqr(pos) < 64.0 && level.getBlockState(globalPos.pos()).getBlock().getDescriptionId().equals(block)) {
+                ChunkPos chunkPos = new ChunkPos(globalPos.pos());
+                level.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    public static boolean stillValid(final Player player, ContainerLevelAccess containerLevelAccess) {
+        return containerLevelAccess.evaluate((level, pos) -> {
+            if (!(level instanceof ServerLevel serverLevel)) return false;
+            return stillValid(player, serverLevel, pos);
+        }, true);
     }
 
     // TODO turn into map
