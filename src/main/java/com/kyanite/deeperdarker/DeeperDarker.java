@@ -43,7 +43,7 @@ public class DeeperDarker implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = new ResourceLocation(MOD_ID, "otherside");
 
-	public static final boolean SHOW_ME_YOUR_SKIN = FabricLoader.getInstance().isModLoaded("showmeyourskin");
+	public static boolean SHOW_ME_YOUR_SKIN = false;
 
 	public static final DDConfig CONFIG = DDConfig.createAndLoad();
 
@@ -62,9 +62,13 @@ public class DeeperDarker implements ModInitializer {
 		AncientPaintings.init();
 		DDLootItemFunctions.init();
 		DDRecipeSerializers.init();
-		if (FabricLoader.getInstance().isModLoaded("create")) {
+		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();
+		}
+
+		if (FabricLoader.getInstance().isModLoaded("showmeyourskin") && CONFIG.server.showMeYourSkinCompatibility()) {
+			SHOW_ME_YOUR_SKIN = true;
 		}
 
 		CustomPortalBuilder.beginPortal()

@@ -64,6 +64,14 @@ public class DDConfigModel {
 
         @RangeConstraint(min = -1.0, max = 32.0)
         public int snapperDropLimit = 8;
+
+        @RestartRequired
+        @ExcludeFromScreen
+        public boolean createCompatibility = true;
+
+        @RestartRequired
+        @ExcludeFromScreen
+        public boolean showMeYourSkinCompatibility = true;
     }
 
     @Nest

@@ -75,7 +75,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.CRYSTALLIZED_AMBER, CrystallizedAmberBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SKULL, SkullBlockRenderer::new);
 
-        if (FabricLoader.getInstance().isModLoaded("create")) {
+        if (FabricLoader.getInstance().isModLoaded("create") && DeeperDarker.CONFIG.server.createCompatibility()) {
             DDCreateCompatClient.init();
         }
 
