@@ -22,6 +22,7 @@
     "StripBloomingStemMixin",
     "TomsStorageCompatMixin",
     "VibrationListenerMixin",
+    "ViewerCounterMixin",
     "WardenMixin"
   ],
   "client": [

@@ -105,15 +105,7 @@ public class SculkTransmitterItem extends Item {
 
         serverLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
 
-        MenuProvider menu = serverLevel.getBlockState(linkedPos).getMenuProvider(serverLevel, linkedPos);
-        if(menu != null) {
-            if (!serverLevel.isClientSide()) {
-                if(player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
-                if(level.getBlockEntity(linkedPos) instanceof Container container) container.startOpen(player);
-            }
-        } else {
-            serverLevel.getBlockState(linkedPos).use(serverLevel, player, pUsedHand == null ? InteractionHand.MAIN_HAND : pUsedHand, new BlockHitResult(linkedPos.getCenter(), Direction.SOUTH, linkedPos, false));
-        }
+        serverLevel.getBlockState(linkedPos).use(serverLevel, player, pUsedHand == null ? InteractionHand.MAIN_HAND : pUsedHand, new BlockHitResult(linkedPos.getCenter(), Direction.SOUTH, linkedPos, false));
         if (player instanceof ServerPlayer serverPlayer) {
             serverPlayer.connection.send(new ClientboundSoundPacket(new Holder.Direct<>(DDSounds.TRANSMITTER_OPEN), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0f, 1.0f, level.getRandom().nextLong()));
         }
