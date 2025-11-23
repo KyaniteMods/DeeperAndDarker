@@ -188,15 +188,15 @@ public class SculkTransmitterItem extends Item {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
-    public static boolean stillValid(Player player, ServerLevel level, BlockPos pos) {
-        if (pos == null) return false;
+    public static boolean stillValid(Player player, ServerLevel level, @Nullable BlockPos pos) {
         return player.getInventory().hasAnyMatching(stack -> {
             if (stack.isEmpty() || !(stack.getItem() instanceof SculkTransmitterItem) || !SculkTransmitterItem.isLinked(stack)) return false;
             String block = stack.getTag().getString("block");
             GlobalPos globalPos = SculkTransmitterItem.readGlobalPosition(stack.getOrCreateTag()).get();
 
             // position needs to be checked roughly due to double chests and other large containers, but is still checked for security.
-            if (level.dimension().equals(globalPos.dimension()) && globalPos.pos().distSqr(pos) < 64.0 && level.getBlockState(globalPos.pos()).getBlock().getDescriptionId().equals(block)) {
+            // pos is null for anvils and smithing tables for technical reasons, we can't check that
+            if (level.dimension().equals(globalPos.dimension()) && (pos == null || globalPos.pos().distSqr(pos) < 64.0) && level.getBlockState(globalPos.pos()).getBlock().getDescriptionId().equals(block)) {
                 ChunkPos chunkPos = new ChunkPos(globalPos.pos());
                 level.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
                 return true;
