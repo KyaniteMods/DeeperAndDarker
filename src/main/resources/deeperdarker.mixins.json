@@ -18,6 +18,7 @@
     "PaintingItemMixin",
     "ResonariumDamageReductionMixin",
     "StripBloomingStemMixin",
+    "TomsStorageCompatMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],
