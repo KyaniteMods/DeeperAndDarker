@@ -308,6 +308,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.GREEN_SCULK_TRANSMITTER);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.RED_SCULK_TRANSMITTER);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.BLACK_SCULK_TRANSMITTER);
+        registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SUPER_SCULK_TRANSMITTER);
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SOUL_ELYTRA, List.of(Triple.of(ResourceLocation.DEFAULT_NAMESPACE + ":broken", 1, BuiltInRegistries.ITEM.getKey(DDItems.SOUL_ELYTRA).withSuffix("_broken").withPrefix("item/"))));
         registerGeneratedWithPredicate(itemModelGenerator, DDItems.SONOROUS_STAFF, List.of(
                 Triple.of(DeeperDarker.MOD_ID + ":charge", 0.001, BuiltInRegistries.ITEM.getKey(DDItems.SONOROUS_STAFF).withSuffix("_charging").withPrefix("item/")),

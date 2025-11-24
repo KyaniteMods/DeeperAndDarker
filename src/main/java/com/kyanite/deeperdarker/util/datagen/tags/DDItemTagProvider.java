@@ -110,7 +110,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 DDItems.BROWN_SCULK_TRANSMITTER,
                 DDItems.GREEN_SCULK_TRANSMITTER,
                 DDItems.RED_SCULK_TRANSMITTER,
-                DDItems.BLACK_SCULK_TRANSMITTER
+                DDItems.BLACK_SCULK_TRANSMITTER,
+                DDItems.SUPER_SCULK_TRANSMITTER
         );
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
