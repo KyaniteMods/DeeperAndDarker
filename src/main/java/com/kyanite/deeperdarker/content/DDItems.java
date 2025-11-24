@@ -81,6 +81,7 @@ public class DDItems {
     public static final Item GREEN_SCULK_TRANSMITTER = register("green_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item RED_SCULK_TRANSMITTER = register("red_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item BLACK_SCULK_TRANSMITTER = register("black_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final Item SUPER_SCULK_TRANSMITTER = register("super_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final Item SONOROUS_STAFF = register("sonorous_staff", new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
 
     public static final Item ANGLER_FISH_SPAWN_EGG = register("angler_fish_spawn_egg", new SpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));
