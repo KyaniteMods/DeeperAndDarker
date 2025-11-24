@@ -124,7 +124,34 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.SCULK_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.ECHO_LEAVES);
         tagBuilder(DDTags.Blocks.GLOWING_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE);
 
-        tagBuilder(DDTags.Blocks.TRANSMITTABLE).addOptionalTag(BlockTags.SHULKER_BOXES).addOptionalTag(BlockTags.ANVIL).addOptionalTag(ConventionalBlockTags.CHESTS).addOptionalTag(ConventionalBlockTags.SHULKER_BOXES).addOptionalTag(ConventionalBlockTags.WOODEN_BARRELS).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST)
+        tagBuilder(DDTags.Blocks.TRANSMITTABLE)
+                .addOptionalTag(BlockTags.SHULKER_BOXES)
+                .addOptionalTag(BlockTags.ANVIL)
+                .addOptionalTag(ConventionalBlockTags.CHESTS)
+                .addOptionalTag(ConventionalBlockTags.SHULKER_BOXES)
+                .addOptionalTag(ConventionalBlockTags.WOODEN_BARRELS)
+                .add(
+                        Blocks.CRAFTING_TABLE,
+                        Blocks.STONECUTTER,
+                        Blocks.CARTOGRAPHY_TABLE,
+                        Blocks.SMITHING_TABLE,
+                        Blocks.GRINDSTONE,
+                        Blocks.LOOM,
+                        Blocks.FURNACE,
+                        Blocks.SMOKER,
+                        Blocks.BLAST_FURNACE,
+                        Blocks.CHIPPED_ANVIL,
+                        Blocks.ENCHANTING_TABLE,
+                        Blocks.BREWING_STAND,
+                        Blocks.BEACON,
+                        Blocks.CHEST,
+                        Blocks.BARREL,
+                        Blocks.DISPENSER,
+                        Blocks.DROPPER,
+                        Blocks.HOPPER,
+                        Blocks.TRAPPED_CHEST,
+                        Blocks.DRAGON_EGG
+                )
                 .addOptional(new ResourceLocation("ironchest", "copper_chest"))
                 .addOptional(new ResourceLocation("ironchest", "iron_chest"))
                 .addOptional(new ResourceLocation("ironchest", "gold_chest"))
