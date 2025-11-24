@@ -127,8 +127,8 @@ public class SculkTransmitterItem extends Item {
         return level.getBlockState(target).is(DDTags.Blocks.TRANSMITTABLE);
     }
 
-    public static void formConnection(Level level, ItemStack stack, BlockPos pos) {
-        Transmitter transmitter = new Transmitter(Optional.ofNullable(pos == null ? null : GlobalPos.of(level.dimension(), pos)), level.getBlockState(pos).getBlock().getDescriptionId());
+    public static void formConnection(Level level, ItemStack stack, @Nullable BlockPos pos) {
+        Transmitter transmitter = pos == null ? Transmitter.empty() : new Transmitter(Optional.ofNullable(GlobalPos.of(level.dimension(), pos)), level.getBlockState(pos).getBlock().getDescriptionId());
         stack.set(DDDataComponents.TRANSMITTER, transmitter);
     }
 
