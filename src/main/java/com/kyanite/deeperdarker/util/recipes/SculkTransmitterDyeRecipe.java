@@ -33,7 +33,7 @@ public class SculkTransmitterDyeRecipe extends CustomRecipe {
                 dyeStack = stack;
             }
         }
-        return transmitterStack != null && dyeStack != null;
+        return transmitterStack != null && dyeStack != null && SculkTransmitterItem.fromColor(((DyeItem) dyeStack.getItem()).getDyeColor()) != transmitterStack.getItem();
     }
 
     @Override
