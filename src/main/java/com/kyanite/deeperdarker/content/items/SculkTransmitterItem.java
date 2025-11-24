@@ -72,12 +72,12 @@ public class SculkTransmitterItem extends Item {
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
-    public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, BlockPos clickedPos, @Nullable InteractionHand pUsedHand) {
+    public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, @Nullable BlockPos clickedPos, @Nullable InteractionHand pUsedHand) {
         if(player.isCrouching()) {
-            if(canConnect(level, clickedPos)) {
+            if(clickedPos != null && canConnect(level, clickedPos)) {
                 actionBarMessage(level, player, "linked", DDSounds.TRANSMITTER_LINK);
                 formConnection(level, transmitter, clickedPos);
-                return InteractionResult.sidedSuccess(false);
+                return InteractionResult.SUCCESS;
             }
 
             actionBarMessage(level, player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
