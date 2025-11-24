@@ -5,6 +5,7 @@
   "mixins": [
     "AbstractContainerMenuMixin",
     "AncientPaintingMixin",
+    "BedTransmitterMixin",
     "ContainerMenuMixin",
     "ContainerMixin",
     "CreateBootsLavaSwimmingMixin",
