@@ -3,8 +3,11 @@
   "package": "com.kyanite.deeperdarker.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AbstractContainerMenuMixin",
     "AncientPaintingMixin",
+    "BedTransmitterMixin",
     "ContainerMenuMixin",
+    "ContainerMixin",
     "DampensVibrationsTooltipMixin",
     "DefaultAttributeRegistryAccessor",
     "EnrichedEchoLogBurnedMixin",
