@@ -82,7 +82,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         if (centerSide == 0) {
             end = new int[]{width - 2, height - 2, depth - 1};
         } else {
-            end = new int[]{width / 2 - 1, height - 2, (depth - centerSide) / 2};
+            end = new int[]{width / 2 + ((width - 1) % 4 != 0 ? 0 : -1), height - 2, (depth - centerSide) / 2};
         }
 
         for (int x = 0; x < width; x++) {
