@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/honey_block",
-  "textures": {
-    "down": "deeperdarker:block/crystallized_amber_outer",
-    "particle": "deeperdarker:block/crystallized_amber_inner",
-    "side": "deeperdarker:block/crystallized_amber_inner",
-    "up": "deeperdarker:block/crystallized_amber_inner"
-  }
-}

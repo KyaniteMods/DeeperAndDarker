@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "deeperdarker:block/cobbled_gloomslate",
-    "side": "deeperdarker:block/cobbled_gloomslate",
-    "top": "deeperdarker:block/cobbled_gloomslate"
-  }
-}
