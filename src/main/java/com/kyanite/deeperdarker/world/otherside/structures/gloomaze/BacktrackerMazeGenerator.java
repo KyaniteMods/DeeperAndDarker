@@ -107,12 +107,12 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             int cz = cPos[2];
 
             float[] weights = {
-                    (1 - (float)cy / height + 0.1f)/1.1f,  // weight for up
-                    ((float)cy / height + 0.1f)/1.1f,  // weight for down
-                    (1 - (float)cx / width + 0.1f)/1.1f,  // weight for west
-                    ((float)cx / width + 0.1f)/1.1f,   // weight for east
-                    (1 - (float)cz / depth + 0.1f)/1.1f,  // weight for south
-                    ((float)cz / depth + 0.1f)/1.1f   // weight for north
+                    0.25f,  // weight for up
+                    0.25f,  // weight for down
+                    1.0f,  // weight for west
+                    1.0f,   // weight for east
+                    1.0f,  // weight for south
+                    1.0f   // weight for north
             };
 
             int[][] ordered = weightedOrder(random, directions, weights);
