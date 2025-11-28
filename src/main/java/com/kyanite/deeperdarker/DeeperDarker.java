@@ -11,7 +11,13 @@ import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.BacktrackerMazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.MazeGenerator;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableSource;
@@ -21,12 +27,14 @@ import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
+import net.minecraft.commands.Commands;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -111,5 +119,53 @@ public class DeeperDarker implements ModInitializer {
 		});
 
 		Messages.registerReceivers();
+
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+			dispatcher.register(Commands.literal("maze")
+					.requires(c -> c.hasPermission(2))
+					.then(Commands.argument("width", IntegerArgumentType.integer())
+							.then(Commands.argument("height", IntegerArgumentType.integer())
+									.then(Commands.argument("depth", IntegerArgumentType.integer())
+											.then(Commands.argument("centerSide", IntegerArgumentType.integer())
+											.executes(c -> {
+												int width = c.getArgument("width", Integer.class);
+												int height = c.getArgument("height", Integer.class);
+												int depth = c.getArgument("depth", Integer.class);
+												int centerSide = c.getArgument("centerSide", Integer.class);
+												int wallSize = 3;
+
+												try {
+													BacktrackerMazeGenerator mazeGenerator = new BacktrackerMazeGenerator(width, height, depth, centerSide);
+
+													MazeGenerator.TileType[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
+
+													for (int x = 0; x < width; x++) {
+														for (int y = 0; y < height; y++) {
+															for (int z = 0; z < depth; z++) {
+																MazeGenerator.TileType tileType = arr[x][y][z];
+																BlockState blockState = switch (tileType) {
+																	case PATH -> Blocks.AIR.defaultBlockState();
+																	case WALL -> DDBlocks.GLOOMSLATE.defaultBlockState();
+																	case ENDPOINT -> Blocks.AIR.defaultBlockState();
+																	case DEBUG -> Blocks.RED_STAINED_GLASS.defaultBlockState();
+																};
+
+																for (int dx = x * wallSize; dx < x * wallSize + wallSize; dx++) {
+																	for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
+																		for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
+																			c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), blockState, 2);
+																		}
+																	}
+																}
+															}
+														}
+													}
+												} catch (Exception e) {
+													System.out.println(e.getMessage());
+												}
+
+												return Command.SINGLE_SUCCESS;
+											}))))));
+		});
 	}
 }
