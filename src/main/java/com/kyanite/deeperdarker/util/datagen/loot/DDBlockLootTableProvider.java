@@ -104,6 +104,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
         add(DDBlocks.SCULK_GRIME_BRICK_SLAB, this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL);
+        dropWhenSilkTouch(DDBlocks.SCULK_GRIME_GLASS);
+        dropWhenSilkTouch(DDBlocks.SCULK_GRIME_GLASS_PANE);
 
         add(DDBlocks.BLOOMING_SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.BLOOMING_MOSS_BLOCK);

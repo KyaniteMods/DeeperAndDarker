@@ -101,7 +101,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
         tagBuilder(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS);
+        tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS, DDBlocks.SCULK_GRIME_GLASS);
         tagBuilder(BlockTags.SNAPS_GOAT_HORN).add(DDBlocks.ECHO_LOG);
 
         tagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, Blocks.SCULK);
@@ -165,6 +165,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .addOptional(new ResourceLocation("toms_storage", "ts.crafting_terminal"));
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
-        tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS);
+        tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS, DDBlocks.SCULK_GRIME_GLASS);
+        tagBuilder(ConventionalBlockTags.GLASS_PANES).add(DDBlocks.SCULK_GRIME_GLASS_PANE);
     }
 }

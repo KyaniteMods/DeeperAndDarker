@@ -70,7 +70,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.CRYSTALLIZED_AMBER,
                 DDBlocks.SOUNDPROOF_GLASS,
                 DDBlocks.GLOOMSLATE_BARRIER,
-                DDBlocks.DARK_GLASS);
+                DDBlocks.DARK_GLASS,
+                DDBlocks.SCULK_GRIME_GLASS,
+                DDBlocks.SCULK_GRIME_GLASS_PANE);
 
         BlockEntityRenderers.register(DDBlockEntities.HANGING_SIGN, HangingSignRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SIGN, SignRenderer::new);

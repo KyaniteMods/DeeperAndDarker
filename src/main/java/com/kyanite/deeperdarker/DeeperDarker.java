@@ -153,7 +153,17 @@ public class DeeperDarker implements ModInitializer {
 																for (int dx = x * wallSize; dx < x * wallSize + wallSize; dx++) {
 																	for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
 																		for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
-																			c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), blockState, 2);
+																			if (tileType == MazeGenerator.TileType.WALL) {
+																				if ((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0)
+																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 2);
+																				else if ((dx - x * wallSize) == 1 && (dy - y * wallSize) == 1 && (dz - z * wallSize) == 1)
+																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GLEAM.defaultBlockState(), 2);
+																				else if (((dx - x * wallSize) + (dy - y * wallSize) + (dz - z * wallSize)) % 2 == 1)
+																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), 2);
+																				else
+																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.DARK_GLASS.defaultBlockState(), 2);
+																			} else
+																				c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), blockState, 2);
 																		}
 																	}
 																}

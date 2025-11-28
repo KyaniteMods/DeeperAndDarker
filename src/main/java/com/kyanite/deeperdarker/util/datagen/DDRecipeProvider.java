@@ -60,6 +60,13 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME, DDItems.GRIME_BALL);
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS, DDItems.GRIME_BRICK);
         registerChildStoneRecipes(output, DDBlocks.SCULK_GRIME, DDBlocks.SCULK_GRIME_BRICKS, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICK_WALL);
+        smeltingResultFromBase(output, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.SCULK_GRIME);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, DDBlocks.SCULK_GRIME_GLASS_PANE, 16)
+                .define('#', DDBlocks.SCULK_GRIME_GLASS)
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_sculk_grime_glass", RecipeProvider.has(DDBlocks.SCULK_GRIME_GLASS))
+                .save(output);
 
         // Gloomslate
         registerStairsSlabsAndWalls(output, DDBlocks.GLOOMSLATE, DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE_SLAB, DDBlocks.GLOOMSLATE_WALL);
