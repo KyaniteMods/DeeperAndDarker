@@ -248,6 +248,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_transmittable", "Cannot link to block");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".not_found", "The linked block is missing or unloaded");
+        translationBuilder.add(DDItems.SCULK_TRANSMITTER.getDescriptionId() + ".unlink_confirm", "Press %s again to unlink");
+        translationBuilder.add(DDItems.SCULK_TRANSMITTER.getDescriptionId() + ".link_confirm", "Press %s again to link");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", "Linked to %1$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", "Located at %1$s, %2$s, %3$s");
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location_advanced", "Dimension: %s");
@@ -343,6 +345,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config.deeperdarker.option.client.changePhantomTextures.tooltip", "Determines if Phantoms should have a\ndifferent texture in the Deeplands.");
         translationBuilder.add("text.config.deeperdarker.option.client.paintingFix", "Fix Ancient Paintings");
         translationBuilder.add("text.config.deeperdarker.option.client.paintingFix.tooltip", "Fixes desync that happens upon placing ancient\npaintings in places where they do not fit.");
+        translationBuilder.add("text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds", "Sculk Transmitter Cooldown");
+        translationBuilder.add("text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds.tooltip", "Measured in seconds. The cooldown to unlink or\nlink an already linked Sculk Transmitter.");
         translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance", "Ancient Vase Mob Spawn Chance");
         translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance.tooltip", "Defines the chance of a mob (Stalker or\nSculk Leech) spawning from an Ancient Vase.");
         translationBuilder.add("text.config.deeperdarker.option.server.sculkLeechesFromAncientVaseChance", "Sculk Leech Spawn Chance");

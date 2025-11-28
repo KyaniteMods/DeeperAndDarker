@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.network;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.ChatFormatting;
@@ -38,6 +39,20 @@ public class Messages {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null, null);
                     break;
                 }
+            }
+        });
+        ServerPlayNetworking.registerGlobalReceiver(UnlinkTransmitterPacket.TYPE, (packet, player, responseSender) -> {
+            ItemStack stack = player.getInventory().getItem(packet.slot());
+            if (stack.getItem() instanceof SculkTransmitterItem) {
+                SculkTransmitterItem.actionBarMessage(player.level(), player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
+                SculkTransmitterItem.formConnection(player.level(), stack, null);
+            }
+        });
+        ServerPlayNetworking.registerGlobalReceiver(LinkTransmitterPacket.TYPE, (packet, player, responseSender) -> {
+            ItemStack stack = player.getInventory().getItem(packet.slot());
+            if (stack.getItem() instanceof SculkTransmitterItem) {
+                SculkTransmitterItem.actionBarMessage(player.level(), player, "linked", DDSounds.TRANSMITTER_LINK);
+                SculkTransmitterItem.formConnection(player.level(), stack, packet.blockPos());
             }
         });
     }
