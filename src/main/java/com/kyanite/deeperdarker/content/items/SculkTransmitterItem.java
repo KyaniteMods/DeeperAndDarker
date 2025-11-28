@@ -5,8 +5,13 @@ import com.kyanite.deeperdarker.content.DDDataComponents;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.datacomponents.Transmitter;
+import com.kyanite.deeperdarker.network.LinkTransmitterPayload;
+import com.kyanite.deeperdarker.network.UnlinkTransmitterPayload;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.mojang.datafixers.util.Pair;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
@@ -41,11 +46,20 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @SuppressWarnings("NullableProblems, DataFlowIssue")
 public class SculkTransmitterItem extends Item {
+    public static final Map<ItemStack, Pair<CooldownType, Long>> COOLDOWNS = new HashMap<>();
+
+    public enum CooldownType {
+        LINK,
+        UNLINK
+    }
+
     public SculkTransmitterItem(Properties pProperties) {
         super(pProperties);
     }
@@ -57,15 +71,7 @@ public class SculkTransmitterItem extends Item {
         ItemStack stack = pContext.getItemInHand();
         BlockPos clickedPos = pContext.getClickedPos();
 
-        if(isLinked(stack)) return transmit(level, player, stack, clickedPos, pContext.getHand());
-        if(!canConnect(level, clickedPos)) {
-            actionBarMessage(level, player, "not_transmittable", DDSounds.TRANSMITTER_ERROR);
-            return InteractionResult.FAIL;
-        }
-
-        actionBarMessage(level, player, "linked", DDSounds.TRANSMITTER_LINK);
-        formConnection(level, stack, clickedPos);
-        return InteractionResult.SUCCESS;
+        return transmit(level, player, stack, clickedPos, pContext.getHand());
     }
 
     @Override
@@ -76,15 +82,7 @@ public class SculkTransmitterItem extends Item {
 
     public static InteractionResult transmit(Level level, Player player, ItemStack transmitter, @Nullable BlockPos clickedPos, @Nullable InteractionHand pUsedHand) {
         if(player.isCrouching()) {
-            if(clickedPos != null && canConnect(level, clickedPos)) {
-                actionBarMessage(level, player, "linked", DDSounds.TRANSMITTER_LINK);
-                formConnection(level, transmitter, clickedPos);
-                return InteractionResult.SUCCESS;
-            }
-
-            actionBarMessage(level, player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
-            formConnection(level, transmitter, null);
-            return InteractionResult.FAIL;
+            return handleLink(level, player, transmitter, clickedPos, pUsedHand);
         }
 
         if (level.isClientSide()) return InteractionResult.sidedSuccess(false);
@@ -119,6 +117,59 @@ public class SculkTransmitterItem extends Item {
         return InteractionResult.sidedSuccess(false);
     }
 
+    protected static InteractionResult handleLink(Level level, Player player, ItemStack transmitter, @Nullable BlockPos clickedPos, @Nullable InteractionHand pUsedHand) {
+        boolean connect = clickedPos != null && canConnect(level, clickedPos);
+
+        if (!level.isClientSide()) return connect ? InteractionResult.SUCCESS : InteractionResult.FAIL;
+
+        if (!isLinked(transmitter) && clickedPos != null && !canConnect(level, clickedPos)) {
+            player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + ".not_transmittable"), true);
+            player.playSound(DDSounds.TRANSMITTER_ERROR, 1.0f, 1.0f);
+            return InteractionResult.FAIL;
+        }
+
+        int slot = getSlot(player, transmitter);
+        int seconds = DeeperDarker.CONFIG.client.sculkTransmitterLinkCooldownSeconds();
+
+        if (connect) {
+            if (!isLinked(transmitter) || checkCooldown(transmitter, CooldownType.LINK, seconds)) {
+                ClientPlayNetworking.send(new LinkTransmitterPayload(slot, clickedPos));
+                COOLDOWNS.remove(transmitter);
+            } else {
+                player.displayClientMessage(Component.translatable(DDItems.SCULK_TRANSMITTER.getDescriptionId() + ".link_confirm", Minecraft.getInstance().options.keyUse.getTranslatedKeyMessage()), true);
+                COOLDOWNS.put(transmitter, Pair.of(CooldownType.LINK, System.nanoTime()));
+            }
+            return InteractionResult.SUCCESS;
+        }
+
+        if (checkCooldown(transmitter, CooldownType.UNLINK, seconds)) {
+            ClientPlayNetworking.send(new UnlinkTransmitterPayload(slot));
+            COOLDOWNS.remove(transmitter);
+        } else {
+            player.displayClientMessage(Component.translatable(DDItems.SCULK_TRANSMITTER.getDescriptionId() + ".unlink_confirm", Minecraft.getInstance().options.keyUse.getTranslatedKeyMessage()), true);
+            COOLDOWNS.put(transmitter, Pair.of(CooldownType.UNLINK, System.nanoTime()));
+        }
+
+        return InteractionResult.FAIL;
+    }
+
+    private static boolean checkCooldown(ItemStack stack, CooldownType cooldownType, int maxSeconds) {
+        if (maxSeconds == 0) return true;
+        if (!COOLDOWNS.containsKey(stack)) return false;
+        Pair<CooldownType, Long> pair = COOLDOWNS.get(stack);
+        return pair.getFirst() == cooldownType && System.nanoTime() - pair.getSecond() < maxSeconds * 1_000_000_000L;
+    }
+
+    private static int getSlot(Player player, ItemStack stack) {
+        if (player.getOffhandItem() == stack) return player.getInventory().items.size() + player.getInventory().armor.size();
+        for (int i = 0; i < player.getInventory().items.size(); i++) {
+            if (player.getInventory().items.get(i) == stack) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static boolean isLinked(ItemStack stack) {
         return stack.has(DDDataComponents.TRANSMITTER) && stack.get(DDDataComponents.TRANSMITTER).linkedPos().isPresent();
     }
@@ -135,7 +186,7 @@ public class SculkTransmitterItem extends Item {
     public static void actionBarMessage(Level level, Player player, String key, SoundEvent sound) {
         if (level.isClientSide()) return;
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
-        if (player instanceof ServerPlayer serverPlayer) {
+        if (player instanceof ServerPlayer serverPlayer && sound != null) {
             serverPlayer.connection.send(new ClientboundSoundPacket(new Holder.Direct<>(sound), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0f, 1.0f, level.getRandom().nextLong()));
         }
     }

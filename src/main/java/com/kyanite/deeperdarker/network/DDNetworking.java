@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.network;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -10,19 +11,17 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
-import net.minecraft.network.protocol.game.ServerboundMovePlayerPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class DDNetworking {
     public static void registerPayloadTypes() {
         PayloadTypeRegistry.playC2S().register(SoulElytraBoostPayload.TYPE, SoulElytraBoostPayload.CODEC);
         PayloadTypeRegistry.playC2S().register(UseTransmitterPayload.TYPE, UseTransmitterPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(LinkTransmitterPayload.TYPE, LinkTransmitterPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(UnlinkTransmitterPayload.TYPE, UnlinkTransmitterPayload.CODEC);
     }
 
     public static void registerReceivers() {
@@ -51,6 +50,22 @@ public class DDNetworking {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null, null);
                     break;
                 }
+            }
+        });
+        ServerPlayNetworking.registerGlobalReceiver(UnlinkTransmitterPayload.TYPE, (payload, ctx) -> {
+            ServerPlayer player = ctx.player();
+            ItemStack stack = player.getInventory().getItem(payload.slot());
+            if (stack.getItem() instanceof SculkTransmitterItem) {
+                SculkTransmitterItem.actionBarMessage(player.level(), player, "unlinked", DDSounds.TRANSMITTER_UNLINK);
+                SculkTransmitterItem.formConnection(player.level(), stack, null);
+            }
+        });
+        ServerPlayNetworking.registerGlobalReceiver(LinkTransmitterPayload.TYPE, (payload, ctx) -> {
+            ServerPlayer player = ctx.player();
+            ItemStack stack = player.getInventory().getItem(payload.slot());
+            if (stack.getItem() instanceof SculkTransmitterItem) {
+                SculkTransmitterItem.actionBarMessage(player.level(), player, "linked", DDSounds.TRANSMITTER_LINK);
+                SculkTransmitterItem.formConnection(player.level(), stack, payload.blockPos());
             }
         });
     }
