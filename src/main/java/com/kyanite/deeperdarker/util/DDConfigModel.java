@@ -85,5 +85,7 @@ public class DDConfigModel {
         public boolean changePhantomTextures = true;
 
         public boolean paintingFix = true;
+        @RangeConstraint(min = 0.0, max = 10.0)
+        public int sculkTransmitterLinkCooldownSeconds = 3;
     }
 }
