@@ -35,7 +35,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 DDBlocks.SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE_SLAB,
                 DDBlocks.SCULK_STONE_WALL, DDBlocks.COBBLED_SCULK_STONE_WALL, DDBlocks.POLISHED_SCULK_STONE_WALL, DDBlocks.SCULK_STONE_BRICK_WALL, DDBlocks.SCULK_STONE_TILE_WALL, DDBlocks.SMOOTH_SCULK_STONE_WALL, DDBlocks.CUT_SCULK_STONE_WALL,
                 DDBlocks.BLOOMING_SCULK_STONE, DDBlocks.BLOOMING_MOSS_BLOCK,
-                DDBlocks.GLOOMSLATE, DDBlocks.COBBLED_GLOOMSLATE, DDBlocks.POLISHED_GLOOMSLATE, DDBlocks.GLOOMSLATE_BRICKS, DDBlocks.GLOOMSLATE_TILES, DDBlocks.SMOOTH_GLOOMSLATE, DDBlocks.CUT_GLOOMSLATE, DDBlocks.CHISELED_GLOOMSLATE,
+                DDBlocks.GLOOMSLATE, DDBlocks.COBBLED_GLOOMSLATE, DDBlocks.POLISHED_GLOOMSLATE, DDBlocks.GLOOMSLATE_BRICKS, DDBlocks.GLOOMSLATE_TILES, DDBlocks.SMOOTH_GLOOMSLATE, DDBlocks.CUT_GLOOMSLATE, DDBlocks.CHISELED_GLOOMSLATE, DDBlocks.GLOOMSLATE_BARRIER,
                 DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.COBBLED_GLOOMSLATE_STAIRS, DDBlocks.POLISHED_GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE_BRICK_STAIRS, DDBlocks.GLOOMSLATE_TILE_STAIRS, DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, DDBlocks.CUT_GLOOMSLATE_STAIRS,
                 DDBlocks.GLOOMSLATE_SLAB, DDBlocks.COBBLED_GLOOMSLATE_SLAB, DDBlocks.POLISHED_GLOOMSLATE_SLAB, DDBlocks.GLOOMSLATE_BRICK_SLAB, DDBlocks.GLOOMSLATE_TILE_SLAB, DDBlocks.SMOOTH_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE_SLAB,
                 DDBlocks.GLOOMSLATE_WALL, DDBlocks.COBBLED_GLOOMSLATE_WALL, DDBlocks.POLISHED_GLOOMSLATE_WALL, DDBlocks.GLOOMSLATE_BRICK_WALL, DDBlocks.GLOOMSLATE_TILE_WALL, DDBlocks.SMOOTH_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE_WALL,
@@ -89,7 +89,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.SMALL_FLOWERS).add(DDBlocks.LILY_FLOWER);
         tagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(DDBlocks.GLOWING_FLOWERS, DDBlocks.ICE_LILY);
         tagBuilder(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.GLOWING_VINES, DDBlocks.GLOWING_VINES_PLANT);
-        tagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(DDBlocks.SOUNDPROOF_GLASS);
+        tagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS);
         tagBuilder(BlockTags.PORTALS).add(DDBlocks.OTHERSIDE_PORTAL);
 
         tagBuilder(BlockTags.COAL_ORES).add(DDBlocks.SCULK_STONE_COAL_ORE, DDBlocks.GLOOMSLATE_COAL_ORE);
@@ -101,7 +101,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
         tagBuilder(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS);
+        tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS);
         tagBuilder(BlockTags.SNAPS_GOAT_HORN).add(DDBlocks.ECHO_LOG);
 
         tagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, Blocks.SCULK);
@@ -165,6 +165,6 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .addOptional(new ResourceLocation("toms_storage", "ts.crafting_terminal"));
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
-        tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS);
+        tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.DARK_GLASS);
     }
 }

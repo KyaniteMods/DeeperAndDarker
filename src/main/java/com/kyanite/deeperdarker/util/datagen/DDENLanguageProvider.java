@@ -109,6 +109,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.CUT_GLOOMSLATE_SLAB, "Cut Gloomslate Slab");
         translationBuilder.add(DDBlocks.CUT_GLOOMSLATE_WALL, "Cut Gloomslate Wall");
         translationBuilder.add(DDBlocks.CHISELED_GLOOMSLATE, "Chiseled Gloomslate");
+        translationBuilder.add(DDBlocks.GLOOMSLATE_BARRIER, "Gloomslate Barrier");
         translationBuilder.add(DDBlocks.ECHO_SOIL, "Echo Soil");
         translationBuilder.add(DDBlocks.SCULK_GLEAM, "Sculk Gleam");
         translationBuilder.add(DDBlocks.SCULK_JAW, "Sculk Jaw");
@@ -167,6 +168,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.BLOOM_HANGING_SIGN, "Bloom Hanging Sign");
         translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BLOOM_WALL_HANGING_SIGN)), "Bloom Wall Hanging Sign");
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
+        translationBuilder.add(DDBlocks.DARK_GLASS, "Dark Glass");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
         translationBuilder.add(DDBlocks.ICE_LILY, "Ice Lily");
         translationBuilder.add(Util.makeDescriptionId("tooltips", BuiltInRegistries.BLOCK.getKey(DDBlocks.ICE_LILY)) + ".flowerless", "Flowerless");

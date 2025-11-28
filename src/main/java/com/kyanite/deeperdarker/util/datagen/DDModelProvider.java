@@ -121,6 +121,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_SLAB, DDBlocks.CUT_GLOOMSLATE);
         registerWall(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
         blockModelGenerators.family(DDBlocks.CHISELED_GLOOMSLATE);
+        blockModelGenerators.family(DDBlocks.GLOOMSLATE_BARRIER);
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);
@@ -232,6 +233,7 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
+        blockModelGenerators.family(DDBlocks.DARK_GLASS);
         blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }

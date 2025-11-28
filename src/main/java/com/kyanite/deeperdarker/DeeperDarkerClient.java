@@ -68,7 +68,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 DDBlocks.CRYSTALLIZED_AMBER,
-                DDBlocks.SOUNDPROOF_GLASS);
+                DDBlocks.SOUNDPROOF_GLASS,
+                DDBlocks.GLOOMSLATE_BARRIER,
+                DDBlocks.DARK_GLASS);
 
         BlockEntityRenderers.register(DDBlockEntities.HANGING_SIGN, HangingSignRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SIGN, SignRenderer::new);

@@ -191,6 +191,7 @@ public class DDBlocks {
     public static final Block CUT_GLOOMSLATE_SLAB = register("cut_gloomslate_slab", new SlabBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE)));
     public static final Block CUT_GLOOMSLATE_WALL = register("cut_gloomslate_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE)));
     public static final Block CHISELED_GLOOMSLATE = register("chiseled_gloomslate", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE)));
+    public static final Block GLOOMSLATE_BARRIER = register("gloomslate_barrier", new Block(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(2.5f, 4.5f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
 
     public static final Block SCULK_GRIME = register("sculk_grime", new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_BRICKS = register("sculk_grime_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
@@ -241,6 +242,7 @@ public class DDBlocks {
     public static final Block INFESTED_SCULK = register("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
+    public static final Block DARK_GLASS = register("dark_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(110.0f, 3600000.0f)));
 
     public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0f).pushReaction(PushReaction.DESTROY)));
     public static final Block SHATTERED_WALL_HEAD = registerWithoutItem("shattered_wall_head", new ShatteredWallHeadBlock(BlockBehaviour.Properties.of().strength(1.0f).dropsLike(SHATTERED_HEAD).pushReaction(PushReaction.DESTROY)));

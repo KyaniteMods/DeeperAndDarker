@@ -137,6 +137,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.CUT_GLOOMSLATE_SLAB, this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_GLOOMSLATE_WALL);
         dropSelf(DDBlocks.CHISELED_GLOOMSLATE);
+        dropSelf(DDBlocks.GLOOMSLATE_BARRIER);
 
         dropSelf(DDBlocks.ECHO_SOIL);
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK);
@@ -180,6 +181,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
 
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
+        dropWhenSilkTouch(DDBlocks.DARK_GLASS);
 
         add(DDCreateCompat.Blocks.WARDEN_BACKTANK, (block) -> {
             LootTable.Builder builder = LootTable.lootTable();
