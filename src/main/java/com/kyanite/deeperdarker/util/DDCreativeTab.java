@@ -82,6 +82,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_SLAB);
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_WALL);
+        entries.accept(DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         entries.accept(DDBlocks.SCULK_GRIME_GLASS);
         entries.accept(DDBlocks.SCULK_GRIME_GLASS_PANE);
         entries.accept(DDBlocks.BLOOMING_SCULK_STONE);
@@ -118,12 +119,12 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CUT_GLOOMSLATE_WALL);
         entries.accept(DDBlocks.CHISELED_GLOOMSLATE);
         entries.accept(DDBlocks.GLOOMSLATE_BARRIER);
-        entries.accept(DDBlocks.DARK_GLASS);
 
         entries.accept(DDBlocks.GLOOMY_SCULK);
         entries.accept(DDBlocks.GLOOMY_GEYSER);
         entries.accept(DDBlocks.CRYSTALLIZED_AMBER);
         entries.accept(DDBlocks.SCULK_GLEAM);
+        entries.accept(DDBlocks.PROTECTED_SCULK_GLEAM);
         entries.accept(DDBlocks.SOUNDPROOF_GLASS);
 
         entries.accept(DDBlocks.SCULK_STONE_COAL_ORE);

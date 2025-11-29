@@ -104,6 +104,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
         add(DDBlocks.SCULK_GRIME_BRICK_SLAB, this::createSlabItemTable);
         dropSelf(DDBlocks.SCULK_GRIME_BRICK_WALL);
+        dropWhenSilkTouch(DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         dropWhenSilkTouch(DDBlocks.SCULK_GRIME_GLASS);
         dropWhenSilkTouch(DDBlocks.SCULK_GRIME_GLASS_PANE);
 
@@ -183,7 +184,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
 
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
-        dropWhenSilkTouch(DDBlocks.DARK_GLASS);
+        dropWhenSilkTouch(DDBlocks.PROTECTED_SCULK_GLEAM);
 
         add(DDCreateCompat.Blocks.WARDEN_BACKTANK, (block) -> {
             LootTable.Builder builder = LootTable.lootTable();

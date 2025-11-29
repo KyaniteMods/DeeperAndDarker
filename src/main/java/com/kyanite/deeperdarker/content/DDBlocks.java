@@ -242,7 +242,8 @@ public class DDBlocks {
     public static final Block INFESTED_SCULK = register("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
-    public static final Block DARK_GLASS = register("dark_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(110.0f, 3600000.0f).pushReaction(PushReaction.BLOCK).isViewBlocking(Blocks::always).friction(0.58f)));
+    public static final Block PROTECTED_SCULK_GLEAM = register("protected_sculk_gleam", new HalfTransparentBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(11000.0f).pushReaction(PushReaction.BLOCK)));
+    public static final Block PROTECTED_SCULK_GRIME_GLASS = register("protected_sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(11000.0f).pushReaction(PushReaction.BLOCK).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_GLASS = register("sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.COLOR_CYAN).strength(20.0f)));
     public static final Block SCULK_GRIME_GLASS_PANE = register("sculk_grime_glass_pane", new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).strength(20.0f)));
 

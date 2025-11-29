@@ -91,6 +91,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerStairs(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICKS);
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
         registerWall(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
+        blockModelGenerators.family(DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         blockModelGenerators.createGlassBlocks(DDBlocks.SCULK_GRIME_GLASS, DDBlocks.SCULK_GRIME_GLASS_PANE);
 
         blockModelGenerators.family(DDBlocks.GLOOMSLATE);
@@ -234,7 +235,7 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(DDBlocks.ICE_LILY)));
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
-        blockModelGenerators.family(DDBlocks.DARK_GLASS);
+        blockModelGenerators.family(DDBlocks.PROTECTED_SCULK_GLEAM);
         blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }

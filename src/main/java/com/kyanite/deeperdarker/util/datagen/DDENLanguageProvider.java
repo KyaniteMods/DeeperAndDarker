@@ -80,6 +80,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_GRIME_BRICK_STAIRS, "Sculk Grime Brick Stairs");
         translationBuilder.add(DDBlocks.SCULK_GRIME_BRICK_SLAB, "Sculk Grime Brick Slab");
         translationBuilder.add(DDBlocks.SCULK_GRIME_BRICK_WALL, "Sculk Grime Brick Wall");
+        translationBuilder.add(DDBlocks.PROTECTED_SCULK_GRIME_GLASS, "Protected Sculk Grime Glass");
         translationBuilder.add(DDBlocks.SCULK_GRIME_GLASS, "Sculk Grime Glass");
         translationBuilder.add(DDBlocks.SCULK_GRIME_GLASS_PANE, "Sculk Grime Glass Pane");
         translationBuilder.add(DDBlocks.GLOOMSLATE, "Gloomslate");
@@ -170,7 +171,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.BLOOM_HANGING_SIGN, "Bloom Hanging Sign");
         translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BLOOM_WALL_HANGING_SIGN)), "Bloom Wall Hanging Sign");
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
-        translationBuilder.add(DDBlocks.DARK_GLASS, "Dark Glass");
+        translationBuilder.add(DDBlocks.PROTECTED_SCULK_GLEAM, "Protected Sculk Gleam");
         translationBuilder.add(DDBlocks.OTHERSIDE_PORTAL, "Otherside Portal");
         translationBuilder.add(DDBlocks.ICE_LILY, "Ice Lily");
         translationBuilder.add(Util.makeDescriptionId("tooltips", BuiltInRegistries.BLOCK.getKey(DDBlocks.ICE_LILY)) + ".flowerless", "Flowerless");
