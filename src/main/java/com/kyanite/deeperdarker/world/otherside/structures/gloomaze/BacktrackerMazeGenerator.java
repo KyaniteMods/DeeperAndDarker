@@ -17,6 +17,15 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
     private int height;
     private int depth;
     private BoundingBox center;
+    boolean weighted; // temporary
+    private static final float[] weights = {
+            0.25f,  // weight for up
+            0.25f,  // weight for down
+            1.0f,  // weight for west
+            1.0f,   // weight for east
+            1.0f,  // weight for south
+            1.0f   // weight for north
+    };
 
     private static final int[][] directions = {
             {0, 1, 0},  // up
@@ -27,7 +36,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             {0, 0, -1}  // north
     };
 
-    public BacktrackerMazeGenerator(int width, int height, int depth, @Nullable BoundingBox center) {
+    public BacktrackerMazeGenerator(int width, int height, int depth, @Nullable BoundingBox center, boolean weighted) {
         if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
         this.width = width;
         if (height % 2 == 0) throw new IllegalArgumentException("height must be odd");
@@ -40,6 +49,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 //            if (((depth - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(depth - centerSide) / 2 must be even");
 //        }
         this.center = center;
+        this.weighted = weighted;
     }
 
     private int[][] weightedOrder(RandomSource random, int[][] directions, float[] weights) {
@@ -112,16 +122,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             int cy = cPos[1];
             int cz = cPos[2];
 
-            float[] weights = {
-                    0.25f,  // weight for up
-                    0.25f,  // weight for down
-                    1.0f,  // weight for west
-                    1.0f,   // weight for east
-                    1.0f,  // weight for south
-                    1.0f   // weight for north
-            };
-
-            int[][] ordered = weightedOrder(random, directions, weights);
+            int[][] ordered = weighted ? weightedOrder(random, directions, weights) : directions;
 
             boolean moved = false;
 
