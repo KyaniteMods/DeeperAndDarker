@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
@@ -27,15 +28,6 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             1.0f   // weight for north
     };
 
-    private static final int[][] directions = {
-            {0, 1, 0},  // up
-            {0, -1, 0}, // down
-            {-1, 0, 0}, // west
-            {1, 0, 0},  // east
-            {0, 0, 1},  // south
-            {0, 0, -1}  // north
-    };
-
     public BacktrackerMazeGenerator(int width, int height, int depth, @Nullable BoundingBox center, boolean weighted) {
         if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
         this.width = width;
@@ -53,30 +45,30 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
     }
 
     private boolean isTouchingExit(int x, int y, int z, int[] end) {
-        for (int[] direction : directions) {
-            if (end[0] + direction[0] == x && end[1] + direction[1] == y && end[2] + direction[2] == z) return true;
+        for (Direction direction : Direction.values()) {
+            if (end[0] + direction.getNormal().getX() == x && end[1] + direction.getNormal().getY() == y && end[2] + direction.getNormal().getZ() == z) return true;
         }
 
         return false;
     }
 
     @Override
-    public TileType[][][] generate(RandomSource random) {
-        TileType[][][] result = new TileType[width][height][depth];
+    public Tile[][][] generate(RandomSource random) {
+        Tile[][][] result = new Tile[width][height][depth];
 //        Stack<int[]> solution = new Stack<>();
 
-        int[] end;
+        Pos end;
         if (center == null) {
-            end = new int[]{width - 2, height - 2, depth - 1};
+            end = new Pos(width - 2, height - 2, depth - 1);
         } else {
             int x = (center.minX() + center.maxX()) / 2;
-            end = new int[]{x + ((x - 1) % 4 == 0 ? 0 : -1), center.minY(), center.minZ() - 1};
+            end = new Pos(x + ((x - 1) % 2 == 0 ? 0 : -1), center.minY(), center.minZ() - 1);
         }
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 for (int z = 0; z < depth; z++) {
-                    result[x][y][z] = TileType.WALL;
+                    result[x][y][z] = new Tile(TileType.WALL, 0);
                 }
             }
         }
@@ -84,24 +76,24 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         int x = 1;
         int y = 1;
         int z = 1;
-        Stack<int[]> stack = new Stack<>();
-        stack.push(new int[]{x, y, z});
-        result[x][y][z] = TileType.PATH;
+        Stack<Pos> stack = new Stack<>();
+        stack.push(new Pos(x, y, z));
+        result[x][y][z] = new Tile(TileType.PATH, 0);
 
         while (!stack.isEmpty()) {
-            int[] cPos = stack.peek();
-            int cx = cPos[0];
-            int cy = cPos[1];
-            int cz = cPos[2];
+            Pos cPos = stack.peek();
+            int cx = cPos.x();
+            int cy = cPos.y();
+            int cz = cPos.z();
 
-            int[][] ordered = weighted ? weightedOrder(random, directions, weights) : order(random, directions);
+            Direction[] ordered = weighted ? weightedOrder(random, Direction.values(), weights) : Direction.allShuffled(random).toArray(new Direction[6]);
 
             boolean moved = false;
 
-            for (int[] direction : ordered) {
-                int dx = direction[0];
-                int dy = direction[1];
-                int dz = direction[2];
+            for (Direction direction : ordered) {
+                int dx = direction.getNormal().getX();
+                int dy = direction.getNormal().getY();
+                int dz = direction.getNormal().getZ();
                 int nx = cx + dx * 2;
                 int ny = cy + dy * 2;
                 int nz = cz + dz * 2;
@@ -110,12 +102,12 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 
                 if (nx < 0 || ny < 0 || nz < 0) continue;
                 if (nx >= width - 1 || ny >= height - 1 || nz >= depth - 1) continue;
-                if (result[nx][ny][nz] != TileType.WALL) continue;
+                if (result[nx][ny][nz].type() != TileType.WALL) continue;
 
-                result[cx + dx][cy + dy][cz + dz] = TileType.PATH;
-                result[nx][ny][nz] = TileType.PATH;
+                result[cx + dx][cy + dy][cz + dz] = new Tile(TileType.PATH, 0);
+                result[nx][ny][nz] = new Tile(TileType.PATH, 0);
 
-                stack.push(new int[]{nx, ny, nz});
+                stack.push(new Pos(nx, ny, nz));
 //                    if (isTouchingExit(nx, ny, nz, end)) {
 //                        solution.addAll(stack);
 //                    }
@@ -128,13 +120,13 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             }
         }
 
-        result[end[0]][end[1]][end[2]] = TileType.ENDPOINT;
-        result[1][1][0] = TileType.ENDPOINT;
+        result[end.x()][end.y()][end.z()] = new Tile(TileType.ENDPOINT, 0);
+        result[1][1][0] = new Tile(TileType.ENDPOINT, 1);
 
         for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
             for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
                 for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
-                    result[ex][ey][ez] = TileType.PATH;
+                    result[ex][ey][ez] = new Tile(TileType.PATH, 0);
                 }
             }
         }

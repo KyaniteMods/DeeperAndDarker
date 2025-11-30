@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3i;
 
 import java.util.ArrayList;
@@ -10,12 +12,12 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class MazeGenerator {
-    public abstract TileType[][][] generate(RandomSource random);
+    public abstract Tile[][][] generate(RandomSource random);
 
-    protected int[][] weightedOrder(RandomSource random, int[][] arr, float[] weights) {
-        int[][] result = new int[arr.length][];
+    protected Direction[] weightedOrder(RandomSource random, Direction[] arr, float[] weights) {
+        Direction[] result = new Direction[arr.length];
 
-        List<Pair<int[], Float>> pool = new ArrayList<>();
+        List<Pair<Direction, Float>> pool = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             pool.add(Pair.of(arr[i], weights[i]));
         }
@@ -54,10 +56,52 @@ public abstract class MazeGenerator {
         return result;
     }
 
+    public record Pos(int x, int y, int z) {
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Pos pos = (Pos) o;
+
+            if (x != pos.x) return false;
+            if (y != pos.y) return false;
+            return z == pos.z;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = x;
+            result = 31 * result + y;
+            result = 31 * result + z;
+            return result;
+        }
+    }
+
     public enum TileType {
         PATH,
         WALL,
         ENDPOINT,
         DEBUG
+    }
+
+    public record Tile(@NotNull TileType type, int data) {
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Tile tile = (Tile) o;
+
+            if (data != tile.data) return false;
+            return type == tile.type;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = type.hashCode();
+            result = 31 * result + data;
+            return result;
+        }
     }
 }
