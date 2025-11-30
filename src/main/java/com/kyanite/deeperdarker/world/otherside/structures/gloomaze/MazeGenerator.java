@@ -6,7 +6,7 @@ import org.joml.Vector3i;
 import java.util.Map;
 
 public abstract class MazeGenerator {
-    public abstract TileType[][][] generate(RandomSource randomSource);
+    public abstract TileType[][][] generate(RandomSource random);
 
     public enum TileType {
         PATH,
