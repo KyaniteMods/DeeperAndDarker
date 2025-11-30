@@ -146,7 +146,7 @@ public class DeeperDarker implements ModInitializer {
 																	for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
 																		for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
 																			if (tileType == MazeGenerator.TileType.WALL) {
-																				if ((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0)
+																				if (((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0) || dx == 0 || dy == 0 || dz == 0 || dx == (width * wallSize) - 1 || dy == (height * wallSize) - 1 || dz == (depth * wallSize) - 1)
 																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 2);
 																				else if ((dx - x * wallSize) == 1 && (dy - y * wallSize) == 1 && (dz - z * wallSize) == 1)
 																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GLEAM.defaultBlockState(), 2);

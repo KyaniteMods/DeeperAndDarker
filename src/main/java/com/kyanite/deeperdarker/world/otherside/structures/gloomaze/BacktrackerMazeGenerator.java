@@ -31,9 +31,11 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         this.height = height;
         if (depth % 2 == 0) throw new IllegalArgumentException("depth must be odd");
         this.depth = depth;
-        if (centerSide % 2 == 0 && centerSide != 0) throw new IllegalArgumentException("centerSide must be odd");
-        if (((width - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(width - centerSide) / 2 must be even");
-        if (((depth - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(depth - centerSide) / 2 must be even");
+        if (centerSide != 0) {
+            if (centerSide % 2 == 0) throw new IllegalArgumentException("centerSide must be odd");
+            if (((width - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(width - centerSide) / 2 must be even");
+            if (((depth - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(depth - centerSide) / 2 must be even");
+        }
         this.centerSide = centerSide;
     }
 
