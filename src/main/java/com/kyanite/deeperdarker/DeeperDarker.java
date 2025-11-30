@@ -29,6 +29,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -118,56 +119,66 @@ public class DeeperDarker implements ModInitializer {
 					.then(Commands.argument("width", IntegerArgumentType.integer())
 							.then(Commands.argument("height", IntegerArgumentType.integer())
 									.then(Commands.argument("depth", IntegerArgumentType.integer())
-											.then(Commands.argument("centerSide", IntegerArgumentType.integer())
-											.executes(c -> {
-												int width = c.getArgument("width", Integer.class);
-												int height = c.getArgument("height", Integer.class);
-												int depth = c.getArgument("depth", Integer.class);
-												int centerSide = c.getArgument("centerSide", Integer.class);
-												int wallSize = 3;
+											.then(Commands.argument("centerMinX", IntegerArgumentType.integer())
+													.then(Commands.argument("centerMinY", IntegerArgumentType.integer())
+															.then(Commands.argument("centerMinZ", IntegerArgumentType.integer())
+																	.then(Commands.argument("centerMaxX", IntegerArgumentType.integer())
+																			.then(Commands.argument("centerMaxY", IntegerArgumentType.integer())
+																					.then(Commands.argument("centerMaxZ", IntegerArgumentType.integer())
+																							.executes(c -> {
+																								int width = c.getArgument("width", Integer.class);
+																								int height = c.getArgument("height", Integer.class);
+																								int depth = c.getArgument("depth", Integer.class);
+																								int centerMinX = c.getArgument("centerMinX", Integer.class);
+																								int centerMinY = c.getArgument("centerMinY", Integer.class);
+																								int centerMinZ = c.getArgument("centerMinZ", Integer.class);
+																								int centerMaxX = c.getArgument("centerMaxX", Integer.class);
+																								int centerMaxY = c.getArgument("centerMaxY", Integer.class);
+																								int centerMaxZ = c.getArgument("centerMaxZ", Integer.class);
+																								int wallSize = 3;
 
-												try {
-													BacktrackerMazeGenerator mazeGenerator = new BacktrackerMazeGenerator(width, height, depth, centerSide);
+																								try {
+																									BacktrackerMazeGenerator mazeGenerator = new BacktrackerMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ));
 
-													MazeGenerator.TileType[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
+																									MazeGenerator.TileType[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 
-													for (int x = 0; x < width; x++) {
-														for (int y = 0; y < height; y++) {
-															for (int z = 0; z < depth; z++) {
-																MazeGenerator.TileType tileType = arr[x][y][z];
-																BlockState blockState = switch (tileType) {
-																	case PATH -> Blocks.AIR.defaultBlockState();
-																	case WALL -> DDBlocks.GLOOMSLATE.defaultBlockState();
-																	case ENDPOINT -> Blocks.AIR.defaultBlockState();
-																	case DEBUG -> Blocks.RED_STAINED_GLASS.defaultBlockState();
-																};
+																									for (int x = 0; x < width; x++) {
+																										for (int y = 0; y < height; y++) {
+																											for (int z = 0; z < depth; z++) {
+																												MazeGenerator.TileType tileType = arr[x][y][z];
+																												BlockState blockState = switch (tileType) {
+																													case PATH -> Blocks.AIR.defaultBlockState();
+																													case WALL -> DDBlocks.GLOOMSLATE.defaultBlockState();
+																													case ENDPOINT -> Blocks.GREEN_WOOL.defaultBlockState();
+																													case DEBUG -> Blocks.RED_STAINED_GLASS.defaultBlockState();
+																												};
 
-																for (int dx = x * wallSize; dx < x * wallSize + wallSize; dx++) {
-																	for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
-																		for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
-																			if (tileType == MazeGenerator.TileType.WALL) {
-																				if (((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0) || dx == 0 || dy == 0 || dz == 0 || dx == (width * wallSize) - 1 || dy == (height * wallSize) - 1 || dz == (depth * wallSize) - 1)
-																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 2);
-																				else if ((dx - x * wallSize) == 1 && (dy - y * wallSize) == 1 && (dz - z * wallSize) == 1)
-																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GLEAM.defaultBlockState(), 2);
-																				else if (((dx - x * wallSize) + (dy - y * wallSize) + (dz - z * wallSize)) % 2 == 1)
-																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.PROTECTED_SCULK_GRIME_GLASS.defaultBlockState(), 2);
-																				else
-																					c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 2);
-																			} else
-																				c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), blockState, 2);
-																		}
-																	}
-																}
-															}
-														}
-													}
-												} catch (Exception e) {
-													System.out.println(e.getMessage());
-												}
+																												for (int dx = x * wallSize; dx < x * wallSize + wallSize; dx++) {
+																													for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
+																														for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
+																															if (tileType == MazeGenerator.TileType.WALL) {
+																																if (((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0) || dx == 0 || dy == 0 || dz == 0 || dx == (width * wallSize) - 1 || dy == (height * wallSize) - 1 || dz == (depth * wallSize) - 1)
+																																	c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 2);
+																																else if ((dx - x * wallSize) == 1 && (dy - y * wallSize) == 1 && (dz - z * wallSize) == 1)
+																																	c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GLEAM.defaultBlockState(), 2);
+																																else if (((dx - x * wallSize) + (dy - y * wallSize) + (dz - z * wallSize)) % 2 == 1)
+																																	c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.PROTECTED_SCULK_GRIME_GLASS.defaultBlockState(), 2);
+																																else
+																																	c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 2);
+																															} else
+																																c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), blockState, 2);
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								} catch (Exception e) {
+																									System.out.println(e.getMessage());
+																								}
 
-												return Command.SINGLE_SUCCESS;
-											}))))));
+																								return Command.SINGLE_SUCCESS;
+																							})))))))))));
 		});
 	}
 }

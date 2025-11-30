@@ -2,6 +2,9 @@ package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +16,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
     private int width;
     private int height;
     private int depth;
-    private int centerSide;
+    private BoundingBox center;
 
     private static final int[][] directions = {
             {0, 1, 0},  // up
@@ -24,19 +27,19 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             {0, 0, -1}  // north
     };
 
-    public BacktrackerMazeGenerator(int width, int height, int depth, int centerSide) {
+    public BacktrackerMazeGenerator(int width, int height, int depth, @Nullable BoundingBox center) {
         if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
         this.width = width;
         if (height % 2 == 0) throw new IllegalArgumentException("height must be odd");
         this.height = height;
         if (depth % 2 == 0) throw new IllegalArgumentException("depth must be odd");
         this.depth = depth;
-        if (centerSide != 0) {
-            if (centerSide % 2 == 0) throw new IllegalArgumentException("centerSide must be odd");
-            if (((width - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(width - centerSide) / 2 must be even");
-            if (((depth - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(depth - centerSide) / 2 must be even");
-        }
-        this.centerSide = centerSide;
+//        if (centerSide != 0) {
+//            if (centerSide % 2 == 0) throw new IllegalArgumentException("centerSide must be odd");
+//            if (((width - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(width - centerSide) / 2 must be even");
+//            if (((depth - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(depth - centerSide) / 2 must be even");
+//        }
+        this.center = center;
     }
 
     private int[][] weightedOrder(RandomSource random, int[][] directions, float[] weights) {
@@ -81,10 +84,11 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 //        Stack<int[]> solution = new Stack<>();
 
         int[] end;
-        if (centerSide == 0) {
+        if (center == null) {
             end = new int[]{width - 2, height - 2, depth - 1};
         } else {
-            end = new int[]{width / 2 + ((width - 1) % 4 != 0 ? 0 : -1), height - 2, (depth - centerSide) / 2};
+            int x = (center.minX() + center.maxX()) / 2;
+            end = new int[]{x + ((x - 1) % 4 == 0 ? 0 : -1), center.minY(), center.minZ() - 1};
         }
 
         for (int x = 0; x < width; x++) {
@@ -129,11 +133,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
                 int ny = cy + dy * 2;
                 int nz = cz + dz * 2;
 
-                if (centerSide != 0
-                        && nx >= (width - centerSide) / 2 && nx < (width + centerSide) / 2
-                        && ny >= (height - 2) && ny < (height - 1)
-                        && nz >= (depth - centerSide) / 2 && nz < (depth + centerSide) / 2
-                ) continue; // fix centerSide in height (it should be center bounding box instead)
+                if (center != null && center.isInside(nx, ny, nz)) continue;
 
                 if (nx < 0 || ny < 0 || nz < 0) continue;
                 if (nx >= width - 1 || ny >= height - 1 || nz >= depth - 1) continue;
@@ -158,9 +158,11 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         result[end[0]][end[1]][end[2]] = TileType.ENDPOINT;
         result[1][1][0] = TileType.ENDPOINT;
 
-        for (int ex = (width - centerSide)/2 + 1; ex < (width + centerSide)/2 - 1; ex++) {
-            for (int ez = (depth - centerSide)/2 + 1; ez < (depth + centerSide)/2 - 1; ez++) {
-                result[ex][height - 2][ez] = TileType.PATH;
+        for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
+            for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
+                for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
+                    result[ex][ey][ez] = TileType.PATH;
+                }
             }
         }
 
