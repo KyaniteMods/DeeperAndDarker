@@ -52,11 +52,12 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         this.weighted = weighted;
     }
 
-    private int[][] weightedOrder(RandomSource random, int[][] directions, float[] weights) {
-        int[][] result = new int[directions.length][];
+    private int[][] weightedOrder(RandomSource random, int[][] arr, float[] weights) {
+        int[][] result = new int[arr.length][];
+
         List<Pair<int[], Float>> pool = new ArrayList<>();
-        for (int i = 0; i < directions.length; i++) {
-            pool.add(Pair.of(directions[i], weights[i]));
+        for (int i = 0; i < arr.length; i++) {
+            pool.add(Pair.of(arr[i], weights[i]));
         }
 
         int resultIndex = 0;
@@ -75,6 +76,19 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 
             result[resultIndex++] = pool.get(index).getFirst();
             pool.remove(index);
+        }
+
+        return result;
+    }
+
+    private int[][] order(RandomSource random, int[][] arr) {
+        int[][] result = Arrays.copyOf(arr, arr.length);
+        for (int i = result.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+
+            int[] temp = result[i];
+            result[i] = result[j];
+            result[j] = temp;
         }
 
         return result;
@@ -122,7 +136,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             int cy = cPos[1];
             int cz = cPos[2];
 
-            int[][] ordered = weighted ? weightedOrder(random, directions, weights) : directions;
+            int[][] ordered = weighted ? weightedOrder(random, directions, weights) : order(random, directions);
 
             boolean moved = false;
 
