@@ -47,16 +47,15 @@ public class WilsonMazeGenerator extends MazeGenerator {
 
     private Tile[][][] randomWalk(RandomSource random, List<Pos> remainingPositions, Tile[][][] partialResult) {
         Pos start = remainingPositions.get(random.nextInt(remainingPositions.size()));
-        Tile[][][] result = deepCopy(partialResult);
 
-        Stack<Pos> stack = new Stack<>();
-        stack.push(start);
+        MazeStack mazeStack = new MazeStack(deepCopy(partialResult));
+
         Pos currentPos = start;
-
         Direction lastDirection = null;
 
-        result[currentPos.x()][currentPos.y()][currentPos.z()] = new Tile(TileType.PATH, 0);
-        while (partialResult[currentPos.x()][currentPos.y()][currentPos.z()].type() != TileType.PATH) {
+        mazeStack.push(currentPos);
+
+        while (partialResult[currentPos.x()][currentPos.y()][currentPos.z()].type() != Tile.Type.PATH) {
             Direction[] ordered = Direction.allShuffled(random).toArray(new Direction[6]);
             Pos newPos = null;
             for (Direction direction : ordered) {
@@ -70,23 +69,19 @@ public class WilsonMazeGenerator extends MazeGenerator {
             }
             if (newPos == null) throw new IllegalStateException("Couldn't move!");
 
-            int posIndex = stack.indexOf(newPos);
+            int posIndex = mazeStack.indexOf(newPos);
             if (posIndex >= 0) {
-                while (stack.size() > posIndex + 1) {
-                    Pos pos = stack.pop();
-                    result[pos.x()][pos.y()][pos.z()] = new Tile(TileType.WALL, 0);
-                    if (!stack.isEmpty()) result[(stack.peek().x() + pos.x()) / 2][(stack.peek().y() + pos.y()) / 2][(stack.peek().z() + pos.z()) / 2] = new Tile(TileType.WALL, 0);
+                while (mazeStack.size() > posIndex + 1) {
+                    mazeStack.pop();
                 }
             } else {
-                stack.push(newPos);
-                result[newPos.x()][newPos.y()][newPos.z()] = new Tile(TileType.PATH, stack.size());
-                result[(newPos.x() + currentPos.x()) / 2][(newPos.y() + currentPos.y()) / 2][(newPos.z() + currentPos.z()) / 2] = new Tile(TileType.PATH, stack.size());
+                mazeStack.push(newPos);
             }
             currentPos = newPos;
         }
 
-        remainingPositions.removeAll(stack);
-        return result;
+        remainingPositions.removeAll(mazeStack);
+        return mazeStack.getTiles();
     }
 
     @Override
@@ -97,7 +92,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
         for (int z = 0; z < depth; z++) {
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
-                    result[x][y][z] = new Tile(TileType.WALL, 0);
+                    result[x][y][z] = new Tile(Tile.Type.WALL, 0);
                     if (x % 2 != 0 && y % 2 != 0 && z % 2 != 0 && !center.isInside(x, y, z)) remainingPositions.add(new Pos(x, y, z));
                 }
             }
@@ -105,7 +100,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
 
         int index = random.nextInt(remainingPositions.size());
         Pos pos = remainingPositions.get(index);
-        result[pos.x()][pos.y()][pos.z()] = new Tile(TileType.PATH, 0);
+        result[pos.x()][pos.y()][pos.z()] = new Tile(Tile.Type.PATH, 0);
         remainingPositions.remove(index);
 
         while (!remainingPositions.isEmpty()) {
@@ -120,17 +115,16 @@ public class WilsonMazeGenerator extends MazeGenerator {
             end = new Pos(x + ((x - 1) % 2 == 0 ? 0 : -1), center.minY(), center.minZ() - 1);
         }
 
-        result[end.x()][end.y()][end.z()] = new Tile(TileType.ENDPOINT, 0);
-        result[1][1][0] = new Tile(TileType.ENDPOINT, 1);
+        result[end.x()][end.y()][end.z()] = new Tile(Tile.Type.ENDPOINT, 0);
+        result[1][1][0] = new Tile(Tile.Type.ENDPOINT, 1);
 
         for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
             for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
                 for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
-                    result[ex][ey][ez] = new Tile(TileType.PATH, 0);
+                    result[ex][ey][ez] = new Tile(Tile.Type.ROOM, 0);
                 }
             }
         }
-
         return result;
     }
 }

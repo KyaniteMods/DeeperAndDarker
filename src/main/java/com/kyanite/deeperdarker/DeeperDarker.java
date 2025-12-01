@@ -10,7 +10,9 @@ import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.BacktrackerMazeGenerator;
 import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.MazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.Tile;
 import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.WilsonMazeGenerator;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -138,16 +140,17 @@ public class DeeperDarker implements ModInitializer {
 																								int wallSize = 3;
 
 																								try {
-																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ));
+																									MazeGenerator mazeGenerator = new BacktrackerMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ), false);
 
-																									MazeGenerator.Tile[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
+																									Tile[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 
 																									for (int x = 0; x < width; x++) {
 																										for (int y = 0; y < height; y++) {
 																											for (int z = 0; z < depth; z++) {
-																												MazeGenerator.Tile tile = arr[x][y][z];
+																												Tile tile = arr[x][y][z];
 																												BlockState blockState = switch (tile.type()) {
 																													case PATH -> Blocks.AIR.defaultBlockState();
+																													case ROOM -> Blocks.GREEN_STAINED_GLASS.defaultBlockState();
 																													case WALL -> DDBlocks.GLOOMSLATE.defaultBlockState();
 																													case ENDPOINT -> Blocks.AIR.defaultBlockState();
 																													case DEBUG -> Blocks.RED_STAINED_GLASS.defaultBlockState();
@@ -156,7 +159,7 @@ public class DeeperDarker implements ModInitializer {
 																												for (int dx = x * wallSize; dx < x * wallSize + wallSize; dx++) {
 																													for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
 																														for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
-																															if (tile.type() == MazeGenerator.TileType.WALL) {
+																															if (tile.type() == Tile.Type.WALL) {
 																																if (((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0) || dx == 0 || dy == 0 || dz == 0 || dx == (width * wallSize) - 1 || dy == (height * wallSize) - 1 || dz == (depth * wallSize) - 1)
 																																	c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 2);
 																																else if ((dx - x * wallSize) == 1 && (dy - y * wallSize) == 1 && (dz - z * wallSize) == 1)

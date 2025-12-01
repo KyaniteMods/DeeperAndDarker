@@ -1,17 +1,11 @@
 package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 public class BacktrackerMazeGenerator extends MazeGenerator {
     private int width;
@@ -54,9 +48,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 
     @Override
     public Tile[][][] generate(RandomSource random) {
-        Tile[][][] result = new Tile[width][height][depth];
 //        Stack<int[]> solution = new Stack<>();
-
         Pos end;
         if (center == null) {
             end = new Pos(width - 2, height - 2, depth - 1);
@@ -65,20 +57,9 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             end = new Pos(x + ((x - 1) % 2 == 0 ? 0 : -1), center.minY(), center.minZ() - 1);
         }
 
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                for (int z = 0; z < depth; z++) {
-                    result[x][y][z] = new Tile(TileType.WALL, 0);
-                }
-            }
-        }
-
-        int x = 1;
-        int y = 1;
-        int z = 1;
-        Stack<Pos> stack = new Stack<>();
-        stack.push(new Pos(x, y, z));
-        result[x][y][z] = new Tile(TileType.PATH, 0);
+        Pos start = new Pos(1, 1, 1);
+        MazeStack stack = new MazeStack(width, height, depth);
+        stack.push(start);
 
         while (!stack.isEmpty()) {
             Pos cPos = stack.peek();
@@ -102,12 +83,9 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 
                 if (nx < 0 || ny < 0 || nz < 0) continue;
                 if (nx >= width - 1 || ny >= height - 1 || nz >= depth - 1) continue;
-                if (result[nx][ny][nz].type() != TileType.WALL) continue;
+                if (stack.get(nx, ny, nz).type() != Tile.Type.WALL) continue;
 
-                result[cx + dx][cy + dy][cz + dz] = new Tile(TileType.PATH, 0);
-                result[nx][ny][nz] = new Tile(TileType.PATH, 0);
-
-                stack.push(new Pos(nx, ny, nz));
+                stack.push(nx, ny, nz);
 //                    if (isTouchingExit(nx, ny, nz, end)) {
 //                        solution.addAll(stack);
 //                    }
@@ -116,21 +94,21 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             }
 
             if (!moved) {
-                stack.pop();
+                stack.back();
             }
         }
 
-        result[end.x()][end.y()][end.z()] = new Tile(TileType.ENDPOINT, 0);
-        result[1][1][0] = new Tile(TileType.ENDPOINT, 1);
+        stack.push(end.x(), end.y(), end.z(), Tile.START);
+        stack.push(1, 1, 0, Tile.END);
 
         for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
             for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
                 for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
-                    result[ex][ey][ez] = new Tile(TileType.PATH, 0);
+                    stack.push(ex, ey, ez, new Tile(Tile.Type.ROOM, 0));
                 }
             }
         }
 
-        return result;
+        return stack.getTiles();
     }
 }
