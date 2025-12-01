@@ -140,7 +140,7 @@ public class DeeperDarker implements ModInitializer {
 																								int wallSize = 3;
 
 																								try {
-																									MazeGenerator mazeGenerator = new BacktrackerMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ), false);
+																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ));
 
 																									Tile[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 
