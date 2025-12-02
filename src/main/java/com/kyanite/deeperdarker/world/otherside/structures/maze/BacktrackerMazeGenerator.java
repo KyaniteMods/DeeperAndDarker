@@ -1,11 +1,9 @@
-package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
+package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Stack;
 
 public class BacktrackerMazeGenerator extends MazeGenerator {
     private int width;

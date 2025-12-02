@@ -1,15 +1,12 @@
-package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
+package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3i;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public abstract class MazeGenerator {
     public abstract Tile[][][] generate(RandomSource random);

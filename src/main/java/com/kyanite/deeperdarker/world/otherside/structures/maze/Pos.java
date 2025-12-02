@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.world.otherside.structures.gloomaze;
+package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 public record Pos(int x, int y, int z) {
     @Override

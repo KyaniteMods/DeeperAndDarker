@@ -10,10 +10,11 @@ import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDFeatures;
-import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.BacktrackerMazeGenerator;
-import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.MazeGenerator;
-import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.Tile;
-import com.kyanite.deeperdarker.world.otherside.structures.gloomaze.WilsonMazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
+import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.Tile;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.WilsonMazeGenerator;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.api.ModInitializer;
@@ -65,6 +66,8 @@ public class DeeperDarker implements ModInitializer {
 		AncientPaintings.init();
 		DDLootItemFunctions.init();
 		DDRecipeSerializers.init();
+		DDStructurePieceTypes.init();
+		DDStructureTypes.init();
 		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();
@@ -140,7 +143,7 @@ public class DeeperDarker implements ModInitializer {
 																								int wallSize = 3;
 
 																								try {
-																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ));
+																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ), true);
 
 																									Tile[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 
