@@ -128,7 +128,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         copy(ConventionalBlockTags.STONES, ConventionalItemTags.STONES);
         copy(ConventionalBlockTags.COBBLESTONES, ConventionalItemTags.STONES);
-        add(ConventionalItemTags.BERRIES_FOODS, DDItems.BLOOM_BERRIES);
+        add(ConventionalItemTags.BERRY_FOODS, DDItems.BLOOM_BERRIES);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
     }
 }
