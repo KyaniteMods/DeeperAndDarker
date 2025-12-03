@@ -98,7 +98,6 @@ public class DDModelProvider extends FabricModelProvider {
                 .with(PropertyDispatch.property(BlockStateProperties.DOUBLE_BLOCK_HALF)
                         .select(DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.RETURN_STATUE, "_lower")))
                         .select(DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.RETURN_STATUE, "_upper")))));
-        blockModelGenerators.delegateItemModel(DDBlocks.RETURN_STATUE, ModelLocationUtils.getModelLocation(DDBlocks.RETURN_STATUE));
 
         blockModelGenerators.family(DDBlocks.GLOOMSLATE);
         registerStairs(blockModelGenerators, DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE);
@@ -301,6 +300,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlocks.RETURN_STATUE.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.WHITE_SCULK_TRANSMITTER);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.ORANGE_SCULK_TRANSMITTER);
