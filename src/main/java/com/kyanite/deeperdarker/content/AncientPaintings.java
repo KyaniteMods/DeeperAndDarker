@@ -16,6 +16,7 @@ public class AncientPaintings {
     public static final ResourceKey<PaintingVariant> ADVENTURE = create("adventure", new PaintingVariant(64, 16));
     public static final ResourceKey<PaintingVariant> ECHOER = create("echoer", new PaintingVariant(16, 16));
     public static final ResourceKey<PaintingVariant> CARROT = create("carrot", new PaintingVariant(32, 16));
+    public static final ResourceKey<PaintingVariant> MAZE = create("maze", new PaintingVariant(64, 48));
 
     private static ResourceKey<PaintingVariant> create(String string, PaintingVariant paintingVariant) {
         ResourceKey<PaintingVariant> resourceKey = ResourceKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(DeeperDarker.MOD_ID, string));
