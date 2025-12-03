@@ -16,9 +16,16 @@ import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 
 public class MazeStructurePiece extends StructurePiece {
-    public MazeStructurePiece(BlockPos pos) {
+    private Pos mazePos;
+    private int mazeWidth, mazeHeight, mazeDepth;
+
+    public MazeStructurePiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
         super(DDStructurePieceTypes.MAZE_PIECE, 0, makeBoundingBox(pos.getX(), pos.getY(), pos.getZ(), Direction.SOUTH, 3, 3, 3));
-        setOrientation(Direction.NORTH);
+        setOrientation(Direction.SOUTH);
+        this.mazePos = mazePos;
+        this.mazeWidth = mazeWidth;
+        this.mazeHeight = mazeHeight;
+        this.mazeDepth = mazeDepth;
     }
 
     public MazeStructurePiece(CompoundTag tag) {
@@ -35,7 +42,10 @@ public class MazeStructurePiece extends StructurePiece {
             for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                 for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
                     BlockState state;
-                    if ((x % 2 == 0 && y % 2 == 0 && z % 2 == 0)/* || dx == 0 || dy == 0 || dz == 0 || dx == (width * wallSize) - 1 || dy == (height * wallSize) - 1 || dz == (depth * wallSize) - 1*/)
+                    int worldMazeX = mazePos.x() * 3 + x;
+                    int worldMazeY = mazePos.y() * 3 + y;
+                    int worldMazeZ = mazePos.z() * 3 + z;
+                    if ((x % 2 == 0 && y % 2 == 0 && z % 2 == 0) || worldMazeX == 0 || worldMazeY == 0 || worldMazeZ == 0 || worldMazeX == (mazeWidth * 3) - 1 || worldMazeY == (mazeHeight * 3) - 1 || worldMazeZ == (mazeDepth * 3) - 1)
                         state = DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState();
                     else if (x == 1 && y == 1 && z == 1)
                         state = DDBlocks.SCULK_GLEAM.defaultBlockState();

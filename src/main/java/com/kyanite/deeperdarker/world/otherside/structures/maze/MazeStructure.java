@@ -68,7 +68,7 @@ public class MazeStructure extends Structure {
             for (int y = 0; y < getHeight(); y++) {
                 for (int x = 0; x < getWidth(); x++) {
                     if (tiles[x][y][z].type() == Tile.Type.WALL) {
-                        builder.addPiece(new MazeStructurePiece(pos.offset(x * 3, y * 3, z * 3)));
+                        builder.addPiece(new MazeStructurePiece(pos.offset(x * 3, y * 3, z * 3), new Pos(x, y, z), getWidth(), getHeight(), getDepth()));
 //                        builder.addPiece(new IglooPieces.IglooPiece(context.structureTemplateManager(), new ResourceLocation("igloo/top"), pos.offset(x, y, z), Rotation.NONE, 0));
                     }
                 }
