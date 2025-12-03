@@ -83,6 +83,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.PROTECTED_SCULK_GRIME_GLASS, "Protected Sculk Grime Glass");
         translationBuilder.add(DDBlocks.SCULK_GRIME_GLASS, "Sculk Grime Glass");
         translationBuilder.add(DDBlocks.SCULK_GRIME_GLASS_PANE, "Sculk Grime Glass Pane");
+        translationBuilder.add(DDBlocks.RETURN_STATUE, "Return Statue");
         translationBuilder.add(DDBlocks.GLOOMSLATE, "Gloomslate");
         translationBuilder.add(DDBlocks.GLOOMSLATE_STAIRS, "Gloomslate Stairs");
         translationBuilder.add(DDBlocks.GLOOMSLATE_SLAB, "Gloomslate Slab");

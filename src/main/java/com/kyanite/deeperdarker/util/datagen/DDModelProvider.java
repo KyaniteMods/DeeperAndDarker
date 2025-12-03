@@ -28,6 +28,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
@@ -93,6 +94,11 @@ public class DDModelProvider extends FabricModelProvider {
         registerWall(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
         blockModelGenerators.family(DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         blockModelGenerators.createGlassBlocks(DDBlocks.SCULK_GRIME_GLASS, DDBlocks.SCULK_GRIME_GLASS_PANE);
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.RETURN_STATUE)
+                .with(PropertyDispatch.property(BlockStateProperties.DOUBLE_BLOCK_HALF)
+                        .select(DoubleBlockHalf.LOWER, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.RETURN_STATUE, "_lower")))
+                        .select(DoubleBlockHalf.UPPER, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.RETURN_STATUE, "_upper")))));
+        blockModelGenerators.delegateItemModel(DDBlocks.RETURN_STATUE, ModelLocationUtils.getModelLocation(DDBlocks.RETURN_STATUE));
 
         blockModelGenerators.family(DDBlocks.GLOOMSLATE);
         registerStairs(blockModelGenerators, DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE);

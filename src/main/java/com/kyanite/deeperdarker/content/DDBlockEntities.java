@@ -18,6 +18,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<CrystallizedAmberBlockEntity> CRYSTALLIZED_AMBER;
     public static final BlockEntityType<DDSkullBlockEntity> SKULL;
     public static final BlockEntityType<SculkJawBlockEntity> SCULK_JAW;
+    public static final BlockEntityType<ReturnStatueBlockEntity> RETURN_STATUE;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -42,6 +43,10 @@ public class DDBlockEntities {
         SCULK_JAW = create("sculk_jaw", FabricBlockEntityTypeBuilder.create(
                 SculkJawBlockEntity::new,
                 DDBlocks.SCULK_JAW
+        ));
+        RETURN_STATUE = create("return_statue", FabricBlockEntityTypeBuilder.create(
+                ReturnStatueBlockEntity::new,
+                DDBlocks.RETURN_STATUE
         ));
     }
 
