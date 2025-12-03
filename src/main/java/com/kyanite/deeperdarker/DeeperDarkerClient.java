@@ -70,7 +70,6 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.CRYSTALLIZED_AMBER,
                 DDBlocks.SOUNDPROOF_GLASS,
                 DDBlocks.GLOOMSLATE_BARRIER,
-                DDBlocks.PROTECTED_SCULK_GLEAM,
                 DDBlocks.PROTECTED_SCULK_GRIME_GLASS,
                 DDBlocks.SCULK_GRIME_GLASS,
                 DDBlocks.SCULK_GRIME_GLASS_PANE);
