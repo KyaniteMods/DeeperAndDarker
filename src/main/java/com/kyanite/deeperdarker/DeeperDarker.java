@@ -91,9 +91,7 @@ public class DeeperDarker implements ModInitializer {
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source == LootTableSource.DATA_PACK) return;
-
-			if (EntityType.WARDEN.getDefaultLootTable().equals(id)) {
+			if (EntityType.WARDEN.getDefaultLootTable().equals(id) && CONFIG.server.addWardenDrops()) {
 				LootPool.Builder carapacePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
 								UniformGenerator.between(1.0f, 3.0f))));
@@ -103,7 +101,7 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.withPool(carapacePoolBuilder);
 				tableBuilder.withPool(heartPoolBuilder);
 			}
-			if (BuiltInLootTables.ANCIENT_CITY.equals(id)) {
+			if (BuiltInLootTables.ANCIENT_CITY.equals(id) && CONFIG.server.addAncientCityLoot()) {
 				LootPool.Builder carapacePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE)
 								.when(LootItemRandomChanceCondition.randomChance(0.2f)));
