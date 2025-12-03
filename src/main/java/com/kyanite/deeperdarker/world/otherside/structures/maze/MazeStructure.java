@@ -63,13 +63,17 @@ public class MazeStructure extends Structure {
 
         MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), center.orElse(null), true);
 
-        Tile[][][] tiles = generator.generate(context.random());
+        MazeResult result = generator.generate(context.random());
         for (int z = 0; z < getDepth(); z++) {
             for (int y = 0; y < getHeight(); y++) {
                 for (int x = 0; x < getWidth(); x++) {
-                    if (tiles[x][y][z].type() == Tile.Type.WALL) {
+                    if (result.get(x, y, z).type() == Tile.Type.WALL) {
                         builder.addPiece(new MazeStructurePieces.MazeWallPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth()));
 //                        builder.addPiece(new IglooPieces.IglooPiece(context.structureTemplateManager(), new ResourceLocation("igloo/top"), pos.offset(x, y, z), Rotation.NONE, 0));
+                    } else if (context.random().nextFloat() < 0.01f) {
+                        builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth(), pos.offset(result.start().x(), result.start().y(), result.start().z())));
+                    } else {
+                        builder.addPiece(new MazeStructurePieces.MazePathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth()));
                     }
                 }
             }

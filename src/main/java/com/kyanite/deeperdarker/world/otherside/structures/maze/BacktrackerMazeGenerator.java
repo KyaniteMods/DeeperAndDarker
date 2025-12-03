@@ -45,7 +45,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
     }
 
     @Override
-    public Tile[][][] generate(RandomSource random) {
+    public MazeResult generate(RandomSource random) {
 //        Stack<int[]> solution = new Stack<>();
         Pos end;
         if (center == null) {
@@ -107,6 +107,6 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             }
         }
 
-        return stack.getTiles();
+        return new MazeResult(stack.getTiles(), start, end);
     }
 }

@@ -13,6 +13,7 @@ import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeResult;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.Tile;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.WilsonMazeGenerator;
 import com.mojang.brigadier.Command;
@@ -20,7 +21,6 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.fabricmc.fabric.api.loot.v2.LootTableSource;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
@@ -143,12 +143,12 @@ public class DeeperDarker implements ModInitializer {
 																								try {
 																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ), true);
 
-																									Tile[][][] arr = mazeGenerator.generate(c.getSource().getLevel().getRandom());
+																									MazeResult result = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 
 																									for (int x = 0; x < width; x++) {
 																										for (int y = 0; y < height; y++) {
 																											for (int z = 0; z < depth; z++) {
-																												Tile tile = arr[x][y][z];
+																												Tile tile = result.get(x, y, z);
 																												BlockState blockState = switch (tile.type()) {
 																													case PATH -> Blocks.AIR.defaultBlockState();
 																													case ROOM -> Blocks.GREEN_STAINED_GLASS.defaultBlockState();

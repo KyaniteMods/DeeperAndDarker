@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class MazeGenerator {
-    public abstract Tile[][][] generate(RandomSource random);
+    public abstract MazeResult generate(RandomSource random);
 
     protected Direction[] weightedOrder(RandomSource random, Direction[] arr, float[] weights) {
         Direction[] result = new Direction[arr.length];

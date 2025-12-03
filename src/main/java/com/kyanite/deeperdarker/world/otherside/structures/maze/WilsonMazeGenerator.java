@@ -90,7 +90,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
     }
 
     @Override
-    public Tile[][][] generate(RandomSource random) {
+    public MazeResult generate(RandomSource random) {
         List<Pos> remainingPositions = new ArrayList<>();
         Tile[][][] result = new Tile[width][height][depth];
 
@@ -116,6 +116,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
             cheap = false;
         }
 
+        Pos start = new Pos(1, 1, 0);
         Pos end;
         if (center == null) {
             end = new Pos(width - 2, height - 2, depth - 1);
@@ -132,8 +133,8 @@ public class WilsonMazeGenerator extends MazeGenerator {
         }
 
         result[end.x()][end.y()][end.z()] = new Tile(Tile.Type.ENDPOINT, 0);
-        result[1][1][0] = new Tile(Tile.Type.ENDPOINT, 1);
+        result[start.x()][start.y()][start.z()] = new Tile(Tile.Type.ENDPOINT, 1);
 
-        return result;
+        return new MazeResult(result, start, end);
     }
 }
