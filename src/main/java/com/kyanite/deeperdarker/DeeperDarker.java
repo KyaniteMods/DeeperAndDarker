@@ -11,8 +11,8 @@ import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableSource;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
@@ -74,10 +74,8 @@ public class DeeperDarker implements ModInitializer {
 
 		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
 
-		LootTableEvents.MODIFY.register((key, tableBuilder, source) -> {
-			if (source == LootTableSource.DATA_PACK) return;
-
-			if (EntityType.WARDEN.getDefaultLootTable() == key) {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
+			if (EntityType.WARDEN.getDefaultLootTable() == key && CONFIG.server.addWardenDrops()) {
 				LootPool.Builder carapacePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).apply(SetItemCountFunction.setCount(
 								UniformGenerator.between(1.0f, 3.0f))));
@@ -87,7 +85,7 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.withPool(carapacePoolBuilder);
 				tableBuilder.withPool(heartPoolBuilder);
 			}
-			if (BuiltInLootTables.ANCIENT_CITY == key) {
+			if (BuiltInLootTables.ANCIENT_CITY == key && CONFIG.server.addAncientCityLoot()) {
 				LootPool.Builder carapacePoolBuilder = LootPool.lootPool()
 						.add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE)
 								.when(LootItemRandomChanceCondition.randomChance(0.2f)));

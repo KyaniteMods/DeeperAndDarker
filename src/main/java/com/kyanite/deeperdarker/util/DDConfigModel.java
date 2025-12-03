@@ -1,9 +1,6 @@
 package com.kyanite.deeperdarker.util;
 
-import io.wispforest.owo.config.annotation.Config;
-import io.wispforest.owo.config.annotation.Modmenu;
-import io.wispforest.owo.config.annotation.Nest;
-import io.wispforest.owo.config.annotation.RangeConstraint;
+import io.wispforest.owo.config.annotation.*;
 
 @Modmenu(modId = "deeperdarker")
 @Config(name = "deeperdarker", wrapperName = "DDConfig")
@@ -67,6 +64,14 @@ public class DDConfigModel {
 
         @RangeConstraint(min = -1.0, max = 32.0)
         public int snapperDropLimit = 8;
+
+        @RestartRequired
+        @ExcludeFromScreen
+        public boolean addWardenDrops = true;
+
+        @RestartRequired
+        @ExcludeFromScreen
+        public boolean addAncientCityLoot = true;
     }
 
     @Nest
