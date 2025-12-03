@@ -99,7 +99,7 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 
-	modCompileOnly "curse.maven:toms-storage-fabric-396826:6811311"
+	modCompileOnly "curse.maven:toms-storage-fabric-396826:7275192"
 
 //	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
 
