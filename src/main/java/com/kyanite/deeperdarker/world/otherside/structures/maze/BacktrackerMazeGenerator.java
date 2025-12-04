@@ -81,7 +81,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 
                 if (nx < 0 || ny < 0 || nz < 0) continue;
                 if (nx >= width - 1 || ny >= height - 1 || nz >= depth - 1) continue;
-                if (stack.get(nx, ny, nz).type() != Tile.Type.WALL) continue;
+                if (stack.get(nx, ny, nz).getType() != Tile.Type.WALL) continue;
 
                 stack.push(nx, ny, nz);
 //                    if (isTouchingExit(nx, ny, nz, end)) {
@@ -96,17 +96,17 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             }
         }
 
-        stack.push(end.x(), end.y(), end.z(), Tile.START);
-        stack.push(1, 1, 0, Tile.END);
+        stack.push(end.x(), end.y(), end.z(), Tile.start());
+        stack.push(1, 1, 0, Tile.end());
 
         for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
             for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
                 for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
-                    stack.push(ex, ey, ez, new Tile(Tile.Type.ROOM, 0));
+                    stack.push(ex, ey, ez, Tile.room());
                 }
             }
         }
 
-        return new MazeResult(stack.getTiles(), start, end);
+        return MazeResult.createAndNavigate(stack.getTiles(), width, height, depth, start, end);
     }
 }

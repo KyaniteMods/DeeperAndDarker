@@ -149,7 +149,7 @@ public class DeeperDarker implements ModInitializer {
 																										for (int y = 0; y < height; y++) {
 																											for (int z = 0; z < depth; z++) {
 																												Tile tile = result.get(x, y, z);
-																												BlockState blockState = switch (tile.type()) {
+																												BlockState blockState = switch (tile.getType()) {
 																													case PATH -> Blocks.AIR.defaultBlockState();
 																													case ROOM -> Blocks.GREEN_STAINED_GLASS.defaultBlockState();
 																													case WALL -> DDBlocks.GLOOMSLATE.defaultBlockState();
@@ -160,7 +160,7 @@ public class DeeperDarker implements ModInitializer {
 																												for (int dx = x * wallSize; dx < x * wallSize + wallSize; dx++) {
 																													for (int dy = y * wallSize; dy < y * wallSize + wallSize; dy++) {
 																														for (int dz = z * wallSize; dz < z * wallSize + wallSize; dz++) {
-																															if (tile.type() == Tile.Type.WALL) {
+																															if (tile.getType() == Tile.Type.WALL) {
 																																if (((dx - x * wallSize) % 2 == 0 && (dy - y * wallSize) % 2 == 0 && (dz - z * wallSize) % 2 == 0) || dx == 0 || dy == 0 || dz == 0 || dx == (width * wallSize) - 1 || dy == (height * wallSize) - 1 || dz == (depth * wallSize) - 1)
 																																	c.getSource().getLevel().setBlock(c.getSource().getEntity().blockPosition().offset(dx, dy, dz), DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 2);
 																																else if ((dx - x * wallSize) == 1 && (dy - y * wallSize) == 1 && (dz - z * wallSize) == 1)

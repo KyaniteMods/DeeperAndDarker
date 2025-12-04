@@ -4,10 +4,34 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 
-public record Tile(@NotNull Type type, int data) {
-    public static final Tile START = new Tile(Type.ENDPOINT, 0);
-    public static final Tile END = new Tile(Type.ENDPOINT, 1);
-    public static final Tile WALL = new Tile(Type.WALL, 0);
+public final class Tile {
+    private final @NotNull Type type;
+    private int data;
+
+    public Tile(@NotNull Type type, int data) {
+        this.type = type;
+        this.data = data;
+    }
+
+    public static Tile start() {
+        return new Tile(Type.ENDPOINT, 0);
+    }
+
+    public static Tile end() {
+        return new Tile(Type.ENDPOINT, 1);
+    }
+
+    public static Tile wall() {
+        return new Tile(Type.WALL, 0);
+    }
+
+    public static Tile room() {
+        return new Tile(Type.ROOM, 0);
+    }
+
+    public static Tile path() {
+        return new Tile(Type.PATH, -1);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -29,14 +53,40 @@ public record Tile(@NotNull Type type, int data) {
 
     @Override
     public String toString() {
-        return type().name().toLowerCase(Locale.ROOT) + ":" + data();
+        return getType().name().toLowerCase(Locale.ROOT) + ":" + getData();
+    }
+
+    public @NotNull Type getType() {
+        return type;
+    }
+
+    public int getData() {
+        return data;
+    }
+
+    public void setData(int value) {
+        data = value;
+    }
+
+    public Tile copy() {
+        return new Tile(type, data);
     }
 
     public enum Type {
-        PATH,
-        ROOM,
-        WALL,
-        ENDPOINT,
-        DEBUG
+        PATH(false),
+        ROOM(false),
+        WALL(true),
+        ENDPOINT(false),
+        DEBUG(true);
+
+        private final boolean isSolid;
+
+        Type(boolean isSolid) {
+            this.isSolid = isSolid;
+        }
+
+        public boolean isSolid() {
+            return isSolid;
+        }
     }
 }

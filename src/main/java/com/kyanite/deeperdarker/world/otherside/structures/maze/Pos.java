@@ -1,5 +1,7 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
+import net.minecraft.core.Vec3i;
+
 public record Pos(int x, int y, int z) {
     @Override
     public boolean equals(Object o) {
@@ -28,5 +30,9 @@ public record Pos(int x, int y, int z) {
                 ", y=" + y +
                 ", z=" + z +
                 '}';
+    }
+
+    public Pos add(Vec3i vec3i) {
+        return new Pos(x() + vec3i.getX(), y() + vec3i.getY(), z() + vec3i.getZ());
     }
 }

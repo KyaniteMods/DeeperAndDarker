@@ -2,21 +2,25 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
 
 public class MazeStack implements Collection<Pos> {
     private final Tile[][][] tiles;
+    private final int width;
+    private final int height;
+    private final int depth;
     private final Stack<Pos> stack;
 
-    public MazeStack(Tile[][][] tiles) {
+    public MazeStack(Tile[][][] tiles, int width, int height, int depth) {
         this.tiles = tiles;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
         stack = new Stack<>();
     }
 
     public MazeStack(int width, int height, int depth) {
-        this(from(width, height, depth));
+        this(from(width, height, depth), width, height, depth);
     }
 
     private static Tile[][][] from(int width, int height, int depth) {
@@ -25,7 +29,7 @@ public class MazeStack implements Collection<Pos> {
         for (int z = 0; z < depth; z++) {
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
-                    tiles[x][y][z] = Tile.WALL;
+                    tiles[x][y][z] = Tile.wall();
                 }
             }
         }
@@ -36,7 +40,7 @@ public class MazeStack implements Collection<Pos> {
     public Pos push(Pos pos, Tile tile) {
         if (!stack.isEmpty()) {
             Pos last = stack.peek();
-            tiles[(last.x() + pos.x()) / 2][(last.y() + pos.y()) / 2][(last.z() + pos.z()) / 2] = tile;
+            tiles[(last.x() + pos.x()) / 2][(last.y() + pos.y()) / 2][(last.z() + pos.z()) / 2] = tile.copy();
         }
         stack.push(pos);
         tiles[pos.x()][pos.y()][pos.z()] = tile;
@@ -44,7 +48,7 @@ public class MazeStack implements Collection<Pos> {
     }
 
     public Pos push(Pos pos) {
-        return push(pos, new Tile(Tile.Type.PATH, stack.size()));
+        return push(pos, Tile.path());
     }
 
     public Pos push(int x, int y, int z, Tile tile) {
@@ -57,10 +61,10 @@ public class MazeStack implements Collection<Pos> {
 
     public Pos pop() {
         Pos pos = stack.pop();
-        tiles[pos.x()][pos.y()][pos.z()] = Tile.WALL;
+        tiles[pos.x()][pos.y()][pos.z()] = Tile.wall();
         if (!stack.isEmpty()) {
             Pos last = stack.peek();
-            tiles[(last.x() + pos.x()) / 2][(last.y() + pos.y()) / 2][(last.z() + pos.z()) / 2] = Tile.WALL;
+            tiles[(last.x() + pos.x()) / 2][(last.y() + pos.y()) / 2][(last.z() + pos.z()) / 2] = Tile.wall();
         }
         return pos;
     }

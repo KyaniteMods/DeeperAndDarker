@@ -7,14 +7,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.entity.SignText;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
@@ -41,15 +45,18 @@ public class MazeStructurePieces {
 
         @Override
         public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            BlockState statueState = DDBlocks.RETURN_STATUE.defaultBlockState();
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
                         if (x == 1 && y == 0 && z == 1) {
-                            placeBlock(worldGenLevel, DDBlocks.RETURN_STATUE.defaultBlockState(), 1, 0, 1, boundingBox);
-                            BlockEntity blockEntity = worldGenLevel.getBlockEntity(blockPos);
+                            placeBlock(worldGenLevel, statueState.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), x, y, z, boundingBox);
+                            BlockEntity blockEntity = worldGenLevel.getBlockEntity(getWorldPos(x, y, z));
                             if (blockEntity instanceof ReturnStatueBlockEntity returnStatue) {
                                 returnStatue.teleportPos = mazeStart;
                             }
+                        } else if (x == 1 && y == 1 && z == 1) {
+                            placeBlock(worldGenLevel, statueState.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), x, y, z, boundingBox);
                         } else placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
@@ -58,7 +65,6 @@ public class MazeStructurePieces {
     }
 
     public static class MazePathPiece extends MazeStructurePiece {
-
         public MazePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
             super(DDStructurePieceTypes.MAZE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
         }

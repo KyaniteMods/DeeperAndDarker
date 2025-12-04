@@ -4,9 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class MazeGenerator {
     public abstract MazeResult generate(RandomSource random);
