@@ -21,7 +21,9 @@ import dev.engine_room.flywheel.lib.model.Models;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -84,6 +86,12 @@ public class DDCreateCompat {
         public static void init() {
             DeeperDarker.LOGGER.debug("Registering block entities (Create)");
         }
+    }
+
+    public static void lavaSwimming(LivingEntity entity) {
+        ItemStack bootsStack = DivingBootsItem.getWornItem(entity);
+        if (DDCreateCompat.Items.WARDEN_DIVING_BOOTS.isIn(bootsStack))
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(DivingBootsItem.getMovementMultiplier(entity)));
     }
 
     public static void init() {
