@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:ores",
+      "required": false
+    },
+    "minecraft:sculk",
+    "deeperdarker:sculk_stone",
+    "deeperdarker:sculk_grime",
+    "deeperdarker:infested_sculk"
+  ]
+}

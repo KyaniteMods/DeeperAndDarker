@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 27070707,
+    "separation": 8,
+    "spacing": 62
+  },
+  "structures": [
+    {
+      "structure": "deeperdarker:bloomaze",
+      "weight": 1
+    }
+  ]
+}

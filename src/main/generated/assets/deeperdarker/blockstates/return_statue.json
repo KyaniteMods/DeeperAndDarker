@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "deeperdarker:block/return_statue_lower"
+    },
+    "half=upper": {
+      "model": "deeperdarker:block/return_statue_upper"
+    }
+  }
+}

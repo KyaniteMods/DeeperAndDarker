@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "deeperdarker:block/protected_sculk_grime_glass"
+  }
+}

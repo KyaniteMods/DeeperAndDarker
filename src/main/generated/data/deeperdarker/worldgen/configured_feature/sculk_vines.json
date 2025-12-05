@@ -1,0 +1,24 @@
+{
+  "type": "deeperdarker:vine",
+  "config": {
+    "doubleHeight": 0.2,
+    "height": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 8,
+        "min_inclusive": 1
+      }
+    },
+    "placeable": "deeperdarker:sculk_vine_placeable",
+    "plant": {
+      "Name": "deeperdarker:sculk_vines_plant"
+    },
+    "reducedHeight": 0.25,
+    "vine": {
+      "Name": "deeperdarker:sculk_vines",
+      "Properties": {
+        "age": "0"
+      }
+    }
+  }
+}

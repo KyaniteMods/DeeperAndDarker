@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "deeperdarker:block/sculk_grime_glass_pane_top",
+    "pane": "deeperdarker:block/sculk_grime_glass"
+  }
+}

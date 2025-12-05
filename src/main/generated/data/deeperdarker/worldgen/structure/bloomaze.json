@@ -1,0 +1,18 @@
+{
+  "type": "deeperdarker:maze",
+  "biomes": "#deeperdarker:has_structure/bloomaze",
+  "center": [
+    11,
+    3,
+    11,
+    17,
+    3,
+    17
+  ],
+  "depth": 29,
+  "height": 5,
+  "spawn_overrides": {},
+  "step": "underground_structures",
+  "terrain_adaptation": "beard_box",
+  "width": 29
+}

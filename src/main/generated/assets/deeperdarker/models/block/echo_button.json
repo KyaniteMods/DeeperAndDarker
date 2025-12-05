@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "deeperdarker:block/echo_planks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deeperdarker:block/echo_slab"
+    },
+    "type=double": {
+      "model": "deeperdarker:block/echo_planks"
+    },
+    "type=top": {
+      "model": "deeperdarker:block/echo_slab_top"
+    }
+  }
+}

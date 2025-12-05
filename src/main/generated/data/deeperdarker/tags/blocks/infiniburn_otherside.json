@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:infiniburn_nether",
+      "required": false
+    },
+    "deeperdarker:gloomslate"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "deeperdarker:block/echo_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "deeperdarker:block/echo_wood"
+    },
+    "axis=z": {
+      "model": "deeperdarker:block/echo_wood",
+      "x": 90
+    }
+  }
+}

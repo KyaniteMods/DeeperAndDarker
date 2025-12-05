@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "deeperdarker:block/gloomy_sculk",
+    "side": "deeperdarker:block/gloomy_sculk",
+    "top": "deeperdarker:block/gloomy_geyser"
+  }
+}

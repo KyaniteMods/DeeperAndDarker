@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "deeperdarker:block/stripped_echo_log_top",
+    "side": "deeperdarker:block/stripped_echo_log"
+  }
+}
