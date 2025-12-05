@@ -185,19 +185,6 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
         dropWhenSilkTouch(DDBlocks.PROTECTED_SCULK_GLEAM);
-
-        add(DDCreateCompat.Blocks.WARDEN_BACKTANK, (block) -> {
-            LootTable.Builder builder = LootTable.lootTable();
-            LootItemCondition.Builder survivesExplosion = ExplosionCondition.survivesExplosion();
-            return builder.withPool(LootPool.lootPool()
-                    .when(survivesExplosion)
-                    .setRolls(ConstantValue.exactly(1))
-                    .add(LootItem.lootTableItem(DDCreateCompat.Items.WARDEN_BACKTANK)
-                            .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                    .copy("VanillaTag", "{}", CopyNbtFunction.MergeStrategy.MERGE))
-                            .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                    .copy("Air", "Air"))));
-        });
     }
 
     private void addVineAndPlant(Block plant, Block vine) {
