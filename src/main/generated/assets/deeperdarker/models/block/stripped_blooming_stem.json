@@ -1,0 +1,6 @@
+{
+  "parent": "deeperdarker:block/stem",
+  "textures": {
+    "stem": "deeperdarker:block/stripped_blooming_stem"
+  }
+}

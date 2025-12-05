@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deeperdarker:block/polished_sculk_stone_slab"
+    },
+    "type=double": {
+      "model": "deeperdarker:block/polished_sculk_stone"
+    },
+    "type=top": {
+      "model": "deeperdarker:block/polished_sculk_stone_slab_top"
+    }
+  }
+}

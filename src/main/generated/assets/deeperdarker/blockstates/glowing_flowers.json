@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "deeperdarker:block/glowing_flowers",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "deeperdarker:block/glowing_flowers"
+    },
+    "facing=south": {
+      "model": "deeperdarker:block/glowing_flowers",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "deeperdarker:block/glowing_flowers",
+      "y": 270
+    }
+  }
+}

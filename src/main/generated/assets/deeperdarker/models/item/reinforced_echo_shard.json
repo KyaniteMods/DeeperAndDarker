@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "deeperdarker:item/reinforced_echo_shard"
+  }
+}

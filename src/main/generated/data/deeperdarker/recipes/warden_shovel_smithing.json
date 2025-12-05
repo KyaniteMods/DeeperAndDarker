@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "deeperdarker:reinforced_echo_shard"
+  },
+  "base": {
+    "item": "minecraft:netherite_shovel"
+  },
+  "result": {
+    "item": "deeperdarker:warden_shovel"
+  },
+  "template": {
+    "item": "deeperdarker:warden_upgrade_smithing_template"
+  }
+}

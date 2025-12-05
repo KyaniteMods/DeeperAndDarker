@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "deeperdarker:blooming_stems"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "deeperdarker:bloom_planks"
+  }
+}

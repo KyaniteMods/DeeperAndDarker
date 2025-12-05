@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "biting=false": {
+      "model": "deeperdarker:block/sculk_jaw"
+    },
+    "biting=true": {
+      "model": "deeperdarker:block/sculk_jaw_biting"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/nether_portal_ew",
+  "textures": {
+    "particle": "deeperdarker:block/otherside_portal",
+    "portal": "deeperdarker:block/otherside_portal"
+  }
+}

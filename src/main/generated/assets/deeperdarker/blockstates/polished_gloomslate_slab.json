@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "deeperdarker:block/polished_gloomslate_slab"
+    },
+    "type=double": {
+      "model": "deeperdarker:block/polished_gloomslate"
+    },
+    "type=top": {
+      "model": "deeperdarker:block/polished_gloomslate_slab_top"
+    }
+  }
+}
