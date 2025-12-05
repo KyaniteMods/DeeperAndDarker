@@ -105,7 +105,7 @@ dependencies {
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
 
-	modCompileOnly("com.simibubi.create:create-fabric:${create_fabric_version}")
+	modImplementation("com.simibubi.create:create-fabric:${create_fabric_version}")
 
 	modCompileOnly "curse.maven:toms-storage-fabric-396826:6418134" // Tom's Simple Storage
 
