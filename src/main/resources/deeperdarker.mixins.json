@@ -23,6 +23,7 @@
     "TomsStorageCompatMixin",
     "VibrationListenerMixin",
     "ViewerCounterMixin",
+    "WardenHelmetImmunityMixin",
     "WardenMixin"
   ],
   "client": [
