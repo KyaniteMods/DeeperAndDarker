@@ -244,8 +244,8 @@ public class DDBlocks {
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
     public static final Block PROTECTED_SCULK_GLEAM = register("protected_sculk_gleam", new HalfTransparentBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(11000.0f).pushReaction(PushReaction.BLOCK)));
     public static final Block PROTECTED_SCULK_GRIME_GLASS = register("protected_sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(11000.0f).pushReaction(PushReaction.BLOCK).mapColor(MapColor.COLOR_CYAN)));
-    public static final Block SCULK_GRIME_GLASS = register("sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.COLOR_CYAN).strength(20.0f)));
-    public static final Block SCULK_GRIME_GLASS_PANE = register("sculk_grime_glass_pane", new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).strength(20.0f)));
+    public static final Block SCULK_GRIME_GLASS = register("sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.COLOR_CYAN).strength(0.3f)));
+    public static final Block SCULK_GRIME_GLASS_PANE = register("sculk_grime_glass_pane", new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).strength(0.3f)));
     public static final Block RETURN_STATUE = register("return_statue", new ReturnStatueBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(-1, 3600000.0f).noLootTable().pushReaction(PushReaction.BLOCK).isViewBlocking(Blocks::never)));
 
     public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0f).pushReaction(PushReaction.DESTROY)));

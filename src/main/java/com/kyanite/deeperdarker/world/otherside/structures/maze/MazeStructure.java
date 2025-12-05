@@ -7,6 +7,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -64,20 +65,20 @@ public class MazeStructure extends Structure {
         MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), center.orElse(null), true);
 
         MazeResult result = generator.generate(context.random());
-        boolean placedReturnStatue = false;
+        boolean placedStartReturnStatue = false;
         for (int z = 0; z < getDepth(); z++) {
             for (int y = 0; y < getHeight(); y++) {
                 for (int x = 0; x < getWidth(); x++) {
                     boolean returnStatue = (result.get(x, y, z).getData() >= 2 && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid());
                     if (result.get(x, y, z).getType() == Tile.Type.WALL) {
                         builder.addPiece(new MazeStructurePieces.MazeWallPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth()));
-                    } else if (isCorner(result, x, y, z)) {
-                        if (returnStatue && !placedReturnStatue) {
-                            builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth(), pos.offset(result.start().x() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH + MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH / 2, result.start().y() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, result.start().z() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH + MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH / 2)));
-                            placedReturnStatue = true;
-                        } else if (context.random().nextFloat() < 0.01f) {
-                            builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth(), pos.offset(result.start().x() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH + MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH / 2, result.start().y() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, result.start().z() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH + MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH / 2)));
-                        }
+                    } else if (isCorner(result, x, y, z) && ((returnStatue && !placedStartReturnStatue) || context.random().nextFloat() < 0.01f)) {
+                        builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth(), pos.offset(result.start().x() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH + MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH / 2, result.start().y() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, result.start().z() * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH + MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH / 2)));
+                        if (returnStatue && !placedStartReturnStatue) placedStartReturnStatue = true;
+                    } else if (isHole(result, x, y, z)) {
+                        builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth(), context.random().nextFloat() < 0.2f ? Blocks.WATER.defaultBlockState() : Blocks.LAVA.defaultBlockState()));
+                    } else if (context.random().nextFloat() < 0.03f) {
+                        builder.addPiece(new MazeStructurePieces.MazeGlassPathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth()));
                     } else {
                         builder.addPiece(new MazeStructurePieces.MazePathPiece(pos.offset(x * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, y * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH, z * MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH), new Pos(x, y, z), getWidth(), getHeight(), getDepth()));
                     }
@@ -90,6 +91,12 @@ public class MazeStructure extends Structure {
         if (result.get(x, y, z).getType().isSolid() || y - 1 < 0 || !result.get(x, y - 1, z).getType().isSolid()) return false;
         return ((x + 1 <= result.width() - 1 && result.get(x + 1, y, z).getType().isSolid()) || (x - 1 >= 0 && result.get(x - 1, y, z).getType().isSolid()))
                 && ((z + 1 <= result.depth() - 1 && result.get(x, y, z + 1).getType().isSolid()) || (z - 1 >= 0 && result.get(x, y, z - 1).getType().isSolid()));
+    }
+
+    private static boolean isHole(MazeResult result, int x, int y, int z) {
+        if (result.get(x, y, z).getType().isSolid() || y - 1 < 0 || !result.get(x, y - 1, z).getType().isSolid()) return false;
+        return ((x + 1 <= result.width() - 1 && result.get(x + 1, y, z).getType().isSolid()) && (x - 1 >= 0 && result.get(x - 1, y, z).getType().isSolid()))
+                && ((z + 1 <= result.depth() - 1 && result.get(x, y, z + 1).getType().isSolid()) && (z - 1 >= 0 && result.get(x, y, z - 1).getType().isSolid()));
     }
 
     public int getWidth() {
