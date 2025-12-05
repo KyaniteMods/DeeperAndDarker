@@ -1,13 +1,19 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["create"]
+    }
+  ],
   "type": "minecraft:smithing_transform",
   "addition": {
     "item": "deeperdarker:reinforced_echo_shard"
   },
   "base": {
-    "item": "create:netherite_diving_boots"
+    "item": "create:netherite_diving_helmet"
   },
   "result": {
-    "item": "deeperdarker:warden_diving_boots"
+    "item": "deeperdarker:warden_diving_helmet"
   },
   "template": {
     "item": "deeperdarker:warden_upgrade_smithing_template"

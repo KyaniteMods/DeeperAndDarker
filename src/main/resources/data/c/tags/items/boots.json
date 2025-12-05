@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "deeperdarker:warden_diving_boots"
+    {
+      "id": "deeperdarker:warden_diving_boots",
+      "required": false
+    }
   ]
 }
 
