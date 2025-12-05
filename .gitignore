@@ -41,4 +41,3 @@ replay_*.log
 *.jfr
 /output/
 /src/main/generated/.cache/
-/src/main/generated/
