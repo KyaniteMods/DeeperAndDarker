@@ -54,7 +54,6 @@ public class WilsonMazeGenerator extends MazeGenerator {
         MazeStack mazeStack = new MazeStack(deepCopy(partialResult), width, height, depth);
 
         Pos currentPos = start;
-        Direction lastDirection = null;
 
         mazeStack.push(currentPos);
 
@@ -65,15 +64,13 @@ public class WilsonMazeGenerator extends MazeGenerator {
             Direction[] ordered = Direction.allShuffled(random).toArray(new Direction[6]);
             Pos newPos = null;
             for (Direction direction : ordered) {
-                if (lastDirection != null && direction.equals(lastDirection.getOpposite())) continue;
                 newPos = new Pos(currentPos.x() + direction.getNormal().getX() * 2, currentPos.y() + direction.getNormal().getY() * 2, currentPos.z() + direction.getNormal().getZ() * 2);
+                if (mazeStack.size() >= 2 && mazeStack.get(mazeStack.size() - 2).equals(newPos)) continue;
                 if (center != null && center.isInside(newPos.x(), newPos.y(), newPos.z())) continue;
                 if (newPos.x() < 0 || newPos.y() < 0 || newPos.z() < 0) continue;
                 if (newPos.x() >= width - 1 || newPos.y() >= height - 1 || newPos.z() >= depth - 1) continue;
-                lastDirection = direction;
                 break;
             }
-            if (newPos == null) throw new IllegalStateException("Couldn't move!");
 
             int posIndex = mazeStack.indexOf(newPos);
             if (posIndex >= 0) {
