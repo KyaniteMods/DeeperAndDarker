@@ -36,6 +36,7 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation ANCIENT_TEMPLE_APEX = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_apex");
     public static final ResourceLocation ANCIENT_TEMPLE_FOUNTAIN = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_fountain");
     public static final ResourceLocation CRYSTALLIZED_AMBER = new ResourceLocation(DeeperDarker.MOD_ID, "chests/crystallized_amber");
+    public static final ResourceLocation MAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/maze_secret");
     public static final ResourceLocation MAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/maze_basic");
 
     public DDChestLootTableProvider(FabricDataOutput output) {
@@ -63,9 +64,29 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
                         .add(LootItem.lootTableItem(Items.IRON_SWORD)
                                 .setWeight(5)
-                                .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6f, 0.8f))))
+                                .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2f, 0.4f))))
                         .add(LootItem.lootTableItem(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS)
                                 .setWeight(1))
                 ));
+        consumer.accept(MAZE_SECRET, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 7))
+                        .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                                .setWeight(30)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))))
+                        .add(LootItem.lootTableItem(Items.IRON_NUGGET)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 10))))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)
+                                .setWeight(2)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f))))
+                        .add(LootItem.lootTableItem(Items.DIAMOND_SWORD)
+                                .setWeight(5)
+                                .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2f, 0.3f))))
+                        .add(LootItem.lootTableItem(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS)
+                                .setWeight(2))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)))
+        );
     }
 }

@@ -24,6 +24,7 @@ import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class MazeStructurePieces {
     public static class MazeChestPathPiece extends MazeStructurePiece {
@@ -100,10 +101,12 @@ public class MazeStructurePieces {
     }
 
     public static class MazeFluidPathPiece extends MazeStructurePiece {
+        private @Nullable ResourceLocation lootTable;
         private BlockState fluid;
 
-        public MazeFluidPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, @NotNull BlockState fluid) {
+        public MazeFluidPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, @NotNull BlockState fluid, @Nullable ResourceLocation lootTable) {
             super(DDStructurePieceTypes.MAZE_FLUID_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
+            this.lootTable = lootTable;
             this.fluid = fluid;
         }
 
@@ -114,6 +117,9 @@ public class MazeStructurePieces {
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
             compoundTag.put("fluid", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, fluid).result().orElseThrow());
+            if (lootTable != null) {
+                compoundTag.putString("loot_table", lootTable.toString());
+            }
         }
 
         @Override
@@ -121,7 +127,11 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, y == 0 ? fluid : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        if (x == 1 && y == 0 && z == 1 && lootTable != null) {
+                            createChest(worldGenLevel, boundingBox, randomSource, x, y, z, lootTable);
+                            continue;
+                        }
+                        placeBlock(worldGenLevel, y <= 1 ? fluid : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
             }

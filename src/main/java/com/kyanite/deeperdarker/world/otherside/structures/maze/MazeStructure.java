@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -90,7 +91,8 @@ public class MazeStructure extends Structure {
                         builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), pos.offset(result.start().x() * sideLength + sideLength / 2, result.start().y() * sideLength, result.start().z() * sideLength + sideLength / 2)));
                         if (returnStatue && !placedStartReturnStatue) placedStartReturnStatue = true;
                     } else if (isHole(result, x, y, z)) {
-                        builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), context.random().nextFloat() < 0.2f ? Blocks.WATER.defaultBlockState() : Blocks.LAVA.defaultBlockState()));
+                        boolean isLava = context.random().nextFloat() < 0.8f;
+                        builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
                     } else if (context.random().nextFloat() < 0.03f) {
                         builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
                     } else if (context.random().nextFloat() < 0.05f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
