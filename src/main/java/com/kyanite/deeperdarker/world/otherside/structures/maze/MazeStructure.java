@@ -88,7 +88,7 @@ public class MazeStructure extends Structure {
                     } else if (context.random().nextFloat() < 0.03f) {
                         builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
                     } else {
-                        builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
+                        builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), Blocks.AIR.defaultBlockState()));
                     }
                 }
             }

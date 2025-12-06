@@ -8,17 +8,33 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.*;
+
 public class FragileBlock extends Block {
     public FragileBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
-        super.onRemove(blockState, level, blockPos, blockState2, bl);
-        for (Direction direction : Direction.values()) {
-            BlockPos neighborPos = blockPos.offset(direction.getNormal());
-            if (level.getBlockState(neighborPos).is(this) && level.getRandom().nextFloat() < 0.9f) level.destroyBlock(neighborPos, true);
+    public void destroy(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
+        super.destroy(level, blockPos, blockState);
+
+        // BFS. could use recursion instead but causes stack overflow for too many blocks
+        Queue<BlockPos> stack = new ArrayDeque<>();
+        Set<BlockPos> explored = new HashSet<>();
+        explored.add(blockPos);
+        stack.add(blockPos);
+
+        while (!stack.isEmpty()) {
+            BlockPos pos = stack.remove();
+            for (Direction direction : Direction.values()) {
+                BlockPos neighborPos = pos.offset(direction.getNormal());
+                if (level.getBlockState(neighborPos).is(this) && !explored.contains(neighborPos)) {
+                    explored.add(neighborPos);
+                    stack.add(neighborPos);
+                    level.destroyBlock(neighborPos, true);
+                }
+            }
         }
     }
 }

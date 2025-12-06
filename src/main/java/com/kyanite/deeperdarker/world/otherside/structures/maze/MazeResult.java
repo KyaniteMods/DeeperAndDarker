@@ -2,7 +2,7 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 import net.minecraft.core.Direction;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 
 public record MazeResult(Tile[][][] result, int width, int height, int depth, Pos start, Pos end) {
@@ -26,7 +26,7 @@ public record MazeResult(Tile[][][] result, int width, int height, int depth, Po
             }
         }
 
-        Queue<Pos> queue = new LinkedList<>();
+        Queue<Pos> queue = new ArrayDeque<>();
         get(start.x(), start.y(), start.z()).setData(0);
         queue.add(start);
 
