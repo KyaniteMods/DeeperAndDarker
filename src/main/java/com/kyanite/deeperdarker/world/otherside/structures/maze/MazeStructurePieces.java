@@ -7,11 +7,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -24,6 +26,41 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import org.jetbrains.annotations.NotNull;
 
 public class MazeStructurePieces {
+    public static class MazeChestPathPiece extends MazeStructurePiece {
+        private ResourceLocation lootTable;
+        private Direction direction;
+
+        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction direction, int mazeWidth, int mazeHeight, int mazeDepth, ResourceLocation lootTable) {
+            super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, pos, direction, mazePos, mazeWidth, mazeHeight, mazeDepth);
+            this.direction = direction;
+            this.lootTable = lootTable;
+        }
+
+        public MazeChestPathPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, tag);
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            compoundTag.putString("loot_table", lootTable.toString());
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        if (x == 1 && y == 0 && z == 2) {
+                            createChest(worldGenLevel, boundingBox, randomSource, getWorldPos(x, y, z), lootTable, Blocks.CHEST.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, direction.getOpposite()));
+                        } else {
+                            placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public static class MazeStatuePathPiece extends MazeStructurePiece {
         private BlockPos mazeStart;
 

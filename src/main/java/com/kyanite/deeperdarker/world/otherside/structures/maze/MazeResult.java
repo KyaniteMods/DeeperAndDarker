@@ -10,6 +10,10 @@ public record MazeResult(Tile[][][] result, int width, int height, int depth, Po
         return result()[x][y][z];
     }
 
+    public Tile get(Pos pos) {
+        return get(pos.x(), pos.y(), pos.z());
+    }
+
     public static MazeResult createAndNavigate(Tile[][][] result, int width, int height, int depth, Pos start, Pos end) {
         MazeResult mazeResult = new MazeResult(result, width, height, depth, start, end);
         mazeResult.updatePathDistances();
@@ -43,5 +47,9 @@ public record MazeResult(Tile[][][] result, int width, int height, int depth, Po
                 }
             }
         }
+    }
+
+    public boolean isWithinBounds(Pos pos) {
+        return pos.x() >= 0 && pos.y() >= 0 && pos.z() >= 0 && pos.x() <= width() - 1 && pos.y() <= height() - 1 && pos.z() <= depth() - 1;
     }
 }
