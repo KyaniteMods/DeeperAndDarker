@@ -18,7 +18,7 @@ public class FragileBlock extends Block {
     @Override
     public void destroy(LevelAccessor level, BlockPos blockPos, BlockState blockState) {
         super.destroy(level, blockPos, blockState);
-
+        if (level.isClientSide()) return;
         // BFS. could use recursion instead but causes stack overflow for too many blocks
         Queue<BlockPos> stack = new ArrayDeque<>();
         Set<BlockPos> explored = new HashSet<>();
@@ -32,7 +32,7 @@ public class FragileBlock extends Block {
                 if (level.getBlockState(neighborPos).is(this) && !explored.contains(neighborPos)) {
                     explored.add(neighborPos);
                     stack.add(neighborPos);
-                    level.destroyBlock(neighborPos, true);
+                    if (level.getRandom().nextFloat() < 0.9f) level.destroyBlock(neighborPos, true);
                 }
             }
         }
