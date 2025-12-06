@@ -82,6 +82,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_STAIRS);
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_SLAB);
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_WALL);
+        entries.accept(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS);
         entries.accept(DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         entries.accept(DDBlocks.SCULK_GRIME_GLASS);
         entries.accept(DDBlocks.SCULK_GRIME_GLASS_PANE);

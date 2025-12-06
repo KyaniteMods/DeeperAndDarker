@@ -62,32 +62,6 @@ public class MazeStructurePieces {
         }
     }
 
-    public static class MazeGlassPathPiece extends MazeStructurePiece {
-        public MazeGlassPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
-            super(DDStructurePieceTypes.MAZE_GLASS_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
-        }
-
-        public MazeGlassPathPiece(CompoundTag tag) {
-            super(DDStructurePieceTypes.MAZE_GLASS_PATH_PIECE, tag);
-        }
-
-        @Override
-        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
-
-        }
-
-        @Override
-        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
-                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
-                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), x, y, z, boundingBox);
-                    }
-                }
-            }
-        }
-    }
-
     public static class MazeFluidPathPiece extends MazeStructurePiece {
         private BlockState fluid;
 
@@ -118,8 +92,11 @@ public class MazeStructurePieces {
     }
 
     public static class MazePathPiece extends MazeStructurePiece {
-        public MazePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
+        private BlockState state;
+
+        public MazePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state) {
             super(DDStructurePieceTypes.MAZE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
+            this.state = state;
         }
 
         public MazePathPiece(CompoundTag tag) {
@@ -128,7 +105,7 @@ public class MazeStructurePieces {
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
-
+            compoundTag.put("block_state", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, state).result().orElseThrow());
         }
 
         @Override
@@ -136,7 +113,7 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        placeBlock(worldGenLevel, state, x, y, z, boundingBox);
                     }
                 }
             }

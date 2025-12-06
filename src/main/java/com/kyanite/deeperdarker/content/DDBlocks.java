@@ -198,6 +198,7 @@ public class DDBlocks {
     public static final Block SCULK_GRIME_BRICK_SLAB = register("sculk_grime_brick_slab", new SlabBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS)));
     public static final Block SCULK_GRIME_BRICK_STAIRS = register("sculk_grime_brick_stairs", new StairBlock(SCULK_GRIME_BRICKS.defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS)));
     public static final Block SCULK_GRIME_BRICK_WALL = register("sculk_grime_brick_wall", new WallBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS)));
+    public static final Block FRAGILE_SCULK_GRIME_BRICKS = register("fragile_sculk_grime_bricks", new FragileBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS).noLootTable().instabreak()));
 
     public static final Block ECHO_SOIL = register("echo_soil", new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block GLOOMY_SCULK = register("gloomy_sculk", new GloomySculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));

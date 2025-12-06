@@ -92,6 +92,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerStairs(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICKS);
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICKS);
         registerWall(blockModelGenerators, DDBlocks.SCULK_GRIME_BRICK_WALL, DDBlocks.SCULK_GRIME_BRICKS);
+        blockModelGenerators.family(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS);
         blockModelGenerators.family(DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         blockModelGenerators.createGlassBlocks(DDBlocks.SCULK_GRIME_GLASS, DDBlocks.SCULK_GRIME_GLASS_PANE);
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.RETURN_STATUE)
