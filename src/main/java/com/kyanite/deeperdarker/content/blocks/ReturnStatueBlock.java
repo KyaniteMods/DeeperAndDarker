@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.entities.blocks.ReturnStatueBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -127,6 +128,18 @@ public class ReturnStatueBlock extends BaseEntityBlock {
             }
         }
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
+        if (!blockState.getValue(BlockStateProperties.ENABLED)) return;
+        for (int i = 0; i < 2; i++) {
+            double angle = randomSource.nextDouble() * 2.0 * Math.PI;
+            double distance = 0.25 + randomSource.nextDouble() * 0.25;
+            double sin = Math.sin(angle) * distance;
+            double cos = Math.cos(angle) * distance;
+            level.addParticle(ParticleTypes.PORTAL, blockPos.getX() + 0.5 + sin, blockPos.getY(), blockPos.getZ() + 0.5 + cos, sin, 0.0, cos);
+        }
     }
 
     @Override
