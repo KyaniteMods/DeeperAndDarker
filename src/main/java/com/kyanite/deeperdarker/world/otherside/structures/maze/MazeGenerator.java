@@ -9,6 +9,8 @@ import java.util.*;
 public abstract class MazeGenerator {
     public abstract MazeResult generate(RandomSource random);
 
+    public abstract boolean addRoomEntry(RoomEntry entry);
+
     protected Direction[] weightedOrder(RandomSource random, Direction[] arr, float[] weights) {
         Direction[] result = new Direction[arr.length];
 

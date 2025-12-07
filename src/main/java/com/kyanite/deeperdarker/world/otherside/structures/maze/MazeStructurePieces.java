@@ -167,6 +167,35 @@ public class MazeStructurePieces {
         }
     }
 
+    public static class MazeBossRoomPiece extends MazeStructurePiece {
+        private BlockState state;
+
+        public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state) {
+            super(DDStructurePieceTypes.MAZE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7);
+            this.state = state;
+        }
+
+        public MazeBossRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.MAZE_PATH_PIECE, tag);
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            compoundTag.put("block_state", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, state).result().orElseThrow());
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        placeBlock(worldGenLevel, state, x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
     public static class MazeWallPiece extends MazeStructurePiece {
         public MazeWallPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
             super(DDStructurePieceTypes.MAZE_WALL_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
@@ -216,13 +245,17 @@ public class MazeStructurePieces {
         protected int mazeWidth, mazeHeight, mazeDepth;
         public static final int SIDE_LENGTH = 3;
 
-        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
-            super(type, 0, makeBoundingBox(pos.getX(), pos.getY(), pos.getZ(), direction, SIDE_LENGTH, SIDE_LENGTH, SIDE_LENGTH));
+        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int width, int height, int depth) {
+            super(type, 0, makeBoundingBox(pos.getX(), pos.getY(), pos.getZ(), direction, width * SIDE_LENGTH, height * SIDE_LENGTH, depth * SIDE_LENGTH));
             setOrientation(direction);
             this.mazePos = mazePos;
             this.mazeWidth = mazeWidth;
             this.mazeHeight = mazeHeight;
             this.mazeDepth = mazeDepth;
+        }
+
+        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
+            this(type, pos, direction, mazePos, mazeWidth, mazeHeight, mazeDepth, 1, 1, 1);
         }
 
         public MazeStructurePiece(StructurePieceType type, CompoundTag tag) {

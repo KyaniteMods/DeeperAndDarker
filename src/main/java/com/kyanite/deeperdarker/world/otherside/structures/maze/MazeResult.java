@@ -3,9 +3,10 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze;
 import net.minecraft.core.Direction;
 
 import java.util.ArrayDeque;
+import java.util.List;
 import java.util.Queue;
 
-public record MazeResult(Tile[][][] result, int width, int height, int depth, Pos start, Pos end) {
+public record MazeResult(Tile[][][] result, List<Room> rooms, int width, int height, int depth, Pos start) {
     public Tile get(int x, int y, int z) {
         return result()[x][y][z];
     }
@@ -14,8 +15,8 @@ public record MazeResult(Tile[][][] result, int width, int height, int depth, Po
         return get(pos.x(), pos.y(), pos.z());
     }
 
-    public static MazeResult createAndNavigate(Tile[][][] result, int width, int height, int depth, Pos start, Pos end) {
-        MazeResult mazeResult = new MazeResult(result, width, height, depth, start, end);
+    public static MazeResult createAndNavigate(Tile[][][] result, List<Room> rooms, int width, int height, int depth, Pos start) {
+        MazeResult mazeResult = new MazeResult(result, rooms, width, height, depth, start);
         mazeResult.updatePathDistances();
         return mazeResult;
     }

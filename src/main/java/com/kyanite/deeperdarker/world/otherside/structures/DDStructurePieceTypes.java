@@ -13,6 +13,7 @@ public class DDStructurePieceTypes {
     public static final StructurePieceType MAZE_CHEST_PATH_PIECE = contextless(MazeStructurePieces.MazeChestPathPiece::new, "maze_chest_path_piece");
     public static final StructurePieceType MAZE_STATUE_PATH_PIECE = contextless(MazeStructurePieces.MazeStatuePathPiece::new, "maze_statue_path_piece");
     public static final StructurePieceType MAZE_FLUID_PATH_PIECE = contextless(MazeStructurePieces.MazeFluidPathPiece::new, "maze_fluid_path_piece");
+    public static final StructurePieceType MAZE_BOSS_ROOM_PIECE = contextless(MazeStructurePieces.MazeFluidPathPiece::new, "maze_boss_room_piece");
 
     private static StructurePieceType contextless(StructurePieceType.ContextlessType structurePieceType, String string) {
         return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(DeeperDarker.MOD_ID, string), structurePieceType);

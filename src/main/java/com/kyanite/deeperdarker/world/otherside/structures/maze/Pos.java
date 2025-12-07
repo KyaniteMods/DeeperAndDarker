@@ -1,8 +1,15 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
+import com.mojang.serialization.Codec;
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 
+import java.util.stream.IntStream;
+
 public record Pos(int x, int y, int z) {
+    public static final Codec<Pos> CODEC = Codec.INT_STREAM.comapFlatMap(intStream -> Util.fixedSize(intStream, 3).map(is -> new Pos(is[0], is[1], is[2])), pos -> IntStream.of(pos.x(), pos.y(), pos.z())).stable();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

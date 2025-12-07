@@ -1,13 +1,17 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
+import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Blocks;
@@ -68,7 +72,9 @@ public class MazeStructure extends Structure {
         ChunkPos chunkPos = context.chunkPos();
         BlockPos pos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
 
-        MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), center.orElse(null), true);
+        MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), true);
+        if (center.isPresent()) generator.addRoomEntry(new RoomEntry(BuiltInRegistries.STRUCTURE_PIECE.getKey(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE), Optional.of(new Pos(center.get().minX(), center.get().minY(), center.get().minZ())), center.get().getXSpan(), center.get().getYSpan(), center.get().getZSpan(), true));
+        generator.addRoomEntry(new RoomEntry(new ResourceLocation(DeeperDarker.MOD_ID, "test"), Optional.empty(), 3, 1, 3, false));
 
         MazeResult result = generator.generate(context.random());
 
@@ -95,7 +101,7 @@ public class MazeStructure extends Structure {
                         builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
                     } else if (context.random().nextFloat() < 0.03f) {
                         builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
-                    } else if (context.random().nextFloat() < 0.05f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
+                    } else if (context.random().nextFloat() < 0.01f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
                         for (Direction direction : Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet())) {
                             Pos adjacentPos = piecePos.add(direction.getNormal());
                             if (result.isWithinBounds(adjacentPos) && result.get(adjacentPos).getType().isSolid()) {

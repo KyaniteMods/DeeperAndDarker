@@ -1,27 +1,36 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class WilsonMazeGenerator extends MazeGenerator {
     private int width;
     private int height;
     private int depth;
-    private BoundingBox center;
+    private List<RoomEntry> roomEntries;
     private boolean cheap;
 
-    public WilsonMazeGenerator(int width, int height, int depth, BoundingBox center, boolean cheap) {
+    public WilsonMazeGenerator(int width, int height, int depth, boolean cheap) {
         this.width = width;
         this.height = height;
         this.depth = depth;
-        this.center = center;
         this.cheap = cheap;
+        this.roomEntries = new ArrayList<>();
+    }
+
+    public boolean addRoomEntry(RoomEntry entry) {
+        if (entry.required()) {
+            roomEntries.add(0, entry);
+            return true;
+        } else {
+            return roomEntries.add(entry);
+        }
     }
 
     private static Tile[] deepCopy(Tile[] original) {
@@ -64,13 +73,15 @@ public class WilsonMazeGenerator extends MazeGenerator {
             Direction[] ordered = Direction.allShuffled(random).toArray(new Direction[6]);
             Pos newPos = null;
             for (Direction direction : ordered) {
-                newPos = new Pos(currentPos.x() + direction.getNormal().getX() * 2, currentPos.y() + direction.getNormal().getY() * 2, currentPos.z() + direction.getNormal().getZ() * 2);
-                if (mazeStack.size() >= 2 && mazeStack.get(mazeStack.size() - 2).equals(newPos)) continue;
-                if (center != null && center.isInside(newPos.x(), newPos.y(), newPos.z())) continue;
-                if (newPos.x() < 0 || newPos.y() < 0 || newPos.z() < 0) continue;
-                if (newPos.x() >= width - 1 || newPos.y() >= height - 1 || newPos.z() >= depth - 1) continue;
+                Pos candidate = new Pos(currentPos.x() + direction.getNormal().getX() * 2, currentPos.y() + direction.getNormal().getY() * 2, currentPos.z() + direction.getNormal().getZ() * 2);
+                if (mazeStack.size() >= 2 && mazeStack.get(mazeStack.size() - 2).equals(candidate)) continue;
+                if (candidate.x() < 0 || candidate.y() < 0 || candidate.z() < 0) continue;
+                if (candidate.x() >= width - 1 || candidate.y() >= height - 1 || candidate.z() >= depth - 1) continue;
+                if (partialResult[candidate.x()][candidate.y()][candidate.z()].getType() == Tile.Type.ROOM) continue;
+                newPos = candidate;
                 break;
             }
+            if (newPos == null) throw new IllegalStateException("newPos is null");
 
             int posIndex = mazeStack.indexOf(newPos);
             if (posIndex >= 0) {
@@ -97,9 +108,46 @@ public class WilsonMazeGenerator extends MazeGenerator {
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
                     result[x][y][z] = Tile.wall();
-                    if (x % 2 != 0 && y % 2 != 0 && z % 2 != 0 && !center.isInside(x, y, z)) remainingPositions.add(new Pos(x, y, z));
+                    if (x % 2 != 0 && y % 2 != 0 && z % 2 != 0) remainingPositions.add(new Pos(x, y, z));
                 }
             }
+        }
+
+        List<Room> rooms = new ArrayList<>();
+        for (int i = 0; i < roomEntries.size(); i++) {
+            RoomEntry entry = roomEntries.get(i);
+            if (entry.pos().isPresent()) {
+                Pos pos = entry.pos().get();
+                if (!entry.fits(result, width, height, depth, pos)) throw new IllegalArgumentException("Room " + entry.id().toString() + " does not fit in specified position");
+
+                rooms.add(placeRoom(random, result, remainingPositions, entry, pos, i));
+                continue;
+            }
+
+            if (width - entry.width() < 0 || height - entry.height() < 0 || depth - entry.depth() < 0) {
+                DeeperDarker.LOGGER.warn("Room " + entry.id().toString() + " does not fit in maze of size " + width + "x" + height + "x" + depth);
+                continue;
+            }
+
+            boolean placed = false;
+            List<Pos> validRemainingPositions = remainingPositions.stream().filter(pos -> pos.x() >= 3 || pos.y() >= 3 || pos.z() >= 3).toList();
+            for (int attempts = 0; attempts < 10; attempts++) {
+                int index = random.nextInt(validRemainingPositions.size());
+                Pos pos = validRemainingPositions.get(index);
+                if (!entry.fits(result, width, height, depth, pos)) continue;
+                rooms.add(placeRoom(random, result, remainingPositions, entry, pos, i));
+                placed = true;
+                break;
+            }
+            if (placed || !entry.required()) continue;
+
+            for (Pos pos : validRemainingPositions) {
+                if (!entry.fits(result, width, height, depth, pos)) continue;
+                rooms.add(placeRoom(random, result, remainingPositions, entry, pos, i));
+                placed = true;
+                break;
+            }
+            if (!placed) throw new IllegalArgumentException("Required room " + entry.id().toString() + " does not fit in maze of size " + width + "x" + height + "x" + depth);
         }
 
         boolean cheap = this.cheap;
@@ -116,24 +164,37 @@ public class WilsonMazeGenerator extends MazeGenerator {
         }
 
         Pos start = new Pos(1, 1, 0);
-        Pos end;
-        if (center == null) {
-            end = new Pos(width - 2, height - 2, depth - 1);
-        } else {
-            int x = (center.minX() + center.maxX()) / 2;
-            end = new Pos(x + ((x - 1) % 2 == 0 ? 0 : -1), center.minY(), center.minZ() - 1);
-            for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
-                for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
-                    for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
-                        result[ex][ey][ez] = Tile.room();
+        result[start.x()][start.y()][start.z()] = Tile.start();
+
+        return MazeResult.createAndNavigate(result, rooms, width, height, depth, start);
+    }
+
+    private Room placeRoom(RandomSource random, Tile[][][] result, List<Pos> remainingPositions, RoomEntry entry, Pos pos, int i) {
+        Set<Direction> entranceDirections = Arrays.stream(Direction.values()).filter(direction -> direction != Direction.DOWN).collect(Collectors.toSet());
+        List<Pos> entrancePositions = new ArrayList<>();
+        for (int z = pos.z(); z < pos.z() + entry.depth(); z++) {
+            for (int y = pos.y(); y < pos.y() + entry.height(); y++) {
+                for (int x = pos.x(); x < pos.x() + entry.width(); x++) {
+                    result[x][y][z] = Tile.room(i);
+                    remainingPositions.remove(new Pos(x, y, z));
+                    if (x == pos.x() || x == pos.x() + entry.width() - 1 || y == pos.y() || y == pos.y() + entry.height() - 1 || z == pos.z() || z == pos.z() + entry.depth() - 1) {
+                        for (Direction direction : entranceDirections) {
+                            Vec3i normal = direction.getNormal();
+                            int checkedX = x + normal.getX() * 2;
+                            int checkedY = y + normal.getY() * 2;
+                            int checkedZ = z + normal.getZ() * 2;
+                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z() && checkedX <= pos.x() + entry.width() - 1 && checkedY <= pos.y() + entry.height() - 1 && checkedZ <= pos.z() + entry.depth() - 1) && checkedX < width && checkedX % 2 != 0 && checkedY < height && checkedY % 2 != 0 && checkedZ < depth && checkedZ % 2 != 0) {
+                                entrancePositions.add(new Pos(x + normal.getX(), y + normal.getY(), z + normal.getZ()));
+                            }
+                        }
                     }
                 }
             }
         }
+        Pos entrancePos = entrancePositions.get(random.nextInt(entrancePositions.size()));
+        result[entrancePos.x()][entrancePos.y()][entrancePos.z()] = Tile.entrance(i);
+        remainingPositions.remove(entrancePos);
 
-        result[end.x()][end.y()][end.z()] = Tile.start();
-        result[start.x()][start.y()][start.z()] = Tile.end();
-
-        return MazeResult.createAndNavigate(result, width, height, depth, start, end);
+        return entry.toRoom(pos, entrancePos);
     }
 }

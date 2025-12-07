@@ -12,10 +12,7 @@ import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeGenerator;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeResult;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.Tile;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.WilsonMazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.*;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.api.ModInitializer;
@@ -41,6 +38,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
 
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
@@ -141,7 +140,8 @@ public class DeeperDarker implements ModInitializer {
 																								int wallSize = 3;
 
 																								try {
-																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, new BoundingBox(centerMinX, centerMinY, centerMinZ, centerMaxX, centerMaxY, centerMaxZ), true);
+																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, true);
+																									mazeGenerator.addRoomEntry(new RoomEntry(new ResourceLocation(MOD_ID, "center"), Optional.of(new Pos(centerMinX, centerMinY, centerMinZ)), centerMaxX - centerMinX, centerMaxY - centerMinY, centerMaxZ - centerMinZ, true));
 
 																									MazeResult result = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 

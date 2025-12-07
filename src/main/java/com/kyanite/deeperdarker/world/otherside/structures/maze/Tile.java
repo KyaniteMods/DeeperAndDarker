@@ -17,16 +17,16 @@ public final class Tile {
         return new Tile(Type.ENDPOINT, 0);
     }
 
-    public static Tile end() {
-        return new Tile(Type.ENDPOINT, 1);
+    public static Tile entrance(int i) {
+        return new Tile(Type.ENDPOINT, i + 1);
     }
 
     public static Tile wall() {
         return new Tile(Type.WALL, 0);
     }
 
-    public static Tile room() {
-        return new Tile(Type.ROOM, 0);
+    public static Tile room(int order) {
+        return new Tile(Type.ROOM, order);
     }
 
     public static Tile path() {

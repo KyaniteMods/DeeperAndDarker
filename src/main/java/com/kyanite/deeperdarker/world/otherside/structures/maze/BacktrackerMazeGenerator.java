@@ -5,6 +5,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class BacktrackerMazeGenerator extends MazeGenerator {
     private int width;
     private int height;
@@ -44,6 +46,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         return false;
     }
 
+    // TODO: rooms
     @Override
     public MazeResult generate(RandomSource random) {
 //        Stack<int[]> solution = new Stack<>();
@@ -97,16 +100,21 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         }
 
         stack.push(end.x(), end.y(), end.z(), Tile.start());
-        stack.push(1, 1, 0, Tile.end());
+        stack.push(1, 1, 0, Tile.entrance(0));
 
         for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
             for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
                 for (int ex = center.minX(); ex < center.maxX() + 1; ex++) {
-                    stack.push(ex, ey, ez, Tile.room());
+                    stack.push(ex, ey, ez, Tile.room(0));
                 }
             }
         }
 
-        return MazeResult.createAndNavigate(stack.getTiles(), width, height, depth, start, end);
+        return MazeResult.createAndNavigate(stack.getTiles(), List.of(), width, height, depth, start);
+    }
+
+    @Override
+    public boolean addRoomEntry(RoomEntry entry) {
+        return false;
     }
 }
