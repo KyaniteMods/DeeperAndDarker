@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.entities.blocks.ReturnStatueBlockEntity;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
@@ -7,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
@@ -29,20 +31,24 @@ import org.jetbrains.annotations.Nullable;
 public class MazeStructurePieces {
     public static class MazeChestPathPiece extends MazeStructurePiece {
         private ResourceLocation lootTable;
-        private Direction direction;
+        private Direction orientation;
 
-        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction direction, int mazeWidth, int mazeHeight, int mazeDepth, ResourceLocation lootTable) {
-            super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, pos, direction, mazePos, mazeWidth, mazeHeight, mazeDepth);
-            this.direction = direction;
+        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction orientation, int mazeWidth, int mazeHeight, int mazeDepth, ResourceLocation lootTable) {
+            super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, pos, orientation, mazePos, mazeWidth, mazeHeight, mazeDepth);
+            this.orientation = orientation;
             this.lootTable = lootTable;
         }
 
         public MazeChestPathPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, tag);
+            orientation = Direction.from2DDataValue(tag.getInt("orientation"));
+            lootTable = ResourceLocation.tryParse(tag.getString("loot_table"));
         }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+            compoundTag.putInt("orientation", orientation.get2DDataValue());
             compoundTag.putString("loot_table", lootTable.toString());
         }
 
@@ -52,7 +58,7 @@ public class MazeStructurePieces {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
                         if (x == 1 && y == 0 && z == 2) {
-                            createChest(worldGenLevel, boundingBox, randomSource, getWorldPos(x, y, z), lootTable, Blocks.CHEST.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, direction.getOpposite()));
+                            createChest(worldGenLevel, boundingBox, randomSource, getWorldPos(x, y, z), lootTable, Blocks.CHEST.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, orientation.getOpposite()));
                         } else {
                             placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                         }
@@ -63,7 +69,7 @@ public class MazeStructurePieces {
     }
 
     public static class MazeStatuePathPiece extends MazeStructurePiece {
-        private BlockPos mazeStart;
+        private @Nullable BlockPos mazeStart;
 
         public MazeStatuePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockPos mazeStart) {
             super(DDStructurePieceTypes.MAZE_STATUE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
@@ -72,11 +78,15 @@ public class MazeStructurePieces {
 
         public MazeStatuePathPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.MAZE_STATUE_PATH_PIECE, tag);
+            mazeStart = BlockPos.CODEC.parse(NbtOps.INSTANCE, tag.get("maze_start")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
-            compoundTag.put("maze_start", BlockPos.CODEC.encodeStart(NbtOps.INSTANCE, mazeStart).result().orElseThrow());
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+            if (mazeStart != null) {
+                compoundTag.put("maze_start", BlockPos.CODEC.encodeStart(NbtOps.INSTANCE, mazeStart).resultOrPartial(DeeperDarker.LOGGER::error).orElseThrow());
+            }
         }
 
         @Override
@@ -88,7 +98,7 @@ public class MazeStructurePieces {
                         if (x == 1 && y == 0 && z == 1) {
                             placeBlock(worldGenLevel, statueState.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), x, y, z, boundingBox);
                             BlockEntity blockEntity = worldGenLevel.getBlockEntity(getWorldPos(x, y, z));
-                            if (blockEntity instanceof ReturnStatueBlockEntity returnStatue) {
+                            if (blockEntity instanceof ReturnStatueBlockEntity returnStatue && mazeStart != null) {
                                 returnStatue.teleportPos = mazeStart;
                             }
                         } else if (x == 1 && y == 1 && z == 1) {
@@ -112,10 +122,15 @@ public class MazeStructurePieces {
 
         public MazeFluidPathPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.MAZE_FLUID_PATH_PIECE, tag);
+            fluid = BlockState.CODEC.parse(NbtOps.INSTANCE, tag.get("fluid")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(Blocks.WATER.defaultBlockState());
+            if (tag.contains("loot_table", Tag.TAG_STRING)) {
+                lootTable = ResourceLocation.tryParse(tag.getString("loot_table"));
+            }
         }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             compoundTag.put("fluid", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, fluid).result().orElseThrow());
             if (lootTable != null) {
                 compoundTag.putString("loot_table", lootTable.toString());
@@ -148,10 +163,12 @@ public class MazeStructurePieces {
 
         public MazePathPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.MAZE_PATH_PIECE, tag);
+            state = BlockState.CODEC.parse(NbtOps.INSTANCE, tag.get("block_state")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(Blocks.AIR.defaultBlockState());
         }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             compoundTag.put("block_state", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, state).result().orElseThrow());
         }
 
@@ -171,16 +188,18 @@ public class MazeStructurePieces {
         private BlockState state;
 
         public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state) {
-            super(DDStructurePieceTypes.MAZE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7);
+            super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7);
             this.state = state;
         }
 
         public MazeBossRoomPiece(CompoundTag tag) {
-            super(DDStructurePieceTypes.MAZE_PATH_PIECE, tag);
+            super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, tag);
+            state = BlockState.CODEC.parse(NbtOps.INSTANCE, tag.get("block_state")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(Blocks.AIR.defaultBlockState());
         }
 
         @Override
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             compoundTag.put("block_state", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, state).result().orElseThrow());
         }
 
@@ -203,11 +222,6 @@ public class MazeStructurePieces {
 
         public MazeWallPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.MAZE_WALL_PIECE, tag);
-        }
-
-        @Override
-        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
-
         }
 
         @Override
@@ -260,6 +274,18 @@ public class MazeStructurePieces {
 
         public MazeStructurePiece(StructurePieceType type, CompoundTag tag) {
             super(type, tag);
+            mazePos = Pos.CODEC.parse(NbtOps.INSTANCE, tag.get("maze_pos")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new Pos(0, 0, 0));
+            mazeWidth = tag.getInt("maze_width");
+            mazeHeight = tag.getInt("maze_height");
+            mazeDepth = tag.getInt("maze_depth");
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            compoundTag.put("maze_pos", Pos.CODEC.encodeStart(NbtOps.INSTANCE, mazePos).result().orElseThrow());
+            compoundTag.putInt("maze_width", mazeWidth);
+            compoundTag.putInt("maze_height", mazeHeight);
+            compoundTag.putInt("maze_depth", mazeDepth);
         }
     }
 }

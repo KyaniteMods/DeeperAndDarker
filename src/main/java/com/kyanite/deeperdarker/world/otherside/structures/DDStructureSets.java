@@ -18,7 +18,7 @@ public class DDStructureSets {
     public static void bootstrap(BootstapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
         context.register(ANCIENT_TEMPLES, new StructureSet(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 40510257)));
-        context.register(BLOOMAZES, new StructureSet(structures.getOrThrow(DDStructures.BLOOMAZE), new RandomSpreadStructurePlacement(62, 8, RandomSpreadType.LINEAR, 27070707)));
+        context.register(BLOOMAZES, new StructureSet(structures.getOrThrow(DDStructures.BLOOMAZE), new RandomSpreadStructurePlacement(30, 8, RandomSpreadType.LINEAR, 27070707)));
     }
 
     static ResourceKey<StructureSet> createKey(String name) {
