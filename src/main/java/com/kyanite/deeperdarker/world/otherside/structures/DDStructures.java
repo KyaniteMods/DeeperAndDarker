@@ -31,7 +31,7 @@ public class DDStructures {
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
         context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.TEMPLE_START), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), false));
-        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE)), 29, 5, 29, Optional.of(new BoundingBox(11, 3, 11, 17, 3, 17))));
+        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE)), 29, 5, 29, 3, Optional.of(new BoundingBox(11, 3, 11, 17, 3, 17))));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {

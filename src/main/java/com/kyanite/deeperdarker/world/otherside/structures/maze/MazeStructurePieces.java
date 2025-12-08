@@ -33,8 +33,8 @@ public class MazeStructurePieces {
         private ResourceLocation lootTable;
         private Direction orientation;
 
-        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction orientation, int mazeWidth, int mazeHeight, int mazeDepth, ResourceLocation lootTable) {
-            super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, pos, orientation, mazePos, mazeWidth, mazeHeight, mazeDepth);
+        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction orientation, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, ResourceLocation lootTable) {
+            super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, pos, orientation, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize);
             this.orientation = orientation;
             this.lootTable = lootTable;
         }
@@ -57,7 +57,7 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        if (x == 1 && y == 0 && z == 2) {
+                        if (x == tileSize / 2 && y == 0 && z == tileSize - 1) {
                             createChest(worldGenLevel, boundingBox, randomSource, getWorldPos(x, y, z), lootTable, Blocks.CHEST.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, orientation.getOpposite()));
                         } else {
                             placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
@@ -71,8 +71,8 @@ public class MazeStructurePieces {
     public static class MazeStatuePathPiece extends MazeStructurePiece {
         private @Nullable BlockPos mazeStart;
 
-        public MazeStatuePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockPos mazeStart) {
-            super(DDStructurePieceTypes.MAZE_STATUE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
+        public MazeStatuePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, BlockPos mazeStart) {
+            super(DDStructurePieceTypes.MAZE_STATUE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize);
             this.mazeStart = mazeStart;
         }
 
@@ -95,13 +95,13 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        if (x == 1 && y == 0 && z == 1) {
+                        if (x == tileSize / 2 && y == 0 && z == tileSize / 2) {
                             placeBlock(worldGenLevel, statueState.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), x, y, z, boundingBox);
                             BlockEntity blockEntity = worldGenLevel.getBlockEntity(getWorldPos(x, y, z));
                             if (blockEntity instanceof ReturnStatueBlockEntity returnStatue && mazeStart != null) {
                                 returnStatue.teleportPos = mazeStart;
                             }
-                        } else if (x == 1 && y == 1 && z == 1) {
+                        } else if (x == tileSize / 2 && y == 1 && z == tileSize / 2) {
                             placeBlock(worldGenLevel, statueState.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), x, y, z, boundingBox);
                         } else placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
@@ -114,8 +114,8 @@ public class MazeStructurePieces {
         private @Nullable ResourceLocation lootTable;
         private BlockState fluid;
 
-        public MazeFluidPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, @NotNull BlockState fluid, @Nullable ResourceLocation lootTable) {
-            super(DDStructurePieceTypes.MAZE_FLUID_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
+        public MazeFluidPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, @NotNull BlockState fluid, @Nullable ResourceLocation lootTable) {
+            super(DDStructurePieceTypes.MAZE_FLUID_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize);
             this.lootTable = lootTable;
             this.fluid = fluid;
         }
@@ -142,11 +142,11 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        if (x == 1 && y == 0 && z == 1 && lootTable != null) {
+                        if (x == tileSize / 2 && y == 0 && z == tileSize / 2 && lootTable != null) {
                             createChest(worldGenLevel, boundingBox, randomSource, x, y, z, lootTable);
                             continue;
                         }
-                        placeBlock(worldGenLevel, y <= 1 ? fluid : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        placeBlock(worldGenLevel, y <= Math.max(1, tileSize - 2) ? fluid : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
             }
@@ -156,8 +156,8 @@ public class MazeStructurePieces {
     public static class MazePathPiece extends MazeStructurePiece {
         private BlockState state;
 
-        public MazePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state) {
-            super(DDStructurePieceTypes.MAZE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
+        public MazePathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, BlockState state) {
+            super(DDStructurePieceTypes.MAZE_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize);
             this.state = state;
         }
 
@@ -187,8 +187,8 @@ public class MazeStructurePieces {
     public static class MazeBossRoomPiece extends MazeStructurePiece {
         private BlockState state;
 
-        public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state) {
-            super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7);
+        public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state, int tileSize) {
+            super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize);
             this.state = state;
         }
 
@@ -216,8 +216,8 @@ public class MazeStructurePieces {
     }
 
     public static class MazeWallPiece extends MazeStructurePiece {
-        public MazeWallPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
-            super(DDStructurePieceTypes.MAZE_WALL_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth);
+        public MazeWallPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize) {
+            super(DDStructurePieceTypes.MAZE_WALL_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize);
         }
 
         public MazeWallPiece(CompoundTag tag) {
@@ -230,17 +230,17 @@ public class MazeStructurePieces {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
                         BlockState state;
-                        int worldMazeX = mazePos.x() * SIDE_LENGTH + x;
-                        int worldMazeY = mazePos.y() * SIDE_LENGTH + y;
-                        int worldMazeZ = mazePos.z() * SIDE_LENGTH + z;
-                        boolean isOuter = worldMazeX == 0 || worldMazeY == 0 || worldMazeZ == 0 || worldMazeX == (mazeWidth * SIDE_LENGTH) - 1 || worldMazeY == (mazeHeight * SIDE_LENGTH) - 1 || worldMazeZ == (mazeDepth * SIDE_LENGTH) - 1;
-                        boolean isPieceCorner = (x == 0 || x == SIDE_LENGTH - 1)
-                                && (y == 0 || y == SIDE_LENGTH - 1)
-                                && (z == 0 || z == SIDE_LENGTH - 1);
-                        boolean isPieceCore = x > 0 && y > 0 && z > 0 && x < SIDE_LENGTH - 1 && y < SIDE_LENGTH - 1 && z < SIDE_LENGTH - 1;
-                        boolean isPieceFace = (z == 0 || z == SIDE_LENGTH - 1) && x > 0 && x < SIDE_LENGTH - 1 && y > 0 && y < SIDE_LENGTH - 1
-                                || (y == 0 || y == SIDE_LENGTH - 1) && x > 0 && x < SIDE_LENGTH - 1 && z > 0 && z < SIDE_LENGTH - 1
-                                || (x == 0 || x == SIDE_LENGTH - 1) && y > 0 && y < SIDE_LENGTH - 1 && z > 0 && z < SIDE_LENGTH - 1;
+                        int worldMazeX = mazePos.x() * tileSize + x;
+                        int worldMazeY = mazePos.y() * tileSize + y;
+                        int worldMazeZ = mazePos.z() * tileSize + z;
+                        boolean isOuter = worldMazeX == 0 || worldMazeY == 0 || worldMazeZ == 0 || worldMazeX == (mazeWidth * tileSize) - 1 || worldMazeY == (mazeHeight * tileSize) - 1 || worldMazeZ == (mazeDepth * tileSize) - 1;
+                        boolean isPieceCorner = (x == 0 || x == tileSize - 1)
+                                && (y == 0 || y == tileSize - 1)
+                                && (z == 0 || z == tileSize - 1);
+                        boolean isPieceCore = x > 0 && y > 0 && z > 0 && x < tileSize - 1 && y < tileSize - 1 && z < tileSize - 1;
+                        boolean isPieceFace = (z == 0 || z == tileSize - 1) && x > 0 && x < tileSize - 1 && y > 0 && y < tileSize - 1
+                                || (y == 0 || y == tileSize - 1) && x > 0 && x < tileSize - 1 && z > 0 && z < tileSize - 1
+                                || (x == 0 || x == tileSize - 1) && y > 0 && y < tileSize - 1 && z > 0 && z < tileSize - 1;
                         boolean isPieceEdge = !isPieceCorner && !isPieceCore && !isPieceFace;
 
                         if (isOuter || isPieceCorner || randomSource.nextFloat() < 0.03f) state = DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState();
@@ -257,19 +257,20 @@ public class MazeStructurePieces {
     public static abstract class MazeStructurePiece extends StructurePiece {
         protected Pos mazePos;
         protected int mazeWidth, mazeHeight, mazeDepth;
-        public static final int SIDE_LENGTH = 3;
+        public int tileSize;
 
-        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int width, int height, int depth) {
-            super(type, 0, makeBoundingBox(pos.getX(), pos.getY(), pos.getZ(), direction, width * SIDE_LENGTH, height * SIDE_LENGTH, depth * SIDE_LENGTH));
+        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int width, int height, int depth, int tileSize) {
+            super(type, 0, makeBoundingBox(pos.getX(), pos.getY(), pos.getZ(), direction, width * tileSize, height * tileSize, depth * tileSize));
             setOrientation(direction);
             this.mazePos = mazePos;
             this.mazeWidth = mazeWidth;
             this.mazeHeight = mazeHeight;
             this.mazeDepth = mazeDepth;
+            this.tileSize = tileSize;
         }
 
-        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth) {
-            this(type, pos, direction, mazePos, mazeWidth, mazeHeight, mazeDepth, 1, 1, 1);
+        public MazeStructurePiece(StructurePieceType type, BlockPos pos, Direction direction, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize) {
+            this(type, pos, direction, mazePos, mazeWidth, mazeHeight, mazeDepth, 1, 1, 1, tileSize);
         }
 
         public MazeStructurePiece(StructurePieceType type, CompoundTag tag) {
@@ -278,6 +279,7 @@ public class MazeStructurePieces {
             mazeWidth = tag.getInt("maze_width");
             mazeHeight = tag.getInt("maze_height");
             mazeDepth = tag.getInt("maze_depth");
+            tileSize = tag.getInt("tile_size");
         }
 
         @Override
@@ -286,6 +288,7 @@ public class MazeStructurePieces {
             compoundTag.putInt("maze_width", mazeWidth);
             compoundTag.putInt("maze_height", mazeHeight);
             compoundTag.putInt("maze_depth", mazeDepth);
+            compoundTag.putInt("tile_size", tileSize);
         }
     }
 }

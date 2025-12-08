@@ -14,5 +14,6 @@
   "spawn_overrides": {},
   "step": "underground_structures",
   "terrain_adaptation": "beard_box",
+  "tile_size": 3,
   "width": 29
 }
