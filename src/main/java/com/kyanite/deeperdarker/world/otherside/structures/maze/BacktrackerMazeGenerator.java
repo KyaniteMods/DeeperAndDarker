@@ -8,9 +8,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class BacktrackerMazeGenerator extends MazeGenerator {
-    private int width;
-    private int height;
-    private int depth;
     private BoundingBox center;
     boolean weighted; // temporary
     private static final float[] weights = {
@@ -23,12 +20,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
     };
 
     public BacktrackerMazeGenerator(int width, int height, int depth, @Nullable BoundingBox center, boolean weighted) {
-        if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
-        this.width = width;
-        if (height % 2 == 0) throw new IllegalArgumentException("height must be odd");
-        this.height = height;
-        if (depth % 2 == 0) throw new IllegalArgumentException("depth must be odd");
-        this.depth = depth;
+        super(width, height, depth);
 //        if (centerSide != 0) {
 //            if (centerSide % 2 == 0) throw new IllegalArgumentException("centerSide must be odd");
 //            if (((width - centerSide) / 2) % 2 != 0) throw new IllegalArgumentException("(width - centerSide) / 2 must be even");
@@ -52,14 +44,14 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 //        Stack<int[]> solution = new Stack<>();
         Pos end;
         if (center == null) {
-            end = new Pos(width - 2, height - 2, depth - 1);
+            end = new Pos(getWidth() - 2, getHeight() - 2, getDepth() - 1);
         } else {
             int x = (center.minX() + center.maxX()) / 2;
             end = new Pos(x + ((x - 1) % 2 == 0 ? 0 : -1), center.minY(), center.minZ() - 1);
         }
 
         Pos start = new Pos(1, 1, 1);
-        MazeStack stack = new MazeStack(width, height, depth);
+        MazeStack stack = new MazeStack(getWidth(), getHeight(), getDepth());
         stack.push(start);
 
         while (!stack.isEmpty()) {
@@ -83,7 +75,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
                 if (center != null && center.isInside(nx, ny, nz)) continue;
 
                 if (nx < 0 || ny < 0 || nz < 0) continue;
-                if (nx >= width - 1 || ny >= height - 1 || nz >= depth - 1) continue;
+                if (nx >= getWidth() - 1 || ny >= getHeight() - 1 || nz >= getDepth() - 1) continue;
                 if (stack.get(nx, ny, nz).getType() != Tile.Type.WALL) continue;
 
                 stack.push(nx, ny, nz);
@@ -110,7 +102,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             }
         }
 
-        return MazeResult.createAndNavigate(stack.getTiles(), List.of(), width, height, depth, start);
+        return MazeResult.createAndNavigate(stack.getTiles(), List.of(), getWidth(), getHeight(), getDepth(), start);
     }
 
     @Override

@@ -4,22 +4,16 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class WilsonMazeGenerator extends MazeGenerator {
-    private int width;
-    private int height;
-    private int depth;
     private List<RoomEntry> roomEntries;
     private boolean cheap;
 
     public WilsonMazeGenerator(int width, int height, int depth, boolean cheap) {
-        this.width = width;
-        this.height = height;
-        this.depth = depth;
+        super(width, height, depth);
         this.cheap = cheap;
         this.roomEntries = new ArrayList<>();
     }
@@ -60,7 +54,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
     private Tile[][][] randomWalk(RandomSource random, List<Pos> remainingPositions, Tile[][][] partialResult, boolean cheap) {
         Pos start = remainingPositions.get(random.nextInt(remainingPositions.size()));
 
-        MazeStack mazeStack = new MazeStack(deepCopy(partialResult), width, height, depth);
+        MazeStack mazeStack = new MazeStack(deepCopy(partialResult), getWidth(), getHeight(), getDepth());
 
         Pos currentPos = start;
 
@@ -76,7 +70,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
                 Pos candidate = new Pos(currentPos.x() + direction.getNormal().getX() * 2, currentPos.y() + direction.getNormal().getY() * 2, currentPos.z() + direction.getNormal().getZ() * 2);
                 if (mazeStack.size() >= 2 && mazeStack.get(mazeStack.size() - 2).equals(candidate)) continue;
                 if (candidate.x() < 0 || candidate.y() < 0 || candidate.z() < 0) continue;
-                if (candidate.x() >= width - 1 || candidate.y() >= height - 1 || candidate.z() >= depth - 1) continue;
+                if (candidate.x() >= getWidth() - 1 || candidate.y() >= getHeight() - 1 || candidate.z() >= getDepth() - 1) continue;
                 if (partialResult[candidate.x()][candidate.y()][candidate.z()].getType() == Tile.Type.ROOM) continue;
                 newPos = candidate;
                 break;
@@ -102,11 +96,11 @@ public class WilsonMazeGenerator extends MazeGenerator {
     @Override
     public MazeResult generate(RandomSource random) {
         List<Pos> remainingPositions = new ArrayList<>();
-        Tile[][][] result = new Tile[width][height][depth];
+        Tile[][][] result = new Tile[getWidth()][getHeight()][getDepth()];
 
-        for (int z = 0; z < depth; z++) {
-            for (int y = 0; y < height; y++) {
-                for (int x = 0; x < width; x++) {
+        for (int z = 0; z < getDepth(); z++) {
+            for (int y = 0; y < getHeight(); y++) {
+                for (int x = 0; x < getWidth(); x++) {
                     result[x][y][z] = Tile.wall();
                     if (x % 2 != 0 && y % 2 != 0 && z % 2 != 0) remainingPositions.add(new Pos(x, y, z));
                 }
@@ -118,14 +112,14 @@ public class WilsonMazeGenerator extends MazeGenerator {
             RoomEntry entry = roomEntries.get(i);
             if (entry.pos().isPresent()) {
                 Pos pos = entry.pos().get();
-                if (!entry.fits(result, width, height, depth, pos)) throw new IllegalArgumentException("Room " + entry.id().toString() + " does not fit in specified position");
+                if (!entry.fits(result, getWidth(), getHeight(), getDepth(), pos)) throw new IllegalArgumentException("Room " + entry.id().toString() + " does not fit in specified position");
 
                 rooms.add(placeRoom(random, result, remainingPositions, entry, pos, i));
                 continue;
             }
 
-            if (width - entry.width() < 0 || height - entry.height() < 0 || depth - entry.depth() < 0) {
-                DeeperDarker.LOGGER.warn("Room " + entry.id().toString() + " does not fit in maze of size " + width + "x" + height + "x" + depth);
+            if (getWidth() - entry.width() < 0 || getHeight() - entry.height() < 0 || getDepth() - entry.depth() < 0) {
+                DeeperDarker.LOGGER.warn("Room " + entry.id().toString() + " does not fit in maze of size " + getWidth() + "x" + getHeight() + "x" + getDepth());
                 continue;
             }
 
@@ -134,7 +128,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
             for (int attempts = 0; attempts < 10; attempts++) {
                 int index = random.nextInt(validRemainingPositions.size());
                 Pos pos = validRemainingPositions.get(index);
-                if (!entry.fits(result, width, height, depth, pos)) continue;
+                if (!entry.fits(result, getWidth(), getHeight(), getDepth(), pos)) continue;
                 rooms.add(placeRoom(random, result, remainingPositions, entry, pos, i));
                 placed = true;
                 break;
@@ -142,12 +136,12 @@ public class WilsonMazeGenerator extends MazeGenerator {
             if (placed || !entry.required()) continue;
 
             for (Pos pos : validRemainingPositions) {
-                if (!entry.fits(result, width, height, depth, pos)) continue;
+                if (!entry.fits(result, getWidth(), getHeight(), getDepth(), pos)) continue;
                 rooms.add(placeRoom(random, result, remainingPositions, entry, pos, i));
                 placed = true;
                 break;
             }
-            if (!placed) throw new IllegalArgumentException("Required room " + entry.id().toString() + " does not fit in maze of size " + width + "x" + height + "x" + depth);
+            if (!placed) throw new IllegalArgumentException("Required room " + entry.id().toString() + " does not fit in maze of size " + getWidth() + "x" + getHeight() + "x" + getDepth());
         }
 
         boolean cheap = this.cheap;
@@ -166,7 +160,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
         Pos start = new Pos(1, 1, 0);
         result[start.x()][start.y()][start.z()] = Tile.start();
 
-        return MazeResult.createAndNavigate(result, rooms, width, height, depth, start);
+        return MazeResult.createAndNavigate(result, rooms, getWidth(), getHeight(), getDepth(), start);
     }
 
     private Room placeRoom(RandomSource random, Tile[][][] result, List<Pos> remainingPositions, RoomEntry entry, Pos pos, int i) {
@@ -183,7 +177,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
                             int checkedX = x + normal.getX() * 2;
                             int checkedY = y + normal.getY() * 2;
                             int checkedZ = z + normal.getZ() * 2;
-                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z() && checkedX <= pos.x() + entry.width() - 1 && checkedY <= pos.y() + entry.height() - 1 && checkedZ <= pos.z() + entry.depth() - 1) && checkedX < width && checkedX % 2 != 0 && checkedY < height && checkedY % 2 != 0 && checkedZ < depth && checkedZ % 2 != 0) {
+                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z() && checkedX <= pos.x() + entry.width() - 1 && checkedY <= pos.y() + entry.height() - 1 && checkedZ <= pos.z() + entry.depth() - 1) && checkedX < getWidth() && checkedX % 2 != 0 && checkedY < getHeight() && checkedY % 2 != 0 && checkedZ < getDepth() && checkedZ % 2 != 0) {
                                 entrancePositions.add(new Pos(x + normal.getX(), y + normal.getY(), z + normal.getZ()));
                             }
                         }
