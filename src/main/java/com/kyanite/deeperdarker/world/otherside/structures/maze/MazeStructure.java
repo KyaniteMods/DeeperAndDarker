@@ -15,7 +15,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -23,6 +22,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilde
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class MazeStructure extends Structure {
@@ -70,7 +70,7 @@ public class MazeStructure extends Structure {
 
     private void generatePieces(StructurePiecesBuilder builder, GenerationContext context) {
         ChunkPos chunkPos = context.chunkPos();
-        BlockPos pos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
+        BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
 
         MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), false);
         if (center.isPresent()) generator.addRoomEntry(new RoomEntry(BuiltInRegistries.STRUCTURE_PIECE.getKey(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE), Optional.of(new Pos(center.get().minX(), center.get().minY(), center.get().minZ())), center.get().getXSpan(), center.get().getYSpan(), center.get().getZSpan(), true));
@@ -80,39 +80,40 @@ public class MazeStructure extends Structure {
 
         int sideLength = MazeStructurePieces.MazeStructurePiece.SIDE_LENGTH;
 
-        boolean placedStartReturnStatue = false;
-        for (int z = 0; z < getDepth(); z++) {
-            for (int y = 0; y < getHeight(); y++) {
-                for (int x = 0; x < getWidth(); x++) {
-                    boolean returnStatue = (result.get(x, y, z).getData() >= 2 && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid());
+        OptionalInt startReturnStatueDistance = OptionalInt.empty();
+        for (Pos pos : result.getPositions()) {
+            int x = pos.x();
+            int y = pos.y();
+            int z = pos.z();
+            boolean returnStatue = result.get(x, y, z).getData() >= 2;
+            if (y - 1 < 0 || result.get(x, y - 1, z).getType().isSolid()) returnStatue = false;
+            if (startReturnStatueDistance.isPresent() && startReturnStatueDistance.getAsInt() != result.get(x, y, z).getData()) returnStatue = false;
 
-                    BlockPos pieceBlockPos = pos.offset(x * sideLength, y * sideLength, z * sideLength);
-                    Pos piecePos = new Pos(x, y, z);
+            BlockPos pieceBlockPos = blockPos.offset(x * sideLength, y * sideLength, z * sideLength);
+            Pos piecePos = new Pos(x, y, z);
 
-                    if (result.get(x, y, z).getType() == Tile.Type.ROOM) continue;
+            if (result.get(x, y, z).getType() == Tile.Type.ROOM) continue;
 
-                    if (result.get(x, y, z).getType() == Tile.Type.WALL) {
-                        builder.addPiece(new MazeStructurePieces.MazeWallPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth()));
-                    } else if (isCorner(result, x, y, z) && ((returnStatue && !placedStartReturnStatue) || context.random().nextFloat() < 0.01f)) {
-                        builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), pos.offset(result.start().x() * sideLength + sideLength / 2, result.start().y() * sideLength, result.start().z() * sideLength + sideLength / 2)));
-                        if (returnStatue && !placedStartReturnStatue) placedStartReturnStatue = true;
-                    } else if (isHole(result, x, y, z)) {
-                        boolean isLava = context.random().nextFloat() < 0.8f;
-                        builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
-                    } else if (context.random().nextFloat() < 0.03f) {
-                        builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
-                    } else if (context.random().nextFloat() < 0.01f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
-                        for (Direction direction : Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet())) {
-                            Pos adjacentPos = piecePos.add(direction.getNormal());
-                            if (result.isWithinBounds(adjacentPos) && result.get(adjacentPos).getType().isSolid()) {
-                                builder.addPiece(new MazeStructurePieces.MazeChestPathPiece(pieceBlockPos, piecePos, direction, getWidth(), getHeight(), getDepth(), DDChestLootTableProvider.MAZE_BASIC));
-                                break;
-                            }
-                        }
-                    } else {
-                        builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), Blocks.AIR.defaultBlockState()));
+            if (result.get(x, y, z).getType() == Tile.Type.WALL) {
+                builder.addPiece(new MazeStructurePieces.MazeWallPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth()));
+            } else if (isCorner(result, x, y, z) && (returnStatue || context.random().nextFloat() < 0.01f)) {
+                builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), blockPos.offset(result.start().x() * sideLength + sideLength / 2, result.start().y() * sideLength, result.start().z() * sideLength + sideLength / 2)));
+                if (returnStatue && startReturnStatueDistance.isEmpty()) startReturnStatueDistance = OptionalInt.of(result.get(x, y, z).getData());
+            } else if (isHole(result, x, y, z)) {
+                boolean isLava = context.random().nextFloat() < 0.8f;
+                builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
+            } else if (context.random().nextFloat() < 0.03f) {
+                builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
+            } else if (context.random().nextFloat() < 0.01f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
+                for (Direction direction : Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet())) {
+                    Pos adjacentPos = piecePos.add(direction.getNormal());
+                    if (result.isWithinBounds(adjacentPos) && result.get(adjacentPos).getType().isSolid()) {
+                        builder.addPiece(new MazeStructurePieces.MazeChestPathPiece(pieceBlockPos, piecePos, direction, getWidth(), getHeight(), getDepth(), DDChestLootTableProvider.MAZE_BASIC));
+                        break;
                     }
                 }
+            } else {
+                builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), Blocks.AIR.defaultBlockState()));
             }
         }
     }

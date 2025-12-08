@@ -87,6 +87,6 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
             state.set(end.x(), end.y(), end.z(), Tile.end());
         }
 
-        return MazeResult.createAndNavigate(state.getTiles(), rooms, getWidth(), getHeight(), getDepth(), start);
+        return MazeResult.create(state.getTiles(), rooms, getWidth(), getHeight(), getDepth(), start);
     }
 }
