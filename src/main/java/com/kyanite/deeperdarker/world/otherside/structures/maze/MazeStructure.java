@@ -72,7 +72,7 @@ public class MazeStructure extends Structure {
         ChunkPos chunkPos = context.chunkPos();
         BlockPos pos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
 
-        MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), true);
+        MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), false);
         if (center.isPresent()) generator.addRoomEntry(new RoomEntry(BuiltInRegistries.STRUCTURE_PIECE.getKey(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE), Optional.of(new Pos(center.get().minX(), center.get().minY(), center.get().minZ())), center.get().getXSpan(), center.get().getYSpan(), center.get().getZSpan(), true));
         generator.addRoomEntry(new RoomEntry(new ResourceLocation(DeeperDarker.MOD_ID, "test"), Optional.empty(), 3, 1, 3, false));
 
