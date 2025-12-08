@@ -9,22 +9,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class WilsonMazeGenerator extends MazeGenerator {
-    private List<RoomEntry> roomEntries;
     private boolean makeExit;
 
     public WilsonMazeGenerator(int width, int height, int depth, boolean makeExit) {
         super(width, height, depth);
         this.makeExit = makeExit;
-        this.roomEntries = new ArrayList<>();
-    }
-
-    public boolean addRoomEntry(RoomEntry entry) {
-        if (entry.required()) {
-            roomEntries.add(0, entry);
-            return true;
-        } else {
-            return roomEntries.add(entry);
-        }
     }
 
     private static Tile[] deepCopy(Tile[] original) {
@@ -104,8 +93,8 @@ public class WilsonMazeGenerator extends MazeGenerator {
         }
 
         List<Room> rooms = new ArrayList<>();
-        for (int i = 0; i < roomEntries.size(); i++) {
-            RoomEntry entry = roomEntries.get(i);
+        for (int i = 0; i < getRoomEntries().size(); i++) {
+            RoomEntry entry = getRoomEntries().get(i);
             if (entry.pos().isPresent()) {
                 Pos pos = entry.pos().get();
                 if (!entry.fits(result, getWidth(), getHeight(), getDepth(), pos)) throw new IllegalArgumentException("Room " + entry.id().toString() + " does not fit in specified position");

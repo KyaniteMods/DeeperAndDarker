@@ -104,9 +104,4 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
 
         return MazeResult.createAndNavigate(stack.getTiles(), List.of(), getWidth(), getHeight(), getDepth(), start);
     }
-
-    @Override
-    public boolean addRoomEntry(RoomEntry entry) {
-        return false;
-    }
 }

@@ -10,6 +10,7 @@ public abstract class MazeGenerator {
     private final int width;
     private final int height;
     private final int depth;
+    private final List<RoomEntry> roomEntries;
 
     protected MazeGenerator(int width, int height, int depth) {
         if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
@@ -18,11 +19,19 @@ public abstract class MazeGenerator {
         this.height = height;
         if (depth % 2 == 0) throw new IllegalArgumentException("depth must be odd");
         this.depth = depth;
+        this.roomEntries = new ArrayList<>();
     }
 
     public abstract MazeResult generate(RandomSource random);
 
-    public abstract boolean addRoomEntry(RoomEntry entry);
+    public boolean addRoomEntry(RoomEntry entry) {
+        if (entry.required()) {
+            roomEntries.add(0, entry);
+            return true;
+        } else {
+            return roomEntries.add(entry);
+        }
+    }
 
     protected Direction[] weightedOrder(RandomSource random, Direction[] arr, float[] weights) {
         Direction[] result = new Direction[arr.length];
@@ -76,5 +85,9 @@ public abstract class MazeGenerator {
 
     public int getDepth() {
         return depth;
+    }
+
+    public List<RoomEntry> getRoomEntries() {
+        return roomEntries;
     }
 }
