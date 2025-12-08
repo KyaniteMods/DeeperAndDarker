@@ -152,6 +152,7 @@ public class DeeperDarker implements ModInitializer {
 																												BlockState blockState = switch (tile.getType()) {
 																													case PATH -> Blocks.AIR.defaultBlockState();
 																													case ROOM -> Blocks.GREEN_STAINED_GLASS.defaultBlockState();
+																													case ROOM_ENTRANCE -> Blocks.AIR.defaultBlockState();
 																													case WALL -> DDBlocks.GLOOMSLATE.defaultBlockState();
 																													case ENDPOINT -> Blocks.AIR.defaultBlockState();
 																													case DEBUG -> Blocks.RED_STAINED_GLASS.defaultBlockState();

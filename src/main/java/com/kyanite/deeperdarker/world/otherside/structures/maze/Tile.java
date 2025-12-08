@@ -17,8 +17,12 @@ public final class Tile {
         return new Tile(Type.ENDPOINT, 0);
     }
 
+    public static Tile end() {
+        return new Tile(Type.ENDPOINT, 1);
+    }
+
     public static Tile entrance(int i) {
-        return new Tile(Type.ENDPOINT, i + 1);
+        return new Tile(Type.ROOM_ENTRANCE, i);
     }
 
     public static Tile wall() {
@@ -75,6 +79,7 @@ public final class Tile {
     public enum Type {
         PATH(false),
         ROOM(false),
+        ROOM_ENTRANCE(false),
         WALL(true),
         ENDPOINT(false),
         DEBUG(true);

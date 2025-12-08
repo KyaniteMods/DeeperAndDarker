@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 public class WilsonMazeGenerator extends MazeGenerator {
     private List<RoomEntry> roomEntries;
-    private boolean cheap;
+    private boolean makeExit;
 
-    public WilsonMazeGenerator(int width, int height, int depth, boolean cheap) {
+    public WilsonMazeGenerator(int width, int height, int depth, boolean makeExit) {
         super(width, height, depth);
-        this.cheap = cheap;
+        this.makeExit = makeExit;
         this.roomEntries = new ArrayList<>();
     }
 
@@ -51,7 +51,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
         return copy;
     }
 
-    private Tile[][][] randomWalk(RandomSource random, List<Pos> remainingPositions, Tile[][][] partialResult, boolean cheap) {
+    private Tile[][][] randomWalk(RandomSource random, List<Pos> remainingPositions, Tile[][][] partialResult) {
         Pos start = remainingPositions.get(random.nextInt(remainingPositions.size()));
 
         MazeStack mazeStack = new MazeStack(deepCopy(partialResult), getWidth(), getHeight(), getDepth());
@@ -60,10 +60,7 @@ public class WilsonMazeGenerator extends MazeGenerator {
 
         mazeStack.push(currentPos);
 
-        int walkLength = cheap ? random.nextInt(50, 100) : -1;
-        int iterations = 0;
-
-        while ((cheap && iterations < walkLength) || (!cheap && partialResult[currentPos.x()][currentPos.y()][currentPos.z()].getType() != Tile.Type.PATH)) {
+        while (partialResult[currentPos.x()][currentPos.y()][currentPos.z()].getType() != Tile.Type.PATH) {
             Direction[] ordered = Direction.allShuffled(random).toArray(new Direction[6]);
             Pos newPos = null;
             for (Direction direction : ordered) {
@@ -86,7 +83,6 @@ public class WilsonMazeGenerator extends MazeGenerator {
                 mazeStack.push(newPos);
             }
             currentPos = newPos;
-            iterations++;
         }
 
         remainingPositions.removeAll(mazeStack);
@@ -144,21 +140,22 @@ public class WilsonMazeGenerator extends MazeGenerator {
             if (!placed) throw new IllegalArgumentException("Required room " + entry.id().toString() + " does not fit in maze of size " + getWidth() + "x" + getHeight() + "x" + getDepth());
         }
 
-        boolean cheap = this.cheap;
-        if (!cheap) {
-            int index = random.nextInt(remainingPositions.size());
-            Pos pos = remainingPositions.get(index);
-            result[pos.x()][pos.y()][pos.z()] = Tile.path();
-            remainingPositions.remove(index);
-        }
+        int index = random.nextInt(remainingPositions.size());
+        Pos pos = remainingPositions.get(index);
+        result[pos.x()][pos.y()][pos.z()] = Tile.path();
+        remainingPositions.remove(index);
 
         while (!remainingPositions.isEmpty()) {
-            result = randomWalk(random, remainingPositions, result, cheap);
-            cheap = false;
+            result = randomWalk(random, remainingPositions, result);
         }
 
         Pos start = new Pos(1, 1, 0);
         result[start.x()][start.y()][start.z()] = Tile.start();
+
+        if (makeExit) {
+            Pos end = new Pos(getWidth() - 2, getHeight() - 2, getDepth() - 1);
+            result[end.x()][end.y()][end.z()] = Tile.end();
+        }
 
         return MazeResult.createAndNavigate(result, rooms, getWidth(), getHeight(), getDepth(), start);
     }

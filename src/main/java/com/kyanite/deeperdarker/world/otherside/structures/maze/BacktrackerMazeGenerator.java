@@ -92,7 +92,7 @@ public class BacktrackerMazeGenerator extends MazeGenerator {
         }
 
         stack.push(end.x(), end.y(), end.z(), Tile.start());
-        stack.push(1, 1, 0, Tile.entrance(0));
+        stack.push(1, 1, 0, Tile.end());
 
         for (int ez = center.minZ(); ez < center.maxZ() + 1; ez++) {
             for (int ey = center.minY(); ey < center.maxY() + 1; ey++) {
