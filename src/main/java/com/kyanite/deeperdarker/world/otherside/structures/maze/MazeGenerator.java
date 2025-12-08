@@ -7,9 +7,9 @@ import net.minecraft.util.RandomSource;
 import java.util.*;
 
 public abstract class MazeGenerator {
-    private int width;
-    private int height;
-    private int depth;
+    private final int width;
+    private final int height;
+    private final int depth;
 
     protected MazeGenerator(int width, int height, int depth) {
         if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
