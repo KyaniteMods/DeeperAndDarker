@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.world.otherside.structures;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeStructure;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeStructurePalette;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.Pos;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -31,7 +32,7 @@ public class DDStructures {
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
         context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.TEMPLE_START), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), false));
-        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE)), 29, 5, 29, 3, Optional.of(new Pos(11, 3, 11))));
+        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE)), 29, 5, 29, 3, MazeStructurePalette.BLOOMAZE, Optional.of(new Pos(11, 3, 11))));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {

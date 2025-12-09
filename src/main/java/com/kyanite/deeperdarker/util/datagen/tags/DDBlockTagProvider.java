@@ -165,6 +165,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .addOptional(new ResourceLocation("toms_storage", "ts.crafting_terminal"));
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
+        tagBuilder(DDTags.Blocks.MAZE_CANNOT_HIDE_CHEST).add(Blocks.WATER);
+
         tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         tagBuilder(ConventionalBlockTags.GLASS_PANES).add(DDBlocks.SCULK_GRIME_GLASS_PANE);
     }

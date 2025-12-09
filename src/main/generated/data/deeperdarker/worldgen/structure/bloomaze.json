@@ -8,6 +8,94 @@
   ],
   "depth": 29,
   "height": 5,
+  "palette": {
+    "fluid": [
+      {
+        "data": {
+          "Name": "minecraft:lava",
+          "Properties": {
+            "level": "0"
+          }
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "Name": "minecraft:water",
+          "Properties": {
+            "level": "0"
+          }
+        },
+        "weight": 1
+      }
+    ],
+    "path": [
+      {
+        "data": {
+          "Name": "minecraft:air"
+        },
+        "weight": 100
+      },
+      {
+        "data": {
+          "Name": "deeperdarker:fragile_sculk_grime_bricks"
+        },
+        "weight": 2
+      },
+      {
+        "data": {
+          "Name": "deeperdarker:sculk_grime_glass"
+        },
+        "weight": 1
+      }
+    ],
+    "structure_cover": [
+      {
+        "data": {
+          "Name": "deeperdarker:sculk_grime_bricks"
+        },
+        "weight": 10
+      },
+      {
+        "data": {
+          "Name": "deeperdarker:sculk_stone_bricks"
+        },
+        "weight": 1
+      }
+    ],
+    "wall_center": [
+      {
+        "data": {
+          "Name": "deeperdarker:protected_sculk_gleam"
+        },
+        "weight": 1
+      }
+    ],
+    "wall_corner": [
+      {
+        "data": {
+          "Name": "deeperdarker:sculk_grime_bricks"
+        },
+        "weight": 1
+      }
+    ],
+    "wall_edge": [
+      {
+        "data": {
+          "Name": "deeperdarker:protected_sculk_grime_glass"
+        },
+        "weight": 1
+      }
+    ],
+    "wall_face": [
+      {
+        "data": {
+          "Name": "deeperdarker:protected_sculk_gleam"
+        },
+        "weight": 1
+      }
+    ]
+  },
   "spawn_overrides": {},
   "step": "underground_structures",
   "terrain_adaptation": "beard_box",

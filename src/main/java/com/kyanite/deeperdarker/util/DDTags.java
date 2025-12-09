@@ -53,6 +53,9 @@ public class DDTags {
 
         public static final TagKey<Block> ECHO_SOIL = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "echo_soil"));
+
+        public static final TagKey<Block> MAZE_CANNOT_HIDE_CHEST = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "maze/cannot_hide_chest"));
     }
 
     public static class Items {
