@@ -1,8 +1,7 @@
-package com.kyanite.deeperdarker.world.otherside.structures.maze;
+package com.kyanite.deeperdarker.world.otherside.structures.maze.generation;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.Util;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 
 import java.util.stream.IntStream;

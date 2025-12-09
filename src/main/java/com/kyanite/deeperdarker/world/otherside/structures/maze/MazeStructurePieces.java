@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.entities.blocks.ReturnStatueBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

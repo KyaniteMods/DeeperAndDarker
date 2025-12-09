@@ -13,6 +13,9 @@ import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.*;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeResult;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.WilsonMazeGenerator;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.api.ModInitializer;
@@ -29,7 +32,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -38,8 +40,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Optional;
 
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
@@ -67,6 +67,7 @@ public class DeeperDarker implements ModInitializer {
 		DDRecipeSerializers.init();
 		DDStructurePieceTypes.init();
 		DDStructureTypes.init();
+		RoomTypeRegistry.init();
 		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();
