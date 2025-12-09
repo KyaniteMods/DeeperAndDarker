@@ -32,20 +32,20 @@ public class MazeStructure extends Structure {
             Codec.INT.fieldOf("height").forGetter(MazeStructure::getHeight),
             Codec.INT.fieldOf("depth").forGetter(MazeStructure::getDepth),
             Codec.INT.fieldOf("tile_size").forGetter(MazeStructure::getTileSize),
-            BoundingBox.CODEC.optionalFieldOf("center").forGetter(MazeStructure::getCenter)).apply(instance, MazeStructure::new)), MazeStructure::verify).codec();
+            Pos.CODEC.optionalFieldOf("boss_room_position").forGetter(MazeStructure::getBossRoomPosition)).apply(instance, MazeStructure::new)), MazeStructure::verify).codec();
     private final int width;
     private final int height;
     private final int depth;
     private final int tileSize;
-    private final Optional<BoundingBox> center;
+    private final Optional<Pos> bossRoomPosition;
 
-    public MazeStructure(StructureSettings structureSettings, int width, int height, int depth, int tileSize, Optional<BoundingBox> center) {
+    public MazeStructure(StructureSettings structureSettings, int width, int height, int depth, int tileSize, Optional<Pos> bossRoomPosition) {
         super(structureSettings);
         this.width = width;
         this.height = height;
         this.depth = depth;
         this.tileSize = tileSize;
-        this.center = center;
+        this.bossRoomPosition = bossRoomPosition;
     }
 
     private static DataResult<MazeStructure> verify(MazeStructure mazeStructure) {
@@ -56,12 +56,14 @@ public class MazeStructure extends Structure {
             return DataResult.error(() -> "Structure width, height or depth must not exceed 128");
         }
 
-        BoundingBox center = mazeStructure.getCenter().orElse(null);
-        if (center != null && (center.minX() < 0 || center.maxX() >= width
-                || center.minY() < 0 || center.maxY() >= height
-                || center.minZ() < 0 || center.maxZ() >= depth)) {
-            return DataResult.error(() -> "Maze center exceeds bounds of maze");
+        Pos bossRoomPos;
+        if (mazeStructure.getBossRoomPosition().isPresent()
+                && ((bossRoomPos = mazeStructure.getBossRoomPosition().get()).x() < 0 || bossRoomPos.x() > width - 1
+                || bossRoomPos.y() < 0 || bossRoomPos.y() > height - 1
+                || bossRoomPos.z() < 0 || bossRoomPos.z() > depth - 1)) {
+            return DataResult.error(() -> "Boss room position is out of bounds");
         }
+
         return DataResult.success(mazeStructure);
     }
 
@@ -76,7 +78,11 @@ public class MazeStructure extends Structure {
         final BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
 
         MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), false);
-        if (center.isPresent()) generator.addRoomEntry(new RoomEntry((pos, entrance) -> new MazeStructurePieces.MazeBossRoomPiece(blockPos.offset(pos.x() * tileSize, pos.y() * tileSize, pos.z() * tileSize), pos, getWidth(), getHeight(), getDepth(), getTileSize(), Blocks.AIR.defaultBlockState()), Optional.of(new Pos(center.get().minX(), center.get().minY(), center.get().minZ())), center.get().getXSpan(), center.get().getYSpan(), center.get().getZSpan(), true));
+
+        if (getBossRoomPosition().isPresent()) {
+            Pos bossRoomPos = getBossRoomPosition().get();
+            generator.addRoomEntry(new RoomEntry((pos, entrance) -> new MazeStructurePieces.MazeBossRoomPiece(blockPos.offset(pos.x() * tileSize, pos.y() * tileSize, pos.z() * tileSize), pos, getWidth(), getHeight(), getDepth(), getTileSize(), Blocks.AIR.defaultBlockState()), Optional.of(bossRoomPos), 7, 1, 7, true));
+        }
 
         MazeResult result = generator.generate(context.random());
 
@@ -95,24 +101,24 @@ public class MazeStructure extends Structure {
             if (result.get(x, y, z).getType() == Tile.Type.ROOM) continue;
 
             if (result.get(x, y, z).getType() == Tile.Type.WALL) {
-                builder.addPiece(new MazeStructurePieces.MazeWallPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize));
+                builder.addPiece(new MazeStructurePieces.MazeWallPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), getTileSize()));
                 continue;
             }
 
             if (isCorner(result, x, y, z) && (generateReturnStatue || context.random().nextFloat() < 0.01f)) {
-                builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, blockPos.offset(result.start().x() * tileSize + tileSize / 2, result.start().y() * tileSize, result.start().z() * tileSize + tileSize / 2)));
+                builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), getTileSize(), blockPos.offset(result.start().x() * getTileSize() + getTileSize() / 2, result.start().y() * getTileSize(), result.start().z() * getTileSize() + getTileSize() / 2)));
                 if (returnStatue && startReturnStatueDistance.isEmpty()) startReturnStatueDistance = OptionalInt.of(result.get(x, y, z).getData());
                 continue;
             }
 
             if (isHole(result, x, y, z)) {
                 boolean isLava = context.random().nextFloat() < 0.8f;
-                builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
+                builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), getTileSize(), isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
                 continue;
             }
 
             if (context.random().nextFloat() < 0.03f) {
-                builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
+                builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), getTileSize(), context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
                 continue;
             }
 
@@ -120,14 +126,14 @@ public class MazeStructure extends Structure {
                 for (Direction direction : Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet())) {
                     Pos adjacentPos = piecePos.add(direction.getNormal());
                     if (result.isWithinBounds(adjacentPos) && result.get(adjacentPos).getType().isSolid()) {
-                        builder.addPiece(new MazeStructurePieces.MazeChestPathPiece(pieceBlockPos, piecePos, direction, getWidth(), getHeight(), getDepth(), tileSize, DDChestLootTableProvider.MAZE_BASIC));
+                        builder.addPiece(new MazeStructurePieces.MazeChestPathPiece(pieceBlockPos, piecePos, direction, getWidth(), getHeight(), getDepth(), getTileSize(), DDChestLootTableProvider.MAZE_BASIC));
                         break;
                     }
                 }
                 continue;
             }
 
-            builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, Blocks.AIR.defaultBlockState()));
+            builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), getTileSize(), Blocks.AIR.defaultBlockState()));
         }
 
         for (Room room : result.rooms()) {
@@ -163,8 +169,8 @@ public class MazeStructure extends Structure {
         return tileSize;
     }
 
-    public Optional<BoundingBox> getCenter() {
-        return center;
+    public Optional<Pos> getBossRoomPosition() {
+        return bossRoomPosition;
     }
 
     @Override

@@ -1,13 +1,10 @@
 {
   "type": "deeperdarker:maze",
   "biomes": "#deeperdarker:has_structure/bloomaze",
-  "center": [
+  "boss_room_position": [
     11,
     3,
-    11,
-    17,
-    3,
-    17
+    11
   ],
   "depth": 29,
   "height": 5,
