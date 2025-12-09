@@ -75,14 +75,14 @@ public abstract class MazeGenerator {
             RoomEntry entry = getRoomEntries().get(i);
             if (entry.pos().isPresent()) {
                 Pos pos = entry.pos().get();
-                if (!entry.fits(state.getTiles(), width, height, depth, pos)) throw new IllegalArgumentException("Room " + entry.id().toString() + " does not fit in specified position");
+                if (!entry.fits(state.getTiles(), width, height, depth, pos)) throw new IllegalArgumentException("Room does not fit in specified position");
 
                 rooms.add(placeRoom(random, state, entry, pos, i));
                 continue;
             }
 
             if (width - entry.width() < 0 || height - entry.height() < 0 || depth - entry.depth() < 0) {
-                DeeperDarker.LOGGER.warn("Room " + entry.id().toString() + " does not fit in maze of size " + width + "x" + height + "x" + depth);
+                DeeperDarker.LOGGER.warn("Room does not fit in maze of size " + width + "x" + height + "x" + depth);
                 continue;
             }
 
@@ -104,7 +104,7 @@ public abstract class MazeGenerator {
                 placed = true;
                 break;
             }
-            if (!placed) throw new IllegalArgumentException("Required room " + entry.id().toString() + " does not fit in maze of size " + width + "x" + height + "x" + depth);
+            if (!placed) throw new IllegalArgumentException("Required room does not fit in maze of size " + width + "x" + height + "x" + depth);
         }
         return rooms;
     }

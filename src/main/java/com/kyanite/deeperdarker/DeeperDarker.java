@@ -141,7 +141,6 @@ public class DeeperDarker implements ModInitializer {
 
 																								try {
 																									MazeGenerator mazeGenerator = new WilsonMazeGenerator(width, height, depth, false);
-																									mazeGenerator.addRoomEntry(new RoomEntry(new ResourceLocation(MOD_ID, "center"), Optional.of(new Pos(centerMinX, centerMinY, centerMinZ)), centerMaxX - centerMinX, centerMaxY - centerMinY, centerMaxZ - centerMinZ, true));
 
 																									MazeResult result = mazeGenerator.generate(c.getSource().getLevel().getRandom());
 

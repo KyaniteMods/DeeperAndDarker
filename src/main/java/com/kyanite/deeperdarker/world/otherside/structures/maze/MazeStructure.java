@@ -73,11 +73,10 @@ public class MazeStructure extends Structure {
 
     private void generatePieces(StructurePiecesBuilder builder, GenerationContext context) {
         ChunkPos chunkPos = context.chunkPos();
-        BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
+        final BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), 60, chunkPos.getMinBlockZ());
 
         MazeGenerator generator = new WilsonMazeGenerator(getWidth(), getHeight(), getDepth(), false);
-        if (center.isPresent()) generator.addRoomEntry(new RoomEntry(BuiltInRegistries.STRUCTURE_PIECE.getKey(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE), Optional.of(new Pos(center.get().minX(), center.get().minY(), center.get().minZ())), center.get().getXSpan(), center.get().getYSpan(), center.get().getZSpan(), true));
-        generator.addRoomEntry(new RoomEntry(new ResourceLocation(DeeperDarker.MOD_ID, "test"), Optional.empty(), 3, 1, 3, false));
+        if (center.isPresent()) generator.addRoomEntry(new RoomEntry((pos, entrance) -> new MazeStructurePieces.MazeBossRoomPiece(blockPos.offset(pos.x() * tileSize, pos.y() * tileSize, pos.z() * tileSize), pos, getWidth(), getHeight(), getDepth(), getTileSize(), Blocks.AIR.defaultBlockState()), Optional.of(new Pos(center.get().minX(), center.get().minY(), center.get().minZ())), center.get().getXSpan(), center.get().getYSpan(), center.get().getZSpan(), true));
 
         MazeResult result = generator.generate(context.random());
 
@@ -97,15 +96,27 @@ public class MazeStructure extends Structure {
 
             if (result.get(x, y, z).getType() == Tile.Type.WALL) {
                 builder.addPiece(new MazeStructurePieces.MazeWallPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize));
-            } else if (isCorner(result, x, y, z) && (generateReturnStatue || context.random().nextFloat() < 0.01f)) {
+                continue;
+            }
+
+            if (isCorner(result, x, y, z) && (generateReturnStatue || context.random().nextFloat() < 0.01f)) {
                 builder.addPiece(new MazeStructurePieces.MazeStatuePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, blockPos.offset(result.start().x() * tileSize + tileSize / 2, result.start().y() * tileSize, result.start().z() * tileSize + tileSize / 2)));
                 if (returnStatue && startReturnStatueDistance.isEmpty()) startReturnStatueDistance = OptionalInt.of(result.get(x, y, z).getData());
-            } else if (isHole(result, x, y, z)) {
+                continue;
+            }
+
+            if (isHole(result, x, y, z)) {
                 boolean isLava = context.random().nextFloat() < 0.8f;
                 builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, isLava ? Blocks.LAVA.defaultBlockState() : Blocks.WATER.defaultBlockState(), (!isLava || context.random().nextFloat() < 0.6f) ? null : DDChestLootTableProvider.MAZE_SECRET));
-            } else if (context.random().nextFloat() < 0.03f) {
+                continue;
+            }
+
+            if (context.random().nextFloat() < 0.03f) {
                 builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, context.random().nextBoolean() ? DDBlocks.SCULK_GRIME_GLASS.defaultBlockState() : DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState()));
-            } else if (context.random().nextFloat() < 0.01f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
+                continue;
+            }
+
+            if (context.random().nextFloat() < 0.01f && y - 1 >= 0 && result.get(x, y - 1, z).getType().isSolid()) {
                 for (Direction direction : Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet())) {
                     Pos adjacentPos = piecePos.add(direction.getNormal());
                     if (result.isWithinBounds(adjacentPos) && result.get(adjacentPos).getType().isSolid()) {
@@ -113,9 +124,14 @@ public class MazeStructure extends Structure {
                         break;
                     }
                 }
-            } else {
-                builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, Blocks.AIR.defaultBlockState()));
+                continue;
             }
+
+            builder.addPiece(new MazeStructurePieces.MazePathPiece(pieceBlockPos, piecePos, getWidth(), getHeight(), getDepth(), tileSize, Blocks.AIR.defaultBlockState()));
+        }
+
+        for (Room room : result.rooms()) {
+            builder.addPiece(room.create());
         }
     }
 

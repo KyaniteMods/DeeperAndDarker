@@ -187,7 +187,7 @@ public class MazeStructurePieces {
     public static class MazeBossRoomPiece extends MazeStructurePiece {
         private BlockState state;
 
-        public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, BlockState state, int tileSize) {
+        public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, BlockState state) {
             super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize);
             this.state = state;
         }
@@ -208,7 +208,7 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, state, x, y, z, boundingBox);
+                        placeBlock(worldGenLevel, y == 0 ? Blocks.MAGENTA_CARPET.defaultBlockState() : state, x, y, z, boundingBox);
                     }
                 }
             }
