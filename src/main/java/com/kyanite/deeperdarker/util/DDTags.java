@@ -93,6 +93,9 @@ public class DDTags {
     public static class Structures {
         public static final TagKey<Structure> WARDEN_HEART_PULSES = TagKey.create(
                 Registries.STRUCTURE, new ResourceLocation(DeeperDarker.MOD_ID, "warden_heart_pulses"));
+
+        public static final TagKey<Structure> NO_BLOOMING_POOL_GENERATION = TagKey.create(
+                Registries.STRUCTURE, new ResourceLocation(DeeperDarker.MOD_ID, "no_blooming_pool_generation"));
     }
 
     public static class GameEvents {

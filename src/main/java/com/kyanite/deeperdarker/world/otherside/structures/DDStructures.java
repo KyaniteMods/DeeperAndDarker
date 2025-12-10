@@ -10,15 +10,19 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.random.WeightedRandomList;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -32,11 +36,20 @@ public class DDStructures {
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
         context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.TEMPLE_START), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), false));
-        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE)), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.BLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
+
+        Map<MobCategory, StructureSpawnOverride> mazeSpawnOverrides = new HashMap<>();
+        for (MobCategory category : MobCategory.values()) {
+            mazeSpawnOverrides.put(category, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create()));
+        }
+        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.BLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {
-        return new Structure.StructureSettings(biomes, Map.of(), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, TerrainAdjustment.BEARD_BOX);
+        return structure(biomes, Map.of());
+    }
+
+    private static Structure.StructureSettings structure(HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides) {
+        return new Structure.StructureSettings(biomes, spawnOverrides, GenerationStep.Decoration.UNDERGROUND_STRUCTURES, TerrainAdjustment.BEARD_BOX);
     }
 
     private static ResourceKey<Structure> createKey(String name) {

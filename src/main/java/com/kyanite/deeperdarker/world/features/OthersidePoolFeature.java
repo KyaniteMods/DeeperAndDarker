@@ -2,17 +2,30 @@ package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingGrassBlock;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.SectionPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureStart;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
     public OthersidePoolFeature(Codec<NoneFeatureConfiguration> pCodec) {
@@ -26,6 +39,31 @@ public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = pContext.random();
 
         if(origin.getY() <= level.getMinBuildHeight() + 4) return false;
+
+        Registry<Structure> registry = pContext.level().registryAccess().registryOrThrow(Registries.STRUCTURE);
+
+        StructureManager structureManager = level.getLevel().structureManager();
+        SectionPos sectionPos = SectionPos.of(origin);
+
+        ChunkAccess chunkAccess = level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_REFERENCES);
+        if (chunkAccess.getHighestGeneratedStatus().isOrAfter(ChunkStatus.STRUCTURE_REFERENCES)) {
+            Map<Structure, LongSet> references = chunkAccess.getAllReferences();
+            for (Map.Entry<Structure, LongSet> entry : references.entrySet()) {
+                if (registry.getHolder(registry.getResourceKey(entry.getKey()).get()).get().is(DDTags.Structures.NO_BLOOMING_POOL_GENERATION)) {
+                    for (long ref : entry.getValue()) {
+                        SectionPos sectionPos1 = SectionPos.of(new ChunkPos(ref), level.getMinBuildHeight());
+                        if (!level.hasChunk(sectionPos.x(), sectionPos.z())) {
+                            continue;
+                        }
+                        StructureStart structureStart = structureManager.getStartForStructure(sectionPos1, entry.getKey(), level.getChunk(sectionPos1.x(), sectionPos1.z(), ChunkStatus.STRUCTURE_STARTS));
+                        if (structureStart != null && structureStart.isValid() && structureStart.getBoundingBox().isInside(origin)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
 
         origin = origin.below(4);
         boolean[] arr = new boolean[2048];
