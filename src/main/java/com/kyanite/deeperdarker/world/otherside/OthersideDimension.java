@@ -18,6 +18,6 @@ public class OthersideDimension {
     public static final ResourceLocation OTHERSIDE_EFFECTS = new ResourceLocation(DeeperDarker.MOD_ID, "otherside_effects");
 
     public static void bootstrap(BootstapContext<DimensionType> context) {
-        context.register(OTHERSIDE, new DimensionType(OptionalLong.of(18000L), false, true, false, true, 1, true, false, 0, 128, 128, DDTags.Blocks.INFINIBURN_OTHERSIDE, OTHERSIDE_EFFECTS, 0.05f, new DimensionType.MonsterSettings(true, false, ConstantInt.of(7), 15)));
+        context.register(OTHERSIDE, new DimensionType(OptionalLong.of(18000L), false, true, false, true, 1, true, false, 0, 128, 128, DDTags.Blocks.INFINIBURN_OTHERSIDE, OTHERSIDE_EFFECTS, 0.0f, new DimensionType.MonsterSettings(true, false, ConstantInt.of(7), 15)));
     }
 }
