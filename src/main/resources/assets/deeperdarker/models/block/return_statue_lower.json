@@ -5,7 +5,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "deeperdarker:block/return_statue_lower",
-		"particle": "deeperdarker:block/return_statue_lower"
+		"particle": "minecraft:block/polished_deepslate"
 	},
 	"elements": [
 		{

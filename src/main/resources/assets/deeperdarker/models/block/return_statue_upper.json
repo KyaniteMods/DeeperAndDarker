@@ -4,7 +4,7 @@
 	"parent": "minecraft:block/block",
 	"textures": {
 		"0": "deeperdarker:block/return_statue_upper",
-		"particle": "deeperdarker:block/return_statue_upper"
+		"particle": "minecraft:block/polished_deepslate"
 	},
 	"elements": [
 		{
