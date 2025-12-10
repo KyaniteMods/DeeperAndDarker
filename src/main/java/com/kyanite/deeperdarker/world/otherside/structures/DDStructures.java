@@ -30,6 +30,7 @@ import java.util.Optional;
 public class DDStructures {
     public static final ResourceKey<Structure> ANCIENT_TEMPLE = createKey("ancient_temple");
     public static final ResourceKey<Structure> BLOOMAZE = createKey("bloomaze");
+    public static final ResourceKey<Structure> GLOOMAZE = createKey("gloomaze");
 
     public static void bootstrap(BootstapContext<Structure> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -41,7 +42,8 @@ public class DDStructures {
         for (MobCategory category : MobCategory.values()) {
             mazeSpawnOverrides.put(category, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create()));
         }
-        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.BLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
+        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(25, 5, 25, 3, MazeStructurePalette.BLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
+        context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {

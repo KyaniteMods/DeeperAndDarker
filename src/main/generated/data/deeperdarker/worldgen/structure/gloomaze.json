@@ -1,23 +1,14 @@
 {
   "type": "deeperdarker:maze",
-  "biomes": "#deeperdarker:has_structure/bloomaze",
+  "biomes": "#deeperdarker:has_structure/gloomaze",
   "maze_settings": {
-    "depth": 25,
+    "depth": 29,
     "height": 5,
     "palette": {
       "fluid": [
         {
           "data": {
             "Name": "minecraft:lava",
-            "Properties": {
-              "level": "0"
-            }
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "minecraft:water",
             "Properties": {
               "level": "0"
             }
@@ -48,13 +39,7 @@
       "structure_cover": [
         {
           "data": {
-            "Name": "deeperdarker:sculk_grime_bricks"
-          },
-          "weight": 10
-        },
-        {
-          "data": {
-            "Name": "deeperdarker:sculk_stone_bricks"
+            "Name": "deeperdarker:gloomslate_bricks"
           },
           "weight": 1
         }
@@ -70,7 +55,7 @@
       "wall_corner": [
         {
           "data": {
-            "Name": "deeperdarker:sculk_grime_bricks"
+            "Name": "deeperdarker:gloomslate_bricks"
           },
           "weight": 1
         }
@@ -100,11 +85,11 @@
           11
         ],
         "required": true,
-        "room_type": "deeperdarker:bloomaze/boss_room"
+        "room_type": "deeperdarker:gloomaze/boss_room"
       }
     ],
     "tile_size": 3,
-    "width": 25
+    "width": 29
   },
   "spawn_overrides": {
     "ambient": {

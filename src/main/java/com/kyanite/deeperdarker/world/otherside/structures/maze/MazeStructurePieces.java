@@ -185,13 +185,13 @@ public class MazeStructurePieces {
         }
     }
 
-    public static class MazeBossRoomPiece extends MazeStructurePiece {
-        public MazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
-            super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize, palette);
+    public static class BloomazeBossRoomPiece extends MazeStructurePiece {
+        public BloomazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
+            super(DDStructurePieceTypes.BLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize, palette);
         }
 
-        public MazeBossRoomPiece(CompoundTag tag) {
-            super(DDStructurePieceTypes.MAZE_BOSS_ROOM_PIECE, tag);
+        public BloomazeBossRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.BLOOMAZE_BOSS_ROOM_PIECE, tag);
         }
 
         @Override
@@ -204,7 +204,33 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, y == 0 ? Blocks.MAGENTA_CARPET.defaultBlockState() : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        placeBlock(worldGenLevel, y == 0 ? Blocks.LIGHT_BLUE_CARPET.defaultBlockState() : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
+    public static class GloomazeBossRoomPiece extends MazeStructurePiece {
+        public GloomazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
+            super(DDStructurePieceTypes.GLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize, palette);
+        }
+
+        public GloomazeBossRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.GLOOMAZE_BOSS_ROOM_PIECE, tag);
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        placeBlock(worldGenLevel, y == 0 ? Blocks.ORANGE_CARPET.defaultBlockState() : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
             }
