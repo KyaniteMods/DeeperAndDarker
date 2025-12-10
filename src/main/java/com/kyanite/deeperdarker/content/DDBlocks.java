@@ -243,6 +243,7 @@ public class DDBlocks {
     public static final Block INFESTED_SCULK = register("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
+    public static final Block SCULK_LAMP = register("sculk_lamp", new SculkLampBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(11000.0f).lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 15 : 0).pushReaction(PushReaction.BLOCK)));
     public static final Block PROTECTED_SCULK_GLEAM = register("protected_sculk_gleam", new HalfTransparentBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(11000.0f).pushReaction(PushReaction.BLOCK)));
     public static final Block PROTECTED_SCULK_GRIME_GLASS = register("protected_sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(11000.0f).pushReaction(PushReaction.BLOCK).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_GLASS = register("sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.COLOR_CYAN).strength(0.3f)));

@@ -184,6 +184,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         otherWhenSilkTouch(DDBlocks.INFESTED_SCULK, Blocks.SCULK);
 
         dropSelf(DDBlocks.SOUNDPROOF_GLASS);
+        dropSelf(DDBlocks.SCULK_LAMP);
         dropWhenSilkTouch(DDBlocks.PROTECTED_SCULK_GLEAM);
     }
 

@@ -47,7 +47,10 @@
       "wall_center": [
         {
           "data": {
-            "Name": "deeperdarker:protected_sculk_gleam"
+            "Name": "deeperdarker:sculk_lamp",
+            "Properties": {
+              "lit": "true"
+            }
           },
           "weight": 1
         }
@@ -63,7 +66,7 @@
       "wall_edge": [
         {
           "data": {
-            "Name": "deeperdarker:protected_sculk_grime_glass"
+            "Name": "deeperdarker:gloomslate_barrier"
           },
           "weight": 1
         }
@@ -71,7 +74,10 @@
       "wall_face": [
         {
           "data": {
-            "Name": "deeperdarker:protected_sculk_gleam"
+            "Name": "deeperdarker:sculk_lamp",
+            "Properties": {
+              "lit": "true"
+            }
           },
           "weight": 1
         }

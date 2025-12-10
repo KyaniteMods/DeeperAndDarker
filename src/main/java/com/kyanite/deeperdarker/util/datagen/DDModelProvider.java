@@ -242,6 +242,7 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.family(DDBlocks.SOUNDPROOF_GLASS);
         blockModelGenerators.family(DDBlocks.PROTECTED_SCULK_GLEAM);
+        registerSculkLamp(blockModelGenerators, DDBlocks.SCULK_LAMP);
         blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
@@ -420,6 +421,15 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.SCULK_JAW).with(BlockModelGenerators.createBooleanModelDispatch(
                 SculkJawBlock.BITING, sculkJawBitingModel, sculkJawModel)));
+    }
+
+    private static void registerSculkLamp(BlockModelGenerators blockModelGenerators, Block lamp) {
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(lamp)
+                .with(PropertyDispatch.property(BlockStateProperties.LIT)
+                        .select(true, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(lamp)))
+                        .select(false, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(lamp, "_off")))));
+        ModelTemplates.CUBE_ALL.create(lamp, TextureMapping.cube(lamp), blockModelGenerators.modelOutput);
+        ModelTemplates.CUBE_ALL.createWithSuffix(lamp, "_off", TextureMapping.cube(TextureMapping.getBlockTexture(lamp, "_off")), blockModelGenerators.modelOutput);
     }
 
     private static void registerGeneratedWithPredicate(ItemModelGenerators itemModelGenerator, Item item, List<Triple<String, Number, ResourceLocation>> predicates) {

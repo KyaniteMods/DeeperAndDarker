@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "deeperdarker:block/sculk_lamp_off"
+    },
+    "lit=true": {
+      "model": "deeperdarker:block/sculk_lamp"
+    }
+  }
+}

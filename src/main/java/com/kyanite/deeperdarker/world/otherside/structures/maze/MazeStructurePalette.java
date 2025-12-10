@@ -32,9 +32,9 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
     public static final MazeStructurePalette GLOOMAZE = MazeStructurePalette.builder()
             .addStructureCovers(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState(), 1))
             .addWallCorners(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState(), 1))
-            .addWallFaces(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))
-            .addWallEdges(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GRIME_GLASS.defaultBlockState(), 1))
-            .addWallCenters(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))
+            .addWallFaces(WeightedEntry.wrap(DDBlocks.SCULK_LAMP.defaultBlockState(), 1))
+            .addWallEdges(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_BARRIER.defaultBlockState(), 1))
+            .addWallCenters(WeightedEntry.wrap(DDBlocks.SCULK_LAMP.defaultBlockState(), 1))
             .addPathBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 100), WeightedEntry.wrap(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState(), 2), WeightedEntry.wrap(DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), 1))
             .addFluids(WeightedEntry.wrap(Blocks.LAVA.defaultBlockState(), 1))
             .build();
