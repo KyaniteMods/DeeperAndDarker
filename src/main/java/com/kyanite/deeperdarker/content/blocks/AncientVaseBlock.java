@@ -74,6 +74,16 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     }
 
     @Override
+    public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl) {
+        if (level.isClientSide()) {
+            return;
+        }
+        if (blockState.getValue(WATERLOGGED)) {
+            level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        }
+    }
+
+    @Override
     public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pBlockPos, BlockState pBlockState,
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
         if (!EnchantmentHelper.hasTag(pPlayer.getMainHandItem(), DDTags.Enchantments.PREVENTS_ANCIENT_VASE_SPAWNS)) {
