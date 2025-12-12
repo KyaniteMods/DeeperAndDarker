@@ -21,6 +21,7 @@ import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +41,8 @@ public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
 
         if(origin.getY() <= level.getMinBuildHeight() + 4) return false;
 
+        int size = random.nextInt(5, 10);
+
         Registry<Structure> registry = pContext.level().registryAccess().registryOrThrow(Registries.STRUCTURE);
 
         StructureManager structureManager = level.getLevel().structureManager();
@@ -56,7 +59,7 @@ public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
                             continue;
                         }
                         StructureStart structureStart = structureManager.getStartForStructure(sectionPos1, entry.getKey(), level.getChunk(sectionPos1.x(), sectionPos1.z(), ChunkStatus.STRUCTURE_STARTS));
-                        if (structureStart != null && structureStart.isValid() && structureStart.getBoundingBox().isInside(origin)) {
+                        if (structureStart != null && structureStart.isValid() && structureStart.getBoundingBox().intersects(new BoundingBox(origin.getX() - size / 2, origin.getY(), origin.getZ() - size / 2, origin.getX() + size, origin.getY() + 4, origin.getZ() + size))) {
                             return false;
                         }
                     }
@@ -67,7 +70,6 @@ public class OthersidePoolFeature extends Feature<NoneFeatureConfiguration> {
 
         origin = origin.below(4);
         boolean[] arr = new boolean[2048];
-        int size = random.nextInt(5, 10);
 
         for(int i = 0; i < size; i++) {
             double length = random.nextDouble() * 6 + 3;
