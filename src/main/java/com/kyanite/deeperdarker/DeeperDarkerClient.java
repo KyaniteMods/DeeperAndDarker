@@ -13,6 +13,7 @@ import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
+import com.kyanite.deeperdarker.world.otherside.OthersideEffects;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -46,6 +47,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
     public void onInitializeClient() {
         DDModelLayers.init();
         Keybinds.init();
+
+        DimensionRenderingRegistry.registerDimensionEffects(new ResourceLocation(DeeperDarker.MOD_ID, "otherside_effects"), new OthersideEffects());
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 DDBlocks.ECHO_DOOR,
                 DDBlocks.ECHO_TRAPDOOR,
