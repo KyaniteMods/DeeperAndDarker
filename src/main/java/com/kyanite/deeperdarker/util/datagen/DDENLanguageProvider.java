@@ -353,6 +353,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config.deeperdarker.option.client.changePhantomTextures.tooltip", "Determines if Phantoms should have a\ndifferent texture in the Deeplands.");
         translationBuilder.add("text.config.deeperdarker.option.client.paintingFix", "Fix Ancient Paintings");
         translationBuilder.add("text.config.deeperdarker.option.client.paintingFix.tooltip", "Fixes desync that happens upon placing ancient\npaintings in places where they do not fit.");
+        translationBuilder.add("text.config.deeperdarker.option.client.whiteFog", "White Fog");
+        translationBuilder.add("text.config.deeperdarker.option.client.whiteFog.tooltip", "Changes the Otherside fog to be white instead of\nblack.");
         translationBuilder.add("text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds", "Sculk Transmitter Cooldown");
         translationBuilder.add("text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds.tooltip", "Measured in seconds. The cooldown to unlink or\nlink an already linked Sculk Transmitter.");
         translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance", "Ancient Vase Mob Spawn Chance");

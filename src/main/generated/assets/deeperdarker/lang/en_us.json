@@ -360,6 +360,8 @@
   "text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds.tooltip": "Measured in seconds. The cooldown to unlink or\nlink an already linked Sculk Transmitter.",
   "text.config.deeperdarker.option.client.wardenHeartPulses": "Heart of the Deep Pulses",
   "text.config.deeperdarker.option.client.wardenHeartPulses.tooltip": "Determines if the Heart of the Deep should\nemit a random pulsing sound.",
+  "text.config.deeperdarker.option.client.whiteFog": "White Fog",
+  "text.config.deeperdarker.option.client.whiteFog.tooltip": "Changes the Otherside fog to be white instead of\nblack.",
   "text.config.deeperdarker.option.server.generatedPortalHeight": "Generated Portal Height",
   "text.config.deeperdarker.option.server.generatedPortalHeight.tooltip": "The height of Otherside portals generated when\ntraveling through dimensions and no portal is\navailable. Making this too large may cause problems.",
   "text.config.deeperdarker.option.server.generatedPortalWidth": "Generated Portal Width",
