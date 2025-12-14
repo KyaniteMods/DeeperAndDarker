@@ -15,6 +15,7 @@ public class DDStructurePieceTypes {
     public static final StructurePieceType MAZE_FLUID_PATH_PIECE = contextless(MazeStructurePieces.MazeFluidPathPiece::new, "maze_fluid_path_piece");
     public static final StructurePieceType BLOOMAZE_BOSS_ROOM_PIECE = contextless(MazeStructurePieces.BloomazeBossRoomPiece::new, "bloomaze_boss_room_piece");
     public static final StructurePieceType GLOOMAZE_BOSS_ROOM_PIECE = contextless(MazeStructurePieces.GloomazeBossRoomPiece::new, "gloomaze_boss_room_piece");
+    public static final StructurePieceType OAK_TREE_ROOM_PIECE = contextless(MazeStructurePieces.OakTreeRoomPiece::new, "oak_tree_room_piece");
 
     private static StructurePieceType contextless(StructurePieceType.ContextlessType structurePieceType, String string) {
         return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(DeeperDarker.MOD_ID, string), structurePieceType);

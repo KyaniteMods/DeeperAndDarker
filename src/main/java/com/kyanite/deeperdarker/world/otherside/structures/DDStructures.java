@@ -2,8 +2,10 @@ package com.kyanite.deeperdarker.world.otherside.structures;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.*;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.OakTreeRoomOptions;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomEntry;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomTypeRegistry;
 import net.minecraft.core.HolderGetter;
@@ -45,7 +47,7 @@ public class DDStructures {
             mazeSpawnOverrides.put(category, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create()));
         }
         context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(25, 5, 25, 3, MazeStructurePalette.BLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
-        context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
+        context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true), new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.MAZE_BASIC), Optional.of(DDChestLootTableProvider.MAZE_SECRET)), Optional.empty(), false)), false)));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {

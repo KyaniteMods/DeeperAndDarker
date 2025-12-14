@@ -19,6 +19,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class MazeStructurePieces {
@@ -148,6 +150,76 @@ public class MazeStructurePieces {
                             continue;
                         }
                         placeBlock(worldGenLevel, y <= Math.max(1, tileSize - 2) ? fluid : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
+    public static class OakTreeRoomPiece extends MazeStructurePiece {
+        private @Nullable ResourceLocation leavesLootTable;
+        private @Nullable ResourceLocation secretLootTable;
+
+        public OakTreeRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, @Nullable ResourceLocation leavesLootTable, @Nullable ResourceLocation secretLootTable) {
+            super(DDStructurePieceTypes.OAK_TREE_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 3, 3, 3, tileSize, palette);
+            this.leavesLootTable = leavesLootTable;
+            this.secretLootTable = secretLootTable;
+        }
+
+        public OakTreeRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.OAK_TREE_ROOM_PIECE, tag);
+            if (tag.contains("leaves_loot_table", Tag.TAG_STRING)) {
+                leavesLootTable = ResourceLocation.tryParse(tag.getString("leaves_loot_table"));
+            }
+            if (tag.contains("secret_loot_table", Tag.TAG_STRING)) {
+                secretLootTable = ResourceLocation.tryParse(tag.getString("secret_loot_table"));
+            }
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+            if (leavesLootTable != null) {
+                compoundTag.putString("leaves_loot_table", leavesLootTable.toString());
+            }
+            if (secretLootTable != null) {
+                compoundTag.putString("secret_loot_table", secretLootTable.toString());
+            }
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        if (secretLootTable != null && x == getBoundingBox().getXSpan() / 2 && y == 0 && z == getBoundingBox().getZSpan() / 2) {
+                            createChest(worldGenLevel, boundingBox, randomSource, x, y, z, secretLootTable);
+                            continue;
+                        }
+
+                        if (x >= getBoundingBox().getXSpan() / 2 - 1 && y == 0 && z >= getBoundingBox().getZSpan() / 2 - 1 && x <= getBoundingBox().getXSpan() / 2 + 1 && z <= getBoundingBox().getZSpan() / 2 + 1) {
+                            placeBlock(worldGenLevel, Blocks.GRASS_BLOCK.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        if (leavesLootTable != null && x == getBoundingBox().getXSpan() / 2 && y == 4 && z == getBoundingBox().getZSpan() / 2) {
+                            createChest(worldGenLevel, boundingBox, randomSource, x, y, z, leavesLootTable);
+                            continue;
+                        }
+
+                        if (x == getBoundingBox().getXSpan() / 2 && y >= 1 && y <= 4 && z == getBoundingBox().getZSpan() / 2) {
+                            placeBlock(worldGenLevel, Blocks.OAK_LOG.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        //noinspection IntegerDivisionInFloatingPointContext
+                        if (x >= getBoundingBox().getXSpan() / 2 - 2 && (y == 3 || y == 4) && z >= getBoundingBox().getZSpan() / 2 - 2 && x <= getBoundingBox().getXSpan() / 2 + 2 && z <= getBoundingBox().getZSpan() / 2 + 2
+                        || new Vec3(x, y, z).distanceToSqr(getBoundingBox().getXSpan() / 2, 5, getBoundingBox().getZSpan() / 2) <= 2) {
+                            placeBlock(worldGenLevel, Blocks.OAK_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, false), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
             }

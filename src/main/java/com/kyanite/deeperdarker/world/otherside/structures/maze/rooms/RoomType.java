@@ -10,19 +10,19 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import java.util.Objects;
 
 public abstract class RoomType<T extends RoomOptions> {
-    private final RoomFactory roomFactory;
+    private final RoomFactory<T> roomFactory;
     private final int width;
     private final int height;
     private final int depth;
 
-    protected RoomType(RoomFactory roomFactory, int width, int height, int depth) {
+    protected RoomType(RoomFactory<T> roomFactory, int width, int height, int depth) {
         this.roomFactory = roomFactory;
         this.width = width;
         this.height = height;
         this.depth = depth;
     }
 
-    public RoomFactory roomFactory() {
+    public RoomFactory<T> roomFactory() {
         return roomFactory;
     }
 
@@ -65,7 +65,7 @@ public abstract class RoomType<T extends RoomOptions> {
                 "depth=" + depth + ']';
     }
 
-    public interface RoomFactory {
-        MazeStructurePieces.MazeStructurePiece create(RoomOptions options, Structure.GenerationContext context, MazeStructureSettings settings, BlockPos origin, Pos pos, Pos entrance);
+    public interface RoomFactory<T extends RoomOptions> {
+        MazeStructurePieces.MazeStructurePiece create(T options, Structure.GenerationContext context, MazeStructureSettings settings, BlockPos origin, Pos pos, Pos entrance);
     }
 }
