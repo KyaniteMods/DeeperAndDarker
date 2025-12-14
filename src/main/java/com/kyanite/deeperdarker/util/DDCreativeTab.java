@@ -172,6 +172,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.GRIME_BALL);
         entries.accept(DDItems.GRIME_BRICK);
 
+        entries.accept(DDBlocks.SCULK_TISSUE);
+
         entries.accept(DDItems.SOUL_ELYTRA);
         entries.accept(DDItems.ECHO_BOAT);
         entries.accept(DDItems.ECHO_CHEST_BOAT);

@@ -19,6 +19,7 @@
     "PaintingItemMixin",
     "PhantomMixin",
     "ResonariumDamageReductionMixin",
+    "ShearEfficientSculkTissueMixin",
     "StripBloomingStemMixin",
     "TomsStorageCompatMixin",
     "VibrationListenerMixin",

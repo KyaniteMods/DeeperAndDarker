@@ -244,6 +244,9 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.PROTECTED_SCULK_GLEAM);
         registerSculkLamp(blockModelGenerators, DDBlocks.SCULK_LAMP);
         blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
+
+        blockModelGenerators.family(DDBlocks.SCULK_TISSUE);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
