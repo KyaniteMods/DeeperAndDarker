@@ -2,10 +2,10 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze.rooms;
 
 import com.mojang.serialization.Codec;
 
-public class SimpleRoomType extends RoomType<SimpleRoomType> implements RoomOptions {
+public class SimpleRoomType extends RoomType<SimpleRoomType> implements RoomOptions<SimpleRoomType> {
     private final Codec<SimpleRoomType> CODEC = Codec.unit(this::getType);
 
-    public SimpleRoomType(RoomFactory roomFactory, int width, int height, int depth) {
+    public SimpleRoomType(RoomFactory<SimpleRoomType> roomFactory, int width, int height, int depth) {
         super(roomFactory, width, height, depth);
     }
 

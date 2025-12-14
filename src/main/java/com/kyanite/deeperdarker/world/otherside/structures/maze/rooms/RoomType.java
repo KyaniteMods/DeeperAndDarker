@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 
 import java.util.Objects;
 
-public abstract class RoomType<T extends RoomOptions> {
+public abstract class RoomType<T extends RoomOptions<T>> {
     private final RoomFactory<T> roomFactory;
     private final int width;
     private final int height;

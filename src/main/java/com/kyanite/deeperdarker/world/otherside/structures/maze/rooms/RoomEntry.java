@@ -7,7 +7,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import java.util.Optional;
 
-public record RoomEntry(RoomOptions roomOptions, Optional<Pos> pos, boolean required) {
+public record RoomEntry(RoomOptions<?> roomOptions, Optional<Pos> pos, boolean required) {
     public static final Codec<RoomEntry> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             RoomTypeRegistry.CODEC.fieldOf("options").forGetter(RoomEntry::roomOptions),
             Pos.CODEC.optionalFieldOf("position").forGetter(RoomEntry::pos),
