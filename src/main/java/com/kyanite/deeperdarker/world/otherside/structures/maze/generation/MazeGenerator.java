@@ -1,7 +1,8 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze.generation;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.*;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.Room;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomEntry;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -82,7 +83,7 @@ public abstract class MazeGenerator {
                 continue;
             }
 
-            if (width - entry.roomType().width() < 0 || height - entry.roomType().height() < 0 || depth - entry.roomType().depth() < 0) {
+            if (width - entry.roomOptions().getType().width() < 0 || height - entry.roomOptions().getType().height() < 0 || depth - entry.roomOptions().getType().depth() < 0) {
                 DeeperDarker.LOGGER.warn("Room does not fit in maze of size " + width + "x" + height + "x" + depth);
                 continue;
             }
@@ -113,17 +114,17 @@ public abstract class MazeGenerator {
     protected Room placeRoom(RandomSource random, MazeState stack, RoomEntry entry, Pos pos, int i) {
         Set<Direction> entranceDirections = Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet());
         List<Pos> entrancePositions = new ArrayList<>();
-        for (int z = pos.z(); z < pos.z() + entry.roomType().depth(); z++) {
-            for (int y = pos.y(); y < pos.y() + entry.roomType().height(); y++) {
-                for (int x = pos.x(); x < pos.x() + entry.roomType().width(); x++) {
+        for (int z = pos.z(); z < pos.z() + entry.roomOptions().getType().depth(); z++) {
+            for (int y = pos.y(); y < pos.y() + entry.roomOptions().getType().height(); y++) {
+                for (int x = pos.x(); x < pos.x() + entry.roomOptions().getType().width(); x++) {
                     stack.set(x, y, z, Tile.room(i));
-                    if (x == pos.x() || x == pos.x() + entry.roomType().width() - 1 || y == pos.y() || y == pos.y() + entry.roomType().height() - 1 || z == pos.z() || z == pos.z() + entry.roomType().depth() - 1) {
+                    if (x == pos.x() || x == pos.x() + entry.roomOptions().getType().width() - 1 || y == pos.y() || y == pos.y() + entry.roomOptions().getType().height() - 1 || z == pos.z() || z == pos.z() + entry.roomOptions().getType().depth() - 1) {
                         for (Direction direction : entranceDirections) {
                             Vec3i normal = direction.getNormal();
                             int checkedX = x + normal.getX() * 2;
                             int checkedY = y + normal.getY() * 2;
                             int checkedZ = z + normal.getZ() * 2;
-                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z() && checkedX <= pos.x() + entry.roomType().width() - 1 && checkedY <= pos.y() + entry.roomType().height() - 1 && checkedZ <= pos.z() + entry.roomType().depth() - 1) && checkedX < getWidth() && checkedX % 2 != 0 && checkedY < getHeight() && checkedY % 2 != 0 && checkedZ < getDepth() && checkedZ % 2 != 0 && stack.get(checkedX, checkedY, checkedZ).getType() != Tile.Type.ROOM) {
+                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z() && checkedX <= pos.x() + entry.roomOptions().getType().width() - 1 && checkedY <= pos.y() + entry.roomOptions().getType().height() - 1 && checkedZ <= pos.z() + entry.roomOptions().getType().depth() - 1) && checkedX < getWidth() && checkedX % 2 != 0 && checkedY < getHeight() && checkedY % 2 != 0 && checkedZ < getDepth() && checkedZ % 2 != 0 && stack.get(checkedX, checkedY, checkedZ).getType() != Tile.Type.ROOM) {
                                 entrancePositions.add(new Pos(x + normal.getX(), y + normal.getY(), z + normal.getZ()));
                             }
                         }

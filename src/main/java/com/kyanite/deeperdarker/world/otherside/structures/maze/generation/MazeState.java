@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze.generation;
 
-import com.kyanite.deeperdarker.world.otherside.structures.maze.Tile;
 import com.mojang.datafixers.util.Pair;
 
 import java.util.*;

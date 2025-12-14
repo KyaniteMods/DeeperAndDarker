@@ -94,13 +94,15 @@
     },
     "rooms": [
       {
+        "options": {
+          "type": "deeperdarker:bloomaze/boss_room"
+        },
         "position": [
           11,
           3,
           11
         ],
-        "required": true,
-        "room_type": "deeperdarker:bloomaze/boss_room"
+        "required": true
       }
     ],
     "tile_size": 3,

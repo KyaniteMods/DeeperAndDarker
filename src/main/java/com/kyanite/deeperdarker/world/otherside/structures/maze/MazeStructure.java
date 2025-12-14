@@ -2,10 +2,9 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeGenerator;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeResult;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.WilsonMazeGenerator;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.*;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.Room;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomEntry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

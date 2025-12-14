@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze.generation;
 
-import com.kyanite.deeperdarker.world.otherside.structures.maze.Room;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.Tile;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.Room;
 import net.minecraft.core.Direction;
 
 import java.util.*;

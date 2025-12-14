@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomEntry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 

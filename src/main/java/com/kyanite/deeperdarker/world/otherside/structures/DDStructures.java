@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.*;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomEntry;
+import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomTypeRegistry;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
