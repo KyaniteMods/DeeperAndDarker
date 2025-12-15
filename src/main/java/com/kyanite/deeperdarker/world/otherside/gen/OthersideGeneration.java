@@ -39,7 +39,8 @@ public class OthersideGeneration {
                 Pair.of(Climate.parameters(-0.5f, -0.5f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.DEEPLANDS)),
                 Pair.of(Climate.parameters(0.3f, 0.5f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST)),
                 Pair.of(Climate.parameters(-0.3f, 0.2f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS)),
-                Pair.of(Climate.parameters(0.6f, 0.2f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))
+                Pair.of(Climate.parameters(0.6f, 0.2f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS)),
+                Pair.of(Climate.parameters(-0.6f, -0.2f, 0, 0, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.DARKLANDS))
         ))), noiseSettings.getOrThrow(OTHERSIDE_GENERATOR));
         return new LevelStem(dimensions.getOrThrow(OthersideDimension.OTHERSIDE), chunkGenerator);
     }
@@ -52,18 +53,27 @@ public class OthersideGeneration {
     }
 
     private static NoiseGeneratorSettings noiseSettings(HolderGetter<DensityFunction> densityFunction, HolderGetter<NormalNoise.NoiseParameters> noise) {
-        SurfaceRules.RuleSource bedrockFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), SurfaceRules.state(Blocks.BEDROCK.defaultBlockState()));
+        SurfaceRules.RuleSource bedrockFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)), SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(Blocks.AIR.defaultBlockState())),
+                SurfaceRules.state(Blocks.BEDROCK.defaultBlockState())
+        ));
         SurfaceRules.RuleSource bedrockRoof = SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("bedrock_roof", VerticalAnchor.belowTop(5), VerticalAnchor.top())), SurfaceRules.state(Blocks.BEDROCK.defaultBlockState()));
         SurfaceRules.RuleSource echoSoilLayer = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.ECHOING_FOREST), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR), SurfaceRules.state(DDBlocks.ECHO_SOIL.defaultBlockState())));
         SurfaceRules.RuleSource biomeSurfaceLayer = SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR), SurfaceRules.sequence(
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.BLOOMING_CAVERNS), SurfaceRules.state(DDBlocks.BLOOMING_SCULK_STONE.defaultBlockState())),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.OVERCAST_COLUMNS), SurfaceRules.state(DDBlocks.GLOOMY_SCULK.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(DDBlocks.SCULK_TISSUE.defaultBlockState())),
                 SurfaceRules.state(Blocks.SCULK.defaultBlockState())
         ));
-        SurfaceRules.RuleSource deepslateFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(12)), SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y)));
+        SurfaceRules.RuleSource deepslateFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(12)), SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(Blocks.AIR.defaultBlockState())),
+                SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y))
+        ));
         SurfaceRules.RuleSource deepslateRoof = SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("deepslate_roof", VerticalAnchor.belowTop(12), VerticalAnchor.top())), SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y)));
         SurfaceRules.RuleSource gloomslate = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.OVERCAST_COLUMNS), SurfaceRules.state(DDBlocks.GLOOMSLATE.defaultBlockState()));
 
-        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 2), DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_GRIME.defaultBlockState(), OthersideNoiseRouter.otherside(densityFunction, noise), SurfaceRules.sequence(bedrockFloor, bedrockRoof, echoSoilLayer, biomeSurfaceLayer, deepslateFloor, deepslateRoof, gloomslate), List.of(), 17, false, false, true, false);
+        SurfaceRules.RuleSource darklandsAir = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(Blocks.AIR.defaultBlockState()));
+
+        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 2), DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_GRIME.defaultBlockState(), OthersideNoiseRouter.otherside(densityFunction, noise), SurfaceRules.sequence(bedrockFloor, bedrockRoof, echoSoilLayer, biomeSurfaceLayer, deepslateFloor, deepslateRoof, gloomslate, darklandsAir), List.of(), 17, false, false, true, false);
     }
 }

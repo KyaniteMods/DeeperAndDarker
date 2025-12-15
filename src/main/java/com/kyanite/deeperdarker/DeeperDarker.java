@@ -9,6 +9,7 @@ import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
+import com.kyanite.deeperdarker.world.DDCarvers;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
@@ -69,6 +70,7 @@ public class DeeperDarker implements ModInitializer {
 		DDStructurePieceTypes.init();
 		DDStructureTypes.init();
 		RoomTypeRegistry.init();
+		DDCarvers.init();
 		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();

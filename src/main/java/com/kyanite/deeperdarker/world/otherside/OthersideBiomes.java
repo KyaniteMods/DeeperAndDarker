@@ -26,6 +26,7 @@ public class OthersideBiomes {
     public static final ResourceKey<Biome> ECHOING_FOREST = createKey("echoing_forest");
     public static final ResourceKey<Biome> BLOOMING_CAVERNS = createKey("blooming_caverns");
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
+    public static final ResourceKey<Biome> DARKLANDS = createKey("darklands");
 
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -35,6 +36,7 @@ public class OthersideBiomes {
         context.register(ECHOING_FOREST, echoingForest(placedFeatures, worldCarvers));
         context.register(BLOOMING_CAVERNS, bloomingCaverns(placedFeatures, worldCarvers));
         context.register(OVERCAST_COLUMNS, overcastColumns(placedFeatures, worldCarvers));
+        context.register(DARKLANDS, darklands(placedFeatures, worldCarvers));
     }
 
     public static ResourceKey<Biome> createKey(String name) {
@@ -49,7 +51,7 @@ public class OthersideBiomes {
         mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 2, 1, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_STONE_COLUMN);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SURFACE_SCULK_STONE);
@@ -78,7 +80,7 @@ public class OthersideBiomes {
         mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED, 17, 2, 5));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM_FOREST);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.ECHO_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DDPlacedFeatures.ECHO_SOIL);
@@ -108,7 +110,7 @@ public class OthersideBiomes {
         mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SLUDGE, 6, 1, 2));
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, DDPlacedFeatures.BLOOMING_WATER_EDGE);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, DDPlacedFeatures.BLOOMING_POOL);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.BLOOMING_SCULK_VEGETATION);
@@ -138,8 +140,8 @@ public class OthersideBiomes {
 
     private static Biome overcastColumns(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CAVE);
-        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.LOW_CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_LOW_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.GLOOMSLATE_COLUMN);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SURFACE_GLOOMSLATE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GLOOMY_SCULK_VEGETATION);
@@ -168,6 +170,23 @@ public class OthersideBiomes {
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.026f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS)).build())
+                .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(biomeBuilder.build()).build();
+    }
+
+    private static Biome darklands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_NOODLES);
+
+        return (new Biome.BiomeBuilder()).hasPrecipitation(true)
+                .temperature(-0.6f)
+                .downfall(-0.2f)
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x13256b)
+                        .waterFogColor(0x132052)
+                        .fogColor(0x141c33)
+                        .skyColor(calculateSkyColor(-0.1f))
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2)).build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(biomeBuilder.build()).build();
     }
