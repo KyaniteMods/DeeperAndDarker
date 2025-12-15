@@ -124,7 +124,9 @@ public abstract class MazeGenerator {
                             int checkedX = x + normal.getX() * 2;
                             int checkedY = y + normal.getY() * 2;
                             int checkedZ = z + normal.getZ() * 2;
-                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z() && checkedX <= pos.x() + entry.roomOptions().getType().width() - 1 && checkedY <= pos.y() + entry.roomOptions().getType().height() - 1 && checkedZ <= pos.z() + entry.roomOptions().getType().depth() - 1) && checkedX < getWidth() && checkedX % 2 != 0 && checkedY < getHeight() && checkedY % 2 != 0 && checkedZ < getDepth() && checkedZ % 2 != 0 && stack.get(checkedX, checkedY, checkedZ).getType() != Tile.Type.ROOM) {
+                            if (!(checkedX >= pos.x() && checkedY >= pos.y() && checkedZ >= pos.z()
+                                    && checkedX <= pos.x() + entry.roomOptions().getType().width() - 1 && checkedY <= pos.y() + entry.roomOptions().getType().height() - 1 && checkedZ <= pos.z() + entry.roomOptions().getType().depth() - 1)
+                                    && checkedX >= 0 && checkedY >= 0 && checkedZ >= 0 && checkedX < getWidth() && checkedX % 2 != 0 && checkedY < getHeight() && checkedY % 2 != 0 && checkedZ < getDepth() && checkedZ % 2 != 0 && stack.get(checkedX, checkedY, checkedZ).getType() != Tile.Type.ROOM) {
                                 entrancePositions.add(new Pos(x + normal.getX(), y + normal.getY(), z + normal.getZ()));
                             }
                         }
