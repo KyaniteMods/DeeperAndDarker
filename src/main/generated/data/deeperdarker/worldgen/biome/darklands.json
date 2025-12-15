@@ -11,11 +11,25 @@
       "sound": "deeperdarker:ambient.otherside.additions",
       "tick_delay": 6000
     },
-    "sky_color": 8429823,
+    "sky_color": 8691199,
     "water_color": 1254763,
     "water_fog_color": 1253458
   },
-  "features": [],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ],
   "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {
