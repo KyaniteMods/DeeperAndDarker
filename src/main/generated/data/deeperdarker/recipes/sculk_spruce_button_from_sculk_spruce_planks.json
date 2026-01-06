@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "deeperdarker:sculk_spruce_planks"
+    }
+  ],
+  "result": {
+    "item": "deeperdarker:sculk_spruce_button"
+  }
+}
