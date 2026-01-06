@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "deeperdarker:echo_chest_boat",
-    "deeperdarker:bloom_chest_boat"
+    "deeperdarker:bloom_chest_boat",
+    "deeperdarker:sculk_spruce_chest_boat"
   ]
 }

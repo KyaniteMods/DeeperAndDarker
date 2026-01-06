@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.trees.EchoTreeGrower;
+import com.kyanite.deeperdarker.world.trees.SculkSpruceTreeGrower;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -40,6 +41,8 @@ public class DDBlocks {
     public static final WoodType ECHO = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "echo"), ECHO_SET);
     private static final BlockSetType BLOOM_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "bloom").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
     public static final WoodType BLOOM = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "bloom"), BLOOM_SET);
+    private static final BlockSetType SCULK_SPRUCE_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_spruce").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final WoodType SCULK_SPRUCE = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_spruce"), SCULK_SPRUCE_SET);
 
     public static final Block ENRICHED_ECHO_LOG = register("enriched_echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_LOG = register("echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
@@ -128,6 +131,49 @@ public class DDBlocks {
     });
 
     public static final Block POTTED_BLOOMING_STEM = registerWithoutItem("potted_blooming_stem", createFlowerPot(BLOOMING_STEM));
+
+    public static final Block SCULK_SPRUCE_LOG = register("sculk_spruce_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_CYAN)));
+    public static final Block SCULK_SPRUCE_WOOD = register("sculk_spruce_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_CYAN)));
+    public static final Block STRIPPED_SCULK_SPRUCE_LOG = register("stripped_sculk_spruce_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block STRIPPED_SCULK_SPRUCE_WOOD = register("stripped_sculk_spruce_wood", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block SCULK_SPRUCE_PLANKS = register("sculk_spruce_planks", new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block SCULK_SPRUCE_STAIRS = register("sculk_spruce_stairs", new StairBlock(SCULK_SPRUCE_PLANKS.defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block SCULK_SPRUCE_SLAB = register("sculk_spruce_slab", new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block SCULK_SPRUCE_FENCE = register("sculk_spruce_fence", new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).mapColor(MapColor.COLOR_LIGHT_GRAY)));
+    public static final Block SCULK_SPRUCE_FENCE_GATE = register("sculk_spruce_fence_gate", new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE));
+    public static final Block SCULK_SPRUCE_DOOR = register("sculk_spruce_door", new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE_SET));
+    public static final Block SCULK_SPRUCE_TRAPDOOR = register("sculk_spruce_trapdoor", new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE_SET));
+    public static final Block SCULK_SPRUCE_PRESSURE_PLATE = register("sculk_spruce_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE_SET));
+    public static final Block SCULK_SPRUCE_BUTTON = register("sculk_spruce_button", new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), SCULK_SPRUCE_SET, 30, true));
+    public static final Block SCULK_SPRUCE_LEAVES = register("sculk_spruce_leaves", new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).mapColor(MapColor.SNOW)));
+    public static final Block SCULK_SPRUCE_SAPLING = register("sculk_spruce_sapling", new SaplingBlock(new SculkSpruceTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+
+    public static final Block SCULK_SPRUCE_SIGN = registerWithoutItem("sculk_spruce_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block SCULK_SPRUCE_WALL_SIGN = registerWithoutItem("sculk_spruce_wall_sign", new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).dropsLike(SCULK_SPRUCE_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block SCULK_SPRUCE_HANGING_SIGN = registerWithoutItem("sculk_spruce_hanging_sign", new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
+    public static final Block SCULK_SPRUCE_WALL_HANGING_SIGN = registerWithoutItem("sculk_spruce_wall_hanging_sign", new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(SCULK_SPRUCE_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+            return new DDHangingSignBlockEntity(pPos, pState);
+        }
+    });
+
+    public static final Block POTTED_SCULK_SPRUCE_SAPLING = registerWithoutItem("potted_sculk_spruce_sapling", createFlowerPot(SCULK_SPRUCE_SAPLING));
 
     public static final Block SCULK_STONE = register("sculk_stone", new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.COLOR_CYAN).sound(DDSounds.SCULK_STONE).requiresCorrectToolForDrops()));
     public static final Block SCULK_STONE_STAIRS = register("sculk_stone_stairs", new StairBlock(SCULK_STONE.defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_STONE)));
@@ -301,5 +347,19 @@ public class DDBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(BLOOM_FENCE_GATE, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(BLOOM_SLAB, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(BLOOM_PLANKS, 5, 20);
+
+        StrippableBlockRegistry.register(SCULK_SPRUCE_LOG, STRIPPED_SCULK_SPRUCE_LOG);
+        StrippableBlockRegistry.register(SCULK_SPRUCE_WOOD, STRIPPED_SCULK_SPRUCE_WOOD);
+        
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_LOG, 3, 3);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_WOOD, 3, 3);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_SCULK_SPRUCE_LOG, 3, 3);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_SCULK_SPRUCE_WOOD, 3, 3);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_LEAVES, 30, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_STAIRS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_FENCE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_FENCE_GATE, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_SLAB, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_PLANKS, 5, 20);
     }
 }

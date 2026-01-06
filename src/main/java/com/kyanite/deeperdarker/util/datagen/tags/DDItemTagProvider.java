@@ -79,9 +79,10 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
         copy(DDTags.Blocks.BLOOMING_STEMS, DDTags.Items.BLOOMING_STEMS);
+        copy(DDTags.Blocks.SCULK_SPRUCE_LOGS, DDTags.Items.SCULK_SPRUCE_LOGS);
 
-        add(ItemTags.BOATS, DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT);
-        add(ItemTags.CHEST_BOATS, DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT);
+        add(ItemTags.BOATS, DDItems.ECHO_BOAT, DDItems.BLOOM_BOAT, DDItems.SCULK_SPRUCE_BOAT);
+        add(ItemTags.CHEST_BOATS, DDItems.ECHO_CHEST_BOAT, DDItems.BLOOM_CHEST_BOAT, DDItems.SCULK_SPRUCE_CHEST_BOAT);
         add(ItemTags.CLUSTER_MAX_HARVESTABLES, DDItems.RESONARIUM_PICKAXE, DDItems.WARDEN_PICKAXE);
         add(ItemTags.SHOVELS, DDItems.RESONARIUM_SHOVEL, DDItems.WARDEN_SHOVEL);
         add(ItemTags.PICKAXES, DDItems.RESONARIUM_PICKAXE, DDItems.WARDEN_PICKAXE);

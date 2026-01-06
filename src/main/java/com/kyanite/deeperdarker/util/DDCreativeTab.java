@@ -34,6 +34,8 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.ECHO_TRAPDOOR);
         entries.accept(DDBlocks.ECHO_PRESSURE_PLATE);
         entries.accept(DDBlocks.ECHO_BUTTON);
+        entries.accept(DDBlocks.ECHO_LEAVES);
+        entries.accept(DDBlocks.ECHO_SAPLING);
 
         entries.accept(DDBlocks.BLOOMING_STEM);
         entries.accept(DDBlocks.STRIPPED_BLOOMING_STEM);
@@ -46,6 +48,22 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.BLOOM_TRAPDOOR);
         entries.accept(DDBlocks.BLOOM_PRESSURE_PLATE);
         entries.accept(DDBlocks.BLOOM_BUTTON);
+
+        entries.accept(DDBlocks.SCULK_SPRUCE_LOG);
+        entries.accept(DDBlocks.SCULK_SPRUCE_WOOD);
+        entries.accept(DDBlocks.STRIPPED_SCULK_SPRUCE_LOG);
+        entries.accept(DDBlocks.STRIPPED_SCULK_SPRUCE_WOOD);
+        entries.accept(DDBlocks.SCULK_SPRUCE_PLANKS);
+        entries.accept(DDBlocks.SCULK_SPRUCE_STAIRS);
+        entries.accept(DDBlocks.SCULK_SPRUCE_SLAB);
+        entries.accept(DDBlocks.SCULK_SPRUCE_FENCE);
+        entries.accept(DDBlocks.SCULK_SPRUCE_FENCE_GATE);
+        entries.accept(DDBlocks.SCULK_SPRUCE_DOOR);
+        entries.accept(DDBlocks.SCULK_SPRUCE_TRAPDOOR);
+        entries.accept(DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE);
+        entries.accept(DDBlocks.SCULK_SPRUCE_BUTTON);
+        entries.accept(DDBlocks.SCULK_SPRUCE_LEAVES);
+        entries.accept(DDBlocks.SCULK_SPRUCE_SAPLING);
 
         entries.accept(DDBlocks.SCULK_STONE);
         entries.accept(DDBlocks.SCULK_STONE_STAIRS);
@@ -146,8 +164,6 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.GLOOMSLATE_LAPIS_ORE);
         entries.accept(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        entries.accept(DDBlocks.ECHO_LEAVES);
-        entries.accept(DDBlocks.ECHO_SAPLING);
         entries.accept(DDBlocks.GLOWING_FLOWERS);
         entries.accept(DDBlocks.GLOWING_GRASS);
         entries.accept(DDBlocks.GLOOMY_GRASS);
@@ -162,6 +178,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.ECHO_HANGING_SIGN);
         entries.accept(DDItems.BLOOM_SIGN);
         entries.accept(DDItems.BLOOM_HANGING_SIGN);
+        entries.accept(DDItems.SCULK_SPRUCE_SIGN);
+        entries.accept(DDItems.SCULK_SPRUCE_HANGING_SIGN);
 
         entries.accept(DDBlocks.ANCIENT_VASE);
         entries.accept(DDBlocks.INFESTED_SCULK);
@@ -179,6 +197,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.ECHO_CHEST_BOAT);
         entries.accept(DDItems.BLOOM_BOAT);
         entries.accept(DDItems.BLOOM_CHEST_BOAT);
+        entries.accept(DDItems.SCULK_SPRUCE_BOAT);
+        entries.accept(DDItems.SCULK_SPRUCE_CHEST_BOAT);
 
         entries.accept(DDItems.RESONARIUM_SHOVEL);
         entries.accept(DDItems.RESONARIUM_PICKAXE);

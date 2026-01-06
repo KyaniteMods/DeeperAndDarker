@@ -30,6 +30,8 @@ public class DDItems {
     public static final Item ECHO_CHEST_BOAT = register("echo_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBoat.Type.ECHO));
     public static final Item BLOOM_BOAT = register("bloom_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBoat.Type.BLOOM));
     public static final Item BLOOM_CHEST_BOAT = register("bloom_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBoat.Type.BLOOM));
+    public static final Item SCULK_SPRUCE_BOAT = register("sculk_spruce_boat", new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBoat.Type.SCULK_SPRUCE));
+    public static final Item SCULK_SPRUCE_CHEST_BOAT = register("sculk_spruce_chest_boat", new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBoat.Type.SCULK_SPRUCE));
 
     public static final Item ICE_LILY = register("ice_lily", new IceLilyItem(DDBlocks.ICE_LILY, new Item.Properties()));
     public static final Item LILY_FLOWER = register("lily_flower", new LilyFlowerItem(DDBlocks.LILY_FLOWER, new Item.Properties()));
@@ -97,6 +99,8 @@ public class DDItems {
     public static final Item ECHO_HANGING_SIGN = register("echo_hanging_sign", new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
     public static final Item BLOOM_SIGN = register("bloom_sign", new SignItem(new Item.Properties().stacksTo(16), DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN));
     public static final Item BLOOM_HANGING_SIGN = register("bloom_hanging_sign", new HangingSignItem(DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
+    public static final Item SCULK_SPRUCE_SIGN = register("sculk_spruce_sign", new SignItem(new Item.Properties().stacksTo(16), DDBlocks.SCULK_SPRUCE_SIGN, DDBlocks.SCULK_SPRUCE_WALL_SIGN));
+    public static final Item SCULK_SPRUCE_HANGING_SIGN = register("sculk_spruce_hanging_sign", new HangingSignItem(DDBlocks.SCULK_SPRUCE_HANGING_SIGN, DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
 
     public static final Item BLOOM_BERRIES = register("bloom_berries", new ItemNameBlockItem(DDBlocks.GLOWING_VINES, new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.1f).effect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f).build())));
 

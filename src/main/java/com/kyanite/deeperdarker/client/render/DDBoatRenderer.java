@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("NullableProblems")
-public class DDBoatRenderer extends EntityRenderer {
+public class DDBoatRenderer<T extends Entity & DDBoatLike> extends EntityRenderer<T> {
     private final boolean HAS_CHEST;
 
     private final Map<DDBoat.Type, ListModel<Boat>> BOAT_RESOURCES;
@@ -42,11 +42,20 @@ public class DDBoatRenderer extends EntityRenderer {
     public DDBoatRenderer(EntityRendererProvider.Context pContext, boolean pChestBoat) {
         super(pContext);
         this.HAS_CHEST = pChestBoat;
-        this.chestBoatModels = Map.of(DDBoat.Type.ECHO, DDModelLayers.ECHO_CHEST_BOAT, DDBoat.Type.BLOOM, DDModelLayers.BLOOM_CHEST_BOAT);
-        this.boatModels = Map.of(DDBoat.Type.ECHO, DDModelLayers.ECHO_BOAT, DDBoat.Type.BLOOM, DDModelLayers.BLOOM_BOAT);
+        this.chestBoatModels = Map.of(
+                DDBoat.Type.ECHO, DDModelLayers.ECHO_CHEST_BOAT,
+                DDBoat.Type.BLOOM, DDModelLayers.BLOOM_CHEST_BOAT,
+                DDBoat.Type.SCULK_SPRUCE, DDModelLayers.SCULK_SPRUCE_CHEST_BOAT
+        );
+        this.boatModels = Map.of(
+                DDBoat.Type.ECHO, DDModelLayers.ECHO_BOAT,
+                DDBoat.Type.BLOOM, DDModelLayers.BLOOM_BOAT,
+                DDBoat.Type.SCULK_SPRUCE, DDModelLayers.SCULK_SPRUCE_BOAT
+        );
         this.BOAT_RESOURCES = ImmutableMap.of(
                 DDBoat.Type.ECHO, this.createBoatModel(pContext, DDBoat.Type.ECHO),
-                DDBoat.Type.BLOOM, this.createBoatModel(pContext, DDBoat.Type.BLOOM)
+                DDBoat.Type.BLOOM, this.createBoatModel(pContext, DDBoat.Type.BLOOM),
+                DDBoat.Type.SCULK_SPRUCE, this.createBoatModel(pContext, DDBoat.Type.SCULK_SPRUCE)
         );
     }
 
@@ -65,7 +74,7 @@ public class DDBoatRenderer extends EntityRenderer {
     }
 
     @Override
-    public void render(Entity entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
+    public void render(T entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
         Boat boatEntity = (Boat)entity;
         ListModel<Boat> model = this.BOAT_RESOURCES.get(((DDBoatLike)boatEntity).getWoodType());
         poseStack.pushPose();
@@ -98,7 +107,7 @@ public class DDBoatRenderer extends EntityRenderer {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Entity entity) {
-        return getTexture((entity instanceof DDBoatLike boat) ? boat.getWoodType() : DDBoat.Type.ECHO, HAS_CHEST);
+    public ResourceLocation getTextureLocation(T boat) {
+        return getTexture(boat.getWoodType(), HAS_CHEST);
     }
 }

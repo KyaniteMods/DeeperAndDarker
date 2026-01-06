@@ -41,6 +41,7 @@ public class DDBoat extends Boat implements DDBoatLike {
     public Item getDropItem() {
         return switch (this.getWoodType()) {
             case BLOOM -> DDItems.BLOOM_BOAT;
+            case SCULK_SPRUCE -> DDItems.SCULK_SPRUCE_BOAT;
             default -> DDItems.ECHO_BOAT;
         };
     }
@@ -74,7 +75,8 @@ public class DDBoat extends Boat implements DDBoatLike {
 
     public enum Type implements StringRepresentable {
         ECHO(DDBlocks.ECHO_PLANKS, "echo"),
-        BLOOM(DDBlocks.BLOOM_PLANKS, "bloom");
+        BLOOM(DDBlocks.BLOOM_PLANKS, "bloom"),
+        SCULK_SPRUCE(DDBlocks.SCULK_SPRUCE_PLANKS, "sculk_spruce");
 
         private final String name;
         private final Block planks;

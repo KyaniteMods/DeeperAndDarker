@@ -54,6 +54,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.ECHO_DOOR,
                 DDBlocks.ECHO_TRAPDOOR,
                 DDBlocks.ECHO_SAPLING,
+                DDBlocks.SCULK_SPRUCE_DOOR,
+                DDBlocks.SCULK_SPRUCE_TRAPDOOR,
+                DDBlocks.SCULK_SPRUCE_SAPLING,
                 DDBlocks.SCULK_TENDRILS_PLANT,
                 DDBlocks.SCULK_TENDRILS,
                 DDBlocks.SCULK_VINES_PLANT,
@@ -93,6 +96,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_CHEST_BOAT, ChestBoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOM_BOAT, BoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOM_CHEST_BOAT, ChestBoatModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_SPRUCE_BOAT, BoatModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_SPRUCE_CHEST_BOAT, ChestBoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ANGLER_FISH, AnglerFishModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_SNAPPER, SculkSnapperModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED, ShatteredModel::createBodyModel);
@@ -104,8 +109,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SLUDGE_OUTER, SludgeModel::createOuterBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
 
-        EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer(ctx, false));
-        EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer(ctx, true));
+        EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer<>(ctx, false));
+        EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer<>(ctx, true));
         EntityRendererRegistry.register(DDEntities.ANGLER_FISH, AnglerFishRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
         EntityRendererRegistry.register(DDEntities.SHATTERED, ShatteredRenderer::new);

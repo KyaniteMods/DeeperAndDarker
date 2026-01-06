@@ -69,6 +69,25 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.BLOOM_SIGN);
         dropSelf(DDBlocks.BLOOM_HANGING_SIGN);
 
+        dropSelf(DDBlocks.SCULK_SPRUCE_LOG);
+        dropSelf(DDBlocks.SCULK_SPRUCE_WOOD);
+        dropSelf(DDBlocks.STRIPPED_SCULK_SPRUCE_LOG);
+        dropSelf(DDBlocks.STRIPPED_SCULK_SPRUCE_WOOD);
+        dropSelf(DDBlocks.SCULK_SPRUCE_PLANKS);
+        dropSelf(DDBlocks.SCULK_SPRUCE_STAIRS);
+        add(DDBlocks.SCULK_SPRUCE_SLAB, this::createSlabItemTable);
+        dropSelf(DDBlocks.SCULK_SPRUCE_FENCE);
+        dropSelf(DDBlocks.SCULK_SPRUCE_FENCE_GATE);
+        add(DDBlocks.SCULK_SPRUCE_DOOR, this::createDoorTable);
+        dropSelf(DDBlocks.SCULK_SPRUCE_TRAPDOOR);
+        dropSelf(DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE);
+        dropSelf(DDBlocks.SCULK_SPRUCE_BUTTON);
+        add(DDBlocks.SCULK_SPRUCE_LEAVES, (block) -> this.createLeavesDrops(block, DDBlocks.SCULK_SPRUCE_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(DDBlocks.SCULK_SPRUCE_SAPLING);
+        dropSelf(DDBlocks.SCULK_SPRUCE_SIGN);
+        dropSelf(DDBlocks.SCULK_SPRUCE_HANGING_SIGN);
+        dropPottedContents(DDBlocks.POTTED_SCULK_SPRUCE_SAPLING);
+
         add(DDBlocks.SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.SCULK_STONE_STAIRS);
         add(DDBlocks.SCULK_STONE_SLAB, this::createSlabItemTable);

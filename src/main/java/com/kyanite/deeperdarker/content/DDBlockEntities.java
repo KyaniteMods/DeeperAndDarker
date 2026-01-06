@@ -24,12 +24,14 @@ public class DDBlockEntities {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
                 DDHangingSignBlockEntity::new,
                 DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN,
-                DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN
+                DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN,
+                DDBlocks.SCULK_SPRUCE_HANGING_SIGN, DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN
         ));
         SIGN = create("sign", FabricBlockEntityTypeBuilder.create(
                 DDSignBlockEntity::new,
                 DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN,
-                DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN
+                DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN,
+                DDBlocks.SCULK_SPRUCE_SIGN, DDBlocks.SCULK_SPRUCE_WALL_SIGN
         ));
         CRYSTALLIZED_AMBER = create("crystallized_amber", FabricBlockEntityTypeBuilder.create(
                 CrystallizedAmberBlockEntity::new,

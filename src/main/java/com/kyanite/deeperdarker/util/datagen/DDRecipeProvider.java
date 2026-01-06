@@ -38,6 +38,10 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_ECHO_WOOD, 3).define('L', DDBlocks.STRIPPED_ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(output);
             // Bloom
         woodRecipes(output, DDBlocks.BLOOM_PLANKS, DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDItems.BLOOM_SIGN, DDItems.BLOOM_HANGING_SIGN, DDItems.BLOOM_BOAT, DDItems.BLOOM_CHEST_BOAT);
+            // Sculk Spruce
+        woodRecipes(output, DDBlocks.SCULK_SPRUCE_PLANKS, DDTags.Items.SCULK_SPRUCE_LOGS, DDBlocks.SCULK_SPRUCE_STAIRS, DDBlocks.SCULK_SPRUCE_SLAB, DDBlocks.SCULK_SPRUCE_FENCE, DDBlocks.SCULK_SPRUCE_FENCE_GATE, DDBlocks.SCULK_SPRUCE_DOOR, DDBlocks.SCULK_SPRUCE_TRAPDOOR, DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE, DDBlocks.SCULK_SPRUCE_BUTTON, DDItems.SCULK_SPRUCE_SIGN, DDItems.SCULK_SPRUCE_HANGING_SIGN, DDItems.SCULK_SPRUCE_BOAT, DDItems.SCULK_SPRUCE_CHEST_BOAT);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_SPRUCE_WOOD, 3).define('L', DDBlocks.SCULK_SPRUCE_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.SCULK_SPRUCE_LOG), FabricRecipeProvider.has(DDBlocks.SCULK_SPRUCE_LOG)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_SCULK_SPRUCE_WOOD, 3).define('L', DDBlocks.STRIPPED_SCULK_SPRUCE_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.SCULK_SPRUCE_LOG), FabricRecipeProvider.has(DDBlocks.SCULK_SPRUCE_LOG)).save(output);
         
         // Sculk Stone
         registerStairsSlabsAndWalls(output, DDBlocks.SCULK_STONE, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_SLAB, DDBlocks.SCULK_STONE_WALL);

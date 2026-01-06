@@ -3,6 +3,7 @@
   "values": [
     "#deeperdarker:echo_logs",
     "#deeperdarker:blooming_stems",
+    "#deeperdarker:sculk_spruce_logs",
     "deeperdarker:echo_planks",
     "deeperdarker:echo_stairs",
     "deeperdarker:echo_slab",
@@ -23,6 +24,15 @@
     "deeperdarker:bloom_trapdoor",
     "deeperdarker:bloom_pressure_plate",
     "deeperdarker:bloom_button",
+    "deeperdarker:sculk_spruce_planks",
+    "deeperdarker:sculk_spruce_stairs",
+    "deeperdarker:sculk_spruce_slab",
+    "deeperdarker:sculk_spruce_fence",
+    "deeperdarker:sculk_spruce_fence_gate",
+    "deeperdarker:sculk_spruce_door",
+    "deeperdarker:sculk_spruce_trapdoor",
+    "deeperdarker:sculk_spruce_pressure_plate",
+    "deeperdarker:sculk_spruce_button",
     "deeperdarker:glowing_grass",
     "deeperdarker:gloomy_grass",
     "deeperdarker:ice_lily"

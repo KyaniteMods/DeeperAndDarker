@@ -57,6 +57,22 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createHangingSign(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN);
         blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN);
 
+        blockModelGenerators.woodProvider(DDBlocks.SCULK_SPRUCE_LOG).log(DDBlocks.SCULK_SPRUCE_LOG).wood(DDBlocks.SCULK_SPRUCE_WOOD);
+        blockModelGenerators.woodProvider(DDBlocks.STRIPPED_SCULK_SPRUCE_LOG).log(DDBlocks.STRIPPED_SCULK_SPRUCE_LOG).wood(DDBlocks.STRIPPED_SCULK_SPRUCE_WOOD);
+        blockModelGenerators.family(DDBlocks.SCULK_SPRUCE_LEAVES);
+        blockModelGenerators.family(DDBlocks.SCULK_SPRUCE_PLANKS);
+        registerStairs(blockModelGenerators, DDBlocks.SCULK_SPRUCE_STAIRS, DDBlocks.SCULK_SPRUCE_PLANKS);
+        registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_SPRUCE_SLAB, DDBlocks.SCULK_SPRUCE_PLANKS);
+        registerFence(blockModelGenerators, DDBlocks.SCULK_SPRUCE_FENCE, DDBlocks.SCULK_SPRUCE_PLANKS);
+        registerFenceGate(blockModelGenerators, DDBlocks.SCULK_SPRUCE_FENCE_GATE, DDBlocks.SCULK_SPRUCE_PLANKS);
+        blockModelGenerators.createDoor(DDBlocks.SCULK_SPRUCE_DOOR);
+        blockModelGenerators.createOrientableTrapdoor(DDBlocks.SCULK_SPRUCE_TRAPDOOR);
+        registerPressurePlate(blockModelGenerators, DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE, DDBlocks.SCULK_SPRUCE_PLANKS);
+        registerButton(blockModelGenerators, DDBlocks.SCULK_SPRUCE_BUTTON, DDBlocks.SCULK_SPRUCE_PLANKS);
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.SCULK_SPRUCE_SAPLING, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createHangingSign(DDBlocks.SCULK_SPRUCE_PLANKS, DDBlocks.SCULK_SPRUCE_SIGN, DDBlocks.SCULK_SPRUCE_WALL_SIGN);
+        blockModelGenerators.createHangingSign(DDBlocks.STRIPPED_SCULK_SPRUCE_LOG, DDBlocks.SCULK_SPRUCE_HANGING_SIGN, DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN);
+
         blockModelGenerators.family(DDBlocks.SCULK_STONE);
         registerStairs(blockModelGenerators, DDBlocks.SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE);
         registerSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_STONE_SLAB, DDBlocks.SCULK_STONE);
@@ -205,6 +221,8 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_ECHO_SAPLING, TextureMapping.plant(DDBlocks.ECHO_SAPLING), blockModelGenerators.modelOutput);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_ECHO_SAPLING);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_BLOOMING_STEM);
+        ModelTemplates.FLOWER_POT_CROSS.create(DDBlocks.POTTED_SCULK_SPRUCE_SAPLING, TextureMapping.plant(DDBlocks.SCULK_SPRUCE_SAPLING), blockModelGenerators.modelOutput);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.POTTED_SCULK_SPRUCE_SAPLING);
 
         registerParented(blockModelGenerators, new ResourceLocation(DeeperDarker.MOD_ID, "block/flowers"), ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS),
                 new Tuple<>(TextureSlot.create("flowers"), TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS)),
@@ -287,6 +305,8 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_ROOTS.asItem()), TextureMapping.layer0(DDBlocks.GLOWING_ROOTS_PLANT), itemModelGenerator.output);
         ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_BUTTON.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.ECHO_FENCE.asItem()), TextureMapping.cube(DDBlocks.ECHO_PLANKS), itemModelGenerator.output);
+        ModelTemplates.BUTTON_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_SPRUCE_BUTTON.asItem()), TextureMapping.cube(DDBlocks.SCULK_SPRUCE_PLANKS), itemModelGenerator.output);
+        ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_SPRUCE_FENCE.asItem()), TextureMapping.cube(DDBlocks.SCULK_SPRUCE_PLANKS), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_STONE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.COBBLED_SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.COBBLED_SCULK_STONE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.POLISHED_SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.POLISHED_SCULK_STONE), itemModelGenerator.output);
@@ -304,6 +324,8 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_GLOOMSLATE), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.SCULK_SPRUCE_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.SCULK_SPRUCE_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDBlocks.GLOWING_FLOWERS.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDBlocks.RETURN_STATUE.asItem(), ModelTemplates.FLAT_ITEM);
         registerSculkTransmitter(itemModelGenerator, (SculkTransmitterItem)DDItems.SCULK_TRANSMITTER);

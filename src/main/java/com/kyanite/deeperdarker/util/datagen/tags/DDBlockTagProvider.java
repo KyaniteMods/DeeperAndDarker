@@ -26,9 +26,40 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        tagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).addTag(DDTags.Blocks.BLOOMING_STEMS).add(DDBlocks.ECHO_PLANKS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON,
-                DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM, DDBlocks.BLOOM_PLANKS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON,
-                DDBlocks.GLOWING_GRASS, DDBlocks.GLOOMY_GRASS, DDBlocks.ICE_LILY);
+        tagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DDTags.Blocks.ECHO_LOGS).addTag(DDTags.Blocks.BLOOMING_STEMS).addTag(DDTags.Blocks.SCULK_SPRUCE_LOGS).add(
+                DDBlocks.ECHO_PLANKS,
+                DDBlocks.ECHO_STAIRS,
+                DDBlocks.ECHO_SLAB,
+                DDBlocks.ECHO_FENCE,
+                DDBlocks.ECHO_FENCE_GATE,
+                DDBlocks.ECHO_DOOR,
+                DDBlocks.ECHO_TRAPDOOR,
+                DDBlocks.ECHO_PRESSURE_PLATE,
+                DDBlocks.ECHO_BUTTON,
+                DDBlocks.BLOOMING_STEM,
+                DDBlocks.STRIPPED_BLOOMING_STEM,
+                DDBlocks.BLOOM_PLANKS,
+                DDBlocks.BLOOM_STAIRS,
+                DDBlocks.BLOOM_SLAB,
+                DDBlocks.BLOOM_FENCE,
+                DDBlocks.BLOOM_FENCE_GATE,
+                DDBlocks.BLOOM_DOOR,
+                DDBlocks.BLOOM_TRAPDOOR,
+                DDBlocks.BLOOM_PRESSURE_PLATE,
+                DDBlocks.BLOOM_BUTTON,
+                DDBlocks.SCULK_SPRUCE_PLANKS,
+                DDBlocks.SCULK_SPRUCE_STAIRS,
+                DDBlocks.SCULK_SPRUCE_SLAB,
+                DDBlocks.SCULK_SPRUCE_FENCE,
+                DDBlocks.SCULK_SPRUCE_FENCE_GATE,
+                DDBlocks.SCULK_SPRUCE_DOOR,
+                DDBlocks.SCULK_SPRUCE_TRAPDOOR,
+                DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE,
+                DDBlocks.SCULK_SPRUCE_BUTTON,
+                DDBlocks.GLOWING_GRASS,
+                DDBlocks.GLOOMY_GRASS,
+                DDBlocks.ICE_LILY
+        );
         tagBuilder(BlockTags.MINEABLE_WITH_HOE).add(DDBlocks.ECHO_LEAVES, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER, DDBlocks.SCULK_GLEAM, DDBlocks.GLOWING_FLOWERS, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.GLOWING_ROOTS, DDBlocks.GLOWING_ROOTS_PLANT, DDBlocks.GLOWING_VINES, DDBlocks.GLOWING_VINES_PLANT, DDBlocks.INFESTED_SCULK, DDBlocks.SCULK_JAW);
         tagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(DDBlocks.SCULK_STONE, DDBlocks.COBBLED_SCULK_STONE, DDBlocks.POLISHED_SCULK_STONE, DDBlocks.SCULK_STONE_BRICKS, DDBlocks.SCULK_STONE_TILES, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.CUT_SCULK_STONE, DDBlocks.CHISELED_SCULK_STONE,
                 DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS,
@@ -48,22 +79,22 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
         tagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.GLOWING_FLOWERS, DDBlocks.GLOOMY_GRASS, DDBlocks.ICE_LILY, DDBlocks.SCULK_TISSUE);
 
-        tagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS);
-        tagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS);
-        tagBuilder(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS);
-        tagBuilder(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB, DDBlocks.BLOOM_SLAB);
-        tagBuilder(BlockTags.WOODEN_FENCES).add(DDBlocks.ECHO_FENCE, DDBlocks.BLOOM_FENCE);
-        tagBuilder(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE, DDBlocks.BLOOM_FENCE_GATE);
-        tagBuilder(BlockTags.WOODEN_DOORS).add(DDBlocks.ECHO_DOOR, DDBlocks.BLOOM_DOOR);
-        tagBuilder(BlockTags.WOODEN_TRAPDOORS).add(DDBlocks.ECHO_TRAPDOOR, DDBlocks.BLOOM_TRAPDOOR);
-        tagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE);
-        tagBuilder(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON);
-        tagBuilder(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES);
-        tagBuilder(BlockTags.SAPLINGS).add(DDBlocks.ECHO_SAPLING);
-        tagBuilder(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN, DDBlocks.BLOOM_SIGN);
-        tagBuilder(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN, DDBlocks.BLOOM_WALL_SIGN);
-        tagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN, DDBlocks.BLOOM_HANGING_SIGN);
-        tagBuilder(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN);
+        tagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).addTag(DDTags.Blocks.SCULK_SPRUCE_LOGS);
+        tagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS, DDBlocks.SCULK_SPRUCE_PLANKS);
+        tagBuilder(BlockTags.WOODEN_STAIRS).add(DDBlocks.ECHO_STAIRS, DDBlocks.BLOOM_STAIRS, DDBlocks.SCULK_SPRUCE_STAIRS);
+        tagBuilder(BlockTags.WOODEN_SLABS).add(DDBlocks.ECHO_SLAB, DDBlocks.BLOOM_SLAB, DDBlocks.SCULK_SPRUCE_SLAB);
+        tagBuilder(BlockTags.WOODEN_FENCES).add(DDBlocks.ECHO_FENCE, DDBlocks.BLOOM_FENCE, DDBlocks.SCULK_SPRUCE_FENCE);
+        tagBuilder(BlockTags.FENCE_GATES).add(DDBlocks.ECHO_FENCE_GATE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.SCULK_SPRUCE_FENCE_GATE);
+        tagBuilder(BlockTags.WOODEN_DOORS).add(DDBlocks.ECHO_DOOR, DDBlocks.BLOOM_DOOR, DDBlocks.SCULK_SPRUCE_DOOR);
+        tagBuilder(BlockTags.WOODEN_TRAPDOORS).add(DDBlocks.ECHO_TRAPDOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.SCULK_SPRUCE_TRAPDOOR);
+        tagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE);
+        tagBuilder(BlockTags.WOODEN_BUTTONS).add(DDBlocks.ECHO_BUTTON, DDBlocks.BLOOM_BUTTON, DDBlocks.SCULK_SPRUCE_BUTTON);
+        tagBuilder(BlockTags.LEAVES).add(DDBlocks.ECHO_LEAVES, DDBlocks.SCULK_SPRUCE_LEAVES);
+        tagBuilder(BlockTags.SAPLINGS).add(DDBlocks.ECHO_SAPLING, DDBlocks.SCULK_SPRUCE_SAPLING);
+        tagBuilder(BlockTags.STANDING_SIGNS).add(DDBlocks.ECHO_SIGN, DDBlocks.BLOOM_SIGN, DDBlocks.SCULK_SPRUCE_SIGN);
+        tagBuilder(BlockTags.WALL_SIGNS).add(DDBlocks.ECHO_WALL_SIGN, DDBlocks.BLOOM_WALL_SIGN, DDBlocks.SCULK_SPRUCE_WALL_SIGN);
+        tagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(DDBlocks.ECHO_HANGING_SIGN, DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.SCULK_SPRUCE_HANGING_SIGN);
+        tagBuilder(BlockTags.WALL_HANGING_SIGNS).add(DDBlocks.ECHO_WALL_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN, DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN);
         tagBuilder(BlockTags.STAIRS).add(DDBlocks.SCULK_STONE_STAIRS, DDBlocks.COBBLED_SCULK_STONE_STAIRS, DDBlocks.POLISHED_SCULK_STONE_STAIRS, DDBlocks.SCULK_STONE_BRICK_STAIRS, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_STAIRS, DDBlocks.SCULK_GRIME_BRICK_STAIRS,
                 DDBlocks.GLOOMSLATE_STAIRS, DDBlocks.COBBLED_GLOOMSLATE_STAIRS, DDBlocks.POLISHED_GLOOMSLATE_STAIRS, DDBlocks.GLOOMSLATE_BRICK_STAIRS, DDBlocks.GLOOMSLATE_TILE_STAIRS, DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, DDBlocks.CUT_GLOOMSLATE_STAIRS);
         tagBuilder(BlockTags.SLABS).add(DDBlocks.SCULK_STONE_SLAB, DDBlocks.COBBLED_SCULK_STONE_SLAB, DDBlocks.POLISHED_SCULK_STONE_SLAB, DDBlocks.SCULK_STONE_BRICK_SLAB, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE_SLAB, DDBlocks.SCULK_GRIME_BRICK_SLAB,
@@ -80,7 +111,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
         tagBuilder(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
-        tagBuilder(BlockTags.FLOWER_POTS).add(DDBlocks.POTTED_ECHO_SAPLING, DDBlocks.POTTED_BLOOMING_STEM);
+        tagBuilder(BlockTags.FLOWER_POTS).add(DDBlocks.POTTED_ECHO_SAPLING, DDBlocks.POTTED_BLOOMING_STEM, DDBlocks.POTTED_SCULK_SPRUCE_SAPLING);
         tagBuilder(BlockTags.DIRT).add(DDBlocks.BLOOMING_MOSS_BLOCK);
         tagBuilder(BlockTags.SMALL_DRIPLEAF_PLACEABLE).add(DDBlocks.BLOOMING_MOSS_BLOCK);
         tagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(DDBlocks.BLOOMING_MOSS_BLOCK);
@@ -102,12 +133,13 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
 
         tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
-        tagBuilder(BlockTags.SNAPS_GOAT_HORN).add(DDBlocks.ECHO_LOG);
+        tagBuilder(BlockTags.SNAPS_GOAT_HORN).add(DDBlocks.ECHO_LOG, DDBlocks.SCULK_SPRUCE_LOG);
 
         tagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, Blocks.SCULK);
 
         tagBuilder(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         tagBuilder(DDTags.Blocks.BLOOMING_STEMS).add(DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
+        tagBuilder(DDTags.Blocks.SCULK_SPRUCE_LOGS).add(DDBlocks.SCULK_SPRUCE_LOG, DDBlocks.SCULK_SPRUCE_WOOD, DDBlocks.STRIPPED_SCULK_SPRUCE_LOG, DDBlocks.STRIPPED_SCULK_SPRUCE_WOOD);
 
         tagBuilder(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES).add(Blocks.WATER, Blocks.DEEPSLATE, Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME, DDBlocks.GLOOMSLATE, DDBlocks.GLOOMY_SCULK, DDBlocks.BLOOMING_SCULK_STONE, DDBlocks.BLOOMING_MOSS_BLOCK);
         tagBuilder(DDTags.Blocks.SCULK_STONE_REPLACEABLES).add(DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME);

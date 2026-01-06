@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "deeperdarker:echo_button",
-    "deeperdarker:bloom_button"
+    "deeperdarker:bloom_button",
+    "deeperdarker:sculk_spruce_button"
   ]
 }
