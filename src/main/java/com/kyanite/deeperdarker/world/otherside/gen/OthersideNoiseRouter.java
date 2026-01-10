@@ -9,8 +9,11 @@ public class OthersideNoiseRouter {
     public static NoiseRouter otherside(HolderGetter<DensityFunction> density, HolderGetter<NormalNoise.NoiseParameters> noise) {
         DensityFunction shiftX = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.shiftX()));
         DensityFunction shiftZ = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.shiftZ()));
-        DensityFunction temperature = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 2.5, noise.getOrThrow(Noises.TEMPERATURE));
-        DensityFunction vegetation = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.6, noise.getOrThrow(Noises.VEGETATION));
+        DensityFunction temperature = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.TEMPERATURE)));
+        DensityFunction vegetation = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.VEGETATION)));
+        DensityFunction continents = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.CONTINENTALNESS)));
+        DensityFunction erosion = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.EROSION)));
+        DensityFunction ridges = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.RIDGE)));
 
         DensityFunction nether3D = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.base3dNoiseNether()));
         DensityFunction finalDensity = DensityFunctions.mul(
@@ -43,10 +46,10 @@ public class OthersideNoiseRouter {
                 DensityFunctions.zero(),
                 temperature,
                 vegetation,
+                continents,
+                erosion,
                 DensityFunctions.zero(),
-                DensityFunctions.zero(),
-                DensityFunctions.zero(),
-                DensityFunctions.zero(),
+                ridges,
                 DensityFunctions.zero(),
                 finalDensity,
                 DensityFunctions.zero(),

@@ -146,7 +146,12 @@ public class DDBlocks {
     public static final Block SCULK_SPRUCE_PRESSURE_PLATE = register("sculk_spruce_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE_SET));
     public static final Block SCULK_SPRUCE_BUTTON = register("sculk_spruce_button", new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), SCULK_SPRUCE_SET, 30, true));
     public static final Block SCULK_SPRUCE_LEAVES = register("sculk_spruce_leaves", new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).mapColor(MapColor.SNOW)));
-    public static final Block SCULK_SPRUCE_SAPLING = register("sculk_spruce_sapling", new SaplingBlock(new SculkSpruceTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final Block SCULK_SPRUCE_SAPLING = register("sculk_spruce_sapling", new SaplingBlock(new SculkSpruceTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)) {
+        @Override
+        public boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
+            return super.mayPlaceOn(blockState, blockGetter, blockPos) || blockState.is(Blocks.SNOW_BLOCK) || blockState.is(SNOWY_SCULK_STONE) || blockState.is(SCULK_STONE);
+        }
+    });
 
     public static final Block SCULK_SPRUCE_SIGN = registerWithoutItem("sculk_spruce_sign", new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY), SCULK_SPRUCE) {
         @Override
@@ -204,6 +209,8 @@ public class DDBlocks {
     public static final Block CUT_SCULK_STONE_SLAB = register("cut_sculk_stone_slab", new SlabBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CHISELED_SCULK_STONE = register("chiseled_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE)));
+
+    public static final Block SNOWY_SCULK_STONE = register("snowy_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.SNOW)));
 
     public static final Block BLOOMING_SCULK_STONE = register("blooming_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final Block BLOOMING_MOSS_BLOCK = register("blooming_moss_block", new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.SCULK).mapColor(MapColor.COLOR_LIGHT_BLUE)));

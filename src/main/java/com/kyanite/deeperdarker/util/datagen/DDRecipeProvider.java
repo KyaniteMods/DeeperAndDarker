@@ -142,10 +142,19 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
                 .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('H', DDItems.HEART_OF_THE_DEEP)
-                .pattern(" CH").pattern(" BC").pattern("B  ")
+                .pattern(" CH")
+                .pattern(" BC")
+                .pattern("B  ")
                 .unlockedBy(getHasName(DDItems.SCULK_BONE), has(DDItems.SCULK_BONE))
                 .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL), has(DDItems.SOUL_CRYSTAL))
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SNOWY_SCULK_STONE)
+                .define('L', Blocks.SNOW)
+                .define('S', DDBlocks.SCULK_STONE)
+                .pattern("L")
+                .pattern("S")
+                .unlockedBy(getHasName(DDBlocks.SCULK_STONE), has(DDBlocks.SCULK_STONE)).save(output);
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
     }

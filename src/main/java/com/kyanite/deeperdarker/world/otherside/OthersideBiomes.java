@@ -30,6 +30,7 @@ public class OthersideBiomes {
     public static final ResourceKey<Biome> BLOOMING_CAVERNS = createKey("blooming_caverns");
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
     public static final ResourceKey<Biome> DARKLANDS = createKey("darklands");
+    public static final ResourceKey<Biome> SCULK_SPRUCE_FOREST = createKey("sculk_spruce_forest");
 
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -40,6 +41,7 @@ public class OthersideBiomes {
         context.register(BLOOMING_CAVERNS, bloomingCaverns(placedFeatures, worldCarvers));
         context.register(OVERCAST_COLUMNS, overcastColumns(placedFeatures, worldCarvers));
         context.register(DARKLANDS, darklands(placedFeatures, worldCarvers));
+        context.register(SCULK_SPRUCE_FOREST, sculkSpruceForest(placedFeatures, worldCarvers));
     }
 
     public static ResourceKey<Biome> createKey(String name) {
@@ -64,13 +66,13 @@ public class OthersideBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
-                .temperature(-0.5f)
-                .downfall(-0.5f)
+                .temperature(-0.2f)
+                .downfall(0.0f)
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0x13256b)
                         .waterFogColor(0x132052)
                         .fogColor(0x141c33)
-                        .skyColor(calculateSkyColor(-0.5f))
+                        .skyColor(calculateSkyColor(-0.2f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_DEEPLANDS)).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
@@ -92,13 +94,13 @@ public class OthersideBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
-                .temperature(0.3f)
-                .downfall(0.5f)
+                .temperature(0.1f)
+                .downfall(0.6f)
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0x42136b)
                         .waterFogColor(0x39195e)
                         .fogColor(0x301a40)
-                        .skyColor(calculateSkyColor(0.3f))
+                        .skyColor(calculateSkyColor(0.1f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.04f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST)).build())
@@ -127,13 +129,13 @@ public class OthersideBiomes {
         addSculkOres(biomeBuilder);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
-                .temperature(-0.3f)
-                .downfall(0.2f)
+                .temperature(-0.2f)
+                .downfall(0.7f)
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0x27b0d9)
                         .waterFogColor(0x216888)
                         .fogColor(0x1a2f40)
-                        .skyColor(calculateSkyColor(-0.3f))
+                        .skyColor(calculateSkyColor(-0.2f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SCULK_CHARGE_POP, 0.002f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST)).build())
@@ -163,13 +165,13 @@ public class OthersideBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
-                .temperature(0.6f)
-                .downfall(0.2f)
+                .temperature(0.75f)
+                .downfall(0.0f)
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0x452312)
                         .waterFogColor(0x362319)
                         .fogColor(0x472918)
-                        .skyColor(calculateSkyColor(0.6f))
+                        .skyColor(calculateSkyColor(0.75f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.026f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2))
                         .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS)).build())
@@ -183,15 +185,38 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, MiscOverworldPlacements.FREEZE_TOP_LAYER);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)
-                .temperature(-0.6f)
-                .downfall(-0.2f)
+                .temperature(-0.2f)
+                .downfall(0.0f)
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0x13256b)
                         .waterFogColor(0x132052)
                         .fogColor(0x141c33)
-                        .skyColor(calculateSkyColor(-0.6f))
+                        .skyColor(calculateSkyColor(-0.2f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2)).build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
+                .generationSettings(biomeBuilder.build()).build();
+    }
+
+    private static Biome sculkSpruceForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, MiscOverworldPlacements.FREEZE_TOP_LAYER);
+        addSculkOres(biomeBuilder);
+        BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
+
+        return (new Biome.BiomeBuilder()).hasPrecipitation(true)
+                .temperature(-0.3f)
+                .downfall(0.5f)
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x13256b)
+                        .waterFogColor(0x132052)
+                        .fogColor(0x141c33)
+                        .skyColor(calculateSkyColor(-0.3f))
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2)).build())
+                .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
 

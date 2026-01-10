@@ -2,7 +2,7 @@
   "carvers": {
     "air": "deeperdarker:cave"
   },
-  "downfall": -0.5,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 1317939,
     "mood_sound": {
@@ -17,7 +17,7 @@
       "replace_current_music": false,
       "sound": "deeperdarker:music.deeperdarker.deeplands"
     },
-    "sky_color": 8625919,
+    "sky_color": 8495359,
     "water_color": 1254763,
     "water_fog_color": 1253458
   },
@@ -92,5 +92,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": -0.5
+  "temperature": -0.2
 }

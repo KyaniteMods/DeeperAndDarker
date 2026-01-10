@@ -1,8 +1,8 @@
 {
   "carvers": {
-    "air": "deeperdarker:noodles"
+    "air": "deeperdarker:cave"
   },
-  "downfall": 0.0,
+  "downfall": 0.5,
   "effects": {
     "fog_color": 1317939,
     "mood_sound": {
@@ -11,7 +11,7 @@
       "sound": "deeperdarker:ambient.otherside.additions",
       "tick_delay": 6000
     },
-    "sky_color": 8495359,
+    "sky_color": 8560639,
     "water_color": 1254763,
     "water_fog_color": 1253458
   },
@@ -19,13 +19,29 @@
     [],
     [],
     [],
+    [
+      "minecraft:fossil_upper",
+      "minecraft:fossil_lower"
+    ],
     [],
     [],
+    [
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
+      "deeperdarker:sculk_coal",
+      "deeperdarker:sculk_iron",
+      "deeperdarker:sculk_copper",
+      "deeperdarker:sculk_gold",
+      "deeperdarker:sculk_redstone",
+      "deeperdarker:sculk_emerald",
+      "deeperdarker:sculk_lapis",
+      "deeperdarker:sculk_diamond"
+    ],
     [],
     [],
-    [],
-    [],
-    [],
+    [
+      "deeperdarker:sculk_spruce_tree"
+    ],
     [
       "minecraft:freeze_top_layer"
     ]
@@ -42,5 +58,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": -0.2
+  "temperature": -0.3
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": {
+      "item": "minecraft:snow"
+    },
+    "S": {
+      "item": "deeperdarker:sculk_stone"
+    }
+  },
+  "pattern": [
+    "L",
+    "S"
+  ],
+  "result": {
+    "item": "deeperdarker:snowy_sculk_stone"
+  },
+  "show_notification": true
+}

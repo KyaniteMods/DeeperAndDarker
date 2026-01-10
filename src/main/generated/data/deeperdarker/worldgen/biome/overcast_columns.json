@@ -5,7 +5,7 @@
       "deeperdarker:low_cave"
     ]
   },
-  "downfall": 0.2,
+  "downfall": 0.0,
   "effects": {
     "fog_color": 4663576,
     "mood_sound": {
@@ -26,7 +26,7 @@
       },
       "probability": 0.026
     },
-    "sky_color": 8037887,
+    "sky_color": 7972607,
     "water_color": 4530962,
     "water_fog_color": 3547929
   },
@@ -75,5 +75,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.6
+  "temperature": 0.75
 }
