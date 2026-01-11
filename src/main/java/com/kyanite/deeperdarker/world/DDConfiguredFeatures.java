@@ -94,6 +94,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_SCULK_SPRUCE = createKey("tree_sculk_spruce");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_FOREST_VEGETATION = createKey("sculk_spruce_forest_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_FOREST_PATCH = createKey("sculk_spruce_forest_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_DELTA = createKey("sculk_spruce_delta");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -175,6 +176,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, TREE_SCULK_SPRUCE, Feature.TREE, createSculkSpruce().build());
         FeatureUtils.register(context, SCULK_SPRUCE_FOREST_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.SCULK_TUBERS.defaultBlockState().setValue(BlockStateProperties.SNOWY, true), 1))));
         FeatureUtils.register(context, SCULK_SPRUCE_FOREST_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState()), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_SPRUCE_FOREST_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.1f, UniformInt.of(1, 2), 0.5f));
+        FeatureUtils.register(context, SCULK_SPRUCE_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.ICE.defaultBlockState(), DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), UniformInt.of(3, 6), UniformInt.of(0, 2)));
 
         FeatureUtils.register(context, PLANT_BLOOMING, DDFeatures.BLOOMING_STEM);
     }

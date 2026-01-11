@@ -70,6 +70,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLOOMING_PLANT = createKey("blooming_plant");
     public static final ResourceKey<PlacedFeature> SCULK_SPRUCE_TREE = createKey("sculk_spruce_tree");
     public static final ResourceKey<PlacedFeature> SCULK_SPRUCE_FOREST_VEGETATION = createKey("sculk_spruce_forest_vegetation");
+    public static final ResourceKey<PlacedFeature> SCULK_SPRUCE_DELTA = createKey("sculk_spruce_delta");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -124,6 +125,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, SCULK_SPRUCE_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_SCULK_SPRUCE), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.SCULK_SPRUCE_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, SCULK_SPRUCE_FOREST_VEGETATION, features.getOrThrow(DDConfiguredFeatures.SCULK_SPRUCE_FOREST_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+        PlacementUtils.register(context, SCULK_SPRUCE_DELTA, features.getOrThrow(DDConfiguredFeatures.SCULK_SPRUCE_DELTA), CountOnEveryLayerPlacement.of(40), BiomeFilter.biome());
 
         PlacementUtils.register(context, BLOOMING_PLANT, features.getOrThrow(DDConfiguredFeatures.PLANT_BLOOMING), CountOnEveryLayerPlacement.of(4), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.BLOOMING_STEM.defaultBlockState(), BlockPos.ZERO)));
     }

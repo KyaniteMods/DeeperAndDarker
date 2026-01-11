@@ -311,34 +311,6 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:stone_depth",
-          "add_surface_depth": false,
-          "offset": 0,
-          "secondary_depth_range": 0,
-          "surface_type": "floor"
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:biome",
-            "biome_is": [
-              "deeperdarker:sculk_spruce_forest"
-            ]
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "minecraft:snow",
-              "Properties": {
-                "layers": "1"
-              }
-            }
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
           "type": "minecraft:vertical_gradient",
           "false_at_and_above": {
             "above_bottom": 12

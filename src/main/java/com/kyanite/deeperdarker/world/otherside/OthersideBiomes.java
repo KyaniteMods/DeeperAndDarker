@@ -202,6 +202,7 @@ public class OthersideBiomes {
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.SCULK_SPRUCE_DELTA);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_FOREST_VEGETATION);
         biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, MiscOverworldPlacements.FREEZE_TOP_LAYER);
