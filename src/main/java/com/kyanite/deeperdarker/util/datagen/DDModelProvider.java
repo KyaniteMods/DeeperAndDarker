@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
@@ -229,8 +230,11 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS).withSuffix("_stem")));
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.GLOWING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, BlockModelGenerators.TintState.NOT_TINTED);
+
         registerSculkTubers(DDBlocks.SCULK_TUBERS, blockModelGenerators);
         registerGrassLikeSculkStone(DDBlocks.SNOWY_SCULK_STONE, blockModelGenerators);
+        registerIcicle(DDBlocks.ICICLE, blockModelGenerators);
+
         registerGrassLikeSculkStone(DDBlocks.BLOOMING_SCULK_STONE, blockModelGenerators);
         blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
         registerBloomingStem(blockModelGenerators, (BloomingStemBlock) DDBlocks.BLOOMING_STEM);
@@ -552,6 +556,24 @@ public class DDModelProvider extends FabricModelProvider {
             return Variant.variant().with(VariantProperties.MODEL, resourceLocation);
         });
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(propertyDispatch));
+    }
+
+    private void registerIcicle(Block block, BlockModelGenerators blockModelGenerators) {
+        blockModelGenerators.skipAutoItemBlock(block);
+        PropertyDispatch.C2<Direction, DripstoneThickness> c2 = PropertyDispatch.properties(BlockStateProperties.VERTICAL_DIRECTION, BlockStateProperties.DRIPSTONE_THICKNESS);
+        for (DripstoneThickness dripstoneThickness : DripstoneThickness.values()) {
+            c2.select(Direction.UP, dripstoneThickness, createPointedDripstoneVariant(block, blockModelGenerators, Direction.UP, dripstoneThickness));
+        }
+        for (DripstoneThickness dripstoneThickness : DripstoneThickness.values()) {
+            c2.select(Direction.DOWN, dripstoneThickness, createPointedDripstoneVariant(block, blockModelGenerators, Direction.DOWN, dripstoneThickness));
+        }
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(c2));
+    }
+
+    public final Variant createPointedDripstoneVariant(Block block, BlockModelGenerators blockModelGenerators, Direction direction, DripstoneThickness dripstoneThickness) {
+        String string = "_" + direction.getSerializedName() + "_" + dripstoneThickness.getSerializedName();
+        TextureMapping textureMapping = TextureMapping.cross(TextureMapping.getBlockTexture(block, string));
+        return Variant.variant().with(VariantProperties.MODEL, ModelTemplates.POINTED_DRIPSTONE.createWithSuffix(block, string, textureMapping, blockModelGenerators.modelOutput));
     }
 
     private void registerBloomingStem(BlockModelGenerators blockModelGenerators, BloomingStemBlock block) {

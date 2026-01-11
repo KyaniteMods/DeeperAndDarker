@@ -64,6 +64,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_SPRUCE_BUTTON);
         entries.accept(DDBlocks.SCULK_SPRUCE_LEAVES);
         entries.accept(DDBlocks.SCULK_SPRUCE_SAPLING);
+        entries.accept(DDBlocks.ICICLE);
 
         entries.accept(DDBlocks.SCULK_STONE);
         entries.accept(DDBlocks.SCULK_STONE_STAIRS);

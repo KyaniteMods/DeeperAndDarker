@@ -212,6 +212,7 @@ public class DDBlocks {
 
     public static final Block SNOWY_SCULK_STONE = register("snowy_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.SNOW)));
     public static final Block SCULK_TUBERS = registerWithoutItem("sculk_tubers", new SculkTubersBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).offsetType(BlockBehaviour.OffsetType.XYZ).mapColor(state -> state.getValue(BlockStateProperties.SNOWY) ? MapColor.SNOW : MapColor.GRASS)));
+    public static final Block ICICLE = register("icicle", new IcicleBlock(BlockBehaviour.Properties.copy(Blocks.POINTED_DRIPSTONE).mapColor(MapColor.ICE).friction(0.98f).randomTicks().strength(0.25f).sound(SoundType.GLASS)));
 
     public static final Block BLOOMING_SCULK_STONE = register("blooming_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final Block BLOOMING_MOSS_BLOCK = register("blooming_moss_block", new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).sound(SoundType.SCULK).mapColor(MapColor.COLOR_LIGHT_BLUE)));

@@ -19,6 +19,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<DDSkullBlockEntity> SKULL;
     public static final BlockEntityType<SculkJawBlockEntity> SCULK_JAW;
     public static final BlockEntityType<ReturnStatueBlockEntity> RETURN_STATUE;
+    public static final BlockEntityType<IcicleBlockEntity> ICICLE;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -49,6 +50,10 @@ public class DDBlockEntities {
         RETURN_STATUE = create("return_statue", FabricBlockEntityTypeBuilder.create(
                 ReturnStatueBlockEntity::new,
                 DDBlocks.RETURN_STATUE
+        ));
+        ICICLE = create("icicle", FabricBlockEntityTypeBuilder.create(
+                IcicleBlockEntity::new,
+                DDBlocks.ICICLE
         ));
     }
 
