@@ -186,7 +186,7 @@ public class DDConfiguredFeatures {
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createSculkSpruce() {
-        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(DDBlocks.SCULK_SPRUCE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(DDBlocks.SCULK_SPRUCE_LEAVES), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)), new TwoLayersFeatureSize(2, 0, 2)).dirt(BlockStateProvider.simple(Blocks.SNOW_BLOCK)).ignoreVines();
+        return new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(DDBlocks.SCULK_SPRUCE_LOG), new StraightTrunkPlacer(5, 2, 1), BlockStateProvider.simple(DDBlocks.SCULK_SPRUCE_LEAVES), new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2), UniformInt.of(1, 2)), new TwoLayersFeatureSize(2, 0, 2)).dirt(BlockStateProvider.simple(DDBlocks.SCULK_STONE)).ignoreVines();
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
