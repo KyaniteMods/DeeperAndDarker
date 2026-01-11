@@ -187,6 +187,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_JAW);
 
         entries.accept(DDItems.BLOOM_BERRIES);
+        entries.accept(DDItems.SCULK_TUBER);
 
         entries.accept(DDItems.GRIME_BALL);
         entries.accept(DDItems.GRIME_BRICK);

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "deeperdarker:block/sculk_tubers"
+    },
+    "snowy=true": {
+      "model": "deeperdarker:block/sculk_tubers_snowy"
+    }
+  }
+}

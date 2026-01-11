@@ -229,6 +229,7 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.STEM, TextureMapping.getBlockTexture(DDBlocks.GLOWING_FLOWERS).withSuffix("_stem")));
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.GLOWING_FLOWERS, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_FLOWERS))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, BlockModelGenerators.TintState.NOT_TINTED);
+        registerSculkTubers(DDBlocks.SCULK_TUBERS, blockModelGenerators);
         registerGrassLikeSculkStone(DDBlocks.SNOWY_SCULK_STONE, blockModelGenerators);
         registerGrassLikeSculkStone(DDBlocks.BLOOMING_SCULK_STONE, blockModelGenerators);
         blockModelGenerators.family(DDBlocks.BLOOMING_MOSS_BLOCK);
@@ -301,6 +302,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BALL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.SCULK_TUBER, ModelTemplates.FLAT_ITEM);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TENDRILS.asItem()), TextureMapping.layer0(DDBlocks.SCULK_TENDRILS_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_ROOTS.asItem()), TextureMapping.layer0(DDBlocks.GLOWING_ROOTS_PLANT), itemModelGenerator.output);
@@ -540,6 +542,16 @@ public class DDModelProvider extends FabricModelProvider {
     private void registerGrassLikeSculkStone(Block block, BlockModelGenerators blockModelGenerators) {
         TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_STONE)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_BOTTOM_TOP.create(block, textureMapping, blockModelGenerators.modelOutput)));
+    }
+
+    private void registerSculkTubers(Block block, BlockModelGenerators blockModelGenerators) {
+        PropertyDispatch propertyDispatch = PropertyDispatch.property(BlockStateProperties.SNOWY).generate(isSnowy -> {
+            String suffix = isSnowy ? "_snowy" : "";
+            TextureMapping textureMapping = TextureMapping.cross(TextureMapping.getBlockTexture(block, suffix));
+            ResourceLocation resourceLocation = BlockModelGenerators.TintState.NOT_TINTED.getCross().createWithSuffix(block, suffix, textureMapping, blockModelGenerators.modelOutput);
+            return Variant.variant().with(VariantProperties.MODEL, resourceLocation);
+        });
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(propertyDispatch));
     }
 
     private void registerBloomingStem(BlockModelGenerators blockModelGenerators, BloomingStemBlock block) {

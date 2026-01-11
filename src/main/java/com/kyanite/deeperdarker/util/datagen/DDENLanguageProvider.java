@@ -171,6 +171,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DDBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
         translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
+        translationBuilder.add(DDBlocks.SCULK_TUBERS, "Sculk Tubers");
         translationBuilder.add(DDBlocks.SNOWY_SCULK_STONE, "Snowy Sculk Stone");
         translationBuilder.add(DDBlocks.BLOOMING_SCULK_STONE, "Blooming Sculk Stone");
         translationBuilder.add(DDBlocks.BLOOMING_MOSS_BLOCK, "Blooming Moss Block");
@@ -269,6 +270,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled", "Boost disabled");
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
+        translationBuilder.add(DDItems.SCULK_TUBER, "Sculk Tuber");
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");

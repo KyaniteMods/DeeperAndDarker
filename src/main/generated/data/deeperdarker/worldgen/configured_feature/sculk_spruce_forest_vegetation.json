@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "deeperdarker:sculk_tubers",
+            "Properties": {
+              "snowy": "true"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

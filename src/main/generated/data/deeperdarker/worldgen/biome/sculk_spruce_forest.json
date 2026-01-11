@@ -40,7 +40,8 @@
     [],
     [],
     [
-      "deeperdarker:sculk_spruce_tree"
+      "deeperdarker:sculk_spruce_tree",
+      "deeperdarker:sculk_spruce_forest_vegetation"
     ],
     [
       "minecraft:freeze_top_layer"
