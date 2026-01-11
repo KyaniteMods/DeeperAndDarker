@@ -204,9 +204,10 @@ public class OthersideBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.SCULK_SPRUCE_DELTA);
         biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.GRAVEL_DISK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SNOW_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.ICICLE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_FOREST_VEGETATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, DDPlacedFeatures.SNOW_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, MiscOverworldPlacements.FREEZE_TOP_LAYER);
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);

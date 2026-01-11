@@ -40,14 +40,16 @@
       "deeperdarker:sculk_lapis",
       "deeperdarker:sculk_diamond"
     ],
-    [],
+    [
+      "deeperdarker:icicle"
+    ],
     [],
     [
-      "deeperdarker:snow_patch",
       "deeperdarker:sculk_spruce_tree",
       "deeperdarker:sculk_spruce_forest_vegetation"
     ],
     [
+      "deeperdarker:snow_patch",
       "minecraft:freeze_top_layer"
     ]
   ],

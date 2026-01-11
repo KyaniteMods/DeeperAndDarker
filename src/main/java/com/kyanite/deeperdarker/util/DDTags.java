@@ -50,6 +50,10 @@ public class DDTags {
 
         public static final TagKey<Block> SCULK_SPRUCE_FOREST_REPLACEABLE = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_spruce_forest_replaceable"));
+        public static final TagKey<Block> ICE_REPLACEABLE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "ice_replaceable"));
+        public static final TagKey<Block> ICE_BASE = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "ice_base"));
 
         public static final TagKey<Block> TRANSMITTABLE = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "transmittable"));

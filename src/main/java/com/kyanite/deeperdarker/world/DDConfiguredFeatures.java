@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
+import com.kyanite.deeperdarker.world.features.config.IcicleConfiguration;
 import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
@@ -15,6 +16,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
@@ -98,6 +100,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_DELTA = createKey("sculk_spruce_delta");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SNOW = createKey("patch_snow");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_GRAVEL = createKey("disk_gravel");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ICICLE = createKey("patch_icicle");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -186,6 +189,11 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, DISK_GRAVEL, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), 4)
                 .add(Blocks.GRAVEL.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SNOWY_SCULK_STONE), UniformInt.of(3, 5), 2));
+        FeatureUtils.register(context, PATCH_ICICLE, Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 6, 2, PlacementUtils.onlyWhenEmpty(DDFeatures.ICICLE, new IcicleConfiguration(DDTags.Blocks.ICE_REPLACEABLE, DDTags.Blocks.ICE_BASE, new WeightedStateProvider(
+                SimpleWeightedRandomList.<BlockState>builder()
+                        .add(Blocks.PACKED_ICE.defaultBlockState(), 1)
+                        .add(Blocks.BLUE_ICE.defaultBlockState(), 1)
+                        .build()), BlockStateProvider.simple(DDBlocks.ICICLE), UniformInt.of(3, 6), 0.7f, 0.6f, 0.6f))));
 
         FeatureUtils.register(context, PLANT_BLOOMING, DDFeatures.BLOOMING_STEM);
     }

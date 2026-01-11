@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "deeperdarker:icicle",
+        "config": {
+          "base": "deeperdarker:ice_base",
+          "chance_of_directional_spread": 0.7,
+          "chance_of_spread_radius2": 0.6,
+          "chance_of_spread_radius3": 0.6,
+          "height_provider": {
+            "type": "minecraft:uniform",
+            "value": {
+              "max_inclusive": 6,
+              "min_inclusive": 3
+            }
+          },
+          "ice_provider": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "minecraft:packed_ice"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:blue_ice"
+                },
+                "weight": 1
+              }
+            ]
+          },
+          "icicle_provider": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "deeperdarker:icicle",
+              "Properties": {
+                "thickness": "tip",
+                "vertical_direction": "up",
+                "waterlogged": "false"
+              }
+            }
+          },
+          "replaceable": "deeperdarker:ice_replaceable"
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 64,
+    "xz_spread": 6,
+    "y_spread": 2
+  }
+}
