@@ -24,7 +24,8 @@
       "minecraft:fossil_lower"
     ],
     [
-      "deeperdarker:sculk_spruce_delta"
+      "deeperdarker:sculk_spruce_delta",
+      "deeperdarker:gravel_disk"
     ],
     [],
     [
@@ -42,6 +43,7 @@
     [],
     [],
     [
+      "deeperdarker:snow_patch",
       "deeperdarker:sculk_spruce_tree",
       "deeperdarker:sculk_spruce_forest_vegetation"
     ],

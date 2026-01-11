@@ -18,9 +18,9 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
-import net.minecraft.world.level.block.grower.SpruceTreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
@@ -95,6 +96,8 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_FOREST_VEGETATION = createKey("sculk_spruce_forest_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_FOREST_PATCH = createKey("sculk_spruce_forest_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCULK_SPRUCE_DELTA = createKey("sculk_spruce_delta");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SNOW = createKey("patch_snow");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_GRAVEL = createKey("disk_gravel");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -177,6 +180,12 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, SCULK_SPRUCE_FOREST_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.SCULK_TUBERS.defaultBlockState().setValue(BlockStateProperties.SNOWY, true), 1))));
         FeatureUtils.register(context, SCULK_SPRUCE_FOREST_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState()), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_SPRUCE_FOREST_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.1f, UniformInt.of(1, 2), 0.5f));
         FeatureUtils.register(context, SCULK_SPRUCE_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.ICE.defaultBlockState(), DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), UniformInt.of(3, 6), UniformInt.of(0, 2)));
+        FeatureUtils.register(context, PATCH_SNOW, Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                .add(Blocks.SNOW.defaultBlockState().setValue(BlockStateProperties.LAYERS, 1), 2)
+                .add(Blocks.SNOW.defaultBlockState().setValue(BlockStateProperties.LAYERS, 2), 1).build())))));
+        FeatureUtils.register(context, DISK_GRAVEL, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                .add(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), 4)
+                .add(Blocks.GRAVEL.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SNOWY_SCULK_STONE), UniformInt.of(3, 5), 2));
 
         FeatureUtils.register(context, PLANT_BLOOMING, DDFeatures.BLOOMING_STEM);
     }
