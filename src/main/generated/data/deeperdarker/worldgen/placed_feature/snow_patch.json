@@ -1,0 +1,24 @@
+{
+  "feature": "deeperdarker:patch_snow",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 50
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "minecraft:snow",
+          "Properties": {
+            "layers": "1"
+          }
+        }
+      }
+    }
+  ]
+}
