@@ -1,7 +1,78 @@
 {
   "variants": {
-    "": {
-      "model": "deeperdarker:block/sculk_tissue"
-    }
+    "": [
+      {
+        "model": "deeperdarker:block/sculk_tissue"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 90
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 180
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 270
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "y": 90
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 270,
+        "y": 90
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "y": 180
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 270,
+        "y": 180
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "y": 270
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue",
+        "x": 270,
+        "y": 270
+      }
+    ]
   }
 }
