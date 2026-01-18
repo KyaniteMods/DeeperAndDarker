@@ -74,8 +74,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_SPRUCE_DELTA = createKey("sculk_spruce_delta");
     public static final ResourceKey<PlacedFeature> SNOW_PATCH = createKey("snow_patch");
     public static final ResourceKey<PlacedFeature> GRAVEL_DISK = createKey("gravel_disk");
-    public static final ResourceKey<PlacedFeature> ICICLE = createKey("icicle");
-    public static final ResourceKey<PlacedFeature> ICICLE_PATCH = createKey("icicle");
+    public static final ResourceKey<PlacedFeature> ICICLE_PATCH = createKey("icicle_patch");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
