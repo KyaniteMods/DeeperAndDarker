@@ -11,6 +11,7 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
+import com.kyanite.deeperdarker.content.items.SunglassesItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.world.otherside.OthersideEffects;
@@ -111,6 +112,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SLUDGE, SludgeModel::createInnerBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SLUDGE_OUTER, SludgeModel::createOuterBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
 
         EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer<>(ctx, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer<>(ctx, true));
@@ -127,6 +129,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             if (entityRenderer.getModel() instanceof HumanoidModel) {
                 registrationHelper.register(new HelmetHornRenderer<>(entityRenderer, context.getModelSet()));
                 registrationHelper.register(new SoulElytraRenderer<>(entityRenderer, context.getModelSet()));
+                registrationHelper.register(new SunglassesRenderer<>(entityRenderer, context.getModelSet()));
             }
         });
 
@@ -219,8 +222,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
             ResourceLocation texture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/soul_elytra_overlay_large.png");
 
-            ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
-            if (itemStack.is(DDItems.SOUL_ELYTRA)) {
+            ItemStack chest = client.player.getItemBySlot(EquipmentSlot.CHEST);
+            if (chest.is(DDItems.SOUL_ELYTRA)) {
                 float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime());
                 drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37, 0, 0, 0, 12, Mth.floor(32 * f), 32, 32);
                 drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37 + Mth.floor(32 * f), 0, 12, Mth.floor(32 * f), 12, Mth.ceil(32 * (1.0f - f)), 32, 32);

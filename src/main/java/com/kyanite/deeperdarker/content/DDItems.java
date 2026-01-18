@@ -106,6 +106,7 @@ public class DDItems {
     public static final Item SCULK_TUBER = register("sculk_tuber", new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.6f).build())));
 
     public static final Item SHADOW_CRYSTAL = register("shadow_crystal", new Item(new Item.Properties()));
+    public static final Item SUNGLASSES = register("sunglasses", new SunglassesItem(new Item.Properties()));
 
     public static final Item SHATTERED_HEAD = register("shattered_head", new StandingAndWallBlockItem(DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD, new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 

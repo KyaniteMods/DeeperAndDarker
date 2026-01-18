@@ -28,6 +28,7 @@
     "WardenMixin"
   ],
   "client": [
+    "DoNotRenderSunglassesItemMixin",
     "PhantomRendererMixin",
     "ShatteredHeadRenderMixin",
     "ShowHangingSignScreenMixin",
