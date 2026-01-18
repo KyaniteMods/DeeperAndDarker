@@ -34,13 +34,6 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
         entityRenderDispatcher = context.getEntityRenderer();
     }
 
-    public static LayerDefinition createModel() {
-        MeshDefinition meshDefinition = new MeshDefinition();
-        PartDefinition partDefinition = meshDefinition.getRoot();
-        partDefinition.addOrReplaceChild("beam", CubeListBuilder.create().texOffs(0, 0).addBox(7.0f, 0.0f, 7.0f, 2.0f, 16.0f, 2.0f), PartPose.ZERO);
-        return LayerDefinition.create(meshDefinition, 32, 32);
-    }
-
     @Override
     public void render(DarkFountainBlockEntity blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int light, int overlay) {
         if (blockEntity.getBlockState().hasProperty(DarkFountainBlock.HAS_BEAM) && !blockEntity.getBlockState().getValue(DarkFountainBlock.HAS_BEAM)) return;
@@ -128,22 +121,6 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
         renderQuad(pose, normal, vertexConsumer, color, y2, y1, x1, z2, x1, z1, u2w, u1w, v1, v2, light, overlay);
         // EAST
         renderQuad(pose, normal, vertexConsumer, color, y2, y1, x2, z1, x2, z2, u2e, u1e, v1, v2, light, overlay);
-
-//        renderQuad(pose, normal, vertexConsumer, color, y2, y, x, z, x2, z2, u + depth + width / spriteWidth, u, v + depth, v + depth + height / spriteHeight);
-//        renderQuad(pose, normal, vertexConsumer, color, y2, y, x4, z4, x3, z3, u + depth + width / spriteWidth, u + depth, v + depth, v2);
-//        renderQuad(pose, normal, vertexConsumer, color, y2, y, x2, z2, x3, z3, u + depth + width / spriteWidth, u + depth, v + depth, v2);
-//        renderQuad(pose, normal, vertexConsumer, color, y2, y, x4, z4, x, z, u + depth + width / spriteWidth, u + depth, v + depth, v2);
-    }
-
-    private static void renderPart(PoseStack poseStack, VertexConsumer vertexConsumer, int color, float y2, float y1, float x1, float z1, float x2, float z2, float x3, float z3, float x4, float z4, float u2, float u1, float v1, float v2, int light, int overlay) {
-        PoseStack.Pose last = poseStack.last();
-        Matrix4f pose = last.pose();
-        Matrix3f normal = last.normal();
-
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x1, z1, x2, z2, u2, u1, v1, v2, light, overlay);
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x4, z4, x3, z3, u2, u1, v1, v2, light, overlay);
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x2, z2, x3, z3, u2, u1, v1, v2, light, overlay);
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x4, z4, x1, z1, u2, u1, v1, v2, light, overlay);
     }
 
     private static void renderQuad(Matrix4f matrix4f, Matrix3f matrix3f, VertexConsumer vertexConsumer, int color, float y2, float y1, float x1, float z1, float x2, float z2, float u2, float u1, float v1, float v2, int light, int overlay) {
