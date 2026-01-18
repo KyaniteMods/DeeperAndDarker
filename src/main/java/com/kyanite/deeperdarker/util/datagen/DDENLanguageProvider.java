@@ -273,6 +273,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
         translationBuilder.add(DDItems.SCULK_TUBER, "Sculk Tuber");
+        translationBuilder.add(DDItems.SHADOW_CRYSTAL, "Shadow Crystal");
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");

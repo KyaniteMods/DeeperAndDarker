@@ -210,7 +210,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SCULK_LAMP);
         dropWhenSilkTouch(DDBlocks.PROTECTED_SCULK_GLEAM);
         dropSelf(DDBlocks.SCULK_TISSUE);
-        dropOther(DDBlocks.DARK_FOUNTAIN, DDBlocks.SCULK_TISSUE); // temporary
+        dropOther(DDBlocks.DARK_FOUNTAIN, DDItems.SHADOW_CRYSTAL);
     }
 
     private void addVineAndPlant(Block plant, Block vine) {
