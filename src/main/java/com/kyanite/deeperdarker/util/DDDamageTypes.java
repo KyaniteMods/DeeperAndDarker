@@ -13,10 +13,12 @@ import net.minecraft.world.level.Level;
 public class DDDamageTypes {
     public static final ResourceKey<DamageType> BITE = createKey("bite");
     public static final ResourceKey<DamageType> RING = createKey("ring");
+    public static final ResourceKey<DamageType> DARK_FOUNTAIN = createKey("dark_fountain");
 
     public static void bootstrap(BootstapContext<DamageType> context) {
         context.register(BITE, new DamageType(DeeperDarker.MOD_ID + ".bite", 0.1f));
         context.register(RING, new DamageType(DeeperDarker.MOD_ID + ".ring", 0.1f));
+        context.register(DARK_FOUNTAIN, new DamageType(DeeperDarker.MOD_ID + ".dark_fountain", 0.1f));
     }
 
     public static DamageSource source(Level level, ResourceKey<DamageType> damageType, Entity target, Entity attacker) {

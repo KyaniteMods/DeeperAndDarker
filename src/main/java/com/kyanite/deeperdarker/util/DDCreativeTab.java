@@ -194,6 +194,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.GRIME_BRICK);
 
         entries.accept(DDBlocks.SCULK_TISSUE);
+        entries.accept(DDBlocks.DARK_FOUNTAIN);
 
         entries.accept(DDItems.SOUL_ELYTRA);
         entries.accept(DDItems.ECHO_BOAT);

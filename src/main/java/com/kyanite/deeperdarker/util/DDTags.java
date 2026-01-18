@@ -10,6 +10,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.material.Fluid;
 
 public class DDTags {
     public static class Blocks {
@@ -54,6 +55,9 @@ public class DDTags {
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "ice_replaceable"));
         public static final TagKey<Block> ICE_BASE = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "ice_base"));
+
+        public static final TagKey<Block> DARK_FOUNTAIN_BEAM_PASSTHROUGH = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "dark_fountain_beam_passthrough"));
 
         public static final TagKey<Block> TRANSMITTABLE = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "transmittable"));
@@ -114,5 +118,10 @@ public class DDTags {
     public static class GameEvents {
         public static final TagKey<GameEvent> CHEST_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, "chest_vibrations"));
         public static final TagKey<GameEvent> FEET_VIBRATIONS = TagKey.create(Registries.GAME_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, "feet_vibrations"));
+    }
+
+    public static class Fluids {
+        public static final TagKey<Fluid> BLOCKS_DARK_FOUNTAIN_BEAM = TagKey.create(
+                Registries.FLUID, new ResourceLocation(DeeperDarker.MOD_ID, "blocks_dark_fountain_beam"));
     }
 }

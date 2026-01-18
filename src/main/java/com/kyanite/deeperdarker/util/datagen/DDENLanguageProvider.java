@@ -206,6 +206,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SHATTERED_HEAD, "Shattered Head");
         translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SHATTERED_WALL_HEAD)), "Shattered Wall Head");
         translationBuilder.add(DDBlocks.SCULK_TISSUE, "Sculk Tissue");
+        translationBuilder.add(DDBlocks.DARK_FOUNTAIN, "Dark Fountain");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
@@ -425,6 +426,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".dark_fountain", "%s was blinded by a dark fountain");
 
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");

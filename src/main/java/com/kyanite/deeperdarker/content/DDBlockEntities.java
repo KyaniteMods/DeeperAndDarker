@@ -20,6 +20,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<SculkJawBlockEntity> SCULK_JAW;
     public static final BlockEntityType<ReturnStatueBlockEntity> RETURN_STATUE;
     public static final BlockEntityType<IcicleBlockEntity> ICICLE;
+    public static final BlockEntityType<DarkFountainBlockEntity> DARK_FOUNTAIN;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -54,6 +55,10 @@ public class DDBlockEntities {
         ICICLE = create("icicle", FabricBlockEntityTypeBuilder.create(
                 IcicleBlockEntity::new,
                 DDBlocks.ICICLE
+        ));
+        DARK_FOUNTAIN = create("dark_fountain", FabricBlockEntityTypeBuilder.create(
+                DarkFountainBlockEntity::new,
+                DDBlocks.DARK_FOUNTAIN
         ));
     }
 

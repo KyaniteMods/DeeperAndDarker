@@ -9,4 +9,5 @@ import net.minecraft.world.damagesource.DamageType;
 public class DDDamageTypes {
     public static final ResourceKey<DamageType> BITE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "bite"));
     public static final ResourceKey<DamageType> RING = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "ring"));
+    public static final ResourceKey<DamageType> DARK_FOUNTAIN = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "dark_fountain"));
 }

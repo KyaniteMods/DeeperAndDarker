@@ -309,6 +309,7 @@ public class DDBlocks {
     public static final Block SHATTERED_WALL_HEAD = registerWithoutItem("shattered_wall_head", new ShatteredWallHeadBlock(BlockBehaviour.Properties.of().strength(1.0f).dropsLike(SHATTERED_HEAD).pushReaction(PushReaction.DESTROY)));
 
     public static final Block SCULK_TISSUE = register("sculk_tissue", new SculkTissueBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
+    public static final Block DARK_FOUNTAIN = register("dark_fountain", new DarkFountainBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
 
     public static final Block OTHERSIDE_PORTAL = registerWithoutItem("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 
