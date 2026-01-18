@@ -47,6 +47,10 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
         float animationTime = (float)Math.floorMod(blockEntity.hasLevel() ? blockEntity.getLevel().getGameTime() : 0, 360) + f;
         float lightScale = 2.25f + Mth.sin(Mth.DEG_TO_RAD * animationTime * 8.0f) * 0.25f;
 
+        float fadeOutTime = 10.0f;
+        float alpha = blockEntity.getFountainTicksLeft() > fadeOutTime ? 1.0f : (Mth.lerp(f, Math.min(fadeOutTime, blockEntity.getFountainTicksLeftOld()), blockEntity.getFountainTicksLeft())) / 10.0f;
+        int color = 0x00FFFFFF | ((int) (alpha * 255.0f) << 24);
+
         for (int i = -blockEntity.getBeamBlocksDown(); i <= blockEntity.getBeamBlocksUp(); i++) {
             int light1 = blockEntity.hasLevel() ? LevelRenderer.getLightColor(blockEntity.getLevel(), blockEntity.getBlockPos().relative(Direction.Axis.Y, i)) : 0xFFFFFF;
             poseStack.pushPose();
@@ -54,7 +58,7 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
             poseStack.scale(lightScale, 1.0f, lightScale);
             poseStack.mulPose(Axis.YP.rotation((float) Mth.atan2(blockEntity.getBlockPos().getCenter().x() - entityRenderDispatcher.camera.getPosition().x(), blockEntity.getBlockPos().getCenter().z() - entityRenderDispatcher.camera.getPosition().z())));
             poseStack.translate(-0.5f, -0.5f, -0.5f);
-            renderFlatFace(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(LIGHT_TEXTURE)), 0xFFFFFFFF, 7.0f, 0, 8.0f, 2.0f, 16.0f, 0.0f, 2.0f / 32.0f, 32, 32, light1, overlay);
+            renderFlatFace(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(LIGHT_TEXTURE)), color, 7.0f, 0, 8.0f, 2.0f, 16.0f, 0.0f, 2.0f / 32.0f, 32, 32, light1, overlay);
             poseStack.popPose();
         }
 
@@ -66,7 +70,7 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
             int light1 = blockEntity.hasLevel() ? LevelRenderer.getLightColor(blockEntity.getLevel(), blockEntity.getBlockPos().relative(Direction.Axis.Y, i)) : 0xFFFFFF;
             poseStack.pushPose();
             poseStack.translate(0.0f, i, 0.0f);
-            renderCuboidSides(poseStack, multiBufferSource.getBuffer(RenderType.entitySolid(TEXTURE)), 0xFFFFFFFF, 7.0f, 0, 7.0f, 2.0f, 16.0f, 2.0f, 0.0f, 0.0f, 32, 32, light1, overlay);
+            renderCuboidSides(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE)), color, 7.0f, 0, 7.0f, 2.0f, 16.0f, 2.0f, 0.0f, 0.0f, 32, 32, light1, overlay);
             poseStack.popPose();
         }
     }

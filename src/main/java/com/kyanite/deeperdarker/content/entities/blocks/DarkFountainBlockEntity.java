@@ -23,7 +23,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class DarkFountainBlockEntity extends BlockEntity {
+    private int fountainTicksLeftOld = 0;
     private int fountainTicksLeft = 0;
+    private boolean createdFountainThisTick = false;
     private int beamBlocksUp = 0;
     private int beamBlocksDown = 0;
     private AABB fountainBeam = null;
@@ -37,9 +39,13 @@ public class DarkFountainBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, DarkFountainBlockEntity blockEntity) {
+        blockEntity.fountainTicksLeftOld = blockEntity.fountainTicksLeft;
+        blockEntity.createdFountainThisTick = false;
         if (blockEntity.fountainTicksLeft == 0) {
             if (level.getRandom().nextFloat() < 0.005f) {
                 blockEntity.fountainTicksLeft = level.getRandom().nextInt(50, 80);
+                blockEntity.fountainTicksLeftOld = blockEntity.fountainTicksLeft;
+                blockEntity.createdFountainThisTick = true;
                 level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, true), Block.UPDATE_ALL);
             } else {
                 level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, false), Block.UPDATE_ALL);
@@ -108,6 +114,18 @@ public class DarkFountainBlockEntity extends BlockEntity {
         return beamBlocksDown;
     }
 
+    public int getFountainTicksLeft() {
+        return fountainTicksLeft;
+    }
+
+    public int getFountainTicksLeftOld() {
+        return fountainTicksLeftOld;
+    }
+
+    public boolean hasCreatedFountainThisTick() {
+        return createdFountainThisTick;
+    }
+
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
@@ -119,6 +137,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
         tag.putInt("fountain_ticks_left", fountainTicksLeft);
         tag.putInt("beam_blocks_up", beamBlocksUp);
         tag.putInt("beam_blocks_down", beamBlocksDown);
+        tag.putBoolean("created_fountain_this_tick", createdFountainThisTick);
         return tag;
     }
 
@@ -127,6 +146,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
         if(pTag.contains("fountain_ticks_left")) fountainTicksLeft = pTag.getInt("fountain_ticks_left");
         if(pTag.contains("beam_blocks_up")) beamBlocksUp = pTag.getInt("beam_blocks_up");
         if(pTag.contains("beam_blocks_down")) beamBlocksDown = pTag.getInt("beam_blocks_down");
+        if(pTag.contains("created_fountain_this_tick")) createdFountainThisTick = pTag.getBoolean("created_fountain_this_tick");
     }
 
     @Override
@@ -134,5 +154,6 @@ public class DarkFountainBlockEntity extends BlockEntity {
         pTag.putInt("fountain_ticks_left", fountainTicksLeft);
         pTag.putInt("beam_blocks_up", beamBlocksUp);
         pTag.putInt("beam_blocks_down", beamBlocksDown);
+        pTag.putBoolean("created_fountain_this_tick", createdFountainThisTick);
     }
 }
