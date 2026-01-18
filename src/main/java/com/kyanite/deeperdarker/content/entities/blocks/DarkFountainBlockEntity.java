@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +38,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
 
     public static void tick(Level level, BlockPos blockPos, BlockState blockState, DarkFountainBlockEntity blockEntity) {
         if (blockEntity.fountainTicksLeft == 0) {
-            if (level.getRandom().nextFloat() < 0.01f) {
+            if (level.getRandom().nextFloat() < 0.005f) {
                 blockEntity.fountainTicksLeft = level.getRandom().nextInt(50, 80);
                 level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, true), Block.UPDATE_ALL);
             } else {
