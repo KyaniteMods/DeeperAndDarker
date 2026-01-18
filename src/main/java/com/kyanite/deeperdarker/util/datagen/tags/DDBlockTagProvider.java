@@ -160,7 +160,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.ICE_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SNOWY_SCULK_STONE, Blocks.DEEPSLATE);
         tagBuilder(DDTags.Blocks.ICE_BASE).add(Blocks.PACKED_ICE, Blocks.BLUE_ICE);
 
-        tagBuilder(DDTags.Blocks.DARK_FOUNTAIN_BEAM_PASSTHROUGH).add(DDBlocks.DARK_FOUNTAIN);
+        tagBuilder(DDTags.Blocks.DARK_FOUNTAIN_BEAM_PASSTHROUGH);
 
         tagBuilder(DDTags.Blocks.TRANSMITTABLE)
                 .addOptionalTag(BlockTags.SHULKER_BOXES)
