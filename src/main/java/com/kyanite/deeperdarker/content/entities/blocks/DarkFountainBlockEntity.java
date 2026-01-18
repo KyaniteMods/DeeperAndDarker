@@ -53,10 +53,15 @@ public class DarkFountainBlockEntity extends BlockEntity {
                     return;
                 }
             }
-        } else blockEntity.fountainTicksLeft--;
+        } else {
+            blockEntity.calculateBeam(level, blockPos);
+            blockEntity.fountainTicksLeft--;
+        }
 
-        if (level.isClientSide()) return;
-        blockEntity.calculateBeam(level, blockPos);
+        if (level.isClientSide()) {
+            return;
+        }
+
         List<Entity> entities = level.getEntities(null, blockEntity.getFountainBeam());
         for (Entity entity : entities) {
             DamageSource damageSource = level.damageSources().source(DDDamageTypes.DARK_FOUNTAIN);
@@ -69,7 +74,6 @@ public class DarkFountainBlockEntity extends BlockEntity {
             double z = Mth.cos(yaw) * Mth.cos(pitch) * strength;
             entity.setDeltaMovement(x, y, z);
         }
-        blockEntity.setChanged();
     }
 
     private void calculateBeam(Level level, BlockPos blockPos) {
@@ -132,6 +136,11 @@ public class DarkFountainBlockEntity extends BlockEntity {
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    private void markUpdated() {
+        this.setChanged();
+        this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
     }
 
     @Override
