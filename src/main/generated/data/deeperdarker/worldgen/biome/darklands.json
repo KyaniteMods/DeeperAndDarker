@@ -25,7 +25,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "deeperdarker:dark_fountain_disk"
+    ],
     [
       "minecraft:freeze_top_layer"
     ]

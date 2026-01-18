@@ -101,6 +101,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_SNOW = createKey("patch_snow");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_GRAVEL = createKey("disk_gravel");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ICICLE = createKey("patch_icicle");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_DARK_FOUNTAIN = createKey("disk_dark_fountain");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -194,6 +195,9 @@ public class DDConfiguredFeatures {
                         .add(Blocks.PACKED_ICE.defaultBlockState(), 1)
                         .add(Blocks.BLUE_ICE.defaultBlockState(), 1)
                         .build()), BlockStateProvider.simple(DDBlocks.ICICLE), UniformInt.of(3, 6), 0.7f, 0.6f, 0.6f))));
+        FeatureUtils.register(context, DISK_DARK_FOUNTAIN, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                .add(DDBlocks.SCULK_TISSUE.defaultBlockState(), 35)
+                .add(DDBlocks.DARK_FOUNTAIN.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SCULK_TISSUE), UniformInt.of(3, 5), 0));
 
         FeatureUtils.register(context, PLANT_BLOOMING, DDFeatures.BLOOMING_STEM);
     }

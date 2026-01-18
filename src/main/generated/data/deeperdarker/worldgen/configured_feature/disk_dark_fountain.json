@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "half_height": 0,
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 5,
+        "min_inclusive": 3
+      }
+    },
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "data": {
+              "Name": "deeperdarker:sculk_tissue"
+            },
+            "weight": 35
+          },
+          {
+            "data": {
+              "Name": "deeperdarker:dark_fountain",
+              "Properties": {
+                "has_beam": "false"
+              }
+            },
+            "weight": 1
+          }
+        ]
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "deeperdarker:sculk_tissue"
+    }
+  }
+}

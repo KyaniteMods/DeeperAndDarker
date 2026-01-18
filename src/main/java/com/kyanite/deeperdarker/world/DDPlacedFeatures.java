@@ -75,6 +75,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SNOW_PATCH = createKey("snow_patch");
     public static final ResourceKey<PlacedFeature> GRAVEL_DISK = createKey("gravel_disk");
     public static final ResourceKey<PlacedFeature> ICICLE_PATCH = createKey("icicle_patch");
+    public static final ResourceKey<PlacedFeature> DARK_FOUNTAIN_DISK = createKey("dark_fountain_disk");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -133,6 +134,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SNOW_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_SNOW), CountOnEveryLayerPlacement.of(50), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SNOW.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, GRAVEL_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_GRAVEL), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(10));
         PlacementUtils.register(context, ICICLE_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_ICICLE), countPlacement(32, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, DARK_FOUNTAIN_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_DARK_FOUNTAIN), countPlacement(64, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, BLOOMING_PLANT, features.getOrThrow(DDConfiguredFeatures.PLANT_BLOOMING), CountOnEveryLayerPlacement.of(4), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.BLOOMING_STEM.defaultBlockState(), BlockPos.ZERO)));
     }
