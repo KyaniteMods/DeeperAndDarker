@@ -42,30 +42,34 @@ public class DarkFountainBlockEntity extends BlockEntity {
         blockEntity.fountainTicksLeftOld = blockEntity.fountainTicksLeft;
         blockEntity.createdFountainThisTick = false;
         if (blockEntity.fountainTicksLeft == 0) {
-            if (level.getRandom().nextFloat() < 0.005f) {
-                blockEntity.fountainTicksLeft = level.getRandom().nextInt(50, 80);
-                blockEntity.fountainTicksLeftOld = blockEntity.fountainTicksLeft;
-                blockEntity.createdFountainThisTick = true;
-                level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, true), Block.UPDATE_ALL);
-            } else {
-                level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, false), Block.UPDATE_ALL);
-                return;
+            if (!level.isClientSide()) {
+                if (level.getRandom().nextFloat() < 0.01f) {
+                    blockEntity.fountainTicksLeft = level.getRandom().nextInt(50, 80);
+                    blockEntity.fountainTicksLeftOld = blockEntity.fountainTicksLeft;
+                    blockEntity.createdFountainThisTick = true;
+                    level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, true), Block.UPDATE_ALL);
+                } else {
+                    level.setBlock(blockPos, blockState.setValue(DarkFountainBlock.HAS_BEAM, false), Block.UPDATE_ALL);
+                    return;
+                }
             }
-        }
-        blockEntity.fountainTicksLeft--;
+        } else blockEntity.fountainTicksLeft--;
+
+        if (level.isClientSide()) return;
         blockEntity.calculateBeam(level, blockPos);
         List<Entity> entities = level.getEntities(null, blockEntity.getFountainBeam());
         for (Entity entity : entities) {
             DamageSource damageSource = level.damageSources().source(DDDamageTypes.DARK_FOUNTAIN);
-            if (!entity.hurt(damageSource, 3)) return;
+            if (!entity.hurt(damageSource, 3)) continue;
             float yaw = level.getRandom().nextFloat() * Mth.TWO_PI;
-            float pitch = Mth.PI / 4.0f;
+            float pitch = Mth.PI / 8.0f;
             double strength = 1.5;
             double x = Mth.sin(yaw) * Mth.cos(pitch) * strength;
             double y = Mth.sin(pitch) * strength;
             double z = Mth.cos(yaw) * Mth.cos(pitch) * strength;
             entity.setDeltaMovement(x, y, z);
         }
+        blockEntity.setChanged();
     }
 
     private void calculateBeam(Level level, BlockPos blockPos) {
@@ -90,7 +94,6 @@ public class DarkFountainBlockEntity extends BlockEntity {
         this.beamBlocksDown = beamBlocksDown;
         if (changed) {
             recalculateFountainBeam();
-            setChanged();
         }
     }
 
