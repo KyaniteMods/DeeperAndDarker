@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "| |",
+    "#|#"
+  ],
+  "result": {
+    "item": "deeperdarker:sunglasses"
+  },
+  "show_notification": true
+}
