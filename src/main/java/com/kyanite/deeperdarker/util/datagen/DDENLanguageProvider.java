@@ -207,6 +207,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SHATTERED_WALL_HEAD)), "Shattered Wall Head");
         translationBuilder.add(DDBlocks.SCULK_TISSUE, "Sculk Tissue");
         translationBuilder.add(DDBlocks.DARK_FOUNTAIN, "Dark Fountain");
+        translationBuilder.add(DDBlocks.SHADOW_CRYSTAL_BLOCK, "Block of Shadow Crystal");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");

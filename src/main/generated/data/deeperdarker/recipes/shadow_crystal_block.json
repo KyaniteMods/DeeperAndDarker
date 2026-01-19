@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    },
+    {
+      "item": "deeperdarker:shadow_crystal"
+    }
+  ],
+  "result": {
+    "item": "deeperdarker:shadow_crystal_block"
+  }
+}

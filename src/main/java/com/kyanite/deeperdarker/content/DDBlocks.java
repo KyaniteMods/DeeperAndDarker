@@ -310,6 +310,7 @@ public class DDBlocks {
 
     public static final Block SCULK_TISSUE = register("sculk_tissue", new SculkTissueBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
     public static final Block DARK_FOUNTAIN = register("dark_fountain", new DarkFountainBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
+    public static final Block SHADOW_CRYSTAL_BLOCK = register("shadow_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
 
     public static final Block OTHERSIDE_PORTAL = registerWithoutItem("otherside_portal", new OthersidePortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL).noLootTable()));
 

@@ -155,6 +155,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("L")
                 .pattern("S")
                 .unlockedBy(getHasName(DDBlocks.SCULK_STONE), has(DDBlocks.SCULK_STONE)).save(output);
+        threeByThreePacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SHADOW_CRYSTAL_BLOCK, DDItems.SHADOW_CRYSTAL);
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
     }
