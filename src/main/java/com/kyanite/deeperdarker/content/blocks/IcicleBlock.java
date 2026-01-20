@@ -51,11 +51,11 @@ public class IcicleBlock extends BaseEntityBlock
     public static final DirectionProperty TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
     public static final EnumProperty<DripstoneThickness> THICKNESS = BlockStateProperties.DRIPSTONE_THICKNESS;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape TIP_MERGE_SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-    private static final VoxelShape TIP_SHAPE_UP = Block.box(5.0, 0.0, 5.0, 11.0, 11.0, 11.0);
-    private static final VoxelShape TIP_SHAPE_DOWN = Block.box(5.0, 5.0, 5.0, 11.0, 16.0, 11.0);
-    private static final VoxelShape FRUSTUM_SHAPE = Block.box(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-    private static final VoxelShape MIDDLE_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+    private static final VoxelShape TIP_MERGE_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+    private static final VoxelShape TIP_SHAPE_UP = Block.box(6.0, 0.0, 6.0, 10.0, 11.0, 10.0);
+    private static final VoxelShape TIP_SHAPE_DOWN = Block.box(6.0, 5.0, 6.0, 10.0, 16.0, 10.0);
+    private static final VoxelShape FRUSTUM_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+    private static final VoxelShape MIDDLE_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
     private static final VoxelShape BASE_SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
     private static final double STALACTITE_DRIP_START_PIXEL = TIP_SHAPE_DOWN.min(Direction.Axis.Y);
     private static final VoxelShape REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
