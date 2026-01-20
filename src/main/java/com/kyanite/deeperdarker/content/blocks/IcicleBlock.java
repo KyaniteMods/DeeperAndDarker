@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
@@ -240,6 +241,7 @@ public class IcicleBlock extends BaseEntityBlock
         BlockState blockState2 = blockState;
         while (isStalactite(blockState2)) {
             FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(serverLevel, mutableBlockPos, blockState2);
+            fallingBlockEntity.setDeltaMovement(new Vec3(0.0, -0.25, 0.0));
             if (isTip(blockState2, true)) {
                 int i = Math.max(1 + blockPos.getY() - mutableBlockPos.getY(), 6);
                 fallingBlockEntity.setHurtsEntities(i, 40);
