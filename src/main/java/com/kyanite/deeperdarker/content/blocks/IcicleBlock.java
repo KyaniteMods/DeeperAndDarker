@@ -410,6 +410,20 @@ public class IcicleBlock extends BaseEntityBlock
         return isTip(blockState, false) && blockState.getValue(TIP_DIRECTION) == direction;
     }
 
+    public Optional<BlockPos> getStalactiteTip(LevelReader levelReader, BlockPos pos) {
+        BlockPos.MutableBlockPos mutablePos = pos.mutable();
+        while (mutablePos.getY() >= levelReader.getMinBuildHeight()) {
+            BlockState state = levelReader.getBlockState(mutablePos);
+            if (isStalactite(state)) {
+                if (isTip(state, false)) return Optional.of(mutablePos.immutable());
+                mutablePos.move(Direction.DOWN);
+                continue;
+            }
+            return Optional.empty();
+        }
+        return Optional.empty();
+    }
+
     private boolean isStalactite(BlockState blockState) {
         return isIcicleWithDirection(blockState, Direction.DOWN);
     }

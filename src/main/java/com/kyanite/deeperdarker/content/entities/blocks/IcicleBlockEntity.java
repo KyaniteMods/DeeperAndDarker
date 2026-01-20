@@ -23,6 +23,7 @@ import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class IcicleBlockEntity extends BlockEntity implements GameEventListener.Holder<VibrationSystem.Listener>, VibrationSystem {
@@ -109,6 +110,10 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
             BlockState blockState = IcicleBlockEntity.this.getBlockState();
             Block block = blockState.getBlock();
             if (!serverLevel.getBlockState(this.blockPos.above()).is(block) || serverLevel.getBlockState(this.blockPos.above(2)).is(block)) return false;
+            if (block instanceof IcicleBlock icicle) {
+                Optional<BlockPos> optional = icicle.getStalactiteTip(serverLevel, this.blockPos);
+                if (optional.isEmpty() || !serverLevel.getBlockState(optional.get().below()).isAir()) return false;
+            }
             return (gameEvent != GameEvent.BLOCK_DESTROY && gameEvent != GameEvent.BLOCK_PLACE) && dx <= 1 && (blockPos.getY() < this.blockPos.getY()) && dz <= 1 && BlockPos.betweenClosedStream(this.blockPos.below(), new BlockPos(this.blockPos.getX(), blockPos.getY(), this.blockPos.getZ())).allMatch(pos -> !serverLevel.getBlockState(pos).isCollisionShapeFullBlock(serverLevel, pos) || serverLevel.getBlockState(pos).is(block));
         }
 
