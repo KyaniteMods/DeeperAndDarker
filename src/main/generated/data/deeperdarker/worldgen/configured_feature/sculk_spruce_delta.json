@@ -2,7 +2,7 @@
   "type": "minecraft:delta_feature",
   "config": {
     "contents": {
-      "Name": "minecraft:ice"
+      "Name": "minecraft:gravel"
     },
     "rim": {
       "Name": "deeperdarker:snowy_sculk_stone"

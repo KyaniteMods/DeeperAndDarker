@@ -42,8 +42,9 @@ public class IcicleFeature
     }
 
     private static Optional<Direction> getTipDirection(TagKey<Block> base, TagKey<Block> replaceable, LevelAccessor levelAccessor, BlockPos blockPos) {
-        boolean isIceBase = IcicleUtils.isIceBase(base, replaceable, levelAccessor.getBlockState(blockPos.above()));
-        return isIceBase && levelAccessor.getBlockState(blockPos).isAir() ? Optional.of(Direction.DOWN) : Optional.empty();
+        Direction direction = levelAccessor.getRandom().nextBoolean() ? Direction.UP : Direction.DOWN;
+        boolean isIceBase = IcicleUtils.isIceBase(base, replaceable, levelAccessor.getBlockState(blockPos.relative(direction.getOpposite())));
+        return isIceBase && levelAccessor.getBlockState(blockPos).isAir() ? Optional.of(direction) : Optional.empty();
     }
 
     private static void createPatchOfIceBlocks(LevelAccessor levelAccessor, RandomSource randomSource, BlockPos blockPos, IcicleConfiguration config) {
