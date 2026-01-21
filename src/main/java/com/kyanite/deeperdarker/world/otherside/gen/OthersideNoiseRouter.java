@@ -14,14 +14,15 @@ public class OthersideNoiseRouter {
         DensityFunction continents = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.CONTINENTALNESS)));
         DensityFunction erosion = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.EROSION)));
         DensityFunction ridges = DensityFunctions.flatCache(DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noise.getOrThrow(Noises.RIDGE)));
+        DensityFunction cheese = DensityFunctions.noise(noise.getOrThrow(Noises.CAVE_CHEESE), 0.6666666666666666);
 
-        DensityFunction nether3D = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.base3dNoiseNether()));
+        DensityFunction nether3D = new DensityFunctions.HolderHolder(density.getOrThrow(NoiseRouterDataAccessor.base3dNoiseOverworld()));
         DensityFunction finalDensity = DensityFunctions.mul(
                 DensityFunctions.constant(0.64),
                 DensityFunctions.interpolated(DensityFunctions.blendDensity(DensityFunctions.add(
                         DensityFunctions.constant(2.5),
                         DensityFunctions.mul(
-                                DensityFunctions.yClampedGradient(-8, 15, 0, 1),
+                                DensityFunctions.yClampedGradient(-8, 42, 0, 1),
                                 DensityFunctions.add(
                                         DensityFunctions.constant(-2.5),
                                         DensityFunctions.add(
@@ -29,8 +30,10 @@ public class OthersideNoiseRouter {
                                                 DensityFunctions.mul(
                                                         DensityFunctions.yClampedGradient(104, 128, 1, 0),
                                                         DensityFunctions.add(
-                                                                DensityFunctions.constant(-0.85),
-                                                                nether3D
+                                                                DensityFunctions.add(
+                                                                        DensityFunctions.constant(-0.9),
+                                                                        nether3D
+                                                                ), cheese.halfNegative()
                                                         )
                                                 )
                                         )

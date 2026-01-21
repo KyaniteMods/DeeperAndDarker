@@ -22,4 +22,9 @@ public interface NoiseRouterDataAccessor {
     static ResourceKey<DensityFunction> base3dNoiseNether() {
         throw new IllegalStateException("Replaced by mixin");
     }
+
+    @Accessor("BASE_3D_NOISE_OVERWORLD")
+    static ResourceKey<DensityFunction> base3dNoiseOverworld() {
+        throw new IllegalStateException("Replaced by mixin");
+    }
 }
