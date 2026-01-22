@@ -76,6 +76,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GRAVEL_DISK = createKey("gravel_disk");
     public static final ResourceKey<PlacedFeature> ICICLE_PATCH = createKey("icicle_patch");
     public static final ResourceKey<PlacedFeature> DARK_FOUNTAIN_DISK = createKey("dark_fountain_disk");
+    public static final ResourceKey<PlacedFeature> SHADOW_CRYSTAL_CONE = createKey("shadow_crystal_cone");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -128,12 +129,14 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(3, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.defaultBlockState(), BlockPos.ZERO)));
-        PlacementUtils.register(context, SCULK_SPRUCE_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_SCULK_SPRUCE), CountOnEveryLayerPlacement.of(12), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.SCULK_SPRUCE_SAPLING.defaultBlockState(), BlockPos.ZERO)));
+        PlacementUtils.register(context, SCULK_SPRUCE_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_SCULK_SPRUCE), CountOnEveryLayerPlacement.of(18), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.SCULK_SPRUCE_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, SCULK_SPRUCE_FOREST_VEGETATION, features.getOrThrow(DDConfiguredFeatures.SCULK_SPRUCE_FOREST_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_SPRUCE_DELTA, features.getOrThrow(DDConfiguredFeatures.SCULK_SPRUCE_DELTA), CountOnEveryLayerPlacement.of(30), BiomeFilter.biome());
         PlacementUtils.register(context, SNOW_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_SNOW), CountOnEveryLayerPlacement.of(50), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SNOW.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, GRAVEL_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_GRAVEL), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(10));
         PlacementUtils.register(context, ICICLE_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_ICICLE), countPlacement(32, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, SHADOW_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_SHADOW_CRYSTAL), countPlacement(64, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+
         PlacementUtils.register(context, DARK_FOUNTAIN_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_DARK_FOUNTAIN), countPlacement(64, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, BLOOMING_PLANT, features.getOrThrow(DDConfiguredFeatures.PLANT_BLOOMING), CountOnEveryLayerPlacement.of(4), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.BLOOMING_STEM.defaultBlockState(), BlockPos.ZERO)));

@@ -156,7 +156,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.SCULK_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.ECHO_LEAVES);
         tagBuilder(DDTags.Blocks.GLOWING_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE);
 
-        tagBuilder(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SNOWY_SCULK_STONE, Blocks.DEEPSLATE);
+        tagBuilder(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SNOWY_SCULK_STONE, Blocks.SNOW, Blocks.GRAVEL, Blocks.DEEPSLATE);
         tagBuilder(DDTags.Blocks.ICE_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SNOWY_SCULK_STONE, Blocks.DEEPSLATE);
         tagBuilder(DDTags.Blocks.ICE_BASE).add(Blocks.PACKED_ICE, Blocks.BLUE_ICE);
 

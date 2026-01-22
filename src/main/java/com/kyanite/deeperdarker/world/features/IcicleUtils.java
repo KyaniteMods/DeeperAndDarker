@@ -75,7 +75,7 @@ public class IcicleUtils {
             if (blockState.is(icicle.getBlock())) {
                 blockState = blockState.setValue(IcicleBlock.WATERLOGGED, levelAccessor.isWaterAt(mutableBlockPos));
             }
-            levelAccessor.setBlock(mutableBlockPos, blockState, 2);
+            levelAccessor.setBlock(mutableBlockPos, blockState, Block.UPDATE_CLIENTS);
             mutableBlockPos.move(direction);
         });
     }
@@ -83,7 +83,7 @@ public class IcicleUtils {
     protected static boolean placeIceBlockIfPossible(BlockState ice, TagKey<Block> replaceable, LevelAccessor levelAccessor, BlockPos blockPos) {
         BlockState blockState = levelAccessor.getBlockState(blockPos);
         if (blockState.is(replaceable)) {
-            levelAccessor.setBlock(blockPos, ice, 2);
+            levelAccessor.setBlock(blockPos, ice, Block.UPDATE_CLIENTS);
             return true;
         }
         return false;

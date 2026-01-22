@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.world;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.world.features.*;
 import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
+import com.kyanite.deeperdarker.world.features.config.ConeConfiguration;
 import com.kyanite.deeperdarker.world.features.config.IcicleConfiguration;
 import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Registry;
@@ -22,6 +23,7 @@ public class DDFeatures {
     public static final Feature<NoneFeatureConfiguration> POOL = register("pool", new OthersidePoolFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> BLOOMING_STEM = register("blooming_stem", new BloomingStemFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<IcicleConfiguration> ICICLE = register("icicle", new IcicleFeature(IcicleConfiguration.CODEC));
+    public static final Feature<ConeConfiguration> CONE = register("cone", new ConeFeature(ConeConfiguration.CODEC));
 
     private static <FC extends FeatureConfiguration> Feature<FC> register(String id, Feature<FC> feature) {
         return Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, id), feature);

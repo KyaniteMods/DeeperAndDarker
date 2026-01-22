@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
+import com.kyanite.deeperdarker.world.features.config.ConeConfiguration;
 import com.kyanite.deeperdarker.world.features.config.IcicleConfiguration;
 import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Direction;
@@ -102,6 +103,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_GRAVEL = createKey("disk_gravel");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ICICLE = createKey("patch_icicle");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_DARK_FOUNTAIN = createKey("disk_dark_fountain");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CONE_SHADOW_CRYSTAL = createKey("cone_shadow_crystal");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -195,6 +197,8 @@ public class DDConfiguredFeatures {
                         .add(Blocks.PACKED_ICE.defaultBlockState(), 1)
                         .add(Blocks.BLUE_ICE.defaultBlockState(), 1)
                         .build()), BlockStateProvider.simple(DDBlocks.ICICLE), UniformInt.of(3, 6), 0.7f, 0.6f, 0.6f))));
+        FeatureUtils.register(context, CONE_SHADOW_CRYSTAL, DDFeatures.CONE, new ConeConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SHADOW_CRYSTAL_BLOCK), UniformInt.of(40, 45), UniformInt.of(30, 50), UniformInt.of(30, 60), UniformInt.of(-8, 8), UniformInt.of(-25, -10), UniformInt.of(-8, 8)));
+
         FeatureUtils.register(context, DISK_DARK_FOUNTAIN, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(DDBlocks.SCULK_TISSUE.defaultBlockState(), 35)
                 .add(DDBlocks.DARK_FOUNTAIN.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SCULK_TISSUE), UniformInt.of(3, 5), 0));

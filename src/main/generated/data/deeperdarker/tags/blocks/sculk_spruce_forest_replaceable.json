@@ -4,6 +4,8 @@
     "minecraft:sculk",
     "deeperdarker:sculk_stone",
     "deeperdarker:snowy_sculk_stone",
+    "minecraft:snow",
+    "minecraft:gravel",
     "minecraft:deepslate"
   ]
 }
