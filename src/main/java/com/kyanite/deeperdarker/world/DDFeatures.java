@@ -2,17 +2,13 @@ package com.kyanite.deeperdarker.world;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.world.features.*;
-import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
-import com.kyanite.deeperdarker.world.features.config.ConeConfiguration;
-import com.kyanite.deeperdarker.world.features.config.IcicleConfiguration;
-import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
+import com.kyanite.deeperdarker.world.features.config.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
 
 public class DDFeatures {
     public static final Feature<VineFeatureConfiguration> VINE = register("vine", new VineFeature(VineFeatureConfiguration.CODEC));
@@ -22,8 +18,9 @@ public class DDFeatures {
     public static final Feature<NoneFeatureConfiguration> GLOWING_ROOTS = register("glowing_roots", new GlowingRootsFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> POOL = register("pool", new OthersidePoolFeature(NoneFeatureConfiguration.CODEC));
     public static final Feature<NoneFeatureConfiguration> BLOOMING_STEM = register("blooming_stem", new BloomingStemFeature(NoneFeatureConfiguration.CODEC));
-    public static final Feature<IcicleConfiguration> ICICLE = register("icicle", new IcicleFeature(IcicleConfiguration.CODEC));
-    public static final Feature<ConeConfiguration> CONE = register("cone", new ConeFeature(ConeConfiguration.CODEC));
+    public static final Feature<IcicleFeatureConfiguration> ICICLE = register("icicle", new IcicleFeature(IcicleFeatureConfiguration.CODEC));
+    public static final Feature<ConeFeatureConfiguration> CONE = register("cone", new ConeFeature(ConeFeatureConfiguration.CODEC));
+    public static final Feature<BoulderFeatureConfiguration> BOULDER = register("boulder", new BoulderFeature(BoulderFeatureConfiguration.CODEC));
 
     private static <FC extends FeatureConfiguration> Feature<FC> register(String id, Feature<FC> feature) {
         return Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, id), feature);

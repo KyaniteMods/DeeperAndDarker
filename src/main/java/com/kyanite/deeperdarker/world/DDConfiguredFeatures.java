@@ -3,10 +3,8 @@ package com.kyanite.deeperdarker.world;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.world.features.config.*;
 import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
-import com.kyanite.deeperdarker.world.features.config.ConeConfiguration;
-import com.kyanite.deeperdarker.world.features.config.IcicleConfiguration;
-import com.kyanite.deeperdarker.world.features.config.VineFeatureConfiguration;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -17,7 +15,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
@@ -32,6 +29,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePl
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
@@ -104,6 +102,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_ICICLE = createKey("patch_icicle");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_DARK_FOUNTAIN = createKey("disk_dark_fountain");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CONE_SHADOW_CRYSTAL = createKey("cone_shadow_crystal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BOULDER_SCULK_FOREST = createKey("boulder_sculk_forest");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -192,12 +191,13 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, DISK_GRAVEL, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), 4)
                 .add(Blocks.GRAVEL.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SNOWY_SCULK_STONE), UniformInt.of(3, 5), 2));
-        FeatureUtils.register(context, PATCH_ICICLE, Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 6, 2, PlacementUtils.onlyWhenEmpty(DDFeatures.ICICLE, new IcicleConfiguration(DDTags.Blocks.ICE_REPLACEABLE, DDTags.Blocks.ICE_BASE, new WeightedStateProvider(
+        FeatureUtils.register(context, PATCH_ICICLE, Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 6, 2, PlacementUtils.onlyWhenEmpty(DDFeatures.ICICLE, new IcicleFeatureConfiguration(DDTags.Blocks.ICE_REPLACEABLE, DDTags.Blocks.ICE_BASE, new WeightedStateProvider(
                 SimpleWeightedRandomList.<BlockState>builder()
                         .add(Blocks.PACKED_ICE.defaultBlockState(), 1)
                         .add(Blocks.BLUE_ICE.defaultBlockState(), 1)
                         .build()), BlockStateProvider.simple(DDBlocks.ICICLE), UniformInt.of(3, 6), 0.7f, 0.6f, 0.6f))));
-        FeatureUtils.register(context, CONE_SHADOW_CRYSTAL, DDFeatures.CONE, new ConeConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SHADOW_CRYSTAL_BLOCK), UniformInt.of(40, 45), UniformInt.of(30, 50), UniformInt.of(30, 60), UniformInt.of(-8, 8), UniformInt.of(-25, -10), UniformInt.of(-8, 8)));
+        FeatureUtils.register(context, CONE_SHADOW_CRYSTAL, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SHADOW_CRYSTAL_BLOCK), UniformInt.of(40, 45), UniformInt.of(30, 50), UniformInt.of(30, 60), UniformInt.of(-8, 8), UniformInt.of(-25, -10), UniformInt.of(-8, 8)));
+        FeatureUtils.register(context, BOULDER_SCULK_FOREST, DDFeatures.BOULDER, new BoulderFeatureConfiguration(SimpleStateProvider.simple(DDBlocks.COBBLED_SCULK_STONE), ConstantInt.of(3)));
 
         FeatureUtils.register(context, DISK_DARK_FOUNTAIN, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(DDBlocks.SCULK_TISSUE.defaultBlockState(), 35)

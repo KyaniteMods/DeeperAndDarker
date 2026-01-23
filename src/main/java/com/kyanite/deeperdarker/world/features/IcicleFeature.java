@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.world.features;
 
-import com.kyanite.deeperdarker.world.features.config.IcicleConfiguration;
+import com.kyanite.deeperdarker.world.features.config.IcicleFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,17 +15,17 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import java.util.Optional;
 
 public class IcicleFeature
-        extends Feature<IcicleConfiguration> {
-    public IcicleFeature(Codec<IcicleConfiguration> codec) {
+        extends Feature<IcicleFeatureConfiguration> {
+    public IcicleFeature(Codec<IcicleFeatureConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<IcicleConfiguration> featurePlaceContext) {
+    public boolean place(FeaturePlaceContext<IcicleFeatureConfiguration> featurePlaceContext) {
         WorldGenLevel levelAccessor = featurePlaceContext.level();
         BlockPos blockPos = featurePlaceContext.origin();
         RandomSource randomSource = featurePlaceContext.random();
-        IcicleConfiguration config = featurePlaceContext.config();
+        IcicleFeatureConfiguration config = featurePlaceContext.config();
         Optional<Direction> optional = getTipDirection(config.base, config.replaceable, levelAccessor, blockPos);
         if (optional.isEmpty()) {
             return false;
@@ -47,7 +47,7 @@ public class IcicleFeature
         return isIceBase && levelAccessor.getBlockState(blockPos).isAir() ? Optional.of(direction) : Optional.empty();
     }
 
-    private static void createPatchOfIceBlocks(LevelAccessor levelAccessor, RandomSource randomSource, BlockPos blockPos, IcicleConfiguration config) {
+    private static void createPatchOfIceBlocks(LevelAccessor levelAccessor, RandomSource randomSource, BlockPos blockPos, IcicleFeatureConfiguration config) {
         IcicleUtils.placeIceBlockIfPossible(config.iceProvider.getState(randomSource, blockPos), config.replaceable, levelAccessor, blockPos);
         for (Direction direction : Direction.Plane.HORIZONTAL) {
             if (randomSource.nextFloat() > config.chanceOfDirectionalSpread) continue;

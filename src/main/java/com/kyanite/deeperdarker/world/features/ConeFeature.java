@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.world.features;
 
-import com.kyanite.deeperdarker.world.features.config.ConeConfiguration;
+import com.kyanite.deeperdarker.world.features.config.ConeFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -12,16 +12,16 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 public class ConeFeature
-        extends Feature<ConeConfiguration> {
-    public ConeFeature(Codec<ConeConfiguration> codec) {
+        extends Feature<ConeFeatureConfiguration> {
+    public ConeFeature(Codec<ConeFeatureConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<ConeConfiguration> featurePlaceContext) {
+    public boolean place(FeaturePlaceContext<ConeFeatureConfiguration> featurePlaceContext) {
         RandomSource random = featurePlaceContext.random();
         WorldGenLevel level = featurePlaceContext.level();
-        ConeConfiguration config = featurePlaceContext.config();
+        ConeFeatureConfiguration config = featurePlaceContext.config();
         BlockPos origin = featurePlaceContext.origin();
         int width = config.widthProvider.sample(random);
         int depth = config.depthProvider.sample(random);

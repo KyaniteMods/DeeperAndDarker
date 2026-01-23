@@ -77,6 +77,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ICICLE_PATCH = createKey("icicle_patch");
     public static final ResourceKey<PlacedFeature> DARK_FOUNTAIN_DISK = createKey("dark_fountain_disk");
     public static final ResourceKey<PlacedFeature> SHADOW_CRYSTAL_CONE = createKey("shadow_crystal_cone");
+    public static final ResourceKey<PlacedFeature> SCULK_FOREST_BOULDER = createKey("sculk_forest_boulder");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -136,6 +137,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GRAVEL_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_GRAVEL), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(10));
         PlacementUtils.register(context, ICICLE_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_ICICLE), countPlacement(32, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SHADOW_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_SHADOW_CRYSTAL), countPlacement(64, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+        PlacementUtils.register(context, SCULK_FOREST_BOULDER, features.getOrThrow(DDConfiguredFeatures.BOULDER_SCULK_FOREST), countPlacement(3, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, DARK_FOUNTAIN_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_DARK_FOUNTAIN), countPlacement(64, PlacementUtils.FULL_RANGE));
 

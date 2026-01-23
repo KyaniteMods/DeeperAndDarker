@@ -1,12 +1,6 @@
 {
   "type": "deeperdarker:cone",
   "config": {
-    "block_state_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "deeperdarker:shadow_crystal_block"
-      }
-    },
     "depth": {
       "type": "minecraft:uniform",
       "value": {
@@ -22,6 +16,12 @@
       }
     },
     "replaceable": "deeperdarker:sculk_spruce_forest_replaceable",
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "deeperdarker:shadow_crystal_block"
+      }
+    },
     "tip_x_shift": {
       "type": "minecraft:uniform",
       "value": {
