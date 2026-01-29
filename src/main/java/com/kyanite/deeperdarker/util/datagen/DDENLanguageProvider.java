@@ -296,6 +296,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(DDEntities.BOAT, "Boat");
         translationBuilder.add(DDEntities.CHEST_BOAT, "Boat with Chest");
+        translationBuilder.add(DDEntities.ICICLE_SHARD, "Icicle Shard");
         translationBuilder.add(DDEntities.ANGLER_FISH, "Angler Fish");
         translationBuilder.add(DDEntities.SCULK_SNAPPER, "Sculk Snapper");
         translationBuilder.add(DDEntities.SHATTERED, "Shattered");
@@ -344,6 +345,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.angler_fish.hurt", "Angler Fish hurts");
         translationBuilder.add("subtitles.entity.angler_fish.flop", "Angler Fish flops");
         translationBuilder.add("subtitles.entity.angler_fish.death", "Angler Fish dies");
+        translationBuilder.add("subtitles.entity.icicle_shard.land", "Icicle shard lands");
 
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you toward the source...");

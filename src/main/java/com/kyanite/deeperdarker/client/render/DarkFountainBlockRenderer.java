@@ -123,15 +123,15 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
         renderQuad(pose, normal, vertexConsumer, color, y2, y1, x2, z1, x2, z2, u2e, u1e, v1, v2, light, overlay);
     }
 
-    private static void renderQuad(Matrix4f matrix4f, Matrix3f matrix3f, VertexConsumer vertexConsumer, int color, float y2, float y1, float x1, float z1, float x2, float z2, float u2, float u1, float v1, float v2, int light, int overlay) {
-        addVertex(matrix4f, matrix3f, vertexConsumer, color, y1, x1, z1, u1, v1, light, overlay);
-        addVertex(matrix4f, matrix3f, vertexConsumer, color, y2, x1, z1, u1, v2, light, overlay);
-        addVertex(matrix4f, matrix3f, vertexConsumer, color, y2, x2, z2, u2, v2, light, overlay);
-        addVertex(matrix4f, matrix3f, vertexConsumer, color, y1, x2, z2, u2, v1, light, overlay);
+    private static void renderQuad(Matrix4f pose, Matrix3f normal, VertexConsumer vertexConsumer, int color, float y2, float y1, float x1, float z1, float x2, float z2, float u2, float u1, float v1, float v2, int light, int overlay) {
+        addVertex(pose, normal, vertexConsumer, color, y1, x1, z1, u1, v1, light, overlay);
+        addVertex(pose, normal, vertexConsumer, color, y2, x1, z1, u1, v2, light, overlay);
+        addVertex(pose, normal, vertexConsumer, color, y2, x2, z2, u2, v2, light, overlay);
+        addVertex(pose, normal, vertexConsumer, color, y1, x2, z2, u2, v1, light, overlay);
     }
 
-    private static void addVertex(Matrix4f matrix4f, Matrix3f matrix3f, VertexConsumer vertexConsumer, int color, float y, float x, float z, float u, float v, int light, int overlay) {
-        vertexConsumer.vertex(matrix4f, x, y, z).color(color >>> 16 & 0xFF, (color >>> 8) & 0xFF, color & 0xFF, (color >>> 24) & 0xFF).uv(u, v).overlayCoords(overlay).uv2(light).normal(matrix3f, 0.0f, 1.0f, 0.0f).endVertex();
+    private static void addVertex(Matrix4f pose, Matrix3f normal, VertexConsumer vertexConsumer, int color, float y, float x, float z, float u, float v, int light, int overlay) {
+        vertexConsumer.vertex(pose, x, y, z).color(color >>> 16 & 0xFF, (color >>> 8) & 0xFF, color & 0xFF, (color >>> 24) & 0xFF).uv(u, v).overlayCoords(overlay).uv2(light).normal(normal, 0.0f, 1.0f, 0.0f).endVertex();
     }
 
     @Override

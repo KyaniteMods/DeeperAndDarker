@@ -233,6 +233,12 @@
     ],
     "subtitle": "subtitles.entity.stalker.notice"
   },
+  "entity.icicle_shard.land": {
+    "sounds": [
+      "deeperdarker:entity/icicle_shard/land"
+    ],
+    "subtitle": "subtitles.entity.icicle_shard.land"
+  },
   "item.transmitter.error": {
     "sounds": [
       "deeperdarker:item/transmitter/error"

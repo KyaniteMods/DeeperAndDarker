@@ -61,6 +61,8 @@ public class DDSounds {
     public static final SoundEvent STALKER_HURT = register("entity.stalker.hurt");
     public static final SoundEvent STALKER_NOTICE = register("entity.stalker.notice");
 
+    public static final SoundEvent ICICLE_SHARD_LAND = register("entity.icicle_shard.land");
+
     public static final SoundEvent TRANSMITTER_ERROR = register("item.transmitter.error");
     public static final SoundEvent TRANSMITTER_LINK = register("item.transmitter.link");
     public static final SoundEvent TRANSMITTER_OPEN = register("item.transmitter.open");

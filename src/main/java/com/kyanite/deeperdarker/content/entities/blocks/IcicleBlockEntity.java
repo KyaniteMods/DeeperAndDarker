@@ -79,7 +79,7 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
 
     protected class VibrationUser
             implements VibrationSystem.User {
-        public static final int LISTENER_RANGE = 32;
+        public static final int LISTENER_RANGE = 96;
         protected final BlockPos blockPos;
         private final PositionSource positionSource;
 

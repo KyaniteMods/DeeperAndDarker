@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
+import com.kyanite.deeperdarker.content.entities.IcicleShard;
 import com.kyanite.deeperdarker.content.entities.blocks.IcicleBlockEntity;
 import com.kyanite.deeperdarker.mixin.AbstractCauldronAccessor;
 import net.minecraft.core.BlockPos;
@@ -8,6 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -228,6 +230,25 @@ public class IcicleBlock extends BaseEntityBlock
     public void onBrokenAfterFall(Level level, BlockPos blockPos, FallingBlockEntity fallingBlockEntity) {
         if (!fallingBlockEntity.isSilent()) {
             level.levelEvent(1045, blockPos, 0);
+        }
+        int shardAmount;
+        if (isTip(fallingBlockEntity.getBlockState(), false)) {
+            shardAmount = level.getRandom().nextBoolean() ? 6 : 8;
+        } else {
+            shardAmount = level.getRandom().nextFloat() < 0.2f ? 2 : 0;
+        }
+        if (shardAmount == 0) return;
+        float angle = level.getRandom().nextFloat() * Mth.TWO_PI;
+        for (int i = 0; i < shardAmount; i++) {
+            IcicleShard shard = new IcicleShard(blockPos.getX() + 0.5, blockPos.getY() + 0.5, blockPos.getZ() + 0.5, level);
+
+            float yawVariation = (level.getRandom().nextFloat() - 0.5f) * Mth.TWO_PI * 0.0625f;
+            float yaw = angle + ((float) i / shardAmount) * Mth.TWO_PI + yawVariation;
+            float pitch = Mth.PI / 8.0f;
+            double strength = 0.35 + level.getRandom().nextFloat() * 0.0625f;
+            shard.setDeltaMovement(Vec3.directionFromRotation(-pitch * Mth.RAD_TO_DEG, yaw * Mth.RAD_TO_DEG).scale(strength));
+
+            level.addFreshEntity(shard);
         }
     }
 

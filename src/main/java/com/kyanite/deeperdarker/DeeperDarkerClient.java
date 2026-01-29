@@ -116,6 +116,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer<>(ctx, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer<>(ctx, true));
+        EntityRendererRegistry.register(DDEntities.ICICLE_SHARD, IcicleShardRenderer::new);
         EntityRendererRegistry.register(DDEntities.ANGLER_FISH, AnglerFishRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_SNAPPER, SculkSnapperRenderer::new);
         EntityRendererRegistry.register(DDEntities.SHATTERED, ShatteredRenderer::new);
