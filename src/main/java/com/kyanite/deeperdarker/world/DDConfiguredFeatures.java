@@ -195,7 +195,7 @@ public class DDConfiguredFeatures {
                 SimpleWeightedRandomList.<BlockState>builder()
                         .add(Blocks.PACKED_ICE.defaultBlockState(), 1)
                         .add(Blocks.BLUE_ICE.defaultBlockState(), 1)
-                        .build()), BlockStateProvider.simple(DDBlocks.ICICLE), UniformInt.of(3, 6), 0.7f, 0.6f, 0.6f))));
+                        .build()), BlockStateProvider.simple(DDBlocks.ICICLE), UniformInt.of(6, 11), 0.9f, 0.8f, 0.8f))));
         FeatureUtils.register(context, CONE_SHADOW_CRYSTAL, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SHADOW_CRYSTAL_BLOCK), UniformInt.of(40, 45), UniformInt.of(30, 50), UniformInt.of(30, 60), UniformInt.of(-8, 8), UniformInt.of(-25, -10), UniformInt.of(-8, 8)));
         FeatureUtils.register(context, BOULDER_SCULK_FOREST, DDFeatures.BOULDER, new BoulderFeatureConfiguration(SimpleStateProvider.simple(DDBlocks.COBBLED_SCULK_STONE), ConstantInt.of(3)));
 

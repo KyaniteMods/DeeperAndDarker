@@ -6,14 +6,14 @@
         "type": "deeperdarker:icicle",
         "config": {
           "base": "deeperdarker:ice_base",
-          "chance_of_directional_spread": 0.7,
-          "chance_of_spread_radius2": 0.6,
-          "chance_of_spread_radius3": 0.6,
+          "chance_of_directional_spread": 0.9,
+          "chance_of_spread_radius2": 0.8,
+          "chance_of_spread_radius3": 0.8,
           "height_provider": {
             "type": "minecraft:uniform",
             "value": {
-              "max_inclusive": 6,
-              "min_inclusive": 3
+              "max_inclusive": 11,
+              "min_inclusive": 6
             }
           },
           "ice_state_provider": {
