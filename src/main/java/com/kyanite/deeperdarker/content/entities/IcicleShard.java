@@ -22,7 +22,7 @@ public class IcicleShard extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return new ItemStack(DDBlocks.ICICLE);
+        return ItemStack.EMPTY;
     }
 
     @Override

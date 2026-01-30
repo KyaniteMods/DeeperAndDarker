@@ -13,7 +13,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
@@ -30,6 +29,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
@@ -154,8 +154,10 @@ public class IcicleBlock extends BaseEntityBlock
     @Override
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         maybeTransferWater(blockState, serverLevel, blockPos, randomSource.nextFloat());
-        if (randomSource.nextFloat() < 0.011377778f && isStalactiteStartPos(blockState, serverLevel, blockPos)) {
-            growStalactiteOrStalagmiteIfPossiblea(blockState, serverLevel, blockPos, randomSource);
+        if (randomSource.nextBoolean() && isStalactiteStartPos(blockState, serverLevel, blockPos)) {
+            growStalactiteOrStalagmiteIfPossible(blockState, serverLevel, blockPos, randomSource);
+        } else if (randomSource.nextFloat() < 0.0625f && isFallingStalactitePos(serverLevel, blockPos)) {
+            spawnFallingStalactite(blockState, serverLevel, blockPos);
         }
     }
 
@@ -262,11 +264,10 @@ public class IcicleBlock extends BaseEntityBlock
         BlockState blockState2 = blockState;
         while (isStalactite(blockState2)) {
             FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(serverLevel, mutableBlockPos, blockState2);
-            fallingBlockEntity.setDeltaMovement(new Vec3(0.0, -0.25, 0.0));
+            fallingBlockEntity.disableDrop();
             if (isTip(blockState2, true)) {
                 int i = Math.max(1 + blockPos.getY() - mutableBlockPos.getY(), 6);
                 fallingBlockEntity.setHurtsEntities(i, 40);
-                fallingBlockEntity.disableDrop();
                 break;
             }
             mutableBlockPos.move(Direction.DOWN);
@@ -274,17 +275,13 @@ public class IcicleBlock extends BaseEntityBlock
         }
     }
 
-    public void growStalactiteOrStalagmiteIfPossiblea(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        BlockState blockState2 = serverLevel.getBlockState(blockPos.above(1));
-        if (!canGrow(blockState2, serverLevel.getBlockState(blockPos.above(2)))) {
-            return;
-        }
+    public void growStalactiteOrStalagmiteIfPossible(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         BlockPos blockPos2 = findTip(blockState, serverLevel, blockPos, 7, false);
         if (blockPos2 == null) {
             return;
         }
         BlockState blockState4 = serverLevel.getBlockState(blockPos2);
-        if (!PointedDripstoneBlock.canDrip(blockState4) || !canTipGrow(blockState4, serverLevel, blockPos2)) {
+        if (!canDrip(blockState4) || !canTipGrow(blockState4, serverLevel, blockPos2)) {
             return;
         }
         if (randomSource.nextBoolean()) {
@@ -457,6 +454,12 @@ public class IcicleBlock extends BaseEntityBlock
         return isStalactite(blockState) && !levelReader.getBlockState(blockPos.above()).is(this);
     }
 
+    public boolean isFallingStalactitePos(LevelReader level, BlockPos pos) {
+        if (!level.getBlockState(pos.above()).is(this) || level.getBlockState(pos.above(2)).is(this)) return false;
+        Optional<BlockPos> optional = getStalactiteTip(level, pos);
+        return optional.isPresent() && level.getBlockState(optional.get().below()).isAir();
+    }
+
     @Override
     public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
         return false;
@@ -471,10 +474,6 @@ public class IcicleBlock extends BaseEntityBlock
         Predicate<BlockState> predicate = blockState -> blockState.getBlock() instanceof AbstractCauldronBlock && ((AbstractCauldronAccessor)blockState.getBlock()).callCanReceiveStalactiteDrip(fluid);
         BiPredicate<BlockPos, BlockState> biPredicate = (blockPos, blockState) -> canDripThrough(level, blockPos, blockState);
         return findBlockVertical(level, blockPos2, Direction.DOWN.getAxisDirection(), biPredicate, predicate, 11).orElse(null);
-    }
-
-    private static boolean canGrow(BlockState blockState, BlockState blockState2) {
-        return blockState.is(Blocks.DRIPSTONE_BLOCK) && blockState2.is(Blocks.WATER) && blockState2.getFluidState().isSource();
     }
 
     private static Optional<BlockPos> findBlockVertical(LevelAccessor levelAccessor, BlockPos blockPos, Direction.AxisDirection axisDirection, BiPredicate<BlockPos, BlockState> biPredicate, Predicate<BlockState> predicate, int i) {
