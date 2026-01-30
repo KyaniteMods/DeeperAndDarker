@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
+import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.entities.IcicleShard;
 import com.kyanite.deeperdarker.content.entities.blocks.IcicleBlockEntity;
 import com.kyanite.deeperdarker.mixin.AbstractCauldronAccessor;
@@ -256,7 +257,7 @@ public class IcicleBlock extends BaseEntityBlock
 
     @Override
     public DamageSource getFallDamageSource(Entity entity) {
-        return entity.damageSources().fallingStalactite(entity);
+        return entity.damageSources().source(DDDamageTypes.ICICLE, entity);
     }
 
     public void spawnFallingStalactite(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos) {

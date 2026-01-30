@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.util;
 
+import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.util.datagen.*;
 import com.kyanite.deeperdarker.util.datagen.loot.DDBlockLootTableProvider;
 import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;

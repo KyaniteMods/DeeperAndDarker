@@ -209,6 +209,8 @@
   "block.deeperdarker.unlinked": "Unlinked transmitter",
   "death.attack.deeperdarker.bite": "%s was devoured",
   "death.attack.deeperdarker.dark_fountain": "%s was blinded by a dark fountain",
+  "death.attack.deeperdarker.icicle": "%s was skewered by a falling icicle",
+  "death.attack.deeperdarker.icicle.player": "%1$s was skewered by a falling icicle while fighting %2$s",
   "death.attack.deeperdarker.ring": "%s was given a deadly case of tinnitus by %s",
   "effect.deeperdarker.sculk_affinity": "Sculk Affinity",
   "enchantment.deeperdarker.catalysis": "Catalysis",
