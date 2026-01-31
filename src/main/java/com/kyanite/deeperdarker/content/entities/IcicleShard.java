@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -14,8 +13,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class IcicleShard extends AbstractArrow {
+    public static final float HIT_DAMAGE = 8.0f;
+    public static final float TOUCH_DAMAGE = 6.0f;
+
     public IcicleShard(EntityType<? extends IcicleShard> entityType, Level level) {
         super(entityType, level);
     }
@@ -32,7 +37,21 @@ public class IcicleShard extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-        if (this.inGroundTime > 4) {
+        if (inGround) {
+            List<LivingEntity> list = level().getEntitiesOfClass(LivingEntity.class, getBoundingBox().inflate(0.0625), this::canTouchDamageEntity);
+            if (!list.isEmpty()) {
+                boolean hit = false;
+                for (LivingEntity livingEntity : list) {
+                    if (applyDamage(livingEntity, null, TOUCH_DAMAGE)) hit = true;
+                }
+                if (hit) {
+                    playSound(getTouchDamageSoundEvent(), 1.0f, 1.0f);
+                    discard();
+                    return;
+                }
+            }
+        }
+        if (inGroundTime > 400) {
             discard();
         }
     }
@@ -40,28 +59,51 @@ public class IcicleShard extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
-        float f = 8.0f;
         Entity owner = getOwner();
+        if (applyDamage(entity, owner, HIT_DAMAGE)) {
+            playSound(getHitDamageSoundEvent(), 1.0f, 1.0f);
+            discard();
+        }
+    }
+
+    public boolean applyDamage(Entity entity, Entity owner, float damage) {
         DamageSource damageSource = damageSources().source(DDDamageTypes.ICICLE, this, owner == null ? this : owner);
-        SoundEvent soundEvent = DDSounds.ICICLE_SHARD_LAND;
-        if (entity.hurt(damageSource, f)) {
+        if (entity.hurt(damageSource, damage)) {
             if (entity.getType() == EntityType.ENDERMAN) {
-                return;
+                return false;
             }
             if (entity instanceof LivingEntity livingEntity) {
-                if (owner instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects(livingEntity, owner);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity)owner, livingEntity);
+                if (owner instanceof LivingEntity livingOwner) {
+                    EnchantmentHelper.doPostHurtEffects(livingEntity, livingOwner);
+                    EnchantmentHelper.doPostDamageEffects(livingOwner, livingEntity);
                 }
                 doPostHurtEffects(livingEntity);
             }
+            return true;
         }
-        playSound(soundEvent, 1.0f, 1.0f);
-        discard();
+        return false;
+    }
+
+    protected boolean canTouchDamageEntity(Entity entity) {
+        if (!canHitEntity(entity)) return false;
+        return entity instanceof LivingEntity && !entity.isCrouching();
     }
 
     @Override
-    protected SoundEvent getDefaultHitGroundSoundEvent() {
+    protected boolean canHitEntity(Entity entity) {
+        return super.canHitEntity(entity) && !entity.isInvulnerableTo(entity.damageSources().source(DDDamageTypes.ICICLE)) && !entity.is(this) && entity.getType() != EntityType.FALLING_BLOCK;
+    }
+
+    @Override
+    protected @NotNull SoundEvent getDefaultHitGroundSoundEvent() {
+        return DDSounds.ICICLE_SHARD_LAND;
+    }
+
+    protected SoundEvent getHitDamageSoundEvent() {
+        return DDSounds.ICICLE_SHARD_LAND;
+    }
+
+    protected SoundEvent getTouchDamageSoundEvent() {
         return DDSounds.ICICLE_SHARD_LAND;
     }
 }
