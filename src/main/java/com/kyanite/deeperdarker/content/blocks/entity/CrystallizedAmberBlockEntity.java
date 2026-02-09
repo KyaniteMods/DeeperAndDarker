@@ -31,19 +31,23 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     }
 
     public void generateFossil(ServerLevel level, BlockPos pos) {
-        if(fossilizedEntity || !loot.isEmpty()) return;
+        if (fossilizedEntity || !loot.isEmpty())
+            return;
 
         RandomSource random = new XoroshiroRandomSource(pos.asLong());
         fossilizedEntity = random.nextFloat() < 0.2f;
-        if(!fossilizedEntity) {
+        if (!fossilizedEntity) {
             LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLoot.CRYSTALLIZED_AMBER);
             LootParams lootParams = new LootParams.Builder(level)
                     .withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter())
                     .withParameter(LootContextParams.BLOCK_ENTITY, this)
                     .create(LootContextParamSets.CHEST);
             List<ItemStack> list = table.getRandomItems(lootParams);
-
-            this.loot = list.getFirst();
+            if (!list.isEmpty()) {
+                this.loot = list.getFirst();
+            } else {
+                fossilizedEntity = true;
+            }
         }
 
         this.setChanged();
@@ -74,8 +78,10 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        if(tag.contains("item")) this.loot = ItemStack.parseOptional(registries, tag.getCompound("item"));
-        if(tag.contains("leech")) this.fossilizedEntity = tag.getBoolean("leech");
+        if (tag.contains("item"))
+            this.loot = ItemStack.parseOptional(registries, tag.getCompound("item"));
+        if (tag.contains("leech"))
+            this.fossilizedEntity = tag.getBoolean("leech");
     }
 
     @Override

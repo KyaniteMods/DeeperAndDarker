@@ -21,3 +21,5 @@ gradlew build
 ```
 
 Build files are located in the project's `build/libs` folder.
+---
+**Latest Version: 1.3.6** (Fixed Crystallized Amber crash)
