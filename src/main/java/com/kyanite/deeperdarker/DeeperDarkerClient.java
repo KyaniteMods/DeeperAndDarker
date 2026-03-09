@@ -108,9 +108,10 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_LEECH, SculkLeechModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHRIEK_WORM, ShriekWormModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.STALKER, StalkerModel::createBodyModel);
-        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_CENTIPEDE, SculkCentipedeModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SLUDGE, SludgeModel::createInnerBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SLUDGE_OUTER, SludgeModel::createOuterBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_CENTIPEDE, SculkCentipedeModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOMING_GOLEM, BloomingGolemModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
 
@@ -125,6 +126,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.STALKER, StalkerRenderer::new);
         EntityRendererRegistry.register(DDEntities.SLUDGE, SludgeRenderer::new);
         EntityRendererRegistry.register(DDEntities.SCULK_CENTIPEDE, SculkCentipedeRenderer::new);
+        EntityRendererRegistry.register(DDEntities.BLOOMING_GOLEM, BloomingGolemRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {

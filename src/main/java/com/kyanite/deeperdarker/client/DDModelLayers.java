@@ -28,6 +28,7 @@ public class DDModelLayers {
     public static ModelLayerLocation SLUDGE;
     public static ModelLayerLocation SLUDGE_OUTER;
     public static ModelLayerLocation SCULK_CENTIPEDE;
+    public static ModelLayerLocation BLOOMING_GOLEM;
     public static ModelLayerLocation SHATTERED_HEAD;
     public static ModelLayerLocation SUNGLASSES;
 
@@ -74,6 +75,7 @@ public class DDModelLayers {
         SLUDGE = registerMain("sludge");
         SLUDGE_OUTER = register("sludge", "outer");
         SCULK_CENTIPEDE = registerMain("sculk_centipede");
+        BLOOMING_GOLEM = registerMain("blooming_golem");
         SHATTERED_HEAD = registerMain("shattered_head");
         SUNGLASSES = registerMain("sunglasses");
     }

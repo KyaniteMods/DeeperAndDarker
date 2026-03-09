@@ -25,6 +25,7 @@ public class DDEntities {
     public static final EntityType<ShriekWorm> SHRIEK_WORM = register("shriek_worm", FabricEntityTypeBuilder.create(MobCategory.MONSTER, ShriekWorm::new).dimensions(EntityDimensions.fixed(1.0f, 5.7f)).trackRangeChunks(10).build());
     public static final EntityType<Sludge> SLUDGE = register("sludge", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Sludge::new).dimensions(EntityDimensions.scalable(2.04f, 2.04f)).trackRangeChunks(10).build());
     public static final EntityType<Stalker> STALKER = register("stalker", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Stalker::new).dimensions(EntityDimensions.fixed(1f, 4.4f)).trackRangeChunks(10).build());
+    public static final EntityType<BloomingGolem> BLOOMING_GOLEM = register("blooming_golem", FabricEntityTypeBuilder.<BloomingGolem>create(MobCategory.MONSTER, BloomingGolem::new).dimensions(EntityDimensions.fixed(3f, 3f)).trackRangeChunks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -41,6 +42,7 @@ public class DDEntities {
         DefaultAttributeRegistryAccessor.getRegistry().put(STALKER, Stalker.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SLUDGE, Sludge.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_CENTIPEDE, SculkCentipede.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(BLOOMING_GOLEM, BloomingGolem.createAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {
