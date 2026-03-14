@@ -19,10 +19,12 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -48,7 +50,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     private short cooldown = 0;
 
     private final int TIMER_RESET_TIME = 50;
-    private int moveTimer = 100;
+    private int moveTimer = TIMER_RESET_TIME;
 
     private final float MIN_SPEED = 1.0f;
     private final float MAX_SPEED = 5.0f;
@@ -258,6 +260,12 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
 
     public int getGolemMoveSpeed() {
         return (int) DDUtil.lerpLog(getHealth() / getMaxHealth(), MIN_SPEED, MAX_SPEED);
+    }
+
+    @Override
+    public boolean hurt(DamageSource damageSource, float f) {
+        if (damageSource.getEntity() instanceof LivingEntity livingEntity && livingEntity.getMainHandItem().is(ItemTags.PICKAXES)) f *= 2.5f;
+        return super.hurt(damageSource, f);
     }
 
     public static class BloomingGolemHurtByTargetGoal extends HurtByTargetGoal {
