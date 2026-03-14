@@ -2,24 +2,27 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.entities.BloomingGolem;
 import com.kyanite.deeperdarker.content.entities.blocks.ReturnStatueBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -259,7 +262,7 @@ public class MazeStructurePieces {
 
     public static class BloomazeBossRoomPiece extends MazeStructurePiece {
         public BloomazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
-            super(DDStructurePieceTypes.BLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize, palette);
+            super(DDStructurePieceTypes.BLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 1, 1, 1, tileSize, palette);
         }
 
         public BloomazeBossRoomPiece(CompoundTag tag) {
@@ -276,9 +279,17 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, y == 0 ? Blocks.LIGHT_BLUE_CARPET.defaultBlockState() : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
+            }
+            BloomingGolem golem;
+            BlockPos.MutableBlockPos bossPos = this.getWorldPos(1, 0, 1);
+            if (boundingBox.isInside(bossPos) && (golem = DDEntities.BLOOMING_GOLEM.create(worldGenLevel.getLevel())) != null) {
+                golem.moveTo((double)bossPos.getX() + 0.5, bossPos.getY(), (double)bossPos.getZ() + 0.5, 0.0f, 0.0f);
+                golem.setHomePos(GlobalPos.of(worldGenLevel.getLevel().dimension(), bossPos));
+                golem.finalizeSpawn(worldGenLevel, worldGenLevel.getCurrentDifficultyAt(golem.blockPosition()), MobSpawnType.STRUCTURE, null, null);
+                worldGenLevel.addFreshEntityWithPassengers(golem);
             }
         }
     }

@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
@@ -36,6 +37,12 @@ public class ToxicAirBlock extends Block {
         super.entityInside(blockState, level, blockPos, entity);
         if (entity.getType().is(DDTags.EntityTypes.IMMUNE_TO_TOXIC_AIR)) return;
         entity.hurt(level.damageSources().magic(), 4);
+    }
+
+    @Override
+    public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+        if (!blockState.getValue(PERSISTENT)) return;
+        serverLevel.removeBlock(blockPos, false);
     }
 
     @Override
