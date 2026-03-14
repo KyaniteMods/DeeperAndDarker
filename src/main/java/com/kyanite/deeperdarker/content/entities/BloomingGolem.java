@@ -204,10 +204,6 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
             return;
         }
 
-        if (getTarget() != null && isBloomingGolemSleeping()) {
-            setBloomingGolemSleeping(false);
-        }
-
         if (isBloomingGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
@@ -246,21 +242,18 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     }
 
     public void reset() {
-        if (level() instanceof ServerLevel serverLevel) {
-            serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState()), getX(), getY(0.5), getZ(), 250, getBbWidth() / 4.0f, getBbHeight() / 4.0f, getBbWidth() / 4.0f, 0.05);
-        }
-
         if (homePos != null && level().dimension() == homePos.dimension()) {
-            setHealth(getMaxHealth());
-            cooldown = COOLDOWN_TIME;
+            if (level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState()), getX(), getY(0.5), getZ(), 250, getBbWidth() / 4.0f, getBbHeight() / 4.0f, getBbWidth() / 4.0f, 0.05);
+            }
             moveTo(homePos.pos().getX() + 0.5, homePos.pos().getY(), homePos.pos().getZ() + 0.5);
-            setBloomingGolemSleeping(true);
-            setTarget(null);
-            lastMovementDirection = null;
-        } else {
-            discard();
         }
-
+        heal(getMaxHealth());
+        cooldown = COOLDOWN_TIME;
+        moveTimer = TIMER_RESET_TIME;
+        setBloomingGolemSleeping(true);
+        setTarget(null);
+        lastMovementDirection = null;
     }
 
     public int getGolemMoveSpeed() {
@@ -275,6 +268,12 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         @Override
         public boolean canContinueToUse() {
             return super.canContinueToUse() && ((BloomingGolem) mob).cooldown == 0;
+        }
+
+        @Override
+        public void start() {
+            super.start();
+            ((BloomingGolem) mob).setBloomingGolemSleeping(false);
         }
 
         @Override
