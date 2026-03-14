@@ -15,7 +15,8 @@ import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
 public class BloomingGolemRenderer extends MobRenderer<BloomingGolem, BloomingGolemModel> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/blooming_golem.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/blooming_golem/blooming_golem.png");
+    private static final ResourceLocation TEXTURE_SLEEPING = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/blooming_golem/blooming_golem_sleeping.png");
 
     public BloomingGolemRenderer(EntityRendererProvider.Context context) {
         super(context, new BloomingGolemModel(context.bakeLayer(DDModelLayers.BLOOMING_GOLEM)), 1.0f);
@@ -23,6 +24,6 @@ public class BloomingGolemRenderer extends MobRenderer<BloomingGolem, BloomingGo
 
     @Override
     public ResourceLocation getTextureLocation(BloomingGolem entity) {
-        return TEXTURE;
+        return entity.isBloomingGolemSleeping() ? TEXTURE_SLEEPING : TEXTURE;
     }
 }

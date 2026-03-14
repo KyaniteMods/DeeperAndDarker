@@ -12,6 +12,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +23,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
@@ -36,7 +40,6 @@ import java.util.List;
 public class BloomingGolem extends AbstractGolem implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private GlobalPos homePos = null;
-    private boolean sleeping = true;
     private Direction lastMovementDirection = null;
 
     private final int TIMER_RESET_TIME = 50;
@@ -45,19 +48,26 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     private final float MIN_SPEED = 1.0f;
     private final float MAX_SPEED = 5.0f;
 
+    private static final EntityDataAccessor<Boolean> DATA_SLEEPING_ID = SynchedEntityData.defineId(BloomingGolem.class, EntityDataSerializers.BOOLEAN);
+
     public BloomingGolem(EntityType<? extends AbstractGolem> entityType, Level level) {
         super(entityType, level);
-        setSleeping(true);
+        setBloomingGolemSleeping(true);
         blocksBuilding = true;
         noPhysics = true;
     }
 
     public BloomingGolem(Level level, double x, double y, double z) {
         this(DDEntities.BLOOMING_GOLEM, level);
-        this.setPos(x, y, z);
-        this.xo = x;
-        this.yo = y;
-        this.zo = z;
+        setPos(x, y, z);
+        xo = x;
+        yo = y;
+        zo = z;
+    }
+
+    @Override
+    protected void registerGoals() {
+        targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
     @Override
@@ -66,7 +76,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         if (compoundTag.contains("home_position")) {
             homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
-        sleeping = compoundTag.getBoolean("is_sleeping");
+        setBloomingGolemSleeping(compoundTag.getBoolean("is_blooming_golem_sleeping"));
         moveTimer = compoundTag.getInt("move_timer");
         if (compoundTag.contains("last_movement_direction", CompoundTag.TAG_INT)) {
             lastMovementDirection = Direction.from3DDataValue(compoundTag.getInt("last_movement_direction"));
@@ -82,11 +92,17 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         if (homePos != null) {
             GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, homePos).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("home_position", tag));
         }
-        compoundTag.putBoolean("is_sleeping", sleeping);
+        compoundTag.putBoolean("is_blooming_golem_sleeping", isBloomingGolemSleeping());
         compoundTag.putInt("move_timer", moveTimer);
         if (lastMovementDirection != null) {
             compoundTag.putInt("last_movement_direction", lastMovementDirection.get3DDataValue());
         }
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        entityData.define(DATA_SLEEPING_ID, true);
     }
 
     @Override
@@ -145,13 +161,12 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         return false;
     }
 
-    @Override
-    public boolean isSleeping() {
-        return sleeping;
+    public boolean isBloomingGolemSleeping() {
+        return entityData.get(DATA_SLEEPING_ID);
     }
 
-    public void setSleeping(boolean sleeping) {
-        this.sleeping = sleeping;
+    public void setBloomingGolemSleeping(boolean sleeping) {
+        entityData.set(DATA_SLEEPING_ID, sleeping);
         bossEvent.setVisible(!sleeping);
     }
 
@@ -166,12 +181,15 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public void tick() {
         super.tick();
+        if (getTarget() != null && isBloomingGolemSleeping()) {
+            setBloomingGolemSleeping(false);
+        }
         setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
         if (homePos != null && (homePos.dimension() != level().dimension() || distanceToSqr(homePos.pos().getCenter()) > 4096)) {
             reset();
             return;
         }
-        if (isSleeping() || isDeadOrDying()) return;
+        if (isBloomingGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
             moveTimer = TIMER_RESET_TIME;
@@ -204,14 +222,15 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     }
 
     public void reset() {
-        if (this.level() instanceof ServerLevel serverLevel) {
+        if (level() instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState()), getX(), getY(0.5), getZ(), 250, getBbWidth() / 4.0f, getBbHeight() / 4.0f, getBbWidth() / 4.0f, 0.05);
         }
 
         if (homePos != null && level().dimension() == homePos.dimension()) {
             setHealth(getMaxHealth());
-            setPos(homePos.pos().getX() + 0.5, homePos.pos().getY(), homePos.pos().getZ() + 0.5);
-            setSleeping(true);
+            moveTo(homePos.pos().getX() + 0.5, homePos.pos().getY(), homePos.pos().getZ() + 0.5);
+            setBloomingGolemSleeping(true);
+            setTarget(null);
             lastMovementDirection = null;
         } else {
             discard();
