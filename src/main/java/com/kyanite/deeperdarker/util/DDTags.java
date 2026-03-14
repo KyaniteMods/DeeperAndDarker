@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
@@ -95,6 +96,10 @@ public class DDTags {
 
         public static final TagKey<Item> SCULK_TRANSMITTERS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_transmitters"));
+    }
+
+    public static class EntityTypes {
+        public static final TagKey<EntityType<?>> IMMUNE_TO_TOXIC_AIR = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "immune_to_toxic_air"));
     }
 
     public static class Biomes {

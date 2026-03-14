@@ -1,9 +1,19 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.util.DDUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.Entity;
@@ -14,30 +24,61 @@ import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class BloomingGolem extends AbstractGolem implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+    private GlobalPos homePos = null;
+    private boolean sleeping = true;
+    private int moveTimer = 40;
+    private final float MIN_SPEED = 1.0f;
+    private final float MAX_SPEED = 5.0f;
 
     public BloomingGolem(EntityType<? extends AbstractGolem> entityType, Level level) {
         super(entityType, level);
         blocksBuilding = true;
+        noPhysics = true;
     }
 
-    public BloomingGolem(Level level, double d, double e, double f) {
+    public BloomingGolem(Level level, double x, double y, double z) {
         this(DDEntities.BLOOMING_GOLEM, level);
-        this.setPos(d, e, f);
-        this.xo = d;
-        this.yo = e;
-        this.zo = f;
+        this.setPos(x, y, z);
+        this.xo = x;
+        this.yo = y;
+        this.zo = z;
+        homePos = GlobalPos.of(level.dimension(), blockPosition());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+        if (compoundTag.contains("home_position")) {
+            homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
+        }
+        sleeping = compoundTag.getBoolean("is_sleeping");
+        moveTimer = compoundTag.getInt("move_timer");
         if (hasCustomName()) {
             bossEvent.setName(getDisplayName());
         }
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        if (homePos != null) {
+            GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, homePos).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("home_position", tag));
+        }
+        compoundTag.putBoolean("is_sleeping", sleeping);
+        compoundTag.putInt("move_timer", moveTimer);
     }
 
     @Override
@@ -74,6 +115,15 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     }
 
     @Override
+    public void aiStep() {
+        super.aiStep();
+        Vec3 vec3 = getDeltaMovement();
+        if (!onGround() && vec3.y < 0.0) {
+            setDeltaMovement(vec3.multiply(1.0, 0.0, 1.0));
+        }
+    }
+
+    @Override
     public void push(Entity entity) {
     }
 
@@ -85,5 +135,65 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public boolean isPushable() {
         return false;
+    }
+
+    @Override
+    public boolean isSleeping() {
+        return sleeping;
+    }
+
+    public void setSleeping(boolean sleeping) {
+        this.sleeping = sleeping;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        reset();
+        if (isSleeping() || isDeadOrDying()) return;
+        moveTimer -= getGolemMoveSpeed();
+        if (moveTimer <= 0) {
+            moveTimer = 50;
+            BlockPos initialPos = blockPosition();
+            AABB boundingBox = getBoundingBox();
+            boolean found = false;
+            List<Direction> list = new ArrayList<>(Direction.Plane.HORIZONTAL.shuffledCopy(getRandom()));
+            list.addAll(Direction.Plane.VERTICAL.stream().toList());
+            for (Direction direction : list) {
+                Vec3 vec3 = new Vec3(direction.getStepX() * getBbWidth(), direction.getStepY() * getBbHeight(), direction.getStepZ() * getBbWidth());
+                if (BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).allMatch(pos -> {
+                    BlockState state = level().getBlockState(pos);
+                    return state.isAir() || state.canBeReplaced();
+                })) {
+                    setPos(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                reset();
+                return;
+            }
+            BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7)).forEach(pos -> level().setBlock(pos, DDBlocks.TOXIC_AIR.defaultBlockState(), Block.UPDATE_CLIENTS));
+        }
+    }
+
+    public void reset() {
+        if (this.level() instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState()), getX(), getY(0.5), getZ(), 250, getBbWidth() / 4.0f, getBbHeight() / 4.0f, getBbWidth() / 4.0f, 0.05);
+        }
+
+        if (homePos != null && level().dimension() == homePos.dimension()) {
+            setHealth(getMaxHealth());
+            setPos(homePos.pos().getX() + 0.5, homePos.pos().getY(), homePos.pos().getZ() + 0.5);
+            setSleeping(true);
+        } else {
+            discard();
+        }
+
+    }
+
+    public int getGolemMoveSpeed() {
+        return (int) DDUtil.lerpLog(getHealth() / getMaxHealth(), MIN_SPEED, MAX_SPEED);
     }
 }
