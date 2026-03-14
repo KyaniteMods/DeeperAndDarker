@@ -6,6 +6,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +36,7 @@ public class ToxicAirBlock extends Block {
     @Override
     public void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
         super.entityInside(blockState, level, blockPos, entity);
-        if (entity.getType().is(DDTags.EntityTypes.IMMUNE_TO_TOXIC_AIR)) return;
+        if (entity.getType().is(DDTags.EntityTypes.IMMUNE_TO_TOXIC_AIR) || !(entity instanceof LivingEntity)) return;
         entity.hurt(level.damageSources().magic(), 4);
     }
 
