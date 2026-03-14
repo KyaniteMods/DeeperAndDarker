@@ -33,6 +33,7 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation SHRIEK_WORM = new ResourceLocation(DeeperDarker.MOD_ID, "entities/shriek_worm");
     public static final ResourceLocation SLUDGE = BuiltInRegistries.ENTITY_TYPE.getKey(DDEntities.SLUDGE).withPrefix("entities/");
     public static final ResourceLocation STALKER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/stalker");
+    public static final ResourceLocation BLOOMING_GOLEM = new ResourceLocation(DeeperDarker.MOD_ID, "entities/blooming_golem");
 
     public DDEntityLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.ENTITY);
@@ -74,6 +75,10 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
                 .add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL)
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))
+        ));
+
+        biConsumer.accept(BLOOMING_GOLEM, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(DDItems.KEYBRAND).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
         ));
     }
 }
