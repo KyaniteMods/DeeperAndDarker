@@ -309,6 +309,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.SCULK_TUBER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SHADOW_CRYSTAL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SUNGLASSES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.KEYBRAND, ModelTemplates.FLAT_HANDHELD_ITEM);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TENDRILS.asItem()), TextureMapping.layer0(DDBlocks.SCULK_TENDRILS_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_VINES.asItem()), TextureMapping.layer0(DDBlocks.SCULK_VINES_PLANT), itemModelGenerator.output);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_ROOTS.asItem()), TextureMapping.layer0(DDBlocks.GLOWING_ROOTS_PLANT), itemModelGenerator.output);

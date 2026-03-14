@@ -33,6 +33,7 @@ import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -43,6 +44,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 
 public class DeeperDarkerClient implements ClientModInitializer {
+    public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand", "inventory");
+    public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand_in_hand", "inventory");
 
     @Override
     public void onInitializeClient() {

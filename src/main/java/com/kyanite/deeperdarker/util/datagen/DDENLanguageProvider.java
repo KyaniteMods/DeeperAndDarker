@@ -278,6 +278,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SHADOW_CRYSTAL, "Shadow Crystal");
         translationBuilder.add(DDItems.SUNGLASSES, "Sunglasses");
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
+        translationBuilder.add(DDItems.KEYBRAND, "Keybrand");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");

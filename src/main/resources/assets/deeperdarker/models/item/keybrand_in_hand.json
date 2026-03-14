@@ -1,0 +1,50 @@
+{
+  "parent": "minecraft:item/generated",
+  "format_version": "1.21.11",
+  "textures": {
+    "layer0": "deeperdarker:item/keybrand_model"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, -90, 55],
+      "translation": [0, 11.5, -0.75],
+      "scale": [1.7, 1.7, 0.85]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, -90, 55],
+      "translation": [0, 11.5, -0.75],
+      "scale": [1.7, 1.7, 0.85]
+    },
+    "firstperson_righthand": {
+      "rotation": [0, -90, 25],
+      "translation": [1.13, 3.2, 1.13],
+      "scale": [1.36, 1.36, 0.68]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 90, -25],
+      "translation": [1.13, 3.2, 1.13],
+      "scale": [1.36, 1.36, 0.68]
+    },
+    "ground": {
+      "translation": [0, 5, 0],
+      "scale": [1, 1, 0.5]
+    },
+    "gui": {
+      "translation": [-8, -8, 0],
+      "scale": [2, 2, 1]
+    },
+    "head": {
+      "rotation": [0, -180, 0],
+      "translation": [0, 21, 7],
+      "scale": [2, 2, 1]
+    },
+    "fixed": {
+      "rotation": [0, -180, 0],
+      "scale": [2, 2, 1]
+    },
+    "on_shelf": {
+      "rotation": [0, 0, 20],
+      "scale": [2, 2, 1]
+    }
+  }
+}
