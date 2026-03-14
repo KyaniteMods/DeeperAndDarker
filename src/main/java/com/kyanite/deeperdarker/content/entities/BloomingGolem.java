@@ -22,6 +22,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -71,7 +72,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
 
     @Override
     protected void registerGoals() {
-        targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        targetSelector.addGoal(1, new BloomingGolemHurtByTargetGoal(this));
     }
 
     @Override
@@ -174,6 +175,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     public void setBloomingGolemSleeping(boolean sleeping) {
         entityData.set(DATA_SLEEPING_ID, sleeping);
         bossEvent.setVisible(!sleeping);
+        if (sleeping) heal(getMaxHealth());
     }
 
     public GlobalPos getHomePos() {
@@ -190,19 +192,20 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
 
         if (cooldown > 0) {
+            cooldown--;
             heal(getMaxHealth());
             setTarget(null);
             setBloomingGolemSleeping(true);
             return;
         }
 
-        if (getTarget() != null && isBloomingGolemSleeping()) {
-            setBloomingGolemSleeping(false);
-        }
-
         if (homePos != null && (homePos.dimension() != level().dimension() || distanceToSqr(homePos.pos().getCenter()) > 4096)) {
             reset();
             return;
+        }
+
+        if (getTarget() != null && isBloomingGolemSleeping()) {
+            setBloomingGolemSleeping(false);
         }
 
         if (isBloomingGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
@@ -262,5 +265,22 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
 
     public int getGolemMoveSpeed() {
         return (int) DDUtil.lerpLog(getHealth() / getMaxHealth(), MIN_SPEED, MAX_SPEED);
+    }
+
+    public static class BloomingGolemHurtByTargetGoal extends HurtByTargetGoal {
+        public BloomingGolemHurtByTargetGoal(BloomingGolem golem, Class<?>... classs) {
+            super(golem, classs);
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return super.canContinueToUse() && ((BloomingGolem) mob).cooldown == 0;
+        }
+
+        @Override
+        public void stop() {
+            super.stop();
+            ((BloomingGolem) mob).reset();
+        }
     }
 }
