@@ -70,6 +70,8 @@ public class DDTags {
 
         public static final TagKey<Block> MAZE_CANNOT_HIDE_CHEST = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "maze/cannot_hide_chest"));
+        public static final TagKey<Block> BLOOMING_GOLEM_CAN_WALK_THROUGH = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_golem_can_walk_through"));
     }
 
     public static class Items {

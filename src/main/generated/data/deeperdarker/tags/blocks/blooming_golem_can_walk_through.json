@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:replaceable",
+      "required": false
+    },
+    "deeperdarker:toxic_air",
+    "deeperdarker:return_statue"
+  ]
+}

@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -42,8 +43,11 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     private GlobalPos homePos = null;
     private Direction lastMovementDirection = null;
 
+    private final short COOLDOWN_TIME = 10;
+    private short cooldown = 0;
+
     private final int TIMER_RESET_TIME = 50;
-    private int moveTimer = 200;
+    private int moveTimer = 100;
 
     private final float MIN_SPEED = 1.0f;
     private final float MAX_SPEED = 5.0f;
@@ -78,6 +82,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         }
         setBloomingGolemSleeping(compoundTag.getBoolean("is_blooming_golem_sleeping"));
         moveTimer = compoundTag.getInt("move_timer");
+        cooldown = compoundTag.getShort("cooldown");
         if (compoundTag.contains("last_movement_direction", CompoundTag.TAG_INT)) {
             lastMovementDirection = Direction.from3DDataValue(compoundTag.getInt("last_movement_direction"));
         }
@@ -94,6 +99,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         }
         compoundTag.putBoolean("is_blooming_golem_sleeping", isBloomingGolemSleeping());
         compoundTag.putInt("move_timer", moveTimer);
+        compoundTag.putShort("cooldown", cooldown);
         if (lastMovementDirection != null) {
             compoundTag.putInt("last_movement_direction", lastMovementDirection.get3DDataValue());
         }
@@ -181,14 +187,24 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public void tick() {
         super.tick();
+        setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
+
+        if (cooldown > 0) {
+            heal(getMaxHealth());
+            setTarget(null);
+            setBloomingGolemSleeping(true);
+            return;
+        }
+
         if (getTarget() != null && isBloomingGolemSleeping()) {
             setBloomingGolemSleeping(false);
         }
-        setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
+
         if (homePos != null && (homePos.dimension() != level().dimension() || distanceToSqr(homePos.pos().getCenter()) > 4096)) {
             reset();
             return;
         }
+
         if (isBloomingGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
@@ -205,7 +221,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
                 Vec3 vec3 = new Vec3(direction.getStepX() * getBbWidth(), direction.getStepY() * getBbHeight(), direction.getStepZ() * getBbWidth());
                 if (BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).allMatch(pos -> {
                     BlockState state = level().getBlockState(pos);
-                    return state.isAir() || state.canBeReplaced() || state.is(DDBlocks.TOXIC_AIR);
+                    return state.isAir() || state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH);
                 })) {
                     setPos(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
                     found = true;
@@ -217,7 +233,12 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
                 reset();
                 return;
             }
-            BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7)).forEach(pos -> level().setBlock(pos, DDBlocks.TOXIC_AIR.defaultBlockState(), Block.UPDATE_CLIENTS));
+            BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7)).forEach(pos -> {
+                BlockState state = level().getBlockState(pos);
+                if (state.isAir() || state.canBeReplaced()) {
+                    level().setBlock(pos, DDBlocks.TOXIC_AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
+                }
+            });
         }
     }
 
@@ -228,6 +249,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
 
         if (homePos != null && level().dimension() == homePos.dimension()) {
             setHealth(getMaxHealth());
+            cooldown = COOLDOWN_TIME;
             moveTo(homePos.pos().getX() + 0.5, homePos.pos().getY(), homePos.pos().getZ() + 0.5);
             setBloomingGolemSleeping(true);
             setTarget(null);
