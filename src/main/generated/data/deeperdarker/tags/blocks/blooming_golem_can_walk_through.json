@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     {
-      "id": "#minecraft:replaceable",
+      "id": "#deeperdarker:blooming_golem_can_destroy",
       "required": false
     },
     "deeperdarker:toxic_air",

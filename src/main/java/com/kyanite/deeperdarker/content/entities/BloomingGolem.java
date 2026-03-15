@@ -224,14 +224,17 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
 
                 Vec3 vec3 = new Vec3(direction.getStepX() * getBbWidth(), direction.getStepY() * getBbHeight(), direction.getStepZ() * getBbWidth());
 
-                if (BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).allMatch(pos -> {
+                if (!BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).allMatch(pos -> {
                     BlockState state = level().getBlockState(pos);
                     return state.isAir() || state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH);
-                })) {
-                    setPos(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
-                    found = true;
-                    break;
-                }
+                })) continue;
+
+                setPos(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
+                BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).forEach(pos -> {
+                    BlockState state = level().getBlockState(pos);
+                    if (state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY)) level().destroyBlock(pos, true);
+                });
+                found = true;
             }
             if (!found) {
                 reset();

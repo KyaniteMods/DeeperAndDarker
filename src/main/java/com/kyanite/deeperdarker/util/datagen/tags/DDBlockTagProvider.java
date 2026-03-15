@@ -204,7 +204,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
         tagBuilder(DDTags.Blocks.MAZE_CANNOT_HIDE_CHEST).add(Blocks.WATER);
-        tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH).addOptionalTag(BlockTags.REPLACEABLE).add(DDBlocks.TOXIC_AIR, DDBlocks.RETURN_STATUE);
+        tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH).addOptionalTag(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY).add(DDBlocks.TOXIC_AIR, DDBlocks.RETURN_STATUE);
+        tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY).addOptionalTag(BlockTags.REPLACEABLE).add(DDBlocks.SCULK_GRIME_GLASS, DDBlocks.FRAGILE_SCULK_GRIME_BRICKS);
 
         tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         tagBuilder(ConventionalBlockTags.GLASS_PANES).add(DDBlocks.SCULK_GRIME_GLASS_PANE);

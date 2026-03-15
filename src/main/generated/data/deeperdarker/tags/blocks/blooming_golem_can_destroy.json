@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:replaceable",
+      "required": false
+    },
+    "deeperdarker:sculk_grime_glass",
+    "deeperdarker:fragile_sculk_grime_bricks"
+  ]
+}
