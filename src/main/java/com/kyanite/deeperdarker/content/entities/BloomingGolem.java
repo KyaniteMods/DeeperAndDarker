@@ -29,6 +29,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
@@ -179,7 +180,10 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     public void setBloomingGolemSleeping(boolean sleeping) {
         entityData.set(DATA_SLEEPING_ID, sleeping);
         bossEvent.setVisible(!sleeping);
-        if (sleeping) heal(getMaxHealth());
+        if (sleeping) {
+            heal(getMaxHealth());
+            setTarget(null);
+        }
     }
 
     public GlobalPos getHomePos() {
@@ -193,14 +197,12 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public void tick() {
         super.tick();
+        setTarget(null);
         visitedPositions.add(blockPosition());
         setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
 
-        if (cooldown > 0) {
+        if (isOnCooldown()) {
             cooldown--;
-            heal(getMaxHealth());
-            setTarget(null);
-            setBloomingGolemSleeping(true);
             return;
         }
 
@@ -210,6 +212,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         }
 
         if (isBloomingGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
+
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
             moveTimer = TIMER_RESET_TIME;
@@ -256,12 +259,20 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
             }
             moveTo(homePos.pos().getX() + 0.5, homePos.pos().getY(), homePos.pos().getZ() + 0.5);
         }
-        heal(getMaxHealth());
         cooldown = COOLDOWN_TIME;
         moveTimer = TIMER_RESET_TIME;
         setBloomingGolemSleeping(true);
-        setTarget(null);
         visitedPositions.clear();
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return isBloomingGolemSleeping() || isOnCooldown() || super.fireImmune();
+    }
+
+    @Override
+    public boolean isInvulnerable() {
+        return isBloomingGolemSleeping() || isOnCooldown() || super.isInvulnerable();
     }
 
     public int getGolemMoveSpeed() {
@@ -274,14 +285,36 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         return super.hurt(damageSource, f);
     }
 
+    @Override
+    public boolean shouldDropExperience() {
+        return true;
+    }
+
+    public short getCooldown() {
+        return cooldown;
+    }
+
+    public void setCooldown(short cooldown) {
+        this.cooldown = cooldown;
+    }
+
+    public boolean isOnCooldown() {
+        return cooldown > 0;
+    }
+
     public static class BloomingGolemHurtByTargetGoal extends HurtByTargetGoal {
         public BloomingGolemHurtByTargetGoal(BloomingGolem golem, Class<?>... classs) {
             super(golem, classs);
         }
 
         @Override
+        public boolean canUse() {
+            return super.canUse() && !((BloomingGolem) mob).isOnCooldown();
+        }
+
+        @Override
         public boolean canContinueToUse() {
-            return super.canContinueToUse() && ((BloomingGolem) mob).cooldown == 0;
+            return super.canContinueToUse() && !((BloomingGolem) mob).isOnCooldown() && !((BloomingGolem) mob).isBloomingGolemSleeping();
         }
 
         @Override
@@ -294,11 +327,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         public void stop() {
             super.stop();
             ((BloomingGolem) mob).reset();
+            mob.setLastHurtByMob(null);
         }
-    }
-
-    @Override
-    public boolean shouldDropExperience() {
-        return true;
     }
 }
