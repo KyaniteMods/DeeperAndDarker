@@ -30,7 +30,7 @@ public class OvercastPot extends Monster {
     }
 
     public static AttributeSupplier createAttributes(int extraHealth) {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 40 + extraHealth).add(Attributes.ATTACK_DAMAGE, 5).add(Attributes.MOVEMENT_SPEED, 0.3).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250 + extraHealth).add(Attributes.ATTACK_DAMAGE, 22).add(Attributes.MOVEMENT_SPEED, 0.3).build();
     }
 
     @Override
