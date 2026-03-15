@@ -2,10 +2,7 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDEnchantments;
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -315,7 +312,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.POT, "Pot");
         translationBuilder.add(DDEntities.POTTER, "Potter");
 
-        translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.MOB_EFFECT.getKey(DDEffects.SCULK_AFFINITY)), "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
         translationBuilder.add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
@@ -324,6 +321,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.minecraft.splash_potion.effect.long_sculk_affinity", "Splash Potion of Sculk Affinity");
         translationBuilder.add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
         translationBuilder.add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
+        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.MOB_EFFECT.getKey(DDEffects.HEMOPHILIA)), "Hemophilia");
 
         translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
         translationBuilder.add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");

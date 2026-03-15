@@ -16,6 +16,9 @@ public class DDEffects {
         }
     });
 
+    public static final MobEffect HEMOPHILIA = Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(
+            DeeperDarker.MOD_ID, "hemophilia"), new MobEffect(MobEffectCategory.HARMFUL, 0x63030a) {});
+
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering effects");
     }

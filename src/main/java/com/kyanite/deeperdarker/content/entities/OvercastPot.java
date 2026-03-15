@@ -1,6 +1,11 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -36,5 +41,16 @@ public class OvercastPot extends Monster {
     @Override
     public MobType getMobType() {
         return DDMobType.SCULK;
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        if (!super.doHurtTarget(entity)) {
+            return false;
+        }
+        if (entity instanceof LivingEntity) {
+            ((LivingEntity)entity).addEffect(new MobEffectInstance(DDEffects.HEMOPHILIA, 200), this);
+        }
+        return true;
     }
 }

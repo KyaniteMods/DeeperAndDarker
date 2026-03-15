@@ -14,6 +14,7 @@
     "DefaultAttributeRegistryAccessor",
     "EnrichedEchoLogBurnedMixin",
     "EnrichedEchoLogItemBurnedMixin",
+    "HemophiliaFoodDataMixin",
     "ItemModelGeneratorAccessor",
     "NoAncientPaintingInGroupMixin",
     "NoiseRouterDataAccessor",
