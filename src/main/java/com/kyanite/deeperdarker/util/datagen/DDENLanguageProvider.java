@@ -311,10 +311,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.SLUDGE, "Sludge");
         translationBuilder.add(DDEntities.SCULK_CENTIPEDE, "Sculk Centipede");
         translationBuilder.add(DDEntities.BLOOMING_GOLEM, "Blooming Golem");
-        translationBuilder.add(DDEntities.POT, "Overcast Pot");
-        translationBuilder.add(DDEntities.POT.getDescriptionId() + ".potty", "Potty");
-        translationBuilder.add(DDEntities.POT.getDescriptionId() + ".pot", "Pot");
-        translationBuilder.add(DDEntities.POT.getDescriptionId() + ".potter", "Potter");
+        translationBuilder.add(DDEntities.POTTY, "Potty");
+        translationBuilder.add(DDEntities.POT, "Pot");
+        translationBuilder.add(DDEntities.POTTER, "Potter");
 
         translationBuilder.add("effect.deeperdarker.sculk_affinity", "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
