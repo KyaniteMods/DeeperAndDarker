@@ -20,6 +20,7 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -44,7 +45,7 @@ import java.util.List;
 public class BloomingGolem extends AbstractGolem implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private GlobalPos homePos = null;
-    private Direction lastMovementDirection = null;
+    private List<BlockPos> visitedPositions = new ArrayList<>();
 
     private final short COOLDOWN_TIME = 10;
     private short cooldown = 0;
@@ -81,14 +82,14 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.contains("home_position")) {
+        if (compoundTag.contains("home_position", CompoundTag.TAG_COMPOUND)) {
             homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
         setBloomingGolemSleeping(compoundTag.getBoolean("is_blooming_golem_sleeping"));
         moveTimer = compoundTag.getInt("move_timer");
         cooldown = compoundTag.getShort("cooldown");
-        if (compoundTag.contains("last_movement_direction", CompoundTag.TAG_INT)) {
-            lastMovementDirection = Direction.from3DDataValue(compoundTag.getInt("last_movement_direction"));
+        if (compoundTag.contains("visited_positions", CompoundTag.TAG_LIST)) {
+            visitedPositions = BlockPos.CODEC.listOf().parse(NbtOps.INSTANCE, compoundTag.get("visited_positions")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
         if (hasCustomName()) {
             bossEvent.setName(getDisplayName());
@@ -104,9 +105,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         compoundTag.putBoolean("is_blooming_golem_sleeping", isBloomingGolemSleeping());
         compoundTag.putInt("move_timer", moveTimer);
         compoundTag.putShort("cooldown", cooldown);
-        if (lastMovementDirection != null) {
-            compoundTag.putInt("last_movement_direction", lastMovementDirection.get3DDataValue());
-        }
+        BlockPos.CODEC.listOf().encodeStart(NbtOps.INSTANCE, visitedPositions).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("visited_positions", tag));
     }
 
     @Override
@@ -192,6 +191,9 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public void tick() {
         super.tick();
+        if (!visitedPositions.contains(blockPosition())) {
+            visitedPositions.add(blockPosition());
+        }
         setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
 
         if (cooldown > 0) {
@@ -216,18 +218,18 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
             boolean found = false;
             List<Direction> list = new ArrayList<>(Direction.Plane.HORIZONTAL.shuffledCopy(getRandom()));
             list.addAll(Direction.Plane.VERTICAL.stream().toList());
-            if (lastMovementDirection != null) {
-                list.remove(lastMovementDirection.getOpposite());
-            }
             for (Direction direction : list) {
+                BlockPos position = initialPos.offset(Mth.floor(direction.getStepX() * getBbWidth()), Mth.floor(direction.getStepY() * getBbHeight()), Mth.floor(direction.getStepZ() * getBbWidth()));
+                if (visitedPositions.contains(position)) continue;
+
                 Vec3 vec3 = new Vec3(direction.getStepX() * getBbWidth(), direction.getStepY() * getBbHeight(), direction.getStepZ() * getBbWidth());
+
                 if (BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).allMatch(pos -> {
                     BlockState state = level().getBlockState(pos);
                     return state.isAir() || state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH);
                 })) {
                     setPos(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
                     found = true;
-                    lastMovementDirection = direction;
                     break;
                 }
             }
@@ -256,7 +258,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         moveTimer = TIMER_RESET_TIME;
         setBloomingGolemSleeping(true);
         setTarget(null);
-        lastMovementDirection = null;
+        visitedPositions.clear();
     }
 
     public int getGolemMoveSpeed() {
