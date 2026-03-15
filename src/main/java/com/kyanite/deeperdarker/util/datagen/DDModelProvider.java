@@ -147,6 +147,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerWall(blockModelGenerators, DDBlocks.CUT_GLOOMSLATE_WALL, DDBlocks.CUT_GLOOMSLATE);
         blockModelGenerators.family(DDBlocks.CHISELED_GLOOMSLATE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_BARRIER);
+        blockModelGenerators.family(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS);
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);

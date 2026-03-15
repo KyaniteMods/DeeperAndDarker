@@ -86,6 +86,7 @@
     "deeperdarker:crystallized_amber",
     "deeperdarker:ancient_vase",
     "deeperdarker:fragile_sculk_grime_bricks",
+    "deeperdarker:fragile_gloomslate_bricks",
     {
       "id": "deeperdarker:warden_backtank",
       "required": false
