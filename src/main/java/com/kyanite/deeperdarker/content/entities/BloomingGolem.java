@@ -40,12 +40,14 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BloomingGolem extends AbstractGolem implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private GlobalPos homePos = null;
-    private List<BlockPos> visitedPositions = new ArrayList<>();
+    private Set<BlockPos> visitedPositions = new HashSet<>();
 
     private final short COOLDOWN_TIME = 10;
     private short cooldown = 0;
@@ -89,7 +91,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         moveTimer = compoundTag.getInt("move_timer");
         cooldown = compoundTag.getShort("cooldown");
         if (compoundTag.contains("visited_positions", CompoundTag.TAG_LIST)) {
-            visitedPositions = BlockPos.CODEC.listOf().parse(NbtOps.INSTANCE, compoundTag.get("visited_positions")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
+            visitedPositions = BlockPos.CODEC.listOf().xmap(HashSet::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.get("visited_positions")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
         if (hasCustomName()) {
             bossEvent.setName(getDisplayName());
@@ -105,7 +107,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         compoundTag.putBoolean("is_blooming_golem_sleeping", isBloomingGolemSleeping());
         compoundTag.putInt("move_timer", moveTimer);
         compoundTag.putShort("cooldown", cooldown);
-        BlockPos.CODEC.listOf().encodeStart(NbtOps.INSTANCE, visitedPositions).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("visited_positions", tag));
+        BlockPos.CODEC.listOf().<Set<BlockPos>>xmap(HashSet::new, ArrayList::new).encodeStart(NbtOps.INSTANCE, visitedPositions).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("visited_positions", tag));
     }
 
     @Override
@@ -191,9 +193,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     @Override
     public void tick() {
         super.tick();
-        if (!visitedPositions.contains(blockPosition())) {
-            visitedPositions.add(blockPosition());
-        }
+        visitedPositions.add(blockPosition());
         setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
 
         if (cooldown > 0) {
