@@ -238,6 +238,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
                     if (state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY)) level().destroyBlock(pos, true);
                 });
                 found = true;
+                break;
             }
             if (!found) {
                 reset();
