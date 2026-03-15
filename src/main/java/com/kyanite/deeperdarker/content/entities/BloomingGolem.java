@@ -62,6 +62,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         setBloomingGolemSleeping(true);
         blocksBuilding = true;
         noPhysics = true;
+        xpReward = 50;
     }
 
     public BloomingGolem(Level level, double x, double y, double z) {
@@ -289,5 +290,10 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
             super.stop();
             ((BloomingGolem) mob).reset();
         }
+    }
+
+    @Override
+    public boolean shouldDropExperience() {
+        return true;
     }
 }
