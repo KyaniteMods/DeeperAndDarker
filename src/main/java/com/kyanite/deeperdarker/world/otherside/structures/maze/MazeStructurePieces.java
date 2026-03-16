@@ -260,6 +260,37 @@ public class MazeStructurePieces {
         }
     }
 
+    public static class MazeEntrancePiece extends MazeStructurePiece {
+        private BlockState state;
+
+        public MazeEntrancePiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, RandomSource random) {
+            super(DDStructurePieceTypes.MAZE_ENTRANCE_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize, palette);
+            state = palette.entrance().getRandomValue(random).orElseThrow();
+        }
+
+        public MazeEntrancePiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.MAZE_ENTRANCE_PIECE, tag);
+            state = BlockState.CODEC.parse(NbtOps.INSTANCE, tag.get("block_state")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(Blocks.AIR.defaultBlockState());
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+            compoundTag.put("block_state", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, state).result().orElseThrow());
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        placeBlock(worldGenLevel, state, x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
     public static class BloomazeBossRoomPiece extends MazeStructurePiece {
         public BloomazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
             super(DDStructurePieceTypes.BLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 1, 1, 1, tileSize, palette);

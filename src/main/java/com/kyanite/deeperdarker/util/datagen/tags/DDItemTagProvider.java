@@ -114,6 +114,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 DDItems.BLACK_SCULK_TRANSMITTER,
                 DDItems.SUPER_SCULK_TRANSMITTER
         );
+        add(DDTags.Items.UNLOCKS_GLOOMSLATE_LOCK, DDItems.KEYBRAND);
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
 

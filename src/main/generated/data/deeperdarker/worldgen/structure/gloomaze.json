@@ -5,6 +5,14 @@
     "depth": 29,
     "height": 5,
     "palette": {
+      "entrance": [
+        {
+          "data": {
+            "Name": "deeperdarker:gloomslate_lock"
+          },
+          "weight": 1
+        }
+      ],
       "fluid": [
         {
           "data": {

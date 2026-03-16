@@ -141,6 +141,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CHISELED_GLOOMSLATE);
         entries.accept(DDBlocks.GLOOMSLATE_BARRIER);
         entries.accept(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS);
+        entries.accept(DDBlocks.GLOOMSLATE_LOCK);
 
         entries.accept(DDBlocks.GLOOMY_SCULK);
         entries.accept(DDBlocks.GLOOMY_GEYSER);
