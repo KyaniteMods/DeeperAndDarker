@@ -2,6 +2,8 @@ package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.DeeperDarkerClient;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.llamalad7.mixinextras.expression.Definition;
+import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -30,5 +32,12 @@ public class KeybrandRenderMixin {
     @WrapOperation(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelManager;getModel(Lnet/minecraft/client/resources/model/ModelResourceLocation;)Lnet/minecraft/client/resources/model/BakedModel;", ordinal = 0))
     private BakedModel deeperdarker$getKeybrandModel(ModelManager instance, ModelResourceLocation modelResourceLocation, Operation<BakedModel> original, @Local(argsOnly = true) ItemStack stack) {
         return original.call(instance, stack.is(DDItems.KEYBRAND) ? DeeperDarkerClient.KEYBRAND_MODEL : modelResourceLocation);
+    }
+
+    @Definition(id = "GROUND", field = "Lnet/minecraft/world/item/ItemDisplayContext;GROUND:Lnet/minecraft/world/item/ItemDisplayContext;")
+    @Expression("? == GROUND")
+    @WrapOperation(method = "render", at = @At(value = "MIXINEXTRAS:EXPRESSION", ordinal = 0))
+    private boolean deeperdarker$renderLargeKeybrandOnGround(Object left, Object right, Operation<Boolean> original, @Local(argsOnly = true) ItemStack stack) {
+        return original.call(left, right) && !stack.is(DDItems.KEYBRAND);
     }
 }
