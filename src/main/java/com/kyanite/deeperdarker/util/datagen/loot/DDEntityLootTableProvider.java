@@ -77,8 +77,11 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
                         .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))
         ));
 
-        biConsumer.accept(BLOOMING_GOLEM, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                .add(LootItem.lootTableItem(DDItems.KEYBRAND).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
-        ));
+        biConsumer.accept(BLOOMING_GOLEM, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(DDItems.KEYBRAND).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(DDItems.PATIENCE_SHARD).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))));
     }
 }

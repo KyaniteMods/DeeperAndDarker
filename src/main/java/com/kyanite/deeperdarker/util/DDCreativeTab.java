@@ -237,6 +237,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.HEART_OF_THE_DEEP);
         entries.accept(DDItems.WARDEN_CARAPACE);
         entries.accept(DDItems.REINFORCED_ECHO_SHARD);
+        entries.accept(DDItems.PATIENCE_SHARD);
         entries.accept(DDItems.KEYBRAND);
 
         entries.accept(DDItems.SCULK_TRANSMITTER);
