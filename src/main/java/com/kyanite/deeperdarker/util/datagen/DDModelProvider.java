@@ -204,17 +204,6 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.delegateItemModel(DDBlocks.CRYSTALLIZED_AMBER, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER));
 
-        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDBlocks.OTHERSIDE_PORTAL).with(PropertyDispatch.property(
-                        BlockStateProperties.AXIS).select(Direction.Axis.X, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ns")))
-                .select(Direction.Axis.Y, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ns")).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90))
-                .select(Direction.Axis.Z, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ew")))));
-        registerParented(blockModelGenerators, ModelLocationUtils.getModelLocation(Blocks.NETHER_PORTAL, "_ew"), ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ew"),
-                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)),
-                new Tuple<>(TextureSlot.create("portal"), TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)));
-        registerParented(blockModelGenerators, ModelLocationUtils.getModelLocation(Blocks.NETHER_PORTAL, "_ns"), ModelLocationUtils.getModelLocation(DDBlocks.OTHERSIDE_PORTAL, "_ns"),
-                new Tuple<>(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)),
-                new Tuple<>(TextureSlot.create("portal"), TextureMapping.getBlockTexture(DDBlocks.OTHERSIDE_PORTAL)));
-
         blockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
         registerSculkJaw(blockModelGenerators, DDBlocks.SCULK_JAW);
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));

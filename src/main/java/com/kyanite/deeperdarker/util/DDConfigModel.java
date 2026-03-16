@@ -21,30 +21,6 @@ public class DDConfigModel {
         public float geyserLaunchVelocity = 2.5f;
 
         @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMinWidth = 2;
-
-        @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMinHeight = 2;
-
-        @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMaxWidth = 48;
-
-        @RangeConstraint(min = 1.0, max = 128.0)
-        public int portalMaxHeight = 24;
-
-        @RangeConstraint(min = 0.0, max = 127.0)
-        public int portalMinSearchHeight = 2;
-
-        @RangeConstraint(min = 0.0, max = 127.0)
-        public int portalMaxSearchHeight = 122;
-
-        @RangeConstraint(min = 1.0, max = 128.0)
-        public int generatedPortalWidth = 8;
-
-        @RangeConstraint(min = 1.0, max = 128.0)
-        public int generatedPortalHeight = 4;
-
-        @RangeConstraint(min = 1.0, max = 128.0)
         public float sonorousStaffDamage = 50.0f;
 
         @RangeConstraint(min = 1.0, max = 128.0)

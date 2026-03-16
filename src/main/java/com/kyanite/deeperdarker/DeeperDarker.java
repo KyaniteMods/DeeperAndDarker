@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
-import com.kyanite.deeperdarker.content.blocks.OthersidePortalFrameTester;
 import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDConfig;
@@ -11,6 +10,7 @@ import com.kyanite.deeperdarker.util.DDLootItemFunctions;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDCarvers;
 import com.kyanite.deeperdarker.world.DDFeatures;
+import com.kyanite.deeperdarker.world.otherside.gen.OthersideGeneration;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeGenerator;
@@ -20,20 +20,18 @@ import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Wilso
 import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomTypeRegistry;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import dev.kyanitemods.kyaniteportals.api.SimplePortalBuilder;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
-import net.kyrptonaught.customportalapi.CustomPortalBlock;
-import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
-import net.kyrptonaught.customportalapi.event.CPASoundEventData;
-import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -80,18 +78,16 @@ public class DeeperDarker implements ModInitializer {
 			SHOW_ME_YOUR_SKIN = true;
 		}
 
-		CustomPortalBuilder.beginPortal()
-				.customFrameTester(OTHERSIDE_FRAME_TESTER)
-				.frameBlock(Blocks.REINFORCED_DEEPSLATE)
-				.customIgnitionSource(PortalIgnitionSource.ItemUseSource(DDItems.HEART_OF_THE_DEEP))
-				.destDimID(new ResourceLocation(DeeperDarker.MOD_ID, "otherside"))
-				.tintColor(5, 98, 93)
-				.customPortalBlock((CustomPortalBlock) DDBlocks.OTHERSIDE_PORTAL)
-				.forcedSize(8, 4)
-				.registerInPortalAmbienceSound((player) -> new CPASoundEventData(DDSounds.PORTAL_GROAN, 1.0f, 1.0f))
-				.registerPortal();
-
-		CustomPortalApiRegistry.registerPortalFrameTester(OTHERSIDE_FRAME_TESTER, OthersidePortalFrameTester::new);
+		SimplePortalBuilder.create()
+				.frame(Blocks.REINFORCED_DEEPSLATE)
+				.ignition(DDItems.HEART_OF_THE_DEEP)
+				.fromDimension(LevelStem.OVERWORLD)
+				.toDimension(OthersideGeneration.OTHERSIDE_STEM)
+				.color((5 << 16) | (98 << 8) | 93)
+				.replaceable(Blocks.AIR, Blocks.CAVE_AIR, Blocks.VOID_AIR, Blocks.SCULK_VEIN)
+				.ambientSound(Holder.direct(DDSounds.PORTAL_GROAN))
+				.generatedSize(10, 6)
+				.register(new ResourceLocation(MOD_ID, "otherside"));
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (EntityType.WARDEN.getDefaultLootTable().equals(id) && CONFIG.server.addWardenDrops()) {
