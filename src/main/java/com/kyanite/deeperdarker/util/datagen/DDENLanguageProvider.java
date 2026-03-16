@@ -371,8 +371,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sonorous_staff.description", "Acquire a Sonorous Staff");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.title", "Echolocation");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".explore_otherside.description", "Explore all Otherside biomes");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.title", "Sculk Slayer");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_sculk_mobs.description", "Kill one of every Sculk monster");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_otherside_mobs.title", "Sculk Slayer");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_otherside_mobs.description", "Kill one of every Otherside hostile monster");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforced_echo_shard.title", "Sculk Engineer");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforced_echo_shard.description", "Reinforce an Echo Shard");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");

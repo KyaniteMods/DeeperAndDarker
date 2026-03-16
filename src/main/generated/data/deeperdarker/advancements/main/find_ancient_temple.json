@@ -23,7 +23,7 @@
     "description": {
       "translate": "advancements.deeperdarker.find_ancient_temple.description"
     },
-    "frame": "goal",
+    "frame": "task",
     "hidden": false,
     "icon": {
       "item": "deeperdarker:cut_sculk_stone"
@@ -38,8 +38,5 @@
       "ancient_temple"
     ]
   ],
-  "rewards": {
-    "experience": 50
-  },
   "sends_telemetry_event": true
 }

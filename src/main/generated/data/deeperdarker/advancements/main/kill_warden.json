@@ -21,7 +21,7 @@
     "description": {
       "translate": "advancements.deeperdarker.kill_warden.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "hidden": false,
     "icon": {
       "item": "deeperdarker:heart_of_the_deep"

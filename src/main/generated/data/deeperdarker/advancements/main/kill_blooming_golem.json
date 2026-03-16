@@ -21,7 +21,7 @@
     "description": {
       "translate": "advancements.deeperdarker.kill_blooming_golem.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "hidden": false,
     "icon": {
       "item": "deeperdarker:patience_shard"

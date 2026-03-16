@@ -13,7 +13,7 @@
     "description": {
       "translate": "advancements.deeperdarker.enter_otherside.description"
     },
-    "frame": "goal",
+    "frame": "task",
     "hidden": false,
     "icon": {
       "item": "minecraft:reinforced_deepslate"

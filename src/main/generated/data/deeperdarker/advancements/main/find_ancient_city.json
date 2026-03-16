@@ -23,7 +23,7 @@
     "description": {
       "translate": "advancements.deeperdarker.find_ancient_city.description"
     },
-    "frame": "goal",
+    "frame": "task",
     "hidden": false,
     "icon": {
       "item": "minecraft:deepslate_tiles"

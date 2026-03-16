@@ -17,7 +17,7 @@
     "description": {
       "translate": "advancements.deeperdarker.obtain_sculk_transmitter.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "deeperdarker:sculk_transmitter"

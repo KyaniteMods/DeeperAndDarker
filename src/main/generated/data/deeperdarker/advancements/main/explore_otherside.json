@@ -17,6 +17,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "darklands": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:darklands"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "deeplands": {
       "conditions": {
         "player": [
@@ -64,6 +80,22 @@
         ]
       },
       "trigger": "minecraft:location"
+    },
+    "sculk_spruce_forest": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:sculk_spruce_forest"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
     }
   },
   "display": {
@@ -94,6 +126,12 @@
     ],
     [
       "overcast_columns"
+    ],
+    [
+      "darklands"
+    ],
+    [
+      "sculk_spruce_forest"
     ]
   ],
   "rewards": {

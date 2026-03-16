@@ -15,6 +15,20 @@
       },
       "trigger": "minecraft:player_killed_entity"
     },
+    "blooming_golem": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:blooming_golem"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "phantom": {
       "conditions": {
         "entity": [
@@ -23,6 +37,48 @@
             "entity": "this",
             "predicate": {
               "type": "minecraft:phantom"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "pot": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:pot"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "potter": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:potter"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "potty": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:potty"
             }
           }
         ]
@@ -145,7 +201,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.kill_all_sculk_mobs.description"
+      "translate": "advancements.deeperdarker.kill_all_otherside_mobs.description"
     },
     "frame": "challenge",
     "hidden": false,
@@ -155,7 +211,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.kill_all_sculk_mobs.title"
+      "translate": "advancements.deeperdarker.kill_all_otherside_mobs.title"
     }
   },
   "requirements": [
@@ -188,10 +244,22 @@
     ],
     [
       "sludge"
+    ],
+    [
+      "blooming_golem"
+    ],
+    [
+      "potty"
+    ],
+    [
+      "pot"
+    ],
+    [
+      "potter"
     ]
   ],
   "rewards": {
-    "experience": 100
+    "experience": 200
   },
   "sends_telemetry_event": true
 }

@@ -49,7 +49,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "find_ancient_city.title"),
                         Component.translatable(id + "find_ancient_city.description"),
                         null,
-                        FrameType.GOAL,
+                        FrameType.TASK,
                         true,
                         true,
                         false
@@ -63,7 +63,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "kill_warden.title"),
                         Component.translatable(id + "kill_warden.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        FrameType.TASK,
                         true,
                         true,
                         false
@@ -77,7 +77,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "enter_otherside.title"),
                         Component.translatable(id + "enter_otherside.description"),
                         null,
-                        FrameType.GOAL,
+                        FrameType.TASK,
                         true,
                         true,
                         false
@@ -90,12 +90,11 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "find_ancient_temple.title"),
                         Component.translatable(id + "find_ancient_temple.description"),
                         null,
-                        FrameType.GOAL,
+                        FrameType.TASK,
                         true,
                         true,
                         false
                 ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setStructure(DDStructures.ANCIENT_TEMPLE).build()))
-                .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("find_ancient_temple"));
 
         Advancement.Builder.advancement().parent(findAncientTemple)
@@ -104,7 +103,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "obtain_sculk_transmitter.title"),
                         Component.translatable(id + "obtain_sculk_transmitter.description"),
                         null,
-                        FrameType.TASK,
+                        FrameType.GOAL,
                         true,
                         true,
                         false
@@ -138,6 +137,8 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ECHOING_FOREST).build()))
                 .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.BLOOMING_CAVERNS).build()))
                 .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.OVERCAST_COLUMNS).build()))
+                .addCriterion("darklands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.DARKLANDS).build()))
+                .addCriterion("sculk_spruce_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.SCULK_SPRUCE_FOREST).build()))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(consumer, path("explore_otherside"));
@@ -148,7 +149,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "kill_blooming_golem.title"),
                         Component.translatable(id + "kill_blooming_golem.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        FrameType.TASK,
                         true,
                         true,
                         false)
@@ -162,7 +163,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "kill_all_pots.title"),
                         Component.translatable(id + "kill_all_pots.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        FrameType.TASK,
                         true,
                         true,
                         false)
@@ -176,8 +177,8 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
         Advancement.Builder.advancement().parent(killAllPots)
                 .display(
                         DDItems.WARDEN_SWORD,
-                        Component.translatable(id + "kill_all_sculk_mobs.title"),
-                        Component.translatable(id + "kill_all_sculk_mobs.description"),
+                        Component.translatable(id + "kill_all_otherside_mobs.title"),
+                        Component.translatable(id + "kill_all_otherside_mobs.description"),
                         null,
                         FrameType.CHALLENGE,
                         true,
@@ -193,9 +194,13 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM)))
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER)))
                 .addCriterion("sludge", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SLUDGE)))
+                .addCriterion("blooming_golem", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.BLOOMING_GOLEM)))
+                .addCriterion("potty", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTY)))
+                .addCriterion("pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POT)))
+                .addCriterion("potter", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTER)))
                 .requirements(RequirementsStrategy.AND)
-                .rewards(AdvancementRewards.Builder.experience(100))
-                .save(consumer, path("kill_all_sculk_mobs"));
+                .rewards(AdvancementRewards.Builder.experience(200))
+                .save(consumer, path("kill_all_otherside_mobs"));
 
         Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
                 .display(
