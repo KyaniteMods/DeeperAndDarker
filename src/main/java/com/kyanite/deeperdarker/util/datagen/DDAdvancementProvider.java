@@ -142,7 +142,21 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(consumer, path("explore_otherside"));
 
-        Advancement.Builder.advancement().parent(enterOtherside)
+        Advancement killBloomingGolem = Advancement.Builder.advancement().parent(enterOtherside)
+                .display(
+                        DDItems.PATIENCE_SHARD,
+                        Component.translatable(id + "kill_blooming_golem.title"),
+                        Component.translatable(id + "kill_blooming_golem.description"),
+                        null,
+                        FrameType.CHALLENGE,
+                        true,
+                        true,
+                        false)
+                .addCriterion("blooming_golem", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.BLOOMING_GOLEM)))
+                .rewards(AdvancementRewards.Builder.experience(50))
+                .save(consumer, path("kill_blooming_golem"));
+
+        Advancement killAllPots = Advancement.Builder.advancement().parent(killBloomingGolem)
                 .display(
                         DDBlocks.GLOOMSLATE_BRICKS,
                         Component.translatable(id + "kill_all_pots.title"),
@@ -159,7 +173,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_all_pots"));
 
-        Advancement.Builder.advancement().parent(enterOtherside)
+        Advancement.Builder.advancement().parent(killAllPots)
                 .display(
                         DDItems.WARDEN_SWORD,
                         Component.translatable(id + "kill_all_sculk_mobs.title"),

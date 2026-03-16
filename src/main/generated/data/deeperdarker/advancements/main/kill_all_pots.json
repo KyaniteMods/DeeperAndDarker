@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/enter_otherside",
+  "parent": "deeperdarker:main/kill_blooming_golem",
   "criteria": {
     "pot": {
       "conditions": {

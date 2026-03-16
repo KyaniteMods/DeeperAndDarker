@@ -380,6 +380,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.title", "Pot Luck");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.description", "Kill Potty, Pot, and Potter");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.title", "Patience is Key");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.description", "Kill the Blooming Golem");
 
         translationBuilder.add("biome." + OthersideBiomes.DEEPLANDS.location().getNamespace() + "." + OthersideBiomes.DEEPLANDS.location().getPath(), "Deeplands");
         translationBuilder.add("biome." + OthersideBiomes.ECHOING_FOREST.location().getNamespace() + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), "Echoing Forest");

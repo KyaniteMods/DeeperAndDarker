@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/enter_otherside",
+  "parent": "deeperdarker:main/kill_all_pots",
   "criteria": {
     "angler_fish": {
       "conditions": {
