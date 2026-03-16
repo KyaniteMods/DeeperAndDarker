@@ -101,8 +101,11 @@ public class DDTags {
         public static final TagKey<Item> SCULK_TRANSMITTERS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_transmitters"));
 
-        public static final TagKey<Item> UNLOCKS_GLOOMSLATE_LOCK = TagKey.create(
-                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "unlocks_gloomslate_lock"));
+        public static final TagKey<Item> UNLOCKS_SMALL_LOCK = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "unlocks_small_lock"));
+
+        public static final TagKey<Item> UNLOCKS_LARGE_LOCK = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "unlocks_large_lock"));
     }
 
     public static class EntityTypes {

@@ -1,11 +1,16 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,13 +22,17 @@ import java.util.Queue;
 import java.util.Set;
 
 public class GloomslateLockBlock extends Block {
-    public GloomslateLockBlock(Properties properties) {
+    private final KeyType keyType;
+
+    public GloomslateLockBlock(KeyType keyType, Properties properties) {
         super(properties);
+        this.keyType = keyType;
     }
 
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        if (!player.getItemInHand(interactionHand).is(DDTags.Items.UNLOCKS_GLOOMSLATE_LOCK)) return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+        InteractionResult useKey = keyType.use(player, player.getItemInHand(interactionHand));
+        if (useKey != InteractionResult.SUCCESS) return useKey;
         if (level.isClientSide()) return InteractionResult.SUCCESS;
         level.destroyBlock(blockPos, true);
 
@@ -44,5 +53,29 @@ public class GloomslateLockBlock extends Block {
             }
         }
         return InteractionResult.CONSUME;
+    }
+
+    public enum KeyType {
+        SMALL(DDTags.Items.UNLOCKS_SMALL_LOCK, DDTags.Items.UNLOCKS_LARGE_LOCK, Component.translatable(DeeperDarker.MOD_ID + ".key_type.too_large")),
+        LARGE(DDTags.Items.UNLOCKS_LARGE_LOCK, DDTags.Items.UNLOCKS_SMALL_LOCK, Component.translatable(DeeperDarker.MOD_ID + ".key_type.too_small"));
+
+        private final TagKey<Item> unlockItems;
+        private final TagKey<Item> errorItems;
+        private final Component errorMessage;
+
+        KeyType(TagKey<Item> unlockItems, TagKey<Item> errorItems, Component errorMessage) {
+            this.unlockItems = unlockItems;
+            this.errorItems = errorItems;
+            this.errorMessage = errorMessage;
+        }
+
+        public InteractionResult use(Player player, ItemStack stack) {
+            if (stack.is(unlockItems)) return InteractionResult.SUCCESS;
+            if (stack.is(errorItems)) {
+                player.displayClientMessage(errorMessage, true);
+                return InteractionResult.CONSUME;
+            }
+            return InteractionResult.FAIL;
+        }
     }
 }

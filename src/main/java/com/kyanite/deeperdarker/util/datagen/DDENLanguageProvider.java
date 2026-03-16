@@ -280,7 +280,11 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SHADOW_CRYSTAL, "Shadow Crystal");
         translationBuilder.add(DDItems.SUNGLASSES, "Sunglasses");
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
+        translationBuilder.add(DDItems.DAINTY_KEY, "Dainty Key");
         translationBuilder.add(DDItems.KEYBRAND, "Keybrand");
+
+        translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_large", "This key is too large, it doesn't fit...");
+        translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_small", "This key is too small, it doesn't fit...");
 
         translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
         translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");

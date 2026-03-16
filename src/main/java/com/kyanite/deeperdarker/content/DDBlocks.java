@@ -248,7 +248,7 @@ public class DDBlocks {
     public static final Block CHISELED_GLOOMSLATE = register("chiseled_gloomslate", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE)));
     public static final Block GLOOMSLATE_BARRIER = register("gloomslate_barrier", new Block(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(-1, 3600000.0f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final Block FRAGILE_GLOOMSLATE_BRICKS = register("fragile_gloomslate_bricks", new FragileBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).noLootTable().instabreak()));
-    public static final Block GLOOMSLATE_LOCK = register("gloomslate_lock", new GloomslateLockBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).strength(-1, 3600000.0f).noLootTable()));
+    public static final Block GLOOMSLATE_LOCK = register("gloomslate_lock", new GloomslateLockBlock(GloomslateLockBlock.KeyType.LARGE, BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).strength(-1, 3600000.0f).noLootTable()));
 
     public static final Block SCULK_GRIME = register("sculk_grime", new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_BRICKS = register("sculk_grime_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
