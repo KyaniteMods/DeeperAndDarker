@@ -218,7 +218,7 @@ public class MazeStructurePieces {
                         //noinspection IntegerDivisionInFloatingPointContext
                         if (x >= getBoundingBox().getXSpan() / 2 - 2 && (y == 3 || y == 4) && z >= getBoundingBox().getZSpan() / 2 - 2 && x <= getBoundingBox().getXSpan() / 2 + 2 && z <= getBoundingBox().getZSpan() / 2 + 2
                         || new Vec3(x, y, z).distanceToSqr(getBoundingBox().getXSpan() / 2, 5, getBoundingBox().getZSpan() / 2) <= 2) {
-                            placeBlock(worldGenLevel, Blocks.OAK_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, false), x, y, z, boundingBox);
+                            placeBlock(worldGenLevel, Blocks.OAK_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true), x, y, z, boundingBox);
                             continue;
                         }
 
