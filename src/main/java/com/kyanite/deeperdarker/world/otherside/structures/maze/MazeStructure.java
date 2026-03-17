@@ -92,7 +92,7 @@ public class MazeStructure extends Structure {
             }
 
             if (isHole(result, x, y, z)) {
-                builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), DDChestLootTableProvider.MAZE_SECRET, context.random()));
+                builder.addPiece(new MazeStructurePieces.MazeFluidPathPiece(pieceBlockPos, piecePos, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), DDChestLootTableProvider.BLOOMAZE_SECRET, context.random()));
                 continue;
             }
 
@@ -100,7 +100,7 @@ public class MazeStructure extends Structure {
                 for (Direction direction : Arrays.stream(Direction.values()).filter(direction -> direction.getAxis().isHorizontal()).collect(Collectors.toSet())) {
                     Pos adjacentPos = piecePos.add(direction.getNormal());
                     if (result.isWithinBounds(adjacentPos) && result.get(adjacentPos).getType().isSolid()) {
-                        builder.addPiece(new MazeStructurePieces.MazeChestPathPiece(pieceBlockPos, piecePos, direction, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), DDChestLootTableProvider.MAZE_BASIC));
+                        builder.addPiece(new MazeStructurePieces.MazeChestPathPiece(pieceBlockPos, piecePos, direction, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), DDChestLootTableProvider.BLOOMAZE_BASIC));
                         break;
                     }
                 }

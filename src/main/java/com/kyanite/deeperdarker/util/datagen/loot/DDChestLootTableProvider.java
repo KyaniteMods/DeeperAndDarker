@@ -8,13 +8,9 @@ import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.SetPaintingVariantFunction;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -25,8 +21,6 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.function.BiConsumer;
 
 public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
@@ -36,8 +30,12 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation ANCIENT_TEMPLE_APEX = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_apex");
     public static final ResourceLocation ANCIENT_TEMPLE_FOUNTAIN = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_fountain");
     public static final ResourceLocation CRYSTALLIZED_AMBER = new ResourceLocation(DeeperDarker.MOD_ID, "chests/crystallized_amber");
-    public static final ResourceLocation MAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/maze_secret");
-    public static final ResourceLocation MAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/maze_basic");
+    public static final ResourceLocation BLOOMAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/bloomaze_basic");
+    public static final ResourceLocation BLOOMAZE_ADVANCED = new ResourceLocation(DeeperDarker.MOD_ID, "chests/bloomaze_advanced");
+    public static final ResourceLocation BLOOMAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/bloomaze_secret");
+    public static final ResourceLocation GLOOMAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_basic");
+    public static final ResourceLocation GLOOMAZE_ADVANCED = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_advanced");
+    public static final ResourceLocation GLOOMAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_secret");
 
     public DDChestLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.CHEST);
@@ -51,7 +49,7 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
         consumer.accept(ANCIENT_TEMPLE_FOUNTAIN, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 6)).add(LootItem.lootTableItem(Blocks.COBWEB).setWeight(33).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))).add(LootItem.lootTableItem(Items.STRING).setWeight(31).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 10)))).add(LootItem.lootTableItem(Blocks.COBBLESTONE).setWeight(28).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 8)))).add(LootItem.lootTableItem(Blocks.SCULK).setWeight(25).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 10)))).add(LootItem.lootTableItem(Items.GOLD_INGOT).setWeight(16).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 8)))).add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(16).apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 8)))).add(LootItem.lootTableItem(Items.REDSTONE).setWeight(14).apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 9)))).add(LootItem.lootTableItem(Items.RAW_COPPER).setWeight(13).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 10)))).add(LootItem.lootTableItem(DDItems.SOUL_DUST).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5)))).add(LootItem.lootTableItem(Items.GOLD_NUGGET).setWeight(9).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 17)))).add(LootItem.lootTableItem(Items.QUARTZ).setWeight(9).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 7)))).add(LootItem.lootTableItem(Items.DIAMOND).setWeight(8).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))).add(LootItem.lootTableItem(Blocks.SCULK_SENSOR).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Blocks.SCULK_CATALYST).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Items.DIAMOND_SWORD).setWeight(1).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(20, 50)))).add(LootItem.lootTableItem(DDItems.SOUL_CRYSTAL).setWeight(1).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
         consumer.accept(ANCIENT_TEMPLE_APEX, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 6)).add(LootItem.lootTableItem(Blocks.SCULK).setWeight(41).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 8)))).add(LootItem.lootTableItem(DDItems.SCULK_BONE).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 6)))).add(LootItem.lootTableItem(Items.ECHO_SHARD).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 9)))).add(LootItem.lootTableItem(DDItems.GRIME_BRICK).setWeight(37).apply(SetItemCountFunction.setCount(UniformGenerator.between(7, 13)))).add(LootItem.lootTableItem(DDItems.GRIME_BALL).setWeight(34).apply(SetItemCountFunction.setCount(UniformGenerator.between(8, 18)))).add(LootItem.lootTableItem(Blocks.TNT).setWeight(30).apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 9)))).add(LootItem.lootTableItem(Items.FLINT).setWeight(30).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 6)))).add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(27).apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 10)))).add(LootItem.lootTableItem(Items.QUARTZ).setWeight(22).apply(SetItemCountFunction.setCount(UniformGenerator.between(5, 13)))).add(LootItem.lootTableItem(Items.REDSTONE).setWeight(18).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 12)))).add(LootItem.lootTableItem(Items.DISC_FRAGMENT_5).setWeight(17).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))).add(LootItem.lootTableItem(Items.LAPIS_LAZULI).setWeight(17).apply(SetItemCountFunction.setCount(UniformGenerator.between(7, 19)))).add(LootItem.lootTableItem(Items.DIAMOND).setWeight(17).apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 8)))).add(LootItem.lootTableItem(Items.EMERALD).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 9)))).add(LootItem.lootTableItem(DDBlocks.CRYSTALLIZED_AMBER).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))).add(LootItem.lootTableItem(Blocks.SCULK_SENSOR).setWeight(12).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))).add(LootItem.lootTableItem(Blocks.SCULK_CATALYST).setWeight(12).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))).add(LootItem.lootTableItem(Items.IRON_HELMET).setWeight(5).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 40))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5f, 0.9f)))).add(LootItem.lootTableItem(Items.IRON_SWORD).setWeight(5).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 40))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.3f, 0.6f)))).add(LootItem.lootTableItem(Items.DIAMOND_BOOTS).setWeight(4).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.4f, 0.7f)))).add(LootItem.lootTableItem(Items.DIAMOND_HELMET).setWeight(4).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.8f, 1f)))).add(LootItem.lootTableItem(Items.BOOK).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))).apply(EnchantRandomlyFunction.randomApplicableEnchantment())).add(LootItem.lootTableItem(Items.DIAMOND_CHESTPLATE).setWeight(2).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(40, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6f, 0.9f)))).add(LootItem.lootTableItem(Items.DIAMOND_LEGGINGS).setWeight(2).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(40, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.6f, 0.8f)))).add(LootItem.lootTableItem(Items.ENCHANTED_GOLDEN_APPLE).setWeight(1).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5f, 0.9f)))).add(LootItem.lootTableItem(DDItems.WARDEN_CARAPACE).setWeight(1).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(30, 50))).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.5f, 0.9f))))));
         consumer.accept(CRYSTALLIZED_AMBER, LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.GOLD_INGOT).setWeight(8)).add(LootItem.lootTableItem(DDItems.SCULK_BONE).setWeight(8)).add(LootItem.lootTableItem(DDItems.SOUL_DUST).setWeight(8)).add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(7)).add(LootItem.lootTableItem(Items.QUARTZ).setWeight(7)).add(LootItem.lootTableItem(Items.AMETHYST_SHARD).setWeight(5)).add(LootItem.lootTableItem(Items.DIAMOND).setWeight(4)).add(LootItem.lootTableItem(Items.IRON_BOOTS).setWeight(4)).add(LootItem.lootTableItem(Items.IRON_BOOTS).setWeight(3).apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(20, 30)))).add(LootItem.lootTableItem(Items.EMERALD).setWeight(2)).add(LootItem.lootTableItem(Items.DIAMOND_AXE))));
-        consumer.accept(MAZE_BASIC, LootTable.lootTable()
+        consumer.accept(BLOOMAZE_BASIC, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 6))
                         .add(LootItem.lootTableItem(Items.IRON_INGOT)
                                 .setWeight(30)
@@ -68,7 +66,26 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                         .add(LootItem.lootTableItem(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS)
                                 .setWeight(1))
                 ));
-        consumer.accept(MAZE_SECRET, LootTable.lootTable()
+        consumer.accept(BLOOMAZE_ADVANCED, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
+                        .add(LootItem.lootTableItem(Items.ENDER_PEARL)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(DDItems.SHADOW_CRYSTAL)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.IRON_BLOCK)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)
+                                .setWeight(20))
+                        .add(LootItem.lootTableItem(Items.ANCIENT_DEBRIS)
+                                .setWeight(5))
+                        .add(LootItem.lootTableItem(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS)
+                                .setWeight(1)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6))))
+                ));
+        consumer.accept(BLOOMAZE_SECRET, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 7))
                         .add(LootItem.lootTableItem(Items.IRON_INGOT)
                                 .setWeight(30)
@@ -77,12 +94,66 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                                 .setWeight(25)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 10))))
                         .add(LootItem.lootTableItem(Items.DIAMOND)
-                                .setWeight(2)
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f))))
+                                .setWeight(2))
                         .add(LootItem.lootTableItem(Items.DIAMOND_SWORD)
                                 .setWeight(5)
                                 .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2f, 0.3f))))
                         .add(LootItem.lootTableItem(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS)
+                                .setWeight(2))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)))
+        );
+        consumer.accept(GLOOMAZE_BASIC, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 6))
+                        .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                                .setWeight(30)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.IRON_NUGGET)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 10))))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)
+                                .setWeight(1)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.IRON_SWORD)
+                                .setWeight(5)
+                                .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2f, 0.4f))))
+                        .add(LootItem.lootTableItem(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS)
+                                .setWeight(1))
+                ));
+        consumer.accept(GLOOMAZE_ADVANCED, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(5, 8))
+                        .add(LootItem.lootTableItem(Items.ENDER_PEARL)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(DDItems.SHADOW_CRYSTAL)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.IRON_BLOCK)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)
+                                .setWeight(20))
+                        .add(LootItem.lootTableItem(Items.ANCIENT_DEBRIS)
+                                .setWeight(5))
+                        .add(LootItem.lootTableItem(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS)
+                                .setWeight(1)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6))))
+                ));
+        consumer.accept(GLOOMAZE_SECRET, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 7))
+                        .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                                .setWeight(30)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))))
+                        .add(LootItem.lootTableItem(Items.IRON_NUGGET)
+                                .setWeight(25)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 10))))
+                        .add(LootItem.lootTableItem(Items.DIAMOND)
+                                .setWeight(2))
+                        .add(LootItem.lootTableItem(Items.DIAMOND_SWORD)
+                                .setWeight(5)
+                                .apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.2f, 0.3f))))
+                        .add(LootItem.lootTableItem(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS)
                                 .setWeight(2))
                 )
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))

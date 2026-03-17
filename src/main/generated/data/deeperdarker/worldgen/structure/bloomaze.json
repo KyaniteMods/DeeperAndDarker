@@ -123,6 +123,18 @@
           11
         ],
         "required": true
+      },
+      {
+        "options": {
+          "type": "deeperdarker:creeper_room"
+        }
+      },
+      {
+        "options": {
+          "type": "deeperdarker:oak_tree_room",
+          "leaves_loot_table": "deeperdarker:chests/bloomaze_basic",
+          "secret_loot_table": "deeperdarker:chests/bloomaze_secret"
+        }
       }
     ],
     "tile_size": 3,

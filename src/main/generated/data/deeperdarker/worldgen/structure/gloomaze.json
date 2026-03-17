@@ -106,8 +106,8 @@
       {
         "options": {
           "type": "deeperdarker:oak_tree_room",
-          "leaves_loot_table": "deeperdarker:chests/maze_basic",
-          "secret_loot_table": "deeperdarker:chests/maze_secret"
+          "leaves_loot_table": "deeperdarker:chests/gloomaze_basic",
+          "secret_loot_table": "deeperdarker:chests/gloomaze_secret"
         }
       }
     ],

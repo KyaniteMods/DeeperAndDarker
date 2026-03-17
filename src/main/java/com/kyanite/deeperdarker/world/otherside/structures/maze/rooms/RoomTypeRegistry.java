@@ -2,9 +2,6 @@ package com.kyanite.deeperdarker.world.otherside.structures.maze.rooms;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.MazeStructurePieces;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomOptions;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomType;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.SimpleRoomType;
 import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.minecraft.core.Registry;
@@ -18,6 +15,7 @@ public class RoomTypeRegistry {
     public static final SimpleRoomType BLOOMAZE_BOSS_ROOM = register("bloomaze/boss_room", new SimpleRoomType((options, context, settings, origin, pos, entrance) -> new MazeStructurePieces.BloomazeBossRoomPiece(origin.offset(pos.x() * settings.tileSize(), pos.y() * settings.tileSize(), pos.z() * settings.tileSize()), pos, settings.width(), settings.height(), settings.depth(), settings.tileSize(), settings.palette()), 1, 1, 1));
     public static final SimpleRoomType GLOOMAZE_BOSS_ROOM = register("gloomaze/boss_room", new SimpleRoomType((options, context, settings, origin, pos, entrance) -> new MazeStructurePieces.GloomazeBossRoomPiece(origin.offset(pos.x() * settings.tileSize(), pos.y() * settings.tileSize(), pos.z() * settings.tileSize()), pos, settings.width(), settings.height(), settings.depth(), settings.tileSize(), settings.palette()), 7, 1, 7));
     public static final OakTreeRoomType OAK_TREE_ROOM = register("oak_tree_room", new OakTreeRoomType((options, context, settings, origin, pos, entrance) -> new MazeStructurePieces.OakTreeRoomPiece(origin.offset(pos.x() * settings.tileSize(), pos.y() * settings.tileSize(), pos.z() * settings.tileSize()), pos, settings.width(), settings.height(), settings.depth(), settings.tileSize(), settings.palette(), options.leavesLootTable().orElse(null), options.secretLootTable().orElse(null)), 3, 3, 3));
+    public static final SimpleRoomType CREEPER_ROOM = register("creeper_room", new SimpleRoomType((options, context, settings, origin, pos, entrance) -> new MazeStructurePieces.CreeperRoomPiece(origin.offset(pos.x() * settings.tileSize(), pos.y() * settings.tileSize(), pos.z() * settings.tileSize()), pos, settings.width(), settings.height(), settings.depth(), settings.tileSize(), settings.palette()), 3, 3, 3));
 
     public static final Codec<RoomOptions<?>> CODEC = REGISTRY.byNameCodec().dispatch("type", RoomOptions::getType, RoomType::codec);
 

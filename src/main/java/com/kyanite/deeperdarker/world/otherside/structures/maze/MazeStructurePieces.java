@@ -229,6 +229,40 @@ public class MazeStructurePieces {
         }
     }
 
+    public static class CreeperRoomPiece extends MazeStructurePiece {
+        public CreeperRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
+            super(DDStructurePieceTypes.CREEPER_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 3, 3, 3, tileSize, palette);
+        }
+
+        public CreeperRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.CREEPER_ROOM_PIECE, tag);
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        if ((((y == 4 || y == 1) && (x == getBoundingBox().getXSpan() / 2 - 1 || x == getBoundingBox().getXSpan() / 2 + 1))
+                                || (y == 3 && x == getBoundingBox().getXSpan() / 2)
+                                || (y == 2 && x >= getBoundingBox().getXSpan() / 2 - 1 && x <= getBoundingBox().getXSpan() / 2 + 1)) && z == getBoundingBox().getZSpan() / 2 - 1) {
+                            placeBlock(worldGenLevel, Blocks.BLACK_TERRACOTTA.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        if (x >= getBoundingBox().getXSpan() / 2 - 1 && x <= getBoundingBox().getXSpan() / 2 + 1 && y <= 5 && z >= getBoundingBox().getZSpan() / 2 - 1 && z <= getBoundingBox().getZSpan() / 2 + 1) {
+                            placeBlock(worldGenLevel, Blocks.GREEN_TERRACOTTA.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
     public static class MazePathPiece extends MazeStructurePiece {
         private BlockState state;
 

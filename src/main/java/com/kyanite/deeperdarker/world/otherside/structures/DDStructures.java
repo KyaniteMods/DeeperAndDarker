@@ -46,8 +46,15 @@ public class DDStructures {
         for (MobCategory category : MobCategory.values()) {
             mazeSpawnOverrides.put(category, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create()));
         }
-        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(25, 5, 25, 3, MazeStructurePalette.BLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true)), false)));
-        context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true), new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.MAZE_BASIC), Optional.of(DDChestLootTableProvider.MAZE_SECRET)), Optional.empty(), false)), false)));
+        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(25, 5, 25, 3, MazeStructurePalette.BLOOMAZE, List.of(
+                new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true),
+                new RoomEntry(RoomTypeRegistry.CREEPER_ROOM, Optional.empty(), false),
+                new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.BLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.BLOOMAZE_SECRET)), Optional.empty(), false)
+        ), false)));
+        context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(
+                new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true),
+                new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.GLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.GLOOMAZE_SECRET)), Optional.empty(), false)
+        ), false)));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {
