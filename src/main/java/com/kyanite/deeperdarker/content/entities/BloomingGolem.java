@@ -331,4 +331,14 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
             mob.setLastHurtByMob(null);
         }
     }
+
+    @Override
+    public boolean isPushedByFluid() {
+        return false;
+    }
+
+    @Override
+    public boolean isAffectedByPotions() {
+        return false;
+    }
 }
