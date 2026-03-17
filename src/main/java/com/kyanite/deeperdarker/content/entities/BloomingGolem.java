@@ -33,6 +33,7 @@ import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -141,7 +142,7 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 800).add(Attributes.ATTACK_DAMAGE, 22).add(Attributes.MOVEMENT_SPEED, 0.3f).add(Attributes.ARMOR, 4).add(Attributes.KNOCKBACK_RESISTANCE, 1).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 800).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).build();
     }
 
     @Override
@@ -212,6 +213,8 @@ public class BloomingGolem extends AbstractGolem implements Enemy {
         }
 
         if (isBloomingGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
+
+        level().getEntities(this, getBoundingBox(), entity -> entity instanceof Player).forEach(this::doHurtTarget);
 
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
