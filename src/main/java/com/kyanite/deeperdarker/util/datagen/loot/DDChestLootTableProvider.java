@@ -36,6 +36,7 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation GLOOMAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_basic");
     public static final ResourceLocation GLOOMAZE_ADVANCED = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_advanced");
     public static final ResourceLocation GLOOMAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_secret");
+    public static final ResourceLocation CASTLE = new ResourceLocation(DeeperDarker.MOD_ID, "chests/castle");
 
     public DDChestLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.CHEST);
@@ -158,6 +159,32 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                 )
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
                         .add(LootItem.lootTableItem(Items.DIAMOND)))
+        );
+        consumer.accept(CASTLE, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(4, 9))
+                        .add(LootItem.lootTableItem(Items.COBWEB)
+                                .setWeight(10)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 10))))
+                        .add(LootItem.lootTableItem(Items.BOOK).setWeight(5))
+                        .add(LootItem.lootTableItem(Items.IRON_NUGGET)
+                                .setWeight(3)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6))))
+                        .add(LootItem.lootTableItem(Items.APPLE).setWeight(3))
+                        .add(LootItem.lootTableItem(Items.OAK_SAPLING).setWeight(3))
+                        .add(LootItem.lootTableItem(Items.STICK)
+                                .setWeight(3)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(Items.BRICK)
+                                .setWeight(2)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                        .add(LootItem.lootTableItem(Items.BUCKET).setWeight(2))
+                        .add(LootItem.lootTableItem(Items.COPPER_INGOT).setWeight(2))
+                        .add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(1))
+                        .add(LootItem.lootTableItem(Items.ENDER_PEARL).setWeight(1))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+                        .add(EmptyLootItem.emptyItem().setWeight(19))
+                        .add(LootItem.lootTableItem(DDItems.DAINTY_KEY).setWeight(1)))
         );
     }
 }
