@@ -9,7 +9,7 @@
         },
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 6
     },
     {
       "element": {
@@ -20,7 +20,7 @@
         },
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 6
     },
     {
       "element": {
@@ -31,7 +31,7 @@
         },
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 6
     },
     {
       "element": {
@@ -42,12 +42,67 @@
         },
         "projection": "rigid"
       },
-      "weight": 2
+      "weight": 6
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "deeperdarker:castle/path_5",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/small_wall",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/medium_wall_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/medium_wall_2",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/large_wall_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/large_wall_2",
         "processors": {
           "processors": []
         },

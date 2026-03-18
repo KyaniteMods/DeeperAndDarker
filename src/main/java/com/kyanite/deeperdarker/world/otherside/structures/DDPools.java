@@ -46,11 +46,16 @@ public class DDPools {
                 Pair.of(location("castle/fountain_2"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_PATHS, new StructureTemplatePool(empty, ImmutableList.of(
-                Pair.of(location("castle/path_1"), 2),
-                Pair.of(location("castle/path_2"), 2),
-                Pair.of(location("castle/path_3"), 2),
-                Pair.of(location("castle/path_4"), 2),
-                Pair.of(location("castle/path_5"), 1)
+                Pair.of(location("castle/path_1"), 6),
+                Pair.of(location("castle/path_2"), 6),
+                Pair.of(location("castle/path_3"), 6),
+                Pair.of(location("castle/path_4"), 6),
+                Pair.of(location("castle/path_5"), 2),
+                Pair.of(location("castle/small_wall"), 1),
+                Pair.of(location("castle/medium_wall_1"), 1),
+                Pair.of(location("castle/medium_wall_2"), 1),
+                Pair.of(location("castle/large_wall_1"), 1),
+                Pair.of(location("castle/large_wall_2"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_SMALL_BUILDINGS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/small_building_1"), 1),
@@ -62,11 +67,13 @@ public class DDPools {
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_MEDIUM_BUILDINGS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/medium_building_1"), 1),
-                Pair.of(location("castle/medium_wall"), 1)
+                Pair.of(location("castle/medium_wall_1"), 1),
+                Pair.of(location("castle/medium_wall_2"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_LARGE_BUILDINGS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/large_building_1"), 1),
                 Pair.of(location("castle/large_building_2"), 1),
+                Pair.of(location("castle/large_building_3"), 1),
                 Pair.of(location("castle/greenhouse"), 1),
                 Pair.of(location("castle/large_wall_1"), 1),
                 Pair.of(location("castle/large_wall_2"), 1)

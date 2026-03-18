@@ -25,6 +25,17 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/large_building_3",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
         "location": "deeperdarker:castle/greenhouse",
         "processors": {
           "processors": []
