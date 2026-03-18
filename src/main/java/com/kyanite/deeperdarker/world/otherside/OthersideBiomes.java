@@ -203,10 +203,10 @@ public class OthersideBiomes {
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.SHADOW_CRYSTAL_CONE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.SCULK_SPRUCE_DELTA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.GRAVEL_DISK);
-        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES, DDPlacedFeatures.SCULK_FOREST_BOULDER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SHADOW_CRYSTAL_CONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SCULK_SPRUCE_DELTA);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.GRAVEL_DISK);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SCULK_FOREST_BOULDER);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_FOREST_VEGETATION);
         biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, DDPlacedFeatures.ICICLE_PATCH);

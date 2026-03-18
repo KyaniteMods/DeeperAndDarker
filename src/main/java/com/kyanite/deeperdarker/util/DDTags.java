@@ -116,6 +116,7 @@ public class DDTags {
         public static final TagKey<Biome> HAS_ANCIENT_TEMPLE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/ancient_temple"));
         public static final TagKey<Biome> HAS_BLOOMAZE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/bloomaze"));
         public static final TagKey<Biome> HAS_GLOOMAZE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/gloomaze"));
+        public static final TagKey<Biome> HAS_CASTLE = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/castle"));
     }
 
     public static class Paintings {

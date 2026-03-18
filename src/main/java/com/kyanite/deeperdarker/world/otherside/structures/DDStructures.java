@@ -35,6 +35,7 @@ public class DDStructures {
     public static final ResourceKey<Structure> ANCIENT_TEMPLE = createKey("ancient_temple");
     public static final ResourceKey<Structure> BLOOMAZE = createKey("bloomaze");
     public static final ResourceKey<Structure> GLOOMAZE = createKey("gloomaze");
+    public static final ResourceKey<Structure> CASTLE = createKey("castle");
 
     public static void bootstrap(BootstapContext<Structure> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -55,6 +56,8 @@ public class DDStructures {
                 new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true),
                 new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.GLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.GLOOMAZE_SECRET)), Optional.empty(), false)
         ), false)));
+
+        context.register(CASTLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_CASTLE)), pools.getOrThrow(DDPools.CASTLE_FOUNTAINS), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), true));
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {

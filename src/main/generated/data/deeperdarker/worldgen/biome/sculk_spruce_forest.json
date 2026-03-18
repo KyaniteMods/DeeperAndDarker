@@ -18,17 +18,17 @@
   "features": [
     [],
     [],
-    [],
-    [
-      "minecraft:fossil_upper",
-      "minecraft:fossil_lower"
-    ],
     [
       "deeperdarker:shadow_crystal_cone",
       "deeperdarker:sculk_spruce_delta",
       "deeperdarker:gravel_disk",
       "deeperdarker:sculk_forest_boulder"
     ],
+    [
+      "minecraft:fossil_upper",
+      "minecraft:fossil_lower"
+    ],
+    [],
     [],
     [
       "deeperdarker:infested_sculk",
