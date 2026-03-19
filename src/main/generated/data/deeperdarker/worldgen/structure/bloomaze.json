@@ -8,19 +8,7 @@
       "entrance": [
         {
           "data": {
-            "Name": "minecraft:air"
-          },
-          "weight": 100
-        },
-        {
-          "data": {
-            "Name": "deeperdarker:fragile_sculk_grime_bricks"
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "deeperdarker:sculk_grime_glass"
+            "Name": "deeperdarker:sculk_grime_lock"
           },
           "weight": 1
         }

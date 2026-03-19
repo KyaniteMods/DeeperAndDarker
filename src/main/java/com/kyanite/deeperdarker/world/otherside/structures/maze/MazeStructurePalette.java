@@ -27,7 +27,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
             .addWallEdges(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GRIME_GLASS.defaultBlockState(), 1))
             .addWallCenters(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))
             .addPathBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 100), WeightedEntry.wrap(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState(), 2), WeightedEntry.wrap(DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), 1))
-            .addEntranceBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 100), WeightedEntry.wrap(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState(), 2), WeightedEntry.wrap(DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), 1))
+            .addEntranceBlocks(WeightedEntry.wrap(DDBlocks.SCULK_GRIME_LOCK.defaultBlockState(), 1))
             .addFluids(WeightedEntry.wrap(Blocks.LAVA.defaultBlockState(), 2), WeightedEntry.wrap(Blocks.WATER.defaultBlockState(), 1))
             .build();
 

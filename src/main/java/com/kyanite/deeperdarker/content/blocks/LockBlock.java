@@ -21,10 +21,10 @@ import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
 
-public class GloomslateLockBlock extends Block {
+public class LockBlock extends Block {
     private final KeyType keyType;
 
-    public GloomslateLockBlock(KeyType keyType, Properties properties) {
+    public LockBlock(KeyType keyType, Properties properties) {
         super(properties);
         this.keyType = keyType;
     }
