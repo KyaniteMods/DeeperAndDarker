@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.blocks.IcicleBlock;
+import com.kyanite.deeperdarker.content.entities.IcicleShard;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
@@ -10,6 +11,7 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SculkSensorBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -112,7 +114,7 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
             if (block instanceof IcicleBlock icicle) {
                 if (!icicle.isFallingStalactitePos(serverLevel, this.blockPos)) return false;
             }
-            return (gameEvent != GameEvent.BLOCK_DESTROY && gameEvent != GameEvent.BLOCK_PLACE) && dx <= 1 && (blockPos.getY() < this.blockPos.getY()) && dz <= 1 && BlockPos.betweenClosedStream(this.blockPos.below(), new BlockPos(this.blockPos.getX(), blockPos.getY(), this.blockPos.getZ())).allMatch(pos -> !serverLevel.getBlockState(pos).isCollisionShapeFullBlock(serverLevel, pos) || serverLevel.getBlockState(pos).is(block));
+            return (gameEvent != GameEvent.BLOCK_DESTROY && gameEvent != GameEvent.BLOCK_PLACE && context != null && !(context.sourceEntity() instanceof FallingBlockEntity) && !(context.sourceEntity() instanceof IcicleShard)) && dx <= 1 && (blockPos.getY() < this.blockPos.getY()) && dz <= 1 && BlockPos.betweenClosedStream(this.blockPos.below(), new BlockPos(this.blockPos.getX(), blockPos.getY(), this.blockPos.getZ())).allMatch(pos -> !serverLevel.getBlockState(pos).isCollisionShapeFullBlock(serverLevel, pos) || serverLevel.getBlockState(pos).is(block));
         }
 
         @Override

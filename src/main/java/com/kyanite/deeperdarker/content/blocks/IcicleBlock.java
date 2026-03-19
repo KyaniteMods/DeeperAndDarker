@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.entities.IcicleShard;
 import com.kyanite.deeperdarker.content.entities.blocks.IcicleBlockEntity;
 import com.kyanite.deeperdarker.mixin.AbstractCauldronAccessor;
+import com.kyanite.deeperdarker.mixin.ProjectileAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -244,6 +245,7 @@ public class IcicleBlock extends BaseEntityBlock
         float angle = level.getRandom().nextFloat() * Mth.TWO_PI;
         for (int i = 0; i < shardAmount; i++) {
             IcicleShard shard = new IcicleShard(blockPos.getX() + 0.5, blockPos.getY() + 0.5, blockPos.getZ() + 0.5, level);
+            ((ProjectileAccessor) shard).setHasBeenShot(true);
 
             float yawVariation = (level.getRandom().nextFloat() - 0.5f) * Mth.TWO_PI * 0.0625f;
             float yaw = angle + ((float) i / shardAmount) * Mth.TWO_PI + yawVariation;
