@@ -42,7 +42,8 @@ public class DDPools {
         context.register(createKey("ancient_temple/mobs"), new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/mobs/shattered", degradation), 1), Pair.of(location("ancient_temple/mobs/snapper", degradation), 1)), StructureTemplatePool.Projection.RIGID));
 
         context.register(CASTLE_CASTLES, new StructureTemplatePool(empty, ImmutableList.of(
-                Pair.of(location("castle/paths/castle_1"), 1)
+                Pair.of(location("castle/paths/castle_1"), 1),
+                Pair.of(location("castle/paths/castle_2"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_PATHS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/paths/bridge"), 1),
