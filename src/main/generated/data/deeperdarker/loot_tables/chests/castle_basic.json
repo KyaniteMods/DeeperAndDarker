@@ -18,7 +18,7 @@
             }
           ],
           "name": "minecraft:cobweb",
-          "weight": 10
+          "weight": 6
         },
         {
           "type": "minecraft:item",
