@@ -1,2 +1,3 @@
 accessWidener   v1 named
 accessible class net/minecraft/data/models/ItemModelGenerators$TrimModelData
+accessible class net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement$Placer

@@ -3,62 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/path_1",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 6
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/path_2",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 6
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/path_3",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 6
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/path_4",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 6
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/path_5",
-        "processors": {
-          "processors": []
-        },
-        "projection": "rigid"
-      },
-      "weight": 2
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/small_wall",
+        "location": "deeperdarker:castle/paths/bridge",
         "processors": {
           "processors": []
         },
@@ -69,46 +14,90 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/medium_wall_1",
+        "location": "deeperdarker:castle/paths/buildings_1",
         "processors": {
           "processors": []
         },
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 5
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/medium_wall_2",
+        "location": "deeperdarker:castle/paths/buildings_2",
         "processors": {
           "processors": []
         },
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 5
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/large_wall_1",
+        "location": "deeperdarker:castle/paths/buildings_3",
         "processors": {
           "processors": []
         },
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 5
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "deeperdarker:castle/large_wall_2",
+        "location": "deeperdarker:castle/paths/buildings_4",
         "processors": {
           "processors": []
         },
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/paths/buildings_5",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/paths/path_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/paths/wall_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 5
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "deeperdarker:castle/paths/wall_2",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 5
     }
   ],
   "fallback": "minecraft:empty"

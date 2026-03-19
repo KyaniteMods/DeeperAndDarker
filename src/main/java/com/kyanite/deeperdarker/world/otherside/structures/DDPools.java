@@ -19,13 +19,13 @@ import java.util.function.Function;
 
 public class DDPools {
     public static final ResourceKey<StructureTemplatePool> TEMPLE_START = createKey("ancient_temple/basement");
-    public static final ResourceKey<StructureTemplatePool> CASTLE_FOUNTAINS = createKey("castle/fountains");
+    public static final ResourceKey<StructureTemplatePool> CASTLE_CASTLES = createKey("castle/castles");
     public static final ResourceKey<StructureTemplatePool> CASTLE_PATHS = createKey("castle/paths");
+    public static final ResourceKey<StructureTemplatePool> CASTLE_DECORATIONS = createKey("castle/decorations");
     public static final ResourceKey<StructureTemplatePool> CASTLE_SMALL_BUILDINGS = createKey("castle/small_buildings");
     public static final ResourceKey<StructureTemplatePool> CASTLE_MEDIUM_BUILDINGS = createKey("castle/medium_buildings");
     public static final ResourceKey<StructureTemplatePool> CASTLE_LARGE_BUILDINGS = createKey("castle/large_buildings");
-    public static final ResourceKey<StructureTemplatePool> CASTLE_STAIRS_PATHS = createKey("castle/stairs_paths");
-    public static final ResourceKey<StructureTemplatePool> CASTLE_STAIRS = createKey("castle/stairs");
+    public static final ResourceKey<StructureTemplatePool> CASTLE_GIANT_BUILDINGS = createKey("castle/giant_buildings");
 
     public static void bootstrap(BootstapContext<StructureTemplatePool> context) {
         Holder<StructureTemplatePool> empty = context.lookup(Registries.TEMPLATE_POOL).getOrThrow(Pools.EMPTY);
@@ -41,48 +41,65 @@ public class DDPools {
         context.register(createKey("ancient_temple/upper/rooms"), new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/upper/rooms/room_0", degradation), 1), Pair.of(location("ancient_temple/upper/rooms/room_1", degradation), 1), Pair.of(location("ancient_temple/upper/rooms/room_2", degradation), 1), Pair.of(location("ancient_temple/upper/rooms/room_3", degradation), 1)), StructureTemplatePool.Projection.RIGID));
         context.register(createKey("ancient_temple/mobs"), new StructureTemplatePool(empty, ImmutableList.of(Pair.of(location("ancient_temple/mobs/shattered", degradation), 1), Pair.of(location("ancient_temple/mobs/snapper", degradation), 1)), StructureTemplatePool.Projection.RIGID));
 
-        context.register(CASTLE_FOUNTAINS, new StructureTemplatePool(empty, ImmutableList.of(
-                Pair.of(location("castle/fountain_1"), 5),
-                Pair.of(location("castle/fountain_2"), 1)
+        context.register(CASTLE_CASTLES, new StructureTemplatePool(empty, ImmutableList.of(
+                Pair.of(location("castle/paths/castle_1"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_PATHS, new StructureTemplatePool(empty, ImmutableList.of(
-                Pair.of(location("castle/path_1"), 6),
-                Pair.of(location("castle/path_2"), 6),
-                Pair.of(location("castle/path_3"), 6),
-                Pair.of(location("castle/path_4"), 6),
-                Pair.of(location("castle/path_5"), 2),
-                Pair.of(location("castle/small_wall"), 1),
-                Pair.of(location("castle/medium_wall_1"), 1),
-                Pair.of(location("castle/medium_wall_2"), 1),
-                Pair.of(location("castle/large_wall_1"), 1),
-                Pair.of(location("castle/large_wall_2"), 1)
+                Pair.of(location("castle/paths/bridge"), 1),
+                Pair.of(location("castle/paths/buildings_1"), 5),
+                Pair.of(location("castle/paths/buildings_2"), 5),
+                Pair.of(location("castle/paths/buildings_3"), 5),
+                Pair.of(location("castle/paths/buildings_4"), 5),
+                Pair.of(location("castle/paths/buildings_5"), 5),
+                Pair.of(location("castle/paths/path_1"), 5),
+                Pair.of(location("castle/paths/wall_1"), 5),
+                Pair.of(location("castle/paths/wall_2"), 5)
+        ), StructureTemplatePool.Projection.RIGID));
+        context.register(CASTLE_DECORATIONS, new StructureTemplatePool(empty, ImmutableList.of(
+                Pair.of(location("castle/decoration_1"), 1),
+                Pair.of(location("castle/decoration_2"), 1),
+                Pair.of(location("castle/decoration_3"), 1),
+                Pair.of(location("castle/decoration_4"), 1),
+                Pair.of(location("castle/decoration_5"), 1),
+                Pair.of(location("castle/decoration_6"), 1),
+                Pair.of(location("castle/decoration_7"), 1),
+                Pair.of(location("castle/decoration_8"), 1),
+                Pair.of(location("castle/decoration_9"), 1),
+                Pair.of(location("castle/decoration_10"), 1),
+                Pair.of(location("castle/decoration_11"), 1),
+                Pair.of(location("castle/decoration_12"), 1),
+                Pair.of(location("castle/decoration_13"), 1),
+                Pair.of(location("castle/decoration_14"), 1),
+                Pair.of(location("castle/decoration_15"), 1),
+                Pair.of(location("castle/decoration_16"), 1),
+                Pair.of(location("castle/decoration_17"), 1),
+                Pair.of(location("castle/decoration_18"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_SMALL_BUILDINGS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/small_building_1"), 1),
                 Pair.of(location("castle/small_building_2"), 1),
-                Pair.of(location("castle/tower"), 1),
-                Pair.of(location("castle/factory"), 1),
-                Pair.of(location("castle/clock_tower"), 1),
-                Pair.of(location("castle/small_wall"), 1)
+                Pair.of(location("castle/small_building_3"), 1),
+                Pair.of(location("castle/small_building_4"), 1),
+                Pair.of(location("castle/small_building_5"), 1),
+                Pair.of(location("castle/small_building_6"), 1),
+                Pair.of(location("castle/small_building_7"), 1),
+                Pair.of(location("castle/small_building_8"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_MEDIUM_BUILDINGS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/medium_building_1"), 1),
-                Pair.of(location("castle/medium_wall_1"), 1),
-                Pair.of(location("castle/medium_wall_2"), 1)
+                Pair.of(location("castle/medium_building_2"), 1),
+                Pair.of(location("castle/medium_building_3"), 1),
+                Pair.of(location("castle/medium_building_4"), 1),
+                Pair.of(location("castle/medium_building_5"), 1),
+                Pair.of(location("castle/medium_building_6"), 1),
+                Pair.of(location("castle/medium_building_7"), 1),
+                Pair.of(location("castle/medium_building_8"), 1)
         ), StructureTemplatePool.Projection.RIGID));
         context.register(CASTLE_LARGE_BUILDINGS, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("castle/large_building_1"), 1),
                 Pair.of(location("castle/large_building_2"), 1),
                 Pair.of(location("castle/large_building_3"), 1),
-                Pair.of(location("castle/greenhouse"), 1),
-                Pair.of(location("castle/large_wall_1"), 1),
-                Pair.of(location("castle/large_wall_2"), 1)
-        ), StructureTemplatePool.Projection.RIGID));
-        context.register(CASTLE_STAIRS_PATHS, new StructureTemplatePool(empty, ImmutableList.of(
-                Pair.of(location("castle/path_stairs"), 1)
-        ), StructureTemplatePool.Projection.RIGID));
-        context.register(CASTLE_STAIRS, new StructureTemplatePool(empty, ImmutableList.of(
-                Pair.of(location("castle/stairs"), 1)
+                Pair.of(location("castle/large_building_4"), 1)
         ), StructureTemplatePool.Projection.RIGID));
     }
 
