@@ -47,6 +47,7 @@ public class DDItems {
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
     public static final Item PATIENCE_SHARD = register("patience_shard", new Item(new Item.Properties().rarity(Rarity.RARE)));
     public static final Item FORTITUDE_SHARD = register("fortitude_shard", new Item(new Item.Properties().rarity(Rarity.RARE)));
+    public static final Item ROYAL_SCEPTER = register("royal_scepter", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
     public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_PICKAXE = register("warden_pickaxe", new PickaxeItem(DDTiers.WARDEN, 1, -2.8f, new Item.Properties().rarity(Rarity.RARE).fireResistant()));

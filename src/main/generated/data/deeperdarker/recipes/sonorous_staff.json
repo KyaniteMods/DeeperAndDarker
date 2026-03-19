@@ -10,11 +10,14 @@
     },
     "H": {
       "item": "deeperdarker:heart_of_the_deep"
+    },
+    "S": {
+      "item": "deeperdarker:royal_scepter"
     }
   },
   "pattern": [
     " CH",
-    " BC",
+    " SC",
     "B  "
   ],
   "result": {

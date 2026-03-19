@@ -107,20 +107,6 @@
         "max": 9.0,
         "min": 4.0
       }
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:empty",
-          "weight": 19
-        },
-        {
-          "type": "minecraft:item",
-          "name": "deeperdarker:dainty_key"
-        }
-      ],
-      "rolls": 1.0
     }
   ]
 }

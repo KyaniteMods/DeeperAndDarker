@@ -237,6 +237,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_BONE, "Sculk Bone");
         translationBuilder.add(DDItems.PATIENCE_SHARD, "Shard of Patience");
         translationBuilder.add(DDItems.FORTITUDE_SHARD, "Shard of Fortitude");
+        translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");
         translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
         translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");
         translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
