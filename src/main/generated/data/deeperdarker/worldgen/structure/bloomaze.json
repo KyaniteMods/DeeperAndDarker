@@ -162,6 +162,6 @@
       "spawns": []
     }
   },
-  "step": "underground_structures",
+  "step": "surface_structures",
   "terrain_adaptation": "beard_box"
 }

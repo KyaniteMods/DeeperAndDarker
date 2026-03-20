@@ -66,7 +66,7 @@ public class DDStructures {
     }
 
     private static Structure.StructureSettings structure(HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides) {
-        return new Structure.StructureSettings(biomes, spawnOverrides, GenerationStep.Decoration.UNDERGROUND_STRUCTURES, TerrainAdjustment.BEARD_BOX);
+        return new Structure.StructureSettings(biomes, spawnOverrides, GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX);
     }
 
     private static ResourceKey<Structure> createKey(String name) {

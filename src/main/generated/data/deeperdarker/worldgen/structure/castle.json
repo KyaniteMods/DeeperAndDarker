@@ -8,7 +8,7 @@
     "above_bottom": 20
   },
   "start_pool": "deeperdarker:castle/castles",
-  "step": "underground_structures",
+  "step": "surface_structures",
   "terrain_adaptation": "beard_box",
   "use_expansion_hack": true
 }

@@ -14,7 +14,7 @@
     }
   },
   "start_pool": "deeperdarker:ancient_temple/basement",
-  "step": "underground_structures",
+  "step": "surface_structures",
   "terrain_adaptation": "beard_box",
   "use_expansion_hack": false
 }

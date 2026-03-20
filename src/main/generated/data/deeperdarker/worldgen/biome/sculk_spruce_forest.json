@@ -19,10 +19,14 @@
     [],
     [],
     [
-      "deeperdarker:shadow_crystal_cone",
       "deeperdarker:sculk_spruce_delta",
       "deeperdarker:gravel_disk",
-      "deeperdarker:sculk_forest_boulder"
+      "deeperdarker:sculk_forest_boulder",
+      "deeperdarker:sculk_spruce_tree",
+      "deeperdarker:sculk_spruce_forest_vegetation",
+      "deeperdarker:icicle_patch",
+      "deeperdarker:snow_patch",
+      "minecraft:freeze_top_layer"
     ],
     [
       "minecraft:fossil_upper",
@@ -42,16 +46,8 @@
       "deeperdarker:sculk_lapis",
       "deeperdarker:sculk_diamond"
     ],
-    [],
-    [],
     [
-      "deeperdarker:sculk_spruce_tree",
-      "deeperdarker:sculk_spruce_forest_vegetation"
-    ],
-    [
-      "deeperdarker:icicle_patch",
-      "deeperdarker:snow_patch",
-      "minecraft:freeze_top_layer"
+      "deeperdarker:shadow_crystal_cone"
     ]
   ],
   "has_precipitation": true,

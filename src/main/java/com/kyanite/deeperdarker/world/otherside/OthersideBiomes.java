@@ -207,11 +207,11 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SCULK_SPRUCE_DELTA);
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.GRAVEL_DISK);
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SCULK_FOREST_BOULDER);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_TREE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_SPRUCE_FOREST_VEGETATION);
-        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, DDPlacedFeatures.ICICLE_PATCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, DDPlacedFeatures.SNOW_PATCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, MiscOverworldPlacements.FREEZE_TOP_LAYER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SCULK_SPRUCE_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SCULK_SPRUCE_FOREST_VEGETATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.ICICLE_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SNOW_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, MiscOverworldPlacements.FREEZE_TOP_LAYER);
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 
