@@ -3,15 +3,10 @@ package com.kyanite.deeperdarker.client.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.BloomingGolemModel;
-import com.kyanite.deeperdarker.client.model.SludgeModel;
 import com.kyanite.deeperdarker.content.entities.BloomingGolem;
-import com.kyanite.deeperdarker.content.entities.Sludge;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
 public class BloomingGolemRenderer extends MobRenderer<BloomingGolem, BloomingGolemModel> {
@@ -24,6 +19,6 @@ public class BloomingGolemRenderer extends MobRenderer<BloomingGolem, BloomingGo
 
     @Override
     public ResourceLocation getTextureLocation(BloomingGolem entity) {
-        return entity.isBloomingGolemSleeping() ? TEXTURE_SLEEPING : TEXTURE;
+        return entity.isGolemSleeping() ? TEXTURE_SLEEPING : TEXTURE;
     }
 }

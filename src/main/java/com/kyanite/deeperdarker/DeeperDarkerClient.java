@@ -115,11 +115,12 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SLUDGE_OUTER, SludgeModel::createOuterBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SCULK_CENTIPEDE, SculkCentipedeModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOMING_GOLEM, BloomingGolemModel::createBodyModel);
-        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
-        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POTTY, PottyModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POT, PotModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.POTTER, PotterModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.OVERCAST_VESSEL, OvercastVesselModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
 
         EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer<>(ctx, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer<>(ctx, true));
@@ -136,6 +137,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.POTTY, PottyRenderer::new);
         EntityRendererRegistry.register(DDEntities.POT, PotRenderer::new);
         EntityRendererRegistry.register(DDEntities.POTTER, PotterRenderer::new);
+        EntityRendererRegistry.register(DDEntities.OVERCAST_VESSEL, OvercastVesselRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {

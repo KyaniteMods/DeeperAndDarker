@@ -27,6 +27,7 @@ public class DDEntities {
     public static final EntityType<OvercastPot> POTTY = register("potty", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.fixed(0.85f, 1.875f)).trackRangeBlocks(10).build());
     public static final EntityType<OvercastPot> POT = register("pot", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.fixed(0.85f, 1.2f)).trackRangeBlocks(10).build());
     public static final EntityType<OvercastPot> POTTER = register("potter", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.fixed(1.3f, 1.2f)).trackRangeBlocks(10).build());
+    public static final EntityType<OvercastVessel> OVERCAST_VESSEL = register("overcast_vessel", FabricEntityTypeBuilder.<OvercastVessel>create(MobCategory.MONSTER, OvercastVessel::new).dimensions(EntityDimensions.fixed(3f, 3f)).trackRangeChunks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -47,6 +48,7 @@ public class DDEntities {
         DefaultAttributeRegistryAccessor.getRegistry().put(POTTY, OvercastPot.createAttributes(-10));
         DefaultAttributeRegistryAccessor.getRegistry().put(POT, OvercastPot.createAttributes(0));
         DefaultAttributeRegistryAccessor.getRegistry().put(POTTER, OvercastPot.createAttributes(10));
+        DefaultAttributeRegistryAccessor.getRegistry().put(OVERCAST_VESSEL, OvercastVessel.createAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {

@@ -29,11 +29,12 @@ public class DDModelLayers {
     public static ModelLayerLocation SLUDGE_OUTER;
     public static ModelLayerLocation SCULK_CENTIPEDE;
     public static ModelLayerLocation BLOOMING_GOLEM;
-    public static ModelLayerLocation SHATTERED_HEAD;
-    public static ModelLayerLocation SUNGLASSES;
     public static ModelLayerLocation POTTY;
     public static ModelLayerLocation POT;
     public static ModelLayerLocation POTTER;
+    public static ModelLayerLocation OVERCAST_VESSEL;
+    public static ModelLayerLocation SHATTERED_HEAD;
+    public static ModelLayerLocation SUNGLASSES;
 
     private static ModelLayerLocation registerMain(String id) {
         return register(id, "main");
@@ -79,10 +80,11 @@ public class DDModelLayers {
         SLUDGE_OUTER = register("sludge", "outer");
         SCULK_CENTIPEDE = registerMain("sculk_centipede");
         BLOOMING_GOLEM = registerMain("blooming_golem");
-        SHATTERED_HEAD = registerMain("shattered_head");
-        SUNGLASSES = registerMain("sunglasses");
         POTTY = register("overcast_pot", "potty");
         POT = register("overcast_pot", "pot");
         POTTER = register("overcast_pot", "potter");
+        OVERCAST_VESSEL = registerMain("overcast_vessel");
+        SHATTERED_HEAD = registerMain("shattered_head");
+        SUNGLASSES = registerMain("sunglasses");
     }
 }
