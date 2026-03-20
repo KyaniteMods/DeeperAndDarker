@@ -80,7 +80,7 @@ public class MazeStructure extends Structure {
                 continue;
             }
 
-            if (result.get(x, y, z).getData() == 0) {
+            if (result.get(x, y, z).getType() == Tile.Type.ENDPOINT && result.get(x, y, z).getData() == 0) {
                 builder.addPiece(new MazeStructurePieces.MazeEntrancePiece(pieceBlockPos, piecePos, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), context.random()));
                 continue;
             }
