@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.*;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.mixin.DefaultAttributeRegistryAccessor;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.core.Registry;

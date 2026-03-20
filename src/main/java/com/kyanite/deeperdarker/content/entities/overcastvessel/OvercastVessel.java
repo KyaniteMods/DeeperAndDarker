@@ -1,6 +1,8 @@
-package com.kyanite.deeperdarker.content.entities;
+package com.kyanite.deeperdarker.content.entities.overcastvessel;
 
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.entities.AbstractGolemBoss;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -9,8 +11,11 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 
 public class OvercastVessel extends AbstractGolemBoss {
+    private final OvercastVesselPhaseManager phaseManager;
+
     public OvercastVessel(EntityType<? extends AbstractGolem> entityType, Level level) {
         super(entityType, level);
+        phaseManager = new OvercastVesselPhaseManager(this);
         xpReward = 50;
     }
 
@@ -22,12 +27,24 @@ public class OvercastVessel extends AbstractGolemBoss {
         zo = z;
     }
 
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        phaseManager.loadFrom(compoundTag);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        phaseManager.save(compoundTag);
+    }
+
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 1000).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).build();
     }
 
     @Override
     protected void golemServerAiStep() {
-
+        phaseManager.tick();
     }
 }

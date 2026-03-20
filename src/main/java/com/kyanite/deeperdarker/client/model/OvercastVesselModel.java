@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.BloomingGolem;
-import com.kyanite.deeperdarker.content.entities.OvercastVessel;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

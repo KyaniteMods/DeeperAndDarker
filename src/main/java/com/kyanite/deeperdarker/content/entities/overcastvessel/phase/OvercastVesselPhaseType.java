@@ -1,0 +1,29 @@
+package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
+
+import com.mojang.serialization.Codec;
+import net.minecraft.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
+
+public enum OvercastVesselPhaseType implements StringRepresentable {
+    IDLE("idle", OvercastVesselIdlePhase.CODEC),
+    USE_ITEM("use_item", OvercastVesselUseItemPhase.CODEC);
+
+    public static final Codec<OvercastVesselPhaseType> CODEC = StringRepresentable.fromEnum(OvercastVesselPhaseType::values);
+
+    private final String name;
+    private final Codec<? extends OvercastVesselPhase> codec;
+
+    OvercastVesselPhaseType(String name, Codec<? extends OvercastVesselPhase> codec) {
+        this.name = name;
+        this.codec = codec;
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return name;
+    }
+
+    public Codec<? extends OvercastVesselPhase> getCodec() {
+        return codec;
+    }
+}
