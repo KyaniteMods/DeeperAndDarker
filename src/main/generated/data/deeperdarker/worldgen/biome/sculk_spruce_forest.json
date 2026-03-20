@@ -19,6 +19,7 @@
     [],
     [],
     [
+      "deeperdarker:shadow_crystal_cone",
       "deeperdarker:sculk_spruce_delta",
       "deeperdarker:gravel_disk",
       "deeperdarker:sculk_forest_boulder",
@@ -45,9 +46,6 @@
       "deeperdarker:sculk_emerald",
       "deeperdarker:sculk_lapis",
       "deeperdarker:sculk_diamond"
-    ],
-    [
-      "deeperdarker:shadow_crystal_cone"
     ]
   ],
   "has_precipitation": true,
