@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -199,6 +200,9 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         if (level().isClientSide()) {
             for (int i = 0; i < 5; ++i) {
                 this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(1.5), this.getRandomY(), this.getRandomZ(1.5), 0.0, 0.0, 0.0);
+            }
+            for (int i = 0; i < 8; ++i) {
+                this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, getItem()), this.getX(), this.getY(), this.getZ(), random.nextGaussian() * 0.15, random.nextDouble() * 0.2, random.nextGaussian() * 0.15);
             }
             return;
         }
