@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselItem;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -49,7 +50,7 @@ public class OvercastVesselUseItemPhase extends OvercastVesselPhase {
     public void tick(OvercastVessel vessel) {
         if (cooldown == 0) {
             ItemStack stack = stacks.removeFirst();
-            // TODO: add DDEntities.OVERCAST_VESSEL_ITEM
+            vessel.level().addFreshEntity(new OvercastVesselItem(vessel.level(), stack, vessel));
             vessel.level().players().forEach(player -> player.sendSystemMessage(Component.literal("Spawned item: " + stack.getDisplayName().getString())));
             cooldown = ticksBetweenUses;
         } else {
