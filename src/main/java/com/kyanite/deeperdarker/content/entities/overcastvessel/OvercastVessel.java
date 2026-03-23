@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities.overcastvessel;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.AbstractGolemBoss;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhaseType;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class OvercastVessel extends AbstractGolemBoss {
@@ -71,5 +73,10 @@ public class OvercastVessel extends AbstractGolemBoss {
     @Override
     public boolean canBeCollidedWith() {
         return phaseManager.getPhases().isEmpty() || phaseManager.getPhases().getFirst().getType() == OvercastVesselPhaseType.SLIDER;
+    }
+
+    @Override
+    public BlockState getParticleState() {
+        return DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState();
     }
 }

@@ -122,6 +122,11 @@ public class BloomingGolem extends AbstractGolemBoss {
         visitedPositions.clear();
     }
 
+    @Override
+    public BlockState getParticleState() {
+        return DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState();
+    }
+
     public int getGolemMoveSpeed() {
         return (int) DDUtil.lerpLog(getHealth() / getMaxHealth(), MIN_SPEED, MAX_SPEED);
     }
