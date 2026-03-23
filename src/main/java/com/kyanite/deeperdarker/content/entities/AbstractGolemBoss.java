@@ -233,21 +233,26 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
                 livingEntity = targetMob;
             }
             if (livingEntity == null) {
-                return false;
+                List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(10.0, 10.0, 10.0));
+                if (players.isEmpty()) return false;
+                for (Player player : players) {
+                    if (!mob.canAttack(player)) {
+                        continue;
+                    }
+                    Team team = mob.getTeam();
+                    Team team2 = player.getTeam();
+                    if (team != null && team2 == team) {
+                        continue;
+                    }
+                    double d = this.getFollowDistance();
+                    if (mob.distanceToSqr(player) > d * d) {
+                        continue;
+                    }
+                    mob.setTarget(player);
+                    break;
+                }
             }
-            if (!mob.canAttack(livingEntity)) {
-                return false;
-            }
-            Team team = mob.getTeam();
-            Team team2 = livingEntity.getTeam();
-            if (team != null && team2 == team) {
-                return false;
-            }
-            double d = this.getFollowDistance();
-            if (mob.distanceToSqr(livingEntity) > d * d) {
-                return false;
-            }
-            mob.setTarget(livingEntity);
+
             return !((AbstractGolemBoss) mob).isOnCooldown() && !((AbstractGolemBoss) mob).isGolemSleeping();
         }
 
