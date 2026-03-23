@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.OvercastVesselModel;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -21,5 +22,9 @@ public class OvercastVesselRenderer extends MobRenderer<OvercastVessel, Overcast
     @Override
     public ResourceLocation getTextureLocation(OvercastVessel entity) {
         return entity.isGolemSleeping() ? TEXTURE_SLEEPING : TEXTURE;
+    }
+
+    @Override
+    protected void setupRotations(OvercastVessel vessel, PoseStack poseStack, float f, float g, float h) {
     }
 }

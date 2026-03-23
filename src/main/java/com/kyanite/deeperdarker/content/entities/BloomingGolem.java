@@ -18,7 +18,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -67,14 +66,14 @@ public class BloomingGolem extends AbstractGolemBoss {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 800).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 800).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).add(Attributes.ATTACK_KNOCKBACK, 10.0).build();
     }
 
     @Override
     protected void golemServerAiStep() {
         visitedPositions.add(blockPosition());
 
-        hurtEntitiesInside();
+        hurtPlayersInside();
 
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {

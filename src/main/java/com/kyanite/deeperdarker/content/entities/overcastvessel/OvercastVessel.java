@@ -18,9 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class OvercastVessel extends AbstractGolemBoss {
@@ -83,7 +81,7 @@ public class OvercastVessel extends AbstractGolemBoss {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 1000).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 1000).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).add(Attributes.ATTACK_KNOCKBACK, 10.0).build();
     }
 
     @Override
@@ -131,7 +129,7 @@ public class OvercastVessel extends AbstractGolemBoss {
 
     @Override
     public boolean canBeCollidedWith() {
-        return phaseManager.getPhases().isEmpty() || phaseManager.getPhases().getFirst().getType() == OvercastVesselPhaseType.SLIDER;
+        return phaseManager.getPhases().isEmpty() || phaseManager.getPhases().getFirst().getType() != OvercastVesselPhaseType.SLIDER;
     }
 
     @Override

@@ -79,6 +79,9 @@ public class OvercastVesselPhaseManager {
     }
 
     public void reset() {
+        if (!phases.isEmpty())  {
+            phases.getFirst().end(vessel);
+        }
         phases.clear();
     }
 }

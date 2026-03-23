@@ -5,8 +5,6 @@ import com.kyanite.deeperdarker.util.DDUtil;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.phys.Vec3;
@@ -42,13 +40,13 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
     }
 
     public void initialize(OvercastVessel vessel) {
-        vessel.snapToBlocks = false;
+        vessel.setSnapToBlocks(false);
         recalculateTarget(vessel);
     }
 
     @Override
     public void end(OvercastVessel vessel) {
-        vessel.snapToBlocks = true;
+        vessel.setSnapToBlocks(true);
     }
 
     @Override
@@ -78,7 +76,7 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
             updateDirection(vessel);
         }
 
-        vessel.hurtEntitiesInside();
+        vessel.hurtPlayersInside();
     }
 
     public void updateDirection(OvercastVessel vessel) {
