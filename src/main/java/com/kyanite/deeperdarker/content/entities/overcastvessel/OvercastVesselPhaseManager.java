@@ -26,7 +26,7 @@ public class OvercastVesselPhaseManager {
 
     public void loadFrom(CompoundTag compoundTag) {
         if (compoundTag.contains("phases", Tag.TAG_LIST)) {
-            phases = OvercastVesselPhase.CODEC.listOf().<Deque<OvercastVesselPhase>>xmap(ArrayDeque::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.getList("phases", Tag.TAG_LIST)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new ArrayDeque<>());
+            phases = OvercastVesselPhase.CODEC.listOf().<Deque<OvercastVesselPhase>>xmap(ArrayDeque::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.get("phases")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new ArrayDeque<>());
             if (!phases.isEmpty()) phases.getFirst().initialize(vessel);
         } else {
             populatePhases();

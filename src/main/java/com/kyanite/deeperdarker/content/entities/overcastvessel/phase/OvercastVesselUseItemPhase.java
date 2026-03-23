@@ -51,7 +51,6 @@ public class OvercastVesselUseItemPhase extends OvercastVesselPhase {
         if (cooldown == 0) {
             ItemStack stack = stacks.removeFirst();
             vessel.level().addFreshEntity(new OvercastVesselItem(vessel.level(), stack, vessel));
-            vessel.level().players().forEach(player -> player.sendSystemMessage(Component.literal("Spawned item: " + stack.getDisplayName().getString())));
             cooldown = ticksBetweenUses;
         } else {
             cooldown--;

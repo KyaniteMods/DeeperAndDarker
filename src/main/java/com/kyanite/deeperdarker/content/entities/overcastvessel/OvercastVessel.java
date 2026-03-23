@@ -85,39 +85,51 @@ public class OvercastVessel extends AbstractGolemBoss {
     }
 
     @Override
+    public void tick() {
+        setNoGravity(true);
+        super.tick();
+    }
+
+    @Override
     protected void golemServerAiStep() {
         phaseManager.tick();
     }
 
-    public void addCrackDirection(Direction crackDirection) {
-        switch (crackDirection) {
-            case DOWN -> entityData.set(DATA_CRACK_DOWN_ID, true);
-            case UP -> entityData.set(DATA_CRACK_UP_ID, true);
-            case NORTH -> entityData.set(DATA_CRACK_NORTH_ID, true);
-            case SOUTH -> entityData.set(DATA_CRACK_SOUTH_ID, true);
-            case WEST -> entityData.set(DATA_CRACK_WEST_ID, true);
-            case EAST -> entityData.set(DATA_CRACK_EAST_ID, true);
-        }
+    public void addCrackDirection(Direction direction) {
+        entityData.set(getCrackDataAccessor(direction), true);
+    }
+
+    public void removeCrackDirection(Direction direction) {
+        entityData.set(getCrackDataAccessor(direction), false);
     }
 
     public Set<Direction> getCrackDirections() {
         HashSet<Direction> set = new HashSet<>();
-        if (entityData.get(DATA_CRACK_DOWN_ID)) set.add(Direction.DOWN);
-        if (entityData.get(DATA_CRACK_UP_ID)) set.add(Direction.UP);
-        if (entityData.get(DATA_CRACK_NORTH_ID)) set.add(Direction.NORTH);
-        if (entityData.get(DATA_CRACK_SOUTH_ID)) set.add(Direction.SOUTH);
-        if (entityData.get(DATA_CRACK_WEST_ID)) set.add(Direction.WEST);
-        if (entityData.get(DATA_CRACK_EAST_ID)) set.add(Direction.EAST);
+        for (Direction direction : Direction.values()) {
+            if (isCracked(direction)) set.add(direction);
+        }
         return set;
     }
 
     public void repairCracks() {
-        entityData.set(DATA_CRACK_DOWN_ID, false);
-        entityData.set(DATA_CRACK_UP_ID, false);
-        entityData.set(DATA_CRACK_NORTH_ID, false);
-        entityData.set(DATA_CRACK_SOUTH_ID, false);
-        entityData.set(DATA_CRACK_WEST_ID, false);
-        entityData.set(DATA_CRACK_EAST_ID, false);
+        for (Direction direction : Direction.values()) {
+            entityData.set(getCrackDataAccessor(direction), false);
+        }
+    }
+
+    public boolean isCracked(Direction direction) {
+        return entityData.get(getCrackDataAccessor(direction));
+    }
+
+    protected EntityDataAccessor<Boolean> getCrackDataAccessor(Direction direction) {
+        return switch (direction) {
+            case DOWN -> DATA_CRACK_DOWN_ID;
+            case UP -> DATA_CRACK_UP_ID;
+            case NORTH -> DATA_CRACK_NORTH_ID;
+            case SOUTH -> DATA_CRACK_SOUTH_ID;
+            case WEST -> DATA_CRACK_WEST_ID;
+            case EAST -> DATA_CRACK_EAST_ID;
+        };
     }
 
     @Override

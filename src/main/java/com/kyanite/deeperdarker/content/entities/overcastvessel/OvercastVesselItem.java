@@ -48,8 +48,8 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         setItem(stack);
         if (vessel != null) {
             setGolem(vessel.getUUID());
-            setPos(vessel.position().add(0.0, vessel.getBbHeight() - getBbHeight(), 0.0));
-            setTarget(BlockPos.containing(vessel.position().add(0.0, vessel.getBbHeight() + 0.5, 0.0)));
+            setPos(vessel.position().add(-getBbWidth() / 2.0, vessel.getBbHeight() - getBbHeight(), -getBbWidth() / 2.0));
+            setTarget(BlockPos.containing(vessel.position().add(-getBbWidth() / 2.0, vessel.getBbHeight() + 0.5, -getBbWidth() / 2.0)));
         }
     }
 

@@ -16,22 +16,25 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
             Codec.INT.fieldOf("max_slides").forGetter(phase -> phase.maxSlides),
             Codec.INT.fieldOf("slides").forGetter(phase -> phase.slides),
             Direction.CODEC.optionalFieldOf("direction").forGetter(phase -> phase.direction),
-            Vec3.CODEC.optionalFieldOf("target").forGetter(phase -> phase.target)
+            Vec3.CODEC.optionalFieldOf("target").forGetter(phase -> phase.target),
+            Codec.INT.fieldOf("move_time").forGetter(phase -> phase.moveTime)
     ).apply(instance, OvercastVesselSliderPhase::new));
     private final int maxSlides;
     private int slides;
     private Optional<Direction> direction;
     private Optional<Vec3> target;
+    private int moveTime;
 
-    private OvercastVesselSliderPhase(int maxSlides, int slides, Optional<Direction> direction, Optional<Vec3> target) {
+    private OvercastVesselSliderPhase(int maxSlides, int slides, Optional<Direction> direction, Optional<Vec3> target, int moveTime) {
         this.maxSlides = maxSlides;
         this.slides = slides;
         this.direction = direction;
         this.target = target;
+        this.moveTime = moveTime;
     }
 
     public OvercastVesselSliderPhase(int maxSlides) {
-        this(maxSlides, 0, Optional.empty(), Optional.empty());
+        this(maxSlides, 0, Optional.empty(), Optional.empty(), 0);
     }
 
     @Override
@@ -54,9 +57,13 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
         if (vessel.level().isClientSide()) return;
         if (target.isEmpty()) recalculateTarget(vessel);
         if (direction.isEmpty()) updateDirection(vessel);
+        if (moveTime > 0) {
+            moveTime--;
+            return;
+        }
 
         Vec3 deltaMovement = vessel.getDeltaMovement();
-        Vec3 position = vessel.position();
+        Vec3 oldPosition = vessel.position();
         Vec3 vectorToTarget = target.get().subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
         Vec3 newDeltaMovement = new Vec3(
                 DDUtil.absMin(vectorToTarget.x(), deltaMovement.x() + direction.get().getStepX() * 0.04),
@@ -66,12 +73,16 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
 
         vessel.setDeltaMovement(newDeltaMovement);
         vessel.move(MoverType.SELF, vessel.getDeltaMovement());
-        Vec3 vectorToTarget2 = target.get().subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
-        if (vessel.getDeltaMovement().equals(Vec3.ZERO) || vessel.position().equals(position) || vessel.verticalCollision || vessel.horizontalCollision || vectorToTarget2.lengthSqr() == 0) {
-            vessel.setDeltaMovement(Vec3.ZERO);
-            if (vessel.verticalCollision || vessel.horizontalCollision) {
+        Vec3 newPosition = vessel.position();
+        Vec3 newVectorToTarget = target.get().subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
+        if (vessel.getDeltaMovement().equals(Vec3.ZERO) || newPosition.equals(oldPosition) || vessel.verticalCollision || vessel.horizontalCollision || newVectorToTarget.lengthSqr() == 0) {
+            if ((vessel.verticalCollision || vessel.horizontalCollision) && newDeltaMovement.lengthSqr() > newPosition.distanceToSqr(oldPosition) && newDeltaMovement.lengthSqr() > 0.2) {
                 vessel.addCrackDirection(direction.get());
+                moveTime = 40;
+            } else {
+                moveTime = 5;
             }
+            vessel.setDeltaMovement(Vec3.ZERO);
             recalculateTarget(vessel);
             updateDirection(vessel);
         }

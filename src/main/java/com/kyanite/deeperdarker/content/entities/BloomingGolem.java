@@ -38,6 +38,7 @@ public class BloomingGolem extends AbstractGolemBoss {
     public BloomingGolem(EntityType<? extends AbstractGolem> entityType, Level level) {
         super(entityType, level);
         xpReward = 50;
+        setNoGravity(true);
         noPhysics = true;
     }
 

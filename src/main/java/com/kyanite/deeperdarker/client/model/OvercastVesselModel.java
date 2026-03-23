@@ -5,13 +5,16 @@ import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.core.Direction;
 import org.jetbrains.annotations.NotNull;
 
 public class OvercastVesselModel extends HierarchicalModel<OvercastVessel> {
 	private final ModelPart root;
+	private final ModelPart opening;
 
 	public OvercastVesselModel(ModelPart root) {
 		this.root = root;
+		this.opening = root.getChild("opening");
 	}
 
 	public static LayerDefinition createBodyModel() {
@@ -33,6 +36,6 @@ public class OvercastVesselModel extends HierarchicalModel<OvercastVessel> {
 
 	@Override
 	public void setupAnim(@NotNull OvercastVessel entity, float f, float g, float h, float i, float j) {
-
+		opening.visible = !entity.isCracked(Direction.UP);
 	}
 }
