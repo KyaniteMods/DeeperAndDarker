@@ -232,28 +232,39 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
             if (livingEntity == null) {
                 livingEntity = targetMob;
             }
-            if (livingEntity == null) {
+            if (!isEntityValidTarget(livingEntity)) {
                 List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(10.0, 10.0, 10.0));
                 if (players.isEmpty()) return false;
                 for (Player player : players) {
-                    if (!mob.canAttack(player)) {
-                        continue;
+                    if (isEntityValidTarget(player)) {
+                        livingEntity = player;
+                        break;
                     }
-                    Team team = mob.getTeam();
-                    Team team2 = player.getTeam();
-                    if (team != null && team2 == team) {
-                        continue;
-                    }
-                    double d = this.getFollowDistance();
-                    if (mob.distanceToSqr(player) > d * d) {
-                        continue;
-                    }
-                    mob.setTarget(player);
-                    break;
                 }
             }
 
-            return !((AbstractGolemBoss) mob).isOnCooldown() && !((AbstractGolemBoss) mob).isGolemSleeping();
+            return livingEntity != null && !((AbstractGolemBoss) mob).isOnCooldown() && !((AbstractGolemBoss) mob).isGolemSleeping();
+        }
+
+        private boolean isEntityValidTarget(LivingEntity entity) {
+            if (entity == null) {
+                return false;
+            }
+
+            if (!mob.canAttack(entity)) {
+                return false;
+            }
+            Team team = mob.getTeam();
+            Team team2 = entity.getTeam();
+            if (team != null && team2 == team) {
+                return false;
+            }
+            double d = this.getFollowDistance();
+            if (mob.distanceToSqr(entity) > d * d) {
+                return false;
+            }
+            mob.setTarget(entity);
+            return true;
         }
 
         @Override
