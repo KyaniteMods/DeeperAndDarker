@@ -72,7 +72,7 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
         if (vessel.getDeltaMovement().equals(Vec3.ZERO) || vessel.position().equals(position) || vessel.verticalCollision || vessel.horizontalCollision || vectorToTarget2.lengthSqr() == 0) {
             vessel.setDeltaMovement(Vec3.ZERO);
             if (vessel.verticalCollision || vessel.horizontalCollision) {
-                vessel.setCrackDirection(direction.get());
+                vessel.addCrackDirection(direction.get());
             }
             recalculateTarget(vessel);
             updateDirection(vessel);

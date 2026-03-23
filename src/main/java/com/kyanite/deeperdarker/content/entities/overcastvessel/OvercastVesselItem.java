@@ -43,12 +43,14 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         super(entityType, level);
     }
 
-    public OvercastVesselItem(Level level, ItemStack stack, OvercastVessel vessel) {
+    public OvercastVesselItem(Level level, ItemStack stack, @Nullable OvercastVessel vessel) {
         this(DDEntities.OVERCAST_VESSEL_ITEM, level);
         setItem(stack);
-        setGolem(vessel.getUUID());
-        setPos(vessel.position().add(0.0, vessel.getBbHeight() - getBbHeight(), 0.0));
-        setTarget(BlockPos.containing(vessel.position().add(0.0, vessel.getBbHeight() + 0.5, 0.0)));
+        if (vessel != null) {
+            setGolem(vessel.getUUID());
+            setPos(vessel.position().add(0.0, vessel.getBbHeight() - getBbHeight(), 0.0));
+            setTarget(BlockPos.containing(vessel.position().add(0.0, vessel.getBbHeight() + 0.5, 0.0)));
+        }
     }
 
     @Override
@@ -209,7 +211,7 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
             return;
         }
         if ((getItem().is(Items.BRICK) || getItem().is(ItemTags.DECORATED_POT_SHERDS)) && getOwner() instanceof OvercastVessel vessel) {
-            vessel.setCrackDirection(null);
+            vessel.repairCracks();
         }
         UseOnContext ctx = new UseOnContext(level(), null, InteractionHand.MAIN_HAND, getItem(), new BlockHitResult(position(), Direction.UP, blockPosition(), true));
         getItem().useOn(ctx);

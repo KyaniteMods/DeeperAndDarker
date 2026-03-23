@@ -15,6 +15,7 @@ public class OvercastVesselRenderer extends MobRenderer<OvercastVessel, Overcast
 
     public OvercastVesselRenderer(EntityRendererProvider.Context context) {
         super(context, new OvercastVesselModel(context.bakeLayer(DDModelLayers.OVERCAST_VESSEL)), 1.0f);
+        addLayer(new OvercastVesselCrackLayer<>(this));
     }
 
     @Override
