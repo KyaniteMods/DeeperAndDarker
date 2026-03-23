@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEffects;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,8 +15,14 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 public class OvercastPot extends Monster {
+    @Nullable
+    private UUID owner;
+
     public OvercastPot(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
     }
@@ -52,5 +58,34 @@ public class OvercastPot extends Monster {
             ((LivingEntity)entity).addEffect(new MobEffectInstance(DDEffects.HEMOPHILIA, 200), this);
         }
         return true;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        if (owner != null) {
+            compoundTag.putUUID("owner", owner);
+        }
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        if (compoundTag.hasUUID("owner")) {
+            owner = compoundTag.getUUID("owner");
+        }
+    }
+
+    @Override
+    public boolean canChangeDimensions() {
+        return owner == null;
+    }
+
+    public void setOwner(@Nullable UUID owner) {
+        this.owner = owner;
+    }
+
+    public @Nullable UUID getOwner() {
+        return owner;
     }
 }

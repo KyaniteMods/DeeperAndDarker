@@ -19,6 +19,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.Team;
@@ -30,6 +31,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
 
     public final short COOLDOWN_TIME = 20;
     protected short cooldown = 0;
+    public boolean snapToBlocks = true;
 
     public final float MIN_SPEED = 1.0f;
     public final float MAX_SPEED = 5.0f;
@@ -40,7 +42,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
         super(entityType, level);
         setGolemSleeping(true);
         blocksBuilding = true;
-        noPhysics = true;
+        setNoGravity(true);
     }
 
     @Override
@@ -113,10 +115,6 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public void aiStep() {
         super.aiStep();
-        Vec3 vec3 = getDeltaMovement();
-        if (!onGround() && vec3.y < 0.0) {
-            setDeltaMovement(vec3.multiply(1.0, 0.0, 1.0));
-        }
     }
 
     @Override
@@ -161,7 +159,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public void tick() {
         super.tick();
-        setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
+//        if (snapToBlocks) setPos(blockPosition().getX() + 0.5, blockPosition().getY(), blockPosition().getZ() + 0.5);
 
         if (isOnCooldown()) {
             cooldown--;
@@ -270,5 +268,9 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public boolean isAffectedByPotions() {
         return false;
+    }
+
+    public void hurtEntitiesInside() {
+        level().getEntities(this, getBoundingBox(), entity -> entity instanceof Player).forEach(this::doHurtTarget);
     }
 }

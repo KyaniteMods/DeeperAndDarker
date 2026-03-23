@@ -14,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -205,6 +207,9 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
                 this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, getItem()), this.getX(), this.getY(), this.getZ(), random.nextGaussian() * 0.15, random.nextDouble() * 0.2, random.nextGaussian() * 0.15);
             }
             return;
+        }
+        if ((getItem().is(Items.BRICK) || getItem().is(ItemTags.DECORATED_POT_SHERDS)) && getOwner() instanceof OvercastVessel vessel) {
+            vessel.setCrackDirection(null);
         }
         UseOnContext ctx = new UseOnContext(level(), null, InteractionHand.MAIN_HAND, getItem(), new BlockHitResult(position(), Direction.UP, blockPosition(), true));
         getItem().useOn(ctx);

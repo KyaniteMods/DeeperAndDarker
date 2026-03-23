@@ -6,7 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 public enum OvercastVesselPhaseType implements StringRepresentable {
     IDLE("idle", OvercastVesselIdlePhase.CODEC),
-    USE_ITEM("use_item", OvercastVesselUseItemPhase.CODEC);
+    USE_ITEM("use_item", OvercastVesselUseItemPhase.CODEC),
+    SLIDER("slider", OvercastVesselSliderPhase.CODEC);
 
     public static final Codec<OvercastVesselPhaseType> CODEC = StringRepresentable.fromEnum(OvercastVesselPhaseType::values);
 

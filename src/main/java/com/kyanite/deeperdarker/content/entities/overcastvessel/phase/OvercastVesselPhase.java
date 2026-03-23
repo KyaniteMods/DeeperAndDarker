@@ -8,6 +8,10 @@ public abstract class OvercastVesselPhase {
     public abstract boolean shouldContinue(OvercastVessel vessel);
     public abstract Codec<? extends OvercastVesselPhase> codec();
     public abstract OvercastVesselPhaseType getType();
+    // Runs on data loaded.
+    public void initialize(OvercastVessel vessel) {
+
+    }
     public void start(OvercastVessel vessel) {
 
     }

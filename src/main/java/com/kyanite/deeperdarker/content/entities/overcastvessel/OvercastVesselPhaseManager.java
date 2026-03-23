@@ -4,10 +4,12 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselIdlePhase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhase;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselSliderPhase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselUseItemPhase;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.world.item.Items;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -22,11 +24,10 @@ public class OvercastVesselPhaseManager {
         this.vessel = vessel;
     }
 
-    public void setPhase() {}
-
     public void loadFrom(CompoundTag compoundTag) {
-        if (compoundTag.contains("phase", Tag.TAG_LIST)) {
-            phases = OvercastVesselPhase.CODEC.listOf().<Deque<OvercastVesselPhase>>xmap(ArrayDeque::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.getList("phases", Tag.TAG_COMPOUND)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new ArrayDeque<>());
+        if (compoundTag.contains("phases", Tag.TAG_LIST)) {
+            phases = OvercastVesselPhase.CODEC.listOf().<Deque<OvercastVesselPhase>>xmap(ArrayDeque::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.getList("phases", Tag.TAG_LIST)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new ArrayDeque<>());
+            if (!phases.isEmpty()) phases.getFirst().initialize(vessel);
         } else {
             populatePhases();
         }
@@ -39,6 +40,7 @@ public class OvercastVesselPhaseManager {
     public void tick() {
         if (phases.isEmpty()) {
             if (!populatePhases()) return;
+            phases.getFirst().initialize(vessel);
             phases.getFirst().start(vessel);
         }
 
@@ -46,6 +48,7 @@ public class OvercastVesselPhaseManager {
             phases.getFirst().end(vessel);
             phases.removeFirst();
             if (!phases.isEmpty()) {
+                phases.getFirst().initialize(vessel);
                 phases.getFirst().start(vessel);
             }
         }
@@ -59,7 +62,9 @@ public class OvercastVesselPhaseManager {
         float healthPercentage = vessel.getHealth() / vessel.getMaxHealth();
         if (healthPercentage > 0.8f) {
             phases.add(new OvercastVesselUseItemPhase(DDItems.POTTY_SPAWN_EGG.getDefaultInstance()));
-            phases.add(new OvercastVesselIdlePhase(400));
+            phases.add(new OvercastVesselIdlePhase(200));
+            phases.add(new OvercastVesselSliderPhase(200));
+            phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
             return true;
         } else if (healthPercentage > 0.5f) {
             phases.add(new OvercastVesselUseItemPhase(List.of(DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POT_SPAWN_EGG.getDefaultInstance(), DDItems.POTTER_SPAWN_EGG.getDefaultInstance()), 10));
@@ -67,5 +72,13 @@ public class OvercastVesselPhaseManager {
             return true;
         }
         return false;
+    }
+
+    public Deque<OvercastVesselPhase> getPhases() {
+        return phases;
+    }
+
+    public void reset() {
+        phases.clear();
     }
 }

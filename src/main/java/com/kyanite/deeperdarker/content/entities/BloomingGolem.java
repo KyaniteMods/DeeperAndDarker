@@ -73,7 +73,7 @@ public class BloomingGolem extends AbstractGolemBoss {
     protected void golemServerAiStep() {
         visitedPositions.add(blockPosition());
 
-        level().getEntities(this, getBoundingBox(), entity -> entity instanceof Player).forEach(this::doHurtTarget);
+        hurtEntitiesInside();
 
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
