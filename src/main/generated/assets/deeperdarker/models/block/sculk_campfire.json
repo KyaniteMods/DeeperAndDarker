@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_campfire",
+  "textures": {
+    "fire": "deeperdarker:block/sculk_campfire_fire",
+    "lit_log": "deeperdarker:block/sculk_campfire_log_lit"
+  }
+}

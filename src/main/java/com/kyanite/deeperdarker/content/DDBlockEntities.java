@@ -21,6 +21,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<ReturnStatueBlockEntity> RETURN_STATUE;
     public static final BlockEntityType<IcicleBlockEntity> ICICLE;
     public static final BlockEntityType<DarkFountainBlockEntity> DARK_FOUNTAIN;
+    public static final BlockEntityType<DDCampfireBlockEntity> CAMPFIRE;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -59,6 +60,10 @@ public class DDBlockEntities {
         DARK_FOUNTAIN = create("dark_fountain", FabricBlockEntityTypeBuilder.create(
                 DarkFountainBlockEntity::new,
                 DDBlocks.DARK_FOUNTAIN
+        ));
+        CAMPFIRE = create("campfire", FabricBlockEntityTypeBuilder.create(
+                DDCampfireBlockEntity::new,
+                DDBlocks.SCULK_CAMPFIRE
         ));
     }
 

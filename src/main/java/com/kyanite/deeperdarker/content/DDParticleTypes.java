@@ -1,0 +1,22 @@
+package com.kyanite.deeperdarker.content;
+
+import com.kyanite.deeperdarker.DeeperDarker;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
+import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+
+public class DDParticleTypes {
+    public static final SimpleParticleType SCULK_FIRE_FLAME = register("sculk_fire_flame", FabricParticleTypes.simple());
+
+    private static <U extends ParticleOptions, T extends ParticleType<U>> T register(String id, T particleType) {
+        return Registry.register(BuiltInRegistries.PARTICLE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, id), particleType);
+    }
+
+    public static void init() {
+        DeeperDarker.LOGGER.debug("Registering particle types");
+    }
+}

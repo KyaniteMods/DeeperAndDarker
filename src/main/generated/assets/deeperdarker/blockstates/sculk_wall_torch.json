@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "deeperdarker:block/sculk_wall_torch"
+    },
+    "facing=north": {
+      "model": "deeperdarker:block/sculk_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "deeperdarker:block/sculk_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "deeperdarker:block/sculk_wall_torch",
+      "y": 180
+    }
+  }
+}

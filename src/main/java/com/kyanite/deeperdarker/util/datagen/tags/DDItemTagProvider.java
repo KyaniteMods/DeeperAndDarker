@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.util.datagen.tags;
 
+import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -89,6 +90,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.AXES, DDItems.RESONARIUM_AXE, DDItems.WARDEN_AXE);
         add(ItemTags.HOES, DDItems.RESONARIUM_HOE, DDItems.WARDEN_HOE);
         add(ItemTags.SWORDS, DDItems.RESONARIUM_SWORD, DDItems.WARDEN_SWORD);
+
+        add(ItemTags.PIGLIN_REPELLENTS, DDItems.SCULK_TORCH, DDBlocks.SCULK_CAMPFIRE.asItem(), DDBlocks.SCULK_LANTERN.asItem());
 
         add(DDTags.Items.RESONARIUM_ARMOR, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS);

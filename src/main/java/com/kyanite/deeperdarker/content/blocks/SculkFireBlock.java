@@ -15,7 +15,6 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Optional;
@@ -63,8 +62,12 @@ public class SculkFireBlock extends BaseFireBlock {
             serverLevel.removeBlock(blockPos, false);
         }
         BlockState below = serverLevel.getBlockState(blockPos.below());
-        if (!below.is(serverLevel.dimensionType().infiniburn()) && serverLevel.dimension() != OthersideDimension.OTHERSIDE_LEVEL) {
-            if (randomSource.nextInt(8) == 0) {
+        if (!below.is(serverLevel.dimensionType().infiniburn())) {
+            int i = 8;
+            if (serverLevel.dimension() != OthersideDimension.OTHERSIDE_LEVEL) {
+                i *= 2;
+            }
+            if (randomSource.nextInt(i) == 0) {
                 serverLevel.setBlock(blockPos, Blocks.SOUL_FIRE.defaultBlockState(), UPDATE_ALL);
             }
         }

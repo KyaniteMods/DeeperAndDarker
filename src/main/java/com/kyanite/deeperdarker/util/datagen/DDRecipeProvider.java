@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -170,6 +171,30 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, DDItems.OTHERSIDE_FIRE_STRIKER)
                 .requires(DDItems.SCULK_BONE_SHARD).requires(Items.FLINT)
                 .unlockedBy(FabricRecipeProvider.getHasName(DDItems.SCULK_BONE_SHARD), FabricRecipeProvider.has(DDItems.SCULK_BONE_SHARD)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.SCULK_TORCH, 4)
+                .define('#', Items.STICK)
+                .define('S', DDItems.SCULK_BONE_SHARD)
+                .pattern("S")
+                .pattern("#")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SCULK_CAMPFIRE)
+                .define('#', Items.STICK)
+                .define('L', ItemTags.LOGS)
+                .define('S', DDItems.SCULK_BONE_SHARD)
+                .pattern(" # ")
+                .pattern("#S#")
+                .pattern("LLL")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SCULK_LANTERN)
+                .define('T', DDItems.SCULK_TORCH)
+                .define('N', Items.IRON_NUGGET)
+                .pattern("NNN")
+                .pattern("NTN")
+                .pattern("NNN")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
     }

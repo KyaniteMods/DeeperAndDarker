@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "deeperdarker:block/sculk_lantern"
+    },
+    "hanging=true": {
+      "model": "deeperdarker:block/sculk_lantern_hanging"
+    }
+  }
+}

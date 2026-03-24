@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "S": {
+      "item": "deeperdarker:sculk_bone_shard"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#S#",
+    "LLL"
+  ],
+  "result": {
+    "item": "deeperdarker:sculk_campfire"
+  },
+  "show_notification": true
+}

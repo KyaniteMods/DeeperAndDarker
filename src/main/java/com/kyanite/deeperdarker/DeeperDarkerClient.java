@@ -5,10 +5,7 @@ import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompatClient;
-import com.kyanite.deeperdarker.content.DDBlockEntities;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.content.items.SunglassesItem;
@@ -19,6 +16,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.loader.api.FabricLoader;
@@ -27,11 +25,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
+import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.BlockPos;
@@ -78,7 +74,11 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.LILY_FLOWER,
                 DDBlocks.SCULK_TUBERS,
                 DDBlocks.ICICLE,
-                DDBlocks.SCULK_FIRE);
+                DDBlocks.SCULK_FIRE,
+                DDBlocks.SCULK_TORCH,
+                DDBlocks.SCULK_WALL_TORCH,
+                DDBlocks.SCULK_CAMPFIRE,
+                DDBlocks.SCULK_LANTERN);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 DDBlocks.CRYSTALLIZED_AMBER,
@@ -93,6 +93,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.CRYSTALLIZED_AMBER, CrystallizedAmberBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.SKULL, SkullBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.DARK_FOUNTAIN, DarkFountainBlockRenderer::new);
+        BlockEntityRenderers.register(DDBlockEntities.CAMPFIRE, CampfireRenderer::new);
 
         if (FabricLoader.getInstance().isModLoaded("create") && DeeperDarker.CONFIG.server.createCompatibility()) {
             DDCreateCompatClient.init();
@@ -252,5 +253,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             }
         });
         LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(entity -> !entity.getItemBySlot(EquipmentSlot.CHEST).is(DDItems.SOUL_ELYTRA));
+
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.SCULK_FIRE_FLAME, FlameParticle.Provider::new);
     }
 }

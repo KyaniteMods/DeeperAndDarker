@@ -26,7 +26,9 @@ import dev.kyanitemods.kyaniteportals.content.Portal;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.NbtOps;
@@ -68,7 +70,7 @@ public class DeeperDarker implements ModInitializer {
 			.replaceable(Blocks.AIR, Blocks.CAVE_AIR, Blocks.VOID_AIR, Blocks.SCULK_VEIN, DDBlocks.SCULK_FIRE)
 			.ambientSound(Holder.direct(DDSounds.PORTAL_GROAN))
 			.generatedSize(10, 6)
-				.register(new ResourceLocation(MOD_ID, "otherside"));;
+			.register(new ResourceLocation(MOD_ID, "otherside"));;
 
 	@Override
 	public void onInitialize() {
@@ -89,6 +91,7 @@ public class DeeperDarker implements ModInitializer {
 		DDStructureTypes.init();
 		RoomTypeRegistry.init();
 		DDCarvers.init();
+		DDParticleTypes.init();
 		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();

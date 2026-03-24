@@ -89,6 +89,7 @@
     "deeperdarker:fragile_gloomslate_bricks",
     "deeperdarker:gloomslate_lock",
     "deeperdarker:sculk_grime_lock",
+    "deeperdarker:sculk_lantern",
     {
       "id": "deeperdarker:warden_backtank",
       "required": false

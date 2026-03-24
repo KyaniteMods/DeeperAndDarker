@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "deeperdarker:sculk_fire",
+    "deeperdarker:sculk_torch",
+    "deeperdarker:sculk_wall_torch",
+    "deeperdarker:sculk_campfire",
+    "deeperdarker:sculk_lantern"
+  ]
+}

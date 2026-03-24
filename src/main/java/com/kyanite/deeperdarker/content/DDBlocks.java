@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.blocks.*;
 import com.kyanite.deeperdarker.content.blocks.vegetation.*;
+import com.kyanite.deeperdarker.content.entities.blocks.DDCampfireBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDHangingSignBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DDSignBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -24,8 +25,12 @@ import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -34,6 +39,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
@@ -301,7 +307,7 @@ public class DDBlocks {
     public static final Block INFESTED_SCULK = register("infested_sculk", new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.copy(Blocks.SCULK)));
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
-    public static final Block SCULK_LAMP = register("sculk_lamp", new SculkLampBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(-1, 3600000.0f).lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 15 : 0).pushReaction(PushReaction.BLOCK)));
+    public static final Block SCULK_LAMP = register("sculk_lamp", new SculkLampBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(-1, 3600000.0f).lightLevel(Blocks.litBlockEmission(15)).pushReaction(PushReaction.BLOCK)));
     public static final Block PROTECTED_SCULK_GLEAM = register("protected_sculk_gleam", new HalfTransparentBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(-1, 3600000.0f).pushReaction(PushReaction.BLOCK)));
     public static final Block PROTECTED_SCULK_GRIME_GLASS = register("protected_sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(-1, 3600000.0f).pushReaction(PushReaction.BLOCK).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_GLASS = register("sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.COLOR_CYAN).strength(0.3f)));
@@ -317,6 +323,31 @@ public class DDBlocks {
     public static final Block TOXIC_AIR = registerWithoutItem("toxic_air", new ToxicAirBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).noCollission().randomTicks().noLootTable().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY)));
 
     public static final Block SCULK_FIRE = registerWithoutItem("sculk_fire", new SculkFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_CYAN).lightLevel(blockState -> 15)));
+    public static final Block SCULK_TORCH = registerWithoutItem("sculk_torch", new TorchBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_TORCH).lightLevel(blockState -> 15), DDParticleTypes.SCULK_FIRE_FLAME));
+    public static final Block SCULK_WALL_TORCH = registerWithoutItem("sculk_wall_torch", new WallTorchBlock(BlockBehaviour.Properties.copy(SCULK_TORCH).dropsLike(SCULK_TORCH), DDParticleTypes.SCULK_FIRE_FLAME));
+    public static final Block SCULK_CAMPFIRE = register("sculk_campfire", new CampfireBlock(false, 2, BlockBehaviour.Properties.copy(Blocks.SOUL_CAMPFIRE).lightLevel(Blocks.litBlockEmission(15))) {
+        @Override
+        public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+            return new DDCampfireBlockEntity(pos, state);
+        }
+
+        @Override
+        @Nullable
+        public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+            if (level.isClientSide()) {
+                if (blockState.getValue(LIT)) {
+                    return createTickerHelper(blockEntityType, DDBlockEntities.CAMPFIRE, DDCampfireBlockEntity::particleTick);
+                }
+            } else {
+                if (blockState.getValue(LIT)) {
+                    return createTickerHelper(blockEntityType, DDBlockEntities.CAMPFIRE, DDCampfireBlockEntity::cookTick);
+                }
+                return createTickerHelper(blockEntityType, DDBlockEntities.CAMPFIRE, DDCampfireBlockEntity::cooldownTick);
+            }
+            return null;
+        }
+    });
+    public static final Block SCULK_LANTERN = register("sculk_lantern", new LanternBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_LANTERN).lightLevel(blockState -> 15)));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(

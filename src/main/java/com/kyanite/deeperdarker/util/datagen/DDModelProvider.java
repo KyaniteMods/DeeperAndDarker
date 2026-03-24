@@ -266,6 +266,10 @@ public class DDModelProvider extends FabricModelProvider {
 
         registerSculkFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
 
+        blockModelGenerators.createNormalTorch(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH);
+        blockModelGenerators.createCampfires(DDBlocks.SCULK_CAMPFIRE);
+        blockModelGenerators.createLantern(DDBlocks.SCULK_LANTERN);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
