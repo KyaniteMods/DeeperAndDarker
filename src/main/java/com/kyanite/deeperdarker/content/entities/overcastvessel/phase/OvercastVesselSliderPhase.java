@@ -4,47 +4,54 @@ import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
 
 public class OvercastVesselSliderPhase extends OvercastVesselPhase {
     public static final Codec<OvercastVesselSliderPhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            Codec.INT.fieldOf("max_slides").forGetter(phase -> phase.maxSlides),
-            Codec.INT.fieldOf("slides").forGetter(phase -> phase.slides),
+            Codec.INT.fieldOf("max_phase_time").forGetter(phase -> phase.maxPhaseTime),
+            Codec.INT.fieldOf("phase_time").forGetter(phase -> phase.phaseTime),
             Direction.CODEC.optionalFieldOf("direction").forGetter(phase -> phase.direction),
             Vec3.CODEC.optionalFieldOf("target").forGetter(phase -> phase.target),
+            Vec3.CODEC.optionalFieldOf("override_target").forGetter(phase -> phase.overrideTarget),
             Codec.INT.fieldOf("move_time").forGetter(phase -> phase.moveTime)
     ).apply(instance, OvercastVesselSliderPhase::new));
-    private final int maxSlides;
-    private int slides;
+    private final int maxPhaseTime;
+    private int phaseTime;
     private Optional<Direction> direction;
     private Optional<Vec3> target;
+    private Optional<Vec3> overrideTarget;
     private int moveTime;
 
-    private OvercastVesselSliderPhase(int maxSlides, int slides, Optional<Direction> direction, Optional<Vec3> target, int moveTime) {
-        this.maxSlides = maxSlides;
-        this.slides = slides;
+    private OvercastVesselSliderPhase(int maxPhaseTime, int phaseTime, Optional<Direction> direction, Optional<Vec3> target, Optional<Vec3> overrideTarget, int moveTime) {
+        this.maxPhaseTime = maxPhaseTime;
+        this.phaseTime = phaseTime;
         this.direction = direction;
         this.target = target;
+        this.overrideTarget = target;
         this.moveTime = moveTime;
     }
 
-    public OvercastVesselSliderPhase(int maxSlides) {
-        this(maxSlides, 0, Optional.empty(), Optional.empty(), 0);
+    public OvercastVesselSliderPhase(int maxPhaseTime) {
+        this(maxPhaseTime, 0, Optional.empty(), Optional.empty(), Optional.empty(), 0);
     }
 
     @Override
     public boolean shouldContinue(OvercastVessel vessel) {
-        return slides < maxSlides && target.isPresent();
+        return phaseTime < maxPhaseTime && target.isPresent();
     }
 
     public void initialize(OvercastVessel vessel) {
         vessel.setSnapToBlocks(false);
-        recalculateTarget(vessel);
+        target = recalculateTarget(vessel);
     }
 
     @Override
@@ -55,55 +62,108 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
     @Override
     public void tick(OvercastVessel vessel) {
         if (vessel.level().isClientSide()) return;
-        if (target.isEmpty()) recalculateTarget(vessel);
-        if (direction.isEmpty()) updateDirection(vessel);
+        phaseTime++;
+
+        if (target.isEmpty()) recalculateTargetAndDirection(vessel);
+
         if (moveTime > 0) {
             moveTime--;
             return;
         }
 
-        Vec3 deltaMovement = vessel.getDeltaMovement();
-        Vec3 oldPosition = vessel.position();
-        Vec3 vectorToTarget = target.get().subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
-        Vec3 newDeltaMovement = new Vec3(
-                DDUtil.absMin(vectorToTarget.x(), deltaMovement.x() + direction.get().getStepX() * 0.04),
-                DDUtil.absMin(vectorToTarget.y(), deltaMovement.y() + direction.get().getStepY() * 0.1),
-                DDUtil.absMin(vectorToTarget.z(), deltaMovement.z() + direction.get().getStepZ() * 0.04)
-        );
-
-        vessel.setDeltaMovement(newDeltaMovement);
-        vessel.move(MoverType.SELF, vessel.getDeltaMovement());
-        Vec3 newPosition = vessel.position();
-        Vec3 newVectorToTarget = target.get().subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
-        if (vessel.getDeltaMovement().equals(Vec3.ZERO) || newPosition.equals(oldPosition) || vessel.verticalCollision || vessel.horizontalCollision || newVectorToTarget.lengthSqr() == 0) {
-            if ((vessel.verticalCollision || vessel.horizontalCollision) && newDeltaMovement.lengthSqr() > newPosition.distanceToSqr(oldPosition) && newDeltaMovement.lengthSqr() > 0.2) {
+        if (slideTowardTarget(vessel, target.get())) {
+            Vec3 deltaMovement = vessel.getDeltaMovement();
+            if (vessel.verticalCollision || vessel.horizontalCollision && deltaMovement.lengthSqr() > 0.2 && !vessel.isCracked(direction.get())) {
                 vessel.addCrackDirection(direction.get());
-                moveTime = 40;
+                moveTime = 20;
             } else {
-                moveTime = 5;
+                moveTime = 2;
             }
-            vessel.setDeltaMovement(Vec3.ZERO);
-            recalculateTarget(vessel);
-            updateDirection(vessel);
+            recalculateTargetAndDirection(vessel);
+            if (direction.get().getAxis().isHorizontal() && !isPathFree(vessel, direction.get())) {
+                target = target.map(vec3 -> vec3.add(0.0, 1.0, 0.0));
+            }
+        } else {
+            overrideTarget = Optional.empty();
         }
 
         vessel.hurtPlayersInside();
     }
 
-    public void updateDirection(OvercastVessel vessel) {
-        if (target.get().y() - vessel.getY() > 1.0E-6) {
+    protected void recalculateTargetAndDirection(OvercastVessel vessel) {
+        target = recalculateTarget(vessel);
+        updateDirection(vessel, target.get());
+
+        if (!isPathFree(vessel, direction.get())) {
+            target = target.map(vec3 -> vec3.add(0.0, 1.0, 0.0));
+            updateDirection(vessel, target.get());
+        }
+    }
+
+    /**
+     * @return if the target was reached
+     */
+    protected boolean slideTowardTarget(OvercastVessel vessel, Vec3 target) {
+        Vec3 deltaMovement = vessel.getDeltaMovement();
+        Vec3 oldPosition = vessel.position();
+        Vec3 vectorToTarget = target.subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
+        Vec3 newDeltaMovement = new Vec3(
+                deltaMovement.x() + direction.get().getStepX() * 0.06,
+                deltaMovement.y() + direction.get().getStepY() * 0.06,
+                deltaMovement.z() + direction.get().getStepZ() * 0.06
+        );
+        if (vectorToTarget.lengthSqr() < newDeltaMovement.lengthSqr()) {
+            newDeltaMovement = vectorToTarget;
+        } else {
+            Vec3 newTarget = recalculateTarget(vessel).get();
+            this.target = this.target.map(vec3 -> vec3.add(
+                    direction.get().getStepX() * (newTarget.x() - vec3.x()),
+                    direction.get().getStepY() * (newTarget.y() - vec3.y()),
+                    direction.get().getStepZ() * (newTarget.z() - vec3.z())
+            ));
+        }
+
+        vessel.setDeltaMovement(newDeltaMovement);
+        vessel.move(MoverType.SELF, vessel.getDeltaMovement());
+        if (vessel.getTarget() instanceof ServerPlayer serverPlayer) {
+            serverPlayer.displayClientMessage(Component.literal("Direction: " + direction.get().getName()), true);
+        }
+        if ((vessel.getX() - target.x()) * direction.get().getStepX() == 0
+                && (vessel.getY() - target.y()) * direction.get().getStepY() == 0
+                && (vessel.getZ() - target.z()) * direction.get().getStepZ() == 0) {
+            vessel.setDeltaMovement(Vec3.ZERO);
+            return true;
+        }
+        return vessel.position().equals(oldPosition);
+    }
+
+    protected boolean isPathFree(OvercastVessel vessel, Direction direction) {
+        if (direction.getAxis().isVertical()) return true;
+        AABB aabb = vessel.getBoundingBox().deflate(0.01).expandTowards(Vec3.atLowerCornerOf(direction.getNormal()));
+        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+        for (int z = Mth.floor(aabb.minZ); z < aabb.maxZ; z++) {
+            for (int x = Mth.floor(aabb.minX); x < aabb.maxX; x++) {
+                if (!vessel.level().getBlockState(mutablePos.set(x, Mth.floor(vessel.getY()), z)).isAir()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void updateDirection(OvercastVessel vessel, Vec3 target) {
+        if (target.subtract(vessel.position()).y() > 0.5) {
             direction = Optional.of(Direction.UP);
             return;
         }
-        direction = Optional.of(DDUtil.relativeDirection(target.get(), vessel.getBoundingBox()));
+        direction = Optional.of(DDUtil.relativeDirection(target, vessel.getBoundingBox()));
     }
 
-    public void recalculateTarget(OvercastVessel vessel) {
+    public Optional<Vec3> recalculateTarget(OvercastVessel vessel) {
         if (vessel.getTarget() != null) {
-            target = Optional.of(vessel.getRandom().nextFloat() < 0.1f ? vessel.getTarget().position().add(0.0, 1.0, 0.0) : vessel.getTarget().position());
-            return;
+            return Optional.of(vessel.getTarget().position());
         }
-        target = vessel.getHomePos() == null ? Optional.empty() : Optional.of(Vec3.atBottomCenterOf(vessel.getHomePos().pos()));
+        return vessel.getHomePos() == null ? Optional.empty() : Optional.of(Vec3.atBottomCenterOf(vessel.getHomePos().pos()));
     }
 
     @Override

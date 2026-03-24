@@ -29,6 +29,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class OvercastVesselItem extends Entity implements TraceableEntity {
@@ -36,7 +38,7 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
     private int timeToUse = 30;
     @Nullable
     private UUID golem;
-    private BlockPos target;
+    private Vec3 target;
     private Vec3 oldDeltaMovement = getDeltaMovement();
 
     public OvercastVesselItem(EntityType<? extends OvercastVesselItem> entityType, Level level) {
@@ -48,8 +50,8 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         setItem(stack);
         if (vessel != null) {
             setGolem(vessel.getUUID());
-            setPos(vessel.position().add(-getBbWidth() / 2.0, vessel.getBbHeight() - getBbHeight(), -getBbWidth() / 2.0));
-            setTarget(BlockPos.containing(vessel.position().add(-getBbWidth() / 2.0, vessel.getBbHeight() + 0.5, -getBbWidth() / 2.0)));
+            setPos(vessel.position().add(0.0, vessel.getBbHeight() - getBbHeight(), 0.0));
+            setTarget(vessel.position().add(0.0, vessel.getBbHeight() + 0.5, 0.0));
         }
     }
 
@@ -79,7 +81,7 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
             compoundTag.put("item_stack", this.getItem().save(new CompoundTag()));
         }
         if (target != null) {
-            BlockPos.CODEC.encodeStart(NbtOps.INSTANCE, this.getTarget()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("target_position", tag));
+            Vec3.CODEC.encodeStart(NbtOps.INSTANCE, this.getTarget()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("target_position", tag));
         }
     }
 
@@ -94,8 +96,8 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         if (getItem().isEmpty()) {
             discard();
         }
-        if (compoundTag.contains("target_position", CompoundTag.TAG_INT_ARRAY)) {
-            setTarget(BlockPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("target_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null));
+        if (compoundTag.contains("target_position", CompoundTag.TAG_LIST)) {
+            setTarget(Vec3.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("target_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null));
         }
     }
 
@@ -130,11 +132,11 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         this.golem = uUID;
     }
 
-    public void setTarget(BlockPos target) {
+    public void setTarget(Vec3 target) {
         this.target = target;
     }
 
-    public BlockPos getTarget() {
+    public Vec3 getTarget() {
         return target;
     }
 
@@ -163,13 +165,15 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
             return;
         }
         super.tick();
+        pushVesselItems();
+
         this.xo = this.getX();
         this.yo = this.getY();
         this.zo = this.getZ();
         Vec3 vec3 = this.getDeltaMovement();
         oldDeltaMovement = vec3;
         if (getTarget() != null) {
-            Vec3 targetCenter = getTarget().getCenter();
+            Vec3 targetCenter = getTarget();
             float moveAmount = Math.min(0.64f, Mth.sqrt((float) distanceToSqr(targetCenter)) / 8.0f);
             setDeltaMovement(targetCenter.subtract(position()).normalize().scale(moveAmount));
             move(MoverType.SELF, getDeltaMovement());
@@ -216,5 +220,21 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
         UseOnContext ctx = new UseOnContext(level(), null, InteractionHand.MAIN_HAND, getItem(), new BlockHitResult(position(), Direction.UP, blockPosition(), true));
         getItem().useOn(ctx);
         discard();
+    }
+
+    public void pushVesselItems() {
+        Vec3 target = getTarget();
+        if (target == null) return;
+        List<Entity> list = level().getEntities(this, getBoundingBox().move(target.subtract(position())), entity -> entity instanceof OvercastVesselItem);
+        if (!list.isEmpty()) {
+            List<Entity> listWithThis = new ArrayList<>(list);
+            listWithThis.add(list.size() / 2, this);
+            double baseX = target.x();
+            for (int i = 0; i < listWithThis.size(); i++) {
+                OvercastVesselItem entity = (OvercastVesselItem) listWithThis.get(i);
+                Vec3 itemTarget = getTarget();
+                entity.setTarget(new Vec3(baseX + (i - (listWithThis.size() - 1) / 2.0) * (getBbWidth() + 0.75), itemTarget.y(), itemTarget.z()));
+            }
+        }
     }
 }

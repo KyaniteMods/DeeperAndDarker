@@ -62,13 +62,17 @@ public class OvercastVesselPhaseManager {
         float healthPercentage = vessel.getHealth() / vessel.getMaxHealth();
         if (healthPercentage > 0.8f) {
             phases.add(new OvercastVesselUseItemPhase(DDItems.POTTY_SPAWN_EGG.getDefaultInstance()));
-            phases.add(new OvercastVesselIdlePhase(200));
-            phases.add(new OvercastVesselSliderPhase(200));
+            phases.add(new OvercastVesselIdlePhase(300));
+            phases.add(new OvercastVesselSliderPhase(400));
+            phases.add(new OvercastVesselIdlePhase(40));
             phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
             return true;
         } else if (healthPercentage > 0.5f) {
             phases.add(new OvercastVesselUseItemPhase(List.of(DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POT_SPAWN_EGG.getDefaultInstance(), DDItems.POTTER_SPAWN_EGG.getDefaultInstance()), 10));
-            phases.add(new OvercastVesselIdlePhase(1200));
+            phases.add(new OvercastVesselIdlePhase(1400));
+            phases.add(new OvercastVesselSliderPhase(400));
+            phases.add(new OvercastVesselIdlePhase(40));
+            phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
             return true;
         }
         return false;

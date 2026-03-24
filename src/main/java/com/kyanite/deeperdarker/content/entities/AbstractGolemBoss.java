@@ -29,6 +29,7 @@ import net.minecraft.world.scores.Team;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
@@ -58,6 +59,12 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
+        if (compoundTag.hasUUID("target") && level() instanceof ServerLevel serverLevel) {
+            Entity entity = serverLevel.getEntity(compoundTag.getUUID("target"));
+            if (entity instanceof LivingEntity livingEntity) {
+                setTarget(livingEntity);
+            }
+        }
         if (compoundTag.contains("home_position", CompoundTag.TAG_COMPOUND)) {
             homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
@@ -74,6 +81,9 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
         super.addAdditionalSaveData(compoundTag);
         if (homePos != null) {
             GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, homePos).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("home_position", tag));
+        }
+        if (getTarget() != null) {
+            compoundTag.putUUID("target", getTarget().getUUID());
         }
         compoundTag.putBoolean("is_golem_sleeping", isGolemSleeping());
         compoundTag.putBoolean("snap_to_blocks", snapToBlocks());
@@ -241,7 +251,20 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
 
         @Override
         public boolean canUse() {
-            return super.canUse() && !((AbstractGolemBoss) mob).isOnCooldown();
+            if (((AbstractGolemBoss) mob).isOnCooldown()) return false;
+
+            if (((AbstractGolemBoss) mob).isGolemSleeping()) {
+                return super.canUse();
+            }
+            List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(30.0, 30.0, 30.0));
+            if (players.isEmpty()) return false;
+            for (Player player : players) {
+                if (isEntityValidTarget(player)) {
+                    mob.setLastHurtByMob(player);
+                    return true;
+                }
+            }
+            return false;
         }
 
         @Override
@@ -251,7 +274,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
                 livingEntity = targetMob;
             }
             if (!isEntityValidTarget(livingEntity)) {
-                List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(10.0, 10.0, 10.0));
+                List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(30.0, 30.0, 30.0));
                 if (players.isEmpty()) return false;
                 for (Player player : players) {
                     if (isEntityValidTarget(player)) {
@@ -334,6 +357,6 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     }
 
     public void hurtPlayersInside() {
-        level().getEntities(this, getBoundingBox().deflate(0.6), entity -> entity instanceof Player).forEach(this::doHurtTarget);
+        level().getEntities(this, getBoundingBox().deflate(0.4), entity -> entity instanceof Player).forEach(this::doHurtTarget);
     }
 }
