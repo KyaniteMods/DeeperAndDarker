@@ -262,6 +262,8 @@ public class DDModelProvider extends FabricModelProvider {
         createRandomRotationBlock(blockModelGenerators, DDBlocks.SCULK_TISSUE);
         registerCubeBottomTop(blockModelGenerators, DDBlocks.DARK_FOUNTAIN, DDBlocks.SCULK_TISSUE);
         blockModelGenerators.family(DDBlocks.SHADOW_CRYSTAL_BLOCK);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.TOXIC_AIR);
+
         registerSculkFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
 
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
