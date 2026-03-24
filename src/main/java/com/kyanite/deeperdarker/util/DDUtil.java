@@ -1,10 +1,14 @@
 package com.kyanite.deeperdarker.util;
 
+import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3f;
@@ -163,5 +167,12 @@ public class DDUtil {
 
     public static void addVertex(Matrix4f pose, Matrix3f normal, VertexConsumer vertexConsumer, int color, float y, float x, float z, float u, float v, int light, int overlay) {
         vertexConsumer.vertex(pose, x, y, z).color(color >>> 16 & 0xFF, (color >>> 8) & 0xFF, color & 0xFF, (color >>> 24) & 0xFF).uv(u, v).overlayCoords(overlay).uv2(light).normal(normal, 0.0f, 1.0f, 0.0f).endVertex();
+    }
+
+    public static int getLightEmission(int original, BlockState state, BlockGetter blockGetter) {
+        if (blockGetter instanceof Level level && level.dimension() == OthersideDimension.OTHERSIDE_LEVEL && !state.is(DDTags.Blocks.SCULK_LIGHT_SOURCES)) {
+            return Mth.ceil(original / 8.0f);
+        }
+        return original;
     }
 }

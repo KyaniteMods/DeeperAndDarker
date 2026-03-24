@@ -74,6 +74,9 @@ public class DDTags {
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_golem_can_walk_through"));
         public static final TagKey<Block> BLOOMING_GOLEM_CAN_DESTROY = TagKey.create(
                 Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "blooming_golem_can_destroy"));
+
+        public static final TagKey<Block> SCULK_LIGHT_SOURCES = TagKey.create(
+                Registries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_light_sources"));
     }
 
     public static class Items {

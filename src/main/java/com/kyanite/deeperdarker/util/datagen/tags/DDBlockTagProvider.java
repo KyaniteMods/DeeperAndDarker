@@ -210,6 +210,26 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH).addOptionalTag(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY).add(DDBlocks.TOXIC_AIR, DDBlocks.RETURN_STATUE);
         tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY).addOptionalTag(BlockTags.REPLACEABLE).add(DDBlocks.SCULK_GRIME_GLASS, DDBlocks.FRAGILE_SCULK_GRIME_BRICKS);
 
+        tagBuilder(DDTags.Blocks.SCULK_LIGHT_SOURCES).add(
+                DDBlocks.ICICLE,
+                DDBlocks.GLOOMY_GEYSER,
+                DDBlocks.CRYSTALLIZED_AMBER,
+                DDBlocks.SCULK_GLEAM,
+                DDBlocks.GLOWING_FLOWERS,
+                DDBlocks.GLOWING_GRASS,
+                DDBlocks.GLOOMY_GRASS,
+                DDBlocks.GLOOMY_CACTUS,
+                DDBlocks.GLOWING_VINES_PLANT,
+                DDBlocks.ICE_LILY,
+                DDBlocks.LILY_FLOWER,
+                DDBlocks.SCULK_LAMP,
+                DDBlocks.SCULK_FIRE,
+                DDBlocks.SCULK_TORCH,
+                DDBlocks.SCULK_WALL_TORCH,
+                DDBlocks.SCULK_CAMPFIRE,
+                DDBlocks.SCULK_LANTERN
+        );
+
         tagBuilder(ConventionalBlockTags.GLASS_BLOCKS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         tagBuilder(ConventionalBlockTags.GLASS_PANES).add(DDBlocks.SCULK_GRIME_GLASS_PANE);
     }

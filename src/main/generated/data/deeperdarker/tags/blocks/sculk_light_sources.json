@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "deeperdarker:icicle",
+    "deeperdarker:gloomy_geyser",
+    "deeperdarker:crystallized_amber",
+    "deeperdarker:sculk_gleam",
+    "deeperdarker:glowing_flowers",
+    "deeperdarker:glowing_grass",
+    "deeperdarker:gloomy_grass",
+    "deeperdarker:gloomy_cactus",
+    "deeperdarker:glowing_vines_plant",
+    "deeperdarker:ice_lily",
+    "deeperdarker:lily_flower",
+    "deeperdarker:sculk_lamp",
+    "deeperdarker:sculk_fire",
+    "deeperdarker:sculk_torch",
+    "deeperdarker:sculk_wall_torch",
+    "deeperdarker:sculk_campfire",
+    "deeperdarker:sculk_lantern"
+  ]
+}
