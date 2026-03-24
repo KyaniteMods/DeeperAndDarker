@@ -208,6 +208,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.DARK_FOUNTAIN, "Dark Fountain");
         translationBuilder.add(DDBlocks.SHADOW_CRYSTAL_BLOCK, "Block of Shadow Crystal");
         translationBuilder.add(DDBlocks.TOXIC_AIR, "Toxic Air");
+        translationBuilder.add(DDBlocks.SCULK_FIRE, "Sculk Fire");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
@@ -236,6 +237,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SOUL_CRYSTAL, "Soul Crystal");
         translationBuilder.add(DDItems.SOUL_DUST, "Soul Dust");
         translationBuilder.add(DDItems.SCULK_BONE, "Sculk Bone");
+        translationBuilder.add(DDItems.SCULK_BONE_SHARD, "Sculk Bone Shard");
+        translationBuilder.add(DDItems.OTHERSIDE_FIRE_STRIKER, "Otherside Fire Striker");
         translationBuilder.add(DDItems.PATIENCE_SHARD, "Shard of Patience");
         translationBuilder.add(DDItems.FORTITUDE_SHARD, "Shard of Fortitude");
         translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");

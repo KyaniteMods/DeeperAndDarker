@@ -6,10 +6,8 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
-import com.simibubi.create.AllItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.loader.impl.discovery.ModLoadCondition;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -162,6 +160,14 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("| |")
                 .pattern("#|#")
                 .unlockedBy(getHasName(DDItems.SHADOW_CRYSTAL), has(DDItems.SHADOW_CRYSTAL)).save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDItems.SCULK_BONE_SHARD, 2)
+                .requires(DDItems.SCULK_BONE)
+                .unlockedBy(FabricRecipeProvider.getHasName(DDItems.SCULK_BONE), FabricRecipeProvider.has(DDItems.SCULK_BONE)).save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, DDItems.OTHERSIDE_FIRE_STRIKER)
+                .requires(DDItems.SCULK_BONE_SHARD).requires(Items.FLINT)
+                .unlockedBy(FabricRecipeProvider.getHasName(DDItems.SCULK_BONE_SHARD), FabricRecipeProvider.has(DDItems.SCULK_BONE_SHARD)).save(output);
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
     }

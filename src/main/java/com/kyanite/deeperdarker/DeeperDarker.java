@@ -22,6 +22,7 @@ import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomTypeRe
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import dev.kyanitemods.kyaniteportals.api.SimplePortalBuilder;
+import dev.kyanitemods.kyaniteportals.content.Portal;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
@@ -29,6 +30,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
@@ -55,6 +57,18 @@ public class DeeperDarker implements ModInitializer {
 	public static boolean SHOW_ME_YOUR_SKIN = false;
 
 	public static final DDConfig CONFIG = DDConfig.createAndLoad();
+
+	public static final ResourceKey<Portal> OTHERSIDE_PORTAL = SimplePortalBuilder.create()
+			.frame(Blocks.REINFORCED_DEEPSLATE)
+			.ignition(DDItems.HEART_OF_THE_DEEP)
+			.ignition(DDBlocks.SCULK_FIRE)
+			.fromDimension(LevelStem.OVERWORLD)
+			.toDimension(OthersideGeneration.OTHERSIDE_STEM)
+			.color((5 << 16) | (98 << 8) | 93)
+			.replaceable(Blocks.AIR, Blocks.CAVE_AIR, Blocks.VOID_AIR, Blocks.SCULK_VEIN, DDBlocks.SCULK_FIRE)
+			.ambientSound(Holder.direct(DDSounds.PORTAL_GROAN))
+			.generatedSize(10, 6)
+				.register(new ResourceLocation(MOD_ID, "otherside"));;
 
 	@Override
 	public void onInitialize() {
@@ -83,17 +97,6 @@ public class DeeperDarker implements ModInitializer {
 		if (FabricLoader.getInstance().isModLoaded("showmeyourskin") && CONFIG.server.showMeYourSkinCompatibility()) {
 			SHOW_ME_YOUR_SKIN = true;
 		}
-
-		SimplePortalBuilder.create()
-				.frame(Blocks.REINFORCED_DEEPSLATE)
-				.ignition(DDItems.HEART_OF_THE_DEEP)
-				.fromDimension(LevelStem.OVERWORLD)
-				.toDimension(OthersideGeneration.OTHERSIDE_STEM)
-				.color((5 << 16) | (98 << 8) | 93)
-				.replaceable(Blocks.AIR, Blocks.CAVE_AIR, Blocks.VOID_AIR, Blocks.SCULK_VEIN)
-				.ambientSound(Holder.direct(DDSounds.PORTAL_GROAN))
-				.generatedSize(10, 6)
-				.register(new ResourceLocation(MOD_ID, "otherside"));
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			if (EntityType.WARDEN.getDefaultLootTable().equals(id) && CONFIG.server.addWardenDrops()) {

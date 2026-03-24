@@ -232,6 +232,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.WARDEN_BOOTS);
 
         entries.accept(DDItems.SCULK_BONE);
+        entries.accept(DDItems.SCULK_BONE_SHARD);
+        entries.accept(DDItems.OTHERSIDE_FIRE_STRIKER);
         entries.accept(DDItems.SOUL_DUST);
         entries.accept(DDItems.SOUL_CRYSTAL);
         entries.accept(DDItems.RESONARIUM);

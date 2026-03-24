@@ -316,6 +316,8 @@ public class DDBlocks {
     public static final Block SHADOW_CRYSTAL_BLOCK = register("shadow_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
     public static final Block TOXIC_AIR = registerWithoutItem("toxic_air", new ToxicAirBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).noCollission().randomTicks().noLootTable().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY)));
 
+    public static final Block SCULK_FIRE = registerWithoutItem("sculk_fire", new SculkFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_CYAN).lightLevel(blockState -> 15)));
+
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(
                 PushReaction.DESTROY);

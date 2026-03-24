@@ -262,6 +262,7 @@ public class DDModelProvider extends FabricModelProvider {
         createRandomRotationBlock(blockModelGenerators, DDBlocks.SCULK_TISSUE);
         registerCubeBottomTop(blockModelGenerators, DDBlocks.DARK_FOUNTAIN, DDBlocks.SCULK_TISSUE);
         blockModelGenerators.family(DDBlocks.SHADOW_CRYSTAL_BLOCK);
+        registerSculkFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
 
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
@@ -297,6 +298,8 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.SOUL_CRYSTAL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SOUL_DUST, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_BONE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.SCULK_BONE_SHARD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.OTHERSIDE_FIRE_STRIKER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BALL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
@@ -464,6 +467,12 @@ public class DDModelProvider extends FabricModelProvider {
                         .select(false, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(lamp, "_off")))));
         ModelTemplates.CUBE_ALL.create(lamp, TextureMapping.cube(lamp), blockModelGenerators.modelOutput);
         ModelTemplates.CUBE_ALL.createWithSuffix(lamp, "_off", TextureMapping.cube(TextureMapping.getBlockTexture(lamp, "_off")), blockModelGenerators.modelOutput);
+    }
+
+    private void registerSculkFire(BlockModelGenerators blockModelGenerators, Block block) {
+        List<ResourceLocation> list = blockModelGenerators.createFloorFireModels(block);
+        List<ResourceLocation> list2 = blockModelGenerators.createSideFireModels(block);
+        blockModelGenerators.blockStateOutput.accept(MultiPartGenerator.multiPart(block).with(BlockModelGenerators.wrapModels(list, variant -> variant)).with(BlockModelGenerators.wrapModels(list2, variant -> variant)).with(BlockModelGenerators.wrapModels(list2, variant -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))).with(BlockModelGenerators.wrapModels(list2, variant -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))).with(BlockModelGenerators.wrapModels(list2, variant -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))));
     }
 
     private static void registerGeneratedWithPredicate(ItemModelGenerators itemModelGenerator, Item item, List<Triple<String, Number, ResourceLocation>> predicates) {

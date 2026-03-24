@@ -37,6 +37,8 @@ public class DDItems {
     public static final Item LILY_FLOWER = register("lily_flower", new LilyFlowerItem(DDBlocks.LILY_FLOWER, new Item.Properties()));
 
     public static final Item SCULK_BONE = register("sculk_bone", new Item(new Item.Properties()));
+    public static final Item SCULK_BONE_SHARD = register("sculk_bone_shard", new Item(new Item.Properties()));
+    public static final Item OTHERSIDE_FIRE_STRIKER = register("otherside_fire_striker", new OthersideFireStrikerItem(new Item.Properties().durability(64)));
     public static final Item SOUL_DUST = register("soul_dust", new Item(new Item.Properties()));
     public static final Item SOUL_CRYSTAL = register("soul_crystal", new Item(new Item.Properties()));
     public static final Item HEART_OF_THE_DEEP = register("heart_of_the_deep", new HeartOfTheDeepItem(new Item.Properties().rarity(Rarity.RARE).fireResistant().stacksTo(1)));
