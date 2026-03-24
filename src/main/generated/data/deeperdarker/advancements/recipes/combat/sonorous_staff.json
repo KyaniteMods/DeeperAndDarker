@@ -13,6 +13,18 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_royal_scepter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deeperdarker:royal_scepter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_sculk_bone": {
       "conditions": {
         "items": [
@@ -46,6 +58,7 @@
   },
   "requirements": [
     [
+      "has_royal_scepter",
       "has_sculk_bone",
       "has_soul_crystal",
       "has_heart_of_the_deep",

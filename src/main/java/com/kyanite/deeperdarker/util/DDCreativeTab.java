@@ -266,6 +266,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.BLACK_SCULK_TRANSMITTER);
         entries.accept(DDItems.SONOROUS_STAFF);
         entries.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
+        entries.accept(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE);
 
         entries.accept(DDItems.ANGLER_FISH_SPAWN_EGG);
         entries.accept(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);

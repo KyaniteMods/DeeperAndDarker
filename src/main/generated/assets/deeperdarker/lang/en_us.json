@@ -306,6 +306,10 @@
   "item.deeperdarker.shattered_spawn_egg": "Shattered Spawn Egg",
   "item.deeperdarker.shriek_worm_spawn_egg": "Shriek Worm Spawn Egg",
   "item.deeperdarker.sludge_spawn_egg": "Sludge Spawn Egg",
+  "item.deeperdarker.smithing_template.guardian_upgrade.additions_slot_description": "Add Shard of Virtue",
+  "item.deeperdarker.smithing_template.guardian_upgrade.applies_to": "Warden Equipment",
+  "item.deeperdarker.smithing_template.guardian_upgrade.base_slot_description": "Add warden armor, weapon, or tool",
+  "item.deeperdarker.smithing_template.guardian_upgrade.ingredients": "Shard of Virtue",
   "item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description": "Add Reinforced Echo Shard",
   "item.deeperdarker.smithing_template.warden_upgrade.applies_to": "Netherite Equipment",
   "item.deeperdarker.smithing_template.warden_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
@@ -350,7 +354,6 @@
   "item.minecraft.lingering_potion.effect.sculk_affinity": "Lingering Potion of Sculk Affinity",
   "item.minecraft.potion.effect.long_sculk_affinity": "Potion of Sculk Affinity",
   "item.minecraft.potion.effect.sculk_affinity": "Potion of Sculk Affinity",
-  "item.minecraft.smithing_template": "Smithing Template",
   "item.minecraft.splash_potion.effect.long_sculk_affinity": "Splash Potion of Sculk Affinity",
   "item.minecraft.splash_potion.effect.sculk_affinity": "Splash Potion of Sculk Affinity",
   "item.minecraft.tipped_arrow.effect.long_sculk_affinity": "Arrow of Sculk Affinity",
@@ -468,5 +471,6 @@
   "tooltips.deeperdarker.sculk_transmitter.location": "Located at %1$s, %2$s, %3$s",
   "tooltips.deeperdarker.sculk_transmitter.location_advanced": "Dimension: %s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Unlinked",
+  "upgrade.deeperdarker.guardian_upgrade": "Guardian Upgrade",
   "upgrade.deeperdarker.warden_upgrade": "Warden Upgrade"
 }

@@ -292,6 +292,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM_PLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.PATIENCE_SHARD, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.FORTITUDE_SHARD, ModelTemplates.FLAT_ITEM);

@@ -127,6 +127,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         oreSmelting(output, Collections.singletonList(DDItems.GRIME_BALL), RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).define('D', Items.DIAMOND).define('U', DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).define('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").unlockedBy(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE, 2).define('D', Items.DIAMOND).define('U', DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).define('G', Items.GOLD_BLOCK).pattern("DUD").pattern("DGD").pattern("DDD").unlockedBy(FabricRecipeProvider.getHasName(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD).define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE).define('E', Items.ECHO_SHARD).pattern("PCP").pattern("CEC").pattern("PCP").unlockedBy(FabricRecipeProvider.getHasName(Items.ECHO_SHARD), FabricRecipeProvider.has(Items.ECHO_SHARD)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA).define('B', DDItems.SCULK_BONE).define('D', DDItems.SOUL_DUST).define('E', Items.ELYTRA).define('S', DDItems.SOUL_CRYSTAL).pattern("BDB").pattern("DED").pattern("BSB").unlockedBy(FabricRecipeProvider.getHasName(Items.ELYTRA), FabricRecipeProvider.has(Items.ELYTRA)).save(output);
 
@@ -143,6 +144,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern(" CH")
                 .pattern(" SC")
                 .pattern("B  ")
+                .unlockedBy(getHasName(DDItems.ROYAL_SCEPTER), has(DDItems.ROYAL_SCEPTER))
                 .unlockedBy(getHasName(DDItems.SCULK_BONE), has(DDItems.SCULK_BONE))
                 .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL), has(DDItems.SOUL_CRYSTAL))
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
@@ -197,6 +199,16 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 //        wardenSmithing(output, AllItems.NETHERITE_DIVING_HELMET, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_HELMET.get());
 //        wardenSmithing(output, AllItems.NETHERITE_DIVING_BOOTS, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get());
 //        wardenSmithing(output, AllItems.NETHERITE_BACKTANK, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_BACKTANK.get());
+
+//        guardianSmithing(output, Items.WARDEN_SHOVEL, RecipeCategory.TOOLS, DDItems.GUARDIAN_SHOVEL);
+//        guardianSmithing(output, Items.WARDEN_PICKAXE, RecipeCategory.TOOLS, DDItems.GUARDIAN_PICKAXE);
+//        guardianSmithing(output, Items.WARDEN_AXE, RecipeCategory.TOOLS, DDItems.GUARDIAN_AXE);
+//        guardianSmithing(output, Items.WARDEN_HOE, RecipeCategory.TOOLS, DDItems.GUARDIAN_HOE);
+//        guardianSmithing(output, Items.WARDEN_SWORD, RecipeCategory.COMBAT, DDItems.GUARDIAN_SWORD);
+//        guardianSmithing(output, Items.WARDEN_HELMET, RecipeCategory.COMBAT, DDItems.GUARDIAN_HELMET);
+//        guardianSmithing(output, Items.WARDEN_CHESTPLATE, RecipeCategory.COMBAT, DDItems.GUARDIAN_CHESTPLATE);
+//        guardianSmithing(output, Items.WARDEN_LEGGINGS, RecipeCategory.COMBAT, DDItems.GUARDIAN_LEGGINGS);
+//        guardianSmithing(output, Items.WARDEN_BOOTS, RecipeCategory.COMBAT, DDItems.GUARDIAN_BOOTS);
     }
 
     private void resonariumSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
@@ -206,6 +218,10 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     private void wardenSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
     }
+
+//    private void guardianSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
+//        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(/* ... */), category, result).unlocks(getHasName(/* ... */), has(/* ... */)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
+//    }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
         planksFromLogs(exporter, planks, logs, 4);

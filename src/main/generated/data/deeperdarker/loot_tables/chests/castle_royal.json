@@ -163,6 +163,20 @@
         }
       ],
       "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 23
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:guardian_upgrade_smithing_template"
+        }
+      ],
+      "rolls": 1.0
     }
   ]
 }

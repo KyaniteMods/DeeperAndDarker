@@ -183,6 +183,9 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                         .add(LootItem.lootTableItem(Items.IRON_INGOT).setWeight(1))
                         .add(LootItem.lootTableItem(Items.ENDER_PEARL).setWeight(1))
                 )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+                        .add(EmptyLootItem.emptyItem().setWeight(99))
+                        .add(LootItem.lootTableItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE).setWeight(1)))
         );
         consumer.accept(CASTLE_ROYAL, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(6, 9))
@@ -210,6 +213,9 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
                         .add(EmptyLootItem.emptyItem().setWeight(10))
                         .add(LootItem.lootTableItem(DDItems.ROYAL_SCEPTER).setWeight(1)))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
+                        .add(EmptyLootItem.emptyItem().setWeight(23))
+                        .add(LootItem.lootTableItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE).setWeight(1)))
         );
     }
 }
