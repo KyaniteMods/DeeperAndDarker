@@ -29,6 +29,7 @@
     "TomsStorageCompatMixin",
     "VibrationListenerMixin",
     "ViewerCounterMixin",
+    "WardenDropSculkBoneShardMixin",
     "WardenMixin"
   ],
   "client": [
