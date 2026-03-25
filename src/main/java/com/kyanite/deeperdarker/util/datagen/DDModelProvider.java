@@ -264,7 +264,9 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.SHADOW_CRYSTAL_BLOCK);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.TOXIC_AIR);
 
-        registerSculkFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
+        registerFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
+        registerFire(blockModelGenerators, DDBlocks.PATIENCE_SOUL_FIRE);
+        registerFire(blockModelGenerators, DDBlocks.FORTITUDE_SOUL_FIRE);
 
         blockModelGenerators.createNormalTorch(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH);
         blockModelGenerators.createCampfires(DDBlocks.SCULK_CAMPFIRE);
@@ -476,7 +478,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.CUBE_ALL.createWithSuffix(lamp, "_off", TextureMapping.cube(TextureMapping.getBlockTexture(lamp, "_off")), blockModelGenerators.modelOutput);
     }
 
-    private void registerSculkFire(BlockModelGenerators blockModelGenerators, Block block) {
+    private void registerFire(BlockModelGenerators blockModelGenerators, Block block) {
         List<ResourceLocation> list = blockModelGenerators.createFloorFireModels(block);
         List<ResourceLocation> list2 = blockModelGenerators.createSideFireModels(block);
         blockModelGenerators.blockStateOutput.accept(MultiPartGenerator.multiPart(block).with(BlockModelGenerators.wrapModels(list, variant -> variant)).with(BlockModelGenerators.wrapModels(list2, variant -> variant)).with(BlockModelGenerators.wrapModels(list2, variant -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))).with(BlockModelGenerators.wrapModels(list2, variant -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))).with(BlockModelGenerators.wrapModels(list2, variant -> variant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))));

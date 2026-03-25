@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fire_side",
+  "textures": {
+    "fire": "deeperdarker:block/patience_soul_fire_0"
+  }
+}

@@ -17,6 +17,8 @@
     "deeperdarker:sculk_torch",
     "deeperdarker:sculk_wall_torch",
     "deeperdarker:sculk_campfire",
-    "deeperdarker:sculk_lantern"
+    "deeperdarker:sculk_lantern",
+    "deeperdarker:patience_soul_fire",
+    "deeperdarker:fortitude_soul_fire"
   ]
 }

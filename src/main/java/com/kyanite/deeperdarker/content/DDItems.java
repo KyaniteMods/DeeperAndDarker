@@ -48,8 +48,6 @@ public class DDItems {
     public static final Item RESONARIUM_PLATE = register("resonarium_plate", new Item(new Item.Properties().fireResistant()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
     public static final Item GUARDIAN_UPGRADE_SMITHING_TEMPLATE = register("guardian_upgrade_smithing_template", createGuardianUpgradeSmithingTemplate());
-    public static final Item PATIENCE_SOUL = register("patience_soul", new SoulItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PATIENCE_SOUL));
-    public static final Item FORTITUDE_SOUL = register("fortitude_soul", new SoulItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.FORTITUDE_SOUL));
     public static final Item ROYAL_SCEPTER = register("royal_scepter", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
     public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
@@ -121,6 +119,8 @@ public class DDItems {
 
     public static final Item SHATTERED_HEAD = register("shattered_head", new StandingAndWallBlockItem(DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD, new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 
+    public static final Item PATIENCE_SOUL = register("patience_soul", new SoulItem(DDBlocks.PATIENCE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PATIENCE_SOUL));
+    public static final Item FORTITUDE_SOUL = register("fortitude_soul", new SoulItem(DDBlocks.FORTITUDE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.FORTITUDE_SOUL));
     public static final Item SCULK_TORCH = register("sculk_torch", new StandingAndWallBlockItem(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH, new Item.Properties(), Direction.DOWN));
 
     public static Item register(String id, Item item) {

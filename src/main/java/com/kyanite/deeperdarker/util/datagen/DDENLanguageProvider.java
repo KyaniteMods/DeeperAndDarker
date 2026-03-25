@@ -217,6 +217,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SCULK_WALL_TORCH)), "Sculk Wall Torch");
         translationBuilder.add(DDBlocks.SCULK_CAMPFIRE, "Sculk Campfire");
         translationBuilder.add(DDBlocks.SCULK_LANTERN, "Sculk Lantern");
+        translationBuilder.add(DDBlocks.PATIENCE_SOUL_FIRE, "Soul of Patience Fire");
+        translationBuilder.add(DDBlocks.FORTITUDE_SOUL_FIRE, "Soul of Fortitude Fire");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");

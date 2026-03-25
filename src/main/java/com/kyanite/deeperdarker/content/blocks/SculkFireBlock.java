@@ -11,6 +11,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
@@ -22,6 +23,11 @@ import java.util.Optional;
 public class SculkFireBlock extends BaseFireBlock {
     public SculkFireBlock(Properties properties) {
         super(properties, 2.0f);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        return defaultBlockState();
     }
 
     @Override
@@ -48,7 +54,12 @@ public class SculkFireBlock extends BaseFireBlock {
 
     @Override
     public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
-        super.onPlace(blockState, level, blockPos, blockState2, bl);
+        if (blockState2.is(blockState.getBlock())) {
+            return;
+        }
+        if (!blockState.canSurvive(level, blockPos)) {
+            level.removeBlock(blockPos, false);
+        }
         level.scheduleTick(blockPos, this, getFireTickDelay(level.random));
     }
 

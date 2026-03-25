@@ -348,6 +348,8 @@ public class DDBlocks {
         }
     });
     public static final Block SCULK_LANTERN = register("sculk_lantern", new LanternBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_LANTERN).lightLevel(blockState -> 15)));
+    public static final Block PATIENCE_SOUL_FIRE = registerWithoutItem("patience_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_CYAN).lightLevel(blockState -> 15), () -> DDItems.PATIENCE_SOUL.getDefaultInstance(), 1.0f));
+    public static final Block FORTITUDE_SOUL_FIRE = registerWithoutItem("fortitude_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_RED).lightLevel(blockState -> 15), () -> DDItems.FORTITUDE_SOUL.getDefaultInstance(), 1.0f));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(

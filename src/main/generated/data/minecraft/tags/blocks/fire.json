@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "deeperdarker:sculk_fire"
+    "deeperdarker:sculk_fire",
+    "deeperdarker:patience_soul_fire",
+    "deeperdarker:fortitude_soul_fire"
   ]
 }

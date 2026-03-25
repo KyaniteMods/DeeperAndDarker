@@ -79,7 +79,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.SCULK_TORCH,
                 DDBlocks.SCULK_WALL_TORCH,
                 DDBlocks.SCULK_CAMPFIRE,
-                DDBlocks.SCULK_LANTERN);
+                DDBlocks.SCULK_LANTERN,
+                DDBlocks.PATIENCE_SOUL_FIRE,
+                DDBlocks.FORTITUDE_SOUL_FIRE);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 DDBlocks.CRYSTALLIZED_AMBER,
