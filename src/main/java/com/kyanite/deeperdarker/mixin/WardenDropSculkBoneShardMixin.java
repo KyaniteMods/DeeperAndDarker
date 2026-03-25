@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -41,7 +42,7 @@ public abstract class WardenDropSculkBoneShardMixin {
     @Unique
     private void shear(SoundSource soundSource) {
         Mob mob = ((Mob) (Object) this);
-        mob.level().playSound(null, mob, SoundEvents.SHEEP_SHEAR, soundSource, 1.0f, 1.0f);
+        mob.level().playSound(null, mob, DDSounds.WARDEN_SHEAR, soundSource, 1.0f, 1.0f);
         RandomSource random = mob.getRandom();
         int i = 1 + random.nextInt(3);
         for (int j = 0; j < i; ++j) {
