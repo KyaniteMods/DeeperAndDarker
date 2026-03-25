@@ -23,9 +23,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.additions_slot_description", "Add Reinforced Echo Shard");
         translationBuilder.add("upgrade.deeperdarker.warden_upgrade", "Warden Upgrade");
         translationBuilder.add("item.deeperdarker.smithing_template.guardian_upgrade.applies_to", "Warden Equipment");
-        translationBuilder.add("item.deeperdarker.smithing_template.guardian_upgrade.ingredients", "Shard of Virtue");
+        translationBuilder.add("item.deeperdarker.smithing_template.guardian_upgrade.ingredients", "Soul of Virtue");
         translationBuilder.add("item.deeperdarker.smithing_template.guardian_upgrade.base_slot_description", "Add warden armor, weapon, or tool");
-        translationBuilder.add("item.deeperdarker.smithing_template.guardian_upgrade.additions_slot_description", "Add Shard of Virtue");
+        translationBuilder.add("item.deeperdarker.smithing_template.guardian_upgrade.additions_slot_description", "Add Soul of Virtue");
         translationBuilder.add("upgrade.deeperdarker.guardian_upgrade", "Guardian Upgrade");
         translationBuilder.add(DDBlocks.ENRICHED_ECHO_LOG, "Enriched Echo Log");
         translationBuilder.add(DDBlocks.ECHO_LOG, "Echo Log");
@@ -247,8 +247,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_BONE, "Sculk Bone");
         translationBuilder.add(DDItems.SCULK_BONE_SHARD, "Sculk Bone Shard");
         translationBuilder.add(DDItems.OTHERSIDE_FIRE_STRIKER, "Otherside Fire Striker");
-        translationBuilder.add(DDItems.PATIENCE_SHARD, "Shard of Patience");
-        translationBuilder.add(DDItems.FORTITUDE_SHARD, "Shard of Fortitude");
+        translationBuilder.add(DDItems.PATIENCE_SOUL, "Soul of Patience");
+        translationBuilder.add(DDItems.FORTITUDE_SOUL, "Soul of Fortitude");
         translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");
         translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
         translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");

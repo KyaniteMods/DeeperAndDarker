@@ -3,6 +3,8 @@ package com.kyanite.deeperdarker.util.datagen.loot;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.util.SetPaintingVariantFunction;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -34,6 +37,7 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation SLUDGE = BuiltInRegistries.ENTITY_TYPE.getKey(DDEntities.SLUDGE).withPrefix("entities/");
     public static final ResourceLocation STALKER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/stalker");
     public static final ResourceLocation BLOOMING_GOLEM = new ResourceLocation(DeeperDarker.MOD_ID, "entities/blooming_golem");
+    public static final ResourceLocation OVERCAST_VESSEL = new ResourceLocation(DeeperDarker.MOD_ID, "entities/overcast_vessel");
 
     public DDEntityLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.ENTITY);
@@ -79,9 +83,23 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
 
         biConsumer.accept(BLOOMING_GOLEM, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(DDItems.KEYBRAND).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                        .add(LootItem.lootTableItem(DDItems.KEYBRAND))
                 )
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(DDItems.PATIENCE_SHARD).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))));
+                        .add(LootItem.lootTableItem(DDItems.PATIENCE_SOUL))));
+
+        biConsumer.accept(OVERCAST_VESSEL, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(DDItems.FORTITUDE_SOUL))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(EmptyLootItem.emptyItem().setWeight(2))
+                        .add(LootItem.lootTableItem(Items.PAINTING)
+                                .apply(SetPaintingVariantFunction.withTag(DDTags.Paintings.ANCIENT)))
+                )
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(EmptyLootItem.emptyItem().setWeight(3))
+                )
+        );
     }
 }

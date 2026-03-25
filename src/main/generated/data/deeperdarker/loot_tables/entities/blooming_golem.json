@@ -6,13 +6,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "deeperdarker:keybrand"
         }
       ],
@@ -23,14 +16,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "deeperdarker:patience_shard"
+          "name": "deeperdarker:patience_soul"
         }
       ],
       "rolls": 1.0

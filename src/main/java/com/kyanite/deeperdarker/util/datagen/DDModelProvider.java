@@ -298,8 +298,8 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.PATIENCE_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.FORTITUDE_SHARD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.PATIENCE_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.FORTITUDE_SOUL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_CARAPACE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.HEART_OF_THE_DEEP, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SOUL_CRYSTAL, ModelTemplates.FLAT_ITEM);

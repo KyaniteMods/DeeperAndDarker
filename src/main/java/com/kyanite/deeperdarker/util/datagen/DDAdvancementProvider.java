@@ -145,7 +145,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
 
         Advancement killBloomingGolem = Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
-                        DDItems.PATIENCE_SHARD,
+                        DDItems.PATIENCE_SOUL,
                         Component.translatable(id + "kill_blooming_golem.title"),
                         Component.translatable(id + "kill_blooming_golem.description"),
                         null,
