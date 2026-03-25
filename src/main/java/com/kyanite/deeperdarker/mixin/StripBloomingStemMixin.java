@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Optional;
 
 @Mixin(AxeItem.class)
-public class StripBloomingStemMixin {
+public abstract class StripBloomingStemMixin {
     @Inject(method = "getStripped", at = @At("HEAD"), cancellable = true)
     private void deeperdarker$stripBloomingStem(BlockState state, CallbackInfoReturnable<Optional<BlockState>> cir) {
         if (state.is(DDBlocks.BLOOMING_STEM)) {

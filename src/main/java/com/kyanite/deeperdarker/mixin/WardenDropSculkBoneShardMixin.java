@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Mob.class)
-public class WardenDropSculkBoneShardMixin {
+public abstract class WardenDropSculkBoneShardMixin {
     @Inject(method = "mobInteract", at = @At("HEAD"), cancellable = true)
     private void deeperdarker$shearWardenRib(Player player, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
         Mob mob = (Mob) (Object) this;

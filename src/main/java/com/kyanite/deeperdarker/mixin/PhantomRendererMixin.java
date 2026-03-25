@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PhantomRenderer.class)
-public class PhantomRendererMixin {
+public abstract class PhantomRendererMixin {
     @Inject(method = "getTextureLocation*", at = @At("HEAD"), cancellable = true)
     public void getTextureLocation(Phantom entity, CallbackInfoReturnable<ResourceLocation> cir) {
         if(entity.level().getBiome(entity.blockPosition()).is(OthersideBiomes.DEEPLANDS.location()) && DeeperDarker.CONFIG.client.changePhantomTextures()) {

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = { ItemCombinerMenu.class })
-public class ContainerMenuMixin {
+public abstract class ContainerMenuMixin {
     @Inject(method = "stillValid", at = @At("HEAD"), cancellable = true)
     public void stillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
         if (player.level() instanceof ServerLevel serverLevel && SculkTransmitterItem.stillValid(player, serverLevel, null)) {

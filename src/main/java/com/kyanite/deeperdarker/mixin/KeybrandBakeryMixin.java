@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Map;
 
 @Mixin(ModelBakery.class)
-public class KeybrandBakeryMixin {
+public abstract class KeybrandBakeryMixin {
     @Mixin(ModelBakery.class)
     private interface ModelBakeryAccessor {
         @Invoker("loadTopLevel")

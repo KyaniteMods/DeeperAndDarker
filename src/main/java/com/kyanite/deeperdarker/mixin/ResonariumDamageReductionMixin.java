@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(LivingEntity.class)
-public class ResonariumDamageReductionMixin {
+public abstract class ResonariumDamageReductionMixin {
     @ModifyArg(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V"), index = 1)
     private float deeperdarker$modifyDamage(float f, @Local(ordinal = 0, argsOnly = true) DamageSource source) {
         if(source.is(DamageTypeTags.BYPASSES_ARMOR)) return f;

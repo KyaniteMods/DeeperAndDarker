@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(FlowingFluid.class)
-public class FlowingFluidToxicAirMixin {
+public abstract class FlowingFluidToxicAirMixin {
     @ModifyReturnValue(method = "canHoldFluid", at = @At("RETURN"))
     private boolean deeperdarker$toxicAirCannotHoldFluid(boolean original, @Local(argsOnly = true) BlockState state) {
         return original && !state.is(DDBlocks.TOXIC_AIR);

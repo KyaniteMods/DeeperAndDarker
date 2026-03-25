@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(BlockBehaviour.Properties.class)
-public class SculkLightPropertiesMixin {
+public abstract class SculkLightPropertiesMixin {
     @WrapOperation(method = "method_26239", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getLightEmission()I"))
     private static int deeperdarker$sculkIsValidSpawnEmission(BlockState instance, Operation<Integer> original, @Local(argsOnly = true) BlockGetter blockGetter) {
         return DDUtil.getLightEmission(original.call(instance), instance, blockGetter);

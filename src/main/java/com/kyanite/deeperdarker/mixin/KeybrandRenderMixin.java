@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ItemRenderer.class)
-public class KeybrandRenderMixin {
+public abstract class KeybrandRenderMixin {
     @WrapOperation(method = "getModel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/ItemModelShaper;getItemModel(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/client/resources/model/BakedModel;"))
     private BakedModel deeperdarker$replaceKeybrandModel(ItemModelShaper instance, ItemStack itemStack, Operation<BakedModel> original) {
         return itemStack.is(DDItems.KEYBRAND) ? instance.getModelManager().getModel(DeeperDarkerClient.KEYBRAND_IN_HAND_MODEL) : original.call(instance, itemStack);

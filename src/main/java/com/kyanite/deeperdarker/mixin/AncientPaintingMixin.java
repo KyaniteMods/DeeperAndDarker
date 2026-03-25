@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Painting.class)
-public class AncientPaintingMixin {
+public abstract class AncientPaintingMixin {
     @WrapOperation(method = "dropItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/decoration/Painting;spawnAtLocation(Lnet/minecraft/world/level/ItemLike;)Lnet/minecraft/world/entity/item/ItemEntity;"))
     private ItemEntity deeperdarker$dropIfAncientPainting(Painting instance, ItemLike itemLike, Operation<ItemEntity> original) {
         ItemEntity itemEntity = original.call(instance, itemLike);

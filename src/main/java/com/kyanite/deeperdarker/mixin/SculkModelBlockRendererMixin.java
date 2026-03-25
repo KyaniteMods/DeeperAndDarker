@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = ModelBlockRenderer.class, priority = 800)
-public class SculkModelBlockRendererMixin {
+public abstract class SculkModelBlockRendererMixin {
     @WrapOperation(method = "tesselateBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getLightEmission()I"))
     private int deeperdarker$sculkModelBlockRendererEmission(BlockState instance, Operation<Integer> original, @Local(argsOnly = true) BlockAndTintGetter blockAndTintGetter) {
         return DDUtil.getLightEmission(original.call(instance), instance, blockAndTintGetter);

@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(HangingEntityItem.class)
-public class PaintingItemMixin {
+public abstract class PaintingItemMixin {
     @Unique
     private static TooltipFlag storedTooltipFlag;
     @Unique

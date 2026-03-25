@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(FireBlock.class)
-public class EnrichedEchoLogBurnedMixin {
+public abstract class EnrichedEchoLogBurnedMixin {
     @Inject(method = "checkBurnOut", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void deeperdarker$dropKyanitePasteWhenEchoLogBurns(Level level, BlockPos blockPos, int i, RandomSource randomSource, int j, CallbackInfo ci, int k, BlockState blockState) {
         if (blockState.is(DDBlocks.ENRICHED_ECHO_LOG)) {

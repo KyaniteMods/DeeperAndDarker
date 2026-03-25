@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractContainerMenu.class)
-public class AbstractContainerMenuMixin {
+public abstract class AbstractContainerMenuMixin {
     @Inject(method = "stillValid(Lnet/minecraft/world/inventory/ContainerLevelAccess;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/block/Block;)Z", at = @At("HEAD"), cancellable = true)
     private static void deeperdarker$abstractContainerStillValid(ContainerLevelAccess containerLevelAccess, Player player, Block block, CallbackInfoReturnable<Boolean> cir) {
         if (SculkTransmitterItem.stillValid(player, containerLevelAccess)) {

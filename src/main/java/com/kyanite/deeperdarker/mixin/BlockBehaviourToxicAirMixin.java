@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(BlockBehaviour.class)
-public class BlockBehaviourToxicAirMixin {
+public abstract class BlockBehaviourToxicAirMixin {
     @WrapOperation(method = "canBeReplaced(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isSolid()Z"))
     private boolean deeperdarker$toxicAirCannotBeReplaced(BlockState instance, Operation<Boolean> original) {
         return original.call(instance) || instance.is(DDBlocks.TOXIC_AIR);

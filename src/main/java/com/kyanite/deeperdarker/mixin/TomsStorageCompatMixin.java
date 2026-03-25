@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Pseudo
 @Mixin(StorageTerminalBlockEntity.class)
-public class TomsStorageCompatMixin {
+public abstract class TomsStorageCompatMixin {
     @Inject(method = "canInteractWith", at = @At("HEAD"), cancellable = true)
     private void deeperdarker$tomsStorageCompat(Player player, CallbackInfoReturnable<Boolean> cir) {
         if (((StorageTerminalBlockEntity) (Object) this).getLevel() instanceof ServerLevel serverLevel && SculkTransmitterItem.stillValid(player, serverLevel, ((StorageTerminalBlockEntity) (Object) this).getBlockPos())) {

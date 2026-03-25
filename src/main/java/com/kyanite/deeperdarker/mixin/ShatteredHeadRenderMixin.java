@@ -27,19 +27,19 @@ import java.util.Map;
 
 @Environment(EnvType.CLIENT)
 @Mixin(SkullBlockRenderer.class)
-public class ShatteredHeadRenderMixin {
+public abstract class ShatteredHeadRenderMixin {
     @Unique
-    private final ShatteredHeadModel shatteredHeadModel = new ShatteredHeadModel(Minecraft.getInstance().getEntityModels().bakeLayer(DDModelLayers.SHATTERED_HEAD));
+    private static final ShatteredHeadModel shatteredHeadModel = new ShatteredHeadModel(Minecraft.getInstance().getEntityModels().bakeLayer(DDModelLayers.SHATTERED_HEAD));
     @Unique
     private static final ResourceLocation shatteredTexture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shattered.png");
 
     @Inject(method = "method_3580", at = @At("TAIL"))
     private static void addModel(HashMap<SkullBlock.Type, ResourceLocation> hashMap, CallbackInfo ci) {
-        hashMap.put(ShatteredHeadBlock.SHATTERED, new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shattered.png"));
+        hashMap.put(ShatteredHeadBlock.SHATTERED, shatteredTexture);
     }
 
     @Inject(method = "createSkullRenderers", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;", shift = At.Shift.BEFORE))
     private static void addLayer(EntityModelSet entityModelSet, CallbackInfoReturnable<Map<SkullBlock.Type, SkullModelBase>> cir, @Local(ordinal = 0) ImmutableMap.Builder builder) {
-        builder.put(ShatteredHeadBlock.SHATTERED, new ShatteredHeadModel(Minecraft.getInstance().getEntityModels().bakeLayer(DDModelLayers.SHATTERED_HEAD)));
+        builder.put(ShatteredHeadBlock.SHATTERED, shatteredHeadModel);
     }
 }

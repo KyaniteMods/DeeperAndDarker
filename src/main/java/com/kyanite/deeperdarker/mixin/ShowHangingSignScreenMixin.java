@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LocalPlayer.class)
-public class ShowHangingSignScreenMixin {
+public abstract class ShowHangingSignScreenMixin {
     @Mixin(LocalPlayer.class)
     private interface ClientAccessor {
         @Accessor("minecraft")

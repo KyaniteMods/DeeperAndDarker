@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(CreativeModeTabs.class)
-public class NoAncientPaintingInGroupMixin {
+public abstract class NoAncientPaintingInGroupMixin {
     @ModifyReturnValue(method = "method_51314", at = @At("RETURN"))
     private static boolean deeperdarker$noAncientPaintingInGroup(boolean original, @Local(ordinal = 0, argsOnly = true) Holder holder) {
         return original && !holder.is(DDTags.Paintings.ANCIENT);

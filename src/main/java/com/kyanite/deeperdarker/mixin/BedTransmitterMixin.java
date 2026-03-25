@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ServerPlayer.class)
-public class BedTransmitterMixin {
+public abstract class BedTransmitterMixin {
     @Inject(method = "isReachableBedBlock", at = @At("HEAD"), cancellable = true)
     private void deeperdarker$bedIsReachable(BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
         if (SculkTransmitterItem.stillValid((ServerPlayer)(Object) this, ((ServerPlayer)(Object) this).serverLevel(), blockPos)) {

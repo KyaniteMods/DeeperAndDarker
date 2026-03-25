@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(ItemStack.class)
-public class DampensVibrationsTooltipMixin {
+public abstract class DampensVibrationsTooltipMixin {
     @Inject(method = "getTooltipLines", at = @At("RETURN"))
     private void deeperdarker$addDampensVibrationsLine(@Nullable Player player, TooltipFlag tooltipFlag, CallbackInfoReturnable<List<Component>> cir, @Local(ordinal = 0) List<Component> list) {
         List<Component> components = cir.getReturnValue();
