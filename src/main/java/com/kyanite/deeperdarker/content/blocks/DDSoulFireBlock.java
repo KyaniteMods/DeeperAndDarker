@@ -23,8 +23,8 @@ import java.util.function.Supplier;
 public class DDSoulFireBlock extends BaseFireBlock {
     private final Supplier<ItemStack> soulItem;
 
-    public DDSoulFireBlock(Properties properties, Supplier<ItemStack> soulItem, float f) {
-        super(properties, f);
+    public DDSoulFireBlock(Properties properties, Supplier<ItemStack> soulItem) {
+        super(properties, 0.0f);
         this.soulItem = soulItem;
     }
 
