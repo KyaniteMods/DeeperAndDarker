@@ -219,6 +219,9 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SCULK_TORCH);
         add(DDBlocks.SCULK_CAMPFIRE, (block) -> VanillaBlockLoot.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.SOUL_SOIL).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f))))));
         dropSelf(DDBlocks.SCULK_LANTERN);
+
+        dropSelf(DDBlocks.PATIENCE_SOUL_FIRE);
+        dropSelf(DDBlocks.FORTITUDE_SOUL_FIRE);
     }
 
     private void addVineAndPlant(Block plant, Block vine) {

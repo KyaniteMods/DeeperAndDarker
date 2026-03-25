@@ -64,15 +64,6 @@ public class DDSoulFireBlock extends BaseFireBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        if (!level.isClientSide()) {
-            level.levelEvent(null, 1009, blockPos, 0);
-            if (!player.getAbilities().instabuild) level.addFreshEntity(new ItemEntity(level, blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5, soulItem.get()));
-        }
-        super.playerWillDestroy(level, blockPos, blockState, player);
-    }
-
-    @Override
     public ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
         return soulItem.get();
     }
