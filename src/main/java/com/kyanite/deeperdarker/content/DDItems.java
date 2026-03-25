@@ -48,8 +48,8 @@ public class DDItems {
     public static final Item RESONARIUM_PLATE = register("resonarium_plate", new Item(new Item.Properties().fireResistant()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
     public static final Item GUARDIAN_UPGRADE_SMITHING_TEMPLATE = register("guardian_upgrade_smithing_template", createGuardianUpgradeSmithingTemplate());
-    public static final Item PATIENCE_SOUL = register("patience_soul", new Item(new Item.Properties().rarity(Rarity.RARE)));
-    public static final Item FORTITUDE_SOUL = register("fortitude_soul", new Item(new Item.Properties().rarity(Rarity.RARE)));
+    public static final Item PATIENCE_SOUL = register("patience_soul", new SoulItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PATIENCE_SOUL));
+    public static final Item FORTITUDE_SOUL = register("fortitude_soul", new SoulItem(new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.FORTITUDE_SOUL));
     public static final Item ROYAL_SCEPTER = register("royal_scepter", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
     public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));

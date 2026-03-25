@@ -26,6 +26,7 @@ import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.particle.SoulParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -255,5 +256,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(entity -> !entity.getItemBySlot(EquipmentSlot.CHEST).is(DDItems.SOUL_ELYTRA));
 
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.SCULK_FIRE_FLAME, FlameParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.PATIENCE_SOUL, SoulParticle.EmissiveProvider::new);
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.FORTITUDE_SOUL, SoulParticle.EmissiveProvider::new);
     }
 }

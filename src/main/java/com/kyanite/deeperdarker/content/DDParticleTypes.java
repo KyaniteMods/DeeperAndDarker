@@ -11,6 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class DDParticleTypes {
     public static final SimpleParticleType SCULK_FIRE_FLAME = register("sculk_fire_flame", FabricParticleTypes.simple());
+    public static final SimpleParticleType PATIENCE_SOUL = register("patience_soul", FabricParticleTypes.simple());
+    public static final SimpleParticleType FORTITUDE_SOUL = register("fortitude_soul", FabricParticleTypes.simple());
 
     private static <U extends ParticleOptions, T extends ParticleType<U>> T register(String id, T particleType) {
         return Registry.register(BuiltInRegistries.PARTICLE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, id), particleType);

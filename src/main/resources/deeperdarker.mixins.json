@@ -29,6 +29,7 @@
     "SculkLightEngineMixin",
     "SculkLightPropertiesMixin",
     "ShearEfficientSculkTissueMixin",
+    "SoulItemEntityMixin",
     "StripBloomingStemMixin",
     "TomsStorageCompatMixin",
     "VibrationListenerMixin",
@@ -46,7 +47,8 @@
     "SculkModelBlockRendererMixin",
     "ShatteredHeadRenderMixin",
     "ShowHangingSignScreenMixin",
-    "ShowHangingSignScreenMixin$ClientAccessor"
+    "ShowHangingSignScreenMixin$ClientAccessor",
+    "SoulItemEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
