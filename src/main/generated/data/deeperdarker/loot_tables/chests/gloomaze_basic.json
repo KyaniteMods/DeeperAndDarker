@@ -69,6 +69,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "deeperdarker:sculk_berry_sprout",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
           "name": "deeperdarker:fragile_gloomslate_bricks"
         }
       ],

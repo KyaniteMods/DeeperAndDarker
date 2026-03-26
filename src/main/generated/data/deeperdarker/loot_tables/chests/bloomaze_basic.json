@@ -41,21 +41,6 @@
           "functions": [
             {
               "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:diamond"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
               "damage": {
                 "type": "minecraft:uniform",
                 "max": 0.4,
@@ -66,6 +51,26 @@
           ],
           "name": "minecraft:iron_sword",
           "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "deeperdarker:sculk_berry_sprout",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:diamond"
         },
         {
           "type": "minecraft:item",

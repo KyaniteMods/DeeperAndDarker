@@ -7,11 +7,13 @@ import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
+import com.kyanite.deeperdarker.content.blocks.SculkBerryBlock;
 import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.mixin.ItemModelGeneratorAccessor;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
@@ -30,6 +32,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
+import net.minecraft.world.level.block.state.properties.Property;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
@@ -277,6 +280,8 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createCampfires(DDBlocks.SCULK_CAMPFIRE);
         blockModelGenerators.createLantern(DDBlocks.SCULK_LANTERN);
 
+        createNonTemplateCropBlock(blockModelGenerators, DDBlocks.SCULK_BERRY, SculkBerryBlock.AGE, 0, 1, 2);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
@@ -318,6 +323,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_TUBER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.SCULK_BERRY, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SHADOW_CRYSTAL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SUNGLASSES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.DAINTY_KEY, ModelTemplates.FLAT_ITEM);
@@ -650,5 +656,18 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createNonTemplateModelBlock(block);
         ModelTemplates.CUBE_BOTTOM_TOP.create(block, TextureMapping.singleSlot(TextureSlot.TOP, top).put(TextureSlot.SIDE, side).put(TextureSlot.BOTTOM, top),
                 blockModelGenerators.modelOutput);
+    }
+
+    private void createNonTemplateCropBlock(BlockModelGenerators blockModelGenerators, Block block, Property<Integer> property, int ... is) {
+        if (property.getPossibleValues().size() != is.length) {
+            throw new IllegalArgumentException();
+        }
+        PropertyDispatch propertyDispatch = PropertyDispatch.property(property).generate(integer -> {
+            int i = is[integer];
+            ResourceLocation resourceLocation = ModelLocationUtils.getModelLocation(block, "_stage" + i);
+            return Variant.variant().with(VariantProperties.MODEL, resourceLocation);
+        });
+        blockModelGenerators.createSimpleFlatItemModel(block.asItem());
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(propertyDispatch));
     }
 }

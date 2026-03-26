@@ -1,0 +1,27 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"texture_size": [12, 12],
+	"textures": {
+		"particle": "deeperdarker:block/sculk_berry_stage2_side",
+		"side": "deeperdarker:block/sculk_berry_stage2_side",
+		"bottom": "deeperdarker:block/sculk_berry_stage2_bottom",
+		"top": "deeperdarker:block/sculk_berry_stage2_top"
+	},
+	"elements": [
+		{
+			"from": [2, -1, 2],
+			"to": [14, 10, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, -1, 2]},
+			"faces": {
+				"north": {"uv": [0, 1.33333, 16, 16], "texture": "#side"},
+				"east": {"uv": [0, 1.33333, 16, 16], "texture": "#side"},
+				"south": {"uv": [0, 1.33333, 16, 16], "texture": "#side"},
+				"west": {"uv": [0, 1.33333, 16, 16], "texture": "#side"},
+				"up": {"uv": [16, 16, 0, 0], "texture": "#top"},
+				"down": {"uv": [16, 0, 0, 16], "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	]
+}

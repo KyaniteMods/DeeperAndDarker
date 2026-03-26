@@ -204,6 +204,8 @@ public class DDCreativeTab {
 
         entries.accept(DDItems.BLOOM_BERRIES);
         entries.accept(DDItems.SCULK_TUBER);
+        entries.accept(DDItems.SCULK_BERRY_SPROUT);
+        entries.accept(DDItems.SCULK_BERRY);
 
         entries.accept(DDItems.GRIME_BALL);
         entries.accept(DDItems.GRIME_BRICK);

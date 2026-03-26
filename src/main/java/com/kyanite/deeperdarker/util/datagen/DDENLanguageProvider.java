@@ -295,6 +295,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
         translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
         translationBuilder.add(DDItems.SCULK_TUBER, "Sculk Tuber");
+        translationBuilder.add(DDItems.SCULK_BERRY_SPROUT, "Sculk Berry Sprout");
+        translationBuilder.add(DDItems.SCULK_BERRY, "Sculk Berry");
         translationBuilder.add(DDItems.SHADOW_CRYSTAL, "Shadow Crystal");
         translationBuilder.add(DDItems.SUNGLASSES, "Sunglasses");
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");

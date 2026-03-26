@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.util.datagen.loot;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.blocks.SculkBerryBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -14,6 +15,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -136,6 +138,9 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         add(DDBlocks.BLOOMING_SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
         dropSelf(DDBlocks.BLOOMING_MOSS_BLOCK);
+
+        LootItemBlockStatePropertyCondition.Builder builder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(DDBlocks.SCULK_BERRY).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SculkBerryBlock.AGE, 2));
+        add(DDBlocks.SCULK_BERRY, createCropDrops(DDBlocks.SCULK_BERRY, DDItems.SCULK_BERRY, DDItems.SCULK_BERRY_SPROUT, builder));
 
         add(DDBlocks.GLOOMSLATE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_GLOOMSLATE));
         dropSelf(DDBlocks.GLOOMSLATE_STAIRS);
