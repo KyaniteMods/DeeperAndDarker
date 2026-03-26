@@ -67,14 +67,18 @@ public class BloomingGolem extends AbstractGolemBoss {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 800).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).add(Attributes.ATTACK_KNOCKBACK, 10.0).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 800).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 12).add(Attributes.ARMOR_TOUGHNESS, 4).add(Attributes.FOLLOW_RANGE, 100).add(Attributes.ATTACK_KNOCKBACK, 3.0).build();
+    }
+
+    @Override
+    public void tick() {
+        setNoGravity(true);
+        super.tick();
     }
 
     @Override
     protected void golemServerAiStep() {
         visitedPositions.add(blockPosition());
-
-        hurtPlayersInside();
 
         moveTimer -= getGolemMoveSpeed();
         if (moveTimer <= 0) {
@@ -114,6 +118,8 @@ public class BloomingGolem extends AbstractGolemBoss {
                 }
             });
         }
+
+        hurtPlayersInside();
     }
 
     @Override

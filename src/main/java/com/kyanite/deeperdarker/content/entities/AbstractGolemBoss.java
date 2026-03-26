@@ -127,9 +127,6 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
 
         if (isGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
 
-        if (getTarget() != null) {
-            lookAt(getTarget(), 10.0f, 10.0f);
-        }
         golemServerAiStep();
     }
 
@@ -334,21 +331,20 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
 
     @Override
     public boolean doHurtTarget(Entity entity) {
-        int i;
-        float f = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float g = (float)this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
+        float attackDamage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float attackKnockback = (float)this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
         if (entity instanceof LivingEntity) {
-            f += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity)entity).getMobType());
-            g += (float)EnchantmentHelper.getKnockbackBonus(this);
+            attackDamage += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity)entity).getMobType());
+            attackKnockback += (float)EnchantmentHelper.getKnockbackBonus(this);
         }
-        if ((i = EnchantmentHelper.getFireAspect(this)) > 0) {
-            entity.setSecondsOnFire(i * 4);
+        int fireAspect = EnchantmentHelper.getFireAspect(this);
+        if (fireAspect > 0) {
+            entity.setSecondsOnFire(fireAspect * 4);
         }
-        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), f);
+        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), attackDamage);
         if (hurt) {
-            if (g > 0.0f && entity instanceof LivingEntity livingEntity) {
-                livingEntity.knockback(g * 0.5f, Mth.sin(livingEntity.getYRot() * (Mth.PI / 180.0f) + Mth.PI), -Mth.cos(this.getYRot() * (Mth.PI / 180.0f) + Mth.PI));
-                this.setDeltaMovement(this.getDeltaMovement().multiply(0.6, 1.0, 0.6));
+            if (attackKnockback > 0.0f && entity instanceof LivingEntity livingEntity) {
+                livingEntity.knockback(attackKnockback * 0.5f, getX() - livingEntity.getX(), getZ() - livingEntity.getZ());
             }
             this.doEnchantDamageEffects(this, entity);
             this.setLastHurtMob(entity);
