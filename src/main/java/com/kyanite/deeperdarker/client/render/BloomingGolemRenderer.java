@@ -4,6 +4,8 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.BloomingGolemModel;
 import com.kyanite.deeperdarker.content.entities.BloomingGolem;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -20,5 +22,9 @@ public class BloomingGolemRenderer extends MobRenderer<BloomingGolem, BloomingGo
     @Override
     public ResourceLocation getTextureLocation(BloomingGolem entity) {
         return entity.isGolemSleeping() ? TEXTURE_SLEEPING : TEXTURE;
+    }
+
+    @Override
+    protected void setupRotations(BloomingGolem vessel, PoseStack poseStack, float f, float g, float h) {
     }
 }
