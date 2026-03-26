@@ -6,15 +6,19 @@ import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVe
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselSliderPhase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselUseItemPhase;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class OvercastVesselPhaseManager {
     private final OvercastVessel vessel;
@@ -74,8 +78,19 @@ public class OvercastVesselPhaseManager {
             phases.add(new OvercastVesselIdlePhase(40));
             phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
             return true;
+        } else {
+            phases.add(new OvercastVesselUseItemPhase(List.of(DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POT_SPAWN_EGG.getDefaultInstance(), DDItems.POTTER_SPAWN_EGG.getDefaultInstance()), 10));
+            phases.add(new OvercastVesselIdlePhase(1400));
+            phases.add(new OvercastVesselSliderPhase(600));
+            phases.add(new OvercastVesselIdlePhase(40));
+            Optional<Holder<Item>> optional = Util.getRandomSafe(new ArrayList<>(StreamSupport.stream(BuiltInRegistries.ITEM.getTagOrEmpty(ItemTags.DECORATED_POT_SHERDS).spliterator(), false).collect(Collectors.toSet())), vessel.getRandom());
+            if (optional.isPresent()) {
+                phases.add(new OvercastVesselUseItemPhase(optional.get().value().getDefaultInstance()));
+            } else {
+                phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
+            }
+            return true;
         }
-        return false;
     }
 
     public Deque<OvercastVesselPhase> getPhases() {

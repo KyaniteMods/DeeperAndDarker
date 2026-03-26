@@ -64,14 +64,14 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
         if (vessel.level().isClientSide()) return;
         phaseTime++;
 
-        if (target.isEmpty()) recalculateTargetAndDirection(vessel);
+        if (target.isEmpty() && !recalculateTargetAndDirection(vessel)) return;
 
         if (moveTime > 0) {
             moveTime--;
             return;
         }
 
-        if (slideTowardTarget(vessel, target.get())) {
+        if (slideTowardTarget(vessel)) {
             Vec3 deltaMovement = vessel.getDeltaMovement();
             if (vessel.verticalCollision || vessel.horizontalCollision && deltaMovement.lengthSqr() > 0.2 && !vessel.isCracked(direction.get())) {
                 vessel.addCrackDirection(direction.get());
@@ -79,26 +79,32 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
             } else {
                 moveTime = 2;
             }
-            recalculateTargetAndDirection(vessel);
+            if (!recalculateTargetAndDirection(vessel)) return;
         }
 
         vessel.hurtPlayersInside();
     }
 
-    protected void recalculateTargetAndDirection(OvercastVessel vessel) {
+    protected boolean recalculateTargetAndDirection(OvercastVessel vessel) {
         target = recalculateTarget(vessel);
+        if (target.isEmpty()) return false;
         updateDirection(vessel, target.get());
 
         if (direction.get().getAxis().isHorizontal() && !isPathFree(vessel, direction.get())) {
             target = target.map(vec3 -> vec3.add(0.0, 1.0, 0.0));
+            if (target.isEmpty()) return false;
             updateDirection(vessel, target.get());
         }
+        return true;
     }
 
     /**
-     * @return if the target was reached
+     * @return whether it stopped sliding
      */
-    protected boolean slideTowardTarget(OvercastVessel vessel, Vec3 target) {
+    protected boolean slideTowardTarget(OvercastVessel vessel) {
+        if (target.isEmpty() || direction.isEmpty()) return true;
+        Vec3 target = this.target.get();
+
         Vec3 deltaMovement = vessel.getDeltaMovement();
         Vec3 oldPosition = vessel.position();
         Vec3 vectorToTarget = target.subtract(vessel.position()).multiply(
@@ -116,20 +122,20 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
         if (distanceToTarget < distanceToMovement) {
             newDeltaMovement = vectorToTarget;
         } else if (direction.get().getAxis().isHorizontal()) {
-            Vec3 newTarget = recalculateTarget(vessel).get();
-            this.target = this.target.map(vec3 -> vec3.add(
-                    Mth.abs(direction.get().getStepX()) * (newTarget.x() - vec3.x()),
-                    Mth.abs(direction.get().getStepY()) * (newTarget.y() - vec3.y()),
-                    Mth.abs(direction.get().getStepZ()) * (newTarget.z() - vec3.z())
-            ));
-            target = this.target.get();
+            Optional<Vec3> newTargetOptional = recalculateTarget(vessel);
+            if (newTargetOptional.isPresent()) {
+                Vec3 newTarget = newTargetOptional.get();
+                this.target = this.target.map(vec3 -> vec3.add(
+                        Mth.abs(direction.get().getStepX()) * (newTarget.x() - vec3.x()),
+                        Mth.abs(direction.get().getStepY()) * (newTarget.y() - vec3.y()),
+                        Mth.abs(direction.get().getStepZ()) * (newTarget.z() - vec3.z())
+                ));
+                target = this.target.get();
+            }
         }
 
         vessel.setDeltaMovement(newDeltaMovement);
         vessel.move(MoverType.SELF, vessel.getDeltaMovement());
-        if (vessel.getTarget() instanceof ServerPlayer serverPlayer) {
-            serverPlayer.displayClientMessage(Component.literal("Direction: " + direction.get().getName() + ", moving toward " + target), true);
-        }
         if ((vessel.getX() - target.x()) * direction.get().getStepX() == 0
                 && (vessel.getY() - target.y()) * direction.get().getStepY() == 0
                 && (vessel.getZ() - target.z()) * direction.get().getStepZ() == 0) {

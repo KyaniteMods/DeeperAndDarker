@@ -13,7 +13,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,7 +28,6 @@ import net.minecraft.world.scores.Team;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
@@ -59,11 +57,15 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        findPlayers();
+        if (!targetPlayers()) {
+            reset();
+            setGolemSleeping(true);
+        } else {
+            setGolemSleeping(compoundTag.getBoolean("is_golem_sleeping"));
+        }
         if (compoundTag.contains("home_position", CompoundTag.TAG_COMPOUND)) {
             homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
-        setGolemSleeping(compoundTag.getBoolean("is_golem_sleeping"));
         setSnapToBlocks(compoundTag.getBoolean("snap_to_blocks"));
         cooldown = compoundTag.getShort("cooldown");
         if (hasCustomName()) {
@@ -118,6 +120,11 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
         bossEvent.setProgress(getHealth() / getMaxHealth());
 
         if (isGolemSleeping() || isDeadOrDying() || level().isClientSide()) return;
+
+        if (getTarget() == null && !targetPlayers()) {
+            reset();
+            return;
+        }
 
         golemServerAiStep();
     }
@@ -233,12 +240,13 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
         return getCooldown() > 0;
     }
 
-    public boolean findPlayers() {
+    public boolean targetPlayers() {
         List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), this, getBoundingBox().inflate(30.0, 30.0, 30.0));
         if (players.isEmpty()) return false;
         for (Player player : players) {
             if (isEntityValidTarget(player)) {
                 setLastHurtByMob(player);
+                setTarget(player);
                 return true;
             }
         }
