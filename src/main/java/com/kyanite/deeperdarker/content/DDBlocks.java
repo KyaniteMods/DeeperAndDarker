@@ -12,6 +12,7 @@ import com.kyanite.deeperdarker.world.trees.SculkSpruceTreeGrower;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.registry.TillableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -23,6 +24,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -266,6 +268,7 @@ public class DDBlocks {
     public static final Block SCULK_GRIME_LOCK = register("sculk_grime_lock", new LockBlock(LockBlock.KeyType.SMALL, BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS).strength(-1, 3600000.0f).noLootTable()));
 
     public static final Block ECHO_SOIL = register("echo_soil", new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
+    public static final Block ECHO_FARMLAND = register("echo_farmland", new EchoFarmlandBlock(BlockBehaviour.Properties.copy(ECHO_SOIL).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block GLOOMY_SCULK = register("gloomy_sculk", new GloomySculkBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f)));
     public static final Block GLOOMY_GEYSER = register("gloomy_geyser", new GeyserBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 9)));
     public static final Block CRYSTALLIZED_AMBER = register("crystallized_amber", new CrystallizedAmberBlock(BlockBehaviour.Properties.of().strength(0.3f, 3f).lightLevel(state -> 1).sound(SoundType.GLASS).mapColor(MapColor.COLOR_ORANGE).noOcclusion()));
@@ -410,5 +413,7 @@ public class DDBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_FENCE_GATE, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_SLAB, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(SCULK_SPRUCE_PLANKS, 5, 20);
+
+        TillableBlockRegistry.register(ECHO_SOIL, HoeItem::onlyIfAirAbove, HoeItem.changeIntoState(ECHO_FARMLAND.defaultBlockState()));
     }
 }

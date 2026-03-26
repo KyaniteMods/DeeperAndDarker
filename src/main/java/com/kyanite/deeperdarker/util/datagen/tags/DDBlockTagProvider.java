@@ -76,7 +76,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 DDBlocks.CRYSTALLIZED_AMBER, DDBlocks.ANCIENT_VASE, DDBlocks.FRAGILE_SCULK_GRIME_BRICKS, DDBlocks.FRAGILE_GLOOMSLATE_BRICKS, DDBlocks.GLOOMSLATE_LOCK, DDBlocks.SCULK_GRIME_LOCK, DDBlocks.SCULK_LANTERN).addOptional(reverseLookup(DDCreateCompat.Blocks.WARDEN_BACKTANK));
         tagBuilder(BlockTags.WALL_POST_OVERRIDE).add(DDBlocks.SCULK_TORCH);
         tagBuilder(BlockTags.PIGLIN_REPELLENTS).add(DDBlocks.SCULK_FIRE, DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH, DDBlocks.SCULK_CAMPFIRE, DDBlocks.SCULK_LANTERN, DDBlocks.PATIENCE_SOUL_FIRE, DDBlocks.FORTITUDE_SOUL_FIRE);
-        tagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.ECHO_SOIL, DDBlocks.SCULK_GRIME);
+        tagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.ECHO_SOIL, DDBlocks.ECHO_FARMLAND, DDBlocks.SCULK_GRIME);
         tagBuilder(BlockTags.NEEDS_STONE_TOOL).add(DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.SCULK_STONE_COPPER_ORE, DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_IRON_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE, DDBlocks.CRYSTALLIZED_AMBER);
         tagBuilder(BlockTags.NEEDS_IRON_TOOL).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
         tagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.GLOWING_FLOWERS, DDBlocks.GLOOMY_GRASS, DDBlocks.ICE_LILY, DDBlocks.SCULK_TUBERS, DDBlocks.SCULK_TISSUE, DDBlocks.DARK_FOUNTAIN);
@@ -138,7 +138,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
         tagBuilder(BlockTags.SNAPS_GOAT_HORN).add(DDBlocks.ECHO_LOG, DDBlocks.SCULK_SPRUCE_LOG);
 
-        tagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, Blocks.SCULK);
+        tagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, DDBlocks.ECHO_FARMLAND, Blocks.SCULK);
 
         tagBuilder(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
         tagBuilder(DDTags.Blocks.BLOOMING_STEMS).add(DDBlocks.BLOOMING_STEM, DDBlocks.STRIPPED_BLOOMING_STEM);
@@ -151,7 +151,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.DEEPLANDS_COLUMN_BASE).addOptionalTag(ConventionalBlockTags.ORES).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.SCULK_GRIME, DDBlocks.INFESTED_SCULK);
 
         tagBuilder(DDTags.Blocks.GLOOMSLATE_REPLACEABLE).add(DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER);
-        tagBuilder(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.GLOOMSLATE, DDBlocks.SCULK_GRIME, DDBlocks.ECHO_SOIL, DDBlocks.GLOOMY_SCULK);
+        tagBuilder(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE, DDBlocks.GLOOMSLATE, DDBlocks.SCULK_GRIME, DDBlocks.ECHO_SOIL, DDBlocks.ECHO_FARMLAND, DDBlocks.GLOOMY_SCULK);
         tagBuilder(DDTags.Blocks.OVERCAST_COLUMN_REPLACEABLE).add(DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMY_GEYSER);
         tagBuilder(DDTags.Blocks.OVERCAST_COLUMN_BASE).addOptionalTag(ConventionalBlockTags.ORES).add(Blocks.MAGMA_BLOCK, Blocks.SOUL_SAND, Blocks.SOUL_SOIL, DDBlocks.GLOOMY_SCULK, DDBlocks.GLOOMSLATE);
 

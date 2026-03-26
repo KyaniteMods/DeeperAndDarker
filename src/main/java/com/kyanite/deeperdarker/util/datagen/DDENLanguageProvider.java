@@ -140,6 +140,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOOMSLATE_LOCK, "Gloomslate Lock");
         translationBuilder.add(DDBlocks.FORTIFIED_CUT_GLOOMSLATE, "Fortified Cut Gloomslate");
         translationBuilder.add(DDBlocks.ECHO_SOIL, "Echo Soil");
+        translationBuilder.add(DDBlocks.ECHO_FARMLAND, "Echo Farmland");
         translationBuilder.add(DDBlocks.SCULK_GLEAM, "Sculk Gleam");
         translationBuilder.add(DDBlocks.SCULK_JAW, "Sculk Jaw");
         translationBuilder.add(DDBlocks.SCULK_STONE_COAL_ORE, "Sculk Stone Coal Ore");

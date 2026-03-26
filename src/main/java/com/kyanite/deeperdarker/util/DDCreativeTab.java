@@ -113,6 +113,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.BLOOMING_SCULK_STONE);
         entries.accept(DDBlocks.BLOOMING_MOSS_BLOCK);
         entries.accept(DDBlocks.ECHO_SOIL);
+        entries.accept(DDBlocks.ECHO_FARMLAND);
 
         entries.accept(DDBlocks.GLOOMSLATE);
         entries.accept(DDBlocks.GLOOMSLATE_STAIRS);

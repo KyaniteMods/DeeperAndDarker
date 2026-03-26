@@ -170,6 +170,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.FORTIFIED_CUT_GLOOMSLATE);
 
         dropSelf(DDBlocks.ECHO_SOIL);
+        dropOther(DDBlocks.ECHO_FARMLAND, DDBlocks.ECHO_SOIL);
         dropWhenSilkTouch(DDBlocks.GLOOMY_SCULK);
         dropWhenSilkTouch(DDBlocks.CRYSTALLIZED_AMBER);
         dropSelf(DDBlocks.SCULK_GLEAM);

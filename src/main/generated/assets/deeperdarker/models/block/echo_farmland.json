@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/farmland",
+  "textures": {
+    "dirt": "deeperdarker:block/echo_soil",
+    "top": "deeperdarker:block/echo_farmland"
+  }
+}

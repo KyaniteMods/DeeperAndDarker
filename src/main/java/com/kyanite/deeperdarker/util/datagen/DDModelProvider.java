@@ -153,6 +153,10 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.FORTIFIED_CUT_GLOOMSLATE);
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ECHO_FARMLAND);
+        registerParented(blockModelGenerators, Blocks.FARMLAND, DDBlocks.ECHO_FARMLAND,
+                new Tuple<>(TextureSlot.DIRT, ModelLocationUtils.getModelLocation(DDBlocks.ECHO_SOIL)),
+                new Tuple<>(TextureSlot.TOP, ModelLocationUtils.getModelLocation(DDBlocks.ECHO_FARMLAND)));
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);
 
         blockModelGenerators.family(DDBlocks.SCULK_STONE_COAL_ORE);
