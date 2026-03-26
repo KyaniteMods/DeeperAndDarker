@@ -80,11 +80,6 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
                 moveTime = 2;
             }
             recalculateTargetAndDirection(vessel);
-            if (direction.get().getAxis().isHorizontal() && !isPathFree(vessel, direction.get())) {
-                target = target.map(vec3 -> vec3.add(0.0, 1.0, 0.0));
-            }
-        } else {
-            overrideTarget = Optional.empty();
         }
 
         vessel.hurtPlayersInside();
@@ -94,7 +89,7 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
         target = recalculateTarget(vessel);
         updateDirection(vessel, target.get());
 
-        if (!isPathFree(vessel, direction.get())) {
+        if (direction.get().getAxis().isHorizontal() && !isPathFree(vessel, direction.get())) {
             target = target.map(vec3 -> vec3.add(0.0, 1.0, 0.0));
             updateDirection(vessel, target.get());
         }
@@ -106,27 +101,34 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
     protected boolean slideTowardTarget(OvercastVessel vessel, Vec3 target) {
         Vec3 deltaMovement = vessel.getDeltaMovement();
         Vec3 oldPosition = vessel.position();
-        Vec3 vectorToTarget = target.subtract(vessel.position()).multiply(Mth.abs(direction.get().getStepX()), Mth.abs(direction.get().getStepY()), Mth.abs(direction.get().getStepZ()));
+        Vec3 vectorToTarget = target.subtract(vessel.position()).multiply(
+                Mth.abs(direction.get().getStepX()),
+                Mth.abs(direction.get().getStepY()),
+                Mth.abs(direction.get().getStepZ())
+        );
         Vec3 newDeltaMovement = new Vec3(
                 deltaMovement.x() + direction.get().getStepX() * 0.06,
                 deltaMovement.y() + direction.get().getStepY() * 0.06,
                 deltaMovement.z() + direction.get().getStepZ() * 0.06
         );
-        if (vectorToTarget.lengthSqr() < newDeltaMovement.lengthSqr()) {
+        double distanceToTarget = vectorToTarget.x() * direction.get().getStepX() + vectorToTarget.y() * direction.get().getStepY() + vectorToTarget.z() * direction.get().getStepZ();
+        double distanceToMovement = newDeltaMovement.x() * direction.get().getStepX() + newDeltaMovement.y() * direction.get().getStepY() + newDeltaMovement.z() * direction.get().getStepZ();
+        if (distanceToTarget < distanceToMovement) {
             newDeltaMovement = vectorToTarget;
-        } else {
+        } else if (direction.get().getAxis().isHorizontal()) {
             Vec3 newTarget = recalculateTarget(vessel).get();
             this.target = this.target.map(vec3 -> vec3.add(
-                    direction.get().getStepX() * (newTarget.x() - vec3.x()),
-                    direction.get().getStepY() * (newTarget.y() - vec3.y()),
-                    direction.get().getStepZ() * (newTarget.z() - vec3.z())
+                    Mth.abs(direction.get().getStepX()) * (newTarget.x() - vec3.x()),
+                    Mth.abs(direction.get().getStepY()) * (newTarget.y() - vec3.y()),
+                    Mth.abs(direction.get().getStepZ()) * (newTarget.z() - vec3.z())
             ));
+            target = this.target.get();
         }
 
         vessel.setDeltaMovement(newDeltaMovement);
         vessel.move(MoverType.SELF, vessel.getDeltaMovement());
         if (vessel.getTarget() instanceof ServerPlayer serverPlayer) {
-            serverPlayer.displayClientMessage(Component.literal("Direction: " + direction.get().getName()), true);
+            serverPlayer.displayClientMessage(Component.literal("Direction: " + direction.get().getName() + ", moving toward " + target), true);
         }
         if ((vessel.getX() - target.x()) * direction.get().getStepX() == 0
                 && (vessel.getY() - target.y()) * direction.get().getStepY() == 0

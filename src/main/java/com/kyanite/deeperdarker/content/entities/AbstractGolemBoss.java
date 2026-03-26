@@ -59,12 +59,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.hasUUID("target") && level() instanceof ServerLevel serverLevel) {
-            Entity entity = serverLevel.getEntity(compoundTag.getUUID("target"));
-            if (entity instanceof LivingEntity livingEntity) {
-                setTarget(livingEntity);
-            }
-        }
+        findPlayers();
         if (compoundTag.contains("home_position", CompoundTag.TAG_COMPOUND)) {
             homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
@@ -81,9 +76,6 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
         super.addAdditionalSaveData(compoundTag);
         if (homePos != null) {
             GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, homePos).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("home_position", tag));
-        }
-        if (getTarget() != null) {
-            compoundTag.putUUID("target", getTarget().getUUID());
         }
         compoundTag.putBoolean("is_golem_sleeping", isGolemSleeping());
         compoundTag.putBoolean("snap_to_blocks", snapToBlocks());
@@ -241,6 +233,39 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
         return getCooldown() > 0;
     }
 
+    public boolean findPlayers() {
+        List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), this, getBoundingBox().inflate(30.0, 30.0, 30.0));
+        if (players.isEmpty()) return false;
+        for (Player player : players) {
+            if (isEntityValidTarget(player)) {
+                setLastHurtByMob(player);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isEntityValidTarget(LivingEntity entity) {
+        if (entity == null) {
+            return false;
+        }
+
+        if (!canAttack(entity)) {
+            return false;
+        }
+        Team team = getTeam();
+        Team team2 = entity.getTeam();
+        if (team != null && team2 == team) {
+            return false;
+        }
+        double d = getAttributeValue(Attributes.FOLLOW_RANGE);
+        if (distanceToSqr(entity) > d * d) {
+            return false;
+        }
+        setTarget(entity);
+        return true;
+    }
+
     public static class GolemBossHurtByTargetGoal extends HurtByTargetGoal {
         public GolemBossHurtByTargetGoal(AbstractGolemBoss golem, Class<?>... classs) {
             super(golem, classs);
@@ -256,7 +281,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
             List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(30.0, 30.0, 30.0));
             if (players.isEmpty()) return false;
             for (Player player : players) {
-                if (isEntityValidTarget(player)) {
+                if (((AbstractGolemBoss) mob).isEntityValidTarget(player)) {
                     mob.setLastHurtByMob(player);
                     return true;
                 }
@@ -270,11 +295,11 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
             if (livingEntity == null) {
                 livingEntity = targetMob;
             }
-            if (!isEntityValidTarget(livingEntity)) {
+            if (!((AbstractGolemBoss) mob).isEntityValidTarget(livingEntity)) {
                 List<Player> players = mob.level().getNearbyPlayers(TargetingConditions.forCombat().ignoreInvisibilityTesting(), mob, mob.getBoundingBox().inflate(30.0, 30.0, 30.0));
                 if (players.isEmpty()) return false;
                 for (Player player : players) {
-                    if (isEntityValidTarget(player)) {
+                    if (((AbstractGolemBoss) mob).isEntityValidTarget(player)) {
                         livingEntity = player;
                         break;
                     }
@@ -282,27 +307,6 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
             }
 
             return livingEntity != null && !((AbstractGolemBoss) mob).isOnCooldown() && !((AbstractGolemBoss) mob).isGolemSleeping();
-        }
-
-        private boolean isEntityValidTarget(LivingEntity entity) {
-            if (entity == null) {
-                return false;
-            }
-
-            if (!mob.canAttack(entity)) {
-                return false;
-            }
-            Team team = mob.getTeam();
-            Team team2 = entity.getTeam();
-            if (team != null && team2 == team) {
-                return false;
-            }
-            double d = this.getFollowDistance();
-            if (mob.distanceToSqr(entity) > d * d) {
-                return false;
-            }
-            mob.setTarget(entity);
-            return true;
         }
 
         @Override
