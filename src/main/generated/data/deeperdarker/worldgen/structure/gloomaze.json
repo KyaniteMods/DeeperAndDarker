@@ -5,6 +5,14 @@
     "depth": 29,
     "height": 5,
     "palette": {
+      "end": [
+        {
+          "data": {
+            "Name": "minecraft:air"
+          },
+          "weight": 1
+        }
+      ],
       "entrance": [
         {
           "data": {
@@ -47,7 +55,7 @@
       "structure_cover": [
         {
           "data": {
-            "Name": "deeperdarker:gloomslate_bricks"
+            "Name": "deeperdarker:fortified_cut_gloomslate"
           },
           "weight": 1
         }
@@ -66,7 +74,7 @@
       "wall_corner": [
         {
           "data": {
-            "Name": "deeperdarker:gloomslate_bricks"
+            "Name": "deeperdarker:fortified_cut_gloomslate"
           },
           "weight": 1
         }
@@ -98,7 +106,7 @@
         },
         "position": [
           11,
-          3,
+          1,
           11
         ],
         "required": true

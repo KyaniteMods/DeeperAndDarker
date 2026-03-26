@@ -5,6 +5,14 @@
     "depth": 25,
     "height": 5,
     "palette": {
+      "end": [
+        {
+          "data": {
+            "Name": "minecraft:air"
+          },
+          "weight": 1
+        }
+      ],
       "entrance": [
         {
           "data": {
@@ -56,13 +64,13 @@
       "structure_cover": [
         {
           "data": {
-            "Name": "deeperdarker:sculk_grime_bricks"
+            "Name": "deeperdarker:fortified_cut_gloomslate"
           },
           "weight": 10
         },
         {
           "data": {
-            "Name": "deeperdarker:sculk_stone_bricks"
+            "Name": "deeperdarker:cut_gloomslate"
           },
           "weight": 1
         }
@@ -78,7 +86,7 @@
       "wall_corner": [
         {
           "data": {
-            "Name": "deeperdarker:sculk_grime_bricks"
+            "Name": "deeperdarker:fortified_cut_gloomslate"
           },
           "weight": 1
         }

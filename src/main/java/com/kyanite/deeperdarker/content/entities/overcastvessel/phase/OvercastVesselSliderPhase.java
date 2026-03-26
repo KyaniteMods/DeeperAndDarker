@@ -51,7 +51,7 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
 
     public void initialize(OvercastVessel vessel) {
         vessel.setSnapToBlocks(false);
-        target = recalculateTarget(vessel);
+        recalculateTargetAndDirection(vessel);
     }
 
     @Override

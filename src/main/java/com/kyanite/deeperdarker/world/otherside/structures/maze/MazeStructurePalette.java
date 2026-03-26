@@ -8,7 +8,7 @@ import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structureCover, SimpleWeightedRandomList<BlockState> wallCorner, SimpleWeightedRandomList<BlockState> wallFace, SimpleWeightedRandomList<BlockState> wallEdge, SimpleWeightedRandomList<BlockState> wallCenter, SimpleWeightedRandomList<BlockState> path, SimpleWeightedRandomList<BlockState> entrance, SimpleWeightedRandomList<BlockState> fluid) {
+public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structureCover, SimpleWeightedRandomList<BlockState> wallCorner, SimpleWeightedRandomList<BlockState> wallFace, SimpleWeightedRandomList<BlockState> wallEdge, SimpleWeightedRandomList<BlockState> wallCenter, SimpleWeightedRandomList<BlockState> path, SimpleWeightedRandomList<BlockState> entrance, SimpleWeightedRandomList<BlockState> end, SimpleWeightedRandomList<BlockState> fluid) {
     public static final Codec<MazeStructurePalette> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("structure_cover").forGetter(MazeStructurePalette::structureCover),
             SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("wall_corner").forGetter(MazeStructurePalette::wallCorner),
@@ -17,28 +17,31 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
             SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("wall_center").forGetter(MazeStructurePalette::wallCenter),
             SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("path").forGetter(MazeStructurePalette::path),
             SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("entrance").forGetter(MazeStructurePalette::entrance),
+            SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("end").forGetter(MazeStructurePalette::end),
             SimpleWeightedRandomList.wrappedCodec(BlockState.CODEC).fieldOf("fluid").forGetter(MazeStructurePalette::fluid)
     ).apply(instance, MazeStructurePalette::new));
 
     public static final MazeStructurePalette BLOOMAZE = MazeStructurePalette.builder()
-            .addStructureCovers(WeightedEntry.wrap(DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 10), WeightedEntry.wrap(DDBlocks.SCULK_STONE_BRICKS.defaultBlockState(), 1))
-            .addWallCorners(WeightedEntry.wrap(DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState(), 1))
+            .addStructureCovers(WeightedEntry.wrap(DDBlocks.FORTIFIED_CUT_GLOOMSLATE.defaultBlockState(), 10), WeightedEntry.wrap(DDBlocks.CUT_GLOOMSLATE.defaultBlockState(), 1))
+            .addWallCorners(WeightedEntry.wrap(DDBlocks.FORTIFIED_CUT_GLOOMSLATE.defaultBlockState(), 1))
             .addWallFaces(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))
             .addWallEdges(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GRIME_GLASS.defaultBlockState(), 1))
             .addWallCenters(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))
             .addPathBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 100), WeightedEntry.wrap(DDBlocks.FRAGILE_SCULK_GRIME_BRICKS.defaultBlockState(), 2), WeightedEntry.wrap(DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), 1))
             .addEntranceBlocks(WeightedEntry.wrap(DDBlocks.SCULK_GRIME_LOCK.defaultBlockState(), 1))
+            .addEndBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 1))
             .addFluids(WeightedEntry.wrap(Blocks.LAVA.defaultBlockState(), 2), WeightedEntry.wrap(Blocks.WATER.defaultBlockState(), 1))
             .build();
 
     public static final MazeStructurePalette GLOOMAZE = MazeStructurePalette.builder()
-            .addStructureCovers(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState(), 1))
-            .addWallCorners(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState(), 1))
+            .addStructureCovers(WeightedEntry.wrap(DDBlocks.FORTIFIED_CUT_GLOOMSLATE.defaultBlockState(), 1))
+            .addWallCorners(WeightedEntry.wrap(DDBlocks.FORTIFIED_CUT_GLOOMSLATE.defaultBlockState(), 1))
             .addWallFaces(WeightedEntry.wrap(DDBlocks.SCULK_LAMP.defaultBlockState(), 1))
             .addWallEdges(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_BARRIER.defaultBlockState(), 1))
             .addWallCenters(WeightedEntry.wrap(DDBlocks.SCULK_LAMP.defaultBlockState(), 1))
             .addPathBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 100), WeightedEntry.wrap(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS.defaultBlockState(), 2), WeightedEntry.wrap(DDBlocks.SCULK_GRIME_GLASS.defaultBlockState(), 1))
             .addEntranceBlocks(WeightedEntry.wrap(DDBlocks.GLOOMSLATE_LOCK.defaultBlockState(), 1))
+            .addEndBlocks(WeightedEntry.wrap(Blocks.AIR.defaultBlockState(), 1)) // TODO: maybe replace
             .addFluids(WeightedEntry.wrap(Blocks.LAVA.defaultBlockState(), 1))
             .build();
 
@@ -54,6 +57,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         private final SimpleWeightedRandomList.Builder<BlockState> wallCenter = SimpleWeightedRandomList.builder();
         private final SimpleWeightedRandomList.Builder<BlockState> path = SimpleWeightedRandomList.builder();
         private final SimpleWeightedRandomList.Builder<BlockState> entrance = SimpleWeightedRandomList.builder();
+        private final SimpleWeightedRandomList.Builder<BlockState> end = SimpleWeightedRandomList.builder();
         private final SimpleWeightedRandomList.Builder<BlockState> fluid = SimpleWeightedRandomList.builder();
 
         @SafeVarargs
@@ -113,6 +117,14 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         }
 
         @SafeVarargs
+        public final Builder addEndBlocks(WeightedEntry.Wrapper<BlockState>... entries) {
+            for (WeightedEntry.Wrapper<BlockState> entry : entries) {
+                end.add(entry.getData(), entry.getWeight().asInt());
+            }
+            return this;
+        }
+
+        @SafeVarargs
         public final Builder addFluids(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
                 fluid.add(entry.getData(), entry.getWeight().asInt());
@@ -121,7 +133,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         }
 
         public MazeStructurePalette build() {
-            return new MazeStructurePalette(structureCover.build(), wallCorner.build(), wallFace.build(), wallEdge.build(), wallCenter.build(), path.build(), entrance.build(), fluid.build());
+            return new MazeStructurePalette(structureCover.build(), wallCorner.build(), wallFace.build(), wallEdge.build(), wallCenter.build(), path.build(), entrance.build(), end.build(), fluid.build());
         }
     }
 }

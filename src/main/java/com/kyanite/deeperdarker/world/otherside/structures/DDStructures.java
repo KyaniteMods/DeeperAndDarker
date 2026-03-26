@@ -54,7 +54,7 @@ public class DDStructures {
                 new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.BLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.BLOOMAZE_SECRET)), Optional.empty(), false)
         ), false)));
         context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(
-                new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true),
+                new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 1, 11)), true),
                 new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.GLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.GLOOMAZE_SECRET)), Optional.empty(), false)
         ), false)));
 

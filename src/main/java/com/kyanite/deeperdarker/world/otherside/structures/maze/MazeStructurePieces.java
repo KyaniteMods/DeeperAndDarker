@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.BloomingGolem;
 import com.kyanite.deeperdarker.content.entities.blocks.ReturnStatueBlockEntity;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
@@ -325,6 +326,37 @@ public class MazeStructurePieces {
         }
     }
 
+    public static class MazeEndPiece extends MazeStructurePiece {
+        private BlockState state;
+
+        public MazeEndPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, RandomSource random) {
+            super(DDStructurePieceTypes.MAZE_END_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize, palette);
+            state = palette.end().getRandomValue(random).orElseThrow();
+        }
+
+        public MazeEndPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.MAZE_END_PIECE, tag);
+            state = BlockState.CODEC.parse(NbtOps.INSTANCE, tag.get("block_state")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(Blocks.AIR.defaultBlockState());
+        }
+
+        @Override
+        protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
+            super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
+            compoundTag.put("block_state", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, state).result().orElseThrow());
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        placeBlock(worldGenLevel, state, x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
     public static class BloomazeBossRoomPiece extends MazeStructurePiece {
         public BloomazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
             super(DDStructurePieceTypes.BLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 1, 1, 1, tileSize, palette);
@@ -349,7 +381,7 @@ public class MazeStructurePieces {
                 }
             }
             BloomingGolem golem;
-            BlockPos.MutableBlockPos bossPos = this.getWorldPos(1, 0, 1);
+            BlockPos.MutableBlockPos bossPos = this.getWorldPos(getBoundingBox().getXSpan() / 2, 0, getBoundingBox().getZSpan() / 2);
             if (boundingBox.isInside(bossPos) && (golem = DDEntities.BLOOMING_GOLEM.create(worldGenLevel.getLevel())) != null) {
                 golem.moveTo((double)bossPos.getX() + 0.5, bossPos.getY(), (double)bossPos.getZ() + 0.5, 0.0f, 0.0f);
                 golem.setHomePos(GlobalPos.of(worldGenLevel.getLevel().dimension(), bossPos));
@@ -361,7 +393,7 @@ public class MazeStructurePieces {
 
     public static class GloomazeBossRoomPiece extends MazeStructurePiece {
         public GloomazeBossRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
-            super(DDStructurePieceTypes.GLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 1, 7, tileSize, palette);
+            super(DDStructurePieceTypes.GLOOMAZE_BOSS_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 7, 3, 7, tileSize, palette);
         }
 
         public GloomazeBossRoomPiece(CompoundTag tag) {
@@ -378,9 +410,22 @@ public class MazeStructurePieces {
             for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
                 for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
                     for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
-                        placeBlock(worldGenLevel, y == 0 ? Blocks.ORANGE_CARPET.defaultBlockState() : Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                        if (x >= getBoundingBox().getXSpan() / 2 - 2 && x <= getBoundingBox().getXSpan() / 2 + 2 && y == 0 && z >= getBoundingBox().getZSpan() / 2 - 2 && z <= getBoundingBox().getZSpan() / 2 + 2) {
+                            placeBlock(worldGenLevel, palette.wallCorner().getRandomValue(randomSource).orElse(Blocks.AIR.defaultBlockState()), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
                     }
                 }
+            }
+            OvercastVessel vessel;
+            BlockPos.MutableBlockPos bossPos = this.getWorldPos(getBoundingBox().getXSpan() / 2, 1, getBoundingBox().getZSpan() / 2);
+            if (boundingBox.isInside(bossPos) && (vessel = DDEntities.OVERCAST_VESSEL.create(worldGenLevel.getLevel())) != null) {
+                vessel.moveTo((double)bossPos.getX() + 0.5, bossPos.getY(), (double)bossPos.getZ() + 0.5, 0.0f, 0.0f);
+                vessel.setHomePos(GlobalPos.of(worldGenLevel.getLevel().dimension(), bossPos));
+                vessel.finalizeSpawn(worldGenLevel, worldGenLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.STRUCTURE, null, null);
+                worldGenLevel.addFreshEntityWithPassengers(vessel);
             }
         }
     }

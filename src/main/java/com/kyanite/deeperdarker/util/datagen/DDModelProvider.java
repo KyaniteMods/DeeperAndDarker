@@ -150,6 +150,7 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_BARRIER);
         blockModelGenerators.family(DDBlocks.FRAGILE_GLOOMSLATE_BRICKS);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_LOCK);
+        blockModelGenerators.family(DDBlocks.FORTIFIED_CUT_GLOOMSLATE);
 
         blockModelGenerators.family(DDBlocks.ECHO_SOIL);
         blockModelGenerators.family(DDBlocks.SCULK_GLEAM);

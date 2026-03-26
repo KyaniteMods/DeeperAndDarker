@@ -13,12 +13,14 @@
     "deeperdarker:ice_lily",
     "deeperdarker:lily_flower",
     "deeperdarker:sculk_lamp",
+    "deeperdarker:protected_sculk_gleam",
     "deeperdarker:sculk_fire",
     "deeperdarker:sculk_torch",
     "deeperdarker:sculk_wall_torch",
     "deeperdarker:sculk_campfire",
     "deeperdarker:sculk_lantern",
     "deeperdarker:patience_soul_fire",
-    "deeperdarker:fortitude_soul_fire"
+    "deeperdarker:fortitude_soul_fire",
+    "deeperdarker:fortified_cut_gloomslate"
   ]
 }

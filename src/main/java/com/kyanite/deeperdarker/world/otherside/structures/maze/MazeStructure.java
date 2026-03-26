@@ -80,9 +80,14 @@ public class MazeStructure extends Structure {
                 continue;
             }
 
-            if (result.get(x, y, z).getType() == Tile.Type.ENDPOINT && result.get(x, y, z).getData() == 0) {
-                builder.addPiece(new MazeStructurePieces.MazeEntrancePiece(pieceBlockPos, piecePos, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), context.random()));
-                continue;
+            if (result.get(x, y, z).getType() == Tile.Type.ENDPOINT) {
+                if (result.get(x, y, z).getData() == 0) {
+                    builder.addPiece(new MazeStructurePieces.MazeEntrancePiece(pieceBlockPos, piecePos, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), context.random()));
+                    continue;
+                } else if (result.get(x, y, z).getData() == 1) {
+                    builder.addPiece(new MazeStructurePieces.MazeEndPiece(pieceBlockPos, piecePos, getSettings().width(), getSettings().height(), getSettings().depth(), getSettings().tileSize(), getSettings().palette(), context.random()));
+                    continue;
+                }
             }
 
             if (isCorner(result, x, y, z) && (generateReturnStatue || context.random().nextFloat() < 0.01f)) {

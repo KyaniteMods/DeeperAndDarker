@@ -255,6 +255,7 @@ public class DDBlocks {
     public static final Block GLOOMSLATE_BARRIER = register("gloomslate_barrier", new Block(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(-1, 3600000.0f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final Block FRAGILE_GLOOMSLATE_BRICKS = register("fragile_gloomslate_bricks", new FragileBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).noLootTable().instabreak()));
     public static final Block GLOOMSLATE_LOCK = register("gloomslate_lock", new LockBlock(LockBlock.KeyType.LARGE, BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).strength(-1, 3600000.0f).noLootTable()));
+    public static final Block FORTIFIED_CUT_GLOOMSLATE = register("fortified_cut_gloomslate", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE).strength(-1, 3600000.0f).lightLevel(state -> 3).requiresCorrectToolForDrops()));
 
     public static final Block SCULK_GRIME = register("sculk_grime", new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_BRICKS = register("sculk_grime_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
@@ -308,7 +309,7 @@ public class DDBlocks {
     public static final Block SCULK_JAW = register("sculk_jaw", new SculkJawBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).randomTicks()));
     public static final Block SOUNDPROOF_GLASS = register("soundproof_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS)));
     public static final Block SCULK_LAMP = register("sculk_lamp", new SculkLampBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(-1, 3600000.0f).lightLevel(Blocks.litBlockEmission(15)).pushReaction(PushReaction.BLOCK)));
-    public static final Block PROTECTED_SCULK_GLEAM = register("protected_sculk_gleam", new HalfTransparentBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).strength(-1, 3600000.0f).pushReaction(PushReaction.BLOCK)));
+    public static final Block PROTECTED_SCULK_GLEAM = register("protected_sculk_gleam", new HalfTransparentBlock(BlockBehaviour.Properties.copy(SCULK_GLEAM).lightLevel(state -> 15).strength(-1, 3600000.0f).pushReaction(PushReaction.BLOCK)));
     public static final Block PROTECTED_SCULK_GRIME_GLASS = register("protected_sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(-1, 3600000.0f).pushReaction(PushReaction.BLOCK).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_GLASS = register("sculk_grime_glass", new HalfTransparentBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).mapColor(MapColor.COLOR_CYAN).strength(0.3f)));
     public static final Block SCULK_GRIME_GLASS_PANE = register("sculk_grime_glass_pane", new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_CYAN).strength(0.3f)));
