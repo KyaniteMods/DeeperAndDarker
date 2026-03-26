@@ -115,7 +115,7 @@ public class DDItems {
     public static final Item SHADOW_CRYSTAL = register("shadow_crystal", new Item(new Item.Properties()));
     public static final Item SUNGLASSES = register("sunglasses", new SunglassesItem(new Item.Properties().stacksTo(1)));
     public static final Item DAINTY_KEY = register("dainty_key", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
-    public static final Item KEYBRAND = register("keybrand", new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
+    public static final Item KEYBRAND = register("keybrand", new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant().stacksTo(1)));
 
     public static final Item SHATTERED_HEAD = register("shattered_head", new StandingAndWallBlockItem(DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD, new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 
