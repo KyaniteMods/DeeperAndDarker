@@ -321,13 +321,13 @@ public class DDBlocks {
     public static final Block SCULK_GRIME_GLASS_PANE = register("sculk_grime_glass_pane", new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE).mapColor(MapColor.COLOR_CYAN).strength(0.3f)));
     public static final Block RETURN_STATUE = register("return_statue", new ReturnStatueBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(-1, 3600000.0f).forceSolidOn().noLootTable().pushReaction(PushReaction.BLOCK).isSuffocating(Blocks::never)));
 
-    public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0f).pushReaction(PushReaction.DESTROY)));
-    public static final Block SHATTERED_WALL_HEAD = registerWithoutItem("shattered_wall_head", new ShatteredWallHeadBlock(BlockBehaviour.Properties.of().strength(1.0f).dropsLike(SHATTERED_HEAD).pushReaction(PushReaction.DESTROY)));
-
     public static final Block SCULK_TISSUE = register("sculk_tissue", new SculkTissueBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
     public static final Block DARK_FOUNTAIN = register("dark_fountain", new DarkFountainBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
     public static final Block SHADOW_CRYSTAL_BLOCK = register("shadow_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
     public static final Block TOXIC_AIR = registerWithoutItem("toxic_air", new ToxicAirBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).noCollission().randomTicks().noLootTable().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY)));
+
+    public static final Block SCULK_BASALT = register("sculk_basalt", new Block(BlockBehaviour.Properties.copy(Blocks.BASALT).mapColor(MapColor.COLOR_BLACK)));
+    public static final Block ACID = registerWithoutItem("acid", new LiquidBlock(DDFluids.ACID, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).replaceable().noCollission().randomTicks().strength(100.0f).lightLevel(blockState -> 15).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
 
     public static final Block SCULK_FIRE = registerWithoutItem("sculk_fire", new SculkFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_CYAN).lightLevel(blockState -> 15)));
     public static final Block SCULK_TORCH = registerWithoutItem("sculk_torch", new TorchBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_TORCH).lightLevel(blockState -> 15), DDParticleTypes.SCULK_FIRE_FLAME));
@@ -358,7 +358,8 @@ public class DDBlocks {
     public static final Block PATIENCE_SOUL_FIRE = registerWithoutItem("patience_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).noCollission().instabreak().lightLevel(blockState -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY), () -> DDItems.PATIENCE_SOUL.getDefaultInstance()));
     public static final Block FORTITUDE_SOUL_FIRE = registerWithoutItem("fortitude_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).noCollission().instabreak().lightLevel(blockState -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY), () -> DDItems.FORTITUDE_SOUL.getDefaultInstance()));
 
-    public static final Block ACID = registerWithoutItem("acid", new LiquidBlock(DDFluids.ACID, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).replaceable().noCollission().randomTicks().strength(100.0f).lightLevel(blockState -> 15).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
+    public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0f).pushReaction(PushReaction.DESTROY)));
+    public static final Block SHATTERED_WALL_HEAD = registerWithoutItem("shattered_wall_head", new ShatteredWallHeadBlock(BlockBehaviour.Properties.of().strength(1.0f).dropsLike(SHATTERED_HEAD).pushReaction(PushReaction.DESTROY)));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(

@@ -256,6 +256,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");
         translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
         translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");
+        translationBuilder.add(DDBlocks.SCULK_BASALT, "Sculk Basalt");
+        translationBuilder.add(DDItems.ACID_BUCKET, "Acid Bucket");
         translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
         translationBuilder.add(DDItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
         translationBuilder.add(DDItems.SCULK_SPRUCE_BOAT, "Sculk Spruce Boat");
@@ -302,8 +304,6 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.RESONARIUM_PLATE, "Resonarium Plate");
         translationBuilder.add(DDItems.DAINTY_KEY, "Dainty Key");
         translationBuilder.add(DDItems.KEYBRAND, "Keybrand");
-
-        translationBuilder.add(DDItems.ACID_BUCKET, "Acid Bucket");
 
         translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_large", "This key is too large...");
         translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_small", "This key is too small...");

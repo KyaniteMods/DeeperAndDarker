@@ -210,6 +210,9 @@ public class DDCreativeTab {
         entries.accept(DDItems.GRIME_BALL);
         entries.accept(DDItems.GRIME_BRICK);
 
+        entries.accept(DDBlocks.SCULK_BASALT);
+        entries.accept(DDItems.ACID_BUCKET);
+
         entries.accept(DDItems.SOUL_ELYTRA);
         entries.accept(DDItems.ECHO_BOAT);
         entries.accept(DDItems.ECHO_CHEST_BOAT);
@@ -274,8 +277,6 @@ public class DDCreativeTab {
         entries.accept(DDItems.SONOROUS_STAFF);
         entries.accept(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE);
         entries.accept(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE);
-
-        entries.accept(DDItems.ACID_BUCKET);
 
         entries.accept(DDItems.ANGLER_FISH_SPAWN_EGG);
         entries.accept(DDItems.SCULK_CENTIPEDE_SPAWN_EGG);

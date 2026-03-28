@@ -270,8 +270,9 @@ public class DDModelProvider extends FabricModelProvider {
         registerCubeBottomTop(blockModelGenerators, DDBlocks.DARK_FOUNTAIN, DDBlocks.SCULK_TISSUE);
         blockModelGenerators.family(DDBlocks.SHADOW_CRYSTAL_BLOCK);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.TOXIC_AIR, Blocks.AIR);
+
+        blockModelGenerators.family(DDBlocks.SCULK_BASALT);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ACID);
-        ModelTemplates.PARTICLE_ONLY.create(DDBlocks.ACID, TextureMapping.particle(new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still")), blockModelGenerators.modelOutput);
 
         registerFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
         registerFire(blockModelGenerators, DDBlocks.PATIENCE_SOUL_FIRE);
@@ -282,6 +283,8 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createLantern(DDBlocks.SCULK_LANTERN);
 
         createNonTemplateCropBlock(blockModelGenerators, DDBlocks.SCULK_BERRY, SculkBerryBlock.AGE, 0, 1, 2);
+
+        ModelTemplates.PARTICLE_ONLY.create(DDBlocks.ACID, TextureMapping.particle(new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still")), blockModelGenerators.modelOutput);
 
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
