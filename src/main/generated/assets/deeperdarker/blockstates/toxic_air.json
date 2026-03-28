@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "deeperdarker:block/toxic_air"
+      "model": "minecraft:block/air"
     }
   }
 }

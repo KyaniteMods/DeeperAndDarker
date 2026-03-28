@@ -13,7 +13,6 @@ import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.mixin.ItemModelGeneratorAccessor;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
@@ -270,7 +269,9 @@ public class DDModelProvider extends FabricModelProvider {
         createRandomRotationBlock(blockModelGenerators, DDBlocks.SCULK_TISSUE);
         registerCubeBottomTop(blockModelGenerators, DDBlocks.DARK_FOUNTAIN, DDBlocks.SCULK_TISSUE);
         blockModelGenerators.family(DDBlocks.SHADOW_CRYSTAL_BLOCK);
-        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.TOXIC_AIR);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.TOXIC_AIR, Blocks.AIR);
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ACID);
+        ModelTemplates.PARTICLE_ONLY.create(DDBlocks.ACID, TextureMapping.particle(new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still")), blockModelGenerators.modelOutput);
 
         registerFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
         registerFire(blockModelGenerators, DDBlocks.PATIENCE_SOUL_FIRE);
