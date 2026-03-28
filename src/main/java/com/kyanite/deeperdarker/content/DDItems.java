@@ -125,6 +125,8 @@ public class DDItems {
     public static final Item FORTITUDE_SOUL = register("fortitude_soul", new SoulItem(DDBlocks.FORTITUDE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.FORTITUDE_SOUL));
     public static final Item SCULK_TORCH = register("sculk_torch", new StandingAndWallBlockItem(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH, new Item.Properties(), Direction.DOWN));
 
+    public static final Item ACID_BUCKET = register("acid_bucket", new BucketItem(DDFluids.ACID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);
     }

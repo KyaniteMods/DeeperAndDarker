@@ -8,7 +8,6 @@ import com.kyanite.deeperdarker.compat.create.DDCreateCompatClient;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
-import com.kyanite.deeperdarker.content.items.SunglassesItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.world.otherside.OthersideEffects;
@@ -17,6 +16,8 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.loader.api.FabricLoader;
@@ -25,6 +26,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.particle.DripParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.SoulParticle;
 import net.minecraft.client.renderer.RenderType;
@@ -43,11 +45,14 @@ import net.minecraft.world.level.GameType;
 public class DeeperDarkerClient implements ClientModInitializer {
     public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand", "inventory");
     public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand_in_hand", "inventory");
+    public static final ResourceLocation ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still");
+    public static final ResourceLocation FLOWING_ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_flow");
 
     @Override
     public void onInitializeClient() {
         DDModelLayers.init();
         Keybinds.init();
+        FluidRenderHandlerRegistry.INSTANCE.register(DDFluids.ACID, DDFluids.FLOWING_ACID, new SimpleFluidRenderHandler(ACID_TEXTURE, FLOWING_ACID_TEXTURE));
 
         DimensionRenderingRegistry.registerDimensionEffects(new ResourceLocation(DeeperDarker.MOD_ID, "otherside_effects"), new OthersideEffects());
 
@@ -260,5 +265,20 @@ public class DeeperDarkerClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.SCULK_FIRE_FLAME, FlameParticle.Provider::new);
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.PATIENCE_SOUL, SoulParticle.EmissiveProvider::new);
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.FORTITUDE_SOUL, SoulParticle.EmissiveProvider::new);
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.DRIPPING_ACID, (particleOptions, clientLevel, x, y, z, g, h, i) -> {
+            DripParticle.DripHangParticle dripParticle = new DripParticle.DripHangParticle(clientLevel, x, y, z, DDFluids.ACID, DDParticleTypes.FALLING_ACID);
+            dripParticle.setColor(0.2f, 1.0f, 0.3f);
+            return dripParticle;
+        });
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.FALLING_ACID, (particleOptions, clientLevel, x, y, z, g, h, i) -> {
+            DripParticle.FallAndLandParticle dripParticle = new DripParticle.FallAndLandParticle(clientLevel, x, y, z, DDFluids.ACID, DDParticleTypes.LANDING_ACID);
+            dripParticle.setColor(0.2f, 0.3f, 1.0f);
+            return dripParticle;
+        });
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.LANDING_ACID, (particleOptions, clientLevel, x, y, z, g, h, i) -> {
+            DripParticle dripParticle = new DripParticle.DripLandParticle(clientLevel, x, y, z, DDFluids.ACID);
+            dripParticle.setColor(0.2f, 0.3f, 1.0f);
+            return dripParticle;
+        });
     }
 }

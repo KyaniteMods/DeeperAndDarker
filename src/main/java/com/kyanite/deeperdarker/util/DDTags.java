@@ -142,5 +142,8 @@ public class DDTags {
     public static class Fluids {
         public static final TagKey<Fluid> BLOCKS_DARK_FOUNTAIN_BEAM = TagKey.create(
                 Registries.FLUID, new ResourceLocation(DeeperDarker.MOD_ID, "blocks_dark_fountain_beam"));
+
+        public static final TagKey<Fluid> ACID = TagKey.create(
+                Registries.FLUID, new ResourceLocation(DeeperDarker.MOD_ID, "acid"));
     }
 }

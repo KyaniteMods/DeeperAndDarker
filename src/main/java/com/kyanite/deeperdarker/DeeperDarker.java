@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
-import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselUseItemPhase;
 import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDConfig;
@@ -14,31 +13,17 @@ import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.gen.OthersideGeneration;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructurePieceTypes;
 import com.kyanite.deeperdarker.world.otherside.structures.DDStructureTypes;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeGenerator;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.MazeResult;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Tile;
-import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.WilsonMazeGenerator;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomTypeRegistry;
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import dev.kyanitemods.kyaniteportals.api.SimplePortalBuilder;
 import dev.kyanitemods.kyaniteportals.content.Portal;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.commands.Commands;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -49,12 +34,9 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 public class DeeperDarker implements ModInitializer {
 	public static final String MOD_ID = "deeperdarker";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final ResourceLocation OTHERSIDE_FRAME_TESTER = new ResourceLocation(MOD_ID, "otherside");
 
 	public static boolean SHOW_ME_YOUR_SKIN = false;
 
@@ -92,6 +74,7 @@ public class DeeperDarker implements ModInitializer {
 		RoomTypeRegistry.init();
 		DDCarvers.init();
 		DDParticleTypes.init();
+		DDFluids.init();
 		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();
@@ -124,6 +107,8 @@ public class DeeperDarker implements ModInitializer {
 				tableBuilder.withPool(wardenUpgradePoolBuilder);
 			}
 		});
+
+
 
 		Messages.registerReceivers();
 	}

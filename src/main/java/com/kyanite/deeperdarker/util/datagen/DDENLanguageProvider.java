@@ -303,6 +303,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.DAINTY_KEY, "Dainty Key");
         translationBuilder.add(DDItems.KEYBRAND, "Keybrand");
 
+        translationBuilder.add(DDItems.ACID_BUCKET, "Acid Bucket");
+
         translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_large", "This key is too large...");
         translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_small", "This key is too small...");
 

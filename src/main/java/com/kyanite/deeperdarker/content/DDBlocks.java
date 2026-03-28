@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
@@ -356,6 +357,8 @@ public class DDBlocks {
     public static final Block SCULK_LANTERN = register("sculk_lantern", new LanternBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_LANTERN).lightLevel(blockState -> 15)));
     public static final Block PATIENCE_SOUL_FIRE = registerWithoutItem("patience_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).noCollission().instabreak().lightLevel(blockState -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY), () -> DDItems.PATIENCE_SOUL.getDefaultInstance()));
     public static final Block FORTITUDE_SOUL_FIRE = registerWithoutItem("fortitude_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).noCollission().instabreak().lightLevel(blockState -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY), () -> DDItems.FORTITUDE_SOUL.getDefaultInstance()));
+
+    public static final Block ACID = registerWithoutItem("acid", new LiquidBlock(DDFluids.ACID, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).replaceable().noCollission().randomTicks().strength(100.0f).lightLevel(blockState -> 15).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
 
     private static FlowerPotBlock createFlowerPot(Block block, FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(

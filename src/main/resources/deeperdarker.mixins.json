@@ -5,6 +5,9 @@
   "mixins": [
     "AbstractCauldronAccessor",
     "AbstractContainerMenuMixin",
+    "AcidEntityMixin",
+    "AcidLivingEntityMixin",
+    "AcidSwimMixin",
     "AncientPaintingMixin",
     "BedTransmitterMixin",
     "BlockBehaviourToxicAirMixin",
