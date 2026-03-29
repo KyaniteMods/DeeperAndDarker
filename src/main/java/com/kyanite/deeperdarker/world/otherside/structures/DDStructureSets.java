@@ -11,17 +11,17 @@ import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
 
+import java.util.List;
+
 public class DDStructureSets {
     public static final ResourceKey<StructureSet> ANCIENT_TEMPLES = createKey("ancient_temples");
-    public static final ResourceKey<StructureSet> BLOOMAZES = createKey("bloomazes");
-    public static final ResourceKey<StructureSet> GLOOMAZES = createKey("gloomazes");
+    public static final ResourceKey<StructureSet> MAZES = createKey("mazes");
     public static final ResourceKey<StructureSet> CASTLES = createKey("castles");
 
     public static void bootstrap(BootstapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
         context.register(ANCIENT_TEMPLES, new StructureSet(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 40510257)));
-        context.register(BLOOMAZES, new StructureSet(structures.getOrThrow(DDStructures.BLOOMAZE), new RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 27070707)));
-        context.register(GLOOMAZES, new StructureSet(structures.getOrThrow(DDStructures.GLOOMAZE), new RandomSpreadStructurePlacement(24, 10, RandomSpreadType.LINEAR, 25122025)));
+        context.register(MAZES, new StructureSet(List.of(StructureSet.entry(structures.getOrThrow(DDStructures.BLOOMAZE)), StructureSet.entry(structures.getOrThrow(DDStructures.GLOOMAZE))), new RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 27070707)));
         context.register(CASTLES, new StructureSet(structures.getOrThrow(DDStructures.CASTLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 18032025)));
     }
 
