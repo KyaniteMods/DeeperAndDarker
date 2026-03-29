@@ -16,11 +16,13 @@
     "water_fog_color": 1253458
   },
   "features": [
-    [],
-    [],
     [
-      "deeperdarker:shadow_crystal_cone",
-      "deeperdarker:sculk_spruce_delta",
+      "deeperdarker:shadow_crystal_cone"
+    ],
+    [
+      "deeperdarker:sculk_spruce_delta"
+    ],
+    [
       "deeperdarker:gravel_disk",
       "deeperdarker:sculk_forest_boulder",
       "deeperdarker:sculk_spruce_tree",

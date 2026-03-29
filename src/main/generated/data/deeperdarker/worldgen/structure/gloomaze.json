@@ -156,6 +156,6 @@
       "spawns": []
     }
   },
-  "step": "surface_structures",
+  "step": "strongholds",
   "terrain_adaptation": "beard_box"
 }

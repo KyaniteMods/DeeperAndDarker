@@ -42,31 +42,39 @@ public class DDStructures {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
-        context.register(ANCIENT_TEMPLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.TEMPLE_START), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), false));
+        context.register(ANCIENT_TEMPLE, new JigsawStructure(surfaceStructure(biomes.getOrThrow(DDTags.Biomes.HAS_ANCIENT_TEMPLE)), pools.getOrThrow(DDPools.TEMPLE_START), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), false));
 
         Map<MobCategory, StructureSpawnOverride> mazeSpawnOverrides = new HashMap<>();
         for (MobCategory category : MobCategory.values()) {
             mazeSpawnOverrides.put(category, new StructureSpawnOverride(StructureSpawnOverride.BoundingBoxType.STRUCTURE, WeightedRandomList.create()));
         }
-        context.register(BLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(25, 5, 25, 3, MazeStructurePalette.BLOOMAZE, List.of(
+        context.register(BLOOMAZE, new MazeStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_BLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(25, 5, 25, 3, MazeStructurePalette.BLOOMAZE, List.of(
                 new RoomEntry(RoomTypeRegistry.BLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 3, 11)), true),
                 new RoomEntry(RoomTypeRegistry.CREEPER_ROOM, Optional.empty(), false),
                 new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.BLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.BLOOMAZE_SECRET)), Optional.empty(), false)
         ), false)));
-        context.register(GLOOMAZE, new MazeStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(
+        context.register(GLOOMAZE, new MazeStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_GLOOMAZE), mazeSpawnOverrides), new MazeStructureSettings(29, 5, 29, 3, MazeStructurePalette.GLOOMAZE, List.of(
                 new RoomEntry(RoomTypeRegistry.GLOOMAZE_BOSS_ROOM, Optional.of(new Pos(11, 1, 11)), true),
                 new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.GLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.GLOOMAZE_SECRET)), Optional.empty(), false)
         ), false)));
 
-        context.register(CASTLE, new JigsawStructure(structure(biomes.getOrThrow(DDTags.Biomes.HAS_CASTLE)), pools.getOrThrow(DDPools.CASTLE_CASTLES), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.aboveBottom(20)), true, Optional.empty(), 116));
+        context.register(CASTLE, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_CASTLE)), pools.getOrThrow(DDPools.CASTLE_CASTLES), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.aboveBottom(20)), true, Optional.empty(), 116));
     }
 
-    private static Structure.StructureSettings structure(HolderSet<Biome> biomes) {
-        return structure(biomes, Map.of());
+    private static Structure.StructureSettings surfaceStructure(HolderSet<Biome> biomes) {
+        return surfaceStructure(biomes, Map.of());
     }
 
-    private static Structure.StructureSettings structure(HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides) {
+    private static Structure.StructureSettings surfaceStructure(HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides) {
         return new Structure.StructureSettings(biomes, spawnOverrides, GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX);
+    }
+
+    private static Structure.StructureSettings stronghold(HolderSet<Biome> biomes) {
+        return surfaceStructure(biomes, Map.of());
+    }
+
+    private static Structure.StructureSettings stronghold(HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides) {
+        return new Structure.StructureSettings(biomes, spawnOverrides, GenerationStep.Decoration.STRONGHOLDS, TerrainAdjustment.BEARD_BOX);
     }
 
     private static ResourceKey<Structure> createKey(String name) {
