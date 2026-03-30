@@ -1,0 +1,29 @@
+{
+  "type": "deeperdarker:floes",
+  "config": {
+    "floe_block_state": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "deeperdarker:sculk_basalt"
+        }
+      },
+      "rules": []
+    },
+    "max_floe_height": 50,
+    "max_seam_height": 30,
+    "seam_block_state": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "deeperdarker:acid",
+          "Properties": {
+            "level": "0"
+          }
+        }
+      },
+      "rules": []
+    },
+    "threshold": 0.32352942
+  }
+}

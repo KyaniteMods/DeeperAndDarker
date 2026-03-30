@@ -61,7 +61,7 @@ public abstract class RoomType<T extends RoomOptions<T>> {
         return "RoomType[" +
                 "roomFactory=" + roomFactory + ", " +
                 "width=" + width + ", " +
-                "height=" + height + ", " +
+                "maxFloeHeight=" + height + ", " +
                 "depth=" + depth + ']';
     }
 

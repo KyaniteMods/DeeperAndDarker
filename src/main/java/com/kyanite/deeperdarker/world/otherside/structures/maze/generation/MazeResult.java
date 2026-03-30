@@ -129,7 +129,7 @@ public final class MazeResult {
                 "result=" + Arrays.deepToString(result) + ", " +
                 "rooms=" + rooms + ", " +
                 "width=" + width + ", " +
-                "height=" + height + ", " +
+                "maxFloeHeight=" + height + ", " +
                 "depth=" + depth + ", " +
                 "start=" + start + ']';
     }

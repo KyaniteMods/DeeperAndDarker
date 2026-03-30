@@ -1,0 +1,8 @@
+{
+  "feature": "deeperdarker:floes",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

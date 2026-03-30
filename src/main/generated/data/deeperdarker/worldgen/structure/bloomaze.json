@@ -3,7 +3,7 @@
   "biomes": "#deeperdarker:has_structure/bloomaze",
   "maze_settings": {
     "depth": 25,
-    "height": 5,
+    "maxFloeHeight": 5,
     "palette": {
       "end": [
         {

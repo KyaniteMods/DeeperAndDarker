@@ -37,7 +37,7 @@ public class MazeStructure extends Structure {
         int height = mazeStructure.getSettings().height();
         int depth = mazeStructure.getSettings().depth();
         if (width > 128 || height > 128 || depth > 128) {
-            return DataResult.error(() -> "Structure width, height or depth must not exceed 128");
+            return DataResult.error(() -> "Structure width, maxFloeHeight or depth must not exceed 128");
         }
 
         return DataResult.success(mazeStructure);

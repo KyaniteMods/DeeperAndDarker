@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;
+import com.kyanite.deeperdarker.util.SimpleWorleyNoise;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import com.kyanite.deeperdarker.world.DDCarvers;
 import com.kyanite.deeperdarker.world.DDFeatures;
@@ -22,6 +23,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.LevelStem;
@@ -108,7 +111,19 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-
+		SimpleWorleyNoise noise = SimpleWorleyNoise.create(RandomSource.create());
+		String chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
+		String chars1 = "ZYXWVUTSRQPONMLKJIHGFEDCBA9876543210";
+		               //ZYXWVUTSRQP
+		for (int z = 0; z < 64; z++) {
+			StringBuilder builder = new StringBuilder();
+			for (int x = 0; x < 64; x++) {
+				float value = noise.get(x, z);
+//				builder.append(value).append(' ');
+				builder.append(chars1.charAt(Mth.floor(value * (chars1.length() - 1))));
+			}
+			System.out.println(builder);
+		}
 
 		Messages.registerReceivers();
 	}

@@ -21,6 +21,7 @@ public class DDFeatures {
     public static final Feature<IcicleFeatureConfiguration> ICICLE = register("icicle", new IcicleFeature(IcicleFeatureConfiguration.CODEC));
     public static final Feature<ConeFeatureConfiguration> CONE = register("cone", new ConeFeature(ConeFeatureConfiguration.CODEC));
     public static final Feature<BoulderFeatureConfiguration> BOULDER = register("boulder", new BoulderFeature(BoulderFeatureConfiguration.CODEC));
+    public static final Feature<FloesFeatureConfiguration> FLOES = register("floes", new FloesFeature(FloesFeatureConfiguration.CODEC));
 
     private static <FC extends FeatureConfiguration> Feature<FC> register(String id, Feature<FC> feature) {
         return Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, id), feature);

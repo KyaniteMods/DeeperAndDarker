@@ -2,7 +2,7 @@
   "type": "deeperdarker:vine",
   "config": {
     "doubleHeight": 0.1,
-    "height": {
+    "maxFloeHeight": {
       "type": "minecraft:uniform",
       "value": {
         "max_inclusive": 5,

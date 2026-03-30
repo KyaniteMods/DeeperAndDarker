@@ -76,6 +76,18 @@
             "temperature": -0.3,
             "weirdness": 0.0
           }
+        },
+        {
+          "biome": "deeperdarker:acid_floes",
+          "parameters": {
+            "continentalness": 0.75,
+            "depth": 0.0,
+            "erosion": 0.1,
+            "humidity": 0.5,
+            "offset": 0.0,
+            "temperature": 0.6,
+            "weirdness": 0.0
+          }
         }
       ]
     },

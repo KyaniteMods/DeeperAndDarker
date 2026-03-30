@@ -18,7 +18,7 @@ public class ConeFeatureConfiguration implements FeatureConfiguration {
             BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(config -> config.blockStateProvider),
             IntProvider.codec(1, 128).fieldOf("width").orElse(UniformInt.of(4, 5)).forGetter(config -> config.widthProvider),
             IntProvider.codec(1, 128).fieldOf("depth").orElse(UniformInt.of(5, 7)).forGetter(config -> config.depthProvider),
-            IntProvider.codec(1, 128).fieldOf("height").orElse(UniformInt.of(6, 8)).forGetter(config -> config.heightProvider),
+            IntProvider.codec(1, 128).fieldOf("maxFloeHeight").orElse(UniformInt.of(6, 8)).forGetter(config -> config.heightProvider),
             IntProvider.codec(-16, 16).fieldOf("tip_x_shift").orElse(UniformInt.of(-3, 3)).forGetter(config -> config.tipXShiftProvider),
             IntProvider.codec(-128, 0).fieldOf("y_shift").orElse(ConstantInt.of(0)).forGetter(config -> config.yShiftProvider),
             IntProvider.codec(-16, 16).fieldOf("tip_z_shift").orElse(UniformInt.of(-3, 3)).forGetter(config -> config.tipZShiftProvider)

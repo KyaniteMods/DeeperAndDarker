@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
@@ -78,6 +79,8 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DARK_FOUNTAIN_DISK = createKey("dark_fountain_disk");
     public static final ResourceKey<PlacedFeature> SHADOW_CRYSTAL_CONE = createKey("shadow_crystal_cone");
     public static final ResourceKey<PlacedFeature> SCULK_FOREST_BOULDER = createKey("sculk_forest_boulder");
+    public static final ResourceKey<PlacedFeature> ACID_DELTA = createKey("acid_delta");
+    public static final ResourceKey<PlacedFeature> FLOES = createKey("floes");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -138,6 +141,8 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, ICICLE_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_ICICLE), countPlacement(128, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SHADOW_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_SHADOW_CRYSTAL), countPlacement(64, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_FOREST_BOULDER, features.getOrThrow(DDConfiguredFeatures.BOULDER_SCULK_FOREST), countPlacement(3, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, ACID_DELTA, features.getOrThrow(DDConfiguredFeatures.ACID_DELTA), CountOnEveryLayerPlacement.of(30), BiomeFilter.biome());
+        PlacementUtils.register(context, FLOES, features.getOrThrow(DDConfiguredFeatures.FLOES), BiomeFilter.biome());
 
         PlacementUtils.register(context, DARK_FOUNTAIN_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_DARK_FOUNTAIN), countPlacement(64, PlacementUtils.FULL_RANGE));
 

@@ -31,6 +31,7 @@ public class OthersideBiomes {
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
     public static final ResourceKey<Biome> DARKLANDS = createKey("darklands");
     public static final ResourceKey<Biome> SCULK_SPRUCE_FOREST = createKey("sculk_spruce_forest");
+    public static final ResourceKey<Biome> ACID_FLOES = createKey("acid_floes");
 
     public static void bootstrap(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -42,6 +43,7 @@ public class OthersideBiomes {
         context.register(OVERCAST_COLUMNS, overcastColumns(placedFeatures, worldCarvers));
         context.register(DARKLANDS, darklands(placedFeatures, worldCarvers));
         context.register(SCULK_SPRUCE_FOREST, sculkSpruceForest(placedFeatures, worldCarvers));
+        context.register(ACID_FLOES, acidFloes(placedFeatures, worldCarvers));
     }
 
     public static ResourceKey<Biome> createKey(String name) {
@@ -223,6 +225,30 @@ public class OthersideBiomes {
                         .waterFogColor(0x132052)
                         .fogColor(0x141c33)
                         .skyColor(calculateSkyColor(-0.3f))
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2)).build())
+                .mobSpawnSettings(mobSpawnBuilder.build())
+                .generationSettings(biomeBuilder.build()).build();
+    }
+
+    private static Biome acidFloes(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_LARGE_CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_LOW_CAVE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, DDPlacedFeatures.ACID_DELTA);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.FLOES);
+        addSculkOres(biomeBuilder);
+
+        return (new Biome.BiomeBuilder()).hasPrecipitation(true)
+                .temperature(0.6f)
+                .downfall(0.5f)
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x13256b)
+                        .waterFogColor(0x132052)
+                        .fogColor(0x141c33)
+                        .skyColor(calculateSkyColor(0.6f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2)).build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();

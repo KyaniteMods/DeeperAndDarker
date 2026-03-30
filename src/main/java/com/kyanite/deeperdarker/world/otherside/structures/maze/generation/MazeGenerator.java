@@ -20,7 +20,7 @@ public abstract class MazeGenerator {
     protected MazeGenerator(int width, int height, int depth) {
         if (width % 2 == 0) throw new IllegalArgumentException("width must be odd");
         this.width = width;
-        if (height % 2 == 0) throw new IllegalArgumentException("height must be odd");
+        if (height % 2 == 0) throw new IllegalArgumentException("maxFloeHeight must be odd");
         this.height = height;
         if (depth % 2 == 0) throw new IllegalArgumentException("depth must be odd");
         this.depth = depth;

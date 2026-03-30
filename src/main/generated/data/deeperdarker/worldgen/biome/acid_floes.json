@@ -1,0 +1,59 @@
+{
+  "carvers": {
+    "air": [
+      "deeperdarker:large_cave",
+      "deeperdarker:cave",
+      "deeperdarker:low_cave"
+    ]
+  },
+  "downfall": 0.5,
+  "effects": {
+    "fog_color": 1317939,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "deeperdarker:ambient.otherside.additions",
+      "tick_delay": 6000
+    },
+    "sky_color": 8037887,
+    "water_color": 1254763,
+    "water_fog_color": 1253458
+  },
+  "features": [
+    [],
+    [
+      "deeperdarker:acid_delta"
+    ],
+    [
+      "deeperdarker:floes"
+    ],
+    [],
+    [],
+    [],
+    [
+      "deeperdarker:infested_sculk",
+      "deeperdarker:sculk_jaw",
+      "deeperdarker:sculk_coal",
+      "deeperdarker:sculk_iron",
+      "deeperdarker:sculk_copper",
+      "deeperdarker:sculk_gold",
+      "deeperdarker:sculk_redstone",
+      "deeperdarker:sculk_emerald",
+      "deeperdarker:sculk_lapis",
+      "deeperdarker:sculk_diamond"
+    ]
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.6
+}

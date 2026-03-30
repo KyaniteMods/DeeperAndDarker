@@ -19,12 +19,24 @@ import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 public class DDCarvers {
     public static final WorldCarver<CaveCarverConfiguration> NOODLES = register("noodles", new DDNoodleCarver(CaveCarverConfiguration.CODEC));
 
+    public static final ResourceKey<ConfiguredWorldCarver<?>> CONFIGURED_LARGE_CAVE = createKey("large_cave");
     public static final ResourceKey<ConfiguredWorldCarver<?>> CONFIGURED_CAVE = createKey("cave");
     public static final ResourceKey<ConfiguredWorldCarver<?>> CONFIGURED_LOW_CAVE = createKey("low_cave");
     public static final ResourceKey<ConfiguredWorldCarver<?>> CONFIGURED_NOODLES = createKey("noodles");
 
     public static void bootstrap(BootstapContext<ConfiguredWorldCarver<?>> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
+        context.register(CONFIGURED_LARGE_CAVE, WorldCarver.CAVE.configured(new CaveCarverConfiguration(
+                0.65f,
+                UniformHeight.of(VerticalAnchor.aboveBottom(10), VerticalAnchor.belowTop(10)),
+                UniformFloat.of(0.4f, 0.9f),
+                VerticalAnchor.bottom(),
+                CarverDebugSettings.of(false, DDBlocks.BLOOM_BUTTON.defaultBlockState()),
+                blocks.getOrThrow(DDTags.Blocks.OTHERSIDE_CARVER_REPLACEABLES),
+                UniformFloat.of(0.9f, 1.5f),
+                UniformFloat.of(1.1f, 1.3f),
+                UniformFloat.of(-1, -0.4f)
+        )));
         context.register(CONFIGURED_CAVE, WorldCarver.CAVE.configured(new CaveCarverConfiguration(
                 0.22f,
                 UniformHeight.of(VerticalAnchor.aboveBottom(10), VerticalAnchor.belowTop(10)),

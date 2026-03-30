@@ -13,7 +13,7 @@ public class VineFeatureConfiguration implements FeatureConfiguration {
     public static final Codec<VineFeatureConfiguration> CODEC = RecordCodecBuilder.create(config -> config.group(BlockState.CODEC.fieldOf("plant").forGetter(f -> f.plant),
             BlockState.CODEC.fieldOf("vine").forGetter(f -> f.vine),
             TagKey.codec(Registries.BLOCK).fieldOf("placeable").forGetter(f -> f.placeable),
-            IntProvider.codec(1, 64).fieldOf("height").forGetter(f -> f.height),
+            IntProvider.codec(1, 64).fieldOf("maxFloeHeight").forGetter(f -> f.height),
             Codec.floatRange(0f, 1f).fieldOf("doubleHeight").forGetter(f -> f.doubleHeight),
             Codec.floatRange(0f, 1f).fieldOf("reducedHeight").forGetter(f -> f.reducedHeight)).apply(config, VineFeatureConfiguration::new));
     private final BlockState plant;

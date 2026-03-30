@@ -35,13 +35,15 @@ public class OthersideGeneration {
     }
 
     private static LevelStem levelStem(HolderGetter<Biome> biomes, HolderGetter<NoiseGeneratorSettings> noiseSettings, HolderGetter<DimensionType> dimensions) {
+        // temperature, humidity, continentalness, erosion, depth, weirdness, offset
         NoiseBasedChunkGenerator chunkGenerator = new NoiseBasedChunkGenerator(MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(List.of(
                 Pair.of(Climate.parameters(-0.2f, 0.0f, 0.7f, 0.55f, 0.2f, 0, 0), biomes.getOrThrow(OthersideBiomes.DEEPLANDS)),
                 Pair.of(Climate.parameters(0.1f, 0.6f, 0.6f, 0.5f, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.ECHOING_FOREST)),
                 Pair.of(Climate.parameters(-0.2f, 0.7f, 0.6f, 0.3f, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS)),
                 Pair.of(Climate.parameters(0.75f, 0.0f, 0.7f, 0.4f, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS)),
                 Pair.of(Climate.parameters(-0.2f, 0.0f, 0.6f, 0.9f, 0.2f, 0.5f, 0), biomes.getOrThrow(OthersideBiomes.DARKLANDS)),
-                Pair.of(Climate.parameters(-0.3f, 0.5f, 0.6f, 0.4f, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.SCULK_SPRUCE_FOREST))
+                Pair.of(Climate.parameters(-0.3f, 0.5f, 0.6f, 0.4f, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.SCULK_SPRUCE_FOREST)),
+                Pair.of(Climate.parameters(0.6f, 0.5f, 0.75f, 0.1f, 0, 0, 0), biomes.getOrThrow(OthersideBiomes.ACID_FLOES))
         ))), noiseSettings.getOrThrow(OTHERSIDE_GENERATOR));
         return new LevelStem(dimensions.getOrThrow(OthersideDimension.OTHERSIDE), chunkGenerator);
     }
@@ -65,6 +67,7 @@ public class OthersideGeneration {
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.OVERCAST_COLUMNS), SurfaceRules.state(DDBlocks.GLOOMY_SCULK.defaultBlockState())),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(DDBlocks.SCULK_TISSUE.defaultBlockState())),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.SCULK_SPRUCE_FOREST), SurfaceRules.state(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.ACID_FLOES), SurfaceRules.state(Blocks.AIR.defaultBlockState())),
                 SurfaceRules.state(Blocks.SCULK.defaultBlockState())
         ));
         SurfaceRules.RuleSource deepslateFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(12)), SurfaceRules.sequence(
