@@ -105,6 +105,7 @@
   "block.deeperdarker.polished_sculk_stone_slab": "Losa de piedra de sculk pulida",
   "block.deeperdarker.polished_sculk_stone_stairs": "Escaleras de piedra de sculk pulida",
   "block.deeperdarker.polished_sculk_stone_wall": "Muro de piedra de sculk pulida",
+  "block.deeperdarker.potted_blooming_stem": "Maceta con Tallo Resplandeciente",
   "block.deeperdarker.potted_echo_sapling": "Maceta con brote resonante",
   "block.deeperdarker.sculk_gleam": "Sculk resplandeciente",
   "block.deeperdarker.sculk_grime": "Mugre de sculk",
@@ -160,6 +161,7 @@
   "entity.deeperdarker.sculk_snapper": "Mordedor de sculk",
   "entity.deeperdarker.shattered": "Destrozado",
   "entity.deeperdarker.shriek_worm": "Gusano chillón",
+  "entity.deeperdarker.sludge": "Slime de Lodo",
   "entity.deeperdarker.stalker": "Asechador",
   "item.deeperdarker.dampens_vibrations": "Amortigua las vibraciones",
   "item.deeperdarker.echo_boat": "Barca resonante",
@@ -232,6 +234,8 @@
   "subtitles.item.transmitter.open": "Transmisor transmite",
   "subtitles.item.transmitter.unlink": "Transmisor desvincula",
   "tag.item.deeperdarker.dampens_vibrations": "Amortigua las vibraciones",
+  "tag.item.deeperdarker.scutes": "Escamas",
+  "tooltips.deeperdarker.sculk_transmitter.linked": "Vinculado a %1$s",
   "tooltips.deeperdarker.sculk_transmitter.not_linked": "Desvinculado",
   "upgrade.deeperdarker.warden_upgrade": "Mejora de warden"
 }
