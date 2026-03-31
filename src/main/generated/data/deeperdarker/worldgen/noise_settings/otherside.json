@@ -314,22 +314,19 @@
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:biome",
-                "biome_is": [
-                  "deeperdarker:acid_floes"
-                ]
+                "type": "minecraft:not",
+                "invert": {
+                  "type": "minecraft:biome",
+                  "biome_is": [
+                    "deeperdarker:acid_floes"
+                  ]
+                }
               },
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "minecraft:air"
+                  "Name": "minecraft:sculk"
                 }
-              }
-            },
-            {
-              "type": "minecraft:block",
-              "result_state": {
-                "Name": "minecraft:sculk"
               }
             }
           ]
@@ -414,6 +411,21 @@
           "type": "minecraft:block",
           "result_state": {
             "Name": "deeperdarker:gloomslate"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "deeperdarker:acid_floes"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "deeperdarker:sculk_basalt"
           }
         }
       },

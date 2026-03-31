@@ -10,8 +10,8 @@
       },
       "rules": []
     },
-    "max_floe_height": 50,
-    "max_seam_height": 30,
+    "max_floe_height": 64,
+    "max_seam_height": 54,
     "seam_block_state": {
       "fallback": {
         "type": "minecraft:simple_state_provider",
@@ -24,6 +24,6 @@
       },
       "rules": []
     },
-    "threshold": 0.32352942
+    "threshold": 0.3529412
   }
 }

@@ -27,8 +27,8 @@ public class FloesFeature extends Feature<FloesFeatureConfiguration> {
             for (int dx = 0; dx < 16; dx++) {
                 int x = blockPos.getX() + dx;
                 int z = blockPos.getZ() + dz;
-                float value = noise.get(x, z);
-                boolean floe = value < config.threshold();
+                float value = noise.get(x, z, SimpleWorleyNoise.ReturnValue.DISTANCE_TO_EDGE);
+                boolean floe = value > config.threshold();
                 for (int y = worldGenLevel.getMinBuildHeight(); y < (floe ? config.maxFloeHeight() : config.maxSeamHeight()); y++) {
                     mutableBlockPos.set(x, y, z);
                     if (worldGenLevel.getBlockState(mutableBlockPos).isAir()) {
