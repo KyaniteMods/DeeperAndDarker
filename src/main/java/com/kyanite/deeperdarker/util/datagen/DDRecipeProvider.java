@@ -196,6 +196,13 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("NNN")
                 .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DDItems.SCULK_DRINK)
+                .requires(Items.WATER_BUCKET)
+                .requires(DDItems.FIZZ)
+                .requires(DDItems.SCULK_BERRY)
+                .requires(DDItems.SCULK_BERRY)
+                .unlockedBy(getHasName(DDItems.FIZZ), has(DDItems.FIZZ)).save(output);
+
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
     }
 

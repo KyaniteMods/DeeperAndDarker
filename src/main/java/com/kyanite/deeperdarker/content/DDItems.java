@@ -128,6 +128,7 @@ public class DDItems {
 
     public static final Item ACID_BUCKET = register("acid_bucket", new BucketItem(DDFluids.ACID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final Item FIZZ = register("fizz", new Item(new Item.Properties()));
+    public static final Item SCULK_DRINK = register("sculk_drink", new SculkDrinkItem(new Item.Properties().craftRemainder(Items.BUCKET).food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).build()).stacksTo(1)));
 
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);
