@@ -291,6 +291,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.POTTY_SPAWN_EGG, "Potty Spawn Egg");
         translationBuilder.add(DDItems.POT_SPAWN_EGG, "Pot Spawn Egg");
         translationBuilder.add(DDItems.POTTER_SPAWN_EGG, "Potter Spawn Egg");
+        translationBuilder.add(DDItems.ACID_SPRITE_SPAWN_EGG, "Acid Sprite Spawn Egg");
         translationBuilder.add(DDItems.SOUL_ELYTRA, "Soul Elytra");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", "Press %s to Boost");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled", "Boost disabled");
@@ -340,6 +341,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.POT, "Pot");
         translationBuilder.add(DDEntities.POTTER, "Potter");
         translationBuilder.add(DDEntities.OVERCAST_VESSEL, "Overcast Vessel");
+        translationBuilder.add(DDEntities.ACID_SPRITE, "Acid Sprite");
 
         translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.MOB_EFFECT.getKey(DDEffects.SCULK_AFFINITY)), "Sculk Affinity");
         translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
@@ -522,5 +524,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.behaviour1", "Provides immunity to _Fire_ and _Lava_, slowly draining _Air Pressure_ from the Backtank. Also grants _improved vision_ in Lava");
         translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.condition1", "When Worn (Full set)");
         translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.summary", "Together with a _Netherite_ or _Warden Backtank_, this can protect you from _extreme heat_. To be effective, _Legs and Feet_ have to be covered in _Netherite_ or _Warden_.");
+
+        translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".reinvoked", "Reinvoked");
     }
 }

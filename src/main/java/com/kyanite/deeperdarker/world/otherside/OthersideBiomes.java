@@ -233,6 +233,8 @@ public class OthersideBiomes {
     private static Biome acidFloes(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
 
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.ACID_SPRITE, 1, 1, 5));
+
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_LARGE_CAVE);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);

@@ -404,6 +404,7 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.POTTY_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.POT_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.POTTER_SPAWN_EGG);
+        registerSpawnEgg(itemModelGenerator, DDItems.ACID_SPRITE_SPAWN_EGG);
 
         // Create
         itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), ModelTemplates.FLAT_ITEM);

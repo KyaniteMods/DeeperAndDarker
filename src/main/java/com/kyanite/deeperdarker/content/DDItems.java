@@ -101,6 +101,7 @@ public class DDItems {
     public static final Item POTTY_SPAWN_EGG = register("potty_spawn_egg", new SpawnEggItem(DDEntities.POTTY, 0x3b2d29, 0x433733, new Item.Properties()));
     public static final Item POT_SPAWN_EGG = register("pot_spawn_egg", new SpawnEggItem(DDEntities.POT, 0x3b2d29, 0x433733, new Item.Properties()));
     public static final Item POTTER_SPAWN_EGG = register("potter_spawn_egg", new SpawnEggItem(DDEntities.POTTER, 0x3b2d29, 0x433733, new Item.Properties()));
+    public static final Item ACID_SPRITE_SPAWN_EGG = register("acid_sprite_spawn_egg", new SpawnEggItem(DDEntities.ACID_SPRITE, 0x28d43d, 0x86ee93, new Item.Properties()));
 
     public static final Item ECHO_SIGN = register("echo_sign", new SignItem(new Item.Properties().stacksTo(16), DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN));
     public static final Item ECHO_HANGING_SIGN = register("echo_hanging_sign", new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN, new Item.Properties().stacksTo(16)));
