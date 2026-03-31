@@ -10,14 +10,18 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 
 public class DDCreativeTab {
     private static final CreativeModeTab.Builder ITEM_GROUP_BUILDER = FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
@@ -299,6 +303,10 @@ public class DDCreativeTab {
             Painting.storeVariant(compoundTag, variant);
             entries.accept(itemStack);
         }
+        generatePotions(displayContext, entries, Items.TIPPED_ARROW);
+        generatePotions(displayContext, entries, Items.POTION);
+        generatePotions(displayContext, entries, Items.SPLASH_POTION);
+        generatePotions(displayContext, entries, Items.LINGERING_POTION);
         if (FabricLoader.getInstance().isModLoaded("create")) {
             ItemStack stack = new ItemStack(DDCreateCompat.Items.WARDEN_BACKTANK);
             stack.getOrCreateTag().putInt("Air", BacktankUtil.maxAirWithoutEnchants());
@@ -307,6 +315,15 @@ public class DDCreativeTab {
             entries.accept(DDCreateCompat.Items.WARDEN_DIVING_BOOTS);
         }
     }));
+
+    private static void generatePotions(CreativeModeTab.ItemDisplayParameters displayParameters, CreativeModeTab.Output output, Item item) {
+        displayParameters.holders().lookup(Registries.POTION).ifPresent(lookup -> {
+            lookup.listElements()
+                    .filter(reference -> !reference.is(Potions.EMPTY_ID) && reference.key().location().getNamespace().equals(DeeperDarker.MOD_ID))
+                    .map(reference -> PotionUtils.setPotion(new ItemStack(item), reference.value()))
+                    .forEach(output::accept);
+        });
+    }
 
     public static CreativeModeTab DEEPER_AND_DARKER;
 

@@ -3,11 +3,23 @@ package com.kyanite.deeperdarker.util.datagen;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.util.AncientPaintings;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.Util;
+import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.decoration.PaintingVariant;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.level.biome.Biome;
 
 public class DDENLanguageProvider extends FabricLanguageProvider {
     public DDENLanguageProvider(FabricDataOutput dataOutput) {
@@ -43,9 +55,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ECHO_PRESSURE_PLATE, "Echo Pressure Plate");
         translationBuilder.add(DDBlocks.ECHO_BUTTON, "Echo Button");
         translationBuilder.add(DDBlocks.ECHO_SIGN, "Echo Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.ECHO_WALL_SIGN)), "Echo Wall Sign");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.ECHO_WALL_SIGN), "Echo Wall Sign");
         translationBuilder.add(DDBlocks.ECHO_HANGING_SIGN, "Echo Hanging Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.ECHO_WALL_HANGING_SIGN)), "Echo Wall Hanging Sign");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.ECHO_WALL_HANGING_SIGN), "Echo Wall Hanging Sign");
         translationBuilder.add(DDBlocks.ECHO_SAPLING, "Echo Sapling");
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_LOG, "Sculk Spruce Log");
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_WOOD, "Sculk Spruce Wood");
@@ -62,9 +74,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE, "Sculk Spruce Pressure Plate");
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_BUTTON, "Sculk Spruce Button");
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_SIGN, "Sculk Spruce Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SCULK_SPRUCE_WALL_SIGN)), "Sculk Spruce Wall Sign");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.SCULK_SPRUCE_WALL_SIGN), "Sculk Spruce Wall Sign");
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_HANGING_SIGN, "Sculk Spruce Hanging Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN)), "Sculk Spruce Wall Hanging Sign");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN), "Sculk Spruce Wall Hanging Sign");
         translationBuilder.add(DDBlocks.SCULK_SPRUCE_SAPLING, "Sculk Spruce Sapling");
         translationBuilder.add(DDBlocks.SCULK_STONE, "Sculk Stone");
         translationBuilder.add(DDBlocks.SCULK_STONE_STAIRS, "Sculk Stone Stairs");
@@ -198,9 +210,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.BLOOM_BOAT, "Bloom Boat");
         translationBuilder.add(DDItems.BLOOM_CHEST_BOAT, "Bloom Boat with Chest");
         translationBuilder.add(DDBlocks.BLOOM_SIGN, "Bloom Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BLOOM_WALL_SIGN)), "Bloom Wall Sign");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.BLOOM_WALL_SIGN), "Bloom Wall Sign");
         translationBuilder.add(DDBlocks.BLOOM_HANGING_SIGN, "Bloom Hanging Sign");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.BLOOM_WALL_HANGING_SIGN)), "Bloom Wall Hanging Sign");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.BLOOM_WALL_HANGING_SIGN), "Bloom Wall Hanging Sign");
         translationBuilder.add(DDBlocks.SOUNDPROOF_GLASS, "Soundproof Glass");
         translationBuilder.add(DDBlocks.PROTECTED_SCULK_GLEAM, "Protected Sculk Gleam");
         translationBuilder.add(DDBlocks.SCULK_LAMP, "Sculk Lamp");
@@ -209,14 +221,14 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.LILY_FLOWER, "Lily Flower");
         translationBuilder.add(DDItems.LILY_FLOWER, "Lily Flower");
         translationBuilder.add(DDBlocks.SHATTERED_HEAD, "Shattered Head");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SHATTERED_WALL_HEAD)), "Shattered Wall Head");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.SHATTERED_WALL_HEAD), "Shattered Wall Head");
         translationBuilder.add(DDBlocks.SCULK_TISSUE, "Sculk Tissue");
         translationBuilder.add(DDBlocks.DARK_FOUNTAIN, "Dark Fountain");
         translationBuilder.add(DDBlocks.SHADOW_CRYSTAL_BLOCK, "Block of Shadow Crystal");
         translationBuilder.add(DDBlocks.TOXIC_AIR, "Toxic Air");
         translationBuilder.add(DDBlocks.SCULK_FIRE, "Sculk Fire");
         translationBuilder.add(DDBlocks.SCULK_TORCH, "Sculk Torch");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(DDBlocks.SCULK_WALL_TORCH)), "Sculk Wall Torch");
+        translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.SCULK_WALL_TORCH), "Sculk Wall Torch");
         translationBuilder.add(DDBlocks.SCULK_CAMPFIRE, "Sculk Campfire");
         translationBuilder.add(DDBlocks.SCULK_LANTERN, "Sculk Lantern");
         translationBuilder.add(DDBlocks.PATIENCE_SOUL_FIRE, "Soul of Patience Fire");
@@ -345,16 +357,20 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.OVERCAST_VESSEL, "Overcast Vessel");
         translationBuilder.add(DDEntities.ACID_SPRITE, "Acid Sprite");
 
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.MOB_EFFECT.getKey(DDEffects.SCULK_AFFINITY)), "Sculk Affinity");
-        translationBuilder.add("item.minecraft.tipped_arrow.effect.sculk_affinity", "Arrow of Sculk Affinity");
-        translationBuilder.add("item.minecraft.tipped_arrow.effect.long_sculk_affinity", "Arrow of Sculk Affinity");
-        translationBuilder.add("item.minecraft.potion.effect.sculk_affinity", "Potion of Sculk Affinity");
-        translationBuilder.add("item.minecraft.potion.effect.long_sculk_affinity", "Potion of Sculk Affinity");
-        translationBuilder.add("item.minecraft.splash_potion.effect.sculk_affinity", "Splash Potion of Sculk Affinity");
-        translationBuilder.add("item.minecraft.splash_potion.effect.long_sculk_affinity", "Splash Potion of Sculk Affinity");
-        translationBuilder.add("item.minecraft.lingering_potion.effect.sculk_affinity", "Lingering Potion of Sculk Affinity");
-        translationBuilder.add("item.minecraft.lingering_potion.effect.long_sculk_affinity", "Lingering Potion of Sculk Affinity");
-        translationBuilder.add(Util.makeDescriptionId("block", BuiltInRegistries.MOB_EFFECT.getKey(DDEffects.HEMOPHILIA)), "Hemophilia");
+        translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.FIZZY), "Tipped Arrow");
+        translationBuilder.add(getPotion(Items.POTION, DDPotions.FIZZY), "Fizzy Potion");
+        translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.FIZZY), "Fizzy Splash Potion");
+        translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.FIZZY), "Fizzy Lingering Potion");
+        translationBuilder.add(DDEffects.SCULK_AFFINITY, "Sculk Affinity");
+        translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.SCULK_AFFINITY), "Arrow of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.LONG_SCULK_AFFINITY), "Arrow of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.POTION, DDPotions.SCULK_AFFINITY), "Potion of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.POTION, DDPotions.LONG_SCULK_AFFINITY), "Potion of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.SCULK_AFFINITY), "Splash Potion of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.LONG_SCULK_AFFINITY), "Splash Potion of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.SCULK_AFFINITY), "Lingering Potion of Sculk Affinity");
+        translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.LONG_SCULK_AFFINITY), "Lingering Potion of Sculk Affinity");
+        translationBuilder.add(DDEffects.HEMOPHILIA, "Hemophilia");
 
         translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
         translationBuilder.add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
@@ -414,67 +430,67 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.title", "Patience is Key");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.description", "Kill the Blooming Golem");
 
-        translationBuilder.add("biome." + OthersideBiomes.DEEPLANDS.location().getNamespace() + "." + OthersideBiomes.DEEPLANDS.location().getPath(), "Deeplands");
-        translationBuilder.add("biome." + OthersideBiomes.ECHOING_FOREST.location().getNamespace() + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), "Echoing Forest");
-        translationBuilder.add("biome." + OthersideBiomes.OVERCAST_COLUMNS.location().getNamespace() + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), "Overcast Columns");
-        translationBuilder.add("biome." + OthersideBiomes.BLOOMING_CAVERNS.location().getNamespace() + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), "Blooming Caverns");
-        translationBuilder.add("biome." + OthersideBiomes.DARKLANDS.location().getNamespace() + "." + OthersideBiomes.DARKLANDS.location().getPath(), "Darklands");
-        translationBuilder.add("biome." + OthersideBiomes.SCULK_SPRUCE_FOREST.location().getNamespace() + "." + OthersideBiomes.SCULK_SPRUCE_FOREST.location().getPath(), "Sculk Spruce Forest");
-        translationBuilder.add("biome." + OthersideBiomes.ACID_FLOES.location().getNamespace() + "." + OthersideBiomes.ACID_FLOES.location().getPath(), "Acid Floes");
+        translationBuilder.add(getBiome(OthersideBiomes.DEEPLANDS), "Deeplands");
+        translationBuilder.add(getBiome(OthersideBiomes.ECHOING_FOREST), "Echoing Forest");
+        translationBuilder.add(getBiome(OthersideBiomes.OVERCAST_COLUMNS), "Overcast Columns");
+        translationBuilder.add(getBiome(OthersideBiomes.BLOOMING_CAVERNS), "Blooming Caverns");
+        translationBuilder.add(getBiome(OthersideBiomes.DARKLANDS), "Darklands");
+        translationBuilder.add(getBiome(OthersideBiomes.SCULK_SPRUCE_FOREST), "Sculk Spruce Forest");
+        translationBuilder.add(getBiome(OthersideBiomes.ACID_FLOES), "Acid Floes");
 
-        translationBuilder.add("text.config.deeperdarker.title", "Deeper and Darker");
-        translationBuilder.add("text.config.deeperdarker.category.server", "Server");
-        translationBuilder.add("text.config.deeperdarker.category.client", "Client");
-        translationBuilder.add("text.config.deeperdarker.option.client.wardenHeartPulses", "Heart of the Deep Pulses");
-        translationBuilder.add("text.config.deeperdarker.option.client.wardenHeartPulses.tooltip", "Determines if the Heart of the Deep should\nemit a random pulsing sound.");
-        translationBuilder.add("text.config.deeperdarker.option.client.renderWardenHelmetHorns", "Render Warden Helmet Horns");
-        translationBuilder.add("text.config.deeperdarker.option.client.renderWardenHelmetHorns.tooltip", "Determines if the horns in the Warden\nHelmet should be rendered.");
-        translationBuilder.add("text.config.deeperdarker.option.client.changePhantomTextures", "Change Phantom Textures");
-        translationBuilder.add("text.config.deeperdarker.option.client.changePhantomTextures.tooltip", "Determines if Phantoms should have a\ndifferent texture in the Deeplands.");
-        translationBuilder.add("text.config.deeperdarker.option.client.paintingFix", "Fix Ancient Paintings");
-        translationBuilder.add("text.config.deeperdarker.option.client.paintingFix.tooltip", "Fixes desync that happens upon placing ancient\npaintings in places where they do not fit.");
-        translationBuilder.add("text.config.deeperdarker.option.client.whiteFog", "White Fog");
-        translationBuilder.add("text.config.deeperdarker.option.client.whiteFog.tooltip", "Changes the Otherside fog to be white instead of\nblack.");
-        translationBuilder.add("text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds", "Sculk Transmitter Cooldown");
-        translationBuilder.add("text.config.deeperdarker.option.client.sculkTransmitterLinkCooldownSeconds.tooltip", "Measured in seconds. The cooldown to unlink or\nlink an already linked Sculk Transmitter.");
-        translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance", "Ancient Vase Mob Spawn Chance");
-        translationBuilder.add("text.config.deeperdarker.option.server.spawnSomethingFromAncientVaseChance.tooltip", "Defines the chance of a mob (Stalker or\nSculk Leech) spawning from an Ancient Vase.");
-        translationBuilder.add("text.config.deeperdarker.option.server.sculkLeechesFromAncientVaseChance", "Sculk Leech Spawn Chance");
-        translationBuilder.add("text.config.deeperdarker.option.server.sculkLeechesFromAncientVaseChance.tooltip", "Defines the chance of Sculk Leeches spawning\nfrom an Ancient Vase if the setting above ends up\nbeing true. If a mob should spawn and this\nsetting ends up being false, a Stalker will spawn.");
-        translationBuilder.add("text.config.deeperdarker.option.server.geysersApplySlowFalling", "Geysers Apply Slow Falling");
-        translationBuilder.add("text.config.deeperdarker.option.server.geysersApplySlowFalling.tooltip", "Determines if stepping on a Gloomy Geyser\ngrants the player Slow Falling.");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMinWidth", "Minimum Portal Width");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMinWidth.tooltip", "Defines the minimum width (not counting the\nframe) for an Otherside portal to be valid.");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMinHeight", "Minimum Portal Height");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMinHeight.tooltip", "Defines the minimum maxFloeHeight (not counting the\nframe) for an Otherside portal to be valid.");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMaxWidth", "Maximum Portal Width");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMaxWidth.tooltip", "Defines the maximum width (not counting the\nframe) for an Otherside portal to be valid.");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMaxHeight", "Maximum Portal Height");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMaxHeight.tooltip", "Defines the maximum maxFloeHeight (not counting the\nframe) for an Otherside portal to be valid.");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMinSearchHeight", "Minimum Portal Search Height");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMinSearchHeight.tooltip", "Defines the lowest Y coordinate to search to\ngenerate an Otherside portal. We recommend\nthat you set this to a value greater than or\nequal to 0 and less than the maximum portal\nsearch maxFloeHeight.");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMaxSearchHeight", "Maximum Portal Search Height");
-        translationBuilder.add("text.config.deeperdarker.option.server.portalMaxSearchHeight.tooltip", "Defines the highest Y coordinate to search to\ngenerate an Otherside portal. We recommend\nthat you set this to a value greater than or\nequal to 0 and less than or equal to (126 - the\ngenerated portal's maxFloeHeight).");
-        translationBuilder.add("text.config.deeperdarker.option.server.generatedPortalWidth", "Generated Portal Width");
-        translationBuilder.add("text.config.deeperdarker.option.server.generatedPortalWidth.tooltip", "The width of Otherside portals generated when\ntraveling through dimensions and no portal is\navailable. Making this too large may cause problems.");
-        translationBuilder.add("text.config.deeperdarker.option.server.generatedPortalHeight", "Generated Portal Height");
-        translationBuilder.add("text.config.deeperdarker.option.server.generatedPortalHeight.tooltip", "The maxFloeHeight of Otherside portals generated when\ntraveling through dimensions and no portal is\navailable. Making this too large may cause problems.");
-        translationBuilder.add("text.config.deeperdarker.option.server.geyserLaunchVelocity", "Gloomy Geyser Launch Velocity");
-        translationBuilder.add("text.config.deeperdarker.option.server.geyserLaunchVelocity.tooltip", "Defines the velocity applied when a player is\nlaunched by a Gloomy Geyser.");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffDamage", "Sonorous Staff Damage");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffDamage.tooltip", "Determines the damage of the Sonorous Staff's sonic\nboom.");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffKnockback", "Sonorous Staff Knockback");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffKnockback.tooltip", "Determines the knockback of the Sonorous Staff's\nsonic boom applied to living entities.");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffCooldown", "Sonorous Staff Cooldown");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffCooldown.tooltip", "Determines the cooldown of the Sonorous Staff\nbefore the player can use it again.");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffRange", "Sonorous Staff Range");
-        translationBuilder.add("text.config.deeperdarker.option.server.sonorousStaffRange.tooltip", "Determines the range of the Sonorous Staff's sonic\nboom.");
-        translationBuilder.add("text.config.deeperdarker.option.server.soulElytraCooldown", "Soul Elytra Cooldown");
-        translationBuilder.add("text.config.deeperdarker.option.server.soulElytraCooldown.tooltip", "Determines the cooldown of the boost provided when\nboosting with Soul Elytra. Set to -1 to disable boost.");
-        translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength", "Soul Elytra Boost Strength");
-        translationBuilder.add("text.config.deeperdarker.option.server.soulElytraBoostStrength.tooltip", "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.");
-        translationBuilder.add("text.config.deeperdarker.option.server.snapperDropLimit", "Sculk Snapper Drop Limit");
-        translationBuilder.add("text.config.deeperdarker.option.server.snapperDropLimit.tooltip", "Determines the maximum amount of books dropped\nby each Sculk Snapper. Set to -1 for infinite books.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".title", "Deeper and Darker");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".category.server", "Server");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".category.client", "Client");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.wardenHeartPulses", "Heart of the Deep Pulses");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.wardenHeartPulses.tooltip", "Determines if the Heart of the Deep should\nemit a random pulsing sound.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.renderWardenHelmetHorns", "Render Warden Helmet Horns");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.renderWardenHelmetHorns.tooltip", "Determines if the horns in the Warden\nHelmet should be rendered.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.changePhantomTextures", "Change Phantom Textures");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.changePhantomTextures.tooltip", "Determines if Phantoms should have a\ndifferent texture in the Deeplands.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.paintingFix", "Fix Ancient Paintings");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.paintingFix.tooltip", "Fixes desync that happens upon placing ancient\npaintings in places where they do not fit.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.whiteFog", "White Fog");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.whiteFog.tooltip", "Changes the Otherside fog to be white instead of\nblack.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.sculkTransmitterLinkCooldownSeconds", "Sculk Transmitter Cooldown");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.client.sculkTransmitterLinkCooldownSeconds.tooltip", "Measured in seconds. The cooldown to unlink or\nlink an already linked Sculk Transmitter.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.spawnSomethingFromAncientVaseChance", "Ancient Vase Mob Spawn Chance");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.spawnSomethingFromAncientVaseChance.tooltip", "Defines the chance of a mob (Stalker or\nSculk Leech) spawning from an Ancient Vase.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sculkLeechesFromAncientVaseChance", "Sculk Leech Spawn Chance");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sculkLeechesFromAncientVaseChance.tooltip", "Defines the chance of Sculk Leeches spawning\nfrom an Ancient Vase if the setting above ends up\nbeing true. If a mob should spawn and this\nsetting ends up being false, a Stalker will spawn.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.geysersApplySlowFalling", "Geysers Apply Slow Falling");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.geysersApplySlowFalling.tooltip", "Determines if stepping on a Gloomy Geyser\ngrants the player Slow Falling.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMinWidth", "Minimum Portal Width");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMinWidth.tooltip", "Defines the minimum width (not counting the\nframe) for an Otherside portal to be valid.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMinHeight", "Minimum Portal Height");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMinHeight.tooltip", "Defines the minimum maxFloeHeight (not counting the\nframe) for an Otherside portal to be valid.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMaxWidth", "Maximum Portal Width");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMaxWidth.tooltip", "Defines the maximum width (not counting the\nframe) for an Otherside portal to be valid.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMaxHeight", "Maximum Portal Height");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMaxHeight.tooltip", "Defines the maximum maxFloeHeight (not counting the\nframe) for an Otherside portal to be valid.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMinSearchHeight", "Minimum Portal Search Height");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMinSearchHeight.tooltip", "Defines the lowest Y coordinate to search to\ngenerate an Otherside portal. We recommend\nthat you set this to a value greater than or\nequal to 0 and less than the maximum portal\nsearch maxFloeHeight.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMaxSearchHeight", "Maximum Portal Search Height");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.portalMaxSearchHeight.tooltip", "Defines the highest Y coordinate to search to\ngenerate an Otherside portal. We recommend\nthat you set this to a value greater than or\nequal to 0 and less than or equal to (126 - the\ngenerated portal's maxFloeHeight).");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.generatedPortalWidth", "Generated Portal Width");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.generatedPortalWidth.tooltip", "The width of Otherside portals generated when\ntraveling through dimensions and no portal is\navailable. Making this too large may cause problems.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.generatedPortalHeight", "Generated Portal Height");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.generatedPortalHeight.tooltip", "The maxFloeHeight of Otherside portals generated when\ntraveling through dimensions and no portal is\navailable. Making this too large may cause problems.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.geyserLaunchVelocity", "Gloomy Geyser Launch Velocity");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.geyserLaunchVelocity.tooltip", "Defines the velocity applied when a player is\nlaunched by a Gloomy Geyser.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffDamage", "Sonorous Staff Damage");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffDamage.tooltip", "Determines the damage of the Sonorous Staff's sonic\nboom.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffKnockback", "Sonorous Staff Knockback");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffKnockback.tooltip", "Determines the knockback of the Sonorous Staff's\nsonic boom applied to living entities.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffCooldown", "Sonorous Staff Cooldown");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffCooldown.tooltip", "Determines the cooldown of the Sonorous Staff\nbefore the player can use it again.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffRange", "Sonorous Staff Range");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.sonorousStaffRange.tooltip", "Determines the range of the Sonorous Staff's sonic\nboom.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.soulElytraCooldown", "Soul Elytra Cooldown");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.soulElytraCooldown.tooltip", "Determines the cooldown of the boost provided when\nboosting with Soul Elytra. Set to -1 to disable boost.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.soulElytraBoostStrength", "Soul Elytra Boost Strength");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.soulElytraBoostStrength.tooltip", "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.snapperDropLimit", "Sculk Snapper Drop Limit");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.snapperDropLimit.tooltip", "Determines the maximum amount of books dropped\nby each Sculk Snapper. Set to -1 for infinite books.");
 
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");
@@ -484,32 +500,32 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".acid", "%s tried to swim in acid");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".acid.player", "%1$s tried to swim in acid to escape %2$s");
 
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".millipede.title", "Millipede");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".millipede.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".clouds.title", "Clouds");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".clouds.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".ooze.title", "Ooze");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".ooze.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".adventure.title", "Adventure");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".adventure.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".echoer.title", "Echoer");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".echoer.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".carrot.title", "Back to Your Roots");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".carrot.author", "Pedro Ricardo");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".maze.title", "Maze");
-        translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".maze.author", "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.ABSTRACTION, ".title"), "Abstraction");
+        translationBuilder.add(getPainting(AncientPaintings.ABSTRACTION, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.MILLIPEDE, ".title"), "Millipede");
+        translationBuilder.add(getPainting(AncientPaintings.MILLIPEDE, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.CLOUDS, ".title"), "Clouds");
+        translationBuilder.add(getPainting(AncientPaintings.CLOUDS, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.OOZE, ".title"), "Ooze");
+        translationBuilder.add(getPainting(AncientPaintings.OOZE, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.ADVENTURE, ".title"), "Adventure");
+        translationBuilder.add(getPainting(AncientPaintings.ADVENTURE, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.ECHOER, ".title"), "Echoer");
+        translationBuilder.add(getPainting(AncientPaintings.ECHOER, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.CARROT, ".title"), "Back to Your Roots");
+        translationBuilder.add(getPainting(AncientPaintings.CARROT, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.MAZE, ".title"), "Maze");
+        translationBuilder.add(getPainting(AncientPaintings.MAZE, ".author"), "Pedro Ricardo");
 
         translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".transmit", "Use Sculk Transmitter");
 
-        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".echo_logs", "Echo Logs");
-        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".blooming_stems", "Blooming Stems");
-        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
-        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".paintings", "Paintings");
-        translationBuilder.add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
+        translationBuilder.add(tag(DDTags.Items.ECHO_LOGS), "Echo Logs");
+        translationBuilder.add(tag(DDTags.Items.BLOOMING_STEMS), "Blooming Stems");
+        translationBuilder.add(tag(DDTags.Items.DAMPENS_VIBRATIONS), "Dampens Vibrations");
+        translationBuilder.add(tag(DDTags.Items.PAINTINGS), "Paintings");
+        translationBuilder.add(tag(DDTags.Items.SCUTES), "Scutes");
 
         // Create
         translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), "Warden Diving Helmet");
@@ -517,18 +533,53 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.get(), "Warden Backtank");
         translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE.get(), "Warden Backtank Placeable");
 
-        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.behaviour1", "Provides _Pressurized_ _Air_ to Equipment that requires it.");
-        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.behaviour2", "_Collects_ _Pressurized_ _Air_ at a rate depending on the Rotational Speed.");
-        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.condition1", "When Worn");
-        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.condition2", "When placed, Powered by Kinetics");
-        translationBuilder.add("item.deeperdarker.warden_backtank.tooltip.summary", "A _Wearable_ _Tank_ for carrying Pressurized Air.");
-        translationBuilder.add("item.deeperdarker.warden_diving_boots.tooltip.behaviour1", "Wielder _descends_ more _quickly_ in liquids. Grants the ability to _walk_ and _jump_ underwater. Wielder also is no longer affected by _Mechanical_ _Belts_.");
-        translationBuilder.add("item.deeperdarker.warden_diving_boots.tooltip.condition1", "When Worn");
-        translationBuilder.add("item.deeperdarker.warden_diving_boots.tooltip.summary", "A pair of _heavy_ _boots_, allowing for better traversal of the Ocean floor, including Oceans made of Lava.");
-        translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.behaviour1", "Provides immunity to _Fire_ and _Lava_, slowly draining _Air Pressure_ from the Backtank. Also grants _improved vision_ in Lava");
-        translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.condition1", "When Worn (Full set)");
-        translationBuilder.add("item.deeperdarker.warden_diving_helmet.tooltip.summary", "Together with a _Netherite_ or _Warden Backtank_, this can protect you from _extreme heat_. To be effective, _Legs and Feet_ have to be covered in _Netherite_ or _Warden_.");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.behaviour1", "Provides _Pressurized_ _Air_ to Equipment that requires it.");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.behaviour2", "_Collects_ _Pressurized_ _Air_ at a rate depending on the Rotational Speed.");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.condition1", "When Worn");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.condition2", "When placed, Powered by Kinetics");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.summary", "A _Wearable_ _Tank_ for carrying Pressurized Air.");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.asItem().getDescriptionId() + ".tooltip.behaviour1", "Wielder _descends_ more _quickly_ in liquids. Grants the ability to _walk_ and _jump_ underwater. Wielder also is no longer affected by _Mechanical_ _Belts_.");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.asItem().getDescriptionId() + ".tooltip.condition1", "When Worn");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.asItem().getDescriptionId() + ".tooltip.summary", "A pair of _heavy_ _boots_, allowing for better traversal of the Ocean floor, including Oceans made of Lava.");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.asItem().getDescriptionId() + ".tooltip.behaviour1", "Provides immunity to _Fire_ and _Lava_, slowly draining _Air Pressure_ from the Backtank. Also grants _improved vision_ in Lava");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.asItem().getDescriptionId() + ".tooltip.condition1", "When Worn (Full set)");
+        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.asItem().getDescriptionId() + ".tooltip.summary", "Together with a _Netherite_ or _Warden Backtank_, this can protect you from _extreme heat_. To be effective, _Legs and Feet_ have to be covered in _Netherite_ or _Warden_.");
 
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".reinvoked", "Reinvoked");
+    }
+
+    private static String tag(TagKey<?> tag) {
+        ResourceLocation resourceLocation = tag.registry().location();
+        StringBuilder stringBuilder = new StringBuilder("tag");
+        if (!resourceLocation.getNamespace().equals(ResourceLocation.DEFAULT_NAMESPACE)) {
+            stringBuilder.append('.').append(resourceLocation.getNamespace());
+        }
+        stringBuilder.append('.').append(resourceLocation.getPath()).append('.').append(tag.location().getNamespace()).append('.').append(tag.location().getPath());
+        return stringBuilder.toString();
+    }
+
+    private static <T> String get(DefaultedRegistry<T> registry, T entry) {
+        return Util.makeDescriptionId(registry.key().location().getPath(), registry.getKey(entry));
+    }
+
+    private static <T> String get(ResourceKey<T> entry) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (!entry.registry().getNamespace().equals(ResourceLocation.DEFAULT_NAMESPACE)) {
+            stringBuilder.append(entry.registry().getNamespace()).append('.');
+        }
+        stringBuilder.append(entry.registry().getPath()).append('.').append(entry.location().getNamespace()).append('.').append(entry.location().getPath());
+        return stringBuilder.toString();
+    }
+
+    private static String getPotion(Item item, Potion potion) {
+        return potion.getName(item.getDescriptionId() + ".effect.");
+    }
+
+    private static String getBiome(ResourceKey<Biome> biome) {
+        return "biome." + biome.location().getNamespace() + "." + biome.location().getPath();
+    }
+
+    private static String getPainting(ResourceKey<PaintingVariant> painting, String suffix) {
+        return "painting." + painting.location().getNamespace() + "." + painting.location().getPath() + suffix;
     }
 }

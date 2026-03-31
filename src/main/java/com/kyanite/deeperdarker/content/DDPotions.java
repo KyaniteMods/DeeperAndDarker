@@ -16,6 +16,7 @@ public class DDPotions {
             DDEffects.SCULK_AFFINITY, 3600)));
     public static final Potion LONG_SCULK_AFFINITY = register("long_sculk_affinity", new Potion(new MobEffectInstance(
             DDEffects.SCULK_AFFINITY, 9600)));
+    public static final Potion FIZZY = register("fizzy", new Potion());
 
     private static Potion register(String id, Potion potion) {
         return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(DeeperDarker.MOD_ID, id), potion);
@@ -27,5 +28,6 @@ public class DDPotions {
         FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.INVISIBILITY, Ingredient.of(DDItems.SOUL_DUST), SCULK_AFFINITY);
         FabricBrewingRecipeRegistry.registerPotionRecipe(SCULK_AFFINITY, Ingredient.of(Items.REDSTONE), LONG_SCULK_AFFINITY);
         FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.LONG_INVISIBILITY, Ingredient.of(DDItems.SOUL_DUST), LONG_SCULK_AFFINITY);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.WATER, Ingredient.of(DDItems.FIZZ), FIZZY);
     }
 }
