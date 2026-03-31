@@ -36,5 +36,12 @@
 		"owo": "*"
 	},
 
+	"custom": {
+		"loom:injected_interfaces": {
+			"net/minecraft/class_1297": [
+				"com/kyanite/deeperdarker/content/fluids/EntityInAcid"
+			]
+		}
+	},
 	"accessWidener": "deeperdarker.accesswidener"
 }

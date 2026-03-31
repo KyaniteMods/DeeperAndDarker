@@ -6,6 +6,7 @@
     "AbstractCauldronAccessor",
     "AbstractContainerMenuMixin",
     "AcidEntityMixin",
+    "AcidImmuneItemMixin",
     "AcidLivingEntityMixin",
     "AcidSwimMixin",
     "AncientPaintingMixin",

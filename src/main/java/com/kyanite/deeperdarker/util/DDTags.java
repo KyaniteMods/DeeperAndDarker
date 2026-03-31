@@ -112,10 +112,17 @@ public class DDTags {
 
         public static final TagKey<Item> FULLBRIGHT = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "fullbright"));
+
+        public static final TagKey<Item> ACID_RESISTANT = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "acid_resistant"));
+
+        public static final TagKey<Item> ACID_IMMUNE_ARMOR = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "acid_immune_armor"));
     }
 
     public static class EntityTypes {
-        public static final TagKey<EntityType<?>> IMMUNE_TO_TOXIC_AIR = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "immune_to_toxic_air"));
+        public static final TagKey<EntityType<?>> TOXIC_AIR_IMMUNE = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "toxic_air_immune"));
+        public static final TagKey<EntityType<?>> ACID_IMMUNE = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "acid_immune"));
     }
 
     public static class Biomes {

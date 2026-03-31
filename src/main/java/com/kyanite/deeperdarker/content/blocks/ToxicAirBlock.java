@@ -36,7 +36,7 @@ public class ToxicAirBlock extends Block {
     @Override
     public void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
         super.entityInside(blockState, level, blockPos, entity);
-        if (entity.getType().is(DDTags.EntityTypes.IMMUNE_TO_TOXIC_AIR) || !(entity instanceof LivingEntity)) return;
+        if (entity.getType().is(DDTags.EntityTypes.TOXIC_AIR_IMMUNE) || !(entity instanceof LivingEntity)) return;
         entity.hurt(level.damageSources().magic(), 4);
     }
 

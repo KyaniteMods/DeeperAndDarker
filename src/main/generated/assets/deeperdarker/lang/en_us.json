@@ -229,6 +229,8 @@
   "block.deeperdarker.stripped_sculk_spruce_wood": "Stripped Sculk Spruce Wood",
   "block.deeperdarker.toxic_air": "Toxic Air",
   "block.deeperdarker.unlinked": "Unlinked transmitter",
+  "death.attack.deeperdarker.acid": "%s tried to swim in acid",
+  "death.attack.deeperdarker.acid.player": "%1$s tried to swim in acid to escape %2$s",
   "death.attack.deeperdarker.bite": "%s was devoured",
   "death.attack.deeperdarker.dark_fountain": "%s was blinded by a dark fountain",
   "death.attack.deeperdarker.icicle": "%s was skewered by a falling icicle",

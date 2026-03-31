@@ -480,6 +480,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".dark_fountain", "%s was blinded by a dark fountain");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".icicle", "%s was skewered by a falling icicle");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".icicle.player", "%1$s was skewered by a falling icicle while fighting %2$s");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".acid", "%s tried to swim in acid");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".acid.player", "%1$s tried to swim in acid to escape %2$s");
 
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
         translationBuilder.add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
