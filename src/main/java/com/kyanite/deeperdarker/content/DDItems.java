@@ -46,6 +46,8 @@ public class DDItems {
     public static final Item REINFORCED_ECHO_SHARD = register("reinforced_echo_shard", new Item(new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item RESONARIUM = register("resonarium", new Item(new Item.Properties().fireResistant()));
     public static final Item RESONARIUM_PLATE = register("resonarium_plate", new Item(new Item.Properties().fireResistant()));
+    public static final Item RAW_LEAD = register("raw_lead", new Item(new Item.Properties()));
+    public static final Item LEAD_INGOT = register("lead_ingot", new Item(new Item.Properties()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
     public static final Item GUARDIAN_UPGRADE_SMITHING_TEMPLATE = register("guardian_upgrade_smithing_template", createGuardianUpgradeSmithingTemplate());
     public static final Item ROYAL_SCEPTER = register("royal_scepter", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));

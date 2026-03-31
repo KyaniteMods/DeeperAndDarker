@@ -78,6 +78,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         copy(BlockTags.LAPIS_ORES, ItemTags.LAPIS_ORES);
         copy(BlockTags.DIAMOND_ORES, ItemTags.DIAMOND_ORES);
 
+        add(ItemTags.BEACON_PAYMENT_ITEMS, DDItems.LEAD_INGOT);
+
         copy(DDTags.Blocks.ECHO_LOGS, DDTags.Items.ECHO_LOGS);
         copy(DDTags.Blocks.BLOOMING_STEMS, DDTags.Items.BLOOMING_STEMS);
         copy(DDTags.Blocks.SCULK_SPRUCE_LOGS, DDTags.Items.SCULK_SPRUCE_LOGS);
@@ -128,5 +130,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES, DDItems.SCULK_TUBER, DDItems.SCULK_BERRY_SPROUT, DDItems.SCULK_BERRY);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
+        add(ConventionalItemTags.ORES, DDBlocks.LEAD_BLOCK);
+        add(ConventionalItemTags.RAW_ORES, DDItems.RAW_LEAD);
+        add(ConventionalItemTags.INGOTS, DDItems.LEAD_INGOT);
     }
 }

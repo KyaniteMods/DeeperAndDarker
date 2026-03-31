@@ -169,6 +169,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_STONE_EMERALD_ORE);
         entries.accept(DDBlocks.SCULK_STONE_LAPIS_ORE);
         entries.accept(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        entries.accept(DDBlocks.SCULK_STONE_LEAD_ORE);
         entries.accept(DDBlocks.GLOOMSLATE_COAL_ORE);
         entries.accept(DDBlocks.GLOOMSLATE_IRON_ORE);
         entries.accept(DDBlocks.GLOOMSLATE_COPPER_ORE);
@@ -177,6 +178,11 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.GLOOMSLATE_EMERALD_ORE);
         entries.accept(DDBlocks.GLOOMSLATE_LAPIS_ORE);
         entries.accept(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
+
+        entries.accept(DDBlocks.RAW_LEAD_BLOCK);
+        entries.accept(DDBlocks.LEAD_BLOCK);
+        entries.accept(DDItems.RAW_LEAD);
+        entries.accept(DDItems.LEAD_INGOT);
 
         entries.accept(DDBlocks.GLOWING_FLOWERS);
         entries.accept(DDBlocks.GLOWING_GRASS);

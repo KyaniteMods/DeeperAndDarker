@@ -108,6 +108,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         oreBlasting(output, Collections.singletonList(DDBlocks.SCULK_STONE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
         oreSmelting(output, Collections.singletonList(DDBlocks.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 200, "diamond");
         oreBlasting(output, Collections.singletonList(DDBlocks.SCULK_STONE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 100, "diamond");
+        oreSmelting(output, Collections.singletonList(DDBlocks.SCULK_STONE_LEAD_ORE), RecipeCategory.MISC, DDItems.LEAD_INGOT, 0.7f, 200, "lead_ingot");
+        oreBlasting(output, Collections.singletonList(DDBlocks.SCULK_STONE_LEAD_ORE), RecipeCategory.MISC, DDItems.LEAD_INGOT, 0.7f, 100, "lead_ingot");
         oreSmelting(output, Collections.singletonList(DDBlocks.GLOOMSLATE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 200, "coal");
         oreBlasting(output, Collections.singletonList(DDBlocks.GLOOMSLATE_COAL_ORE), RecipeCategory.MISC, Items.COAL, 0.1f, 100, "coal");
         oreSmelting(output, Collections.singletonList(DDBlocks.GLOOMSLATE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
@@ -124,6 +126,9 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         oreBlasting(output, Collections.singletonList(DDBlocks.GLOOMSLATE_LAPIS_ORE), RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2f, 100, "lapis_lazuli");
         oreSmelting(output, Collections.singletonList(DDBlocks.GLOOMSLATE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 200, "diamond");
         oreBlasting(output, Collections.singletonList(DDBlocks.GLOOMSLATE_DIAMOND_ORE), RecipeCategory.MISC, Items.DIAMOND, 1.0f, 100, "diamond");
+
+        nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.RAW_LEAD, RecipeCategory.BUILDING_BLOCKS, DDBlocks.RAW_LEAD_BLOCK);
+        nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.LEAD_INGOT, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LEAD_BLOCK);
 
         oreSmelting(output, Collections.singletonList(DDItems.GRIME_BALL), RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
 

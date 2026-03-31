@@ -278,21 +278,25 @@ public class DDBlocks {
     public static final Block SCULK_GLEAM = register("sculk_gleam", new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).lightLevel(state -> 10).mapColor(MapColor.SAND)));
 
     public static final Block SCULK_STONE_COAL_ORE = register("sculk_stone_coal_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), UniformInt.of(1, 4)));
-    public static final Block SCULK_STONE_IRON_ORE = register("sculk_stone_iron_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), ConstantInt.of(0)));
-    public static final Block SCULK_STONE_COPPER_ORE = register("sculk_stone_copper_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), ConstantInt.of(0)));
-    public static final Block SCULK_STONE_GOLD_ORE = register("sculk_stone_gold_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), ConstantInt.of(0)));
+    public static final Block SCULK_STONE_IRON_ORE = register("sculk_stone_iron_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE)));
+    public static final Block SCULK_STONE_COPPER_ORE = register("sculk_stone_copper_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE)));
+    public static final Block SCULK_STONE_GOLD_ORE = register("sculk_stone_gold_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE)));
     public static final Block SCULK_STONE_REDSTONE_ORE = register("sculk_stone_redstone_ore", new RedStoneOreBlock(BlockBehaviour.Properties.copy(SCULK_STONE).randomTicks().lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 9 : 0)));
     public static final Block SCULK_STONE_EMERALD_ORE = register("sculk_stone_emerald_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), UniformInt.of(5, 10)));
     public static final Block SCULK_STONE_LAPIS_ORE = register("sculk_stone_lapis_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), UniformInt.of(4, 8)));
     public static final Block SCULK_STONE_DIAMOND_ORE = register("sculk_stone_diamond_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE), UniformInt.of(5, 10)));
+    public static final Block SCULK_STONE_LEAD_ORE = register("sculk_stone_lead_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(SCULK_STONE)));
     public static final Block GLOOMSLATE_COAL_ORE = register("gloomslate_coal_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(1, 4)));
-    public static final Block GLOOMSLATE_IRON_ORE = register("gloomslate_iron_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), ConstantInt.of(0)));
-    public static final Block GLOOMSLATE_COPPER_ORE = register("gloomslate_copper_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), ConstantInt.of(0)));
-    public static final Block GLOOMSLATE_GOLD_ORE = register("gloomslate_gold_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), ConstantInt.of(0)));
+    public static final Block GLOOMSLATE_IRON_ORE = register("gloomslate_iron_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE)));
+    public static final Block GLOOMSLATE_COPPER_ORE = register("gloomslate_copper_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE)));
+    public static final Block GLOOMSLATE_GOLD_ORE = register("gloomslate_gold_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE)));
     public static final Block GLOOMSLATE_REDSTONE_ORE = register("gloomslate_redstone_ore", new RedStoneOreBlock(BlockBehaviour.Properties.copy(GLOOMSLATE).randomTicks().lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 9 : 0)));
     public static final Block GLOOMSLATE_EMERALD_ORE = register("gloomslate_emerald_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(5, 10)));
     public static final Block GLOOMSLATE_LAPIS_ORE = register("gloomslate_lapis_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(4, 8)));
     public static final Block GLOOMSLATE_DIAMOND_ORE = register("gloomslate_diamond_ore", new DropExperienceBlock(BlockBehaviour.Properties.copy(GLOOMSLATE), UniformInt.of(5, 10)));
+
+    public static final Block RAW_LEAD_BLOCK = register("raw_lead_block", new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK).mapColor(MapColor.TERRACOTTA_CYAN)));
+    public static final Block LEAD_BLOCK = register("lead_block", new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).mapColor(MapColor.TERRACOTTA_CYAN)));
 
     public static final Block GLOWING_FLOWERS = register("glowing_flowers", new BloomingFlowersBlock(BlockBehaviour.Properties.copy(Blocks.PINK_PETALS).lightLevel(state -> 9)));
     public static final Block GLOWING_GRASS = register("glowing_grass", new GlowingGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS).lightLevel(state -> 11)));

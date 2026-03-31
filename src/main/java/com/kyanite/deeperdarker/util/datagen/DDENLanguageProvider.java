@@ -163,6 +163,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_STONE_EMERALD_ORE, "Sculk Stone Emerald Ore");
         translationBuilder.add(DDBlocks.SCULK_STONE_LAPIS_ORE, "Sculk Stone Lapis Lazuli Ore");
         translationBuilder.add(DDBlocks.SCULK_STONE_DIAMOND_ORE, "Sculk Stone Diamond Ore");
+        translationBuilder.add(DDBlocks.SCULK_STONE_LEAD_ORE, "Sculk Stone Lead Ore");
         translationBuilder.add(DDBlocks.GLOOMSLATE_COAL_ORE, "Gloomslate Coal Ore");
         translationBuilder.add(DDBlocks.GLOOMSLATE_IRON_ORE, "Gloomslate Iron Ore");
         translationBuilder.add(DDBlocks.GLOOMSLATE_COPPER_ORE, "Gloomslate Copper Ore");
@@ -171,6 +172,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.GLOOMSLATE_EMERALD_ORE, "Gloomslate Emerald Ore");
         translationBuilder.add(DDBlocks.GLOOMSLATE_LAPIS_ORE, "Gloomslate Lapis Lazuli Ore");
         translationBuilder.add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, "Gloomslate Diamond Ore");
+        translationBuilder.add(DDBlocks.RAW_LEAD_BLOCK, "Block of Raw Lead");
+        translationBuilder.add(DDBlocks.LEAD_BLOCK, "Block of Lead");
+        translationBuilder.add(DDItems.RAW_LEAD, "Raw Lead");
+        translationBuilder.add(DDItems.LEAD_INGOT, "Lead Ingot");
         translationBuilder.add(DDBlocks.SCULK_TENDRILS_PLANT, "Sculk Tendrils Plant");
         translationBuilder.add(DDBlocks.SCULK_TENDRILS, "Sculk Tendrils");
         translationBuilder.add(DDBlocks.SCULK_VINES_PLANT, "Sculk Vines Plant");

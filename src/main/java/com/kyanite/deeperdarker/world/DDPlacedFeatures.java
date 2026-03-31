@@ -50,6 +50,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SCULK_EMERALD = createKey("sculk_emerald");
     public static final ResourceKey<PlacedFeature> SCULK_LAPIS = createKey("sculk_lapis");
     public static final ResourceKey<PlacedFeature> SCULK_DIAMOND = createKey("sculk_diamond");
+    public static final ResourceKey<PlacedFeature> SCULK_LEAD = createKey("sculk_lead");
 
     public static final ResourceKey<PlacedFeature> BLOOMING_MOSS = createKey("blooming_moss");
     public static final ResourceKey<PlacedFeature> BLOOMING_WATER_EDGE = createKey("blooming_water_edge");
@@ -114,6 +115,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SCULK_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_EMERALD), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
         PlacementUtils.register(context, SCULK_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LAPIS), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
         PlacementUtils.register(context, SCULK_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_DIAMOND), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
+        PlacementUtils.register(context, SCULK_LEAD, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_LEAD), countPlacement(7, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, BLOOMING_MOSS, features.getOrThrow(DDConfiguredFeatures.ORE_BLOOMING_MOSS), countPlacement(19, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, BLOOMING_WATER_EDGE, features.getOrThrow(DDConfiguredFeatures.WATER_EDGE_BLOOMING), CountPlacement.of(13), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());

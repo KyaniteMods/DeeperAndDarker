@@ -169,6 +169,7 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.SCULK_STONE_EMERALD_ORE);
         blockModelGenerators.family(DDBlocks.SCULK_STONE_LAPIS_ORE);
         blockModelGenerators.family(DDBlocks.SCULK_STONE_DIAMOND_ORE);
+        blockModelGenerators.family(DDBlocks.SCULK_STONE_LEAD_ORE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_COAL_ORE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_IRON_ORE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_COPPER_ORE);
@@ -177,6 +178,8 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_EMERALD_ORE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_LAPIS_ORE);
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
+        blockModelGenerators.family(DDBlocks.RAW_LEAD_BLOCK);
+        blockModelGenerators.family(DDBlocks.LEAD_BLOCK);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
         blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
@@ -311,6 +314,8 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM_PLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.RAW_LEAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.LEAD_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);

@@ -189,6 +189,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.SCULK_STONE_EMERALD_ORE, (block) -> this.createOreDrop(block, Items.EMERALD));
         add(DDBlocks.SCULK_STONE_LAPIS_ORE, this::createLapisOreDrops);
         add(DDBlocks.SCULK_STONE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
+        add(DDBlocks.SCULK_STONE_LEAD_ORE, (block) -> this.createOreDrop(block, DDItems.RAW_LEAD));
         add(DDBlocks.GLOOMSLATE_COAL_ORE, (block) -> this.createOreDrop(block, Items.COAL));
         add(DDBlocks.GLOOMSLATE_IRON_ORE, (block) -> this.createOreDrop(block, Items.RAW_IRON));
         add(DDBlocks.GLOOMSLATE_COPPER_ORE, this::createCopperOreDrops);
@@ -197,6 +198,9 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.GLOOMSLATE_EMERALD_ORE, (block) -> this.createOreDrop(block, Items.EMERALD));
         add(DDBlocks.GLOOMSLATE_LAPIS_ORE, this::createLapisOreDrops);
         add(DDBlocks.GLOOMSLATE_DIAMOND_ORE, (block) -> this.createOreDrop(block, Items.DIAMOND));
+
+        dropSelf(DDBlocks.RAW_LEAD_BLOCK);
+        dropSelf(DDBlocks.LEAD_BLOCK);
 
         add(DDBlocks.GLOOMY_GRASS, BlockLootSubProvider::createShearsOnlyDrop);
         add(DDBlocks.GLOWING_GRASS, BlockLootSubProvider::createShearsOnlyDrop);

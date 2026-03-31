@@ -8,6 +8,7 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 public enum DDTiers implements Tier {
+    LEAD(2, 250, 6.0f, 2.0f, 14, DDItems.LEAD_INGOT),
     RESONARIUM(3, 1193, 8, 3, 15, DDItems.RESONARIUM),
     WARDEN(5, 2519, 10.0f, 5.0f, 18, DDItems.REINFORCED_ECHO_SHARD);
 
