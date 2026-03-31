@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "deeperdarker:lead_block"
+    },
+    "l": {
+      "item": "deeperdarker:lead_ingot"
+    }
+  },
+  "pattern": [
+    "LLL",
+    " l ",
+    "lll"
+  ],
+  "result": {
+    "item": "minecraft:anvil"
+  },
+  "show_notification": true
+}

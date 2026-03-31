@@ -130,6 +130,20 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.RAW_LEAD, RecipeCategory.BUILDING_BLOCKS, DDBlocks.RAW_LEAD_BLOCK);
         nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.LEAD_INGOT, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LEAD_BLOCK);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ANVIL)
+                .define('L', DDBlocks.LEAD_BLOCK)
+                .define('l', DDItems.LEAD_INGOT)
+                .pattern("LLL")
+                .pattern(" l ")
+                .pattern("lll")
+                .unlockedBy(getHasName(DDBlocks.LEAD_BLOCK), has(DDBlocks.LEAD_BLOCK)).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BUCKET)
+                .define('l', DDItems.LEAD_INGOT)
+                .pattern("l l")
+                .pattern(" l ")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+
         oreSmelting(output, Collections.singletonList(DDItems.GRIME_BALL), RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).define('D', Items.DIAMOND).define('U', DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).define('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").unlockedBy(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).save(output);
