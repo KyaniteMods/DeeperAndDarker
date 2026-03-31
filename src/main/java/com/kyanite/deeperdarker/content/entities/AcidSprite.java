@@ -43,7 +43,7 @@ public class AcidSprite extends Monster {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 10).add(Attributes.ATTACK_DAMAGE, 1).add(Attributes.KNOCKBACK_RESISTANCE, -1.0).add(Attributes.MOVEMENT_SPEED, 0.5).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 5).add(Attributes.ATTACK_DAMAGE, 1).add(Attributes.KNOCKBACK_RESISTANCE, -1.0).add(Attributes.MOVEMENT_SPEED, 0.5).build();
     }
 
     @Override
