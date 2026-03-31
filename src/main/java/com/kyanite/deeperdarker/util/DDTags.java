@@ -109,6 +109,9 @@ public class DDTags {
 
         public static final TagKey<Item> UNLOCKS_LARGE_LOCK = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "unlocks_large_lock"));
+
+        public static final TagKey<Item> FULLBRIGHT = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "fullbright"));
     }
 
     public static class EntityTypes {

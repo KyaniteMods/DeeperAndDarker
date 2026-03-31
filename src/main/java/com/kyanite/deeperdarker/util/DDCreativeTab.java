@@ -212,6 +212,7 @@ public class DDCreativeTab {
 
         entries.accept(DDBlocks.SCULK_BASALT);
         entries.accept(DDItems.ACID_BUCKET);
+        entries.accept(DDItems.FIZZ);
 
         entries.accept(DDItems.SOUL_ELYTRA);
         entries.accept(DDItems.ECHO_BOAT);

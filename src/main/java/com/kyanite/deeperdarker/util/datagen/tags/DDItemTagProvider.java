@@ -119,6 +119,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         );
         add(DDTags.Items.UNLOCKS_SMALL_LOCK, DDItems.DAINTY_KEY);
         add(DDTags.Items.UNLOCKS_LARGE_LOCK, DDItems.KEYBRAND);
+        add(DDTags.Items.FULLBRIGHT, DDItems.FIZZ);
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
 

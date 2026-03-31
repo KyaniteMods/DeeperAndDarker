@@ -127,6 +127,7 @@ public class DDItems {
     public static final Item SCULK_TORCH = register("sculk_torch", new StandingAndWallBlockItem(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH, new Item.Properties(), Direction.DOWN));
 
     public static final Item ACID_BUCKET = register("acid_bucket", new BucketItem(DDFluids.ACID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final Item FIZZ = register("fizz", new Item(new Item.Properties()));
 
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);

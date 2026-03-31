@@ -22,6 +22,7 @@ import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -37,7 +38,11 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation SLUDGE = BuiltInRegistries.ENTITY_TYPE.getKey(DDEntities.SLUDGE).withPrefix("entities/");
     public static final ResourceLocation STALKER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/stalker");
     public static final ResourceLocation BLOOMING_GOLEM = new ResourceLocation(DeeperDarker.MOD_ID, "entities/blooming_golem");
+    public static final ResourceLocation POTTY = new ResourceLocation(DeeperDarker.MOD_ID, "entities/potty");
+    public static final ResourceLocation POT = new ResourceLocation(DeeperDarker.MOD_ID, "entities/pot");
+    public static final ResourceLocation POTTER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/potter");
     public static final ResourceLocation OVERCAST_VESSEL = new ResourceLocation(DeeperDarker.MOD_ID, "entities/overcast_vessel");
+    public static final ResourceLocation ACID_SPRITE = new ResourceLocation(DeeperDarker.MOD_ID, "entities/acid_sprite");
 
     public DDEntityLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.ENTITY);
@@ -101,5 +106,13 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
                         .add(EmptyLootItem.emptyItem().setWeight(3))
                 )
         );
+        biConsumer.accept(POTTY, LootTable.lootTable());
+        biConsumer.accept(POT, LootTable.lootTable());
+        biConsumer.accept(POTTER, LootTable.lootTable());
+        biConsumer.accept(ACID_SPRITE, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(EmptyLootItem.emptyItem().setWeight(5))
+                        .add(LootItem.lootTableItem(DDItems.FIZZ).setWeight(1)
+                                .when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.25f, 0.03125f)))));
     }
 }

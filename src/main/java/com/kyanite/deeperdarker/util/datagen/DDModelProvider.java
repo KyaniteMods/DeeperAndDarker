@@ -392,6 +392,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDItems.ICE_LILY), TextureMapping.layer0(DDBlocks.ICE_LILY), itemModelGenerator.output);
 
         itemModelGenerator.generateFlatItem(DDItems.ACID_BUCKET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.FIZZ, ModelTemplates.FLAT_ITEM);
 
         registerSpawnEgg(itemModelGenerator, DDItems.ANGLER_FISH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);
