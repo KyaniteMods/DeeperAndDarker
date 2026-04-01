@@ -6,14 +6,21 @@ import com.kyanite.deeperdarker.content.entities.AbstractGolemBoss;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhaseType;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractGolem;
+import net.minecraft.world.entity.boss.EnderDragonPart;
+import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,8 +38,23 @@ public class OvercastVessel extends AbstractGolemBoss {
     protected static final EntityDataAccessor<Boolean> DATA_CRACK_WEST_ID = SynchedEntityData.defineId(OvercastVessel.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Boolean> DATA_CRACK_EAST_ID = SynchedEntityData.defineId(OvercastVessel.class, EntityDataSerializers.BOOLEAN);
 
+    private final OvercastVesselPart[] subEntities;
+    private final OvercastVesselPart downPart;
+    private final OvercastVesselPart upPart;
+    private final OvercastVesselPart northPart;
+    private final OvercastVesselPart southPart;
+    private final OvercastVesselPart westPart;
+    private final OvercastVesselPart eastPart;
+
     public OvercastVessel(EntityType<? extends AbstractGolem> entityType, Level level) {
         super(entityType, level);
+        downPart = new OvercastVesselPart(this, "down", Direction.DOWN);
+        upPart = new OvercastVesselPart(this, "up", Direction.UP);
+        northPart = new OvercastVesselPart(this, "north", Direction.NORTH);
+        southPart = new OvercastVesselPart(this, "south", Direction.SOUTH);
+        westPart = new OvercastVesselPart(this, "west", Direction.WEST);
+        eastPart = new OvercastVesselPart(this, "east", Direction.EAST);
+        subEntities = new OvercastVesselPart[]{downPart, upPart, northPart, southPart, westPart, eastPart};
         phaseManager = new OvercastVesselPhaseManager(this);
         xpReward = 50;
     }
@@ -88,11 +110,22 @@ public class OvercastVessel extends AbstractGolemBoss {
     public void tick() {
         setNoGravity(true);
         super.tick();
+        for (OvercastVesselPart part : subEntities) {
+            tickPart(part);
+        }
+    }
+
+    protected void tickPart(OvercastVesselPart part) {
+        part.recalculateBoundingBox();
     }
 
     @Override
     protected void golemServerAiStep() {
         phaseManager.tick();
+    }
+
+    public OvercastVesselPart[] getSubEntities() {
+        return subEntities;
     }
 
     public void addCrackDirection(Direction direction) {
@@ -147,5 +180,43 @@ public class OvercastVessel extends AbstractGolemBoss {
     @Override
     public BlockState getParticleState() {
         return DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState();
+    }
+
+    public boolean hurt(OvercastVesselPart part, DamageSource damageSource, float f) {
+        if (this.phaseManager.getPhases().isEmpty()) {
+            if (damageSource.getEntity() instanceof LivingEntity livingEntity) {
+                setLastHurtByMob(livingEntity);
+            }
+            return true;
+        }
+        f = this.phaseManager.getPhases().getFirst().onHurt(this, part, damageSource, f);
+        if (f < 0.01f) {
+            return false;
+        }
+        if (damageSource.getEntity() instanceof Player) {
+            this.reallyHurt(damageSource, f);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean hurt(DamageSource damageSource, float f) {
+        if (!this.level().isClientSide()) {
+            return hurt(southPart, damageSource, f);
+        }
+        return false;
+    }
+
+    protected boolean reallyHurt(DamageSource damageSource, float f) {
+        return super.hurt(damageSource, f);
+    }
+
+    @Override
+    public void recreateFromPacket(ClientboundAddEntityPacket clientboundAddEntityPacket) {
+        super.recreateFromPacket(clientboundAddEntityPacket);
+        OvercastVesselPart[] parts = getSubEntities();
+        for (int i = 0; i < parts.length; ++i) {
+            parts[i].setId(i + clientboundAddEntityPacket.getId());
+        }
     }
 }

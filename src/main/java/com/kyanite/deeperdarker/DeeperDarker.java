@@ -118,9 +118,9 @@ public class DeeperDarker implements ModInitializer {
 		for (int z = 0; z < 64; z++) {
 			StringBuilder builder = new StringBuilder();
 			for (int x = 0; x < 64; x++) {
-				float value = noise.get(x, z, SimpleWorleyNoise.ReturnValue.VALUE);
+				float value = 1.0f - noise.get(x, z, SimpleWorleyNoise.ReturnValue.DISTANCE_TO_EDGE);
 //				builder.append(value).append(' ');
-				builder.append(chars1.charAt(Mth.floor(value * (chars1.length() - 1))));
+				builder.append(chars.charAt(Mth.floor(value * (chars.length() - 1))));
 			}
 			System.out.println(builder);
 		}

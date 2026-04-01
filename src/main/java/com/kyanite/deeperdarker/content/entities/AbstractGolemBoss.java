@@ -365,6 +365,11 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     }
 
     public void hurtPlayersInside() {
-        level().getEntities(this, getBoundingBox().deflate(0.4), entity -> entity instanceof Player).forEach(this::doHurtTarget);
+        level().getEntities(this, getBoundingBox().deflate(0.4), entity -> entity instanceof Player).forEach(player -> {
+            if (getRandom().nextBoolean()) {
+                player.addDeltaMovement(player.getDeltaMovement().add(0.0, getBbHeight(), 0.0));
+            }
+            doHurtTarget(player);
+        });
     }
 }

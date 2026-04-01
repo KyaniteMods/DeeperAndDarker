@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.util.DDUtil;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -71,9 +72,10 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
             return;
         }
 
-        if (slideTowardTarget(vessel)) {
+        Pair<Boolean, Vec3> slideResult = slideTowardTarget(vessel);
+        if (slideResult.getFirst()) {
             Vec3 deltaMovement = vessel.getDeltaMovement();
-            if (vessel.verticalCollision || vessel.horizontalCollision && deltaMovement.lengthSqr() > 0.2 && !vessel.isCracked(direction.get())) {
+            if ((vessel.verticalCollision || vessel.horizontalCollision) && slideResult.getSecond().lengthSqr() > 0.002 && !vessel.isCracked(direction.get())) {
                 vessel.addCrackDirection(direction.get());
                 moveTime = 20;
             } else {
@@ -99,10 +101,10 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
     }
 
     /**
-     * @return whether it stopped sliding
+     * @return whether it stopped sliding and delta movement
      */
-    protected boolean slideTowardTarget(OvercastVessel vessel) {
-        if (target.isEmpty() || direction.isEmpty()) return true;
+    protected Pair<Boolean, Vec3> slideTowardTarget(OvercastVessel vessel) {
+        if (target.isEmpty() || direction.isEmpty()) return Pair.of(true, Vec3.ZERO);
         Vec3 target = this.target.get();
 
         Vec3 deltaMovement = vessel.getDeltaMovement();
@@ -140,9 +142,9 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
                 && (vessel.getY() - target.y()) * direction.get().getStepY() == 0
                 && (vessel.getZ() - target.z()) * direction.get().getStepZ() == 0) {
             vessel.setDeltaMovement(Vec3.ZERO);
-            return true;
+            return Pair.of(true, newDeltaMovement);
         }
-        return vessel.position().equals(oldPosition);
+        return Pair.of(vessel.position().equals(oldPosition), newDeltaMovement);
     }
 
     protected boolean isPathFree(OvercastVessel vessel, Direction direction) {
