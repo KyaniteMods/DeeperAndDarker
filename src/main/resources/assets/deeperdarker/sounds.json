@@ -269,6 +269,17 @@
     ],
     "subtitle": "subtitles.item.transmitter.unlink"
   },
+  "item.armor.equip_lead": {
+    "sounds": [
+      "deeperdarker:item/armor/equip_lead_1",
+      "deeperdarker:item/armor/equip_lead_2",
+      "deeperdarker:item/armor/equip_lead_3",
+      "deeperdarker:item/armor/equip_lead_4",
+      "deeperdarker:item/armor/equip_lead_5",
+      "deeperdarker:item/armor/equip_lead_6"
+    ],
+    "subtitle": "subtitles.item.deeperdarker.equip_lead"
+  },
   "music.otherside.deeplands": {
     "sounds": [
       "deeperdarker:ambience/otherside/deeplands"

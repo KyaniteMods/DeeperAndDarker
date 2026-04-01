@@ -243,6 +243,16 @@ public class DDCreativeTab {
         entries.accept(DDItems.RESONARIUM_LEGGINGS);
         entries.accept(DDItems.RESONARIUM_BOOTS);
 
+        entries.accept(DDItems.LEAD_SHOVEL);
+        entries.accept(DDItems.LEAD_PICKAXE);
+        entries.accept(DDItems.LEAD_AXE);
+        entries.accept(DDItems.LEAD_HOE);
+        entries.accept(DDItems.LEAD_SWORD);
+        entries.accept(DDItems.LEAD_HELMET);
+        entries.accept(DDItems.LEAD_CHESTPLATE);
+        entries.accept(DDItems.LEAD_LEGGINGS);
+        entries.accept(DDItems.LEAD_BOOTS);
+
         entries.accept(DDItems.WARDEN_SHOVEL);
         entries.accept(DDItems.WARDEN_PICKAXE);
         entries.accept(DDItems.WARDEN_AXE);

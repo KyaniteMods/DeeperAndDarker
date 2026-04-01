@@ -249,6 +249,15 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.RESONARIUM_AXE, "Resonarium Axe");
         translationBuilder.add(DDItems.RESONARIUM_SHOVEL, "Resonarium Shovel");
         translationBuilder.add(DDItems.RESONARIUM_HOE, "Resonarium Hoe");
+        translationBuilder.add(DDItems.LEAD_HELMET, "Lead Helmet");
+        translationBuilder.add(DDItems.LEAD_CHESTPLATE, "Lead Chestplate");
+        translationBuilder.add(DDItems.LEAD_LEGGINGS, "Lead Leggings");
+        translationBuilder.add(DDItems.LEAD_BOOTS, "Lead Boots");
+        translationBuilder.add(DDItems.LEAD_SWORD, "Lead Sword");
+        translationBuilder.add(DDItems.LEAD_PICKAXE, "Lead Pickaxe");
+        translationBuilder.add(DDItems.LEAD_AXE, "Lead Axe");
+        translationBuilder.add(DDItems.LEAD_SHOVEL, "Lead Shovel");
+        translationBuilder.add(DDItems.LEAD_HOE, "Lead Hoe");
         translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
         translationBuilder.add(DDItems.WARDEN_CHESTPLATE, "Warden Chestplate");
         translationBuilder.add(DDItems.WARDEN_LEGGINGS, "Warden Leggings");
@@ -407,6 +416,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.angler_fish.flop", "Angler Fish flops");
         translationBuilder.add("subtitles.entity.angler_fish.death", "Angler Fish dies");
         translationBuilder.add("subtitles.entity.icicle_shard.land", "Icicle shard lands");
+        translationBuilder.add("subtitles.item.deeperdarker.equip_lead", "Lead armor thuds");
 
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you toward the source...");

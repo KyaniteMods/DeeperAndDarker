@@ -72,6 +72,16 @@ public class DDItems {
     public static final Item RESONARIUM_HOE = register("resonarium_hoe", new HoeItem(DDTiers.RESONARIUM, -4, 0, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
     public static final Item RESONARIUM_SWORD = register("resonarium_sword", new SwordItem(DDTiers.RESONARIUM, 3, -2.4f, new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
 
+    public static final Item LEAD_HELMET = register("lead_helmet", new ArmorItem(DDArmorMaterials.LEAD, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final Item LEAD_CHESTPLATE = register("lead_chestplate", new ArmorItem(DDArmorMaterials.LEAD, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final Item LEAD_LEGGINGS = register("lead_leggings", new ArmorItem(DDArmorMaterials.LEAD, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final Item LEAD_BOOTS = register("lead_boots", new ArmorItem(DDArmorMaterials.LEAD, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final Item LEAD_SHOVEL = register("lead_shovel", new ShovelItem(DDTiers.LEAD, 1.5f, -3.0f, new Item.Properties()));
+    public static final Item LEAD_PICKAXE = register("lead_pickaxe", new PickaxeItem(DDTiers.LEAD, 1, -2.8f, new Item.Properties()));
+    public static final Item LEAD_AXE = register("lead_axe", new AxeItem(DDTiers.LEAD, 6.0f, -3.1f, new Item.Properties()));
+    public static final Item LEAD_HOE = register("lead_hoe", new HoeItem(DDTiers.LEAD, -2, 1.0f, new Item.Properties()));
+    public static final Item LEAD_SWORD = register("lead_sword", new SwordItem(DDTiers.LEAD, 3, -2.4f, new Item.Properties()));
+
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item WHITE_SCULK_TRANSMITTER = register("white_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item ORANGE_SCULK_TRANSMITTER = register("orange_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));

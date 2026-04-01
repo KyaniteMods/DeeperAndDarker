@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "l": {
+      "item": "deeperdarker:lead_ingot"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "lll",
+    " | ",
+    " | "
+  ],
+  "result": {
+    "item": "deeperdarker:lead_pickaxe"
+  },
+  "show_notification": true
+}

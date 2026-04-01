@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "l": {
+      "item": "deeperdarker:lead_ingot"
+    }
+  },
+  "pattern": [
+    "l l",
+    "lll",
+    "lll"
+  ],
+  "result": {
+    "item": "deeperdarker:lead_chestplate"
+  },
+  "show_notification": true
+}

@@ -30,6 +30,64 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     public void buildRecipes(Consumer<FinishedRecipe> output) {
         addSmithingRecipes(output);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_HELMET)
+                .define('l', DDItems.LEAD_INGOT)
+                .pattern("lll")
+                .pattern("l l")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_CHESTPLATE)
+                .define('l', DDItems.LEAD_INGOT)
+                .pattern("l l")
+                .pattern("lll")
+                .pattern("lll")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_LEGGINGS)
+                .define('l', DDItems.LEAD_INGOT)
+                .pattern("lll")
+                .pattern("l l")
+                .pattern("l l")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_BOOTS)
+                .define('l', DDItems.LEAD_INGOT)
+                .pattern("l l")
+                .pattern("l l")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_SWORD)
+                .define('l', DDItems.LEAD_INGOT)
+                .define('|', Items.STICK)
+                .pattern("l")
+                .pattern("l")
+                .pattern("|")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_PICKAXE)
+                .define('l', DDItems.LEAD_INGOT)
+                .define('|', Items.STICK)
+                .pattern("lll")
+                .pattern(" | ")
+                .pattern(" | ")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_AXE)
+                .define('l', DDItems.LEAD_INGOT)
+                .define('|', Items.STICK)
+                .pattern("ll")
+                .pattern("l|")
+                .pattern(" |")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_SHOVEL)
+                .define('l', DDItems.LEAD_INGOT)
+                .define('|', Items.STICK)
+                .pattern("l")
+                .pattern("|")
+                .pattern("|")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_HOE)
+                .define('l', DDItems.LEAD_INGOT)
+                .define('|', Items.STICK)
+                .pattern("ll")
+                .pattern(" |")
+                .pattern(" |")
+                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+
         // Wood stuff
             // Echo
         woodRecipes(output, DDBlocks.ECHO_PLANKS, DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);

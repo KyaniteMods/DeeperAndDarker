@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -14,6 +15,7 @@ import java.util.EnumMap;
 
 @SuppressWarnings("NullableProblems")
 public enum DDArmorMaterials implements ArmorMaterial {
+    LEAD("lead", 15, new int[] {2, 5, 6, 2}, 9, DDSounds.ARMOR_EQUIP_LEAD, 0.0f, 0.0f, DDItems.LEAD_INGOT),
     RESONARIUM("resonarium", 30, new int[] {2, 6, 7, 3}, 10, SoundEvents.ARMOR_EQUIP_IRON, 1, 0, DDItems.RESONARIUM),
     WARDEN("warden", 40, new int[] {4, 7, 9, 4}, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.1f, DDItems.REINFORCED_ECHO_SHARD);
 
