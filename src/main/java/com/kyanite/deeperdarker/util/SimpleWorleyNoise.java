@@ -22,17 +22,17 @@ public class SimpleWorleyNoise {
         float secondLowestDistance = 21.213203f;
         for (int dz = -1; dz <= 1; dz++) {
             for (int dx = -1; dx <= 1; dx++) {
-                Vec2 pointPos = getPointPosition(SectionPos.blockToSectionCoord(x + dx), SectionPos.blockToSectionCoord(z + dz));
-                float diffX = x - pointPos.x;
-                float diffZ = z - pointPos.y;
-                float diff = Mth.sqrt(diffX * diffX + diffZ * diffZ);
-                if (lowestDistance > diff) {
+                Vec2 pointPos = getPointPosition(SectionPos.blockToSectionCoord(x) + dx, SectionPos.blockToSectionCoord(z) + dz);
+                float distanceX = x - pointPos.x;
+                float distanceZ = z - pointPos.y;
+                float distance = Mth.sqrt(distanceX * distanceX + distanceZ * distanceZ);
+                if (lowestDistance > distance) {
                     secondLowestDistance = lowestDistance;
-                    lowestDistance = diff;
+                    lowestDistance = distance;
                 }
             }
         }
-        return returnValue == ReturnValue.VALUE ? lowestDistance / 21.213203f : Mth.abs(lowestDistance - secondLowestDistance) / 21.213203f;
+        return returnValue == ReturnValue.VALUE ? lowestDistance / 21.213203f : Mth.abs(secondLowestDistance - lowestDistance) / 21.213203f;
     }
 
     public Vec2 getPointPosition(int chunkX, int chunkZ) {
