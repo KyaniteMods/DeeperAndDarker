@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "deeperdarker:sculk_stone_diamond_ore"
+          "Name": "deeperdarker:sculk_stone_lead_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

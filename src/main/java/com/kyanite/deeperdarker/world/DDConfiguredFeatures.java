@@ -130,7 +130,7 @@ public class DDConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> emeraldTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.SCULK_STONE_EMERALD_ORE.defaultBlockState()), OreConfiguration.target(gloomslate, DDBlocks.GLOOMSLATE_EMERALD_ORE.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> lapisTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.SCULK_STONE_LAPIS_ORE.defaultBlockState()), OreConfiguration.target(gloomslate, DDBlocks.GLOOMSLATE_LAPIS_ORE.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> diamondTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.SCULK_STONE_DIAMOND_ORE.defaultBlockState()), OreConfiguration.target(gloomslate, DDBlocks.GLOOMSLATE_DIAMOND_ORE.defaultBlockState()));
-        List<OreConfiguration.TargetBlockState> leadTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.SCULK_STONE_DIAMOND_ORE.defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> leadTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.SCULK_STONE_LEAD_ORE.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> bloomingMossTarget = List.of(OreConfiguration.target(new BlockMatchTest(DDBlocks.BLOOMING_SCULK_STONE), DDBlocks.BLOOMING_MOSS_BLOCK.defaultBlockState()), OreConfiguration.target(sculkGrime, DDBlocks.BLOOMING_MOSS_BLOCK.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> gloomySculkTarget = List.of(OreConfiguration.target(sculkGrime, DDBlocks.GLOOMY_SCULK.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> soulSandTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.SOUL_SAND.defaultBlockState()));
