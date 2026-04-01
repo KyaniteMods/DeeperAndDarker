@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.network.Messages;
-import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDConfig;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.util.DDLootItemFunctions;

@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.util.datagen;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
-import com.kyanite.deeperdarker.util.AncientPaintings;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -14,7 +13,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -531,6 +529,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(getPainting(AncientPaintings.CARROT, ".author"), "Pedro Ricardo");
         translationBuilder.add(getPainting(AncientPaintings.MAZE, ".title"), "Maze");
         translationBuilder.add(getPainting(AncientPaintings.MAZE, ".author"), "Pedro Ricardo");
+        translationBuilder.add(getPainting(AncientPaintings.STAR_CATCHER, ".title"), "Star Catcher");
+        translationBuilder.add(getPainting(AncientPaintings.STAR_CATCHER, ".author"), "Pedro Ricardo");
 
         translationBuilder.add("key.categories." + DeeperDarker.MOD_ID, "Deeper and Darker");
         translationBuilder.add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");

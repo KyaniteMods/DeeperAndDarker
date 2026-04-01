@@ -1,4 +1,4 @@
-package com.kyanite.deeperdarker.util;
+package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.Registry;
@@ -17,6 +17,7 @@ public class AncientPaintings {
     public static final ResourceKey<PaintingVariant> ECHOER = create("echoer", new PaintingVariant(16, 16));
     public static final ResourceKey<PaintingVariant> CARROT = create("carrot", new PaintingVariant(32, 16));
     public static final ResourceKey<PaintingVariant> MAZE = create("maze", new PaintingVariant(64, 48));
+    public static final ResourceKey<PaintingVariant> STAR_CATCHER = create("star_catcher", new PaintingVariant(32, 32));
 
     private static ResourceKey<PaintingVariant> create(String string, PaintingVariant paintingVariant) {
         ResourceKey<PaintingVariant> resourceKey = ResourceKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(DeeperDarker.MOD_ID, string));
