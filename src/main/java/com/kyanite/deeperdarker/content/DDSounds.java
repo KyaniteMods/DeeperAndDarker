@@ -63,7 +63,10 @@ public class DDSounds {
 
     public static final SoundEvent ICICLE_SHARD_LAND = register("entity.icicle_shard.land");
 
+    public static final SoundEvent BUBBLOX_POP = register("entity.bubblox.pop");
+
     public static final SoundEvent WARDEN_SHEAR = register("entity.warden.shear");
+
 
     public static final SoundEvent TRANSMITTER_ERROR = register("item.transmitter.error");
     public static final SoundEvent TRANSMITTER_LINK = register("item.transmitter.link");

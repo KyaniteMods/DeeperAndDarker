@@ -34,6 +34,7 @@ public class DDModelLayers {
     public static ModelLayerLocation POTTER;
     public static ModelLayerLocation OVERCAST_VESSEL;
     public static ModelLayerLocation ACID_SPRITE;
+    public static ModelLayerLocation BUBBLOX;
     public static ModelLayerLocation SHATTERED_HEAD;
     public static ModelLayerLocation SUNGLASSES;
 
@@ -86,6 +87,7 @@ public class DDModelLayers {
         POTTER = register("overcast_pot", "potter");
         OVERCAST_VESSEL = registerMain("overcast_vessel");
         ACID_SPRITE = registerMain("acid_sprite");
+        BUBBLOX = registerMain("bubblox");
         SHATTERED_HEAD = registerMain("shattered_head");
         SUNGLASSES = registerMain("sunglasses");
     }

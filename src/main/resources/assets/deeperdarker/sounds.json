@@ -239,6 +239,12 @@
     ],
     "subtitle": "subtitles.entity.icicle_shard.land"
   },
+  "entity.bubblox.pop": {
+    "sounds": [
+      "deeperdarker:entity/bubblox/pop"
+    ],
+    "subtitle": "subtitles.entity.bubblox.pop"
+  },
   "entity.warden.shear": {
     "sounds": [
       "minecraft:mob/sheep/shear"

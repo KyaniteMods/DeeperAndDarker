@@ -64,6 +64,12 @@ public class AcidSprite extends Monster {
         if (this.level().isClientSide()) {
             this.idleAnimationState.animateWhen(!walkAnimation.isMoving(), this.tickCount);
         }
+        if (deeperdarker$isInAcid() && !isDeadOrDying() && !hasCustomName()) {
+            discard();
+            Bubblox bubblox = new Bubblox(level(), getX(), getY(), getZ());
+            bubblox.setSize((byte) random.nextIntBetweenInclusive(0, 2));
+            level().addFreshEntity(bubblox);
+        }
         super.tick();
     }
 

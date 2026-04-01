@@ -32,6 +32,7 @@ public class DDEntities {
     public static final EntityType<OvercastPot> POTTER = register("potter", FabricEntityTypeBuilder.create(MobCategory.MONSTER, OvercastPot::new).dimensions(EntityDimensions.fixed(1.3f, 1.2f)).trackRangeBlocks(10).build());
     public static final EntityType<OvercastVessel> OVERCAST_VESSEL = register("overcast_vessel", FabricEntityTypeBuilder.<OvercastVessel>create(MobCategory.MONSTER, OvercastVessel::new).dimensions(EntityDimensions.fixed(3f, 3f)).trackRangeChunks(10).build());
     public static final EntityType<AcidSprite> ACID_SPRITE = register("acid_sprite", FabricEntityTypeBuilder.create(MobCategory.MONSTER, AcidSprite::new).dimensions(EntityDimensions.fixed(0.5f, 0.6f)).trackRangeChunks(10).build());
+    public static final EntityType<Bubblox> BUBBLOX = register("bubblox", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Bubblox::new).dimensions(EntityDimensions.fixed(1.0f, 1.0f)).trackRangeChunks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");

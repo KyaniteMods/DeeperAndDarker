@@ -368,6 +368,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.POTTER, "Potter");
         translationBuilder.add(DDEntities.OVERCAST_VESSEL, "Overcast Vessel");
         translationBuilder.add(DDEntities.ACID_SPRITE, "Acid Sprite");
+        translationBuilder.add(DDEntities.BUBBLOX, "Bubblox");
 
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.FIZZY), "Tipped Arrow");
         translationBuilder.add(getPotion(Items.POTION, DDPotions.FIZZY), "Fizzy Potion");
@@ -415,6 +416,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.angler_fish.death", "Angler Fish dies");
         translationBuilder.add("subtitles.entity.icicle_shard.land", "Icicle shard lands");
         translationBuilder.add("subtitles.item.deeperdarker.equip_lead", "Lead armor thuds");
+        translationBuilder.add("subtitles.entity.bubblox.pop", "Bubblox pops");
 
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.title", "Sculk Story");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you toward the source...");
