@@ -205,7 +205,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, CONE_SHADOW_CRYSTAL, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SHADOW_CRYSTAL_BLOCK), UniformInt.of(40, 45), UniformInt.of(30, 50), UniformInt.of(30, 60), UniformInt.of(-8, 8), UniformInt.of(-25, -10), UniformInt.of(-8, 8)));
         FeatureUtils.register(context, BOULDER_SCULK_FOREST, DDFeatures.BOULDER, new BoulderFeatureConfiguration(SimpleStateProvider.simple(DDBlocks.COBBLED_SCULK_STONE), ConstantInt.of(3)));
         FeatureUtils.register(context, ACID_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(DDBlocks.ACID.defaultBlockState(), DDBlocks.SCULK_BASALT.defaultBlockState(), UniformInt.of(3, 6), UniformInt.of(1, 2)));
-        FeatureUtils.register(context, FLOES, DDFeatures.FLOES, new FloesFeatureConfiguration(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.SCULK_BASALT)), Optional.of(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.ACID))), 64, 54, 12.0f / 34.0f));
+        FeatureUtils.register(context, FLOES, DDFeatures.FLOES, new FloesFeatureConfiguration(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.SCULK_BASALT)), Optional.of(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.ACID))), 64, 54, 0.15f));
 
         FeatureUtils.register(context, DISK_DARK_FOUNTAIN, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(DDBlocks.SCULK_TISSUE.defaultBlockState(), 35)
