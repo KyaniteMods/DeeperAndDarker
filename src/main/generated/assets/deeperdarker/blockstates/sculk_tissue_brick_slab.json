@@ -1,0 +1,55 @@
+{
+  "variants": {
+    "type=bottom": [
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_2"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_3"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_4"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_5"
+      }
+    ],
+    "type=double": [
+      {
+        "model": "deeperdarker:block/sculk_tissue_bricks"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_bricks_2"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_bricks_3"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_bricks_4"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_bricks_5"
+      }
+    ],
+    "type=top": [
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_top"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_2_top"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_3_top"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_4_top"
+      },
+      {
+        "model": "deeperdarker:block/sculk_tissue_brick_slab_5_top"
+      }
+    ]
+  }
+}

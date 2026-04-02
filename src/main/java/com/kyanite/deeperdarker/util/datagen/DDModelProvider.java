@@ -28,10 +28,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.DripstoneThickness;
-import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.*;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.*;
@@ -270,6 +267,10 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.blockEntityModels(ModelLocationUtils.decorateBlockModelLocation("skull"), Blocks.SOUL_SAND).createWithCustomBlockItemModel(ModelTemplates.SKULL_INVENTORY, DDBlocks.SHATTERED_HEAD).createWithoutBlockItem(DDBlocks.SHATTERED_WALL_HEAD);
 
         createRandomRotationBlock(blockModelGenerators, DDBlocks.SCULK_TISSUE);
+        createRandomCubeAll(blockModelGenerators, DDBlocks.SCULK_TISSUE_BRICKS, 5);
+        createRandomStairs(blockModelGenerators, DDBlocks.SCULK_TISSUE_BRICK_STAIRS, DDBlocks.SCULK_TISSUE_BRICKS, 5);
+        createRandomSlabWithCubeAll(blockModelGenerators, DDBlocks.SCULK_TISSUE_BRICK_SLAB, DDBlocks.SCULK_TISSUE_BRICKS, 5);
+        createRandomWall(blockModelGenerators, DDBlocks.SCULK_TISSUE_BRICK_WALL, DDBlocks.SCULK_TISSUE_BRICKS, 5);
         registerCubeBottomTop(blockModelGenerators, DDBlocks.DARK_FOUNTAIN, DDBlocks.SCULK_TISSUE);
         blockModelGenerators.family(DDBlocks.SHADOW_CRYSTAL_BLOCK);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.TOXIC_AIR, Blocks.AIR);
@@ -369,6 +370,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOOMSLATE_TILE_WALL.asItem()), TextureMapping.cube(DDBlocks.GLOOMSLATE_TILES), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SMOOTH_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.SMOOTH_GLOOMSLATE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_GLOOMSLATE), itemModelGenerator.output);
+        ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_TISSUE_BRICK_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_TISSUE_BRICKS), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.ECHO_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_SPRUCE_BOAT, ModelTemplates.FLAT_ITEM);
@@ -693,5 +695,125 @@ public class DDModelProvider extends FabricModelProvider {
         });
         blockModelGenerators.createSimpleFlatItemModel(block.asItem());
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(propertyDispatch));
+    }
+
+    private void createRandomCubeAll(BlockModelGenerators blockModelGenerators, Block block, int amount) {
+        Variant[] variants = new Variant[amount];
+        for (int i = 0; i < amount; i++) {
+            ResourceLocation model = ModelLocationUtils.getModelLocation(block, i == 0 ? "" : "_" + (i + 1));
+            variants[i] = Variant.variant().with(VariantProperties.MODEL, model);
+            ResourceLocation texture = TextureMapping.getBlockTexture(block, i == 0 ? "" : "_" + (i + 1));
+            ModelTemplates.CUBE_ALL.create(model, TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+        }
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, variants));
+    }
+
+    private void createRandomStairs(BlockModelGenerators blockModelGenerators, Block block, Block base, int amount) {
+        List<ResourceLocation> variantsInner = new ArrayList<>();
+        List<ResourceLocation> variantsStraight = new ArrayList<>();
+        List<ResourceLocation> variantsOuter = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            ResourceLocation model = ModelLocationUtils.getModelLocation(block, i == 0 ? "" : "_" + (i + 1));
+            ResourceLocation texture = TextureMapping.getBlockTexture(base, i == 0 ? "" : "_" + (i + 1));
+
+            ResourceLocation innerModel = ModelTemplates.STAIRS_INNER.create(model.withSuffix("_inner"), TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            ResourceLocation straightModel = ModelTemplates.STAIRS_STRAIGHT.create(model, TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            ResourceLocation outerModel = ModelTemplates.STAIRS_OUTER.create(model.withSuffix("_outer"), TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            variantsInner.add(innerModel);
+            variantsStraight.add(straightModel);
+            variantsOuter.add(outerModel);
+        }
+
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.HALF, BlockStateProperties.STAIRS_SHAPE)
+                .select(Direction.EAST, Half.BOTTOM, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model)).toList())
+                .select(Direction.WEST, Half.BOTTOM, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.BOTTOM, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.BOTTOM, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.BOTTOM, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model)).toList())
+                .select(Direction.WEST, Half.BOTTOM, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.BOTTOM, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.BOTTOM, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.BOTTOM, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.BOTTOM, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.BOTTOM, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model)).toList())
+                .select(Direction.NORTH, Half.BOTTOM, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.BOTTOM, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model)).toList())
+                .select(Direction.WEST, Half.BOTTOM, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.BOTTOM, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.BOTTOM, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.BOTTOM, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.BOTTOM, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.BOTTOM, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model)).toList())
+                .select(Direction.NORTH, Half.BOTTOM, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.TOP, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.TOP, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.TOP, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.TOP, StairsShape.STRAIGHT, variantsStraight.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.TOP, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.TOP, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.TOP, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.TOP, StairsShape.OUTER_RIGHT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.TOP, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.TOP, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.TOP, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.TOP, StairsShape.OUTER_LEFT, variantsOuter.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.TOP, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.TOP, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.TOP, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.TOP, StairsShape.INNER_RIGHT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.EAST, Half.TOP, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.WEST, Half.TOP, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.SOUTH, Half.TOP, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .select(Direction.NORTH, Half.TOP, StairsShape.INNER_LEFT, variantsInner.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())));
+    }
+
+    private void createRandomSlabWithCubeAll(BlockModelGenerators blockModelGenerators, Block block, Block base, int amount) {
+        List<Variant> variantsBottom = new ArrayList<>();
+        List<Variant> variantsTop = new ArrayList<>();
+        List<Variant> variantsDouble = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            ResourceLocation model = ModelLocationUtils.getModelLocation(block, i == 0 ? "" : "_" + (i + 1));
+            ResourceLocation texture = TextureMapping.getBlockTexture(base, i == 0 ? "" : "_" + (i + 1));
+
+            ResourceLocation bottomModel = ModelTemplates.SLAB_BOTTOM.create(model, TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            ResourceLocation topModel = ModelTemplates.SLAB_TOP.create(model.withSuffix("_top"), TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            ResourceLocation doubleModel = ModelLocationUtils.getModelLocation(base, i == 0 ? "" : "_" + (i + 1));
+            variantsBottom.add(Variant.variant().with(VariantProperties.MODEL, bottomModel));
+            variantsTop.add(Variant.variant().with(VariantProperties.MODEL, topModel));
+            variantsDouble.add(Variant.variant().with(VariantProperties.MODEL, doubleModel));
+        }
+
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(BlockStateProperties.SLAB_TYPE)
+                .select(SlabType.BOTTOM, variantsBottom)
+                .select(SlabType.TOP, variantsTop)
+                .select(SlabType.DOUBLE, variantsDouble)));
+    }
+
+    private void createRandomWall(BlockModelGenerators blockModelGenerators, Block block, Block base, int amount) {
+        List<ResourceLocation> variantsPost = new ArrayList<>();
+        List<ResourceLocation> variantsSide = new ArrayList<>();
+        List<ResourceLocation> variantsSideTall = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            ResourceLocation model = ModelLocationUtils.getModelLocation(block, i == 0 ? "" : "_" + (i + 1));
+            ResourceLocation texture = TextureMapping.getBlockTexture(base, i == 0 ? "" : "_" + (i + 1));
+
+            ResourceLocation postModel = ModelTemplates.WALL_POST.create(model.withSuffix("_post"), TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            ResourceLocation sideModel = ModelTemplates.WALL_LOW_SIDE.create(model.withSuffix("_side"), TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            ResourceLocation sideTallModel = ModelTemplates.WALL_TALL_SIDE.create(model.withSuffix("_side_tall"), TextureMapping.cube(texture), blockModelGenerators.modelOutput);
+            variantsPost.add(postModel);
+            variantsSide.add(sideModel);
+            variantsSideTall.add(sideTallModel);
+        }
+
+        blockModelGenerators.blockStateOutput.accept(MultiPartGenerator.multiPart(block)
+                .with(Condition.condition().term(BlockStateProperties.UP, true), variantsPost.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model)).toList())
+                .with(Condition.condition().term(BlockStateProperties.NORTH_WALL, WallSide.LOW), variantsSide.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.EAST_WALL, WallSide.LOW), variantsSide.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.SOUTH_WALL, WallSide.LOW), variantsSide.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.WEST_WALL, WallSide.LOW), variantsSide.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.NORTH_WALL, WallSide.TALL), variantsSideTall.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.EAST_WALL, WallSide.TALL), variantsSideTall.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.SOUTH_WALL, WallSide.TALL), variantsSideTall.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).toList())
+                .with(Condition.condition().term(BlockStateProperties.WEST_WALL, WallSide.TALL), variantsSideTall.stream().map(model -> Variant.variant().with(VariantProperties.MODEL, model).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).toList()));
     }
 }

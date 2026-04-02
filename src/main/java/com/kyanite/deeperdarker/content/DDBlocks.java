@@ -326,6 +326,10 @@ public class DDBlocks {
     public static final Block RETURN_STATUE = register("return_statue", new ReturnStatueBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(-1, 3600000.0f).forceSolidOn().noLootTable().pushReaction(PushReaction.BLOCK).isSuffocating(Blocks::never)));
 
     public static final Block SCULK_TISSUE = register("sculk_tissue", new SculkTissueBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
+    public static final Block SCULK_TISSUE_BRICKS = register("sculk_tissue_bricks", new Block(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS)));
+    public static final Block SCULK_TISSUE_BRICK_STAIRS = register("sculk_tissue_brick_stairs", new StairBlock(SCULK_TISSUE_BRICKS.defaultBlockState(), BlockBehaviour.Properties.copy(SCULK_TISSUE_BRICKS)));
+    public static final Block SCULK_TISSUE_BRICK_SLAB = register("sculk_tissue_brick_slab", new SlabBlock(BlockBehaviour.Properties.copy(SCULK_TISSUE_BRICKS)));
+    public static final Block SCULK_TISSUE_BRICK_WALL = register("sculk_tissue_brick_wall", new WallBlock(BlockBehaviour.Properties.copy(SCULK_TISSUE_BRICKS)));
     public static final Block DARK_FOUNTAIN = register("dark_fountain", new DarkFountainBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.5f)));
     public static final Block SHADOW_CRYSTAL_BLOCK = register("shadow_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
     public static final Block TOXIC_AIR = registerWithoutItem("toxic_air", new ToxicAirBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).noCollission().randomTicks().noLootTable().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY)));

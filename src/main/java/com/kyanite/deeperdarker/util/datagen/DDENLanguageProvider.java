@@ -226,6 +226,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SHATTERED_HEAD, "Shattered Head");
         translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.SHATTERED_WALL_HEAD), "Shattered Wall Head");
         translationBuilder.add(DDBlocks.SCULK_TISSUE, "Sculk Tissue");
+        translationBuilder.add(DDBlocks.SCULK_TISSUE_BRICKS, "Sculk Tissue Bricks");
+        translationBuilder.add(DDBlocks.SCULK_TISSUE_BRICK_STAIRS, "Sculk Tissue Brick Stairs");
+        translationBuilder.add(DDBlocks.SCULK_TISSUE_BRICK_SLAB, "Sculk Tissue Brick Slab");
+        translationBuilder.add(DDBlocks.SCULK_TISSUE_BRICK_WALL, "Sculk Tissue Brick Wall");
         translationBuilder.add(DDBlocks.DARK_FOUNTAIN, "Dark Fountain");
         translationBuilder.add(DDBlocks.SHADOW_CRYSTAL_BLOCK, "Block of Shadow Crystal");
         translationBuilder.add(DDBlocks.TOXIC_AIR, "Toxic Air");

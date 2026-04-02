@@ -1,0 +1,272 @@
+{
+  "multipart": [
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_post"
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_post"
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_post"
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_post"
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_post"
+        }
+      ],
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side",
+          "uvlock": true
+        }
+      ],
+      "when": {
+        "north": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
+      "when": {
+        "east": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
+      "when": {
+        "south": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
+      "when": {
+        "west": "low"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side_tall",
+          "uvlock": true
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side_tall",
+          "uvlock": true
+        }
+      ],
+      "when": {
+        "north": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side_tall",
+          "uvlock": true,
+          "y": 90
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side_tall",
+          "uvlock": true,
+          "y": 90
+        }
+      ],
+      "when": {
+        "east": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side_tall",
+          "uvlock": true,
+          "y": 180
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side_tall",
+          "uvlock": true,
+          "y": 180
+        }
+      ],
+      "when": {
+        "south": "tall"
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_2_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_3_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_4_side_tall",
+          "uvlock": true,
+          "y": 270
+        },
+        {
+          "model": "deeperdarker:block/sculk_tissue_brick_wall_5_side_tall",
+          "uvlock": true,
+          "y": 270
+        }
+      ],
+      "when": {
+        "west": "tall"
+      }
+    }
+  ]
+}

@@ -206,6 +206,10 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_JAW);
 
         entries.accept(DDBlocks.SCULK_TISSUE);
+        entries.accept(DDBlocks.SCULK_TISSUE_BRICKS);
+        entries.accept(DDBlocks.SCULK_TISSUE_BRICK_STAIRS);
+        entries.accept(DDBlocks.SCULK_TISSUE_BRICK_SLAB);
+        entries.accept(DDBlocks.SCULK_TISSUE_BRICK_WALL);
         entries.accept(DDBlocks.DARK_FOUNTAIN);
         entries.accept(DDBlocks.SHADOW_CRYSTAL_BLOCK);
 
