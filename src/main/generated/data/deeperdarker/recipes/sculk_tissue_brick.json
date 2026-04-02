@@ -3,9 +3,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.3,
-  "group": "grime_brick",
   "ingredient": {
-    "item": "deeperdarker:grime_ball"
+    "item": "deeperdarker:sculk_tissue"
   },
-  "result": "deeperdarker:grime_brick"
+  "result": "deeperdarker:sculk_tissue_brick"
 }

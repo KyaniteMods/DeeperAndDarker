@@ -9,6 +9,7 @@ import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -111,7 +112,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         registerChildStoneRecipes(output, DDBlocks.SCULK_STONE, DDBlocks.SCULK_STONE_TILES, DDBlocks.SCULK_STONE_TILE_STAIRS, DDBlocks.SCULK_STONE_TILE_SLAB, DDBlocks.SCULK_STONE_TILE_WALL);
 
-        oreSmelting(output, Collections.singletonList(DDBlocks.SCULK_STONE), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE, 0.1f, 200, "sculk_stone");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDBlocks.SCULK_STONE), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_SCULK_STONE, 0.1f, 200)
+                .unlockedBy(getHasName(DDBlocks.SCULK_STONE), VanillaRecipeProvider.has(DDBlocks.SCULK_STONE)).save(output);
         registerStairsSlabsAndWalls(output, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.SMOOTH_SCULK_STONE_STAIRS, DDBlocks.SMOOTH_SCULK_STONE_SLAB, DDBlocks.SMOOTH_SCULK_STONE_WALL);
 
         registerChildStoneRecipes(output, DDBlocks.SMOOTH_SCULK_STONE, DDBlocks.CUT_SCULK_STONE, DDBlocks.CUT_SCULK_STONE_STAIRS, DDBlocks.CUT_SCULK_STONE_SLAB, DDBlocks.CUT_SCULK_STONE_WALL);
@@ -122,7 +124,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME, DDItems.GRIME_BALL);
         twoByTwoPacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_BRICKS, DDItems.GRIME_BRICK);
         registerChildStoneRecipes(output, DDBlocks.SCULK_GRIME, DDBlocks.SCULK_GRIME_BRICKS, DDBlocks.SCULK_GRIME_BRICK_STAIRS, DDBlocks.SCULK_GRIME_BRICK_SLAB, DDBlocks.SCULK_GRIME_BRICK_WALL);
-        smeltingResultFromBase(output, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.SCULK_GRIME);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDBlocks.SCULK_GRIME), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_GRIME_GLASS, 0.1f, 200)
+                .unlockedBy(getHasName(DDBlocks.SCULK_GRIME), has(DDBlocks.SCULK_GRIME)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, DDBlocks.SCULK_GRIME_GLASS_PANE, 16)
                 .define('#', DDBlocks.SCULK_GRIME_GLASS)
                 .pattern("###")
@@ -142,7 +145,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         registerChildStoneRecipes(output, DDBlocks.COBBLED_GLOOMSLATE, DDBlocks.GLOOMSLATE_TILES, DDBlocks.GLOOMSLATE_TILE_STAIRS, DDBlocks.GLOOMSLATE_TILE_SLAB, DDBlocks.GLOOMSLATE_TILE_WALL);
 
-        oreSmelting(output, Collections.singletonList(DDBlocks.GLOOMSLATE), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE, 0.1f, 200, "sculk_stone");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDBlocks.GLOOMSLATE), RecipeCategory.BUILDING_BLOCKS, DDBlocks.SMOOTH_GLOOMSLATE, 0.1f, 200)
+                .unlockedBy(getHasName(DDBlocks.GLOOMSLATE), VanillaRecipeProvider.has(DDBlocks.GLOOMSLATE)).save(output);
         registerStairsSlabsAndWalls(output, DDBlocks.SMOOTH_GLOOMSLATE, DDBlocks.SMOOTH_GLOOMSLATE_STAIRS, DDBlocks.SMOOTH_GLOOMSLATE_SLAB, DDBlocks.SMOOTH_GLOOMSLATE_WALL);
 
         polished(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.CUT_GLOOMSLATE, DDBlocks.SMOOTH_GLOOMSLATE);
@@ -202,14 +206,16 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern(" l ")
                 .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
 
-        oreSmelting(output, Collections.singletonList(DDItems.GRIME_BALL), RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.3f, 200, "grime_brick");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDItems.GRIME_BALL), RecipeCategory.MISC, DDItems.GRIME_BRICK, 0.3f, 200)
+                .unlockedBy(getHasName(DDItems.GRIME_BALL), VanillaRecipeProvider.has(DDItems.GRIME_BALL)).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, 2).define('D', Items.DIAMOND).define('U', DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).define('S', Items.SCULK).pattern("DUD").pattern("DSD").pattern("DDD").unlockedBy(FabricRecipeProvider.getHasName(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE, 2).define('D', Items.DIAMOND).define('U', DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE).define('G', Items.GOLD_BLOCK).pattern("DUD").pattern("DGD").pattern("DDD").unlockedBy(FabricRecipeProvider.getHasName(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), FabricRecipeProvider.has(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.REINFORCED_ECHO_SHARD).define('P', Items.PHANTOM_MEMBRANE).define('C', DDItems.WARDEN_CARAPACE).define('E', Items.ECHO_SHARD).pattern("PCP").pattern("CEC").pattern("PCP").unlockedBy(FabricRecipeProvider.getHasName(Items.ECHO_SHARD), FabricRecipeProvider.has(Items.ECHO_SHARD)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, DDItems.SOUL_ELYTRA).define('B', DDItems.SCULK_BONE).define('D', DDItems.SOUL_DUST).define('E', Items.ELYTRA).define('S', DDItems.SOUL_CRYSTAL).pattern("BDB").pattern("DED").pattern("BSB").unlockedBy(FabricRecipeProvider.getHasName(Items.ELYTRA), FabricRecipeProvider.has(Items.ELYTRA)).save(output);
 
-        oreSmelting(output, Collections.singletonList(DDBlocks.GLOOMY_CACTUS), RecipeCategory.MISC, Items.ORANGE_DYE, 1.0f, 200, "orange_dye");
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDBlocks.GLOOMY_CACTUS), RecipeCategory.MISC, Items.ORANGE_DYE, 1.0f, 200)
+                .unlockedBy(getHasName(DDBlocks.GLOOMY_CACTUS), VanillaRecipeProvider.has(DDBlocks.GLOOMY_CACTUS)).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SOUNDPROOF_GLASS, 16).define('S', DDItems.SOUL_DUST).define('C', DDItems.SOUL_CRYSTAL).define('G', Blocks.GLASS).pattern("SCS").pattern("CGC").pattern("SCS").unlockedBy(FabricRecipeProvider.getHasName(DDItems.SOUL_CRYSTAL), FabricRecipeProvider.has(DDItems.SOUL_CRYSTAL)).save(output);
 
@@ -233,6 +239,16 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("L")
                 .pattern("S")
                 .unlockedBy(getHasName(DDBlocks.SCULK_STONE), has(DDBlocks.SCULK_STONE)).save(output);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DDBlocks.SCULK_TISSUE), RecipeCategory.MISC, DDItems.SCULK_TISSUE_BRICK, 0.3f, 200)
+                .unlockedBy(getHasName(DDBlocks.SCULK_TISSUE), VanillaRecipeProvider.has(DDBlocks.SCULK_TISSUE)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_TISSUE_BRICKS)
+                .define('#', DDItems.SCULK_TISSUE_BRICK)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(DDItems.SCULK_TISSUE_BRICK), has(DDItems.SCULK_TISSUE_BRICK)).save(output);
+        registerStairsSlabsAndWalls(output, DDBlocks.SCULK_TISSUE_BRICKS, DDBlocks.SCULK_TISSUE_BRICK_STAIRS, DDBlocks.SCULK_TISSUE_BRICK_SLAB, DDBlocks.SCULK_TISSUE_BRICK_WALL);
+
         threeByThreePacker(output, RecipeCategory.BUILDING_BLOCKS, DDBlocks.SHADOW_CRYSTAL_BLOCK, DDItems.SHADOW_CRYSTAL);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.SUNGLASSES)
                 .define('#', DDItems.SHADOW_CRYSTAL)

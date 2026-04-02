@@ -127,6 +127,7 @@ public class DDItems {
     public static final Item SCULK_BERRY = register("sculk_berry", new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationMod(0.8f).build())));
     public static final Item SCULK_BERRY_SPROUT = register("sculk_berry_sprout", new ItemNameBlockItem(DDBlocks.SCULK_BERRY, new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationMod(0.2f).build())));
 
+    public static final Item SCULK_TISSUE_BRICK = register("sculk_tissue_brick", new Item(new Item.Properties()));
     public static final Item SHADOW_CRYSTAL = register("shadow_crystal", new Item(new Item.Properties()));
     public static final Item SUNGLASSES = register("sunglasses", new SunglassesItem(new Item.Properties().stacksTo(1)));
     public static final Item DAINTY_KEY = register("dainty_key", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));

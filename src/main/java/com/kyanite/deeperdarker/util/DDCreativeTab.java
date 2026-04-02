@@ -213,6 +213,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.DARK_FOUNTAIN);
         entries.accept(DDBlocks.SHADOW_CRYSTAL_BLOCK);
 
+        entries.accept(DDItems.SCULK_TISSUE_BRICK);
         entries.accept(DDItems.SHADOW_CRYSTAL);
         entries.accept(DDItems.SUNGLASSES);
 

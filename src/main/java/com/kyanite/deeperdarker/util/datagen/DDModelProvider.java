@@ -343,6 +343,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_TUBER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_BERRY, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.SCULK_TISSUE_BRICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SHADOW_CRYSTAL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SUNGLASSES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.DAINTY_KEY, ModelTemplates.FLAT_ITEM);

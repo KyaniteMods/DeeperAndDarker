@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "deeperdarker:sculk_tissue_bricks"
+  },
+  "result": "deeperdarker:sculk_tissue_brick_wall"
+}

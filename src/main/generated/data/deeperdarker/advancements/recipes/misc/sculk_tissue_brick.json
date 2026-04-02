@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gloomslate": {
+    "has_sculk_tissue": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:gloomslate"
+              "deeperdarker:sculk_tissue"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:smooth_gloomslate_from_smelting_gloomslate"
+        "recipe": "deeperdarker:sculk_tissue_brick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_gloomslate",
+      "has_sculk_tissue",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:smooth_gloomslate_from_smelting_gloomslate"
+      "deeperdarker:sculk_tissue_brick"
     ]
   },
   "sends_telemetry_event": false

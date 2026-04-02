@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_grime_ball": {
+    "has_sculk_tissue_brick": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:grime_ball"
+              "deeperdarker:sculk_tissue_brick"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:grime_brick_from_smelting_grime_ball"
+        "recipe": "deeperdarker:sculk_tissue_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_grime_ball",
+      "has_sculk_tissue_brick",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:grime_brick_from_smelting_grime_ball"
+      "deeperdarker:sculk_tissue_bricks"
     ]
   },
   "sends_telemetry_event": false
