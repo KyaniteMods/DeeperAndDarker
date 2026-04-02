@@ -277,6 +277,7 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.family(DDBlocks.SCULK_BASALT);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ACID);
+        blockModelGenerators.family(DDBlocks.FIZZ_BLOCK);
 
         registerFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
         registerFire(blockModelGenerators, DDBlocks.PATIENCE_SOUL_FIRE);

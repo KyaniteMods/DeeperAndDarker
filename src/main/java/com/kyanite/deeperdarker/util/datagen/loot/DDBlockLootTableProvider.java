@@ -232,6 +232,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.SHADOW_CRYSTAL_BLOCK);
 
         dropSelf(DDBlocks.SCULK_BASALT);
+        dropSelf(DDBlocks.FIZZ_BLOCK);
 
         dropSelf(DDBlocks.SCULK_TORCH);
         add(DDBlocks.SCULK_CAMPFIRE, (block) -> VanillaBlockLoot.createSilkTouchDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(Items.SOUL_SOIL).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f))))));

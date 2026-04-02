@@ -295,6 +295,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .requires(DDItems.SCULK_BERRY)
                 .requires(DDItems.SCULK_BERRY)
                 .unlockedBy(getHasName(DDItems.FIZZ), has(DDItems.FIZZ)).save(output);
+        nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.FIZZ, RecipeCategory.BUILDING_BLOCKS, DDBlocks.FIZZ_BLOCK);
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
     }
