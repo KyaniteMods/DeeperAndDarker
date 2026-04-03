@@ -240,6 +240,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_LANTERN, "Sculk Lantern");
         translationBuilder.add(DDBlocks.PATIENCE_SOUL_FIRE, "Soul of Patience Fire");
         translationBuilder.add(DDBlocks.FORTITUDE_SOUL_FIRE, "Soul of Fortitude Fire");
+        translationBuilder.add(DDBlocks.CORRUPTION_SOUL_FIRE, "Soul of Corruption Fire");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
@@ -281,6 +282,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.OTHERSIDE_FIRE_STRIKER, "Otherside Fire Striker");
         translationBuilder.add(DDItems.PATIENCE_SOUL, "Soul of Patience");
         translationBuilder.add(DDItems.FORTITUDE_SOUL, "Soul of Fortitude");
+        translationBuilder.add(DDItems.CORRUPTION_SOUL, "Soul of Corruption");
         translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");
         translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
         translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");

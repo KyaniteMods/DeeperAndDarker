@@ -240,6 +240,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         dropSelf(DDBlocks.PATIENCE_SOUL_FIRE);
         dropSelf(DDBlocks.FORTITUDE_SOUL_FIRE);
+        dropSelf(DDBlocks.CORRUPTION_SOUL_FIRE);
     }
 
     private void addVineAndPlant(Block plant, Block vine) {

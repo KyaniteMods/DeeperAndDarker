@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fire_floor",
+  "textures": {
+    "fire": "deeperdarker:block/corruption_soul_fire_1"
+  }
+}

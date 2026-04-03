@@ -281,6 +281,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.REINFORCED_ECHO_SHARD);
         entries.accept(DDItems.PATIENCE_SOUL);
         entries.accept(DDItems.FORTITUDE_SOUL);
+        entries.accept(DDItems.CORRUPTION_SOUL);
         entries.accept(DDItems.ROYAL_SCEPTER);
         entries.accept(DDItems.DAINTY_KEY);
         entries.accept(DDItems.KEYBRAND);
