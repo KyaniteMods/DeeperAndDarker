@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompatClient;
 import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.content.entities.blocks.DeadMansChestBlockEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
@@ -30,8 +31,10 @@ import net.minecraft.client.particle.DripParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.particle.SoulParticle;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -41,12 +44,17 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
+import org.spongepowered.asm.mixin.Unique;
 
 public class DeeperDarkerClient implements ClientModInitializer {
     public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand", "inventory");
     public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand_in_hand", "inventory");
     public static final ResourceLocation ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still");
     public static final ResourceLocation FLOWING_ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_flow");
+    public static final Material DEAD_MANS_CHEST_LOCATION = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal"));
+    public static final Material DEAD_MANS_CHEST_LOCATION_RIGHT = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal_right"));
+    public static final Material DEAD_MANS_CHEST_LOCATION_LEFT = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal_left"));
+    public static final DeadMansChestBlockEntity RENDER_DEAD_MANS_CHEST = new DeadMansChestBlockEntity(BlockPos.ZERO, DDBlocks.DEAD_MANS_CHEST.defaultBlockState());
 
     @Override
     public void onInitializeClient() {
@@ -103,6 +111,10 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.SKULL, SkullBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.DARK_FOUNTAIN, DarkFountainBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.CAMPFIRE, CampfireRenderer::new);
+        BlockEntityRenderers.register(DDBlockEntities.DEAD_MANS_CHEST, ChestRenderer::new);
+        BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.DEAD_MANS_CHEST, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
+            Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_DEAD_MANS_CHEST, matrices, vertexConsumers, light, overlay);
+        });
 
         if (FabricLoader.getInstance().isModLoaded("create") && DeeperDarker.CONFIG.server.createCompatibility()) {
             DDCreateCompatClient.init();
@@ -134,6 +146,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BUBBLOX, BubbloxModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.DEAD_MANS_CHEST, ChestRenderer::createSingleBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.DOUBLE_DEAD_MANS_CHEST_LEFT, ChestRenderer::createDoubleBodyLeftLayer);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.DOUBLE_DEAD_MANS_CHEST_RIGHT, ChestRenderer::createDoubleBodyRightLayer);
 
         EntityRendererRegistry.register(DDEntities.BOAT, (ctx) -> new DDBoatRenderer<>(ctx, false));
         EntityRendererRegistry.register(DDEntities.CHEST_BOAT, (ctx) -> new DDBoatRenderer<>(ctx, true));

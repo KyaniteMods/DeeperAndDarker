@@ -241,6 +241,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.PATIENCE_SOUL_FIRE, "Soul of Patience Fire");
         translationBuilder.add(DDBlocks.FORTITUDE_SOUL_FIRE, "Soul of Fortitude Fire");
         translationBuilder.add(DDBlocks.CORRUPTION_SOUL_FIRE, "Soul of Corruption Fire");
+        translationBuilder.add(DDBlocks.DEAD_MANS_CHEST, "Dead Man's Chest");
+        translationBuilder.add(DeeperDarker.MOD_ID + ".container.dead_mans_chest", "Dead Man's Chest");
+        translationBuilder.add(DeeperDarker.MOD_ID + ".container.double_dead_mans_chest", "Large Dead Man's Chest");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");
@@ -452,6 +455,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.description", "Kill Potty, Pot, and Potter");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.title", "Patience is Key");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.description", "Kill the Blooming Golem");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".open_dead_mans_chest.title", "But It Refused");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".open_dead_mans_chest.description", "Open a Dead Man's Chest and find a lost item");
 
         translationBuilder.add(getBiome(OthersideBiomes.DEEPLANDS), "Deeplands");
         translationBuilder.add(getBiome(OthersideBiomes.ECHOING_FOREST), "Echoing Forest");

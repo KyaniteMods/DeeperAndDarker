@@ -319,6 +319,7 @@ public class DDCreativeTab {
         entries.accept(DDItems.POT_SPAWN_EGG);
         entries.accept(DDItems.POTTER_SPAWN_EGG);
         entries.accept(DDItems.ACID_SPRITE_SPAWN_EGG);
+        entries.accept(DDBlocks.DEAD_MANS_CHEST);
         entries.accept(DDItems.SHATTERED_HEAD);
         for (Holder<PaintingVariant> variant : BuiltInRegistries.PAINTING_VARIANT.getTagOrEmpty(DDTags.Paintings.ANCIENT)) {
             ItemStack itemStack = new ItemStack(Items.PAINTING);

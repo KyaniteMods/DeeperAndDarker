@@ -15,6 +15,7 @@ import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.mixin.ItemModelGeneratorAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -292,6 +293,8 @@ public class DDModelProvider extends FabricModelProvider {
 
         ModelTemplates.PARTICLE_ONLY.create(DDBlocks.ACID, TextureMapping.particle(new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still")), blockModelGenerators.modelOutput);
 
+        blockModelGenerators.blockEntityModels(ModelLocationUtils.getModelLocation(DDBlocks.DEAD_MANS_CHEST), Blocks.POLISHED_DEEPSLATE).createWithoutBlockItem(DDBlocks.DEAD_MANS_CHEST);
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
@@ -427,6 +430,10 @@ public class DDModelProvider extends FabricModelProvider {
         registerSpawnEgg(itemModelGenerator, DDItems.POT_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.POTTER_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.ACID_SPRITE_SPAWN_EGG);
+
+        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(Items.CHEST), ModelLocationUtils.getModelLocation(DDBlocks.DEAD_MANS_CHEST.asItem()), new Tuple<>(
+                TextureSlot.PARTICLE, TextureMapping.getBlockTexture(Blocks.POLISHED_DEEPSLATE)
+        ));
 
         // Create
         itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), ModelTemplates.FLAT_ITEM);

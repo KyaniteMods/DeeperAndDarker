@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDCriteriaTriggers;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -83,6 +84,19 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         false
                 ).addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL))
                 .save(consumer, path("enter_otherside"));
+
+        Advancement.Builder.advancement().parent(enterOtherside)
+                .display(
+                        DDBlocks.DEAD_MANS_CHEST,
+                        Component.translatable(id + "open_dead_mans_chest.title"),
+                        Component.translatable(id + "open_dead_mans_chest.description"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false
+                ).addCriterion("open_dead_mans_chest", new PlayerTrigger.TriggerInstance(DDCriteriaTriggers.OPEN_DEAD_MANS_CHEST.getId(), ContextAwarePredicate.ANY))
+                .save(consumer, path("open_dead_mans_chest"));
 
         Advancement findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
                 .display(

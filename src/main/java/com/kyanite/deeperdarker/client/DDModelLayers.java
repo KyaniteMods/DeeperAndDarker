@@ -37,6 +37,9 @@ public class DDModelLayers {
     public static ModelLayerLocation BUBBLOX;
     public static ModelLayerLocation SHATTERED_HEAD;
     public static ModelLayerLocation SUNGLASSES;
+    public static ModelLayerLocation DEAD_MANS_CHEST;
+    public static ModelLayerLocation DOUBLE_DEAD_MANS_CHEST_LEFT;
+    public static ModelLayerLocation DOUBLE_DEAD_MANS_CHEST_RIGHT;
 
     private static ModelLayerLocation registerMain(String id) {
         return register(id, "main");
@@ -90,5 +93,8 @@ public class DDModelLayers {
         BUBBLOX = registerMain("bubblox");
         SHATTERED_HEAD = registerMain("shattered_head");
         SUNGLASSES = registerMain("sunglasses");
+        DEAD_MANS_CHEST = registerMain("dead_mans_chest");
+        DOUBLE_DEAD_MANS_CHEST_LEFT = registerMain("double_dead_mans_chest_left");
+        DOUBLE_DEAD_MANS_CHEST_RIGHT = registerMain("double_dead_mans_chest_right");
     }
 }

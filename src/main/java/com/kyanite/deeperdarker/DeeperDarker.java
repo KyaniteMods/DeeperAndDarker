@@ -77,6 +77,7 @@ public class DeeperDarker implements ModInitializer {
 		DDCarvers.init();
 		DDParticleTypes.init();
 		DDFluids.init();
+		DDCriteriaTriggers.init();
 		if (FabricLoader.getInstance().isModLoaded("create") && CONFIG.server.createCompatibility()) {
 			DDCreateCompat.init();
 			DDCreateCompat.REGISTRATE.register();

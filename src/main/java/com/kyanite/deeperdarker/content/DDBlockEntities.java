@@ -22,6 +22,7 @@ public class DDBlockEntities {
     public static final BlockEntityType<IcicleBlockEntity> ICICLE;
     public static final BlockEntityType<DarkFountainBlockEntity> DARK_FOUNTAIN;
     public static final BlockEntityType<DDCampfireBlockEntity> CAMPFIRE;
+    public static final BlockEntityType<DeadMansChestBlockEntity> DEAD_MANS_CHEST;
 
     static {
         HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
@@ -64,6 +65,10 @@ public class DDBlockEntities {
         CAMPFIRE = create("campfire", FabricBlockEntityTypeBuilder.create(
                 DDCampfireBlockEntity::new,
                 DDBlocks.SCULK_CAMPFIRE
+        ));
+        DEAD_MANS_CHEST = create("dead_mans_chest", FabricBlockEntityTypeBuilder.create(
+                DeadMansChestBlockEntity::new,
+                DDBlocks.DEAD_MANS_CHEST
         ));
     }
 

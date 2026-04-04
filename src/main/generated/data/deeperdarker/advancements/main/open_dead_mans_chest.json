@@ -1,0 +1,30 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "open_dead_mans_chest": {
+      "conditions": {},
+      "trigger": "deeperdarker:player_opened_dead_mans_chest"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.open_dead_mans_chest.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:dead_mans_chest"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.open_dead_mans_chest.title"
+    }
+  },
+  "requirements": [
+    [
+      "open_dead_mans_chest"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -133,5 +133,6 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ConventionalItemTags.ORES, DDBlocks.LEAD_BLOCK);
         add(ConventionalItemTags.RAW_ORES, DDItems.RAW_LEAD);
         add(ConventionalItemTags.INGOTS, DDItems.LEAD_INGOT);
+        add(ConventionalItemTags.CHESTS, DDBlocks.DEAD_MANS_CHEST.asItem());
     }
 }

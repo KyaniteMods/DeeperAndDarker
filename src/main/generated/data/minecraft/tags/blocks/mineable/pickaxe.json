@@ -99,6 +99,7 @@
     "deeperdarker:gloomslate_lock",
     "deeperdarker:sculk_grime_lock",
     "deeperdarker:sculk_lantern",
+    "deeperdarker:dead_mans_chest",
     {
       "id": "deeperdarker:warden_backtank",
       "required": false
