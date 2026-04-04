@@ -1,7 +1,7 @@
 <p align="center"><img src="https://github.com/KyaniteMods/DeeperAndDarker/blob/master/common/src/main/resources/banner.png" alt="banner" width="1024"></p>
 
 ---
-A Minecraft 1.19 mod which features more blocks, items, armors, and hidden mysteries to complement the Deep Dark update. Such implementations include new sculk-related blocks, Warden armor and tools, the Otherside dimension, and secrets waiting to be discovered by you!
+A Minecraft 1.20.1 mod which features more blocks, items, armors, and hidden mysteries to complement the Deep Dark update. Such implementations include new sculk-related blocks, Warden armor and tools, the Otherside dimension, and secrets waiting to be discovered by you!
 
 If you happen to find any bugs or inconsistencies in Deeper and Darker, be sure to report them here!
 
