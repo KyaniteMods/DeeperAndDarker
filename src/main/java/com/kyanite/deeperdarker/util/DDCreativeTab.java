@@ -231,6 +231,10 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.FIZZ_BLOCK);
         entries.accept(DDItems.SCULK_DRINK);
 
+        entries.accept(DDBlocks.RED_CRYSTAL_BLOCK);
+        entries.accept(DDBlocks.GREEN_CRYSTAL_BLOCK);
+        entries.accept(DDBlocks.BLUE_CRYSTAL_BLOCK);
+
         entries.accept(DDItems.SOUL_ELYTRA);
         entries.accept(DDItems.ECHO_BOAT);
         entries.accept(DDItems.ECHO_CHEST_BOAT);

@@ -280,6 +280,10 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ACID);
         blockModelGenerators.family(DDBlocks.FIZZ_BLOCK);
 
+        blockModelGenerators.family(DDBlocks.RED_CRYSTAL_BLOCK);
+        blockModelGenerators.family(DDBlocks.GREEN_CRYSTAL_BLOCK);
+        blockModelGenerators.family(DDBlocks.BLUE_CRYSTAL_BLOCK);
+
         registerFire(blockModelGenerators, DDBlocks.SCULK_FIRE);
         registerFire(blockModelGenerators, DDBlocks.PATIENCE_SOUL_FIRE);
         registerFire(blockModelGenerators, DDBlocks.FORTITUDE_SOUL_FIRE);

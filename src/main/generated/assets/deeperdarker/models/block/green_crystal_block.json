@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "deeperdarker:block/green_crystal_block"
+  }
+}

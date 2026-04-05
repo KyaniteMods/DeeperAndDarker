@@ -294,6 +294,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.FIZZ, "Fizz");
         translationBuilder.add(DDBlocks.FIZZ_BLOCK, "Block of Fizz");
         translationBuilder.add(DDItems.SCULK_DRINK, "Sculk Drink");
+        translationBuilder.add(DDBlocks.RED_CRYSTAL_BLOCK, "Red Crystal Block");
+        translationBuilder.add(DDBlocks.GREEN_CRYSTAL_BLOCK, "Green Crystal Block");
+        translationBuilder.add(DDBlocks.BLUE_CRYSTAL_BLOCK, "Blue Crystal Block");
         translationBuilder.add(DDItems.ECHO_BOAT, "Echo Boat");
         translationBuilder.add(DDItems.ECHO_CHEST_BOAT, "Echo Boat with Chest");
         translationBuilder.add(DDItems.SCULK_SPRUCE_BOAT, "Sculk Spruce Boat");
