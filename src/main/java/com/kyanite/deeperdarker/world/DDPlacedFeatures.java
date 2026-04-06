@@ -140,12 +140,12 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
 
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.defaultBlockState(), BlockPos.ZERO)));
-        PlacementUtils.register(context, SCULK_SPRUCE_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_SCULK_SPRUCE), CountOnEveryLayerPlacement.of(18), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.SCULK_SPRUCE_SAPLING.defaultBlockState(), BlockPos.ZERO)));
+        PlacementUtils.register(context, SCULK_SPRUCE_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_SCULK_SPRUCE), CountOnEveryLayerPlacement.of(10), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.SCULK_SPRUCE_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, SCULK_SPRUCE_FOREST_VEGETATION, features.getOrThrow(DDConfiguredFeatures.SCULK_SPRUCE_FOREST_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_SPRUCE_DELTA, features.getOrThrow(DDConfiguredFeatures.SCULK_SPRUCE_DELTA), CountOnEveryLayerPlacement.of(30), BiomeFilter.biome());
         PlacementUtils.register(context, SNOW_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_SNOW), CountOnEveryLayerPlacement.of(64), BiomeFilter.biome());
         PlacementUtils.register(context, GRAVEL_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_GRAVEL), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(10));
-        PlacementUtils.register(context, ICICLE_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_ICICLE), countPlacement(128, PlacementUtils.FULL_RANGE));
+        PlacementUtils.register(context, ICICLE_PATCH, features.getOrThrow(DDConfiguredFeatures.PATCH_ICICLE), countPlacement(64, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, SHADOW_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_SHADOW_CRYSTAL), countPlacement(64, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_FOREST_BOULDER, features.getOrThrow(DDConfiguredFeatures.BOULDER_SCULK_FOREST), countPlacement(3, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, ACID_DELTA, features.getOrThrow(DDConfiguredFeatures.ACID_DELTA), CountOnEveryLayerPlacement.of(30), BiomeFilter.biome());
