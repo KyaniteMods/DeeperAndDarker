@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content;
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 
@@ -32,6 +33,16 @@ public class DeadMansChestSavedData extends SavedData {
     }
 
     public void add(ItemStack stack) {
-        list.add(stack);
+        if (!stack.isStackable()) {
+            list.add(stack);
+            return;
+        }
+        for (ItemStack stack1 : list) {
+            if (!stack1.isEmpty() && ItemStack.isSameItemSameTags(stack, stack1)) {
+                stack = ItemEntity.merge(stack, stack1, 64);
+                if (stack.isEmpty()) return;
+            }
+        }
+        if (!stack.isEmpty()) list.add(stack);
     }
 }

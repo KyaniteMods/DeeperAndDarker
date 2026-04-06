@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
@@ -45,15 +46,19 @@ public class DeadMansChestBlockEntity extends ChestBlockEntity {
             DeadMansChestSavedData data = getLevel().getServer().overworld().getDataStorage().get(DeadMansChestSavedData::load, DeadMansChestSavedData.ID);
             if (data == null) return true;
             List<ItemStack> list = data.getList();
-            if (list.isEmpty()) return true;
+            list.removeIf(ItemStack::isEmpty);
+            if (list.isEmpty()) {
+                data.setDirty();
+                return true;
+            }
 
             if (player instanceof ServerPlayer) {
                 DDCriteriaTriggers.OPEN_DEAD_MANS_CHEST.trigger((ServerPlayer)player);
             }
 
-            ObjectArrayList<ItemStack> objectList = new ObjectArrayList<>(data.getList());
+            ObjectArrayList<ItemStack> objectList = new ObjectArrayList<>(list);
             Util.shuffle(objectList, getLevel().getRandom());
-            int items = getLevel().getRandom().nextIntBetweenInclusive(Math.min(3, list.size()), Math.min(10, list.size()));
+            int items = Math.min(getReinvokedItemAmount(getLevel().getRandom()), list.size());
             List<Integer> availableSlots = getAvailableSlots(this, getLevel().getRandom());
             for (int i = 0; i < items; i++) {
                 ItemStack stack = objectList.get(i);
@@ -65,6 +70,12 @@ public class DeadMansChestBlockEntity extends ChestBlockEntity {
             return true;
         }
         return false;
+    }
+
+    protected int getReinvokedItemAmount(RandomSource random) {
+        int min = getContainerSize() / 2;
+        int max = Mth.ceil(getContainerSize() * (5.0f / 6.0f));
+        return random.nextIntBetweenInclusive(min, max);
     }
 
     private List<Integer> getAvailableSlots(Container container, RandomSource randomSource) {

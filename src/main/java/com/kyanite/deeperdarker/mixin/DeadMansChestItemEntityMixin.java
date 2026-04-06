@@ -13,7 +13,7 @@ public abstract class DeadMansChestItemEntityMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/item/ItemEntity;discard()V", ordinal = 1))
     private void deeperdarker$addItemToDeadMansChestLootTable(CallbackInfo ci) {
         ItemEntity entity = (ItemEntity) (Object) this;
-        if (entity.level() instanceof ServerLevel serverLevel) {
+        if (entity.level() instanceof ServerLevel serverLevel && !entity.getItem().isEmpty()) {
             DeadMansChestSavedData data = serverLevel.getServer().overworld().getDataStorage().computeIfAbsent(DeadMansChestSavedData::load, DeadMansChestSavedData::new, DeadMansChestSavedData.ID);
             data.add(entity.getItem());
             data.setDirty();
