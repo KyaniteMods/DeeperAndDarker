@@ -27,15 +27,18 @@ public class FloesFeature extends Feature<FloesFeatureConfiguration> {
             for (int dx = 0; dx < 16; dx++) {
                 int x = blockPos.getX() + dx;
                 int z = blockPos.getZ() + dz;
+
+                if (!worldGenLevel.getBiome(new BlockPos(x, Math.max(config.maxFloeHeight(), config.maxSeamHeight()), z)).is(config.allowedBiomes())) continue;
+
                 float value = noise.get(x, z, SimpleWorleyNoise.ReturnValue.DISTANCE_TO_EDGE);
                 boolean floe = value > config.threshold();
                 for (int y = worldGenLevel.getMinBuildHeight(); y < (floe ? config.maxFloeHeight() : config.maxSeamHeight()); y++) {
                     mutableBlockPos.set(x, y, z);
                     if (worldGenLevel.getBlockState(mutableBlockPos).isAir()) {
                         if (floe) {
-                            worldGenLevel.setBlock(mutableBlockPos, config.floeBlockState().getState(worldGenLevel, random, mutableBlockPos), Block.UPDATE_CLIENTS);
+                            worldGenLevel.setBlock(mutableBlockPos, config.floeBlockState().getState(worldGenLevel, random, mutableBlockPos), Block.UPDATE_ALL);
                         } else if (config.seamBlockState().isPresent()) {
-                            worldGenLevel.setBlock(mutableBlockPos, config.seamBlockState().get().getState(worldGenLevel, random, mutableBlockPos), Block.UPDATE_CLIENTS);
+                            worldGenLevel.setBlock(mutableBlockPos, config.seamBlockState().get().getState(worldGenLevel, random, mutableBlockPos), Block.UPDATE_ALL);
                         }
                     }
                 }

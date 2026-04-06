@@ -1,6 +1,7 @@
 {
   "type": "deeperdarker:floes",
   "config": {
+    "allowed_biomes": "deeperdarker:has_acid_floes",
     "floe_block_state": {
       "fallback": {
         "type": "minecraft:simple_state_provider",
