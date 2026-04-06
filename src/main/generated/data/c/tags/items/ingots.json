@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "deeperdarker:lead_ingot"
+    "deeperdarker:lead_ingot",
+    "deeperdarker:radioactive_ingot"
   ]
 }

@@ -279,6 +279,7 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.SCULK_BASALT);
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.ACID);
         blockModelGenerators.family(DDBlocks.FIZZ_BLOCK);
+        blockModelGenerators.family(DDBlocks.RADIOACTIVE_BLOCK);
 
         blockModelGenerators.family(DDBlocks.RED_CRYSTAL_BLOCK);
         blockModelGenerators.family(DDBlocks.GREEN_CRYSTAL_BLOCK);
@@ -331,6 +332,15 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.LEAD_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.LEAD_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.LEAD_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.RADIOACTIVE_HELMET);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.RADIOACTIVE_CHESTPLATE);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.RADIOACTIVE_LEGGINGS);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.RADIOACTIVE_BOOTS);
+        itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM_PLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RAW_LEAD, ModelTemplates.FLAT_ITEM);
@@ -421,6 +431,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.ACID_BUCKET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.FIZZ, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_DRINK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_INGOT, ModelTemplates.FLAT_ITEM);
 
         registerSpawnEgg(itemModelGenerator, DDItems.ANGLER_FISH_SPAWN_EGG);
         registerSpawnEgg(itemModelGenerator, DDItems.SCULK_SNAPPER_SPAWN_EGG);

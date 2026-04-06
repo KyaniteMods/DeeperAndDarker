@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "l": {
+      "item": "deeperdarker:radioactive_ingot"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "l",
+    "l",
+    "|"
+  ],
+  "result": {
+    "item": "deeperdarker:radioactive_sword"
+  },
+  "show_notification": true
+}

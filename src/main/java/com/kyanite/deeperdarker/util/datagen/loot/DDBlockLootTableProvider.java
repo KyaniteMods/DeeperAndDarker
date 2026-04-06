@@ -233,6 +233,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         dropSelf(DDBlocks.SCULK_BASALT);
         dropSelf(DDBlocks.FIZZ_BLOCK);
+        dropSelf(DDBlocks.RADIOACTIVE_BLOCK);
 
         dropSelf(DDBlocks.RED_CRYSTAL_BLOCK);
         dropSelf(DDBlocks.GREEN_CRYSTAL_BLOCK);

@@ -230,6 +230,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.FIZZ);
         entries.accept(DDBlocks.FIZZ_BLOCK);
         entries.accept(DDItems.SCULK_DRINK);
+        entries.accept(DDBlocks.RADIOACTIVE_BLOCK);
+        entries.accept(DDItems.RADIOACTIVE_INGOT);
 
         entries.accept(DDBlocks.RED_CRYSTAL_BLOCK);
         entries.accept(DDBlocks.GREEN_CRYSTAL_BLOCK);
@@ -262,6 +264,16 @@ public class DDCreativeTab {
         entries.accept(DDItems.LEAD_CHESTPLATE);
         entries.accept(DDItems.LEAD_LEGGINGS);
         entries.accept(DDItems.LEAD_BOOTS);
+
+        entries.accept(DDItems.RADIOACTIVE_SHOVEL);
+        entries.accept(DDItems.RADIOACTIVE_PICKAXE);
+        entries.accept(DDItems.RADIOACTIVE_AXE);
+        entries.accept(DDItems.RADIOACTIVE_HOE);
+        entries.accept(DDItems.RADIOACTIVE_SWORD);
+        entries.accept(DDItems.RADIOACTIVE_HELMET);
+        entries.accept(DDItems.RADIOACTIVE_CHESTPLATE);
+        entries.accept(DDItems.RADIOACTIVE_LEGGINGS);
+        entries.accept(DDItems.RADIOACTIVE_BOOTS);
 
         entries.accept(DDItems.WARDEN_SHOVEL);
         entries.accept(DDItems.WARDEN_PICKAXE);

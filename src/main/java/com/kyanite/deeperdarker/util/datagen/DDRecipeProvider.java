@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -31,63 +32,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
     public void buildRecipes(Consumer<FinishedRecipe> output) {
         addSmithingRecipes(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_HELMET)
-                .define('l', DDItems.LEAD_INGOT)
-                .pattern("lll")
-                .pattern("l l")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_CHESTPLATE)
-                .define('l', DDItems.LEAD_INGOT)
-                .pattern("l l")
-                .pattern("lll")
-                .pattern("lll")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_LEGGINGS)
-                .define('l', DDItems.LEAD_INGOT)
-                .pattern("lll")
-                .pattern("l l")
-                .pattern("l l")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_BOOTS)
-                .define('l', DDItems.LEAD_INGOT)
-                .pattern("l l")
-                .pattern("l l")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.LEAD_SWORD)
-                .define('l', DDItems.LEAD_INGOT)
-                .define('|', Items.STICK)
-                .pattern("l")
-                .pattern("l")
-                .pattern("|")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_PICKAXE)
-                .define('l', DDItems.LEAD_INGOT)
-                .define('|', Items.STICK)
-                .pattern("lll")
-                .pattern(" | ")
-                .pattern(" | ")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_AXE)
-                .define('l', DDItems.LEAD_INGOT)
-                .define('|', Items.STICK)
-                .pattern("ll")
-                .pattern("l|")
-                .pattern(" |")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_SHOVEL)
-                .define('l', DDItems.LEAD_INGOT)
-                .define('|', Items.STICK)
-                .pattern("l")
-                .pattern("|")
-                .pattern("|")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.LEAD_HOE)
-                .define('l', DDItems.LEAD_INGOT)
-                .define('|', Items.STICK)
-                .pattern("ll")
-                .pattern(" |")
-                .pattern(" |")
-                .unlockedBy(getHasName(DDItems.LEAD_INGOT), has(DDItems.LEAD_INGOT)).save(output);
+        simpleGearRecipes(output, DDItems.LEAD_INGOT, DDItems.LEAD_HELMET, DDItems.LEAD_CHESTPLATE, DDItems.LEAD_LEGGINGS, DDItems.LEAD_BOOTS, DDItems.LEAD_SWORD, DDItems.LEAD_PICKAXE, DDItems.LEAD_AXE, DDItems.LEAD_SHOVEL, DDItems.LEAD_HOE);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.RADIOACTIVE_INGOT)
+                .define('f', DDItems.FIZZ)
+                .define('i', DDItems.LEAD_INGOT)
+                .pattern(" f ")
+                .pattern("fif")
+                .pattern(" f ")
+                .unlockedBy(getHasName(DDItems.FIZZ), has(DDItems.FIZZ)).save(output, BuiltInRegistries.ITEM.getKey(DDItems.RADIOACTIVE_INGOT).withSuffix("_from_" + BuiltInRegistries.ITEM.getKey(DDItems.LEAD_INGOT).getPath()));
+        simpleGearRecipes(output, DDItems.RADIOACTIVE_INGOT, DDItems.RADIOACTIVE_HELMET, DDItems.RADIOACTIVE_CHESTPLATE, DDItems.RADIOACTIVE_LEGGINGS, DDItems.RADIOACTIVE_BOOTS, DDItems.RADIOACTIVE_SWORD, DDItems.RADIOACTIVE_PICKAXE, DDItems.RADIOACTIVE_AXE, DDItems.RADIOACTIVE_SHOVEL, DDItems.RADIOACTIVE_HOE);
 
         // Wood stuff
             // Echo
@@ -191,6 +144,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.RAW_LEAD, RecipeCategory.BUILDING_BLOCKS, DDBlocks.RAW_LEAD_BLOCK);
         nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.LEAD_INGOT, RecipeCategory.BUILDING_BLOCKS, DDBlocks.LEAD_BLOCK);
+        nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.RADIOACTIVE_INGOT, RecipeCategory.BUILDING_BLOCKS, DDBlocks.RADIOACTIVE_BLOCK);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ANVIL)
                 .define('L', DDBlocks.LEAD_BLOCK)
@@ -392,5 +346,65 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         for (ItemLike stone : stones) {
             stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, chiseled, stone);
         }
+    }
+
+    private static void simpleGearRecipes(Consumer<FinishedRecipe> output, ItemLike ingot, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots, ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, helmet)
+                .define('l', ingot)
+                .pattern("lll")
+                .pattern("l l")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, chestplate)
+                .define('l', ingot)
+                .pattern("l l")
+                .pattern("lll")
+                .pattern("lll")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, leggings)
+                .define('l', ingot)
+                .pattern("lll")
+                .pattern("l l")
+                .pattern("l l")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, boots)
+                .define('l', ingot)
+                .pattern("l l")
+                .pattern("l l")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, sword)
+                .define('l', ingot)
+                .define('|', Items.STICK)
+                .pattern("l")
+                .pattern("l")
+                .pattern("|")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pickaxe)
+                .define('l', ingot)
+                .define('|', Items.STICK)
+                .pattern("lll")
+                .pattern(" | ")
+                .pattern(" | ")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, axe)
+                .define('l', ingot)
+                .define('|', Items.STICK)
+                .pattern("ll")
+                .pattern("l|")
+                .pattern(" |")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shovel)
+                .define('l', ingot)
+                .define('|', Items.STICK)
+                .pattern("l")
+                .pattern("|")
+                .pattern("|")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoe)
+                .define('l', ingot)
+                .define('|', Items.STICK)
+                .pattern("ll")
+                .pattern(" |")
+                .pattern(" |")
+                .unlockedBy(getHasName(ingot), has(ingot)).save(output);
     }
 }

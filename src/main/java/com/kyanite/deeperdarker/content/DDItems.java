@@ -48,6 +48,7 @@ public class DDItems {
     public static final Item RESONARIUM_PLATE = register("resonarium_plate", new Item(new Item.Properties().fireResistant()));
     public static final Item RAW_LEAD = register("raw_lead", new Item(new Item.Properties()));
     public static final Item LEAD_INGOT = register("lead_ingot", new Item(new Item.Properties()));
+    public static final Item RADIOACTIVE_INGOT = register("radioactive_ingot", new Item(new Item.Properties()));
     public static final Item WARDEN_UPGRADE_SMITHING_TEMPLATE = register("warden_upgrade_smithing_template", createWardenUpgradeSmithingTemplate());
     public static final Item GUARDIAN_UPGRADE_SMITHING_TEMPLATE = register("guardian_upgrade_smithing_template", createGuardianUpgradeSmithingTemplate());
     public static final Item ROYAL_SCEPTER = register("royal_scepter", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
@@ -79,8 +80,18 @@ public class DDItems {
     public static final Item LEAD_SHOVEL = register("lead_shovel", new ShovelItem(DDTiers.LEAD, 1.5f, -3.0f, new Item.Properties()));
     public static final Item LEAD_PICKAXE = register("lead_pickaxe", new PickaxeItem(DDTiers.LEAD, 1, -2.8f, new Item.Properties()));
     public static final Item LEAD_AXE = register("lead_axe", new AxeItem(DDTiers.LEAD, 6.0f, -3.1f, new Item.Properties()));
-    public static final Item LEAD_HOE = register("lead_hoe", new HoeItem(DDTiers.LEAD, -2, 1.0f, new Item.Properties()));
+    public static final Item LEAD_HOE = register("lead_hoe", new HoeItem(DDTiers.LEAD, -2, -1.0f, new Item.Properties()));
     public static final Item LEAD_SWORD = register("lead_sword", new SwordItem(DDTiers.LEAD, 3, -2.4f, new Item.Properties()));
+
+    public static final Item RADIOACTIVE_HELMET = register("radioactive_helmet", new ArmorItem(DDArmorMaterials.RADIOACTIVE, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final Item RADIOACTIVE_CHESTPLATE = register("radioactive_chestplate", new ArmorItem(DDArmorMaterials.RADIOACTIVE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final Item RADIOACTIVE_LEGGINGS = register("radioactive_leggings", new ArmorItem(DDArmorMaterials.RADIOACTIVE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final Item RADIOACTIVE_BOOTS = register("radioactive_boots", new ArmorItem(DDArmorMaterials.RADIOACTIVE, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final Item RADIOACTIVE_SHOVEL = register("radioactive_shovel", new ShovelItem(DDTiers.RADIOACTIVE, 1.5f, -3.0f, new Item.Properties()));
+    public static final Item RADIOACTIVE_PICKAXE = register("radioactive_pickaxe", new PickaxeItem(DDTiers.RADIOACTIVE, 1, -2.8f, new Item.Properties()));
+    public static final Item RADIOACTIVE_AXE = register("radioactive_axe", new AxeItem(DDTiers.RADIOACTIVE, 5.0f, -3.1f, new Item.Properties()));
+    public static final Item RADIOACTIVE_HOE = register("radioactive_hoe", new HoeItem(DDTiers.RADIOACTIVE, -3, 0.0f, new Item.Properties()));
+    public static final Item RADIOACTIVE_SWORD = register("radioactive_sword", new SwordItem(DDTiers.RADIOACTIVE, 3, -2.4f, new Item.Properties()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item WHITE_SCULK_TRANSMITTER = register("white_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));

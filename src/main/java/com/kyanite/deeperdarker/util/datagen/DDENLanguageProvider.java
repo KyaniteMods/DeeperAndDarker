@@ -264,6 +264,15 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.LEAD_AXE, "Lead Axe");
         translationBuilder.add(DDItems.LEAD_SHOVEL, "Lead Shovel");
         translationBuilder.add(DDItems.LEAD_HOE, "Lead Hoe");
+        translationBuilder.add(DDItems.RADIOACTIVE_HELMET, "Radioactive Helmet");
+        translationBuilder.add(DDItems.RADIOACTIVE_CHESTPLATE, "Radioactive Chestplate");
+        translationBuilder.add(DDItems.RADIOACTIVE_LEGGINGS, "Radioactive Leggings");
+        translationBuilder.add(DDItems.RADIOACTIVE_BOOTS, "Radioactive Boots");
+        translationBuilder.add(DDItems.RADIOACTIVE_SWORD, "Radioactive Sword");
+        translationBuilder.add(DDItems.RADIOACTIVE_PICKAXE, "Radioactive Pickaxe");
+        translationBuilder.add(DDItems.RADIOACTIVE_AXE, "Radioactive Axe");
+        translationBuilder.add(DDItems.RADIOACTIVE_SHOVEL, "Radioactive Shovel");
+        translationBuilder.add(DDItems.RADIOACTIVE_HOE, "Radioactive Hoe");
         translationBuilder.add(DDItems.WARDEN_HELMET, "Warden Helmet");
         translationBuilder.add(DDItems.WARDEN_CHESTPLATE, "Warden Chestplate");
         translationBuilder.add(DDItems.WARDEN_LEGGINGS, "Warden Leggings");
@@ -294,6 +303,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.FIZZ, "Fizz");
         translationBuilder.add(DDBlocks.FIZZ_BLOCK, "Block of Fizz");
         translationBuilder.add(DDItems.SCULK_DRINK, "Sculk Drink");
+        translationBuilder.add(DDBlocks.RADIOACTIVE_BLOCK, "Radioactive Block");
+        translationBuilder.add(DDItems.RADIOACTIVE_INGOT, "Radioactive Ingot");
         translationBuilder.add(DDBlocks.RED_CRYSTAL_BLOCK, "Red Crystal Block");
         translationBuilder.add(DDBlocks.GREEN_CRYSTAL_BLOCK, "Green Crystal Block");
         translationBuilder.add(DDBlocks.BLUE_CRYSTAL_BLOCK, "Blue Crystal Block");

@@ -16,6 +16,7 @@ import java.util.EnumMap;
 @SuppressWarnings("NullableProblems")
 public enum DDArmorMaterials implements ArmorMaterial {
     LEAD("lead", 15, new int[] {2, 5, 6, 2}, 9, DDSounds.ARMOR_EQUIP_LEAD, 0.0f, 0.0f, DDItems.LEAD_INGOT),
+    RADIOACTIVE("radioactive", 36, new int[] {3, 6, 8, 3}, 11, SoundEvents.ARMOR_EQUIP_IRON, 2.0f, 1.0f, DDItems.RADIOACTIVE_INGOT),
     RESONARIUM("resonarium", 30, new int[] {2, 6, 7, 3}, 10, SoundEvents.ARMOR_EQUIP_IRON, 1, 0, DDItems.RESONARIUM),
     WARDEN("warden", 40, new int[] {4, 7, 9, 4}, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.1f, DDItems.REINFORCED_ECHO_SHARD);
 
