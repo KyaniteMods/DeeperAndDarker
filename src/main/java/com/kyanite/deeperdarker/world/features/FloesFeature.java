@@ -19,14 +19,14 @@ public class FloesFeature extends Feature<FloesFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<FloesFeatureConfiguration> featurePlaceContext) {
         FloesFeatureConfiguration config = featurePlaceContext.config();
         WorldGenLevel worldGenLevel = featurePlaceContext.level();
-        RandomSource random = featurePlaceContext.random();
+        RandomSource random = RandomSource.create(worldGenLevel.getSeed());
         BlockPos blockPos = featurePlaceContext.origin();
         SimpleWorleyNoise noise = SimpleWorleyNoise.create(random);
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        for (int dz = 0; dz < 16; dz++) {
-            for (int dx = 0; dx < 16; dx++) {
-                int x = blockPos.getX() + dx;
-                int z = blockPos.getZ() + dz;
+        for (int dz = 0; dz < 48; dz++) {
+            for (int dx = 0; dx < 48; dx++) {
+                int x = blockPos.getX() - 16 + dx;
+                int z = blockPos.getZ() - 16 + dz;
 
                 if (!worldGenLevel.getBiome(new BlockPos(x, Math.max(config.maxFloeHeight(), config.maxSeamHeight()), z)).is(config.allowedBiomes())) continue;
 
