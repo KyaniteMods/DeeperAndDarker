@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -35,7 +34,6 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -108,7 +106,10 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CONE_SHADOW_CRYSTAL = createKey("cone_shadow_crystal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BOULDER_SCULK_FOREST = createKey("boulder_sculk_forest");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ACID_DELTA = createKey("acid_delta");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOES = createKey("floes");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FLOES_ACID = createKey("floes_acid");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CONE_RED_CRYSTAL_BLOCK = createKey("cone_red_crystal_block");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CONE_GREEN_CRYSTAL_BLOCK = createKey("cone_green_crystal_block");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CONE_BLUE_CRYSTAL_BLOCK = createKey("cone_blue_crystal_block");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> PLANT_BLOOMING = createKey("plant_blooming");
 
@@ -158,6 +159,10 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, GLOOMY_SCULK_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_GRASS.defaultBlockState(), 9).add(DDBlocks.GLOOMY_CACTUS.defaultBlockState(), 1))));
         FeatureUtils.register(context, GLOOMY_SCULK_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.GLOOMY_SCULK_REPLACEABLE, new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.GLOOMY_SCULK.defaultBlockState(), 99).add(DDBlocks.GLOOMY_GEYSER.defaultBlockState(), 1)), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GLOOMY_SCULK_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.2f, UniformInt.of(1, 2), 0.7f));
 
+        FeatureUtils.register(context, CONE_RED_CRYSTAL_BLOCK, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_REPLACEABLES, BlockStateProvider.simple(DDBlocks.RED_CRYSTAL_BLOCK), UniformInt.of(3, 5), UniformInt.of(3, 5), UniformInt.of(3, 6), UniformInt.of(0, 3), ConstantInt.of(-1), UniformInt.of(0, 3)));
+        FeatureUtils.register(context, CONE_GREEN_CRYSTAL_BLOCK, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_REPLACEABLES, BlockStateProvider.simple(DDBlocks.GREEN_CRYSTAL_BLOCK), UniformInt.of(3, 5), UniformInt.of(3, 5), UniformInt.of(3, 6), UniformInt.of(0, 3), ConstantInt.of(-1), UniformInt.of(0, 3)));
+        FeatureUtils.register(context, CONE_BLUE_CRYSTAL_BLOCK, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_REPLACEABLES, BlockStateProvider.simple(DDBlocks.BLUE_CRYSTAL_BLOCK), UniformInt.of(3, 5), UniformInt.of(3, 5), UniformInt.of(3, 6), UniformInt.of(0, 3), ConstantInt.of(-1), UniformInt.of(0, 3)));
+
         FeatureUtils.register(context, ORE_INFESTED_SCULK, Feature.ORE, new OreConfiguration(infestedSculkTarget, 9));
         FeatureUtils.register(context, ORE_SCULK_JAW, Feature.ORE, new OreConfiguration(sculkJawTarget, 6));
         FeatureUtils.register(context, ORE_ECHO_SOIL, Feature.ORE, new OreConfiguration(echoSoilTarget, 64));
@@ -205,7 +210,7 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, CONE_SHADOW_CRYSTAL, DDFeatures.CONE, new ConeFeatureConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SHADOW_CRYSTAL_BLOCK), UniformInt.of(40, 45), UniformInt.of(30, 50), UniformInt.of(30, 60), UniformInt.of(-8, 8), UniformInt.of(-25, -10), UniformInt.of(-8, 8)));
         FeatureUtils.register(context, BOULDER_SCULK_FOREST, DDFeatures.BOULDER, new BoulderFeatureConfiguration(SimpleStateProvider.simple(DDBlocks.COBBLED_SCULK_STONE), ConstantInt.of(3)));
         FeatureUtils.register(context, ACID_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(DDBlocks.ACID.defaultBlockState(), DDBlocks.SCULK_BASALT.defaultBlockState(), UniformInt.of(3, 6), UniformInt.of(1, 2)));
-        FeatureUtils.register(context, FLOES, DDFeatures.FLOES, new FloesFeatureConfiguration(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.SCULK_BASALT)), Optional.of(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.ACID))), 64, 54, 0.15f));
+        FeatureUtils.register(context, FLOES_ACID, DDFeatures.FLOES, new FloesFeatureConfiguration(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.SCULK_BASALT)), Optional.of(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(DDBlocks.ACID))), 64, 54, 0.15f));
 
         FeatureUtils.register(context, DISK_DARK_FOUNTAIN, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(DDBlocks.SCULK_TISSUE.defaultBlockState(), 35)

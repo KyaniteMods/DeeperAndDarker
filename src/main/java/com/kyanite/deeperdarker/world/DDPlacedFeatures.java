@@ -11,11 +11,9 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
@@ -81,7 +79,10 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SHADOW_CRYSTAL_CONE = createKey("shadow_crystal_cone");
     public static final ResourceKey<PlacedFeature> SCULK_FOREST_BOULDER = createKey("sculk_forest_boulder");
     public static final ResourceKey<PlacedFeature> ACID_DELTA = createKey("acid_delta");
-    public static final ResourceKey<PlacedFeature> FLOES = createKey("floes");
+    public static final ResourceKey<PlacedFeature> FLOES_ACID = createKey("floes_acid");
+    public static final ResourceKey<PlacedFeature> RED_CRYSTAL_CONE = createKey("red_crystal_cone");
+    public static final ResourceKey<PlacedFeature> GREEN_CRYSTAL_CONE = createKey("green_crystal_cone");
+    public static final ResourceKey<PlacedFeature> BLUE_CRYSTAL_CONE = createKey("blue_crystal_cone");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -103,6 +104,10 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, ICE_LILY, features.getOrThrow(DDConfiguredFeatures.PATCH_ICE_LILY), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SURFACE_GLOOMSLATE, features.getOrThrow(DDConfiguredFeatures.SURFACE_GLOOMSLATE), countPlacement(32, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, GLOOMY_SCULK_VEGETATION, features.getOrThrow(DDConfiguredFeatures.GLOOMY_SCULK_PATCH), countPlacement(256, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+
+        PlacementUtils.register(context, RED_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_RED_CRYSTAL_BLOCK), countPlacement(1, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+        PlacementUtils.register(context, GREEN_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_GREEN_CRYSTAL_BLOCK), countPlacement(1, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
+        PlacementUtils.register(context, BLUE_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_BLUE_CRYSTAL_BLOCK), countPlacement(1, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
 
         PlacementUtils.register(context, INFESTED_SCULK, features.getOrThrow(DDConfiguredFeatures.ORE_INFESTED_SCULK), countPlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(86))));
         PlacementUtils.register(context, SCULK_JAW, features.getOrThrow(DDConfiguredFeatures.ORE_SCULK_JAW), countPlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-92), VerticalAnchor.top())));
@@ -144,7 +149,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, SHADOW_CRYSTAL_CONE, features.getOrThrow(DDConfiguredFeatures.CONE_SHADOW_CRYSTAL), countPlacement(64, PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT));
         PlacementUtils.register(context, SCULK_FOREST_BOULDER, features.getOrThrow(DDConfiguredFeatures.BOULDER_SCULK_FOREST), countPlacement(3, PlacementUtils.FULL_RANGE));
         PlacementUtils.register(context, ACID_DELTA, features.getOrThrow(DDConfiguredFeatures.ACID_DELTA), CountOnEveryLayerPlacement.of(30), BiomeFilter.biome());
-        PlacementUtils.register(context, FLOES, features.getOrThrow(DDConfiguredFeatures.FLOES), BiomeFilter.biome());
+        PlacementUtils.register(context, FLOES_ACID, features.getOrThrow(DDConfiguredFeatures.FLOES_ACID), BiomeFilter.biome());
 
         PlacementUtils.register(context, DARK_FOUNTAIN_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_DARK_FOUNTAIN), countPlacement(64, PlacementUtils.FULL_RANGE));
 

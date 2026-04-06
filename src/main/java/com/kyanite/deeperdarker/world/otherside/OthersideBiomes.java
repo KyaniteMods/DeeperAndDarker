@@ -20,8 +20,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.SnowAndFreezeFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class OthersideBiomes {
@@ -63,6 +61,9 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SURFACE_SCULK_STONE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_DECORATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.RED_CRYSTAL_CONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GREEN_CRYSTAL_CONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.BLUE_CRYSTAL_CONE);
         addSculkDecoration(biomeBuilder);
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
@@ -240,7 +241,7 @@ public class OthersideBiomes {
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_LOW_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.LAKES, DDPlacedFeatures.ACID_DELTA);
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.FLOES);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.FLOES_ACID);
         addSculkOres(biomeBuilder);
 
         return (new Biome.BiomeBuilder()).hasPrecipitation(true)

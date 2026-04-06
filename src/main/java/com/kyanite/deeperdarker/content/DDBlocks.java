@@ -338,9 +338,9 @@ public class DDBlocks {
     public static final Block ACID = registerWithoutItem("acid", new LiquidBlock(DDFluids.ACID, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).replaceable().noCollission().randomTicks().strength(100.0f).lightLevel(blockState -> 15).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
     public static final Block FIZZ_BLOCK = register("fizz_block", new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).requiresCorrectToolForDrops().strength(5.0f, 6.0f).sound(SoundType.METAL)));
 
-    public static final Block RED_CRYSTAL_BLOCK = register("red_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
-    public static final Block GREEN_CRYSTAL_BLOCK = register("green_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
-    public static final Block BLUE_CRYSTAL_BLOCK = register("blue_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
+    public static final Block RED_CRYSTAL_BLOCK = register("red_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).lightLevel(state -> 8)));
+    public static final Block GREEN_CRYSTAL_BLOCK = register("green_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).lightLevel(state -> 8)));
+    public static final Block BLUE_CRYSTAL_BLOCK = register("blue_crystal_block", new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).lightLevel(state -> 8)));
 
     public static final Block SCULK_FIRE = registerWithoutItem("sculk_fire", new SculkFireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE).mapColor(MapColor.COLOR_CYAN).lightLevel(blockState -> 15)));
     public static final Block SCULK_TORCH = registerWithoutItem("sculk_torch", new TorchBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_TORCH).lightLevel(blockState -> 15), DDParticleTypes.SCULK_FIRE_FLAME));

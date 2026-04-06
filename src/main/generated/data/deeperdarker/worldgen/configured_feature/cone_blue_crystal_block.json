@@ -1,0 +1,48 @@
+{
+  "type": "deeperdarker:cone",
+  "config": {
+    "depth": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 5,
+        "min_inclusive": 3
+      }
+    },
+    "maxFloeHeight": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 6,
+        "min_inclusive": 3
+      }
+    },
+    "replaceable": "deeperdarker:sculk_replaceables",
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "deeperdarker:blue_crystal_block"
+      }
+    },
+    "tip_x_shift": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 3,
+        "min_inclusive": 0
+      }
+    },
+    "tip_z_shift": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 3,
+        "min_inclusive": 0
+      }
+    },
+    "width": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 5,
+        "min_inclusive": 3
+      }
+    },
+    "y_shift": -1
+  }
+}
