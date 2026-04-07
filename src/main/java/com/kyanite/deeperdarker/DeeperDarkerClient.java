@@ -44,13 +44,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
-import org.spongepowered.asm.mixin.Unique;
 
 public class DeeperDarkerClient implements ClientModInitializer {
     public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand", "inventory");
     public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand_in_hand", "inventory");
     public static final ResourceLocation ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still");
     public static final ResourceLocation FLOWING_ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_flow");
+    public static final ResourceLocation ACID_SCREEN_EFFECT_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/misc/acid.png");
     public static final Material DEAD_MANS_CHEST_LOCATION = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal"));
     public static final Material DEAD_MANS_CHEST_LOCATION_RIGHT = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal_right"));
     public static final Material DEAD_MANS_CHEST_LOCATION_LEFT = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal_left"));
