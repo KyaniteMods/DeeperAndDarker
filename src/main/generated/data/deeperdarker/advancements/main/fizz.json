@@ -1,12 +1,12 @@
 {
-  "parent": "deeperdarker:main/find_ancient_city",
+  "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
-    "reinforced_echo_shard": {
+    "fizz": {
       "conditions": {
         "items": [
           {
             "items": [
-              "deeperdarker:reinforced_echo_shard"
+              "deeperdarker:fizz"
             ]
           }
         ]
@@ -17,21 +17,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.deeperdarker.obtain_reinforced_echo_shard.description"
+      "translate": "advancements.deeperdarker.fizz.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "deeperdarker:reinforced_echo_shard"
+      "item": "deeperdarker:fizz"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.deeperdarker.obtain_reinforced_echo_shard.title"
+      "translate": "advancements.deeperdarker.fizz.title"
     }
   },
   "requirements": [
     [
-      "reinforced_echo_shard"
+      "fizz"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,0 +1,43 @@
+{
+  "parent": "deeperdarker:main/kill_all_pots",
+  "criteria": {
+    "overcast_vessel": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:overcast_vessel"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.deeperdarker.kill_overcast_vessel.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "deeperdarker:fortitude_soul"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.deeperdarker.kill_overcast_vessel.title"
+    }
+  },
+  "requirements": [
+    [
+      "overcast_vessel"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

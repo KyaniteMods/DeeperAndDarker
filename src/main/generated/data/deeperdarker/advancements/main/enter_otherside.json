@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/kill_warden",
+  "parent": "deeperdarker:main/find_ancient_city",
   "criteria": {
     "otherside": {
       "conditions": {
@@ -16,7 +16,8 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:reinforced_deepslate"
+      "item": "deeperdarker:otherside_fire_striker",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {

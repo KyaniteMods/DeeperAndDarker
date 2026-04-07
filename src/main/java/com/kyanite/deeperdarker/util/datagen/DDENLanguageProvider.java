@@ -448,10 +448,12 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".root.description", "You feel something pulling you toward the source...");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.title", "A Metropolis of Restless Souls");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_city.description", "Find an Ancient City");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.description", "Slay the Warden and take its heart");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.title", "Below the Bedrock");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".enter_otherside.description", "Deep below the bedrock, the darkness awaits");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.title", "Phantom Thief");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_warden.description", "Slay the Warden and take its heart");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".fizz.title", "Fizz Buzz");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".fizz.description", "Acquire Fizz");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.title", "Abyssal Descent");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".find_ancient_temple.description", "Explore the depths for a temple");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_sculk_transmitter.title", "Remote Storage");
@@ -466,10 +468,12 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".obtain_reinforced_echo_shard.description", "Reinforce an Echo Shard");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.title", "Cover Me with Sculk");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".warden_armor.description", "Protect yourself with a full set of Warden Armor");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.title", "Pot Luck");
-        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.description", "Kill Potty, Pot, and Potter");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.title", "Patience is Key");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_blooming_golem.description", "Kill the Blooming Golem");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.title", "Pot Luck");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_all_pots.description", "Kill Potty, Pot, and Potter");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcast_vessel.title", "Twinsanity");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcast_vessel.description", "Kill the Overcast Vessel");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".open_dead_mans_chest.title", "But It Refused");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".open_dead_mans_chest.description", "Open a Dead Man's Chest and find a lost item");
 

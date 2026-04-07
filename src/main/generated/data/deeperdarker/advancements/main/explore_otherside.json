@@ -1,6 +1,22 @@
 {
   "parent": "deeperdarker:main/enter_otherside",
   "criteria": {
+    "acid_floes": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:acid_floes"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "blooming_caverns": {
       "conditions": {
         "player": [
@@ -115,6 +131,9 @@
     }
   },
   "requirements": [
+    [
+      "acid_floes"
+    ],
     [
       "deeplands"
     ],

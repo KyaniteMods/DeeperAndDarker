@@ -58,6 +58,19 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("find_ancient_city"));
 
+        Advancement enterOtherside = Advancement.Builder.advancement().parent(findAncientCity)
+                .display(
+                        DDItems.OTHERSIDE_FIRE_STRIKER,
+                        Component.translatable(id + "enter_otherside.title"),
+                        Component.translatable(id + "enter_otherside.description"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false
+                ).addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL))
+                .save(consumer, path("enter_otherside"));
+
         Advancement killWarden = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.HEART_OF_THE_DEEP,
@@ -72,18 +85,18 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(100))
                 .save(consumer, path("kill_warden"));
 
-        Advancement enterOtherside = Advancement.Builder.advancement().parent(killWarden)
+        Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
-                        Blocks.REINFORCED_DEEPSLATE,
-                        Component.translatable(id + "enter_otherside.title"),
-                        Component.translatable(id + "enter_otherside.description"),
+                        DDItems.FIZZ,
+                        Component.translatable(id + "fizz.title"),
+                        Component.translatable(id + "fizz.description"),
                         null,
                         FrameType.TASK,
                         true,
                         true,
                         false
-                ).addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL))
-                .save(consumer, path("enter_otherside"));
+                ).addCriterion("fizz", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(DDItems.FIZZ).build()))
+                .save(consumer, path("fizz"));
 
         Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
@@ -147,6 +160,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         true,
                         true,
                         false)
+                .addCriterion("acid_floes", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ACID_FLOES).build()))
                 .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.DEEPLANDS).build()))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ECHOING_FOREST).build()))
                 .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.BLOOMING_CAVERNS).build()))
@@ -188,7 +202,21 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_all_pots"));
 
-        Advancement.Builder.advancement().parent(killAllPots)
+        Advancement killOvercastVessel = Advancement.Builder.advancement().parent(killAllPots)
+                .display(
+                        DDItems.FORTITUDE_SOUL,
+                        Component.translatable(id + "kill_overcast_vessel.title"),
+                        Component.translatable(id + "kill_overcast_vessel.description"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false)
+                .addCriterion("overcast_vessel", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.OVERCAST_VESSEL)))
+                .rewards(AdvancementRewards.Builder.experience(50))
+                .save(consumer, path("kill_overcast_vessel"));
+
+        Advancement.Builder.advancement().parent(killOvercastVessel)
                 .display(
                         DDItems.WARDEN_SWORD,
                         Component.translatable(id + "kill_all_otherside_mobs.title"),
@@ -212,11 +240,13 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("potty", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTY)))
                 .addCriterion("pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POT)))
                 .addCriterion("potter", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTER)))
+                .addCriterion("overcast_vessel", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.OVERCAST_VESSEL)))
+                .addCriterion("acid_sprite", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.ACID_SPRITE)))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(200))
                 .save(consumer, path("kill_all_otherside_mobs"));
 
-        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(killWarden)
+        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.REINFORCED_ECHO_SHARD,
                         Component.translatable(id + "obtain_reinforced_echo_shard.title"),

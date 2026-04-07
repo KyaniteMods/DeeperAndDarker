@@ -1,6 +1,20 @@
 {
-  "parent": "deeperdarker:main/kill_all_pots",
+  "parent": "deeperdarker:main/kill_overcast_vessel",
   "criteria": {
+    "acid_sprite": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:acid_sprite"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
     "angler_fish": {
       "conditions": {
         "entity": [
@@ -23,6 +37,20 @@
             "entity": "this",
             "predicate": {
               "type": "deeperdarker:blooming_golem"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "overcast_vessel": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:overcast_vessel"
             }
           }
         ]
@@ -256,6 +284,12 @@
     ],
     [
       "potter"
+    ],
+    [
+      "overcast_vessel"
+    ],
+    [
+      "acid_sprite"
     ]
   ],
   "rewards": {
