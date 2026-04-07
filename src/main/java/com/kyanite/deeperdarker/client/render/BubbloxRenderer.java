@@ -2,27 +2,17 @@ package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
-import com.kyanite.deeperdarker.client.model.AcidSpriteModel;
 import com.kyanite.deeperdarker.client.model.BubbloxModel;
-import com.kyanite.deeperdarker.content.entities.AcidSprite;
 import com.kyanite.deeperdarker.content.entities.Bubblox;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.vehicle.AbstractMinecart;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("NullableProblems")
 public class BubbloxRenderer<T extends Bubblox> extends EntityRenderer<T> {

@@ -118,6 +118,9 @@ public class DDTags {
 
         public static final TagKey<Item> ACID_IMMUNE_ARMOR = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "acid_immune_armor"));
+
+        public static final TagKey<Item> ALLOWS_ACID_SPRITE_TRADES = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "allows_acid_sprite_trades"));
     }
 
     public static class EntityTypes {

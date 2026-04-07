@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.client.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.AcidSpriteModel;
-import com.kyanite.deeperdarker.content.entities.AcidSprite;
+import com.kyanite.deeperdarker.content.entities.acidsprite.AcidSprite;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.core.BlockPos;

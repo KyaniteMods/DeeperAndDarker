@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.*;
+import com.kyanite.deeperdarker.content.entities.acidsprite.AcidSprite;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselItem;
 import com.kyanite.deeperdarker.mixin.DefaultAttributeRegistryAccessor;

@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.client.model;// Made with Blockbench 5.1.1
 // Paste this class into your mod and generate all required imports
 
 
-import com.kyanite.deeperdarker.content.entities.AcidSprite;
+import com.kyanite.deeperdarker.content.entities.acidsprite.AcidSprite;
 import com.kyanite.deeperdarker.content.entities.animations.AcidSpriteAnimation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
