@@ -230,7 +230,7 @@ public class DDModelProvider extends FabricModelProvider {
 
         registerSculkTubers(DDBlocks.SCULK_TUBERS, blockModelGenerators);
         blockModelGenerators.family(DDBlocks.SCULK_PERMAFROST);
-        registerGrassLikeSculkStone(DDBlocks.SNOWY_SCULK_PERMAFROST, blockModelGenerators);
+        registerGrassLikeSculkPermafrost(DDBlocks.SNOWY_SCULK_PERMAFROST, blockModelGenerators);
         registerIcicle(DDBlocks.ICICLE, blockModelGenerators);
 
         registerGrassLikeSculkStone(DDBlocks.BLOOMING_SCULK_STONE, blockModelGenerators);
@@ -628,6 +628,11 @@ public class DDModelProvider extends FabricModelProvider {
 
     private void registerGrassLikeSculkStone(Block block, BlockModelGenerators blockModelGenerators) {
         TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_STONE)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_BOTTOM_TOP.create(block, textureMapping, blockModelGenerators.modelOutput)));
+    }
+
+    private void registerGrassLikeSculkPermafrost(Block block, BlockModelGenerators blockModelGenerators) {
+        TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_PERMAFROST)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_BOTTOM_TOP.create(block, textureMapping, blockModelGenerators.modelOutput)));
     }
 
