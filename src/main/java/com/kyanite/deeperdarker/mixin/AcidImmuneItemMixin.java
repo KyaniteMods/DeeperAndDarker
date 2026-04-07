@@ -1,6 +1,6 @@
 package com.kyanite.deeperdarker.mixin;
 
-import com.kyanite.deeperdarker.util.DDTags;
+import com.kyanite.deeperdarker.util.DDUtil;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -15,6 +15,6 @@ public abstract class AcidImmuneItemMixin extends Entity {
 
     @Override
     public boolean deeperdarker$acidImmune() {
-        return super.deeperdarker$acidImmune() || ((ItemEntity) (Object) this).getItem().is(DDTags.Items.ACID_RESISTANT);
+        return super.deeperdarker$acidImmune() || DDUtil.isAcidResistant(((ItemEntity) (Object) this).getItem());
     }
 }

@@ -251,6 +251,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.FIZZ, RecipeCategory.BUILDING_BLOCKS, DDBlocks.FIZZ_BLOCK);
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
+        SpecialRecipeBuilder.special(DDRecipeSerializers.ACID_RESISTANT_ITEM).save(output, "acid_resistant_item");
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {
