@@ -19,7 +19,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.flag.FeatureFlag;
@@ -32,14 +31,12 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import org.jetbrains.annotations.Nullable;
@@ -158,7 +155,7 @@ public class DDBlocks {
     public static final Block SCULK_SPRUCE_SAPLING = register("sculk_spruce_sapling", new SaplingBlock(new SculkSpruceTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)) {
         @Override
         public boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-            return super.mayPlaceOn(blockState, blockGetter, blockPos) || blockState.is(Blocks.SNOW_BLOCK) || blockState.is(SNOWY_SCULK_STONE) || blockState.is(SCULK_STONE);
+            return super.mayPlaceOn(blockState, blockGetter, blockPos) || blockState.is(Blocks.SNOW_BLOCK) || blockState.is(SNOWY_SCULK_PERMAFROST) || blockState.is(SCULK_STONE);
         }
     });
 
@@ -219,7 +216,8 @@ public class DDBlocks {
     public static final Block CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CHISELED_SCULK_STONE = register("chiseled_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE)));
 
-    public static final Block SNOWY_SCULK_STONE = register("snowy_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.SNOW)));
+    public static final Block SCULK_PERMAFROST = register("sculk_permafrost", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.ICE)));
+    public static final Block SNOWY_SCULK_PERMAFROST = register("snowy_sculk_permafrost", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.SNOW)));
     public static final Block SCULK_TUBERS = registerWithoutItem("sculk_tubers", new SculkTubersBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).offsetType(BlockBehaviour.OffsetType.XYZ).mapColor(state -> state.getValue(BlockStateProperties.SNOWY) ? MapColor.SNOW : MapColor.GRASS)));
     public static final Block ICICLE = register("icicle", new IcicleBlock(BlockBehaviour.Properties.copy(Blocks.POINTED_DRIPSTONE).mapColor(MapColor.ICE).friction(0.98f).randomTicks().strength(0.25f).sound(SoundType.GLASS).lightLevel(state -> 3)));
 

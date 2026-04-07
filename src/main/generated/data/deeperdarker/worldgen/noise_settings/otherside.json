@@ -307,7 +307,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "deeperdarker:snowy_sculk_stone"
+                  "Name": "deeperdarker:snowy_sculk_permafrost"
                 }
               }
             },
@@ -426,6 +426,21 @@
           "type": "minecraft:block",
           "result_state": {
             "Name": "deeperdarker:sculk_basalt"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "deeperdarker:sculk_spruce_forest"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "deeperdarker:sculk_permafrost"
           }
         }
       },

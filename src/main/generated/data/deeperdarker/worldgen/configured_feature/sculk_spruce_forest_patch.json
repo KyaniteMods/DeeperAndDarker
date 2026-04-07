@@ -7,7 +7,7 @@
     "ground_state": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "deeperdarker:snowy_sculk_stone"
+        "Name": "deeperdarker:snowy_sculk_permafrost"
       }
     },
     "replaceable": "#deeperdarker:sculk_spruce_forest_replaceable",

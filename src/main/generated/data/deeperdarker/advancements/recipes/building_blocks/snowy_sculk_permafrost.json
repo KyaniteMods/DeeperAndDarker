@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "deeperdarker:snowy_sculk_stone"
+        "recipe": "deeperdarker:snowy_sculk_permafrost"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "deeperdarker:snowy_sculk_stone"
+      "deeperdarker:snowy_sculk_permafrost"
     ]
   },
   "sends_telemetry_event": false

@@ -66,6 +66,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_EMERALD = createKey("gloomslate_emerald");
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_LAPIS = createKey("gloomslate_lapis");
     public static final ResourceKey<PlacedFeature> GLOOMSLATE_DIAMOND = createKey("gloomslate_diamond");
+    public static final ResourceKey<PlacedFeature> CALCITE = createKey("calcite");
 
     public static final ResourceKey<PlacedFeature> ECHO_TREE = createKey("echo_tree");
     public static final ResourceKey<PlacedFeature> BLOOMING_PLANT = createKey("blooming_plant");
@@ -138,6 +139,7 @@ public class DDPlacedFeatures {
         PlacementUtils.register(context, GLOOMSLATE_EMERALD, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_EMERALD), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-16), VerticalAnchor.aboveBottom(30))));
         PlacementUtils.register(context, GLOOMSLATE_LAPIS, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_LAPIS), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(10), VerticalAnchor.aboveBottom(25))));
         PlacementUtils.register(context, GLOOMSLATE_DIAMOND, features.getOrThrow(DDConfiguredFeatures.ORE_GLOOMSLATE_DIAMOND), countPlacement(1, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(50))));
+        PlacementUtils.register(context, CALCITE, features.getOrThrow(DDConfiguredFeatures.ORE_CALCITE), countPlacement(96, PlacementUtils.FULL_RANGE));
 
         PlacementUtils.register(context, ECHO_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_ECHO), CountOnEveryLayerPlacement.of(8), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.ECHO_SAPLING.defaultBlockState(), BlockPos.ZERO)));
         PlacementUtils.register(context, SCULK_SPRUCE_TREE, features.getOrThrow(DDConfiguredFeatures.TREE_SCULK_SPRUCE), CountOnEveryLayerPlacement.of(10), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.SCULK_SPRUCE_SAPLING.defaultBlockState(), BlockPos.ZERO)));

@@ -215,6 +215,7 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.ICICLE_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, DDPlacedFeatures.SNOW_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, MiscOverworldPlacements.FREEZE_TOP_LAYER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, DDPlacedFeatures.CALCITE);
         addSculkOres(biomeBuilder);
         BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
 

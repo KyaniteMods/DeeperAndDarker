@@ -21,7 +21,7 @@
         {
           "type": "minecraft:matching_blocks",
           "blocks": [
-            "deeperdarker:snowy_sculk_stone",
+            "deeperdarker:snowy_sculk_permafrost",
             "deeperdarker:sculk_spruce_leaves",
             "deeperdarker:sculk_stone"
           ],

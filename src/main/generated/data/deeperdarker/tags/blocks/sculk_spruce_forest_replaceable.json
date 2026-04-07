@@ -3,7 +3,8 @@
   "values": [
     "minecraft:sculk",
     "deeperdarker:sculk_stone",
-    "deeperdarker:snowy_sculk_stone",
+    "deeperdarker:sculk_permafrost",
+    "deeperdarker:snowy_sculk_permafrost",
     "minecraft:snow",
     "minecraft:gravel",
     "minecraft:deepslate"

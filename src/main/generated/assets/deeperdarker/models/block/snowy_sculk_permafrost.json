@@ -2,7 +2,7 @@
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "deeperdarker:block/sculk_stone",
-    "side": "deeperdarker:block/snowy_sculk_stone",
-    "top": "deeperdarker:block/snowy_sculk_stone_top"
+    "side": "deeperdarker:block/snowy_sculk_permafrost",
+    "top": "deeperdarker:block/snowy_sculk_permafrost_top"
   }
 }

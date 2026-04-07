@@ -5,7 +5,7 @@
       "Name": "minecraft:gravel"
     },
     "rim": {
-      "Name": "deeperdarker:snowy_sculk_stone"
+      "Name": "deeperdarker:snowy_sculk_permafrost"
     },
     "rim_size": {
       "type": "minecraft:uniform",

@@ -66,7 +66,7 @@ public class OthersideGeneration {
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.BLOOMING_CAVERNS), SurfaceRules.state(DDBlocks.BLOOMING_SCULK_STONE.defaultBlockState())),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.OVERCAST_COLUMNS), SurfaceRules.state(DDBlocks.GLOOMY_SCULK.defaultBlockState())),
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(DDBlocks.SCULK_TISSUE.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.SCULK_SPRUCE_FOREST), SurfaceRules.state(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.SCULK_SPRUCE_FOREST), SurfaceRules.state(DDBlocks.SNOWY_SCULK_PERMAFROST.defaultBlockState())),
                 SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.isBiome(OthersideBiomes.ACID_FLOES)), SurfaceRules.state(Blocks.SCULK.defaultBlockState()))
         ));
         SurfaceRules.RuleSource deepslateFloor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient("deepslate_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(12)), SurfaceRules.sequence(
@@ -76,9 +76,10 @@ public class OthersideGeneration {
         SurfaceRules.RuleSource deepslateRoof = SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.verticalGradient("deepslate_roof", VerticalAnchor.belowTop(12), VerticalAnchor.top())), SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y)));
         SurfaceRules.RuleSource gloomslate = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.OVERCAST_COLUMNS), SurfaceRules.state(DDBlocks.GLOOMSLATE.defaultBlockState()));
         SurfaceRules.RuleSource sculkBasalt = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.ACID_FLOES), SurfaceRules.state(DDBlocks.SCULK_BASALT.defaultBlockState()));
+        SurfaceRules.RuleSource sculkPermafrost = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.SCULK_SPRUCE_FOREST), SurfaceRules.state(DDBlocks.SCULK_PERMAFROST.defaultBlockState()));
 
         SurfaceRules.RuleSource darklandsAir = SurfaceRules.ifTrue(SurfaceRules.isBiome(OthersideBiomes.DARKLANDS), SurfaceRules.state(Blocks.AIR.defaultBlockState()));
 
-        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 2), DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_GRIME.defaultBlockState(), OthersideNoiseRouter.otherside(densityFunction, noise), SurfaceRules.sequence(bedrockFloor, bedrockRoof, echoSoilLayer, biomeSurfaceLayer, deepslateFloor, deepslateRoof, gloomslate, sculkBasalt, darklandsAir), List.of(), 17, false, false, true, false);
+        return new NoiseGeneratorSettings(NoiseSettings.create(0, 128, 1, 2), DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_GRIME.defaultBlockState(), OthersideNoiseRouter.otherside(densityFunction, noise), SurfaceRules.sequence(bedrockFloor, bedrockRoof, echoSoilLayer, biomeSurfaceLayer, deepslateFloor, deepslateRoof, gloomslate, sculkBasalt, sculkPermafrost, darklandsAir), List.of(), 17, false, false, true, false);
     }
 }

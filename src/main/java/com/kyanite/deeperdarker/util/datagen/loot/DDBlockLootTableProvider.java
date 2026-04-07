@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.util.datagen.loot;
 
-import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.SculkBerryBlock;
@@ -14,21 +13,15 @@ import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -132,7 +125,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropWhenSilkTouch(DDBlocks.SCULK_GRIME_GLASS);
         dropWhenSilkTouch(DDBlocks.SCULK_GRIME_GLASS_PANE);
 
-        add(DDBlocks.SNOWY_SCULK_STONE, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.COBBLED_SCULK_STONE));
+        dropSelf(DDBlocks.SCULK_PERMAFROST);
+        add(DDBlocks.SNOWY_SCULK_PERMAFROST, (block) -> this.createSingleItemTableWithSilkTouch(block, DDBlocks.SCULK_PERMAFROST));
         dropOther(DDBlocks.SCULK_TUBERS, DDItems.SCULK_TUBER);
         dropWhenSilkTouch(DDBlocks.ICICLE);
 

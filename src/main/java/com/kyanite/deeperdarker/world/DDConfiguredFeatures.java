@@ -93,6 +93,7 @@ public class DDConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_EMERALD = createKey("ore_gloomslate_emerald");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_LAPIS = createKey("ore_gloomslate_lapis");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GLOOMSLATE_DIAMOND = createKey("ore_gloomslate_diamond");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CALCITE = createKey("ore_calcite");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_ECHO = createKey("tree_echo");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREE_SCULK_SPRUCE = createKey("tree_sculk_spruce");
@@ -119,6 +120,7 @@ public class DDConfiguredFeatures {
         RuleTest sculkStone = new TagMatchTest(DDTags.Blocks.SCULK_STONE_REPLACEABLES);
         RuleTest gloomslate = new BlockMatchTest(DDBlocks.GLOOMSLATE);
         RuleTest sculkGrime = new BlockMatchTest(DDBlocks.SCULK_GRIME);
+        RuleTest sculkPermafrost = new BlockMatchTest(DDBlocks.SCULK_PERMAFROST);
 
         List<OreConfiguration.TargetBlockState> infestedSculkTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.INFESTED_SCULK.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> sculkJawTarget = List.of(OreConfiguration.target(sculkStone, DDBlocks.SCULK_JAW.defaultBlockState()));
@@ -137,6 +139,7 @@ public class DDConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> soulSandTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.SOUL_SAND.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> soulSoilTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.SOUL_SOIL.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> magmaTarget = List.of(OreConfiguration.target(sculkGrime, Blocks.MAGMA_BLOCK.defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> calciteTarget = List.of(OreConfiguration.target(sculkPermafrost, Blocks.CALCITE.defaultBlockState()));
 
         FeatureUtils.register(context, SCULK_STONE_COLUMN, DDFeatures.OTHERSIDE_COLUMN, new ColumnFeatureConfiguration(DDBlocks.SCULK_STONE.defaultBlockState(), DDBlocks.SCULK_STONE.defaultBlockState(), DDTags.Blocks.DEEPLANDS_COLUMN_BASE, DDTags.Blocks.DEEPLANDS_COLUMN_REPLACEABLE, 0.1f));
         FeatureUtils.register(context, GLOOMSLATE_COLUMN, DDFeatures.OTHERSIDE_COLUMN, new ColumnFeatureConfiguration(DDBlocks.GLOOMSLATE.defaultBlockState(), DDBlocks.CRYSTALLIZED_AMBER.defaultBlockState(), DDTags.Blocks.OVERCAST_COLUMN_BASE, DDTags.Blocks.OVERCAST_COLUMN_REPLACEABLE, 0.333f));
@@ -193,15 +196,17 @@ public class DDConfiguredFeatures {
         FeatureUtils.register(context, ORE_GLOOMSLATE_LAPIS, Feature.ORE, new OreConfiguration(lapisTarget, 10, 0.7f));
         FeatureUtils.register(context, ORE_GLOOMSLATE_DIAMOND, Feature.ORE, new OreConfiguration(diamondTarget, 7, 0.6f));
 
+        FeatureUtils.register(context, ORE_CALCITE, Feature.ORE, new OreConfiguration(calciteTarget, 32));
+
         FeatureUtils.register(context, TREE_ECHO, Feature.TREE, createEcho().build());
         FeatureUtils.register(context, TREE_SCULK_SPRUCE, Feature.TREE, createSculkSpruce().build());
         FeatureUtils.register(context, SCULK_SPRUCE_FOREST_VEGETATION, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(DDBlocks.SCULK_TUBERS.defaultBlockState().setValue(BlockStateProperties.SNOWY, true), 1))));
-        FeatureUtils.register(context, SCULK_SPRUCE_FOREST_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState()), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_SPRUCE_FOREST_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.1f, UniformInt.of(1, 2), 0.5f));
-        FeatureUtils.register(context, SCULK_SPRUCE_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.GRAVEL.defaultBlockState(), DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), UniformInt.of(3, 6), UniformInt.of(0, 2)));
-        FeatureUtils.register(context, PATCH_SNOW, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(Blocks.SNOW)), BlockPredicate.allOf(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), DDBlocks.SNOWY_SCULK_STONE, DDBlocks.SCULK_SPRUCE_LEAVES, DDBlocks.SCULK_STONE), BlockPredicate.matchesBlocks(Blocks.AIR)), ConstantInt.of(8), 0));
+        FeatureUtils.register(context, SCULK_SPRUCE_FOREST_PATCH, Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(DDTags.Blocks.SCULK_SPRUCE_FOREST_REPLACEABLE, BlockStateProvider.simple(DDBlocks.SNOWY_SCULK_PERMAFROST.defaultBlockState()), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SCULK_SPRUCE_FOREST_VEGETATION)), CaveSurface.FLOOR, ConstantInt.of(1), 0, 2, 0.1f, UniformInt.of(1, 2), 0.5f));
+        FeatureUtils.register(context, SCULK_SPRUCE_DELTA, Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(Blocks.GRAVEL.defaultBlockState(), DDBlocks.SNOWY_SCULK_PERMAFROST.defaultBlockState(), UniformInt.of(3, 6), UniformInt.of(0, 2)));
+        FeatureUtils.register(context, PATCH_SNOW, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(BlockStateProvider.simple(Blocks.SNOW)), BlockPredicate.allOf(BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), DDBlocks.SNOWY_SCULK_PERMAFROST, DDBlocks.SCULK_SPRUCE_LEAVES, DDBlocks.SCULK_STONE), BlockPredicate.matchesBlocks(Blocks.AIR)), ConstantInt.of(8), 0));
         FeatureUtils.register(context, DISK_GRAVEL, Feature.DISK, new DiskConfiguration(RuleBasedBlockStateProvider.simple(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
-                .add(DDBlocks.SNOWY_SCULK_STONE.defaultBlockState(), 4)
-                .add(Blocks.GRAVEL.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SNOWY_SCULK_STONE), UniformInt.of(3, 5), 2));
+                .add(DDBlocks.SNOWY_SCULK_PERMAFROST.defaultBlockState(), 4)
+                .add(Blocks.GRAVEL.defaultBlockState(), 1).build())), BlockPredicate.matchesBlocks(DDBlocks.SNOWY_SCULK_PERMAFROST), UniformInt.of(3, 5), 2));
         FeatureUtils.register(context, PATCH_ICICLE, Feature.RANDOM_PATCH, new RandomPatchConfiguration(64, 6, 2, PlacementUtils.onlyWhenEmpty(DDFeatures.ICICLE, new IcicleFeatureConfiguration(DDTags.Blocks.ICE_REPLACEABLE, DDTags.Blocks.ICE_BASE, new WeightedStateProvider(
                 SimpleWeightedRandomList.<BlockState>builder()
                         .add(Blocks.PACKED_ICE.defaultBlockState(), 1)

@@ -15,7 +15,6 @@ import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.mixin.ItemModelGeneratorAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -230,7 +229,8 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.GLOWING_GRASS, BlockModelGenerators.TintState.NOT_TINTED);
 
         registerSculkTubers(DDBlocks.SCULK_TUBERS, blockModelGenerators);
-        registerGrassLikeSculkStone(DDBlocks.SNOWY_SCULK_STONE, blockModelGenerators);
+        blockModelGenerators.family(DDBlocks.SCULK_PERMAFROST);
+        registerGrassLikeSculkStone(DDBlocks.SNOWY_SCULK_PERMAFROST, blockModelGenerators);
         registerIcicle(DDBlocks.ICICLE, blockModelGenerators);
 
         registerGrassLikeSculkStone(DDBlocks.BLOOMING_SCULK_STONE, blockModelGenerators);

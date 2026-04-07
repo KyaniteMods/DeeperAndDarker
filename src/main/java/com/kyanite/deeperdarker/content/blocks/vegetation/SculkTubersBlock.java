@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -32,7 +31,7 @@ public class SculkTubersBlock extends BushBlock {
 
     private BlockState setSnowyState(LevelAccessor level, BlockPos pos, BlockState state) {
         if (!state.is(this)) return state;
-        if (level.getBlockState(pos.below()).is(Blocks.SNOW_BLOCK) || level.getBlockState(pos.below()).is(DDBlocks.SNOWY_SCULK_STONE)) {
+        if (level.getBlockState(pos.below()).is(Blocks.SNOW_BLOCK) || level.getBlockState(pos.below()).is(DDBlocks.SNOWY_SCULK_PERMAFROST)) {
             return state.setValue(BlockStateProperties.SNOWY, true);
         }
         return state.setValue(BlockStateProperties.SNOWY, false);
@@ -54,7 +53,7 @@ public class SculkTubersBlock extends BushBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-        return blockState.is(DDBlocks.SNOWY_SCULK_STONE) || blockState.is(DDBlocks.SCULK_STONE) || blockState.is(Blocks.SNOW_BLOCK);
+        return blockState.is(DDBlocks.SNOWY_SCULK_PERMAFROST) || blockState.is(DDBlocks.SCULK_STONE) || blockState.is(Blocks.SNOW_BLOCK);
     }
 
     @Override

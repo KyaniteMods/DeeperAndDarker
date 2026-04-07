@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -187,7 +186,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .unlockedBy(getHasName(DDItems.SOUL_CRYSTAL), has(DDItems.SOUL_CRYSTAL))
                 .unlockedBy(getHasName(DDItems.HEART_OF_THE_DEEP), has(DDItems.HEART_OF_THE_DEEP)).save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SNOWY_SCULK_STONE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SNOWY_SCULK_PERMAFROST)
                 .define('L', Blocks.SNOW)
                 .define('S', DDBlocks.SCULK_STONE)
                 .pattern("L")

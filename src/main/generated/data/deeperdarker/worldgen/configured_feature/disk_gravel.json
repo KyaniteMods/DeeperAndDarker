@@ -15,7 +15,7 @@
         "entries": [
           {
             "data": {
-              "Name": "deeperdarker:snowy_sculk_stone"
+              "Name": "deeperdarker:snowy_sculk_permafrost"
             },
             "weight": 4
           },
@@ -31,7 +31,7 @@
     },
     "target": {
       "type": "minecraft:matching_blocks",
-      "blocks": "deeperdarker:snowy_sculk_stone"
+      "blocks": "deeperdarker:snowy_sculk_permafrost"
     }
   }
 }
