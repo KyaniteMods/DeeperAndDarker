@@ -189,12 +189,12 @@ public class AcidSprite extends Monster implements Merchant {
             return;
         }
         MerchantOffers merchantOffers = getOffers();
-        addOffersFromItemListings(merchantOffers, itemListings, 5);
-        int i = getRandom().nextInt(itemListings2.length);
-        VillagerTrades.ItemListing itemListing = itemListings2[i];
-        MerchantOffer merchantOffer = itemListing.getOffer(this, random);
-        if (merchantOffer != null) {
-            merchantOffers.add(merchantOffer);
+        addOffersFromItemListings(merchantOffers, itemListings, 2);
+        for (VillagerTrades.ItemListing itemListing : itemListings2) {
+            MerchantOffer merchantOffer = itemListing.getOffer(this, random);
+            if (merchantOffer != null) {
+                merchantOffers.add(merchantOffer);
+            }
         }
     }
 
