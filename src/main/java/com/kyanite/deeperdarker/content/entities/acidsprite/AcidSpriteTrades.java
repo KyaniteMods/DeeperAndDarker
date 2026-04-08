@@ -19,7 +19,6 @@ public final class AcidSpriteTrades {
                     new ItemStacksToItemStack(new ItemStack(Items.QUARTZ, 8), new ItemStack(DDItems.FIZZ), 5, 1),
                     new ItemStacksToItemStack(new ItemStack(Items.SHULKER_SHELL, 4), new ItemStack(DDItems.SHADOW_CRYSTAL), 5, 1),
                     new ItemStacksToItemStack(new ItemStack(Items.BONE, 6), new ItemStack(DDItems.SCULK_BONE), 3, 1),
-                    new ItemStacksToItemStack(new ItemStack(DDItems.HEART_OF_THE_DEEP), new ItemStack(DDItems.SOUL_CRYSTAL), 3, 2),
                     new ItemStacksToItemStack(new ItemStack(DDItems.RADIOACTIVE_INGOT, 2), new ItemStack(Items.ECHO_SHARD), 3, 1)
             }, 2, new VillagerTrades.ItemListing[]{
                     new ItemStacksToItemStack(new ItemStack(DDItems.PATIENCE_SOUL), new ItemStack(DDItems.SOUL_CRYSTAL, 2), new ItemStack(DDItems.SHIELD_AUGMENT), 5, 2),
