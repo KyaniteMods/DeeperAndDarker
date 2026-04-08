@@ -161,6 +161,7 @@ public class ENLanguageProvider extends LanguageProvider {
         add("tag.item." + DeeperDarker.MOD_ID + ".dampens_vibrations", "Dampens Vibrations");
         add("tag.item." + DeeperDarker.MOD_ID + ".transmitter", "Transmitter");
         add("tag.item." + DeeperDarker.MOD_ID + ".sonic_weapon", "Sonic Weapons");
+        add("tag.item." + DeeperDarker.MOD_ID + ".gloomslate_sherds", "Gloomslate Sherds");
         add("tag.item." + DeeperDarker.MOD_ID + ".scutes", "Scutes");
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));

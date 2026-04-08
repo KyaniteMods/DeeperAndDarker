@@ -9,7 +9,6 @@ import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -415,6 +414,6 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     private void stonecuttingRecipe(RecipeOutput output, ItemLike ingredient, ItemLike result, int count) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, result, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, ResourceLocation.fromNamespaceAndPath(DeeperDarker.MOD_ID,getConversionRecipeName(result, ingredient) + "_stonecutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, result, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, DeeperDarker.rl(getConversionRecipeName(result, ingredient) + "_stonecutting"));
     }
 }
