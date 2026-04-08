@@ -25,7 +25,7 @@ public record CatalyzeEnvironment(boolean dropXp) implements EnchantmentEntityEf
     @Override
     public void apply(ServerLevel level, int enchantmentLevel, EnchantedItemInUse item, Entity entity, Vec3 origin) {
         if (entity instanceof LivingEntity target) {
-            if (target.isDeadOrDying() && !target.wasExperienceConsumed()) {
+            if (target.isDeadOrDying() && !target.wasExperienceConsumed() && target.shouldDropExperience()) {
                 SculkSpreader spreader = SculkSpreader.createLevelSpreader();
                 Entity attacker = Optionull.map(target.getLastDamageSource(), DamageSource::getEntity);
                 if (!(attacker instanceof ServerPlayer serverPlayer)) return;
