@@ -71,12 +71,6 @@
     "misc": [],
     "monster": [
       {
-        "type": "deeperdarker:angler_fish",
-        "maxCount": 5,
-        "minCount": 3,
-        "weight": 6
-      },
-      {
         "type": "deeperdarker:sculk_snapper",
         "maxCount": 2,
         "minCount": 1,
@@ -91,7 +85,14 @@
     ],
     "underground_water_creature": [],
     "water_ambient": [],
-    "water_creature": []
+    "water_creature": [
+      {
+        "type": "deeperdarker:angler_fish",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 6
+      }
+    ]
   },
   "temperature": -0.3
 }
