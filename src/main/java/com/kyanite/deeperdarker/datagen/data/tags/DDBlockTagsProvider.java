@@ -130,7 +130,7 @@ public class DDBlockTagsProvider extends BlockTagsProvider {
         tag(DDTags.Blocks.SCULK_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get(), DDBlocks.ECHO_LEAVES.get());
         tag(DDTags.Blocks.GLOWING_VINE_PLACEABLE).add(Blocks.SCULK, DDBlocks.SCULK_STONE.get());
 
-        tag(DDTags.Blocks.TRANSMITTABLE).addTags(BlockTags.SHULKER_BOXES, BlockTags.ANVIL).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST);
+        tag(DDTags.Blocks.TRANSMITTABLE).addTags(BlockTags.SHULKER_BOXES, BlockTags.ANVIL, Tags.Blocks.BARRELS, Tags.Blocks.CHESTS, Tags.Blocks.PLAYER_WORKSTATIONS_CRAFTING_TABLES, Tags.Blocks.PLAYER_WORKSTATIONS_FURNACES).add(Blocks.CRAFTING_TABLE, Blocks.STONECUTTER, Blocks.CARTOGRAPHY_TABLE, Blocks.SMITHING_TABLE, Blocks.GRINDSTONE, Blocks.LOOM, Blocks.FURNACE, Blocks.SMOKER, Blocks.BLAST_FURNACE, Blocks.CHIPPED_ANVIL, Blocks.ENCHANTING_TABLE, Blocks.BREWING_STAND, Blocks.BEACON, Blocks.CHEST, Blocks.BARREL, Blocks.DISPENSER, Blocks.DROPPER, Blocks.HOPPER, Blocks.TRAPPED_CHEST);
         tag(DDTags.Blocks.INFINIBURN_OTHERSIDE).addTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE.get());
 
         tag(DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL);

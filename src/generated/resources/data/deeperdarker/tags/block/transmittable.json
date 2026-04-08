@@ -2,6 +2,10 @@
   "values": [
     "#minecraft:shulker_boxes",
     "#minecraft:anvil",
+    "#c:barrels",
+    "#c:chests",
+    "#c:player_workstations/crafting_tables",
+    "#c:player_workstations/furnaces",
     "minecraft:crafting_table",
     "minecraft:stonecutter",
     "minecraft:cartography_table",
