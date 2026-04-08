@@ -22,12 +22,9 @@ public final class AcidSpriteTrades {
                     new ItemStacksToItemStack(new ItemStack(DDItems.HEART_OF_THE_DEEP), new ItemStack(DDItems.SOUL_CRYSTAL), 3, 2),
                     new ItemStacksToItemStack(new ItemStack(DDItems.RADIOACTIVE_INGOT, 2), new ItemStack(Items.ECHO_SHARD), 3, 1)
             }, 2, new VillagerTrades.ItemListing[]{
-                    new VillagerTrades.ItemsForEmeralds(Items.TROPICAL_FISH_BUCKET, 5, 1, 4, 1),
-                    new VillagerTrades.ItemsForEmeralds(Items.PUFFERFISH_BUCKET, 5, 1, 4, 1),
-                    new VillagerTrades.ItemsForEmeralds(Items.PACKED_ICE, 3, 1, 6, 1),
-                    new VillagerTrades.ItemsForEmeralds(Items.BLUE_ICE, 6, 1, 6, 1),
-                    new VillagerTrades.ItemsForEmeralds(Items.GUNPOWDER, 1, 1, 8, 1),
-                    new VillagerTrades.ItemsForEmeralds(Items.PODZOL, 3, 3, 6, 1)
+                    new ItemStacksToItemStack(new ItemStack(DDItems.PATIENCE_SOUL), new ItemStack(DDItems.SOUL_CRYSTAL, 2), new ItemStack(DDItems.SHIELD_AUGMENT), 5, 2),
+                    new ItemStacksToItemStack(new ItemStack(DDItems.FORTITUDE_SOUL), new ItemStack(DDItems.SOUL_CRYSTAL, 2), new ItemStack(DDItems.SHIELD_AUGMENT), 5, 2),
+                    new ItemStacksToItemStack(new ItemStack(DDItems.CORRUPTION_SOUL), new ItemStack(DDItems.SOUL_CRYSTAL, 2), new ItemStack(DDItems.SHIELD_AUGMENT), 5, 2)
             }));
 
     public static class ItemStacksToItemStack implements VillagerTrades.ItemListing {

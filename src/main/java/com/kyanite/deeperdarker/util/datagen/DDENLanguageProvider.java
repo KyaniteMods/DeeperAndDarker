@@ -306,6 +306,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_DRINK, "Sculk Drink");
         translationBuilder.add(DDBlocks.RADIOACTIVE_BLOCK, "Radioactive Block");
         translationBuilder.add(DDItems.RADIOACTIVE_INGOT, "Radioactive Ingot");
+        translationBuilder.add(DDItems.SHIELD_AUGMENT, "Shield Augment");
+        translationBuilder.add(DDItems.AUGMENTED_SHIELD, "Augmented Shield");
         translationBuilder.add(DDBlocks.RED_CRYSTAL_BLOCK, "Red Crystal Block");
         translationBuilder.add(DDBlocks.GREEN_CRYSTAL_BLOCK, "Green Crystal Block");
         translationBuilder.add(DDBlocks.BLUE_CRYSTAL_BLOCK, "Blue Crystal Block");

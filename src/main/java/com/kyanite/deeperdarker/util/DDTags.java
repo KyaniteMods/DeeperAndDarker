@@ -121,6 +121,9 @@ public class DDTags {
 
         public static final TagKey<Item> ALLOWS_ACID_SPRITE_TRADES = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "allows_acid_sprite_trades"));
+
+        public static final TagKey<Item> SHIELD_AUGMENT_ITEMS = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "shield_augment_items"));
     }
 
     public static class EntityTypes {

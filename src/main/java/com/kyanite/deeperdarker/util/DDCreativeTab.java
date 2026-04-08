@@ -233,6 +233,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.SCULK_DRINK);
         entries.accept(DDBlocks.RADIOACTIVE_BLOCK);
         entries.accept(DDItems.RADIOACTIVE_INGOT);
+        entries.accept(DDItems.SHIELD_AUGMENT);
+        entries.accept(DDItems.AUGMENTED_SHIELD);
 
         entries.accept(DDBlocks.RED_CRYSTAL_BLOCK);
         entries.accept(DDBlocks.GREEN_CRYSTAL_BLOCK);
