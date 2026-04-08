@@ -252,6 +252,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
         SpecialRecipeBuilder.special(DDRecipeSerializers.ACID_RESISTANT_ITEM).save(output, "acid_resistant_item");
+        SpecialRecipeBuilder.special(DDRecipeSerializers.AUGMENT_SHIELD).save(output, "augment_shield");
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {

@@ -155,7 +155,6 @@ public class DDItems {
     public static final Item FIZZ = register("fizz", new Item(new Item.Properties()));
     public static final Item SCULK_DRINK = register("sculk_drink", new SculkDrinkItem(new Item.Properties().craftRemainder(Items.BUCKET).food(new FoodProperties.Builder().nutrition(10).saturationMod(1.2f).build()).stacksTo(1)));
     public static final Item SHIELD_AUGMENT = register("shield_augment", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final Item AUGMENTED_SHIELD = register("augmented_shield", new AugmentedShieldItem(new Item.Properties().durability(336)));
 
     public static Item register(String id, Item item) {
         return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);

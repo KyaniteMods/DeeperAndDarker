@@ -27,6 +27,7 @@ import java.util.function.Predicate;
 
 public class DDUtil {
     public static final String ACID_RESISTANT_TAG = "acid_resistant";
+    public static final String AUGMENTED_TAG = "augmented";
 
     public static float lerpLog(float t, float a, float b) {
         // https://www.cmu.edu/biolphys/deserno/pdf/log_interpol.pdf
@@ -192,5 +193,13 @@ public class DDUtil {
 
     public static void setAcidResistant(ItemStack stack) {
         stack.getOrCreateTag().putBoolean(ACID_RESISTANT_TAG, true);
+    }
+
+    public static boolean isAugmented(ItemStack stack) {
+        return stack.getOrCreateTag().getBoolean(AUGMENTED_TAG);
+    }
+
+    public static void setAugmented(ItemStack stack) {
+        stack.getOrCreateTag().putBoolean(AUGMENTED_TAG, true);
     }
 }

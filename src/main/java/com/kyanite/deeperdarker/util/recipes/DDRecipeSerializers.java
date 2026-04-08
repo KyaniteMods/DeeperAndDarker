@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 public class DDRecipeSerializers {
     public static final RecipeSerializer<SculkTransmitterDyeRecipe> SCULK_TRANSMITTER_DYE = register("crafting_special_sculktransmitterdye", new SimpleCraftingRecipeSerializer<>(SculkTransmitterDyeRecipe::new));
     public static final RecipeSerializer<AcidResistantItemRecipe> ACID_RESISTANT_ITEM = register("crafting_special_acidresistantitem", new SimpleCraftingRecipeSerializer<>(AcidResistantItemRecipe::new));
+    public static final RecipeSerializer<AugmentShieldRecipe> AUGMENT_SHIELD = register("crafting_special_augmentshield", new SimpleCraftingRecipeSerializer<>(AugmentShieldRecipe::new));
 
     public static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String string, S recipeSerializer) {
         return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, new ResourceLocation(DeeperDarker.MOD_ID, string), recipeSerializer);

@@ -307,7 +307,6 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.RADIOACTIVE_BLOCK, "Radioactive Block");
         translationBuilder.add(DDItems.RADIOACTIVE_INGOT, "Radioactive Ingot");
         translationBuilder.add(DDItems.SHIELD_AUGMENT, "Shield Augment");
-        translationBuilder.add(DDItems.AUGMENTED_SHIELD, "Augmented Shield");
         translationBuilder.add(DDBlocks.RED_CRYSTAL_BLOCK, "Red Crystal Block");
         translationBuilder.add(DDBlocks.GREEN_CRYSTAL_BLOCK, "Green Crystal Block");
         translationBuilder.add(DDBlocks.BLUE_CRYSTAL_BLOCK, "Blue Crystal Block");
@@ -478,6 +477,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcast_vessel.description", "Kill the Overcast Vessel");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".open_dead_mans_chest.title", "But It Refused");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".open_dead_mans_chest.description", "Open a Dead Man's Chest and find a lost item");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overseer.title", "Darker Yet Darker");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overseer.description", "Kill the Overseer");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcaster.title", "Oh The Places You'll Go");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcaster.description", "Purify the Overcaster, then kill it");
 
         translationBuilder.add(getBiome(OthersideBiomes.DEEPLANDS), "Deeplands");
         translationBuilder.add(getBiome(OthersideBiomes.ECHOING_FOREST), "Echoing Forest");

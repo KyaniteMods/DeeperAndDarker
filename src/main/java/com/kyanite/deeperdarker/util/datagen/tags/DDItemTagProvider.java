@@ -37,6 +37,15 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         return builder;
     }
 
+    @SafeVarargs
+    public final FabricTagProvider<Item>.FabricTagBuilder addOptionalTags(TagKey<Item> tag, TagKey<Item>... tags) {
+        FabricTagBuilder builder = getOrCreateTagBuilder(tag).setReplace(false);
+        for (TagKey<Item> item : tags) {
+            builder.addOptionalTag(item);
+        }
+        return builder;
+    }
+
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         copy(BlockTags.PLANKS, ItemTags.PLANKS);

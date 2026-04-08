@@ -41,6 +41,7 @@
     "SculkLightEngineMixin",
     "SculkLightPropertiesMixin",
     "ShearEfficientSculkTissueMixin",
+    "ShieldItemMixin",
     "SoulItemEntityMixin",
     "StripBloomingStemMixin",
     "TomsStorageCompatMixin",
