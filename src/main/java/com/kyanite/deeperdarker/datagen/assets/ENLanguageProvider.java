@@ -2,11 +2,10 @@ package com.kyanite.deeperdarker.datagen.assets;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.*;
-import com.kyanite.deeperdarker.content.entities.DDBoat;
-import com.kyanite.deeperdarker.content.entities.DDChestBoat;
 import com.kyanite.deeperdarker.util.DDDamageTypes;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.WallHangingSignBlock;
@@ -166,7 +165,10 @@ public class ENLanguageProvider extends LanguageProvider {
 
         DDBlocks.BLOCKS.getEntries().forEach(block -> add(block, "block"));
         DDItems.ITEMS.getEntries().forEach(item -> add(item, "item"));
+
         DDEntities.ENTITIES.getEntries().forEach(entity -> add(entity, "entity"));
+        add("entity." + DeeperDarker.MOD_ID + ".angler_fish", "Angler Fish");
+
         DDEffects.EFFECTS.getEntries().forEach(effect -> add(effect, "effect"));
     }
 
@@ -178,7 +180,8 @@ public class ENLanguageProvider extends LanguageProvider {
 
     private boolean filter(DeferredHolder<?, ?> entry) {
         if(entry.get() instanceof ItemNameBlockItem) return false;
-        return entry.get() instanceof BlockItem || entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock || entry.get() instanceof DDBoat || entry.get() instanceof DDChestBoat;
+        if(entry.get() instanceof EntityType<?>) return entry == DDEntities.BOAT || entry == DDEntities.CHEST_BOAT || entry == DDEntities.ANGLER_FISH;
+        return entry.get() instanceof BlockItem || entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock;
     }
 
     private String convertToName(String key) {
