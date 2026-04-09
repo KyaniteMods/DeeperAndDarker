@@ -47,7 +47,7 @@ public class WardenArmorItem extends ArmorItem {
     @NotNull
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        return this == DDItems.WARDEN_LEGGINGS && slot == EquipmentSlot.LEGS ? this.LEGGINGS_MODIFIERS : super.getDefaultAttributeModifiers(slot);
+        return slot == EquipmentSlot.LEGS ? this.LEGGINGS_MODIFIERS : super.getDefaultAttributeModifiers(slot);
     }
 
     @Override
