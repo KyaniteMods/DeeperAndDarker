@@ -154,8 +154,6 @@
   "enchantment.deeperdarker.catalysis.desc": "モブを倒した時、スカルクを広める",
   "enchantment.deeperdarker.sculk_smite": "スカルク特効",
   "enchantment.deeperdarker.sculk_smite.desc": "シャッタードやウォーデン等のスカルク系モブに対するダメージを増加させます。",
-  "entity.deeperdarker.boat": "ボート",
-  "entity.deeperdarker.chest_boat": "チェスト付きのボート",
   "entity.deeperdarker.sculk_centipede": "スカルクムカデ",
   "entity.deeperdarker.sculk_leech": "スカルクヒル",
   "entity.deeperdarker.sculk_snapper": "スカルクスナッパー",
