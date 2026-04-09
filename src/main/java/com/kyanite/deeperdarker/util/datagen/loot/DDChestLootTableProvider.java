@@ -38,6 +38,7 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation GLOOMAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_secret");
     public static final ResourceLocation CASTLE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/castle_basic");
     public static final ResourceLocation CASTLE_ROYAL = new ResourceLocation(DeeperDarker.MOD_ID, "chests/castle_royal");
+    public static final ResourceLocation SCULK_RUINS = new ResourceLocation(DeeperDarker.MOD_ID, "chests/sculk_ruins");
 
     public DDChestLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.CHEST);
@@ -229,6 +230,19 @@ public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
                         .add(EmptyLootItem.emptyItem().setWeight(23))
                         .add(LootItem.lootTableItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE).setWeight(1)))
+        );
+        consumer.accept(SCULK_RUINS, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(3, 7))
+                        .add(LootItem.lootTableItem(Items.SCULK).setWeight(7)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(Items.FERMENTED_SPIDER_EYE).setWeight(7)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(DDItems.SCULK_BONE).setWeight(2)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(DDItems.SCULK_TORCH).setWeight(2)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .add(LootItem.lootTableItem(DDItems.SCULK_BERRY_SPROUT).setWeight(1))
+                )
         );
     }
 }
