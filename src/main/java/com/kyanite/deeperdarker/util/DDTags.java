@@ -124,6 +124,9 @@ public class DDTags {
 
         public static final TagKey<Item> SHIELD_AUGMENT_ITEMS = TagKey.create(
                 Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "shield_augment_items"));
+
+        public static final TagKey<Item> CLUTTER_ITEMS = TagKey.create(
+                Registries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, "clutter_items"));
     }
 
     public static class EntityTypes {

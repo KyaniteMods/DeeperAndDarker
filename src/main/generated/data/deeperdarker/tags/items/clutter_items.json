@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:egg",
+    "minecraft:rotten_flesh",
+    "minecraft:bone",
+    "minecraft:arrow",
+    "minecraft:spider_eye",
+    "minecraft:stick",
+    "minecraft:apple",
+    "minecraft:azalea",
+    "minecraft:flowering_azalea",
+    "minecraft:moss_carpet",
+    "minecraft:moss_block",
+    "minecraft:big_dripleaf",
+    "minecraft:small_dripleaf",
+    "deeperdarker:resonarium",
+    "minecraft:glow_ink_sac",
+    "minecraft:ink_sac",
+    {
+      "id": "#minecraft:saplings",
+      "required": false
+    }
+  ]
+}

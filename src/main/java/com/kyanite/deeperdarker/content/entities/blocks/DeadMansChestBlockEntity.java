@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class DeadMansChestBlockEntity extends ChestBlockEntity {
@@ -58,6 +59,7 @@ public class DeadMansChestBlockEntity extends ChestBlockEntity {
 
             ObjectArrayList<ItemStack> objectList = new ObjectArrayList<>(list);
             Util.shuffle(objectList, getLevel().getRandom());
+            objectList.sort((first, second) -> second.getRarity().compareTo(first.getRarity()));
             int items = Math.min(getReinvokedItemAmount(getLevel().getRandom()), list.size());
             List<Integer> availableSlots = getAvailableSlots(this, getLevel().getRandom());
             for (int i = 0; i < items; i++) {
