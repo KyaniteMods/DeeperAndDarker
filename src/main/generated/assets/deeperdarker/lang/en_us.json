@@ -518,6 +518,8 @@
   "text.config.deeperdarker.option.client.wardenHeartPulses.tooltip": "Determines if the Heart of the Deep should\nemit a random pulsing sound.",
   "text.config.deeperdarker.option.client.whiteFog": "White Fog",
   "text.config.deeperdarker.option.client.whiteFog.tooltip": "Changes the Otherside fog to be white instead of\nblack.",
+  "text.config.deeperdarker.option.server.cancelDummyBlockEntityWarning": "Cancel DUMMY Block Entity Warning",
+  "text.config.deeperdarker.option.server.cancelDummyBlockEntityWarning.tooltip": "Disables console logs related to block entities not found\nat a location. This is meant for developers and only applies\nto the Otherside.",
   "text.config.deeperdarker.option.server.generatedPortalHeight": "Generated Portal Height",
   "text.config.deeperdarker.option.server.generatedPortalHeight.tooltip": "The maxFloeHeight of Otherside portals generated when\ntraveling through dimensions and no portal is\navailable. Making this too large may cause problems.",
   "text.config.deeperdarker.option.server.generatedPortalWidth": "Generated Portal Width",

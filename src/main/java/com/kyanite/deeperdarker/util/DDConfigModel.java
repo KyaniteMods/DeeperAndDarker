@@ -56,6 +56,8 @@ public class DDConfigModel {
         @RestartRequired
         @ExcludeFromScreen
         public boolean addAncientCityLoot = true;
+
+        public boolean cancelDummyBlockEntityWarning = true;
     }
 
     @Nest

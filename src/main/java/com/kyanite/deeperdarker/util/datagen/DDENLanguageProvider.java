@@ -553,6 +553,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.soulElytraBoostStrength.tooltip", "Determines the strength of the boost provided\nwhen boosting with Soul Elytra.");
         translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.snapperDropLimit", "Sculk Snapper Drop Limit");
         translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.snapperDropLimit.tooltip", "Determines the maximum amount of books dropped\nby each Sculk Snapper. Set to -1 for infinite books.");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.cancelDummyBlockEntityWarning", "Cancel DUMMY Block Entity Warning");
+        translationBuilder.add("text.config." + DeeperDarker.MOD_ID + ".option.server.cancelDummyBlockEntityWarning.tooltip", "Disables console logs related to block entities not found\nat a location. This is meant for developers and only applies\nto the Otherside.");
 
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".bite", "%s was devoured");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".ring", "%s was given a deadly case of tinnitus by %s");
