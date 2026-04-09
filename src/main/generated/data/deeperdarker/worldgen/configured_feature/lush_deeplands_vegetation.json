@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "deeperdarker:sculk_fern"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "deeperdarker:large_sculk_fern",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

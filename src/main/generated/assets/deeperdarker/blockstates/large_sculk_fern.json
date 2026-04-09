@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "deeperdarker:block/large_sculk_fern_bottom"
+    },
+    "half=upper": {
+      "model": "deeperdarker:block/large_sculk_fern_top"
+    }
+  }
+}

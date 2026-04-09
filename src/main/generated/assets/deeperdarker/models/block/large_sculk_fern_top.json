@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "deeperdarker:block/large_sculk_fern_top"
+  }
+}

@@ -216,6 +216,9 @@ public class DDBlocks {
     public static final Block CUT_SCULK_STONE_WALL = register("cut_sculk_stone_wall", new WallBlock(BlockBehaviour.Properties.copy(CUT_SCULK_STONE)));
     public static final Block CHISELED_SCULK_STONE = register("chiseled_sculk_stone", new Block(BlockBehaviour.Properties.copy(SCULK_STONE)));
 
+    public static final Block SCULK_FERN = register("sculk_fern", new SculkFernBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).replaceable().noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+    public static final Block LARGE_SCULK_FERN = register("large_sculk_fern", new LargeSculkFernBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).replaceable().noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+
     public static final Block SCULK_PERMAFROST = register("sculk_permafrost", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.ICE)));
     public static final Block SNOWY_SCULK_PERMAFROST = register("snowy_sculk_permafrost", new Block(BlockBehaviour.Properties.copy(SCULK_STONE).strength(1.5f, 4f).mapColor(MapColor.SNOW)));
     public static final Block SCULK_TUBERS = registerWithoutItem("sculk_tubers", new SculkTubersBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).offsetType(BlockBehaviour.OffsetType.XYZ).mapColor(state -> state.getValue(BlockStateProperties.SNOWY) ? MapColor.SNOW : MapColor.GRASS)));

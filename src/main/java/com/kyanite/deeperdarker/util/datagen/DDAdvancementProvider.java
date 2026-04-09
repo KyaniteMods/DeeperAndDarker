@@ -162,6 +162,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         false)
                 .addCriterion("acid_floes", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ACID_FLOES).build()))
                 .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.DEEPLANDS).build()))
+                .addCriterion("lush_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.LUSH_DEEPLANDS).build()))
                 .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ECHOING_FOREST).build()))
                 .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.BLOOMING_CAVERNS).build()))
                 .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.OVERCAST_COLUMNS).build()))

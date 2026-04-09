@@ -75,6 +75,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.SCULK_TENDRILS,
                 DDBlocks.SCULK_VINES_PLANT,
                 DDBlocks.SCULK_VINES,
+                DDBlocks.SCULK_FERN,
+                DDBlocks.LARGE_SCULK_FERN,
                 DDBlocks.GLOWING_ROOTS_PLANT,
                 DDBlocks.GLOWING_ROOTS,
                 DDBlocks.GLOWING_VINES_PLANT,

@@ -178,7 +178,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.SCULK_TENDRILS, "Sculk Tendrils");
         translationBuilder.add(DDBlocks.SCULK_VINES_PLANT, "Sculk Vines Plant");
         translationBuilder.add(DDBlocks.SCULK_VINES, "Sculk Vines");
-        translationBuilder.add(DDBlocks.GLOWING_ROOTS_PLANT, "Glowing Roots Plant");
+        translationBuilder.add(DDBlocks.SCULK_FERN, "Sculk Fern");
+        translationBuilder.add(DDBlocks.LARGE_SCULK_FERN, "Large Sculk Fern");
         translationBuilder.add(DDBlocks.GLOWING_ROOTS, "Glowing Roots");
         translationBuilder.add(DDBlocks.GLOWING_VINES_PLANT, "Glowing Vines Plant");
         translationBuilder.add(DDBlocks.GLOWING_VINES, "Glowing Vines");
@@ -506,6 +507,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcaster.description", "Purify the Overcaster, then kill it");
 
         translationBuilder.add(getBiome(OthersideBiomes.DEEPLANDS), "Deeplands");
+        translationBuilder.add(getBiome(OthersideBiomes.LUSH_DEEPLANDS), "Lush Deeplands");
         translationBuilder.add(getBiome(OthersideBiomes.ECHOING_FOREST), "Echoing Forest");
         translationBuilder.add(getBiome(OthersideBiomes.OVERCAST_COLUMNS), "Overcast Columns");
         translationBuilder.add(getBiome(OthersideBiomes.BLOOMING_CAVERNS), "Blooming Caverns");

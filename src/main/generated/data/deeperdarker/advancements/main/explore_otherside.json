@@ -81,6 +81,22 @@
       },
       "trigger": "minecraft:location"
     },
+    "lush_deeplands": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "deeperdarker:lush_deeplands"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
     "overcast_columns": {
       "conditions": {
         "player": [
@@ -136,6 +152,9 @@
     ],
     [
       "deeplands"
+    ],
+    [
+      "lush_deeplands"
     ],
     [
       "echoing_forest"

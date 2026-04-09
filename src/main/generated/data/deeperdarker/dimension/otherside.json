@@ -18,6 +18,18 @@
           }
         },
         {
+          "biome": "deeperdarker:lush_deeplands",
+          "parameters": {
+            "continentalness": 0.7,
+            "depth": 0.2,
+            "erosion": 0.55,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": -0.2,
+            "weirdness": 0.2
+          }
+        },
+        {
           "biome": "deeperdarker:echoing_forest",
           "parameters": {
             "continentalness": 0.6,

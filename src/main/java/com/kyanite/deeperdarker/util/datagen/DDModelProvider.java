@@ -177,13 +177,17 @@ public class DDModelProvider extends FabricModelProvider {
         blockModelGenerators.family(DDBlocks.GLOOMSLATE_DIAMOND_ORE);
         blockModelGenerators.family(DDBlocks.RAW_LEAD_BLOCK);
         blockModelGenerators.family(DDBlocks.LEAD_BLOCK);
-        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_ROOTS_PLANT, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_ROOTS, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_VINES, net.minecraft.data.models.BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS_PLANT, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_TENDRILS, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES_PLANT, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.SCULK_VINES, BlockModelGenerators.TintState.NOT_TINTED);
+
+        blockModelGenerators.createCrossBlockWithDefaultItem(DDBlocks.SCULK_FERN, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createDoublePlant(DDBlocks.LARGE_SCULK_FERN, BlockModelGenerators.TintState.NOT_TINTED);
+
+        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_ROOTS_PLANT, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_ROOTS, BlockModelGenerators.TintState.NOT_TINTED);
+        blockModelGenerators.createCrossBlock(DDBlocks.GLOWING_VINES, BlockModelGenerators.TintState.NOT_TINTED);
 
         ModelTemplates.CROSS.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_VINES_PLANT), TextureMapping.cross(TextureMapping.getBlockTexture(DDBlocks.GLOWING_VINES_PLANT)), blockModelGenerators.modelOutput);
         ModelTemplates.CROSS.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOWING_VINES_PLANT, "_berries"), TextureMapping.cross(TextureMapping.getBlockTexture(DDBlocks.GLOWING_VINES_PLANT).withSuffix("_berries")), blockModelGenerators.modelOutput);

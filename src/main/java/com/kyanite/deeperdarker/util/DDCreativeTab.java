@@ -103,6 +103,9 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.CUT_SCULK_STONE_WALL);
         entries.accept(DDBlocks.CHISELED_SCULK_STONE);
 
+        entries.accept(DDBlocks.SCULK_FERN);
+        entries.accept(DDBlocks.LARGE_SCULK_FERN);
+
         entries.accept(DDBlocks.SCULK_GRIME);
         entries.accept(DDBlocks.SCULK_GRIME_BRICKS);
         entries.accept(DDBlocks.SCULK_GRIME_BRICK_STAIRS);

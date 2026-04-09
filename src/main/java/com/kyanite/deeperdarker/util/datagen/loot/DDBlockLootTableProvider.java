@@ -7,7 +7,10 @@ import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.advancements.critereon.BlockPredicate;
+import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.BlockPos;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.nbt.CompoundTag;
@@ -15,13 +18,16 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoublePlantBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -115,6 +121,9 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         add(DDBlocks.CUT_SCULK_STONE_SLAB, this::createSlabItemTable);
         dropSelf(DDBlocks.CUT_SCULK_STONE_WALL);
         dropSelf(DDBlocks.CHISELED_SCULK_STONE);
+
+        add(DDBlocks.SCULK_FERN, BlockLootSubProvider::createShearsOnlyDrop);
+        add(DDBlocks.LARGE_SCULK_FERN, (block) -> createDoublePlantWithoutSeedDrops(block, DDBlocks.SCULK_FERN));
 
         add(DDBlocks.SCULK_GRIME, (block) -> this.createSingleItemTableWithSilkTouch(block, DDItems.GRIME_BALL, UniformGenerator.between(2, 4)));
         dropSelf(DDBlocks.SCULK_GRIME_BRICKS);
@@ -244,6 +253,11 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.VIRTUE_SOUL_FIRE);
 
         dropSelf(DDBlocks.DEAD_MANS_CHEST);
+    }
+
+    public LootTable.Builder createDoublePlantWithoutSeedDrops(Block largePlant, Block plant) {
+        LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(plant).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0f))).when(HAS_SHEARS);
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(largePlant).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(largePlant).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(largePlant).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(largePlant).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
     }
 
     private void addVineAndPlant(Block plant, Block vine) {

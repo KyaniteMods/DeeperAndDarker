@@ -143,6 +143,7 @@ public class DDTags {
         public static final TagKey<Biome> HAS_WATCHTOWER = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/watchtower"));
         public static final TagKey<Biome> HAS_VILLAGER_CAMP = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_structure/villager_camp"));
         public static final TagKey<Biome> HAS_ACID_FLOES = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "has_acid_floes"));
+        public static final TagKey<Biome> SCULK_PHANTOM_BIOMES = TagKey.create(Registries.BIOME, new ResourceLocation(DeeperDarker.MOD_ID, "sculk_phantom_biomes"));
     }
 
     public static class Paintings {

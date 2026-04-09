@@ -24,6 +24,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class OthersideBiomes {
     public static final ResourceKey<Biome> DEEPLANDS = createKey("deeplands");
+    public static final ResourceKey<Biome> LUSH_DEEPLANDS = createKey("lush_deeplands");
     public static final ResourceKey<Biome> ECHOING_FOREST = createKey("echoing_forest");
     public static final ResourceKey<Biome> BLOOMING_CAVERNS = createKey("blooming_caverns");
     public static final ResourceKey<Biome> OVERCAST_COLUMNS = createKey("overcast_columns");
@@ -36,6 +37,7 @@ public class OthersideBiomes {
         HolderGetter<ConfiguredWorldCarver<?>> worldCarvers = context.lookup(Registries.CONFIGURED_CARVER);
 
         context.register(DEEPLANDS, deeplands(placedFeatures, worldCarvers));
+        context.register(LUSH_DEEPLANDS, lushDeeplands(placedFeatures, worldCarvers));
         context.register(ECHOING_FOREST, echoingForest(placedFeatures, worldCarvers));
         context.register(BLOOMING_CAVERNS, bloomingCaverns(placedFeatures, worldCarvers));
         context.register(OVERCAST_COLUMNS, overcastColumns(placedFeatures, worldCarvers));
@@ -60,6 +62,41 @@ public class OthersideBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_STONE_COLUMN);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SURFACE_SCULK_STONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_DECORATION);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.RED_CRYSTAL_CONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GREEN_CRYSTAL_CONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.BLUE_CRYSTAL_CONE);
+        addSculkDecoration(biomeBuilder);
+        addSculkOres(biomeBuilder);
+        BiomeDefaultFeatures.addFossilDecoration(biomeBuilder);
+
+        return (new Biome.BiomeBuilder()).hasPrecipitation(true)
+                .temperature(-0.2f)
+                .downfall(0.0f)
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x13256b)
+                        .waterFogColor(0x132052)
+                        .fogColor(0x141c33)
+                        .skyColor(calculateSkyColor(-0.2f))
+                        .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, 6000, 8, 2))
+                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_DEEPLANDS)).build())
+                .mobSpawnSettings(mobSpawnBuilder.build())
+                .generationSettings(biomeBuilder.build()).build();
+    }
+
+    private static Biome lushDeeplands(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
+        MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_CENTIPEDE, 6, 1, 4));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SCULK_SNAPPER, 11, 3, 6));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(DDEntities.SHATTERED, 5, 2, 4));
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 2, 1, 2));
+
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
+        biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_STONE_COLUMN);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, DDPlacedFeatures.SCULK_GLEAM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SURFACE_SCULK_STONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.LUSH_DEEPLANDS_VEGETATION);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.SCULK_DECORATION);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.RED_CRYSTAL_CONE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, DDPlacedFeatures.GREEN_CRYSTAL_CONE);
