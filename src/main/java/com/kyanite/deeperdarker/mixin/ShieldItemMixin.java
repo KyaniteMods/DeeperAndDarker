@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.mixin;
 
+import com.kyanite.deeperdarker.content.items.ShieldAugmentItem;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
@@ -47,22 +48,42 @@ public abstract class ShieldItemMixin {
         ItemStack slotStack = slot.getItem();
         if (slotStack.isEmpty()) {
             this.playRemoveOneSound(player);
-            removeStack(shield).ifPresent(itemStack2 -> addAugment(shield, slot.safeInsert(itemStack2)));
+            removeStack(shield).ifPresent(itemStack2 -> {
+                if (itemStack2.getItem() instanceof ShieldAugmentItem augmentItem) {
+                    augmentItem.onAugmentRemoved(shield, slot, player);
+                }
+                addAugment(shield, slot.safeInsert(itemStack2));
+            });
         } else if (ItemStack.isSameItemSameTags(previousStack, slotStack) && slotStack.getCount() < slotStack.getMaxStackSize()) {
             slotStack.grow(1);
-            removeStack(shield);
+            removeStack(shield).ifPresent(itemStack2 -> {
+                if (itemStack2.getItem() instanceof ShieldAugmentItem augmentItem) {
+                    augmentItem.onAugmentRemoved(shield, slot, player);
+                }
+            });
         } else if (!slotStack.is(DDTags.Items.SHIELD_AUGMENT_ITEMS)) {
             return;
         } else if (slotStack.getItem().canFitInsideContainerItems()) {
             if (previousStack.isEmpty()) {
-                int j = addAugment(shield, slot.safeTake(slotStack.getCount(), 1, player));
-                if (j > 0) {
+                ItemStack addedStack = slot.safeTake(slotStack.getCount(), 1, player);
+                boolean added = addAugment(shield, addedStack);
+                if (added) {
+                    if (addedStack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                        augmentItem.onAugmentAdded(shield, previousStack, slot, player);
+                    }
                     playInsertSound(player);
                 }
             } else if (slotStack.getCount() == 1) {
-                removeStack(shield);
-                int j = addAugment(shield, slotStack);
-                if (j > 0) {
+                removeStack(shield).ifPresent(itemStack -> {
+                    if (itemStack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                        augmentItem.onAugmentRemoved(shield, slot, player);
+                    }
+                });
+                boolean added = addAugment(shield, slotStack);
+                if (added) {
+                    if (slotStack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                        augmentItem.onAugmentAdded(shield, previousStack, slot, player);
+                    }
                     slot.setByPlayer(previousStack);
                     playInsertSound(player);
                 }
@@ -81,6 +102,9 @@ public abstract class ShieldItemMixin {
         }
         if (stack.isEmpty()) {
             removeStack(shield).ifPresent(itemStack -> {
+                if (itemStack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                    augmentItem.onAugmentRemoved(shield, slot, player);
+                }
                 this.playRemoveOneSound(player);
                 slotAccess.set(itemStack);
             });
@@ -88,16 +112,26 @@ public abstract class ShieldItemMixin {
         } else if (stack.is(DDTags.Items.SHIELD_AUGMENT_ITEMS)) {
             ItemStack previousStack = getStack(shield);
             if (previousStack.isEmpty()) {
-                int j = addAugment(shield, stack);
-                stack.shrink(1);
-                if (j > 0) {
+                boolean added = addAugment(shield, stack);
+                if (added) {
+                    if (stack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                        augmentItem.onAugmentAdded(shield, previousStack, slot, player);
+                    }
+                    stack.shrink(1);
                     playInsertSound(player);
                 }
                 cir.setReturnValue(true);
             } else if (stack.getCount() == 1) {
-                removeStack(shield);
-                int j = addAugment(shield, stack);
-                if (j > 0) {
+                removeStack(shield).ifPresent(itemStack -> {
+                    if (itemStack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                        augmentItem.onAugmentRemoved(shield, slot, player);
+                    }
+                });
+                boolean added = addAugment(shield, stack);
+                if (added) {
+                    if (stack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                        augmentItem.onAugmentAdded(shield, previousStack, slot, player);
+                    }
                     slotAccess.set(previousStack);
                     playInsertSound(player);
                 }
@@ -107,13 +141,13 @@ public abstract class ShieldItemMixin {
     }
 
     @Unique
-    private static int addAugment(ItemStack shield, ItemStack stack) {
+    private static boolean addAugment(ItemStack shield, ItemStack stack) {
         if (stack.isEmpty() || !stack.getItem().canFitInsideContainerItems() || !stack.is(DDTags.Items.SHIELD_AUGMENT_ITEMS)) {
-            return 0;
+            return false;
         }
         CompoundTag compoundTag = shield.getOrCreateTag();
         if (compoundTag.contains(TAG_ITEM, Tag.TAG_COMPOUND)) {
-            return 0;
+            return false;
         }
 
         ItemStack itemStack4 = stack.copyWithCount(1);
@@ -121,7 +155,7 @@ public abstract class ShieldItemMixin {
         itemStack4.save(itemTag);
         compoundTag.put(TAG_ITEM, itemTag);
 
-        return 1;
+        return true;
     }
 
     @Unique

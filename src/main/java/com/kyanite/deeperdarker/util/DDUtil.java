@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -28,6 +29,7 @@ import java.util.function.Predicate;
 public class DDUtil {
     public static final String ACID_RESISTANT_TAG = "acid_resistant";
     public static final String AUGMENTED_TAG = "augmented";
+    public static final String ITEM_TAG = "item";
 
     public static float lerpLog(float t, float a, float b) {
         // https://www.cmu.edu/biolphys/deserno/pdf/log_interpol.pdf
@@ -199,7 +201,18 @@ public class DDUtil {
         return stack.getOrCreateTag().getBoolean(AUGMENTED_TAG);
     }
 
+    public static boolean isAugmentedShield(ItemStack stack) {
+        return stack.is(ConventionalItemTags.SHIELDS) && isAugmented(stack);
+    }
+
     public static void setAugmented(ItemStack stack) {
         stack.getOrCreateTag().putBoolean(AUGMENTED_TAG, true);
+    }
+
+    public static ItemStack getAugmentItem(ItemStack shield) {
+        if (!isAugmented(shield)) {
+            return ItemStack.EMPTY;
+        }
+        return ItemStack.of(shield.getOrCreateTag().getCompound(ITEM_TAG));
     }
 }
