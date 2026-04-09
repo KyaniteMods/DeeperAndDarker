@@ -238,6 +238,10 @@ public class DDCreativeTab {
         entries.accept(DDItems.RADIOACTIVE_INGOT);
         entries.accept(DDItems.SHIELD_AUGMENT);
 
+        ItemStack shield = new ItemStack(Items.SHIELD);
+        DDUtil.setAugmented(shield);
+        entries.accept(shield);
+
         entries.accept(DDBlocks.RED_CRYSTAL_BLOCK);
         entries.accept(DDBlocks.GREEN_CRYSTAL_BLOCK);
         entries.accept(DDBlocks.BLUE_CRYSTAL_BLOCK);
