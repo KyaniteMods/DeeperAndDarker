@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
@@ -43,5 +45,10 @@ public class FortitudeSoulItem extends SoulItem implements ShieldAugmentItem {
 
     @Override
     public void onAugmentRemoved(ItemStack shield, Slot slot, Player player) {
+    }
+
+    @Override
+    public void augmentTick(ItemStack shield, Level level, Entity entity, int index, boolean selected) {
+
     }
 }

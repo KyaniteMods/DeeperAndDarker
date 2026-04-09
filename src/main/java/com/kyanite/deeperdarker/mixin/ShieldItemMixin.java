@@ -21,6 +21,7 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -44,7 +45,7 @@ public abstract class ShieldItemMixin {
         if (clickAction != ClickAction.SECONDARY) {
             return;
         }
-        ItemStack previousStack = getStack(shield);
+        ItemStack previousStack = DDUtil.getAugmentItem(shield);
         ItemStack slotStack = slot.getItem();
         if (slotStack.isEmpty()) {
             this.playRemoveOneSound(player);
@@ -110,7 +111,7 @@ public abstract class ShieldItemMixin {
             });
             cir.setReturnValue(true);
         } else if (stack.is(DDTags.Items.SHIELD_AUGMENT_ITEMS)) {
-            ItemStack previousStack = getStack(shield);
+            ItemStack previousStack = DDUtil.getAugmentItem(shield);
             if (previousStack.isEmpty()) {
                 boolean added = addAugment(shield, stack);
                 if (added) {
@@ -136,6 +137,16 @@ public abstract class ShieldItemMixin {
                     playInsertSound(player);
                 }
                 cir.setReturnValue(true);
+            }
+        }
+    }
+
+    @Inject(method = "inventoryTick", at = @At("TAIL"))
+    private void deeperdarker$tickShieldAugment(ItemStack stack, Level level, Entity entity, int index, boolean selected, CallbackInfo ci) {
+        if (DDUtil.isAugmentedShield(stack)) {
+            ItemStack augmentStack = DDUtil.getAugmentItem(stack);
+            if (augmentStack.getItem() instanceof ShieldAugmentItem augmentItem) {
+                augmentItem.augmentTick(stack, level, entity, index, selected);
             }
         }
     }
@@ -173,25 +184,16 @@ public abstract class ShieldItemMixin {
 
     @Unique
     private static Stream<ItemStack> getStackAsStream(ItemStack shield) {
-        ItemStack stack = getStack(shield);
+        ItemStack stack = DDUtil.getAugmentItem(shield);
         if (stack.isEmpty()) return Stream.empty();
         return Stream.of(stack);
     }
 
-    @Unique
-    private static ItemStack getStack(ItemStack shield) {
-        CompoundTag compoundTag = shield.getTag();
-        if (compoundTag == null || !compoundTag.contains(TAG_ITEM, Tag.TAG_COMPOUND)) {
-            return ItemStack.EMPTY;
-        }
-        return ItemStack.of(compoundTag.getCompound(TAG_ITEM));
-    }
-
     @ModifyReturnValue(method = "getTooltipImage", at = @At("RETURN"))
     public Optional<TooltipComponent> getTooltipImage(Optional<TooltipComponent> original, @Local(argsOnly = true) ItemStack shield) {
-        if (!shield.is(ConventionalItemTags.SHIELDS)) return original;
+        if (!DDUtil.isAugmentedShield(shield)) return original;
         NonNullList<ItemStack> nonNullList = NonNullList.create();
-        nonNullList.add(getStack(shield));
+        nonNullList.add(DDUtil.getAugmentItem(shield));
         return Optional.of(new BundleTooltip(nonNullList, 64));
     }
 

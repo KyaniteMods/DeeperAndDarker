@@ -240,6 +240,8 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.PATIENCE_SOUL_FIRE);
         dropSelf(DDBlocks.FORTITUDE_SOUL_FIRE);
         dropSelf(DDBlocks.CORRUPTION_SOUL_FIRE);
+        dropSelf(DDBlocks.PURITY_SOUL_FIRE);
+        dropSelf(DDBlocks.VIRTUE_SOUL_FIRE);
 
         dropSelf(DDBlocks.DEAD_MANS_CHEST);
     }

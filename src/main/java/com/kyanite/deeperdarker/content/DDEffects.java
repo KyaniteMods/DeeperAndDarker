@@ -53,10 +53,10 @@ public class DDEffects {
             boolean converted = SculkConversionRegistry.corruptionConversion(livingEntity);
             if (!converted) {
                 if (livingEntity.getMobType() == DDMobType.SCULK) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 260, 1));
-                } else {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 260, 0));
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
+                } else {
+                    livingEntity.removeEffect(MobEffects.DARKNESS);
+                    livingEntity.removeEffect(MobEffects.WITHER);
                 }
             }
         }
@@ -66,11 +66,9 @@ public class DDEffects {
             boolean converted = SculkConversionRegistry.purityConversion(livingEntity);
             if (!converted) {
                 if (livingEntity.getMobType() == DDMobType.SCULK) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 260, 0));
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
                 } else {
                     livingEntity.removeEffect(MobEffects.DARKNESS);
-                    livingEntity.removeEffect(MobEffects.BLINDNESS);
                     livingEntity.removeEffect(MobEffects.WITHER);
                 }
             }

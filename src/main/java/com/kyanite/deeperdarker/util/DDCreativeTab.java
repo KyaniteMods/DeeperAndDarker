@@ -300,6 +300,8 @@ public class DDCreativeTab {
         entries.accept(DDItems.PATIENCE_SOUL);
         entries.accept(DDItems.FORTITUDE_SOUL);
         entries.accept(DDItems.CORRUPTION_SOUL);
+        entries.accept(DDItems.PURITY_SOUL);
+        entries.accept(DDItems.VIRTUE_SOUL);
         entries.accept(DDItems.ROYAL_SCEPTER);
         entries.accept(DDItems.DAINTY_KEY);
         entries.accept(DDItems.KEYBRAND);

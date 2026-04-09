@@ -14,6 +14,8 @@ public class DDParticleTypes {
     public static final SimpleParticleType PATIENCE_SOUL = register("patience_soul", FabricParticleTypes.simple());
     public static final SimpleParticleType FORTITUDE_SOUL = register("fortitude_soul", FabricParticleTypes.simple());
     public static final SimpleParticleType CORRUPTION_SOUL = register("corruption_soul", FabricParticleTypes.simple());
+    public static final SimpleParticleType PURITY_SOUL = register("purity_soul", FabricParticleTypes.simple());
+    public static final SimpleParticleType VIRTUE_SOUL = register("virtue_soul", FabricParticleTypes.simple());
     public static final SimpleParticleType DRIPPING_ACID = register("dripping_acid", FabricParticleTypes.simple());
     public static final SimpleParticleType FALLING_ACID = register("falling_acid", FabricParticleTypes.simple());
     public static final SimpleParticleType LANDING_ACID = register("landing_acid", FabricParticleTypes.simple());

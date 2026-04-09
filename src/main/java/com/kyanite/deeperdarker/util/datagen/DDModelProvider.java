@@ -289,6 +289,8 @@ public class DDModelProvider extends FabricModelProvider {
         registerFire(blockModelGenerators, DDBlocks.PATIENCE_SOUL_FIRE);
         registerFire(blockModelGenerators, DDBlocks.FORTITUDE_SOUL_FIRE);
         registerFire(blockModelGenerators, DDBlocks.CORRUPTION_SOUL_FIRE);
+        registerFire(blockModelGenerators, DDBlocks.PURITY_SOUL_FIRE);
+        registerFire(blockModelGenerators, DDBlocks.VIRTUE_SOUL_FIRE);
 
         blockModelGenerators.createNormalTorch(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH);
         blockModelGenerators.createCampfires(DDBlocks.SCULK_CAMPFIRE);
@@ -351,6 +353,8 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.PATIENCE_SOUL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.FORTITUDE_SOUL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.CORRUPTION_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.PURITY_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.VIRTUE_SOUL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_CARAPACE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.HEART_OF_THE_DEEP, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SOUL_CRYSTAL, ModelTemplates.FLAT_ITEM);

@@ -242,6 +242,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.PATIENCE_SOUL_FIRE, "Soul of Patience Fire");
         translationBuilder.add(DDBlocks.FORTITUDE_SOUL_FIRE, "Soul of Fortitude Fire");
         translationBuilder.add(DDBlocks.CORRUPTION_SOUL_FIRE, "Soul of Corruption Fire");
+        translationBuilder.add(DDBlocks.PURITY_SOUL_FIRE, "Soul of Purity Fire");
+        translationBuilder.add(DDBlocks.VIRTUE_SOUL_FIRE, "Soul of Virtue Fire");
         translationBuilder.add(DDBlocks.DEAD_MANS_CHEST, "Dead Man's Chest");
         translationBuilder.add(DeeperDarker.MOD_ID + ".container.dead_mans_chest", "Dead Man's Chest");
         translationBuilder.add(DeeperDarker.MOD_ID + ".container.double_dead_mans_chest", "Large Dead Man's Chest");
@@ -296,6 +298,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.PATIENCE_SOUL, "Soul of Patience");
         translationBuilder.add(DDItems.FORTITUDE_SOUL, "Soul of Fortitude");
         translationBuilder.add(DDItems.CORRUPTION_SOUL, "Soul of Corruption");
+        translationBuilder.add(DDItems.PURITY_SOUL, "Soul of Purity");
+        translationBuilder.add(DDItems.VIRTUE_SOUL, "Soul of Virtue");
         translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");
         translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
         translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");

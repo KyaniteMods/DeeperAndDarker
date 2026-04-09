@@ -96,7 +96,9 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 DDBlocks.SCULK_LANTERN,
                 DDBlocks.PATIENCE_SOUL_FIRE,
                 DDBlocks.FORTITUDE_SOUL_FIRE,
-                DDBlocks.CORRUPTION_SOUL_FIRE);
+                DDBlocks.CORRUPTION_SOUL_FIRE,
+                DDBlocks.PURITY_SOUL_FIRE,
+                DDBlocks.VIRTUE_SOUL_FIRE);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 DDBlocks.CRYSTALLIZED_AMBER,
@@ -287,6 +289,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.PATIENCE_SOUL, SoulParticle.EmissiveProvider::new);
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.FORTITUDE_SOUL, SoulParticle.EmissiveProvider::new);
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.CORRUPTION_SOUL, SoulParticle.EmissiveProvider::new);
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.PURITY_SOUL, SoulParticle.EmissiveProvider::new);
+        ParticleFactoryRegistry.getInstance().register(DDParticleTypes.VIRTUE_SOUL, SoulParticle.EmissiveProvider::new);
         ParticleFactoryRegistry.getInstance().register(DDParticleTypes.DRIPPING_ACID, (particleOptions, clientLevel, x, y, z, g, h, i) -> {
             DripParticle.DripHangParticle dripParticle = new DripParticle.DripHangParticle(clientLevel, x, y, z, DDFluids.ACID, DDParticleTypes.FALLING_ACID);
             dripParticle.setColor(0.2f, 1.0f, 0.3f);
