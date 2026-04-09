@@ -59,8 +59,8 @@ public class VirtueSoulItem extends SoulItem implements ShieldAugmentItem {
 
     @Override
     public void augmentTick(ItemStack shield, Level level, Entity entity, int index, boolean selected) {
-        if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(DDEffects.PURITY, 1, 0));
+        if (entity instanceof LivingEntity livingEntity && level.getGameTime() % 80L == 0L) {
+            livingEntity.addEffect(new MobEffectInstance(DDEffects.PURITY, 210, 0, false, false, true));
         }
     }
 }
