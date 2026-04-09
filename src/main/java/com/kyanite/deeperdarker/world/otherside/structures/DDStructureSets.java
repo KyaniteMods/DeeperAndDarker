@@ -18,6 +18,7 @@ public class DDStructureSets {
     public static final ResourceKey<StructureSet> MAZES = createKey("mazes");
     public static final ResourceKey<StructureSet> CASTLES = createKey("castles");
     public static final ResourceKey<StructureSet> SCULK_RUINS = createKey("sculk_ruins");
+    public static final ResourceKey<StructureSet> WATCHTOWERS = createKey("watchtower");
 
     public static void bootstrap(BootstapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
@@ -25,6 +26,7 @@ public class DDStructureSets {
         context.register(MAZES, new StructureSet(List.of(StructureSet.entry(structures.getOrThrow(DDStructures.BLOOMAZE)), StructureSet.entry(structures.getOrThrow(DDStructures.GLOOMAZE))), new RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 27070707)));
         context.register(CASTLES, new StructureSet(structures.getOrThrow(DDStructures.CASTLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 18032025)));
         context.register(SCULK_RUINS, new StructureSet(structures.getOrThrow(DDStructures.SCULK_RUINS), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 10294104)));
+        context.register(WATCHTOWERS, new StructureSet(structures.getOrThrow(DDStructures.WATCHTOWER), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 55015601)));
     }
 
     static ResourceKey<StructureSet> createKey(String name) {

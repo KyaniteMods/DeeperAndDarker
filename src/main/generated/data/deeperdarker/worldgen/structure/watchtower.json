@@ -1,6 +1,6 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "#deeperdarker:has_structure/sculk_ruins",
+  "biomes": "#deeperdarker:has_structure/watchtower",
   "max_distance_from_center": 80,
   "size": 7,
   "spawn_overrides": {},
@@ -13,7 +13,7 @@
       "above_bottom": 18
     }
   },
-  "start_pool": "deeperdarker:sculk_ruins/top",
+  "start_pool": "deeperdarker:watchtower",
   "step": "surface_structures",
   "terrain_adaptation": "beard_box",
   "use_expansion_hack": false

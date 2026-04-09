@@ -38,6 +38,7 @@ public class DDStructures {
     public static final ResourceKey<Structure> GLOOMAZE = createKey("gloomaze");
     public static final ResourceKey<Structure> CASTLE = createKey("castle");
     public static final ResourceKey<Structure> SCULK_RUINS = createKey("sculk_ruins");
+    public static final ResourceKey<Structure> WATCHTOWER = createKey("watchtower");
 
     public static void bootstrap(BootstapContext<Structure> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -60,7 +61,8 @@ public class DDStructures {
         ), false)));
 
         context.register(CASTLE, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_CASTLE)), pools.getOrThrow(DDPools.CASTLE_CASTLES), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.aboveBottom(20)), true, Optional.empty(), 116));
-        context.register(SCULK_RUINS, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_SCULK_RUINS)), pools.getOrThrow(DDPools.SCULK_RUINS_TOP), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.aboveBottom(28)), false));
+        context.register(SCULK_RUINS, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_SCULK_RUINS)), pools.getOrThrow(DDPools.SCULK_RUINS_TOP), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.belowTop(28)), false));
+        context.register(WATCHTOWER, new JigsawStructure(surfaceStructure(biomes.getOrThrow(DDTags.Biomes.HAS_WATCHTOWER)), pools.getOrThrow(DDPools.WATCHTOWER), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.belowTop(28)), false));
     }
 
     private static Structure.StructureSettings surfaceStructure(HolderSet<Biome> biomes) {
