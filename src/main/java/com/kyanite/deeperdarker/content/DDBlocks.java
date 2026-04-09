@@ -333,7 +333,7 @@ public class DDBlocks {
     public static final Block TOXIC_AIR = registerWithoutItem("toxic_air", new ToxicAirBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).noCollission().randomTicks().noLootTable().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY)));
 
     public static final Block SCULK_BASALT = register("sculk_basalt", new Block(BlockBehaviour.Properties.copy(Blocks.BASALT).mapColor(MapColor.COLOR_BLACK)));
-    public static final Block ACID = registerWithoutItem("acid", new LiquidBlock(DDFluids.ACID, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).replaceable().noCollission().randomTicks().strength(100.0f).lightLevel(blockState -> 15).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
+    public static final Block ACID = registerWithoutItem("acid", new AcidLiquidBlock(DDFluids.ACID, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).replaceable().noCollission().randomTicks().strength(100.0f).lightLevel(blockState -> 15).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
     public static final Block FIZZ_BLOCK = register("fizz_block", new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).requiresCorrectToolForDrops().strength(5.0f, 6.0f).sound(SoundType.METAL)));
     public static final Block RADIOACTIVE_BLOCK = register("radioactive_block", new Block(BlockBehaviour.Properties.copy(LEAD_BLOCK).mapColor(MapColor.COLOR_LIGHT_GREEN)));
 

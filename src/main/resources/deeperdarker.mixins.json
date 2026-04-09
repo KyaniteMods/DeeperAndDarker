@@ -8,6 +8,7 @@
     "AcidEntityMixin",
     "AcidFloatGoalMixin",
     "AcidImmuneItemMixin",
+    "AcidLavaReplacementMixin",
     "AcidLivingEntityMixin",
     "AcidSwimMixin",
     "AncientPaintingMixin",

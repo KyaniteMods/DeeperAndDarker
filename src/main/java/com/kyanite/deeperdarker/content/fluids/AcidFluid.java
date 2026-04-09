@@ -3,23 +3,23 @@ package com.kyanite.deeperdarker.content.fluids;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDFluids;
 import com.kyanite.deeperdarker.content.DDItems;
-import com.kyanite.deeperdarker.content.DDParticleTypes;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import org.jetbrains.annotations.Nullable;
 
 public abstract class AcidFluid extends FlowingFluid {
     @Override
@@ -59,7 +59,26 @@ public abstract class AcidFluid extends FlowingFluid {
 
     @Override
     protected boolean canBeReplacedWith(FluidState fluidState, BlockGetter blockGetter, BlockPos blockPos, Fluid fluid, Direction direction) {
-        return fluidState.getHeight(blockGetter, blockPos) >= 4.0f/9.0f && (fluid.is(FluidTags.WATER) || fluid.is(FluidTags.LAVA));
+        return fluidState.getHeight(blockGetter, blockPos) >= 4.0f/9.0f && fluid.is(FluidTags.WATER);
+    }
+
+    @Override
+    protected void spreadTo(LevelAccessor levelAccessor, BlockPos blockPos, BlockState blockState, Direction direction, FluidState fluidState) {
+        if (direction == Direction.DOWN) {
+            FluidState adjacentFluid = levelAccessor.getFluidState(blockPos);
+            if (this.is(DDTags.Fluids.ACID) && blockState.getBlock() instanceof LiquidBlock) {
+                if (adjacentFluid.is(FluidTags.WATER)) {
+                    levelAccessor.setBlock(blockPos, DDBlocks.SCULK_STONE.defaultBlockState(), Block.UPDATE_ALL);
+                    return;
+                } else if (adjacentFluid.is(FluidTags.LAVA)) {
+                    levelAccessor.setBlock(blockPos, DDBlocks.SCULK_BASALT.defaultBlockState(), Block.UPDATE_ALL);
+                    return;
+                } else {
+                    System.out.println("Third branch!");
+                }
+            }
+        }
+        super.spreadTo(levelAccessor, blockPos, blockState, direction, fluidState);
     }
 
     @Override
