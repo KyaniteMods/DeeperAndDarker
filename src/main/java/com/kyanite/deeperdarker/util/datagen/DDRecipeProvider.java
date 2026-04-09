@@ -288,15 +288,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 //        wardenSmithing(output, AllItems.NETHERITE_DIVING_BOOTS, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get());
 //        wardenSmithing(output, AllItems.NETHERITE_BACKTANK, RecipeCategory.COMBAT, DDCreateCompat.Items.WARDEN_BACKTANK.get());
 
-//        guardianSmithing(output, Items.WARDEN_SHOVEL, RecipeCategory.TOOLS, DDItems.GUARDIAN_SHOVEL);
-//        guardianSmithing(output, Items.WARDEN_PICKAXE, RecipeCategory.TOOLS, DDItems.GUARDIAN_PICKAXE);
-//        guardianSmithing(output, Items.WARDEN_AXE, RecipeCategory.TOOLS, DDItems.GUARDIAN_AXE);
-//        guardianSmithing(output, Items.WARDEN_HOE, RecipeCategory.TOOLS, DDItems.GUARDIAN_HOE);
-//        guardianSmithing(output, Items.WARDEN_SWORD, RecipeCategory.COMBAT, DDItems.GUARDIAN_SWORD);
-//        guardianSmithing(output, Items.WARDEN_HELMET, RecipeCategory.COMBAT, DDItems.GUARDIAN_HELMET);
-//        guardianSmithing(output, Items.WARDEN_CHESTPLATE, RecipeCategory.COMBAT, DDItems.GUARDIAN_CHESTPLATE);
-//        guardianSmithing(output, Items.WARDEN_LEGGINGS, RecipeCategory.COMBAT, DDItems.GUARDIAN_LEGGINGS);
-//        guardianSmithing(output, Items.WARDEN_BOOTS, RecipeCategory.COMBAT, DDItems.GUARDIAN_BOOTS);
+        guardianSmithing(output, DDItems.WARDEN_SHOVEL, RecipeCategory.TOOLS, DDItems.GUARDIAN_SHOVEL);
+        guardianSmithing(output, DDItems.WARDEN_PICKAXE, RecipeCategory.TOOLS, DDItems.GUARDIAN_PICKAXE);
+        guardianSmithing(output, DDItems.WARDEN_AXE, RecipeCategory.TOOLS, DDItems.GUARDIAN_AXE);
+        guardianSmithing(output, DDItems.WARDEN_HOE, RecipeCategory.TOOLS, DDItems.GUARDIAN_HOE);
+        guardianSmithing(output, DDItems.WARDEN_SWORD, RecipeCategory.COMBAT, DDItems.GUARDIAN_SWORD);
+        guardianSmithing(output, DDItems.WARDEN_HELMET, RecipeCategory.COMBAT, DDItems.GUARDIAN_HELMET);
+        guardianSmithing(output, DDItems.WARDEN_CHESTPLATE, RecipeCategory.COMBAT, DDItems.GUARDIAN_CHESTPLATE);
+        guardianSmithing(output, DDItems.WARDEN_LEGGINGS, RecipeCategory.COMBAT, DDItems.GUARDIAN_LEGGINGS);
+        guardianSmithing(output, DDItems.WARDEN_BOOTS, RecipeCategory.COMBAT, DDItems.GUARDIAN_BOOTS);
     }
 
     private void resonariumSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
@@ -307,9 +307,9 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
     }
 
-//    private void guardianSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
-//        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(/* ... */), category, result).unlocks(getHasName(/* ... */), has(/* ... */)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
-//    }
+    private void guardianSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.VIRTUE_SOUL), category, result).unlocks(getHasName(DDItems.VIRTUE_SOUL), has(DDItems.VIRTUE_SOUL)).save(output, new ResourceLocation(DeeperDarker.MOD_ID, getItemName(result) + "_smithing"));
+    }
 
     private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
         planksFromLogs(exporter, planks, logs, 4);

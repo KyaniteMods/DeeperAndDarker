@@ -343,6 +343,15 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_HELMET);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_CHESTPLATE);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_LEGGINGS);
+        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_BOOTS);
+        itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RESONARIUM_PLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RAW_LEAD, ModelTemplates.FLAT_ITEM);

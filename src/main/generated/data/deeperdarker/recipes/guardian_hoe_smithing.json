@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "deeperdarker:virtue_soul"
+  },
+  "base": {
+    "item": "deeperdarker:warden_hoe"
+  },
+  "result": {
+    "item": "deeperdarker:guardian_hoe"
+  },
+  "template": {
+    "item": "deeperdarker:guardian_upgrade_smithing_template"
+  }
+}

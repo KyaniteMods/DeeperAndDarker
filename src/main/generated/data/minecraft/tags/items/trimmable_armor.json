@@ -13,19 +13,13 @@
     "deeperdarker:lead_chestplate",
     "deeperdarker:lead_leggings",
     "deeperdarker:lead_boots",
-    "deeperdarker:lead_sword",
-    "deeperdarker:lead_pickaxe",
-    "deeperdarker:lead_axe",
-    "deeperdarker:lead_shovel",
-    "deeperdarker:lead_hoe",
     "deeperdarker:radioactive_helmet",
     "deeperdarker:radioactive_chestplate",
     "deeperdarker:radioactive_leggings",
     "deeperdarker:radioactive_boots",
-    "deeperdarker:radioactive_sword",
-    "deeperdarker:radioactive_pickaxe",
-    "deeperdarker:radioactive_axe",
-    "deeperdarker:radioactive_shovel",
-    "deeperdarker:radioactive_hoe"
+    "deeperdarker:guardian_helmet",
+    "deeperdarker:guardian_chestplate",
+    "deeperdarker:guardian_leggings",
+    "deeperdarker:guardian_boots"
   ]
 }

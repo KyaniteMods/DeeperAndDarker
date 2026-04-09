@@ -53,6 +53,12 @@ public class DDItems {
     public static final Item GUARDIAN_UPGRADE_SMITHING_TEMPLATE = register("guardian_upgrade_smithing_template", createGuardianUpgradeSmithingTemplate());
     public static final Item ROYAL_SCEPTER = register("royal_scepter", new Item(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
+    public static final Item PATIENCE_SOUL = register("patience_soul", new PatienceSoulItem(DDBlocks.PATIENCE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PATIENCE_SOUL));
+    public static final Item FORTITUDE_SOUL = register("fortitude_soul", new FortitudeSoulItem(DDBlocks.FORTITUDE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.FORTITUDE_SOUL));
+    public static final Item CORRUPTION_SOUL = register("corruption_soul", new CorruptionSoulItem(DDBlocks.CORRUPTION_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.CORRUPTION_SOUL));
+    public static final Item PURITY_SOUL = register("purity_soul", new PuritySoulItem(DDBlocks.PURITY_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PURITY_SOUL));
+    public static final Item VIRTUE_SOUL = register("virtue_soul", new VirtueSoulItem(DDBlocks.VIRTUE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.VIRTUE_SOUL));
+
     public static final Item WARDEN_SHOVEL = register("warden_shovel", new ShovelItem(DDTiers.WARDEN, 1.5f, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_PICKAXE = register("warden_pickaxe", new PickaxeItem(DDTiers.WARDEN, 1, -2.8f, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
     public static final Item WARDEN_AXE = register("warden_axe", new AxeItem(DDTiers.WARDEN, 5, -3, new Item.Properties().rarity(Rarity.RARE).fireResistant()));
@@ -92,6 +98,16 @@ public class DDItems {
     public static final Item RADIOACTIVE_AXE = register("radioactive_axe", new AxeItem(DDTiers.RADIOACTIVE, 5.0f, -3.1f, new Item.Properties()));
     public static final Item RADIOACTIVE_HOE = register("radioactive_hoe", new HoeItem(DDTiers.RADIOACTIVE, -3, 0.0f, new Item.Properties()));
     public static final Item RADIOACTIVE_SWORD = register("radioactive_sword", new SwordItem(DDTiers.RADIOACTIVE, 3, -2.4f, new Item.Properties()));
+
+    public static final Item GUARDIAN_HELMET = register("guardian_helmet", new WardenArmorItem(DDArmorMaterials.GUARDIAN, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC).fireResistant(), List.of(MobEffects.BLINDNESS, MobEffects.DARKNESS)));
+    public static final Item GUARDIAN_CHESTPLATE = register("guardian_chestplate", new WardenArmorItem(DDArmorMaterials.GUARDIAN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_LEGGINGS = register("guardian_leggings", new WardenArmorItem(DDArmorMaterials.GUARDIAN, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_BOOTS = register("guardian_boots", new WardenArmorItem(DDArmorMaterials.GUARDIAN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_SHOVEL = register("guardian_shovel", new ShovelItem(DDTiers.GUARDIAN, 1.5f, -3.0f, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_PICKAXE = register("guardian_pickaxe", new PickaxeItem(DDTiers.GUARDIAN, 1, -2.8f, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_AXE = register("guardian_axe", new AxeItem(DDTiers.GUARDIAN, 5.0f, -3.1f, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_HOE = register("guardian_hoe", new HoeItem(DDTiers.GUARDIAN, -3, 0.0f, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+    public static final Item GUARDIAN_SWORD = register("guardian_sword", new SwordItem(DDTiers.GUARDIAN, 3, -2.4f, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
 
     public static final Item SCULK_TRANSMITTER = register("sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final Item WHITE_SCULK_TRANSMITTER = register("white_sculk_transmitter", new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
@@ -146,11 +162,6 @@ public class DDItems {
 
     public static final Item SHATTERED_HEAD = register("shattered_head", new StandingAndWallBlockItem(DDBlocks.SHATTERED_HEAD, DDBlocks.SHATTERED_WALL_HEAD, new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 
-    public static final Item PATIENCE_SOUL = register("patience_soul", new PatienceSoulItem(DDBlocks.PATIENCE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PATIENCE_SOUL));
-    public static final Item FORTITUDE_SOUL = register("fortitude_soul", new FortitudeSoulItem(DDBlocks.FORTITUDE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.FORTITUDE_SOUL));
-    public static final Item CORRUPTION_SOUL = register("corruption_soul", new CorruptionSoulItem(DDBlocks.CORRUPTION_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.CORRUPTION_SOUL));
-    public static final Item PURITY_SOUL = register("purity_soul", new PuritySoulItem(DDBlocks.PURITY_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.PURITY_SOUL));
-    public static final Item VIRTUE_SOUL = register("virtue_soul", new VirtueSoulItem(DDBlocks.VIRTUE_SOUL_FIRE, new Item.Properties().rarity(Rarity.RARE).fireResistant(), DDParticleTypes.VIRTUE_SOUL));
     public static final Item SCULK_TORCH = register("sculk_torch", new StandingAndWallBlockItem(DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH, new Item.Properties(), Direction.DOWN));
 
     public static final Item ACID_BUCKET = register("acid_bucket", new BucketItem(DDFluids.ACID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
@@ -213,7 +224,7 @@ public class DDItems {
     }
 
     private static List<ResourceLocation> getGuardianEmptyAdditionsSlotTextures() {
-        return List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_virtue_shard"));
+        return List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_virtue_soul"));
     }
 
     public static void init() {

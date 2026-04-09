@@ -12,7 +12,7 @@ public class DDModelLayers {
     private static final String MAIN = "main";
     private static final Set<ModelLayerLocation> LAYERS = Sets.newHashSet();
 
-    public static ModelLayerLocation WARDEN_HELMET;
+    public static ModelLayerLocation HELMET_HORNS;
     public static ModelLayerLocation ECHO_BOAT;
     public static ModelLayerLocation ECHO_CHEST_BOAT;
     public static ModelLayerLocation BLOOM_BOAT;
@@ -68,7 +68,7 @@ public class DDModelLayers {
 
     public static void init() {
         DeeperDarker.LOGGER.info("Initializing model layers");
-        WARDEN_HELMET = registerMain("warden_helmet");
+        HELMET_HORNS = registerMain("helmet_horns");
         ECHO_BOAT = createBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
         ECHO_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
         BLOOM_BOAT = createBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());

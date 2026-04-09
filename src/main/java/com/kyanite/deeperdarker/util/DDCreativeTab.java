@@ -287,6 +287,16 @@ public class DDCreativeTab {
         entries.accept(DDItems.WARDEN_LEGGINGS);
         entries.accept(DDItems.WARDEN_BOOTS);
 
+        entries.accept(DDItems.GUARDIAN_SHOVEL);
+        entries.accept(DDItems.GUARDIAN_PICKAXE);
+        entries.accept(DDItems.GUARDIAN_AXE);
+        entries.accept(DDItems.GUARDIAN_HOE);
+        entries.accept(DDItems.GUARDIAN_SWORD);
+        entries.accept(DDItems.GUARDIAN_HELMET);
+        entries.accept(DDItems.GUARDIAN_CHESTPLATE);
+        entries.accept(DDItems.GUARDIAN_LEGGINGS);
+        entries.accept(DDItems.GUARDIAN_BOOTS);
+
         entries.accept(DDItems.SCULK_BONE);
         entries.accept(DDItems.SCULK_BONE_SHARD);
         entries.accept(DDItems.OTHERSIDE_FIRE_STRIKER);

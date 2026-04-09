@@ -7,7 +7,6 @@ import com.kyanite.deeperdarker.compat.showmeyourskin.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -24,7 +23,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png");
+    private static final ResourceLocation WARDEN_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png");
+    private static final ResourceLocation GUARDIAN_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/guardian_horns.png");
 
     private final float scaleX;
     private final float scaleY;
@@ -59,8 +59,8 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
                 matrixStack.translate(0.0F, 1.0F, 0.0F);
             }
 
-            ((HeadedModel)this.getParentModel()).getHead().translateAndRotate(matrixStack);
-            if (item == DDItems.WARDEN_HELMET) {
+            this.getParentModel().getHead().translateAndRotate(matrixStack);
+            if (itemStack.is(DDItems.WARDEN_HELMET) || itemStack.is(DDItems.GUARDIAN_HELMET)) {
                 if (livingEntity.isBaby()) {
                     matrixStack.scale(1.3425f, 1.3425f, 1.3425f);
                     matrixStack.translate(0.0f, -0.803125f, 0.0f); // the Y may seem extremely random, but it's actually -1.60625f / 2.0f. now where does -1.60625f come from? -3.2125f / 2.0f, of course.
@@ -71,9 +71,10 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
                 if (bl) {
                     matrixStack.translate(0.0f, -0.1f, 0.0f);
                 }
-                HelmetHornsModel<T> hornsModel = new HelmetHornsModel<>(this.modelLoader.bakeLayer(DDModelLayers.WARDEN_HELMET));
-                if (hasShowMeYourSkin && ShowMeYourSkinCompat.armorTransparency(matrixStack, vertexConsumerProvider, light, hornsModel, TEXTURE, 1.0f, 1.0f, 1.0f)) return;
-                RenderType renderLayer = RenderType.armorCutoutNoCull(TEXTURE);
+                HelmetHornsModel<T> hornsModel = new HelmetHornsModel<>(this.modelLoader.bakeLayer(DDModelLayers.HELMET_HORNS));
+                ResourceLocation texture = getTexture(itemStack);
+                if (hasShowMeYourSkin && ShowMeYourSkinCompat.armorTransparency(matrixStack, vertexConsumerProvider, light, hornsModel, texture, 1.0f, 1.0f, 1.0f)) return;
+                RenderType renderLayer = RenderType.armorCutoutNoCull(texture);
                 RenderType glintRenderLayer = RenderType.armorEntityGlint();
                 hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(renderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
                 if (isFoil(item, itemStack, hasShowMeYourSkin)) {
@@ -90,5 +91,12 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
             return itemIsFoil;
         }
         return ShowMeYourSkinCompat.isFoil(item, itemStack);
+    }
+
+    private static ResourceLocation getTexture(ItemStack stack) {
+        if (stack.is(DDItems.GUARDIAN_HELMET)) {
+            return GUARDIAN_TEXTURE;
+        }
+        return WARDEN_TEXTURE;
     }
 }

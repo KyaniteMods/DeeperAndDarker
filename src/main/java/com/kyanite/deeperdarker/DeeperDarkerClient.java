@@ -43,7 +43,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameType;
 
 public class DeeperDarkerClient implements ClientModInitializer {
@@ -124,7 +123,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         }
 
         DeeperDarker.LOGGER.info("Registering models");
-        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.WARDEN_HELMET, HelmetHornsModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.HELMET_HORNS, HelmetHornsModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_BOAT, BoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.ECHO_CHEST_BOAT, ChestBoatModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BLOOM_BOAT, BoatModel::createBodyModel);

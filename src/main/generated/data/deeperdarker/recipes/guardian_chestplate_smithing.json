@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "deeperdarker:virtue_soul"
+  },
+  "base": {
+    "item": "deeperdarker:warden_chestplate"
+  },
+  "result": {
+    "item": "deeperdarker:guardian_chestplate"
+  },
+  "template": {
+    "item": "deeperdarker:guardian_upgrade_smithing_template"
+  }
+}
