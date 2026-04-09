@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 24446666,
+    "separation": 8,
+    "spacing": 28
+  },
+  "structures": [
+    {
+      "structure": "deeperdarker:villager_camp",
+      "weight": 1
+    }
+  ]
+}

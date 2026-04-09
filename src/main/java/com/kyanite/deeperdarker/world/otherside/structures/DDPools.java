@@ -29,6 +29,7 @@ public class DDPools {
     public static final ResourceKey<StructureTemplatePool> SCULK_RUINS_TOP = createKey("sculk_ruins/top");
     public static final ResourceKey<StructureTemplatePool> SCULK_RUINS_BOTTOM = createKey("sculk_ruins/bottom");
     public static final ResourceKey<StructureTemplatePool> WATCHTOWER = createKey("watchtower");
+    public static final ResourceKey<StructureTemplatePool> VILLAGER_CAMP = createKey("villager_camp");
 
     public static void bootstrap(BootstapContext<StructureTemplatePool> context) {
         Holder<StructureTemplatePool> empty = context.lookup(Registries.TEMPLATE_POOL).getOrThrow(Pools.EMPTY);
@@ -117,6 +118,12 @@ public class DDPools {
 
         context.register(WATCHTOWER, new StructureTemplatePool(empty, ImmutableList.of(
                 Pair.of(location("watchtower"), 1)
+        ), StructureTemplatePool.Projection.RIGID));
+
+        context.register(VILLAGER_CAMP, new StructureTemplatePool(empty, ImmutableList.of(
+                Pair.of(location("villager_camp/white"), 1),
+                Pair.of(location("villager_camp/yellow"), 1),
+                Pair.of(location("villager_camp/light_gray"), 1)
         ), StructureTemplatePool.Projection.RIGID));
     }
 
