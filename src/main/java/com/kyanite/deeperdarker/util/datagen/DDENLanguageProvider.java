@@ -411,6 +411,16 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.SCULK_AFFINITY), "Lingering Potion of Sculk Affinity");
         translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.LONG_SCULK_AFFINITY), "Lingering Potion of Sculk Affinity");
         translationBuilder.add(DDEffects.HEMOPHILIA, "Hemophilia");
+        translationBuilder.add(DDEffects.CORRUPTION, "Corruption");
+        translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.CORRUPTION), "Arrow of Corruption");
+        translationBuilder.add(getPotion(Items.POTION, DDPotions.CORRUPTION), "Potion of Corruption");
+        translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.CORRUPTION), "Splash Potion of Corruption");
+        translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.CORRUPTION), "Lingering Potion of Corruption");
+        translationBuilder.add(DDEffects.PURITY, "Purity");
+        translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.PURITY), "Arrow of Purity");
+        translationBuilder.add(getPotion(Items.POTION, DDPotions.PURITY), "Potion of Purity");
+        translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.PURITY), "Splash Potion of Purity");
+        translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.PURITY), "Lingering Potion of Purity");
 
         translationBuilder.add("subtitles.ambience.otherside_portal.groan", "The Otherside forebodes");
         translationBuilder.add("subtitles.entity.snapper.ambient", "Sculk Snapper breathes");
