@@ -241,6 +241,8 @@ public class OthersideBiomes {
     private static Biome sculkSpruceForest(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
 
+        mobSpawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4, 4));
+
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         biomeBuilder.addCarver(GenerationStep.Carving.AIR, DDCarvers.CONFIGURED_CAVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, DDPlacedFeatures.SHADOW_CRYSTAL_CONE);

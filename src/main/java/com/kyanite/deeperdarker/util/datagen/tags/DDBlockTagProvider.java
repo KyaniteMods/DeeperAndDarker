@@ -146,6 +146,8 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         tagBuilder(BlockTags.CROPS).add(DDBlocks.SCULK_BERRY);
 
+        tagBuilder(BlockTags.ENDERMAN_HOLDABLE).add(DDBlocks.SNOWY_SCULK_PERMAFROST, DDBlocks.BLOOMING_SCULK_STONE);
+
         tagBuilder(DDTags.Blocks.ECHO_SOIL).add(DDBlocks.ECHO_SOIL, DDBlocks.ECHO_FARMLAND, Blocks.SCULK);
 
         tagBuilder(DDTags.Blocks.ECHO_LOGS).add(DDBlocks.ECHO_LOG, DDBlocks.ECHO_WOOD, DDBlocks.STRIPPED_ECHO_LOG, DDBlocks.STRIPPED_ECHO_WOOD);
