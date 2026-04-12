@@ -26,6 +26,7 @@
     "FlowingFluidToxicAirMixin",
     "HemophiliaFoodDataMixin",
     "ItemModelGeneratorAccessor",
+    "ItemModelGeneratorsAccessor",
     "ItemStackReinvokedMixin",
     "LivingEntityShieldMixin",
     "NoAncientPaintingInGroupMixin",

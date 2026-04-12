@@ -10,6 +10,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.Util;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
@@ -29,9 +30,10 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class DDUtil {
-    public static final String ACID_RESISTANT_TAG = "acid_resistant";
-    public static final String AUGMENTED_TAG = "augmented";
-    public static final String ITEM_TAG = "item";
+    public static final String HAS_HORNS_TAG = "deeperdarker:has_horns";
+    public static final String ACID_RESISTANT_TAG = "deeperdarker:acid_resistant";
+    public static final String AUGMENTED_TAG = "deeperdarker:augmented";
+    public static final String ITEM_TAG = "deeperdarker:item";
 
     public static float lerpLog(float t, float a, float b) {
         // https://www.cmu.edu/biolphys/deserno/pdf/log_interpol.pdf
@@ -189,6 +191,18 @@ public class DDUtil {
             return Mth.ceil(original / 8.0f);
         }
         return original;
+    }
+
+    public static boolean hasHorns(ItemStack stack) {
+        CompoundTag tag = stack.getOrCreateTag();
+        if (!tag.contains(HAS_HORNS_TAG, CompoundTag.TAG_BYTE)) {
+            return true;
+        }
+        return stack.getOrCreateTag().getBoolean(HAS_HORNS_TAG);
+    }
+
+    public static void setHasHorns(ItemStack stack, boolean value) {
+        stack.getOrCreateTag().putBoolean(HAS_HORNS_TAG, value);
     }
 
     public static boolean isAcidResistant(ItemStack stack) {

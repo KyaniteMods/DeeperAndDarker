@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.HelmetHornsModel;
 import com.kyanite.deeperdarker.compat.showmeyourskin.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.util.DDUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.model.HumanoidModel;
@@ -22,7 +23,7 @@ import net.minecraft.world.entity.monster.ZombieVillager;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
+public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
     private static final ResourceLocation WARDEN_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png");
     private static final ResourceLocation GUARDIAN_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/guardian_horns.png");
 
@@ -48,7 +49,7 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
         boolean hasShowMeYourSkin = FabricLoader.getInstance().isModLoaded("showmeyourskin");
         if (hasShowMeYourSkin) ShowMeYourSkinCompat.captureContext(EquipmentSlot.HEAD, livingEntity);
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);
-        if (!itemStack.isEmpty()) {
+        if (!itemStack.isEmpty() && DDUtil.hasHorns(itemStack)) {
             Item item = itemStack.getItem();
             matrixStack.pushPose();
             matrixStack.scale(this.scaleX, this.scaleY, this.scaleZ);

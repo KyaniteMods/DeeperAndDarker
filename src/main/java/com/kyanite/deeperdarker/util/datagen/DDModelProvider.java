@@ -12,7 +12,7 @@ import com.kyanite.deeperdarker.content.blocks.SculkJawBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
-import com.kyanite.deeperdarker.mixin.ItemModelGeneratorAccessor;
+import com.kyanite.deeperdarker.mixin.ItemModelGeneratorsAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
@@ -24,6 +24,7 @@ import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -311,7 +312,7 @@ public class DDModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
-        registerWardenHelmet(itemModelGenerator, (ArmorItem) DDItems.WARDEN_HELMET);
+        registerHornedHelmet(itemModelGenerator, (ArmorItem) DDItems.WARDEN_HELMET);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_CHESTPLATE);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_LEGGINGS);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.WARDEN_BOOTS);
@@ -347,7 +348,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.RADIOACTIVE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_HELMET);
+        registerHornedHelmet(itemModelGenerator, (ArmorItem) DDItems.GUARDIAN_HELMET);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_CHESTPLATE);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_LEGGINGS);
         itemModelGenerator.generateArmorTrims((ArmorItem) DDItems.GUARDIAN_BOOTS);
@@ -592,17 +593,42 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
     }
 
-    private static void registerWardenHelmet(ItemModelGenerators itemModelGenerators, ArmorItem armor) {
+    private static void registerHornedHelmet(ItemModelGenerators itemModelGenerators, ArmorItem armor) {
         ResourceLocation armorModelIdentifier = ModelLocationUtils.getModelLocation(armor);
         ResourceLocation armorTextureIdentifier = TextureMapping.getItemTexture(armor);
-        ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> itemModelGenerators.generateBaseArmorTrimTemplate(id, textures, armor.getMaterial()));
-        for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGeneratorAccessor.generatedTrimModels()) {
-            String string = trimMaterial.name(armor.getMaterial());
-            ResourceLocation identifier4 = itemModelGenerators.getItemModelForTrimMaterial(armorModelIdentifier, string);
-            String string2 = "warden_" + armor.getType().getName() + "_trim_" + string;
-            ResourceLocation trimOverlayIdentifier = new ResourceLocation(DeeperDarker.MOD_ID, string2).withPrefix("trims/items/");
-            itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier, trimOverlayIdentifier);
+        ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> generateBaseHornedHelmetTrimTemplate(id, textures, armor.getMaterial()));
+        for (int hasHorns = 0; hasHorns <= 1; hasHorns++) {
+            String suffix = hasHorns == 1 ? "" : "_no_horns";
+            for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGeneratorsAccessor.deeperdarker$getGENERATED_TRIM_MODELS()) {
+                String string = trimMaterial.name(armor.getMaterial());
+                ResourceLocation identifier4 = getItemModelForTrimMaterial(armorModelIdentifier, string, suffix);
+                String string2 = hasHorns == 1 ? BuiltInRegistries.ITEM.getKey(armor).getPath() + suffix + "_trim_" + string : armor.getType().getName() + "_trim_" + string;
+                ResourceLocation trimOverlayIdentifier = hasHorns == 1 ? new ResourceLocation(DeeperDarker.MOD_ID, string2).withPrefix("trims/items/") : new ResourceLocation(string2).withPrefix("trims/items/");
+                itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier.withSuffix(suffix), trimOverlayIdentifier);
+            }
         }
+    }
+
+    private static JsonObject generateBaseHornedHelmetTrimTemplate(ResourceLocation model, Map<TextureSlot, ResourceLocation> map, ArmorMaterial armorMaterial) {
+        JsonObject jsonObject = ModelTemplates.TWO_LAYERED_ITEM.createBaseTemplate(model, map);
+        JsonArray jsonArray = new JsonArray();
+        for (ItemModelGenerators.TrimModelData trimModelData : ItemModelGeneratorsAccessor.deeperdarker$getGENERATED_TRIM_MODELS()) {
+            for (int hasHorns = 0; hasHorns <= 1; hasHorns++) {
+                JsonObject jsonObject2 = new JsonObject();
+                JsonObject jsonObject3 = new JsonObject();
+                jsonObject3.addProperty(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID.getPath(), Float.valueOf(trimModelData.itemModelIndex()));
+                jsonObject3.addProperty(new ResourceLocation(DeeperDarker.MOD_ID, "has_horns").toString(), hasHorns);
+                jsonObject2.add("predicate", jsonObject3);
+                jsonObject2.addProperty("model", getItemModelForTrimMaterial(model, trimModelData.name(armorMaterial), (hasHorns == 1 ? "" : "_no_horns")).toString());
+                jsonArray.add(jsonObject2);
+            }
+        }
+        jsonObject.add("overrides", jsonArray);
+        return jsonObject;
+    }
+
+    private static ResourceLocation getItemModelForTrimMaterial(ResourceLocation id, String material, String suffix) {
+        return id.withSuffix(suffix + "_" + material + "_trim");
     }
 
     @SafeVarargs

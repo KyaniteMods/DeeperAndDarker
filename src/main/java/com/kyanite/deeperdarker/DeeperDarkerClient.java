@@ -11,6 +11,7 @@ import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
+import com.kyanite.deeperdarker.util.DDUtil;
 import com.kyanite.deeperdarker.world.otherside.OthersideEffects;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -243,6 +244,14 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         ItemProperties.register(DDItems.SONOROUS_STAFF, new ResourceLocation(DeeperDarker.MOD_ID, "charge"), (itemStack, worldClient, livingEntity, i) ->
             livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 128.0f : 0
+        );
+
+        ItemProperties.register(DDItems.WARDEN_HELMET, new ResourceLocation(DeeperDarker.MOD_ID, "has_horns"), (itemStack, worldClient, livingEntity, i) ->
+                DDUtil.hasHorns(itemStack) ? 1 : 0
+        );
+
+        ItemProperties.register(DDItems.GUARDIAN_HELMET, new ResourceLocation(DeeperDarker.MOD_ID, "has_horns"), (itemStack, worldClient, livingEntity, i) ->
+                DDUtil.hasHorns(itemStack) ? 1 : 0
         );
 
         ClientTickEvents.START_WORLD_TICK.register(world -> {

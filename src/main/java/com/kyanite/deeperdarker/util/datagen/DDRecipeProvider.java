@@ -260,6 +260,8 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
         SpecialRecipeBuilder.special(DDRecipeSerializers.ACID_RESISTANT_ITEM).save(output, "acid_resistant_item");
         SpecialRecipeBuilder.special(DDRecipeSerializers.AUGMENT_SHIELD).save(output, "augment_shield");
+        SpecialRecipeBuilder.special(DDRecipeSerializers.REMOVE_HORNS).save(output, "remove_horns");
+        SpecialRecipeBuilder.special(DDRecipeSerializers.ADD_HORNS).save(output, "add_horns");
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {
