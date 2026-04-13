@@ -34,9 +34,6 @@ import java.util.stream.Stream;
 
 @Mixin(value = Item.class, priority = 500)
 public abstract class ShieldItemMixin {
-    @Unique
-    private static final String TAG_ITEM = "item";
-
     @Inject(method = "overrideStackedOnOther", at = @At("HEAD"), cancellable = true)
     private void deeperdarker$overrideShieldStackedOnOther(ItemStack shield, Slot slot, ClickAction clickAction, Player player, CallbackInfoReturnable<Boolean> cir) {
         if (!shield.is(ConventionalItemTags.SHIELDS) || !DDUtil.isAugmented(shield)) {
@@ -157,14 +154,14 @@ public abstract class ShieldItemMixin {
             return false;
         }
         CompoundTag compoundTag = shield.getOrCreateTag();
-        if (compoundTag.contains(TAG_ITEM, Tag.TAG_COMPOUND)) {
+        if (compoundTag.contains(DDUtil.ITEM_TAG, Tag.TAG_COMPOUND)) {
             return false;
         }
 
         ItemStack itemStack4 = stack.copyWithCount(1);
         CompoundTag itemTag = new CompoundTag();
         itemStack4.save(itemTag);
-        compoundTag.put(TAG_ITEM, itemTag);
+        compoundTag.put(DDUtil.ITEM_TAG, itemTag);
 
         return true;
     }
@@ -172,12 +169,12 @@ public abstract class ShieldItemMixin {
     @Unique
     private static Optional<ItemStack> removeStack(ItemStack shield) {
         CompoundTag compoundTag = shield.getOrCreateTag();
-        if (!compoundTag.contains(TAG_ITEM, Tag.TAG_COMPOUND)) {
+        if (!compoundTag.contains(DDUtil.ITEM_TAG, Tag.TAG_COMPOUND)) {
             return Optional.empty();
         }
 
-        ItemStack stack = ItemStack.of(compoundTag.getCompound(TAG_ITEM));
-        shield.removeTagKey(TAG_ITEM);
+        ItemStack stack = ItemStack.of(compoundTag.getCompound(DDUtil.ITEM_TAG));
+        shield.removeTagKey(DDUtil.ITEM_TAG);
 
         return Optional.of(stack);
     }
