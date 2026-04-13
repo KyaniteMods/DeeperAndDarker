@@ -54,6 +54,7 @@ public class DDEffects {
             if (!converted) {
                 if (livingEntity.getMobType() == DDMobType.SCULK) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 6));
                 } else {
                     livingEntity.removeEffect(MobEffects.DARKNESS);
                     livingEntity.removeEffect(MobEffects.WITHER);
@@ -67,6 +68,7 @@ public class DDEffects {
             if (!converted) {
                 if (livingEntity.getMobType() == DDMobType.SCULK) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 8));
                 } else {
                     livingEntity.removeEffect(MobEffects.DARKNESS);
                     livingEntity.removeEffect(MobEffects.WITHER);
