@@ -11,12 +11,6 @@
       "sound": "deeperdarker:ambient.otherside.additions",
       "tick_delay": 6000
     },
-    "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "deeperdarker:music.otherside.echoing_forest"
-    },
     "particle": {
       "options": {
         "type": "minecraft:ash"

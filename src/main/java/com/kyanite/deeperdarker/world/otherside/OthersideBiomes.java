@@ -11,7 +11,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.Musics;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -67,7 +66,7 @@ public class OthersideBiomes {
                         .fogColor(0x141c33)
                         .skyColor(calculateSkyColor(-0.5f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getDelegate(), 6000, 8, 2))
-                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_DEEPLANDS.getDelegate())).build())
+                        .build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
@@ -97,7 +96,7 @@ public class OthersideBiomes {
                         .skyColor(calculateSkyColor(0.3f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.04f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getDelegate(), 6000, 8, 2))
-                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST.getDelegate())).build())
+                        .build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
@@ -132,7 +131,7 @@ public class OthersideBiomes {
                         .skyColor(calculateSkyColor(-0.3f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SCULK_CHARGE_POP, 0.002f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getDelegate(), 6000, 8, 2))
-                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_ECHOING_FOREST.getDelegate())).build())
+                        .build())
                 .mobSpawnSettings(mobSpawnBuilder.build())
                 .generationSettings(biomeBuilder.build()).build();
     }
@@ -168,7 +167,7 @@ public class OthersideBiomes {
                         .skyColor(calculateSkyColor(0.6f))
                         .ambientParticle(new AmbientParticleSettings(ParticleTypes.SMOKE, 0.026f))
                         .ambientMoodSound(new AmbientMoodSettings(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS.getDelegate(), 6000, 8, 2))
-                        .backgroundMusic(Musics.createGameMusic(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS.getDelegate())).build())
+                        .build())
                 .mobSpawnSettings(MobSpawnSettings.EMPTY)
                 .generationSettings(biomeBuilder.build()).build();
     }

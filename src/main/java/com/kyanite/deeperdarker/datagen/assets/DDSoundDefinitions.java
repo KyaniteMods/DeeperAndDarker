@@ -16,9 +16,6 @@ public class DDSoundDefinitions extends SoundDefinitionsProvider {
     @Override
     public void registerSounds() {
         add(DDSounds.AMBIENT_OTHERSIDE_ADDITIONS, subtitle("ambient.otherside.additions").with(sound("ambience/otherside/otherside1"), sound("ambience/otherside/otherside2"), sound("ambience/otherside/otherside3")));
-        add(DDSounds.MUSIC_BIOME_DEEPLANDS, definition().with(sound("ambience/otherside/deeplands")));
-        add(DDSounds.MUSIC_BIOME_ECHOING_FOREST, definition().with(sound("ambience/otherside/echoing_forest")));
-        add(DDSounds.MUSIC_BIOME_OVERCAST_COLUMNS, definition().with(sound("ambience/otherside/overcast_columns")));
 
         add(DDSounds.PORTAL_GROAN, subtitle("ambient.portal.groan").with(sound("ambience/portal/groan1"), sound("ambience/portal/groan2"), sound("ambience/portal/groan3"), sound("ambience/portal/groan4")));
         add(DDSounds.APPLY_EFFECT_SCULK_OMEN, subtitle("event.mob_effect.sculk_omen").with(sound("event/sculk_omen")));

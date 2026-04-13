@@ -436,20 +436,5 @@
       "deeperdarker:item/transmitter/unlink"
     ],
     "subtitle": "subtitles.item.transmitter.unlink"
-  },
-  "music.otherside.deeplands": {
-    "sounds": [
-      "deeperdarker:ambience/otherside/deeplands"
-    ]
-  },
-  "music.otherside.echoing_forest": {
-    "sounds": [
-      "deeperdarker:ambience/otherside/echoing_forest"
-    ]
-  },
-  "music.otherside.overcast_columns": {
-    "sounds": [
-      "deeperdarker:ambience/otherside/overcast_columns"
-    ]
   }
 }

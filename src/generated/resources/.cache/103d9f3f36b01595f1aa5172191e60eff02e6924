@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-08T13:00:41.0958089	Registries
+// 1.21.1	2026-04-12T00:44:08.008399	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 8cba8ff9a846f73bafc297442955919d9bdfb58a data/deeperdarker/dimension/otherside.json
@@ -14,10 +14,10 @@ f546de3c61927a2ce6f17a4dd0d95202e0145d62 data/deeperdarker/painting_variant/clou
 a586790706333d3aed918ccb581374c90b6dfab4 data/deeperdarker/painting_variant/echoer.json
 4f542558da209a048364477b006d9f36569e6a85 data/deeperdarker/painting_variant/millipede.json
 05eff8725701535b0964a0e8a0f9aaa9cead3983 data/deeperdarker/painting_variant/ooze.json
-cf45e3c8eb3663d9e1a2a473c6a3da2e277c087c data/deeperdarker/worldgen/biome/blooming_caverns.json
-c461901b9c725f1f9e8e592a46d3014d9db3fcfb data/deeperdarker/worldgen/biome/deeplands.json
-ef4f15c0f575ccbc11ee35f93d06ae56a08e93be data/deeperdarker/worldgen/biome/echoing_forest.json
-fe74d33c1973d08025b393326f5ee08d8e1a11fc data/deeperdarker/worldgen/biome/overcast_columns.json
+78245890bbf2e64261b72bf53dbb1fb480e4a5b5 data/deeperdarker/worldgen/biome/blooming_caverns.json
+9527873b426426e1ef3f5c5eda40cb5b6816336c data/deeperdarker/worldgen/biome/deeplands.json
+d92f7acb22999f9f31f0285e743141933530c504 data/deeperdarker/worldgen/biome/echoing_forest.json
+190da3842ce0aa3d412bb831b624a6521137b3ef data/deeperdarker/worldgen/biome/overcast_columns.json
 c8ded336a053628e3d1b703205e22bdab82e45ed data/deeperdarker/worldgen/configured_carver/cave.json
 c6d46779c65f1278cbac896eb08d65ee6491b937 data/deeperdarker/worldgen/configured_carver/low_cave.json
 7a40f8a13100f7860d8cb263f4384985ae7c06ef data/deeperdarker/worldgen/configured_feature/blooming_sculk_patch.json

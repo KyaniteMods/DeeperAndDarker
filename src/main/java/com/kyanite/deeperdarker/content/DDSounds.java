@@ -11,9 +11,6 @@ public class DDSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Registries.SOUND_EVENT, DeeperDarker.MOD_ID);
 
     public static final DeferredHolder<SoundEvent, SoundEvent> AMBIENT_OTHERSIDE_ADDITIONS = register("ambient.otherside.additions");
-    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_BIOME_DEEPLANDS = register("music.otherside.deeplands");
-    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_BIOME_ECHOING_FOREST = register("music.otherside.echoing_forest");
-    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = register("music.otherside.overcast_columns");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> PORTAL_GROAN = register("ambient.portal.groan");
     public static final DeferredHolder<SoundEvent, SoundEvent> APPLY_EFFECT_SCULK_OMEN = register("event.mob_effect.sculk_omen");
