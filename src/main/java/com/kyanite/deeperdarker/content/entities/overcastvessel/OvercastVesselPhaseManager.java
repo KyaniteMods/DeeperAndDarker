@@ -68,21 +68,21 @@ public class OvercastVesselPhaseManager {
             phases.add(new OvercastVesselUseItemPhase(DDItems.POTTY_SPAWN_EGG.getDefaultInstance()));
             phases.add(new OvercastVesselIdlePhase(300));
             phases.add(new OvercastVesselSliderPhase(400));
-            phases.add(new OvercastVesselIdlePhase(40));
+            phases.add(new OvercastVesselIdlePhase(140));
             phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
             return true;
         } else if (healthPercentage > 0.5f) {
             phases.add(new OvercastVesselUseItemPhase(List.of(DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POT_SPAWN_EGG.getDefaultInstance(), DDItems.POTTER_SPAWN_EGG.getDefaultInstance()), 10));
             phases.add(new OvercastVesselIdlePhase(1400));
             phases.add(new OvercastVesselSliderPhase(400));
-            phases.add(new OvercastVesselIdlePhase(40));
+            phases.add(new OvercastVesselIdlePhase(120));
             phases.add(new OvercastVesselUseItemPhase(Items.BRICK.getDefaultInstance()));
             return true;
         } else {
             phases.add(new OvercastVesselUseItemPhase(List.of(DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POTTY_SPAWN_EGG.getDefaultInstance(), DDItems.POT_SPAWN_EGG.getDefaultInstance(), DDItems.POTTER_SPAWN_EGG.getDefaultInstance()), 10));
             phases.add(new OvercastVesselIdlePhase(1400));
             phases.add(new OvercastVesselSliderPhase(600));
-            phases.add(new OvercastVesselIdlePhase(40));
+            phases.add(new OvercastVesselIdlePhase(100));
             Optional<Holder<Item>> optional = Util.getRandomSafe(new ArrayList<>(StreamSupport.stream(BuiltInRegistries.ITEM.getTagOrEmpty(ItemTags.DECORATED_POT_SHERDS).spliterator(), false).collect(Collectors.toSet())), vessel.getRandom());
             if (optional.isPresent()) {
                 phases.add(new OvercastVesselUseItemPhase(optional.get().value().getDefaultInstance()));
