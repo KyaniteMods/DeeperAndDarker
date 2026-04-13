@@ -1,10 +1,9 @@
 package com.kyanite.deeperdarker.content;
 
-import com.kyanite.deeperdarker.content.entities.Shattered;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.Slime;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +40,10 @@ public final class SculkConversionRegistry {
     public static Consumer<LivingEntity> directConversionToMob(EntityType<? extends Mob> entityType) {
         return entity -> {
             if (entity instanceof Mob mob) {
-                mob.convertTo(entityType, true);
+                Mob converted = mob.convertTo(entityType, true);
+                if (mob instanceof Slime slime && converted instanceof Slime convertedSlime) {
+                    convertedSlime.setSize(slime.getSize(), true);
+                }
             }
         };
     }
