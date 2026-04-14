@@ -7,6 +7,9 @@
     "ContainerMenuMixin",
     "HangingEntityItemMixin",
     "PaintingMixin",
+    "PlayerMixin",
+    "ServerGamePacketListenerImplMixin",
+    "ServerPlayerMixin",
     "VibrationListenerMixin",
     "WardenMixin"
   ],

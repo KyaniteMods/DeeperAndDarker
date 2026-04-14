@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.content.blocks.AncientVaseBlock;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
-import com.kyanite.deeperdarker.content.data.PlayerPortalData;
+import com.kyanite.deeperdarker.content.data.PlayerData;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDTags;
@@ -60,6 +60,7 @@ import net.neoforged.neoforge.event.entity.living.ArmorHurtEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -102,7 +103,7 @@ public class DeeperDarkerEvents {
         if(player == null) return;
         if(screen instanceof OthersideReceivingLevelScreen) return;
 
-        PlayerPortalData data = player.getData(DDDataAttachments.PORTAL_DATA);
+        PlayerData data = player.getData(DDDataAttachments.PLAYER_DATA);
         data.oPortalIntensity = data.portalIntensity;
         float f = 0f;
 
@@ -121,6 +122,13 @@ public class DeeperDarkerEvents {
         }
 
         data.portalIntensity = Mth.clamp(data.portalIntensity + f, 0f, 1f);
+    }
+
+    @SubscribeEvent
+    public static void containerCloseEvent(final PlayerContainerEvent.Close event) {
+        Player player = event.getEntity();
+        PlayerData data = player.getData(DDDataAttachments.PLAYER_DATA);
+        if(data.usingTransmitter) data.usingTransmitter = false;
     }
 
     @SubscribeEvent

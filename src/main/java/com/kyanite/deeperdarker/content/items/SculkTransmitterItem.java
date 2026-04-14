@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDDataAttachments;
 import com.kyanite.deeperdarker.content.DDDataComponents;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
@@ -8,13 +9,15 @@ import com.kyanite.deeperdarker.content.data.Transmitter;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.TicketType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.*;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -25,6 +28,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
@@ -93,12 +97,8 @@ public class SculkTransmitterItem extends Item {
         }
 
         linkedLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
-        MenuProvider menu = linkedLevel.getBlockState(linkedPos).getMenuProvider(linkedLevel, linkedPos);
-        if (menu != null) {
-            player.playNotifySound(DDSounds.TRANSMITTER_OPEN.get(), SoundSource.NEUTRAL, 1, 1);
-            if (player instanceof ServerPlayer serverPlayer) serverPlayer.openMenu(menu);
-            if (linkedLevel.getBlockEntity(linkedPos) instanceof Container container) container.startOpen(player);
-        }
+        linkedLevel.getBlockState(linkedPos).useWithoutItem(linkedLevel, player, new BlockHitResult(linkedPos.getCenter(), Direction.NORTH, linkedPos, false));
+        player.getData(DDDataAttachments.PLAYER_DATA).usingTransmitter = true;
 
         return InteractionResult.SUCCESS;
     }
@@ -125,6 +125,7 @@ public class SculkTransmitterItem extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (isLinked(stack)) {
             Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
+            if(transmitter.linkedPos().isEmpty()) return;
             BlockPos pos = transmitter.linkedPos().get().pos();
 
             tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(transmitter.savedBlock())).withStyle(ChatFormatting.GRAY));
@@ -157,5 +158,33 @@ public class SculkTransmitterItem extends Item {
             case RED -> DDItems.RED_SCULK_TRANSMITTER;
             case BLACK -> DDItems.BLACK_SCULK_TRANSMITTER;
         };
+    }
+
+    public static boolean stillValid(Player player) {
+        if(!player.getData(DDDataAttachments.PLAYER_DATA).usingTransmitter) return false;
+
+        ItemStack stack = player.getOffhandItem();
+        if(!SculkTransmitterItem.isLinked(stack)) {
+            for(ItemStack item : player.getInventory().items) {
+                if(SculkTransmitterItem.isLinked(item)) {
+                    stack = item;
+                    break;
+                }
+            }
+        }
+
+        if(!SculkTransmitterItem.isLinked(stack)) return false;
+        if(player.level().isClientSide()) return true;
+
+        Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
+        if(transmitter.linkedPos().isEmpty()) return false;
+        Level linkedLevel = player.getServer().getLevel(transmitter.linkedPos().get().dimension());
+        BlockPos linkedPos = transmitter.linkedPos().get().pos();
+        String blockName = transmitter.savedBlock();
+
+        if(linkedLevel.getBlockState(linkedPos).getBlock().getDescriptionId().equals(blockName)) return true;
+
+        SculkTransmitterItem.tryConnect(transmitter, stack, player, null, "not_found", DDSounds.TRANSMITTER_ERROR);
+        return false;
     }
 }
