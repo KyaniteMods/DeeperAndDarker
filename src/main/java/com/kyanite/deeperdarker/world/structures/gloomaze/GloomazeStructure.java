@@ -1,16 +1,6 @@
 package com.kyanite.deeperdarker.world.structures.gloomaze;
 
-import com.kyanite.deeperdarker.world.structures.CustomStructures;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
-
-public class GloomazeStructure extends Structure {
+/*public class GloomazeStructure extends Structure {
     public static final MapCodec<GloomazeStructure> CODEC = simpleCodec(GloomazeStructure::new);
 
     public GloomazeStructure(StructureSettings settings) {
@@ -32,4 +22,4 @@ public class GloomazeStructure extends Structure {
     public @NotNull StructureType<?> type() {
         return CustomStructures.GLOOMAZE.get();
     }
-}
+}*/
