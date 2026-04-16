@@ -26,7 +26,7 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFountainBlockEntity> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/dark_fountain/beam.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/dark_fountain/overseer_beam.png");
     private static final ResourceLocation LIGHT_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/dark_fountain/beam_light.png");
 
     private final EntityRenderDispatcher entityRenderDispatcher;

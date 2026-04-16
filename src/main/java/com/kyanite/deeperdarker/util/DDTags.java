@@ -132,6 +132,7 @@ public class DDTags {
     public static class EntityTypes {
         public static final TagKey<EntityType<?>> TOXIC_AIR_IMMUNE = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "toxic_air_immune"));
         public static final TagKey<EntityType<?>> ACID_IMMUNE = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "acid_immune"));
+        public static final TagKey<EntityType<?>> OVERCASTERS = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, "overcasters"));
     }
 
     public static class Biomes {

@@ -130,11 +130,6 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     }
 
     @Override
-    public void aiStep() {
-        super.aiStep();
-    }
-
-    @Override
     public void push(Entity entity) {
     }
 

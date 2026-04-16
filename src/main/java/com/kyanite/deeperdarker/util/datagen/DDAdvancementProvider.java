@@ -217,7 +217,21 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_overcast_vessel"));
 
-        Advancement.Builder.advancement().parent(killOvercastVessel)
+        Advancement killOverseer = Advancement.Builder.advancement().parent(killOvercastVessel)
+                .display(
+                        DDItems.CORRUPTION_SOUL,
+                        Component.translatable(id + "kill_overseer.title"),
+                        Component.translatable(id + "kill_overseer.description"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false)
+                .addCriterion("kill_overseer", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.OVERSEER)))
+                .rewards(AdvancementRewards.Builder.experience(50))
+                .save(consumer, path("kill_overseer"));
+
+        Advancement.Builder.advancement().parent(killOverseer)
                 .display(
                         DDItems.WARDEN_SWORD,
                         Component.translatable(id + "kill_all_otherside_mobs.title"),
@@ -243,6 +257,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("potter", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTER)))
                 .addCriterion("overcast_vessel", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.OVERCAST_VESSEL)))
                 .addCriterion("acid_sprite", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.ACID_SPRITE)))
+                .addCriterion("overseer", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDTags.EntityTypes.OVERCASTERS)))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(200))
                 .save(consumer, path("kill_all_otherside_mobs"));
