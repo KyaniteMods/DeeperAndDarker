@@ -20,15 +20,14 @@ Build files are located in the project's `build/libs` folder.
 Kyanite Team
 - NewJumper: NeoForge & Forge Developer
 - AndroidDr: Fabric Developer
-- MainlyMaya: Textures & Artwork Designer
+- MainlyMaya: Artwork Designer
 - nitro_dynamite18: Translations Manager
 - angxdd: Former Developer
 
 Others
 - GSimus: Playtester
 - Nyvi: Playtester
-- Rotch_Gwylt: Music for Deeper and Darker
-- DanielArtist: Texture improvements
+- DanielArtist: Artwork
 
 # Contributions
 We accept bug fixes from the community. Be sure to use proper naming conventions and match the organization of the mod's workspace if you want to make changes!
