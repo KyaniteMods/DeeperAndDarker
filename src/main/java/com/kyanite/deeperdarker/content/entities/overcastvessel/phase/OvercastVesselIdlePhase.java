@@ -2,13 +2,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.item.ItemStack;
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
 
 public class OvercastVesselIdlePhase extends OvercastVesselPhase {
     public static final Codec<OvercastVesselIdlePhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(

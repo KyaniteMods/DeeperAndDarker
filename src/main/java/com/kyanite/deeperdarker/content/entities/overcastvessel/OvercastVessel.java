@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.AbstractGolemBoss;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhaseType;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -10,15 +11,12 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractGolem;
-import net.minecraft.world.entity.boss.EnderDragonPart;
-import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -55,7 +53,7 @@ public class OvercastVessel extends AbstractGolemBoss {
         westPart = new OvercastVesselPart(this, "west", Direction.WEST);
         eastPart = new OvercastVesselPart(this, "east", Direction.EAST);
         subEntities = new OvercastVesselPart[]{downPart, upPart, northPart, southPart, westPart, eastPart};
-        phaseManager = new OvercastVesselPhaseManager(this);
+        phaseManager = new OvercastVesselPhaseManager(this, OvercastVesselPhase.CODEC);
         xpReward = 50;
     }
 

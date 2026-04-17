@@ -3,9 +3,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselItem;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayDeque;
