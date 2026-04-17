@@ -34,6 +34,8 @@ public class Overseer extends Monster {
     public Overseer(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         moveControl = new FlyingMoveControl(this, 20, true);
+        xpReward = 50;
+        setNoGravity(true);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class Overseer extends Monster {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 1000).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 15).add(Attributes.ARMOR_TOUGHNESS, 7).add(Attributes.FOLLOW_RANGE, 100).add(Attributes.ATTACK_KNOCKBACK, 10.0).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 1000).add(Attributes.ATTACK_DAMAGE, 40).add(Attributes.ARMOR, 15).add(Attributes.ARMOR_TOUGHNESS, 7).add(Attributes.FOLLOW_RANGE, 100).add(Attributes.ATTACK_KNOCKBACK, 10.0).add(Attributes.KNOCKBACK_RESISTANCE, 10.0).build();
     }
 
     @Override
@@ -107,11 +109,17 @@ public class Overseer extends Monster {
 
     @Override
     public void tick() {
+        setNoGravity(true);
         if (!isValidOrigin(getOriginPos())) {
             discard();
             return;
         }
         super.tick();
+    }
+
+    @Override
+    public boolean canChangeDimensions() {
+        return false;
     }
 
     @Override
