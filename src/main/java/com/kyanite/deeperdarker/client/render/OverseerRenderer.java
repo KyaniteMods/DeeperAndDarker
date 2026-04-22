@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.client.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.OverseerModel;
-import com.kyanite.deeperdarker.content.entities.Overseer;
+import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;

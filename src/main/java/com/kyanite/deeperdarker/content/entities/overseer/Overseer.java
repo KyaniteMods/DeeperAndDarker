@@ -1,6 +1,8 @@
-package com.kyanite.deeperdarker.content.entities;
+package com.kyanite.deeperdarker.content.entities.overseer;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselPhaseManager;
+import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhase;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -11,6 +13,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -26,6 +29,8 @@ import java.util.EnumSet;
 import java.util.Optional;
 
 public class Overseer extends Monster {
+    private final OverseerPhaseManager phaseManager;
+
     private static final EntityDataAccessor<Integer> DATA_ID_INVULNERABLE = SynchedEntityData.defineId(Overseer.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Optional<GlobalPos>> DATA_ID_ORIGIN = SynchedEntityData.defineId(Overseer.class, EntityDataSerializers.OPTIONAL_GLOBAL_POS);
     private static final int INVULNERABLE_TICKS = 220;
@@ -34,6 +39,7 @@ public class Overseer extends Monster {
     public Overseer(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
         moveControl = new FlyingMoveControl(this, 20, true);
+        phaseManager = new OverseerPhaseManager(this, OverseerPhase.CODEC);
         xpReward = 50;
         setNoGravity(true);
     }
@@ -54,6 +60,7 @@ public class Overseer extends Monster {
     @Override
     protected void registerGoals() {
         goalSelector.addGoal(0, new OverseerDoNothingGoal());
+        goalSelector.addGoal(1, new OverseerTickPhaseGoal());
     }
 
     @Override
@@ -69,6 +76,7 @@ public class Overseer extends Monster {
         compoundTag.putInt("invulnerable_ticks", getInvulnerableTicks());
         Optional<GlobalPos> originPos = getOriginPos();
         originPos.flatMap(globalPos -> GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, globalPos).resultOrPartial(DeeperDarker.LOGGER::error)).ifPresent(tag -> compoundTag.put("origin_position", tag));
+        phaseManager.save(compoundTag);
     }
 
     @Override
@@ -78,9 +86,10 @@ public class Overseer extends Monster {
         if (compoundTag.contains("origin_position", CompoundTag.TAG_COMPOUND)) {
             setOriginPos(GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("origin_position")).resultOrPartial(DeeperDarker.LOGGER::error));
         }
-        if (this.hasCustomName()) {
-            this.bossEvent.setName(this.getDisplayName());
+        if (hasCustomName()) {
+            bossEvent.setName(getDisplayName());
         }
+        phaseManager.loadFrom(compoundTag);
     }
 
     @Override
@@ -110,11 +119,21 @@ public class Overseer extends Monster {
     @Override
     public void tick() {
         setNoGravity(true);
+        if (getInvulnerableTicks() > 0) {
+            setInvulnerableTicks(getInvulnerableTicks() - 1);
+            heal(getMaxHealth());
+        }
         if (!isValidOrigin(getOriginPos())) {
             discard();
             return;
         }
         super.tick();
+    }
+
+    @Override
+    public boolean hurt(DamageSource damageSource, float f) {
+        if (getInvulnerableTicks() > 0) return false;
+        return super.hurt(damageSource, f);
     }
 
     @Override
@@ -161,6 +180,23 @@ public class Overseer extends Monster {
         @Override
         public boolean canUse() {
             return Overseer.this.getInvulnerableTicks() > 0;
+        }
+    }
+
+    class OverseerTickPhaseGoal
+            extends Goal {
+        public OverseerTickPhaseGoal() {
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP, Goal.Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return true;
+        }
+
+        @Override
+        public void tick() {
+            Overseer.this.phaseManager.tick();
         }
     }
 }

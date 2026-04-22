@@ -2,10 +2,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel;
 
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.entities.boss.BossPhaseManager;
-import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselIdlePhase;
-import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhase;
-import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselSliderPhase;
-import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselUseItemPhase;
+import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.*;
 import com.mojang.serialization.Codec;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
@@ -20,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class OvercastVesselPhaseManager extends BossPhaseManager<OvercastVessel, OvercastVesselPhase> {
+public class OvercastVesselPhaseManager extends BossPhaseManager<OvercastVessel, OvercastVesselPhaseType, OvercastVesselPhase> {
     public OvercastVesselPhaseManager(OvercastVessel vessel, Codec<OvercastVesselPhase> phaseCodec) {
         super(vessel, phaseCodec);
     }

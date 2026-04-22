@@ -1,13 +1,12 @@
 package com.kyanite.deeperdarker.content.entities.boss;
 
-import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhaseType;
 import com.mojang.serialization.Codec;
 import net.minecraft.world.entity.LivingEntity;
 
-public abstract class BossPhase<T extends LivingEntity> {
+public abstract class BossPhase<T extends LivingEntity, U extends BossPhaseType<T, U, V>, V extends BossPhase<T, U, V>> {
     public abstract boolean shouldContinue(T vessel);
-    public abstract Codec<? extends BossPhase<T>> codec();
-    public abstract OvercastVesselPhaseType getType();
+    public abstract Codec<? extends V> codec();
+    public abstract U getType();
     // Runs on data loaded.
     public void initialize(T boss) {
 

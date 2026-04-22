@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselPa
 import com.mojang.serialization.Codec;
 import net.minecraft.world.damagesource.DamageSource;
 
-public abstract class OvercastVesselPhase extends BossPhase<OvercastVessel> {
+public abstract class OvercastVesselPhase extends BossPhase<OvercastVessel, OvercastVesselPhaseType, OvercastVesselPhase> {
     public static final Codec<OvercastVesselPhase> CODEC = OvercastVesselPhaseType.CODEC.dispatch(OvercastVesselPhase::getType, OvercastVesselPhaseType::getCodec);
 
     public float onHurt(OvercastVessel vessel, OvercastVesselPart part, DamageSource source, float amount) {
