@@ -6,3 +6,5 @@ accessible class net/minecraft/client/particle/DripParticle$DripLandParticle
 accessible method net/minecraft/client/particle/DripParticle$FallAndLandParticle <init> (Lnet/minecraft/client/multiplayer/ClientLevel;DDDLnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/particles/ParticleOptions;)V
 accessible method net/minecraft/client/particle/DripParticle$DripLandParticle <init> (Lnet/minecraft/client/multiplayer/ClientLevel;DDDLnet/minecraft/world/level/material/Fluid;)V
 accessible class net/minecraft/server/level/ServerLevel$EntityCallbacks
+accessible class net/minecraft/client/renderer/RenderStateShard$MultiTextureStateShard
+accessible class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard

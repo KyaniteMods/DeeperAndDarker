@@ -44,8 +44,8 @@ public class OverseerRenderer<T extends Overseer> extends MobRenderer<T, Oversee
     }
 
     @Override
-    public void render(T mob, float yaw, float tickDelta, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
-        super.render(mob, yaw, tickDelta, poseStack, multiBufferSource, i);
+    public void render(T mob, float yaw, float tickDelta, PoseStack poseStack, MultiBufferSource multiBufferSource, int light) {
+        super.render(mob, yaw, tickDelta, poseStack, multiBufferSource, light);
         Optional<GlobalPos> pos = mob.getOriginPos();
         if (pos.isPresent()) {
             poseStack.pushPose();
@@ -57,34 +57,34 @@ public class OverseerRenderer<T extends Overseer> extends MobRenderer<T, Oversee
             float dz = (float) ((double) targetZ - mob.getZ());
             Vector3f vec3f = new Vector3f(dx, dy, dz).normalize().mul(2.0f);
             poseStack.translate(dx, dy, dz);
-            renderBeams(-dx + vec3f.x(), -dy + vec3f.y() + mob.getBbHeight() / 2.0f, -dz + vec3f.z(), tickDelta, mob.tickCount, poseStack, multiBufferSource, i);
+            renderBeams(-dx + vec3f.x(), -dy + vec3f.y() + mob.getBbHeight() / 2.0f, -dz + vec3f.z(), tickDelta, mob.tickCount, poseStack, multiBufferSource, light, BEAM, 32.0f, 0.75f);
             poseStack.popPose();
         }
     }
 
-    public static void renderBeams(float dx, float dy, float dz, float tickDelta, int tickCount, PoseStack poseStack, MultiBufferSource multiBufferSource, int k) {
-        float l = Mth.sqrt(dx * dx + dz * dz);
-        float m = Mth.sqrt(dx * dx + dy * dy + dz * dz);
+    public static void renderBeams(float dx, float dy, float dz, float tickDelta, int tickCount, PoseStack poseStack, MultiBufferSource multiBufferSource, int light, RenderType renderType, float resHeight, float endDiameter) {
+        float d2d = Mth.sqrt(dx * dx + dz * dz);
+        float d3d = Mth.sqrt(dx * dx + dy * dy + dz * dz);
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotation((float)(-Math.atan2(dz, dx)) - 1.5707964f));
-        poseStack.mulPose(Axis.XP.rotation((float)(-Math.atan2(l, dy)) - 1.5707964f));
-        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(BEAM);
-        float n = 0.0f - ((float)tickCount + tickDelta) * 0.01f;
-        float o = Mth.sqrt(dx * dx + dy * dy + dz * dz) / 32.0f - ((float)tickCount + tickDelta) * 0.01f;
+        poseStack.mulPose(Axis.XP.rotation((float)(-Math.atan2(d2d, dy)) - 1.5707964f));
+        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
+        float v1 = -((float)tickCount + tickDelta) * 0.01f;
+        float v2 = d3d / resHeight - ((float)tickCount + tickDelta) * 0.01f;
         float q = 0.0f;
-        float r = 0.75f;
+        float r = endDiameter;
         float s = 0.0f;
         PoseStack.Pose pose = poseStack.last();
         Matrix4f matrix4f = pose.pose();
         Matrix3f matrix3f = pose.normal();
         for (int t = 1; t <= 8; ++t) {
-            float u = Mth.sin((float)t * ((float)Math.PI * 2) / 8.0f) * 0.75f;
-            float v = Mth.cos((float)t * ((float)Math.PI * 2) / 8.0f) * 0.75f;
+            float u = Mth.sin((float)t * ((float)Math.PI * 2) / 8.0f) * endDiameter;
+            float v = Mth.cos((float)t * ((float)Math.PI * 2) / 8.0f) * endDiameter;
             float w = (float)t / 8.0f;
-            vertexConsumer.vertex(matrix4f, q * 0.2f, r * 0.2f, 0.0f).color(0, 0, 0, 255).uv(s, n).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(k).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
-            vertexConsumer.vertex(matrix4f, q, r, m).color(255, 255, 255, 255).uv(s, o).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(k).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
-            vertexConsumer.vertex(matrix4f, u, v, m).color(255, 255, 255, 255).uv(w, o).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(k).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
-            vertexConsumer.vertex(matrix4f, u * 0.2f, v * 0.2f, 0.0f).color(0, 0, 0, 255).uv(w, n).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(k).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
+            vertexConsumer.vertex(matrix4f, q * 0.2f, r * 0.2f, 0.0f).color(0, 0, 0, 255).uv(s, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
+            vertexConsumer.vertex(matrix4f, q, r, d3d).color(255, 255, 255, 255).uv(s, v2).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
+            vertexConsumer.vertex(matrix4f, u, v, d3d).color(255, 255, 255, 255).uv(w, v2).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
+            vertexConsumer.vertex(matrix4f, u * 0.2f, v * 0.2f, 0.0f).color(0, 0, 0, 255).uv(w, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
             q = u;
             r = v;
             s = w;
