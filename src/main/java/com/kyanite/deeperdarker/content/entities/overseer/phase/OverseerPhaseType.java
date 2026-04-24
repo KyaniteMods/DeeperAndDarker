@@ -9,7 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public enum OverseerPhaseType implements StringRepresentable, BossPhaseType<Overseer, OverseerPhaseType, OverseerPhase> {
-    IDLE("idle", () -> OverseerIdlePhase.CODEC);
+    IDLE("idle", () -> OverseerIdlePhase.CODEC),
+    CRYSTALS("crystals", () -> OverseerCrystalsPhase.CODEC);
 
     public static final Codec<OverseerPhaseType> CODEC = StringRepresentable.fromEnum(OverseerPhaseType::values);
 

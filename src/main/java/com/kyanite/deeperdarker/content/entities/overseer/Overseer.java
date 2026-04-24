@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -26,10 +27,13 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 public class Overseer extends Monster {
     private final OverseerPhaseManager phaseManager;
+    private final Set<Entity> crystals = new HashSet<>();
 
     private static final EntityDataAccessor<Integer> DATA_ID_INVULNERABLE = SynchedEntityData.defineId(Overseer.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Optional<GlobalPos>> DATA_ID_ORIGIN = SynchedEntityData.defineId(Overseer.class, EntityDataSerializers.OPTIONAL_GLOBAL_POS);
@@ -164,6 +168,18 @@ public class Overseer extends Monster {
 
     public boolean isValidOrigin(Optional<GlobalPos> pos) {
         return pos.isEmpty() || pos.get().dimension().equals(level().dimension());
+    }
+
+    public boolean addCrystal(OverseerCrystal crystal) {
+        return crystals.add(crystal);
+    }
+
+    public boolean removeCrystal(OverseerCrystal crystal) {
+        return crystals.remove(crystal);
+    }
+
+    public Set<Entity> getCrystals() {
+        return crystals;
     }
 
     @Override

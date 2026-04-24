@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.content.entities.overseer;
 
 import com.kyanite.deeperdarker.content.entities.boss.BossPhaseManager;
+import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerCrystalsPhase;
+import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerIdlePhase;
 import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhase;
 import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhaseType;
 import com.mojang.serialization.Codec;
@@ -12,6 +14,23 @@ public class OverseerPhaseManager extends BossPhaseManager<Overseer, OverseerPha
 
     @Override
     public boolean populatePhases() {
-        return false;
+        float healthPercentage = getBoss().getHealth() / getBoss().getMaxHealth();
+        if (healthPercentage > 0.75f) {
+            getPhases().add(new OverseerCrystalsPhase(3, 300));
+            getPhases().add(new OverseerIdlePhase(100));
+            return true;
+        } else if (healthPercentage > 0.5f) {
+            getPhases().add(new OverseerCrystalsPhase(4, 400));
+            getPhases().add(new OverseerIdlePhase(100));
+            return true;
+        } else if (healthPercentage > 0.25f) {
+            getPhases().add(new OverseerCrystalsPhase(5, 500));
+            getPhases().add(new OverseerIdlePhase(100));
+            return true;
+        } else {
+            getPhases().add(new OverseerCrystalsPhase(5, 450));
+            getPhases().add(new OverseerIdlePhase(100));
+            return true;
+        }
     }
 }
