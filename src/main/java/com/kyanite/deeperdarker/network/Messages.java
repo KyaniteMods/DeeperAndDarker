@@ -6,6 +6,8 @@ import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystal;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.ChatFormatting;
@@ -61,6 +63,10 @@ public class Messages {
                 SculkTransmitterItem.formConnection(player.level(), stack, packet.blockPos());
             }
         });
+    }
+
+    @Environment(EnvType.CLIENT)
+    public static void registerClientReceivers() {
         ClientPlayNetworking.registerGlobalReceiver(LinkOverseerCrystalPacket.TYPE, (packet, player, responseSender) -> {
             if (packet.crystalId() == 0) return;
             Entity entity = player.level().getEntity(packet.crystalId());

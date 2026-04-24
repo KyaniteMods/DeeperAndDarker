@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/kill_overcast_vessel",
+  "parent": "deeperdarker:main/kill_overseer",
   "criteria": {
     "acid_sprite": {
       "conditions": {
@@ -51,6 +51,20 @@
             "entity": "this",
             "predicate": {
               "type": "deeperdarker:overcast_vessel"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "overseer": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "#deeperdarker:overcasters"
             }
           }
         ]
@@ -290,6 +304,9 @@
     ],
     [
       "acid_sprite"
+    ],
+    [
+      "overseer"
     ]
   ],
   "rewards": {

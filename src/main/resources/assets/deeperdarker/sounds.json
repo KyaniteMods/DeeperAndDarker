@@ -436,6 +436,40 @@
     ],
     "subtitle": "subtitles.entity.angler_fish.hurt"
   },
+  "entity.overseer_crystal.hit": {
+    "sounds": [
+      {
+        "name": "minecraft:random/glass1",
+        "pitch": 0.5
+      },
+      {
+        "name": "minecraft:random/glass2",
+        "pitch": 0.5
+      },
+      {
+        "name": "minecraft:random/glass3",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.overseer_crystal.hit"
+  },
+  "entity.overseer_crystal.break": {
+    "sounds": [
+      {
+        "name": "minecraft:random/glass1",
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:random/glass2",
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:random/glass3",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.entity.overseer_crystal.break"
+  },
   "item.sonorous_staff.sonic_boom": {
     "sounds": [
       "mob/warden/sonic_boom1",

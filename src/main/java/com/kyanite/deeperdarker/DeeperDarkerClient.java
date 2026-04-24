@@ -9,6 +9,7 @@ import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.blocks.DeadMansChestBlockEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
+import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.util.DDUtil;
@@ -320,5 +321,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             dripParticle.setColor(0.2f, 0.3f, 1.0f);
             return dripParticle;
         });
+
+        Messages.registerClientReceivers();
     }
 }

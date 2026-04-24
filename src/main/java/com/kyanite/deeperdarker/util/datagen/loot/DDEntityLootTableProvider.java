@@ -43,6 +43,7 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
     public static final ResourceLocation POTTER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/potter");
     public static final ResourceLocation OVERCAST_VESSEL = new ResourceLocation(DeeperDarker.MOD_ID, "entities/overcast_vessel");
     public static final ResourceLocation ACID_SPRITE = new ResourceLocation(DeeperDarker.MOD_ID, "entities/acid_sprite");
+    public static final ResourceLocation OVERSEER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/overseer");
 
     public DDEntityLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.ENTITY);
@@ -102,9 +103,6 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
                         .add(LootItem.lootTableItem(Items.PAINTING)
                                 .apply(SetPaintingVariantFunction.withTag(DDTags.Paintings.ANCIENT)))
                 )
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(EmptyLootItem.emptyItem().setWeight(3))
-                )
         );
         biConsumer.accept(POTTY, LootTable.lootTable());
         biConsumer.accept(POT, LootTable.lootTable());
@@ -114,5 +112,11 @@ public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
                         .add(EmptyLootItem.emptyItem().setWeight(5))
                         .add(LootItem.lootTableItem(DDItems.FIZZ).setWeight(1)
                                 .when(LootItemRandomChanceWithLootingCondition.randomChanceAndLootingBoost(0.25f, 0.03125f)))));
+
+        biConsumer.accept(OVERSEER, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(DDItems.CORRUPTION_SOUL))
+                )
+        );
     }
 }

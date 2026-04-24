@@ -29,6 +29,15 @@ public class OverseerCrystalModel<T extends OverseerCrystal> extends EntityModel
 	public void setupAnim(OverseerCrystal entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		float factor = 1.0f / 2.0f;
         crystal.yRot = Mth.DEG_TO_RAD * (entity.tickCount + ageInTicks) * factor;
+		crystal.xRot = getTilt(entity.getLastHurtTime(), entity.lastHurtTimeOld, ageInTicks);
+		entity.lastHurtTimeOld = entity.getLastHurtTime();
+	}
+
+	private float getTilt(int time, int timeOld, float tickDelta) {
+		float lerpedTime = Mth.lerp(tickDelta, timeOld, time);
+		if (lerpedTime == 0) return 1.0f;
+		lerpedTime /= 5.0f;
+		return 0.05f * Mth.sin(lerpedTime * Mth.PI) / (lerpedTime / Mth.PI);
 	}
 
 	@Override

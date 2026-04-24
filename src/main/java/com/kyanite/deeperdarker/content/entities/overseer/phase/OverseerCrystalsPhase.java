@@ -85,9 +85,6 @@ public class OverseerCrystalsPhase extends OverseerPhase {
             Set<Entity> set = new HashSet<>(boss.getCrystals());
             for (Entity crystal : set) {
                 boss.heal(200.0f);
-                if (boss.level() instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.AMETHYST_BLOCK.defaultBlockState()), crystal.getX(), crystal.getY(0.5), crystal.getZ(), 5, crystal.getBbWidth() / 4.0f, crystal.getBbHeight() / 4.0f, crystal.getBbWidth() / 4.0f, 0.05);
-                }
                 crystal.discard();
             }
         }

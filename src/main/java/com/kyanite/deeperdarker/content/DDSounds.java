@@ -67,6 +67,8 @@ public class DDSounds {
 
     public static final SoundEvent WARDEN_SHEAR = register("entity.warden.shear");
 
+    public static final SoundEvent OVERSEER_CRYSTAL_HIT = register("entity.overseer_crystal.hit");
+    public static final SoundEvent OVERSEER_CRYSTAL_BREAK = register("entity.overseer_crystal.break");
 
     public static final SoundEvent TRANSMITTER_ERROR = register("item.transmitter.error");
     public static final SoundEvent TRANSMITTER_LINK = register("item.transmitter.link");
