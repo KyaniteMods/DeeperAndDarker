@@ -2,10 +2,7 @@ package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
-import com.kyanite.deeperdarker.client.model.BubbloxModel;
 import com.kyanite.deeperdarker.client.model.OverseerCrystalModel;
-import com.kyanite.deeperdarker.content.entities.Bubblox;
-import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystal;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -22,13 +19,11 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import org.joml.Vector3f;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @SuppressWarnings("NullableProblems")
 public class OverseerCrystalRenderer<T extends OverseerCrystal> extends EntityRenderer<T> {
