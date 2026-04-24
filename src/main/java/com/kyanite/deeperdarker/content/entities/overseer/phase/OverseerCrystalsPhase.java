@@ -1,25 +1,30 @@
 package com.kyanite.deeperdarker.content.entities.overseer.phase;
 
-import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystal;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class OverseerCrystalsPhase extends OverseerPhase {
+    private static final UUID ARMOR_ATTRIBUTE_MODIFIER_UUID = UUID.fromString("94be3129-a9e0-4338-b12c-84f0659d4ae8");
+    private static final AttributeModifier ARMOR_ATTRIBUTE_MODIFIER = new AttributeModifier(ARMOR_ATTRIBUTE_MODIFIER_UUID, "Overseer crystals armor", 10000, AttributeModifier.Operation.ADDITION);
+    private static final UUID ARMOR_TOUGHNESS_ATTRIBUTE_MODIFIER_UUID = UUID.fromString("4df817f4-0700-47d2-a25f-c58435279699");
+    private static final AttributeModifier ARMOR_TOUGHNESS_ATTRIBUTE_MODIFIER = new AttributeModifier(ARMOR_TOUGHNESS_ATTRIBUTE_MODIFIER_UUID, "Overseer crystals armor toughness", 10000, AttributeModifier.Operation.ADDITION);
+
     public static final Codec<OverseerCrystalsPhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.INT.fieldOf("crystals").forGetter(phase -> phase.crystals),
             Codec.INT.fieldOf("idle_time").forGetter(phase -> phase.idleTime),
@@ -43,13 +48,21 @@ public class OverseerCrystalsPhase extends OverseerPhase {
 
     @Override
     public void start(Overseer boss) {
+        AttributeInstance armor = boss.getAttribute(Attributes.ARMOR);
+        if (armor != null) {
+            armor.addPermanentModifier(ARMOR_ATTRIBUTE_MODIFIER);
+        }
+        AttributeInstance armorToughness = boss.getAttribute(Attributes.ARMOR_TOUGHNESS);
+        if (armorToughness != null) {
+            armorToughness.addPermanentModifier(ARMOR_TOUGHNESS_ATTRIBUTE_MODIFIER);
+        }
         if (boss.level().isClientSide()) return;
         for (int i = 0; i < crystals; i++) {
             OverseerCrystal crystal = new OverseerCrystal(boss.level(), boss);
             crystal.setPos(boss.position());
-            ;
-            crystal.move(MoverType.SELF, Vec3.directionFromRotation((boss.getRandom().nextFloat() - 0.5f) * 45.0f, boss.getRandom().nextFloat() * 360.0f).scale(boss.getRandom().nextFloat() * 3.0f + 7.0f));
             boss.level().addFreshEntity(crystal);
+            crystal.setDeltaMovement(Vec3.directionFromRotation((boss.getRandom().nextFloat() - 0.5f) * 45.0f, boss.getRandom().nextFloat() * 360.0f).scale(boss.getRandom().nextFloat() * 3.0f + 7.0f));
+            crystal.move(MoverType.SELF, crystal.getDeltaMovement());
         }
     }
 
@@ -60,10 +73,18 @@ public class OverseerCrystalsPhase extends OverseerPhase {
 
     @Override
     public void end(Overseer boss) {
+        AttributeInstance armor = boss.getAttribute(Attributes.ARMOR);
+        if (armor != null) {
+            armor.removePermanentModifier(ARMOR_ATTRIBUTE_MODIFIER_UUID);
+        }
+        AttributeInstance armorToughness = boss.getAttribute(Attributes.ARMOR_TOUGHNESS);
+        if (armorToughness != null) {
+            armorToughness.removePermanentModifier(ARMOR_TOUGHNESS_ATTRIBUTE_MODIFIER_UUID);
+        }
         if (!boss.getCrystals().isEmpty()) {
             Set<Entity> set = new HashSet<>(boss.getCrystals());
             for (Entity crystal : set) {
-                boss.heal(25.0f);
+                boss.heal(200.0f);
                 if (boss.level() instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.AMETHYST_BLOCK.defaultBlockState()), crystal.getX(), crystal.getY(0.5), crystal.getZ(), 5, crystal.getBbWidth() / 4.0f, crystal.getBbHeight() / 4.0f, crystal.getBbWidth() / 4.0f, 0.05);
                 }
