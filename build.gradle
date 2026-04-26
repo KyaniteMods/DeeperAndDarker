@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.1.21'
+    id 'net.neoforged.gradle.userdev' version '7.1.22'
 }
 
 tasks.named('wrapper', Wrapper).configure { distributionType = Wrapper.DistributionType.BIN }
@@ -10,7 +10,7 @@ version = "neoforge-${minecraft_version}-${mod_version}"
 group = mod_group_id
 base { archivesName = mod_id }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 runs {
     configureEach {
@@ -32,7 +32,7 @@ runs {
         systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
     }
 
-    data {
+    clientData {
         arguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
@@ -41,23 +41,24 @@ sourceSets.main.resources {
     srcDir 'src/generated/resources'
     exclude("src/generated/**/.cache")
 }
+
 configurations { runtimeClasspath.extendsFrom localRuntime }
 
 repositories {
     mavenLocal()
-    maven { url = "https://modmaven.dev" }
-    maven { url = "https://maven.terraformersmc.com/" }
+//    maven { url = "https://modmaven.dev" }
+//    maven { url = "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    /*compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}:api"
-    localRuntime "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
+    localRuntime "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"*/
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -66,7 +67,6 @@ tasks.withType(ProcessResources).configureEach {
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
             neo_version_range      : neo_version_range,
-            loader_version_range   : loader_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
