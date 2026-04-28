@@ -179,6 +179,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.BUBBLOX, BubbloxRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER, OverseerRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER_CRYSTAL, OverseerCrystalRenderer::new);
+        EntityRendererRegistry.register(DDEntities.OVERSEER_LASER, OverseerLaserRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {
