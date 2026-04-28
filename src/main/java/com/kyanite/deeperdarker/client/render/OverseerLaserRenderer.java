@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
 public class OverseerLaserRenderer<T extends OverseerLaser> extends EntityRenderer<T> {
@@ -27,7 +28,7 @@ public class OverseerLaserRenderer<T extends OverseerLaser> extends EntityRender
     public void render(T entity, float yaw, float tickDelta, PoseStack poseStack, MultiBufferSource multiBufferSource, int light) {
         super.render(entity, yaw, tickDelta, poseStack, multiBufferSource, light);
 
-        float scale = entity.getDespawnTime() / (float) OverseerLaser.MAX_DESPAWN_TIME;
+        float scale = Mth.lerp(tickDelta, entity.oldDespawnTime, entity.getDespawnTime()) / (float) OverseerLaser.MAX_DESPAWN_TIME;
 
         poseStack.pushPose();
         poseStack.scale(scale, 1.0f, scale);

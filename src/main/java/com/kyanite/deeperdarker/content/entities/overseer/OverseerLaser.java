@@ -12,6 +12,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -59,6 +60,7 @@ public class OverseerLaser extends Entity implements TraceableEntity {
     @Override
     public void tick() {
         super.tick();
+        if (level().isClientSide()) return;
         if (isDespawning) {
             setDespawnTime(getDespawnTime() - 1);
         } else {
@@ -69,7 +71,7 @@ public class OverseerLaser extends Entity implements TraceableEntity {
             return;
         }
 
-        List<Entity> list = level().getEntities(this, new AABB(getX() - 0.5, level().getMinBuildHeight(), getZ() - 0.5, getX() + 0.5, level().getMaxBuildHeight(), getZ() + 0.5), Entity::isAlive);
+        List<Entity> list = level().getEntities(this, new AABB(getX() - 0.5, getY() - 128.0, getZ() - 0.5, getX() + 0.5, getY() + 129.0, getZ() + 0.5), Entity::isAlive);
         for (Entity entity : list) {
             entity.hurt(entity.damageSources().source(DDDamageTypes.DARK_FOUNTAIN, this, entity), 10.0f);
         }
@@ -104,5 +106,18 @@ public class OverseerLaser extends Entity implements TraceableEntity {
         }
         compoundTag.putInt(DESPAWN_TIME_TAG, getDespawnTime());
         compoundTag.putBoolean(IS_DESPAWNING_TAG, isDespawning);
+    }
+
+    public void setDespawning() {
+        isDespawning = true;
+    }
+
+    @Override
+    public void setDeltaMovement(Vec3 vec3) {
+    }
+
+    @Override
+    public Vec3 getDeltaMovement() {
+        return Vec3.ZERO;
     }
 }
