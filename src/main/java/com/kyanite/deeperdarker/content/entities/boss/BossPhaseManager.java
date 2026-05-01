@@ -29,6 +29,7 @@ public abstract class BossPhaseManager<T extends LivingEntity, U extends BossPha
     }
 
     public void save(CompoundTag compoundTag) {
+        if (!phases.isEmpty()) phases.getFirst().dataSaved(boss);
         phaseCodec.listOf().<Deque<V>>xmap(ArrayDeque::new, ArrayList::new).encodeStart(NbtOps.INSTANCE, phases).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("phases", tag));
     }
 

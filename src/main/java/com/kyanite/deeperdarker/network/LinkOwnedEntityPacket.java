@@ -4,27 +4,26 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import io.netty.buffer.ByteBuf;
 import net.fabricmc.fabric.api.networking.v1.FabricPacket;
 import net.fabricmc.fabric.api.networking.v1.PacketType;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
-public record LinkOverseerCrystalPacket(int overseerId, int crystalId) implements FabricPacket {
-    public static final PacketType<LinkOverseerCrystalPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "link_overseer_crystal"), LinkOverseerCrystalPacket::new);
+public record LinkOwnedEntityPacket(int ownerId, int ownedEntityId) implements FabricPacket {
+    public static final PacketType<LinkOwnedEntityPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "link_owned_entity"), LinkOwnedEntityPacket::new);
 
-    public LinkOverseerCrystalPacket(Entity overseer, @Nullable Entity crystal) {
-        this(overseer.getId(), crystal == null ? 0 : crystal.getId());
+    public LinkOwnedEntityPacket(Entity owner, @Nullable Entity ownedEntity) {
+        this(owner.getId(), ownedEntity == null ? 0 : ownedEntity.getId());
     }
 
-    public LinkOverseerCrystalPacket(ByteBuf buf) {
+    public LinkOwnedEntityPacket(ByteBuf buf) {
         this(buf.readInt(), buf.readInt());
     }
 
     @Override
     public void write(FriendlyByteBuf buf) {
-        buf.writeInt(overseerId);
-        buf.writeInt(crystalId);
+        buf.writeInt(ownerId);
+        buf.writeInt(ownedEntityId);
     }
 
     @Override

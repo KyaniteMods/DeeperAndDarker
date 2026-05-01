@@ -48,6 +48,8 @@ public class OverseerCrystalsPhase extends OverseerPhase {
 
     @Override
     public void start(Overseer boss) {
+        if (boss.level().isClientSide()) return;
+
         AttributeInstance armor = boss.getAttribute(Attributes.ARMOR);
         if (armor != null) {
             armor.addPermanentModifier(ARMOR_ATTRIBUTE_MODIFIER);
@@ -56,9 +58,8 @@ public class OverseerCrystalsPhase extends OverseerPhase {
         if (armorToughness != null) {
             armorToughness.addPermanentModifier(ARMOR_TOUGHNESS_ATTRIBUTE_MODIFIER);
         }
-        if (boss.level().isClientSide()) return;
         for (int i = 0; i < crystals; i++) {
-            OverseerCrystal crystal = new OverseerCrystal(boss.level(), boss);
+            OverseerCrystal crystal = new OverseerCrystal(boss);
             crystal.setPos(boss.position());
             boss.level().addFreshEntity(crystal);
             crystal.setDeltaMovement(Vec3.directionFromRotation((boss.getRandom().nextFloat() - 0.5f) * 45.0f, boss.getRandom().nextFloat() * 360.0f).scale(boss.getRandom().nextFloat() * 3.0f + 7.0f));
@@ -73,6 +74,8 @@ public class OverseerCrystalsPhase extends OverseerPhase {
 
     @Override
     public void end(Overseer boss) {
+        if (boss.level().isClientSide()) return;
+
         AttributeInstance armor = boss.getAttribute(Attributes.ARMOR);
         if (armor != null) {
             armor.removePermanentModifier(ARMOR_ATTRIBUTE_MODIFIER_UUID);

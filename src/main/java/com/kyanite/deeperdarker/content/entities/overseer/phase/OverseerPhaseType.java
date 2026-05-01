@@ -10,7 +10,8 @@ import java.util.function.Supplier;
 
 public enum OverseerPhaseType implements StringRepresentable, BossPhaseType<Overseer, OverseerPhaseType, OverseerPhase> {
     IDLE("idle", () -> OverseerIdlePhase.CODEC),
-    CRYSTALS("crystals", () -> OverseerCrystalsPhase.CODEC);
+    CRYSTALS("crystals", () -> OverseerCrystalsPhase.CODEC),
+    LASERS("lasers", () -> OverseerLasersPhase.CODEC);
 
     public static final Codec<OverseerPhaseType> CODEC = StringRepresentable.fromEnum(OverseerPhaseType::values);
 

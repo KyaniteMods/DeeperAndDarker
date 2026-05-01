@@ -3,8 +3,7 @@ package com.kyanite.deeperdarker.network;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
-import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
-import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystal;
+import com.kyanite.deeperdarker.content.entities.SyncedOwnedEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,11 +13,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.protocol.PacketUtils;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
@@ -67,11 +64,11 @@ public class Messages {
 
     @Environment(EnvType.CLIENT)
     public static void registerClientReceivers() {
-        ClientPlayNetworking.registerGlobalReceiver(LinkOverseerCrystalPacket.TYPE, (packet, player, responseSender) -> {
-            if (packet.crystalId() == 0) return;
-            Entity entity = player.level().getEntity(packet.crystalId());
-            if (entity instanceof OverseerCrystal overseer) {
-                overseer.setDelayedOwnerId(packet.overseerId());
+        ClientPlayNetworking.registerGlobalReceiver(LinkOwnedEntityPacket.TYPE, (packet, player, responseSender) -> {
+            if (packet.ownedEntityId() == 0) return;
+            Entity entity = player.level().getEntity(packet.ownedEntityId());
+            if (entity instanceof SyncedOwnedEntity ownedEntity) {
+                ownedEntity.setDelayedOwnerId(packet.ownerId());
             }
         });
     }

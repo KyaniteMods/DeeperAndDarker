@@ -7,6 +7,10 @@ public abstract class BossPhase<T extends LivingEntity, U extends BossPhaseType<
     public abstract boolean shouldContinue(T vessel);
     public abstract Codec<? extends V> codec();
     public abstract U getType();
+
+    public void dataSaved(T boss) {
+
+    }
     // Runs on data loaded.
     public void initialize(T boss) {
 
