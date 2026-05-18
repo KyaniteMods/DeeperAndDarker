@@ -17,55 +17,51 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 
 	public ShatteredModel(ModelPart root) {
 		this.root = root;
-		this.head = root.getChild("root").getChild("body");
+		head = root.getChild("waist").getChild("head");
 	}
 
 	public static LayerDefinition createBodyModel() {
-		MeshDefinition mesh = new MeshDefinition();
-		PartDefinition parts = mesh.getRoot();
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition root = parts.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition waist = partdefinition.addOrReplaceChild("waist", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 12.0F, 0.0F, 0.1745F, 0.0F, 0.0F));
 
-		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, -13.0F, -2.0F, 8.0F, 13.0F, 4.0F, new CubeDeformation(0.0F))
-				.texOffs(37, 6).mirror().addBox(0.0F, -11.0F, 2.0F, 0.0F, 11.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, -13.0F, 0.0F));
-		body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(32, 0).addBox(-12.0F, -11.0F, 0.0F, 8.0F, 8.0F, 0.0F, new CubeDeformation(0.0F))
-				.texOffs(40, 0).mirror().addBox(4.0F, -11.0F, 0.0F, 8.0F, 8.0F, 0.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, -13.0F, 0.0F));
+		waist.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, CubeDeformation.NONE)
+				.texOffs(16, 32).addBox(-9.0F, -10.0F, 0.0F, 8.0F, 8.0F, 0.0F, CubeDeformation.NONE)
+				.texOffs(32, 32).addBox(1.0F, -10.0F, 0.0F, 8.0F, 8.0F, 0.0F, CubeDeformation.NONE), PartPose.offsetAndRotation(0.0F, -12.0F, 0.0F, -0.1745F, 0.0F, 0.0F));
 
-		PartDefinition arms = body.addOrReplaceChild("arms", CubeListBuilder.create(), PartPose.offset(0.0F, -11.0F, 0.0F));
-		arms.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, -2.0F, -2.0F, 4.0F, 13.0F, 4.0F, new CubeDeformation(0.0F))
-				.texOffs(43, 8).addBox(-4.0F, 11.0F, -2.0F, 4.0F, 2.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.0F, 0.0F, 0.0F));
-		arms.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(40, 16).addBox(0.0F, -2.0F, -2.0F, 4.0F, 7.0F, 4.0F, new CubeDeformation(0.0F))
-				.texOffs(44, 27).addBox(1.0F, 5.0F, -1.0F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(4.0F, 0.0F, 0.0F));
+		waist.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, -6.0F, -2.0F, 8.0F, 12.0F, 4.0F, CubeDeformation.NONE), PartPose.offset(0.0F, -6.0F, 0.0F));
 
-		PartDefinition legs = root.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, -13.0F, 0.0F));
-		legs.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(0, 33).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, new CubeDeformation(0.0F))
-				.texOffs(4, 41).addBox(-1.0F, 4.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 47).addBox(-2.0F, 8.0F, -2.0F, 4.0F, 5.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.0F, 0.0F, 0.0F));
-		legs.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(16, 33).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 13.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 0.0F, 0.0F));
+		waist.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(24, 16).addBox(0.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, CubeDeformation.NONE), PartPose.offsetAndRotation(4.0F, -12.0F, 0.0F, -0.1745F, 0.0F, 0.0F));
 
-		return LayerDefinition.create(mesh, 64, 64);
+		waist.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(0, 32).addBox(-4.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, CubeDeformation.NONE), PartPose.offsetAndRotation(-4.0F, -12.0F, 0.0F, -0.1745F, 0.0F, 0.0F));
+
+		partdefinition.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(16, 40).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, CubeDeformation.NONE), PartPose.offset(2.0F, 12.0F, 0.0F));
+
+		partdefinition.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(32, 0).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, CubeDeformation.NONE), PartPose.offset(-2.0F, 12.0F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
 	public void setupAnim(Shattered entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
+		root.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(ShatteredAnimation.WALK, limbSwing, limbSwingAmount, 5.5f, 2.5f);
-		this.animate(entity.idleState, ShatteredAnimation.IDLE, ageInTicks);
-		this.animate(entity.attackState, ShatteredAnimation.ATTACK, ageInTicks);
+		animateWalk(ShatteredAnimation.WALK, limbSwing, limbSwingAmount, 1.0f, 2.5f);
+		animate(entity.idleState, ShatteredAnimation.IDLE, ageInTicks);
+		animate(entity.attackState, ShatteredAnimation.ATTACK, ageInTicks);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {
 		netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
 		headPitch = Mth.clamp(headPitch, -25, 45);
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
-		this.head.xRot = headPitch * ((float)Math.PI / 180f);
+		head.yRot = netHeadYaw * ((float)Math.PI / 180f);
+		head.xRot = headPitch * ((float)Math.PI / 180f);
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		root.getChild("root").render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 
 	@Override

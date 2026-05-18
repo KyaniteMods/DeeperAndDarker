@@ -121,7 +121,6 @@ public class SculkSnapper extends TamableAnimal {
 
         if(level().isClientSide()) {
             if(this.isInSittingPose() && !this.sitState.isStarted()) {
-                this.idleState.stop();
                 this.sitState.start(this.tickCount);
             }
             if(!this.isInSittingPose() && this.sitState.isStarted()) {

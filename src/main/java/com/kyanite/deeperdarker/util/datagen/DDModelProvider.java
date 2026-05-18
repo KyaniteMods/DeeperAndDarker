@@ -401,7 +401,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_STONE_TILE_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_STONE_TILES), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SMOOTH_SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.SMOOTH_SCULK_STONE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.CUT_SCULK_STONE_WALL.asItem()), TextureMapping.cube(DDBlocks.CUT_SCULK_STONE), itemModelGenerator.output);
-        ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_GRIME_BRICK_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_GRIME), itemModelGenerator.output);
+        ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.SCULK_GRIME_BRICK_WALL.asItem()), TextureMapping.cube(DDBlocks.SCULK_GRIME_BRICKS), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.GLOOMSLATE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.COBBLED_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.COBBLED_GLOOMSLATE), itemModelGenerator.output);
         ModelTemplates.WALL_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.POLISHED_GLOOMSLATE_WALL.asItem()), TextureMapping.cube(DDBlocks.POLISHED_GLOOMSLATE), itemModelGenerator.output);

@@ -12,66 +12,77 @@ import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
 public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
-	private final ModelPart root;
+	private final ModelPart body;
+	private final ModelPart backRightLeg;
+	private final ModelPart backLeftLeg;
+	private final ModelPart frontRightLeg;
+	private final ModelPart frontLeftLeg;
 	private final ModelPart head;
+	private final ModelPart lowerJaw;
+	private final ModelPart upperJaw;
 
 	public SculkSnapperModel(ModelPart root) {
-		this.root = root;
-		this.head = root.getChild("root").getChild("body").getChild("head");
+		this.body = root.getChild("body");
+		this.backRightLeg = this.body.getChild("back_right_leg");
+		this.backLeftLeg = this.body.getChild("back_left_leg");
+		this.frontRightLeg = this.body.getChild("front_right_leg");
+		this.frontLeftLeg = this.body.getChild("front_left_leg");
+		this.head = this.body.getChild("head");
+		this.lowerJaw = this.head.getChild("lower_jaw");
+		this.upperJaw = this.head.getChild("upper_jaw");
 	}
 
 	public static LayerDefinition createBodyModel() {
-		MeshDefinition mesh = new MeshDefinition();
-		PartDefinition parts = mesh.getRoot();
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition root = parts.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.75F, -1.0F));
+		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 34).addBox(-3.0F, -2.99F, -4.0F, 6.0F, 2.0F, 8.0F, CubeDeformation.NONE), PartPose.offset(0.0F, 23.0F, 0.0F));
 
-		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 39).addBox(-3.0F, -1.5F, -3.0F, 6.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.5F, 1.5F));
-		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 13).addBox(-4.5F, -3.0F, -6.0F, 9.0F, 3.0F, 10.0F, new CubeDeformation(0.0F))
-				.texOffs(28, 3).addBox(-4.0F, -5.0F, -5.75F, 8.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
-				.texOffs(28, -5).addBox(4.25F, -5.0F, -5.0F, 0.0F, 2.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(28, -5).addBox(-4.25F, -5.0F, -5.0F, 0.0F, 2.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.5F, -0.5F));
-		head.addOrReplaceChild("tongue", CubeListBuilder.create().texOffs(-8, 13).addBox(-1.5F, 0.0F, -8.0F, 3.0F, 0.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -3.36F, 3.0F));
-		PartDefinition jaw = head.addOrReplaceChild("jaw", CubeListBuilder.create().texOffs(0, 0).addBox(-4.5F, -3.0F, -9.0F, 9.0F, 3.0F, 10.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 26).addBox(-4.5F, -3.0F, -9.0F, 9.0F, 3.0F, 10.0F, new CubeDeformation(0.3F))
-				.texOffs(28, -8).addBox(4.0F, 0.0F, -8.5F, 0.0F, 2.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(28, 0).addBox(-4.0F, 0.0F, -8.5F, 8.0F, 2.0F, 0.0F, new CubeDeformation(0.0F))
-				.texOffs(28, -8).addBox(-4.0F, 0.0F, -8.5F, 0.0F, 2.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -3.0F, 3.0F));
-		jaw.addOrReplaceChild("tendril", CubeListBuilder.create().texOffs(33, 37).addBox(0.0F, -6.0F, -3.0F, 0.0F, 4.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, 0.0F));
+		body.addOrReplaceChild("back_right_leg", CubeListBuilder.create().texOffs(36, 34).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, CubeDeformation.NONE), PartPose.offset(-2.0F, -1.0F, 4.0F));
 
-		PartDefinition legs = root.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 2.0F));
-		legs.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-1.8F, -0.35F, -0.74F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, -3.4F, -2.75F));
-		legs.addOrReplaceChild("right_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-0.2F, -0.35F, -0.74F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.75F, -3.4F, -2.75F));
-		legs.addOrReplaceChild("left_back_leg", CubeListBuilder.create().texOffs(0, 0).addBox(3.7F, -0.35F, -1.26F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-2.75F, -3.4F, 1.75F));
-		legs.addOrReplaceChild("right_back_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-5.7F, -0.35F, -1.26F, 2.0F, 3.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, -3.4F, 1.75F));
+		body.addOrReplaceChild("back_left_leg", CubeListBuilder.create().texOffs(28, 34).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, CubeDeformation.NONE), PartPose.offset(2.0F, -1.0F, 4.0F));
 
-		return LayerDefinition.create(mesh, 48, 48);
+		body.addOrReplaceChild("front_right_leg", CubeListBuilder.create().texOffs(28, 38).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, CubeDeformation.NONE), PartPose.offset(-2.0F, -1.0F, -2.0F));
+
+		body.addOrReplaceChild("front_left_leg", CubeListBuilder.create().texOffs(36, 38).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, CubeDeformation.NONE), PartPose.offset(2.0F, -1.0F, -2.0F));
+
+		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.offset(0.0F, -6.0F, 4.0F));
+
+		head.addOrReplaceChild("lower_jaw", CubeListBuilder.create().texOffs(0, 17).addBox(-5.0F, -2.0F, -12.0F, 10.0F, 5.0F, 12.0F, CubeDeformation.NONE)
+				.texOffs(0, 56).addBox(-4.5F, -2.0F, -11.5F, 9.0F, 2.0F, 11.0F, CubeDeformation.NONE)
+				.texOffs(-1, 44).addBox(-5.0F, 0.0F, -12.0F, 10.0F, 0.0F, 12.0F, CubeDeformation.NONE), PartPose.offset(0.0F, 0.0F, 0.0F));
+
+		head.addOrReplaceChild("upper_jaw", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -5.0F, -12.0F, 10.0F, 5.0F, 12.0F, new CubeDeformation(0.1F))
+				.texOffs(40, 56).addBox(-4.5F, -2.0F, -11.5F, 9.0F, 2.0F, 11.0F, CubeDeformation.NONE)
+				.texOffs(19, 44).addBox(-5.0F, -2.0F, -12.0F, 10.0F, 0.0F, 12.0F, CubeDeformation.NONE), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.2182F, 0.0F, 0.0F));
+
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
 	public void setupAnim(SculkSnapper entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
+		body.getAllParts().forEach(ModelPart::resetPose);
 		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(SculkSnapperAnimation.WALK, limbSwing, limbSwingAmount, 2.5f, 2.5f);
-		this.animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks);
-		this.animate(entity.attackState, SculkSnapperAnimation.BITE, ageInTicks);
-		this.animate(entity.sitState, SculkSnapperAnimation.SIT, ageInTicks);
+		animateWalk(SculkSnapperAnimation.WALK, limbSwing, limbSwingAmount, 2.5f, 2.5f);
+		animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks);
+		animate(entity.attackState, SculkSnapperAnimation.BITE, ageInTicks);
+		animate(entity.sitState, SculkSnapperAnimation.SIT, ageInTicks);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {
 		netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
 		headPitch = Mth.clamp(headPitch, -25, 45);
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
-		this.head.xRot = headPitch * ((float)Math.PI / 180f);
+		head.yRot = netHeadYaw * ((float)Math.PI / 180f);
+		head.xRot = headPitch * ((float)Math.PI / 180f);
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		root.getChild("root").render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 
 	@Override
 	public ModelPart root() {
-		return this.root;
+		return body;
 	}
 }
