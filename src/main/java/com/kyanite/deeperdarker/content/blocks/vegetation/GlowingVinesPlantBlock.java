@@ -51,12 +51,15 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if(state.getValue(BERRIES)) {
+            if(level.isClientSide()) return InteractionResult.SUCCESS;
+
             Block.popResource(level, pos, new ItemStack(DDItems.BLOOM_BERRIES.get()));
             level.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1, Mth.randomBetween(level.getRandom(), 0.8f, 1.2f));
             BlockState newState = state.setValue(BERRIES, false);
             level.setBlock(pos, newState, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+
+            return InteractionResult.SUCCESS;
         }
 
         return InteractionResult.PASS;

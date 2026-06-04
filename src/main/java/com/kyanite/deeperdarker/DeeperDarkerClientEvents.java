@@ -22,15 +22,21 @@ import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredItem;
 
@@ -163,6 +169,25 @@ public class DeeperDarkerClientEvents {
         if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) {
             renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
             renderer.addLayer(new WardenHelmetRenderer<>(renderer, event.getEntityModels()));
+        }
+    }
+
+    @SubscribeEvent
+    public static void itemTooltipEvent(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        if(stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) {
+            if(stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
+                CompoundTag tag = stack.getOrDefault(DataComponents.BLOCK_ENTITY_DATA, CustomData.EMPTY);
+                if(tag.contains("BlockEntityTag")) {
+                    tag = tag.getCompoundOrEmpty("BlockEntityTag");
+                }
+                if(tag.contains("leech") && tag.getBoolean("leech")) {
+                    event.getToolTip().add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.leech").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+                }
+                else if(tag.contains("item")) {
+                    event.getToolTip().add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parseOptional(context.registries(), tag.getCompound("item")).getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+                }
+            }
         }
     }
 

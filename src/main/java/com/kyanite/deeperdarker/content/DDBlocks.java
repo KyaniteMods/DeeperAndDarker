@@ -15,6 +15,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -45,16 +46,16 @@ public class DDBlocks {
     public static final DeferredBlock<RotatedPillarBlock> ECHO_WOOD = register("echo_wood", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).mapColor(MapColor.COLOR_PURPLE), 5, 5));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ECHO_LOG = register("stripped_echo_log", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 5));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ECHO_WOOD = register("stripped_echo_wood", () -> new RotatedFlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 5));
-    public static final DeferredBlock<Block> ECHO_PLANKS = register("echo_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
-    public static final DeferredBlock<StairBlock> ECHO_STAIRS = register("echo_stairs", () -> new FlammableStairBlock(ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
-    public static final DeferredBlock<SlabBlock> ECHO_SLAB = register("echo_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
-    public static final DeferredBlock<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
-    public static final DeferredBlock<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FlammableFenceGateBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.COLOR_LIGHT_GRAY), 20, 5));
+    public static final DeferredBlock<Block> ECHO_PLANKS = register("echo_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 20));
+    public static final DeferredBlock<StairBlock> ECHO_STAIRS = register("echo_stairs", () -> new FlammableStairBlock(ECHO_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 20));
+    public static final DeferredBlock<SlabBlock> ECHO_SLAB = register("echo_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 20));
+    public static final DeferredBlock<FenceBlock> ECHO_FENCE = register("echo_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 20));
+    public static final DeferredBlock<FenceGateBlock> ECHO_FENCE_GATE = register("echo_fence_gate", () -> new FlammableFenceGateBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.COLOR_LIGHT_GRAY), 5, 20));
     public static final DeferredBlock<DoorBlock> ECHO_DOOR = register("echo_door", () -> new DoorBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<TrapDoorBlock> ECHO_TRAPDOOR = register("echo_trapdoor", () -> new TrapDoorBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<PressurePlateBlock> ECHO_PRESSURE_PLATE = register("echo_pressure_plate", () -> new PressurePlateBlock(ECHO_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.COLOR_LIGHT_GRAY)));
     public static final DeferredBlock<ButtonBlock> ECHO_BUTTON = register("echo_button", () -> new ButtonBlock(ECHO_SET, 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
-    public static final DeferredBlock<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new FlammableLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).mapColor(MapColor.COLOR_PURPLE), 60, 30));
+    public static final DeferredBlock<LeavesBlock> ECHO_LEAVES = register("echo_leaves", () -> new FlammableLeavesBlock(0.01f, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).mapColor(MapColor.COLOR_PURPLE), 30, 60));
     public static final TreeGrower ECHO_TREE = new TreeGrower("echo", Optional.empty(), Optional.of(DDConfiguredFeatures.TREE_ECHO), Optional.empty());
     public static final DeferredBlock<SaplingBlock> ECHO_SAPLING = register("echo_sapling", () -> new SaplingBlock(ECHO_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)) {
         @Override
@@ -68,7 +69,7 @@ public class DDBlocks {
             return new DDSignBlockEntity(pPos, pState);
         }
     });
-    public static final DeferredBlock<WallSignBlock> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new WallSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).lootFrom(ECHO_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
+    public static final DeferredBlock<WallSignBlock> ECHO_WALL_SIGN = BLOCKS.register("echo_wall_sign", () -> new WallSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(ECHO_SIGN.get().getLootTable()).overrideDescription(ECHO_SIGN.get().getDescriptionId()).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
@@ -80,7 +81,7 @@ public class DDBlocks {
             return new DDHangingSignBlockEntity(pPos, pState);
         }
     });
-    public static final DeferredBlock<WallHangingSignBlock> ECHO_WALL_HANGING_SIGN = BLOCKS.register("echo_wall_hanging_sign", () -> new WallHangingSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(ECHO_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
+    public static final DeferredBlock<WallHangingSignBlock> ECHO_WALL_HANGING_SIGN = BLOCKS.register("echo_wall_hanging_sign", () -> new WallHangingSignBlock(ECHO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(ECHO_HANGING_SIGN.get().getLootTable()).overrideDescription(ECHO_HANGING_SIGN.get().getDescriptionId()).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDHangingSignBlockEntity(pPos, pState);
@@ -93,11 +94,11 @@ public class DDBlocks {
     
     public static final DeferredBlock<Block> BLOOMING_STEM = register("blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.of().strength(1f).randomTicks().sound(SoundType.WOOD).mapColor(MapColor.COLOR_CYAN).ignitedByLava().noOcclusion()));
     public static final DeferredBlock<Block> STRIPPED_BLOOMING_STEM = register("stripped_blooming_stem", () -> new BloomingStemBlock(BlockBehaviour.Properties.ofFullCopy(BLOOMING_STEM.get()).mapColor(MapColor.GLOW_LICHEN)));
-    public static final DeferredBlock<Block> BLOOM_PLANKS = register("bloom_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
-    public static final DeferredBlock<StairBlock> BLOOM_STAIRS = register("bloom_stairs", () -> new FlammableStairBlock(BLOOM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN), 20, 5));
-    public static final DeferredBlock<SlabBlock> BLOOM_SLAB = register("bloom_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.GLOW_LICHEN), 20, 5));
-    public static final DeferredBlock<FenceBlock> BLOOM_FENCE = register("bloom_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).mapColor(MapColor.GLOW_LICHEN), 20, 5));
-    public static final DeferredBlock<FenceGateBlock> BLOOM_FENCE_GATE = register("bloom_fence_gate", () -> new FlammableFenceGateBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), 20, 5));
+    public static final DeferredBlock<Block> BLOOM_PLANKS = register("bloom_planks", () -> new FlammableBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.GLOW_LICHEN), 5, 20));
+    public static final DeferredBlock<StairBlock> BLOOM_STAIRS = register("bloom_stairs", () -> new FlammableStairBlock(BLOOM_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS).mapColor(MapColor.GLOW_LICHEN), 5, 20));
+    public static final DeferredBlock<SlabBlock> BLOOM_SLAB = register("bloom_slab", () -> new FlammableSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB).mapColor(MapColor.GLOW_LICHEN), 5, 20));
+    public static final DeferredBlock<FenceBlock> BLOOM_FENCE = register("bloom_fence", () -> new FlammableFenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE).mapColor(MapColor.GLOW_LICHEN), 5, 20));
+    public static final DeferredBlock<FenceGateBlock> BLOOM_FENCE_GATE = register("bloom_fence_gate", () -> new FlammableFenceGateBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).mapColor(MapColor.GLOW_LICHEN), 5, 20));
     public static final DeferredBlock<DoorBlock> BLOOM_DOOR = register("bloom_door", () -> new DoorBlock(BLOOM_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<TrapDoorBlock> BLOOM_TRAPDOOR = register("bloom_trapdoor", () -> new TrapDoorBlock(BLOOM_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR).mapColor(MapColor.GLOW_LICHEN)));
     public static final DeferredBlock<PressurePlateBlock> BLOOM_PRESSURE_PLATE = register("bloom_pressure_plate", () -> new PressurePlateBlock(BLOOM_SET, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE).mapColor(MapColor.GLOW_LICHEN)));
@@ -108,7 +109,7 @@ public class DDBlocks {
             return new DDSignBlockEntity(pPos, pState);
         }
     });
-    public static final DeferredBlock<WallSignBlock> BLOOM_WALL_SIGN = BLOCKS.register("bloom_wall_sign", () -> new WallSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).lootFrom(BLOOM_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
+    public static final DeferredBlock<WallSignBlock> BLOOM_WALL_SIGN = BLOCKS.register("bloom_wall_sign", () -> new WallSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(BLOOM_SIGN.get().getLootTable()).overrideDescription(BLOOM_SIGN.get().getDescriptionId()).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDSignBlockEntity(pPos, pState);
@@ -120,7 +121,7 @@ public class DDBlocks {
             return new DDHangingSignBlockEntity(pPos, pState);
         }
     });
-    public static final DeferredBlock<WallHangingSignBlock> BLOOM_WALL_HANGING_SIGN = BLOCKS.register("bloom_wall_hanging_sign", () -> new WallHangingSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(BLOOM_HANGING_SIGN).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
+    public static final DeferredBlock<WallHangingSignBlock> BLOOM_WALL_HANGING_SIGN = BLOCKS.register("bloom_wall_hanging_sign", () -> new WallHangingSignBlock(BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(BLOOM_HANGING_SIGN.get().getLootTable()).overrideDescription(BLOOM_HANGING_SIGN.get().getDescriptionId()).mapColor(MapColor.COLOR_LIGHT_GRAY)) {
         @Override
         public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
             return new DDHangingSignBlockEntity(pPos, pState);
@@ -200,16 +201,16 @@ public class DDBlocks {
     public static final DeferredBlock<FenceBlock> GLOOMSLATE_BRICK_FENCE = register("gloomslate_brick_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE_BRICKS.get())));
     public static final DeferredBlock<Block> CHISELED_GLOOMSLATE = register("chiseled_gloomslate", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get())));
 
-    public static final DeferredBlock<Block> SCULK_GLEAM = register("sculk_gleam", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).sound(DDSounds.SCULK_GLEAM).lightLevel(state -> 15).mapColor(MapColor.SAND)));
+    public static final DeferredBlock<Block> SCULK_GLEAM = register("sculk_gleam", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).sound(DDSounds.SCULK_GLEAM).lightLevel(_ -> 15).mapColor(MapColor.SAND)));
     public static final DeferredBlock<Block> POROUS_SCULK_GLEAM = register("porous_sculk_gleam", () -> new PorousSculkGleamBlock(BlockBehaviour.Properties.ofFullCopy(SCULK_GLEAM.get()).randomTicks().lightLevel(state -> state.getValue(PorousSculkGleamBlock.GEL_LEVEL) + 5)));
-    public static final DeferredBlock<Block> GLOOMSLATE_LIGHT = register("gloomslate_light", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get()).lightLevel(state -> 15).mapColor(MapColor.SAND)));
+    public static final DeferredBlock<Block> GLOOMSLATE_LIGHT = register("gloomslate_light", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get()).lightLevel(_ -> 15).mapColor(MapColor.SAND)));
     public static final DeferredBlock<Block> LITE_BLOCK = register("lite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.VERDANT_FROGLIGHT).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     public static final DeferredBlock<Block> BORDERED_LITE_BLOCK = register("bordered_lite_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE_LIGHT.get()).mapColor(MapColor.COLOR_LIGHT_BLUE)));
 
     public static final DeferredBlock<Block> GLOOMY_SCULK = register("gloomy_sculk", () -> new GloomySculkBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.TERRACOTTA_BROWN)));
-    public static final DeferredBlock<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(state -> 9).mapColor(MapColor.TERRACOTTA_BROWN)));
-    public static final DeferredBlock<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new CrystallizedAmberBlock(BlockBehaviour.Properties.of().strength(0.3f, 3f).lightLevel(state -> 1).sound(SoundType.GLASS).mapColor(MapColor.COLOR_ORANGE).noOcclusion()));
-    public static final DeferredBlock<Block> GLEAM_GEL_BLOCK = register("gleam_gel_block", () -> new GleamGelBlock(BlockBehaviour.Properties.of().sound(SoundType.HONEY_BLOCK).noCollission().mapColor(MapColor.SNOW)));
+    public static final DeferredBlock<GeyserBlock> GLOOMY_GEYSER = register("gloomy_geyser", () -> new GeyserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).lightLevel(_ -> 9).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final DeferredBlock<Block> CRYSTALLIZED_AMBER = register("crystallized_amber", () -> new CrystallizedAmberBlock(BlockBehaviour.Properties.of().strength(0.3f, 3f).lightLevel(_ -> 1).sound(SoundType.GLASS).mapColor(MapColor.COLOR_ORANGE).noOcclusion()));
+    public static final DeferredBlock<Block> GLEAM_GEL_BLOCK = register("gleam_gel_block", () -> new GleamGelBlock(BlockBehaviour.Properties.of().sound(SoundType.HONEY_BLOCK).noCollision().mapColor(MapColor.SNOW)));
     public static final DeferredBlock<Block> SOUNDPROOF_GLASS = register("soundproof_glass", () -> new TransparentBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)));
 
     public static final DeferredBlock<Block> SCULK_STONE_COAL_ORE = register("sculk_stone_coal_ore", () -> new DropExperienceBlock(UniformInt.of(1, 4), BlockBehaviour.Properties.ofFullCopy(SCULK_STONE.get())));
@@ -229,24 +230,24 @@ public class DDBlocks {
     public static final DeferredBlock<Block> GLOOMSLATE_LAPIS_ORE = register("gloomslate_lapis_ore", () -> new DropExperienceBlock(UniformInt.of(4, 8), BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get())));
     public static final DeferredBlock<Block> GLOOMSLATE_DIAMOND_ORE = register("gloomslate_diamond_ore", () -> new DropExperienceBlock(UniformInt.of(5, 10), BlockBehaviour.Properties.ofFullCopy(GLOOMSLATE.get())));
 
-    public static final DeferredBlock<Block> GLOWING_FLOWERS = register("glowing_flowers", () -> new GlowingFlowersBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PINK_PETALS).lightLevel(state -> 9).mapColor(MapColor.GLOW_LICHEN)));
-    public static final DeferredBlock<Block> GLOWING_GRASS = register("glowing_grass", () -> new GlowingGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel(state -> 11).mapColor(MapColor.GLOW_LICHEN)));
-    public static final DeferredBlock<Block> GLOOMY_GRASS = register("gloomy_grass", () -> new GloomyGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel(state -> 1).mapColor(MapColor.TERRACOTTA_BROWN)));
-    public static final DeferredBlock<Block> GLOOMY_CACTUS = register("gloomy_cactus", () -> new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(state -> 6).sound(SoundType.WOOL).mapColor(MapColor.COLOR_ORANGE)));
-    public static final DeferredBlock<SculkTendrilsBlock> SCULK_TENDRILS = register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_CYAN)));
-    public static final DeferredBlock<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = BLOCKS.register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak().mapColor(MapColor.COLOR_CYAN)));
-    public static final DeferredBlock<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_CYAN)));
-    public static final DeferredBlock<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollission().instabreak().mapColor(MapColor.COLOR_CYAN)));
-    public static final DeferredBlock<GlowingRootsBlock> GLOWING_ROOTS = register("glowing_roots", () -> new GlowingRootsBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
-    public static final DeferredBlock<GlowingRootsPlantBlock> GLOWING_ROOTS_PLANT = BLOCKS.register("glowing_roots_plant", () -> new GlowingRootsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
-    public static final DeferredBlock<GlowingVinesBlock> GLOWING_VINES = BLOCKS.register("glowing_vines", () -> new GlowingVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).noLootTable()));
-    public static final DeferredBlock<GlowingVinesPlantBlock> GLOWING_VINES_PLANT = BLOCKS.register("glowing_vines_plant", () -> new GlowingVinesPlantBlock(BlockBehaviour.Properties.of().lightLevel(state -> state.getValue(GlowingVinesPlantBlock.BERRIES) ? 14 : 0).sound(SoundType.CAVE_VINES).noCollission().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
-    public static final DeferredBlock<Block> ICE_LILY = BLOCKS.register("ice_lily", () -> new IceLilyBlock(BlockBehaviour.Properties.of().lightLevel(state -> 7).sound(SoundType.LILY_PAD).noOcclusion().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY)));
-    public static final DeferredBlock<Block> LILY_FLOWER = BLOCKS.register("lily_flower", () -> new LilyFlowerBlock(MobEffects.GLOWING, 6f, BlockBehaviour.Properties.of().lightLevel(state -> 7).noCollission().instabreak().sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> GLOWING_FLOWERS = register("glowing_flowers", () -> new GlowingFlowersBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PINK_PETALS).lightLevel(_ -> 9).mapColor(MapColor.GLOW_LICHEN)));
+    public static final DeferredBlock<Block> GLOWING_GRASS = register("glowing_grass", () -> new GlowingGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel(_ -> 11).mapColor(MapColor.GLOW_LICHEN)));
+    public static final DeferredBlock<Block> GLOOMY_GRASS = register("gloomy_grass", () -> new GloomyGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).lightLevel(_ -> 1).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final DeferredBlock<Block> GLOOMY_CACTUS = register("gloomy_cactus", () -> new GloomyCactusBlock(BlockBehaviour.Properties.of().strength(0.5f).lightLevel(_ -> 6).sound(SoundType.WOOL).mapColor(MapColor.COLOR_ORANGE)));
+    public static final DeferredBlock<SculkTendrilsBlock> SCULK_TENDRILS = register("sculk_tendrils", () -> new SculkTendrilsBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollision().instabreak().mapColor(MapColor.COLOR_CYAN)));
+    public static final DeferredBlock<SculkTendrilsPlantBlock> SCULK_TENDRILS_PLANT = BLOCKS.register("sculk_tendrils_plant", () -> new SculkTendrilsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollision().instabreak().mapColor(MapColor.COLOR_CYAN)));
+    public static final DeferredBlock<SculkVinesBlock> SCULK_VINES = register("sculk_vines", () -> new SculkVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).randomTicks().noCollision().instabreak().mapColor(MapColor.COLOR_CYAN)));
+    public static final DeferredBlock<SculkVinesPlantBlock> SCULK_VINES_PLANT = BLOCKS.register("sculk_vines_plant", () -> new SculkVinesPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.SCULK).noCollision().instabreak().mapColor(MapColor.COLOR_CYAN)));
+    public static final DeferredBlock<GlowingRootsBlock> GLOWING_ROOTS = register("glowing_roots", () -> new GlowingRootsBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollision().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final DeferredBlock<GlowingRootsPlantBlock> GLOWING_ROOTS_PLANT = BLOCKS.register("glowing_roots_plant", () -> new GlowingRootsPlantBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).noCollision().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final DeferredBlock<GlowingVinesBlock> GLOWING_VINES = BLOCKS.register("glowing_vines", () -> new GlowingVinesBlock(BlockBehaviour.Properties.of().sound(SoundType.CAVE_VINES).randomTicks().noCollision().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).noLootTable()));
+    public static final DeferredBlock<GlowingVinesPlantBlock> GLOWING_VINES_PLANT = BLOCKS.register("glowing_vines_plant", () -> new GlowingVinesPlantBlock(BlockBehaviour.Properties.of().lightLevel(state -> state.getValue(GlowingVinesPlantBlock.BERRIES) ? 14 : 0).sound(SoundType.CAVE_VINES).noCollision().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE)));
+    public static final DeferredBlock<Block> ICE_LILY = BLOCKS.register("ice_lily", () -> new IceLilyBlock(BlockBehaviour.Properties.of().lightLevel(_ -> 7).sound(SoundType.LILY_PAD).noOcclusion().instabreak().mapColor(MapColor.COLOR_LIGHT_BLUE).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> LILY_FLOWER = BLOCKS.register("lily_flower", () -> new LilyFlowerBlock(MobEffects.GLOWING, 6f, BlockBehaviour.Properties.of().lightLevel(_ -> 7).noCollision().instabreak().sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> ANCIENT_VASE = register("ancient_vase", () -> new AncientVaseBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(2f, 6f).sound(DDSounds.VASE).mapColor(MapColor.DEEPSLATE)));
     public static final DeferredBlock<Block> GLOOMSLATE_POT = BLOCKS.register("gloomslate_pot", () -> new GloomslatePotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_BROWN)));
-    public static final DeferredItem<BlockItem> GLOOMSLATE_POT_ITEM = DDItems.ITEMS.registerSimpleBlockItem("gloomslate_pot", GLOOMSLATE_POT, new Item.Properties().component(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY));
+    public static final DeferredItem<BlockItem> GLOOMSLATE_POT_ITEM = DDItems.ITEMS.registerSimpleBlockItem("gloomslate_pot", GLOOMSLATE_POT, () -> new Item.Properties().component(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY).component(DataComponents.CONTAINER, ItemContainerContents.EMPTY));
     public static final DeferredBlock<Block> INFESTED_SCULK = register("infested_sculk", () -> new InfestedSculkBlock(Blocks.SCULK, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK)));
     public static final DeferredBlock<Block> SCULK_JAW = register("sculk_jaw", () -> new SculkJawBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).randomTicks().mapColor(MapColor.COLOR_BLACK)));
 

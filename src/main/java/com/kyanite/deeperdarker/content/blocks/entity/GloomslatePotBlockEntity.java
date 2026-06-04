@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
@@ -18,6 +19,8 @@ import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.world.level.block.entity.PotDecorations;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.ticks.ContainerSingleItem;
 
 import java.util.List;
@@ -42,20 +45,6 @@ public class GloomslatePotBlockEntity extends BlockEntity implements ContainerSi
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        this.decorations.save(tag);
-        tag.put("item", this.item.saveOptional(registries));
-    }
-
-    @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        this.decorations = PotDecorations.load(tag);
-        this.item = ItemStack.parseOptional(registries, tag.getCompound("item"));
-    }
-
-    @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
@@ -63,6 +52,20 @@ public class GloomslatePotBlockEntity extends BlockEntity implements ContainerSi
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return this.saveCustomOnly(registries);
+    }
+
+    @Override
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        if(this.decorations != PotDecorations.EMPTY) output.store("sherds", PotDecorations.CODEC, this.decorations);
+        if(!this.item.isEmpty()) output.store("item", ItemStack.CODEC, this.item);
+    }
+
+    @Override
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        this.decorations = input.read("sherds", PotDecorations.CODEC).orElse(PotDecorations.EMPTY);
+        this.item = input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
     }
 
     @Override
@@ -95,20 +98,23 @@ public class GloomslatePotBlockEntity extends BlockEntity implements ContainerSi
 
     @Override
     protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
         components.set(DataComponents.POT_DECORATIONS, this.decorations);
         components.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(List.of(this.item)));
     }
 
     @Override
-    protected void applyImplicitComponents(DataComponentInput componentInput) {
-        this.decorations = componentInput.getOrDefault(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY);
-        this.item = componentInput.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyOne();
+    protected void applyImplicitComponents(DataComponentGetter components) {
+        super.applyImplicitComponents(components);
+        this.decorations = components.getOrDefault(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY);
+        this.item = components.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyOne();
     }
 
     @Override
-    public void removeComponentsFromTag(CompoundTag tag) {
-        tag.remove("sherds");
-        tag.remove("item");
+    public void removeComponentsFromTag(ValueOutput output) {
+        super.removeComponentsFromTag(output);
+        output.discard("sherds");
+        output.discard("item");
     }
 
     public void wobble(DecoratedPotBlockEntity.WobbleStyle style) {

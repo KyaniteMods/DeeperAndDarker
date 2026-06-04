@@ -11,10 +11,10 @@ public class FlammableStairBlock extends StairBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableStairBlock(BlockState state, Properties properties, int flammability, int spread) {
+    public FlammableStairBlock(BlockState state, Properties properties, int igniteOdds, int burnOdds) {
         super(state, properties);
-        this.FLAMMABILITY = flammability;
-        this.SPREAD = spread;
+        this.FLAMMABILITY = burnOdds;
+        this.SPREAD = igniteOdds;
     }
 
     @Override

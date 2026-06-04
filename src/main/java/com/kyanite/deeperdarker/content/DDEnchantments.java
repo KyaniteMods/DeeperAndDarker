@@ -4,8 +4,8 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.misc.CatalyzeEnvironment;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.EntityTypePredicate;
+import net.minecraft.advancements.criterion.EntityPredicate;
+import net.minecraft.advancements.criterion.EntityTypePredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -41,7 +41,7 @@ public class DDEnchantments {
 
         context.register(CATALYSIS, Enchantment.enchantment(
                 Enchantment.definition(
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.MELEE_WEAPON_ENCHANTABLE),
                         4, 3,
                         Enchantment.dynamicCost(10, 20), Enchantment.dynamicCost(15, 30), 3,
                         EquipmentSlotGroup.MAINHAND
@@ -51,12 +51,12 @@ public class DDEnchantments {
                         EnchantmentTarget.ATTACKER,
                         EnchantmentTarget.VICTIM,
                         AllOf.entityEffects(new CatalyzeEnvironment(false))
-                ).build(CATALYSIS.location())
+                ).build(CATALYSIS.identifier())
         );
 
         context.register(SCULK_SMITE, Enchantment.enchantment(
                 Enchantment.definition(
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), items.getOrThrow(ItemTags.MELEE_WEAPON_ENCHANTABLE),
                         5, 5,
                         Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2,
                         EquipmentSlotGroup.MAINHAND
@@ -65,8 +65,8 @@ public class DDEnchantments {
                 .withEffect(
                         EnchantmentEffectComponents.DAMAGE,
                         new AddValue(LevelBasedValue.perLevel(2.5f)),
-                        LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(DDTags.Misc.SENSITIVE_TO_SCULK_SMITE)))
-                ).build(SCULK_SMITE.location())
+                        LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(context.lookup(Registries.ENTITY_TYPE), DDTags.Misc.SENSITIVE_TO_SCULK_SMITE)))
+                ).build(SCULK_SMITE.identifier())
         );
 
         context.register(VOLUME, Enchantment.enchantment(
@@ -75,7 +75,7 @@ public class DDEnchantments {
                         5, 4,
                         Enchantment.dynamicCost(10, 9), Enchantment.dynamicCost(45, 9), 3,
                         EquipmentSlotGroup.MAINHAND
-                )).build(VOLUME.location())
+                )).build(VOLUME.identifier())
         );
 
         context.register(REVERBERATION, Enchantment.enchantment(
@@ -84,7 +84,7 @@ public class DDEnchantments {
                         2, 3,
                         Enchantment.dynamicCost(10, 8), Enchantment.dynamicCost(25, 8), 2,
                         EquipmentSlotGroup.MAINHAND
-                )).build(REVERBERATION.location())
+                )).build(REVERBERATION.identifier())
         );
     }
 

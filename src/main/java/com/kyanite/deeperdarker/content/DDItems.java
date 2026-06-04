@@ -10,6 +10,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,14 +21,14 @@ import java.util.List;
 public class DDItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(DeeperDarker.MOD_ID);
 
-    public static final DeferredItem<Item> ICE_LILY = ITEMS.register("ice_lily", () -> new PlaceOnWaterBlockItem(DDBlocks.ICE_LILY.get(), new Item.Properties()));
+    public static final DeferredItem<Item> ICE_LILY = ITEMS.registerItem("ice_lily", properties -> new PlaceOnWaterBlockItem(DDBlocks.ICE_LILY.get(), properties));
     public static final DeferredItem<Item> LILY_FLOWER = ITEMS.register("lily_flower", () -> new LilyFlowerItem(DDBlocks.LILY_FLOWER.get(), new Item.Properties()));
     public static final DeferredItem<Item> ECHO_SIGN = ITEMS.register("echo_sign", () -> new SignItem(new Item.Properties().stacksTo(16), DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get()));
     public static final DeferredItem<Item> ECHO_HANGING_SIGN = ITEMS.register("echo_hanging_sign", () -> new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN.get(), DDBlocks.ECHO_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> BLOOM_SIGN = ITEMS.register("bloom_sign", () -> new SignItem(new Item.Properties().stacksTo(16), DDBlocks.BLOOM_SIGN.get(), DDBlocks.BLOOM_WALL_SIGN.get()));
     public static final DeferredItem<Item> BLOOM_HANGING_SIGN = ITEMS.register("bloom_hanging_sign", () -> new HangingSignItem(DDBlocks.BLOOM_HANGING_SIGN.get(), DDBlocks.BLOOM_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
-    public static final DeferredItem<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new ItemNameBlockItem(DDBlocks.GLOWING_VINES.get(), new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f).build())));
+    public static final DeferredItem<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new BlockItem(DDBlocks.GLOWING_VINES.get(), new Item.Properties().useItemDescriptionPrefix().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build(), Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f)).build())));
     public static final DeferredItem<Item> GRIME_BALL = ITEMS.registerSimpleItem("grime_ball");
     public static final DeferredItem<Item> GRIME_BRICK = ITEMS.registerSimpleItem("grime_brick");
     public static final DeferredItem<Item> GLEAM_GEL = ITEMS.registerSimpleItem("gleam_gel");

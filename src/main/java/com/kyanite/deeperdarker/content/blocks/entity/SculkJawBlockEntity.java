@@ -2,11 +2,11 @@ package com.kyanite.deeperdarker.content.blocks.entity;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 @SuppressWarnings("NullableProblems")
 public class SculkJawBlockEntity extends BlockEntity {
@@ -31,14 +31,14 @@ public class SculkJawBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        if(tag.contains("experience")) experience = tag.getInt("experience");
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        output.putInt("experience", experience);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.putInt("experience", experience);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        experience = input.getIntOr("experience", 0);
     }
 }

@@ -11,10 +11,10 @@ public class FlammableSlabBlock extends SlabBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableSlabBlock(Properties properties, int flammability, int spread) {
+    public FlammableSlabBlock(Properties properties, int igniteOdds, int burnOdds) {
         super(properties);
-        this.FLAMMABILITY = flammability;
-        this.SPREAD = spread;
+        this.FLAMMABILITY = burnOdds;
+        this.SPREAD = igniteOdds;
     }
 
     @Override

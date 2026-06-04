@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
@@ -13,16 +12,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("NullableProblems")
 public class GloomyGrassBlock extends BushBlock {
-    public static final MapCodec<GloomyGrassBlock> CODEC = simpleCodec(GloomyGrassBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 10, 15);
 
     public GloomyGrassBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
     }
 
     @Override

@@ -67,4 +67,9 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     public int getExpDrop(BlockState state, LevelAccessor level, BlockPos pos, BlockEntity blockEntity, Entity breaker, ItemStack tool) {
         return level.getRandom().nextInt(0, 4);
     }
+
+    @Override
+    public int getDustColor(BlockState blockState, BlockGetter level, BlockPos pos) {
+        return blockState.getMapColor(level, pos).col;
+    }
 }

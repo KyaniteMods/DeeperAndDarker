@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,7 +19,7 @@ public record SoulElytraClientPacket(boolean bool) implements CustomPacketPayloa
             SoulElytraClientPacket::new
     );
 
-    public static final ResourceLocation ID = DeeperDarker.rl("soul_elytra_client");
+    public static final Identifier ID = DeeperDarker.rl("soul_elytra_client");
     public static final Type<SoulElytraClientPacket> TYPE = new Type<>(ID);
 
     @Override
@@ -30,7 +30,7 @@ public record SoulElytraClientPacket(boolean bool) implements CustomPacketPayloa
     public void handle(IPayloadContext context) {
         context.enqueueWork(() -> {
             if (DeeperDarkerConfig.CONFIG.soulElytraCooldown.get() == -1) return;
-            Minecraft.getInstance().player.displayClientMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", Keybinds.BOOST.getTranslatedKeyMessage()), true);
+            Minecraft.getInstance().player.sendOverlayMessage(Component.translatable("item." + DeeperDarker.MOD_ID + ".soul_elytra.equipped", Keybinds.BOOST.getTranslatedKeyMessage()));
         });
     }
 }

@@ -78,7 +78,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
         return new CrystallizedAmberBlockEntity(pos, state);
     }
 
-    @Override
+    /*@Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if(stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
             CompoundTag tag = stack.getOrDefault(DataComponents.BLOCK_ENTITY_DATA, CustomData.EMPTY).copyTag();
@@ -92,5 +92,5 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
                 tooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parseOptional(context.registries(), tag.getCompound("item")).getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
             }
         }
-    }
+    }*/
 }

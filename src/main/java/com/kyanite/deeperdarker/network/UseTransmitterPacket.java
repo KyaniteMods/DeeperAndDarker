@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
@@ -18,7 +18,7 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
             UseTransmitterPacket::new
     );
 
-    public static final ResourceLocation ID = DeeperDarker.rl("use_transmitter");
+    public static final Identifier ID = DeeperDarker.rl("use_transmitter");
     public static final Type<UseTransmitterPacket> TYPE = new Type<>(ID);
 
     @Override
@@ -35,8 +35,8 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
                 return;
             }
 
-            for (ItemStack stack : player.getInventory().items) {
-                if (SculkTransmitterItem.isLinked(stack)) {
+            for(ItemStack stack : player.getInventory().getNonEquipmentItems()) {
+                if(SculkTransmitterItem.isLinked(stack)) {
                     SculkTransmitterItem.transmit(player.level(), player, stack, null);
                     break;
                 }

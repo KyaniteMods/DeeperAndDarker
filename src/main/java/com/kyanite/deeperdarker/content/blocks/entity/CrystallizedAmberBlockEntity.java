@@ -14,6 +14,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -65,23 +67,20 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        CompoundTag tag = new CompoundTag();
-        tag.put("item", this.loot.saveOptional(registries));
-        tag.putBoolean("leech", this.fossilizedEntity);
-        return tag;
+        return this.saveCustomOnly(registries);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        if(tag.contains("item")) this.loot = ItemStack.parseOptional(registries, tag.getCompound("item"));
-        if(tag.contains("leech")) this.fossilizedEntity = tag.getBoolean("leech");
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        if(!this.loot.isEmpty()) output.store("item", ItemStack.CODEC, this.loot);
+        output.putBoolean("leech", this.fossilizedEntity);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.put("item", this.loot.saveOptional(registries));
-        tag.putBoolean("leech", this.fossilizedEntity);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        this.loot = input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
+        this.fossilizedEntity = input.getBooleanOr("leech", false);
     }
 }

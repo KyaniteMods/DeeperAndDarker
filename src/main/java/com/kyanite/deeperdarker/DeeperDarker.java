@@ -25,7 +25,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.block.Blocks;
@@ -37,7 +37,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -91,33 +90,32 @@ public class DeeperDarker {
         });
     }
 
-    private void generateData(final GatherDataEvent event) {
+    private void generateData(final GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
-        ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         // assets
-        generator.addProvider(event.includeClient(), new ENLanguageProvider(packOutput));
-        generator.addProvider(event.includeClient(), new DDBlockStateProvider(packOutput, fileHelper));
-        generator.addProvider(event.includeClient(), new DDItemModelProvider(packOutput, fileHelper));
-        generator.addProvider(event.includeClient(), new DDSoundDefinitions(packOutput, fileHelper));
+        generator.addProvider(new ENLanguageProvider(output));
+        generator.addProvider(new DDBlockStateProvider(output, fileHelper));
+        generator.addProvider(new DDItemModelProvider(output, fileHelper));
+        generator.addProvider(new DDSoundDefinitions(output, fileHelper));
 
         // data
-        CompletableFuture<HolderLookup.Provider> newLookup = generator.addProvider(event.includeServer(), new DDRegistriesGenerator(packOutput, lookupProvider)).getRegistryProvider();
+        CompletableFuture<HolderLookup.Provider> newLookup = generator.addProvider(event.includeServer(), new DDRegistriesGenerator(output, lookupProvider)).getRegistryProvider();
 
-        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(packOutput, lookupProvider, fileHelper);
+        DDBlockTagsProvider blockTags = new DDBlockTagsProvider(output, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new DDEnchantmentTagsProvider(packOutput, newLookup, fileHelper));
-        generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(packOutput, lookupProvider, fileHelper));
-        generator.addProvider(event.includeServer(), new DDGameEventTagsProvider(packOutput, lookupProvider, fileHelper));
-        generator.addProvider(event.includeServer(), new DDItemTagsProvider(packOutput, lookupProvider, blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new DDEnchantmentTagsProvider(output, newLookup, fileHelper));
+        generator.addProvider(event.includeServer(), new DDEntityTypeTagsProvider(output, lookupProvider, fileHelper));
+        generator.addProvider(event.includeServer(), new DDGameEventTagsProvider(output, lookupProvider, fileHelper));
+        generator.addProvider(event.includeServer(), new DDItemTagsProvider(output, lookupProvider, blockTags, fileHelper));
 
-        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, newLookup, fileHelper, List.of(new DDAdvancements())));
-        generator.addProvider(event.includeServer(), new DDDataMaps(packOutput, newLookup));
-        generator.addProvider(event.includeServer(), new DDLootTableProvider(packOutput, newLookup));
-        generator.addProvider(event.includeServer(), new DDLootModifierProvider(packOutput, newLookup));
-        generator.addProvider(event.includeServer(), new DDRecipeProvider(packOutput, newLookup));
+        generator.addProvider(event.includeServer(), new AdvancementProvider(output, newLookup, fileHelper, List.of(new DDAdvancements())));
+        generator.addProvider(event.includeServer(), new DDDataMaps(output, newLookup));
+        generator.addProvider(event.includeServer(), new DDLootTableProvider(output, newLookup));
+        generator.addProvider(event.includeServer(), new DDLootModifierProvider(output, newLookup));
+        generator.addProvider(event.includeServer(), new DDRecipeProvider(output, newLookup));
     }
 
     private void registerPayloads(final RegisterPayloadHandlersEvent event) {
@@ -150,7 +148,7 @@ public class DeeperDarker {
         event.register(DDEntities.SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
-    public static ResourceLocation rl(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier rl(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

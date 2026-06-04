@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -19,18 +18,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("NullableProblems")
 public class GlowingGrassBlock extends BushBlock {
-    public static final MapCodec<GlowingGrassBlock> CODEC = simpleCodec(GlowingGrassBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 12, 14);
 
     public GlowingGrassBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return CODEC;
     }
 
     @Override

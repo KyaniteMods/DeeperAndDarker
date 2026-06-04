@@ -10,8 +10,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.PipeBlock;
@@ -84,18 +84,20 @@ public class BloomingStemBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbour, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
         if(!state.canSurvive(level, pos)) {
-            level.scheduleTick(pos, this, 1);
-            return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+            ticks.scheduleTick(pos, this, 1);
+            return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
         }
 
-        if(isStem(neighborState) && neighborState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()))) {
-            return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), true);
+        if(isStem(neighbourState) && neighbourState.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(directionToNeighbour.getOpposite()))) {
+            return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(directionToNeighbour), true);
         }
-        if(!isStem(neighborState)) {
-            return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), false);
+
+        if(!isStem(neighbourState)) {
+            return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(directionToNeighbour), false);
         }
+
         return state;
     }
 

@@ -11,10 +11,10 @@ public class FlammableFenceBlock extends FenceBlock {
     private final int FLAMMABILITY;
     private final int SPREAD;
 
-    public FlammableFenceBlock(Properties properties, int flammability, int spread) {
+    public FlammableFenceBlock(Properties properties, int igniteOdds, int burnOdds) {
         super(properties);
-        this.FLAMMABILITY = flammability;
-        this.SPREAD = spread;
+        this.FLAMMABILITY = burnOdds;
+        this.SPREAD = igniteOdds;
     }
 
     @Override

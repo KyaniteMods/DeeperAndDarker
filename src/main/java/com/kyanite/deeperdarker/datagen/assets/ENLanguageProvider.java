@@ -90,21 +90,21 @@ public class ENLanguageProvider extends LanguageProvider {
         add("key." + DeeperDarker.MOD_ID + ".boost", "Boost Soul Elytra");
         add("key." + DeeperDarker.MOD_ID + ".transmit", "Use Sculk Transmitter");
 
-        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.DEEPLANDS.location().getPath(), convertToName(OthersideBiomes.DEEPLANDS.location().getPath()));
-        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.location().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.location().getPath()));
-        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.location().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.location().getPath()));
-        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.location().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.location().getPath()));
-        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.BITE.location().getPath(), "%s was devoured");
-        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.RING.location().getPath(), "%s was given a deadly case of tinnitus by %s");
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.DEEPLANDS.identifier().getPath(), convertToName(OthersideBiomes.DEEPLANDS.identifier().getPath()));
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.ECHOING_FOREST.identifier().getPath(), convertToName(OthersideBiomes.ECHOING_FOREST.identifier().getPath()));
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.BLOOMING_CAVERNS.identifier().getPath(), convertToName(OthersideBiomes.BLOOMING_CAVERNS.identifier().getPath()));
+        add("biome." + DeeperDarker.MOD_ID + "." + OthersideBiomes.OVERCAST_COLUMNS.identifier().getPath(), convertToName(OthersideBiomes.OVERCAST_COLUMNS.identifier().getPath()));
+        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.BITE.identifier().getPath(), "%s was devoured");
+        add("death.attack." + DeeperDarker.MOD_ID + "." + DDDamageTypes.RING.identifier().getPath(), "%s was given a deadly case of tinnitus by %s");
 
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath(), convertToName(DDEnchantments.CATALYSIS.location().getPath()));
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.location().getPath() + ".desc", "Spreads sculk when mobs are killed.");
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath(), convertToName(DDEnchantments.SCULK_SMITE.location().getPath()));
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.location().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.VOLUME.location().getPath(), convertToName(DDEnchantments.VOLUME.location().getPath()));
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.VOLUME.location().getPath() + ".desc", "Increases damage from sonic blasts.");
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.REVERBERATION.location().getPath(), convertToName(DDEnchantments.REVERBERATION.location().getPath()));
-        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.REVERBERATION.location().getPath() + ".desc", "Increases the range of sonic blasts.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.identifier().getPath(), convertToName(DDEnchantments.CATALYSIS.identifier().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.CATALYSIS.identifier().getPath() + ".desc", "Spreads sculk when mobs are killed.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.identifier().getPath(), convertToName(DDEnchantments.SCULK_SMITE.identifier().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.SCULK_SMITE.identifier().getPath() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.VOLUME.identifier().getPath(), convertToName(DDEnchantments.VOLUME.identifier().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.VOLUME.identifier().getPath() + ".desc", "Increases damage from sonic blasts.");
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.REVERBERATION.identifier().getPath(), convertToName(DDEnchantments.REVERBERATION.identifier().getPath()));
+        add("enchantment." + DeeperDarker.MOD_ID + "." + DDEnchantments.REVERBERATION.identifier().getPath() + ".desc", "Increases the range of sonic blasts.");
 
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.title", "Abstraction");
         add("painting." + DeeperDarker.MOD_ID + ".abstraction.author", "Pedro Ricardo");
@@ -179,7 +179,7 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private boolean filter(DeferredHolder<?, ?> entry) {
-        if(entry.get() instanceof ItemNameBlockItem) return false;
+        if(entry.get() instanceof ItemName) return false;
         if(entry.get() instanceof EntityType<?>) return entry == DDEntities.BOAT || entry == DDEntities.CHEST_BOAT || entry == DDEntities.ANGLER_FISH;
         return entry.get() instanceof BlockItem || entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock;
     }
