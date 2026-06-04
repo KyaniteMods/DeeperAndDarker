@@ -41,9 +41,10 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
                     .withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter())
                     .withParameter(LootContextParams.BLOCK_ENTITY, this)
                     .create(LootContextParamSets.CHEST);
-            List<ItemStack> list = table.getRandomItems(lootParams);
 
-            this.loot = list.getFirst();
+            List<ItemStack> list = table.getRandomItems(lootParams);
+            if(list.isEmpty()) fossilizedEntity = true;
+            else this.loot = list.getFirst();
         }
 
         this.setChanged();
