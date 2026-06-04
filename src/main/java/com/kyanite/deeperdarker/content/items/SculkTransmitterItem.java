@@ -12,19 +12,18 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.TicketType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -46,8 +45,8 @@ public class SculkTransmitterItem extends Item {
         ItemStack stack = context.getItemInHand();
         BlockPos clickedPos = context.getClickedPos();
 
-        if (isLinked(stack)) return transmit(level, player, stack, clickedPos);
-        if (!canConnect(level, clickedPos)) {
+        if(isLinked(stack)) return transmit(level, player, stack, clickedPos);
+        if(!canConnect(level, clickedPos)) {
             tryConnect(null, stack, player, null, "not_transmittable", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
         }
@@ -59,7 +58,7 @@ public class SculkTransmitterItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
-        if (isLinked(stack)) {
+        if(isLinked(stack)) {
             transmit(level, player, stack, null);
             return InteractionResultHolder.success(stack);
         }
@@ -68,12 +67,12 @@ public class SculkTransmitterItem extends Item {
 
     public static InteractionResult transmit(Level level, Player player, ItemStack stack, BlockPos clickedPos) {
         Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
-        if (transmitter.linkedPos().isEmpty()) {
+        if(transmitter.linkedPos().isEmpty()) {
             return InteractionResult.FAIL;
         }
 
-        if (player.isCrouching()) {
-            if (clickedPos != null && canConnect(level, clickedPos)) {
+        if(player.isCrouching()) {
+            if(clickedPos != null && canConnect(level, clickedPos)) {
                 tryConnect(transmitter, stack, player, clickedPos, "linked", DDSounds.TRANSMITTER_LINK);
                 return InteractionResult.SUCCESS;
             }
@@ -86,18 +85,17 @@ public class SculkTransmitterItem extends Item {
         ServerLevel linkedLevel = player.getServer().getLevel(transmitter.linkedPos().get().dimension());
         BlockPos linkedPos = transmitter.linkedPos().get().pos();
 
-        if (!linkedLevel.isLoaded(linkedPos)) {
-            ChunkPos chunkPos = new ChunkPos(linkedPos);
-            linkedLevel.getChunkSource().addRegionTicket(TicketType.UNKNOWN, chunkPos, 1, chunkPos);
-        }
-
-        if (!canConnect(linkedLevel, linkedPos)) {
+        if(!canConnect(linkedLevel, linkedPos)) {
             tryConnect(transmitter, stack, player, null, "not_found", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
         }
 
         linkedLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
-        linkedLevel.getBlockState(linkedPos).useWithoutItem(linkedLevel, player, new BlockHitResult(linkedPos.getCenter(), Direction.NORTH, linkedPos, false));
+        if(linkedLevel.getBlockEntity(linkedPos) instanceof MenuProvider menu) {
+            player.openMenu(menu);
+        } else {
+            linkedLevel.getBlockState(linkedPos).useWithoutItem(linkedLevel, player, new BlockHitResult(linkedPos.getCenter(), Direction.NORTH, linkedPos, false));
+        }
         player.getData(DDDataAttachments.PLAYER_DATA).usingTransmitter = true;
 
         return InteractionResult.SUCCESS;
@@ -115,7 +113,7 @@ public class SculkTransmitterItem extends Item {
         player.displayClientMessage(Component.translatable("block." + DeeperDarker.MOD_ID + "." + key), true);
         player.playNotifySound(sound.get(), SoundSource.NEUTRAL, 1, 1);
 
-        if (transmitter != null) {
+        if(transmitter != null) {
             transmitter = transmitter.newConnection(player.level(), pos);
             stack.set(DDDataComponents.TRANSMITTER, transmitter);
         }
@@ -123,7 +121,7 @@ public class SculkTransmitterItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (isLinked(stack)) {
+        if(isLinked(stack)) {
             Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
             if(transmitter.linkedPos().isEmpty()) return;
             BlockPos pos = transmitter.linkedPos().get().pos();
