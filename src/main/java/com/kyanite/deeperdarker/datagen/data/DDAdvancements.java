@@ -72,15 +72,15 @@ public class DDAdvancements implements AdvancementProvider.AdvancementGenerator 
         Advancement.Builder.advancement().parent(enterOtherside).display(DDItems.WARDEN_SWORD.get(), Component.translatable(id + "kill_all_sculk_mobs.title"), Component.translatable(id + "kill_all_sculk_mobs.description"), null, AdvancementType.CHALLENGE, true, true, false)
                 .addCriterion("phantom", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.PHANTOM)))
                 .addCriterion("warden", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(EntityType.WARDEN)))
-                .addCriterion("anger_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.ANGER_POT.get())))
+//                .addCriterion("anger_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.ANGER_POT.get())))
                 .addCriterion("angler_fish", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.ANGLER_FISH.get())))
-                .addCriterion("fear_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.FEAR_POT.get())))
+//                .addCriterion("fear_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.FEAR_POT.get())))
                 .addCriterion("sculk_centipede", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_CENTIPEDE.get())))
                 .addCriterion("sculk_leech", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_LEECH.get())))
                 .addCriterion("sculk_snapper", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SCULK_SNAPPER.get())))
                 .addCriterion("shattered", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHATTERED.get())))
                 .addCriterion("shriek_worm", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SHRIEK_WORM.get())))
-                .addCriterion("sorrow_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SORROW_POT.get())))
+//                .addCriterion("sorrow_pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.SORROW_POT.get())))
                 .addCriterion("stalker", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.STALKER.get())))
                 .requirements(AdvancementRequirements.Strategy.AND).rewards(AdvancementRewards.Builder.experience(100)).save(saver, path("kill_all_sculk_mobs"), existingFileHelper);
 
