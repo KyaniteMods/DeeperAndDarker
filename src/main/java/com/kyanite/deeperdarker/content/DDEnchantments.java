@@ -19,7 +19,6 @@ import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentTarget;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.AddValue;
-import net.minecraft.world.item.enchantment.effects.AllOf;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
@@ -50,7 +49,7 @@ public class DDEnchantments {
                         EnchantmentEffectComponents.POST_ATTACK,
                         EnchantmentTarget.ATTACKER,
                         EnchantmentTarget.VICTIM,
-                        AllOf.entityEffects(new CatalyzeEnvironment(false))
+                        new CatalyzeEnvironment(false)
                 ).build(CATALYSIS.location())
         );
 

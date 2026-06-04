@@ -1,9 +1,9 @@
-// 1.21.1	2026-04-13T20:44:07.5985794	Registries
+// 1.21.1	2026-06-03T23:44:20.2725812	Registries
 65c8c67a4ec7ef0ce6846fb2f4d921cc6ceb02e2 data/deeperdarker/damage_type/bite.json
 0b65c61bd1e5086d0f3685566cc6cecf6e324516 data/deeperdarker/damage_type/ring.json
 8cba8ff9a846f73bafc297442955919d9bdfb58a data/deeperdarker/dimension/otherside.json
 0f715fda6f60117cf74eadf94c1590aea34761a3 data/deeperdarker/dimension_type/otherside.json
-ad453d5b708fe189495a8e5d4ce2531d9898a555 data/deeperdarker/enchantment/catalysis.json
+f33773337388bbe7bf4420f320dc0444f9f8deec data/deeperdarker/enchantment/catalysis.json
 00e4d020f7dd84f8074fef2c6ba17b20f5327d66 data/deeperdarker/enchantment/reverberation.json
 1fc0f629a511c74dde26cb07a56be72714a20aca data/deeperdarker/enchantment/sculk_smite.json
 87ae95b79d5b6aecddbb439014dd3518e63be21a data/deeperdarker/enchantment/volume.json

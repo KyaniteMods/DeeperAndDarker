@@ -8,13 +8,8 @@
       {
         "affected": "victim",
         "effect": {
-          "type": "minecraft:all_of",
-          "effects": [
-            {
-              "type": "deeperdarker:catalyze_environment",
-              "drop_xp": false
-            }
-          ]
+          "type": "deeperdarker:catalyze_environment",
+          "drop_xp": false
         },
         "enchanted": "attacker"
       }
