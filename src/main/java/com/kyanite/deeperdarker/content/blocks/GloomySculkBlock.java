@@ -32,7 +32,7 @@ public class GloomySculkBlock extends SculkBlock implements BonemealableBlock, S
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE);
-        registry.getHolder(DDConfiguredFeatures.GLOOMY_SCULK_PATCH).ifPresent(holder -> holder.value().place(level, level.getChunkSource().getGenerator(), random, pos.above()));
+        Registry<ConfiguredFeature<?, ?>> registry = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE);
+        registry.get(DDConfiguredFeatures.GLOOMY_SCULK_PATCH).ifPresent(holder -> holder.value().place(level, level.getChunkSource().getGenerator(), random, pos.above()));
     }
 }

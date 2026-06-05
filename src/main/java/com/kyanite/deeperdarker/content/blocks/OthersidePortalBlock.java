@@ -11,12 +11,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Portal;
@@ -27,14 +25,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.portal.DimensionTransition;
-import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.ICancellableEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
-import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class OthersidePortalBlock extends Block implements Portal {
@@ -58,11 +54,13 @@ public class OthersidePortalBlock extends Block implements Portal {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        Direction.Axis facingAxis = direction.getAxis();
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction directionToNeighbour, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
+        Direction.Axis updateAxis = directionToNeighbour.getAxis();
         Direction.Axis axis = state.getValue(AXIS);
-        boolean flag = axis != facingAxis && facingAxis.isHorizontal();
-        return !flag && !neighborState.is(this) && !(new OthersidePortalShape(level, pos, axis)).isComplete() ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+        boolean wrongAxis = axis != updateAxis && updateAxis.isHorizontal();
+        return !wrongAxis && !neighbourState.is(this) && !(new OthersidePortalShape(level, pos, axis)).isComplete()
+                ? Blocks.AIR.defaultBlockState()
+                : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
     }
 
     @Override
@@ -73,8 +71,8 @@ public class OthersidePortalBlock extends Block implements Portal {
     }
 
     @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity pEntity) {
-        if(pEntity.canUsePortal(false)) pEntity.setAsInsidePortal(this, pos);
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise) {
+        if(entity.canUsePortal(false)) entity.setAsInsidePortal(this, pos);
     }
 
     @Override
@@ -90,14 +88,14 @@ public class OthersidePortalBlock extends Block implements Portal {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return ItemStack.EMPTY;
     }
 
-    public boolean spawnPortal(LevelAccessor worldIn, BlockPos pos) {
-        OthersidePortalShape portal = this.isPortal(worldIn, pos);
-        if(portal != null && !trySpawningPortal(worldIn, pos, portal)) {
-            portal.createPortalBlocks();
+    public boolean spawnPortal(LevelAccessor level, BlockPos pos) {
+        OthersidePortalShape portal = this.isPortal(level, pos);
+        if(portal != null && !trySpawningPortal(level, pos, portal)) {
+            portal.createPortalBlocks(level);
             return true;
         } else return false;
     }
@@ -116,9 +114,8 @@ public class OthersidePortalBlock extends Block implements Portal {
         }
     }
 
-    @Nullable
     @Override
-    public DimensionTransition getPortalDestination(ServerLevel level, Entity pEntity, BlockPos pos) {
+    public TeleportTransition getPortalDestination(ServerLevel level, Entity pEntity, BlockPos pos) {
         ResourceKey<Level> destLevel = level.dimension() == Level.OVERWORLD ? OthersideDimension.OTHERSIDE_LEVEL : Level.OVERWORLD;
         ServerLevel destServerLevel = level.getServer().getLevel(destLevel);
         if(destServerLevel == null) return null;
@@ -148,7 +145,7 @@ public class OthersidePortalBlock extends Block implements Portal {
         public static final int MAX_WIDTH = 21;
         public static final int MAX_HEIGHT = 21;
 
-        private final LevelAccessor level;
+        private final BlockGetter level;
         private final Direction.Axis axis;
         private final Direction rightDir;
         private BlockPos bottomLeft;
@@ -156,7 +153,7 @@ public class OthersidePortalBlock extends Block implements Portal {
         private int height;
         private final int width;
 
-        public OthersidePortalShape(LevelAccessor level, BlockPos bottomLeft, Direction.Axis axis) {
+        public OthersidePortalShape(BlockGetter level, BlockPos bottomLeft, Direction.Axis axis) {
             this.level = level;
             this.axis = axis;
             this.rightDir = axis == Direction.Axis.X ? Direction.WEST : Direction.SOUTH;
@@ -175,7 +172,7 @@ public class OthersidePortalBlock extends Block implements Portal {
         }
 
         private BlockPos calculateBottomLeft(BlockPos pos) {
-            int height = Math.max(this.level.getMinBuildHeight(), pos.getY() - 21);
+            int height = Math.max(this.level.getMinY(), pos.getY() - 21);
             while(pos.getY() > height && isEmpty(this.level.getBlockState(pos.below()))) pos = pos.below();
 
             Direction direction = this.rightDir.getOpposite();
@@ -243,9 +240,9 @@ public class OthersidePortalBlock extends Block implements Portal {
             return true;
         }
 
-        public void createPortalBlocks() {
+        public void createPortalBlocks(LevelAccessor level) {
             BlockState blockstate = DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState().setValue(OthersidePortalBlock.AXIS, this.axis);
-            BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)).forEach((blockPos) -> this.level.setBlock(blockPos, blockstate, 18));
+            BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1)).forEach((blockPos) -> level.setBlock(blockPos, blockstate, 18));
         }
 
         public boolean isComplete() {

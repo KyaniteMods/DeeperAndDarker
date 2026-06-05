@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +16,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -43,7 +43,7 @@ public class SculkJawBlock extends BaseEntityBlock {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if(entity instanceof Player player && (player.isCreative() || player.isCrouching())) return;
-        if(entity instanceof Monster monster && monster.getType().is(DDTags.Misc.SCULK)) return;
+        if(entity instanceof Monster monster && monster.is(DDTags.Misc.SCULK)) return;
 
         if(state.getValue(CAN_BITE) && entity instanceof LivingEntity living) {
             level.setBlock(pos, state.setValue(BITING, true), 3);
@@ -62,7 +62,7 @@ public class SculkJawBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise) {
         if(entity instanceof LivingEntity living) {
             living.hurt(DDDamageTypes.source(level, DDDamageTypes.BITE, living, null), 3);
             if(living instanceof Player player && level.getBlockEntity(pos) instanceof SculkJawBlockEntity blockEntity) {
@@ -82,18 +82,10 @@ public class SculkJawBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        if(state.getBlock() == newState.getBlock()) return;
+    protected void affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos, boolean movedByPiston) {
         if(level instanceof ServerLevel serverLevel && level.getBlockEntity(pos) instanceof SculkJawBlockEntity blockEntity) {
             popExperience(serverLevel, pos, blockEntity.storedXP());
         }
-
-        super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
     @Override

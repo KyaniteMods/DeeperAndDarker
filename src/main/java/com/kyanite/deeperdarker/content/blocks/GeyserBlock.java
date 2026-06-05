@@ -28,10 +28,9 @@ public class GeyserBlock extends Block {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if(entity instanceof ExperienceOrb) return;
-//        entity.hurt(level.damageSources().hotFloor(), 2);
         entity.setDeltaMovement(entity.getDeltaMovement().x(), 2.5, entity.getDeltaMovement().z());
         if(level.isClientSide()) {
-            level.playLocalSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 2 + level.random.nextFloat(), level.random.nextFloat() * 0.7f + 0.6f, false);
+            level.playLocalSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 2 + level.getRandom().nextFloat(), level.getRandom().nextFloat() * 0.7f + 0.6f, false);
             level.addParticle(ParticleTypes.LARGE_SMOKE, pos.getX(), pos.getY(), pos.getZ(), 0.05, 0.5, 0.05);
         }
     }

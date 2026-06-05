@@ -3,13 +3,13 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -42,12 +42,12 @@ public class PorousSculkGleamBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(state.getValue(GEL_LEVEL) >= 6) {
             if(stack.canPerformAction(ItemAbilities.SHEARS_HARVEST)) {
-                level.playSound(player, pos, DDSounds.POROUS_SCULK_GLEAM_SHEAR.get(), SoundSource.BLOCKS, 0.8f, level.random.nextFloat() * 0.2f + 0.8f);
+                level.playSound(player, pos, DDSounds.POROUS_SCULK_GLEAM_SHEAR.get(), SoundSource.BLOCKS, 0.8f, level.getRandom().nextFloat() * 0.2f + 0.8f);
                 popResource(level, pos, new ItemStack(DDItems.GLEAM_GEL.get(), 2));
-                stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+                stack.hurtAndBreak(1, player, hand);
                 level.gameEvent(player, GameEvent.SHEAR, pos);
 
                 if(!level.isClientSide()) player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
@@ -63,7 +63,7 @@ public class PorousSculkGleamBlock extends Block {
     }
 
     @Override
-    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, Direction direction) {
         return state.getValue(GEL_LEVEL);
     }
 }

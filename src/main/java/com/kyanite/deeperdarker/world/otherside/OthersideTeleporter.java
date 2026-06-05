@@ -21,6 +21,7 @@ import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.level.portal.PortalShape;
+import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Comparator;
@@ -35,7 +36,7 @@ public class OthersideTeleporter {
     private static final int PORTAL_WIDTH = DeeperDarkerConfig.CONFIG.othersidePortalWidth.get();
     private static final int PORTAL_HEIGHT = DeeperDarkerConfig.CONFIG.othersidePortalHeight.get();
 
-    public static DimensionTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, WorldBorder destBorder) {
+    public static TeleportTransition getExitPortal(ServerLevel destLevel, Entity entity, BlockPos pos, BlockPos exitPos, WorldBorder destBorder) {
         Optional<BlockPos> existingPortalPos = findExistingPortal(destLevel, exitPos, destBorder);
         BlockUtil.FoundRectangle portal;
         DimensionTransition.PostDimensionTransition transition;
