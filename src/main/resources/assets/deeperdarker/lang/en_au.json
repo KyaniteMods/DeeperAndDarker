@@ -148,8 +148,6 @@
   "enchantment.deeperdarker.catalysis.desc": "Spreads sculk when mobs are killed.",
   "enchantment.deeperdarker.sculk_smite": "Sculk Smite",
   "enchantment.deeperdarker.sculk_smite.desc": "Increases damage against sculk mobs such as Shattered and the Warden.",
-  "entity.deeperdarker.boat": "Boat",
-  "entity.deeperdarker.chest_boat": "Boat with Chest",
   "entity.deeperdarker.sculk_centipede": "Sculk Centipede",
   "entity.deeperdarker.sculk_leech": "Sculk Leech",
   "entity.deeperdarker.sculk_snapper": "Sculk Snapper",
