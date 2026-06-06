@@ -153,8 +153,6 @@
   "enchantment.deeperdarker.catalysis.desc": "Розповсюджує скалк при убивстві мобів.",
   "enchantment.deeperdarker.sculk_smite": "Інквізиція",
   "enchantment.deeperdarker.sculk_smite.desc": "Підвищує шкоду проти скалк мобів, включаючи фантомів та боронителів.",
-  "entity.deeperdarker.boat": "Човен",
-  "entity.deeperdarker.chest_boat": "Човен зі скринею",
   "entity.deeperdarker.sculk_centipede": "Скалк стонога",
   "entity.deeperdarker.sculk_leech": "Скалк п'явка",
   "entity.deeperdarker.sculk_snapper": "Скалк бешкетник",
