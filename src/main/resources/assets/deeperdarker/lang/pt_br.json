@@ -1,5 +1,5 @@
 {
-  "advancements.deeperdarker.enter_otherside.description": "Muito abaixo da rocha-mãe, a escuridão te aguarda",
+  "advancements.deeperdarker.enter_otherside.description": "Muito abaixo da rocha matriz, a escuridão te aguarda",
   "advancements.deeperdarker.enter_otherside.title": "Quem apagou as luzes?",
   "advancements.deeperdarker.explore_otherside.description": "Descubra todos os biomas do Otherside",
   "advancements.deeperdarker.explore_otherside.title": "Ecolocalização",
@@ -7,6 +7,7 @@
   "advancements.deeperdarker.find_ancient_city.title": "A cidade das sombras",
   "advancements.deeperdarker.find_ancient_temple.description": "Encontre um Templo Ancestral nas profundezas",
   "advancements.deeperdarker.find_ancient_temple.title": "Câmara escura",
+  "advancements.deeperdarker.kill_all_pots.title": "Vaso ruim não quebra",
   "advancements.deeperdarker.kill_all_sculk_mobs.description": "Mate um de cada monstro de Sculk",
   "advancements.deeperdarker.kill_all_sculk_mobs.title": "O som do silêncio",
   "advancements.deeperdarker.kill_warden.description": "Mate o Defensor e pegue o seu coração",
@@ -104,7 +105,7 @@
   "block.deeperdarker.gloomy_geyser": "Gêiser resinado",
   "block.deeperdarker.gloomy_grass": "Grama resinada",
   "block.deeperdarker.gloomy_sculk": "Sculk resinado",
-  "block.deeperdarker.glowing_flowers": "Flores brilhantes",
+  "block.deeperdarker.glowing_flowers": "Flores Brilhantes",
   "block.deeperdarker.glowing_grass": "Grama brilhante",
   "block.deeperdarker.glowing_roots": "Raízes brilhantes",
   "block.deeperdarker.glowing_roots_plant": "Planta de raízes brilhantes",
