@@ -261,7 +261,7 @@ public class DDBlocks {
     public static final Block GLOOMSLATE_BARRIER = register("gloomslate_barrier", new Block(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(-1, 3600000.0f).mapColor(MapColor.TERRACOTTA_BROWN).requiresCorrectToolForDrops()));
     public static final Block FRAGILE_GLOOMSLATE_BRICKS = register("fragile_gloomslate_bricks", new FragileBlock(BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).noLootTable().instabreak()));
     public static final Block GLOOMSLATE_LOCK = register("gloomslate_lock", new LockBlock(LockBlock.KeyType.LARGE, BlockBehaviour.Properties.copy(GLOOMSLATE_BRICKS).strength(-1, 3600000.0f).noLootTable()));
-    public static final Block FORTIFIED_CUT_GLOOMSLATE = register("fortified_cut_gloomslate", new Block(BlockBehaviour.Properties.copy(GLOOMSLATE).strength(-1, 3600000.0f).lightLevel(state -> 3).requiresCorrectToolForDrops()));
+    public static final Block FORTIFIED_CUT_GLOOMSLATE = register("fortified_cut_gloomslate", new Block(BlockBehaviour.Properties.copy(CUT_GLOOMSLATE).strength(-1, 3600000.0f).lightLevel(state -> 3).requiresCorrectToolForDrops()));
 
     public static final Block SCULK_GRIME = register("sculk_grime", new MudBlock(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.6f).mapColor(MapColor.COLOR_CYAN)));
     public static final Block SCULK_GRIME_BRICKS = register("sculk_grime_bricks", new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).mapColor(MapColor.TERRACOTTA_GREEN)));
@@ -270,6 +270,7 @@ public class DDBlocks {
     public static final Block SCULK_GRIME_BRICK_WALL = register("sculk_grime_brick_wall", new WallBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS)));
     public static final Block FRAGILE_SCULK_GRIME_BRICKS = register("fragile_sculk_grime_bricks", new FragileBlock(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS).noLootTable().instabreak()));
     public static final Block SCULK_GRIME_LOCK = register("sculk_grime_lock", new LockBlock(LockBlock.KeyType.SMALL, BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS).strength(-1, 3600000.0f).noLootTable()));
+    public static final Block FORTIFIED_SCULK_GRIME_BRICKS = register("fortified_sculk_grime_bricks", new Block(BlockBehaviour.Properties.copy(SCULK_GRIME_BRICKS).strength(-1, 3600000.0f).lightLevel(state -> 3).requiresCorrectToolForDrops()));
 
     public static final Block ECHO_SOIL = register("echo_soil", new Block(BlockBehaviour.Properties.copy(Blocks.SCULK).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));
     public static final Block ECHO_FARMLAND = register("echo_farmland", new EchoFarmlandBlock(BlockBehaviour.Properties.copy(ECHO_SOIL).strength(0.3f).mapColor(MapColor.COLOR_PURPLE)));

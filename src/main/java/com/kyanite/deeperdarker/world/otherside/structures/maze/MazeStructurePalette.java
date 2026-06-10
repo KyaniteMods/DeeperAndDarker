@@ -22,8 +22,8 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
     ).apply(instance, MazeStructurePalette::new));
 
     public static final MazeStructurePalette BLOOMAZE = MazeStructurePalette.builder()
-            .addStructureCovers(WeightedEntry.wrap(DDBlocks.FORTIFIED_CUT_GLOOMSLATE.defaultBlockState(), 10), WeightedEntry.wrap(DDBlocks.CUT_GLOOMSLATE.defaultBlockState(), 1))
-            .addWallCorners(WeightedEntry.wrap(DDBlocks.FORTIFIED_CUT_GLOOMSLATE.defaultBlockState(), 1))
+            .addStructureCovers(WeightedEntry.wrap(DDBlocks.FORTIFIED_SCULK_GRIME_BRICKS.defaultBlockState(), 1))
+            .addWallCorners(WeightedEntry.wrap(DDBlocks.FORTIFIED_SCULK_GRIME_BRICKS.defaultBlockState(), 1))
             .addWallFaces(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))
             .addWallEdges(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GRIME_GLASS.defaultBlockState(), 1))
             .addWallCenters(WeightedEntry.wrap(DDBlocks.PROTECTED_SCULK_GLEAM.defaultBlockState(), 1))

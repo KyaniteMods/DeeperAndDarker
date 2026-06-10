@@ -64,13 +64,7 @@
       "structure_cover": [
         {
           "data": {
-            "Name": "deeperdarker:fortified_cut_gloomslate"
-          },
-          "weight": 10
-        },
-        {
-          "data": {
-            "Name": "deeperdarker:cut_gloomslate"
+            "Name": "deeperdarker:fortified_sculk_grime_bricks"
           },
           "weight": 1
         }
@@ -86,7 +80,7 @@
       "wall_corner": [
         {
           "data": {
-            "Name": "deeperdarker:fortified_cut_gloomslate"
+            "Name": "deeperdarker:fortified_sculk_grime_bricks"
           },
           "weight": 1
         }
