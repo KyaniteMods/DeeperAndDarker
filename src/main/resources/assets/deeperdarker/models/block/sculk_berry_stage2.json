@@ -3,6 +3,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
+		"particle": "deeperdarker:block/sculk_berry_stage2_side",
 		"bottom": "deeperdarker:block/sculk_berry_stage2_bottom",
 		"side": "deeperdarker:block/sculk_berry_stage2_side",
 		"top": "deeperdarker:block/sculk_berry_stage2_top"
