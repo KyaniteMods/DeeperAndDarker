@@ -6,16 +6,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public class LilyFlowerItem extends ItemNameBlockItem {
+public class LilyFlowerItem extends BlockItem {
     public LilyFlowerItem(Block block, Properties properties) {
-        super(block, properties);
+        super(block, properties.useItemDescriptionPrefix());
     }
 
     @Override
@@ -27,7 +27,7 @@ public class LilyFlowerItem extends ItemNameBlockItem {
             level.setBlock(pos, state.setValue(IceLilyBlock.HAS_FLOWER, true), 3);
             context.getItemInHand().consume(1, context.getPlayer());
             level.playSound(context.getPlayer(), pos, SoundEvents.LILY_PAD_PLACE, SoundSource.BLOCKS);
-            return InteractionResult.sidedSuccess(level.isClientSide());
+            return InteractionResult.SUCCESS_SERVER;
         }
 
         return super.useOn(context);

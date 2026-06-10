@@ -2,16 +2,19 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.content.DDDataComponents;
 import com.kyanite.deeperdarker.content.data.TempleTracker;
-import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.kyanite.deeperdarker.world.structures.DDStructures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -22,16 +25,18 @@ public class AncientCompassItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if(!(entity instanceof Player player)) return;
-        if(stack.has(DDDataComponents.TEMPLE_TRACKER)) return;
+    public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
+        if(!(owner instanceof Player player)) return;
+        if(itemStack.has(DDDataComponents.TEMPLE_TRACKER)) return;
 
-        if(level instanceof ServerLevel serverLevel && serverLevel.dimension() == OthersideDimension.OTHERSIDE_LEVEL) {
-            BlockPos pos = serverLevel.findNearestMapStructure(DDTags.Misc.ANCIENT_TEMPLE, player.blockPosition(), 5, true);
+        if(level.dimension() == OthersideDimension.OTHERSIDE_LEVEL) {
+            var temple = level.registryAccess().lookupOrThrow(Registries.STRUCTURE).getOrThrow(DDStructures.ANCIENT_TEMPLE);
+            var result = level.getChunkSource().getGenerator().findNearestMapStructure(level, HolderSet.direct(temple), player.blockPosition(), 100, true);
+            BlockPos pos = result == null ? null : result.getFirst();
             TempleTracker tracker;
-            if(pos == null) tracker = TempleTracker.empty();
-            else tracker = new TempleTracker(Optional.of(GlobalPos.of(serverLevel.dimension(), pos)));
-            stack.set(DDDataComponents.TEMPLE_TRACKER, tracker);
+            if (pos == null) tracker = TempleTracker.empty();
+            else tracker = new TempleTracker(Optional.of(GlobalPos.of(level.dimension(), pos)));
+            itemStack.set(DDDataComponents.TEMPLE_TRACKER, tracker);
         }
     }
 }

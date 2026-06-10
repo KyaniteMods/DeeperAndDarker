@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.data.TempleTracker;
+import com.kyanite.deeperdarker.content.data.Transmitter;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
@@ -188,6 +189,12 @@ public class DeeperDarkerClientEvents {
                     event.getToolTip().add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".crystallized_amber.item", ItemStack.parseOptional(context.registries(), tag.getCompound("item")).getHoverName()).withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
                 }
             }
+        }
+
+        if(SculkTransmitterItem.isLinked(stack)) {
+            Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
+            assert transmitter != null;
+            transmitter.addToTooltip(event.getContext(), event.getToolTip()::add, event.getFlags(), stack.getComponents());
         }
     }
 

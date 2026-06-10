@@ -2,17 +2,18 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.items.*;
-import com.kyanite.deeperdarker.util.DDArmorMaterials;
-import com.kyanite.deeperdarker.util.DDTiers;
+import com.kyanite.deeperdarker.util.DDMaterials;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -21,76 +22,76 @@ import java.util.List;
 public class DDItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(DeeperDarker.MOD_ID);
 
-    public static final DeferredItem<Item> ICE_LILY = ITEMS.registerItem("ice_lily", properties -> new PlaceOnWaterBlockItem(DDBlocks.ICE_LILY.get(), properties));
-    public static final DeferredItem<Item> LILY_FLOWER = ITEMS.register("lily_flower", () -> new LilyFlowerItem(DDBlocks.LILY_FLOWER.get(), new Item.Properties()));
-    public static final DeferredItem<Item> ECHO_SIGN = ITEMS.register("echo_sign", () -> new SignItem(new Item.Properties().stacksTo(16), DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get()));
-    public static final DeferredItem<Item> ECHO_HANGING_SIGN = ITEMS.register("echo_hanging_sign", () -> new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN.get(), DDBlocks.ECHO_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final DeferredItem<Item> BLOOM_SIGN = ITEMS.register("bloom_sign", () -> new SignItem(new Item.Properties().stacksTo(16), DDBlocks.BLOOM_SIGN.get(), DDBlocks.BLOOM_WALL_SIGN.get()));
-    public static final DeferredItem<Item> BLOOM_HANGING_SIGN = ITEMS.register("bloom_hanging_sign", () -> new HangingSignItem(DDBlocks.BLOOM_HANGING_SIGN.get(), DDBlocks.BLOOM_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ICE_LILY = ITEMS.registerItem("ice_lily", p -> new PlaceOnWaterBlockItem(DDBlocks.ICE_LILY.get(), p.useItemDescriptionPrefix()));
+    public static final DeferredItem<Item> LILY_FLOWER = ITEMS.registerItem("lily_flower", p -> new LilyFlowerItem(DDBlocks.LILY_FLOWER.get(), p));
+    public static final DeferredItem<Item> ECHO_SIGN = ITEMS.registerItem("echo_sign", p -> new SignItem(DDBlocks.ECHO_SIGN.get(), DDBlocks.ECHO_WALL_SIGN.get(), p), p -> p.stacksTo(16));
+    public static final DeferredItem<Item> ECHO_HANGING_SIGN = ITEMS.registerItem("echo_hanging_sign", p -> new HangingSignItem(DDBlocks.ECHO_HANGING_SIGN.get(), DDBlocks.ECHO_WALL_HANGING_SIGN.get(), p), p -> p.stacksTo(16));
+    public static final DeferredItem<Item> BLOOM_SIGN = ITEMS.registerItem("bloom_sign", p -> new SignItem(DDBlocks.BLOOM_SIGN.get(), DDBlocks.BLOOM_WALL_SIGN.get(), p), p -> p.stacksTo(16));
+    public static final DeferredItem<Item> BLOOM_HANGING_SIGN = ITEMS.registerItem("bloom_hanging_sign", p -> new HangingSignItem(DDBlocks.BLOOM_HANGING_SIGN.get(), DDBlocks.BLOOM_WALL_HANGING_SIGN.get(), p), p -> p.stacksTo(16));
 
-    public static final DeferredItem<Item> BLOOM_BERRIES = ITEMS.register("bloom_berries", () -> new BlockItem(DDBlocks.GLOWING_VINES.get(), new Item.Properties().useItemDescriptionPrefix().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build(), Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f)).build())));
+    public static final DeferredItem<Item> BLOOM_BERRIES = ITEMS.registerItem("bloom_berries", p -> new BlockItem(DDBlocks.GLOWING_VINES.get(), p.useItemDescriptionPrefix()), p -> p.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build(), Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0), 0.8f)).build()));
     public static final DeferredItem<Item> GRIME_BALL = ITEMS.registerSimpleItem("grime_ball");
     public static final DeferredItem<Item> GRIME_BRICK = ITEMS.registerSimpleItem("grime_brick");
     public static final DeferredItem<Item> GLEAM_GEL = ITEMS.registerSimpleItem("gleam_gel");
     public static final DeferredItem<Item> LITE = ITEMS.registerSimpleItem("lite");
 
-    public static final DeferredItem<Item> ANCIENT_COMPASS = ITEMS.register("ancient_compass", () -> new AncientCompassItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> SOUL_ELYTRA = ITEMS.register("soul_elytra", () -> new SoulElytraItem(new Item.Properties().durability(956).rarity(Rarity.UNCOMMON).attributes(SoulElytraItem.createAttributes())));
-    public static final DeferredItem<Item> ECHO_BOAT = ITEMS.register("echo_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
-    public static final DeferredItem<Item> ECHO_CHEST_BOAT = ITEMS.register("echo_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.ECHO));
-    public static final DeferredItem<Item> BLOOM_BOAT = ITEMS.register("bloom_boat", () -> new DDBoatItem(false, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
-    public static final DeferredItem<Item> BLOOM_CHEST_BOAT = ITEMS.register("bloom_chest_boat", () -> new DDBoatItem(true, new Item.Properties().stacksTo(1), DDBlocks.BLOOM));
+    public static final DeferredItem<Item> ANCIENT_COMPASS = ITEMS.registerItem("ancient_compass", AncientCompassItem::new, p -> p.stacksTo(1));
+    public static final DeferredItem<Item> SOUL_ELYTRA = ITEMS.registerItem("soul_elytra", SoulElytraItem::new, p -> p.rarity(Rarity.RARE).component(DataComponents.GLIDER, Unit.INSTANCE).component(DataComponents.EQUIPPABLE, SoulElytraItem.equipableComponent()).repairable(DDItems.SOUL_CRYSTAL.get()).attributes(SoulElytraItem.attributes()));
+    public static final DeferredItem<Item> ECHO_BOAT = ITEMS.registerItem("echo_boat", p -> new BoatItem(DDEntities.ECHO_BOAT.get(), p), p -> p.stacksTo(1));
+    public static final DeferredItem<Item> ECHO_CHEST_BOAT = ITEMS.registerItem("echo_chest_boat", p -> new BoatItem(DDEntities.ECHO_CHEST_BOAT.get(), p), p -> p.stacksTo(1));
+    public static final DeferredItem<Item> BLOOM_BOAT = ITEMS.registerItem("bloom_boat", p -> new BoatItem(DDEntities.BLOOM_BOAT.get(), p), p -> p.stacksTo(1));
+    public static final DeferredItem<Item> BLOOM_CHEST_BOAT = ITEMS.registerItem("bloom_chest_boat", p -> new BoatItem(DDEntities.BLOOM_CHEST_BOAT.get(), p), p -> p.stacksTo(1));
 
-    public static final DeferredItem<Item> ANGLER_FISH = ITEMS.registerSimpleItem("angler_fish", new Item.Properties().food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build()));
-    public static final DeferredItem<Item> COOKED_ANGLER_FISH = ITEMS.registerSimpleItem("cooked_angler_fish", new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()));
+    public static final DeferredItem<Item> ANGLER_FISH = ITEMS.registerSimpleItem("angler_fish", p -> p.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build()));
+    public static final DeferredItem<Item> COOKED_ANGLER_FISH = ITEMS.registerSimpleItem("cooked_angler_fish", p -> p.food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f).build()));
 
     public static final DeferredItem<Item> SCULK_BONE = ITEMS.registerSimpleItem("sculk_bone");
     public static final DeferredItem<Item> SOUL_DUST = ITEMS.registerSimpleItem("soul_dust");
     public static final DeferredItem<Item> SOUL_CRYSTAL = ITEMS.registerSimpleItem("soul_crystal");
     public static final DeferredItem<Item> RESONARIUM = ITEMS.registerSimpleItem("resonarium");
     public static final DeferredItem<Item> RESONARIUM_PLATE = ITEMS.registerSimpleItem("resonarium_plate");
-    public static final DeferredItem<Item> HEART_OF_THE_DEEP = ITEMS.register("heart_of_the_deep", () -> new WardenHeartItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.registerSimpleItem("warden_carapace", new Item.Properties().rarity(Rarity.RARE).fireResistant());
-    public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.registerSimpleItem("reinforced_echo_shard", new Item.Properties().rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> HEART_OF_THE_DEEP = ITEMS.registerItem("heart_of_the_deep", WardenHeartItem::new, p -> p.rarity(Rarity.RARE).stacksTo(1).fireResistant());
+    public static final DeferredItem<Item> WARDEN_CARAPACE = ITEMS.registerSimpleItem("warden_carapace", p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> REINFORCED_ECHO_SHARD = ITEMS.registerSimpleItem("reinforced_echo_shard", p -> p.rarity(Rarity.RARE).fireResistant());
 
-    public static final DeferredItem<Item> RESONARIUM_SHOVEL = ITEMS.register("resonarium_shovel", () -> new ShovelItem(DDTiers.RESONARIUM, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.RESONARIUM, 1.5f, -3))));
-    public static final DeferredItem<Item> RESONARIUM_PICKAXE = ITEMS.register("resonarium_pickaxe", () -> new PickaxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.RESONARIUM, 1, -2.8f))));
-    public static final DeferredItem<Item> RESONARIUM_AXE = ITEMS.register("resonarium_axe", () -> new AxeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.RESONARIUM, 5, -3))));
-    public static final DeferredItem<Item> RESONARIUM_HOE = ITEMS.register("resonarium_hoe", () -> new HoeItem(DDTiers.RESONARIUM, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.RESONARIUM, -3, 0))));
-    public static final DeferredItem<Item> RESONARIUM_SWORD = ITEMS.register("resonarium_sword", () -> new SwordItem(DDTiers.RESONARIUM, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.RESONARIUM, 3, -2.4f))));
-    public static final DeferredItem<ResonariumArmorItem> RESONARIUM_HELMET = ITEMS.register("resonarium_helmet", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(30))));
-    public static final DeferredItem<ResonariumArmorItem> RESONARIUM_CHESTPLATE = ITEMS.register("resonarium_chestplate", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
-    public static final DeferredItem<ResonariumArmorItem> RESONARIUM_LEGGINGS = ITEMS.register("resonarium_leggings", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(30))));
-    public static final DeferredItem<ResonariumArmorItem> RESONARIUM_BOOTS = ITEMS.register("resonarium_boots", () -> new ResonariumArmorItem(DDArmorMaterials.RESONARIUM, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(30))));
+    public static final DeferredItem<Item> RESONARIUM_SWORD = ITEMS.registerSimpleItem("resonarium_sword", p -> p.sword(DDMaterials.Tool.RESONARIUM, 3f, -2.4f));
+    public static final DeferredItem<Item> RESONARIUM_SHOVEL = ITEMS.registerItem("resonarium_shovel", p -> new ShovelItem(DDMaterials.Tool.RESONARIUM, 1.5f, -3f, p));
+    public static final DeferredItem<Item> RESONARIUM_PICKAXE = ITEMS.registerSimpleItem("resonarium_pickaxe", p -> p.pickaxe(DDMaterials.Tool.RESONARIUM, 1f, -2.8f));
+    public static final DeferredItem<Item> RESONARIUM_AXE = ITEMS.registerItem("resonarium_axe", p -> new AxeItem(DDMaterials.Tool.RESONARIUM, 5f, -3f, p));
+    public static final DeferredItem<Item> RESONARIUM_HOE = ITEMS.registerItem("resonarium_hoe", p -> new HoeItem(DDMaterials.Tool.RESONARIUM, -3f, 0f, p));
+    public static final DeferredItem<Item> RESONARIUM_HELMET = ITEMS.registerItem("resonarium_helmet", p -> new ResonariumArmorItem(p, DDMaterials.Armor.RESONARIUM, ArmorType.HELMET));
+    public static final DeferredItem<Item> RESONARIUM_CHESTPLATE = ITEMS.registerItem("resonarium_chestplate", p -> new ResonariumArmorItem(p, DDMaterials.Armor.RESONARIUM, ArmorType.CHESTPLATE));
+    public static final DeferredItem<Item> RESONARIUM_LEGGINGS = ITEMS.registerItem("resonarium_leggings", p -> new ResonariumArmorItem(p, DDMaterials.Armor.RESONARIUM, ArmorType.LEGGINGS));
+    public static final DeferredItem<Item> RESONARIUM_BOOTS = ITEMS.registerItem("resonarium_boots", p -> new ResonariumArmorItem(p, DDMaterials.Armor.RESONARIUM, ArmorType.BOOTS));
 
-    public static final DeferredItem<Item> WARDEN_SHOVEL = ITEMS.register("warden_shovel", () -> new ShovelItem(DDTiers.WARDEN, new Item.Properties().attributes(ShovelItem.createAttributes(DDTiers.WARDEN, 1.5f, -3)).rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_PICKAXE = ITEMS.register("warden_pickaxe", () -> new PickaxeItem(DDTiers.WARDEN, new Item.Properties().attributes(PickaxeItem.createAttributes(DDTiers.WARDEN, 1, -2.8f)).rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_AXE = ITEMS.register("warden_axe", () -> new AxeItem(DDTiers.WARDEN, new Item.Properties().attributes(AxeItem.createAttributes(DDTiers.WARDEN, 5, -3)).rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_HOE = ITEMS.register("warden_hoe", () -> new HoeItem(DDTiers.WARDEN, new Item.Properties().attributes(HoeItem.createAttributes(DDTiers.WARDEN, -5, 0)).rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<Item> WARDEN_SWORD = ITEMS.register("warden_sword", () -> new SwordItem(DDTiers.WARDEN, new Item.Properties().attributes(SwordItem.createAttributes(DDTiers.WARDEN, 3, -2.4f)).rarity(Rarity.RARE).fireResistant()));
-    public static final DeferredItem<WardenArmorItem> WARDEN_HELMET = ITEMS.register("warden_helmet", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.HELMET.getDurability(40))));
-    public static final DeferredItem<WardenArmorItem> WARDEN_CHESTPLATE = ITEMS.register("warden_chestplate", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
-    public static final DeferredItem<WardenArmorItem> WARDEN_LEGGINGS = ITEMS.register("warden_leggings", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(WardenArmorItem.createAttributes()).durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
-    public static final DeferredItem<WardenArmorItem> WARDEN_BOOTS = ITEMS.register("warden_boots", () -> new WardenArmorItem(DDArmorMaterials.WARDEN, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+    public static final DeferredItem<Item> WARDEN_SWORD = ITEMS.registerSimpleItem("warden_sword", p -> p.sword(DDMaterials.Tool.WARDEN, 3f, -2.4f).rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_SHOVEL = ITEMS.registerItem("warden_shovel", p -> new ShovelItem(DDMaterials.Tool.WARDEN, 1.5f, -3f, p), p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_PICKAXE = ITEMS.registerSimpleItem("warden_pickaxe", p -> p.pickaxe(DDMaterials.Tool.WARDEN, 1f, -2.8f).rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_AXE = ITEMS.registerItem("warden_axe", p -> new AxeItem(DDMaterials.Tool.WARDEN, 5f, -3f, p), p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_HOE = ITEMS.registerItem("warden_hoe", p -> new HoeItem(DDMaterials.Tool.WARDEN, -3f, 0f, p), p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_HELMET = ITEMS.registerItem("warden_helmet", p -> new WardenArmorItem(p, DDMaterials.Armor.WARDEN, ArmorType.HELMET), p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_CHESTPLATE = ITEMS.registerItem("warden_chestplate", p -> new WardenArmorItem(p, DDMaterials.Armor.WARDEN, ArmorType.CHESTPLATE), p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_LEGGINGS = ITEMS.registerItem("warden_leggings", p -> new WardenArmorItem(p, DDMaterials.Armor.WARDEN, ArmorType.LEGGINGS), p -> p.rarity(Rarity.RARE).fireResistant());
+    public static final DeferredItem<Item> WARDEN_BOOTS = ITEMS.registerItem("warden_boots", p -> new WardenArmorItem(p, DDMaterials.Armor.WARDEN, ArmorType.BOOTS), p -> p.rarity(Rarity.RARE).fireResistant());
 
-    public static final DeferredItem<Item> SCULK_TRANSMITTER = ITEMS.register("sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> WHITE_SCULK_TRANSMITTER = ITEMS.register("white_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> ORANGE_SCULK_TRANSMITTER = ITEMS.register("orange_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> MAGENTA_SCULK_TRANSMITTER = ITEMS.register("magenta_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> LIGHT_BLUE_SCULK_TRANSMITTER = ITEMS.register("light_blue_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> YELLOW_SCULK_TRANSMITTER = ITEMS.register("yellow_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> LIME_SCULK_TRANSMITTER = ITEMS.register("lime_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> PINK_SCULK_TRANSMITTER = ITEMS.register("pink_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> GRAY_SCULK_TRANSMITTER = ITEMS.register("gray_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> LIGHT_GRAY_SCULK_TRANSMITTER = ITEMS.register("light_gray_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> CYAN_SCULK_TRANSMITTER = ITEMS.register("cyan_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> PURPLE_SCULK_TRANSMITTER = ITEMS.register("purple_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> BLUE_SCULK_TRANSMITTER = ITEMS.register("blue_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> BROWN_SCULK_TRANSMITTER = ITEMS.register("brown_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> GREEN_SCULK_TRANSMITTER = ITEMS.register("green_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> RED_SCULK_TRANSMITTER = ITEMS.register("red_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> BLACK_SCULK_TRANSMITTER = ITEMS.register("black_sculk_transmitter", () -> new SculkTransmitterItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
-    public static final DeferredItem<Item> SONOROUS_STAFF = ITEMS.register("sonorous_staff", () -> new SonorousStaffItem(new Item.Properties().durability(320).rarity(Rarity.RARE)));
+    public static final DeferredItem<Item> SCULK_TRANSMITTER = ITEMS.registerItem("sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> WHITE_SCULK_TRANSMITTER = ITEMS.registerItem("white_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> ORANGE_SCULK_TRANSMITTER = ITEMS.registerItem("orange_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> MAGENTA_SCULK_TRANSMITTER = ITEMS.registerItem("magenta_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> LIGHT_BLUE_SCULK_TRANSMITTER = ITEMS.registerItem("light_blue_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> YELLOW_SCULK_TRANSMITTER = ITEMS.registerItem("yellow_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> LIME_SCULK_TRANSMITTER = ITEMS.registerItem("lime_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> PINK_SCULK_TRANSMITTER = ITEMS.registerItem("pink_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> GRAY_SCULK_TRANSMITTER = ITEMS.registerItem("gray_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> LIGHT_GRAY_SCULK_TRANSMITTER = ITEMS.registerItem("light_gray_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> CYAN_SCULK_TRANSMITTER = ITEMS.registerItem("cyan_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> PURPLE_SCULK_TRANSMITTER = ITEMS.registerItem("purple_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> BLUE_SCULK_TRANSMITTER = ITEMS.registerItem("blue_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> BROWN_SCULK_TRANSMITTER = ITEMS.registerItem("brown_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> GREEN_SCULK_TRANSMITTER = ITEMS.registerItem("green_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> RED_SCULK_TRANSMITTER = ITEMS.registerItem("red_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> BLACK_SCULK_TRANSMITTER = ITEMS.registerItem("black_sculk_transmitter", SculkTransmitterItem::new, p -> p.stacksTo(1).rarity(Rarity.RARE));
+    public static final DeferredItem<Item> SONOROUS_STAFF = ITEMS.registerItem("sonorous_staff", SonorousStaffItem::new, p -> p.repairable(DDItems.SOUL_CRYSTAL.get()).durability(320).rarity(Rarity.RARE));
 
     public static final DeferredItem<Item> GLOOMSHERD = ITEMS.registerSimpleItem("gloomsherd");
     public static final DeferredItem<Item> BRITTLE_GLOOMSHERD = ITEMS.registerSimpleItem("brittle_gloomsherd");
@@ -102,32 +103,34 @@ public class DDItems {
     public static final DeferredItem<Item> WARD_GLOOMSHERD = ITEMS.registerSimpleItem("ward_gloomsherd");
     public static final DeferredItem<Item> WAYFINDER_GLOOMSHERD = ITEMS.registerSimpleItem("wayfinder_gloomsherd");
 
-    public static final DeferredItem<Item> RESONARIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("resonarium_upgrade_smithing_template", () -> new SmithingTemplateItem(
+    public static final DeferredItem<Item> RESONARIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("resonarium_upgrade_smithing_template", p -> new SmithingTemplateItem(
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
-            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".resonarium_upgrade").withStyle(ChatFormatting.GRAY),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.base_slot_description"),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.resonarium_upgrade.additions_slot_description"),
-            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
-    ));
-    public static final DeferredItem<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("warden_upgrade_smithing_template", () -> new SmithingTemplateItem(
+            SmithingTemplateItem.createNetheriteUpgradeIconList(),
+            List.of(DeeperDarker.rl("item/empty_slot_shard")),
+            p
+    ), p -> p.rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> WARDEN_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("warden_upgrade_smithing_template", p -> new SmithingTemplateItem(
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
-            Component.translatable("upgrade." + DeeperDarker.MOD_ID + ".warden_upgrade").withStyle(ChatFormatting.GRAY),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.base_slot_description"),
             Component.translatable("item." + DeeperDarker.MOD_ID + ".smithing_template.warden_upgrade.additions_slot_description"),
-            SmithingTemplateItem.createNetheriteUpgradeIconList(), List.of(DeeperDarker.rl("item/empty_slot_shard"))
-    ));
+            SmithingTemplateItem.createNetheriteUpgradeIconList(),
+            List.of(DeeperDarker.rl("item/empty_slot_shard")),
+            p
+    ), p -> p.rarity(Rarity.UNCOMMON));
 
-    public static final DeferredItem<Item> ANGLER_FISH_SPAWN_EGG = ITEMS.register("angler_fish_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGLER_FISH, 0x074857, 0x74faf3, new Item.Properties()));
-    public static final DeferredItem<Item> ANGER_POT_SPAWN_EGG = ITEMS.register("anger_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.ANGER_POT, 0x211b1a, 0x8c3737, new Item.Properties()));
-    public static final DeferredItem<Item> FEAR_POT_SPAWN_EGG = ITEMS.register("fear_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.FEAR_POT, 0x211b1a, 0x783b68, new Item.Properties()));
-    public static final DeferredItem<Item> SORROW_POT_SPAWN_EGG = ITEMS.register("sorrow_pot_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SORROW_POT, 0x211b1a, 0x6c5851, new Item.Properties()));
-    public static final DeferredItem<Item> SCULK_CENTIPEDE_SPAWN_EGG = ITEMS.register("sculk_centipede_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_CENTIPEDE, 0x1a2340, 0xded697, new Item.Properties()));
-    public static final DeferredItem<Item> SCULK_LEECH_SPAWN_EGG = ITEMS.register("sculk_leech_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_LEECH, 0x152b38, 0x47e5ed, new Item.Properties()));
-    public static final DeferredItem<Item> SCULK_SNAPPER_SPAWN_EGG = ITEMS.register("sculk_snapper_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SCULK_SNAPPER, 0xd1d6b6, 0x1d726f, new Item.Properties()));
-    public static final DeferredItem<Item> SHATTERED_SPAWN_EGG = ITEMS.register("shattered_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SHATTERED, 0x0e181d, 0x819699, new Item.Properties()));
-    public static final DeferredItem<Item> SHRIEK_WORM_SPAWN_EGG = ITEMS.register("shriek_worm_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SHRIEK_WORM, 0xd1d6b6, 0x009295, new Item.Properties()));
-    public static final DeferredItem<Item> SLUDGE_SPAWN_EGG = ITEMS.register("sludge_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.SLUDGE, 0x0f2824, 0x3ca195, new Item.Properties()));
-    public static final DeferredItem<Item> STALKER_SPAWN_EGG = ITEMS.register("stalker_spawn_egg", () -> new DeferredSpawnEggItem(DDEntities.STALKER, 0x172226, 0x6abdd9, new Item.Properties()));
+    public static final DeferredItem<Item> ANGLER_FISH_SPAWN_EGG = ITEMS.registerItem("angler_fish_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.ANGLER_FISH.get()));
+    public static final DeferredItem<Item> ANGER_POT_SPAWN_EGG = ITEMS.registerItem("anger_pot_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.ANGER_POT.get()));
+    public static final DeferredItem<Item> FEAR_POT_SPAWN_EGG = ITEMS.registerItem("fear_pot_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.FEAR_POT.get()));
+    public static final DeferredItem<Item> SORROW_POT_SPAWN_EGG = ITEMS.registerItem("sorrow_pot_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SORROW_POT.get()));
+    public static final DeferredItem<Item> SCULK_CENTIPEDE_SPAWN_EGG = ITEMS.registerItem("sculk_centipede_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SCULK_CENTIPEDE.get()));
+    public static final DeferredItem<Item> SCULK_LEECH_SPAWN_EGG = ITEMS.registerItem("sculk_leech_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SCULK_LEECH.get()));
+    public static final DeferredItem<Item> SCULK_SNAPPER_SPAWN_EGG = ITEMS.registerItem("sculk_snapper_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SCULK_SNAPPER.get()));
+    public static final DeferredItem<Item> SHATTERED_SPAWN_EGG = ITEMS.registerItem("shattered_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SHATTERED.get()));
+    public static final DeferredItem<Item> SHRIEK_WORM_SPAWN_EGG = ITEMS.registerItem("shriek_worm_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SHRIEK_WORM.get()));
+    public static final DeferredItem<Item> SLUDGE_SPAWN_EGG = ITEMS.registerItem("sludge_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.SLUDGE.get()));
+    public static final DeferredItem<Item> STALKER_SPAWN_EGG = ITEMS.registerItem("stalker_spawn_egg", SpawnEggItem::new, p -> p.spawnEgg(DDEntities.STALKER.get()));
 }

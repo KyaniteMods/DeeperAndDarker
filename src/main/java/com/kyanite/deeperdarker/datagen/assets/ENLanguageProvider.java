@@ -7,7 +7,6 @@ import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.neoforged.neoforge.common.data.LanguageProvider;

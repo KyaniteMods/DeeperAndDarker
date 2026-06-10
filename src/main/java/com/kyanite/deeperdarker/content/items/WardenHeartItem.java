@@ -4,15 +4,19 @@ import com.kyanite.deeperdarker.DeeperDarkerConfig;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class WardenHeartItem extends Item {
@@ -29,8 +33,10 @@ public class WardenHeartItem extends Item {
                 if(DDBlocks.OTHERSIDE_PORTAL.get().spawnPortal(context.getLevel(), clickedPos)) {
                     context.getLevel().playSound(context.getPlayer(), clickedPos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 6f, 0.8f);
                     if(!context.getPlayer().isCreative()) context.getPlayer().setItemInHand(context.getHand(), ItemStack.EMPTY);
-                    return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
-                } else return InteractionResult.FAIL;
+                    return InteractionResult.SUCCESS;
+                } else {
+                    return InteractionResult.FAIL;
+                }
             }
         }
 
@@ -38,9 +44,10 @@ public class WardenHeartItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+    public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
+        if(!(owner instanceof Player)) return;
         if(DeeperDarkerConfig.CONFIG.wardenHeartPulses.get() && RandomSource.create().nextFloat() < 0.012f) {
-            level.playSound(entity, entity.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
+            level.playSound(owner, owner.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.AMBIENT, 1.7f, 1f);
         }
     }
 }

@@ -16,8 +16,8 @@ import com.kyanite.deeperdarker.datagen.data.tags.*;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
-import com.kyanite.deeperdarker.util.DDArmorMaterials;
 import com.kyanite.deeperdarker.util.DDCreativeTab;
+import com.kyanite.deeperdarker.util.DDMaterials;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.kyanite.deeperdarker.world.structures.CustomStructures;
@@ -66,7 +66,7 @@ public class DeeperDarker {
         DDPotions.POTIONS.register(eventBus);
         DDRecipes.RECIPE.register(eventBus);
         DDEnchantments.ENCHANTMENT_EFFECTS.register(eventBus);
-        DDArmorMaterials.ARMOR_MATERIALS.register(eventBus);
+        DDMaterials.ARMOR_MATERIALS.register(eventBus);
         DDFeatures.FEATURES.register(eventBus);
         CustomStructures.PIECE_TYPE.register(eventBus);
         CustomStructures.STRUCTURE_TYPE.register(eventBus);

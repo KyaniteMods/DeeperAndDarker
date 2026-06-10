@@ -8,7 +8,7 @@ import com.kyanite.deeperdarker.content.blocks.entity.CrystallizedAmberBlockEnti
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
 import com.kyanite.deeperdarker.content.data.PlayerData;
 import com.kyanite.deeperdarker.network.SoulElytraClientPacket;
-import com.kyanite.deeperdarker.util.DDArmorMaterials;
+import com.kyanite.deeperdarker.util.DDMaterials;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.structures.DDStructures;
 import net.minecraft.ChatFormatting;
@@ -223,7 +223,7 @@ public class DeeperDarkerEvents {
     @SubscribeEvent
     public static void armorHurtEvent(final ArmorHurtEvent event) {
         event.getArmorMap().forEach((equipmentSlot, armorEntry) -> {
-            if(event.getArmorItemStack(equipmentSlot).getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDArmorMaterials.RESONARIUM.getId())) {
+            if(event.getArmorItemStack(equipmentSlot).getItem() instanceof ArmorItem armor && armor.getMaterial().is(DDMaterials.RESONARIUM.getId())) {
                 armorEntry.newDamage = 0;
             }
         });
