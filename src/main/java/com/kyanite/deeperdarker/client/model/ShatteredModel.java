@@ -1,23 +1,27 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.Shattered;
+import com.kyanite.deeperdarker.client.render.state.ShatteredRenderState;
 import com.kyanite.deeperdarker.content.entities.animations.ShatteredAnimation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
-public class ShatteredModel extends HierarchicalModel<Shattered> {
-	private final ModelPart root;
+public class ShatteredModel extends EntityModel<ShatteredRenderState> {
 	private final ModelPart head;
+	private final KeyframeAnimation walkAnimation;
+	private final KeyframeAnimation attackAnimation;
+	private final KeyframeAnimation idleAnimation;
 
 	public ShatteredModel(ModelPart root) {
-		this.root = root;
+        super(root);
 		this.head = root.getChild("root").getChild("body");
+		this.walkAnimation = ShatteredAnimation.WALK.bake(this.root);
+		this.attackAnimation = ShatteredAnimation.ATTACK.bake(this.root);
+		this.idleAnimation = ShatteredAnimation.IDLE.bake(this.root);
 	}
 
 	public static LayerDefinition createModel() {
@@ -48,12 +52,12 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 	}
 
 	@Override
-	public void setupAnim(Shattered entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
-		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(ShatteredAnimation.WALK, limbSwing, limbSwingAmount, 5.5f, 2.5f);
-		this.animate(entity.idleState, ShatteredAnimation.IDLE, ageInTicks);
-		this.animate(entity.attackState, ShatteredAnimation.ATTACK, ageInTicks);
+	public void setupAnim(ShatteredRenderState state) {
+		super.setupAnim(state);
+		applyHeadRotation(state.yRot, state.xRot);
+		this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2f, 2.5f);
+		this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
+		this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
 	}
 
 	private void applyHeadRotation(float netHeadYaw, float headPitch) {
@@ -61,15 +65,5 @@ public class ShatteredModel extends HierarchicalModel<Shattered> {
 		headPitch = Mth.clamp(headPitch, -25, 45);
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
 		this.head.xRot = headPitch * ((float)Math.PI / 180f);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-	}
-
-	@Override
-	public ModelPart root() {
-		return root;
 	}
 }

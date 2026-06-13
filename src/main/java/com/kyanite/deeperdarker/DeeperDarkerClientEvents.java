@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker;
 
 import com.kyanite.deeperdarker.client.Keybinds;
+import com.kyanite.deeperdarker.client.ModModelLayers;
 import com.kyanite.deeperdarker.client.OthersidePortalOverlay;
 import com.kyanite.deeperdarker.client.OthersideReceivingLevelScreen;
 import com.kyanite.deeperdarker.client.model.*;
@@ -13,16 +14,19 @@ import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
 import com.kyanite.deeperdarker.network.UseTransmitterPacket;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
-import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.object.boat.BoatModel;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.blockentity.StandingSignRenderer;
 import net.minecraft.client.renderer.entity.ArmorStandRenderer;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.entity.BoatRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.model.sprite.AtlasManager;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -36,9 +40,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 @SuppressWarnings("unused")
@@ -81,8 +84,8 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
-    public static void registerMaterialAtlas(final RegisterMaterialAtlasesEvent event) {
-        event.register(GloomslatePotRenderer.GLOOMSLATE_POT, DeeperDarker.rl("gloomslate_pot"));
+    public static void registerTextureAtlases(final RegisterTextureAtlasesEvent event) {
+        event.register(new AtlasManager.AtlasConfig(GloomslatePotRenderer.GLOOMSLATE_POT_ATLAS, DeeperDarker.rl("gloomslate_pot"), false));
     }
 
     @SubscribeEvent
@@ -108,19 +111,16 @@ public class DeeperDarkerClientEvents {
     }
 
     @SubscribeEvent
-    public static void registerExtensions(final RegisterClientExtensionsEvent event) {
-        event.registerItem(new GloomslatePotExtension(), DDBlocks.GLOOMSLATE_POT_ITEM.get());
-    }
-
-    @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), SignRenderer::new);
+        event.registerBlockEntityRenderer(DDBlockEntities.DEEPER_DARKER_SIGNS.get(), StandingSignRenderer::new);
         event.registerBlockEntityRenderer(DDBlockEntities.DEEPER_DARKER_HANGING_SIGNS.get(), HangingSignRenderer::new);
         event.registerBlockEntityRenderer(DDBlockEntities.CRYSTALLIZED_AMBER.get(), CrystallizedAmberBlockRenderer::new);
         event.registerBlockEntityRenderer(DDBlockEntities.GLOOMSLATE_POT.get(), GloomslatePotRenderer::new);
 
-        event.registerEntityRenderer(DDEntities.BOAT.get(), (context) -> new DDBoatRenderer(context, false));
-        event.registerEntityRenderer(DDEntities.CHEST_BOAT.get(), (context) -> new DDBoatRenderer(context, true));
+        event.registerEntityRenderer(DDEntities.ECHO_BOAT.get(), (context) -> new BoatRenderer(context, ModModelLayers.ECHO_BOAT));
+        event.registerEntityRenderer(DDEntities.ECHO_CHEST_BOAT.get(), (context) -> new BoatRenderer(context, ModModelLayers.ECHO_CHEST_BOAT));
+        event.registerEntityRenderer(DDEntities.BLOOM_BOAT.get(), (context) -> new BoatRenderer(context, ModModelLayers.BLOOM_BOAT));
+        event.registerEntityRenderer(DDEntities.BLOOM_CHEST_BOAT.get(), (context) -> new BoatRenderer(context, ModModelLayers.BLOOM_CHEST_BOAT));
         event.registerEntityRenderer(DDEntities.ANGLER_FISH.get(), AnglerFishRenderer::new);
         event.registerEntityRenderer(DDEntities.ANGER_POT.get(), AngerPotRenderer::new);
         event.registerEntityRenderer(DDEntities.FEAR_POT.get(), FearPotRenderer::new);
@@ -136,39 +136,40 @@ public class DeeperDarkerClientEvents {
 
     @SubscribeEvent
     public static void registerLayers(final EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(GloomslatePotRenderer.POT_BASE, GloomslatePotModel::createBaseLayer);
-        event.registerLayerDefinition(GloomslatePotRenderer.POT_SIDES, GloomslatePotModel::createSidesLayer);
+        event.registerLayerDefinition(ModModelLayers.GLOOMSLATE_POT_BASE, GloomslatePotModel::createBaseLayer);
+        event.registerLayerDefinition(ModModelLayers.GLOOMSLATE_POT_SIDES, GloomslatePotModel::createSidesLayer);
 
-        event.registerLayerDefinition(DDBoatRenderer.ECHO_BOAT_MODEL, BoatModel::createBodyModel);
-        event.registerLayerDefinition(DDBoatRenderer.ECHO_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
-        event.registerLayerDefinition(DDBoatRenderer.BLOOM_BOAT_MODEL, BoatModel::createBodyModel);
-        event.registerLayerDefinition(DDBoatRenderer.BLOOM_CHEST_BOAT_MODEL, ChestBoatModel::createBodyModel);
+        event.registerLayerDefinition(ModModelLayers.ECHO_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(ModModelLayers.ECHO_CHEST_BOAT, BoatModel::createChestBoatModel);
+        event.registerLayerDefinition(ModModelLayers.BLOOM_BOAT, BoatModel::createBoatModel);
+        event.registerLayerDefinition(ModModelLayers.BLOOM_CHEST_BOAT, BoatModel::createChestBoatModel);
 
         event.registerLayerDefinition(AnglerFishRenderer.MODEL, AnglerFishModel::createModel);
-        event.registerLayerDefinition(AngerPotRenderer.MODEL, AngerPotModel::createModel);
-        event.registerLayerDefinition(FearPotRenderer.MODEL, FearPotModel::createModel);
-        event.registerLayerDefinition(SorrowPotRenderer.MODEL, SorrowPotModel::createModel);
-        event.registerLayerDefinition(SculkCentipedeRenderer.MODEL, SculkCentipedeModel::createModel);
-        event.registerLayerDefinition(SculkLeechRenderer.MODEL, SculkLeechModel::createModel);
-        event.registerLayerDefinition(SculkSnapperRenderer.MODEL, SculkSnapperModel::createModel);
-        event.registerLayerDefinition(ShatteredRenderer.MODEL, ShatteredModel::createModel);
-        event.registerLayerDefinition(ShriekWormRenderer.MODEL, ShriekWormModel::createModel);
-        event.registerLayerDefinition(SludgeRenderer.MODEL, SludgeModel::createInnerModel);
-        event.registerLayerDefinition(SludgeOuterLayer.OUTER_MODEL, SludgeModel::createOuterModel);
-        event.registerLayerDefinition(StalkerRenderer.MODEL, StalkerModel::createModel);
-        event.registerLayerDefinition(WardenHelmetRenderer.MODEL, WardenHelmetModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.ANGER_POT, AngerPotModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.FEAR_POT, FearPotModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SORROW_POT, SorrowPotModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SCULK_CENTIPEDE, SculkCentipedeModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SCULK_LEECH, SculkLeechModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SCULK_SNAPPER, SculkSnapperModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SHATTERED, ShatteredModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SHRIEK_WORM, ShriekWormModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.SLUDGE, SludgeModel::createInnerModel);
+        event.registerLayerDefinition(ModModelLayers.SLUDGE_OUTER, SludgeModel::createOuterModel);
+        event.registerLayerDefinition(ModModelLayers.STALKER, StalkerModel::createModel);
+        event.registerLayerDefinition(ModModelLayers.WARDEN_HELMET, WardenHelmetModel::createModel);
     }
 
     @SubscribeEvent
     public static void addLayers(final EntityRenderersEvent.AddLayers event) {
+        EntityRendererProvider.Context context = event.getContext();
         event.getSkins().forEach(name -> {
-            if(event.getSkin(name) instanceof PlayerRenderer renderer) {
-                renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+            if(event.getPlayerRenderer(name) instanceof AvatarRenderer<AbstractClientPlayer> renderer) {
+                renderer.addLayer(new SoulElytraRenderer<>(renderer, context.getModelSet(), context.getEquipmentRenderer()));
                 renderer.addLayer(new WardenHelmetRenderer<>(renderer, event.getEntityModels()));
             }
         });
         if(event.getRenderer(EntityType.ARMOR_STAND) instanceof ArmorStandRenderer renderer) {
-            renderer.addLayer(new SoulElytraRenderer<>(renderer, event.getEntityModels()));
+            renderer.addLayer(new SoulElytraRenderer<>(renderer, context.getModelSet(), context.getEquipmentRenderer()));
             renderer.addLayer(new WardenHelmetRenderer<>(renderer, event.getEntityModels()));
         }
     }
@@ -200,7 +201,7 @@ public class DeeperDarkerClientEvents {
 
     @SubscribeEvent
     public static void keyInput(final InputEvent.Key event) {
-        if(Keybinds.BOOST.consumeClick()) PacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
-        else if(Keybinds.TRANSMIT.consumeClick()) PacketDistributor.sendToServer(new UseTransmitterPacket(true));
+        if(Keybinds.BOOST.consumeClick()) ClientPacketDistributor.sendToServer(new SoulElytraBoostPacket(true));
+        else if(Keybinds.TRANSMIT.consumeClick()) ClientPacketDistributor.sendToServer(new UseTransmitterPacket(true));
     }
 }

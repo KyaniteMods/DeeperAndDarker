@@ -1,21 +1,17 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
 
 @SuppressWarnings("NullableProblems")
-public class WardenHelmetModel<E extends LivingEntity> extends EntityModel<E> implements HeadedModel {
-    private final ModelPart head;
-
-    public WardenHelmetModel(ModelPart head) {
-        this.head = head;
+public class WardenHelmetModel<E extends LivingEntityRenderState> extends EntityModel<E> implements HeadedModel {
+    public WardenHelmetModel(ModelPart root) {
+        super(root);
     }
 
     public static LayerDefinition createModel() {
@@ -27,20 +23,14 @@ public class WardenHelmetModel<E extends LivingEntity> extends EntityModel<E> im
     }
 
     @Override
-    public void setupAnim(E entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
-        headPitch = Mth.clamp(headPitch, -25, 45);
-        this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
-        this.head.xRot = headPitch * ((float)Math.PI / 180f);
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-        head.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
+    public void setupAnim(E state) {
+        super.setupAnim(state);
+        this.root.yRot = Mth.clamp(state.yRot, -30, 30) * ((float)Math.PI / 180f);
+        this.root.xRot = Mth.clamp(state.xRot, -25, 45) * ((float)Math.PI / 180f);
     }
 
     @Override
     public ModelPart getHead() {
-        return this.head;
+        return this.root;
     }
 }

@@ -18,6 +18,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -48,11 +49,11 @@ import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class Stalker extends Monster implements DisturbanceListener, VibrationSystem {
-    public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
-    public final AnimationState ringAttackState = new AnimationState();
     public final AnimationState emergeState = new AnimationState();
-    private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
+    public final AnimationState idleState = new AnimationState();
+    public final AnimationState ringAttackState = new AnimationState();
+    private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(Mth.createInsecureUUID(level().getRandom()), this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private final DynamicGameEventListener<Listener> dynamicGameEventListener;
     private final User vibrationUser;
     private final Data vibrationData;
@@ -106,9 +107,9 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(entity);
+        return super.doHurtTarget(level, target);
     }
 
     @Override
@@ -124,25 +125,29 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
             this.setTarget(null);
         }
 
-        List<Player> players = level().getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
-        if(!players.isEmpty()) {
-            this.rangedCooldown--;
-            if(this.rangedCooldown < -200) {
-                if(level().isClientSide()) this.ringAttackState.stop();
-                this.rangedCooldown = 440;
-            } else if(this.rangedCooldown < 0 && !level().isClientSide()) {
-                for(Player player : players) {
-                    player.hurt(DDDamageTypes.source(this.level(), DDDamageTypes.RING, player, this), 2);
-                }
-                if(this.rangedCooldown % 40 == 0 && level() instanceof ServerLevel serverLevel) {
-                    int spawn = this.random.nextIntBetweenInclusive(1, 3);
-                    for(int i = 0; i < spawn; i++) {
-                        BlockPos spawnPos = new BlockPos((int) getRandomX(5), (int) getRandomY(), (int) getRandomZ(5));
-                        DDEntities.SCULK_LEECH.get().spawn(serverLevel, spawnPos, MobSpawnType.EVENT);
+        if(level() instanceof ServerLevel serverLevel) {
+            List<Player> players = serverLevel.getNearbyPlayers(TargetingConditions.forCombat().range(10), this, this.getBoundingBox().inflate(10, 8, 10));
+            if(!players.isEmpty()) {
+                this.rangedCooldown--;
+                if(this.rangedCooldown < -200) {
+                    if(level().isClientSide()) this.ringAttackState.stop();
+                    this.rangedCooldown = 440;
+                } else if(this.rangedCooldown < 0 && !level().isClientSide()) {
+                    for(Player player : players) {
+                        player.hurt(DDDamageTypes.source(this.level(), DDDamageTypes.RING, player, this), 2);
+                    }
+                    if(this.rangedCooldown % 40 == 0) {
+                        int spawn = this.random.nextIntBetweenInclusive(1, 3);
+                        for(int i = 0; i < spawn; i++) {
+                            BlockPos spawnPos = new BlockPos((int) getRandomX(5), (int) getRandomY(), (int) getRandomZ(5));
+                            DDEntities.SCULK_LEECH.get().spawn(serverLevel, spawnPos, EntitySpawnReason.EVENT);
+                        }
                     }
                 }
+            } else if(this.rangedCooldown < 0) {
+                this.rangedCooldown--;
             }
-        } else if(this.rangedCooldown < 0) this.rangedCooldown--;
+        }
 
         if(level().isClientSide()) {
             if(!this.idleState.isStarted() && !this.attackState.isStarted() && !this.ringAttackState.isStarted()) {
@@ -182,7 +187,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
-        return getAttackBoundingBox().inflate(2.8, 1, 2.8).intersects(entity.getBoundingBox());
+        return getAttackBoundingBox(2.8).intersects(entity.getBoundingBox());
     }
 
     @Override
@@ -207,11 +212,10 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
         this.bossEvent.removePlayer(serverPlayer);
     }
 
-    @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, SpawnGroupData spawnGroupData) {
-        if(spawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @org.jspecify.annotations.Nullable SpawnGroupData groupData) {
+        if(spawnReason == EntitySpawnReason.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
     }
 
     @Override
@@ -223,7 +227,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
 
     public boolean canTargetEntity(Entity target) {
         if(target instanceof LivingEntity entity) {
-            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && !entity.getType().is(DDTags.Misc.SCULK) && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
+            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && !entity.is(DDTags.Misc.SCULK) && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
         }
 
         return false;
@@ -287,7 +291,7 @@ public class Stalker extends Monster implements DisturbanceListener, VibrationSy
             if(isDeadOrDying()) return;
             playSound(DDSounds.STALKER_NOTICE.get(), 2, 1);
             if(entity != null && canTargetEntity(entity)) {
-                if(entity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
+                if(entity instanceof LivingEntity target && !target.is(DDTags.Misc.SCULK)) setTarget(target);
                 return;
             }
 

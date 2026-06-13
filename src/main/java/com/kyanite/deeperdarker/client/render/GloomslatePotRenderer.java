@@ -2,36 +2,47 @@ package com.kyanite.deeperdarker.client.render;
 
 import com.google.common.collect.ImmutableMap;
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.client.ModModelLayers;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.entity.GloomslatePotBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayerLocation;
+import com.mojang.math.Transformation;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SpriteMapper;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.resources.model.Material;
+import net.minecraft.client.renderer.blockentity.state.DecoratedPotRenderState;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.sprite.SpriteGetter;
+import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.world.level.block.entity.PotDecorations;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class GloomslatePotRenderer implements BlockEntityRenderer<GloomslatePotBlockEntity> {
-    public static final ModelLayerLocation POT_BASE = new ModelLayerLocation(DeeperDarker.rl("gloomslate_pot_base"), "main");
-    public static final ModelLayerLocation POT_SIDES = new ModelLayerLocation(DeeperDarker.rl("gloomslate_pot_sides"), "main");
-    public static final ResourceLocation GLOOMSLATE_POT = DeeperDarker.rl("textures/atlas/gloomslate_pot.png");
-    public static final Material POT_BASE_MATERIAL = createMaterial("gloomslate_pot_base");
-    public static final Material POT_SIDE_MATERIAL = createMaterial("gloomslate_pot_side");
-
+@SuppressWarnings("NullableProblems")
+public class GloomslatePotRenderer implements BlockEntityRenderer<GloomslatePotBlockEntity, DecoratedPotRenderState> {
+    public static final Identifier GLOOMSLATE_POT_ATLAS = DeeperDarker.rl("textures/atlas/gloomslate_pot.png");
+    private static final SpriteMapper GLOOMSLATE_POT_MAPPER = new SpriteMapper(GLOOMSLATE_POT_ATLAS, "entity/gloomslate_pot");
+    private static final SpriteId GLOOMSLATE_POT_BASE = createSprite("gloomslate_pot_base");
+    private static final SpriteId GLOOMSLATE_POT_SIDE = createSprite("gloomslate_pot_side");
+    private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, GloomslatePotRenderer::createModelTransformation);
+    private final SpriteGetter sprites;
     private static final Map<Item, String> PATTERNS = ImmutableMap.of(
             DDItems.GLOOMSHERD.asItem(), "gloomslate_pot_side",
             DDItems.BRITTLE_GLOOMSHERD.asItem(), "brittle_pottery_pattern",
@@ -52,11 +63,13 @@ public class GloomslatePotRenderer implements BlockEntityRenderer<GloomslatePotB
     private final ModelPart bottom;
 
     public GloomslatePotRenderer(BlockEntityRendererProvider.Context context) {
-        ModelPart baseModel = context.bakeLayer(POT_BASE);
+        this.sprites = context.sprites();
+
+        ModelPart baseModel = context.bakeLayer(ModModelLayers.GLOOMSLATE_POT_BASE);
         this.neck = baseModel.getChild("neck");
         this.top = baseModel.getChild("top");
         this.bottom = baseModel.getChild("bottom");
-        ModelPart sideModel = context.bakeLayer(POT_SIDES);
+        ModelPart sideModel = context.bakeLayer(ModModelLayers.GLOOMSLATE_POT_SIDES);
         this.frontSide = sideModel.getChild("front");
         this.backSide = sideModel.getChild("back");
         this.leftSide = sideModel.getChild("left");
@@ -64,52 +77,133 @@ public class GloomslatePotRenderer implements BlockEntityRenderer<GloomslatePotB
     }
 
     @Override
-    public void render(GloomslatePotBlockEntity blockEntity, float partialTick, PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public DecoratedPotRenderState createRenderState() {
+        return new DecoratedPotRenderState();
+    }
+
+    @Override
+    public void extractRenderState(GloomslatePotBlockEntity blockEntity, DecoratedPotRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.CrumblingOverlay breakProgress) {
+        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
+        state.direction = blockEntity.getDirection();
+        state.decorations = blockEntity.getDecorations();
+        state.wobbleStyle = blockEntity.lastWobbleStyle;
+        if (state.wobbleStyle != null && blockEntity.getLevel() != null) {
+            state.wobbleProgress = ((float)(blockEntity.getLevel().getGameTime() - blockEntity.wobbleStartedAtTick) + partialTicks) / state.wobbleStyle.duration;
+        } else {
+            state.wobbleProgress = 0.0F;
+        }
+    }
+
+    @Override
+    public void submit(DecoratedPotRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         poseStack.pushPose();
-
-        Direction direction = blockEntity.getDirection();
-        poseStack.translate(0.5f, 0f, 0.5f);
-        poseStack.mulPose(Axis.YP.rotationDegrees(180f - direction.toYRot()));
-        poseStack.translate(-0.5f, 0f, -0.5f);
-
-        DecoratedPotBlockEntity.WobbleStyle wobbleStyle = blockEntity.lastWobbleStyle;
-        if(wobbleStyle != null && blockEntity.getLevel() != null) {
-            float f = ((float)(blockEntity.getLevel().getGameTime() - blockEntity.wobbleStartedAtTick) + partialTick) / wobbleStyle.duration;
-            if(f >= 0 && f <= 1) {
-                if(wobbleStyle == DecoratedPotBlockEntity.WobbleStyle.POSITIVE) {
-                    float f2 = f * (float) (Math.PI * 2);
-                    float f3 = -1.5f * (Mth.cos(f2) + 0.5f) * Mth.sin(f2 / 2);
-                    poseStack.rotateAround(Axis.XP.rotation(f3 * 0.015625f), 0.5f, 0f, 0.5f);
-                    float f4 = Mth.sin(f2);
-                    poseStack.rotateAround(Axis.ZP.rotation(f4 * 0.015625f), 0.5f, 0f, 0.5f);
-                } else {
-                    float f5 = Mth.sin(-f * 3 * (float) Math.PI) * 0.125f;
-                    float f6 = 1 - f;
-                    poseStack.rotateAround(Axis.YP.rotation(f5 * f6), 0.5f, 0f, 0.5f);
-                }
+        poseStack.mulPose(modelTransformation(state.direction));
+        if (state.wobbleProgress >= 0.0F && state.wobbleProgress <= 1.0F) {
+            if (state.wobbleStyle == DecoratedPotBlockEntity.WobbleStyle.POSITIVE) {
+                float amplitude = 0.015625F;
+                float deltaTime = state.wobbleProgress * (float) (Math.PI * 2);
+                float tiltX = -1.5F * (Mth.cos(deltaTime) + 0.5F) * Mth.sin(deltaTime / 2.0F);
+                poseStack.rotateAround(Axis.XP.rotation(tiltX * amplitude), 0.5F, 0.0F, 0.5F);
+                float tiltZ = Mth.sin(deltaTime);
+                poseStack.rotateAround(Axis.ZP.rotation(tiltZ * amplitude), 0.5F, 0.0F, 0.5F);
+            } else {
+                float turnAngle = Mth.sin(-state.wobbleProgress * 3.0F * (float) Math.PI) * 0.125F;
+                float linearDecayFactor = 1.0F - state.wobbleProgress;
+                poseStack.rotateAround(Axis.YP.rotation(turnAngle * linearDecayFactor), 0.5F, 0.0F, 0.5F);
             }
         }
 
-        VertexConsumer buffer = POT_BASE_MATERIAL.buffer(bufferSource, RenderType::entitySolid);
-        this.neck.render(poseStack, buffer, packedLight, packedOverlay);
-        this.top.render(poseStack, buffer, packedLight, packedOverlay);
-        this.bottom.render(poseStack, buffer, packedLight, packedOverlay);
-
-        PotDecorations decorations = blockEntity.getDecorations();
-        renderSide(this.frontSide, poseStack, bufferSource, packedLight, packedOverlay, decorations.front());
-        renderSide(this.backSide, poseStack, bufferSource, packedLight, packedOverlay, decorations.back());
-        renderSide(this.leftSide, poseStack, bufferSource, packedLight, packedOverlay, decorations.left());
-        renderSide(this.rightSide, poseStack, bufferSource, packedLight, packedOverlay, decorations.right());
-
+        this.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.decorations, 0);
         poseStack.popPose();
     }
 
-    private void renderSide(ModelPart modelPart, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, Optional<Item> item) {
-        Material material = item.map(value -> createMaterial(PATTERNS.get(value))).orElse(POT_SIDE_MATERIAL);
-        modelPart.render(poseStack, material.buffer(buffer, RenderType::entitySolid), packedLight, packedOverlay);
+    public static Transformation modelTransformation(Direction facing) {
+        return TRANSFORMATIONS.get(facing);
     }
 
-    private static Material createMaterial(String path) {
-        return new Material(GLOOMSLATE_POT, DeeperDarker.rl("entity/gloomslate_pot/" + path));
+    private static Transformation createModelTransformation(Direction entityDirection) {
+        return new Transformation(new Matrix4f().rotateAround(Axis.YP.rotationDegrees(180.0F - entityDirection.toYRot()), 0.5F, 0.5F, 0.5F));
+    }
+
+    public void submit(
+            PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, PotDecorations decorations, int outlineColor
+    ) {
+        RenderType renderType = GLOOMSLATE_POT_BASE.renderType(RenderTypes::entitySolid);
+        TextureAtlasSprite sprite = this.sprites.get(GLOOMSLATE_POT_BASE);
+        submitNodeCollector.submitModelPart(this.neck, poseStack, renderType, lightCoords, overlayCoords, sprite, false, false, -1, null, outlineColor);
+        submitNodeCollector.submitModelPart(this.top, poseStack, renderType, lightCoords, overlayCoords, sprite, false, false, -1, null, outlineColor);
+        submitNodeCollector.submitModelPart(this.bottom, poseStack, renderType, lightCoords, overlayCoords, sprite, false, false, -1, null, outlineColor);
+        SpriteId frontSprite = getSideSprite(decorations.front());
+        submitNodeCollector.submitModelPart(
+                this.frontSide,
+                poseStack,
+                frontSprite.renderType(RenderTypes::entitySolid),
+                lightCoords,
+                overlayCoords,
+                this.sprites.get(frontSprite),
+                false,
+                false,
+                -1,
+                null,
+                outlineColor
+        );
+        SpriteId backSprite = getSideSprite(decorations.back());
+        submitNodeCollector.submitModelPart(
+                this.backSide,
+                poseStack,
+                backSprite.renderType(RenderTypes::entitySolid),
+                lightCoords,
+                overlayCoords,
+                this.sprites.get(backSprite),
+                false,
+                false,
+                -1,
+                null,
+                outlineColor
+        );
+        SpriteId leftSprite = getSideSprite(decorations.left());
+        submitNodeCollector.submitModelPart(
+                this.leftSide,
+                poseStack,
+                leftSprite.renderType(RenderTypes::entitySolid),
+                lightCoords,
+                overlayCoords,
+                this.sprites.get(leftSprite),
+                false,
+                false,
+                -1,
+                null,
+                outlineColor
+        );
+        SpriteId rightSprite = getSideSprite(decorations.right());
+        submitNodeCollector.submitModelPart(
+                this.rightSide,
+                poseStack,
+                rightSprite.renderType(RenderTypes::entitySolid),
+                lightCoords,
+                overlayCoords,
+                this.sprites.get(rightSprite),
+                false,
+                false,
+                -1,
+                null,
+                outlineColor
+        );
+    }
+
+    private static SpriteId createSprite(String path) {
+        return GLOOMSLATE_POT_MAPPER.apply(DeeperDarker.rl(path));
+    }
+
+    private static SpriteId getSideSprite(Optional<Item> item) {
+        if(item.isPresent()) {
+            String pattern = PATTERNS.get(item.get());
+            if(pattern != null) {
+                return createSprite(pattern);
+            }
+        }
+
+//        return item.map(value -> createSprite(PATTERNS.get(value))).orElse(GLOOMSLATE_POT_SIDE);
+        return GLOOMSLATE_POT_SIDE;
     }
 }

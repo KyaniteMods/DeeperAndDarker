@@ -33,8 +33,8 @@ import java.util.function.BiConsumer;
 
 @SuppressWarnings("NullableProblems")
 public class Shattered extends Monster implements DisturbanceListener, VibrationSystem {
-    public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
+    public final AnimationState idleState = new AnimationState();
     private final DynamicGameEventListener<Listener> dynamicGameEventListener;
     private final User vibrationUser;
     private final Data vibrationData;
@@ -80,9 +80,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(entity);
+        return super.doHurtTarget(level, target);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
 
     public boolean canTargetEntity(Entity target) {
         if(target instanceof LivingEntity entity) {
-            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && !entity.getType().is(DDTags.Misc.SCULK) && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
+            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && !entity.is(DDTags.Misc.SCULK) && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
         }
 
         return false;
@@ -169,8 +169,8 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel level, BlockPos pPos, Holder<GameEvent> gameEvent, GameEvent.Context context) {
-            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(pPos)) {
+        public boolean canReceiveVibration(ServerLevel level, BlockPos pos, Holder<GameEvent> event, GameEvent.Context context) {
+            if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && level.getWorldBorder().isWithinBounds(pos)) {
                 if(context.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
             } else {
@@ -183,7 +183,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
             if(isDeadOrDying()) return;
             playSound(DDSounds.SHATTERED_NOTICE.get(), 2, 1);
             if(entity != null && canTargetEntity(entity)) {
-                if(entity instanceof LivingEntity target && !target.getType().is(DDTags.Misc.SCULK)) setTarget(target);
+                if(entity instanceof LivingEntity target && !target.is(DDTags.Misc.SCULK)) setTarget(target);
                 return;
             }
 

@@ -10,7 +10,9 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
@@ -20,11 +22,12 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
 @SuppressWarnings("NullableProblems")
-public class CrystallizedAmberBlockEntity extends BlockEntity {
+public class CrystallizedAmberBlockEntity extends BlockEntity implements ItemOwner {
     private boolean fossilizedEntity;
     private ItemStack loot = ItemStack.EMPTY;
 
@@ -83,5 +86,20 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         super.loadAdditional(input);
         this.loot = input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
         this.fossilizedEntity = input.getBooleanOr("leech", false);
+    }
+
+    @Override
+    public Level level() {
+        return this.level;
+    }
+
+    @Override
+    public Vec3 position() {
+        return this.getBlockPos().getCenter();
+    }
+
+    @Override
+    public float getVisualRotationYInDegrees() {
+        return 0;
     }
 }

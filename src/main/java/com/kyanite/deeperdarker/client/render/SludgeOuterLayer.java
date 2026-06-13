@@ -1,46 +1,35 @@
 package com.kyanite.deeperdarker.client.render;
 
-import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.client.ModModelLayers;
 import com.kyanite.deeperdarker.client.model.SludgeModel;
-import com.kyanite.deeperdarker.content.entities.Sludge;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.state.SlimeRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 
 @SuppressWarnings("NullableProblems")
-public class SludgeOuterLayer extends RenderLayer<Sludge, SludgeModel> {
-    public static final ModelLayerLocation OUTER_MODEL = new ModelLayerLocation(DeeperDarker.rl("sludge_layer"), "outer");
-    private final EntityModel<Sludge> model;
+public class SludgeOuterLayer extends RenderLayer<SlimeRenderState, SludgeModel> {
+    private final SludgeModel model;
 
-    public SludgeOuterLayer(RenderLayerParent<Sludge, SludgeModel> renderer, EntityModelSet modelSet) {
+    public SludgeOuterLayer(RenderLayerParent<SlimeRenderState, SludgeModel> renderer, EntityModelSet modelSet) {
         super(renderer);
-        this.model = new SludgeModel(modelSet.bakeLayer(OUTER_MODEL));
+        this.model = new SludgeModel(modelSet.bakeLayer(ModModelLayers.SLUDGE_OUTER));
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, Sludge livingEntity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-        Minecraft minecraft = Minecraft.getInstance();
-        boolean flag = minecraft.shouldEntityAppearGlowing(livingEntity) && livingEntity.isInvisible();
-        if (!livingEntity.isInvisible() || flag) {
-            VertexConsumer vertexconsumer;
-            if (flag) {
-                vertexconsumer = bufferSource.getBuffer(RenderType.outline(this.getTextureLocation(livingEntity)));
+    public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, SlimeRenderState state, float yRot, float xRot) {
+        boolean appearsGlowingWithInvisibility = state.appearsGlowing() && state.isInvisible;
+        if(!state.isInvisible || appearsGlowingWithInvisibility) {
+            int overlayCoords = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
+            if(appearsGlowingWithInvisibility) {
+                submitNodeCollector.order(1).submitModel(this.model, state, poseStack, RenderTypes.outline(SludgeRenderer.TEXTURE), lightCoords, overlayCoords, state.outlineColor, null);
             } else {
-                vertexconsumer = bufferSource.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(livingEntity)));
+                submitNodeCollector.order(1).submitModel(this.model, state, poseStack, RenderTypes.entityTranslucent(SludgeRenderer.TEXTURE), lightCoords, overlayCoords, state.outlineColor, null);
             }
-
-            this.getParentModel().copyPropertiesTo(this.model);
-            this.model.prepareMobModel(livingEntity, limbSwing, limbSwingAmount, partialTick);
-            this.model.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-            this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(livingEntity, 0.0F));
         }
     }
 }

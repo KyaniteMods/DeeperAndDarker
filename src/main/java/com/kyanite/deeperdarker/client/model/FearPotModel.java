@@ -1,24 +1,21 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.OvercastPot;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
-public class FearPotModel extends HierarchicalModel<OvercastPot> {
-    private final ModelPart root;
+public class FearPotModel extends EntityModel<LivingEntityRenderState> {
     private final ModelPart rightFrontLeg;
     private final ModelPart leftFrontLeg;
     private final ModelPart rightHindLeg;
     private final ModelPart leftHindLeg;
 
     public FearPotModel(ModelPart root) {
-        this.root = root;
+        super(root);
         this.rightFrontLeg = root.getChild("root").getChild("right_front_leg");
         this.leftFrontLeg = root.getChild("root").getChild("left_front_leg");
         this.rightHindLeg = root.getChild("root").getChild("right_hind_leg");
@@ -41,21 +38,13 @@ public class FearPotModel extends HierarchicalModel<OvercastPot> {
     }
 
     @Override
-    public void setupAnim(OvercastPot entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.root.getAllParts().forEach(ModelPart::resetPose);
-        this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662f + (float) Math.PI) * 1.4f * limbSwingAmount;
-        this.leftFrontLeg.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount;
-        this.rightHindLeg.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount;
-        this.leftHindLeg.xRot = Mth.cos(limbSwing * 0.6662f + (float) Math.PI) * 1.4f * limbSwingAmount;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-        root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-    }
-
-    @Override
-    public ModelPart root() {
-        return root;
+    public void setupAnim(LivingEntityRenderState state) {
+        super.setupAnim(state);
+        float animationPos = state.walkAnimationPos;
+        float animationSpeed = state.walkAnimationSpeed;
+        this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662f + (float) Math.PI) * 1.4f * animationSpeed;
+        this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662f) * 1.4f * animationSpeed;
+        this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662f) * 1.4f * animationSpeed;
+        this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662f + (float) Math.PI) * 1.4f * animationSpeed;
     }
 }

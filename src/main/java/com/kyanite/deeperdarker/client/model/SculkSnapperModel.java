@@ -1,23 +1,29 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.SculkSnapper;
+import com.kyanite.deeperdarker.client.render.state.SculkSnapperRenderState;
 import com.kyanite.deeperdarker.content.entities.animations.SculkSnapperAnimation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
-public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
-	private final ModelPart root;
+public class SculkSnapperModel extends EntityModel<SculkSnapperRenderState> {
 	private final ModelPart head;
+	private final KeyframeAnimation walkAnimation;
+	private final KeyframeAnimation attackAnimation;
+	private final KeyframeAnimation idleAnimation;
+	private final KeyframeAnimation sitAnimation;
 
 	public SculkSnapperModel(ModelPart root) {
-		this.root = root;
+        super(root);
 		this.head = root.getChild("root").getChild("body").getChild("head");
+		this.walkAnimation = SculkSnapperAnimation.WALK.bake(this.root);
+		this.attackAnimation = SculkSnapperAnimation.BITE.bake(this.root);
+		this.idleAnimation = SculkSnapperAnimation.IDLE.bake(this.root);
+		this.sitAnimation = SculkSnapperAnimation.SIT.bake(this.root);
 	}
 
 	public static LayerDefinition createModel() {
@@ -50,29 +56,19 @@ public class SculkSnapperModel extends HierarchicalModel<SculkSnapper> {
 	}
 
 	@Override
-	public void setupAnim(SculkSnapper entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
-		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(SculkSnapperAnimation.WALK, limbSwing, limbSwingAmount, 2.5f, 2.5f);
-		this.animate(entity.idleState, SculkSnapperAnimation.IDLE, ageInTicks);
-		this.animate(entity.attackState, SculkSnapperAnimation.BITE, ageInTicks);
-		this.animate(entity.sitState, SculkSnapperAnimation.SIT, ageInTicks);
+	public void setupAnim(SculkSnapperRenderState state) {
+		super.setupAnim(state);
+		applyHeadRotation(state.yRot, state.xRot);
+		this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2.5f, 2.5f);
+		this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
+		this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
+		this.sitAnimation.apply(state.sitAnimationState, state.ageInTicks);
 	}
 
-	private void applyHeadRotation(float netHeadYaw, float headPitch) {
-		netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
-		headPitch = Mth.clamp(headPitch, -25, 45);
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
-		this.head.xRot = headPitch * ((float)Math.PI / 180f);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-	}
-
-	@Override
-	public ModelPart root() {
-		return this.root;
+	private void applyHeadRotation(float yRot, float xRot) {
+		yRot = Mth.clamp(yRot, -30, 30);
+		xRot = Mth.clamp(xRot, -25, 45);
+		this.head.yRot = yRot * ((float)Math.PI / 180f);
+		this.head.xRot = xRot * ((float)Math.PI / 180f);
 	}
 }

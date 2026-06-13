@@ -24,10 +24,10 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -79,21 +79,22 @@ public class SculkSnapper extends TamableAnimal {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
-        if(this.isInvulnerableTo(source)) return false;
-        if(!this.level().isClientSide) {
-            this.setInSittingPose(false);
-            this.setOrderedToSit(false);
-        }
-
-        return super.hurt(source, amount);
+    public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
+        if(this.isInvulnerableTo(level, source)) return false;
+        this.setInSittingPose(false);
+        this.setOrderedToSit(false);
+        return super.hurtServer(level, source, damage);
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
-        level().broadcastEntityEvent(this, (byte) 4);
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
+        this.level().broadcastEntityEvent(this, (byte) 4);
+        return super.doHurtTarget(level, target);
+    }
+
+    @Override
+    protected void playAttackSound() {
         this.playSound(DDSounds.SNAPPER_BITE.get());
-        return super.doHurtTarget(entity);
     }
 
     @Override
@@ -102,7 +103,7 @@ public class SculkSnapper extends TamableAnimal {
 
         if(this.isTame() && this.getOwner() != null) {
             if(droppedBooks < DeeperDarkerConfig.CONFIG.snapperDropLimit.get() && this.getOwner().distanceTo(this) < 5 && this.random.nextFloat() < 0.00025f) {
-                Registry<Enchantment> registry = this.level().registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+                Registry<Enchantment> registry = this.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
                 List<Enchantment> enchantments = new ArrayList<>();
                 registry.forEach(enchantment -> {
                     if(!enchantment.effects().has(EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) && !enchantment.effects().has(EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) enchantments.add(enchantment);
@@ -110,7 +111,7 @@ public class SculkSnapper extends TamableAnimal {
                 Enchantment enchantment1 = enchantments.remove(this.random.nextInt(enchantments.size()));
                 Enchantment enchantment2 = enchantments.get(this.random.nextInt(enchantments.size()));
 
-                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(registry.wrapAsHolder(enchantment1), this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
+                ItemStack book = EnchantmentHelper.createBook(new EnchantmentInstance(registry.wrapAsHolder(enchantment1), this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
                 if(this.random.nextFloat() < 0.2f) book.enchant(registry.wrapAsHolder(enchantment2), BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random));
                 this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
                 droppedBooks++;
@@ -139,7 +140,7 @@ public class SculkSnapper extends TamableAnimal {
     @Override
     protected void applyTamingSideEffects() {
         if(this.isTame()) {
-            this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16);
+            this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16.0);
             this.setHealth(16f);
         }
     }

@@ -4,8 +4,8 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.DifficultyInstance;
@@ -19,9 +19,10 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.fluids.FluidType;
-import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class ShriekWorm extends Monster {
@@ -65,11 +66,11 @@ public class ShriekWorm extends Monster {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
         this.idleTime = 0;
         this.level().broadcastEntityEvent(this, (byte) 4);
         this.attackCooldown = 21;
-        return super.doHurtTarget(entity);
+        return super.doHurtTarget(level, target);
     }
 
     @Override
@@ -108,7 +109,7 @@ public class ShriekWorm extends Monster {
 
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
-        return getAttackBoundingBox().inflate(3, 0, 3).intersects(entity.getBoundingBox());
+        return getAttackBoundingBox(3).intersects(entity.getBoundingBox());
     }
 
     @Override
@@ -134,35 +135,34 @@ public class ShriekWorm extends Monster {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putInt("EmergeTime", this.emergeTime);
-        compound.putInt("IdleTime", this.idleTime);
-        compound.putInt("DescentTime", this.descentTime);
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.putInt("EmergeTime", this.emergeTime);
+        output.putInt("IdleTime", this.idleTime);
+        output.putInt("DescentTime", this.descentTime);
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        if(compound.contains("EmergeTime")) this.emergeTime = compound.getInt("EmergeTime");
-        if(compound.contains("IdleTime")) this.idleTime = compound.getInt("IdleTime");
-        if(compound.contains("DescentTime")) this.descentTime = compound.getInt("DescentTime");
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        this.emergeTime = input.getIntOr("EmergeTime", 0);
+        this.idleTime = input.getIntOr("IdleTime", 0);
+        this.descentTime = input.getIntOr("DescentTime", 0);
     }
 
     @Override
-    public boolean isInvulnerableTo(DamageSource source) {
-        return isUnableToAttack() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || super.isInvulnerableTo(source);
+    public boolean isInvulnerableTo(ServerLevel level, DamageSource source) {
+        return isUnableToAttack() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || super.isInvulnerableTo(level, source);
     }
 
     private boolean isUnableToAttack() {
         return this.hasPose(Pose.EMERGING) || this.hasPose(Pose.DIGGING);
     }
 
-    @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, SpawnGroupData spawnGroupData) {
-        if(spawnType == MobSpawnType.TRIGGERED) this.setPose(Pose.EMERGING);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @org.jspecify.annotations.Nullable SpawnGroupData groupData) {
+        if(spawnReason == EntitySpawnReason.TRIGGERED) this.setPose(Pose.EMERGING);
+        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
     }
 
     @Override

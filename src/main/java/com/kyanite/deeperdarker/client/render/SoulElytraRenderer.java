@@ -1,45 +1,25 @@
 package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDItems;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.ElytraModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.model.object.equipment.ElytraModel;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
+import net.minecraft.client.renderer.entity.layers.WingsLayer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.resources.Identifier;
 
 @SuppressWarnings("NullableProblems")
-public class SoulElytraRenderer<E extends LivingEntity, M extends EntityModel<E>> extends ElytraLayer<E, M> {
-    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/entity/soul_elytra.png");
-    private final ElytraModel<E> model;
+public class SoulElytraRenderer<S extends HumanoidRenderState, M extends EntityModel<S>> extends WingsLayer<S, M> {
+    private static final Identifier TEXTURE = DeeperDarker.rl("textures/entity/soul_elytra.png");
+    private final ElytraModel elytraModel;
+    private final ElytraModel elytraBabyModel;
 
-    public SoulElytraRenderer(RenderLayerParent<E, M> renderer, EntityModelSet modelSet) {
-        super(renderer, modelSet);
-        this.model = new ElytraModel<>(modelSet.bakeLayer(ModelLayers.ELYTRA));
-    }
-
-    @Override
-    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, E livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
-        if(itemStack.is(DDItems.SOUL_ELYTRA.get())) {
-            poseStack.pushPose();
-            poseStack.translate(0, 0, 0.125f);
-            this.getParentModel().copyPropertiesTo(this.model);
-            this.model.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorFoilBuffer(buffer, RenderType.armorCutoutNoCull(TEXTURE), false);
-            this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
-            poseStack.popPose();
-        }
+    public SoulElytraRenderer(RenderLayerParent<S, M> renderer, EntityModelSet modelSet, EquipmentLayerRenderer equipmentRenderer) {
+        super(renderer, modelSet, equipmentRenderer);
+        this.elytraModel = new ElytraModel(modelSet.bakeLayer(ModelLayers.ELYTRA));
+        this.elytraBabyModel = new ElytraModel(modelSet.bakeLayer(ModelLayers.ELYTRA_BABY));
     }
 }

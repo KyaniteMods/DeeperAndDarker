@@ -2,28 +2,26 @@ package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Cod;
-import net.minecraft.world.entity.animal.Salmon;
 import net.minecraft.world.entity.animal.fish.AbstractFish;
+import net.minecraft.world.entity.animal.fish.Cod;
+import net.minecraft.world.entity.animal.fish.Salmon;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 
 @SuppressWarnings("NullableProblems")
@@ -42,7 +40,7 @@ public class AnglerFish extends AbstractFish {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new AnglerFishAttackGoal(this, 1.5, true));
         this.goalSelector.addGoal(1, new RandomSwimmingGoal(this, 1, 40));
-        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::validTarget));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (target, _) -> validTarget(target)));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Cod.class, true));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Salmon.class, true));
     }
@@ -63,9 +61,9 @@ public class AnglerFish extends AbstractFish {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(entity);
+        return super.doHurtTarget(level, target);
     }
 
     @Override
@@ -76,7 +74,7 @@ public class AnglerFish extends AbstractFish {
 
     @Override
     public boolean isWithinMeleeAttackRange(LivingEntity entity) {
-        return getAttackBoundingBox().inflate(1).intersects(entity.getBoundingBox());
+        return getAttackBoundingBox(1).intersects(entity.getBoundingBox());
     }
 
     @Override
@@ -84,11 +82,11 @@ public class AnglerFish extends AbstractFish {
         return InteractionResult.PASS;
     }
 
-    public boolean validTarget(LivingEntity entity) {
-        return entity != null && entity.isInWater();
+    private boolean validTarget(LivingEntity livingEntity) {
+        return livingEntity != null && livingEntity.isInWater();
     }
 
-    public static boolean checkSpawnRules(EntityType<? extends LivingEntity> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+    public static boolean checkSpawnRules(EntityType<? extends Mob> type, LevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random) {
         return level.getBlockState(pos).is(Blocks.WATER);
     }
 

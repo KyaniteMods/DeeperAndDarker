@@ -1,24 +1,31 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.Stalker;
+import com.kyanite.deeperdarker.client.render.state.StalkerRenderState;
 import com.kyanite.deeperdarker.content.entities.animations.StalkerAnimation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
-public class StalkerModel extends HierarchicalModel<Stalker> {
-	private final ModelPart root;
+public class StalkerModel extends EntityModel<StalkerRenderState> {
 	private final ModelPart head;
-
+	private final KeyframeAnimation walkAnimation;
+	private final KeyframeAnimation attackAnimation;
+	private final KeyframeAnimation emergeAnimation;
+	private final KeyframeAnimation idleAnimation;
+	private final KeyframeAnimation ringAnimation;
 
 	public StalkerModel(ModelPart root) {
-		this.root = root;
+        super(root);
 		this.head = root.getChild("root").getChild("waist").getChild("body").getChild("head");
+		this.walkAnimation = StalkerAnimation.WALK.bake(this.root);
+		this.attackAnimation = StalkerAnimation.ATTACK.bake(this.root);
+		this.emergeAnimation = StalkerAnimation.EMERGE.bake(this.root);
+		this.idleAnimation = StalkerAnimation.IDLE.bake(this.root);
+		this.ringAnimation = StalkerAnimation.RING_ATTACK.bake(this.root);
 	}
 
 	public static LayerDefinition createModel() {
@@ -66,30 +73,20 @@ public class StalkerModel extends HierarchicalModel<Stalker> {
 	}
 
 	@Override
-	public void setupAnim(Stalker entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
-		applyHeadRotation(netHeadYaw, headPitch);
-		this.animateWalk(StalkerAnimation.WALK, limbSwing, limbSwingAmount, 3f, 2.5f);
-		this.animate(entity.idleState, StalkerAnimation.IDLE, ageInTicks);
-		this.animate(entity.attackState, StalkerAnimation.ATTACK, ageInTicks);
-		this.animate(entity.ringAttackState, StalkerAnimation.RING_ATTACK, ageInTicks);
-		this.animate(entity.emergeState, StalkerAnimation.EMERGE, ageInTicks);
+	public void setupAnim(StalkerRenderState state) {
+		super.setupAnim(state);
+		applyHeadRotation(state.yRot, state.xRot);
+		this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 3f, 2.5f);
+		this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
+		this.emergeAnimation.apply(state.emergeAnimationState, state.ageInTicks);
+		this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
+		this.ringAnimation.apply(state.ringAnimationState, state.ageInTicks);
 	}
 
-	private void applyHeadRotation(float netHeadYaw, float headPitch) {
-		netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
-		headPitch = Mth.clamp(headPitch, -25, 45);
-		this.head.yRot = netHeadYaw * ((float)Math.PI / 180f);
-		this.head.xRot = headPitch * ((float)Math.PI / 180f);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-	}
-
-	@Override
-	public ModelPart root() {
-		return this.root;
+	private void applyHeadRotation(float yRot, float xRot) {
+		yRot = Mth.clamp(yRot, -30, 30);
+		xRot = Mth.clamp(xRot, -25, 45);
+		this.head.yRot = yRot * ((float)Math.PI / 180f);
+		this.head.xRot = xRot * ((float)Math.PI / 180f);
 	}
 }

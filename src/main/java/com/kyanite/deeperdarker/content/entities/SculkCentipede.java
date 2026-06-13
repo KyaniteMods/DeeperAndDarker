@@ -1,11 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -16,13 +14,11 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import java.util.UUID;
-
 @SuppressWarnings("NullableProblems")
 public class SculkCentipede extends Monster implements NeutralMob {
     public final AnimationState attackState = new AnimationState();
-    private UUID angerTarget;
-    private int remainingAngerTime;
+    private EntityReference<LivingEntity> angerTarget;
+    private long remainingAngerTime;
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 30);
 
     public SculkCentipede(EntityType<? extends Monster> entityType, Level level) {
@@ -46,9 +42,9 @@ public class SculkCentipede extends Monster implements NeutralMob {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
-        level().broadcastEntityEvent(this, (byte) 4);
-        return super.doHurtTarget(entity);
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
+        this.level().broadcastEntityEvent(this, (byte) 4);
+        return super.doHurtTarget(level, target);
     }
 
     @Override
@@ -61,27 +57,27 @@ public class SculkCentipede extends Monster implements NeutralMob {
     }
 
     @Override
-    public int getRemainingPersistentAngerTime() {
+    public long getPersistentAngerEndTime() {
         return this.remainingAngerTime;
     }
 
     @Override
-    public void setRemainingPersistentAngerTime(int remainingPersistentAngerTime) {
-        this.remainingAngerTime = remainingPersistentAngerTime;
+    public void setPersistentAngerEndTime(long endTime) {
+        this.remainingAngerTime = endTime;
     }
 
     @Override
-    public UUID getPersistentAngerTarget() {
+    public EntityReference<LivingEntity> getPersistentAngerTarget() {
         return this.angerTarget;
     }
 
     @Override
-    public void setPersistentAngerTarget(UUID persistentAngerTarget) {
+    public void setPersistentAngerTarget(EntityReference<LivingEntity> persistentAngerTarget) {
         this.angerTarget = persistentAngerTarget;
     }
 
     @Override
     public void startPersistentAngerTimer() {
-        this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+        this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 }

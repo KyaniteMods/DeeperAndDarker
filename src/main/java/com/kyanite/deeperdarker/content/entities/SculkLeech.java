@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDSounds;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
@@ -42,10 +43,10 @@ public class SculkLeech extends Monster {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
+    public boolean doHurtTarget(ServerLevel level, Entity target) {
         this.level().broadcastEntityEvent(this, (byte) 4);
-        if (entity instanceof Player player) player.giveExperiencePoints(-4);
-        return super.doHurtTarget(entity);
+        if(target instanceof Player player && player.totalExperience > 1) player.giveExperiencePoints(-1);
+        return super.doHurtTarget(level, target);
     }
 
     @Override

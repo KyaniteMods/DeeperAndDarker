@@ -14,23 +14,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DDEntities {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, DeeperDarker.MOD_ID);
 
-
-    public static final DeferredHolder<EntityType<?>, EntityType<AnglerFish>> ANGLER_FISH = ENTITIES.register(
-            "angler_fish",
-            () -> EntityType.Builder.of(AnglerFish::new, MobCategory.WATER_CREATURE)
-                    .sized(0.7f, 0.4f)
-                    .eyeHeight(0.26f)
-                    .clientTrackingRange(10)
-                    .build(createKey("angler_fish"))
-    );
-    public static final DeferredHolder<EntityType<?>, EntityType<OvercastPot>> ANGER_POT = ENTITIES.register(
-            "anger_pot",
-            () -> EntityType.Builder.of(OvercastPot::new, MobCategory.MONSTER)
-                    .sized(1.25f, 0.9375f)
-                    .eyeHeight(0.4f)
-                    .clientTrackingRange(10)
-                    .build(createKey("anger_pot"))
-    );
     public static final DeferredHolder<EntityType<?>, EntityType<Boat>> BLOOM_BOAT = ENTITIES.register(
             "bloom_boat",
             () -> EntityType.Builder.<Boat>of((entityType, level) -> new Boat(entityType, level, DDItems.BLOOM_BOAT), MobCategory.MISC)
@@ -66,6 +49,23 @@ public class DDEntities {
                     .eyeHeight(0.5625f)
                     .clientTrackingRange(10)
                     .build(createKey("echo_chest_boat"))
+    );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<AnglerFish>> ANGLER_FISH = ENTITIES.register(
+            "angler_fish",
+            () -> EntityType.Builder.of(AnglerFish::new, MobCategory.WATER_CREATURE)
+                    .sized(0.7f, 0.4f)
+                    .eyeHeight(0.26f)
+                    .clientTrackingRange(10)
+                    .build(createKey("angler_fish"))
+    );
+    public static final DeferredHolder<EntityType<?>, EntityType<OvercastPot>> ANGER_POT = ENTITIES.register(
+            "anger_pot",
+            () -> EntityType.Builder.of(OvercastPot::new, MobCategory.MONSTER)
+                    .sized(1.25f, 0.9375f)
+                    .eyeHeight(0.4f)
+                    .clientTrackingRange(10)
+                    .build(createKey("anger_pot"))
     );
     public static final DeferredHolder<EntityType<?>, EntityType<OvercastPot>> FEAR_POT = ENTITIES.register(
             "fear_pot",

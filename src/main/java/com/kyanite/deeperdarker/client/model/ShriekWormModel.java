@@ -1,20 +1,28 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.ShriekWorm;
+import com.kyanite.deeperdarker.client.render.state.ShriekWormRenderState;
 import com.kyanite.deeperdarker.content.entities.animations.ShriekWormAnimation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 
 @SuppressWarnings("NullableProblems")
-public class ShriekWormModel extends HierarchicalModel<ShriekWorm> {
-	private final ModelPart root;
+public class ShriekWormModel extends EntityModel<ShriekWormRenderState> {
+	private final KeyframeAnimation attackAnimation;
+	private final KeyframeAnimation asleepAnimation;
+	private final KeyframeAnimation descendAnimation;
+	private final KeyframeAnimation emergeAnimation;
+	private final KeyframeAnimation idleAnimation;
 
 	public ShriekWormModel(ModelPart root) {
-		this.root = root;
+        super(root);
+		this.attackAnimation = ShriekWormAnimation.ATTACK.bake(root);
+		this.asleepAnimation = ShriekWormAnimation.ASLEEP.bake(root);
+		this.descendAnimation = ShriekWormAnimation.DESCEND.bake(root);
+		this.emergeAnimation = ShriekWormAnimation.EMERGE.bake(root);
+		this.idleAnimation = ShriekWormAnimation.IDLE.bake(root);
 	}
 
 	public static LayerDefinition createModel() {
@@ -117,22 +125,12 @@ public class ShriekWormModel extends HierarchicalModel<ShriekWorm> {
 	}
 
 	@Override
-	public void setupAnim(ShriekWorm entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
-		this.animate(entity.idleState, ShriekWormAnimation.IDLE, ageInTicks);
-		this.animate(entity.attackState, ShriekWormAnimation.ATTACK, ageInTicks);
-		this.animate(entity.asleepState, ShriekWormAnimation.ASLEEP, ageInTicks);
-		this.animate(entity.emergeState, ShriekWormAnimation.EMERGE, ageInTicks);
-		this.animate(entity.descendState, ShriekWormAnimation.DESCEND, ageInTicks);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-	}
-
-	@Override
-	public ModelPart root() {
-		return this.root;
+	public void setupAnim(ShriekWormRenderState state) {
+		super.setupAnim(state);
+		this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
+		this.asleepAnimation.apply(state.asleepAnimationState, state.ageInTicks);
+		this.descendAnimation.apply(state.descendAnimationState, state.ageInTicks);
+		this.emergeAnimation.apply(state.emergeAnimationState, state.ageInTicks);
+		this.idleAnimation.apply(state.idleAnimationState, state.ageInTicks);
 	}
 }

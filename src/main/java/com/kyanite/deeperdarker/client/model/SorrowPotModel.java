@@ -1,20 +1,20 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.OvercastPot;
 import com.kyanite.deeperdarker.content.entities.animations.OvercastPotAnimation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 
 @SuppressWarnings("NullableProblems")
-public class SorrowPotModel extends HierarchicalModel<OvercastPot> {
-    private final ModelPart root;
+public class SorrowPotModel extends EntityModel<LivingEntityRenderState> {
+    private final KeyframeAnimation walkAnimation;
 
     public SorrowPotModel(ModelPart root) {
-        this.root = root;
+        super(root);
+        this.walkAnimation = OvercastPotAnimation.SORROW_WALK.bake(root);
     }
 
     public static LayerDefinition createModel() {
@@ -31,18 +31,8 @@ public class SorrowPotModel extends HierarchicalModel<OvercastPot> {
     }
 
     @Override
-    public void setupAnim(OvercastPot entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.root.getAllParts().forEach(ModelPart::resetPose);
-        this.animateWalk(OvercastPotAnimation.SORROW_WALK, limbSwing, limbSwingAmount, 2.5f, 2.5f);
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-        root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-    }
-
-    @Override
-    public ModelPart root() {
-        return root;
+    public void setupAnim(LivingEntityRenderState state) {
+        super.setupAnim(state);
+        this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 2.5f, 2.5f);
     }
 }

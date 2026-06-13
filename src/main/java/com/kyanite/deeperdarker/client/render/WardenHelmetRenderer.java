@@ -1,45 +1,40 @@
 package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.client.ModModelLayers;
 import com.kyanite.deeperdarker.client.model.WardenHelmetModel;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("NullableProblems")
-public class WardenHelmetRenderer<E extends LivingEntity, M extends HumanoidModel<E>> extends RenderLayer<E, M> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.rl("warden"), "3");
-    private static final ResourceLocation TEXTURE = DeeperDarker.rl("textures/models/armor/warden_layer_3.png");
-    private final EntityModelSet model;
+public class WardenHelmetRenderer<S extends HumanoidRenderState, M extends HumanoidModel<S>> extends RenderLayer<S, M> {
+    private static final Identifier TEXTURE = DeeperDarker.rl("textures/models/armor/warden_layer_3.png");
+    private final WardenHelmetModel<S> model;
 
-    public WardenHelmetRenderer(RenderLayerParent<E, M> renderer, EntityModelSet modelSet) {
+    public WardenHelmetRenderer(RenderLayerParent<S, M> renderer, EntityModelSet modelSet) {
         super(renderer);
-        this.model = modelSet;
+        this.model = new WardenHelmetModel<>(modelSet.bakeLayer(ModModelLayers.WARDEN_HELMET));
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, E livingEntity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-        ItemStack stack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);
+    public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, S state, float yRot, float xRot) {
+        ItemStack stack = state.headEquipment;
         if(stack.is(DDItems.WARDEN_HELMET.get())) {
             poseStack.pushPose();
 
             poseStack.scale(1, 1, 1);
             this.getParentModel().getHead().translateAndRotate(poseStack);
-            WardenHelmetModel<E> helmetModel = new WardenHelmetModel<>(this.model.bakeLayer(MODEL));
-            helmetModel.renderToBuffer(poseStack, bufferSource.getBuffer(RenderType.armorCutoutNoCull(TEXTURE)), packedLight, OverlayTexture.NO_OVERLAY);
-
-            poseStack.popPose();
+            submitNodeCollector.submitModel(model, state, poseStack, RenderTypes.armorCutoutNoCull(TEXTURE), lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
         }
     }
 }

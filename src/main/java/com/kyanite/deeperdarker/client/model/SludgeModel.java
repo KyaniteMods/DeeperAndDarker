@@ -1,17 +1,14 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.Sludge;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 
-public class SludgeModel extends HierarchicalModel<Sludge> {
-	private final ModelPart root;
-
+public class SludgeModel extends EntityModel<LivingEntityRenderState> {
 	public SludgeModel(ModelPart root) {
-		this.root = root;
+        super(root);
 	}
 
 	public static LayerDefinition createInnerModel() {
@@ -33,14 +30,5 @@ public class SludgeModel extends HierarchicalModel<Sludge> {
 		parts.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		return LayerDefinition.create(mesh, 64, 32);
-	}
-
-	@Override
-	public @NotNull ModelPart root() {
-		return root;
-	}
-
-	@Override
-	public void setupAnim(@NotNull Sludge entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 	}
 }

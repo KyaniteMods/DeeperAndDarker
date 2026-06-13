@@ -1,23 +1,23 @@
 package com.kyanite.deeperdarker.client.model;
 
-import com.kyanite.deeperdarker.content.entities.AnglerFish;
+import com.kyanite.deeperdarker.client.render.state.AnglerFishRenderState;
 import com.kyanite.deeperdarker.content.entities.animations.AnglerFishAnimation;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.animation.KeyframeAnimation;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
-public class AnglerFishModel extends HierarchicalModel<AnglerFish> {
-	private final ModelPart root;
+public class AnglerFishModel extends EntityModel<AnglerFishRenderState> {
 	private final ModelPart body;
+	private final KeyframeAnimation attackAnimation;
 
 	public AnglerFishModel(ModelPart root) {
-		this.root = root;
+		super(root);
 		this.body = root.getChild("root").getChild("body");
+		this.attackAnimation = AnglerFishAnimation.BITE.bake(root);
 	}
 
 	public static LayerDefinition createModel() {
@@ -44,26 +44,16 @@ public class AnglerFishModel extends HierarchicalModel<AnglerFish> {
 	}
 
 	@Override
-	public void setupAnim(AnglerFish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.root.getAllParts().forEach(ModelPart::resetPose);
+	public void setupAnim(AnglerFishRenderState state) {
+		super.setupAnim(state);
 		float f = 1f;
 		float f1 = 1f;
-		if (!entity.isInWater()) {
+		if (!state.isInWater) {
 			f = 1.3f;
 			f1 = 1.7f;
 		}
 
-		this.body.yRot = -f * 0.25f * Mth.sin(f1 * 0.6f * ageInTicks);
-		this.animate(entity.attackState, AnglerFishAnimation.BITE, ageInTicks);
-	}
-
-	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-		root.getChild("root").render(poseStack, buffer, packedLight, packedOverlay, color);
-	}
-
-	@Override
-	public ModelPart root() {
-		return this.root;
+		this.body.yRot = -f * 0.25f * Mth.sin(f1 * 0.6f * state.ageInTicks);
+		this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
 	}
 }
