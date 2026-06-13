@@ -3,20 +3,20 @@ package com.kyanite.deeperdarker.client;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDDataAttachments;
 import com.kyanite.deeperdarker.content.data.PlayerData;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
-import net.neoforged.neoforge.client.model.data.ModelData;
-import org.jetbrains.annotations.NotNull;
+import net.neoforged.neoforge.client.gui.GuiLayer;
 
-public class OthersidePortalOverlay implements LayeredDraw.Layer {
+@SuppressWarnings("NullableProblems")
+public class OthersidePortalOverlay implements GuiLayer {
     @Override
-    public void render(@NotNull GuiGraphics guiGraphics, @NotNull DeltaTracker deltaTracker) {
+    public void render(GuiGraphicsExtractor guiGraphics, DeltaTracker deltaTracker) {
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer player = minecraft.player;
         if(player == null) return;
@@ -25,23 +25,15 @@ public class OthersidePortalOverlay implements LayeredDraw.Layer {
         float alpha = Mth.lerp(deltaTracker.getGameTimeDeltaPartialTick(false), data.oPortalIntensity, data.portalIntensity);
         if(alpha <= 0) return;
 
-        if(alpha < 1) {
+        if(alpha < 1f) {
             alpha *= alpha;
             alpha *= alpha;
             alpha = alpha * 0.8f + 0.2f;
         }
 
-        RenderSystem.disableDepthTest();
-        RenderSystem.depthMask(false);
-        RenderSystem.enableBlend();
-        guiGraphics.setColor(1f, 1f, 1f, alpha);
+        int color = ARGB.white(alpha);
 
-        TextureAtlasSprite atlas = minecraft.getBlockRenderer().getBlockModelShaper().getBlockModel(DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState()).getParticleIcon(ModelData.EMPTY);
-        guiGraphics.blit(0, 0, -90, guiGraphics.guiWidth(), guiGraphics.guiHeight(), atlas);
-
-        RenderSystem.disableBlend();
-        RenderSystem.depthMask(true);
-        RenderSystem.enableDepthTest();
-        guiGraphics.setColor(1f, 1f, 1f, 1f);
+        TextureAtlasSprite atlas = minecraft.getModelManager().getBlockStateModelSet().getParticleMaterial(DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState()).sprite();
+        guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, atlas, 0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight(), color);
     }
 }

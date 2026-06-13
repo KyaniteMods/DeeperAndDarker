@@ -1,29 +1,26 @@
 package com.kyanite.deeperdarker.client;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.ReceivingLevelScreen;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.screens.LevelLoadingScreen;
+import net.minecraft.client.multiplayer.LevelLoadTracker;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.neoforged.neoforge.client.model.data.ModelData;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.function.BooleanSupplier;
-
-public class OthersideReceivingLevelScreen extends ReceivingLevelScreen {
+public class OthersideReceivingLevelScreen extends LevelLoadingScreen {
     private TextureAtlasSprite cachedPortalSprite;
 
-    public OthersideReceivingLevelScreen(BooleanSupplier levelReceived, Reason reason) {
-        super(levelReceived, reason);
+    public OthersideReceivingLevelScreen(LevelLoadTracker loadTracker, Reason reason) {
+        super(loadTracker, reason);
     }
 
     @Override
-    public void renderBackground(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        guiGraphics.blit(0, 0, -90, guiGraphics.guiWidth(), guiGraphics.guiHeight(), portalSprite());
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+        graphics.blitSprite(RenderPipelines.GUI_OPAQUE_TEXTURED_BACKGROUND, portalSprite(), 0, 0, graphics.guiWidth(), graphics.guiHeight());
     }
 
     private TextureAtlasSprite portalSprite() {
-        if(cachedPortalSprite == null) cachedPortalSprite = Minecraft.getInstance().getBlockRenderer().getBlockModelShaper().getBlockModel(DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState()).getParticleIcon(ModelData.EMPTY);
+        if(cachedPortalSprite == null) cachedPortalSprite = this.minecraft.getModelManager().getBlockStateModelSet().getParticleMaterial(DDBlocks.OTHERSIDE_PORTAL.get().defaultBlockState()).sprite();
         return cachedPortalSprite;
     }
 }
