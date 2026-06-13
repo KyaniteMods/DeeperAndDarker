@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class DDEntities {
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, DeeperDarker.MOD_ID);
+    public static final DeferredRegister.Entities ENTITIES = DeferredRegister.createEntities(DeeperDarker.MOD_ID);
 
     public static final DeferredHolder<EntityType<?>, EntityType<Boat>> BLOOM_BOAT = ENTITIES.register(
             "bloom_boat",
