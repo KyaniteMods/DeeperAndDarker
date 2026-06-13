@@ -3,14 +3,14 @@ package com.kyanite.deeperdarker.datagen.data;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
-import com.kyanite.deeperdarker.content.recipes.GloomslatePotRecipe;
-import com.kyanite.deeperdarker.content.recipes.SculkTransmitterColoring;
+import com.kyanite.deeperdarker.content.misc.GloomslatePotRecipe;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -148,7 +148,7 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern(" S ").pattern("SGS").pattern(" S ")
                 .unlockedBy(getHasName(DDItems.SOUL_DUST), has(DDItems.SOUL_DUST)).save(output);
 
-        SpecialRecipeBuilder.special(GloomslatePotRecipe::new).save(output, DeeperDarker.rl("gloomslate_pot"));
+        SpecialRecipeBuilder.special(() -> new GloomslatePotRecipe(tag(DDTags.Items.GLOOMSLATE_SHERDS), new ItemStackTemplate(DDBlocks.GLOOMSLATE_POT_ITEM))).save(output, DeeperDarker.rl("gloomslate_pot").toString());
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DDItems.ANCIENT_COMPASS)
                 .define('A', DDItems.WARDEN_CARAPACE).define('C', Items.COMPASS)
@@ -171,7 +171,22 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         copySmithingTemplate(output, DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE, DDItems.RESONARIUM);
         copySmithingTemplate(output, DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, Blocks.SCULK);
 
-        SpecialRecipeBuilder.special(SculkTransmitterColoring::new).save(output, DeeperDarker.rl("sculk_transmitter_coloring"));
+        dyedSculkTransmitter(Items.WHITE_DYE, DDItems.WHITE_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.ORANGE_DYE, DDItems.ORANGE_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.MAGENTA_DYE, DDItems.MAGENTA_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.LIGHT_BLUE_DYE, DDItems.LIGHT_BLUE_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.YELLOW_DYE, DDItems.YELLOW_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.LIME_DYE, DDItems.LIME_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.PINK_DYE, DDItems.PINK_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.GRAY_DYE, DDItems.GRAY_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.LIGHT_GRAY_DYE, DDItems.LIGHT_GRAY_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.CYAN_DYE, DDItems.CYAN_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.PURPLE_DYE, DDItems.PURPLE_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.BLUE_DYE, DDItems.BLUE_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.BROWN_DYE, DDItems.BROWN_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.GREEN_DYE, DDItems.GREEN_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.RED_DYE, DDItems.RED_SCULK_TRANSMITTER);
+        dyedSculkTransmitter(Items.BLACK_DYE, DDItems.BLACK_SCULK_TRANSMITTER);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, DDItems.SONOROUS_STAFF)
                 .define('B', DDItems.SCULK_BONE).define('C', DDItems.SOUL_CRYSTAL).define('H', DDItems.HEART_OF_THE_DEEP)
@@ -365,14 +380,6 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         wardenSmithing(output, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, DDItems.WARDEN_BOOTS.get());
     }
 
-    private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
-    }
-
-    private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
-    }
-
     private void woodenRecipes(RecipeOutput output, TagKey<Item> logs, DeferredBlock<? extends Block> strippedLog, DeferredBlock<Block> planks, DeferredBlock<StairBlock> stairs, DeferredBlock<SlabBlock> slabs, DeferredBlock<FenceBlock> fence, DeferredBlock<FenceGateBlock> fenceGate, DeferredBlock<DoorBlock> door, DeferredBlock<TrapDoorBlock> trapDoor, DeferredBlock<PressurePlateBlock> pressurePlate, DeferredBlock<ButtonBlock> button, DeferredItem<Item> sign, DeferredItem<Item> hangingSign, DeferredItem<Item> boat, DeferredItem<Item> chestBoat) {
         planksFromLogs(output, planks, logs, 4);
         stairBuilder(stairs, Ingredient.of(planks)).unlockedBy("has_planks", has(planks)).save(output);
@@ -387,6 +394,10 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
         hangingSign(output, hangingSign, strippedLog);
         woodenBoat(output, boat, planks);
         chestBoat(output, chestBoat, boat);
+    }
+
+    private void dyedSculkTransmitter(Item dye, DeferredItem<Item> result) {
+        TransmuteRecipeBuilder.transmute(RecipeCategory.TOOLS, tag(DDTags.Items.TRANSMITTER), Ingredient.of(dye), result.get()).group("sculk_transmitter_dye").unlockedBy(getHasName(DDItems.SCULK_TRANSMITTER), has(DDItems.SCULK_TRANSMITTER)).save(output);
     }
 
     private void smelting(ItemLike ingredient, RecipeCategory category, ItemLike result, float experience, RecipeOutput output) {
@@ -415,5 +426,13 @@ public class DDRecipeProvider extends RecipeProvider implements IConditionBuilde
 
     private void stonecuttingRecipe(RecipeOutput output, ItemLike ingredient, ItemLike result, int count) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, result, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(output, DeeperDarker.rl(getConversionRecipeName(result, ingredient) + "_stonecutting"));
+    }
+
+    private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.RESONARIUM_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
+    }
+
+    private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, DeeperDarker.rl(getItemName(result) + "_smithing"));
     }
 }
