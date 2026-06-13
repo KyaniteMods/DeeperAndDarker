@@ -26,15 +26,15 @@ public class AddItemModifier extends LootModifier {
     private final int max;
 
     public AddItemModifier(LootItemCondition[] conditionsIn, Item item) {
-        this(conditionsIn, item, 1, 1);
+        this(conditionsIn, 0, item, 1, 1);
     }
 
     public AddItemModifier(LootItemCondition[] conditionsIn, Item item, int max) {
-        this(conditionsIn, item, 1, max);
+        this(conditionsIn, 0, item, 1, max);
     }
 
-    public AddItemModifier(LootItemCondition[] conditionsIn, Item item, int min, int max) {
-        super(conditionsIn);
+    public AddItemModifier(LootItemCondition[] conditionsIn, int priority, Item item, int min, int max) {
+        super(conditionsIn, priority);
         this.item = item;
         this.min = min;
         this.max = max;
