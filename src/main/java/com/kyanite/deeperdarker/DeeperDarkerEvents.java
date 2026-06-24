@@ -61,7 +61,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerContainerEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -132,7 +132,7 @@ public class DeeperDarkerEvents {
     }
 
     @SubscribeEvent
-    public static void breakEvent(final BlockEvent.BreakEvent event) {
+    public static void breakEvent(final BreakBlockEvent event) {
         Level level = (Level) event.getLevel();
         BlockState state = event.getState();
         BlockPos pos = event.getPos();

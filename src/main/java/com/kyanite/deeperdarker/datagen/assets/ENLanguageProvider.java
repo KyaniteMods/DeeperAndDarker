@@ -178,8 +178,7 @@ public class ENLanguageProvider extends LanguageProvider {
     }
 
     private boolean filter(DeferredHolder<?, ?> entry) {
-        if(entry.get() instanceof ItemName) return false;
-        if(entry.get() instanceof EntityType<?>) return entry == DDEntities.BOAT || entry == DDEntities.CHEST_BOAT || entry == DDEntities.ANGLER_FISH;
+        if(entry.get() instanceof EntityType<?>) return entry == DDEntities.BLOOM_BOAT || entry == DDEntities.BLOOM_CHEST_BOAT || entry == DDEntities.ECHO_BOAT || entry == DDEntities.ECHO_CHEST_BOAT || entry == DDEntities.ANGLER_FISH;
         return entry.get() instanceof BlockItem || entry.get() instanceof WallSignBlock || entry.get() instanceof WallHangingSignBlock;
     }
 
