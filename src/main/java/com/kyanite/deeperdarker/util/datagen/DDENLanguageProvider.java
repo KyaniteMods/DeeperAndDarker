@@ -414,6 +414,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.BUBBLOX, "Bubblox");
         translationBuilder.add(DDEntities.OVERSEER, "Overseer");
         translationBuilder.add(DDEntities.OVERSEER_CRYSTAL, "Overseer Crystal");
+        translationBuilder.add(DDEntities.OVERSEER_LASER, "Overseer Laser");
+        translationBuilder.add(DDEntities.FLOATER, "Floater");
 
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.FIZZY), "Tipped Arrow");
         translationBuilder.add(getPotion(Items.POTION, DDPotions.FIZZY), "Fizzy Potion");

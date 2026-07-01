@@ -147,9 +147,13 @@ public class OverseerLaser extends SyncedOwnedEntity {
 
     public void updatePosition() {
         if (getOwner() != null && !isDespawning()) {
-            Vec3 direction = Vec3.directionFromRotation(0.0f, getAngle());
-            setPos(getOwner().position().add(direction.scale(3.0)));
+            updatePosition(getOwner());
         }
+    }
+
+    public void updatePosition(@NotNull Entity owner) {
+        Vec3 direction = Vec3.directionFromRotation(0.0f, getAngle());
+        setPos(owner.position().add(direction.scale(3.0)));
     }
 
     @Override

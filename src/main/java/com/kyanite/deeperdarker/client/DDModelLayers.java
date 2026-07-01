@@ -37,6 +37,7 @@ public class DDModelLayers {
     public static ModelLayerLocation BUBBLOX;
     public static ModelLayerLocation OVERSEER;
     public static ModelLayerLocation OVERSEER_CRYSTAL;
+    public static ModelLayerLocation FLOATER;
     public static ModelLayerLocation SHATTERED_HEAD;
     public static ModelLayerLocation SUNGLASSES;
     public static ModelLayerLocation DEAD_MANS_CHEST;
@@ -95,6 +96,7 @@ public class DDModelLayers {
         BUBBLOX = registerMain("bubblox");
         OVERSEER = registerMain("overseer");
         OVERSEER_CRYSTAL = registerMain("overseer_crystal");
+        FLOATER = registerMain("floater");
         SHATTERED_HEAD = registerMain("shattered_head");
         SUNGLASSES = registerMain("sunglasses");
         DEAD_MANS_CHEST = registerMain("dead_mans_chest");

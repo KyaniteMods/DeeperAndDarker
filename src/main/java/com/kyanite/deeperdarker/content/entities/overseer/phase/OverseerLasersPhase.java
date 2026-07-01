@@ -64,6 +64,7 @@ public class OverseerLasersPhase extends OverseerPhase {
 
         for (int i = 0; i < lasers; i++) {
             OverseerLaser laser = new OverseerLaser(boss);
+            laser.updatePosition(boss);
             laser.setLasers(lasers);
             laser.setLaserIndex(i);
             laser.setRotationSpeed(10.0f);

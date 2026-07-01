@@ -40,6 +40,7 @@ public class DDEntities {
     public static final EntityType<AcidSprite> ACID_SPRITE = register("acid_sprite", FabricEntityTypeBuilder.create(MobCategory.MONSTER, AcidSprite::new).dimensions(EntityDimensions.fixed(0.5f, 0.6f)).trackRangeChunks(10).build());
     public static final EntityType<Bubblox> BUBBLOX = register("bubblox", FabricEntityTypeBuilder.<Bubblox>create(MobCategory.MONSTER, Bubblox::new).dimensions(EntityDimensions.fixed(1.0f, 1.0f)).trackRangeChunks(10).build());
     public static final EntityType<Overseer> OVERSEER = register("overseer", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Overseer::new).dimensions(EntityDimensions.fixed(2.0f, 2.0f)).trackRangeChunks(10).build());
+    public static final EntityType<Floater> FLOATER = register("floater", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Floater::new).dimensions(EntityDimensions.fixed(0.625f, 0.625f)).trackRangeChunks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -63,6 +64,7 @@ public class DDEntities {
         DefaultAttributeRegistryAccessor.getRegistry().put(OVERCAST_VESSEL, OvercastVessel.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(ACID_SPRITE, AcidSprite.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(OVERSEER, Overseer.createAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(FLOATER, Floater.createFloaterAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {

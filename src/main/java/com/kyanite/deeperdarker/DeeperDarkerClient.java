@@ -152,6 +152,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.BUBBLOX, BubbloxModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.OVERSEER, OverseerModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.OVERSEER_CRYSTAL, OverseerCrystalModel::createBodyModel);
+        EntityModelLayerRegistry.registerModelLayer(DDModelLayers.FLOATER, FloaterModel::createBodyModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SHATTERED_HEAD, ShatteredHeadModel::createHeadModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.SUNGLASSES, SunglassesModel::createModel);
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.DEAD_MANS_CHEST, ChestRenderer::createSingleBodyLayer);
@@ -180,6 +181,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.OVERSEER, OverseerRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER_CRYSTAL, OverseerCrystalRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER_LASER, OverseerLaserRenderer::new);
+        EntityRendererRegistry.register(DDEntities.FLOATER, FloaterRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {
