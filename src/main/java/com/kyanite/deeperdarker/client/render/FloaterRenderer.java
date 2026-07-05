@@ -12,18 +12,18 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 
 @SuppressWarnings("NullableProblems")
-public class FloaterRenderer<T extends Floater> extends EntityRenderer<T> {
+public class FloaterRenderer<T extends Floater> extends MobRenderer<T, EntityModel<T>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/floater.png");
-    private final EntityModel<T> model;
 
     public FloaterRenderer(EntityRendererProvider.Context context) {
-        super(context);
-        model = new FloaterModel<>(context.bakeLayer(DDModelLayers.FLOATER));
+        super(context, new FloaterModel<>(context.bakeLayer(DDModelLayers.FLOATER)), 0.0f);
     }
 
     @Override
@@ -34,17 +34,5 @@ public class FloaterRenderer<T extends Floater> extends EntityRenderer<T> {
     @Override
     protected int getBlockLightLevel(T entity, BlockPos blockPos) {
         return 15;
-    }
-
-    @Override
-    public void render(T entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
-        super.render(entity, f, g, poseStack, multiBufferSource, i);
-        poseStack.pushPose();
-        poseStack.translate(0.0f, entity.getBbHeight() / 2.0f, 0.0f);
-        poseStack.scale(-1.0f, -1.0f, 1.0f);
-        model.setupAnim(entity, g, 0.0f, 0.0f, 0.0f, 0.0f);
-        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureLocation(entity)));
-        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
-        poseStack.popPose();
     }
 }

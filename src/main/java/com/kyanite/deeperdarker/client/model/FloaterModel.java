@@ -25,15 +25,13 @@ public class FloaterModel<T extends Floater> extends EntityModel<T> {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition cube = partdefinition.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 10.0F, 10.0F, CubeDeformation.NONE), PartPose.ZERO);
+		PartDefinition cube = partdefinition.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 10.0F, 10.0F, CubeDeformation.NONE), PartPose.offset(0.0f, 19.0f, 0.0f));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
 	@Override
 	public void setupAnim(Floater entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		netHeadYaw = Mth.clamp(netHeadYaw, -30, 30);
-		headPitch = Mth.clamp(headPitch, -25, 45);
 		cube.yRot = netHeadYaw * ((float)Math.PI / 180f);
 		cube.xRot = headPitch * ((float)Math.PI / 180f);
 	}
