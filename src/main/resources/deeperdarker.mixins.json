@@ -25,7 +25,6 @@
     "EnrichedEchoLogItemBurnedMixin",
     "FlowingFluidToxicAirMixin",
     "HemophiliaFoodDataMixin",
-    "ItemModelGeneratorAccessor",
     "ItemModelGeneratorsAccessor",
     "ItemStackReinvokedMixin",
     "LivingEntityShieldMixin",
