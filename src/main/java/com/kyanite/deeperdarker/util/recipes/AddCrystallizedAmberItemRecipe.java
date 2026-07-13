@@ -19,10 +19,14 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
     @Override
     public Predicate<ItemStack> getFirst() {
         return stack -> {
-            if (stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) {
-                return !stack.hasTag() || !stack.getTag().contains("item") || !ItemStack.of(stack.getTag().getCompound("item")).isEmpty();
+            if (!stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) return false;
+            if (stack.hasTag() && stack.getTag().contains(BlockItem.BLOCK_ENTITY_TAG)) {
+                CompoundTag blockEntityTag = stack.getTag().getCompound(BlockItem.BLOCK_ENTITY_TAG);
+                if (blockEntityTag.contains("item")) {
+                    return ItemStack.of(blockEntityTag.getCompound("item")).isEmpty();
+                } else return !blockEntityTag.getBoolean("leech");
             }
-            return false;
+            return true;
         };
     }
 
