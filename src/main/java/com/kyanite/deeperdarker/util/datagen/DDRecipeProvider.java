@@ -262,6 +262,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         SpecialRecipeBuilder.special(DDRecipeSerializers.AUGMENT_SHIELD).save(output, "augment_shield");
         SpecialRecipeBuilder.special(DDRecipeSerializers.REMOVE_HORNS).save(output, "remove_horns");
         SpecialRecipeBuilder.special(DDRecipeSerializers.ADD_HORNS).save(output, "add_horns");
+        SpecialRecipeBuilder.special(DDRecipeSerializers.ADD_CRYSTALLIZED_AMBER_ITEM).save(output, "add_crystallized_amber_item");
     }
 
     private void addSmithingRecipes(Consumer<FinishedRecipe> output) {
