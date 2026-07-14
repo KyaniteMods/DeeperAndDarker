@@ -51,7 +51,7 @@ public class DeeperDarker implements ModInitializer {
 			.fromDimension(LevelStem.OVERWORLD)
 			.toDimension(OthersideGeneration.OTHERSIDE_STEM)
 			.color((5 << 16) | (98 << 8) | 93)
-			.replaceable(Blocks.AIR, Blocks.CAVE_AIR, Blocks.VOID_AIR, Blocks.SCULK_VEIN, DDBlocks.SCULK_FIRE)
+			.addReplaceable(Blocks.SCULK_VEIN)
 			.ambientSound(Holder.direct(DDSounds.PORTAL_GROAN))
 			.generatedSize(10, 6)
 			.register(new ResourceLocation(MOD_ID, "otherside"));;
