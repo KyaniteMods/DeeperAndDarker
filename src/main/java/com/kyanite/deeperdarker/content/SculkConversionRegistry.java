@@ -51,7 +51,9 @@ public final class SculkConversionRegistry {
     static {
         addCorruptionConversion(EntityType.ZOMBIE, directConversionToMob(DDEntities.SHATTERED));
         addCorruptionConversion(EntityType.SLIME, directConversionToMob(DDEntities.SLUDGE));
+        addCorruptionConversion(EntityType.VEX, directConversionToMob(DDEntities.FLOATER));
         addPurityConversion(DDEntities.SHATTERED, directConversionToMob(EntityType.ZOMBIE));
         addPurityConversion(DDEntities.SLUDGE, directConversionToMob(EntityType.SLIME));
+        addPurityConversion(DDEntities.FLOATER, directConversionToMob(EntityType.VEX));
     }
 }
