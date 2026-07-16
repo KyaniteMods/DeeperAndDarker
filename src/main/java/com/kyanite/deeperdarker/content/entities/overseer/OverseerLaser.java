@@ -61,7 +61,7 @@ public class OverseerLaser extends SyncedOwnedEntity {
 
         updatePosition();
 
-        if (getDespawnTime() <= 0) {
+        if (getDespawnTime() <= 0 || !hasOwner()) {
             discard();
             return;
         }

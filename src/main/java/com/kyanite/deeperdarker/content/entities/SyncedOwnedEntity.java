@@ -38,6 +38,11 @@ public abstract class SyncedOwnedEntity extends Entity implements TraceableEntit
     protected void defineSynchedData() {
     }
 
+    public boolean hasOwner() {
+        Entity owner = getOwner();
+        return owner != null && owner.isAlive();
+    }
+
     @Override
     @Nullable
     public Entity getOwner() {
