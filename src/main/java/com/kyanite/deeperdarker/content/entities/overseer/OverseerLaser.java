@@ -61,7 +61,7 @@ public class OverseerLaser extends SyncedOwnedEntity {
 
         updatePosition();
 
-        if (getDespawnTime() <= 0 || !hasOwner()) {
+        if (getDespawnTime() <= 0 || shouldDespawn()) {
             discard();
             return;
         }
@@ -83,6 +83,12 @@ public class OverseerLaser extends SyncedOwnedEntity {
     public float getAngle() {
         if (getOwner() == null) return 0.0f;
         return 360.0f / getLasers() * getLaserIndex() + Mth.wrapDegrees(level().getGameTime() * getRotationSpeed());
+    }
+
+    public boolean shouldDespawn() {
+        if (getOwnerUUID() == null) return false;
+        Entity owner = getOwner();
+        return owner != null && !owner.isAlive();
     }
 
     public void setDespawnTime(int value) {
