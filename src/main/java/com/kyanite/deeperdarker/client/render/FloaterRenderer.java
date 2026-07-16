@@ -20,7 +20,8 @@ import net.minecraft.world.entity.Entity;
 
 @SuppressWarnings("NullableProblems")
 public class FloaterRenderer<T extends Floater> extends MobRenderer<T, EntityModel<T>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/floater.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/floater/floater.png");
+    private static final ResourceLocation SPECIAL_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/floater/special_floater.png");
 
     public FloaterRenderer(EntityRendererProvider.Context context) {
         super(context, new FloaterModel<>(context.bakeLayer(DDModelLayers.FLOATER)), 0.0f);
@@ -28,7 +29,7 @@ public class FloaterRenderer<T extends Floater> extends MobRenderer<T, EntityMod
 
     @Override
     public ResourceLocation getTextureLocation(T entity) {
-        return TEXTURE;
+        return entity.isSpecial() ? SPECIAL_TEXTURE : TEXTURE;
     }
 
     @Override

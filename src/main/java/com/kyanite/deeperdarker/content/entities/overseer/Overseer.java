@@ -46,6 +46,7 @@ public class Overseer extends Monster {
         phaseManager = new OverseerPhaseManager(this, OverseerPhase.CODEC);
         xpReward = 50;
         setNoGravity(true);
+        setPersistenceRequired();
     }
 
     @Override

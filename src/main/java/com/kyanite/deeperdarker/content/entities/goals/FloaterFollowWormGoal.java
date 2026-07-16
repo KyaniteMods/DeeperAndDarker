@@ -17,12 +17,9 @@ import net.minecraft.world.phys.Vec3;
 public class FloaterFollowWormGoal
         extends Goal {
     public final Floater floater;
-    private double speedModifier;
-    private int distCheckCounter;
 
-    public FloaterFollowWormGoal(Floater floater, double d) {
+    public FloaterFollowWormGoal(Floater floater) {
         this.floater = floater;
-        this.speedModifier = d;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE));
     }
 
@@ -33,30 +30,12 @@ public class FloaterFollowWormGoal
 
     @Override
     public boolean canContinueToUse() {
-        if (!this.floater.inWorm() || !this.floater.getWormHead().isAlive()) {
-            return false;
-        }
-        double d = this.floater.distanceToSqr(this.floater.getWormHead());
-        if (d > 676.0) {
-            if (this.speedModifier <= 3.0) {
-                this.speedModifier *= 1.2;
-                this.distCheckCounter = reducedTickDelay(40);
-                return true;
-            }
-            if (this.distCheckCounter == 0) {
-                return false;
-            }
-        }
-        if (this.distCheckCounter > 0) {
-            --this.distCheckCounter;
-        }
-        return true;
+        return this.floater.inWorm() && this.floater.getWormHead().isAlive();
     }
 
     @Override
     public void stop() {
         this.floater.leaveWorm();
-        this.speedModifier = 2.1;
     }
 
     @Override
@@ -64,14 +43,12 @@ public class FloaterFollowWormGoal
         if (!this.floater.inWorm()) {
             return;
         }
-        if (this.floater.getLeashHolder() instanceof LeashFenceKnotEntity) {
-            return;
-        }
         Floater floater = this.floater.getWormHead();
         double d = this.floater.distanceTo(floater);
-        float f = 0.1f;
+        float f = 0.75f;
         Vec3 vec3 = new Vec3(floater.getX() - this.floater.getX(), floater.getY() - this.floater.getY(), floater.getZ() - this.floater.getZ()).normalize().scale(Math.max(d - f, 0.0));
-        this.floater.getMoveControl().setWantedPosition(this.floater.getX() + vec3.x, this.floater.getY() + vec3.y, this.floater.getZ() + vec3.z, this.speedModifier);
+        this.floater.moveTo(this.floater.getX() + vec3.x, this.floater.getY() + vec3.y, this.floater.getZ() + vec3.z);
+        this.floater.getLookControl().setLookAt(floater);
     }
 }
 

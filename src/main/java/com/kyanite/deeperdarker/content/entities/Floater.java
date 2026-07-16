@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.goals.FloaterFollowWormGoal;
-import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -23,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public class Floater extends Vex {
-    public static final EntityDataAccessor<Boolean> DATA_ID_WORM_HEAD = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> DATA_ID_SPECIAL = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
 
     @Nullable
     private Floater wormHead;
@@ -34,7 +33,7 @@ public class Floater extends Vex {
     private UUID wormHeadUUID;
 
     public static final String WORM_HEAD = "worm_head";
-    public static final String WORM_TAIL = "worm_tail";
+    public static final String SPECIAL = "special";
 
     public Floater(EntityType<? extends Vex> entityType, Level level) {
         super(entityType, level);
@@ -44,14 +43,14 @@ public class Floater extends Vex {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        goalSelector.addGoal(2, new FloaterFollowWormGoal(this, 1.0));
+        goalSelector.addGoal(2, new FloaterFollowWormGoal(this));
         removeAllGoals(goal -> goal instanceof LookAtPlayerGoal);
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        entityData.define(DATA_ID_WORM_HEAD, false);
+        entityData.define(DATA_ID_SPECIAL, false);
     }
 
     public static AttributeSupplier createFloaterAttributes() {
@@ -129,6 +128,7 @@ public class Floater extends Vex {
         if (size == 0) throw new IllegalArgumentException("Floater worm size should be more than 0");
         Floater last = DDEntities.FLOATER.create(level);
         if (last != null) {
+            last.setSpecial(true);
             last.moveTo(x, y, z);
             level.addFreshEntity(last);
         }
@@ -161,11 +161,22 @@ public class Floater extends Vex {
     }
 
     @Override
+    public int getMaxHeadXRot() {
+        return 90;
+    }
+
+    @Override
+    public int getMaxHeadYRot() {
+        return 90;
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         if (wormHeadUUID != null) {
             compoundTag.putUUID(WORM_HEAD, wormHeadUUID);
         }
+        compoundTag.putBoolean(SPECIAL, isSpecial());
     }
 
     @Override
@@ -174,5 +185,14 @@ public class Floater extends Vex {
         if (compoundTag.hasUUID(WORM_HEAD)) {
             wormHeadUUID = compoundTag.getUUID(WORM_HEAD);
         }
+        setSpecial(compoundTag.getBoolean(SPECIAL));
+    }
+
+    public void setSpecial(boolean value) {
+        entityData.set(DATA_ID_SPECIAL, value);
+    }
+
+    public boolean isSpecial() {
+        return entityData.get(DATA_ID_SPECIAL);
     }
 }
