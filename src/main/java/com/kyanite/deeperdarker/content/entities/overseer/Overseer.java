@@ -215,4 +215,17 @@ public class Overseer extends Monster {
             Overseer.this.phaseManager.tick();
         }
     }
+
+    @Override
+    public void push(Entity entity) {
+    }
+
+    @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public void knockback(double strength, double x, double z) {
+    }
 }

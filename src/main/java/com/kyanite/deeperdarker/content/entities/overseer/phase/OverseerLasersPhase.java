@@ -40,7 +40,7 @@ public class OverseerLasersPhase extends OverseerPhase {
         this.lasers = lasers;
         this.idleTime = idleTime;
         this.ticksLeft = ticksLeft;
-        this.laserListUUID = laserListUUID;
+        this.laserListUUID = new ArrayList<>(laserListUUID);
     }
 
     public OverseerLasersPhase(int lasers, int idleTime) {

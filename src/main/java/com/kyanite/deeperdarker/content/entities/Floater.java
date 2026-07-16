@@ -1,5 +1,14 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.entities.goals.FloaterFollowWormGoal;
+import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -9,8 +18,24 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 public class Floater extends Vex {
+    public static final EntityDataAccessor<Boolean> DATA_ID_WORM_HEAD = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
+
+    @Nullable
+    private Floater wormHead;
+    @Nullable
+    private Floater wormTail;
+
+    @Nullable
+    private UUID wormHeadUUID;
+
+    public static final String WORM_HEAD = "worm_head";
+    public static final String WORM_TAIL = "worm_tail";
+
     public Floater(EntityType<? extends Vex> entityType, Level level) {
         super(entityType, level);
         moveControl = new FloaterMoveControl(this);
@@ -19,7 +44,14 @@ public class Floater extends Vex {
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        goalSelector.addGoal(2, new FloaterFollowWormGoal(this, 1.0));
         removeAllGoals(goal -> goal instanceof LookAtPlayerGoal);
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        entityData.define(DATA_ID_WORM_HEAD, false);
     }
 
     public static AttributeSupplier createFloaterAttributes() {
@@ -39,13 +71,13 @@ public class Floater extends Vex {
 
         @Override
         public void tick() {
-            if (this.operation != MoveControl.Operation.MOVE_TO) {
+            if (this.operation != Operation.MOVE_TO) {
                 return;
             }
             Vec3 vec3 = new Vec3(this.wantedX - Floater.this.getX(), this.wantedY - Floater.this.getY(), this.wantedZ - Floater.this.getZ());
             double d = vec3.length();
             if (d < Floater.this.getBoundingBox().getSize()) {
-                this.operation = MoveControl.Operation.WAIT;
+                this.operation = Operation.WAIT;
                 Floater.this.setDeltaMovement(Floater.this.getDeltaMovement().scale(0.5));
             } else {
                 Floater.this.setDeltaMovement(Floater.this.getDeltaMovement().add(vec3.scale(this.speedModifier * 0.05 / d)));
@@ -53,6 +85,94 @@ public class Floater extends Vex {
 
             Floater.this.getLookControl().setLookAt(wantedX, wantedY, wantedZ);
             Floater.this.yBodyRot = Floater.this.getYRot();
+        }
+    }
+
+    public void leaveWorm() {
+        if (wormHead != null) {
+            wormHead.wormTail = null;
+        }
+        wormHead = null;
+        wormHeadUUID = null;
+    }
+
+    public void joinWorm(Floater floater) {
+        wormHeadUUID = floater.getUUID();
+        wormHead = floater;
+        wormHead.wormTail = this;
+    }
+
+    public boolean hasWormTail() {
+        return wormTail != null;
+    }
+
+    public boolean inWorm() {
+        return wormHeadUUID != null;
+    }
+
+    public boolean isWormHead() {
+        return hasWormTail() && !inWorm();
+    }
+
+    @Nullable
+    public Floater getWormHead() {
+        if (wormHead == null && wormHeadUUID != null && level() instanceof ServerLevel serverLevel) {
+            Entity head = serverLevel.getEntity(wormHeadUUID);
+            if (head instanceof Floater floater) {
+                joinWorm(floater);
+            }
+        }
+        return wormHead;
+    }
+
+    public static Floater generateWorm(int size, double x, double y, double z, ServerLevel level) {
+        if (size == 0) throw new IllegalArgumentException("Floater worm size should be more than 0");
+        Floater last = DDEntities.FLOATER.create(level);
+        if (last != null) {
+            last.moveTo(x, y, z);
+            level.addFreshEntity(last);
+        }
+        if (size == 1) return last;
+        for (int i = 0; i < size - 1; i++) {
+            Floater floater = DDEntities.FLOATER.create(level);
+            if (floater != null) {
+                floater.moveTo(x, y, z);
+                if (last != null) {
+                    floater.joinWorm(last);
+                }
+                last = floater;
+                level.addFreshEntity(floater);
+            }
+        }
+        return last;
+    }
+
+    @Override
+    public void push(Entity entity) {
+    }
+
+    @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public void knockback(double strength, double x, double z) {
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        if (wormHeadUUID != null) {
+            compoundTag.putUUID(WORM_HEAD, wormHeadUUID);
+        }
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        if (compoundTag.hasUUID(WORM_HEAD)) {
+            wormHeadUUID = compoundTag.getUUID(WORM_HEAD);
         }
     }
 }
