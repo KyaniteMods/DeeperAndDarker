@@ -378,6 +378,7 @@ public class DDBlocks {
     public static final Block VIRTUE_SOUL_FIRE = registerWithoutItem("virtue_soul_fire", new DDSoulFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).noCollission().instabreak().lightLevel(blockState -> 15).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY), () -> DDItems.VIRTUE_SOUL.getDefaultInstance()));
 
     public static final Block DEAD_MANS_CHEST = register("dead_mans_chest", new DeadMansChestBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_DEEPSLATE)));
+    public static final Block SCULK_ALTAR = register("sculk_altar", new SculkAltarBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
 
     public static final Block SHATTERED_HEAD = registerWithoutItem("shattered_head", new ShatteredHeadBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.CUSTOM_HEAD).strength(1.0f).pushReaction(PushReaction.DESTROY)));
     public static final Block SHATTERED_WALL_HEAD = registerWithoutItem("shattered_wall_head", new ShatteredWallHeadBlock(BlockBehaviour.Properties.of().strength(1.0f).dropsLike(SHATTERED_HEAD).pushReaction(PushReaction.DESTROY)));

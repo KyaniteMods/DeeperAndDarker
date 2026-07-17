@@ -249,6 +249,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.DEAD_MANS_CHEST, "Dead Man's Chest");
         translationBuilder.add(DeeperDarker.MOD_ID + ".container.dead_mans_chest", "Dead Man's Chest");
         translationBuilder.add(DeeperDarker.MOD_ID + ".container.double_dead_mans_chest", "Large Dead Man's Chest");
+        translationBuilder.add(DDBlocks.SCULK_ALTAR, "Sculk Altar");
 
         translationBuilder.add(DDItems.RESONARIUM, "Resonarium");
         translationBuilder.add(DDItems.RESONARIUM_HELMET, "Resonarium Helmet");

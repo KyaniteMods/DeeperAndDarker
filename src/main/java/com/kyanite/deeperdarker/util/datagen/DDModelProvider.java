@@ -308,6 +308,9 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.blockEntityModels(ModelLocationUtils.getModelLocation(DDBlocks.DEAD_MANS_CHEST), Blocks.POLISHED_DEEPSLATE).createWithoutBlockItem(DDBlocks.DEAD_MANS_CHEST);
 
+        blockModelGenerators.createNonTemplateModelBlock(DDBlocks.SCULK_ALTAR);
+        blockModelGenerators.delegateItemModel(DDBlocks.SCULK_ALTAR, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_ALTAR));
+
         blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 

@@ -254,6 +254,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
         dropSelf(DDBlocks.VIRTUE_SOUL_FIRE);
 
         dropSelf(DDBlocks.DEAD_MANS_CHEST);
+        dropSelf(DDBlocks.SCULK_ALTAR);
     }
 
     public LootTable.Builder createDoublePlantWithoutSeedDrops(Block largePlant, Block plant) {
