@@ -26,6 +26,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add("deeperdarker.discord", "Discord");
+
         translationBuilder.add("itemGroup.deeperdarker", "Deeper and Darker");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.applies_to", "Netherite Equipment");
         translationBuilder.add("item.deeperdarker.smithing_template.warden_upgrade.ingredients", "Reinforced Echo Shard");

@@ -9,7 +9,9 @@
 	],
 	"contact": {
 		"homepage": "https://kyanitemods.dev/",
-		"sources": "https://github.com/KyaniteMods/DeeperAndDarker"
+		"sources": "https://github.com/KyaniteMods/DeeperAndDarker",
+		"issues": "https://github.com/KyaniteMods/DeeperAndDarker/issues",
+		"discord": "https://discord.gg/GDNRd5yvxa"
 	},
 	"icon": "assets/deeperdarker/icon.png",
 	"license": "AGPL-3.0",
@@ -41,6 +43,11 @@
 			"net/minecraft/class_1297": [
 				"com/kyanite/deeperdarker/content/fluids/EntityInAcid"
 			]
+		},
+		"modmenu": {
+			"links": {
+				"deeperdarker.discord": "https://discord.gg/GDNRd5yvxa"
+			}
 		}
 	},
 	"accessWidener": "deeperdarker.accesswidener"
