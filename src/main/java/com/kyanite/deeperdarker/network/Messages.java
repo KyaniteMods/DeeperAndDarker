@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.SyncedOwnedEntity;
+import com.kyanite.deeperdarker.content.entities.blocks.SculkAltarBlockEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,8 +16,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.network.ServerGamePacketListenerImpl;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 public class Messages {
@@ -58,6 +62,34 @@ public class Messages {
             if (stack.getItem() instanceof SculkTransmitterItem) {
                 SculkTransmitterItem.actionBarMessage(player.level(), player, "linked", DDSounds.TRANSMITTER_LINK);
                 SculkTransmitterItem.formConnection(player.level(), stack, packet.blockPos());
+            }
+        });
+        ServerPlayNetworking.registerGlobalReceiver(RemoveSculkAltarItemPacket.TYPE, (packet, player, responseSender) -> {
+            ServerLevel level = player.serverLevel();
+            if (!level.getWorldBorder().isWithinBounds(player.blockPosition())) {
+                return;
+            }
+
+            if (player.getEyePosition().distanceToSqr(packet.blockPos().getCenter()) < ServerGamePacketListenerImpl.MAX_INTERACTION_DISTANCE && level.getBlockEntity(packet.blockPos()) instanceof SculkAltarBlockEntity sculkAltarBlockEntity) {
+                ItemStack stack = sculkAltarBlockEntity.remove(player, packet.item());
+                if (!stack.isEmpty()) {
+                    if (player.getMainHandItem().isEmpty()) {
+                        player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+                    } else if (!player.addItem(stack)) {
+                        player.drop(stack, false);
+                    }
+                }
+            }
+        });
+        ServerPlayNetworking.registerGlobalReceiver(AddSculkAltarItemPacket.TYPE, (packet, player, responseSender) -> {
+            ServerLevel level = player.serverLevel();
+            if (!level.getWorldBorder().isWithinBounds(player.blockPosition())) {
+                return;
+            }
+
+            if (player.getEyePosition().distanceToSqr(packet.blockPos().getCenter()) < ServerGamePacketListenerImpl.MAX_INTERACTION_DISTANCE && level.getBlockEntity(packet.blockPos()) instanceof SculkAltarBlockEntity sculkAltarBlockEntity) {
+                ItemStack stack = player.getInventory().getItem(packet.slot());
+                sculkAltarBlockEntity.placeStack(player, player.getAbilities().instabuild ? stack.copy() : stack);
             }
         });
     }

@@ -118,6 +118,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.DARK_FOUNTAIN, DarkFountainBlockRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.CAMPFIRE, CampfireRenderer::new);
         BlockEntityRenderers.register(DDBlockEntities.DEAD_MANS_CHEST, ChestRenderer::new);
+        BlockEntityRenderers.register(DDBlockEntities.SCULK_ALTAR, SculkAltarBlockRenderer::new);
         BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.DEAD_MANS_CHEST, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_DEAD_MANS_CHEST, matrices, vertexConsumers, light, overlay);
         });
