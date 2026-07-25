@@ -6,6 +6,8 @@
     "minecraft:bone",
     "minecraft:arrow",
     "minecraft:spider_eye",
+    "minecraft:ender_pearl",
+    "minecraft:string",
     "minecraft:stick",
     "minecraft:apple",
     "minecraft:azalea",
@@ -15,8 +17,19 @@
     "minecraft:big_dripleaf",
     "minecraft:small_dripleaf",
     "deeperdarker:resonarium",
+    "deeperdarker:blooming_stem",
+    "deeperdarker:bloom_berries",
     "minecraft:glow_ink_sac",
     "minecraft:ink_sac",
+    "minecraft:chicken",
+    "minecraft:mutton",
+    "minecraft:beef",
+    "minecraft:porkchop",
+    "minecraft:feather",
+    {
+      "id": "#minecraft:wool",
+      "required": false
+    },
     {
       "id": "#minecraft:saplings",
       "required": false

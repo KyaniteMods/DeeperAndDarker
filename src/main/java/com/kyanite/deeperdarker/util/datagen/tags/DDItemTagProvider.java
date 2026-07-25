@@ -137,7 +137,33 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(DDTags.Items.ALLOWS_ACID_SPRITE_TRADES, DDItems.RADIOACTIVE_HELMET, DDItems.RADIOACTIVE_CHESTPLATE, DDItems.RADIOACTIVE_LEGGINGS, DDItems.RADIOACTIVE_BOOTS);
         add(DDTags.Items.SHIELD_AUGMENT_ITEMS, DDItems.PATIENCE_SOUL, DDItems.FORTITUDE_SOUL, DDItems.CORRUPTION_SOUL, DDItems.PURITY_SOUL, DDItems.VIRTUE_SOUL);
 
-        add(DDTags.Items.CLUTTER_ITEMS, Items.EGG, Items.ROTTEN_FLESH, Items.BONE, Items.ARROW, Items.SPIDER_EYE, Items.STICK, Items.APPLE, Items.AZALEA, Items.FLOWERING_AZALEA, Items.MOSS_CARPET, Items.MOSS_BLOCK, Items.BIG_DRIPLEAF, Items.SMALL_DRIPLEAF, DDItems.RESONARIUM, Items.GLOW_INK_SAC, Items.INK_SAC)
+        add(DDTags.Items.CLUTTER_ITEMS,
+                Items.EGG,
+                Items.ROTTEN_FLESH,
+                Items.BONE,
+                Items.ARROW,
+                Items.SPIDER_EYE,
+                Items.ENDER_PEARL,
+                Items.STRING,
+                Items.STICK,
+                Items.APPLE,
+                Items.AZALEA,
+                Items.FLOWERING_AZALEA,
+                Items.MOSS_CARPET,
+                Items.MOSS_BLOCK,
+                Items.BIG_DRIPLEAF,
+                Items.SMALL_DRIPLEAF,
+                DDItems.RESONARIUM,
+                DDBlocks.BLOOMING_STEM.asItem(),
+                DDItems.BLOOM_BERRIES,
+                Items.GLOW_INK_SAC,
+                Items.INK_SAC,
+                Items.CHICKEN,
+                Items.MUTTON,
+                Items.BEEF,
+                Items.PORKCHOP,
+                Items.FEATHER)
+                .addOptionalTag(ItemTags.WOOL)
                 .addOptionalTag(ItemTags.SAPLINGS);
 
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
