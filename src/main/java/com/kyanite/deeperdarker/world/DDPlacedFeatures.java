@@ -11,6 +11,7 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -157,7 +158,7 @@ public class DDPlacedFeatures {
 
         PlacementUtils.register(context, DARK_FOUNTAIN_DISK, features.getOrThrow(DDConfiguredFeatures.DISK_DARK_FOUNTAIN), countPlacement(64, PlacementUtils.FULL_RANGE));
 
-        PlacementUtils.register(context, BLOOMING_PLANT, features.getOrThrow(DDConfiguredFeatures.PLANT_BLOOMING), CountOnEveryLayerPlacement.of(4), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.BLOOMING_STEM.defaultBlockState(), BlockPos.ZERO)));
+        PlacementUtils.register(context, BLOOMING_PLANT, features.getOrThrow(DDConfiguredFeatures.PLANT_BLOOMING), CountOnEveryLayerPlacement.of(4), BiomeFilter.biome(), BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(DDBlocks.BLOOMING_STEM.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(Direction.DOWN), true), BlockPos.ZERO)));
     }
 
     private static List<PlacementModifier> countPlacement(int attempts, PlacementModifier heightRange) {

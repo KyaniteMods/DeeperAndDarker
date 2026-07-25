@@ -144,22 +144,24 @@ public class BloomingStemBlock extends Block implements BonemealableBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        if(validBase(level.getBlockState(pos.below()))) return true;
+        if(state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(Direction.DOWN)) && validBase(level.getBlockState(pos.below()))) return true;
 
         for(Direction direction : Direction.Plane.HORIZONTAL) {
+            if (!state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) continue;
+
             BlockState adjacent = level.getBlockState(pos.relative(direction));
             BlockState belowAdjacent = level.getBlockState(pos.relative(direction).below());
-            if(isStem(adjacent) && validBase(belowAdjacent) && state.getValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction))) return true;
+            if(isStem(adjacent) && validBase(belowAdjacent)) return true;
         }
 
         return false;
     }
 
-    private boolean validBase(BlockState state) {
+    public boolean validBase(BlockState state) {
         return isStem(state) || state.is(DDBlocks.BLOOMING_SCULK_STONE);
     }
 
-    private boolean isStem(BlockState state) {
+    public boolean isStem(BlockState state) {
         return state.is(DDTags.Blocks.BLOOMING_STEMS);
     }
 
