@@ -170,6 +170,6 @@ public class DDPlacedFeatures {
     }
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, DeeperDarker.id(name));
     }
 }

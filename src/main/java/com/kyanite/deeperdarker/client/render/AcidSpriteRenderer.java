@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class AcidSpriteRenderer extends MobRenderer<AcidSprite, AcidSpriteModel<AcidSprite>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/acid_sprite.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/acid_sprite.png");
 
     public AcidSpriteRenderer(EntityRendererProvider.Context context) {
         super(context, new AcidSpriteModel<>(context.bakeLayer(DDModelLayers.ACID_SPRITE)), 0.25f);

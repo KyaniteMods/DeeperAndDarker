@@ -8,7 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 
 public class SoulElytraBoostPacket implements FabricPacket {
-    public static final PacketType<SoulElytraBoostPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "soul_elytra_boost"), SoulElytraBoostPacket::new);
+    public static final PacketType<SoulElytraBoostPacket> TYPE = PacketType.create(DeeperDarker.id("soul_elytra_boost"), SoulElytraBoostPacket::new);
 
     public SoulElytraBoostPacket(ByteBuf buf) {
     }

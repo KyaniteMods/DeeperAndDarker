@@ -61,9 +61,9 @@ public class DDBoatRenderer<T extends Entity & DDBoatLike> extends EntityRendere
 
     private static ResourceLocation getTexture(DDBoat.Type type, boolean chest) {
         if (chest) {
-            return new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/chest_boat/" + type.getName() + ".png");
+            return DeeperDarker.id("textures/entity/chest_boat/" + type.getName() + ".png");
         }
-        return new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/boat/" + type.getName() + ".png");
+        return DeeperDarker.id("textures/entity/boat/" + type.getName() + ".png");
     }
 
     private ListModel<Boat> createBoatModel(EntityRendererProvider.Context context, DDBoat.Type type) {

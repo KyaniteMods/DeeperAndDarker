@@ -24,8 +24,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    private static final ResourceLocation WARDEN_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_horns.png");
-    private static final ResourceLocation GUARDIAN_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/guardian_horns.png");
+    private static final ResourceLocation WARDEN_TEXTURE = DeeperDarker.id("textures/models/armor/warden_horns.png");
+    private static final ResourceLocation GUARDIAN_TEXTURE = DeeperDarker.id("textures/models/armor/guardian_horns.png");
 
     private final float scaleX;
     private final float scaleY;

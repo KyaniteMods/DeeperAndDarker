@@ -79,7 +79,7 @@ public class DDBlockEntities {
 
     public static <T extends BlockEntity> BlockEntityType<T> create(String id, FabricBlockEntityTypeBuilder<T> builder) {
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id);
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, id), builder.build(type));
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, DeeperDarker.id(id), builder.build(type));
     }
 
     public static void init() {

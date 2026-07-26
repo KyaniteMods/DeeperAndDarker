@@ -8,7 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 
 public class UseTransmitterPacket implements FabricPacket {
-    public static final PacketType<UseTransmitterPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "use_transmitter"), UseTransmitterPacket::new);
+    public static final PacketType<UseTransmitterPacket> TYPE = PacketType.create(DeeperDarker.id("use_transmitter"), UseTransmitterPacket::new);
 
     public UseTransmitterPacket(ByteBuf buf) {
     }

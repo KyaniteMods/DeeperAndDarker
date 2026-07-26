@@ -25,9 +25,9 @@ import java.util.Optional;
 
 @SuppressWarnings("NullableProblems")
 public class OverseerRenderer<T extends Overseer> extends MobRenderer<T, OverseerModel<T>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overseer/overseer.png");
-    private static final ResourceLocation TEXTURE_PURIFYING = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overseer/overseer_purifying.png");
-    private static final ResourceLocation TEXTURE_BEAM = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overseer/overseer_beam.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/overseer/overseer.png");
+    private static final ResourceLocation TEXTURE_PURIFYING = DeeperDarker.id("textures/entity/overseer/overseer_purifying.png");
+    private static final ResourceLocation TEXTURE_BEAM = DeeperDarker.id("textures/entity/overseer/overseer_beam.png");
     private static final RenderType BEAM = RenderType.entitySmoothCutout(TEXTURE_BEAM);
 
     public OverseerRenderer(EntityRendererProvider.Context context) {

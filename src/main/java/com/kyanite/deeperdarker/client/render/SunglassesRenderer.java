@@ -17,7 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
 public class SunglassesRenderer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/sunglasses.png");
+    public static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/sunglasses.png");
     private final SunglassesModel model;
 
     public SunglassesRenderer(RenderLayerParent<T, M> renderLayerParent, EntityModelSet pModelSet) {

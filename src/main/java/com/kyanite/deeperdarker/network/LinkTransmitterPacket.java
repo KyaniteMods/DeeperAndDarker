@@ -9,7 +9,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 
 public record LinkTransmitterPacket(int slot, BlockPos blockPos) implements FabricPacket {
-    public static final PacketType<LinkTransmitterPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "link_transmitter"), LinkTransmitterPacket::new);
+    public static final PacketType<LinkTransmitterPacket> TYPE = PacketType.create(DeeperDarker.id("link_transmitter"), LinkTransmitterPacket::new);
 
     public LinkTransmitterPacket(ByteBuf buf) {
         this(buf.readInt(), BlockPos.of(buf.readLong()));

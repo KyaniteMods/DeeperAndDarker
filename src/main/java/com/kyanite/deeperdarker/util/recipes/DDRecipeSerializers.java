@@ -17,7 +17,7 @@ public class DDRecipeSerializers {
     public static final RecipeSerializer<AddCrystallizedAmberItemRecipe> ADD_CRYSTALLIZED_AMBER_ITEM = register("crafting_special_addcrystallizedamberitem", new SimpleCraftingRecipeSerializer<>(AddCrystallizedAmberItemRecipe::new));
 
     public static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String string, S recipeSerializer) {
-        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, new ResourceLocation(DeeperDarker.MOD_ID, string), recipeSerializer);
+        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, DeeperDarker.id(string), recipeSerializer);
     }
 
     public static void init() {

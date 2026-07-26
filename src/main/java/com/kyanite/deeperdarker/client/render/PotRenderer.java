@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class PotRenderer extends MobRenderer<OvercastPot, HierarchicalModel<OvercastPot>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overcast_pot/pot.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/overcast_pot/pot.png");
 
     public PotRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new PotModel(pContext.bakeLayer(DDModelLayers.POT)), 0.5f);

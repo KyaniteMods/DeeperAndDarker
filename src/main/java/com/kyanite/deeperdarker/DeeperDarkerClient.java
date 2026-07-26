@@ -50,12 +50,12 @@ import net.minecraft.world.level.GameType;
 public class DeeperDarkerClient implements ClientModInitializer {
     public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand", "inventory");
     public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand_in_hand", "inventory");
-    public static final ResourceLocation ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_still");
-    public static final ResourceLocation FLOWING_ACID_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "block/acid_flow");
-    public static final ResourceLocation ACID_SCREEN_EFFECT_TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/misc/acid.png");
-    public static final Material DEAD_MANS_CHEST_LOCATION = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal"));
-    public static final Material DEAD_MANS_CHEST_LOCATION_RIGHT = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal_right"));
-    public static final Material DEAD_MANS_CHEST_LOCATION_LEFT = new Material(Sheets.CHEST_SHEET, new ResourceLocation(DeeperDarker.MOD_ID, "entity/chest/dead_mans_chest_normal_left"));
+    public static final ResourceLocation ACID_TEXTURE = DeeperDarker.id("block/acid_still");
+    public static final ResourceLocation FLOWING_ACID_TEXTURE = DeeperDarker.id("block/acid_flow");
+    public static final ResourceLocation ACID_SCREEN_EFFECT_TEXTURE = DeeperDarker.id("textures/misc/acid.png");
+    public static final Material DEAD_MANS_CHEST_LOCATION = new Material(Sheets.CHEST_SHEET, DeeperDarker.id("entity/chest/dead_mans_chest_normal"));
+    public static final Material DEAD_MANS_CHEST_LOCATION_RIGHT = new Material(Sheets.CHEST_SHEET, DeeperDarker.id("entity/chest/dead_mans_chest_normal_right"));
+    public static final Material DEAD_MANS_CHEST_LOCATION_LEFT = new Material(Sheets.CHEST_SHEET, DeeperDarker.id("entity/chest/dead_mans_chest_normal_left"));
     public static final DeadMansChestBlockEntity RENDER_DEAD_MANS_CHEST = new DeadMansChestBlockEntity(BlockPos.ZERO, DDBlocks.DEAD_MANS_CHEST.defaultBlockState());
 
     @Override
@@ -64,7 +64,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         Keybinds.init();
         FluidRenderHandlerRegistry.INSTANCE.register(DDFluids.ACID, DDFluids.FLOWING_ACID, new SimpleFluidRenderHandler(ACID_TEXTURE, FLOWING_ACID_TEXTURE));
 
-        DimensionRenderingRegistry.registerDimensionEffects(new ResourceLocation(DeeperDarker.MOD_ID, "otherside_effects"), new OthersideEffects());
+        DimensionRenderingRegistry.registerDimensionEffects(DeeperDarker.id("otherside_effects"), new OthersideEffects());
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 DDBlocks.ECHO_DOOR,
@@ -192,58 +192,58 @@ public class DeeperDarkerClient implements ClientModInitializer {
             }
         });
 
-        ItemProperties.register(DDItems.SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
             SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.WHITE_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.WHITE_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.ORANGE_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.ORANGE_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.MAGENTA_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.MAGENTA_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.LIGHT_BLUE_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.YELLOW_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.YELLOW_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.LIME_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.LIME_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.PINK_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.PINK_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.GRAY_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.GRAY_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.LIGHT_GRAY_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.CYAN_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.CYAN_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.PURPLE_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.PURPLE_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.BLUE_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.BLUE_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.BROWN_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.BROWN_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.GREEN_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.GREEN_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.RED_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.RED_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.BLACK_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.BLACK_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
-        ItemProperties.register(DDItems.SUPER_SCULK_TRANSMITTER, new ResourceLocation(DeeperDarker.MOD_ID, "linked"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.SUPER_SCULK_TRANSMITTER, DeeperDarker.id("linked"), (itemStack, worldClient, livingEntity, i) ->
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
 
@@ -251,15 +251,15 @@ public class DeeperDarkerClient implements ClientModInitializer {
             SoulElytraItem.isFlyEnabled(itemStack) ? 0 : 1
         );
 
-        ItemProperties.register(DDItems.SONOROUS_STAFF, new ResourceLocation(DeeperDarker.MOD_ID, "charge"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.SONOROUS_STAFF, DeeperDarker.id("charge"), (itemStack, worldClient, livingEntity, i) ->
             livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 128.0f : 0
         );
 
-        ItemProperties.register(DDItems.WARDEN_HELMET, new ResourceLocation(DeeperDarker.MOD_ID, "has_horns"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.WARDEN_HELMET, DeeperDarker.id("has_horns"), (itemStack, worldClient, livingEntity, i) ->
                 DDUtil.hasHorns(itemStack) ? 1 : 0
         );
 
-        ItemProperties.register(DDItems.GUARDIAN_HELMET, new ResourceLocation(DeeperDarker.MOD_ID, "has_horns"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.GUARDIAN_HELMET, DeeperDarker.id("has_horns"), (itemStack, worldClient, livingEntity, i) ->
                 DDUtil.hasHorns(itemStack) ? 1 : 0
         );
 
@@ -287,7 +287,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 return;
             }
 
-            ResourceLocation texture = new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/soul_elytra_overlay_large.png");
+            ResourceLocation texture = DeeperDarker.id("textures/gui/soul_elytra_overlay_large.png");
 
             ItemStack chest = client.player.getItemBySlot(EquipmentSlot.CHEST);
             if (chest.is(DDItems.SOUL_ELYTRA)) {

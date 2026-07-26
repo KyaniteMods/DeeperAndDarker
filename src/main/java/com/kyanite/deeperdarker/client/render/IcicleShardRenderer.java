@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class IcicleShardRenderer extends EntityRenderer<IcicleShard> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/icicle_shard.png");
+    public static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/icicle_shard.png");
 
     public IcicleShardRenderer(EntityRendererProvider.Context context) {
         super(context);

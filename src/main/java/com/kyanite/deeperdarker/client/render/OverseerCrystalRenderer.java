@@ -51,7 +51,7 @@ public class OverseerCrystalRenderer<T extends OverseerCrystal> extends EntityRe
                     .setLayeringState(RenderStateShard.VIEW_OFFSET_Z_LAYERING)
                     .createCompositeState(false));
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overseer/overseer_crystal.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/overseer/overseer_crystal.png");
     private final EntityModel<T> model;
 
     public OverseerCrystalRenderer(EntityRendererProvider.Context context) {

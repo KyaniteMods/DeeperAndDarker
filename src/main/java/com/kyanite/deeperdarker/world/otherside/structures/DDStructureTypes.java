@@ -13,7 +13,7 @@ public class DDStructureTypes {
     public static final StructureType<MazeStructure> MAZE = register("maze", MazeStructure.CODEC);
 
     private static <S extends Structure> StructureType<S> register(String string, Codec<S> codec) {
-        return Registry.register(BuiltInRegistries.STRUCTURE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, string), () -> codec);
+        return Registry.register(BuiltInRegistries.STRUCTURE_TYPE, DeeperDarker.id(string), () -> codec);
     }
 
     public static void init() {

@@ -128,14 +128,14 @@ public class DDPools {
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name, Holder<StructureProcessorList> processor) {
-        return projection -> new SinglePoolElement(Either.left(new ResourceLocation(DeeperDarker.MOD_ID, name)), processor, projection) {};
+        return projection -> new SinglePoolElement(Either.left(DeeperDarker.id(name)), processor, projection) {};
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name) {
-        return projection -> new SinglePoolElement(Either.left(new ResourceLocation(DeeperDarker.MOD_ID, name)), Holder.direct(new StructureProcessorList(List.of())), projection) {};
+        return projection -> new SinglePoolElement(Either.left(DeeperDarker.id(name)), Holder.direct(new StructureProcessorList(List.of())), projection) {};
     }
 
     public static ResourceKey<StructureTemplatePool> createKey(String name) {
-        return ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.TEMPLATE_POOL, DeeperDarker.id(name));
     }
 }

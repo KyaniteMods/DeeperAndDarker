@@ -170,16 +170,16 @@ public class DDItems {
     public static final Item SHIELD_AUGMENT = register("shield_augment", new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     public static Item register(String id, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(DeeperDarker.MOD_ID, id), item);
+        return Registry.register(BuiltInRegistries.ITEM, DeeperDarker.id(id), item);
     }
 
     private static Item createWardenUpgradeSmithingTemplate() {
         return new SmithingTemplateItem(
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(DeeperDarker.MOD_ID, "warden_upgrade"))).withStyle(ChatFormatting.GRAY),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.base_slot_description"))),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.warden_upgrade.additions_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("upgrade", DeeperDarker.id("warden_upgrade"))).withStyle(ChatFormatting.GRAY),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.base_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.warden_upgrade.additions_slot_description"))),
                 getWardenEmptyBaseSlotTextures(),
                 getWardenEmptyAdditionsSlotTextures());
     }
@@ -197,16 +197,16 @@ public class DDItems {
     }
 
     private static List<ResourceLocation> getWardenEmptyAdditionsSlotTextures() {
-        return List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_reinforced_echo_shard"));
+        return List.of(DeeperDarker.id("item/empty_slot_reinforced_echo_shard"));
     }
 
     private static Item createGuardianUpgradeSmithingTemplate() {
         return new SmithingTemplateItem(
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.guardian_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.guardian_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
-                Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(DeeperDarker.MOD_ID, "guardian_upgrade"))).withStyle(ChatFormatting.GRAY),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.guardian_upgrade.base_slot_description"))),
-                Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(DeeperDarker.MOD_ID, "smithing_template.guardian_upgrade.additions_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.guardian_upgrade.applies_to"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.guardian_upgrade.ingredients"))).withStyle(ChatFormatting.BLUE),
+                Component.translatable(Util.makeDescriptionId("upgrade", DeeperDarker.id("guardian_upgrade"))).withStyle(ChatFormatting.GRAY),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.guardian_upgrade.base_slot_description"))),
+                Component.translatable(Util.makeDescriptionId("item", DeeperDarker.id("smithing_template.guardian_upgrade.additions_slot_description"))),
                 getGuardianEmptyBaseSlotTextures(),
                 getGuardianEmptyAdditionsSlotTextures());
     }
@@ -224,7 +224,7 @@ public class DDItems {
     }
 
     private static List<ResourceLocation> getGuardianEmptyAdditionsSlotTextures() {
-        return List.of(new ResourceLocation(DeeperDarker.MOD_ID, "item/empty_slot_virtue_soul"));
+        return List.of(DeeperDarker.id("item/empty_slot_virtue_soul"));
     }
 
     public static void init() {

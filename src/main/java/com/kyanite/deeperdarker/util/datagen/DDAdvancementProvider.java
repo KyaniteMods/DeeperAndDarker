@@ -36,7 +36,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Blocks.SCULK,
                         Component.translatable(id + "root.title"),
                         Component.translatable(id + "root.description"),
-                        new ResourceLocation(DeeperDarker.MOD_ID, "textures/gui/advancements/root.png"),
+                        DeeperDarker.id("textures/gui/advancements/root.png"),
                         FrameType.TASK,
                         false,
                         false,
@@ -291,6 +291,6 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
     }
 
     private String path(String name) {
-        return new ResourceLocation(DeeperDarker.MOD_ID, "main/" + name).toString();
+        return DeeperDarker.id("main/" + name).toString();
     }
 }

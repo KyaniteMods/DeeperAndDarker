@@ -23,7 +23,7 @@ public class DDPotions {
             DDEffects.PURITY, 1)));
 
     private static Potion register(String id, Potion potion) {
-        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(DeeperDarker.MOD_ID, id), potion);
+        return Registry.register(BuiltInRegistries.POTION, DeeperDarker.id(id), potion);
     }
 
     public static void init() {

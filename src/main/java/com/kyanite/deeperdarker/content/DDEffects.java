@@ -78,7 +78,7 @@ public class DDEffects {
     });
 
     private static MobEffect register(String id, MobEffect mobEffect) {
-        return Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(DeeperDarker.MOD_ID, id), mobEffect);
+        return Registry.register(BuiltInRegistries.MOB_EFFECT, DeeperDarker.id(id), mobEffect);
     }
 
     public static void init() {

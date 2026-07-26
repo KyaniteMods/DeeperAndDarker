@@ -58,6 +58,6 @@ public class DDProcessorLists {
     }
 
     private static ResourceKey<StructureProcessorList> createKey(String name) {
-        return ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.PROCESSOR_LIST, DeeperDarker.id(name));
     }
 }

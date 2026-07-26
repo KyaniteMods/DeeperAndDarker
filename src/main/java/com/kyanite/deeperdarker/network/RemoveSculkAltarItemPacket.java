@@ -9,7 +9,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 
 public record RemoveSculkAltarItemPacket(int item, BlockPos blockPos) implements FabricPacket {
-    public static final PacketType<RemoveSculkAltarItemPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "remove_sculk_altar_item"), RemoveSculkAltarItemPacket::new);
+    public static final PacketType<RemoveSculkAltarItemPacket> TYPE = PacketType.create(DeeperDarker.id("remove_sculk_altar_item"), RemoveSculkAltarItemPacket::new);
 
     public RemoveSculkAltarItemPacket(ByteBuf buf) {
         this(buf.readInt(), BlockPos.of(buf.readLong()));

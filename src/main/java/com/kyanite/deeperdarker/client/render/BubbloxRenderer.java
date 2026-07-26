@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class BubbloxRenderer<T extends Bubblox> extends EntityRenderer<T> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/bubblox.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/bubblox.png");
     private final EntityModel<T> model;
 
     public BubbloxRenderer(EntityRendererProvider.Context context) {

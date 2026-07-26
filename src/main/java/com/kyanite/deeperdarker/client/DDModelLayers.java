@@ -58,7 +58,7 @@ public class DDModelLayers {
     }
 
     private static ModelLayerLocation create(String id, String layer) {
-        return new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, id), layer);
+        return new ModelLayerLocation(DeeperDarker.id(id), layer);
     }
 
     public static ModelLayerLocation createBoat(String type) {

@@ -73,11 +73,11 @@ public class DDCarvers {
     }
 
     private static <T extends CarverConfiguration> WorldCarver<T> register(String id, WorldCarver<T> carver) {
-        return Registry.register(BuiltInRegistries.CARVER, new ResourceLocation(DeeperDarker.MOD_ID, id), carver);
+        return Registry.register(BuiltInRegistries.CARVER, DeeperDarker.id(id), carver);
     }
 
     private static ResourceKey<ConfiguredWorldCarver<?>> createKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_CARVER, new ResourceLocation(DeeperDarker.MOD_ID, name));
+        return ResourceKey.create(Registries.CONFIGURED_CARVER, DeeperDarker.id(name));
     }
 
     public static void init() {

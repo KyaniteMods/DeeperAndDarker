@@ -10,8 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class SculkCentipedeRenderer extends MobRenderer<SculkCentipede, SculkCentipedeModel> {
-    public static final ModelLayerLocation MODEL = new ModelLayerLocation(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_centipede"), "main");
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/sculk_centipede.png");
+    public static final ModelLayerLocation MODEL = new ModelLayerLocation(DeeperDarker.id("sculk_centipede"), "main");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/sculk_centipede.png");
 
     public SculkCentipedeRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new SculkCentipedeModel(pContext.bakeLayer(MODEL)), 0.6f);

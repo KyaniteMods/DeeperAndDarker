@@ -21,7 +21,7 @@ public class DDStructurePieceTypes {
     public static final StructurePieceType CREEPER_ROOM_PIECE = contextless(MazeStructurePieces.CreeperRoomPiece::new, "creeper_room_piece");
 
     private static StructurePieceType contextless(StructurePieceType.ContextlessType structurePieceType, String string) {
-        return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(DeeperDarker.MOD_ID, string), structurePieceType);
+        return Registry.register(BuiltInRegistries.STRUCTURE_PIECE, DeeperDarker.id(string), structurePieceType);
     }
 
     public static void init() {

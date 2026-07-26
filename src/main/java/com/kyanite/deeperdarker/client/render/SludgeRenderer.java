@@ -13,7 +13,7 @@ import net.minecraft.util.Mth;
 
 @SuppressWarnings("NullableProblems")
 public class SludgeRenderer extends MobRenderer<Sludge, SludgeModel> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/sludge.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/sludge.png");
 
     public SludgeRenderer(EntityRendererProvider.Context context) {
         super(context, new SludgeModel(context.bakeLayer(DDModelLayers.SLUDGE)), 0.25f);

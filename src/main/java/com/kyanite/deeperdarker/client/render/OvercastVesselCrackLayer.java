@@ -21,7 +21,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class OvercastVesselCrackLayer<E extends OvercastVessel, M extends EntityModel<E>> extends RenderLayer<E, M> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overcast_vessel/overcast_vessel_crack.png");
+    public static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/overcast_vessel/overcast_vessel_crack.png");
 
     public OvercastVesselCrackLayer(RenderLayerParent<E, M> renderLayerParent) {
         super(renderLayerParent);

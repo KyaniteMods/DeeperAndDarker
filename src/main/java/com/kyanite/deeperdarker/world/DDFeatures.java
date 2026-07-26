@@ -24,7 +24,7 @@ public class DDFeatures {
     public static final Feature<FloesFeatureConfiguration> FLOES = register("floes", new FloesFeature(FloesFeatureConfiguration.CODEC));
 
     private static <FC extends FeatureConfiguration> Feature<FC> register(String id, Feature<FC> feature) {
-        return Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(DeeperDarker.MOD_ID, id), feature);
+        return Registry.register(BuiltInRegistries.FEATURE, DeeperDarker.id(id), feature);
     }
 
     public static void init() {

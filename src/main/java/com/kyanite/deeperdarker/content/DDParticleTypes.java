@@ -21,7 +21,7 @@ public class DDParticleTypes {
     public static final SimpleParticleType LANDING_ACID = register("landing_acid", FabricParticleTypes.simple());
 
     private static <U extends ParticleOptions, T extends ParticleType<U>> T register(String id, T particleType) {
-        return Registry.register(BuiltInRegistries.PARTICLE_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, id), particleType);
+        return Registry.register(BuiltInRegistries.PARTICLE_TYPE, DeeperDarker.id(id), particleType);
     }
 
     public static void init() {

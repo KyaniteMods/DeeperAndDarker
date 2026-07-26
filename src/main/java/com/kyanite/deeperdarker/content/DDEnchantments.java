@@ -18,6 +18,6 @@ public class DDEnchantments {
     }
 
     private static Enchantment register(String id, Enchantment enchantment) {
-        return Registry.register(BuiltInRegistries.ENCHANTMENT, new ResourceLocation(DeeperDarker.MOD_ID, id), enchantment);
+        return Registry.register(BuiltInRegistries.ENCHANTMENT, DeeperDarker.id(id), enchantment);
     }
 }

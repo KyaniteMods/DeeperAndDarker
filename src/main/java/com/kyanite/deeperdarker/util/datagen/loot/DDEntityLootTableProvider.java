@@ -29,21 +29,21 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.function.BiConsumer;
 
 public class DDEntityLootTableProvider extends SimpleFabricLootTableProvider {
-    public static final ResourceLocation ANGLER_FISH = new ResourceLocation(DeeperDarker.MOD_ID, "entities/angler_fish");
-    public static final ResourceLocation SCULK_CENTIPEDE = new ResourceLocation(DeeperDarker.MOD_ID, "entities/sculk_centipede");
-    public static final ResourceLocation SCULK_LEECH = new ResourceLocation(DeeperDarker.MOD_ID, "entities/sculk_leech");
-    public static final ResourceLocation SCULK_SNAPPER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/sculk_snapper");
-    public static final ResourceLocation SHATTERED = new ResourceLocation(DeeperDarker.MOD_ID, "entities/shattered");
-    public static final ResourceLocation SHRIEK_WORM = new ResourceLocation(DeeperDarker.MOD_ID, "entities/shriek_worm");
+    public static final ResourceLocation ANGLER_FISH = DeeperDarker.id("entities/angler_fish");
+    public static final ResourceLocation SCULK_CENTIPEDE = DeeperDarker.id("entities/sculk_centipede");
+    public static final ResourceLocation SCULK_LEECH = DeeperDarker.id("entities/sculk_leech");
+    public static final ResourceLocation SCULK_SNAPPER = DeeperDarker.id("entities/sculk_snapper");
+    public static final ResourceLocation SHATTERED = DeeperDarker.id("entities/shattered");
+    public static final ResourceLocation SHRIEK_WORM = DeeperDarker.id("entities/shriek_worm");
     public static final ResourceLocation SLUDGE = BuiltInRegistries.ENTITY_TYPE.getKey(DDEntities.SLUDGE).withPrefix("entities/");
-    public static final ResourceLocation STALKER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/stalker");
-    public static final ResourceLocation BLOOMING_GOLEM = new ResourceLocation(DeeperDarker.MOD_ID, "entities/blooming_golem");
-    public static final ResourceLocation POTTY = new ResourceLocation(DeeperDarker.MOD_ID, "entities/potty");
-    public static final ResourceLocation POT = new ResourceLocation(DeeperDarker.MOD_ID, "entities/pot");
-    public static final ResourceLocation POTTER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/potter");
-    public static final ResourceLocation OVERCAST_VESSEL = new ResourceLocation(DeeperDarker.MOD_ID, "entities/overcast_vessel");
-    public static final ResourceLocation ACID_SPRITE = new ResourceLocation(DeeperDarker.MOD_ID, "entities/acid_sprite");
-    public static final ResourceLocation OVERSEER = new ResourceLocation(DeeperDarker.MOD_ID, "entities/overseer");
+    public static final ResourceLocation STALKER = DeeperDarker.id("entities/stalker");
+    public static final ResourceLocation BLOOMING_GOLEM = DeeperDarker.id("entities/blooming_golem");
+    public static final ResourceLocation POTTY = DeeperDarker.id("entities/potty");
+    public static final ResourceLocation POT = DeeperDarker.id("entities/pot");
+    public static final ResourceLocation POTTER = DeeperDarker.id("entities/potter");
+    public static final ResourceLocation OVERCAST_VESSEL = DeeperDarker.id("entities/overcast_vessel");
+    public static final ResourceLocation ACID_SPRITE = DeeperDarker.id("entities/acid_sprite");
+    public static final ResourceLocation OVERSEER = DeeperDarker.id("entities/overseer");
 
     public DDEntityLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.ENTITY);

@@ -30,7 +30,7 @@ import java.util.Map;
 public abstract class ShatteredHeadRenderMixin {
     @Inject(method = "method_3580", at = @At("TAIL"))
     private static void addModel(HashMap<SkullBlock.Type, ResourceLocation> hashMap, CallbackInfo ci) {
-        hashMap.put(ShatteredHeadBlock.SHATTERED, new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/shattered.png"));
+        hashMap.put(ShatteredHeadBlock.SHATTERED, DeeperDarker.id("textures/entity/shattered.png"));
     }
 
     @Inject(method = "createSkullRenderers", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;", shift = At.Shift.BEFORE))

@@ -17,7 +17,7 @@ import net.minecraft.world.entity.HumanoidArm;
 
 public class WardenBacktankFirstPersonRenderer {
     private static final ResourceLocation BACKTANK_ARMOR_LOCATION =
-            new ResourceLocation(DeeperDarker.MOD_ID, "textures/models/armor/warden_diving_arm.png");
+            DeeperDarker.id("textures/models/armor/warden_diving_arm.png");
 
     private static boolean rendererActive = false;
 

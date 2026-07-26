@@ -49,16 +49,16 @@ public class DDCreateCompat {
     }
 
     public static class Items {
-        public static final ItemEntry<? extends DivingHelmetItem> WARDEN_DIVING_HELMET = REGISTRATE.item("warden_diving_helmet", (properties) -> new DivingHelmetItem(DDArmorMaterials.WARDEN, properties, new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving")))
+        public static final ItemEntry<? extends DivingHelmetItem> WARDEN_DIVING_HELMET = REGISTRATE.item("warden_diving_helmet", (properties) -> new DivingHelmetItem(DDArmorMaterials.WARDEN, properties, DeeperDarker.id("warden_diving")))
                 .properties(p -> p.fireResistant().rarity(Rarity.RARE))
                 .register();
-        public static final ItemEntry<? extends DivingBootsItem> WARDEN_DIVING_BOOTS = REGISTRATE.item("warden_diving_boots", (properties) -> new DivingBootsItem(DDArmorMaterials.WARDEN, properties, new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving")))
+        public static final ItemEntry<? extends DivingBootsItem> WARDEN_DIVING_BOOTS = REGISTRATE.item("warden_diving_boots", (properties) -> new DivingBootsItem(DDArmorMaterials.WARDEN, properties, DeeperDarker.id("warden_diving")))
                 .properties(p -> p.fireResistant().rarity(Rarity.RARE))
                 .register();
         public static final ItemEntry<BacktankItem.BacktankBlockItem> WARDEN_BACKTANK_PLACEABLE = REGISTRATE.item("warden_backtank_placeable", (properties) -> new BacktankItem.BacktankBlockItem(Blocks.WARDEN_BACKTANK, Items.WARDEN_BACKTANK::get, properties))
                 .properties(p -> p.fireResistant().rarity(Rarity.RARE))
                 .register();
-        public static final ItemEntry<? extends BacktankItem> WARDEN_BACKTANK = REGISTRATE.item("warden_backtank", (properties) -> new BacktankItem.Layered(DDArmorMaterials.WARDEN, properties, new ResourceLocation(DeeperDarker.MOD_ID, "warden_diving"), WARDEN_BACKTANK_PLACEABLE))
+        public static final ItemEntry<? extends BacktankItem> WARDEN_BACKTANK = REGISTRATE.item("warden_backtank", (properties) -> new BacktankItem.Layered(DDArmorMaterials.WARDEN, properties, DeeperDarker.id("warden_diving"), WARDEN_BACKTANK_PLACEABLE))
                 .properties(p -> p.fireResistant().rarity(Rarity.RARE).durability(-1))
                 .register();
 

@@ -13,7 +13,7 @@ public class DDFluids {
     public static final FlowingFluid FLOWING_ACID = register("flowing_acid", new AcidFluid.Flowing());
 
     private static <T extends Fluid> T register(String id, T fluid) {
-        return Registry.register(BuiltInRegistries.FLUID, new ResourceLocation(DeeperDarker.MOD_ID, id), fluid);
+        return Registry.register(BuiltInRegistries.FLUID, DeeperDarker.id(id), fluid);
     }
 
     public static void init() {

@@ -54,7 +54,7 @@ public class DeeperDarker implements ModInitializer {
 			.addReplaceable(Blocks.SCULK_VEIN)
 			.ambientSound(Holder.direct(DDSounds.PORTAL_GROAN))
 			.generatedSize(10, 6)
-			.register(new ResourceLocation(MOD_ID, "otherside"));;
+			.register(id("otherside"));
 
 	@Override
 	public void onInitialize() {
@@ -126,5 +126,9 @@ public class DeeperDarker implements ModInitializer {
 		}
 
 		Messages.registerReceivers();
+	}
+
+	public static ResourceLocation id(String key) {
+		return new ResourceLocation(MOD_ID, key);
 	}
 }

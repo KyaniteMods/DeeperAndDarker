@@ -13,7 +13,7 @@ public class DDLootItemFunctions {
     public static final LootItemFunctionType SET_PAINTING_VARIANT = register("set_painting_variant", new SetPaintingVariantFunction.Serializer());
 
     private static LootItemFunctionType register(String string, LootItemConditionalFunction.Serializer<? extends LootItemFunction> serializer) {
-        return Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, new ResourceLocation(DeeperDarker.MOD_ID, string), new LootItemFunctionType(serializer));
+        return Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, DeeperDarker.id(string), new LootItemFunctionType(serializer));
     }
 
     public static void init() {

@@ -86,11 +86,11 @@ public class DDSounds {
     public static final Holder.Reference<SoundEvent> MUSIC_BIOME_OVERCAST_COLUMNS = registerReference("music.deeperdarker.overcast_columns");
 
     private static SoundEvent register(String id) {
-        return Registry.register(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, id), SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, id)));
+        return Registry.register(BuiltInRegistries.SOUND_EVENT, DeeperDarker.id(id), SoundEvent.createVariableRangeEvent(DeeperDarker.id(id)));
     }
 
     private static Holder.Reference<SoundEvent> registerReference(String id) {
-        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(DeeperDarker.MOD_ID, id), SoundEvent.createVariableRangeEvent(new ResourceLocation(DeeperDarker.MOD_ID, id)));
+        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, DeeperDarker.id(id), SoundEvent.createVariableRangeEvent(DeeperDarker.id(id)));
     }
 
     public static void init() {

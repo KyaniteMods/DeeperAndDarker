@@ -391,7 +391,7 @@ public class DDCreativeTab {
     public static CreativeModeTab DEEPER_AND_DARKER;
 
     public static void init() {
-        DEEPER_AND_DARKER = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(DeeperDarker.MOD_ID, "deeper_and_darker"), ITEM_GROUP_BUILDER.build());
+        DEEPER_AND_DARKER = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DeeperDarker.id("deeper_and_darker"), ITEM_GROUP_BUILDER.build());
         DeeperDarker.LOGGER.debug("Registering creative tab");
     }
 }

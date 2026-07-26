@@ -20,7 +20,7 @@ public class AncientPaintings {
     public static final ResourceKey<PaintingVariant> STAR_CATCHER = create("star_catcher", new PaintingVariant(32, 32));
 
     private static ResourceKey<PaintingVariant> create(String string, PaintingVariant paintingVariant) {
-        ResourceKey<PaintingVariant> resourceKey = ResourceKey.create(Registries.PAINTING_VARIANT, new ResourceLocation(DeeperDarker.MOD_ID, string));
+        ResourceKey<PaintingVariant> resourceKey = ResourceKey.create(Registries.PAINTING_VARIANT, DeeperDarker.id(string));
         Registry.register(BuiltInRegistries.PAINTING_VARIANT, resourceKey, paintingVariant);
         return resourceKey;
     }

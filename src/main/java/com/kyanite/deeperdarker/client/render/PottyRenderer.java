@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class PottyRenderer extends MobRenderer<OvercastPot, HierarchicalModel<OvercastPot>> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overcast_pot/potty.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/overcast_pot/potty.png");
 
     public PottyRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new PottyModel(pContext.bakeLayer(DDModelLayers.POTTY)), 0.5f);

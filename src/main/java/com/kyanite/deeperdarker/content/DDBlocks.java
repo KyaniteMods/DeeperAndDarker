@@ -43,12 +43,12 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("NullableProblems")
 public class DDBlocks {
-    private static final BlockSetType ECHO_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "echo").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-    public static final WoodType ECHO = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "echo"), ECHO_SET);
-    private static final BlockSetType BLOOM_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "bloom").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-    public static final WoodType BLOOM = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "bloom"), BLOOM_SET);
-    private static final BlockSetType SCULK_SPRUCE_SET = new BlockSetType(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_spruce").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
-    public static final WoodType SCULK_SPRUCE = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(new ResourceLocation(DeeperDarker.MOD_ID, "sculk_spruce"), SCULK_SPRUCE_SET);
+    private static final BlockSetType ECHO_SET = new BlockSetType(DeeperDarker.id("echo").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final WoodType ECHO = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(DeeperDarker.id("echo"), ECHO_SET);
+    private static final BlockSetType BLOOM_SET = new BlockSetType(DeeperDarker.id("bloom").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final WoodType BLOOM = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(DeeperDarker.id("bloom"), BLOOM_SET);
+    private static final BlockSetType SCULK_SPRUCE_SET = new BlockSetType(DeeperDarker.id("sculk_spruce").toString(), true, SoundType.WOOD, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON);
+    public static final WoodType SCULK_SPRUCE = new WoodTypeBuilder().soundGroup(SoundType.WOOD).hangingSignSoundGroup(SoundType.HANGING_SIGN).fenceGateCloseSound(SoundEvents.FENCE_GATE_CLOSE).fenceGateOpenSound(SoundEvents.FENCE_GATE_OPEN).register(DeeperDarker.id("sculk_spruce"), SCULK_SPRUCE_SET);
 
     public static final Block ENRICHED_ECHO_LOG = register("enriched_echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
     public static final Block ECHO_LOG = register("echo_log", new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_PURPLE)));
@@ -400,7 +400,7 @@ public class DDBlocks {
     }
 
     public static Block registerWithoutItem(String name, Block block) {
-        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(DeeperDarker.MOD_ID, name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, DeeperDarker.id(name), block);
     }
 
     public static void init() {

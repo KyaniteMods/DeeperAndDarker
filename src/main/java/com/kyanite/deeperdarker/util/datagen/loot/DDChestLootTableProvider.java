@@ -24,21 +24,21 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.function.BiConsumer;
 
 public class DDChestLootTableProvider extends SimpleFabricLootTableProvider {
-    public static final ResourceLocation ANCIENT_TEMPLE_BASEMENT = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_basement");
-    public static final ResourceLocation ANCIENT_TEMPLE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_secret");
-    public static final ResourceLocation ANCIENT_TEMPLE_STORAGE = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_storage");
-    public static final ResourceLocation ANCIENT_TEMPLE_APEX = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_apex");
-    public static final ResourceLocation ANCIENT_TEMPLE_FOUNTAIN = new ResourceLocation(DeeperDarker.MOD_ID, "chests/ancient_temple_fountain");
-    public static final ResourceLocation CRYSTALLIZED_AMBER = new ResourceLocation(DeeperDarker.MOD_ID, "chests/crystallized_amber");
-    public static final ResourceLocation BLOOMAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/bloomaze_basic");
-    public static final ResourceLocation BLOOMAZE_ADVANCED = new ResourceLocation(DeeperDarker.MOD_ID, "chests/bloomaze_advanced");
-    public static final ResourceLocation BLOOMAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/bloomaze_secret");
-    public static final ResourceLocation GLOOMAZE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_basic");
-    public static final ResourceLocation GLOOMAZE_ADVANCED = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_advanced");
-    public static final ResourceLocation GLOOMAZE_SECRET = new ResourceLocation(DeeperDarker.MOD_ID, "chests/gloomaze_secret");
-    public static final ResourceLocation CASTLE_BASIC = new ResourceLocation(DeeperDarker.MOD_ID, "chests/castle_basic");
-    public static final ResourceLocation CASTLE_ROYAL = new ResourceLocation(DeeperDarker.MOD_ID, "chests/castle_royal");
-    public static final ResourceLocation SCULK_RUINS = new ResourceLocation(DeeperDarker.MOD_ID, "chests/sculk_ruins");
+    public static final ResourceLocation ANCIENT_TEMPLE_BASEMENT = DeeperDarker.id("chests/ancient_temple_basement");
+    public static final ResourceLocation ANCIENT_TEMPLE_SECRET = DeeperDarker.id("chests/ancient_temple_secret");
+    public static final ResourceLocation ANCIENT_TEMPLE_STORAGE = DeeperDarker.id("chests/ancient_temple_storage");
+    public static final ResourceLocation ANCIENT_TEMPLE_APEX = DeeperDarker.id("chests/ancient_temple_apex");
+    public static final ResourceLocation ANCIENT_TEMPLE_FOUNTAIN = DeeperDarker.id("chests/ancient_temple_fountain");
+    public static final ResourceLocation CRYSTALLIZED_AMBER = DeeperDarker.id("chests/crystallized_amber");
+    public static final ResourceLocation BLOOMAZE_BASIC = DeeperDarker.id("chests/bloomaze_basic");
+    public static final ResourceLocation BLOOMAZE_ADVANCED = DeeperDarker.id("chests/bloomaze_advanced");
+    public static final ResourceLocation BLOOMAZE_SECRET = DeeperDarker.id("chests/bloomaze_secret");
+    public static final ResourceLocation GLOOMAZE_BASIC = DeeperDarker.id("chests/gloomaze_basic");
+    public static final ResourceLocation GLOOMAZE_ADVANCED = DeeperDarker.id("chests/gloomaze_advanced");
+    public static final ResourceLocation GLOOMAZE_SECRET = DeeperDarker.id("chests/gloomaze_secret");
+    public static final ResourceLocation CASTLE_BASIC = DeeperDarker.id("chests/castle_basic");
+    public static final ResourceLocation CASTLE_ROYAL = DeeperDarker.id("chests/castle_royal");
+    public static final ResourceLocation SCULK_RUINS = DeeperDarker.id("chests/sculk_ruins");
 
     public DDChestLootTableProvider(FabricDataOutput output) {
         super(output, LootContextParamSets.CHEST);

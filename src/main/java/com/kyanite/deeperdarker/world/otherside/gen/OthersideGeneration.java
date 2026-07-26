@@ -25,7 +25,7 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import java.util.List;
 
 public class OthersideGeneration {
-    public static final ResourceKey<LevelStem> OTHERSIDE_STEM = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(DeeperDarker.MOD_ID, "otherside"));
+    public static final ResourceKey<LevelStem> OTHERSIDE_STEM = ResourceKey.create(Registries.LEVEL_STEM, DeeperDarker.id("otherside"));
     public static void levelBootstrap(BootstapContext<LevelStem> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<NoiseGeneratorSettings> noiseSettings = context.lookup(Registries.NOISE_SETTINGS);
@@ -49,7 +49,7 @@ public class OthersideGeneration {
         return new LevelStem(dimensions.getOrThrow(OthersideDimension.OTHERSIDE), chunkGenerator);
     }
 
-    public static final ResourceKey<NoiseGeneratorSettings> OTHERSIDE_GENERATOR = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(DeeperDarker.MOD_ID, "otherside"));
+    public static final ResourceKey<NoiseGeneratorSettings> OTHERSIDE_GENERATOR = ResourceKey.create(Registries.NOISE_SETTINGS, DeeperDarker.id("otherside"));
     public static void noiseBootstrap(BootstapContext<NoiseGeneratorSettings> context) {
         HolderGetter<DensityFunction> densityFunction = context.lookup(Registries.DENSITY_FUNCTION);
         HolderGetter<NormalNoise.NoiseParameters> noise = context.lookup(Registries.NOISE);

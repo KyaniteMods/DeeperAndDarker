@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 
 @SuppressWarnings("NullableProblems")
 public class OvercastVesselRenderer extends MobRenderer<OvercastVessel, OvercastVesselModel> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overcast_vessel/overcast_vessel.png");
-    private static final ResourceLocation TEXTURE_SLEEPING = new ResourceLocation(DeeperDarker.MOD_ID, "textures/entity/overcast_vessel/overcast_vessel_sleeping.png");
+    private static final ResourceLocation TEXTURE = DeeperDarker.id("textures/entity/overcast_vessel/overcast_vessel.png");
+    private static final ResourceLocation TEXTURE_SLEEPING = DeeperDarker.id("textures/entity/overcast_vessel/overcast_vessel_sleeping.png");
 
     public OvercastVesselRenderer(EntityRendererProvider.Context context) {
         super(context, new OvercastVesselModel(context.bakeLayer(DDModelLayers.OVERCAST_VESSEL)), 1.0f);

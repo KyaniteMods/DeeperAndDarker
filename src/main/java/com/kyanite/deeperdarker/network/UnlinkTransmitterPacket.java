@@ -8,7 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 
 public record UnlinkTransmitterPacket(int slot) implements FabricPacket {
-    public static final PacketType<UnlinkTransmitterPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "unlink_transmitter"), UnlinkTransmitterPacket::new);
+    public static final PacketType<UnlinkTransmitterPacket> TYPE = PacketType.create(DeeperDarker.id("unlink_transmitter"), UnlinkTransmitterPacket::new);
 
     public UnlinkTransmitterPacket(ByteBuf buf) {
         this(buf.readInt());

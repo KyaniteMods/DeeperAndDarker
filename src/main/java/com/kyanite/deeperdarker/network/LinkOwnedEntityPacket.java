@@ -10,7 +10,7 @@ import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
 public record LinkOwnedEntityPacket(int ownerId, int ownedEntityId) implements FabricPacket {
-    public static final PacketType<LinkOwnedEntityPacket> TYPE = PacketType.create(new ResourceLocation(DeeperDarker.MOD_ID, "link_owned_entity"), LinkOwnedEntityPacket::new);
+    public static final PacketType<LinkOwnedEntityPacket> TYPE = PacketType.create(DeeperDarker.id("link_owned_entity"), LinkOwnedEntityPacket::new);
 
     public LinkOwnedEntityPacket(Entity owner, @Nullable Entity ownedEntity) {
         this(owner.getId(), ownedEntity == null ? 0 : ownedEntity.getId());
