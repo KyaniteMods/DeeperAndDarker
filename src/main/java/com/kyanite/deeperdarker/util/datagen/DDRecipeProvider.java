@@ -257,6 +257,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .requires(Items.NETHER_STAR)
                 .unlockedBy(getHasName(DDItems.PURITY_SOUL), has(DDItems.PURITY_SOUL)).save(output);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SCULK_ALTAR)
+                .define('S', DDItems.SHADOW_CRYSTAL)
+                .define('L', DDItems.SOUL_CRYSTAL)
+                .define('B', DDBlocks.SCULK_BASALT)
+                .pattern("SSS")
+                .pattern("LBL")
+                .pattern("BBB")
+                .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
+
         SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
         SpecialRecipeBuilder.special(DDRecipeSerializers.ACID_RESISTANT_ITEM).save(output, "acid_resistant_item");
         SpecialRecipeBuilder.special(DDRecipeSerializers.AUGMENT_SHIELD).save(output, "augment_shield");

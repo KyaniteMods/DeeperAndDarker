@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "deeperdarker:sculk_basalt"
+    },
+    "L": {
+      "item": "deeperdarker:soul_crystal"
+    },
+    "S": {
+      "item": "deeperdarker:shadow_crystal"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "LBL",
+    "BBB"
+  ],
+  "result": {
+    "item": "deeperdarker:sculk_altar"
+  },
+  "show_notification": true
+}
