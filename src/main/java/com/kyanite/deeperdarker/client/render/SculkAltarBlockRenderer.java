@@ -24,7 +24,7 @@ public class SculkAltarBlockRenderer implements BlockEntityRenderer<SculkAltarBl
         float itemSpanningAngle = 360.0f / amount;
 
         poseStack.pushPose();
-        poseStack.translate(0.5f, 1.0f, 0.5f);
+        poseStack.translate(0.5f, 1.01f, 0.5f);
         poseStack.mulPose(Axis.YP.rotationDegrees(blockEntity.getRotationDegrees(tickDelta) + itemSpanningAngle / 2.0f));
 
         float scale = 0.25f;
