@@ -89,6 +89,6 @@ public class BloomingStemFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     private BlockState stemPlacement(Direction direction) {
-        return DDBlocks.BLOOMING_STEM.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()), true);
+        return DDBlocks.BLOOMING_STEM.defaultBlockState().setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction.getOpposite()), true).setValue(BloomingStemBlock.AGE, 25);
     }
 }
