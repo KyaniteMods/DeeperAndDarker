@@ -23,21 +23,21 @@ public class DDChestBoat extends ChestBoat implements DDBoatLike {
 
     public DDChestBoat(Level level, double x, double y, double z) {
         this(DDEntities.CHEST_BOAT, level);
-        this.setPos(x, y, z);
-        this.xo = x;
-        this.yo = y;
-        this.zo = z;
+        setPos(x, y, z);
+        xo = x;
+        yo = y;
+        zo = z;
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(WOOD_TYPE, "echo");
+        entityData.define(WOOD_TYPE, DDBoat.Type.ECHO.getSerializedName());
     }
 
     @Override
     public Item getDropItem() {
-        return switch (this.getWoodType()) {
+        return switch (getWoodType()) {
             case BLOOM -> DDItems.BLOOM_CHEST_BOAT;
             default -> DDItems.ECHO_CHEST_BOAT;
         };
@@ -46,27 +46,27 @@ public class DDChestBoat extends ChestBoat implements DDBoatLike {
     @Override
     protected void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        pCompound.putString("Type", this.getWoodType().getSerializedName());
+        pCompound.putString(DDBoat.TYPE_TAG, getWoodType().getSerializedName());
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        this.setWoodType(DDBoat.Type.byName(pCompound.getString("Type")));
+        setWoodType(DDBoat.Type.byName(pCompound.getString(DDBoat.TYPE_TAG)));
     }
 
     @Override
     public DDBoat.Type getWoodType() {
-        return DDBoat.Type.byName(this.entityData.get(WOOD_TYPE));
+        return DDBoat.Type.byName(entityData.get(WOOD_TYPE));
     }
 
     @Override
     public void setWoodType(DDBoat.Type woodType) {
-        this.entityData.set(WOOD_TYPE, woodType.getSerializedName());
+        entityData.set(WOOD_TYPE, woodType.getSerializedName());
     }
 
     @Override
     public ItemStack getPickResult() {
-        return new ItemStack(this.getDropItem());
+        return new ItemStack(getDropItem());
     }
 }

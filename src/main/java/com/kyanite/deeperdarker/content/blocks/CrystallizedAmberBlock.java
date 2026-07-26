@@ -4,7 +4,6 @@ import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -83,9 +82,9 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                     CompoundTag tag = new CompoundTag();
-                    tag.put("item", crystallizedAmber.getLoot().save(new CompoundTag()));
-                    tag.putBoolean("leech", crystallizedAmber.fossilizedEntity);
-                    tag.putFloat("rotation", crystallizedAmber.rotation);
+                    tag.put(CrystallizedAmberBlockEntity.ITEM_TAG, crystallizedAmber.getLoot().save(new CompoundTag()));
+                    tag.putBoolean(CrystallizedAmberBlockEntity.LEECH_TAG, crystallizedAmber.fossilizedEntity);
+                    tag.putFloat(CrystallizedAmberBlockEntity.ROTATION_TAG, crystallizedAmber.rotation);
                     BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
                 }
 
@@ -98,12 +97,12 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
-        if (itemStack.hasTag() && itemStack.getTag().contains("BlockEntityTag")) {
-            CompoundTag tag = itemStack.getTag().getCompound("BlockEntityTag");
-            if (tag.contains("leech") && tag.getBoolean("leech")) {
+        if (itemStack.hasTag() && itemStack.getTag().contains(BlockItem.BLOCK_ENTITY_TAG)) {
+            CompoundTag tag = itemStack.getTag().getCompound(BlockItem.BLOCK_ENTITY_TAG);
+            if (tag.contains(CrystallizedAmberBlockEntity.LEECH_TAG) && tag.getBoolean(CrystallizedAmberBlockEntity.LEECH_TAG)) {
                 list.add(ComponentUtils.wrapInSquareBrackets(DDEntities.SCULK_LEECH.getDescription().copy()).withStyle(ChatFormatting.GRAY));
-            } else if (tag.contains("item")) {
-                ItemStack stack = ItemStack.of(tag.getCompound("item"));
+            } else if (tag.contains(CrystallizedAmberBlockEntity.ITEM_TAG)) {
+                ItemStack stack = ItemStack.of(tag.getCompound(CrystallizedAmberBlockEntity.ITEM_TAG));
                 list.add(stack.getDisplayName().copy().withStyle(ChatFormatting.GRAY));
             }
         }

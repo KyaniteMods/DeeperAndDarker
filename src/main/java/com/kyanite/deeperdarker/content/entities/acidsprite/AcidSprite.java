@@ -34,6 +34,8 @@ import java.util.EnumSet;
 import java.util.HashSet;
 
 public class AcidSprite extends Monster implements Merchant {
+    public static final String OFFERS_TAG = "offers";
+
     @Nullable
     private Player tradingPlayer = null;
     @Nullable
@@ -96,15 +98,15 @@ public class AcidSprite extends Monster implements Merchant {
         super.addAdditionalSaveData(compoundTag);
         MerchantOffers merchantOffers = this.getOffers();
         if (!merchantOffers.isEmpty()) {
-            compoundTag.put("offers", merchantOffers.createTag());
+            compoundTag.put(OFFERS_TAG, merchantOffers.createTag());
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.contains("offers", CompoundTag.TAG_COMPOUND)) {
-            offers = new MerchantOffers(compoundTag.getCompound("offers"));
+        if (compoundTag.contains(OFFERS_TAG, CompoundTag.TAG_COMPOUND)) {
+            offers = new MerchantOffers(compoundTag.getCompound(OFFERS_TAG));
         }
     }
 

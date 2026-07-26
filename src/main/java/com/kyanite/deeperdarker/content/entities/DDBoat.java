@@ -17,6 +17,8 @@ import net.minecraft.world.level.block.Block;
 
 @SuppressWarnings("NullableProblems")
 public class DDBoat extends Boat implements DDBoatLike {
+    public static final String TYPE_TAG = "Type";
+
     private static final EntityDataAccessor<String> WOOD_TYPE = SynchedEntityData.defineId(DDBoat.class, EntityDataSerializers.STRING);
 
     public DDBoat(EntityType<? extends Boat> pEntityType, Level pLevel) {
@@ -25,21 +27,21 @@ public class DDBoat extends Boat implements DDBoatLike {
 
     public DDBoat(Level level, double x, double y, double z) {
         this(DDEntities.BOAT, level);
-        this.setPos(x, y, z);
-        this.xo = x;
-        this.yo = y;
-        this.zo = z;
+        setPos(x, y, z);
+        xo = x;
+        yo = y;
+        zo = z;
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(WOOD_TYPE, "deeperdarker:echo");
+        entityData.define(WOOD_TYPE, Type.ECHO.getSerializedName());
     }
 
     @Override
     public Item getDropItem() {
-        return switch (this.getWoodType()) {
+        return switch (getWoodType()) {
             case BLOOM -> DDItems.BLOOM_BOAT;
             case SCULK_SPRUCE -> DDItems.SCULK_SPRUCE_BOAT;
             default -> DDItems.ECHO_BOAT;
@@ -49,28 +51,28 @@ public class DDBoat extends Boat implements DDBoatLike {
     @Override
     protected void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        pCompound.putString("Type", this.getWoodType().getSerializedName());
+        pCompound.putString(TYPE_TAG, getWoodType().getSerializedName());
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        this.setWoodType(Type.byName(pCompound.getString("Type")));
+        setWoodType(Type.byName(pCompound.getString(TYPE_TAG)));
     }
 
     @Override
     public Type getWoodType() {
-        return Type.byName(this.entityData.get(WOOD_TYPE));
+        return Type.byName(entityData.get(WOOD_TYPE));
     }
 
     @Override
     public void setWoodType(Type woodType) {
-        this.entityData.set(WOOD_TYPE, woodType.getSerializedName());
+        entityData.set(WOOD_TYPE, woodType.getSerializedName());
     }
 
     @Override
     public ItemStack getPickResult() {
-        return new ItemStack(this.getDropItem());
+        return new ItemStack(getDropItem());
     }
 
     public enum Type implements StringRepresentable {
@@ -82,26 +84,26 @@ public class DDBoat extends Boat implements DDBoatLike {
         private final Block planks;
         public static final StringRepresentable.EnumCodec<Type> CODEC;
 
-        Type(Block block, String string2) {
-            this.name = string2;
-            this.planks = block;
+        Type(Block planks, String name) {
+            this.name = name;
+            this.planks = planks;
         }
 
         @Override
         public String getSerializedName() {
-            return this.name;
+            return name;
         }
 
         public String getName() {
-            return this.name;
+            return name;
         }
 
         public Block getPlanks() {
-            return this.planks;
+            return planks;
         }
 
         public String toString() {
-            return this.name;
+            return name;
         }
 
         public static Type byName(String string) {

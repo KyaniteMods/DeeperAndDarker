@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class SculkAltarBlockRenderer implements BlockEntityRenderer<SculkAltarBlockEntity> {
     private final ItemRenderer itemRenderer;
+    private static final int MAGIC_ROTATION_NUMBER = 71;
 
     public SculkAltarBlockRenderer(BlockEntityRendererProvider.Context context) {
         this.itemRenderer = context.getItemRenderer();
@@ -35,11 +36,11 @@ public class SculkAltarBlockRenderer implements BlockEntityRenderer<SculkAltarBl
         float itemRotation = blockEntity.getItemRotationDegrees(tickDelta);
         for (int i = 0; i < amount; i++) {
             ItemStack stack = blockEntity.getItems().get(i);
-            poseStack.mulPose(Axis.YP.rotationDegrees(itemRotation + 71 * i));
+            poseStack.mulPose(Axis.YP.rotationDegrees(itemRotation + MAGIC_ROTATION_NUMBER * i));
             poseStack.scale(scale, scale, scale);
             itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, light, overlay, poseStack, multiBufferSource, blockEntity.getLevel(), 0);
             poseStack.scale(1.0f / scale, 1.0f / scale, 1.0f / scale);
-            poseStack.mulPose(Axis.YN.rotationDegrees(itemRotation + 71 * i));
+            poseStack.mulPose(Axis.YN.rotationDegrees(itemRotation + MAGIC_ROTATION_NUMBER * i));
             if (amount > 1) {
                 poseStack.translate(-distanceFromCenter, 0.0f, 0.0f);
                 poseStack.mulPose(Axis.YP.rotationDegrees(360.0f / amount));

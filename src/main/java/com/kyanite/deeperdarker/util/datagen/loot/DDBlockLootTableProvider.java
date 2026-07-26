@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.SculkBerryBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.GlowingVinesPlantBlock;
 import com.kyanite.deeperdarker.content.blocks.vegetation.IceLilyBlock;
+import com.kyanite.deeperdarker.content.items.IceLilyItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.advancements.critereon.BlockPredicate;
@@ -278,9 +279,7 @@ public class DDBlockLootTableProvider extends FabricBlockLootTableProvider {
 
     private LootTable.Builder iceLilyDrop(Block block) {
         CompoundTag noFlower = new CompoundTag();
-        noFlower.putBoolean("has_flower", false);
-//        CompoundTag flower = new CompoundTag();
-//        flower.putBoolean("has_flower", true);
+        noFlower.putBoolean(IceLilyItem.HAS_FLOWER, false);
         return LootTable.lootTable().withPool(
                 LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f))
                         .add(LootItem.lootTableItem(DDItems.ICE_LILY)

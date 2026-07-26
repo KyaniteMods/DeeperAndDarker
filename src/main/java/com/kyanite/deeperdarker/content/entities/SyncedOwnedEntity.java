@@ -16,14 +16,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public abstract class SyncedOwnedEntity extends Entity implements TraceableEntity {
+    public static final String OWNER_TAG = "owner";
+
     @Nullable
     private UUID ownerUUID;
     @Nullable
     private Entity owner;
     @Nullable
     private int delayedOwnerId;
-
-    public static final String OWNER_TAG = "owner";
 
     public SyncedOwnedEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);

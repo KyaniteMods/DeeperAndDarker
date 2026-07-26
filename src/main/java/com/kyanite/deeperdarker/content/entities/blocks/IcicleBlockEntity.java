@@ -13,7 +13,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SculkSensorBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,10 +24,9 @@ import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 public class IcicleBlockEntity extends BlockEntity implements GameEventListener.Holder<VibrationSystem.Listener>, VibrationSystem {
+    public static final String LISTENER_TAG = "listener";
+
     private static final Logger LOGGER = LogUtils.getLogger();
     private VibrationSystem.Data vibrationData;
     private final VibrationSystem.Listener vibrationListener;
@@ -51,8 +49,8 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
     @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
-        if (compoundTag.contains("listener", 10)) {
-            VibrationSystem.Data.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, compoundTag.getCompound("listener"))).resultOrPartial(LOGGER::error).ifPresent(data -> {
+        if (compoundTag.contains(LISTENER_TAG, 10)) {
+            VibrationSystem.Data.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, compoundTag.getCompound(LISTENER_TAG))).resultOrPartial(LOGGER::error).ifPresent(data -> {
                 this.vibrationData = data;
             });
         }
@@ -61,7 +59,7 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
-        VibrationSystem.Data.CODEC.encodeStart(NbtOps.INSTANCE, this.vibrationData).resultOrPartial(LOGGER::error).ifPresent(tag -> compoundTag.put("listener", tag));
+        VibrationSystem.Data.CODEC.encodeStart(NbtOps.INSTANCE, this.vibrationData).resultOrPartial(LOGGER::error).ifPresent(tag -> compoundTag.put(LISTENER_TAG, tag));
     }
 
     @Override

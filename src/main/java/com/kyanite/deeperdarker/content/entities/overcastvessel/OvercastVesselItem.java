@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -34,6 +33,11 @@ import java.util.List;
 import java.util.UUID;
 
 public class OvercastVesselItem extends Entity implements TraceableEntity {
+    public static final String TIME_TO_USE_TAG = "time_to_use";
+    public static final String GOLEM_TAG = "golem";
+    public static final String ITEM_STACK_TAG = "item_stack";
+    public static final String TARGET_POSITION_TAG = "target_position";
+
     private static final EntityDataAccessor<ItemStack> DATA_ITEM = SynchedEntityData.defineId(OvercastVesselItem.class, EntityDataSerializers.ITEM_STACK);
     private int timeToUse = 30;
     @Nullable
@@ -73,31 +77,31 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
-        compoundTag.putInt("time_to_use", timeToUse);
+        compoundTag.putInt(TIME_TO_USE_TAG, timeToUse);
         if (this.golem != null) {
-            compoundTag.putUUID("golem", this.golem);
+            compoundTag.putUUID(GOLEM_TAG, this.golem);
         }
         if (!this.getItem().isEmpty()) {
-            compoundTag.put("item_stack", this.getItem().save(new CompoundTag()));
+            compoundTag.put(ITEM_STACK_TAG, this.getItem().save(new CompoundTag()));
         }
         if (target != null) {
-            Vec3.CODEC.encodeStart(NbtOps.INSTANCE, this.getTarget()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("target_position", tag));
+            Vec3.CODEC.encodeStart(NbtOps.INSTANCE, this.getTarget()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put(TARGET_POSITION_TAG, tag));
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
-        timeToUse = compoundTag.getInt("time_to_use");
-        if (compoundTag.hasUUID("golem")) {
-            golem = compoundTag.getUUID("golem");
+        timeToUse = compoundTag.getInt(TIME_TO_USE_TAG);
+        if (compoundTag.hasUUID(GOLEM_TAG)) {
+            golem = compoundTag.getUUID(GOLEM_TAG);
         }
-        CompoundTag compoundTag2 = compoundTag.getCompound("item_stack");
+        CompoundTag compoundTag2 = compoundTag.getCompound(ITEM_STACK_TAG);
         setItem(ItemStack.of(compoundTag2));
         if (getItem().isEmpty()) {
             discard();
         }
-        if (compoundTag.contains("target_position", CompoundTag.TAG_LIST)) {
-            setTarget(Vec3.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("target_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null));
+        if (compoundTag.contains(TARGET_POSITION_TAG, CompoundTag.TAG_LIST)) {
+            setTarget(Vec3.CODEC.parse(NbtOps.INSTANCE, compoundTag.get(TARGET_POSITION_TAG)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null));
         }
     }
 

@@ -15,6 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class IceLilyItem extends PlaceOnWaterBlockItem {
+    public static final String HAS_FLOWER = "has_flower";
+
     public IceLilyItem(Block block, Item.Properties properties) {
         super(block, properties);
     }
@@ -22,7 +24,7 @@ public class IceLilyItem extends PlaceOnWaterBlockItem {
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
         CompoundTag tag = pStack.getTag();
-        if(tag != null && tag.contains("has_flower")) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless").withStyle(ChatFormatting.GRAY));
+        if(tag != null && tag.contains(HAS_FLOWER)) pTooltip.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".ice_lily.flowerless").withStyle(ChatFormatting.GRAY));
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }
 }

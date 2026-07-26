@@ -21,12 +21,12 @@ public class SoulElytraItem extends ElytraItem implements FabricElytraItem {
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ARMOR, new AttributeModifier("Soul Elytra armor", 3, AttributeModifier.Operation.ADDITION));
-        this.MODIFIERS = builder.build();
+        MODIFIERS = builder.build();
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        return slot == EquipmentSlot.CHEST ? this.MODIFIERS : super.getDefaultAttributeModifiers(slot);
+        return slot == EquipmentSlot.CHEST ? MODIFIERS : super.getDefaultAttributeModifiers(slot);
     }
 
     @Override

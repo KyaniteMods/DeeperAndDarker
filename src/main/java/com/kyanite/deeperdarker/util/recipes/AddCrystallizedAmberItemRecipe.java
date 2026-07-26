@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.util.recipes;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -22,9 +22,9 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
             if (!stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) return false;
             if (stack.hasTag() && stack.getTag().contains(BlockItem.BLOCK_ENTITY_TAG)) {
                 CompoundTag blockEntityTag = stack.getTag().getCompound(BlockItem.BLOCK_ENTITY_TAG);
-                if (blockEntityTag.contains("item")) {
-                    return ItemStack.of(blockEntityTag.getCompound("item")).isEmpty();
-                } else return !blockEntityTag.getBoolean("leech");
+                if (blockEntityTag.contains(CrystallizedAmberBlockEntity.ITEM_TAG)) {
+                    return ItemStack.of(blockEntityTag.getCompound(CrystallizedAmberBlockEntity.ITEM_TAG)).isEmpty();
+                } else return !blockEntityTag.getBoolean(CrystallizedAmberBlockEntity.LEECH_TAG);
             }
             return true;
         };
@@ -46,7 +46,7 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
         } else {
             blockEntityTag = tag.getCompound(BlockItem.BLOCK_ENTITY_TAG);
         }
-        blockEntityTag.put("item", second.save(new CompoundTag()));
+        blockEntityTag.put(CrystallizedAmberBlockEntity.ITEM_TAG, second.save(new CompoundTag()));
         return stack;
     }
 

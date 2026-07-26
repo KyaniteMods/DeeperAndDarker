@@ -25,6 +25,8 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class SonorousStaffItem extends Item {
+    public static final String CHARGED_TAG = "charged";
+
     public double dropOffFactor = 1/3.0;
 
     public SonorousStaffItem(Properties pProperties) {
@@ -78,7 +80,7 @@ public class SonorousStaffItem extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(pEntity instanceof Player player) {
-            pStack.getOrCreateTag().putBoolean("charged", player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 128);
+            pStack.getOrCreateTag().putBoolean(CHARGED_TAG, player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 128);
         }
     }
 
@@ -89,7 +91,7 @@ public class SonorousStaffItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return super.isFoil(pStack) || (pStack.hasTag() && pStack.getTag().getBoolean("charged"));
+        return super.isFoil(pStack) || (pStack.hasTag() && pStack.getTag().getBoolean(CHARGED_TAG));
     }
 
     @Override

@@ -39,23 +39,23 @@ public class WardenArmorItem extends ArmorItem {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ARMOR, new AttributeModifier("Armor modifier", material.getDefenseForType(type), AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier("Armor toughness", material.getToughness(), AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier("Armor knockback resistance", this.knockbackResistance, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier("Armor knockback resistance", knockbackResistance, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.MOVEMENT_SPEED, new AttributeModifier("Leggings speed boost", 0.02, AttributeModifier.Operation.ADDITION));
-        this.LEGGINGS_MODIFIERS = builder.build();
+        LEGGINGS_MODIFIERS = builder.build();
     }
 
     @NotNull
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        return slot == EquipmentSlot.LEGS ? this.LEGGINGS_MODIFIERS : super.getDefaultAttributeModifiers(slot);
+        return slot == EquipmentSlot.LEGS ? LEGGINGS_MODIFIERS : super.getDefaultAttributeModifiers(slot);
     }
 
     @Override
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int slot, boolean selected) {
         super.inventoryTick(itemStack, level, entity, slot, selected);
         if (!level.isClientSide() && entity instanceof LivingEntity user) {
-            if (this.getEquipmentSlot().getIndex() == slot) {
-                this.immunities.forEach(user::removeEffect);
+            if (getEquipmentSlot().getIndex() == slot) {
+                immunities.forEach(user::removeEffect);
             }
         }
     }
@@ -63,9 +63,9 @@ public class WardenArmorItem extends ArmorItem {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, level, list, tooltipFlag);
-        if (!this.immunities.isEmpty()) {
+        if (!immunities.isEmpty()) {
             list.add(Component.translatable("item." + DeeperDarker.MOD_ID + ".perks.immunity").withStyle(ChatFormatting.GRAY));
-            for (MobEffect effect : this.immunities) {
+            for (MobEffect effect : immunities) {
                 list.add(effect.getDisplayName().copy().withStyle(ChatFormatting.GREEN));
             }
         }

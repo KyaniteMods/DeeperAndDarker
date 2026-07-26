@@ -27,6 +27,10 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     public float rotation;
     private ItemStack loot = ItemStack.EMPTY;
 
+    public static final String ITEM_TAG = "item";
+    public static final String LEECH_TAG = "leech";
+    public static final String ROTATION_TAG = "rotation";
+
     public CrystallizedAmberBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(DDBlockEntities.CRYSTALLIZED_AMBER, pPos, pBlockState);
     }
@@ -43,9 +47,9 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         }
 
         LootTable table = level.getServer().getLootData().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
-        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, this.getBlockPos().getCenter()).create(LootContextParamSets.CHEST), pos.asLong());
-        this.loot = list.isEmpty() ? ItemStack.EMPTY : list.get(0);
-        this.setChanged();
+        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, getBlockPos().getCenter()).create(LootContextParamSets.CHEST), pos.asLong());
+        loot = list.isEmpty() ? ItemStack.EMPTY : list.get(0);
+        setChanged();
     }
 
     public ItemStack getLoot() {
@@ -60,27 +64,27 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     @Override
     public @NotNull CompoundTag getUpdateTag() {
         CompoundTag tag = new CompoundTag();
-        if (!this.loot.isEmpty()) {
-            tag.put("item", this.loot.save(new CompoundTag()));
+        if (!loot.isEmpty()) {
+            tag.put(ITEM_TAG, loot.save(new CompoundTag()));
         }
-        tag.putBoolean("leech", this.fossilizedEntity);
-        tag.putFloat("rotation", this.rotation);
+        tag.putBoolean(LEECH_TAG, fossilizedEntity);
+        tag.putFloat(ROTATION_TAG, rotation);
         return tag;
     }
 
     @Override
     public void load(CompoundTag pTag) {
-        if(pTag.contains("item")) this.loot = ItemStack.of(pTag.getCompound("item"));
-        if(pTag.contains("leech")) this.fossilizedEntity = pTag.getBoolean("leech");
-        if(pTag.contains("rotation")) this.rotation = pTag.getFloat("rotation");
+        if(pTag.contains(ITEM_TAG)) loot = ItemStack.of(pTag.getCompound(ITEM_TAG));
+        if(pTag.contains(LEECH_TAG)) fossilizedEntity = pTag.getBoolean(LEECH_TAG);
+        if(pTag.contains(ROTATION_TAG)) rotation = pTag.getFloat(ROTATION_TAG);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        if (!this.loot.isEmpty()) {
-            pTag.put("item", this.loot.save(new CompoundTag()));
+        if (!loot.isEmpty()) {
+            pTag.put(ITEM_TAG, loot.save(new CompoundTag()));
         }
-        pTag.putBoolean("leech", this.fossilizedEntity);
-        pTag.putFloat("rotation", this.rotation);
+        pTag.putBoolean(LEECH_TAG, this.fossilizedEntity);
+        pTag.putFloat(ROTATION_TAG, this.rotation);
     }
 }

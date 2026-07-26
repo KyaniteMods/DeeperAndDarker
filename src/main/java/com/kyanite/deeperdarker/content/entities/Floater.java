@@ -22,6 +22,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public class Floater extends Vex {
+    public static final String WORM_HEAD_TAG = "worm_head";
+    public static final String SPECIAL_TAG = "special";
+
     public static final EntityDataAccessor<Boolean> DATA_ID_SPECIAL = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
 
     @Nullable
@@ -31,9 +34,6 @@ public class Floater extends Vex {
 
     @Nullable
     private UUID wormHeadUUID;
-
-    public static final String WORM_HEAD = "worm_head";
-    public static final String SPECIAL = "special";
 
     public Floater(EntityType<? extends Vex> entityType, Level level) {
         super(entityType, level);
@@ -174,18 +174,18 @@ public class Floater extends Vex {
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         if (wormHeadUUID != null) {
-            compoundTag.putUUID(WORM_HEAD, wormHeadUUID);
+            compoundTag.putUUID(WORM_HEAD_TAG, wormHeadUUID);
         }
-        compoundTag.putBoolean(SPECIAL, isSpecial());
+        compoundTag.putBoolean(SPECIAL_TAG, isSpecial());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.hasUUID(WORM_HEAD)) {
-            wormHeadUUID = compoundTag.getUUID(WORM_HEAD);
+        if (compoundTag.hasUUID(WORM_HEAD_TAG)) {
+            wormHeadUUID = compoundTag.getUUID(WORM_HEAD_TAG);
         }
-        setSpecial(compoundTag.getBoolean(SPECIAL));
+        setSpecial(compoundTag.getBoolean(SPECIAL_TAG));
     }
 
     public void setSpecial(boolean value) {

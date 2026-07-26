@@ -20,6 +20,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 public class OvercastPot extends Monster {
+    public static final String OWNER_TAG = "owner";
+
     @Nullable
     private UUID owner;
 
@@ -64,15 +66,15 @@ public class OvercastPot extends Monster {
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         if (owner != null) {
-            compoundTag.putUUID("owner", owner);
+            compoundTag.putUUID(OWNER_TAG, owner);
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.hasUUID("owner")) {
-            owner = compoundTag.getUUID("owner");
+        if (compoundTag.hasUUID(OWNER_TAG)) {
+            owner = compoundTag.getUUID(OWNER_TAG);
         }
     }
 

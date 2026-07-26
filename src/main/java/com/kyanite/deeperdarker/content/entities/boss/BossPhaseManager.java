@@ -10,6 +10,8 @@ import net.minecraft.world.entity.LivingEntity;
 import java.util.*;
 
 public abstract class BossPhaseManager<T extends LivingEntity, U extends BossPhaseType<T, U, V>, V extends BossPhase<T, U, V>> {
+    public static final String PHASES_TAG = "phases";
+
     private final T boss;
     private final Codec<V> phaseCodec;
     private Deque<V> phases = new ArrayDeque<>();
@@ -20,8 +22,8 @@ public abstract class BossPhaseManager<T extends LivingEntity, U extends BossPha
     }
 
     public void loadFrom(CompoundTag compoundTag) {
-        if (compoundTag.contains("phases", Tag.TAG_LIST)) {
-            phases = phaseCodec.listOf().<Deque<V>>xmap(ArrayDeque::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.get("phases")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new ArrayDeque<>());
+        if (compoundTag.contains(PHASES_TAG, Tag.TAG_LIST)) {
+            phases = phaseCodec.listOf().<Deque<V>>xmap(ArrayDeque::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.get(PHASES_TAG)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(new ArrayDeque<>());
             if (!phases.isEmpty()) phases.getFirst().initialize(boss);
         } else {
             populatePhases();
@@ -30,7 +32,7 @@ public abstract class BossPhaseManager<T extends LivingEntity, U extends BossPha
 
     public void save(CompoundTag compoundTag) {
         if (!phases.isEmpty()) phases.getFirst().dataSaved(boss);
-        phaseCodec.listOf().<Deque<V>>xmap(ArrayDeque::new, ArrayList::new).encodeStart(NbtOps.INSTANCE, phases).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("phases", tag));
+        phaseCodec.listOf().<Deque<V>>xmap(ArrayDeque::new, ArrayList::new).encodeStart(NbtOps.INSTANCE, phases).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put(PHASES_TAG, tag));
     }
 
     public void tick() {

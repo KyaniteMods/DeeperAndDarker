@@ -9,9 +9,10 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 
 public class ReturnStatueBlockEntity extends BlockEntity {
+    public static final String TELEPORT_POS_TAG = "teleport_pos";
+
     public BlockPos teleportPos = null;
 
     public ReturnStatueBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -26,8 +27,8 @@ public class ReturnStatueBlockEntity extends BlockEntity {
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        if (tag.contains("teleport_pos", Tag.TAG_COMPOUND)) {
-            CompoundTag posTag = tag.getCompound("teleport_pos");
+        if (tag.contains(TELEPORT_POS_TAG, Tag.TAG_COMPOUND)) {
+            CompoundTag posTag = tag.getCompound(TELEPORT_POS_TAG);
             if (posTag.contains("x", Tag.TAG_INT) && posTag.contains("y", Tag.TAG_INT) && posTag.contains("z", Tag.TAG_INT)) {
                 teleportPos = new BlockPos(posTag.getInt("x"), posTag.getInt("y"), posTag.getInt("z"));
             }
@@ -42,7 +43,7 @@ public class ReturnStatueBlockEntity extends BlockEntity {
             posTag.putInt("x", teleportPos.getX());
             posTag.putInt("y", teleportPos.getY());
             posTag.putInt("z", teleportPos.getZ());
-            tag.put("teleport_pos", posTag);
+            tag.put(TELEPORT_POS_TAG, posTag);
         }
     }
 }

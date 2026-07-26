@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.items.IceLilyItem;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -66,7 +67,7 @@ public class IceLilyBlock extends BushBlock {
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         ItemStack stack = pContext.getItemInHand();
         CompoundTag tag = stack.getTag();
-        if (tag == null || !tag.contains("has_flower")) return super.getStateForPlacement(pContext);
+        if (tag == null || !tag.contains(IceLilyItem.HAS_FLOWER)) return super.getStateForPlacement(pContext);
         return super.getStateForPlacement(pContext).setValue(HAS_FLOWER, false);
     }
 

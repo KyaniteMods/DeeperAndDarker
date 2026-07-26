@@ -21,10 +21,11 @@ import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class DeadMansChestBlockEntity extends ChestBlockEntity {
+    public static final String HAS_BEEN_OPENED_TAG = "has_been_opened";
+
     private boolean hasBeenOpened = true;
 
     public DeadMansChestBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
@@ -93,13 +94,13 @@ public class DeadMansChestBlockEntity extends ChestBlockEntity {
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
-        compoundTag.putBoolean("has_been_opened", hasBeenOpened);
+        compoundTag.putBoolean(HAS_BEEN_OPENED_TAG, hasBeenOpened);
     }
 
     @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
-        hasBeenOpened = compoundTag.getBoolean("has_been_opened");
+        hasBeenOpened = compoundTag.getBoolean(HAS_BEEN_OPENED_TAG);
     }
 
     @Override

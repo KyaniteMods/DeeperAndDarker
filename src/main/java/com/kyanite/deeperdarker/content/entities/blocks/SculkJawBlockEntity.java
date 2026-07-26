@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class SculkJawBlockEntity extends BlockEntity {
+    public static final String EXPERIENCE_TAG = "experience";
+
     private int experience;
 
     public SculkJawBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -17,13 +19,13 @@ public class SculkJawBlockEntity extends BlockEntity {
     @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
-        this.experience = compoundTag.getInt("experience");
+        this.experience = compoundTag.getInt(EXPERIENCE_TAG);
     }
 
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
-        compoundTag.putInt("experience", this.experience);
+        compoundTag.putInt(EXPERIENCE_TAG, this.experience);
     }
 
     public int getExperience() {

@@ -23,6 +23,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class DarkFountainBlockEntity extends BlockEntity {
+    public static final String FOUNTAIN_TICKS_LEFT_TAG = "fountain_ticks_left";
+    public static final String BEAM_BLOCKS_UP_TAG = "beam_blocks_up";
+    public static final String BEAM_BLOCKS_DOWN_TAG = "beam_blocks_down";
+    public static final String CREATED_FOUNTAIN_THIS_TICK_TAG = "created_fountain_this_tick";
+
     private int fountainTicksLeftOld = 0;
     private int fountainTicksLeft = 0;
     private boolean createdFountainThisTick = false;
@@ -146,26 +151,26 @@ public class DarkFountainBlockEntity extends BlockEntity {
     @Override
     public @NotNull CompoundTag getUpdateTag() {
         CompoundTag tag = new CompoundTag();
-        tag.putInt("fountain_ticks_left", fountainTicksLeft);
-        tag.putInt("beam_blocks_up", beamBlocksUp);
-        tag.putInt("beam_blocks_down", beamBlocksDown);
-        tag.putBoolean("created_fountain_this_tick", createdFountainThisTick);
+        tag.putInt(FOUNTAIN_TICKS_LEFT_TAG, fountainTicksLeft);
+        tag.putInt(BEAM_BLOCKS_UP_TAG, beamBlocksUp);
+        tag.putInt(BEAM_BLOCKS_DOWN_TAG, beamBlocksDown);
+        tag.putBoolean(CREATED_FOUNTAIN_THIS_TICK_TAG, createdFountainThisTick);
         return tag;
     }
 
     @Override
     public void load(CompoundTag pTag) {
-        if(pTag.contains("fountain_ticks_left")) fountainTicksLeft = pTag.getInt("fountain_ticks_left");
-        if(pTag.contains("beam_blocks_up")) beamBlocksUp = pTag.getInt("beam_blocks_up");
-        if(pTag.contains("beam_blocks_down")) beamBlocksDown = pTag.getInt("beam_blocks_down");
-        if(pTag.contains("created_fountain_this_tick")) createdFountainThisTick = pTag.getBoolean("created_fountain_this_tick");
+        if(pTag.contains(FOUNTAIN_TICKS_LEFT_TAG)) fountainTicksLeft = pTag.getInt(FOUNTAIN_TICKS_LEFT_TAG);
+        if(pTag.contains(BEAM_BLOCKS_UP_TAG)) beamBlocksUp = pTag.getInt(BEAM_BLOCKS_UP_TAG);
+        if(pTag.contains(BEAM_BLOCKS_DOWN_TAG)) beamBlocksDown = pTag.getInt(BEAM_BLOCKS_DOWN_TAG);
+        if(pTag.contains(CREATED_FOUNTAIN_THIS_TICK_TAG)) createdFountainThisTick = pTag.getBoolean(CREATED_FOUNTAIN_THIS_TICK_TAG);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        pTag.putInt("fountain_ticks_left", fountainTicksLeft);
-        pTag.putInt("beam_blocks_up", beamBlocksUp);
-        pTag.putInt("beam_blocks_down", beamBlocksDown);
-        pTag.putBoolean("created_fountain_this_tick", createdFountainThisTick);
+        pTag.putInt(FOUNTAIN_TICKS_LEFT_TAG, fountainTicksLeft);
+        pTag.putInt(BEAM_BLOCKS_UP_TAG, beamBlocksUp);
+        pTag.putInt(BEAM_BLOCKS_DOWN_TAG, beamBlocksDown);
+        pTag.putBoolean(CREATED_FOUNTAIN_THIS_TICK_TAG, createdFountainThisTick);
     }
 }

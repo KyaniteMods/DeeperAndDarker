@@ -29,6 +29,13 @@ import java.util.Set;
 public class OvercastVessel extends AbstractGolemBoss {
     private final OvercastVesselPhaseManager phaseManager;
 
+    public static final String CRACK_DOWN_TAG = "crack_down";
+    public static final String CRACK_UP_TAG = "crack_up";
+    public static final String CRACK_NORTH_TAG = "crack_north";
+    public static final String CRACK_SOUTH_TAG = "crack_south";
+    public static final String CRACK_WEST_TAG = "crack_west";
+    public static final String CRACK_EAST_TAG = "crack_east";
+
     protected static final EntityDataAccessor<Boolean> DATA_CRACK_DOWN_ID = SynchedEntityData.defineId(OvercastVessel.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Boolean> DATA_CRACK_UP_ID = SynchedEntityData.defineId(OvercastVessel.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Boolean> DATA_CRACK_NORTH_ID = SynchedEntityData.defineId(OvercastVessel.class, EntityDataSerializers.BOOLEAN);
@@ -68,24 +75,24 @@ public class OvercastVessel extends AbstractGolemBoss {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        entityData.set(DATA_CRACK_DOWN_ID, compoundTag.getBoolean("crack_down"));
-        entityData.set(DATA_CRACK_UP_ID, compoundTag.getBoolean("crack_up"));
-        entityData.set(DATA_CRACK_NORTH_ID, compoundTag.getBoolean("crack_north"));
-        entityData.set(DATA_CRACK_SOUTH_ID, compoundTag.getBoolean("crack_south"));
-        entityData.set(DATA_CRACK_WEST_ID, compoundTag.getBoolean("crack_west"));
-        entityData.set(DATA_CRACK_EAST_ID, compoundTag.getBoolean("crack_east"));
+        entityData.set(DATA_CRACK_DOWN_ID, compoundTag.getBoolean(CRACK_DOWN_TAG));
+        entityData.set(DATA_CRACK_UP_ID, compoundTag.getBoolean(CRACK_UP_TAG));
+        entityData.set(DATA_CRACK_NORTH_ID, compoundTag.getBoolean(CRACK_NORTH_TAG));
+        entityData.set(DATA_CRACK_SOUTH_ID, compoundTag.getBoolean(CRACK_SOUTH_TAG));
+        entityData.set(DATA_CRACK_WEST_ID, compoundTag.getBoolean(CRACK_WEST_TAG));
+        entityData.set(DATA_CRACK_EAST_ID, compoundTag.getBoolean(CRACK_EAST_TAG));
         phaseManager.loadFrom(compoundTag);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putBoolean("crack_down", entityData.get(DATA_CRACK_DOWN_ID));
-        compoundTag.putBoolean("crack_up", entityData.get(DATA_CRACK_UP_ID));
-        compoundTag.putBoolean("crack_north", entityData.get(DATA_CRACK_NORTH_ID));
-        compoundTag.putBoolean("crack_south", entityData.get(DATA_CRACK_SOUTH_ID));
-        compoundTag.putBoolean("crack_west", entityData.get(DATA_CRACK_WEST_ID));
-        compoundTag.putBoolean("crack_east", entityData.get(DATA_CRACK_EAST_ID));
+        compoundTag.putBoolean(CRACK_DOWN_TAG, entityData.get(DATA_CRACK_DOWN_ID));
+        compoundTag.putBoolean(CRACK_UP_TAG, entityData.get(DATA_CRACK_UP_ID));
+        compoundTag.putBoolean(CRACK_NORTH_TAG, entityData.get(DATA_CRACK_NORTH_ID));
+        compoundTag.putBoolean(CRACK_SOUTH_TAG, entityData.get(DATA_CRACK_SOUTH_ID));
+        compoundTag.putBoolean(CRACK_WEST_TAG, entityData.get(DATA_CRACK_WEST_ID));
+        compoundTag.putBoolean(CRACK_EAST_TAG, entityData.get(DATA_CRACK_EAST_ID));
         phaseManager.save(compoundTag);
     }
 

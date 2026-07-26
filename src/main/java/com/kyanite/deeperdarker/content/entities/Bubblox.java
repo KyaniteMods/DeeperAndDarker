@@ -12,6 +12,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class Bubblox extends Entity {
+    public static final String SIZE_TAG = "size";
+
     public static final EntityDataAccessor<Byte> ID_SIZE = SynchedEntityData.defineId(Bubblox.class, EntityDataSerializers.BYTE);
 
     public Bubblox(EntityType<?> entityType, Level level) {
@@ -71,12 +73,12 @@ public class Bubblox extends Entity {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        setSize(compoundTag.getByte("size"));
+        setSize(compoundTag.getByte(SIZE_TAG));
     }
 
     @Override
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        compoundTag.putByte("size", getSize());
+        compoundTag.putByte(SIZE_TAG, getSize());
     }
 
     @Override

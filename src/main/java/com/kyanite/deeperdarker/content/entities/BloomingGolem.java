@@ -30,6 +30,9 @@ import java.util.List;
 import java.util.Set;
 
 public class BloomingGolem extends AbstractGolemBoss {
+    public static final String MOVE_TIMER_TAG = "move_timer";
+    public static final String VISITED_POSITIONS_TAG = "visited_positions";
+
     public final int TIMER_RESET_TIME = 50;
     private int moveTimer = TIMER_RESET_TIME;
 
@@ -53,17 +56,17 @@ public class BloomingGolem extends AbstractGolemBoss {
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        moveTimer = compoundTag.getInt("move_timer");
-        if (compoundTag.contains("visited_positions", CompoundTag.TAG_LIST)) {
-            visitedPositions = BlockPos.CODEC.listOf().xmap(HashSet::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.get("visited_positions")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
+        moveTimer = compoundTag.getInt(MOVE_TIMER_TAG);
+        if (compoundTag.contains(VISITED_POSITIONS_TAG, CompoundTag.TAG_LIST)) {
+            visitedPositions = BlockPos.CODEC.listOf().xmap(HashSet::new, ArrayList::new).parse(NbtOps.INSTANCE, compoundTag.get(VISITED_POSITIONS_TAG)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        compoundTag.putInt("move_timer", moveTimer);
-        BlockPos.CODEC.listOf().<Set<BlockPos>>xmap(HashSet::new, ArrayList::new).encodeStart(NbtOps.INSTANCE, visitedPositions).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("visited_positions", tag));
+        compoundTag.putInt(MOVE_TIMER_TAG, moveTimer);
+        BlockPos.CODEC.listOf().<Set<BlockPos>>xmap(HashSet::new, ArrayList::new).encodeStart(NbtOps.INSTANCE, visitedPositions).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put(VISITED_POSITIONS_TAG, tag));
     }
 
     public static AttributeSupplier createAttributes() {

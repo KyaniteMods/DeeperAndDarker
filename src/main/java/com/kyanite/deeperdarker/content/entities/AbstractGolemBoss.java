@@ -30,6 +30,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
+    public static final String IS_GOLEM_SLEEPING_TAG = "is_golem_sleeping";
+    public static final String HOME_POSITION_TAG = "home_position";
+    public static final String SNAP_TO_BLOCKS_TAG = "snap_to_blocks";
+    public static final String COOLDOWN_TAG = "cooldown";
+
     private final ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
     private GlobalPos homePos = null;
 
@@ -61,13 +66,13 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
             reset();
             setGolemSleeping(true);
         } else {
-            setGolemSleeping(compoundTag.getBoolean("is_golem_sleeping"));
+            setGolemSleeping(compoundTag.getBoolean(IS_GOLEM_SLEEPING_TAG));
         }
-        if (compoundTag.contains("home_position", CompoundTag.TAG_COMPOUND)) {
-            homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get("home_position")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
+        if (compoundTag.contains(HOME_POSITION_TAG, CompoundTag.TAG_COMPOUND)) {
+            homePos = GlobalPos.CODEC.parse(NbtOps.INSTANCE, compoundTag.get(HOME_POSITION_TAG)).resultOrPartial(DeeperDarker.LOGGER::error).orElse(null);
         }
-        setSnapToBlocks(compoundTag.getBoolean("snap_to_blocks"));
-        cooldown = compoundTag.getShort("cooldown");
+        setSnapToBlocks(compoundTag.getBoolean(SNAP_TO_BLOCKS_TAG));
+        cooldown = compoundTag.getShort(COOLDOWN_TAG);
         if (hasCustomName()) {
             bossEvent.setName(getDisplayName());
         }
@@ -77,11 +82,11 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         if (homePos != null) {
-            GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, homePos).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put("home_position", tag));
+            GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, homePos).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put(HOME_POSITION_TAG, tag));
         }
-        compoundTag.putBoolean("is_golem_sleeping", isGolemSleeping());
-        compoundTag.putBoolean("snap_to_blocks", snapToBlocks());
-        compoundTag.putShort("cooldown", cooldown);
+        compoundTag.putBoolean(IS_GOLEM_SLEEPING_TAG, isGolemSleeping());
+        compoundTag.putBoolean(SNAP_TO_BLOCKS_TAG, snapToBlocks());
+        compoundTag.putShort(COOLDOWN_TAG, cooldown);
     }
 
     @Override
