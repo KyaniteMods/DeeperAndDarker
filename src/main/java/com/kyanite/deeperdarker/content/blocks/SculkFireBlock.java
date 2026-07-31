@@ -41,10 +41,10 @@ public class SculkFireBlock extends BaseFireBlock {
         if (!blockState.isAir()) {
             return false;
         }
-        return level.getBlockState(blockPos.below()).isFaceSturdy(level, blockPos.below(), Direction.UP) || (level instanceof WorldGenLevel worldGenLevel && isPortal(worldGenLevel, blockPos));
+        return level.getBlockState(blockPos.below()).isFaceSturdy(level, blockPos.below(), Direction.UP) || isPortal(level, blockPos);
     }
 
-    private static boolean isPortal(WorldGenLevel level, BlockPos blockPos) {
+    private static boolean isPortal(Level level, BlockPos blockPos) {
         Optional<HolderLookup.RegistryLookup<Portal>> lookup = level.registryAccess().lookup(KyanitePortals.RESOURCE_KEY);
         if (lookup.isEmpty()) return false;
         Optional<Holder.Reference<Portal>> portal = lookup.get().get(DeeperDarker.OTHERSIDE_PORTAL);
