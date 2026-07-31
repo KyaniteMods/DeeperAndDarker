@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
@@ -31,28 +32,32 @@ public class LockBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        InteractionResult useKey = keyType.use(player, player.getItemInHand(interactionHand));
+        return use(level, blockPos, player, player.getItemInHand(interactionHand));
+    }
+
+    public InteractionResult use(Level level, BlockPos pos, @Nullable Player player, ItemStack stack) {
+        InteractionResult useKey = keyType.use(player, stack);
         if (useKey != InteractionResult.SUCCESS) return useKey;
         if (level.isClientSide()) return InteractionResult.SUCCESS;
-        level.destroyBlock(blockPos, true);
+        level.destroyBlock(pos, true);
 
-        Queue<BlockPos> stack = new ArrayDeque<>();
+        Queue<BlockPos> posStack = new ArrayDeque<>();
         Set<BlockPos> explored = new HashSet<>();
-        explored.add(blockPos);
-        stack.add(blockPos);
+        explored.add(pos);
+        posStack.add(pos);
 
-        while (!stack.isEmpty()) {
-            BlockPos pos = stack.remove();
+        while (!posStack.isEmpty()) {
+            BlockPos blockPos = posStack.remove();
             for (Direction direction : Direction.values()) {
-                BlockPos neighborPos = pos.offset(direction.getNormal());
+                BlockPos neighborPos = blockPos.offset(direction.getNormal());
                 if (level.getBlockState(neighborPos).is(this) && !explored.contains(neighborPos)) {
                     explored.add(neighborPos);
-                    stack.add(neighborPos);
+                    posStack.add(neighborPos);
                     level.destroyBlock(neighborPos, true);
                 }
             }
         }
-        return InteractionResult.CONSUME;
+        return InteractionResult.SUCCESS;
     }
 
     public enum KeyType {
@@ -69,10 +74,10 @@ public class LockBlock extends Block {
             this.errorMessage = errorMessage;
         }
 
-        public InteractionResult use(Player player, ItemStack stack) {
+        public InteractionResult use(@Nullable Player player, ItemStack stack) {
             if (stack.is(unlockItems)) return InteractionResult.SUCCESS;
             if (stack.is(errorItems)) {
-                player.displayClientMessage(errorMessage, true);
+                if (player != null) player.displayClientMessage(errorMessage, true);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.FAIL;

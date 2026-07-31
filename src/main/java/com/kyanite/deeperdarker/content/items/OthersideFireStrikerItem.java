@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
+import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.SculkFireBlock;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
