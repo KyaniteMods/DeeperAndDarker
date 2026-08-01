@@ -194,20 +194,6 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
-		SimpleWorleyNoise noise = SimpleWorleyNoise.create(RandomSource.create());
-		String chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
-		String chars1 = "ZYXWVUTSRQPONMLKJIHGFEDCBA9876543210";
-		               //ZYXWVUTSRQP
-		for (int z = 0; z < 64; z++) {
-			StringBuilder builder = new StringBuilder();
-			for (int x = 0; x < 64; x++) {
-				float value = 1.0f - noise.get(x, z, SimpleWorleyNoise.ReturnValue.DISTANCE_TO_EDGE);
-//				builder.append(value).append(' ');
-				builder.append(chars.charAt(Mth.floor(value * (chars.length() - 1))));
-			}
-			System.out.println(builder);
-		}
-
 		Messages.registerReceivers();
 	}
 

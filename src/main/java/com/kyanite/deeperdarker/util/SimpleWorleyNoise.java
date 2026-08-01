@@ -35,6 +35,19 @@ public class SimpleWorleyNoise {
         return returnValue == ReturnValue.VALUE ? lowestDistance / 21.213203f : Mth.abs(secondLowestDistance - lowestDistance) / 21.213203f;
     }
 
+    public static void logExample() {
+        SimpleWorleyNoise noise = SimpleWorleyNoise.create(RandomSource.create());
+        String chars = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
+        for (int z = 0; z < 64; z++) {
+            StringBuilder builder = new StringBuilder();
+            for (int x = 0; x < 64; x++) {
+                float value = 1.0f - noise.get(x, z, SimpleWorleyNoise.ReturnValue.DISTANCE_TO_EDGE);
+                builder.append(chars.charAt(Mth.floor(value * (chars.length() - 1))));
+            }
+            System.out.println(builder);
+        }
+    }
+
     public Vec2 getPointPosition(int chunkX, int chunkZ) {
         RandomSource random = this.random.at(chunkX, 0, chunkZ);
         return new Vec2(chunkX * 16 + random.nextInt(0, 16), chunkZ * 16 + random.nextInt(0, 16));
