@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.entities.overseer;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.blocks.SculkAltarBlock;
 import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhase;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
@@ -23,6 +24,8 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -167,10 +170,27 @@ public class Overseer extends Monster {
 
     public void setOriginPos(Optional<GlobalPos> pos) {
         entityData.set(DATA_ID_ORIGIN, pos);
+        setOriginBossLocked(true);
+    }
+
+    @Override
+    public void remove(RemovalReason removalReason) {
+        setOriginBossLocked(false);
+        super.remove(removalReason);
     }
 
     public boolean isValidOrigin(Optional<GlobalPos> pos) {
         return pos.isEmpty() || pos.get().dimension().equals(level().dimension());
+    }
+
+    public void setOriginBossLocked(boolean value) {
+        Optional<GlobalPos> pos = getOriginPos();
+        if (pos.isPresent() && isValidOrigin(pos)) {
+            BlockState state = level().getBlockState(pos.get().pos());
+            if (state.hasProperty(SculkAltarBlock.BOSS_LOCKED)) {
+                level().setBlock(pos.get().pos(), state.setValue(SculkAltarBlock.BOSS_LOCKED, value), Block.UPDATE_CLIENTS);
+            }
+        }
     }
 
     public boolean addCrystal(OverseerCrystal crystal) {

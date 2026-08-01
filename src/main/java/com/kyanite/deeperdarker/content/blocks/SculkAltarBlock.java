@@ -6,7 +6,6 @@ import com.kyanite.deeperdarker.network.AddSculkAltarItemPacket;
 import com.kyanite.deeperdarker.network.RemoveSculkAltarItemPacket;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -41,15 +40,17 @@ public class SculkAltarBlock extends BaseEntityBlock {
     protected static final VoxelShape SHAPE = Shapes.or(SHAPE_BOTTOM, SHAPE_RING);
 
     public static final BooleanProperty HAS_ITEMS = BooleanProperty.create("has_items");
+    public static final BooleanProperty CAN_SPAWN_BOSS = BooleanProperty.create("can_spawn_boss");
+    public static final BooleanProperty BOSS_LOCKED = BooleanProperty.create("boss_locked");
 
     public SculkAltarBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        registerDefaultState(getStateDefinition().any().setValue(HAS_ITEMS, false));
+        registerDefaultState(getStateDefinition().any().setValue(HAS_ITEMS, false).setValue(CAN_SPAWN_BOSS, true).setValue(BOSS_LOCKED, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HAS_ITEMS);
+        builder.add(HAS_ITEMS, CAN_SPAWN_BOSS, BOSS_LOCKED);
     }
 
     @Override
@@ -85,7 +86,7 @@ public class SculkAltarBlock extends BaseEntityBlock {
     @Override
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide() ? createTickerHelper(blockEntityType, DDBlockEntities.SCULK_ALTAR, SculkAltarBlockEntity::itemAnimationTick) : null;
+        return createTickerHelper(blockEntityType, DDBlockEntities.SCULK_ALTAR, SculkAltarBlockEntity::tick);
     }
 
     @Override
