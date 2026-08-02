@@ -59,7 +59,7 @@ public class Floater extends Vex {
     }
 
     public static AttributeSupplier createFloaterAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 28.0).add(Attributes.ATTACK_DAMAGE, 8.0).add(Attributes.FOLLOW_RANGE, 64.0).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 28.0).add(Attributes.ATTACK_DAMAGE, 12.0).add(Attributes.FOLLOW_RANGE, 64.0).build();
     }
 
     @Override
