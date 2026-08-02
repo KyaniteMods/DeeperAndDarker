@@ -1,7 +1,7 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.entities.goals.FloaterFollowWormGoal;
+import com.kyanite.deeperdarker.content.entities.goals.FloaterInWormGoal;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -43,7 +43,7 @@ public class Floater extends Vex {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        goalSelector.addGoal(2, new FloaterFollowWormGoal(this));
+        goalSelector.addGoal(2, new FloaterInWormGoal(this));
         removeAllGoals(goal -> goal instanceof LookAtPlayerGoal);
     }
 
@@ -60,6 +60,25 @@ public class Floater extends Vex {
     @Override
     public boolean isCurrentlyGlowing() {
         return true;
+    }
+
+    protected void tickWorm() {
+        if (!inWorm() || getWormHead() == null) {
+            if (hasWormTail()) wormTail.tickWorm();
+            return;
+        }
+        Floater floater = getWormHead();
+        double d = distanceTo(floater);
+        float f = 0.75f;
+        Vec3 vec3 = new Vec3(floater.getX() - getX(), floater.getY() - getY(), floater.getZ() - getZ()).normalize().scale(Math.max(d - f, 0.0));
+        moveTo(getX() + vec3.x, getY() + vec3.y, getZ() + vec3.z);
+        getLookControl().setLookAt(floater);
+        if (hasWormTail()) wormTail.tickWorm();
+    }
+
+    @Override
+    protected void customServerAiStep() {
+        tickWorm();
     }
 
     class FloaterMoveControl
