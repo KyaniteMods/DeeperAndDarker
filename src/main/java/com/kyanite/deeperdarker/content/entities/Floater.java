@@ -20,10 +20,12 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public class Floater extends Vex {
     public static final String WORM_HEAD_TAG = "worm_head";
     public static final String SPECIAL_TAG = "special";
+    public static final int MAX_AGE = 3600;
 
     public static final EntityDataAccessor<Boolean> DATA_ID_SPECIAL = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
 
@@ -35,6 +37,8 @@ public class Floater extends Vex {
     @Nullable
     private UUID wormHeadUUID;
 
+    private int age;
+
     public Floater(EntityType<? extends Vex> entityType, Level level) {
         super(entityType, level);
         moveControl = new FloaterMoveControl(this);
@@ -45,6 +49,7 @@ public class Floater extends Vex {
         super.registerGoals();
         goalSelector.addGoal(2, new FloaterInWormGoal(this));
         removeAllGoals(goal -> goal instanceof LookAtPlayerGoal);
+        setPersistenceRequired();
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Floater extends Vex {
     }
 
     public static AttributeSupplier createFloaterAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 28.0).add(Attributes.ATTACK_DAMAGE, 8.0).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 28.0).add(Attributes.ATTACK_DAMAGE, 8.0).add(Attributes.FOLLOW_RANGE, 64.0).build();
     }
 
     @Override
@@ -79,6 +84,14 @@ public class Floater extends Vex {
     @Override
     protected void customServerAiStep() {
         tickWorm();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (age++ >= MAX_AGE && isWormHead()) {
+            executeOnEveryWormPart(Entity::discard);
+        }
     }
 
     class FloaterMoveControl
@@ -141,6 +154,12 @@ public class Floater extends Vex {
             }
         }
         return wormHead;
+    }
+
+    public void executeOnEveryWormPart(Consumer<Floater> consumer) {
+        Floater tail = wormTail;
+        consumer.accept(this);
+        if (tail != null) tail.executeOnEveryWormPart(consumer);
     }
 
     public static Floater generateWorm(int size, double x, double y, double z, ServerLevel level) {
