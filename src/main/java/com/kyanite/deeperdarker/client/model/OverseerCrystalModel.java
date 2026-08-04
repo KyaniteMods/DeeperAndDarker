@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.client.model;
 
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystal;
+import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystalProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -8,8 +9,10 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.Vec3;
 
-public class OverseerCrystalModel<T extends OverseerCrystal> extends EntityModel<T> {
+public class OverseerCrystalModel<T extends Entity> extends EntityModel<T> {
 	private final ModelPart crystal;
 
 	public OverseerCrystalModel(ModelPart root) {
@@ -26,11 +29,16 @@ public class OverseerCrystalModel<T extends OverseerCrystal> extends EntityModel
 	}
 
 	@Override
-	public void setupAnim(OverseerCrystal entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		float factor = 1.0f / 2.0f;
-        crystal.yRot = Mth.DEG_TO_RAD * (entity.tickCount + ageInTicks) * factor;
-		crystal.xRot = getTilt(entity.getLastHurtTime(), entity.lastHurtTimeOld, ageInTicks);
-		entity.lastHurtTimeOld = entity.getLastHurtTime();
+		if (entity instanceof OverseerCrystal crystalEntity) {
+			crystal.yRot = Mth.DEG_TO_RAD * (crystalEntity.tickCount + ageInTicks) * factor;
+			crystal.xRot = getTilt(crystalEntity.getLastHurtTime(), crystalEntity.lastHurtTimeOld, ageInTicks);
+			crystalEntity.lastHurtTimeOld = crystalEntity.getLastHurtTime();
+		} else if (entity instanceof OverseerCrystalProjectile projectile) {
+			crystal.xRot = Mth.rotLerp(limbSwing, projectile.yRotO, projectile.getYRot()) * (Mth.PI / 180.0f);
+			crystal.yRot = Mth.lerp(limbSwing, projectile.xRotO, projectile.getXRot()) * (Mth.PI / 180.0f);
+		}
 	}
 
 	private float getTilt(int time, int timeOld, float tickDelta) {

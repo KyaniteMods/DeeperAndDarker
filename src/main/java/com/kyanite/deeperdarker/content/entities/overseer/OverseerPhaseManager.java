@@ -32,12 +32,14 @@ public class OverseerPhaseManager extends BossPhaseManager<Overseer, OverseerPha
             getPhases().add(new OverseerIdlePhase(100));
             getPhases().add(new OverseerLasersPhase(5, 400));
             getPhases().add(new OverseerFloaterPhase(1000, ConstantInt.of(4), UniformInt.of(5, 8)));
+            getPhases().add(new OverseerShootCrystalsPhase(100, 0.05f));
             return true;
         } else {
             getPhases().add(new OverseerCrystalsPhase(5, 450));
             getPhases().add(new OverseerIdlePhase(100));
             getPhases().add(new OverseerLasersPhase(6, 300));
             getPhases().add(new OverseerFloaterPhase(1000, ConstantInt.of(4), UniformInt.of(6, 8)));
+            getPhases().add(new OverseerShootCrystalsPhase(300, 0.15f));
             return true;
         }
     }

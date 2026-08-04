@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselItem;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystal;
+import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystalProjectile;
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerLaser;
 import com.kyanite.deeperdarker.mixin.DefaultAttributeRegistryAccessor;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -23,6 +24,7 @@ public class DDEntities {
     public static final EntityType<OvercastVesselItem> OVERCAST_VESSEL_ITEM = register("overcast_vessel_item", FabricEntityTypeBuilder.<OvercastVesselItem>create(MobCategory.MISC, OvercastVesselItem::new).dimensions(EntityDimensions.fixed(0.25f, 0.25f)).trackRangeChunks(10).build());
     public static final EntityType<OverseerCrystal> OVERSEER_CRYSTAL = register("overseer_crystal", FabricEntityTypeBuilder.<OverseerCrystal>create(MobCategory.MISC, OverseerCrystal::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeChunks(10).build());
     public static final EntityType<OverseerLaser> OVERSEER_LASER = register("overseer_laser", FabricEntityTypeBuilder.<OverseerLaser>create(MobCategory.MISC, OverseerLaser::new).dimensions(EntityDimensions.fixed(0.0f, 0.0f)).trackRangeChunks(10).build());
+    public static final EntityType<OverseerCrystalProjectile> OVERSEER_CRYSTAL_PROJECTILE = register("overseer_crystal_projectile", FabricEntityTypeBuilder.<OverseerCrystalProjectile>create(MobCategory.MISC, OverseerCrystalProjectile::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeChunks(10).build());
 
     public static final EntityType<AnglerFish> ANGLER_FISH = register("angler_fish", FabricEntityTypeBuilder.create(MobCategory.WATER_CREATURE, AnglerFish::new).dimensions(EntityDimensions.fixed(0.7f, 0.4f)).trackRangeChunks(10).build());
     public static final EntityType<SculkCentipede> SCULK_CENTIPEDE = register("sculk_centipede", FabricEntityTypeBuilder.create(MobCategory.MONSTER, SculkCentipede::new).dimensions(EntityDimensions.fixed(1f, 0.2f)).trackRangeChunks(10).build());

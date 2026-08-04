@@ -12,7 +12,8 @@ public enum OverseerPhaseType implements StringRepresentable, BossPhaseType<Over
     IDLE("idle", () -> OverseerIdlePhase.CODEC),
     CRYSTALS("crystals", () -> OverseerCrystalsPhase.CODEC),
     LASERS("lasers", () -> OverseerLasersPhase.CODEC),
-    FLOATER("floater", () -> OverseerFloaterPhase.CODEC);
+    FLOATER("floater", () -> OverseerFloaterPhase.CODEC),
+    SHOOT_CRYSTALS("shoot_crystals", () -> OverseerShootCrystalsPhase.CODEC);
 
     public static final Codec<OverseerPhaseType> CODEC = StringRepresentable.fromEnum(OverseerPhaseType::values);
 

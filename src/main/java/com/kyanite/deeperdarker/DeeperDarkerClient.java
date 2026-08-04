@@ -182,6 +182,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.OVERSEER, OverseerRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER_CRYSTAL, OverseerCrystalRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER_LASER, OverseerLaserRenderer::new);
+        EntityRendererRegistry.register(DDEntities.OVERSEER_CRYSTAL_PROJECTILE, OverseerCrystalProjectileRenderer::new);
         EntityRendererRegistry.register(DDEntities.FLOATER, FloaterRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {

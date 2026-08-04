@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
@@ -18,13 +19,19 @@ public final class DDDamageTypes {
     public static final ResourceKey<DamageType> DARK_FOUNTAIN = createKey("dark_fountain");
     public static final ResourceKey<DamageType> ICICLE = createKey("icicle");
     public static final ResourceKey<DamageType> ACID = createKey("acid");
+    public static final ResourceKey<DamageType> OVERSEER_CRYSTAL = createKey("overseer_crystal");
 
     public static void bootstrap(BootstapContext<DamageType> context) {
-        context.register(BITE, new DamageType(DeeperDarker.MOD_ID + ".bite", 0.1f));
-        context.register(RING, new DamageType(DeeperDarker.MOD_ID + ".ring", 0.1f));
-        context.register(DARK_FOUNTAIN, new DamageType(DeeperDarker.MOD_ID + ".dark_fountain", 0.1f));
-        context.register(ICICLE, new DamageType(DeeperDarker.MOD_ID + ".icicle", 0.1f));
-        context.register(ACID, new DamageType(DeeperDarker.MOD_ID + ".acid", 0.1f));
+        register(context, BITE, 0.1f);
+        register(context, RING, 0.1f);
+        register(context, DARK_FOUNTAIN, 0.1f);
+        register(context, ICICLE, 0.1f);
+        register(context, ACID, 0.1f);
+        register(context, OVERSEER_CRYSTAL, 0.1f);
+    }
+
+    private static Holder.Reference<DamageType> register(BootstapContext<DamageType> context, ResourceKey<DamageType> resourceKey, float f) {
+        return context.register(resourceKey, new DamageType(DeeperDarker.MOD_ID + "." + resourceKey.location().getPath(), f));
     }
 
     public static DamageSource source(Level level, ResourceKey<DamageType> damageType, Entity target, Entity attacker) {

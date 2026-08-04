@@ -16,6 +16,7 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,7 +35,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class Overseer extends Monster {
+public class Overseer extends Monster implements RangedAttackMob {
     public static final String INVULNERABLE_TICKS_TAG = "invulnerable_ticks";
     public static final String ORIGIN_POSITION_TAG = "origin_position";
 
@@ -208,6 +210,30 @@ public class Overseer extends Monster {
     @Override
     public boolean isCurrentlyGlowing() {
         return true;
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity livingEntity, float f) {
+        double x = getX();
+        double y = getY() + getEyeHeight();
+        double z = getZ();
+
+        double powerX = livingEntity.getX() - x;
+        double powerY = livingEntity.getY() + livingEntity.getEyeHeight() * 0.5 - y;
+        double powerZ = livingEntity.getZ() - z;
+
+        performRangedAttack(powerX, powerY, powerZ);
+    }
+
+    public void performRangedAttack(double powerX, double powerY, double powerZ) {
+        double x = getX();
+        double y = getY() + getEyeHeight();
+        double z = getZ();
+
+        OverseerCrystalProjectile crystal = new OverseerCrystalProjectile(level(), this, powerX, powerY, powerZ);
+        crystal.setOwner(this);
+        crystal.setPosRaw(x, y, z);
+        level().addFreshEntity(crystal);
     }
 
     class OverseerDoNothingGoal

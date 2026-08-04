@@ -418,6 +418,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDEntities.OVERSEER, "Overseer");
         translationBuilder.add(DDEntities.OVERSEER_CRYSTAL, "Overseer Crystal");
         translationBuilder.add(DDEntities.OVERSEER_LASER, "Overseer Laser");
+        translationBuilder.add(DDEntities.OVERSEER_CRYSTAL_PROJECTILE, "Overseer Crystal");
         translationBuilder.add(DDEntities.FLOATER, "Floater");
 
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.FIZZY), "Tipped Arrow");
@@ -589,6 +590,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".icicle.player", "%1$s was skewered by a falling icicle while fighting %2$s");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".acid", "%s tried to swim in acid");
         translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".acid.player", "%1$s tried to swim in acid to escape %2$s");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".overseer_crystal", "%s was hit by a crystal");
+        translationBuilder.add("death.attack." + DeeperDarker.MOD_ID + ".overseer_crystal.player", "%1$s was hit by a crystal from %2$s");
 
         translationBuilder.add(getPainting(AncientPaintings.ABSTRACTION, ".title"), "Abstraction");
         translationBuilder.add(getPainting(AncientPaintings.ABSTRACTION, ".author"), "Pedro Ricardo");
