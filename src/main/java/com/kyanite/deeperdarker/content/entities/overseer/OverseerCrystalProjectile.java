@@ -8,10 +8,13 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+
+import java.util.List;
 
 public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
     public OverseerCrystalProjectile(EntityType<? extends OverseerCrystalProjectile> entityType, Level level) {
@@ -32,24 +35,35 @@ public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
         super.onHitEntity(entityHitResult);
         if (!level().isClientSide()) {
             Entity entity = entityHitResult.getEntity();
-            boolean bl;
-            if (getOwner() instanceof LivingEntity owner) {
-                bl = entity.hurt(damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL, owner), 5.0f);
-                if (bl && entity.isAlive()) {
-                    doEnchantDamageEffects(owner, entity);
-                }
-            } else {
-                entity.hurt(damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL), 5.0f);
-            }
+            hurt(entity, 10.0f);
         }
     }
 
     @Override
     protected void onHit(HitResult hitResult) {
         super.onHit(hitResult);
+        level().addParticle(ParticleTypes.EXPLOSION, getX(), getY(), getZ(), 0.0f, 0.0f, 0.0f);
+
         if (!level().isClientSide()) {
+            List<Entity> list = level().getEntities(this, getBoundingBox().inflate(1.5), entity -> entity.isAlive() && !(entity instanceof ItemEntity));
+            for (Entity entity : list) {
+                hurt(entity, 5.0f);
+            }
             discard();
         }
+    }
+
+    protected boolean hurt(Entity entity, float amount) {
+        boolean bl;
+        if (getOwner() instanceof LivingEntity owner) {
+            bl = entity.hurt(damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL, owner), amount);
+            if (bl && entity.isAlive()) {
+                doEnchantDamageEffects(owner, entity);
+            }
+        } else {
+            bl = entity.hurt(damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL), amount);
+        }
+        return bl;
     }
 
     @Override

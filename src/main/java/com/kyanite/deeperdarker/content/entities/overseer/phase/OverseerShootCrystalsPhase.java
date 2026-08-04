@@ -3,6 +3,8 @@ package com.kyanite.deeperdarker.content.entities.overseer.phase;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 
 public class OverseerShootCrystalsPhase extends OverseerPhase {
@@ -35,8 +37,13 @@ public class OverseerShootCrystalsPhase extends OverseerPhase {
     @Override
     public void tick(Overseer overseer) {
         if (overseer.getRandom().nextFloat() < probability) {
-            Vec3 vec3 = Vec3.directionFromRotation(overseer.getRandom().nextFloat() * 360.0f, overseer.getRandom().nextFloat() * 360.0f).scale(0.01);
-            overseer.performRangedAttack(vec3.x(), vec3.y(), vec3.z());
+            Player player = overseer.level().getNearestPlayer(overseer, 80.0f);
+            if (player != null && TargetingConditions.forCombat().test(overseer, player)) {
+                overseer.performRangedAttackAround(player, 3);
+            } else {
+                Vec3 vec3 = Vec3.directionFromRotation(overseer.getRandom().nextFloat() * 360.0f, overseer.getRandom().nextFloat() * 360.0f).scale(0.01);
+                overseer.performRangedAttack(vec3.x(), vec3.y(), vec3.z());
+            }
             crystalsLeft--;
         }
     }

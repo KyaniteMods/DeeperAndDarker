@@ -14,9 +14,7 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -213,26 +211,26 @@ public class Overseer extends Monster implements RangedAttackMob {
     }
 
     @Override
-    public void performRangedAttack(LivingEntity livingEntity, float f) {
+    public void performRangedAttack(LivingEntity entity, float f) {
+        performRangedAttackAround(entity, 0);
+    }
+
+    public void performRangedAttackAround(LivingEntity entity, int precision) {
         double x = getX();
         double y = getY() + getEyeHeight();
         double z = getZ();
 
-        double powerX = livingEntity.getX() - x;
-        double powerY = livingEntity.getY() + livingEntity.getEyeHeight() * 0.5 - y;
-        double powerZ = livingEntity.getZ() - z;
+        double powerX = entity.getX() + getRandom().nextIntBetweenInclusive(-precision, precision) - x;
+        double powerY = entity.getY() + getRandom().nextIntBetweenInclusive(-precision, precision) + entity.getEyeHeight() * 0.5 - y;
+        double powerZ = entity.getZ() + getRandom().nextIntBetweenInclusive(-precision, precision) - z;
 
         performRangedAttack(powerX, powerY, powerZ);
     }
 
     public void performRangedAttack(double powerX, double powerY, double powerZ) {
-        double x = getX();
-        double y = getY() + getEyeHeight();
-        double z = getZ();
-
         OverseerCrystalProjectile crystal = new OverseerCrystalProjectile(level(), this, powerX, powerY, powerZ);
         crystal.setOwner(this);
-        crystal.setPosRaw(x, y, z);
+        crystal.setPosRaw(getX(), getY() + getEyeHeight(), getZ());
         level().addFreshEntity(crystal);
     }
 
@@ -276,5 +274,10 @@ public class Overseer extends Monster implements RangedAttackMob {
 
     @Override
     public void knockback(double strength, double x, double z) {
+    }
+
+    @Override
+    protected float getStandingEyeHeight(Pose pose, EntityDimensions entityDimensions) {
+        return 0.5f * entityDimensions.height;
     }
 }
