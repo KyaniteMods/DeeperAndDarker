@@ -69,7 +69,7 @@ public class OverseerCrystalsPhase extends OverseerPhase {
 
     @Override
     public boolean shouldContinue(Overseer overseer) {
-        return ticksLeft > 0 && (!overseer.getCrystals().isEmpty() || ticksLeft == idleTime);
+        return ticksLeft > 0 && ((!overseer.isFirstTick() && !overseer.getCrystals().isEmpty()) || ticksLeft == idleTime);
     }
 
     @Override

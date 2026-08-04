@@ -280,4 +280,8 @@ public class Overseer extends Monster implements RangedAttackMob {
     protected float getStandingEyeHeight(Pose pose, EntityDimensions entityDimensions) {
         return 0.5f * entityDimensions.height;
     }
+
+    public boolean isFirstTick() {
+        return firstTick;
+    }
 }
