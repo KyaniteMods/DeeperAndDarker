@@ -265,6 +265,8 @@
   "death.attack.deeperdarker.dark_fountain": "%s был ослеплён тёмным фонтаном",
   "death.attack.deeperdarker.icicle": "%s был проткнут падающей сосулькой",
   "death.attack.deeperdarker.icicle.player": "%1$s был проткнут падающей сосулькой, пока боролся с %2$s",
+  "death.attack.deeperdarker.overseer_crystal": "%s был поражён кристаллом",
+  "death.attack.deeperdarker.overseer_crystal.player": "%1$s был поражён кристаллом %2$s",
   "death.attack.deeperdarker.ring": "%s испытал смертельный шум в ушах от %s",
   "deeperdarker.container.dead_mans_chest": "Сундук мертвеца",
   "deeperdarker.container.double_dead_mans_chest": "Большой сундук мертвеца",
