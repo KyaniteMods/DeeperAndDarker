@@ -195,6 +195,23 @@ public class DeeperDarker implements ModInitializer {
 			}
 		});
 
+		DispenserBlock.registerBehavior(DDItems.ACID_BUCKET, new DefaultDispenseItemBehavior() {
+			private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
+
+			@Override
+			public ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
+				DispensibleContainerItem dispensibleContainerItem = (DispensibleContainerItem)itemStack.getItem();
+				BlockPos blockPos = blockSource.getPos().relative(blockSource.getBlockState().getValue(DispenserBlock.FACING));
+				Level level = blockSource.getLevel();
+				if (dispensibleContainerItem.emptyContents(null, level, blockPos, null)) {
+					dispensibleContainerItem.checkExtraContent(null, level, itemStack, blockPos);
+					return new ItemStack(Items.BUCKET);
+				} else {
+					return this.defaultDispenseItemBehavior.dispense(blockSource, itemStack);
+				}
+			}
+		});
+
 		Messages.registerReceivers();
 	}
 
