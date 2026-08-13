@@ -130,15 +130,6 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.CLIMBABLE).add(DDBlocks.SCULK_TENDRILS, DDBlocks.SCULK_TENDRILS_PLANT, DDBlocks.SCULK_VINES, DDBlocks.SCULK_VINES_PLANT, DDBlocks.GLOWING_VINES, DDBlocks.GLOWING_VINES_PLANT);
         tagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.PROTECTED_SCULK_GLEAM, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
 
-        tagBuilder(BlockTags.COAL_ORES).add(DDBlocks.SCULK_STONE_COAL_ORE, DDBlocks.GLOOMSLATE_COAL_ORE);
-        tagBuilder(BlockTags.IRON_ORES).add(DDBlocks.SCULK_STONE_IRON_ORE, DDBlocks.GLOOMSLATE_IRON_ORE);
-        tagBuilder(BlockTags.COPPER_ORES).add(DDBlocks.SCULK_STONE_COPPER_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE);
-        tagBuilder(BlockTags.GOLD_ORES).add(DDBlocks.SCULK_STONE_GOLD_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE);
-        tagBuilder(BlockTags.REDSTONE_ORES).add(DDBlocks.SCULK_STONE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE);
-        tagBuilder(BlockTags.EMERALD_ORES).add(DDBlocks.SCULK_STONE_EMERALD_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE);
-        tagBuilder(BlockTags.LAPIS_ORES).add(DDBlocks.SCULK_STONE_LAPIS_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE);
-        tagBuilder(BlockTags.DIAMOND_ORES).add(DDBlocks.SCULK_STONE_DIAMOND_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE);
-
         tagBuilder(BlockTags.BEACON_BASE_BLOCKS).add(DDBlocks.LEAD_BLOCK, DDBlocks.RADIOACTIVE_BLOCK);
 
         tagBuilder(BlockTags.IMPERMEABLE).add(DDBlocks.SOUNDPROOF_GLASS, DDBlocks.SCULK_GRIME_GLASS, DDBlocks.PROTECTED_SCULK_GRIME_GLASS);
@@ -219,6 +210,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(DDTags.Blocks.MAZE_CANNOT_HIDE_CHEST).add(Blocks.WATER);
         tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH).addOptionalTag(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY).add(DDBlocks.TOXIC_AIR, DDBlocks.RETURN_STATUE);
         tagBuilder(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY).addOptionalTag(BlockTags.REPLACEABLE).add(DDBlocks.SCULK_GRIME_GLASS, DDBlocks.FRAGILE_SCULK_GRIME_BRICKS);
+        tagBuilder(DDTags.Blocks.OVERSEER_VALID_ORIGIN).add(DDBlocks.SCULK_ALTAR);
 
         tagBuilder(DDTags.Blocks.SCULK_LIGHT_SOURCES).add(
                 DDBlocks.ICICLE,

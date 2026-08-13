@@ -77,6 +77,9 @@ public class DDTags {
 
         public static final TagKey<Block> SCULK_LIGHT_SOURCES = TagKey.create(
                 Registries.BLOCK, DeeperDarker.id("sculk_light_sources"));
+        public static final TagKey<Block> OVERSEER_VALID_ORIGIN = TagKey.create(
+                Registries.BLOCK, DeeperDarker.id("overseer_valid_origin")
+        );
     }
 
     public static class Items {

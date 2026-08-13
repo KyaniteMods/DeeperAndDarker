@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities.overseer;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.blocks.SculkAltarBlock;
 import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhase;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -180,7 +181,7 @@ public class Overseer extends Monster implements RangedAttackMob {
     }
 
     public boolean isValidOrigin(Optional<GlobalPos> pos) {
-        return pos.isEmpty() || pos.get().dimension().equals(level().dimension());
+        return pos.isEmpty() || (pos.get().dimension().equals(level().dimension()) && level().getBlockState(pos.get().pos()).is(DDTags.Blocks.OVERSEER_VALID_ORIGIN));
     }
 
     public void setOriginBossLocked(boolean value) {
