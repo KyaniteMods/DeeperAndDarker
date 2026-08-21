@@ -35,6 +35,7 @@ import net.minecraft.client.particle.SoulParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.*;
+import net.minecraft.client.renderer.entity.IllusionerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -184,6 +185,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
         EntityRendererRegistry.register(DDEntities.OVERSEER_LASER, OverseerLaserRenderer::new);
         EntityRendererRegistry.register(DDEntities.OVERSEER_CRYSTAL_PROJECTILE, OverseerCrystalProjectileRenderer::new);
         EntityRendererRegistry.register(DDEntities.FLOATER, FloaterRenderer::new);
+        EntityRendererRegistry.register(DDEntities.OVERCASTER, IllusionerRenderer::new);
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer.getModel() instanceof HumanoidModel) {

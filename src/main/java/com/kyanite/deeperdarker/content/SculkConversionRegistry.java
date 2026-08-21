@@ -55,5 +55,6 @@ public final class SculkConversionRegistry {
         addPurityConversion(DDEntities.SHATTERED, directConversionToMob(EntityType.ZOMBIE));
         addPurityConversion(DDEntities.SLUDGE, directConversionToMob(EntityType.SLIME));
         addPurityConversion(DDEntities.FLOATER, directConversionToMob(EntityType.VEX));
+        addPurityConversion(DDEntities.OVERSEER, directConversionToMob(DDEntities.OVERCASTER));
     }
 }
