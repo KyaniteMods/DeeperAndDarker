@@ -12,108 +12,147 @@ import net.minecraft.client.model.geom.builders.*;
 @SuppressWarnings("NullableProblems")
 public class ShriekWormModel extends HierarchicalModel<ShriekWorm> {
 	private final ModelPart root;
+	private final ModelPart base;
+	private final ModelPart segment_1;
+	private final ModelPart segment_1_tendrils;
+	private final ModelPart segment_2;
+	private final ModelPart segment_2_tendrils;
+	private final ModelPart segment_3;
+	private final ModelPart segment_3_tendrils;
+	private final ModelPart segment_4;
+	private final ModelPart segment_4_tendrils;
+	private final ModelPart segment_5;
+	private final ModelPart segment_5_tendrils;
+	private final ModelPart segment_6;
+	private final ModelPart segment_6_tendrils;
+	private final ModelPart segment_7;
+	private final ModelPart segment_7_tendrils;
+	private final ModelPart segment_8;
+	private final ModelPart segment_8_tendrils;
+	private final ModelPart head;
+	private final ModelPart flap_front;
+	private final ModelPart medium_flap_front;
+	private final ModelPart small_flap_front;
+	private final ModelPart flap_back;
+	private final ModelPart medium_flap_back;
+	private final ModelPart small_flap_back;
+	private final ModelPart flap_left;
+	private final ModelPart medium_flap_left;
+	private final ModelPart small_flap_left;
+	private final ModelPart flap_right;
+	private final ModelPart medium_flap_right;
+	private final ModelPart small_flap_right;
 
 	public ShriekWormModel(ModelPart root) {
 		this.root = root;
+		this.base = root.getChild("base");
+		this.segment_1 = this.base.getChild("segment_1");
+		this.segment_1_tendrils = this.segment_1.getChild("segment_1_tendrils");
+		this.segment_2 = this.segment_1.getChild("segment_2");
+		this.segment_2_tendrils = this.segment_2.getChild("segment_2_tendrils");
+		this.segment_3 = this.segment_2.getChild("segment_3");
+		this.segment_3_tendrils = this.segment_3.getChild("segment_3_tendrils");
+		this.segment_4 = this.segment_3.getChild("segment_4");
+		this.segment_4_tendrils = this.segment_4.getChild("segment_4_tendrils");
+		this.segment_5 = this.segment_4.getChild("segment_5");
+		this.segment_5_tendrils = this.segment_5.getChild("segment_5_tendrils");
+		this.segment_6 = this.segment_5.getChild("segment_6");
+		this.segment_6_tendrils = this.segment_6.getChild("segment_6_tendrils");
+		this.segment_7 = this.segment_6.getChild("segment_7");
+		this.segment_7_tendrils = this.segment_7.getChild("segment_7_tendrils");
+		this.segment_8 = this.segment_7.getChild("segment_8");
+		this.segment_8_tendrils = this.segment_8.getChild("segment_8_tendrils");
+		this.head = this.segment_8.getChild("head");
+		this.flap_front = this.head.getChild("flap_front");
+		this.medium_flap_front = this.flap_front.getChild("medium_flap_front");
+		this.small_flap_front = this.medium_flap_front.getChild("small_flap_front");
+		this.flap_back = this.head.getChild("flap_back");
+		this.medium_flap_back = this.flap_back.getChild("medium_flap_back");
+		this.small_flap_back = this.medium_flap_back.getChild("small_flap_back");
+		this.flap_left = this.head.getChild("flap_left");
+		this.medium_flap_left = this.flap_left.getChild("medium_flap_left");
+		this.small_flap_left = this.medium_flap_left.getChild("small_flap_left");
+		this.flap_right = this.head.getChild("flap_right");
+		this.medium_flap_right = this.flap_right.getChild("medium_flap_right");
+		this.small_flap_right = this.medium_flap_right.getChild("small_flap_right");
 	}
 
 	public static LayerDefinition createBodyModel() {
-		MeshDefinition mesh = new MeshDefinition();
-		PartDefinition parts = mesh.getRoot();
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition root = parts.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 11.0F, 0.0F));
+		PartDefinition base = partdefinition.addOrReplaceChild("base", CubeListBuilder.create().texOffs(54, 88).addBox(-4.0F, -8.0F, -6.0F, 10.0F, 14.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.0F, 24.0F, 1.0F));
 
-		PartDefinition base = root.addOrReplaceChild("base", CubeListBuilder.create().texOffs(0, 136).addBox(-6.0F, -5.0F, -6.0F, 12.0F, 18.0F, 12.0F, new CubeDeformation(0.0F))
-				.texOffs(48, 138).addBox(-5.0F, -6.0F, -5.0F, 10.0F, 4.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition segment_1 = base.addOrReplaceChild("segment_1", CubeListBuilder.create().texOffs(0, 106).addBox(-4.0F, -9.0F, -3.0F, 8.0F, 9.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(38, 89).addBox(-2.0F, -11.0F, 1.0F, 4.0F, 13.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.0F, -8.0F, 0.0F, -0.1745F, 0.0F, 0.0F));
 
-		PartDefinition segment_1 = base.addOrReplaceChild("segment_1", CubeListBuilder.create().texOffs(0, 118).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(32, 122).addBox(-2.0F, -8.0F, 3.75F, 4.0F, 12.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(45, 113).addBox(0.0F, -12.0F, 6.0F, 0.0F, 16.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -6.0F, 0.0F));
-		PartDefinition segment_2 = segment_1.addOrReplaceChild("segment_2", CubeListBuilder.create().texOffs(0, 101).addBox(-4.5F, -10.0F, -3.5F, 9.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(32, 106).addBox(-2.0F, -10.0F, 3.5F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 0.5F));
-		PartDefinition segment_3 = segment_2.addOrReplaceChild("segment_3", CubeListBuilder.create().texOffs(0, 84).addBox(-5.5F, -10.0F, -3.5F, 11.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(36, 89).addBox(-2.0F, -10.0F, 3.5F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(49, 88).addBox(0.0F, -10.0F, 5.5F, 0.0F, 10.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.0F, 0.5F));
+		PartDefinition segment_1_tendrils = segment_1.addOrReplaceChild("segment_1_tendrils", CubeListBuilder.create().texOffs(140, 32).addBox(0.0F, -6.5F, 0.0F, 0.0F, 13.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -4.5F, 5.0F));
 
-		PartDefinition rib_1 = segment_3.addOrReplaceChild("rib_1", CubeListBuilder.create().texOffs(102, 113).addBox(-5.5F, -2.0F, 0.25F, 11.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(146, 109).addBox(-10.46F, -2.0F, -8.69F, 2.0F, 4.0F, 6.0F, new CubeDeformation(0.0F))
-				.texOffs(146, 109).addBox(8.46F, -2.0F, -8.69F, 2.0F, 4.0F, 6.0F, new CubeDeformation(0.0F))
-				.texOffs(102, 97).addBox(-2.5F, -1.5F, 2.0F, 5.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -5.5F, 3.5F));
-		rib_1.addOrReplaceChild("rib_1_r1", CubeListBuilder.create().texOffs(162, 113).mirror().addBox(-3.42F, -41.0F, -12.72F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-1.0F, 39.0F, -2.25F, 0.0F, -0.7854F, 0.0F));
-		rib_1.addOrReplaceChild("rib_1_r2", CubeListBuilder.create().texOffs(128, 113).addBox(0.0F, -41.0F, 7.2F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.0F, 39.0F, -4.25F, 0.0F, 0.7854F, 0.0F));
-		rib_1.addOrReplaceChild("rib_1_r3", CubeListBuilder.create().texOffs(162, 113).addBox(-3.58F, -41.0F, -12.72F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.0F, 39.0F, -2.25F, 0.0F, 0.7854F, 0.0F));
-		rib_1.addOrReplaceChild("rib_1_r4", CubeListBuilder.create().texOffs(128, 113).mirror().addBox(-7.0F, -41.0F, 7.2F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(1.0F, 39.0F, -4.25F, 0.0F, -0.7854F, 0.0F));
+		PartDefinition segment_2 = segment_1.addOrReplaceChild("segment_2", CubeListBuilder.create().texOffs(94, 100).addBox(-5.0F, -12.0F, -4.0F, 10.0F, 12.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(44, 128).addBox(-2.0F, -14.0F, 0.0F, 4.0F, 16.0F, 4.0F, new CubeDeformation(0.001F)), PartPose.offsetAndRotation(0.0F, -9.0F, 1.0F, -0.1745F, 0.0F, 0.0F));
 
-		PartDefinition segment_4 = segment_3.addOrReplaceChild("segment_4", CubeListBuilder.create().texOffs(0, 67).addBox(-6.5F, -10.0F, -3.25F, 13.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(40, 72).addBox(-2.0F, -10.0F, 3.25F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(53, 69).addBox(0.0F, -10.0F, 5.25F, 0.0F, 10.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.0F, 0.25F));
+		PartDefinition segment_2_tendrils = segment_2.addOrReplaceChild("segment_2_tendrils", CubeListBuilder.create().texOffs(132, 128).addBox(0.0F, -7.0F, 0.0F, 0.0F, 16.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -7.0F, 4.0F));
 
-		PartDefinition rib_2 = segment_4.addOrReplaceChild("rib_2", CubeListBuilder.create().texOffs(102, 103).addBox(-6.5F, -2.0F, 0.25F, 13.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(150, 97).addBox(-11.46F, -2.0F, -10.69F, 2.0F, 4.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(150, 97).addBox(9.46F, -2.0F, -10.69F, 2.0F, 4.0F, 8.0F, new CubeDeformation(0.0F))
-				.texOffs(102, 97).addBox(-2.5F, -1.5F, 2.0F, 5.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -5.0F, 3.25F));
-		rib_2.addOrReplaceChild("rib_2_r1", CubeListBuilder.create().texOffs(170, 103).mirror().addBox(-3.42F, -41.0F, -12.72F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false)
-				.texOffs(132, 103).mirror().addBox(-7.0F, -41.0F, 7.2F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 39.0F, -4.25F, 0.0F, -0.7854F, 0.0F));
-		rib_2.addOrReplaceChild("rib_2_r2", CubeListBuilder.create().texOffs(132, 103).addBox(0.0F, -41.0F, 7.2F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(170, 103).addBox(-3.58F, -41.0F, -12.72F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 39.0F, -4.25F, 0.0F, 0.7854F, 0.0F));
+		PartDefinition segment_3 = segment_2.addOrReplaceChild("segment_3", CubeListBuilder.create().texOffs(84, 23).addBox(-6.0F, -14.0F, -3.0F, 12.0F, 14.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(16, 124).addBox(-2.0F, -16.0F, 1.0F, 4.0F, 18.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -12.0F, -1.0F, -0.3927F, 0.0F, 0.0F));
 
-		PartDefinition segment_5 = segment_4.addOrReplaceChild("segment_5", CubeListBuilder.create().texOffs(0, 50).addBox(-7.5F, -10.0F, -3.25F, 15.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(44, 55).addBox(-2.0F, -10.0F, 3.25F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(57, 51).addBox(0.0F, -10.0F, 5.25F, 0.0F, 10.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.0F, 0.5F));
+		PartDefinition segment_3_tendrils = segment_3.addOrReplaceChild("segment_3_tendrils", CubeListBuilder.create().texOffs(130, 52).addBox(0.0F, -9.0F, 0.0F, 0.0F, 18.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -7.0F, 5.0F));
 
-		PartDefinition rib_3 = segment_5.addOrReplaceChild("rib_3", CubeListBuilder.create().texOffs(154, 83).addBox(-12.46F, -2.0F, -12.69F, 2.0F, 4.0F, 10.0F, new CubeDeformation(0.0F))
-				.texOffs(154, 83).addBox(10.46F, -2.0F, -12.69F, 2.0F, 4.0F, 10.0F, new CubeDeformation(0.0F))
-				.texOffs(102, 91).addBox(-7.5F, -2.0F, 0.25F, 15.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(102, 97).addBox(-2.5F, -1.5F, 2.0F, 5.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -6.0F, 3.25F));
-		rib_3.addOrReplaceChild("rib_3_r1", CubeListBuilder.create().texOffs(178, 91).mirror().addBox(-3.78F, -52.0F, -14.42F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false)
-				.texOffs(136, 91).mirror().addBox(-7.36F, -52.0F, 8.26F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F, 50.0F, -4.75F, 0.0F, -0.7854F, 0.0F));
-		rib_3.addOrReplaceChild("rib_3_r2", CubeListBuilder.create().texOffs(136, 91).addBox(0.36F, -52.0F, 8.26F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(178, 91).addBox(-3.22F, -52.0F, -14.42F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 50.0F, -4.75F, 0.0F, 0.7854F, 0.0F));
+		PartDefinition segment_4 = segment_3.addOrReplaceChild("segment_4", CubeListBuilder.create().texOffs(84, 0).addBox(-7.0F, -16.0F, -4.0F, 14.0F, 16.0F, 7.0F, new CubeDeformation(0.0F))
+				.texOffs(100, 118).addBox(-2.0F, -18.0F, 1.0F, 4.0F, 20.0F, 4.0F, new CubeDeformation(0.001F)), PartPose.offsetAndRotation(0.0F, -14.0F, 0.0F, 0.3054F, 0.0F, 0.0F));
 
-		PartDefinition segment_6 = segment_5.addOrReplaceChild("segment_6", CubeListBuilder.create().texOffs(0, 33).addBox(-9.0F, -10.0F, -3.25F, 18.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(50, 38).addBox(-2.0F, -10.0F, 3.25F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(63, 31).addBox(0.0F, -10.0F, 5.25F, 0.0F, 10.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.0F, 0.0F));
+		PartDefinition segment_4_tendrils = segment_4.addOrReplaceChild("segment_4_tendrils", CubeListBuilder.create().texOffs(32, 124).addBox(0.0F, -18.0F, 0.0F, 0.0F, 20.0F, 6.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 22).addBox(-11.0F, -10.0F, -20.0F, 22.0F, 2.0F, 20.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 5.0F));
 
-		PartDefinition rib_4 = segment_6.addOrReplaceChild("rib_4", CubeListBuilder.create().texOffs(162, 68).addBox(-14.26F, -2.0F, -13.99F, 2.0F, 4.0F, 11.0F, new CubeDeformation(0.0F))
-				.texOffs(162, 68).addBox(12.26F, -2.0F, -13.99F, 2.0F, 4.0F, 11.0F, new CubeDeformation(0.0F))
-				.texOffs(102, 77).addBox(-9.0F, -2.0F, 0.25F, 18.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(102, 83).addBox(-2.5F, -1.5F, 2.0F, 5.0F, 3.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -6.0F, 3.25F));
-		rib_4.addOrReplaceChild("rib_4_r1", CubeListBuilder.create().texOffs(188, 77).mirror().addBox(-3.78F, -52.0F, -14.42F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(1.8F, 50.0F, -6.05F, 0.0F, -0.7854F, 0.0F));
-		rib_4.addOrReplaceChild("rib_4_r2", CubeListBuilder.create().texOffs(142, 77).addBox(-0.14F, -52.0F, 8.26F, 8.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.5F, 50.0F, -4.75F, 0.0F, 0.7854F, 0.0F));
-		rib_4.addOrReplaceChild("rib_4_r3", CubeListBuilder.create().texOffs(142, 77).mirror().addBox(-7.86F, -52.0F, 8.26F, 8.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-1.5F, 50.0F, -4.75F, 0.0F, -0.7854F, 0.0F));
-		rib_4.addOrReplaceChild("rib_4_r4", CubeListBuilder.create().texOffs(188, 77).addBox(-3.22F, -52.0F, -14.42F, 7.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.8F, 50.0F, -6.05F, 0.0F, 0.7854F, 0.0F));
+		PartDefinition segment_5 = segment_4.addOrReplaceChild("segment_5", CubeListBuilder.create().texOffs(0, 64).addBox(-9.0F, -16.0F, -5.0F, 18.0F, 16.0F, 9.0F, new CubeDeformation(0.0F))
+				.texOffs(116, 118).addBox(-2.0F, -18.0F, 2.0F, 4.0F, 20.0F, 4.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 0).addBox(-11.0F, -9.0F, -14.0F, 22.0F, 2.0F, 20.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -16.0F, -1.0F, 0.6109F, 0.0F, 0.0F));
 
-		PartDefinition segment_7 = segment_6.addOrReplaceChild("segment_7", CubeListBuilder.create().texOffs(0, 16).addBox(-10.0F, -10.0F, -3.25F, 20.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
-				.texOffs(54, 21).addBox(-2.0F, -10.0F, 3.25F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(67, 13).addBox(0.0F, -10.0F, 5.25F, 0.0F, 10.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.0F, 0.0F));
-		PartDefinition segment_8 = segment_7.addOrReplaceChild("segment_8", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -10.0F, -3.0F, 16.0F, 10.0F, 6.0F, new CubeDeformation(0.0F))
-				.texOffs(44, 4).addBox(-2.0F, -10.0F, 3.0F, 4.0F, 10.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(57, -4).mirror().addBox(0.0F, -10.0F, 5.0F, 0.0F, 10.0F, 10.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(0.0F, -10.0F, -0.25F));
+		PartDefinition segment_5_tendrils = segment_5.addOrReplaceChild("segment_5_tendrils", CubeListBuilder.create().texOffs(126, 0).addBox(0.0F, -10.0F, 0.0F, 0.0F, 20.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 6.0F));
 
-		PartDefinition head = segment_8.addOrReplaceChild("head", CubeListBuilder.create().texOffs(102, 52).addBox(-6.0F, -4.0F, -6.0F, 12.0F, 4.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -10.0F, 0.0F));
-		PartDefinition flaps = head.addOrReplaceChild("flaps", CubeListBuilder.create(), PartPose.offset(0.0F, -2.0F, 0.0F));
+		PartDefinition segment_6 = segment_5.addOrReplaceChild("segment_6", CubeListBuilder.create().texOffs(54, 64).addBox(-9.0F, -16.0F, -3.0F, 18.0F, 16.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 121).addBox(-2.0F, -18.0F, 3.0F, 4.0F, 20.0F, 4.0F, new CubeDeformation(0.001F))
+				.texOffs(0, 44).addBox(-11.0F, -5.0F, -11.0F, 22.0F, 2.0F, 18.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -16.0F, -2.0F, 0.4363F, 0.0F, 0.0F));
 
-		PartDefinition front_flap = flaps.addOrReplaceChild("front_flap", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, -6.0F));
-		PartDefinition front_bottom_flap = front_flap.addOrReplaceChild("front_bottom_flap", CubeListBuilder.create().texOffs(130, 0).addBox(-6.0F, -12.0F, -2.0F, 12.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
-		PartDefinition front_middle_flap = front_bottom_flap.addOrReplaceChild("front_middle_flap", CubeListBuilder.create().texOffs(102, 22).addBox(-6.0F, -8.0F, -1.0F, 12.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -12.0F, -1.0F));
-		front_middle_flap.addOrReplaceChild("front_top_flap", CubeListBuilder.create().texOffs(106, 0).addBox(-4.0F, -6.0F, -1.0F, 8.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 0.0F));
+		PartDefinition segment_6_tendrils = segment_6.addOrReplaceChild("segment_6_tendrils", CubeListBuilder.create().texOffs(128, 26).addBox(0.0F, -10.0F, 0.0F, 0.0F, 20.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 7.0F));
 
-		PartDefinition right_flap = flaps.addOrReplaceChild("right_flap", CubeListBuilder.create(), PartPose.offset(-6.0F, 0.0F, 0.0F));
-		PartDefinition right_bottom_flap = right_flap.addOrReplaceChild("right_bottom_flap", CubeListBuilder.create().texOffs(130, 14).addBox(-2.0F, -12.0F, -6.0F, 2.0F, 12.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
-		PartDefinition right_middle_flap = right_bottom_flap.addOrReplaceChild("right_middle_flap", CubeListBuilder.create().texOffs(102, 32).addBox(-1.0F, -8.0F, -6.0F, 2.0F, 8.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.0F, -12.0F, 0.0F));
-		right_middle_flap.addOrReplaceChild("right_top_flap", CubeListBuilder.create().texOffs(106, 8).addBox(-1.0F, -6.0F, -4.0F, 2.0F, 6.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 0.0F));
+		PartDefinition segment_7 = segment_6.addOrReplaceChild("segment_7", CubeListBuilder.create().texOffs(80, 44).addBox(-8.0F, -12.0F, -3.0F, 16.0F, 12.0F, 8.0F, new CubeDeformation(0.0F))
+				.texOffs(60, 128).addBox(-2.0F, -14.0F, 3.0F, 4.0F, 16.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -16.0F, 0.0F, 0.5236F, 0.0F, 0.0F));
 
-		PartDefinition left_flap = flaps.addOrReplaceChild("left_flap", CubeListBuilder.create(), PartPose.offset(6.0F, 0.0F, 0.0F));
-		PartDefinition left_bottom_flap = left_flap.addOrReplaceChild("left_bottom_flap", CubeListBuilder.create().texOffs(158, 14).addBox(0.0F, -12.0F, -6.0F, 2.0F, 12.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
-		PartDefinition left_middle_flap = left_bottom_flap.addOrReplaceChild("left_middle_flap", CubeListBuilder.create().texOffs(102, 32).addBox(-1.0F, -8.0F, -6.0F, 2.0F, 8.0F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(1.0F, -12.0F, 0.0F));
-		left_middle_flap.addOrReplaceChild("left_top_flap", CubeListBuilder.create().texOffs(106, 8).addBox(-1.0F, -6.0F, -4.0F, 2.0F, 6.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 0.0F));
+		PartDefinition segment_7_tendrils = segment_7.addOrReplaceChild("segment_7_tendrils", CubeListBuilder.create().texOffs(76, 134).addBox(0.0F, -14.0F, 0.0F, 0.0F, 16.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 7.0F));
 
-		PartDefinition back_flap = flaps.addOrReplaceChild("back_flap", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 6.0F));
-		PartDefinition back_bottom_flap = back_flap.addOrReplaceChild("back_bottom_flap", CubeListBuilder.create().texOffs(158, 0).addBox(-6.0F, -12.0F, 0.0F, 12.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
-		PartDefinition back_middle_flap = back_bottom_flap.addOrReplaceChild("back_middle_flap", CubeListBuilder.create().texOffs(102, 22).addBox(-6.0F, -8.0F, -1.0F, 12.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -12.0F, 1.0F));
-		back_middle_flap.addOrReplaceChild("back_top_flap", CubeListBuilder.create().texOffs(106, 0).addBox(-4.0F, -6.0F, -1.0F, 8.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -8.0F, 0.0F));
+		PartDefinition segment_8 = segment_7.addOrReplaceChild("segment_8", CubeListBuilder.create().texOffs(0, 89).addBox(-6.0F, -10.0F, -3.0F, 12.0F, 10.0F, 7.0F, new CubeDeformation(0.0F))
+				.texOffs(132, 110).addBox(-2.0F, -10.0F, 2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.001F)), PartPose.offsetAndRotation(0.0F, -12.0F, 0.0F, 0.7418F, 0.0F, 0.0F));
 
-		return LayerDefinition.create(mesh, 256, 256);
+		PartDefinition segment_8_tendrils = segment_8.addOrReplaceChild("segment_8_tendrils", CubeListBuilder.create().texOffs(88, 134).addBox(0.0F, -10.0F, 0.0F, 0.0F, 12.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 6.0F));
+
+		PartDefinition head = segment_8.addOrReplaceChild("head", CubeListBuilder.create().texOffs(94, 88).addBox(-5.0F, -2.0F, -5.0F, 10.0F, 2.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -10.0F, 0.0F, 0.3491F, 0.0F, 0.0F));
+
+		PartDefinition flap_front = head.addOrReplaceChild("flap_front", CubeListBuilder.create().texOffs(126, 100).addBox(-5.0F, -8.0F, -2.0F, 10.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -1.0F, -5.0F, 0.4363F, 0.0F, 0.0F));
+
+		PartDefinition medium_flap_front = flap_front.addOrReplaceChild("medium_flap_front", CubeListBuilder.create().texOffs(134, 86).addBox(-5.0F, -6.0F, -1.0F, 10.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -8.0F, -1.0F, -0.7854F, 0.0F, 0.0F));
+
+		PartDefinition small_flap_front = medium_flap_front.addOrReplaceChild("small_flap_front", CubeListBuilder.create().texOffs(134, 94).addBox(-4.0F, -4.0F, -1.0F, 8.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -6.0F, 0.0F, -0.5236F, 0.0F, 0.0F));
+
+		PartDefinition flap_back = head.addOrReplaceChild("flap_back", CubeListBuilder.create().texOffs(130, 76).addBox(-5.0F, -8.0F, 0.0F, 10.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -1.0F, 5.0F, -0.4363F, 0.0F, 0.0F));
+
+		PartDefinition medium_flap_back = flap_back.addOrReplaceChild("medium_flap_back", CubeListBuilder.create().texOffs(138, 0).addBox(-5.0F, -6.0F, -1.0F, 10.0F, 6.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -8.0F, 1.0F, 0.7854F, 0.0F, 0.0F));
+
+		PartDefinition small_flap_back = medium_flap_back.addOrReplaceChild("small_flap_back", CubeListBuilder.create().texOffs(106, 82).addBox(-4.0F, -4.0F, -1.0F, 8.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -6.0F, 0.0F, 0.5236F, 0.0F, 0.0F));
+
+		PartDefinition flap_left = head.addOrReplaceChild("flap_left", CubeListBuilder.create().texOffs(28, 106).addBox(0.0F, -8.0F, -5.0F, 2.0F, 8.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(5.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.4363F));
+
+		PartDefinition medium_flap_left = flap_left.addOrReplaceChild("medium_flap_left", CubeListBuilder.create().texOffs(52, 112).addBox(-1.0F, -6.0F, -5.0F, 2.0F, 6.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.0F, -8.0F, 0.0F, 0.0F, 0.0F, -0.7854F));
+
+		PartDefinition small_flap_left = medium_flap_left.addOrReplaceChild("small_flap_left", CubeListBuilder.create().texOffs(138, 8).addBox(-1.0F, -4.0F, -4.0F, 2.0F, 4.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -6.0F, 0.0F, 0.0F, 0.0F, -0.5236F));
+
+		PartDefinition flap_right = head.addOrReplaceChild("flap_right", CubeListBuilder.create().texOffs(106, 64).addBox(-2.0F, -8.0F, -5.0F, 2.0F, 8.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-5.0F, -1.0F, 0.0F, 0.0F, 0.0F, -0.4363F));
+
+		PartDefinition medium_flap_right = flap_right.addOrReplaceChild("medium_flap_right", CubeListBuilder.create().texOffs(76, 118).addBox(-1.0F, -6.0F, -5.0F, 2.0F, 6.0F, 10.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.7854F));
+
+		PartDefinition small_flap_right = medium_flap_right.addOrReplaceChild("small_flap_right", CubeListBuilder.create().texOffs(140, 20).addBox(-1.0F, -4.0F, -4.0F, 2.0F, 4.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -6.0F, 0.0F, 0.0F, 0.0F, 0.5236F));
+
+		return LayerDefinition.create(meshdefinition, 256, 256);
 	}
 
 	@Override
@@ -121,14 +160,13 @@ public class ShriekWormModel extends HierarchicalModel<ShriekWorm> {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		this.animate(entity.idleState, ShriekWormAnimation.IDLE, ageInTicks);
 		this.animate(entity.attackState, ShriekWormAnimation.ATTACK, ageInTicks);
-		this.animate(entity.asleepState, ShriekWormAnimation.ASLEEP, ageInTicks);
 		this.animate(entity.emergeState, ShriekWormAnimation.EMERGE, ageInTicks);
 		this.animate(entity.descendState, ShriekWormAnimation.DESCEND, ageInTicks);
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		root.getChild("root").render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		base.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 
 	@Override

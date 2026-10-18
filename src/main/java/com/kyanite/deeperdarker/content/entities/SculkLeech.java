@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 
 @SuppressWarnings("NullableProblems")
 public class SculkLeech extends Monster {
+    public final AnimationState idleState = new AnimationState();
     public final AnimationState attackState = new AnimationState();
 
     public SculkLeech(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -57,6 +58,11 @@ public class SculkLeech extends Monster {
     @Override
     public void tick() {
         super.tick();
+        if (level().isClientSide()) {
+            if (!this.idleState.isStarted()) {
+                this.idleState.start(this.tickCount);
+            }
+        }
     }
 
     @Override

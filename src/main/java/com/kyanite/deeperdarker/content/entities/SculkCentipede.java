@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities;
 
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @SuppressWarnings("NullableProblems")
 public class SculkCentipede extends Monster implements NeutralMob {
     public final AnimationState attackState = new AnimationState();
+    public final AnimationState damageState = new AnimationState();
     private UUID angerTarget;
     private int remainingAngerTime;
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 30);
@@ -86,5 +88,13 @@ public class SculkCentipede extends Monster implements NeutralMob {
     @Override
     public void startPersistentAngerTimer() {
         this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
+    }
+
+    @Override
+    public void handleDamageEvent(DamageSource damageSource) {
+        super.handleDamageEvent(damageSource);
+        if (!damageState.isStarted()) {
+            damageState.start(tickCount);
+        }
     }
 }
