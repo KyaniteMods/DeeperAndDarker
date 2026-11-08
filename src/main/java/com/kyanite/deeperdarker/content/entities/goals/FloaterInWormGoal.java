@@ -4,7 +4,6 @@ import java.util.EnumSet;
 
 import com.kyanite.deeperdarker.content.entities.Floater;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.phys.Vec3;
 
 public class FloaterInWormGoal
         extends Goal {
@@ -17,12 +16,12 @@ public class FloaterInWormGoal
 
     @Override
     public boolean canUse() {
-        return floater.inWorm() && (floater.getWormHead() == null || floater.getWormHead().isAlive());
+        return floater.inWormBody() && (floater.getNextWormPart() == null || floater.getNextWormPart().isAlive());
     }
 
     @Override
     public boolean canContinueToUse() {
-        return floater.inWorm() && (floater.getWormHead() == null || floater.getWormHead().isAlive());
+        return floater.inWormBody() && (floater.getNextWormPart() == null || floater.getNextWormPart().isAlive());
     }
 
     @Override
