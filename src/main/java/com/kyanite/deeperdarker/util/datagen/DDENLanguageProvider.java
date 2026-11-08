@@ -473,6 +473,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.deeperdarker.blooming_golem.slide", "Blooming Golem slides");
         translationBuilder.add("subtitles.entity.deeperdarker.overcast_vessel.slide", "Overcast Vessel slides");
         translationBuilder.add("subtitles.entity.deeperdarker.overcast_vessel.crack", "Overcast Vessel cracks");
+        translationBuilder.add("subtitles.entity.deeperdarker.acid_sprite.ambient", "Acid Sprite hees");
         translationBuilder.add("subtitles.entity.sludge.hurt", "Sludge hurts");
         translationBuilder.add("subtitles.entity.sludge.death", "Sludge dies");
         translationBuilder.add("subtitles.entity.sludge.squish", "Sludge squishes");

@@ -66,6 +66,8 @@ public class DDSounds {
     public static final SoundEvent OVERCAST_VESSEL_SLIDE = register("entity.overcast_vessel.slide");
     public static final SoundEvent OVERCAST_VESSEL_CRACK = register("entity.overcast_vessel.crack");
 
+    public static final SoundEvent ACID_SPRITE_AMBIENT = register("entity.acid_sprite.ambient");
+
     public static final SoundEvent ICICLE_SHARD_LAND = register("entity.icicle_shard.land");
 
     public static final SoundEvent BUBBLOX_POP = register("entity.bubblox.pop");

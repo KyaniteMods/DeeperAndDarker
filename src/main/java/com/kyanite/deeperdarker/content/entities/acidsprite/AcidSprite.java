@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities.acidsprite;
 
 import com.google.common.collect.Sets;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.Bubblox;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.nbt.CompoundTag;
@@ -248,7 +249,12 @@ public class AcidSprite extends Monster implements Merchant {
 
     @Override
     public SoundEvent getNotifyTradeSound() {
-        return SoundEvents.VILLAGER_YES; // todo: custom sound effect
+        return DDSounds.ACID_SPRITE_AMBIENT; // todo: custom sound effect
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return DDSounds.ACID_SPRITE_AMBIENT;
     }
 
     @Override

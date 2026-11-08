@@ -272,6 +272,12 @@
     ],
     "subtitle": "subtitles.entity.deeperdarker.overcast_vessel.crack"
   },
+  "entity.acid_sprite.ambient": {
+    "sounds": [
+      "deeperdarker:entity/acid_sprite/ambient"
+    ],
+    "subtitle": "subtitles.entity.deeperdarker.acid_sprite.ambient"
+  },
   "entity.icicle_shard.land": {
     "sounds": [
       "deeperdarker:entity/icicle_shard/land"
