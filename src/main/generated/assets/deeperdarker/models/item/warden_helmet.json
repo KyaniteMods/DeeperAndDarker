@@ -2,6 +2,20 @@
   "parent": "minecraft:item/generated",
   "overrides": [
     {
+      "model": "deeperdarker:item/warden_helmet_no_horns",
+      "predicate": {
+        "deeperdarker:has_horns": 0.0,
+        "trim_type": 0.0
+      }
+    },
+    {
+      "model": "deeperdarker:item/warden_helmet",
+      "predicate": {
+        "deeperdarker:has_horns": 1.0,
+        "trim_type": 0.0
+      }
+    },
+    {
       "model": "deeperdarker:item/warden_helmet_no_horns_quartz_trim",
       "predicate": {
         "deeperdarker:has_horns": 0,

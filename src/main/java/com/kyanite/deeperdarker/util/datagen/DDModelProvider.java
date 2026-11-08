@@ -35,6 +35,8 @@ import org.apache.commons.lang3.tuple.Triple;
 import java.util.*;
 
 public class DDModelProvider extends FabricModelProvider {
+    public static final String NO_HORNS = "_no_horns";
+
     public DDModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -602,7 +604,7 @@ public class DDModelProvider extends FabricModelProvider {
         ResourceLocation armorTextureIdentifier = TextureMapping.getItemTexture(armor);
         ModelTemplates.FLAT_ITEM.create(armorModelIdentifier, TextureMapping.layer0(armorTextureIdentifier), itemModelGenerators.output, (id, textures) -> generateBaseHornedHelmetTrimTemplate(id, textures, armor.getMaterial()));
         for (int hasHorns = 0; hasHorns <= 1; hasHorns++) {
-            String suffix = hasHorns == 1 ? "" : "_no_horns";
+            String suffix = hasHorns == 1 ? "" : NO_HORNS;
             for (ItemModelGenerators.TrimModelData trimMaterial : ItemModelGeneratorsAccessor.deeperdarker$getGENERATED_TRIM_MODELS()) {
                 String string = trimMaterial.name(armor.getMaterial());
                 ResourceLocation identifier4 = getItemModelForTrimMaterial(armorModelIdentifier, string, suffix);
@@ -611,23 +613,43 @@ public class DDModelProvider extends FabricModelProvider {
                 itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier.withSuffix(suffix), trimOverlayIdentifier);
             }
         }
+
+        ModelTemplates.FLAT_ITEM.create(armorModelIdentifier.withSuffix(NO_HORNS), TextureMapping.layer0(armorTextureIdentifier.withSuffix(NO_HORNS)), itemModelGenerators.output);
     }
 
     private static JsonObject generateBaseHornedHelmetTrimTemplate(ResourceLocation model, Map<TextureSlot, ResourceLocation> map, ArmorMaterial armorMaterial) {
         JsonObject jsonObject = ModelTemplates.TWO_LAYERED_ITEM.createBaseTemplate(model, map);
-        JsonArray jsonArray = new JsonArray();
+        JsonArray overrides = new JsonArray();
+
+        JsonObject override1 = new JsonObject();
+        JsonObject predicate1 = new JsonObject();
+        predicate1.addProperty(DeeperDarker.id("has_horns").toString(), 0.0);
+        predicate1.addProperty(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID.getPath(), 0.0);
+        override1.add("predicate", predicate1);
+        override1.addProperty("model", model.withSuffix(NO_HORNS).toString());
+        overrides.add(override1);
+
+        JsonObject override2 = new JsonObject();
+        JsonObject predicate2 = new JsonObject();
+        predicate2.addProperty(DeeperDarker.id("has_horns").toString(), 1.0);
+        predicate2.addProperty(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID.getPath(), 0.0);
+        override2.add("predicate", predicate2);
+        override2.addProperty("model", model.toString());
+        overrides.add(override2);
+
         for (ItemModelGenerators.TrimModelData trimModelData : ItemModelGeneratorsAccessor.deeperdarker$getGENERATED_TRIM_MODELS()) {
             for (int hasHorns = 0; hasHorns <= 1; hasHorns++) {
-                JsonObject jsonObject2 = new JsonObject();
-                JsonObject jsonObject3 = new JsonObject();
-                jsonObject3.addProperty(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID.getPath(), Float.valueOf(trimModelData.itemModelIndex()));
-                jsonObject3.addProperty(DeeperDarker.id("has_horns").toString(), hasHorns);
-                jsonObject2.add("predicate", jsonObject3);
-                jsonObject2.addProperty("model", getItemModelForTrimMaterial(model, trimModelData.name(armorMaterial), (hasHorns == 1 ? "" : "_no_horns")).toString());
-                jsonArray.add(jsonObject2);
+                JsonObject override3 = new JsonObject();
+                JsonObject predicate3 = new JsonObject();
+                predicate3.addProperty(ItemModelGenerators.TRIM_TYPE_PREDICATE_ID.getPath(), trimModelData.itemModelIndex());
+                predicate3.addProperty(DeeperDarker.id("has_horns").toString(), hasHorns);
+                override3.add("predicate", predicate3);
+                override3.addProperty("model", getItemModelForTrimMaterial(model, trimModelData.name(armorMaterial), (hasHorns == 1 ? "" : NO_HORNS)).toString());
+                overrides.add(override3);
             }
         }
-        jsonObject.add("overrides", jsonArray);
+
+        jsonObject.add("overrides", overrides);
         return jsonObject;
     }
 
