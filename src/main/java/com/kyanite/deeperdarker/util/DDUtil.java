@@ -194,11 +194,14 @@ public class DDUtil {
     }
 
     public static boolean hasHorns(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
+        if (!stack.hasTag()) {
+            return true;
+        }
+        CompoundTag tag = stack.getTag();
         if (!tag.contains(HAS_HORNS_TAG, CompoundTag.TAG_BYTE)) {
             return true;
         }
-        return stack.getOrCreateTag().getBoolean(HAS_HORNS_TAG);
+        return tag.getBoolean(HAS_HORNS_TAG);
     }
 
     public static void setHasHorns(ItemStack stack, boolean value) {
@@ -206,7 +209,7 @@ public class DDUtil {
     }
 
     public static boolean isAcidResistant(ItemStack stack) {
-        return stack.is(DDTags.Items.ACID_RESISTANT) || stack.getOrCreateTag().getBoolean(ACID_RESISTANT_TAG);
+        return stack.is(DDTags.Items.ACID_RESISTANT) || (stack.hasTag() && stack.getTag().getBoolean(ACID_RESISTANT_TAG));
     }
 
     public static void setAcidResistant(ItemStack stack) {
@@ -214,7 +217,7 @@ public class DDUtil {
     }
 
     public static boolean isAugmented(ItemStack stack) {
-        return stack.getOrCreateTag().getBoolean(AUGMENTED_TAG);
+        return stack.hasTag() && stack.getTag().getBoolean(AUGMENTED_TAG);
     }
 
     public static boolean isAugmentedShield(ItemStack stack) {
@@ -229,6 +232,6 @@ public class DDUtil {
         if (!isAugmented(shield)) {
             return ItemStack.EMPTY;
         }
-        return ItemStack.of(shield.getOrCreateTag().getCompound(ITEM_TAG));
+        return ItemStack.of(shield.getTag().getCompound(ITEM_TAG));
     }
 }
