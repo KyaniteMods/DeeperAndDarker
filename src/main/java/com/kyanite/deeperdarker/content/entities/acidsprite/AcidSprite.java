@@ -150,7 +150,8 @@ public class AcidSprite extends Monster implements Merchant {
     }
 
     public boolean isFriendlyPlayer(LivingEntity entity) {
-        if (!(entity instanceof Player)) return false;
+        if (!(entity instanceof Player player)) return false;
+        if (player.getAbilities().invulnerable) return true;
         for (ItemStack stack : entity.getArmorSlots()) {
             if (!stack.is(DDTags.Items.ALLOWS_ACID_SPRITE_TRADES)) return false;
         }
