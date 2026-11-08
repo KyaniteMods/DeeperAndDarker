@@ -470,6 +470,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.stalker.hurt", "Stalker hurts");
         translationBuilder.add("subtitles.entity.stalker.death", "Stalker dies");
         translationBuilder.add("subtitles.entity.stalker.notice", "Stalker takes notice");
+        translationBuilder.add("subtitles.entity.deeperdarker.overcast_vessel.crack", "Overcast Vessel cracks");
         translationBuilder.add("subtitles.entity.sludge.hurt", "Sludge hurts");
         translationBuilder.add("subtitles.entity.sludge.death", "Sludge dies");
         translationBuilder.add("subtitles.entity.sludge.squish", "Sludge squishes");
@@ -478,6 +479,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("subtitles.entity.angler_fish.death", "Angler Fish dies");
         translationBuilder.add("subtitles.entity.icicle_shard.land", "Icicle shard lands");
         translationBuilder.add("subtitles.item.deeperdarker.equip_lead", "Lead armor thuds");
+        translationBuilder.add("subtitles.item.deeperdarker.equip_radioactive", "Radioactive armor hisses");
+        translationBuilder.add("subtitles.item.deeperdarker.equip_resonarium", "Resonarium armor slushes");
+        translationBuilder.add("subtitles.item.deeperdarker.equip_warden", "Warden armor clanks");
+        translationBuilder.add("subtitles.item.deeperdarker.equip_guardian", "Guardian armor shines upon");
         translationBuilder.add("subtitles.entity.bubblox.pop", "Bubblox pops");
         translationBuilder.add("subtitles.entity.overseer_crystal.hit", "Overseer Crystal hit");
         translationBuilder.add("subtitles.entity.overseer_crystal.break", "Overseer Crystal breaks");

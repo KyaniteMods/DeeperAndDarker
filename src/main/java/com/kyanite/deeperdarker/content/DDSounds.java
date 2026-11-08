@@ -61,6 +61,8 @@ public class DDSounds {
     public static final SoundEvent STALKER_HURT = register("entity.stalker.hurt");
     public static final SoundEvent STALKER_NOTICE = register("entity.stalker.notice");
 
+    public static final SoundEvent OVERCAST_VESSEL_CRACK = register("entity.overcast_vessel.crack");
+
     public static final SoundEvent ICICLE_SHARD_LAND = register("entity.icicle_shard.land");
 
     public static final SoundEvent BUBBLOX_POP = register("entity.bubblox.pop");
@@ -77,6 +79,10 @@ public class DDSounds {
     public static final SoundEvent SONOROUS_STAFF_SONIC_BOOM = register("item.sonorous_staff.sonic_boom");
 
     public static final SoundEvent ARMOR_EQUIP_LEAD = register("item.armor.equip_lead");
+    public static final SoundEvent ARMOR_EQUIP_RADIOACTIVE = register("item.armor.equip_radioactive");
+    public static final SoundEvent ARMOR_EQUIP_RESONARIUM = register("item.armor.equip_resonarium");
+    public static final SoundEvent ARMOR_EQUIP_WARDEN = register("item.armor.equip_warden");
+    public static final SoundEvent ARMOR_EQUIP_GUARDIAN = register("item.armor.equip_guardian");
 
     public static final Holder.Reference<SoundEvent> NOTE_BLOCK_IMITATE_SHATTERED = registerReference("block.note_block.imitate.shattered");
 

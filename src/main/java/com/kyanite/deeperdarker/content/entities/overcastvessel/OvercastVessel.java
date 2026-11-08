@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.AbstractGolemBoss;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.phase.OvercastVesselPhaseType;
@@ -11,6 +12,7 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -133,6 +135,11 @@ public class OvercastVessel extends AbstractGolemBoss {
         return subEntities;
     }
 
+    public void crack(Direction direction) {
+        addCrackDirection(direction);
+        playSound(getCrackSoundEvent(), 1.0f, getRandom().nextFloat() * 0.2f + 0.9f);
+    }
+
     public void addCrackDirection(Direction direction) {
         entityData.set(getCrackDataAccessor(direction), true);
     }
@@ -185,6 +192,10 @@ public class OvercastVessel extends AbstractGolemBoss {
     @Override
     public BlockState getParticleState() {
         return DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState();
+    }
+
+    public SoundEvent getCrackSoundEvent() {
+        return DDSounds.OVERCAST_VESSEL_CRACK;
     }
 
     public boolean hurt(OvercastVesselPart part, DamageSource damageSource, float f) {

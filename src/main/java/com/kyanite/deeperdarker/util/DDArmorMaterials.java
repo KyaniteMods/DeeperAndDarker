@@ -16,10 +16,10 @@ import java.util.EnumMap;
 @SuppressWarnings("NullableProblems")
 public enum DDArmorMaterials implements ArmorMaterial {
     LEAD(DeeperDarker.MOD_ID + ":lead", 15, new int[] {2, 5, 6, 2}, 9, DDSounds.ARMOR_EQUIP_LEAD, 0.0f, 0.0f, DDItems.LEAD_INGOT),
-    RADIOACTIVE(DeeperDarker.MOD_ID + ":radioactive", 36, new int[] {3, 6, 8, 3}, 11, SoundEvents.ARMOR_EQUIP_IRON, 2.0f, 1.0f, DDItems.RADIOACTIVE_INGOT),
-    RESONARIUM(DeeperDarker.MOD_ID + ":resonarium", 30, new int[] {2, 6, 7, 3}, 10, SoundEvents.ARMOR_EQUIP_IRON, 1, 0, DDItems.RESONARIUM),
-    WARDEN(DeeperDarker.MOD_ID + ":warden", 40, new int[] {4, 7, 9, 4}, 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 4, 0.1f, DDItems.REINFORCED_ECHO_SHARD),
-    GUARDIAN(DeeperDarker.MOD_ID + ":guardian", 100, new int[] {4, 7, 9, 4}, 22, SoundEvents.ARMOR_EQUIP_NETHERITE, 6, 0.2f, DDItems.VIRTUE_SOUL);
+    RADIOACTIVE(DeeperDarker.MOD_ID + ":radioactive", 36, new int[] {3, 6, 8, 3}, 11, DDSounds.ARMOR_EQUIP_RADIOACTIVE, 2.0f, 1.0f, DDItems.RADIOACTIVE_INGOT),
+    RESONARIUM(DeeperDarker.MOD_ID + ":resonarium", 30, new int[] {2, 6, 7, 3}, 10, DDSounds.ARMOR_EQUIP_RESONARIUM, 1, 0, DDItems.RESONARIUM),
+    WARDEN(DeeperDarker.MOD_ID + ":warden", 40, new int[] {4, 7, 9, 4}, 18, DDSounds.ARMOR_EQUIP_WARDEN, 4, 0.1f, DDItems.REINFORCED_ECHO_SHARD),
+    GUARDIAN(DeeperDarker.MOD_ID + ":guardian", 100, new int[] {4, 7, 9, 4}, 22, DDSounds.ARMOR_EQUIP_GUARDIAN, 6, 0.2f, DDItems.VIRTUE_SOUL);
 
     private final String name;
     private final int durabilityMultiplier;

@@ -233,6 +233,15 @@
     ],
     "subtitle": "subtitles.entity.stalker.notice"
   },
+  "entity.overcast_vessel.crack": {
+    "sounds": [
+      "dig/stone1",
+      "dig/stone2",
+      "dig/stone3",
+      "dig/stone4"
+    ],
+    "subtitle": "subtitles.entity.deeperdarker.overcast_vessel.crack"
+  },
   "entity.icicle_shard.land": {
     "sounds": [
       "deeperdarker:entity/icicle_shard/land"
@@ -285,6 +294,105 @@
       "deeperdarker:item/armor/equip_lead_6"
     ],
     "subtitle": "subtitles.item.deeperdarker.equip_lead"
+  },
+  "item.armor.equip_radioactive": {
+    "sounds": [
+      "minecraft:random/fizz"
+    ],
+    "subtitle": "subtitles.item.deeperdarker.equip_radioactive"
+  },
+  "item.armor.equip_resonarium": {
+    "sounds": [
+      "minecraft:item/armor/equip_generic1",
+      "minecraft:item/armor/equip_generic2",
+      "minecraft:item/armor/equip_generic3",
+      "minecraft:item/armor/equip_generic4",
+      "minecraft:item/armor/equip_generic5",
+      "minecraft:item/armor/equip_generic6"
+    ],
+    "subtitle": "subtitles.item.deeperdarker.equip_resonarium"
+  },
+  "item.armor.equip_warden": {
+    "sounds": [
+      {
+        "name": "minecraft:item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.item.deeperdarker.equip_warden"
+  },
+  "item.armor.equip_guardian": {
+    "sounds": [
+      {
+        "name": "minecraft:item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.item.deeperdarker.equip_guardian"
   },
   "music.otherside.deeplands": {
     "sounds": [
