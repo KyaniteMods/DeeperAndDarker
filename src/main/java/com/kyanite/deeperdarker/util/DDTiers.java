@@ -7,27 +7,29 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 public enum DDTiers implements Tier {
-    LEAD(2, 250, 6.0f, 2.0f, 14, DDItems.LEAD_INGOT),
-    RADIOACTIVE(3, 1661, 8.0f, 4.0f, 11, DDItems.RADIOACTIVE_INGOT),
-    RESONARIUM(3, 1193, 8, 3, 15, DDItems.RESONARIUM),
-    WARDEN(5, 2519, 10.0f, 5.0f, 18, DDItems.REINFORCED_ECHO_SHARD),
-    GUARDIAN(6, 11508, 11.0f, 7.0f, 22, DDItems.VIRTUE_SOUL);
+    LEAD(2, 250, 6.0f, 2.0f, 14, () -> Ingredient.of(DDItems.LEAD_INGOT)),
+    RADIOACTIVE(3, 1661, 8.0f, 4.0f, 11, () -> Ingredient.of(DDItems.RADIOACTIVE_INGOT)),
+    RESONARIUM(3, 1193, 8, 3, 15, () -> Ingredient.of(DDItems.RESONARIUM)),
+    WARDEN(5, 2519, 10.0f, 5.0f, 18, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD)),
+    GUARDIAN(6, 11508, 11.0f, 7.0f, 22, () -> Ingredient.of(DDItems.VIRTUE_SOUL));
 
     private final int level;
     private final int durability;
     private final float speed;
     private final float damage;
     private final int enchantmentValue;
-    private final Ingredient repairIngredient;
+    private final Supplier<Ingredient> repairIngredient;
 
-    DDTiers(int level, int durability, float speed, float damage, int enchantmentValue, ItemLike repairIngredient) {
+    DDTiers(int level, int durability, float speed, float damage, int enchantmentValue, Supplier<Ingredient> repairIngredient) {
         this.level = level;
         this.durability = durability;
         this.speed = speed;
         this.damage = damage;
         this.enchantmentValue = enchantmentValue;
-        this.repairIngredient = Ingredient.of(repairIngredient);
+        this.repairIngredient = repairIngredient;
     }
 
     @Override
@@ -57,6 +59,6 @@ public enum DDTiers implements Tier {
 
     @Override
     public @NotNull Ingredient getRepairIngredient() {
-        return this.repairIngredient;
+        return this.repairIngredient.get();
     }
 }
