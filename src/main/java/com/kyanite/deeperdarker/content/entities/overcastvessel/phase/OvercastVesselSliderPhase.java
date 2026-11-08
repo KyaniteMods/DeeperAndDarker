@@ -72,7 +72,6 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
 
         Pair<Boolean, Vec3> slideResult = slideTowardTarget(vessel);
         if (slideResult.getFirst()) {
-            Vec3 deltaMovement = vessel.getDeltaMovement();
             if ((vessel.verticalCollision || vessel.horizontalCollision) && slideResult.getSecond().lengthSqr() > 0.002 && !vessel.isCracked(direction.get())) {
                 vessel.crack(direction.get());
                 moveTime = 20;
