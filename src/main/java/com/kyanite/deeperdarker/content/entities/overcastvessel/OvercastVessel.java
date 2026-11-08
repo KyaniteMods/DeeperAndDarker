@@ -194,6 +194,11 @@ public class OvercastVessel extends AbstractGolemBoss {
         return DDBlocks.GLOOMSLATE_BRICKS.defaultBlockState();
     }
 
+    @Override
+    public SoundEvent getSlideSoundEvent() {
+        return DDSounds.OVERCAST_VESSEL_SLIDE;
+    }
+
     public SoundEvent getCrackSoundEvent() {
         return DDSounds.OVERCAST_VESSEL_CRACK;
     }

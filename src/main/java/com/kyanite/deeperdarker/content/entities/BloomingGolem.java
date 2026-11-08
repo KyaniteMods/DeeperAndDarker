@@ -3,12 +3,14 @@ package com.kyanite.deeperdarker.content.entities;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
@@ -102,7 +104,7 @@ public class BloomingGolem extends AbstractGolemBoss {
                     return state.isAir() || state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_WALK_THROUGH);
                 })) continue;
 
-                setPos(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
+                slideTo(initialPos.getX() + 0.5 + vec3.x, initialPos.getY() + vec3.y, initialPos.getZ() + 0.5 + vec3.z);
                 BlockPos.betweenClosedStream(boundingBox.deflate(1.0E-7).move(vec3)).forEach(pos -> {
                     BlockState state = level().getBlockState(pos);
                     if (state.canBeReplaced() || state.is(DDTags.Blocks.BLOOMING_GOLEM_CAN_DESTROY)) level().destroyBlock(pos, true);
@@ -125,6 +127,11 @@ public class BloomingGolem extends AbstractGolemBoss {
         hurtPlayersInside();
     }
 
+    public void slideTo(double x, double y, double z) {
+        playSound(getSlideSoundEvent());
+        setPos(x, y, z);
+    }
+
     @Override
     public void reset() {
         super.reset();
@@ -135,6 +142,11 @@ public class BloomingGolem extends AbstractGolemBoss {
     @Override
     public BlockState getParticleState() {
         return DDBlocks.SCULK_GRIME_BRICKS.defaultBlockState();
+    }
+
+    @Override
+    public SoundEvent getSlideSoundEvent() {
+        return DDSounds.BLOOMING_GOLEM_SLIDE;
     }
 
     public int getGolemMoveSpeed() {

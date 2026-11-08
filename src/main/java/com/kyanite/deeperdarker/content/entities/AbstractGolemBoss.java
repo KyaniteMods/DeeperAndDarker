@@ -13,6 +13,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -204,6 +205,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     }
 
     public abstract BlockState getParticleState();
+    public abstract SoundEvent getSlideSoundEvent();
 
     @Override
     public boolean fireImmune() {

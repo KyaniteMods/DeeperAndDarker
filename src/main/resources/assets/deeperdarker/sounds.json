@@ -233,6 +233,36 @@
     ],
     "subtitle": "subtitles.entity.stalker.notice"
   },
+  "entity.blooming_golem.slide": {
+    "sounds": [
+      "deeperdarker:entity/slider_boss/boss_slide1",
+      {
+        "name": "deeperdarker:entity/slider_boss/boss_slide1",
+        "pitch": 0.95
+      },
+      "deeperdarker:entity/slider_boss/boss_slide2",
+      {
+        "name": "deeperdarker:entity/slider_boss/boss_slide2",
+        "pitch": 0.95
+      }
+    ],
+    "subtitle": "subtitles.entity.deeperdarker.blooming_golem.slide"
+  },
+  "entity.overcast_vessel.slide": {
+    "sounds": [
+      "deeperdarker:entity/slider_boss/boss_slide1",
+      {
+        "name": "deeperdarker:entity/slider_boss/boss_slide1",
+        "pitch": 0.95
+      },
+      "deeperdarker:entity/slider_boss/boss_slide2",
+      {
+        "name": "deeperdarker:entity/slider_boss/boss_slide2",
+        "pitch": 0.95
+      }
+    ],
+    "subtitle": "subtitles.entity.deeperdarker.overcast_vessel.slide"
+  },
   "entity.overcast_vessel.crack": {
     "sounds": [
       "dig/stone1",

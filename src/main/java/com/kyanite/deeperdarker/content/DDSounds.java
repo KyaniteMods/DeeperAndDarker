@@ -61,6 +61,9 @@ public class DDSounds {
     public static final SoundEvent STALKER_HURT = register("entity.stalker.hurt");
     public static final SoundEvent STALKER_NOTICE = register("entity.stalker.notice");
 
+    public static final SoundEvent BLOOMING_GOLEM_SLIDE = register("entity.blooming_golem.slide");
+
+    public static final SoundEvent OVERCAST_VESSEL_SLIDE = register("entity.overcast_vessel.slide");
     public static final SoundEvent OVERCAST_VESSEL_CRACK = register("entity.overcast_vessel.crack");
 
     public static final SoundEvent ICICLE_SHARD_LAND = register("entity.icicle_shard.land");

@@ -80,6 +80,7 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
                 moveTime = 2;
             }
             if (!recalculateTargetAndDirection(vessel)) return;
+            else vessel.playSound(vessel.getSlideSoundEvent());
         }
 
         vessel.hurtPlayersInside();
