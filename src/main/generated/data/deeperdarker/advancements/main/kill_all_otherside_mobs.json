@@ -1,5 +1,5 @@
 {
-  "parent": "deeperdarker:main/kill_overseer",
+  "parent": "deeperdarker:main/kill_sculk_millipede",
   "criteria": {
     "acid_sprite": {
       "conditions": {
@@ -42,6 +42,20 @@
         ]
       },
       "trigger": "minecraft:player_killed_entity"
+    },
+    "floater": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:floater"
+            }
+          }
+        ]
+      },
+      "trigger": "deeperdarker:player_killed_worm"
     },
     "overcast_vessel": {
       "conditions": {
@@ -154,6 +168,20 @@
         ]
       },
       "trigger": "minecraft:player_killed_entity"
+    },
+    "sculk_millipede": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:sculk_millipede"
+            }
+          }
+        ]
+      },
+      "trigger": "deeperdarker:player_killed_worm"
     },
     "sculk_snapper": {
       "conditions": {
@@ -307,6 +335,12 @@
     ],
     [
       "overseer"
+    ],
+    [
+      "floater"
+    ],
+    [
+      "sculk_millipede"
     ]
   ],
   "rewards": {

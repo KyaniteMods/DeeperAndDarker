@@ -527,6 +527,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overseer.description", "Kill the Overseer");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcaster.title", "Oh The Places You'll Go");
         translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_overcaster.description", "Purify the Overcaster, then kill it");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_sculk_millipede.title", "Feet Don't Fail Me Now");
+        translationBuilder.add("advancements." + DeeperDarker.MOD_ID + ".kill_sculk_millipede.description", "Kill the Sculk Millipede");
 
         translationBuilder.add(getBiome(OthersideBiomes.DEEPLANDS), "Deeplands");
         translationBuilder.add(getBiome(OthersideBiomes.LUSH_DEEPLANDS), "Lush Deeplands");

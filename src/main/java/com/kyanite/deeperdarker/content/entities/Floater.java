@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDCriteriaTriggers;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.goals.FloaterInWormGoal;
 import net.minecraft.nbt.CompoundTag;
@@ -10,6 +11,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -369,8 +372,16 @@ public class Floater extends Vex {
         return totalMaxHealth;
     }
 
-    public void onWormKilled() {
-
+    public void onWormRemoved(RemovalReason removalReason) {
+        if (removalReason != RemovalReason.KILLED) return;
+        if (!(getKillCredit() instanceof ServerPlayer serverPlayer)) return;
+        if (getWormHead() == this && getWormPartEntities().stream().findFirst().isEmpty()) {
+            DamageSource damageSource = getLastDamageSource();
+            if (damageSource == null) {
+                damageSource = damageSources().generic();
+            }
+            DDCriteriaTriggers.PLAYER_KILLED_WORM.trigger(serverPlayer, this, damageSource);
+        }
     }
 
     public void remove(RemovalReason removalReason, Floater oldHead, @Nullable Floater newHead) {
@@ -386,7 +397,7 @@ public class Floater extends Vex {
         if (newHead != null) {
             newHead.getWormParts().remove(getUUID());
         } else {
-            onWormKilled();
+            onWormRemoved(removalReason);
         }
     }
 

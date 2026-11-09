@@ -14,7 +14,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
@@ -231,7 +230,21 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_overseer"));
 
-        Advancement.Builder.advancement().parent(killOverseer)
+        Advancement killSculkMillipede = Advancement.Builder.advancement().parent(killOverseer)
+                .display(
+                        DDItems.VIRTUE_SOUL,
+                        Component.translatable(id + "kill_sculk_millipede.title"),
+                        Component.translatable(id + "kill_sculk_millipede.description"),
+                        null,
+                        FrameType.TASK,
+                        true,
+                        true,
+                        false)
+                .addCriterion("kill_sculk_millipede", DDCriteriaTriggers.playerKilledWorm(EntityPredicate.Builder.entity().of(DDEntities.SCULK_MILLIPEDE)))
+                .rewards(AdvancementRewards.Builder.experience(100))
+                .save(consumer, path("kill_sculk_millipede"));
+
+        Advancement.Builder.advancement().parent(killSculkMillipede)
                 .display(
                         DDItems.WARDEN_SWORD,
                         Component.translatable(id + "kill_all_otherside_mobs.title"),
@@ -258,6 +271,8 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("overcast_vessel", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.OVERCAST_VESSEL)))
                 .addCriterion("acid_sprite", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.ACID_SPRITE)))
                 .addCriterion("overseer", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDTags.EntityTypes.OVERCASTERS)))
+                .addCriterion("floater", DDCriteriaTriggers.playerKilledWorm(EntityPredicate.Builder.entity().of(DDEntities.FLOATER)))
+                .addCriterion("sculk_millipede", DDCriteriaTriggers.playerKilledWorm(EntityPredicate.Builder.entity().of(DDEntities.SCULK_MILLIPEDE)))
                 .requirements(RequirementsStrategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(200))
                 .save(consumer, path("kill_all_otherside_mobs"));
