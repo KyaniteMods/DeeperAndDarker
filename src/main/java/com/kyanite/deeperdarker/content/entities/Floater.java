@@ -22,16 +22,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Floater extends Vex {
     public static final String NEXT_WORM_TAG = "next_worm";
     public static final String WORM_HEAD_TAG = "worm_head";
     public static final String SPECIAL_TAG = "special";
     public static final String WORM_PARTS_TAG = "worm_parts";
+    public static final String TOTAL_MAX_HEALTH_TAG = "total_max_health";
+
     public static final int MAX_AGE = 3600;
 
     public static final EntityDataAccessor<Boolean> DATA_ID_SPECIAL = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
@@ -52,12 +57,14 @@ public class Floater extends Vex {
     private HashSet<UUID> wormParts;
 
     private int age;
+    private float totalMaxHealth;
 
     public Floater(EntityType<? extends Vex> entityType, Level level) {
         super(entityType, level);
         wormParts = new HashSet<>();
         wormParts.add(getUUID());
         wormHeadUUID = getUUID();
+        setTotalMaxHealth(getMaxHealth());
         moveControl = new FloaterMoveControl(this);
     }
 
@@ -108,7 +115,7 @@ public class Floater extends Vex {
     public void tick() {
         super.tick();
         if (age++ >= MAX_AGE && hasMaxAge() && isLeaderWormHead()) {
-            executeOnEveryWormPart(Entity::discard);
+            executeOnEveryConnectedWormPart(Entity::discard);
         }
     }
 
@@ -158,8 +165,9 @@ public class Floater extends Vex {
         nextWormPartUUID = floater.getUUID();
         nextWormPart = floater;
         nextWormPart.previousWormPart = this;
-        executeOnEveryWormPart((floater1) -> floater1.wormHeadUUID = floater.wormHeadUUID);
+        executeOnEveryConnectedWormPart((floater1) -> floater1.wormHeadUUID = floater.wormHeadUUID);
         nextWormPart.getWormParts().addAll(getWormParts());
+
         setIsBody(true);
     }
 
@@ -188,7 +196,8 @@ public class Floater extends Vex {
 
     @Nullable
     public Floater getWormHead() {
-        if (wormHead == null && wormHeadUUID != null && level() instanceof ServerLevel serverLevel) {
+        if (wormHeadUUID == getUUID() || wormHeadUUID == null) return this;
+        if (wormHead == null && level() instanceof ServerLevel serverLevel) {
             Entity nextPart = serverLevel.getEntity(wormHeadUUID);
             if (nextPart instanceof Floater floater) {
                 wormHead = floater;
@@ -205,10 +214,42 @@ public class Floater extends Vex {
         return wormParts;
     }
 
-    public void executeOnEveryWormPart(Consumer<Floater> consumer) {
+    public void executeOnEveryConnectedWormPart(Consumer<Floater> consumer) {
         Floater previous = previousWormPart;
         consumer.accept(this);
-        if (previous != null) previous.executeOnEveryWormPart(consumer);
+        if (previous != null) previous.executeOnEveryConnectedWormPart(consumer);
+    }
+
+    public Set<Floater> getWormPartEntities() {
+        if (!(level() instanceof ServerLevel serverLevel)) return Set.of();
+        return getWormParts().stream()
+                .map(serverLevel::getEntity)
+                .filter(Objects::nonNull)
+                .filter(floater -> floater instanceof Floater)
+                .map(floater -> (Floater) floater)
+                .collect(Collectors.toSet());
+    }
+
+    public double executeOnEveryWormPart(Function<Floater, Double> function) {
+        if (!(level() instanceof ServerLevel serverLevel)) return 0;
+        return getWormParts().stream().map(serverLevel::getEntity)
+                .mapToDouble(floater -> floater instanceof Floater ? function.apply((Floater) floater) : 0.0f)
+                .sum();
+    }
+
+    public void executeOnEveryWormPart(Consumer<Floater> consumer) {
+        if (!(level() instanceof ServerLevel serverLevel)) return;
+        getWormParts().stream()
+                .map(serverLevel::getEntity)
+                .forEach(floater -> {
+                    if (floater instanceof Floater) {
+                        consumer.accept((Floater) floater);
+                    }
+                });
+    }
+
+    public float getTotalHealth() {
+        return (float) executeOnEveryWormPart(floater -> (double) floater.getHealth());
     }
 
     public static Floater generateWorm(int size, double x, double y, double z, ServerLevel level) {
@@ -217,28 +258,27 @@ public class Floater extends Vex {
 
     public static <T extends Floater> T generateWorm(EntityType<T> entityType, int size, double x, double y, double z, ServerLevel level) {
         if (size == 0) throw new IllegalArgumentException("Floater worm size should be more than 0");
-        T last = entityType.create(level);
-        if (last != null) {
-            last.setSpecial(true);
-            last.moveTo(x, y, z);
-            level.addFreshEntity(last);
+        T parent = entityType.create(level);
+        if (parent != null) {
+            parent.setSpecial(true);
+            parent.moveTo(x, y, z);
+            level.addFreshEntity(parent);
         }
-        if (size == 1) return last;
+        if (size == 1 || parent == null) return parent;
+        T head = parent;
         for (int i = 0; i < size - 1; i++) {
-            T floater = entityType.create(level);
-            if (floater != null) {
-                floater.moveTo(x, y, z);
-                if (last != null) {
-                    floater.joinWorm(last);
-                    floater.getWormParts().remove(floater.getUUID());
-                    floater.setWormParts(last.getWormHead().getWormParts());
-                    floater.getWormParts().add(floater.getUUID());
-                }
-                last = floater;
-                level.addFreshEntity(floater);
+            T tail = entityType.create(level);
+            if (tail != null) {
+                tail.moveTo(x, y, z);
+                tail.joinWorm(parent);
+                tail.setWormParts(head.getWormParts());
+                tail.getWormParts().add(tail.getUUID());
+                head.setTotalMaxHealth(head.getTotalMaxHealth() + tail.getTotalMaxHealth());
+                parent = tail;
+                level.addFreshEntity(tail);
             }
         }
-        return last;
+        return parent;
     }
 
     @Override
@@ -273,6 +313,7 @@ public class Floater extends Vex {
         if (wormHeadUUID != null) {
             compoundTag.putUUID(WORM_HEAD_TAG, wormHeadUUID);
         }
+        compoundTag.putFloat(TOTAL_MAX_HEALTH_TAG, totalMaxHealth);
         if (!wormParts.isEmpty()) {
             ListTag listTag = new ListTag();
             for (UUID uuid : wormParts) {
@@ -292,6 +333,7 @@ public class Floater extends Vex {
         if (compoundTag.hasUUID(WORM_HEAD_TAG)) {
             wormHeadUUID = compoundTag.getUUID(WORM_HEAD_TAG);
         }
+        totalMaxHealth = compoundTag.getFloat(TOTAL_MAX_HEALTH_TAG);
         if (compoundTag.contains(WORM_PARTS_TAG)) {
             wormParts = new HashSet<>();
             ListTag listTag = compoundTag.getList(WORM_PARTS_TAG, Tag.TAG_STRING);
@@ -319,6 +361,31 @@ public class Floater extends Vex {
         return entityData.get(DATA_ID_IS_BODY);
     }
 
+    public void setTotalMaxHealth(float totalMaxHealth) {
+        this.totalMaxHealth = totalMaxHealth;
+    }
+
+    public float getTotalMaxHealth() {
+        return totalMaxHealth;
+    }
+
+    public void remove(RemovalReason removalReason, Floater oldHead, @Nullable Floater newHead) {
+        if (oldHead == this && newHead != null && oldHead != newHead) {
+            executeOnEveryWormPart(floater -> {
+                floater.wormHeadUUID = newHead.getUUID();
+                floater.wormHead = newHead;
+            });
+            newHead.setWormParts(getWormParts());
+            newHead.setTotalMaxHealth(getTotalMaxHealth());
+        }
+
+        if (newHead != null) {
+            newHead.getWormParts().remove(getUUID());
+        } else {
+            System.out.println("Worm parts empty");
+        }
+    }
+
     @Override
     public void remove(RemovalReason removalReason) {
         super.remove(removalReason);
@@ -327,25 +394,20 @@ public class Floater extends Vex {
 
         if (previousWormPart != null) {
             previousWormPart.setIsBody(false);
-            if (!inWormBody()) {
-                previousWormPart.setWormParts(getWormParts());
-                previousWormPart.getWormParts().remove(getUUID());
-                return;
-            }
         }
 
-        Floater head;
-        if (!inWormBody()) {
-            head = this;
+        Floater newHead;
+        Floater head = getWormHead();
+        if (head == this) {
+            if (previousWormPart != null) {
+                newHead = previousWormPart;
+            } else {
+                newHead = getWormPartEntities().stream().findFirst().orElse(null);
+            }
         } else {
-            head = getWormHead();
+            newHead = head;
         }
 
-        if (head != null) {
-            head.getWormParts().remove(getUUID());
-            if (head.getWormParts().isEmpty()) {
-                System.out.println("Worm parts empty");
-            }
-        }
+        remove(removalReason, head, newHead);
     }
 }
