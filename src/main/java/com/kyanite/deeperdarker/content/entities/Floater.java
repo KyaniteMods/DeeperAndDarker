@@ -369,6 +369,10 @@ public class Floater extends Vex {
         return totalMaxHealth;
     }
 
+    public void onWormKilled() {
+
+    }
+
     public void remove(RemovalReason removalReason, Floater oldHead, @Nullable Floater newHead) {
         if (oldHead == this && newHead != null && oldHead != newHead) {
             executeOnEveryWormPart(floater -> {
@@ -382,7 +386,7 @@ public class Floater extends Vex {
         if (newHead != null) {
             newHead.getWormParts().remove(getUUID());
         } else {
-            System.out.println("Worm parts empty");
+            onWormKilled();
         }
     }
 
