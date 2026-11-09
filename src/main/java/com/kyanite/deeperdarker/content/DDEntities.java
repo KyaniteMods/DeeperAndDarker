@@ -44,6 +44,7 @@ public class DDEntities {
     public static final EntityType<Overseer> OVERSEER = register("overseer", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Overseer::new).dimensions(EntityDimensions.fixed(2.0f, 2.0f)).trackRangeChunks(10).build());
     public static final EntityType<Floater> FLOATER = register("floater", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Floater::new).dimensions(EntityDimensions.fixed(0.625f, 0.625f)).trackRangeChunks(10).build());
     public static final EntityType<Overcaster> OVERCASTER = register("overcaster", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Overcaster::new).dimensions(EntityDimensions.fixed(0.6f, 1.95f)).trackRangeChunks(10).build());
+    public static final EntityType<SculkMillipede> SCULK_MILLIPEDE = register("sculk_millipede", FabricEntityTypeBuilder.create(MobCategory.MONSTER, SculkMillipede::new).dimensions(EntityDimensions.fixed(1.5f, 1.5f)).trackRangeChunks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -69,6 +70,7 @@ public class DDEntities {
         DefaultAttributeRegistryAccessor.getRegistry().put(OVERSEER, Overseer.createAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(FLOATER, Floater.createFloaterAttributes());
         DefaultAttributeRegistryAccessor.getRegistry().put(OVERCASTER, Overcaster.createOvercasterAttributes());
+        DefaultAttributeRegistryAccessor.getRegistry().put(SCULK_MILLIPEDE, SculkMillipede.createSculkMillipedeAttributes());
     }
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> entity) {

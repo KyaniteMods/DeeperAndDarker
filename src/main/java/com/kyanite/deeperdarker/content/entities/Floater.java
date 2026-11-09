@@ -23,7 +23,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.UUID;
 import java.util.function.Consumer;
 
@@ -35,6 +35,7 @@ public class Floater extends Vex {
     public static final int MAX_AGE = 3600;
 
     public static final EntityDataAccessor<Boolean> DATA_ID_SPECIAL = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> DATA_ID_IS_BODY = SynchedEntityData.defineId(Floater.class, EntityDataSerializers.BOOLEAN);
 
     @Nullable
     private Floater nextWormPart;
@@ -48,13 +49,13 @@ public class Floater extends Vex {
     @Nullable
     private UUID wormHeadUUID;
 
-    private List<UUID> wormParts;
+    private HashSet<UUID> wormParts;
 
     private int age;
 
     public Floater(EntityType<? extends Vex> entityType, Level level) {
         super(entityType, level);
-        wormParts = new ArrayList<>();
+        wormParts = new HashSet<>();
         wormParts.add(getUUID());
         wormHeadUUID = getUUID();
         moveControl = new FloaterMoveControl(this);
@@ -72,6 +73,7 @@ public class Floater extends Vex {
     protected void defineSynchedData() {
         super.defineSynchedData();
         entityData.define(DATA_ID_SPECIAL, false);
+        entityData.define(DATA_ID_IS_BODY, false);
     }
 
     public static AttributeSupplier createFloaterAttributes() {
@@ -90,7 +92,7 @@ public class Floater extends Vex {
         }
         Floater floater = getNextWormPart();
         double d = distanceTo(floater);
-        float f = 0.75f;
+        float f = floater.getBbWidth() / 2.0f;
         Vec3 vec3 = new Vec3(floater.getX() - getX(), floater.getY() - getY(), floater.getZ() - getZ()).normalize().scale(Math.max(d - f, 0.0));
         moveTo(getX() + vec3.x, getY() + vec3.y, getZ() + vec3.z);
         getLookControl().setLookAt(floater);
@@ -139,19 +141,26 @@ public class Floater extends Vex {
         }
     }
 
+    // Disconnects this segment of the worm, from this to all previous parts
     public void leaveWorm() {
         if (nextWormPart != null) {
             nextWormPart.previousWormPart = null;
         }
         nextWormPart = null;
         nextWormPartUUID = null;
+        setIsBody(false);
     }
 
+    // Joins a worm tail
     public void joinWorm(Floater floater) {
+        if (this == floater) return;
+
         nextWormPartUUID = floater.getUUID();
-        executeOnEveryWormPart((floater1) -> floater1.wormHeadUUID = floater.wormHeadUUID);
         nextWormPart = floater;
         nextWormPart.previousWormPart = this;
+        executeOnEveryWormPart((floater1) -> floater1.wormHeadUUID = floater.wormHeadUUID);
+        nextWormPart.getWormParts().addAll(getWormParts());
+        setIsBody(true);
     }
 
     public boolean hasPreviousWormPart() {
@@ -177,6 +186,7 @@ public class Floater extends Vex {
         return nextWormPart;
     }
 
+    @Nullable
     public Floater getWormHead() {
         if (wormHead == null && wormHeadUUID != null && level() instanceof ServerLevel serverLevel) {
             Entity nextPart = serverLevel.getEntity(wormHeadUUID);
@@ -187,6 +197,14 @@ public class Floater extends Vex {
         return wormHead;
     }
 
+    public void setWormParts(HashSet<UUID> wormParts) {
+        this.wormParts = wormParts;
+    }
+
+    public HashSet<UUID> getWormParts() {
+        return wormParts;
+    }
+
     public void executeOnEveryWormPart(Consumer<Floater> consumer) {
         Floater previous = previousWormPart;
         consumer.accept(this);
@@ -194,8 +212,12 @@ public class Floater extends Vex {
     }
 
     public static Floater generateWorm(int size, double x, double y, double z, ServerLevel level) {
+        return generateWorm(DDEntities.FLOATER, size, x, y, z, level);
+    }
+
+    public static <T extends Floater> T generateWorm(EntityType<T> entityType, int size, double x, double y, double z, ServerLevel level) {
         if (size == 0) throw new IllegalArgumentException("Floater worm size should be more than 0");
-        Floater last = DDEntities.FLOATER.create(level);
+        T last = entityType.create(level);
         if (last != null) {
             last.setSpecial(true);
             last.moveTo(x, y, z);
@@ -203,14 +225,14 @@ public class Floater extends Vex {
         }
         if (size == 1) return last;
         for (int i = 0; i < size - 1; i++) {
-            Floater floater = DDEntities.FLOATER.create(level);
+            T floater = entityType.create(level);
             if (floater != null) {
                 floater.moveTo(x, y, z);
                 if (last != null) {
                     floater.joinWorm(last);
-                    floater.wormParts.remove(floater.getUUID());
-                    floater.wormParts = last.getWormHead().wormParts;
-                    floater.wormParts.add(floater.getUUID());
+                    floater.getWormParts().remove(floater.getUUID());
+                    floater.setWormParts(last.getWormHead().getWormParts());
+                    floater.getWormParts().add(floater.getUUID());
                 }
                 last = floater;
                 level.addFreshEntity(floater);
@@ -271,7 +293,7 @@ public class Floater extends Vex {
             wormHeadUUID = compoundTag.getUUID(WORM_HEAD_TAG);
         }
         if (compoundTag.contains(WORM_PARTS_TAG)) {
-            wormParts = new ArrayList<>();
+            wormParts = new HashSet<>();
             ListTag listTag = compoundTag.getList(WORM_PARTS_TAG, Tag.TAG_STRING);
             for (int i = 0; i < listTag.size(); i++) {
                 UUID uuid = UUID.fromString(listTag.getString(i));
@@ -287,5 +309,43 @@ public class Floater extends Vex {
 
     public boolean isSpecial() {
         return entityData.get(DATA_ID_SPECIAL);
+    }
+
+    public void setIsBody(boolean value) {
+        entityData.set(DATA_ID_IS_BODY, value);
+    }
+
+    public boolean isBody() {
+        return entityData.get(DATA_ID_IS_BODY);
+    }
+
+    @Override
+    public void remove(RemovalReason removalReason) {
+        super.remove(removalReason);
+
+        leaveWorm();
+
+        if (previousWormPart != null) {
+            previousWormPart.setIsBody(false);
+            if (!inWormBody()) {
+                previousWormPart.setWormParts(getWormParts());
+                previousWormPart.getWormParts().remove(getUUID());
+                return;
+            }
+        }
+
+        Floater head;
+        if (!inWormBody()) {
+            head = this;
+        } else {
+            head = getWormHead();
+        }
+
+        if (head != null) {
+            head.getWormParts().remove(getUUID());
+            if (head.getWormParts().isEmpty()) {
+                System.out.println("Worm parts empty");
+            }
+        }
     }
 }

@@ -38,6 +38,7 @@ public class DDModelLayers {
     public static ModelLayerLocation OVERSEER;
     public static ModelLayerLocation OVERSEER_CRYSTAL;
     public static ModelLayerLocation FLOATER;
+    public static ModelLayerLocation SCULK_MILLIPEDE;
     public static ModelLayerLocation SHATTERED_HEAD;
     public static ModelLayerLocation SUNGLASSES;
     public static ModelLayerLocation DEAD_MANS_CHEST;
@@ -97,6 +98,7 @@ public class DDModelLayers {
         OVERSEER = registerMain("overseer");
         OVERSEER_CRYSTAL = registerMain("overseer_crystal");
         FLOATER = registerMain("floater");
+        SCULK_MILLIPEDE = registerMain("sculk_millipede");
         SHATTERED_HEAD = registerMain("shattered_head");
         SUNGLASSES = registerMain("sunglasses");
         DEAD_MANS_CHEST = registerMain("dead_mans_chest");
