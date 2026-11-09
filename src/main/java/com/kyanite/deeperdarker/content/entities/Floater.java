@@ -197,7 +197,6 @@ public class Floater extends Vex {
         return nextWormPart;
     }
 
-    @Nullable
     public Floater getWormHead() {
         if (wormHeadUUID == getUUID() || wormHeadUUID == null) return this;
         if (wormHead == null && level() instanceof ServerLevel serverLevel) {
@@ -206,7 +205,7 @@ public class Floater extends Vex {
                 wormHead = floater;
             }
         }
-        return wormHead;
+        return wormHead == null ? this : wormHead;
     }
 
     public void setWormParts(HashSet<UUID> wormParts) {
@@ -253,6 +252,11 @@ public class Floater extends Vex {
 
     public float getTotalHealth() {
         return (float) executeOnEveryWormPart(floater -> (double) floater.getHealth());
+    }
+
+    public boolean isLastRemaining() {
+        Floater head = getWormHead();
+        return head.getWormPartEntities().stream().filter(floater -> !floater.isDeadOrDying()).findFirst().isEmpty();
     }
 
     public static Floater generateWorm(int size, double x, double y, double z, ServerLevel level) {
@@ -375,7 +379,7 @@ public class Floater extends Vex {
     public void onWormRemoved(RemovalReason removalReason) {
         if (removalReason != RemovalReason.KILLED) return;
         if (!(getKillCredit() instanceof ServerPlayer serverPlayer)) return;
-        if (getWormHead() == this && getWormPartEntities().stream().findFirst().isEmpty()) {
+        if (isLastRemaining()) {
             DamageSource damageSource = getLastDamageSource();
             if (damageSource == null) {
                 damageSource = damageSources().generic();
@@ -417,7 +421,7 @@ public class Floater extends Vex {
             if (previousWormPart != null) {
                 newHead = previousWormPart;
             } else {
-                newHead = getWormPartEntities().stream().findFirst().orElse(null);
+                newHead = getWormPartEntities().stream().filter(floater -> !floater.isDeadOrDying()).findFirst().orElse(null);
             }
         } else {
             newHead = head;

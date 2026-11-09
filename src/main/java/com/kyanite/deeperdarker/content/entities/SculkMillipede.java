@@ -1,11 +1,13 @@
 package com.kyanite.deeperdarker.content.entities;
 
 import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -72,6 +74,14 @@ public class SculkMillipede extends Floater {
             } else {
                 bossEvent.removeAllPlayers();
             }
+        }
+    }
+
+    @Override
+    protected void dropCustomDeathLoot(DamageSource damageSource, int i, boolean bl) {
+        super.dropCustomDeathLoot(damageSource, i, bl);
+        if (isLastRemaining()) {
+            spawnAtLocation(DDItems.VIRTUE_SOUL);
         }
     }
 
