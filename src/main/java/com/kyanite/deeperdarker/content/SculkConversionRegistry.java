@@ -59,7 +59,7 @@ public final class SculkConversionRegistry {
         addPurityConversion(DDEntities.FLOATER, directConversionToMob(EntityType.VEX));
         addPurityConversion(DDEntities.OVERSEER, entity -> {
             if (!entity.level().isClientSide()) {
-                SculkMillipede.generateBoss(20, entity.getX(), entity.getY(), entity.getZ(), (ServerLevel) entity.level());
+                SculkMillipede.generateBoss(30, entity.getX(), entity.getY(), entity.getZ(), (ServerLevel) entity.level());
             }
             entity.discard();
         });
