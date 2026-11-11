@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content;
 
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.SculkMillipede;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -59,7 +60,7 @@ public final class SculkConversionRegistry {
         addPurityConversion(DDEntities.FLOATER, directConversionToMob(EntityType.VEX));
         addPurityConversion(DDEntities.OVERSEER, entity -> {
             if (!entity.level().isClientSide()) {
-                SculkMillipede.generateBoss(5, entity.getX(), entity.getY(), entity.getZ(), (ServerLevel) entity.level());
+                SculkMillipede.generateBoss(DeeperDarker.CONFIG.server.sculkMillipedeSize(), entity.getX(), entity.getY(), entity.getZ(), (ServerLevel) entity.level());
             }
             entity.discard();
         });
