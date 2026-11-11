@@ -10,9 +10,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
@@ -22,9 +24,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.Set;
 
 public class SculkMillipede extends Floater {
+    public static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forNonCombat().range(64.0).ignoreLineOfSight().ignoreInvisibilityTesting();
     private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
 
     public SculkMillipede(EntityType<? extends Vex> entityType, Level level) {
@@ -32,7 +36,7 @@ public class SculkMillipede extends Floater {
     }
 
     public static AttributeSupplier createSculkMillipedeAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 28.0).add(Attributes.ATTACK_DAMAGE, 12.0).add(Attributes.FOLLOW_RANGE, 64.0).build();
+        return Monster.createMonsterAttributes().add(Attributes.FLYING_SPEED, 1.2).add(Attributes.MAX_HEALTH, 56.0).add(Attributes.ATTACK_DAMAGE, 36.0).add(Attributes.FOLLOW_RANGE, 128.0).build();
     }
 
     public static SculkMillipede generateBoss(int size, double x, double y, double z, ServerLevel level) {
@@ -107,6 +111,9 @@ public class SculkMillipede extends Floater {
         super.tick();
         updateBossEvent();
         level().getEntities(this, getBoundingBox().deflate(0.2), entity -> entity instanceof Player).forEach(this::doHurtTarget);
+        if (getWormHead() == this && level().getNearbyPlayers(TARGETING_CONDITIONS, this, getBoundingBox().inflate(64.0, 64.0, 64.0)).isEmpty()) {
+            executeOnEveryConnectedWormPart(Entity::discard);
+        }
     }
 
     @Override
@@ -117,5 +124,20 @@ public class SculkMillipede extends Floater {
     @Override
     protected @NotNull SoundEvent getDeathSound() {
         return SoundEvents.HOSTILE_DEATH;
+    }
+
+    @Override
+    public int chargeDelay() {
+        return 1;
+    }
+
+    @Override
+    public double chargeMinimumDistance() {
+        return random.nextInt(10) == 0 ? 2.0 : 6.0;
+    }
+
+    @Override
+    public OptionalInt getMaxAge() {
+        return OptionalInt.empty();
     }
 }

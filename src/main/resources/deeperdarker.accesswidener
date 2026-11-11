@@ -8,3 +8,4 @@ accessible method net/minecraft/client/particle/DripParticle$DripLandParticle <i
 accessible class net/minecraft/server/level/ServerLevel$EntityCallbacks
 accessible class net/minecraft/client/renderer/RenderStateShard$MultiTextureStateShard
 accessible class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+accessible class net/minecraft/world/entity/monster/Vex$VexChargeAttackGoal

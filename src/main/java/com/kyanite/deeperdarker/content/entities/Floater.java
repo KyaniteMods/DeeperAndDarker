@@ -12,9 +12,11 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -25,10 +27,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -76,6 +75,8 @@ public class Floater extends Vex {
         super.registerGoals();
         goalSelector.addGoal(2, new FloaterInWormGoal(this));
         removeAllGoals(goal -> goal instanceof LookAtPlayerGoal);
+        removeAllGoals(goal -> goal instanceof VexChargeAttackGoal);
+        goalSelector.addGoal(4, new FloaterChargeAttackGoal());
         setPersistenceRequired();
     }
 
@@ -117,13 +118,42 @@ public class Floater extends Vex {
     @Override
     public void tick() {
         super.tick();
-        if (age++ >= MAX_AGE && hasMaxAge() && isLeaderWormHead()) {
+        if (getMaxAge().isPresent() && age++ >= getMaxAge().getAsInt() && isLeaderWormHead()) {
             executeOnEveryConnectedWormPart(Entity::discard);
         }
     }
 
-    public boolean hasMaxAge() {
-        return true;
+    public OptionalInt getMaxAge() {
+        return OptionalInt.of(MAX_AGE);
+    }
+
+    class FloaterChargeAttackGoal extends VexChargeAttackGoal {
+        public FloaterChargeAttackGoal() {
+            super();
+        }
+
+        @Override
+        public boolean canUse() {
+            LivingEntity livingEntity = Floater.this.getTarget();
+            if (livingEntity != null && livingEntity.isAlive() && !Floater.this.getMoveControl().hasWanted() && Floater.this.random.nextInt(reducedTickDelay(Floater.this.chargeDelay())) == 0) {
+                return Floater.this.distanceToSqr(livingEntity) > (Floater.this.chargeMinimumDistance() * Floater.this.chargeMinimumDistance());
+            }
+            return false;
+        }
+
+        @Override
+        public void start() {
+            LivingEntity livingEntity = Floater.this.getTarget();
+            if (livingEntity != null) {
+                Vec3 vec3 = livingEntity.getEyePosition();
+                Floater.this.moveControl.setWantedPosition(vec3.x, vec3.y, vec3.z, 1.0F);
+            }
+
+            Floater.this.setIsCharging(true);
+            if (Floater.this.getChargeSound() != null) {
+                Floater.this.playSound(Floater.this.getChargeSound(), 1.0F, 1.0F);
+            }
+        }
     }
 
     class FloaterMoveControl
@@ -426,5 +456,28 @@ public class Floater extends Vex {
         }
 
         remove(removalReason, head, newHead);
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return null;
+    }
+
+    @Nullable
+    public SoundEvent getChargeSound() {
+        return null;
+    }
+
+    public int chargeDelay() {
+        return 7;
+    }
+
+    public double chargeMinimumDistance() {
+        return 2.0;
+    }
+
+    @Override
+    public boolean canChangeDimensions() {
+        return false;
     }
 }
