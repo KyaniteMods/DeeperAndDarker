@@ -6,6 +6,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
@@ -104,5 +107,15 @@ public class SculkMillipede extends Floater {
         super.tick();
         updateBossEvent();
         level().getEntities(this, getBoundingBox().deflate(0.2), entity -> entity instanceof Player).forEach(this::doHurtTarget);
+    }
+
+    @Override
+    protected @NotNull SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
+        return SoundEvents.HOSTILE_HURT;
+    }
+
+    @Override
+    protected @NotNull SoundEvent getDeathSound() {
+        return SoundEvents.HOSTILE_DEATH;
     }
 }
