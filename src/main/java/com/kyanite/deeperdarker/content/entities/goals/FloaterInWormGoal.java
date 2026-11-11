@@ -16,12 +16,12 @@ public class FloaterInWormGoal
 
     @Override
     public boolean canUse() {
-        return floater.inWormBody() && (floater.getNextWormPart() == null || floater.getNextWormPart().isAlive());
+        return floater.isBody() && (floater.getNextWormPart() == null || floater.getNextWormPart().isAlive());
     }
 
     @Override
     public boolean canContinueToUse() {
-        return floater.inWormBody() && (floater.getNextWormPart() == null || floater.getNextWormPart().isAlive());
+        return floater.isBody() && (floater.getNextWormPart() == null || floater.getNextWormPart().isAlive());
     }
 
     @Override

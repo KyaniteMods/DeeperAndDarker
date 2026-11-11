@@ -96,7 +96,7 @@ public class Floater extends Vex {
     }
 
     protected void tickWorm() {
-        if (!inWormBody() || getNextWormPart() == null) {
+        if (!isBody() || getNextWormPart() == null) {
             if (hasPreviousWormPart()) previousWormPart.tickWorm();
             return;
         }
@@ -157,38 +157,36 @@ public class Floater extends Vex {
             nextWormPart.previousWormPart = null;
         }
         nextWormPart = null;
-        nextWormPartUUID = null;
-        setIsBody(false);
+        setNextWormPartUUID(null);
     }
 
     // Joins a worm tail
     public void joinWorm(Floater floater) {
         if (this == floater) return;
 
-        nextWormPartUUID = floater.getUUID();
+        setNextWormPartUUID(floater.getUUID());
         nextWormPart = floater;
         nextWormPart.previousWormPart = this;
         executeOnEveryConnectedWormPart((floater1) -> floater1.wormHeadUUID = floater.wormHeadUUID);
         nextWormPart.getWormParts().addAll(getWormParts());
-
-        setIsBody(true);
     }
 
     public boolean hasPreviousWormPart() {
         return previousWormPart != null;
     }
 
-    public boolean inWormBody() {
-        return nextWormPartUUID != null;
+    public boolean isLeaderWormHead() {
+        return hasPreviousWormPart() && !isBody();
     }
 
-    public boolean isLeaderWormHead() {
-        return hasPreviousWormPart() && !inWormBody();
+    public void setNextWormPartUUID(@Nullable UUID nextWormPartUUID) {
+        this.nextWormPartUUID = nextWormPartUUID;
+        updateIsBody();
     }
 
     @Nullable
     public Floater getNextWormPart() {
-        if (nextWormPart == null && nextWormPartUUID != null && level() instanceof ServerLevel serverLevel) {
+        if (nextWormPart == null && isBody() && level() instanceof ServerLevel serverLevel) {
             Entity nextPart = serverLevel.getEntity(nextWormPartUUID);
             if (nextPart instanceof Floater floater) {
                 joinWorm(floater);
@@ -335,7 +333,7 @@ public class Floater extends Vex {
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         if (compoundTag.hasUUID(NEXT_WORM_TAG)) {
-            nextWormPartUUID = compoundTag.getUUID(NEXT_WORM_TAG);
+            setNextWormPartUUID(compoundTag.getUUID(NEXT_WORM_TAG));
         }
         if (compoundTag.hasUUID(WORM_HEAD_TAG)) {
             wormHeadUUID = compoundTag.getUUID(WORM_HEAD_TAG);
@@ -360,8 +358,8 @@ public class Floater extends Vex {
         return entityData.get(DATA_ID_SPECIAL);
     }
 
-    public void setIsBody(boolean value) {
-        entityData.set(DATA_ID_IS_BODY, value);
+    public void updateIsBody() {
+        entityData.set(DATA_ID_IS_BODY, nextWormPartUUID != null);
     }
 
     public boolean isBody() {
@@ -412,7 +410,7 @@ public class Floater extends Vex {
         leaveWorm();
 
         if (previousWormPart != null) {
-            previousWormPart.setIsBody(false);
+            previousWormPart.setNextWormPartUUID(null);
         }
 
         Floater newHead;
