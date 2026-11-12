@@ -1,7 +1,9 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystalProjectile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
@@ -9,15 +11,19 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -26,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class SculkMillipede extends Floater {
+public class SculkMillipede extends Floater implements RangedAttackMob {
     private static final UUID HEAD_ATTACK_DAMAGE_MODIFIER_UUID = UUID.fromString("3b3c6298-6096-463d-8fbb-304dfe9f075a");
     private static final UUID HEAD_ARMOR_MODIFIER_UUID = UUID.fromString("d37aa9cd-3d8d-4be3-9dd8-8ed5df4e1f3f");
     public static final AttributeModifier HEAD_ATTACK_DAMAGE_MODIFIER = new AttributeModifier(HEAD_ATTACK_DAMAGE_MODIFIER_UUID, "Sculk millipede head attack damage bonus", 1.15, AttributeModifier.Operation.MULTIPLY_TOTAL);
@@ -117,6 +123,13 @@ public class SculkMillipede extends Floater {
         if (getWormHead() == this && level().getNearbyPlayers(TARGETING_CONDITIONS, this, getBoundingBox().inflate(64.0, 64.0, 64.0)).isEmpty()) {
             executeOnEveryConnectedWormPart(Entity::discard);
         }
+
+        if (isBody() && level().getDifficulty() == Difficulty.HARD) {
+            Player nearestPlayer = level().getNearestPlayer(this, 128.0f);
+            if (nearestPlayer != null && getRandom().nextInt(200 * (getWormParts().size() + 1)) == 0) {
+                performRangedAttack(nearestPlayer, 1.0f);
+            }
+        }
     }
 
     @Override
@@ -160,5 +173,35 @@ public class SculkMillipede extends Floater {
             getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(HEAD_ATTACK_DAMAGE_MODIFIER_UUID);
             getAttribute(Attributes.ARMOR).removeModifier(HEAD_ARMOR_MODIFIER_UUID);
         }
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        return super.isInvulnerableTo(damageSource) || damageSource.is(DDDamageTypes.OVERSEER_CRYSTAL) || damageSource.is(DamageTypes.EXPLOSION);
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity livingEntity, float f) {
+        performRangedAttackAround(livingEntity, 12 - this.level().getDifficulty().getId() * 4);
+    }
+
+    public void performRangedAttackAround(LivingEntity entity, int precision) {
+        double x = getX();
+        double y = getY() + getEyeHeight();
+        double z = getZ();
+
+        double powerX = entity.getX() + getRandom().nextIntBetweenInclusive(-precision, precision) - x;
+        double powerY = entity.getY() + getRandom().nextIntBetweenInclusive(-precision, precision) + entity.getEyeHeight() * 0.5 - y;
+        double powerZ = entity.getZ() + getRandom().nextIntBetweenInclusive(-precision, precision) - z;
+
+        performRangedAttack(powerX, powerY, powerZ);
+    }
+
+    public void performRangedAttack(double powerX, double powerY, double powerZ) {
+        OverseerCrystalProjectile crystal = new OverseerCrystalProjectile(level(), this, powerX, powerY, powerZ);
+        crystal.setOwner(this);
+        crystal.setPosRaw(getX(), getY() + getEyeHeight(), getZ());
+        crystal.setDamage(20.0f);
+        level().addFreshEntity(crystal);
     }
 }

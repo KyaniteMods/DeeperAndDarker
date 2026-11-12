@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -17,6 +18,10 @@ import net.minecraft.world.phys.HitResult;
 import java.util.List;
 
 public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
+    public static final String DAMAGE_TAG = "damage";
+
+    private float damage = 10.0f;
+
     public OverseerCrystalProjectile(EntityType<? extends OverseerCrystalProjectile> entityType, Level level) {
         super(entityType, level);
     }
@@ -31,11 +36,16 @@ public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
     }
 
     @Override
+    protected boolean canHitEntity(Entity entity) {
+        return super.canHitEntity(entity) && entity.getType() != DDEntities.OVERSEER && entity.getType() != DDEntities.SCULK_MILLIPEDE;
+    }
+
+    @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         super.onHitEntity(entityHitResult);
         if (!level().isClientSide()) {
             Entity entity = entityHitResult.getEntity();
-            hurt(entity, 10.0f);
+            hurt(entity, damage);
         }
     }
 
@@ -92,5 +102,25 @@ public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
     @Override
     protected ParticleOptions getTrailParticle() {
         return ParticleTypes.END_ROD;
+    }
+
+    public void setDamage(float damage) {
+        this.damage = damage;
+    }
+
+    public float getDamage() {
+        return damage;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compoundTag) {
+        super.addAdditionalSaveData(compoundTag);
+        compoundTag.putFloat(DAMAGE_TAG, damage);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compoundTag) {
+        super.readAdditionalSaveData(compoundTag);
+        damage = compoundTag.getFloat(DAMAGE_TAG);
     }
 }
