@@ -2,9 +2,9 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.DDMobType;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -50,11 +50,15 @@ public class DDEffects {
     public static final MobEffect PURITY = register("purity", new InstantenousMobEffect(MobEffectCategory.BENEFICIAL, 0x42cf67) {
         @Override
         public void applyEffectTick(LivingEntity livingEntity, int i) {
-            boolean converted = SculkConversionRegistry.corruptionConversion(livingEntity);
+            boolean converted = SculkConversionRegistry.purityConversion(livingEntity);
             if (!converted) {
                 if (livingEntity.getMobType() == DDMobType.SCULK) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 6));
+                    if (!livingEntity.getType().is(DDTags.EntityTypes.PURITY_RESISTANT)) {
+                        livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
+                        livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 8));
+                    } else {
+                        livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 0));
+                    }
                 } else {
                     livingEntity.removeEffect(MobEffects.DARKNESS);
                     livingEntity.removeEffect(MobEffects.WITHER);
