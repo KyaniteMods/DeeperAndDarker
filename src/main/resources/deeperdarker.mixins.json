@@ -27,6 +27,7 @@
     "HemophiliaFoodDataMixin",
     "ItemModelGeneratorsAccessor",
     "ItemStackReinvokedMixin",
+    "ItemStackShieldMixin",
     "LivingEntityShieldMixin",
     "NoAncientPaintingInGroupMixin",
     "NoiseRouterDataAccessor",

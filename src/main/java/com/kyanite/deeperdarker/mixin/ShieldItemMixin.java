@@ -179,13 +179,6 @@ public abstract class ShieldItemMixin {
         return Optional.of(stack);
     }
 
-    @Unique
-    private static Stream<ItemStack> getStackAsStream(ItemStack shield) {
-        ItemStack stack = DDUtil.getAugmentItem(shield);
-        if (stack.isEmpty()) return Stream.empty();
-        return Stream.of(stack);
-    }
-
     @ModifyReturnValue(method = "getTooltipImage", at = @At("RETURN"))
     public Optional<TooltipComponent> getTooltipImage(Optional<TooltipComponent> original, @Local(argsOnly = true) ItemStack shield) {
         if (!DDUtil.isAugmentedShield(shield)) return original;
@@ -197,7 +190,7 @@ public abstract class ShieldItemMixin {
     @Inject(method = "onDestroyed", at = @At("HEAD"))
     public void deeperdarker$onShieldDestroyed(ItemEntity itemEntity, CallbackInfo ci) {
         if (!itemEntity.getItem().is(ConventionalItemTags.SHIELDS)) return;
-        ItemUtils.onContainerDestroyed(itemEntity, getStackAsStream(itemEntity.getItem()));
+        ItemUtils.onContainerDestroyed(itemEntity, DDUtil.getStackAsStream(itemEntity.getItem()));
     }
 
     @Unique

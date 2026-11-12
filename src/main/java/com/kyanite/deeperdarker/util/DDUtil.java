@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DDUtil {
     public static final String HAS_HORNS_TAG = "deeperdarker:has_horns";
@@ -233,5 +234,11 @@ public class DDUtil {
             return ItemStack.EMPTY;
         }
         return ItemStack.of(shield.getTag().getCompound(ITEM_TAG));
+    }
+
+    public static Stream<ItemStack> getStackAsStream(ItemStack shield) {
+        ItemStack stack = DDUtil.getAugmentItem(shield);
+        if (stack.isEmpty()) return Stream.empty();
+        return Stream.of(stack);
     }
 }
