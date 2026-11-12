@@ -136,7 +136,7 @@ public class SculkMillipede extends Floater {
 
     @Override
     public double chargeMinimumDistance() {
-        return random.nextInt(10) == 0 ? 2.0 : 6.0;
+        return random.nextInt(10) == 0 ? 4.0 - level().getDifficulty().getId() : 8.0 - level().getDifficulty().getId();
     }
 
     @Override
