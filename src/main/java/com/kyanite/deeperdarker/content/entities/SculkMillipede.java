@@ -98,7 +98,7 @@ public class SculkMillipede extends Floater implements RangedAttackMob {
     protected void dropCustomDeathLoot(DamageSource damageSource, int i, boolean bl) {
         super.dropCustomDeathLoot(damageSource, i, bl);
         if (isLastRemaining()) {
-            spawnAtLocation(DDItems.VIRTUE_SOUL);
+            spawnAtLocation(DDItems.PURITY_SOUL);
         }
     }
 
