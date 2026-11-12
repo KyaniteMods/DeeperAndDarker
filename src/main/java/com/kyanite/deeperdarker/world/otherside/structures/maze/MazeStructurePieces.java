@@ -264,6 +264,69 @@ public class MazeStructurePieces {
         }
     }
 
+    public static class EggRoomPiece extends MazeStructurePiece {
+        public EggRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
+            super(DDStructurePieceTypes.EGG_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 3, 3, 3, tileSize, palette);
+        }
+
+        public EggRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.EGG_ROOM_PIECE, tag);
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        if (x >= getBoundingBox().getXSpan() / 2 - 1 && x <= getBoundingBox().getXSpan() / 2 + 1 && y <= 3 && z >= getBoundingBox().getZSpan() / 2 - 1 && z <= getBoundingBox().getZSpan() / 2 + 1) {
+                            placeBlock(worldGenLevel, Blocks.GREEN_WOOL.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
+    public static class NetherPortalRoomPiece extends MazeStructurePiece {
+        public NetherPortalRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette) {
+            super(DDStructurePieceTypes.NETHER_PORTAL_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 3, 3, 3, tileSize, palette);
+        }
+
+        public NetherPortalRoomPiece(CompoundTag tag) {
+            super(DDStructurePieceTypes.NETHER_PORTAL_ROOM_PIECE, tag);
+        }
+
+        @Override
+        public void postProcess(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+
+            for (int z = 0; z < getBoundingBox().getZSpan(); z++) {
+                for (int y = 0; y < getBoundingBox().getYSpan(); y++) {
+                    for (int x = 0; x < getBoundingBox().getXSpan(); x++) {
+                        if ((x >= getBoundingBox().getXSpan() / 2 - 1 && x <= getBoundingBox().getXSpan() / 2 + 1)
+                                && (y >= 1 && y <= 4)
+                                && z == getBoundingBox().getZSpan() / 2) {
+                            placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        if ((x >= getBoundingBox().getXSpan() / 2 - 2 && x <= getBoundingBox().getXSpan() / 2 + 2)
+                                && (y >= 0 && y <= 5)
+                                && z == getBoundingBox().getZSpan() / 2) {
+                            placeBlock(worldGenLevel, Blocks.OBSIDIAN.defaultBlockState(), x, y, z, boundingBox);
+                            continue;
+                        }
+
+                        placeBlock(worldGenLevel, Blocks.AIR.defaultBlockState(), x, y, z, boundingBox);
+                    }
+                }
+            }
+        }
+    }
+
     public static class MazePathPiece extends MazeStructurePiece {
         private BlockState state;
 

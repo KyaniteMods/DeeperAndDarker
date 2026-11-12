@@ -113,6 +113,11 @@
       },
       {
         "options": {
+          "type": "deeperdarker:nether_portal_room"
+        }
+      },
+      {
+        "options": {
           "type": "deeperdarker:oak_tree_room",
           "leaves_loot_table": "deeperdarker:chests/gloomaze_basic",
           "secret_loot_table": "deeperdarker:chests/gloomaze_secret"

@@ -121,6 +121,16 @@
       },
       {
         "options": {
+          "type": "deeperdarker:egg_room"
+        }
+      },
+      {
+        "options": {
+          "type": "deeperdarker:nether_portal_room"
+        }
+      },
+      {
+        "options": {
           "type": "deeperdarker:oak_tree_room",
           "leaves_loot_table": "deeperdarker:chests/bloomaze_basic",
           "secret_loot_table": "deeperdarker:chests/bloomaze_secret"
