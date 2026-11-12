@@ -46,7 +46,7 @@ public class SculkMillipede extends Floater implements RangedAttackMob {
     }
 
     public static AttributeSupplier createSculkMillipedeAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.FLYING_SPEED, 1.2).add(Attributes.MAX_HEALTH, 56.0).add(Attributes.ATTACK_DAMAGE, 36.0).add(Attributes.FOLLOW_RANGE, 128.0).build();
+        return Monster.createMonsterAttributes().add(Attributes.FLYING_SPEED, 1.2).add(Attributes.MAX_HEALTH, 56.0).add(Attributes.ATTACK_DAMAGE, 24.0).add(Attributes.FOLLOW_RANGE, 128.0).build();
     }
 
     public static SculkMillipede generateBoss(int size, double x, double y, double z, ServerLevel level) {
