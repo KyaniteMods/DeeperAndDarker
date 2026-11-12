@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities.overseer;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.blocks.SculkAltarBlock;
+import com.kyanite.deeperdarker.content.entities.DDMobType;
 import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhase;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.GlobalPos;
@@ -284,5 +285,10 @@ public class Overseer extends Monster implements RangedAttackMob {
 
     public boolean isFirstTick() {
         return firstTick;
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobType.SCULK;
     }
 }

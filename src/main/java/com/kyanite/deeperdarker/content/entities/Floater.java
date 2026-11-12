@@ -483,4 +483,9 @@ public class Floater extends Vex {
     protected float getStandingEyeHeight(Pose pose, EntityDimensions entityDimensions) {
         return entityDimensions.height / 2.0f;
     }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobType.SCULK;
+    }
 }

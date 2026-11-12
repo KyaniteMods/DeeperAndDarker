@@ -17,6 +17,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -203,5 +204,10 @@ public class SculkMillipede extends Floater implements RangedAttackMob {
         crystal.setPosRaw(getX(), getY() + getEyeHeight(), getZ());
         crystal.setDamage(20.0f);
         level().addFreshEntity(crystal);
+    }
+
+    @Override
+    public MobType getMobType() {
+        return DDMobType.SCULK;
     }
 }
