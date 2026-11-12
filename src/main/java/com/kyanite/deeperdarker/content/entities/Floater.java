@@ -14,9 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -103,10 +101,10 @@ public class Floater extends Vex {
         }
         Floater floater = getNextWormPart();
         double d = distanceTo(floater);
-        float f = floater.getBbWidth() / 2.0f;
+        float f = floater.getBbWidth();
         Vec3 vec3 = new Vec3(floater.getX() - getX(), floater.getY() - getY(), floater.getZ() - getZ()).normalize().scale(Math.max(d - f, 0.0));
         moveTo(getX() + vec3.x, getY() + vec3.y, getZ() + vec3.z);
-        getLookControl().setLookAt(floater);
+        getLookControl().setLookAt(floater, 90, 90);
         if (hasPreviousWormPart()) previousWormPart.tickWorm();
     }
 
@@ -331,12 +329,12 @@ public class Floater extends Vex {
 
     @Override
     public int getMaxHeadXRot() {
-        return 90;
+        return 180;
     }
 
     @Override
     public int getMaxHeadYRot() {
-        return 90;
+        return 180;
     }
 
     @Override
@@ -479,5 +477,10 @@ public class Floater extends Vex {
     @Override
     public boolean canChangeDimensions() {
         return false;
+    }
+
+    @Override
+    protected float getStandingEyeHeight(Pose pose, EntityDimensions entityDimensions) {
+        return entityDimensions.height / 2.0f;
     }
 }
