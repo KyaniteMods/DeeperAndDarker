@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -13,7 +14,10 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -27,17 +31,17 @@ public class IcicleShard extends AbstractArrow {
     }
 
     public IcicleShard(double d, double e, double f, Level level) {
-        super(DDEntities.ICICLE_SHARD, d, e, f, level, ItemStack.EMPTY, null);
+        super(DDEntities.ICICLE_SHARD, d, e, f, level, new ItemStack(Blocks.ICE), null);
     }
 
     @Override
     protected ItemStack getPickupItem() {
-        return ItemStack.EMPTY;
+        return new ItemStack(Blocks.ICE);
     }
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return ItemStack.EMPTY;
+        return new ItemStack(Blocks.ICE);
     }
 
     @Override
