@@ -23,8 +23,9 @@ public class IcicleShardRenderer extends EntityRenderer<IcicleShard> {
     public void render(IcicleShard entity, float yaw, float tickDelta, PoseStack poseStack, MultiBufferSource multiBufferSource, int light) {
         poseStack.pushPose();
         poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+        poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
         poseStack.translate(-0.5f, -0.5f, -0.5f);
-        DDUtil.renderFlatFace(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucentCull(TEXTURE)), 0xFFFFFFFF, 0.0f, 0.0f, 8.0f, 16, 16, 0, 16, 16, -16, light, OverlayTexture.NO_OVERLAY);
+        DDUtil.renderFlatFace(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucentCull(TEXTURE)), 0xFFFFFFFF, 0.0f, 0.0f, 8.0f, 16, 16, 0, 16, 16, 16, light, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
         super.render(entity, yaw, tickDelta, poseStack, multiBufferSource, light);
     }
