@@ -27,6 +27,7 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
+import java.util.function.Function;
 import java.util.function.IntFunction;
 
 public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFountainBlockEntity> {
@@ -56,13 +57,6 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
     }
 
     public static void renderFountainBeam(PoseStack poseStack, MultiBufferSource multiBufferSource, Vec3 center, Vec3 cameraPos, long gameTime, float tickDelta, Int2IntFunction lightFunction, int overlay, int color, int blocksDown, int blocksUp) {
-        VertexConsumer vertexConsumerLight = multiBufferSource.getBuffer(RenderType.entityTranslucentCull(LIGHT_TEXTURE));
-        VertexConsumer vertexConsumerBeam = multiBufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE));
-
-        renderFountainBeam(poseStack, center, cameraPos, gameTime, tickDelta, lightFunction, overlay, color, vertexConsumerLight, vertexConsumerBeam, blocksDown, blocksUp);
-    }
-
-    public static void renderFountainBeam(PoseStack poseStack, Vec3 center, Vec3 cameraPos, long gameTime, float tickDelta, Int2IntFunction lightFunction, int overlay, int color, VertexConsumer vertexConsumerLight, VertexConsumer vertexConsumerBeam, int blocksDown, int blocksUp) {
         float rotation = (float) Mth.atan2(center.x() - cameraPos.x(), center.z() - cameraPos.z());
         float animationTime = (float)Math.floorMod(gameTime, 360) + tickDelta;
         float lightScale = 2.25f + Mth.sin(Mth.DEG_TO_RAD * animationTime * 8.0f) * 0.25f;
@@ -70,12 +64,18 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
         for (int offsetY = -blocksDown; offsetY <= blocksUp; offsetY++) {
             poseStack.pushPose();
             poseStack.translate(0.0f, offsetY, 0.0f);
-            renderFountainBeam(poseStack, rotation, animationTime, lightScale, lightFunction.applyAsInt(offsetY), overlay, color, vertexConsumerLight, vertexConsumerBeam);
+            renderFountainLight(poseStack, rotation, lightScale, lightFunction.applyAsInt(offsetY), overlay, color, multiBufferSource.getBuffer(RenderType.entityTranslucentCull(LIGHT_TEXTURE)));
+            poseStack.popPose();
+        }
+        for (int offsetY = -blocksDown; offsetY <= blocksUp; offsetY++) {
+            poseStack.pushPose();
+            poseStack.translate(0.0f, offsetY, 0.0f);
+            renderFountainBeam(poseStack, animationTime, lightFunction.applyAsInt(offsetY), overlay, color, multiBufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE)));
             poseStack.popPose();
         }
     }
 
-    public static void renderFountainBeam(PoseStack poseStack, float rotation, float animationTime, float lightScale, int light, int overlay, int color, VertexConsumer vertexConsumerLight, VertexConsumer vertexConsumerBeam) {
+    public static void renderFountainLight(PoseStack poseStack, float rotation, float lightScale, int light, int overlay, int color, VertexConsumer vertexConsumerLight) {
         poseStack.pushPose();
 
         poseStack.scale(lightScale, 1.0f, lightScale);
@@ -85,7 +85,9 @@ public class DarkFountainBlockRenderer implements BlockEntityRenderer<DarkFounta
         DDUtil.renderFlatFace(poseStack, vertexConsumerLight, color, 7.0f, 0, 8.0f, 2.0f, 16.0f, 0.0f, 2.0f / 32.0f, 32, 32, light, overlay);
 
         poseStack.popPose();
+    }
 
+    public static void renderFountainBeam(PoseStack poseStack, float animationTime, int light, int overlay, int color, VertexConsumer vertexConsumerBeam) {
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(animationTime - 45.0F));
 
