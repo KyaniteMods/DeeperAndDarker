@@ -405,6 +405,8 @@ public class DDBlocks {
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering blocks");
+        CrystallizedAmberContentType.init();
+
         StrippableBlockRegistry.register(ECHO_LOG, STRIPPED_ECHO_LOG);
         StrippableBlockRegistry.register(ECHO_WOOD, STRIPPED_ECHO_WOOD);
 

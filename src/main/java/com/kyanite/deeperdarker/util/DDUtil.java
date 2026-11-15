@@ -1,33 +1,33 @@
 package com.kyanite.deeperdarker.util;
 
+import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDEntities;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContent;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
+import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
-import net.minecraft.Util;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DDUtil {
@@ -234,6 +234,35 @@ public class DDUtil {
             return ItemStack.EMPTY;
         }
         return ItemStack.of(shield.getTag().getCompound(ITEM_TAG));
+    }
+
+    public static boolean hasCrystallizedAmberContent(ItemStack stack) {
+        CompoundTag tag = BlockItem.getBlockEntityData(stack);
+        return tag != null && tag.contains(CrystallizedAmberBlockEntity.CONTENT_TAG);
+    }
+
+    public static CrystallizedAmberContent<?> getCrystallizedAmberContent(ItemStack stack) {
+        if (!hasCrystallizedAmberContent(stack)) return null;
+        CompoundTag tag = BlockItem.getBlockEntityData(stack);
+        return CrystallizedAmberContent.CODEC.parse(NbtOps.INSTANCE, tag.getCompound(CrystallizedAmberBlockEntity.CONTENT_TAG))
+                .resultOrPartial(string -> DeeperDarker.LOGGER.error("Invalid crystallized amber content: '{}'", string))
+                .orElse(null);
+    }
+
+    public static void setCrystallizedAmberContent(ItemStack stack, CrystallizedAmberContent<?> content) {
+        CrystallizedAmberContent.CODEC.encodeStart(NbtOps.INSTANCE, content)
+                .resultOrPartial(string -> DeeperDarker.LOGGER.error("Error saving crystallized amber content: '{}'", string))
+                .ifPresent(result -> {
+                    CompoundTag tag = stack.getOrCreateTag();
+                    CompoundTag blockEntityTag;
+                    if (!tag.contains(BlockItem.BLOCK_ENTITY_TAG)) {
+                        blockEntityTag = new CompoundTag();
+                        tag.put(BlockItem.BLOCK_ENTITY_TAG, blockEntityTag);
+                    } else {
+                        blockEntityTag = tag.getCompound(BlockItem.BLOCK_ENTITY_TAG);
+                    }
+                    blockEntityTag.put(CrystallizedAmberBlockEntity.CONTENT_TAG, result);
+                });
     }
 
     public static Stream<ItemStack> getStackAsStream(ItemStack shield) {
