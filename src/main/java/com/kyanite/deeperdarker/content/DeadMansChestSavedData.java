@@ -32,9 +32,7 @@ public class DeadMansChestSavedData extends SavedData {
     }
 
     public static SavedData.Factory<DeadMansChestSavedData> factory() {
-        return new SavedData.Factory<>(() -> {
-            throw new IllegalStateException("Should never create an empty map saved data");
-        }, DeadMansChestSavedData::load, null);
+        return new SavedData.Factory<>(DeadMansChestSavedData::new, DeadMansChestSavedData::load, null);
     }
 
     public ArrayList<ItemStack> getList() {
