@@ -46,7 +46,7 @@ public final class DDArmorMaterials {
             ArmorItem.Type.CHESTPLATE, 9,
             ArmorItem.Type.HELMET, 4
     ), 18, DDSounds.ARMOR_EQUIP_WARDEN, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), 4.0f, 0.1f);
-    public static final Holder<ArmorMaterial> GUARDIAN = register("warden", Map.of(
+    public static final Holder<ArmorMaterial> GUARDIAN = register("guardian", Map.of(
             ArmorItem.Type.BOOTS, 4,
             ArmorItem.Type.LEGGINGS, 7,
             ArmorItem.Type.CHESTPLATE, 9,
