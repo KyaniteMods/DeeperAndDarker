@@ -86,21 +86,24 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
         if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
             boolean picksUp = EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER);
             if(!picksUp && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
-                if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
-                else Block.popResource(level, pos, crystallizedAmber.getLoot());
+                if (crystallizedAmber.getContent() != null) {
+                    CrystallizedAmberContentType<?> type = crystallizedAmber.getContent().getType();
+                    if (type == CrystallizedAmberContentType.ENTITY) {
+                        if (level instanceof ServerLevel serverLevel)
+                            ((CrystallizedAmberEntity) crystallizedAmber.getContent()).type().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
+                    } else if (type == CrystallizedAmberContentType.ITEM_STACK) {
+                        Block.popResource(level, pos, ((CrystallizedAmberItemStack) crystallizedAmber.getContent()).stack());
+                    }
+                }
             } else if(picksUp && !level.isClientSide()) {
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
-                    CompoundTag tag = new CompoundTag();
-                    tag.put(CrystallizedAmberBlockEntity.ITEM_TAG, crystallizedAmber.getLoot().save(level.registryAccess()));
-                    tag.putBoolean(CrystallizedAmberBlockEntity.LEECH_TAG, crystallizedAmber.fossilizedEntity);
-                    tag.putFloat(CrystallizedAmberBlockEntity.ROTATION_TAG, crystallizedAmber.rotation);
-                    BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
+                    stack.set(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT, crystallizedAmber.getContent());
                 }
 
                 Block.popResource(level, pos, stack);
 
-                level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
             }
         }
     }

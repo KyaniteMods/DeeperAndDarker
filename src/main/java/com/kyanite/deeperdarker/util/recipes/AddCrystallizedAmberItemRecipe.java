@@ -2,12 +2,16 @@ package com.kyanite.deeperdarker.util.recipes;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
+import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberEntity;
+import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberItemStack;
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -23,13 +27,7 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
     public Predicate<ItemStack> getFirst(HolderLookup.Provider provider) {
         return stack -> {
             if (!stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) return false;
-            if (stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
-                CompoundTag blockEntityTag = stack.get(DataComponents.BLOCK_ENTITY_DATA).copyTag();
-                if (blockEntityTag.contains(CrystallizedAmberBlockEntity.ITEM_TAG)) {
-                    return ItemStack.parse(provider, blockEntityTag.getCompound(CrystallizedAmberBlockEntity.ITEM_TAG)).isEmpty();
-                } else return !blockEntityTag.getBoolean(CrystallizedAmberBlockEntity.LEECH_TAG);
-            }
-            return true;
+            return !stack.has(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT);
         };
     }
 
@@ -41,15 +39,11 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
     @Override
     public ItemStack assemble(ItemStack first, ItemStack second, HolderLookup.Provider lookupProvider) {
         ItemStack stack = first.copyWithCount(1);
-        CompoundTag blockEntityTag;
-        if (!stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
-            blockEntityTag = new CompoundTag();
-            stack.set(DataComponents.BLOCK_ENTITY_DATA, CustomData.of(blockEntityTag));
+        if (second.getItem() instanceof SpawnEggItem spawnEgg) {
+            stack.set(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT, new CrystallizedAmberEntity(spawnEgg.getType(second), 0.0f));
         } else {
-            blockEntityTag = stack.get(DataComponents.BLOCK_ENTITY_DATA).copyTag();
+            stack.set(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT, new CrystallizedAmberItemStack(second.copy(), 0.0f));
         }
-        blockEntityTag.put(CrystallizedAmberBlockEntity.ITEM_TAG, second.save(lookupProvider, new CompoundTag()));
-        stack.set(DataComponents.BLOCK_ENTITY_DATA, CustomData.of(blockEntityTag));
         return stack;
     }
 
