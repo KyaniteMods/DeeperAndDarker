@@ -40,6 +40,7 @@ public class DeadMansChestSavedData extends SavedData {
     }
 
     public void add(ItemStack stack) {
+        if (stack.isEmpty()) return;
         if (!stack.isStackable()) {
             list.add(stack);
             return;
