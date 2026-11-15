@@ -2,10 +2,10 @@ package com.kyanite.deeperdarker.client.render;
 
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
-import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberContent;
-import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberContentType;
-import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberEntity;
-import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberItemStack;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContent;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContentType;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;

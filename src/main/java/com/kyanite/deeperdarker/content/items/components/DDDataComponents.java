@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.content.items.components;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContent;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContentType;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;

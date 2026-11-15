@@ -1,15 +1,11 @@
 package com.kyanite.deeperdarker.util.recipes;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
-import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberEntity;
-import com.kyanite.deeperdarker.content.items.components.CrystallizedAmberItemStack;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
 import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.CustomData;
