@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.mojang.serialization.MapCodec;
@@ -12,6 +13,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -30,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
+    public static final MapCodec<GlowingVinesPlantBlock> CODEC = simpleCodec(GlowingVinesPlantBlock::new);
     public static final BooleanProperty BERRIES = BlockStateProperties.BERRIES;
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
@@ -49,22 +52,27 @@ public class GlowingVinesPlantBlock extends GrowingPlantBodyBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if(pState.getValue(BERRIES)) {
-            Block.popResource(pLevel, pPos, new ItemStack(DDItems.BLOOM_BERRIES));
-            pLevel.playSound(null, pPos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1, Mth.randomBetween(pLevel.random, 0.8f, 1.2f));
-            BlockState newState = pState.setValue(BERRIES, false);
-            pLevel.setBlock(pPos, newState, 2);
-            pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, newState));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if(state.getValue(BERRIES)) {
+            Block.popResource(level, pos, new ItemStack(DDBlockItems.BLOOM_BERRIES));
+            level.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1, Mth.randomBetween(level.random, 0.8f, 1.2f));
+            BlockState newState = state.setValue(BERRIES, false);
+            level.setBlock(pos, newState, 2);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
 
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean bl) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return !pState.getValue(BERRIES);
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantBodyBlock> codec() {
+        return CODEC;
     }
 
     @Override

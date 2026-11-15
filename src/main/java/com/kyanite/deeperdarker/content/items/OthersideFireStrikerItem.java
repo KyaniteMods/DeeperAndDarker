@@ -37,7 +37,7 @@ public class OthersideFireStrikerItem extends FlintAndSteelItem {
             level.gameEvent(player, GameEvent.BLOCK_PLACE, blockPos);
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockPos2, itemStack);
-                itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(useOnContext.getHand()));
+                itemStack.hurtAndBreak(1, player, Player.getSlotForHand(useOnContext.getHand()));
             }
             return InteractionResult.SUCCESS;
         }

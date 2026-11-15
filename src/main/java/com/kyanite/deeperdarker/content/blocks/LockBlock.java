@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -31,14 +32,14 @@ public class LockBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        return use(level, blockPos, player, player.getItemInHand(interactionHand));
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        return use(level, blockPos, player, itemStack);
     }
 
-    public InteractionResult use(Level level, BlockPos pos, @Nullable Player player, ItemStack stack) {
-        InteractionResult useKey = keyType.use(player, stack);
-        if (useKey != InteractionResult.SUCCESS) return useKey;
-        if (level.isClientSide()) return InteractionResult.SUCCESS;
+    public ItemInteractionResult use(Level level, BlockPos pos, @Nullable Player player, ItemStack stack) {
+        ItemInteractionResult useKey = keyType.use(player, stack);
+        if (useKey != ItemInteractionResult.SUCCESS) return useKey;
+        if (level.isClientSide()) return ItemInteractionResult.SUCCESS;
         level.destroyBlock(pos, true);
 
         Queue<BlockPos> posStack = new ArrayDeque<>();
@@ -57,7 +58,7 @@ public class LockBlock extends Block {
                 }
             }
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.SUCCESS;
     }
 
     public enum KeyType {
@@ -74,13 +75,13 @@ public class LockBlock extends Block {
             this.errorMessage = errorMessage;
         }
 
-        public InteractionResult use(@Nullable Player player, ItemStack stack) {
-            if (stack.is(unlockItems)) return InteractionResult.SUCCESS;
+        public ItemInteractionResult use(@Nullable Player player, ItemStack stack) {
+            if (stack.is(unlockItems)) return ItemInteractionResult.SUCCESS;
             if (stack.is(errorItems)) {
                 if (player != null) player.displayClientMessage(errorMessage, true);
-                return InteractionResult.CONSUME;
+                return ItemInteractionResult.CONSUME;
             }
-            return InteractionResult.FAIL;
+            return ItemInteractionResult.FAIL;
         }
     }
 }

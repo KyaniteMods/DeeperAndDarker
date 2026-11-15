@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.items.ShieldAugmentItem;
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
@@ -21,7 +22,9 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.Level;
+import org.apache.commons.lang3.math.Fraction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -52,7 +55,7 @@ public abstract class ShieldItemMixin {
                 }
                 addAugment(shield, slot.safeInsert(itemStack2));
             });
-        } else if (ItemStack.isSameItemSameTags(previousStack, slotStack) && slotStack.getCount() < slotStack.getMaxStackSize()) {
+        } else if (ItemStack.isSameItemSameComponents(previousStack, slotStack) && slotStack.getCount() < slotStack.getMaxStackSize()) {
             slotStack.grow(1);
             removeStack(shield).ifPresent(itemStack2 -> {
                 if (itemStack2.getItem() instanceof ShieldAugmentItem augmentItem) {
@@ -153,29 +156,24 @@ public abstract class ShieldItemMixin {
         if (stack.isEmpty() || !stack.getItem().canFitInsideContainerItems() || !stack.is(DDTags.Items.SHIELD_AUGMENT_ITEMS)) {
             return false;
         }
-        CompoundTag compoundTag = shield.getOrCreateTag();
-        if (compoundTag.contains(DDUtil.ITEM_TAG, Tag.TAG_COMPOUND)) {
+
+        if (!shield.getOrDefault(DDDataComponents.AUGMENT, ItemStack.EMPTY).isEmpty()) {
             return false;
         }
 
-        ItemStack itemStack4 = stack.copyWithCount(1);
-        CompoundTag itemTag = new CompoundTag();
-        itemStack4.save(itemTag);
-        compoundTag.put(DDUtil.ITEM_TAG, itemTag);
+        shield.set(DDDataComponents.AUGMENT, stack.copyWithCount(1));
 
         return true;
     }
 
     @Unique
     private static Optional<ItemStack> removeStack(ItemStack shield) {
-        CompoundTag compoundTag = shield.getOrCreateTag();
-        if (!compoundTag.contains(DDUtil.ITEM_TAG, Tag.TAG_COMPOUND)) {
+        if (shield.getOrDefault(DDDataComponents.AUGMENT, ItemStack.EMPTY).isEmpty()) {
             return Optional.empty();
         }
 
-        ItemStack stack = ItemStack.of(compoundTag.getCompound(DDUtil.ITEM_TAG));
-        shield.removeTagKey(DDUtil.ITEM_TAG);
-
+        ItemStack stack = shield.get(DDDataComponents.AUGMENT);
+        shield.set(DDDataComponents.AUGMENT, ItemStack.EMPTY);
         return Optional.of(stack);
     }
 
@@ -184,13 +182,13 @@ public abstract class ShieldItemMixin {
         if (!DDUtil.isAugmentedShield(shield)) return original;
         NonNullList<ItemStack> nonNullList = NonNullList.create();
         nonNullList.add(DDUtil.getAugmentItem(shield));
-        return Optional.of(new BundleTooltip(nonNullList, 64));
+        return Optional.of(new BundleTooltip(new BundleContents(nonNullList, Fraction.getFraction(1, 1))));
     }
 
     @Inject(method = "onDestroyed", at = @At("HEAD"))
     public void deeperdarker$onShieldDestroyed(ItemEntity itemEntity, CallbackInfo ci) {
         if (!itemEntity.getItem().is(ConventionalItemTags.SHIELDS)) return;
-        ItemUtils.onContainerDestroyed(itemEntity, DDUtil.getStackAsStream(itemEntity.getItem()));
+        ItemUtils.onContainerDestroyed(itemEntity, DDUtil.getStackAsStream(itemEntity.getItem()).toList());
     }
 
     @Unique

@@ -1,11 +1,12 @@
 package com.kyanite.deeperdarker.util.datagen.tags;
 
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -102,11 +103,11 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
         add(ItemTags.HOES, DDItems.RESONARIUM_HOE, DDItems.WARDEN_HOE);
         add(ItemTags.SWORDS, DDItems.RESONARIUM_SWORD, DDItems.WARDEN_SWORD);
 
-        add(ItemTags.PIGLIN_REPELLENTS, DDItems.SCULK_TORCH, DDBlocks.SCULK_CAMPFIRE.asItem(), DDBlocks.SCULK_LANTERN.asItem());
+        add(ItemTags.PIGLIN_REPELLENTS, DDBlockItems.SCULK_TORCH, DDBlocks.SCULK_CAMPFIRE.asItem(), DDBlocks.SCULK_LANTERN.asItem());
 
         add(DDTags.Items.RESONARIUM_ARMOR, DDItems.RESONARIUM_HELMET, DDItems.RESONARIUM_CHESTPLATE, DDItems.RESONARIUM_LEGGINGS, DDItems.RESONARIUM_BOOTS);
         add(DDTags.Items.DAMPENS_VIBRATIONS, DDItems.WARDEN_BOOTS, DDItems.GUARDIAN_BOOTS);
-        add(DDTags.Items.SCUTES, Items.SCUTE);
+        add(DDTags.Items.SCUTES, Items.TURTLE_SCUTE, Items.ARMADILLO_SCUTE);
         add(DDTags.Items.PAINTINGS, Items.PAINTING);
         add(DDTags.Items.SCULK_TRANSMITTERS,
                 DDItems.SCULK_TRANSMITTER,
@@ -135,7 +136,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         add(DDTags.Items.ACID_IMMUNE_ARMOR, DDItems.RADIOACTIVE_HELMET, DDItems.RADIOACTIVE_CHESTPLATE, DDItems.RADIOACTIVE_LEGGINGS, DDItems.RADIOACTIVE_BOOTS);
         add(DDTags.Items.ALLOWS_ACID_SPRITE_TRADES, DDItems.RADIOACTIVE_HELMET, DDItems.RADIOACTIVE_CHESTPLATE, DDItems.RADIOACTIVE_LEGGINGS, DDItems.RADIOACTIVE_BOOTS);
-        add(DDTags.Items.SHIELD_AUGMENT_ITEMS, DDItems.PATIENCE_SOUL, DDItems.FORTITUDE_SOUL, DDItems.CORRUPTION_SOUL, DDItems.PURITY_SOUL, DDItems.VIRTUE_SOUL);
+        add(DDTags.Items.SHIELD_AUGMENT_ITEMS, DDBlockItems.PATIENCE_SOUL, DDBlockItems.FORTITUDE_SOUL, DDBlockItems.CORRUPTION_SOUL, DDBlockItems.PURITY_SOUL, DDBlockItems.VIRTUE_SOUL);
 
         add(DDTags.Items.CLUTTER_ITEMS,
                 Items.EGG,
@@ -155,7 +156,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 Items.SMALL_DRIPLEAF,
                 DDItems.RESONARIUM,
                 DDBlocks.BLOOMING_STEM.asItem(),
-                DDItems.BLOOM_BERRIES,
+                DDBlockItems.BLOOM_BERRIES,
                 Items.GLOW_INK_SAC,
                 Items.INK_SAC,
                 Items.CHICKEN,
@@ -166,7 +167,7 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptionalTag(ItemTags.WOOL)
                 .addOptionalTag(ItemTags.SAPLINGS);
 
-        add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDItems.SHATTERED_HEAD);
+        add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDBlockItems.SHATTERED_HEAD);
 
         add(ItemTags.TRIMMABLE_ARMOR,
                 DDItems.WARDEN_HELMET, DDItems.WARDEN_CHESTPLATE, DDItems.WARDEN_LEGGINGS, DDItems.WARDEN_BOOTS,
@@ -176,11 +177,14 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 DDItems.GUARDIAN_HELMET, DDItems.GUARDIAN_CHESTPLATE, DDItems.GUARDIAN_LEGGINGS, DDItems.GUARDIAN_BOOTS
         );
 
-        add(ConventionalItemTags.FOODS, DDItems.BLOOM_BERRIES, DDItems.SCULK_TUBER, DDItems.SCULK_BERRY_SPROUT, DDItems.SCULK_BERRY);
+        add(ConventionalItemTags.BERRY_FOODS, DDBlockItems.BLOOM_BERRIES);
+        add(ConventionalItemTags.FOODS, DDItems.SCULK_TUBER, DDBlockItems.SCULK_BERRY_SPROUT, DDItems.SCULK_BERRY);
         add(ConventionalItemTags.DUSTS, DDItems.SOUL_DUST);
         add(ConventionalItemTags.ORES, DDBlocks.LEAD_BLOCK);
-        add(ConventionalItemTags.RAW_ORES, DDItems.RAW_LEAD);
+        add(ConventionalItemTags.RAW_MATERIALS, DDItems.RAW_LEAD);
         add(ConventionalItemTags.INGOTS, DDItems.LEAD_INGOT, DDItems.RADIOACTIVE_INGOT);
+        add(ConventionalItemTags.BUCKETS, DDItems.ACID_BUCKET, DDItems.SCULK_DRINK);
+        add(ConventionalItemTags.CROPS, DDItems.SCULK_BERRY);
         add(ConventionalItemTags.CHESTS, DDBlocks.DEAD_MANS_CHEST.asItem());
     }
 }

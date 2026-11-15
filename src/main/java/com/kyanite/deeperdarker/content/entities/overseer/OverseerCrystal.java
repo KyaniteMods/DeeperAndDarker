@@ -36,9 +36,9 @@ public class OverseerCrystal extends SyncedOwnedEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        entityData.define(DATA_ID_HEALTH, 3);
-        entityData.define(DATA_ID_LAST_HURT_TIME, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(DATA_ID_HEALTH, 3);
+        builder.define(DATA_ID_LAST_HURT_TIME, 0);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class OverseerCrystal extends SyncedOwnedEntity {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level, Level level2) {
         return false;
     }
 

@@ -13,10 +13,16 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class SculkTendrilsBlock extends GrowingPlantHeadBlock {
+    public static final MapCodec<SculkTendrilsBlock> CODEC = simpleCodec(SculkTendrilsBlock::new);
     private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 15, 12);
 
     public SculkTendrilsBlock(Properties properties) {
         super(properties, Direction.UP, SHAPE, false, 0.1);
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

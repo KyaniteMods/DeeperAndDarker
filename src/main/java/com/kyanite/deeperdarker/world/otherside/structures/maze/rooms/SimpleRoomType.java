@@ -1,9 +1,9 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze.rooms;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
 public class SimpleRoomType extends RoomType<SimpleRoomType> implements RoomOptions<SimpleRoomType> {
-    private final Codec<SimpleRoomType> CODEC = Codec.unit(this::getType);
+    private final MapCodec<SimpleRoomType> CODEC = MapCodec.unit(this::getType);
 
     public SimpleRoomType(RoomFactory<SimpleRoomType> roomFactory, int width, int height, int depth) {
         super(roomFactory, width, height, depth);
@@ -15,7 +15,7 @@ public class SimpleRoomType extends RoomType<SimpleRoomType> implements RoomOpti
     }
 
     @Override
-    public Codec<SimpleRoomType> codec() {
+    public MapCodec<SimpleRoomType> codec() {
         return CODEC;
     }
 

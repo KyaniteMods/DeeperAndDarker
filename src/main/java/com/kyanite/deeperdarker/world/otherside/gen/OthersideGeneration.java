@@ -8,7 +8,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class OthersideGeneration {
     public static final ResourceKey<LevelStem> OTHERSIDE_STEM = ResourceKey.create(Registries.LEVEL_STEM, DeeperDarker.id("otherside"));
-    public static void levelBootstrap(BootstapContext<LevelStem> context) {
+    public static void levelBootstrap(BootstrapContext<LevelStem> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<NoiseGeneratorSettings> noiseSettings = context.lookup(Registries.NOISE_SETTINGS);
         HolderGetter<DimensionType> dimensions = context.lookup(Registries.DIMENSION_TYPE);
@@ -50,7 +50,7 @@ public class OthersideGeneration {
     }
 
     public static final ResourceKey<NoiseGeneratorSettings> OTHERSIDE_GENERATOR = ResourceKey.create(Registries.NOISE_SETTINGS, DeeperDarker.id("otherside"));
-    public static void noiseBootstrap(BootstapContext<NoiseGeneratorSettings> context) {
+    public static void noiseBootstrap(BootstrapContext<NoiseGeneratorSettings> context) {
         HolderGetter<DensityFunction> densityFunction = context.lookup(Registries.DENSITY_FUNCTION);
         HolderGetter<NormalNoise.NoiseParameters> noise = context.lookup(Registries.NOISE);
         context.register(OTHERSIDE_GENERATOR, noiseSettings(densityFunction, noise));

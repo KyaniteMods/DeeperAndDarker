@@ -3,10 +3,12 @@ package com.kyanite.deeperdarker.content.items;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.Unit;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -25,8 +27,6 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class SonorousStaffItem extends Item {
-    public static final String CHARGED_TAG = "charged";
-
     public double dropOffFactor = 1/3.0;
 
     public SonorousStaffItem(Properties pProperties) {
@@ -37,7 +37,7 @@ public class SonorousStaffItem extends Item {
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
         if(!(pLivingEntity instanceof Player player)) return;
 
-        int timeUsed = getUseDuration(pStack) - pTimeCharged;
+        int timeUsed = getUseDuration(pStack, pLivingEntity) - pTimeCharged;
         int damage = (int) Math.round(DeeperDarker.CONFIG.server.sonorousStaffDamage() / (1 + 16 / Math.exp(0.06 * timeUsed)));
         int range = (int) Math.min(DeeperDarker.CONFIG.server.sonorousStaffRange(), Math.round(3 * Math.log(timeUsed + 1)));
 
@@ -65,7 +65,7 @@ public class SonorousStaffItem extends Item {
         }
 
         player.playSound(DDSounds.SONOROUS_STAFF_SONIC_BOOM);
-        pStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(player.getUsedItemHand()));
+        pStack.hurtAndBreak(1, player, Player.getSlotForHand(player.getUsedItemHand()));
         player.awardStat(Stats.ITEM_USED.get(this));
         player.getCooldowns().addCooldown(this, DeeperDarker.CONFIG.server.sonorousStaffCooldown());
     }
@@ -80,7 +80,12 @@ public class SonorousStaffItem extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(pEntity instanceof Player player) {
-            pStack.getOrCreateTag().putBoolean(CHARGED_TAG, player.getUseItem() == pStack && pStack.getUseDuration() - player.getUseItemRemainingTicks() >= 128);
+            boolean charged = player.getUseItem() == pStack && pStack.getUseDuration(player) - player.getUseItemRemainingTicks() >= 128;
+            if (charged) {
+                pStack.set(DDDataComponents.SONOROUS_STAFF_CHARGED, Unit.INSTANCE);
+            } else {
+                pStack.remove(DDDataComponents.SONOROUS_STAFF_CHARGED);
+            }
         }
     }
 
@@ -91,11 +96,11 @@ public class SonorousStaffItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return super.isFoil(pStack) || (pStack.hasTag() && pStack.getTag().getBoolean(CHARGED_TAG));
+        return super.isFoil(pStack) || pStack.has(DDDataComponents.SONOROUS_STAFF_CHARGED);
     }
 
     @Override
-    public int getUseDuration(ItemStack pStack) {
+    public int getUseDuration(ItemStack pStack, LivingEntity entity) {
         return 72000;
     }
 

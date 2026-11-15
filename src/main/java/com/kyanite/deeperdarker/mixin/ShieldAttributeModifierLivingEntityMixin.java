@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.content.items.ShieldAugmentItem;
 import com.kyanite.deeperdarker.util.DDUtil;
+import net.minecraft.core.Holder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -67,12 +68,12 @@ public abstract class ShieldAttributeModifierLivingEntityMixin {
     }
 
     @Unique
-    private Multimap<Attribute, AttributeModifier> getShieldAugmentAttributeModifiers(ItemStack instance, EquipmentSlot slot, boolean isBlocking) {
-        Multimap<Attribute, AttributeModifier> multimap = HashMultimap.create();
+    private Multimap<Holder<Attribute>, AttributeModifier> getShieldAugmentAttributeModifiers(ItemStack instance, EquipmentSlot slot, boolean isBlocking) {
+        Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
         if (DDUtil.isAugmentedShield(instance)) {
             ItemStack augmentStack = DDUtil.getAugmentItem(instance);
             if (augmentStack.getItem() instanceof ShieldAugmentItem augmentItem) {
-                Optional<Multimap<Attribute, AttributeModifier>> modifiers = augmentItem.getAugmentAttributeModifiers(slot, isBlocking);
+                Optional<Multimap<Holder<Attribute>, AttributeModifier>> modifiers = augmentItem.getAugmentAttributeModifiers(slot, isBlocking);
                 if (modifiers.isPresent()) {
                     return modifiers.get();
                 }

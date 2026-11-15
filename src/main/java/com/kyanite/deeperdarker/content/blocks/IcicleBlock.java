@@ -6,6 +6,7 @@ import com.kyanite.deeperdarker.content.entities.IcicleShard;
 import com.kyanite.deeperdarker.content.entities.blocks.IcicleBlockEntity;
 import com.kyanite.deeperdarker.mixin.AbstractCauldronAccessor;
 import com.kyanite.deeperdarker.mixin.ProjectileAccessor;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -52,6 +53,7 @@ import java.util.function.Predicate;
 public class IcicleBlock extends BaseEntityBlock
         implements Fallable,
         SimpleWaterloggedBlock  {
+    public static final MapCodec<IcicleBlock> CODEC = simpleCodec(IcicleBlock::new);
     public static final DirectionProperty TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
     public static final EnumProperty<DripstoneThickness> THICKNESS = BlockStateProperties.DRIPSTONE_THICKNESS;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -67,6 +69,11 @@ public class IcicleBlock extends BaseEntityBlock
     public IcicleBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(TIP_DIRECTION, Direction.UP).setValue(THICKNESS, DripstoneThickness.TIP).setValue(WATERLOGGED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -464,7 +471,7 @@ public class IcicleBlock extends BaseEntityBlock
     }
 
     @Override
-    public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
+    protected boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return false;
     }
 

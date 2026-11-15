@@ -5,15 +5,18 @@ import com.kyanite.deeperdarker.content.DDEntities;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -27,7 +30,7 @@ public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
     }
 
     public OverseerCrystalProjectile(Level level, LivingEntity livingEntity, double d, double e, double f) {
-        super(DDEntities.OVERSEER_CRYSTAL_PROJECTILE, livingEntity, d, e, f, level);
+        super(DDEntities.OVERSEER_CRYSTAL_PROJECTILE, livingEntity, new Vec3(d, e, f), level);
     }
 
     @Override
@@ -65,10 +68,11 @@ public class OverseerCrystalProjectile extends AbstractHurtingProjectile {
 
     protected boolean hurt(Entity entity, float amount) {
         boolean bl;
-        if (getOwner() instanceof LivingEntity owner) {
-            bl = entity.hurt(damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL, owner), amount);
+        if (getOwner() instanceof LivingEntity owner && level() instanceof ServerLevel serverLevel) {
+            DamageSource source = damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL, owner);
+            bl = entity.hurt(source, amount);
             if (bl && entity.isAlive()) {
-                doEnchantDamageEffects(owner, entity);
+                EnchantmentHelper.doPostAttackEffects(serverLevel, entity, source);
             }
         } else {
             bl = entity.hurt(damageSources().source(DDDamageTypes.OVERSEER_CRYSTAL), amount);

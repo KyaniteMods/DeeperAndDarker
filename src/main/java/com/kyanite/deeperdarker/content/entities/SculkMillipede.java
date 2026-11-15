@@ -1,10 +1,13 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.entities.overseer.OverseerCrystalProjectile;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,7 +20,6 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -34,10 +36,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 public class SculkMillipede extends Floater implements RangedAttackMob {
-    private static final UUID HEAD_ATTACK_DAMAGE_MODIFIER_UUID = UUID.fromString("3b3c6298-6096-463d-8fbb-304dfe9f075a");
-    private static final UUID HEAD_ARMOR_MODIFIER_UUID = UUID.fromString("d37aa9cd-3d8d-4be3-9dd8-8ed5df4e1f3f");
-    public static final AttributeModifier HEAD_ATTACK_DAMAGE_MODIFIER = new AttributeModifier(HEAD_ATTACK_DAMAGE_MODIFIER_UUID, "Sculk millipede head attack damage bonus", 1.15, AttributeModifier.Operation.MULTIPLY_TOTAL);
-    public static final AttributeModifier HEAD_ARMOR_MODIFIER = new AttributeModifier(HEAD_ARMOR_MODIFIER_UUID, "Sculk millipede head armor bonus", 1.25, AttributeModifier.Operation.MULTIPLY_TOTAL);
+    private static final ResourceLocation HEAD_ATTACK_DAMAGE_MODIFIER_ID = DeeperDarker.id("sculk_millipede.head_attack_damage");
+    private static final ResourceLocation HEAD_ARMOR_MODIFIER_ID = DeeperDarker.id("sculk_millipede.head_armor");
+    public static final AttributeModifier HEAD_ATTACK_DAMAGE_MODIFIER = new AttributeModifier(HEAD_ATTACK_DAMAGE_MODIFIER_ID, 1.15, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+    public static final AttributeModifier HEAD_ARMOR_MODIFIER = new AttributeModifier(HEAD_ARMOR_MODIFIER_ID, 1.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     public static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forNonCombat().range(64.0).ignoreLineOfSight().ignoreInvisibilityTesting();
     private ServerBossEvent bossEvent = (ServerBossEvent) new ServerBossEvent(getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
 
@@ -95,10 +97,10 @@ public class SculkMillipede extends Floater implements RangedAttackMob {
     }
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource damageSource, int i, boolean bl) {
-        super.dropCustomDeathLoot(damageSource, i, bl);
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean recentlyHit) {
+        super.dropCustomDeathLoot(serverLevel, damageSource, recentlyHit);
         if (isLastRemaining()) {
-            spawnAtLocation(DDItems.PURITY_SOUL);
+            spawnAtLocation(DDBlockItems.PURITY_SOUL);
         }
     }
 
@@ -164,15 +166,15 @@ public class SculkMillipede extends Floater implements RangedAttackMob {
         if (!isBody()) {
             AttributeInstance attackDamage = getAttribute(Attributes.ATTACK_DAMAGE);
             AttributeInstance armor = getAttribute(Attributes.ARMOR);
-            if (!attackDamage.hasModifier(HEAD_ATTACK_DAMAGE_MODIFIER)) {
+            if (!attackDamage.hasModifier(HEAD_ATTACK_DAMAGE_MODIFIER_ID)) {
                 attackDamage.addTransientModifier(HEAD_ATTACK_DAMAGE_MODIFIER);
             }
-            if (!armor.hasModifier(HEAD_ARMOR_MODIFIER)) {
+            if (!armor.hasModifier(HEAD_ARMOR_MODIFIER_ID)) {
                 armor.addTransientModifier(HEAD_ARMOR_MODIFIER);
             }
         } else {
-            getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(HEAD_ATTACK_DAMAGE_MODIFIER_UUID);
-            getAttribute(Attributes.ARMOR).removeModifier(HEAD_ARMOR_MODIFIER_UUID);
+            getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(HEAD_ATTACK_DAMAGE_MODIFIER_ID);
+            getAttribute(Attributes.ARMOR).removeModifier(HEAD_ARMOR_MODIFIER_ID);
         }
     }
 
@@ -204,10 +206,5 @@ public class SculkMillipede extends Floater implements RangedAttackMob {
         crystal.setPosRaw(getX(), getY() + getEyeHeight(), getZ());
         crystal.setDamage(20.0f);
         level().addFreshEntity(crystal);
-    }
-
-    @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
     }
 }

@@ -63,7 +63,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addStructureCovers(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                structureCover.add(entry.getData(), entry.getWeight().asInt());
+                structureCover.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -71,7 +71,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addWallCorners(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                wallCorner.add(entry.getData(), entry.getWeight().asInt());
+                wallCorner.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -79,7 +79,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addWallFaces(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                wallFace.add(entry.getData(), entry.getWeight().asInt());
+                wallFace.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -87,7 +87,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addWallEdges(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                wallEdge.add(entry.getData(), entry.getWeight().asInt());
+                wallEdge.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -95,7 +95,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addWallCenters(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                wallCenter.add(entry.getData(), entry.getWeight().asInt());
+                wallCenter.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -103,7 +103,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addPathBlocks(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                path.add(entry.getData(), entry.getWeight().asInt());
+                path.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -111,7 +111,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addEntranceBlocks(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                entrance.add(entry.getData(), entry.getWeight().asInt());
+                entrance.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -119,7 +119,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addEndBlocks(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                end.add(entry.getData(), entry.getWeight().asInt());
+                end.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }
@@ -127,7 +127,7 @@ public record MazeStructurePalette(SimpleWeightedRandomList<BlockState> structur
         @SafeVarargs
         public final Builder addFluids(WeightedEntry.Wrapper<BlockState>... entries) {
             for (WeightedEntry.Wrapper<BlockState> entry : entries) {
-                fluid.add(entry.getData(), entry.getWeight().asInt());
+                fluid.add(entry.data(), entry.getWeight().asInt());
             }
             return this;
         }

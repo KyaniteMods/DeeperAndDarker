@@ -12,9 +12,11 @@ import com.kyanite.deeperdarker.world.otherside.structures.maze.generation.Pos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.MobSpawnType;
@@ -32,15 +34,16 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class MazeStructurePieces {
     public static class MazeChestPathPiece extends MazeStructurePiece {
-        private ResourceLocation lootTable;
+        private ResourceKey<LootTable> lootTable;
         private Direction orientation;
 
-        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction orientation, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, ResourceLocation lootTable) {
+        public MazeChestPathPiece(BlockPos pos, Pos mazePos, Direction orientation, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, ResourceKey<LootTable> lootTable) {
             super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, pos, orientation, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize, palette);
             this.orientation = orientation;
             this.lootTable = lootTable;
@@ -49,7 +52,10 @@ public class MazeStructurePieces {
         public MazeChestPathPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.MAZE_CHEST_PATH_PIECE, tag);
             orientation = Direction.from2DDataValue(tag.getInt("orientation"));
-            lootTable = ResourceLocation.tryParse(tag.getString("loot_table"));
+            ResourceLocation location = ResourceLocation.tryParse(tag.getString("loot_table"));
+            if (location != null) {
+                lootTable = ResourceKey.create(Registries.LOOT_TABLE, location);
+            }
         }
 
         @Override
@@ -119,9 +125,9 @@ public class MazeStructurePieces {
 
     public static class MazeFluidPathPiece extends MazeStructurePiece {
         private BlockState fluid;
-        private @Nullable ResourceLocation lootTable;
+        private @Nullable ResourceKey<LootTable> lootTable;
 
-        public MazeFluidPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, @Nullable ResourceLocation lootTable, RandomSource random) {
+        public MazeFluidPathPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, @Nullable ResourceKey<LootTable> lootTable, RandomSource random) {
             super(DDStructurePieceTypes.MAZE_FLUID_PATH_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, tileSize, palette);
             fluid = palette.fluid().getRandomValue(random).orElseThrow();
             this.lootTable = lootTable;
@@ -131,7 +137,10 @@ public class MazeStructurePieces {
             super(DDStructurePieceTypes.MAZE_FLUID_PATH_PIECE, tag);
             fluid = BlockState.CODEC.parse(NbtOps.INSTANCE, tag.get("fluid")).resultOrPartial(DeeperDarker.LOGGER::error).orElse(Blocks.AIR.defaultBlockState());
             if (tag.contains("loot_table", Tag.TAG_STRING)) {
-                lootTable = ResourceLocation.tryParse(tag.getString("loot_table"));
+                ResourceLocation location = ResourceLocation.tryParse(tag.getString("loot_table"));
+                if (location != null) {
+                    lootTable = ResourceKey.create(Registries.LOOT_TABLE, location);
+                }
             }
         }
 
@@ -161,10 +170,10 @@ public class MazeStructurePieces {
     }
 
     public static class OakTreeRoomPiece extends MazeStructurePiece {
-        private @Nullable ResourceLocation leavesLootTable;
-        private @Nullable ResourceLocation secretLootTable;
+        private @Nullable ResourceKey<LootTable> leavesLootTable;
+        private @Nullable ResourceKey<LootTable> secretLootTable;
 
-        public OakTreeRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, @Nullable ResourceLocation leavesLootTable, @Nullable ResourceLocation secretLootTable) {
+        public OakTreeRoomPiece(BlockPos pos, Pos mazePos, int mazeWidth, int mazeHeight, int mazeDepth, int tileSize, MazeStructurePalette palette, @Nullable ResourceKey<LootTable> leavesLootTable, @Nullable ResourceKey<LootTable> secretLootTable) {
             super(DDStructurePieceTypes.OAK_TREE_ROOM_PIECE, pos, Direction.SOUTH, mazePos, mazeWidth, mazeHeight, mazeDepth, 3, 3, 3, tileSize, palette);
             this.leavesLootTable = leavesLootTable;
             this.secretLootTable = secretLootTable;
@@ -173,10 +182,16 @@ public class MazeStructurePieces {
         public OakTreeRoomPiece(CompoundTag tag) {
             super(DDStructurePieceTypes.OAK_TREE_ROOM_PIECE, tag);
             if (tag.contains("leaves_loot_table", Tag.TAG_STRING)) {
-                leavesLootTable = ResourceLocation.tryParse(tag.getString("leaves_loot_table"));
+                ResourceLocation location = ResourceLocation.tryParse(tag.getString("leaves_loot_table"));
+                if (location != null) {
+                    leavesLootTable = ResourceKey.create(Registries.LOOT_TABLE, location);
+                }
             }
             if (tag.contains("secret_loot_table", Tag.TAG_STRING)) {
-                secretLootTable = ResourceLocation.tryParse(tag.getString("secret_loot_table"));
+                ResourceLocation location = ResourceLocation.tryParse(tag.getString("secret_loot_table"));
+                if (location != null) {
+                    secretLootTable = ResourceKey.create(Registries.LOOT_TABLE, location);
+                }
             }
         }
 
@@ -448,7 +463,7 @@ public class MazeStructurePieces {
             if (boundingBox.isInside(bossPos) && (golem = DDEntities.BLOOMING_GOLEM.create(worldGenLevel.getLevel())) != null) {
                 golem.moveTo((double)bossPos.getX() + 0.5, bossPos.getY(), (double)bossPos.getZ() + 0.5, 0.0f, 0.0f);
                 golem.setHomePos(GlobalPos.of(worldGenLevel.getLevel().dimension(), bossPos));
-                golem.finalizeSpawn(worldGenLevel, worldGenLevel.getCurrentDifficultyAt(golem.blockPosition()), MobSpawnType.STRUCTURE, null, null);
+                golem.finalizeSpawn(worldGenLevel, worldGenLevel.getCurrentDifficultyAt(golem.blockPosition()), MobSpawnType.STRUCTURE, null);
                 worldGenLevel.addFreshEntityWithPassengers(golem);
             }
         }
@@ -487,7 +502,7 @@ public class MazeStructurePieces {
             if (boundingBox.isInside(bossPos) && (vessel = DDEntities.OVERCAST_VESSEL.create(worldGenLevel.getLevel())) != null) {
                 vessel.moveTo((double)bossPos.getX() + 0.5, bossPos.getY(), (double)bossPos.getZ() + 0.5, 0.0f, 0.0f);
                 vessel.setHomePos(GlobalPos.of(worldGenLevel.getLevel().dimension(), bossPos));
-                vessel.finalizeSpawn(worldGenLevel, worldGenLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.STRUCTURE, null, null);
+                vessel.finalizeSpawn(worldGenLevel, worldGenLevel.getCurrentDifficultyAt(vessel.blockPosition()), MobSpawnType.STRUCTURE, null);
                 worldGenLevel.addFreshEntityWithPassengers(vessel);
             }
         }

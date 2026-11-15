@@ -40,7 +40,7 @@ public class OverseerRenderer<T extends Overseer> extends MobRenderer<T, Oversee
     }
 
     @Override
-    protected void setupRotations(Overseer vessel, PoseStack poseStack, float f, float g, float h) {
+    protected void setupRotations(Overseer vessel, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks, float entityScale) {
     }
 
     @Override
@@ -81,10 +81,10 @@ public class OverseerRenderer<T extends Overseer> extends MobRenderer<T, Oversee
             float u = Mth.sin((float)t * ((float)Math.PI * 2) / 8.0f) * endDiameter;
             float v = Mth.cos((float)t * ((float)Math.PI * 2) / 8.0f) * endDiameter;
             float w = (float)t / 8.0f;
-            vertexConsumer.vertex(matrix4f, q * 0.2f, r * 0.2f, 0.0f).color(0, 0, 0, 255).uv(s, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
-            vertexConsumer.vertex(matrix4f, q, r, d3d).color(255, 255, 255, 255).uv(s, v2).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
-            vertexConsumer.vertex(matrix4f, u, v, d3d).color(255, 255, 255, 255).uv(w, v2).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
-            vertexConsumer.vertex(matrix4f, u * 0.2f, v * 0.2f, 0.0f).color(0, 0, 0, 255).uv(w, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(matrix3f, 0.0f, -1.0f, 0.0f).endVertex();
+            vertexConsumer.addVertex(matrix4f, q * 0.2f, r * 0.2f, 0.0f).setColor(0, 0, 0, 255).setUv(s, v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(pose, 0.0f, -1.0f, 0.0f);
+            vertexConsumer.addVertex(matrix4f, q, r, d3d).setColor(255, 255, 255, 255).setUv(s, v2).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(pose, 0.0f, -1.0f, 0.0f);
+            vertexConsumer.addVertex(matrix4f, u, v, d3d).setColor(255, 255, 255, 255).setUv(w, v2).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(pose, 0.0f, -1.0f, 0.0f);
+            vertexConsumer.addVertex(matrix4f, u * 0.2f, v * 0.2f, 0.0f).setColor(0, 0, 0, 255).setUv(w, v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(pose, 0.0f, -1.0f, 0.0f);
             q = u;
             r = v;
             s = w;

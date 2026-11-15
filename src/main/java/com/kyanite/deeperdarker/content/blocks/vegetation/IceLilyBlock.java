@@ -1,17 +1,14 @@
 package com.kyanite.deeperdarker.content.blocks.vegetation;
 
-import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.items.IceLilyItem;
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -22,10 +19,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.IceBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -39,6 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class IceLilyBlock extends BushBlock {
+    public static final MapCodec<IceLilyBlock> CODEC = simpleCodec(IceLilyBlock::new);
     public static final BooleanProperty HAS_FLOWER = BooleanProperty.create("has_flower");
     private static final VoxelShape LILY_PAD = Block.box(1, 0, 1, 15, 1.5, 15);
     private static final VoxelShape FLOWER = Block.box(5, 0, 5, 11, 12, 11);
@@ -49,25 +45,28 @@ public class IceLilyBlock extends BushBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack stack = pPlayer.getItemInHand(pHand);
-        if (stack.is(Items.SHEARS) && pState.getValue(HAS_FLOWER)) {
-            pLevel.setBlock(pPos, pState.setValue(HAS_FLOWER, false), 3);
-            pLevel.playSound(pPlayer, pPos, SoundEvents.BIG_DRIPLEAF_BREAK, SoundSource.BLOCKS);
-            Block.popResource(pLevel, pPos, new ItemStack(DDBlocks.LILY_FLOWER));
-            stack.hurtAndBreak(1, pPlayer, player -> player.broadcastBreakEvent(pHand));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    protected MapCodec<? extends BushBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if (stack.is(Items.SHEARS) && state.getValue(HAS_FLOWER)) {
+            level.setBlock(pos, state.setValue(HAS_FLOWER, false), 3);
+            level.playSound(player, pos, SoundEvents.BIG_DRIPLEAF_BREAK, SoundSource.BLOCKS);
+            Block.popResource(level, pos, new ItemStack(DDBlocks.LILY_FLOWER));
+            stack.hurtAndBreak(stack.getMaxDamage(), player, Player.getSlotForHand(interactionHand));
+            return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
 
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         ItemStack stack = pContext.getItemInHand();
-        CompoundTag tag = stack.getTag();
-        if (tag == null || !tag.contains(IceLilyItem.HAS_FLOWER)) return super.getStateForPlacement(pContext);
+        if (!stack.has(DDDataComponents.NO_FLOWER)) return super.getStateForPlacement(pContext);
         return super.getStateForPlacement(pContext).setValue(HAS_FLOWER, false);
     }
 

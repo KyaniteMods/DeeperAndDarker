@@ -34,9 +34,9 @@ public class DDBoat extends Boat implements DDBoatLike {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(WOOD_TYPE, Type.ECHO.getSerializedName());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WOOD_TYPE, Type.ECHO.getSerializedName());
     }
 
     @Override

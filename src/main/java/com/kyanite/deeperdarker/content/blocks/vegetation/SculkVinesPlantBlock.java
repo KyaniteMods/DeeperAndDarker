@@ -10,6 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class SculkVinesPlantBlock extends GrowingPlantBodyBlock {
+    public static final MapCodec<SculkVinesPlantBlock> CODEC = simpleCodec(SculkVinesPlantBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 16, 15);
 
     public SculkVinesPlantBlock(Properties pProperties) {
@@ -19,5 +20,10 @@ public class SculkVinesPlantBlock extends GrowingPlantBodyBlock {
     @Override
     protected @NotNull GrowingPlantHeadBlock getHeadBlock() {
         return (GrowingPlantHeadBlock) DDBlocks.SCULK_VINES;
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantBodyBlock> codec() {
+        return CODEC;
     }
 }

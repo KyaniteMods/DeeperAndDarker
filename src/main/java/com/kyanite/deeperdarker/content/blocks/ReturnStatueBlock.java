@@ -1,12 +1,14 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.entities.blocks.ReturnStatueBlockEntity;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,12 +35,18 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class ReturnStatueBlock extends BaseEntityBlock {
+    public static final MapCodec<ReturnStatueBlock> CODEC = simpleCodec(ReturnStatueBlock::new);
     private static final VoxelShape LOWER = Shapes.or(Block.box(0.0, 0.0, 0.0, 16.0, 4.0, 16.0), Block.box(1.0, 4.0, 1.0, 15.0, 8.0, 15.0), Block.box(4.0, 8.0, 4.0, 12.0, 16.0, 12.0));
     private static final VoxelShape UPPER = Shapes.or(Block.box(4.0, 0.0, 4.0, 12.0, 8.0, 12.0));
 
     public ReturnStatueBlock(Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER).setValue(BlockStateProperties.ENABLED, true));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -89,7 +97,7 @@ public class ReturnStatueBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
         if (!level.isClientSide() && player.isCreative()) {
             BlockPos blockPos2;
             BlockState blockState2;
@@ -100,7 +108,7 @@ public class ReturnStatueBlock extends BaseEntityBlock {
                 level.levelEvent(player, 2001, blockPos2, Block.getId(blockState2));
             }
         }
-        super.playerWillDestroy(level, blockPos, blockState, player);
+        return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     @Override
@@ -114,11 +122,11 @@ public class ReturnStatueBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        BlockPos blockEntityPos = pos;
-        if (state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) blockEntityPos = pos.below();
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        BlockPos blockEntityPos = blockPos;
+        if (blockState.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) blockEntityPos = blockPos.below();
         BlockEntity blockEntity = level.getBlockEntity(blockEntityPos);
-        if (!(blockEntity instanceof ReturnStatueBlockEntity returnStatue) || returnStatue.teleportPos == null || !state.getValue(BlockStateProperties.ENABLED)) return InteractionResult.PASS;
+        if (!(blockEntity instanceof ReturnStatueBlockEntity returnStatue) || returnStatue.teleportPos == null || !blockState.getValue(BlockStateProperties.ENABLED)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
         player.teleportTo(returnStatue.teleportPos.getX() + 0.5, returnStatue.teleportPos.getY(), returnStatue.teleportPos.getZ() + 0.5);
         level.gameEvent(GameEvent.TELEPORT, returnStatue.teleportPos, GameEvent.Context.of(player));
@@ -127,7 +135,7 @@ public class ReturnStatueBlock extends BaseEntityBlock {
                 level.addParticle(ParticleTypes.PORTAL, player.getRandomX(0.5), player.getRandomY() - 0.25, player.getRandomZ(0.5), (level.getRandom().nextDouble() - 0.5) * 2.0, -level.getRandom().nextDouble(), (level.getRandom().nextDouble() - 0.5) * 2.0);
             }
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.SUCCESS;
     }
 
     @Override

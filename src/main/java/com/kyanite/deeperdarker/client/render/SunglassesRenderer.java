@@ -29,7 +29,7 @@ public class SunglassesRenderer<T extends LivingEntity, M extends EntityModel<T>
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float yRot, float xRot) {
         if (SunglassesItem.isWearingSunglasses(entity)) {
             ((HeadedModel)this.getParentModel()).getHead().translateAndRotate(poseStack);
-            model.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE)), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+            model.renderToBuffer(poseStack, multiBufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE)), light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         }
     }
 }

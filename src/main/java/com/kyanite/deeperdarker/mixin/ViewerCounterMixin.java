@@ -15,7 +15,7 @@ import java.util.function.Predicate;
 
 @Mixin(ContainerOpenersCounter.class)
 public abstract class ViewerCounterMixin {
-    @WrapOperation(method = "getOpenCount", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getEntities(Lnet/minecraft/world/level/entity/EntityTypeTest;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;"))
+    @WrapOperation(method = "getPlayersWithContainerOpen", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getEntities(Lnet/minecraft/world/level/entity/EntityTypeTest;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;"))
     private List deeperdarker$containerIncludeAllPlayers(Level instance, EntityTypeTest<Entity, ?> entityTypeTest, AABB aABB, Predicate predicate, Operation<List> original) {
         return instance.players().stream().filter(predicate).toList();
     }

@@ -73,11 +73,11 @@ public class OverseerLaser extends SyncedOwnedEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        entityData.define(DATA_ID_DESPAWN_TIME, MAX_DESPAWN_TIME);
-        entityData.define(DATA_ID_LASERS, 1);
-        entityData.define(DATA_ID_LASER_INDEX, 0);
-        entityData.define(DATA_ID_ROTATION_SPEED, 0.0f);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(DATA_ID_DESPAWN_TIME, MAX_DESPAWN_TIME);
+        builder.define(DATA_ID_LASERS, 1);
+        builder.define(DATA_ID_LASER_INDEX, 0);
+        builder.define(DATA_ID_ROTATION_SPEED, 0.0f);
     }
 
     public float getAngle() {

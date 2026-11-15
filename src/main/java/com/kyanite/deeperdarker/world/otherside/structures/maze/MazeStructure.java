@@ -7,6 +7,7 @@ import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.Room;
 import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomEntry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,9 +23,9 @@ import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class MazeStructure extends Structure {
-    public static final Codec<MazeStructure> CODEC = ExtraCodecs.validate(RecordCodecBuilder.mapCodec(instance -> instance.group(
+    public static final MapCodec<MazeStructure> CODEC = RecordCodecBuilder.<MazeStructure>mapCodec(instance -> instance.group(
             settingsCodec(instance),
-            MazeStructureSettings.CODEC.fieldOf("maze_settings").forGetter(MazeStructure::getSettings)).apply(instance, MazeStructure::new)), MazeStructure::verify).codec();
+            MazeStructureSettings.CODEC.fieldOf("maze_settings").forGetter(MazeStructure::getSettings)).apply(instance, MazeStructure::new)).validate(MazeStructure::verify);
     private final MazeStructureSettings settings;
 
     public MazeStructure(StructureSettings structureSettings, MazeStructureSettings settings) {

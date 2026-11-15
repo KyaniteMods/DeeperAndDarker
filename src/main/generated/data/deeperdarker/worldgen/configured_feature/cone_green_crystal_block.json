@@ -3,17 +3,13 @@
   "config": {
     "depth": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 5,
-        "min_inclusive": 3
-      }
+      "max_inclusive": 5,
+      "min_inclusive": 3
     },
     "maxFloeHeight": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 6,
-        "min_inclusive": 3
-      }
+      "max_inclusive": 6,
+      "min_inclusive": 3
     },
     "replaceable": "deeperdarker:sculk_replaceables",
     "state_provider": {
@@ -24,24 +20,18 @@
     },
     "tip_x_shift": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 3,
-        "min_inclusive": 0
-      }
+      "max_inclusive": 3,
+      "min_inclusive": 0
     },
     "tip_z_shift": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 3,
-        "min_inclusive": 0
-      }
+      "max_inclusive": 3,
+      "min_inclusive": 0
     },
     "width": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 5,
-        "min_inclusive": 3
-      }
+      "max_inclusive": 5,
+      "min_inclusive": 3
     },
     "y_shift": -1
   }

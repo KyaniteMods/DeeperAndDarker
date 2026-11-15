@@ -1,9 +1,13 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
@@ -12,83 +16,45 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
 @SuppressWarnings("NullableProblems")
-public enum DDArmorMaterials implements ArmorMaterial {
-    LEAD(DeeperDarker.MOD_ID + ":lead", 15, new int[] {2, 5, 6, 2}, 9, DDSounds.ARMOR_EQUIP_LEAD, 0.0f, 0.0f, DDItems.LEAD_INGOT),
-    RADIOACTIVE(DeeperDarker.MOD_ID + ":radioactive", 36, new int[] {3, 6, 8, 3}, 11, DDSounds.ARMOR_EQUIP_RADIOACTIVE, 2.0f, 1.0f, DDItems.RADIOACTIVE_INGOT),
-    RESONARIUM(DeeperDarker.MOD_ID + ":resonarium", 30, new int[] {2, 6, 7, 3}, 10, DDSounds.ARMOR_EQUIP_RESONARIUM, 1, 0, DDItems.RESONARIUM),
-    WARDEN(DeeperDarker.MOD_ID + ":warden", 40, new int[] {4, 7, 9, 4}, 18, DDSounds.ARMOR_EQUIP_WARDEN, 4, 0.1f, DDItems.REINFORCED_ECHO_SHARD),
-    GUARDIAN(DeeperDarker.MOD_ID + ":guardian", 100, new int[] {4, 7, 9, 4}, 22, DDSounds.ARMOR_EQUIP_GUARDIAN, 6, 0.2f, DDItems.VIRTUE_SOUL);
+public final class DDArmorMaterials {
+    public static final Holder<ArmorMaterial> LEAD = register("lead", Map.of(
+            ArmorItem.Type.BOOTS, 2,
+            ArmorItem.Type.LEGGINGS, 5,
+            ArmorItem.Type.CHESTPLATE, 6,
+            ArmorItem.Type.HELMET, 2
+    ), 9, DDSounds.ARMOR_EQUIP_LEAD, () -> Ingredient.of(DDItems.LEAD_INGOT), 0.0f, 0.0f);
+    public static final Holder<ArmorMaterial> RADIOACTIVE = register("radioactive", Map.of(
+            ArmorItem.Type.BOOTS, 3,
+            ArmorItem.Type.LEGGINGS, 6,
+            ArmorItem.Type.CHESTPLATE, 8,
+            ArmorItem.Type.HELMET, 3
+    ), 11, DDSounds.ARMOR_EQUIP_RADIOACTIVE, () -> Ingredient.of(DDItems.RADIOACTIVE_INGOT), 2.0f, 1.0f);
+    public static final Holder<ArmorMaterial> RESONARIUM = register("resonarium", Map.of(
+            ArmorItem.Type.BOOTS, 2,
+            ArmorItem.Type.LEGGINGS, 6,
+            ArmorItem.Type.CHESTPLATE, 7,
+            ArmorItem.Type.HELMET, 3
+    ), 10, DDSounds.ARMOR_EQUIP_RESONARIUM, () -> Ingredient.of(DDItems.RESONARIUM), 1.0f, 0.0f);
+    public static final Holder<ArmorMaterial> WARDEN = register("warden", Map.of(
+            ArmorItem.Type.BOOTS, 4,
+            ArmorItem.Type.LEGGINGS, 7,
+            ArmorItem.Type.CHESTPLATE, 9,
+            ArmorItem.Type.HELMET, 4
+    ), 18, DDSounds.ARMOR_EQUIP_WARDEN, () -> Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), 4.0f, 0.1f);
+    public static final Holder<ArmorMaterial> GUARDIAN = register("warden", Map.of(
+            ArmorItem.Type.BOOTS, 4,
+            ArmorItem.Type.LEGGINGS, 7,
+            ArmorItem.Type.CHESTPLATE, 9,
+            ArmorItem.Type.HELMET, 4
+    ), 22, DDSounds.ARMOR_EQUIP_GUARDIAN, () -> Ingredient.of(DDBlockItems.VIRTUE_SOUL), 6.0f, 0.2f);
 
-    private final String name;
-    private final int durabilityMultiplier;
-    private final EnumMap<ArmorItem.Type, Integer> defensePoints;
-    private final int enchantmentValue;
-    private final SoundEvent sound;
-    private final float toughness;
-    private final float knockbackResistance;
-    private final Ingredient repairIngredient;
-    private static final EnumMap<ArmorItem.Type, Integer> DURABILITY_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.BOOTS, 13);
-        map.put(ArmorItem.Type.LEGGINGS, 15);
-        map.put(ArmorItem.Type.CHESTPLATE, 16);
-        map.put(ArmorItem.Type.HELMET, 11);
-    });
-
-    DDArmorMaterials(String name, int durability, int[] defensePoints, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, ItemLike repairIngredient) {
-        this.name = name;
-        this.durabilityMultiplier = durability;
-        this.defensePoints = Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-            map.put(ArmorItem.Type.BOOTS, defensePoints[0]);
-            map.put(ArmorItem.Type.LEGGINGS, defensePoints[1]);
-            map.put(ArmorItem.Type.CHESTPLATE, defensePoints[2]);
-            map.put(ArmorItem.Type.HELMET, defensePoints[3]);
-        });
-        this.enchantmentValue = enchantmentValue;
-        this.sound = sound;
-        this.toughness = toughness;
-        this.knockbackResistance = knockbackResistance;
-        this.repairIngredient = Ingredient.of(repairIngredient);
-    }
-
-    @Override
-    public int getDurabilityForType(ArmorItem.Type type) {
-        return DURABILITY_FOR_TYPE.get(type) * this.durabilityMultiplier;
-    }
-
-    @Override
-    public int getDefenseForType(ArmorItem.Type type) {
-        return this.defensePoints.get(type);
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.enchantmentValue;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return this.sound;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient;
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public float getToughness() {
-        return this.toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return this.knockbackResistance;
+    private static Holder<ArmorMaterial> register(String id, Map<ArmorItem.Type, Integer> defense, int enchantmentValue, Holder<SoundEvent> equipSound, Supplier<Ingredient> repairIngredient, float toughness, float knockbackResistance) {
+        ArmorMaterial armorMaterial = new ArmorMaterial(defense, enchantmentValue, equipSound, repairIngredient, List.of(new ArmorMaterial.Layer(DeeperDarker.id(id))), toughness, knockbackResistance);
+        return Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, DeeperDarker.id(id), armorMaterial);
     }
 }

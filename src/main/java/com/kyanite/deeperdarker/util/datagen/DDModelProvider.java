@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.util.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.BloomingStemBlock;
@@ -16,6 +16,7 @@ import com.kyanite.deeperdarker.mixin.ItemModelGeneratorsAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
@@ -312,8 +313,6 @@ public class DDModelProvider extends FabricModelProvider {
 
         blockModelGenerators.createNonTemplateModelBlock(DDBlocks.SCULK_ALTAR);
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_ALTAR, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_ALTAR));
-
-        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(DDCreateCompat.Blocks.WARDEN_BACKTANK, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(DDCreateCompat.Blocks.WARDEN_BACKTANK).withSuffix("/block"))).with(BlockModelGenerators.createHorizontalFacingDispatch()));
     }
 
     @Override
@@ -370,11 +369,11 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.REINFORCED_ECHO_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.PATIENCE_SOUL, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.FORTITUDE_SOUL, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.CORRUPTION_SOUL, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.PURITY_SOUL, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.VIRTUE_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlockItems.PATIENCE_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlockItems.FORTITUDE_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlockItems.CORRUPTION_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlockItems.PURITY_SOUL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlockItems.VIRTUE_SOUL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.WARDEN_CARAPACE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.HEART_OF_THE_DEEP, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SOUL_CRYSTAL, ModelTemplates.FLAT_ITEM);
@@ -384,7 +383,7 @@ public class DDModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DDItems.OTHERSIDE_FIRE_STRIKER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BALL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.GRIME_BRICK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(DDBlockItems.BLOOM_BERRIES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_TUBER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_BERRY, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.SCULK_TISSUE_BRICK, ModelTemplates.FLAT_ITEM);
@@ -450,7 +449,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(DDBlocks.BLOOM_FENCE.asItem()), TextureMapping.cube(DDBlocks.BLOOM_PLANKS), itemModelGenerator.output);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.BLOOM_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
-        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDItems.ICE_LILY), TextureMapping.layer0(DDBlocks.ICE_LILY), itemModelGenerator.output);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DDBlockItems.ICE_LILY), TextureMapping.layer0(DDBlocks.ICE_LILY), itemModelGenerator.output);
 
         itemModelGenerator.generateFlatItem(DDItems.ACID_BUCKET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(DDItems.FIZZ, ModelTemplates.FLAT_ITEM);
@@ -474,12 +473,6 @@ public class DDModelProvider extends FabricModelProvider {
         registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(Items.CHEST), ModelLocationUtils.getModelLocation(DDBlocks.DEAD_MANS_CHEST.asItem()), new Tuple<>(
                 TextureSlot.PARTICLE, TextureMapping.getBlockTexture(Blocks.POLISHED_DEEPSLATE)
         ));
-
-        // Create
-        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get(), ModelTemplates.FLAT_ITEM);
-        registerParented(itemModelGenerator, DeeperDarker.id("block/warden_backtank/item"), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK.get()));
-        registerParented(itemModelGenerator, ModelLocationUtils.getModelLocation(Items.BARRIER), ModelLocationUtils.getModelLocation(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE.get()));
     }
 
     private static void createGildedLog(BlockModelGenerators blockModelGenerators, Block gildedLog, Block normalLog) {
@@ -595,7 +588,7 @@ public class DDModelProvider extends FabricModelProvider {
 
     private static void registerSpawnEgg(ItemModelGenerators itemModelGenerator, Item item) {
         JsonObject model = new JsonObject();
-        model.addProperty("parent", new ResourceLocation("template_spawn_egg").withPrefix("item/").toString());
+        model.addProperty("parent", ResourceLocation.withDefaultNamespace("template_spawn_egg").withPrefix("item/").toString());
         itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
     }
 
@@ -609,7 +602,7 @@ public class DDModelProvider extends FabricModelProvider {
                 String string = trimMaterial.name(armor.getMaterial());
                 ResourceLocation identifier4 = getItemModelForTrimMaterial(armorModelIdentifier, string, suffix);
                 String string2 = hasHorns == 1 ? BuiltInRegistries.ITEM.getKey(armor).getPath() + suffix + "_trim_" + string : armor.getType().getName() + "_trim_" + string;
-                ResourceLocation trimOverlayIdentifier = hasHorns == 1 ? DeeperDarker.id(string2).withPrefix("trims/items/") : new ResourceLocation(string2).withPrefix("trims/items/");
+                ResourceLocation trimOverlayIdentifier = hasHorns == 1 ? DeeperDarker.id(string2).withPrefix("trims/items/") : ResourceLocation.withDefaultNamespace(string2).withPrefix("trims/items/");
                 itemModelGenerators.generateLayeredItem(identifier4, armorTextureIdentifier.withSuffix(suffix), trimOverlayIdentifier);
             }
         }
@@ -617,7 +610,7 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplates.FLAT_ITEM.create(armorModelIdentifier.withSuffix(NO_HORNS), TextureMapping.layer0(armorTextureIdentifier.withSuffix(NO_HORNS)), itemModelGenerators.output);
     }
 
-    private static JsonObject generateBaseHornedHelmetTrimTemplate(ResourceLocation model, Map<TextureSlot, ResourceLocation> map, ArmorMaterial armorMaterial) {
+    private static JsonObject generateBaseHornedHelmetTrimTemplate(ResourceLocation model, Map<TextureSlot, ResourceLocation> map, Holder<ArmorMaterial> armorMaterial) {
         JsonObject jsonObject = ModelTemplates.TWO_LAYERED_ITEM.createBaseTemplate(model, map);
         JsonArray overrides = new JsonArray();
 

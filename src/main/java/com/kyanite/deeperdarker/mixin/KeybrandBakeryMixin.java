@@ -17,12 +17,12 @@ import java.util.Map;
 public abstract class KeybrandBakeryMixin {
     @Mixin(ModelBakery.class)
     private interface ModelBakeryAccessor {
-        @Invoker("loadTopLevel")
-        void callLoadTopLevel(ModelResourceLocation location);
+        @Invoker("loadSpecialItemModelAndDependencies")
+        void callLoadSpecialItemModelAndDependencies(ModelResourceLocation location);
     }
 
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelBakery;loadTopLevel(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V", ordinal = 3))
+    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelBakery;loadSpecialItemModelAndDependencies(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V", ordinal = 1))
     private void deeperdarker$loadKeybrandModel(BlockColors blockColors, ProfilerFiller profilerFiller, Map map, Map map2, CallbackInfo ci) {
-        ((ModelBakeryAccessor) this).callLoadTopLevel(DeeperDarkerClient.KEYBRAND_IN_HAND_MODEL);
+        ((ModelBakeryAccessor) this).callLoadSpecialItemModelAndDependencies(DeeperDarkerClient.KEYBRAND_IN_HAND_MODEL);
     }
 }

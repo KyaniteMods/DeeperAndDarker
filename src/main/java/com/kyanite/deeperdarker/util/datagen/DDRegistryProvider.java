@@ -19,8 +19,10 @@ public class DDRegistryProvider extends FabricDynamicRegistryProvider {
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.CONFIGURED_FEATURE));
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.DAMAGE_TYPE));
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.DIMENSION_TYPE));
+        entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.ENCHANTMENT));
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.LEVEL_STEM));
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.NOISE_SETTINGS));
+        entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.PAINTING_VARIANT));
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.placedFeatures());
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.PROCESSOR_LIST));
         entries.addAll((HolderLookup.RegistryLookup<?>) entries.getLookup(Registries.STRUCTURE));

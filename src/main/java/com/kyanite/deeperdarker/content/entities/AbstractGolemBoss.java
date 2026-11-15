@@ -15,6 +15,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -91,10 +92,10 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(DATA_SLEEPING_ID, true);
-        entityData.define(DATA_SNAP_TO_BLOCKS_ID, true);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_SLEEPING_ID, true);
+        builder.define(DATA_SNAP_TO_BLOCKS_ID, true);
     }
 
     @Override
@@ -104,7 +105,7 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level, Level level2) {
         return false;
     }
 
@@ -346,22 +347,22 @@ public abstract class AbstractGolemBoss extends AbstractGolem implements Enemy {
     @Override
     public boolean doHurtTarget(Entity entity) {
         float attackDamage = (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float attackKnockback = (float)this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
-        if (entity instanceof LivingEntity) {
-            attackDamage += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity)entity).getMobType());
-            attackKnockback += (float)EnchantmentHelper.getKnockbackBonus(this);
+
+        DamageSource damageSource = damageSources().mobAttack(this);
+        if (level() instanceof ServerLevel) {
+            ServerLevel serverLevel = (ServerLevel)level();
+            attackDamage = EnchantmentHelper.modifyDamage(serverLevel, getWeaponItem(), entity, damageSource, attackDamage);
         }
-        int fireAspect = EnchantmentHelper.getFireAspect(this);
-        if (fireAspect > 0) {
-            entity.setSecondsOnFire(fireAspect * 4);
-        }
-        boolean hurt = entity.hurt(this.damageSources().mobAttack(this), attackDamage);
+        boolean hurt = entity.hurt(damageSource, attackDamage);
         if (hurt) {
+            float attackKnockback = getKnockback(entity, damageSource);
             if (attackKnockback > 0.0f && entity instanceof LivingEntity livingEntity) {
                 livingEntity.knockback(attackKnockback * 0.5f, getX() - livingEntity.getX(), getZ() - livingEntity.getZ());
             }
-            this.doEnchantDamageEffects(this, entity);
-            this.setLastHurtMob(entity);
+            if (level() instanceof ServerLevel serverLevel) {
+                EnchantmentHelper.doPostAttackEffects(serverLevel, entity, damageSource);
+            }
+            setLastHurtMob(entity);
         }
         return hurt;
     }

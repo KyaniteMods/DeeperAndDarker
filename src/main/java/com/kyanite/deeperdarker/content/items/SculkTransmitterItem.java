@@ -3,8 +3,10 @@ package com.kyanite.deeperdarker.content.items;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
-import com.kyanite.deeperdarker.network.LinkTransmitterPacket;
-import com.kyanite.deeperdarker.network.UnlinkTransmitterPacket;
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
+import com.kyanite.deeperdarker.content.items.components.TransmitterData;
+import com.kyanite.deeperdarker.network.LinkTransmitterPayload;
+import com.kyanite.deeperdarker.network.UnlinkTransmitterPayload;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -74,7 +76,11 @@ public class SculkTransmitterItem extends Item {
 
         if (level.isClientSide()) return InteractionResult.sidedSuccess(false);
 
-        Optional<GlobalPos> globalLinkedPos = readGlobalPosition(transmitter.getOrCreateTag());
+        TransmitterData data = transmitter.get(DDDataComponents.TRANSMITTER_DATA);
+        if (data == null) return InteractionResult.FAIL;
+
+        Optional<GlobalPos> globalLinkedPos = data.linkedPos();
+
         if (globalLinkedPos.isEmpty()) return InteractionResult.FAIL;
         ServerLevel serverLevel = level.getServer().getLevel(globalLinkedPos.get().dimension());
         BlockPos linkedPos = globalLinkedPos.get().pos();
@@ -92,7 +98,7 @@ public class SculkTransmitterItem extends Item {
 
         serverLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
 
-        serverLevel.getBlockState(linkedPos).use(serverLevel, player, pUsedHand == null ? InteractionHand.MAIN_HAND : pUsedHand, new BlockHitResult(linkedPos.getCenter(), Direction.SOUTH, linkedPos, false));
+        serverLevel.getBlockState(linkedPos).useWithoutItem(serverLevel, player, new BlockHitResult(linkedPos.getCenter(), Direction.SOUTH, linkedPos, false));
         if (player instanceof ServerPlayer serverPlayer) {
             serverPlayer.connection.send(new ClientboundSoundPacket(new Holder.Direct<>(DDSounds.TRANSMITTER_OPEN), SoundSource.PLAYERS, player.getX(), player.getY(), player.getZ(), 1.0f, 1.0f, level.getRandom().nextLong()));
         }
@@ -116,7 +122,7 @@ public class SculkTransmitterItem extends Item {
 
         if (connect) {
             if (!isLinked(transmitter) || checkCooldown(transmitter, CooldownType.LINK, seconds)) {
-                ClientPlayNetworking.send(new LinkTransmitterPacket(slot, clickedPos));
+                ClientPlayNetworking.send(new LinkTransmitterPayload(slot, clickedPos));
                 COOLDOWNS.remove(transmitter);
             } else {
                 player.displayClientMessage(Component.translatable(DDItems.SCULK_TRANSMITTER.getDescriptionId() + ".link_confirm", Minecraft.getInstance().options.keyUse.getTranslatedKeyMessage()), true);
@@ -126,7 +132,7 @@ public class SculkTransmitterItem extends Item {
         }
 
         if (checkCooldown(transmitter, CooldownType.UNLINK, seconds)) {
-            ClientPlayNetworking.send(new UnlinkTransmitterPacket(slot));
+            ClientPlayNetworking.send(new UnlinkTransmitterPayload(slot));
             COOLDOWNS.remove(transmitter);
         } else {
             player.displayClientMessage(Component.translatable(DDItems.SCULK_TRANSMITTER.getDescriptionId() + ".unlink_confirm", Minecraft.getInstance().options.keyUse.getTranslatedKeyMessage()), true);
@@ -154,7 +160,7 @@ public class SculkTransmitterItem extends Item {
     }
 
     public static boolean isLinked(ItemStack stack) {
-        return readGlobalPosition(stack.getOrCreateTag()).isPresent();
+        return stack.has(DDDataComponents.TRANSMITTER_DATA) && stack.get(DDDataComponents.TRANSMITTER_DATA).linkedPos().isPresent();
     }
 
     private static boolean canConnect(Level level, BlockPos target) {
@@ -162,39 +168,12 @@ public class SculkTransmitterItem extends Item {
     }
 
     public static void formConnection(Level level, ItemStack stack, BlockPos pos) {
-        CompoundTag tag = stack.getOrCreateTag();
         if(pos == null) {
-            stack.removeTagKey("block");
-            removeGlobalPosition(stack.getOrCreateTag());
+            stack.remove(DDDataComponents.TRANSMITTER_DATA);
             return;
         }
 
-        tag.putString("block", level.getBlockState(pos).getBlock().getDescriptionId());
-        writeGlobalPosition(tag, GlobalPos.of(level.dimension(), pos));
-    }
-
-    private static Optional<ResourceKey<Level>> getDimension(CompoundTag tag) {
-        if (!tag.contains("dimension")) return Optional.empty();
-        return Level.RESOURCE_KEY_CODEC.parse(NbtOps.INSTANCE, tag.get("dimension")).result();
-    }
-
-    public static Optional<GlobalPos> readGlobalPosition(CompoundTag tag) {
-        Optional<ResourceKey<Level>> dimension = getDimension(tag);
-        if (tag.contains("block_pos") && dimension.isPresent()) {
-            BlockPos blockPos = NbtUtils.readBlockPos(tag.getCompound("block_pos"));
-            return Optional.of(GlobalPos.of(dimension.get(), blockPos));
-        }
-        return Optional.empty();
-    }
-
-    public static void writeGlobalPosition(CompoundTag tag, GlobalPos pos) {
-        tag.put("block_pos", NbtUtils.writeBlockPos(pos.pos()));
-        Level.RESOURCE_KEY_CODEC.encodeStart(NbtOps.INSTANCE, pos.dimension()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(dimensionTag -> tag.put("dimension", dimensionTag));
-    }
-
-    public static void removeGlobalPosition(CompoundTag tag) {
-        tag.remove("block_pos");
-        tag.remove("dimension");
+        stack.set(DDDataComponents.TRANSMITTER_DATA, new TransmitterData(Optional.of(new GlobalPos(level.dimension(), pos)), level.getBlockState(pos).getBlock().getDescriptionId()));
     }
 
     public static void actionBarMessage(Level level, Player player, String key, SoundEvent sound) {
@@ -206,10 +185,11 @@ public class SculkTransmitterItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if(isLinked(pStack)) {
-            GlobalPos pos = readGlobalPosition(pStack.getOrCreateTag()).get();
-            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(pStack.getTag().getString("block"))).withStyle(ChatFormatting.GRAY));
+            TransmitterData data = pStack.get(DDDataComponents.TRANSMITTER_DATA);
+            GlobalPos pos = data.linkedPos().get();
+            pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.linked", Component.translatable(data.savedBlock())).withStyle(ChatFormatting.GRAY));
             pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location", pos.pos().getX(), pos.pos().getY(), pos.pos().getZ()).withStyle(ChatFormatting.GRAY));
             if (pIsAdvanced.isAdvanced()) {
                 pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.location_advanced", pos.dimension().location().toString()).withStyle(ChatFormatting.DARK_GRAY));
@@ -217,14 +197,15 @@ public class SculkTransmitterItem extends Item {
         }
         else pTooltipComponents.add(Component.translatable("tooltips." + DeeperDarker.MOD_ID + ".sculk_transmitter.not_linked").withStyle(ChatFormatting.GRAY));
 
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
     }
 
     public static boolean stillValid(Player player, ServerLevel level, @Nullable BlockPos pos) {
         return player.getInventory().hasAnyMatching(stack -> {
             if (stack.isEmpty() || !(stack.getItem() instanceof SculkTransmitterItem) || !SculkTransmitterItem.isLinked(stack)) return false;
-            String block = stack.getTag().getString("block");
-            GlobalPos globalPos = SculkTransmitterItem.readGlobalPosition(stack.getOrCreateTag()).get();
+            TransmitterData data = stack.get(DDDataComponents.TRANSMITTER_DATA);
+            String block = data.savedBlock();
+            GlobalPos globalPos = data.linkedPos().get();
 
             // position needs to be checked roughly due to double chests and other large containers, but is still checked for security.
             // pos is null for anvils and smithing tables for technical reasons, we can't check that

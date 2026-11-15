@@ -1,8 +1,9 @@
 package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDDamageTypes;
-import com.kyanite.deeperdarker.content.entities.DDMobType;
 import com.kyanite.deeperdarker.content.entities.blocks.SculkJawBlockEntity;
+import com.kyanite.deeperdarker.util.DDTags;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -25,6 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class SculkJawBlock extends BaseEntityBlock {
+    public static final MapCodec<SculkJawBlock> CODEC = simpleCodec(SculkJawBlock::new);
     public static final BooleanProperty BITING = BooleanProperty.create("biting");
     public static final BooleanProperty CAN_BITE = BooleanProperty.create("can_bite");
 
@@ -34,9 +36,14 @@ public class SculkJawBlock extends BaseEntityBlock {
     }
 
     @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if(pEntity instanceof Player player && (player.isCreative() || player.isCrouching())) return;
-        if(pEntity instanceof Monster monster && monster.getMobType() == DDMobType.SCULK) return;
+        if(pEntity instanceof Monster monster && monster.getType().is(DDTags.EntityTypes.SCULK)) return;
         if(pState.getValue(CAN_BITE) && pEntity instanceof LivingEntity entity) {
             pLevel.setBlock(pPos, pState.setValue(BITING, true), 3);
             entity.hurt(pLevel.damageSources().source(DDDamageTypes.BITE), 3);

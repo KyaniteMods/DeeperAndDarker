@@ -27,7 +27,7 @@ import java.io.IOException;
 
 @SuppressWarnings("NullableProblems")
 public class OverseerCrystalRenderer<T extends OverseerCrystal> extends EntityRenderer<T> {
-    public static final ResourceLocation SHADER = new ResourceLocation("rendertype_deeperdarker_overseer_crystal_trail");
+    public static final ResourceLocation SHADER = ResourceLocation.withDefaultNamespace("rendertype_deeperdarker_overseer_crystal_trail");
     public static final RenderStateShard.ShaderStateShard PROGRAM;
     static {
         PROGRAM = new RenderStateShard.ShaderStateShard(() -> {
@@ -77,7 +77,7 @@ public class OverseerCrystalRenderer<T extends OverseerCrystal> extends EntityRe
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         model.setupAnim(entity, tickDelta, 0.0f, 0.0f, 0.0f, 0.0f);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureLocation(entity)));
-        model.renderToBuffer(poseStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+        model.renderToBuffer(poseStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
         Entity owner = entity.getOwner();
         if (owner != null) {

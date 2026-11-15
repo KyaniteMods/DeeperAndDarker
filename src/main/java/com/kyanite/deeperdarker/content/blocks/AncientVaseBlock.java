@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -36,6 +37,7 @@ import java.util.stream.Stream;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<AncientVaseBlock> CODEC = simpleCodec(AncientVaseBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty SAFE = BooleanProperty.create("safe");
     private static final VoxelShape BASE = Block.box(3, 0, 3, 13, 1, 13);
@@ -45,6 +47,11 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     public AncientVaseBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE).setValue(SAFE, Boolean.FALSE));
+    }
+
+    @Override
+    protected MapCodec<? extends FallingBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -80,7 +87,7 @@ public class AncientVaseBlock extends FallingBlock implements SimpleWaterloggedB
     @Override
     public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pBlockPos, BlockState pBlockState,
                               @Nullable BlockEntity pBlockEntity, ItemStack pItemStack) {
-        if (!EnchantmentHelper.hasSilkTouch(pPlayer.getMainHandItem())) {
+        if (!EnchantmentHelper.hasTag(pPlayer.getMainHandItem(), DDTags.Enchantments.PREVENTS_ANCIENT_VASE_SPAWNS)) {
             RandomSource random = pLevel.getRandom();
             if (!pBlockState.getValue(SAFE) && pLevel.getDifficulty() != Difficulty.PEACEFUL && random.nextFloat() < DeeperDarker.CONFIG.server.spawnSomethingFromAncientVaseChance()) {
                 if (random.nextDouble() < DeeperDarker.CONFIG.server.sculkLeechesFromAncientVaseChance()) {

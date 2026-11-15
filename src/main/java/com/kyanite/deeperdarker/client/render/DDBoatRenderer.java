@@ -95,7 +95,7 @@ public class DDBoatRenderer<T extends Entity & DDBoatLike> extends EntityRendere
         poseStack.mulPose(Axis.YP.rotationDegrees(90.0f));
         model.setupAnim(boatEntity, g, 0.0f, -0.1f, 0.0f, 0.0f);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTexture(((DDBoatLike)boatEntity).getWoodType(), HAS_CHEST)));
-        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
             if (!boatEntity.isUnderWater()) {
             VertexConsumer vertexConsumer2 = multiBufferSource.getBuffer(RenderType.waterMask());
             if (model instanceof WaterPatchModel waterPatchModel) {

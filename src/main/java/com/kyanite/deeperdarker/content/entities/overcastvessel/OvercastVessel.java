@@ -99,14 +99,14 @@ public class OvercastVessel extends AbstractGolemBoss {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(DATA_CRACK_DOWN_ID, false);
-        entityData.define(DATA_CRACK_UP_ID, false);
-        entityData.define(DATA_CRACK_NORTH_ID, false);
-        entityData.define(DATA_CRACK_SOUTH_ID, false);
-        entityData.define(DATA_CRACK_WEST_ID, false);
-        entityData.define(DATA_CRACK_EAST_ID, false);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_CRACK_DOWN_ID, false);
+        builder.define(DATA_CRACK_UP_ID, false);
+        builder.define(DATA_CRACK_NORTH_ID, false);
+        builder.define(DATA_CRACK_SOUTH_ID, false);
+        builder.define(DATA_CRACK_WEST_ID, false);
+        builder.define(DATA_CRACK_EAST_ID, false);
     }
 
     public static AttributeSupplier createAttributes() {

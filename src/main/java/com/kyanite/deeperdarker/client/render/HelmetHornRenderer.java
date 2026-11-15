@@ -3,7 +3,6 @@ package com.kyanite.deeperdarker.client.render;
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.model.HelmetHornsModel;
-import com.kyanite.deeperdarker.compat.showmeyourskin.ShowMeYourSkinCompat;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -46,8 +45,6 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
 
     public void render(PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int light, T livingEntity, float f, float g, float h, float j, float k, float l) {
         if (!DeeperDarker.CONFIG.client.renderWardenHelmetHorns()) return;
-        boolean hasShowMeYourSkin = FabricLoader.getInstance().isModLoaded("showmeyourskin");
-        if (hasShowMeYourSkin) ShowMeYourSkinCompat.captureContext(EquipmentSlot.HEAD, livingEntity);
         ItemStack itemStack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);
         if (!itemStack.isEmpty() && DDUtil.hasHorns(itemStack)) {
             Item item = itemStack.getItem();
@@ -74,24 +71,15 @@ public class HelmetHornRenderer<T extends LivingEntity, M extends HumanoidModel<
                 }
                 HelmetHornsModel<T> hornsModel = new HelmetHornsModel<>(this.modelLoader.bakeLayer(DDModelLayers.HELMET_HORNS));
                 ResourceLocation texture = getTexture(itemStack);
-                if (hasShowMeYourSkin && ShowMeYourSkinCompat.armorTransparency(matrixStack, vertexConsumerProvider, light, hornsModel, texture, 1.0f, 1.0f, 1.0f)) return;
                 RenderType renderLayer = RenderType.armorCutoutNoCull(texture);
                 RenderType glintRenderLayer = RenderType.armorEntityGlint();
-                hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(renderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
-                if (isFoil(item, itemStack, hasShowMeYourSkin)) {
-                    hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(glintRenderLayer), light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+                hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(renderLayer), light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
+                if (item.isFoil(itemStack)) {
+                    hornsModel.renderToBuffer(matrixStack, vertexConsumerProvider.getBuffer(glintRenderLayer), light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
                 }
             }
             matrixStack.popPose();
         }
-    }
-
-    private static boolean isFoil(Item item, ItemStack itemStack, boolean hasShowMeYourSkin) {
-        boolean itemIsFoil = item.isFoil(itemStack);
-        if (!hasShowMeYourSkin) {
-            return itemIsFoil;
-        }
-        return ShowMeYourSkinCompat.isFoil(item, itemStack);
     }
 
     private static ResourceLocation getTexture(ItemStack stack) {

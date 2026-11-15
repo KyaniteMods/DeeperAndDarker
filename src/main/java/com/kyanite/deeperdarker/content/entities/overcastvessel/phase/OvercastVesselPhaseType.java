@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 import com.kyanite.deeperdarker.content.entities.boss.BossPhaseType;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,9 +17,9 @@ public enum OvercastVesselPhaseType implements StringRepresentable, BossPhaseTyp
     public static final Codec<OvercastVesselPhaseType> CODEC = StringRepresentable.fromEnum(OvercastVesselPhaseType::values);
 
     private final String name;
-    private final Supplier<Codec<? extends OvercastVesselPhase>> codec;
+    private final Supplier<MapCodec<? extends OvercastVesselPhase>> codec;
 
-    OvercastVesselPhaseType(String name, Supplier<Codec<? extends OvercastVesselPhase>> codec) {
+    OvercastVesselPhaseType(String name, Supplier<MapCodec<? extends OvercastVesselPhase>> codec) {
         this.name = name;
         this.codec = codec;
     }
@@ -28,7 +29,7 @@ public enum OvercastVesselPhaseType implements StringRepresentable, BossPhaseTyp
         return name;
     }
 
-    public Codec<? extends OvercastVesselPhase> getCodec() {
+    public MapCodec<? extends OvercastVesselPhase> getCodec() {
         return codec.get();
     }
 }

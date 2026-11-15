@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.world.otherside.structures;
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -21,7 +21,7 @@ public class DDStructureSets {
     public static final ResourceKey<StructureSet> WATCHTOWERS = createKey("watchtowers");
     public static final ResourceKey<StructureSet> VILLAGER_CAMPS = createKey("villager_camps");
 
-    public static void bootstrap(BootstapContext<StructureSet> context) {
+    public static void bootstrap(BootstrapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
         context.register(ANCIENT_TEMPLES, new StructureSet(structures.getOrThrow(DDStructures.ANCIENT_TEMPLE), new RandomSpreadStructurePlacement(28, 8, RandomSpreadType.LINEAR, 40510257)));
         context.register(MAZES, new StructureSet(List.of(StructureSet.entry(structures.getOrThrow(DDStructures.BLOOMAZE)), StructureSet.entry(structures.getOrThrow(DDStructures.GLOOMAZE))), new RandomSpreadStructurePlacement(24, 8, RandomSpreadType.LINEAR, 27070707)));

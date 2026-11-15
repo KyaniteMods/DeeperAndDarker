@@ -33,10 +33,10 @@ public class SunglassesModel extends Model {
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
         poseStack.translate(0.0f, -0.25f, 0.0f);
         poseStack.scale(1.3f, 1.3f, 1.3f);
         poseStack.translate(0.0f, 0.25f, 0.0f);
-        sunglasses.render(poseStack, vertexConsumer, light, overlay, red, green, blue, alpha);
+        sunglasses.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 }

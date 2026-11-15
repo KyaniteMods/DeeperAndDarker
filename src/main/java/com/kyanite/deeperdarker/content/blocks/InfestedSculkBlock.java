@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.blocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.kyanite.deeperdarker.content.entities.ShriekWorm;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -47,7 +48,7 @@ public class InfestedSculkBlock extends Block {
     @Override
     public void spawnAfterBreak(BlockState pState, ServerLevel pLevel, BlockPos pPos, ItemStack pStack, boolean pDropExperience) {
         super.spawnAfterBreak(pState, pLevel, pPos, pStack, pDropExperience);
-        if(!EnchantmentHelper.hasSilkTouch(pStack)) {
+        if(!EnchantmentHelper.hasTag(pStack, DDTags.Enchantments.PREVENTS_INFESTED_SCULK_SPAWNS)) {
             SculkLeech leech = DDEntities.SCULK_LEECH.create(pLevel);
             if(leech != null) {
                 leech.moveTo(pPos.getX() + 0.5, pPos.getY(), pPos.getZ() + 0.5, 0, 0);

@@ -5,6 +5,7 @@ import com.kyanite.deeperdarker.content.DDDamageTypes;
 import com.kyanite.deeperdarker.content.blocks.DarkFountainBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -114,7 +115,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
     public AABB recalculateFountainBeam() {
         BlockPos bottom = getBlockPos().below(beamBlocksDown);
         BlockPos top = getBlockPos().above(beamBlocksUp).offset(1, 1, 1);
-        fountainBeam = new AABB(bottom, top);
+        fountainBeam = new AABB(bottom.getX(), bottom.getY(), bottom.getZ(), top.getX() + 1, top.getY() + 1, top.getZ() + 1);
         return fountainBeam;
     }
 
@@ -149,7 +150,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
     }
 
     @Override
-    public @NotNull CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();
         tag.putInt(FOUNTAIN_TICKS_LEFT_TAG, fountainTicksLeft);
         tag.putInt(BEAM_BLOCKS_UP_TAG, beamBlocksUp);
@@ -159,7 +160,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void load(CompoundTag pTag) {
+    public void loadAdditional(CompoundTag pTag, HolderLookup.Provider provider) {
         if(pTag.contains(FOUNTAIN_TICKS_LEFT_TAG)) fountainTicksLeft = pTag.getInt(FOUNTAIN_TICKS_LEFT_TAG);
         if(pTag.contains(BEAM_BLOCKS_UP_TAG)) beamBlocksUp = pTag.getInt(BEAM_BLOCKS_UP_TAG);
         if(pTag.contains(BEAM_BLOCKS_DOWN_TAG)) beamBlocksDown = pTag.getInt(BEAM_BLOCKS_DOWN_TAG);
@@ -167,7 +168,7 @@ public class DarkFountainBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider provider) {
         pTag.putInt(FOUNTAIN_TICKS_LEFT_TAG, fountainTicksLeft);
         pTag.putInt(BEAM_BLOCKS_UP_TAG, beamBlocksUp);
         pTag.putInt(BEAM_BLOCKS_DOWN_TAG, beamBlocksDown);

@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ShatteredHeadBlock extends SkullBlock {
-    public static final Type SHATTERED = new Type(){};
+    public static final Type SHATTERED = () -> "deeperdarker_shattered";
 
     public ShatteredHeadBlock(Properties properties) {
         super(SHATTERED, properties);

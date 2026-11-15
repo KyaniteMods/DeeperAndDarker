@@ -1,12 +1,14 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.util.DDTags;
-import com.kyanite.deeperdarker.util.recipes.DDRecipeSerializers;
+import com.kyanite.deeperdarker.util.recipes.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
@@ -20,15 +22,16 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class DDRecipeProvider extends FabricRecipeProvider {
-    public DDRecipeProvider(FabricDataOutput output) {
-        super(output);
+    public DDRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(output, registriesFuture);
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> output) {
+    public void buildRecipes(RecipeOutput output) {
         addSmithingRecipes(output);
 
         simpleGearRecipes(output, DDItems.LEAD_INGOT, DDItems.LEAD_HELMET, DDItems.LEAD_CHESTPLATE, DDItems.LEAD_LEGGINGS, DDItems.LEAD_BOOTS, DDItems.LEAD_SWORD, DDItems.LEAD_PICKAXE, DDItems.LEAD_AXE, DDItems.LEAD_SHOVEL, DDItems.LEAD_HOE);
@@ -43,13 +46,13 @@ public class DDRecipeProvider extends FabricRecipeProvider {
 
         // Wood stuff
             // Echo
-        woodRecipes(output, DDBlocks.ECHO_PLANKS, DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDItems.ECHO_SIGN, DDItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
+        woodRecipes(output, DDBlocks.ECHO_PLANKS, DDTags.Items.ECHO_LOGS, DDBlocks.ECHO_STAIRS, DDBlocks.ECHO_SLAB, DDBlocks.ECHO_FENCE, DDBlocks.ECHO_FENCE_GATE, DDBlocks.ECHO_DOOR, DDBlocks.ECHO_TRAPDOOR, DDBlocks.ECHO_PRESSURE_PLATE, DDBlocks.ECHO_BUTTON, DDBlockItems.ECHO_SIGN, DDBlockItems.ECHO_HANGING_SIGN, DDItems.ECHO_BOAT, DDItems.ECHO_CHEST_BOAT);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.ECHO_WOOD, 3).define('L', DDBlocks.ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_ECHO_WOOD, 3).define('L', DDBlocks.STRIPPED_ECHO_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.ECHO_LOG), FabricRecipeProvider.has(DDBlocks.ECHO_LOG)).save(output);
             // Bloom
-        woodRecipes(output, DDBlocks.BLOOM_PLANKS, DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDItems.BLOOM_SIGN, DDItems.BLOOM_HANGING_SIGN, DDItems.BLOOM_BOAT, DDItems.BLOOM_CHEST_BOAT);
+        woodRecipes(output, DDBlocks.BLOOM_PLANKS, DDTags.Items.BLOOMING_STEMS, DDBlocks.BLOOM_STAIRS, DDBlocks.BLOOM_SLAB, DDBlocks.BLOOM_FENCE, DDBlocks.BLOOM_FENCE_GATE, DDBlocks.BLOOM_DOOR, DDBlocks.BLOOM_TRAPDOOR, DDBlocks.BLOOM_PRESSURE_PLATE, DDBlocks.BLOOM_BUTTON, DDBlockItems.BLOOM_SIGN, DDBlockItems.BLOOM_HANGING_SIGN, DDItems.BLOOM_BOAT, DDItems.BLOOM_CHEST_BOAT);
             // Sculk Spruce
-        woodRecipes(output, DDBlocks.SCULK_SPRUCE_PLANKS, DDTags.Items.SCULK_SPRUCE_LOGS, DDBlocks.SCULK_SPRUCE_STAIRS, DDBlocks.SCULK_SPRUCE_SLAB, DDBlocks.SCULK_SPRUCE_FENCE, DDBlocks.SCULK_SPRUCE_FENCE_GATE, DDBlocks.SCULK_SPRUCE_DOOR, DDBlocks.SCULK_SPRUCE_TRAPDOOR, DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE, DDBlocks.SCULK_SPRUCE_BUTTON, DDItems.SCULK_SPRUCE_SIGN, DDItems.SCULK_SPRUCE_HANGING_SIGN, DDItems.SCULK_SPRUCE_BOAT, DDItems.SCULK_SPRUCE_CHEST_BOAT);
+        woodRecipes(output, DDBlocks.SCULK_SPRUCE_PLANKS, DDTags.Items.SCULK_SPRUCE_LOGS, DDBlocks.SCULK_SPRUCE_STAIRS, DDBlocks.SCULK_SPRUCE_SLAB, DDBlocks.SCULK_SPRUCE_FENCE, DDBlocks.SCULK_SPRUCE_FENCE_GATE, DDBlocks.SCULK_SPRUCE_DOOR, DDBlocks.SCULK_SPRUCE_TRAPDOOR, DDBlocks.SCULK_SPRUCE_PRESSURE_PLATE, DDBlocks.SCULK_SPRUCE_BUTTON, DDBlockItems.SCULK_SPRUCE_SIGN, DDBlockItems.SCULK_SPRUCE_HANGING_SIGN, DDItems.SCULK_SPRUCE_BOAT, DDItems.SCULK_SPRUCE_CHEST_BOAT);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.SCULK_SPRUCE_WOOD, 3).define('L', DDBlocks.SCULK_SPRUCE_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.SCULK_SPRUCE_LOG), FabricRecipeProvider.has(DDBlocks.SCULK_SPRUCE_LOG)).save(output);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, DDBlocks.STRIPPED_SCULK_SPRUCE_WOOD, 3).define('L', DDBlocks.STRIPPED_SCULK_SPRUCE_LOG).pattern("LL").pattern("LL").unlockedBy(FabricRecipeProvider.getHasName(DDBlocks.SCULK_SPRUCE_LOG), FabricRecipeProvider.has(DDBlocks.SCULK_SPRUCE_LOG)).save(output);
         
@@ -218,7 +221,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .requires(DDItems.SCULK_BONE_SHARD).requires(Items.FLINT)
                 .unlockedBy(FabricRecipeProvider.getHasName(DDItems.SCULK_BONE_SHARD), FabricRecipeProvider.has(DDItems.SCULK_BONE_SHARD)).save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDItems.SCULK_TORCH, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlockItems.SCULK_TORCH, 4)
                 .define('#', Items.STICK)
                 .define('S', DDItems.SCULK_BONE_SHARD)
                 .pattern("S")
@@ -235,7 +238,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SCULK_LANTERN)
-                .define('T', DDItems.SCULK_TORCH)
+                .define('T', DDBlockItems.SCULK_TORCH)
                 .define('N', Items.IRON_NUGGET)
                 .pattern("NNN")
                 .pattern("NTN")
@@ -250,12 +253,12 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .unlockedBy(getHasName(DDItems.FIZZ), has(DDItems.FIZZ)).save(output);
         nineBlockStorageRecipes(output, RecipeCategory.MISC, DDItems.FIZZ, RecipeCategory.BUILDING_BLOCKS, DDBlocks.FIZZ_BLOCK);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDItems.VIRTUE_SOUL)
-                .requires(DDItems.PATIENCE_SOUL)
-                .requires(DDItems.FORTITUDE_SOUL)
-                .requires(DDItems.PURITY_SOUL)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DDBlockItems.VIRTUE_SOUL)
+                .requires(DDBlockItems.PATIENCE_SOUL)
+                .requires(DDBlockItems.FORTITUDE_SOUL)
+                .requires(DDBlockItems.PURITY_SOUL)
                 .requires(Items.NETHER_STAR)
-                .unlockedBy(getHasName(DDItems.PURITY_SOUL), has(DDItems.PURITY_SOUL)).save(output);
+                .unlockedBy(getHasName(DDBlockItems.PURITY_SOUL), has(DDBlockItems.PURITY_SOUL)).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DDBlocks.SCULK_ALTAR)
                 .define('S', DDItems.SHADOW_CRYSTAL)
@@ -266,15 +269,15 @@ public class DDRecipeProvider extends FabricRecipeProvider {
                 .pattern("BBB")
                 .unlockedBy(getHasName(DDItems.SCULK_BONE_SHARD), has(DDItems.SCULK_BONE_SHARD)).save(output);
 
-        SpecialRecipeBuilder.special(DDRecipeSerializers.SCULK_TRANSMITTER_DYE).save(output, "sculk_transmitter_dye");
-        SpecialRecipeBuilder.special(DDRecipeSerializers.ACID_RESISTANT_ITEM).save(output, "acid_resistant_item");
-        SpecialRecipeBuilder.special(DDRecipeSerializers.AUGMENT_SHIELD).save(output, "augment_shield");
-        SpecialRecipeBuilder.special(DDRecipeSerializers.REMOVE_HORNS).save(output, "remove_horns");
-        SpecialRecipeBuilder.special(DDRecipeSerializers.ADD_HORNS).save(output, "add_horns");
-        SpecialRecipeBuilder.special(DDRecipeSerializers.ADD_CRYSTALLIZED_AMBER_ITEM).save(output, "add_crystallized_amber_item");
+        SpecialRecipeBuilder.special(SculkTransmitterDyeRecipe::new).save(output, "sculk_transmitter_dye");
+        SpecialRecipeBuilder.special(AcidResistantItemRecipe::new).save(output, "acid_resistant_item");
+        SpecialRecipeBuilder.special(AugmentShieldRecipe::new).save(output, "augment_shield");
+        SpecialRecipeBuilder.special(RemoveHornsRecipe::new).save(output, "remove_horns");
+        SpecialRecipeBuilder.special(AddHornsRecipe::new).save(output, "add_horns");
+        SpecialRecipeBuilder.special(AddCrystallizedAmberItemRecipe::new).save(output, "add_crystallized_amber_item");
     }
 
-    private void addSmithingRecipes(Consumer<FinishedRecipe> output) {
+    private void addSmithingRecipes(RecipeOutput output) {
         resonariumSmithing(output, Items.IRON_SHOVEL, RecipeCategory.TOOLS, DDItems.RESONARIUM_SHOVEL);
         resonariumSmithing(output, Items.IRON_PICKAXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_PICKAXE);
         resonariumSmithing(output, Items.IRON_AXE, RecipeCategory.TOOLS, DDItems.RESONARIUM_AXE);
@@ -311,19 +314,19 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         guardianSmithing(output, DDItems.WARDEN_BOOTS, RecipeCategory.COMBAT, DDItems.GUARDIAN_BOOTS);
     }
 
-    private void resonariumSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
+    private void resonariumSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(), Ingredient.of(ingredient), Ingredient.of(DDItems.RESONARIUM_PLATE), category, result).unlocks(getHasName(DDItems.RESONARIUM_PLATE), has(DDItems.RESONARIUM_PLATE)).save(output, DeeperDarker.id(getItemName(result) + "_smithing"));
     }
 
-    private void wardenSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
+    private void wardenSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.WARDEN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.REINFORCED_ECHO_SHARD), category, result).unlocks(getHasName(DDItems.REINFORCED_ECHO_SHARD), has(DDItems.REINFORCED_ECHO_SHARD)).save(output, DeeperDarker.id(getItemName(result) + "_smithing"));
     }
 
-    private void guardianSmithing(Consumer<FinishedRecipe> output, ItemLike ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDItems.VIRTUE_SOUL), category, result).unlocks(getHasName(DDItems.VIRTUE_SOUL), has(DDItems.VIRTUE_SOUL)).save(output, DeeperDarker.id(getItemName(result) + "_smithing"));
+    private void guardianSmithing(RecipeOutput output, ItemLike ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(DDItems.GUARDIAN_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(DDBlockItems.VIRTUE_SOUL), category, result).unlocks(getHasName(DDBlockItems.VIRTUE_SOUL), has(DDBlockItems.VIRTUE_SOUL)).save(output, DeeperDarker.id(getItemName(result) + "_smithing"));
     }
 
-    private static void woodRecipes(Consumer<FinishedRecipe> exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
+    private static void woodRecipes(RecipeOutput exporter, ItemLike planks, TagKey<Item> logs, ItemLike stairs, ItemLike slab, ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor, ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign, ItemLike boat, ItemLike chestBoat) {
         planksFromLogs(exporter, planks, logs, 4);
         stairBuilder(stairs, Ingredient.of(planks)).unlockedBy(FabricRecipeProvider.getHasName(planks), FabricRecipeProvider.has(planks)).save(exporter);
         slab(exporter, RecipeCategory.BUILDING_BLOCKS, slab, planks);
@@ -339,7 +342,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         chestBoat(exporter, chestBoat, planks);
     }
 
-    private static void registerStairsSlabsAndWalls(Consumer<FinishedRecipe> output, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
+    private static void registerStairsSlabsAndWalls(RecipeOutput output, ItemLike stone, ItemLike stairs, ItemLike slab, ItemLike wall) {
         stairBuilder(stairs, Ingredient.of(stone)).unlockedBy(getHasName(stone), has(stone)).save(output);
         stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, stairs, stone);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.of(stone)).unlockedBy(getHasName(stone), has(stone)).save(output);
@@ -348,7 +351,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, wall, stone);
     }
 
-    private static void registerChildStoneRecipes(Consumer<FinishedRecipe> output, ItemLike parentStone, ItemLike childStone, ItemLike stairs, ItemLike slab, ItemLike wall) {
+    private static void registerChildStoneRecipes(RecipeOutput output, ItemLike parentStone, ItemLike childStone, ItemLike stairs, ItemLike slab, ItemLike wall) {
         stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, childStone, parentStone);
         stairBuilder(stairs, Ingredient.of(childStone)).unlockedBy(getHasName(childStone), has(childStone)).save(output);
         stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, stairs, childStone);
@@ -361,14 +364,14 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, wall, parentStone);
     }
 
-    private static void registerChiseled(Consumer<FinishedRecipe> output, ItemLike chiseled, ItemLike slab, ItemLike... stones) {
+    private static void registerChiseled(RecipeOutput output, ItemLike chiseled, ItemLike slab, ItemLike... stones) {
         chiseled(output, RecipeCategory.BUILDING_BLOCKS, chiseled, slab);
         for (ItemLike stone : stones) {
             stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, chiseled, stone);
         }
     }
 
-    private static void simpleGearRecipes(Consumer<FinishedRecipe> output, ItemLike ingot, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots, ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe) {
+    private static void simpleGearRecipes(RecipeOutput output, ItemLike ingot, ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots, ItemLike sword, ItemLike pickaxe, ItemLike axe, ItemLike shovel, ItemLike hoe) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, helmet)
                 .define('l', ingot)
                 .pattern("lll")

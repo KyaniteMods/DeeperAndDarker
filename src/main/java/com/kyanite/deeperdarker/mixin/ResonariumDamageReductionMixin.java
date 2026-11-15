@@ -23,7 +23,7 @@ public abstract class ResonariumDamageReductionMixin {
         for(ItemStack stack : ((LivingEntity)(Object) this).getArmorSlots()) {
             if(stack.getItem() instanceof ArmorItem armor && stack.is(DDTags.Items.RESONARIUM_ARMOR)) {
                 incoming -= reduction;
-                stack.hurtAndBreak((int) (f / 1.5f), ((LivingEntity)(Object) this), living -> living.broadcastBreakEvent(armor.getEquipmentSlot()));
+                stack.hurtAndBreak((int) (f / 1.5f), ((LivingEntity) (Object) this), armor.getEquipmentSlot());
             }
         }
 

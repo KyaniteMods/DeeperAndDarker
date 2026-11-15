@@ -1,10 +1,11 @@
 package com.kyanite.deeperdarker.content.entities;
 
-import com.kyanite.deeperdarker.network.LinkOwnedEntityPacket;
-import net.fabricmc.fabric.api.networking.v1.FabricPacket;
+import com.kyanite.deeperdarker.network.LinkOwnedEntityPayload;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -35,7 +36,7 @@ public abstract class SyncedOwnedEntity extends Entity implements TraceableEntit
     }
 
     @Override
-    protected void defineSynchedData() {
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
     }
 
     public @Nullable UUID getOwnerUUID() {
@@ -56,7 +57,7 @@ public abstract class SyncedOwnedEntity extends Entity implements TraceableEntit
         ownerUUID = null;
         if (entity == null) return;
         if (!level().isClientSide() && broadcast && level() instanceof ServerLevel serverLevel) {
-            final FabricPacket packet = new LinkOwnedEntityPacket(owner, this);
+            final CustomPacketPayload packet = new LinkOwnedEntityPayload(owner, this);
             PlayerLookup.world(serverLevel).forEach(player -> ServerPlayNetworking.send(player, packet));
         }
     }

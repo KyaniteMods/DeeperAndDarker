@@ -99,25 +99,14 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	include modImplementation("maven.modrinth:kyanite-portals:${project.kyanite_portals_version}")
+	modImplementation("maven.modrinth:kyanite-portals:${project.kyanite_portals_version}")
 
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
-	// Show Me Your Skin!
-	modImplementation "show-me-your-skin:show-me-your-skin:${project.show_me_your_skin_version}"
-
-	modImplementation("nl.enjarai:cicada-lib:${project.cicada_version}") {
-		exclude group: "net.fabricmc.fabric-api"
-	}
 	//annotationProcessor("com.github.LlamaLad7.mixinextras:mixinextras-fabric:${project.mixin_extras_version}")
 
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}")
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}")
-
-	modImplementation("com.simibubi.create:create-fabric:${create_fabric_version}")
-
-	modCompileOnly "curse.maven:toms-storage-fabric-396826:6418134" // Tom's Simple Storage
+	modCompileOnly "curse.maven:toms-storage-378609:8769956" // Tom's Simple Storage
 
 //	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
 
@@ -136,7 +125,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = 21
 }
 
 java {
@@ -145,8 +134,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {

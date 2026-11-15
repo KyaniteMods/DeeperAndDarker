@@ -3,27 +3,26 @@ package com.kyanite.deeperdarker.util.recipes;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.CustomRecipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class SculkTransmitterDyeRecipe extends CustomRecipe {
-    public SculkTransmitterDyeRecipe(ResourceLocation resourceLocation, CraftingBookCategory craftingBookCategory) {
-        super(resourceLocation, craftingBookCategory);
+    public SculkTransmitterDyeRecipe(CraftingBookCategory craftingBookCategory) {
+        super(craftingBookCategory);
     }
 
     @Override
-    public boolean matches(CraftingContainer container, Level level) {
+    public boolean matches(CraftingInput container, Level level) {
         ItemStack transmitterStack = null;
         ItemStack dyeStack = null;
-        for (int i = 0; i < container.getContainerSize(); ++i) {
+        for (int i = 0; i < container.size(); ++i) {
             ItemStack stack = container.getItem(i);
             if (stack.is(DDTags.Items.SCULK_TRANSMITTERS)) {
                 if (transmitterStack != null) return false;
@@ -37,10 +36,10 @@ public class SculkTransmitterDyeRecipe extends CustomRecipe {
     }
 
     @Override
-    public @NotNull ItemStack assemble(CraftingContainer container, RegistryAccess registryAccess) {
+    public @NotNull ItemStack assemble(CraftingInput container, HolderLookup.Provider provider) {
         ItemStack transmitterStack = null;
         ItemStack result = null;
-        for (int i = 0; i < container.getContainerSize(); ++i) {
+        for (int i = 0; i < container.size(); ++i) {
             ItemStack stack = container.getItem(i);
             if (stack.is(DDTags.Items.SCULK_TRANSMITTERS)) {
                 transmitterStack = stack;
@@ -48,7 +47,7 @@ public class SculkTransmitterDyeRecipe extends CustomRecipe {
                 result = new ItemStack(SculkTransmitterItem.fromColor(dye.getDyeColor()));
             }
         }
-        result.setTag(transmitterStack.getTag().copy());
+        transmitterStack.transmuteCopy(result.getItem(), 1);
         return result;
     }
 

@@ -1,10 +1,13 @@
 package com.kyanite.deeperdarker.content.entities;
 
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceGoal;
 import com.kyanite.deeperdarker.content.entities.goals.DisturbanceListener;
+import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.GameEventTags;
@@ -27,7 +30,7 @@ import net.minecraft.world.level.gameevent.EntityPositionSource;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 
 import java.util.function.BiConsumer;
 
@@ -45,9 +48,9 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new Listener(this));
         this.vibrationUser = new VibrationUser();
         this.vibrationData = new Data();
-        this.setPathfindingMalus(BlockPathTypes.LAVA, 8);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, 8);
-        this.setPathfindingMalus(BlockPathTypes.UNPASSABLE_RAIL, 0);
+        this.setPathfindingMalus(PathType.LAVA, 8);
+        this.setPathfindingMalus(PathType.POWDER_SNOW, 8);
+        this.setPathfindingMalus(PathType.UNPASSABLE_RAIL, 0);
     }
 
     @Override
@@ -82,11 +85,6 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return DDSounds.SHATTERED_HURT;
-    }
-
-    @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
     }
 
     @Override
@@ -129,7 +127,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
 
     public boolean canTargetEntity(Entity target) {
         if(target instanceof LivingEntity entity) {
-            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && entity.getMobType() != DDMobType.SCULK && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
+            return this.level() == target.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(target) && !this.isAlliedTo(target) && entity.getType() != EntityType.ARMOR_STAND && !entity.getType().is(DDTags.EntityTypes.SCULK) && !entity.isInvulnerable() && !entity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(entity.getBoundingBox());
         }
 
         return false;
@@ -156,12 +154,12 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
     }
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource damageSource, int looting, boolean recentlyHit) {
-        super.dropCustomDeathLoot(damageSource, looting, recentlyHit);
+    protected void dropCustomDeathLoot(ServerLevel serverLevel, DamageSource damageSource, boolean recentlyHit) {
+        super.dropCustomDeathLoot(serverLevel, damageSource, recentlyHit);
         Entity entity = damageSource.getEntity();
         if (entity instanceof Creeper creeper && creeper.canDropMobsSkull()) {
             creeper.increaseDroppedSkulls();
-            this.spawnAtLocation(DDItems.SHATTERED_HEAD);
+            this.spawnAtLocation(DDBlockItems.SHATTERED_HEAD);
         }
     }
 
@@ -189,7 +187,7 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, GameEvent pGameEvent, GameEvent.Context pContext) {
+        public boolean canReceiveVibration(ServerLevel pLevel, BlockPos pPos, Holder<GameEvent> pGameEvent, GameEvent.Context pContext) {
             if(!isNoAi() && !isDeadOrDying() && !getBrain().hasMemoryValue(MemoryModuleType.VIBRATION_COOLDOWN) && pLevel.getWorldBorder().isWithinBounds(pPos)) {
                 if(pContext.sourceEntity() instanceof LivingEntity target) return canTargetEntity(target);
                 return true;
@@ -199,11 +197,11 @@ public class Shattered extends Monster implements DisturbanceListener, Vibration
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel level, BlockPos pos, GameEvent gameEvent, Entity entity, Entity playerEntity, float distance) {
+        public void onReceiveVibration(ServerLevel level, BlockPos pos, Holder<GameEvent> gameEvent, Entity entity, Entity playerEntity, float distance) {
             if(isDeadOrDying()) return;
             playSound(DDSounds.SHATTERED_NOTICE, 2, 1);
             if(entity != null && canTargetEntity(entity)) {
-                if(entity instanceof LivingEntity target && target.getMobType() != DDMobType.SCULK) setTarget(target);
+                if(entity instanceof LivingEntity target && !target.getType().is(DDTags.EntityTypes.SCULK)) setTarget(target);
                 return;
             }
 

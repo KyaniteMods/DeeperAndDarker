@@ -1,5 +1,6 @@
 package com.kyanite.deeperdarker.content.blocks;
 
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
 import net.minecraft.core.BlockPos;
@@ -50,7 +51,7 @@ public class SculkBerryBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return DDItems.SCULK_BERRY_SPROUT;
+        return DDBlockItems.SCULK_BERRY_SPROUT;
     }
 
     @Override

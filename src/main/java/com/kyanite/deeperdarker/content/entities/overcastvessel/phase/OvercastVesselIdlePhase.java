@@ -2,10 +2,11 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class OvercastVesselIdlePhase extends OvercastVesselPhase {
-    public static final Codec<OvercastVesselIdlePhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<OvercastVesselIdlePhase> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.fieldOf("idle_time").forGetter(phase -> phase.idleTime),
             Codec.INT.fieldOf("ticks_left").forGetter(phase -> phase.ticksLeft)
     ).apply(instance, OvercastVesselIdlePhase::new));
@@ -33,7 +34,7 @@ public class OvercastVesselIdlePhase extends OvercastVesselPhase {
     }
 
     @Override
-    public Codec<? extends OvercastVesselPhase> codec() {
+    public MapCodec<? extends OvercastVesselPhase> codec() {
         return CODEC;
     }
 

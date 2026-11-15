@@ -1,11 +1,12 @@
 package com.kyanite.deeperdarker.content.entities.boss;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.entity.LivingEntity;
 
 public abstract class BossPhase<T extends LivingEntity, U extends BossPhaseType<T, U, V>, V extends BossPhase<T, U, V>> {
     public abstract boolean shouldContinue(T vessel);
-    public abstract Codec<? extends V> codec();
+    public abstract MapCodec<? extends V> codec();
     public abstract U getType();
 
     public void dataSaved(T boss) {

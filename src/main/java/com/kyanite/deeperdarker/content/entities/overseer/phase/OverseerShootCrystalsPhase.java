@@ -2,13 +2,14 @@ package com.kyanite.deeperdarker.content.entities.overseer.phase;
 
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 
 public class OverseerShootCrystalsPhase extends OverseerPhase {
-    public static final Codec<OverseerShootCrystalsPhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<OverseerShootCrystalsPhase> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.fieldOf("crystals").forGetter(phase -> phase.crystals),
             Codec.INT.fieldOf("crystals_left").forGetter(phase -> phase.crystalsLeft),
             Codec.FLOAT.fieldOf("probability").forGetter(phase -> phase.probability)
@@ -49,7 +50,7 @@ public class OverseerShootCrystalsPhase extends OverseerPhase {
     }
 
     @Override
-    public Codec<? extends OverseerPhase> codec() {
+    public MapCodec<? extends OverseerPhase> codec() {
         return CODEC;
     }
 

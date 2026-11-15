@@ -71,8 +71,8 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.getEntityData().define(DATA_ITEM, ItemStack.EMPTY);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(DATA_ITEM, ItemStack.EMPTY);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
             compoundTag.putUUID(GOLEM_TAG, this.golem);
         }
         if (!this.getItem().isEmpty()) {
-            compoundTag.put(ITEM_STACK_TAG, this.getItem().save(new CompoundTag()));
+            compoundTag.put(ITEM_STACK_TAG, this.getItem().save(level().registryAccess()));
         }
         if (target != null) {
             Vec3.CODEC.encodeStart(NbtOps.INSTANCE, this.getTarget()).resultOrPartial(DeeperDarker.LOGGER::error).ifPresent(tag -> compoundTag.put(TARGET_POSITION_TAG, tag));
@@ -96,7 +96,7 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
             golem = compoundTag.getUUID(GOLEM_TAG);
         }
         CompoundTag compoundTag2 = compoundTag.getCompound(ITEM_STACK_TAG);
-        setItem(ItemStack.of(compoundTag2));
+        ItemStack.parse(level().registryAccess(), compoundTag2).ifPresent(this::setItem);
         if (getItem().isEmpty()) {
             discard();
         }
@@ -120,7 +120,7 @@ public class OvercastVesselItem extends Entity implements TraceableEntity {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level, Level level2) {
         return false;
     }
 

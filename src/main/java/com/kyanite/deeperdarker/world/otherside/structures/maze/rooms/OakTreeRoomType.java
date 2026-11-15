@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.world.otherside.structures.maze.rooms;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
 public class OakTreeRoomType extends RoomType<OakTreeRoomOptions> {
     protected OakTreeRoomType(RoomFactory<OakTreeRoomOptions> roomFactory, int width, int height, int depth) {
@@ -8,7 +9,7 @@ public class OakTreeRoomType extends RoomType<OakTreeRoomOptions> {
     }
 
     @Override
-    public Codec<OakTreeRoomOptions> codec() {
+    public MapCodec<OakTreeRoomOptions> codec() {
         return OakTreeRoomOptions.CODEC;
     }
 }

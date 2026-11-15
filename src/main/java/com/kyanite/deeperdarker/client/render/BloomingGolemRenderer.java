@@ -25,6 +25,6 @@ public class BloomingGolemRenderer extends MobRenderer<BloomingGolem, BloomingGo
     }
 
     @Override
-    protected void setupRotations(BloomingGolem vessel, PoseStack poseStack, float f, float g, float h) {
+    protected void setupRotations(BloomingGolem livingEntity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks, float entityScale) {
     }
 }

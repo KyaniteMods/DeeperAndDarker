@@ -3,17 +3,13 @@
   "config": {
     "depth": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 50,
-        "min_inclusive": 30
-      }
+      "max_inclusive": 50,
+      "min_inclusive": 30
     },
     "maxFloeHeight": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 60,
-        "min_inclusive": 30
-      }
+      "max_inclusive": 60,
+      "min_inclusive": 30
     },
     "replaceable": "deeperdarker:sculk_spruce_forest_replaceable",
     "state_provider": {
@@ -24,31 +20,23 @@
     },
     "tip_x_shift": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 8,
-        "min_inclusive": -8
-      }
+      "max_inclusive": 8,
+      "min_inclusive": -8
     },
     "tip_z_shift": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 8,
-        "min_inclusive": -8
-      }
+      "max_inclusive": 8,
+      "min_inclusive": -8
     },
     "width": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": 45,
-        "min_inclusive": 40
-      }
+      "max_inclusive": 45,
+      "min_inclusive": 40
     },
     "y_shift": {
       "type": "minecraft:uniform",
-      "value": {
-        "max_inclusive": -10,
-        "min_inclusive": -25
-      }
+      "max_inclusive": -10,
+      "min_inclusive": -25
     }
   }
 }

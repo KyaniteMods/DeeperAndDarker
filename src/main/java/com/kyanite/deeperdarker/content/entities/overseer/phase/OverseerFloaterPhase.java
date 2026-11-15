@@ -3,12 +3,13 @@ package com.kyanite.deeperdarker.content.entities.overseer.phase;
 import com.kyanite.deeperdarker.content.entities.Floater;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.valueproviders.IntProvider;
 
 public class OverseerFloaterPhase extends OverseerPhase {
-    public static final Codec<OverseerFloaterPhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<OverseerFloaterPhase> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.fieldOf("idle_time").forGetter(phase -> phase.idleTime),
             Codec.INT.fieldOf("ticks_left").forGetter(phase -> phase.ticksLeft),
             IntProvider.POSITIVE_CODEC.fieldOf("amount").forGetter(phase -> phase.amount),
@@ -53,7 +54,7 @@ public class OverseerFloaterPhase extends OverseerPhase {
     }
 
     @Override
-    public Codec<? extends OverseerPhase> codec() {
+    public MapCodec<? extends OverseerPhase> codec() {
         return CODEC;
     }
 

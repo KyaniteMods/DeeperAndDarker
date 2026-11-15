@@ -12,6 +12,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import org.spongepowered.asm.mixin.Final;
@@ -64,11 +65,13 @@ public abstract class AcidEntityMixin implements EntityInAcid {
         if (deeperdarker$acidImmune()) {
             return;
         }
-        for(ItemStack stack : ((Entity) (Object) this).getArmorSlots()) {
-            if (!stack.is(DDTags.Items.ACID_IMMUNE_ARMOR)) {
-                break;
+        if (((Object) this) instanceof LivingEntity livingEntity) {
+            for (ItemStack stack : livingEntity.getArmorSlots()) {
+                if (!stack.is(DDTags.Items.ACID_IMMUNE_ARMOR)) {
+                    break;
+                }
+                return;
             }
-            return;
         }
         ((Entity) (Object) this).hurt(((Entity) (Object) this).damageSources().source(DDDamageTypes.ACID), 5.0f);
     }

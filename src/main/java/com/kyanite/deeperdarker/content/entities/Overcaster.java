@@ -34,8 +34,9 @@ public class Overcaster extends Illusioner {
 
     @Override
     public void performRangedAttack(LivingEntity livingEntity, float f) {
-        ItemStack itemStack = getProjectile(getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW)));
-        AbstractArrow abstractArrow = ProjectileUtil.getMobArrow(this, itemStack, f);
+        ItemStack bow = getItemInHand(ProjectileUtil.getWeaponHoldingHand(this, Items.BOW));
+        ItemStack itemStack = getProjectile(bow);
+        AbstractArrow abstractArrow = ProjectileUtil.getMobArrow(this, itemStack, f, bow);
         if (abstractArrow instanceof Arrow arrow) {
             arrow.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600));
         }

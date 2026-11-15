@@ -1,11 +1,15 @@
 package com.kyanite.deeperdarker.content.entities.acidsprite;
 
 import com.google.common.collect.Sets;
+import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
 import com.kyanite.deeperdarker.content.entities.Bubblox;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -29,12 +33,17 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.portal.DimensionTransition;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 import java.util.HashSet;
 
 public class AcidSprite extends Monster implements Merchant {
+    public static final ResourceLocation ACID_SPRITE_ATTACK_DAMAGE_BONUS_ID = DeeperDarker.id("acid_sprite.attack_damage_bonus");
+    public static final ResourceLocation ACID_SPRITE_MOVEMENT_SPEED_DEBUFF_ID = DeeperDarker.id("acid_sprite.movement_speed_debuff");
+    public static final ResourceLocation ACID_SPRITE_ATTACK_DAMAGE_DEBUFF_ID = DeeperDarker.id("acid_sprite.attack_damage_debuff");
+
     public static final String OFFERS_TAG = "offers";
 
     @Nullable
@@ -68,14 +77,14 @@ public class AcidSprite extends Monster implements Merchant {
     }
 
     @Override
-    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag compoundTag) {
-        spawnGroupData = super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData) {
+        spawnGroupData = super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData);
         float f = difficultyInstance.getSpecialMultiplier();
         if (this.random.nextFloat() < f * 0.2f) {
-            this.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier("Acid sprite bonus", this.random.nextDouble() + 1.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
-            this.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier("Acid sprite debuff", -this.random.nextDouble() * 0.1, AttributeModifier.Operation.ADDITION));
+            this.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(ACID_SPRITE_ATTACK_DAMAGE_BONUS_ID, this.random.nextDouble() + 1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            this.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier(ACID_SPRITE_MOVEMENT_SPEED_DEBUFF_ID, -this.random.nextDouble() * 0.1, AttributeModifier.Operation.ADD_VALUE));
         } else if (this.random.nextFloat() < 0.5f - f * 0.25) {
-            this.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier("Acid sprite debuff", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
+            this.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(ACID_SPRITE_ATTACK_DAMAGE_DEBUFF_ID, 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
         return spawnGroupData;
     }
@@ -97,17 +106,19 @@ public class AcidSprite extends Monster implements Merchant {
     @Override
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
-        MerchantOffers merchantOffers = this.getOffers();
-        if (!merchantOffers.isEmpty()) {
-            compoundTag.put(OFFERS_TAG, merchantOffers.createTag());
+        MerchantOffers merchantOffers;
+        if (!level().isClientSide() && !(merchantOffers = getOffers()).isEmpty()) {
+            compoundTag.put(OFFERS_TAG, MerchantOffers.CODEC.encodeStart(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), merchantOffers).getOrThrow());
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
-        if (compoundTag.contains(OFFERS_TAG, CompoundTag.TAG_COMPOUND)) {
-            offers = new MerchantOffers(compoundTag.getCompound(OFFERS_TAG));
+        if (compoundTag.contains(OFFERS_TAG)) {
+            MerchantOffers.CODEC.parse(this.registryAccess().createSerializationContext(NbtOps.INSTANCE), compoundTag.get(OFFERS_TAG)).resultOrPartial(Util.prefix("Failed to load offers: ", DeeperDarker.LOGGER::warn)).ifPresent(merchantOffers -> {
+                offers = merchantOffers;
+            });
         }
     }
 
@@ -117,10 +128,9 @@ public class AcidSprite extends Monster implements Merchant {
     }
 
     @Override
-    @Nullable
-    public Entity changeDimension(ServerLevel serverLevel) {
+    public @Nullable Entity changeDimension(DimensionTransition dimensionTransition) {
         stopTrading();
-        return super.changeDimension(serverLevel);
+        return super.changeDimension(dimensionTransition);
     }
 
     protected void stopTrading() {

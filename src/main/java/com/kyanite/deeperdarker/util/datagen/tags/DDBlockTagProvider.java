@@ -1,6 +1,5 @@
 package com.kyanite.deeperdarker.util.datagen.tags;
 
-import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
@@ -77,7 +76,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 DDBlocks.RED_CRYSTAL_BLOCK, DDBlocks.GREEN_CRYSTAL_BLOCK, DDBlocks.BLUE_CRYSTAL_BLOCK,
                 DDBlocks.GLOOMSLATE_COAL_ORE, DDBlocks.GLOOMSLATE_IRON_ORE, DDBlocks.GLOOMSLATE_COPPER_ORE, DDBlocks.GLOOMSLATE_GOLD_ORE, DDBlocks.GLOOMSLATE_REDSTONE_ORE, DDBlocks.GLOOMSLATE_EMERALD_ORE, DDBlocks.GLOOMSLATE_LAPIS_ORE, DDBlocks.GLOOMSLATE_DIAMOND_ORE,
                 DDBlocks.CRYSTALLIZED_AMBER, DDBlocks.ANCIENT_VASE, DDBlocks.FRAGILE_SCULK_GRIME_BRICKS, DDBlocks.FRAGILE_GLOOMSLATE_BRICKS, DDBlocks.GLOOMSLATE_LOCK, DDBlocks.SCULK_GRIME_LOCK, DDBlocks.SCULK_LANTERN,
-                DDBlocks.DEAD_MANS_CHEST, DDBlocks.SCULK_ALTAR).addOptional(reverseLookup(DDCreateCompat.Blocks.WARDEN_BACKTANK));
+                DDBlocks.DEAD_MANS_CHEST, DDBlocks.SCULK_ALTAR);
         tagBuilder(BlockTags.WALL_POST_OVERRIDE).add(DDBlocks.SCULK_TORCH);
         tagBuilder(BlockTags.PIGLIN_REPELLENTS).add(DDBlocks.SCULK_FIRE, DDBlocks.SCULK_TORCH, DDBlocks.SCULK_WALL_TORCH, DDBlocks.SCULK_CAMPFIRE, DDBlocks.SCULK_LANTERN, DDBlocks.PATIENCE_SOUL_FIRE, DDBlocks.FORTITUDE_SOUL_FIRE, DDBlocks.CORRUPTION_SOUL_FIRE, DDBlocks.PURITY_SOUL_FIRE, DDBlocks.VIRTUE_SOUL_FIRE);
         tagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(DDBlocks.ECHO_SOIL, DDBlocks.ECHO_FARMLAND, DDBlocks.SCULK_GRIME);
@@ -86,6 +85,11 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         tagBuilder(BlockTags.SWORD_EFFICIENT).add(DDBlocks.GLOWING_GRASS, DDBlocks.GLOWING_FLOWERS, DDBlocks.GLOOMY_GRASS, DDBlocks.ICE_LILY, DDBlocks.SCULK_TUBERS, DDBlocks.SCULK_TISSUE, DDBlocks.SCULK_FERN, DDBlocks.LARGE_SCULK_FERN, DDBlocks.DARK_FOUNTAIN);
         tagBuilder(BlockTags.FIRE).add(DDBlocks.SCULK_FIRE, DDBlocks.PATIENCE_SOUL_FIRE, DDBlocks.FORTITUDE_SOUL_FIRE, DDBlocks.CORRUPTION_SOUL_FIRE, DDBlocks.PURITY_SOUL_FIRE, DDBlocks.VIRTUE_SOUL_FIRE);
         tagBuilder(BlockTags.CAMPFIRES).add(DDBlocks.SCULK_CAMPFIRE);
+        tagBuilder(DDTags.Blocks.INCORRECT_FOR_LEAD_TOOL).addOptionalTag(BlockTags.INCORRECT_FOR_IRON_TOOL);
+        tagBuilder(DDTags.Blocks.INCORRECT_FOR_RADIOACTIVE_TOOL).addOptionalTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL);
+        tagBuilder(DDTags.Blocks.INCORRECT_FOR_RESONARIUM_TOOL).addOptionalTag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL);
+        tagBuilder(DDTags.Blocks.INCORRECT_FOR_WARDEN_TOOL);
+        tagBuilder(DDTags.Blocks.INCORRECT_FOR_GUARDIAN_TOOL);
 
         tagBuilder(BlockTags.LOGS_THAT_BURN).addTag(DDTags.Blocks.ECHO_LOGS).addTag(DDTags.Blocks.SCULK_SPRUCE_LOGS);
         tagBuilder(BlockTags.PLANKS).add(DDBlocks.ECHO_PLANKS, DDBlocks.BLOOM_PLANKS, DDBlocks.SCULK_SPRUCE_PLANKS);
@@ -193,18 +197,7 @@ public class DDBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         Blocks.HOPPER,
                         Blocks.TRAPPED_CHEST,
                         Blocks.DRAGON_EGG
-                )
-                .addOptional(new ResourceLocation("ironchest", "copper_chest"))
-                .addOptional(new ResourceLocation("ironchest", "iron_chest"))
-                .addOptional(new ResourceLocation("ironchest", "gold_chest"))
-                .addOptional(new ResourceLocation("ironchest", "diamond_chest"))
-                .addOptional(new ResourceLocation("ironchest", "emerald_chest"))
-                .addOptional(new ResourceLocation("ironchest", "crystal_chest"))
-                .addOptional(new ResourceLocation("ironchest", "obsidian_chest"))
-                .addOptional(new ResourceLocation("ironchest", "netherite_chest"))
-                .addOptional(new ResourceLocation("ironchest", "christmas_chest"))
-                .addOptional(new ResourceLocation("toms_storage", "ts.storage_terminal"))
-                .addOptional(new ResourceLocation("toms_storage", "ts.crafting_terminal"));
+                );
         tagBuilder(DDTags.Blocks.INFINIBURN_OTHERSIDE).addOptionalTag(BlockTags.INFINIBURN_NETHER).add(DDBlocks.GLOOMSLATE);
 
         tagBuilder(DDTags.Blocks.MAZE_CANNOT_HIDE_CHEST).add(Blocks.WATER);

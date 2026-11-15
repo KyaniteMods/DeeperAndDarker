@@ -1,33 +1,24 @@
 package com.kyanite.deeperdarker.util;
 
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
-import net.minecraft.Util;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class DDUtil {
@@ -124,7 +115,6 @@ public class DDUtil {
     public static void renderFlatFace(PoseStack poseStack, VertexConsumer vertexConsumer, int color, float x, float y, float z, float width, float height, float u, float v, int spriteWidth, int spriteHeight, int light, int overlay) {
         PoseStack.Pose last = poseStack.last();
         Matrix4f pose = last.pose();
-        Matrix3f normal = last.normal();
 
         float x1 = x / 16.0f;
         float y1 = y / 16.0f;
@@ -137,13 +127,12 @@ public class DDUtil {
 
         float u2n = u + width / spriteWidth;
 
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x1, z1, x2, z1, u2n, u, v1, v, light, overlay);
+        renderQuad(pose, last, vertexConsumer, color, y2, y1, x1, z1, x2, z1, u2n, u, v1, v, light, overlay);
     }
 
     public static void renderCuboidSides(PoseStack poseStack, VertexConsumer vertexConsumer, int color, float x, float y, float z, float width, float height, float depth, float u, float v, int spriteWidth, int spriteHeight, int light, int overlay) {
         PoseStack.Pose last = poseStack.last();
         Matrix4f pose = last.pose();
-        Matrix3f normal = last.normal();
 
         float x1 = x / 16.0f;
         float y1 = y / 16.0f;
@@ -167,24 +156,24 @@ public class DDUtil {
         float u2s = u1s + width / spriteWidth;
 
         // NORTH
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x1, z1, x2, z1, u2n, u1n, v1, v2, light, overlay);
+        renderQuad(pose, last, vertexConsumer, color, y2, y1, x1, z1, x2, z1, u2n, u1n, v1, v2, light, overlay);
         // SOUTH
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x2, z2, x1, z2, u2s, u1s, v1, v2, light, overlay);
+        renderQuad(pose, last, vertexConsumer, color, y2, y1, x2, z2, x1, z2, u2s, u1s, v1, v2, light, overlay);
         // WEST
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x1, z2, x1, z1, u2w, u1w, v1, v2, light, overlay);
+        renderQuad(pose, last, vertexConsumer, color, y2, y1, x1, z2, x1, z1, u2w, u1w, v1, v2, light, overlay);
         // EAST
-        renderQuad(pose, normal, vertexConsumer, color, y2, y1, x2, z1, x2, z2, u2e, u1e, v1, v2, light, overlay);
+        renderQuad(pose, last, vertexConsumer, color, y2, y1, x2, z1, x2, z2, u2e, u1e, v1, v2, light, overlay);
     }
 
-    public static void renderQuad(Matrix4f pose, Matrix3f normal, VertexConsumer vertexConsumer, int color, float y2, float y1, float x1, float z1, float x2, float z2, float u2, float u1, float v1, float v2, int light, int overlay) {
+    public static void renderQuad(Matrix4f pose, PoseStack.Pose normal, VertexConsumer vertexConsumer, int color, float y2, float y1, float x1, float z1, float x2, float z2, float u2, float u1, float v1, float v2, int light, int overlay) {
         addVertex(pose, normal, vertexConsumer, color, y1, x1, z1, u1, v1, light, overlay);
         addVertex(pose, normal, vertexConsumer, color, y2, x1, z1, u1, v2, light, overlay);
         addVertex(pose, normal, vertexConsumer, color, y2, x2, z2, u2, v2, light, overlay);
         addVertex(pose, normal, vertexConsumer, color, y1, x2, z2, u2, v1, light, overlay);
     }
 
-    public static void addVertex(Matrix4f pose, Matrix3f normal, VertexConsumer vertexConsumer, int color, float y, float x, float z, float u, float v, int light, int overlay) {
-        vertexConsumer.vertex(pose, x, y, z).color(color >>> 16 & 0xFF, (color >>> 8) & 0xFF, color & 0xFF, (color >>> 24) & 0xFF).uv(u, v).overlayCoords(overlay).uv2(light).normal(normal, 0.0f, 1.0f, 0.0f).endVertex();
+    public static void addVertex(Matrix4f pose, PoseStack.Pose normal, VertexConsumer vertexConsumer, int color, float y, float x, float z, float u, float v, int light, int overlay) {
+        vertexConsumer.addVertex(pose, x, y, z).setColor(color >>> 16 & 0xFF, (color >>> 8) & 0xFF, color & 0xFF, (color >>> 24) & 0xFF).setUv(u, v).setOverlay(overlay).setLight(light).setNormal(normal, 0.0f, 1.0f, 0.0f);
     }
 
     public static int getLightEmission(int original, BlockState state, BlockGetter blockGetter) {
@@ -195,45 +184,41 @@ public class DDUtil {
     }
 
     public static boolean hasHorns(ItemStack stack) {
-        if (!stack.hasTag()) {
-            return true;
-        }
-        CompoundTag tag = stack.getTag();
-        if (!tag.contains(HAS_HORNS_TAG, CompoundTag.TAG_BYTE)) {
-            return true;
-        }
-        return tag.getBoolean(HAS_HORNS_TAG);
+        return !stack.has(DDDataComponents.NO_HORNS);
     }
 
     public static void setHasHorns(ItemStack stack, boolean value) {
-        stack.getOrCreateTag().putBoolean(HAS_HORNS_TAG, value);
+        if (value) {
+            stack.remove(DDDataComponents.NO_HORNS);
+        } else {
+            stack.set(DDDataComponents.NO_HORNS, Unit.INSTANCE);
+        }
     }
 
     public static boolean isAcidResistant(ItemStack stack) {
-        return stack.is(DDTags.Items.ACID_RESISTANT) || (stack.hasTag() && stack.getTag().getBoolean(ACID_RESISTANT_TAG));
+        return stack.is(DDTags.Items.ACID_RESISTANT) || stack.has(DDDataComponents.ACID_RESISTANT);
     }
 
     public static void setAcidResistant(ItemStack stack) {
-        stack.getOrCreateTag().putBoolean(ACID_RESISTANT_TAG, true);
+        stack.set(DDDataComponents.ACID_RESISTANT, Unit.INSTANCE);
     }
 
     public static boolean isAugmented(ItemStack stack) {
-        return stack.hasTag() && stack.getTag().getBoolean(AUGMENTED_TAG);
+        return stack.has(DDDataComponents.AUGMENT);
     }
 
     public static boolean isAugmentedShield(ItemStack stack) {
-        return stack.is(ConventionalItemTags.SHIELDS) && isAugmented(stack);
+        return stack.is(ConventionalItemTags.SHIELD_TOOLS) && isAugmented(stack);
     }
 
     public static void setAugmented(ItemStack stack) {
-        stack.getOrCreateTag().putBoolean(AUGMENTED_TAG, true);
+        if (!stack.has(DDDataComponents.AUGMENT)) {
+            stack.set(DDDataComponents.AUGMENT, ItemStack.EMPTY);
+        }
     }
 
     public static ItemStack getAugmentItem(ItemStack shield) {
-        if (!isAugmented(shield)) {
-            return ItemStack.EMPTY;
-        }
-        return ItemStack.of(shield.getTag().getCompound(ITEM_TAG));
+        return shield.getOrDefault(DDDataComponents.AUGMENT, ItemStack.EMPTY);
     }
 
     public static Stream<ItemStack> getStackAsStream(ItemStack shield) {

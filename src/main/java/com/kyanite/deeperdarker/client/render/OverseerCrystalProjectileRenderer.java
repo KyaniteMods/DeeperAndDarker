@@ -41,7 +41,7 @@ public class OverseerCrystalProjectileRenderer<T extends OverseerCrystalProjecti
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         model.setupAnim(entity, tickDelta, 0.0f, 0.0f, 0.0f, 0.0f);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureLocation(entity)));
-        model.renderToBuffer(poseStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+        model.renderToBuffer(poseStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
     }
 }

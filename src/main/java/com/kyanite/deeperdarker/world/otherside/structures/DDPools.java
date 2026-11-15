@@ -6,7 +6,7 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class DDPools {
@@ -31,7 +32,7 @@ public class DDPools {
     public static final ResourceKey<StructureTemplatePool> WATCHTOWER = createKey("watchtower");
     public static final ResourceKey<StructureTemplatePool> VILLAGER_CAMP = createKey("villager_camp");
 
-    public static void bootstrap(BootstapContext<StructureTemplatePool> context) {
+    public static void bootstrap(BootstrapContext<StructureTemplatePool> context) {
         Holder<StructureTemplatePool> empty = context.lookup(Registries.TEMPLATE_POOL).getOrThrow(Pools.EMPTY);
         Holder<StructureProcessorList> ancientTempleDegradation = context.lookup(Registries.PROCESSOR_LIST).getOrThrow(DDProcessorLists.ANCIENT_TEMPLE_DEGRADATION);
 
@@ -128,11 +129,11 @@ public class DDPools {
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name, Holder<StructureProcessorList> processor) {
-        return projection -> new SinglePoolElement(Either.left(DeeperDarker.id(name)), processor, projection) {};
+        return projection -> new SinglePoolElement(Either.left(DeeperDarker.id(name)), processor, projection, Optional.empty()) {};
     }
 
     public static Function<StructureTemplatePool.Projection, SinglePoolElement> location(String name) {
-        return projection -> new SinglePoolElement(Either.left(DeeperDarker.id(name)), Holder.direct(new StructureProcessorList(List.of())), projection) {};
+        return projection -> new SinglePoolElement(Either.left(DeeperDarker.id(name)), Holder.direct(new StructureProcessorList(List.of())), projection, Optional.empty()) {};
     }
 
     public static ResourceKey<StructureTemplatePool> createKey(String name) {

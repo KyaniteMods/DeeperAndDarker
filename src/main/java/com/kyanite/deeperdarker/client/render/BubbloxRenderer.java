@@ -42,7 +42,7 @@ public class BubbloxRenderer<T extends Bubblox> extends EntityRenderer<T> {
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         model.setupAnim(entity, g, 0.0f, 0.0f, 0.0f, 0.0f);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(model.renderType(getTextureLocation(entity)));
-        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0f, 1.0f, 1.0f, 1.0f);
+        model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
     }
 }

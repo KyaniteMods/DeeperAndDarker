@@ -31,7 +31,6 @@ public abstract class ScreenEffectMixin {
     private static void deeperdarker$renderAcid(Minecraft minecraft, PoseStack poseStack) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, DeeperDarkerClient.ACID_SCREEN_EFFECT_TEXTURE);
-        BufferBuilder bufferBuilder = Tesselator.getInstance().getBuilder();
         BlockPos blockPos = BlockPos.containing(minecraft.player.getX(), minecraft.player.getEyeY(), minecraft.player.getZ());
         float f = LightTexture.getBrightness(minecraft.player.level().dimensionType(), minecraft.player.level().getMaxLocalRawBrightness(blockPos));
         RenderSystem.enableBlend();
@@ -45,12 +44,12 @@ public abstract class ScreenEffectMixin {
         float m = -minecraft.player.getYRot() / 64.0f;
         float n = minecraft.player.getXRot() / 64.0f;
         Matrix4f matrix4f = poseStack.last().pose();
-        bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-        bufferBuilder.vertex(matrix4f, -1.0f, -1.0f, -0.5f).uv(4.0f + m, 4.0f + n).endVertex();
-        bufferBuilder.vertex(matrix4f, 1.0f, -1.0f, -0.5f).uv(0.0f + m, 4.0f + n).endVertex();
-        bufferBuilder.vertex(matrix4f, 1.0f, 1.0f, -0.5f).uv(0.0f + m, 0.0f + n).endVertex();
-        bufferBuilder.vertex(matrix4f, -1.0f, 1.0f, -0.5f).uv(4.0f + m, 0.0f + n).endVertex();
-        BufferUploader.drawWithShader(bufferBuilder.end());
+        BufferBuilder bufferBuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
+        bufferBuilder.addVertex(matrix4f, -1.0f, -1.0f, -0.5f).setUv(4.0f + m, 4.0f + n);
+        bufferBuilder.addVertex(matrix4f, 1.0f, -1.0f, -0.5f).setUv(0.0f + m, 4.0f + n);
+        bufferBuilder.addVertex(matrix4f, 1.0f, 1.0f, -0.5f).setUv(0.0f + m, 0.0f + n);
+        bufferBuilder.addVertex(matrix4f, -1.0f, 1.0f, -0.5f).setUv(4.0f + m, 0.0f + n);
+        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.disableBlend();
     }

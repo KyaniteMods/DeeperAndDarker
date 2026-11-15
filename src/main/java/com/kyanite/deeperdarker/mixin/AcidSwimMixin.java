@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Swim.class)
 public class AcidSwimMixin {
-    @WrapOperation(method = "checkExtraStartConditions(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Mob;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Mob;isInLava()Z"))
-    private boolean deeperdarker$mobSwimInAcid(Mob instance, Operation<Boolean> original, @Local(argsOnly = true) Mob mob) {
+    @WrapOperation(method = "shouldSwim", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Mob;isInLava()Z"))
+    private static boolean deeperdarker$mobSwimInAcid(Mob instance, Operation<Boolean> original, @Local(argsOnly = true) Mob mob) {
         return original.call(instance) || ((EntityInAcid) mob).deeperdarker$isInAcid();
     }
 }

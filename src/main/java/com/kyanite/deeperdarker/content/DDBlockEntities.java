@@ -2,11 +2,9 @@ package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.entities.blocks.*;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -26,58 +24,58 @@ public class DDBlockEntities {
     public static final BlockEntityType<SculkAltarBlockEntity> SCULK_ALTAR;
 
     static {
-        HANGING_SIGN = create("hanging_sign", FabricBlockEntityTypeBuilder.create(
+        HANGING_SIGN = create("hanging_sign", BlockEntityType.Builder.of(
                 DDHangingSignBlockEntity::new,
                 DDBlocks.ECHO_HANGING_SIGN, DDBlocks.ECHO_WALL_HANGING_SIGN,
                 DDBlocks.BLOOM_HANGING_SIGN, DDBlocks.BLOOM_WALL_HANGING_SIGN,
                 DDBlocks.SCULK_SPRUCE_HANGING_SIGN, DDBlocks.SCULK_SPRUCE_WALL_HANGING_SIGN
         ));
-        SIGN = create("sign", FabricBlockEntityTypeBuilder.create(
+        SIGN = create("sign", BlockEntityType.Builder.of(
                 DDSignBlockEntity::new,
                 DDBlocks.ECHO_SIGN, DDBlocks.ECHO_WALL_SIGN,
                 DDBlocks.BLOOM_SIGN, DDBlocks.BLOOM_WALL_SIGN,
                 DDBlocks.SCULK_SPRUCE_SIGN, DDBlocks.SCULK_SPRUCE_WALL_SIGN
         ));
-        CRYSTALLIZED_AMBER = create("crystallized_amber", FabricBlockEntityTypeBuilder.create(
+        CRYSTALLIZED_AMBER = create("crystallized_amber", BlockEntityType.Builder.of(
                 CrystallizedAmberBlockEntity::new,
                 DDBlocks.CRYSTALLIZED_AMBER
         ));
-        SKULL = create("skull", FabricBlockEntityTypeBuilder.create(
+        SKULL = create("skull", BlockEntityType.Builder.of(
                 DDSkullBlockEntity::new,
                 DDBlocks.SHATTERED_HEAD,
                 DDBlocks.SHATTERED_WALL_HEAD
         ));
-        SCULK_JAW = create("sculk_jaw", FabricBlockEntityTypeBuilder.create(
+        SCULK_JAW = create("sculk_jaw", BlockEntityType.Builder.of(
                 SculkJawBlockEntity::new,
                 DDBlocks.SCULK_JAW
         ));
-        RETURN_STATUE = create("return_statue", FabricBlockEntityTypeBuilder.create(
+        RETURN_STATUE = create("return_statue", BlockEntityType.Builder.of(
                 ReturnStatueBlockEntity::new,
                 DDBlocks.RETURN_STATUE
         ));
-        ICICLE = create("icicle", FabricBlockEntityTypeBuilder.create(
+        ICICLE = create("icicle", BlockEntityType.Builder.of(
                 IcicleBlockEntity::new,
                 DDBlocks.ICICLE
         ));
-        DARK_FOUNTAIN = create("dark_fountain", FabricBlockEntityTypeBuilder.create(
+        DARK_FOUNTAIN = create("dark_fountain", BlockEntityType.Builder.of(
                 DarkFountainBlockEntity::new,
                 DDBlocks.DARK_FOUNTAIN
         ));
-        CAMPFIRE = create("campfire", FabricBlockEntityTypeBuilder.create(
+        CAMPFIRE = create("campfire", BlockEntityType.Builder.of(
                 DDCampfireBlockEntity::new,
                 DDBlocks.SCULK_CAMPFIRE
         ));
-        DEAD_MANS_CHEST = create("dead_mans_chest", FabricBlockEntityTypeBuilder.create(
+        DEAD_MANS_CHEST = create("dead_mans_chest", BlockEntityType.Builder.of(
                 DeadMansChestBlockEntity::new,
                 DDBlocks.DEAD_MANS_CHEST
         ));
-        SCULK_ALTAR = create("sculk_altar", FabricBlockEntityTypeBuilder.create(
+        SCULK_ALTAR = create("sculk_altar", BlockEntityType.Builder.of(
                 SculkAltarBlockEntity::new,
                 DDBlocks.SCULK_ALTAR
         ));
     }
 
-    public static <T extends BlockEntity> BlockEntityType<T> create(String id, FabricBlockEntityTypeBuilder<T> builder) {
+    public static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.fetchChoiceType(References.BLOCK_ENTITY, id);
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, DeeperDarker.id(id), builder.build(type));
     }

@@ -2,7 +2,6 @@ package com.kyanite.deeperdarker.content.entities.overseer;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.content.blocks.SculkAltarBlock;
-import com.kyanite.deeperdarker.content.entities.DDMobType;
 import com.kyanite.deeperdarker.content.entities.overseer.phase.OverseerPhase;
 import com.kyanite.deeperdarker.util.DDTags;
 import net.minecraft.core.GlobalPos;
@@ -76,10 +75,10 @@ public class Overseer extends Monster implements RangedAttackMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(DATA_ID_INVULNERABLE, DEFAULT_INVULNERABLE_TICKS);
-        entityData.define(DATA_ID_ORIGIN, Optional.of(GlobalPos.of(level().dimension(), blockPosition())));
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ID_INVULNERABLE, DEFAULT_INVULNERABLE_TICKS);
+        builder.define(DATA_ID_ORIGIN, Optional.of(GlobalPos.of(level().dimension(), blockPosition())));
     }
 
     @Override
@@ -149,7 +148,7 @@ public class Overseer extends Monster implements RangedAttackMob {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level, Level level2) {
         return false;
     }
 
@@ -278,17 +277,7 @@ public class Overseer extends Monster implements RangedAttackMob {
     public void knockback(double strength, double x, double z) {
     }
 
-    @Override
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions entityDimensions) {
-        return 0.5f * entityDimensions.height;
-    }
-
     public boolean isFirstTick() {
         return firstTick;
-    }
-
-    @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
     }
 }

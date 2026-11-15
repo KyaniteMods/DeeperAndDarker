@@ -2,7 +2,10 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.kyanite.deeperdarker.DeeperDarker;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -19,12 +22,13 @@ import net.minecraft.world.level.block.Block;
 import java.util.Optional;
 
 public class CorruptionSoulItem extends SoulItem implements ShieldAugmentItem {
-    private final Multimap<Attribute, AttributeModifier> augmentModifiers;
+    public static final ResourceLocation CORRUPTION_SOUL_ATTACK_DAMAGE_ID = DeeperDarker.id("corruption_soul.attack_damage");
+    private final Multimap<Holder<Attribute>, AttributeModifier> augmentModifiers;
 
     public CorruptionSoulItem(Block block, Properties properties, ParticleOptions particle) {
         super(block, properties, particle);
-        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier("Augment modifier", 1.0, AttributeModifier.Operation.ADDITION));
+        ImmutableMultimap.Builder<Holder<Attribute>, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(CORRUPTION_SOUL_ATTACK_DAMAGE_ID, 1.0, AttributeModifier.Operation.ADD_VALUE));
         augmentModifiers = builder.build();
     }
 
@@ -34,7 +38,7 @@ public class CorruptionSoulItem extends SoulItem implements ShieldAugmentItem {
     }
 
     @Override
-    public Optional<Multimap<Attribute, AttributeModifier>> getAugmentAttributeModifiers(EquipmentSlot equipmentSlot, boolean defending) {
+    public Optional<Multimap<Holder<Attribute>, AttributeModifier>> getAugmentAttributeModifiers(EquipmentSlot equipmentSlot, boolean defending) {
         return equipmentSlot == EquipmentSlot.OFFHAND ? Optional.of(augmentModifiers) : Optional.empty();
     }
 

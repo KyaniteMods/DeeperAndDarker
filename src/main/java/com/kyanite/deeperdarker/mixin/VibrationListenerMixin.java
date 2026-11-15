@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.DDEffects;
-import com.kyanite.deeperdarker.content.entities.DDMobType;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -18,11 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(VibrationSystem.Listener.class)
 public abstract class VibrationListenerMixin {
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
-    public void handleGameEvent(ServerLevel level, GameEvent event, GameEvent.Context context, Vec3 vec3, CallbackInfoReturnable<Boolean> cir) {
+    public void handleGameEvent(ServerLevel level, Holder<GameEvent> event, GameEvent.Context context, Vec3 vec3, CallbackInfoReturnable<Boolean> cir) {
         if(context.sourceEntity() instanceof LivingEntity entity) {
             if(event.is(DDTags.GameEvents.FEET_VIBRATIONS) && hasArmorThatDampensVibrations(entity)) cir.setReturnValue(false);
             if(entity.hasEffect(DDEffects.SCULK_AFFINITY)) cir.setReturnValue(false);
-            if(entity.getMobType().equals(DDMobType.SCULK)) cir.setReturnValue(false);
+            if(entity.getType().is(DDTags.EntityTypes.SCULK)) cir.setReturnValue(false);
         }
     }
 

@@ -1,27 +1,28 @@
 package com.kyanite.deeperdarker.util;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDItems;
-import com.simibubi.create.content.equipment.armor.BacktankUtil;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.component.CustomData;
 
 public class DDCreativeTab {
     private static final CreativeModeTab.Builder ITEM_GROUP_BUILDER = FabricItemGroup.builder().title(Component.translatable("itemGroup.deeperdarker")).icon(() -> new ItemStack(DDItems.WARDEN_SWORD)).displayItems(((displayContext, entries) -> {
@@ -70,7 +71,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_SPRUCE_SAPLING);
         entries.accept(DDBlocks.ICICLE);
 
-        entries.accept(DDItems.SCULK_TORCH);
+        entries.accept(DDBlockItems.SCULK_TORCH);
         entries.accept(DDBlocks.SCULK_CAMPFIRE);
         entries.accept(DDBlocks.SCULK_LANTERN);
         entries.accept(DDBlocks.SCULK_STONE);
@@ -196,15 +197,15 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.SCULK_TENDRILS);
         entries.accept(DDBlocks.SCULK_VINES);
         entries.accept(DDBlocks.GLOWING_ROOTS);
-        entries.accept(DDItems.ICE_LILY);
-        entries.accept(DDItems.LILY_FLOWER);
+        entries.accept(DDBlockItems.ICE_LILY);
+        entries.accept(DDBlockItems.LILY_FLOWER);
 
-        entries.accept(DDItems.ECHO_SIGN);
-        entries.accept(DDItems.ECHO_HANGING_SIGN);
-        entries.accept(DDItems.BLOOM_SIGN);
-        entries.accept(DDItems.BLOOM_HANGING_SIGN);
-        entries.accept(DDItems.SCULK_SPRUCE_SIGN);
-        entries.accept(DDItems.SCULK_SPRUCE_HANGING_SIGN);
+        entries.accept(DDBlockItems.ECHO_SIGN);
+        entries.accept(DDBlockItems.ECHO_HANGING_SIGN);
+        entries.accept(DDBlockItems.BLOOM_SIGN);
+        entries.accept(DDBlockItems.BLOOM_HANGING_SIGN);
+        entries.accept(DDBlockItems.SCULK_SPRUCE_SIGN);
+        entries.accept(DDBlockItems.SCULK_SPRUCE_HANGING_SIGN);
 
         entries.accept(DDBlocks.ANCIENT_VASE);
         entries.accept(DDBlocks.INFESTED_SCULK);
@@ -222,9 +223,9 @@ public class DDCreativeTab {
         entries.accept(DDItems.SHADOW_CRYSTAL);
         entries.accept(DDItems.SUNGLASSES);
 
-        entries.accept(DDItems.BLOOM_BERRIES);
+        entries.accept(DDBlockItems.BLOOM_BERRIES);
         entries.accept(DDItems.SCULK_TUBER);
-        entries.accept(DDItems.SCULK_BERRY_SPROUT);
+        entries.accept(DDBlockItems.SCULK_BERRY_SPROUT);
         entries.accept(DDItems.SCULK_BERRY);
 
         entries.accept(DDItems.GRIME_BALL);
@@ -315,11 +316,11 @@ public class DDCreativeTab {
         entries.accept(DDItems.HEART_OF_THE_DEEP);
         entries.accept(DDItems.WARDEN_CARAPACE);
         entries.accept(DDItems.REINFORCED_ECHO_SHARD);
-        entries.accept(DDItems.PATIENCE_SOUL);
-        entries.accept(DDItems.FORTITUDE_SOUL);
-        entries.accept(DDItems.CORRUPTION_SOUL);
-        entries.accept(DDItems.PURITY_SOUL);
-        entries.accept(DDItems.VIRTUE_SOUL);
+        entries.accept(DDBlockItems.PATIENCE_SOUL);
+        entries.accept(DDBlockItems.FORTITUDE_SOUL);
+        entries.accept(DDBlockItems.CORRUPTION_SOUL);
+        entries.accept(DDBlockItems.PURITY_SOUL);
+        entries.accept(DDBlockItems.VIRTUE_SOUL);
         entries.accept(DDItems.ROYAL_SCEPTER);
         entries.accept(DDItems.DAINTY_KEY);
         entries.accept(DDItems.KEYBRAND);
@@ -359,31 +360,26 @@ public class DDCreativeTab {
         entries.accept(DDItems.ACID_SPRITE_SPAWN_EGG);
         entries.accept(DDBlocks.DEAD_MANS_CHEST);
         entries.accept(DDBlocks.SCULK_ALTAR);
-        entries.accept(DDItems.SHATTERED_HEAD);
-        for (Holder<PaintingVariant> variant : BuiltInRegistries.PAINTING_VARIANT.getTagOrEmpty(DDTags.Paintings.ANCIENT)) {
-            ItemStack itemStack = new ItemStack(Items.PAINTING);
-            CompoundTag compoundTag = itemStack.getOrCreateTagElement("EntityTag");
-            Painting.storeVariant(compoundTag, variant);
-            entries.accept(itemStack);
-        }
+        entries.accept(DDBlockItems.SHATTERED_HEAD);
+        displayContext.holders().lookupOrThrow(Registries.PAINTING_VARIANT).get(DDTags.Paintings.ANCIENT).ifPresent(holders -> {
+            for (Holder<PaintingVariant> holder : holders) {
+                CustomData customData = CustomData.EMPTY.update(displayContext.holders().createSerializationContext(NbtOps.INSTANCE), Painting.VARIANT_MAP_CODEC, holder).getOrThrow().update(compoundTag -> compoundTag.putString("id", "minecraft:painting"));
+                ItemStack itemStack = new ItemStack(Items.PAINTING);
+                itemStack.set(DataComponents.ENTITY_DATA, customData);
+                entries.accept(itemStack);
+            }
+        });
         generatePotions(displayContext, entries, Items.TIPPED_ARROW);
         generatePotions(displayContext, entries, Items.POTION);
         generatePotions(displayContext, entries, Items.SPLASH_POTION);
         generatePotions(displayContext, entries, Items.LINGERING_POTION);
-        if (FabricLoader.getInstance().isModLoaded("create")) {
-            ItemStack stack = new ItemStack(DDCreateCompat.Items.WARDEN_BACKTANK);
-            stack.getOrCreateTag().putInt("Air", BacktankUtil.maxAirWithoutEnchants());
-            entries.accept(stack);
-            entries.accept(DDCreateCompat.Items.WARDEN_DIVING_HELMET);
-            entries.accept(DDCreateCompat.Items.WARDEN_DIVING_BOOTS);
-        }
     }));
 
     private static void generatePotions(CreativeModeTab.ItemDisplayParameters displayParameters, CreativeModeTab.Output output, Item item) {
         displayParameters.holders().lookup(Registries.POTION).ifPresent(lookup -> {
             lookup.listElements()
-                    .filter(reference -> !reference.is(Potions.EMPTY_ID) && reference.key().location().getNamespace().equals(DeeperDarker.MOD_ID))
-                    .map(reference -> PotionUtils.setPotion(new ItemStack(item), reference.value()))
+                    .filter(reference -> reference.key().location().getNamespace().equals(DeeperDarker.MOD_ID))
+                    .map(reference -> PotionContents.createItemStack(item, reference))
                     .forEach(output::accept);
         });
     }

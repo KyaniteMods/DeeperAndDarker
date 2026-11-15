@@ -46,14 +46,6 @@ public class DDConfigModel {
 
         @RestartRequired
         @ExcludeFromScreen
-        public boolean createCompatibility = true;
-
-        @RestartRequired
-        @ExcludeFromScreen
-        public boolean showMeYourSkinCompatibility = true;
-
-        @RestartRequired
-        @ExcludeFromScreen
         public boolean addWardenDrops = true;
 
         @RestartRequired

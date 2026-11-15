@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities.blocks;
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -46,7 +47,7 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
             return;
         }
 
-        LootTable table = level.getServer().getLootData().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
+        LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
         List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, getBlockPos().getCenter()).create(LootContextParamSets.CHEST), pos.asLong());
         loot = list.isEmpty() ? ItemStack.EMPTY : list.get(0);
         setChanged();
@@ -62,27 +63,27 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
     }
 
     @Override
-    public @NotNull CompoundTag getUpdateTag() {
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();
         if (!loot.isEmpty()) {
-            tag.put(ITEM_TAG, loot.save(new CompoundTag()));
+            tag.put(ITEM_TAG, loot.save(provider));
         }
-        tag.putBoolean(LEECH_TAG, fossilizedEntity);
-        tag.putFloat(ROTATION_TAG, rotation);
+        tag.putBoolean(LEECH_TAG, this.fossilizedEntity);
+        tag.putFloat(ROTATION_TAG, this.rotation);
         return tag;
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        if(pTag.contains(ITEM_TAG)) loot = ItemStack.of(pTag.getCompound(ITEM_TAG));
+    public void loadAdditional(CompoundTag pTag, HolderLookup.Provider provider) {
+        if(pTag.contains(ITEM_TAG)) ItemStack.parse(provider, pTag.getCompound(ITEM_TAG)).ifPresent(result -> loot = result);
         if(pTag.contains(LEECH_TAG)) fossilizedEntity = pTag.getBoolean(LEECH_TAG);
         if(pTag.contains(ROTATION_TAG)) rotation = pTag.getFloat(ROTATION_TAG);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider provider) {
         if (!loot.isEmpty()) {
-            pTag.put(ITEM_TAG, loot.save(new CompoundTag()));
+            pTag.put(ITEM_TAG, loot.save(provider));
         }
         pTag.putBoolean(LEECH_TAG, this.fossilizedEntity);
         pTag.putFloat(ROTATION_TAG, this.rotation);

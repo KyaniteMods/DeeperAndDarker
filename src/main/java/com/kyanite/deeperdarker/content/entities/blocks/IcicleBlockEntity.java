@@ -6,6 +6,8 @@ import com.kyanite.deeperdarker.content.entities.IcicleShard;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
@@ -24,7 +26,7 @@ import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
-public class IcicleBlockEntity extends BlockEntity implements GameEventListener.Holder<VibrationSystem.Listener>, VibrationSystem {
+public class IcicleBlockEntity extends BlockEntity implements GameEventListener.Provider<VibrationSystem.Listener>, VibrationSystem {
     public static final String LISTENER_TAG = "listener";
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -47,8 +49,8 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
+    public void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.loadAdditional(compoundTag, provider);
         if (compoundTag.contains(LISTENER_TAG, 10)) {
             VibrationSystem.Data.CODEC.parse(new Dynamic<>(NbtOps.INSTANCE, compoundTag.getCompound(LISTENER_TAG))).resultOrPartial(LOGGER::error).ifPresent(data -> {
                 this.vibrationData = data;
@@ -57,8 +59,8 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
+    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.saveAdditional(compoundTag, provider);
         VibrationSystem.Data.CODEC.encodeStart(NbtOps.INSTANCE, this.vibrationData).resultOrPartial(LOGGER::error).ifPresent(tag -> compoundTag.put(LISTENER_TAG, tag));
     }
 
@@ -104,7 +106,7 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
         }
 
         @Override
-        public boolean canReceiveVibration(ServerLevel serverLevel, BlockPos blockPos, GameEvent gameEvent, @Nullable GameEvent.Context context) {
+        public boolean canReceiveVibration(ServerLevel serverLevel, BlockPos blockPos, Holder<GameEvent> gameEvent, @Nullable GameEvent.Context context) {
             int dx = Mth.abs(this.blockPos.getX() - blockPos.getX());
             int dz = Mth.abs(this.blockPos.getZ() - blockPos.getZ());
             BlockState blockState = IcicleBlockEntity.this.getBlockState();
@@ -112,11 +114,11 @@ public class IcicleBlockEntity extends BlockEntity implements GameEventListener.
             if (block instanceof IcicleBlock icicle) {
                 if (!icicle.isFallingStalactitePos(serverLevel, this.blockPos)) return false;
             }
-            return (gameEvent != GameEvent.BLOCK_DESTROY && gameEvent != GameEvent.BLOCK_PLACE && context != null && !(context.sourceEntity() instanceof FallingBlockEntity) && !(context.sourceEntity() instanceof IcicleShard)) && dx <= 1 && (blockPos.getY() < this.blockPos.getY()) && dz <= 1 && BlockPos.betweenClosedStream(this.blockPos.below(), new BlockPos(this.blockPos.getX(), blockPos.getY(), this.blockPos.getZ())).allMatch(pos -> !serverLevel.getBlockState(pos).isCollisionShapeFullBlock(serverLevel, pos) || serverLevel.getBlockState(pos).is(block));
+            return (!gameEvent.is(GameEvent.BLOCK_DESTROY) && !gameEvent.is(GameEvent.BLOCK_PLACE) && context != null && !(context.sourceEntity() instanceof FallingBlockEntity) && !(context.sourceEntity() instanceof IcicleShard)) && dx <= 1 && (blockPos.getY() < this.blockPos.getY()) && dz <= 1 && BlockPos.betweenClosedStream(this.blockPos.below(), new BlockPos(this.blockPos.getX(), blockPos.getY(), this.blockPos.getZ())).allMatch(pos -> !serverLevel.getBlockState(pos).isCollisionShapeFullBlock(serverLevel, pos) || serverLevel.getBlockState(pos).is(block));
         }
 
         @Override
-        public void onReceiveVibration(ServerLevel serverLevel, BlockPos blockPos, GameEvent gameEvent, @Nullable Entity entity, @Nullable Entity entity2, float f) {
+        public void onReceiveVibration(ServerLevel serverLevel, BlockPos blockPos, Holder<GameEvent> gameEvent, @Nullable Entity entity, @Nullable Entity entity2, float f) {
             BlockState blockState = IcicleBlockEntity.this.getBlockState();
             Block block = blockState.getBlock();
             if (block instanceof IcicleBlock icicle) {

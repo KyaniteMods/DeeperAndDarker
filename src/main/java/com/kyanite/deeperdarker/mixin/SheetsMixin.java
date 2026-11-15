@@ -22,12 +22,12 @@ public abstract class SheetsMixin {
         return null;
     }
 
-    @Inject(method = "getAllMaterials", at = @At("TAIL"))
-    private static void deeperdarker$addDeadMansChestLocations(Consumer<Material> consumer, CallbackInfo ci) {
-        consumer.accept(DeeperDarkerClient.DEAD_MANS_CHEST_LOCATION);
-        consumer.accept(DeeperDarkerClient.DEAD_MANS_CHEST_LOCATION_LEFT);
-        consumer.accept(DeeperDarkerClient.DEAD_MANS_CHEST_LOCATION_RIGHT);
-    }
+//    @Inject(method = "getAllMaterials", at = @At("TAIL"))
+//    private static void deeperdarker$addDeadMansChestLocations(Consumer<Material> consumer, CallbackInfo ci) {
+//        consumer.accept(DeeperDarkerClient.DEAD_MANS_CHEST_LOCATION);
+//        consumer.accept(DeeperDarkerClient.DEAD_MANS_CHEST_LOCATION_LEFT);
+//        consumer.accept(DeeperDarkerClient.DEAD_MANS_CHEST_LOCATION_RIGHT);
+//    }
 
     @Inject(method = "chooseMaterial(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/level/block/state/properties/ChestType;Z)Lnet/minecraft/client/resources/model/Material;", at = @At("HEAD"), cancellable = true)
     private static void deeperdarker$chooseDeadMansChestMaterial(BlockEntity blockEntity, ChestType chestType, boolean bl, CallbackInfoReturnable<Material> cir) {

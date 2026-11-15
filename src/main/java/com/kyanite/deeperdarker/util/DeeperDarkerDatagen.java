@@ -1,6 +1,8 @@
 package com.kyanite.deeperdarker.util;
 
+import com.kyanite.deeperdarker.content.AncientPaintings;
 import com.kyanite.deeperdarker.content.DDDamageTypes;
+import com.kyanite.deeperdarker.content.DDEnchantments;
 import com.kyanite.deeperdarker.util.datagen.*;
 import com.kyanite.deeperdarker.util.datagen.loot.DDBlockLootTableProvider;
 import com.kyanite.deeperdarker.util.datagen.loot.DDChestLootTableProvider;
@@ -49,8 +51,10 @@ public class DeeperDarkerDatagen implements DataGeneratorEntrypoint {
                 .add(Registries.CONFIGURED_FEATURE, DDConfiguredFeatures::bootstrap)
                 .add(Registries.DAMAGE_TYPE, DDDamageTypes::bootstrap)
                 .add(Registries.DIMENSION_TYPE, OthersideDimension::bootstrap)
+                .add(Registries.ENCHANTMENT, DDEnchantments::bootstrap)
                 .add(Registries.LEVEL_STEM, OthersideGeneration::levelBootstrap)
                 .add(Registries.NOISE_SETTINGS, OthersideGeneration::noiseBootstrap)
+                .add(Registries.PAINTING_VARIANT, AncientPaintings::bootstrap)
                 .add(Registries.PLACED_FEATURE, DDPlacedFeatures::bootstrap)
                 .add(Registries.PROCESSOR_LIST, DDProcessorLists::bootstrap)
                 .add(Registries.STRUCTURE, DDStructures::bootstrap)

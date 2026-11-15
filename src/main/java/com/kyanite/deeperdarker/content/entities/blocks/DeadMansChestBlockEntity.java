@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.content.blocks.Reinvokable;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -45,7 +46,7 @@ public class DeadMansChestBlockEntity extends ChestBlockEntity {
         if (!hasBeenOpened && getLevel().getServer() != null) {
             hasBeenOpened = true;
 
-            DeadMansChestSavedData data = getLevel().getServer().overworld().getDataStorage().get(DeadMansChestSavedData::load, DeadMansChestSavedData.ID);
+            DeadMansChestSavedData data = getLevel().getServer().overworld().getDataStorage().get(DeadMansChestSavedData.factory(), DeadMansChestSavedData.ID);
             if (data == null) return true;
             List<ItemStack> list = data.getList();
             list.removeIf(ItemStack::isEmpty);
@@ -92,14 +93,14 @@ public class DeadMansChestBlockEntity extends ChestBlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
+    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.saveAdditional(compoundTag, provider);
         compoundTag.putBoolean(HAS_BEEN_OPENED_TAG, hasBeenOpened);
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
+    protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.loadAdditional(compoundTag, provider);
         hasBeenOpened = compoundTag.getBoolean(HAS_BEEN_OPENED_TAG);
     }
 

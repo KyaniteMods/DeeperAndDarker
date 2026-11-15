@@ -6,10 +6,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -87,7 +86,7 @@ public class DDPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GREEN_CRYSTAL_CONE = createKey("green_crystal_cone");
     public static final ResourceKey<PlacedFeature> BLUE_CRYSTAL_CONE = createKey("blue_crystal_cone");
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> features = context.lookup(Registries.CONFIGURED_FEATURE);
 
         PlacementUtils.register(context, SCULK_STONE_COLUMN, features.getOrThrow(DDConfiguredFeatures.SCULK_STONE_COLUMN), countPlacement(6, PlacementUtils.FULL_RANGE));

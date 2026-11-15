@@ -83,11 +83,11 @@ public class DDSounds {
     public static final SoundEvent TRANSMITTER_UNLINK = register("item.transmitter.unlink");
     public static final SoundEvent SONOROUS_STAFF_SONIC_BOOM = register("item.sonorous_staff.sonic_boom");
 
-    public static final SoundEvent ARMOR_EQUIP_LEAD = register("item.armor.equip_lead");
-    public static final SoundEvent ARMOR_EQUIP_RADIOACTIVE = register("item.armor.equip_radioactive");
-    public static final SoundEvent ARMOR_EQUIP_RESONARIUM = register("item.armor.equip_resonarium");
-    public static final SoundEvent ARMOR_EQUIP_WARDEN = register("item.armor.equip_warden");
-    public static final SoundEvent ARMOR_EQUIP_GUARDIAN = register("item.armor.equip_guardian");
+    public static final Holder<SoundEvent> ARMOR_EQUIP_LEAD = registerReference("item.armor.equip_lead");
+    public static final Holder<SoundEvent> ARMOR_EQUIP_RADIOACTIVE = registerReference("item.armor.equip_radioactive");
+    public static final Holder<SoundEvent> ARMOR_EQUIP_RESONARIUM = registerReference("item.armor.equip_resonarium");
+    public static final Holder<SoundEvent> ARMOR_EQUIP_WARDEN = registerReference("item.armor.equip_warden");
+    public static final Holder<SoundEvent> ARMOR_EQUIP_GUARDIAN = registerReference("item.armor.equip_guardian");
 
     public static final Holder.Reference<SoundEvent> NOTE_BLOCK_IMITATE_SHATTERED = registerReference("block.note_block.imitate.shattered");
 

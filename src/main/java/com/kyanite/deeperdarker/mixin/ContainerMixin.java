@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Container.class)
 public interface ContainerMixin {
-    @Inject(method = "stillValidBlockEntity(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/player/Player;I)Z", at = @At("HEAD"), cancellable = true)
-    private static void deeperdarker$stillValidBlockEntity(BlockEntity blockEntity, Player player, int i, CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "stillValidBlockEntity(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/player/Player;F)Z", at = @At("HEAD"), cancellable = true)
+    private static void deeperdarker$stillValidBlockEntity(BlockEntity blockEntity, Player player, float f, CallbackInfoReturnable<Boolean> cir) {
         if (blockEntity.getLevel() instanceof ServerLevel serverLevel && SculkTransmitterItem.stillValid(player, serverLevel, blockEntity.getBlockPos())) {
             cir.setReturnValue(true);
             cir.cancel();

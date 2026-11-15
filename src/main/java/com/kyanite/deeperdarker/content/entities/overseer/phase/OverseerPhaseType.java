@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities.overseer.phase;
 import com.kyanite.deeperdarker.content.entities.boss.BossPhaseType;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,9 +19,9 @@ public enum OverseerPhaseType implements StringRepresentable, BossPhaseType<Over
     public static final Codec<OverseerPhaseType> CODEC = StringRepresentable.fromEnum(OverseerPhaseType::values);
 
     private final String name;
-    private final Supplier<Codec<? extends OverseerPhase>> codec;
+    private final Supplier<MapCodec<? extends OverseerPhase>> codec;
 
-    OverseerPhaseType(String name, Supplier<Codec<? extends OverseerPhase>> codec) {
+    OverseerPhaseType(String name, Supplier<MapCodec<? extends OverseerPhase>> codec) {
         this.name = name;
         this.codec = codec;
     }
@@ -30,7 +31,7 @@ public enum OverseerPhaseType implements StringRepresentable, BossPhaseType<Over
         return name;
     }
 
-    public Codec<? extends OverseerPhase> getCodec() {
+    public MapCodec<? extends OverseerPhase> getCodec() {
         return codec.get();
     }
 }

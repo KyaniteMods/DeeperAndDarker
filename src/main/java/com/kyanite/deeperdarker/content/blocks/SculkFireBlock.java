@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.DeeperDarker;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
+import com.mojang.serialization.MapCodec;
 import dev.kyanitemods.kyaniteportals.KyanitePortals;
 import dev.kyanitemods.kyaniteportals.content.Portal;
 import dev.kyanitemods.kyaniteportals.content.testers.PortalTester;
@@ -22,8 +23,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.Optional;
 
 public class SculkFireBlock extends BaseFireBlock {
+    public static final MapCodec<SculkFireBlock> CODEC = simpleCodec(SculkFireBlock::new);
     public SculkFireBlock(Properties properties) {
         super(properties, 2.0f);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseFireBlock> codec() {
+        return CODEC;
     }
 
     @Override

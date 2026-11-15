@@ -51,8 +51,8 @@ public class Bubblox extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        entityData.define(ID_SIZE, (byte) 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(ID_SIZE, (byte) 0);
     }
 
     @Override

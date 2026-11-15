@@ -1,7 +1,6 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.compat.create.DDCreateCompat;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
@@ -9,7 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.Util;
 import net.minecraft.core.DefaultedRegistry;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -17,15 +19,21 @@ import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+
 public class DDENLanguageProvider extends FabricLanguageProvider {
-    public DDENLanguageProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public DDENLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = registryLookup.lookupOrThrow(Registries.ENCHANTMENT);
+
         translationBuilder.add("deeperdarker.discord", "Discord");
 
         translationBuilder.add("itemGroup.deeperdarker", "Deeper and Darker");
@@ -227,7 +235,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.ICE_LILY, "Ice Lily");
         translationBuilder.add(Util.makeDescriptionId("tooltips", BuiltInRegistries.BLOCK.getKey(DDBlocks.ICE_LILY)) + ".flowerless", "Flowerless");
         translationBuilder.add(DDBlocks.LILY_FLOWER, "Lily Flower");
-        translationBuilder.add(DDItems.LILY_FLOWER, "Lily Flower");
+        translationBuilder.add(DDBlockItems.LILY_FLOWER, "Lily Flower");
         translationBuilder.add(DDBlocks.SHATTERED_HEAD, "Shattered Head");
         translationBuilder.add(get(BuiltInRegistries.BLOCK, DDBlocks.SHATTERED_WALL_HEAD), "Shattered Wall Head");
         translationBuilder.add(DDBlocks.SCULK_TISSUE, "Sculk Tissue");
@@ -309,11 +317,11 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SCULK_BONE, "Sculk Bone");
         translationBuilder.add(DDItems.SCULK_BONE_SHARD, "Sculk Bone Shard");
         translationBuilder.add(DDItems.OTHERSIDE_FIRE_STRIKER, "Otherside Fire Striker");
-        translationBuilder.add(DDItems.PATIENCE_SOUL, "Soul of Patience");
-        translationBuilder.add(DDItems.FORTITUDE_SOUL, "Soul of Fortitude");
-        translationBuilder.add(DDItems.CORRUPTION_SOUL, "Soul of Corruption");
-        translationBuilder.add(DDItems.PURITY_SOUL, "Soul of Purity");
-        translationBuilder.add(DDItems.VIRTUE_SOUL, "Soul of Virtue");
+        translationBuilder.add(DDBlockItems.PATIENCE_SOUL, "Soul of Patience");
+        translationBuilder.add(DDBlockItems.FORTITUDE_SOUL, "Soul of Fortitude");
+        translationBuilder.add(DDBlockItems.CORRUPTION_SOUL, "Soul of Corruption");
+        translationBuilder.add(DDBlockItems.PURITY_SOUL, "Soul of Purity");
+        translationBuilder.add(DDBlockItems.VIRTUE_SOUL, "Soul of Virtue");
         translationBuilder.add(DDItems.ROYAL_SCEPTER, "Royal Scepter");
         translationBuilder.add(DDItems.GRIME_BALL, "Grime Ball");
         translationBuilder.add(DDItems.GRIME_BRICK, "Grime Brick");
@@ -367,9 +375,9 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost", "Press %s to Boost");
         translationBuilder.add(DDItems.SOUL_ELYTRA.getDescriptionId() + ".boost_disabled", "Boost disabled");
         translationBuilder.add(DDItems.SONOROUS_STAFF, "Sonorous Staff");
-        translationBuilder.add(DDItems.BLOOM_BERRIES, "Bloom Berries");
+        translationBuilder.add(DDBlockItems.BLOOM_BERRIES, "Bloom Berries");
         translationBuilder.add(DDItems.SCULK_TUBER, "Sculk Tuber");
-        translationBuilder.add(DDItems.SCULK_BERRY_SPROUT, "Sculk Berry Sprout");
+        translationBuilder.add(DDBlockItems.SCULK_BERRY_SPROUT, "Sculk Berry Sprout");
         translationBuilder.add(DDItems.SCULK_BERRY, "Sculk Berry");
         translationBuilder.add(DDItems.SCULK_TISSUE_BRICK, "Sculk Tissue Brick");
         translationBuilder.add(DDItems.SHADOW_CRYSTAL, "Shadow Crystal");
@@ -381,10 +389,10 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_large", "This key is too large...");
         translationBuilder.add(DeeperDarker.MOD_ID + ".key_type.too_small", "This key is too small...");
 
-        translationBuilder.add(DDEnchantments.CATALYSIS, "Catalysis");
-        translationBuilder.add(DDEnchantments.CATALYSIS.getDescriptionId() + ".desc", "Spreads sculk when mobs are killed.");
-        translationBuilder.add(DDEnchantments.SCULK_SMITE, "Sculk Smite");
-        translationBuilder.add(DDEnchantments.SCULK_SMITE.getDescriptionId() + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
+        translationBuilder.addEnchantment(DDEnchantments.CATALYSIS, "Catalysis");
+        translationBuilder.add(Util.makeDescriptionId("enchantment", DDEnchantments.CATALYSIS.location()) + ".desc", "Spreads sculk when mobs are killed.");
+        translationBuilder.addEnchantment(DDEnchantments.SCULK_SMITE, "Sculk Smite");
+        translationBuilder.add(Util.makeDescriptionId("enchantment", DDEnchantments.SCULK_SMITE.location()) + ".desc", "Increases damage against sculk mobs such as Shattered and the Warden.");
 
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".linked", "Linked transmitter");
         translationBuilder.add("block." + DeeperDarker.MOD_ID + ".unlinked", "Unlinked transmitter");
@@ -427,7 +435,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(getPotion(Items.POTION, DDPotions.FIZZY), "Fizzy Potion");
         translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.FIZZY), "Fizzy Splash Potion");
         translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.FIZZY), "Fizzy Lingering Potion");
-        translationBuilder.add(DDEffects.SCULK_AFFINITY, "Sculk Affinity");
+        translationBuilder.add(DDEffects.SCULK_AFFINITY.value(), "Sculk Affinity");
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.SCULK_AFFINITY), "Arrow of Sculk Affinity");
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.LONG_SCULK_AFFINITY), "Arrow of Sculk Affinity");
         translationBuilder.add(getPotion(Items.POTION, DDPotions.SCULK_AFFINITY), "Potion of Sculk Affinity");
@@ -436,13 +444,13 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.LONG_SCULK_AFFINITY), "Splash Potion of Sculk Affinity");
         translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.SCULK_AFFINITY), "Lingering Potion of Sculk Affinity");
         translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.LONG_SCULK_AFFINITY), "Lingering Potion of Sculk Affinity");
-        translationBuilder.add(DDEffects.HEMOPHILIA, "Hemophilia");
-        translationBuilder.add(DDEffects.CORRUPTION, "Corruption");
+        translationBuilder.add(DDEffects.HEMOPHILIA.value(), "Hemophilia");
+        translationBuilder.add(DDEffects.CORRUPTION.value(), "Corruption");
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.CORRUPTION), "Arrow of Corruption");
         translationBuilder.add(getPotion(Items.POTION, DDPotions.CORRUPTION), "Potion of Corruption");
         translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.CORRUPTION), "Splash Potion of Corruption");
         translationBuilder.add(getPotion(Items.LINGERING_POTION, DDPotions.CORRUPTION), "Lingering Potion of Corruption");
-        translationBuilder.add(DDEffects.PURITY, "Purity");
+        translationBuilder.add(DDEffects.PURITY.value(), "Purity");
         translationBuilder.add(getPotion(Items.TIPPED_ARROW, DDPotions.PURITY), "Arrow of Purity");
         translationBuilder.add(getPotion(Items.POTION, DDPotions.PURITY), "Potion of Purity");
         translationBuilder.add(getPotion(Items.SPLASH_POTION, DDPotions.PURITY), "Splash Potion of Purity");
@@ -636,24 +644,6 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(tag(DDTags.Items.PAINTINGS), "Paintings");
         translationBuilder.add(tag(DDTags.Items.SCUTES), "Scutes");
 
-        // Create
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.get(), "Warden Diving Helmet");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.get(), "Warden Diving Boots");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.get(), "Warden Backtank");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK_PLACEABLE.get(), "Warden Backtank Placeable");
-
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.behaviour1", "Provides _Pressurized_ _Air_ to Equipment that requires it.");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.behaviour2", "_Collects_ _Pressurized_ _Air_ at a rate depending on the Rotational Speed.");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.condition1", "When Worn");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.condition2", "When placed, Powered by Kinetics");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_BACKTANK.asItem().getDescriptionId() + ".tooltip.summary", "A _Wearable_ _Tank_ for carrying Pressurized Air.");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.asItem().getDescriptionId() + ".tooltip.behaviour1", "Wielder _descends_ more _quickly_ in liquids. Grants the ability to _walk_ and _jump_ underwater. Wielder also is no longer affected by _Mechanical_ _Belts_.");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.asItem().getDescriptionId() + ".tooltip.condition1", "When Worn");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_BOOTS.asItem().getDescriptionId() + ".tooltip.summary", "A pair of _heavy_ _boots_, allowing for better traversal of the Ocean floor, including Oceans made of Lava.");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.asItem().getDescriptionId() + ".tooltip.behaviour1", "Provides immunity to _Fire_ and _Lava_, slowly draining _Air Pressure_ from the Backtank. Also grants _improved vision_ in Lava");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.asItem().getDescriptionId() + ".tooltip.condition1", "When Worn (Full set)");
-        translationBuilder.add(DDCreateCompat.Items.WARDEN_DIVING_HELMET.asItem().getDescriptionId() + ".tooltip.summary", "Together with a _Netherite_ or _Warden Backtank_, this can protect you from _extreme heat_. To be effective, _Legs and Feet_ have to be covered in _Netherite_ or _Warden_.");
-
         translationBuilder.add("tooltips." + DeeperDarker.MOD_ID + ".reinvoked", "Reinvoked");
     }
 
@@ -680,8 +670,8 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         return stringBuilder.toString();
     }
 
-    private static String getPotion(Item item, Potion potion) {
-        return potion.getName(item.getDescriptionId() + ".effect.");
+    private static String getPotion(Item item, Holder<Potion> potion) {
+        return Potion.getName(Optional.of(potion), item.getDescriptionId() + ".effect.");
     }
 
     private static String getBiome(ResourceKey<Biome> biome) {

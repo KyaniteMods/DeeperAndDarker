@@ -6,7 +6,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -47,11 +46,6 @@ public class OvercastPot extends Monster {
     }
 
     @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
-    }
-
-    @Override
     public boolean doHurtTarget(Entity entity) {
         if (!super.doHurtTarget(entity)) {
             return false;
@@ -79,7 +73,7 @@ public class OvercastPot extends Monster {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level, Level level2) {
         return owner == null;
     }
 

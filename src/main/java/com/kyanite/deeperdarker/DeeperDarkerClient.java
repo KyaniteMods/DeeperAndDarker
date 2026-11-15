@@ -4,14 +4,13 @@ import com.kyanite.deeperdarker.client.DDModelLayers;
 import com.kyanite.deeperdarker.client.Keybinds;
 import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
-import com.kyanite.deeperdarker.compat.create.DDCreateCompatClient;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.entities.blocks.DeadMansChestBlockEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
 import com.kyanite.deeperdarker.network.Messages;
-import com.kyanite.deeperdarker.network.SoulElytraBoostPacket;
-import com.kyanite.deeperdarker.network.UseTransmitterPacket;
+import com.kyanite.deeperdarker.network.SoulElytraBoostPayload;
+import com.kyanite.deeperdarker.network.UseTransmitterPayload;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.kyanite.deeperdarker.world.otherside.OthersideEffects;
 import net.fabricmc.api.ClientModInitializer;
@@ -23,7 +22,6 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
@@ -49,8 +47,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 
 public class DeeperDarkerClient implements ClientModInitializer {
-    public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand", "inventory");
-    public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.MOD_ID, "keybrand_in_hand", "inventory");
+    public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.id("keybrand"), "inventory");
+    public static final ModelResourceLocation KEYBRAND_IN_HAND_MODEL = new ModelResourceLocation(DeeperDarker.id("keybrand_in_hand"), "inventory");
     public static final ResourceLocation ACID_TEXTURE = DeeperDarker.id("block/acid_still");
     public static final ResourceLocation FLOWING_ACID_TEXTURE = DeeperDarker.id("block/acid_flow");
     public static final ResourceLocation ACID_SCREEN_EFFECT_TEXTURE = DeeperDarker.id("textures/misc/acid.png");
@@ -123,10 +121,6 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.DEAD_MANS_CHEST, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_DEAD_MANS_CHEST, matrices, vertexConsumers, light, overlay);
         });
-
-        if (FabricLoader.getInstance().isModLoaded("create") && DeeperDarker.CONFIG.server.createCompatibility()) {
-            DDCreateCompatClient.init();
-        }
 
         DeeperDarker.LOGGER.info("Registering models");
         EntityModelLayerRegistry.registerModelLayer(DDModelLayers.HELMET_HORNS, HelmetHornsModel::getTexturedModelData);
@@ -252,12 +246,12 @@ public class DeeperDarkerClient implements ClientModInitializer {
                 SculkTransmitterItem.isLinked(itemStack) ? 1 : 0
         );
 
-        ItemProperties.register(DDItems.SOUL_ELYTRA, new ResourceLocation("broken"), (itemStack, worldClient, livingEntity, i) ->
+        ItemProperties.register(DDItems.SOUL_ELYTRA, ResourceLocation.withDefaultNamespace("broken"), (itemStack, worldClient, livingEntity, i) ->
             SoulElytraItem.isFlyEnabled(itemStack) ? 0 : 1
         );
 
         ItemProperties.register(DDItems.SONOROUS_STAFF, DeeperDarker.id("charge"), (itemStack, worldClient, livingEntity, i) ->
-            livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 128.0f : 0
+            livingEntity != null && livingEntity.getUseItem() == itemStack ? (itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 128.0f : 0
         );
 
         ItemProperties.register(DDItems.WARDEN_HELMET, DeeperDarker.id("has_horns"), (itemStack, worldClient, livingEntity, i) ->
@@ -273,7 +267,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             if (client.player == null) return;
             ItemStack itemStack = client.player.getItemBySlot(EquipmentSlot.CHEST);
             if (itemStack.is(DDItems.SOUL_ELYTRA) && client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, 0.0f) == 0 && client.player.isFallFlying() && Keybinds.BOOST.isDown()) {
-                ClientPlayNetworking.send(new SoulElytraBoostPacket(PacketByteBufs.empty()));
+                ClientPlayNetworking.send(SoulElytraBoostPayload.INSTANCE);
             }
         });
 
@@ -281,7 +275,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             Minecraft client = Minecraft.getInstance();
             if (client.player == null) return;
             if (client.player.getInventory().hasAnyMatching(stack -> stack.getItem() instanceof SculkTransmitterItem) && Keybinds.TRANSMIT.isDown()) {
-                ClientPlayNetworking.send(new UseTransmitterPacket(PacketByteBufs.empty()));
+                ClientPlayNetworking.send(UseTransmitterPayload.INSTANCE);
             }
         });
 
@@ -296,7 +290,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
             ItemStack chest = client.player.getItemBySlot(EquipmentSlot.CHEST);
             if (chest.is(DDItems.SOUL_ELYTRA)) {
-                float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getFrameTime());
+                float f = client.player.getCooldowns().getCooldownPercent(DDItems.SOUL_ELYTRA, Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true));
                 drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37, 0, 0, 0, 12, Mth.floor(32 * f), 32, 32);
                 drawContext.blit(texture, 5, client.getWindow().getGuiScaledHeight() - 37 + Mth.floor(32 * f), 0, 12, Mth.floor(32 * f), 12, Mth.ceil(32 * (1.0f - f)), 32, 32);
                 if (f == 0.0f && client.player.isFallFlying()) {

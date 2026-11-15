@@ -1,6 +1,7 @@
 package com.kyanite.deeperdarker.content.items;
 
 import com.google.common.collect.Multimap;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -31,7 +32,7 @@ public class PatienceSoulItem extends SoulItem implements ShieldAugmentItem {
     }
 
     @Override
-    public Optional<Multimap<Attribute, AttributeModifier>> getAugmentAttributeModifiers(EquipmentSlot equipmentSlot, boolean defending) {
+    public Optional<Multimap<Holder<Attribute>, AttributeModifier>> getAugmentAttributeModifiers(EquipmentSlot equipmentSlot, boolean defending) {
         return Optional.empty();
     }
 

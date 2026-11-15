@@ -7,9 +7,8 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -24,7 +23,7 @@ public class DDCarvers {
     public static final ResourceKey<ConfiguredWorldCarver<?>> CONFIGURED_LOW_CAVE = createKey("low_cave");
     public static final ResourceKey<ConfiguredWorldCarver<?>> CONFIGURED_NOODLES = createKey("noodles");
 
-    public static void bootstrap(BootstapContext<ConfiguredWorldCarver<?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredWorldCarver<?>> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         context.register(CONFIGURED_LARGE_CAVE, WorldCarver.CAVE.configured(new CaveCarverConfiguration(
                 0.65f,

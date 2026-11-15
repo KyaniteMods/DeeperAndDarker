@@ -79,10 +79,10 @@ public class Floater extends Vex {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(DATA_ID_SPECIAL, false);
-        entityData.define(DATA_ID_IS_BODY, false);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ID_SPECIAL, false);
+        builder.define(DATA_ID_IS_BODY, false);
     }
 
     public static AttributeSupplier createFloaterAttributes() {
@@ -475,17 +475,7 @@ public class Floater extends Vex {
     }
 
     @Override
-    public boolean canChangeDimensions() {
+    public boolean canChangeDimensions(Level level, Level level2) {
         return false;
-    }
-
-    @Override
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions entityDimensions) {
-        return entityDimensions.height / 2.0f;
-    }
-
-    @Override
-    public MobType getMobType() {
-        return DDMobType.SCULK;
     }
 }

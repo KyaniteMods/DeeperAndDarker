@@ -11,7 +11,7 @@ import com.kyanite.deeperdarker.world.otherside.structures.maze.rooms.RoomTypeRe
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.WeightedRandomList;
@@ -24,8 +24,10 @@ import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
+import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +43,7 @@ public class DDStructures {
     public static final ResourceKey<Structure> WATCHTOWER = createKey("watchtower");
     public static final ResourceKey<Structure> VILLAGER_CAMP = createKey("villager_camp");
 
-    public static void bootstrap(BootstapContext<Structure> context) {
+    public static void bootstrap(BootstrapContext<Structure> context) {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
 
@@ -64,7 +66,7 @@ public class DDStructures {
                 new RoomEntry(new OakTreeRoomOptions(Optional.of(DDChestLootTableProvider.GLOOMAZE_BASIC), Optional.of(DDChestLootTableProvider.GLOOMAZE_SECRET)), Optional.empty(), false)
         ), false)));
 
-        context.register(CASTLE, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_CASTLE)), pools.getOrThrow(DDPools.CASTLE_CASTLES), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.aboveBottom(20)), true, Optional.empty(), 116));
+        context.register(CASTLE, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_CASTLE)), pools.getOrThrow(DDPools.CASTLE_CASTLES), Optional.empty(), 7, ConstantHeight.of(VerticalAnchor.aboveBottom(20)), true, Optional.empty(), 116, List.of(), DimensionPadding.ZERO, LiquidSettings.APPLY_WATERLOGGING));
         context.register(SCULK_RUINS, new JigsawStructure(stronghold(biomes.getOrThrow(DDTags.Biomes.HAS_SCULK_RUINS)), pools.getOrThrow(DDPools.SCULK_RUINS_TOP), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.belowTop(28)), false));
         context.register(WATCHTOWER, new JigsawStructure(surfaceStructure(biomes.getOrThrow(DDTags.Biomes.HAS_WATCHTOWER)), pools.getOrThrow(DDPools.WATCHTOWER), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.belowTop(28)), false));
         context.register(VILLAGER_CAMP, new JigsawStructure(surfaceStructure(biomes.getOrThrow(DDTags.Biomes.HAS_VILLAGER_CAMP)), pools.getOrThrow(DDPools.VILLAGER_CAMP), 7, UniformHeight.of(VerticalAnchor.aboveBottom(18), VerticalAnchor.belowTop(28)), false));

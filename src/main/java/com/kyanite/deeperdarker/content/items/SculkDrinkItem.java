@@ -29,10 +29,12 @@ public class SculkDrinkItem extends Item {
         return itemStack;
     }
 
-    public int getUseDuration(ItemStack itemStack) {
+    @Override
+    public int getUseDuration(ItemStack itemStack, LivingEntity livingEntity) {
         return 32;
     }
 
+    @Override
     public UseAnim getUseAnimation(ItemStack itemStack) {
         return UseAnim.DRINK;
     }

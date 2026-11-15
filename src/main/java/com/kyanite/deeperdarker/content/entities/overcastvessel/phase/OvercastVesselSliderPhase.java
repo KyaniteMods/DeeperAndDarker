@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,7 +16,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Optional;
 
 public class OvercastVesselSliderPhase extends OvercastVesselPhase {
-    public static final Codec<OvercastVesselSliderPhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<OvercastVesselSliderPhase> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.INT.fieldOf("max_phase_time").forGetter(phase -> phase.maxPhaseTime),
             Codec.INT.fieldOf("phase_time").forGetter(phase -> phase.phaseTime),
             Direction.CODEC.optionalFieldOf("direction").forGetter(phase -> phase.direction),
@@ -175,7 +176,7 @@ public class OvercastVesselSliderPhase extends OvercastVesselPhase {
     }
 
     @Override
-    public Codec<? extends OvercastVesselPhase> codec() {
+    public MapCodec<? extends OvercastVesselPhase> codec() {
         return CODEC;
     }
 

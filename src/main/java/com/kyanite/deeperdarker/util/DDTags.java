@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -80,6 +81,22 @@ public class DDTags {
         public static final TagKey<Block> OVERSEER_VALID_ORIGIN = TagKey.create(
                 Registries.BLOCK, DeeperDarker.id("overseer_valid_origin")
         );
+
+        public static final TagKey<Block> INCORRECT_FOR_LEAD_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.id("incorrect_for_lead_tool")
+        );
+        public static final TagKey<Block> INCORRECT_FOR_RADIOACTIVE_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.id("incorrect_for_radioactive_tool")
+        );
+        public static final TagKey<Block> INCORRECT_FOR_RESONARIUM_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.id("incorrect_for_resonarium_tool")
+        );
+        public static final TagKey<Block> INCORRECT_FOR_WARDEN_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.id("incorrect_for_warden_tool")
+        );
+        public static final TagKey<Block> INCORRECT_FOR_GUARDIAN_TOOL = TagKey.create(
+                Registries.BLOCK, DeeperDarker.id("incorrect_for_guardian_tool")
+        );
     }
 
     public static class Items {
@@ -137,6 +154,8 @@ public class DDTags {
         public static final TagKey<EntityType<?>> ACID_IMMUNE = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.id("acid_immune"));
         public static final TagKey<EntityType<?>> OVERCASTERS = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.id("overcasters"));
         public static final TagKey<EntityType<?>> PURITY_RESISTANT = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.id("purity_resistant"));
+        public static final TagKey<EntityType<?>> SCULK = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.id("sculk"));
+        public static final TagKey<EntityType<?>> SENSITIVE_TO_SCULK_SMITE = TagKey.create(Registries.ENTITY_TYPE, DeeperDarker.id("sensitive_to_sculk_smite"));
     }
 
     public static class Biomes {
@@ -161,6 +180,12 @@ public class DDTags {
 
         public static final TagKey<Structure> NO_BLOOMING_POOL_GENERATION = TagKey.create(
                 Registries.STRUCTURE, DeeperDarker.id("no_blooming_pool_generation"));
+    }
+
+    public static class Enchantments {
+        public static final TagKey<Enchantment> PREVENTS_ANCIENT_VASE_SPAWNS = TagKey.create(Registries.ENCHANTMENT, DeeperDarker.id("prevents_ancient_vase_spawns"));
+        public static final TagKey<Enchantment> PICKS_UP_CRYSTALLIZED_AMBER = TagKey.create(Registries.ENCHANTMENT, DeeperDarker.id("picks_up_crystallized_amber"));
+        public static final TagKey<Enchantment> PREVENTS_INFESTED_SCULK_SPAWNS = TagKey.create(Registries.ENCHANTMENT, DeeperDarker.id("prevents_infested_sculk_spawns"));
     }
 
     public static class GameEvents {

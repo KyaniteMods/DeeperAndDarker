@@ -2,11 +2,13 @@ package com.kyanite.deeperdarker.mixin;
 
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.DDSounds;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
@@ -31,7 +33,7 @@ public abstract class WardenDropSculkBoneShardMixin {
             if (!warden.level().isClientSide()) {
                 shear(SoundSource.PLAYERS);
                 mob.gameEvent(GameEvent.SHEAR, player);
-                itemStack.hurtAndBreak(Items.SHEARS.getMaxDamage(), player, p -> p.broadcastBreakEvent(interactionHand));
+                itemStack.hurtAndBreak(itemStack.getMaxDamage(), player, Player.getSlotForHand(interactionHand));
                 cir.setReturnValue(InteractionResult.SUCCESS);
                 return;
             }

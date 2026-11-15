@@ -3,7 +3,7 @@ package com.kyanite.deeperdarker.content;
 import com.kyanite.deeperdarker.DeeperDarker;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,7 +21,7 @@ public final class DDDamageTypes {
     public static final ResourceKey<DamageType> ACID = createKey("acid");
     public static final ResourceKey<DamageType> OVERSEER_CRYSTAL = createKey("overseer_crystal");
 
-    public static void bootstrap(BootstapContext<DamageType> context) {
+    public static void bootstrap(BootstrapContext<DamageType> context) {
         register(context, BITE, 0.1f);
         register(context, RING, 0.1f);
         register(context, DARK_FOUNTAIN, 0.1f);
@@ -30,7 +30,7 @@ public final class DDDamageTypes {
         register(context, OVERSEER_CRYSTAL, 0.1f);
     }
 
-    private static Holder.Reference<DamageType> register(BootstapContext<DamageType> context, ResourceKey<DamageType> resourceKey, float f) {
+    private static Holder.Reference<DamageType> register(BootstrapContext<DamageType> context, ResourceKey<DamageType> resourceKey, float f) {
         return context.register(resourceKey, new DamageType(DeeperDarker.MOD_ID + "." + resourceKey.location().getPath(), f));
     }
 

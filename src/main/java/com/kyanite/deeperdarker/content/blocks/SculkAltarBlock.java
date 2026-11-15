@@ -2,8 +2,9 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.entities.blocks.SculkAltarBlockEntity;
-import com.kyanite.deeperdarker.network.AddSculkAltarItemPacket;
-import com.kyanite.deeperdarker.network.RemoveSculkAltarItemPacket;
+import com.kyanite.deeperdarker.network.AddSculkAltarItemPayload;
+import com.kyanite.deeperdarker.network.RemoveSculkAltarItemPayload;
+import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -31,6 +32,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class SculkAltarBlock extends BaseEntityBlock {
+    public static final MapCodec<SculkAltarBlock> CODEC = simpleCodec(SculkAltarBlock::new);
     protected static final VoxelShape SHAPE_BOTTOM = Block.box(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
     protected static final VoxelShape SHAPE_RING = Shapes.join(
             Block.box(0.0, 12.0, 0.0, 16.0, 16.0, 16.0),
@@ -46,6 +48,11 @@ public class SculkAltarBlock extends BaseEntityBlock {
     public SculkAltarBlock(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(getStateDefinition().any().setValue(HAS_ITEMS, false).setValue(CAN_SPAWN_BOSS, true).setValue(BOSS_LOCKED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -90,23 +97,23 @@ public class SculkAltarBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (level.getBlockEntity(blockPos) instanceof SculkAltarBlockEntity blockEntity) {
-            if (!level.isClientSide()) return InteractionResult.CONSUME;
+            if (!level.isClientSide()) return ItemInteractionResult.CONSUME;
 
-            ItemStack itemStack = player.getItemInHand(interactionHand);
-            if (itemStack.isEmpty()) {
-                if (!itemsHit(blockHitResult)) return InteractionResult.PASS;
+            ItemStack handStack = player.getItemInHand(interactionHand);
+            if (handStack.isEmpty()) {
+                if (!itemsHit(blockHitResult)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
                 float angle = (float) Mth.atan2(blockHitResult.getLocation().z() - blockHitResult.getBlockPos().getCenter().z(), blockHitResult.getBlockPos().getCenter().x() - blockHitResult.getLocation().x()) * Mth.RAD_TO_DEG + 540.0f - blockEntity.getRotationDegrees(0.0f);
-                ClientPlayNetworking.send(new RemoveSculkAltarItemPacket((int)(angle / 360.0f * blockEntity.getItems().size()), blockPos));
+                ClientPlayNetworking.send(new RemoveSculkAltarItemPayload((int)(angle / 360.0f * blockEntity.getItems().size()), blockPos));
             } else {
                 int slot = interactionHand == InteractionHand.MAIN_HAND ? player.getInventory().selected : 40;
-                ClientPlayNetworking.send(new AddSculkAltarItemPacket(slot, blockPos));
+                ClientPlayNetworking.send(new AddSculkAltarItemPayload(slot, blockPos));
             }
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     private static boolean itemsHit(BlockHitResult blockHitResult) {
@@ -114,7 +121,7 @@ public class SculkAltarBlock extends BaseEntityBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, PathComputationType pathComputationType) {
+    protected boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return false;
     }
 

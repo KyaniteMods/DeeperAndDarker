@@ -73,12 +73,12 @@ public class DDModelLayers {
     public static void init() {
         DeeperDarker.LOGGER.info("Initializing model layers");
         HELMET_HORNS = registerMain("helmet_horns");
-        ECHO_BOAT = createBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
-        ECHO_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.ECHO.name()).getPath());
-        BLOOM_BOAT = createBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());
-        BLOOM_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.BLOOM.name()).getPath());
-        SCULK_SPRUCE_BOAT = createBoat(new ResourceLocation(DDBlocks.SCULK_SPRUCE.name()).getPath());
-        SCULK_SPRUCE_CHEST_BOAT = createChestBoat(new ResourceLocation(DDBlocks.SCULK_SPRUCE.name()).getPath());
+        ECHO_BOAT = createBoat(ResourceLocation.parse(DDBlocks.ECHO.name()).getPath());
+        ECHO_CHEST_BOAT = createChestBoat(ResourceLocation.parse(DDBlocks.ECHO.name()).getPath());
+        BLOOM_BOAT = createBoat(ResourceLocation.parse(DDBlocks.BLOOM.name()).getPath());
+        BLOOM_CHEST_BOAT = createChestBoat(ResourceLocation.parse(DDBlocks.BLOOM.name()).getPath());
+        SCULK_SPRUCE_BOAT = createBoat(ResourceLocation.parse(DDBlocks.SCULK_SPRUCE.name()).getPath());
+        SCULK_SPRUCE_CHEST_BOAT = createChestBoat(ResourceLocation.parse(DDBlocks.SCULK_SPRUCE.name()).getPath());
         ANGLER_FISH = registerMain("angler_fish");
         SCULK_SNAPPER = registerMain("sculk_snapper");
         SHATTERED = registerMain("shattered");

@@ -15,7 +15,7 @@ public abstract class DeadMansChestItemEntityMixin {
     private void deeperdarker$addItemToDeadMansChestLootTable(CallbackInfo ci) {
         ItemEntity entity = (ItemEntity) (Object) this;
         if (entity.level() instanceof ServerLevel serverLevel && !entity.getItem().isEmpty() && !entity.getItem().is(DDTags.Items.CLUTTER_ITEMS)) {
-            DeadMansChestSavedData data = serverLevel.getServer().overworld().getDataStorage().computeIfAbsent(DeadMansChestSavedData::load, DeadMansChestSavedData::new, DeadMansChestSavedData.ID);
+            DeadMansChestSavedData data = serverLevel.getServer().overworld().getDataStorage().computeIfAbsent(DeadMansChestSavedData.factory(), DeadMansChestSavedData.ID);
             data.add(entity.getItem());
             data.setDirty();
         }

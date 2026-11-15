@@ -41,10 +41,10 @@ public class DDEntities {
     public static final EntityType<OvercastVessel> OVERCAST_VESSEL = register("overcast_vessel", FabricEntityTypeBuilder.<OvercastVessel>create(MobCategory.MONSTER, OvercastVessel::new).dimensions(EntityDimensions.fixed(3f, 3f)).trackRangeChunks(10).build());
     public static final EntityType<AcidSprite> ACID_SPRITE = register("acid_sprite", FabricEntityTypeBuilder.create(MobCategory.MONSTER, AcidSprite::new).dimensions(EntityDimensions.fixed(0.5f, 0.6f)).trackRangeChunks(10).build());
     public static final EntityType<Bubblox> BUBBLOX = register("bubblox", FabricEntityTypeBuilder.<Bubblox>create(MobCategory.MONSTER, Bubblox::new).dimensions(EntityDimensions.fixed(1.0f, 1.0f)).trackRangeChunks(10).build());
-    public static final EntityType<Overseer> OVERSEER = register("overseer", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Overseer::new).dimensions(EntityDimensions.fixed(2.0f, 2.0f)).trackRangeChunks(10).build());
-    public static final EntityType<Floater> FLOATER = register("floater", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Floater::new).dimensions(EntityDimensions.fixed(0.625f, 0.625f)).trackRangeChunks(10).build());
+    public static final EntityType<Overseer> OVERSEER = register("overseer", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Overseer::new).dimensions(EntityDimensions.fixed(2.0f, 2.0f).withEyeHeight(1.0f)).trackRangeChunks(10).build());
+    public static final EntityType<Floater> FLOATER = register("floater", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Floater::new).dimensions(EntityDimensions.fixed(0.625f, 0.625f).withEyeHeight(0.3125f)).trackRangeChunks(10).build());
     public static final EntityType<Overcaster> OVERCASTER = register("overcaster", FabricEntityTypeBuilder.create(MobCategory.MONSTER, Overcaster::new).dimensions(EntityDimensions.fixed(0.6f, 1.95f)).trackRangeChunks(10).build());
-    public static final EntityType<SculkMillipede> SCULK_MILLIPEDE = register("sculk_millipede", FabricEntityTypeBuilder.create(MobCategory.MONSTER, SculkMillipede::new).dimensions(EntityDimensions.fixed(1.5f, 1.5f)).trackRangeChunks(10).build());
+    public static final EntityType<SculkMillipede> SCULK_MILLIPEDE = register("sculk_millipede", FabricEntityTypeBuilder.create(MobCategory.MONSTER, SculkMillipede::new).dimensions(EntityDimensions.fixed(1.5f, 1.5f).withEyeHeight(0.75f)).trackRangeChunks(10).build());
 
     public static void init() {
         DeeperDarker.LOGGER.debug("Registering Deeper and Darker entity types");
@@ -78,17 +78,17 @@ public class DDEntities {
     }
 
     public static void registerSpawnPlacements() {
-        SpawnPlacements.register(ANGLER_FISH, SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkAnglerFishSpawnRules);
-        SpawnPlacements.register(SCULK_SNAPPER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(SHATTERED, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(SCULK_LEECH, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(SHRIEK_WORM, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(STALKER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(SLUDGE, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(SCULK_CENTIPEDE, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(POTTY, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(POT, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(POTTER, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-        SpawnPlacements.register(ACID_SPRITE, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(ANGLER_FISH, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnglerFish::checkAnglerFishSpawnRules);
+        SpawnPlacements.register(SCULK_SNAPPER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(SHATTERED, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(SCULK_LEECH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(SHRIEK_WORM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(STALKER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(SLUDGE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(SCULK_CENTIPEDE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(POTTY, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(POT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(POTTER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+        SpawnPlacements.register(ACID_SPRITE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
     }
 }

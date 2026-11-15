@@ -20,6 +20,11 @@ public class GloomyGrassBlock extends BushBlock {
     }
 
     @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return null;
+    }
+
+    @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockState state = pLevel.getBlockState(pPos.below());
         return state.is(DDBlocks.GLOOMY_SCULK);

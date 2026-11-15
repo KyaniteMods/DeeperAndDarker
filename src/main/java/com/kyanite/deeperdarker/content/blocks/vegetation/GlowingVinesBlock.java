@@ -11,10 +11,16 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class GlowingVinesBlock extends GrowingPlantHeadBlock {
+    public static final MapCodec<GlowingVinesBlock> CODEC = simpleCodec(GlowingVinesBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 9, 1, 15, 16, 15);
 
     public GlowingVinesBlock(Properties pProperties) {
         super(pProperties, Direction.DOWN, SHAPE, false, 0.14);
+    }
+
+    @Override
+    protected MapCodec<? extends GrowingPlantHeadBlock> codec() {
+        return CODEC;
     }
 
     @Override

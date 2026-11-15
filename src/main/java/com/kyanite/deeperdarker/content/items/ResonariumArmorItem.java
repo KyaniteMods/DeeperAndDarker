@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class ResonariumArmorItem extends ArmorItem {
-    public ResonariumArmorItem(ArmorMaterial material, Type type, Properties properties) {
+    public ResonariumArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties) {
         super(material, type, properties);
     }
 

@@ -4,6 +4,9 @@ import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
+import com.kyanite.deeperdarker.content.items.components.*;
+import com.kyanite.deeperdarker.util.DDTags;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,11 +17,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -34,11 +37,17 @@ import java.util.List;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class CrystallizedAmberBlock extends BaseEntityBlock {
+    public static final MapCodec<CrystallizedAmberBlock> CODEC = simpleCodec(CrystallizedAmberBlock::new);
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
 
     public CrystallizedAmberBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FOSSILIZED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -48,7 +57,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().hasTag());
+        return this.defaultBlockState().setValue(FOSSILIZED, pContext.getItemInHand().has(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT));
     }
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
@@ -75,14 +84,15 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
         if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
-            if(!EnchantmentHelper.hasSilkTouch(itemStack) && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
+            boolean picksUp = EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER);
+            if(!picksUp && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                 if(crystallizedAmber.fossilizedEntity && level instanceof ServerLevel serverLevel) DDEntities.SCULK_LEECH.spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
                 else Block.popResource(level, pos, crystallizedAmber.getLoot());
-            } else if(EnchantmentHelper.hasSilkTouch(itemStack) && !level.isClientSide()) {
+            } else if(picksUp && !level.isClientSide()) {
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                     CompoundTag tag = new CompoundTag();
-                    tag.put(CrystallizedAmberBlockEntity.ITEM_TAG, crystallizedAmber.getLoot().save(new CompoundTag()));
+                    tag.put(CrystallizedAmberBlockEntity.ITEM_TAG, crystallizedAmber.getLoot().save(level.registryAccess()));
                     tag.putBoolean(CrystallizedAmberBlockEntity.LEECH_TAG, crystallizedAmber.fossilizedEntity);
                     tag.putFloat(CrystallizedAmberBlockEntity.ROTATION_TAG, crystallizedAmber.rotation);
                     BlockItem.setBlockEntityData(stack, DDBlockEntities.CRYSTALLIZED_AMBER, tag);
@@ -96,16 +106,15 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
-        if (itemStack.hasTag() && itemStack.getTag().contains(BlockItem.BLOCK_ENTITY_TAG)) {
-            CompoundTag tag = itemStack.getTag().getCompound(BlockItem.BLOCK_ENTITY_TAG);
-            if (tag.contains(CrystallizedAmberBlockEntity.LEECH_TAG) && tag.getBoolean(CrystallizedAmberBlockEntity.LEECH_TAG)) {
-                list.add(ComponentUtils.wrapInSquareBrackets(DDEntities.SCULK_LEECH.getDescription().copy()).withStyle(ChatFormatting.GRAY));
-            } else if (tag.contains(CrystallizedAmberBlockEntity.ITEM_TAG)) {
-                ItemStack stack = ItemStack.of(tag.getCompound(CrystallizedAmberBlockEntity.ITEM_TAG));
-                list.add(stack.getDisplayName().copy().withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
+        if (itemStack.has(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT)) {
+            CrystallizedAmberContent<?> content = itemStack.get(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT);
+            if (content.getType() == CrystallizedAmberContentType.ENTITY) {
+                list.add(ComponentUtils.wrapInSquareBrackets(((CrystallizedAmberEntity) content).type().getDescription().copy()).withStyle(ChatFormatting.GRAY));
+            } else if (content.getType() == CrystallizedAmberContentType.ITEM_STACK) {
+                list.add(((CrystallizedAmberItemStack) content).stack().getDisplayName().copy().withStyle(ChatFormatting.GRAY));
             }
         }
-        super.appendHoverText(itemStack, blockGetter, list, tooltipFlag);
+        super.appendHoverText(itemStack, context, list, tooltipFlag);
     }
 }

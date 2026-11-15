@@ -1,8 +1,8 @@
 package com.kyanite.deeperdarker.content;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.entities.DDMobType;
 import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.*;
@@ -11,34 +11,35 @@ import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class DDEffects {
-    public static final MobEffect SCULK_AFFINITY = register("sculk_affinity", new MobEffect(MobEffectCategory.BENEFICIAL, 0x00ffd0) {
+    public static final Holder<MobEffect> SCULK_AFFINITY = register("sculk_affinity", new MobEffect(MobEffectCategory.BENEFICIAL, 0x00ffd0) {
         @Override
-        public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+        public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
             return true;
         }
     });
 
-    public static final MobEffect HEMOPHILIA = register("hemophilia", new MobEffect(MobEffectCategory.HARMFUL, 0x63030a) {});
+    public static final Holder<MobEffect> HEMOPHILIA = register("hemophilia", new MobEffect(MobEffectCategory.HARMFUL, 0x63030a) {});
 
-    public static final MobEffect CORRUPTION = register("corruption", new InstantenousMobEffect(MobEffectCategory.HARMFUL, 0x0d031a) {
+    public static final Holder<MobEffect> CORRUPTION = register("corruption", new InstantenousMobEffect(MobEffectCategory.HARMFUL, 0x0d031a) {
         @Override
-        public void applyEffectTick(LivingEntity livingEntity, int i) {
+        public boolean applyEffectTick(LivingEntity livingEntity, int i) {
             boolean converted = SculkConversionRegistry.corruptionConversion(livingEntity);
             if (!converted) {
-                if (livingEntity.getMobType() == DDMobType.SCULK) {
+                if (livingEntity.getType().is(DDTags.EntityTypes.SCULK)) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 260, 1));
                 } else {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 260, 0));
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
                 }
             }
+            return true;
         }
 
         @Override
         public void applyInstantenousEffect(@Nullable Entity entity, @Nullable Entity entity2, LivingEntity livingEntity, int i, double d) {
             boolean converted = SculkConversionRegistry.corruptionConversion(livingEntity);
             if (!converted) {
-                if (livingEntity.getMobType() == DDMobType.SCULK) {
+                if (livingEntity.getType().is(DDTags.EntityTypes.SCULK)) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 260, 1));
                 } else {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 260, 0));
@@ -47,12 +48,12 @@ public class DDEffects {
             }
         }
     });
-    public static final MobEffect PURITY = register("purity", new InstantenousMobEffect(MobEffectCategory.BENEFICIAL, 0x42cf67) {
+    public static final Holder<MobEffect> PURITY = register("purity", new InstantenousMobEffect(MobEffectCategory.BENEFICIAL, 0x42cf67) {
         @Override
-        public void applyEffectTick(LivingEntity livingEntity, int i) {
+        public boolean applyEffectTick(LivingEntity livingEntity, int i) {
             boolean converted = SculkConversionRegistry.purityConversion(livingEntity);
             if (!converted) {
-                if (livingEntity.getMobType() == DDMobType.SCULK) {
+                if (livingEntity.getType().is(DDTags.EntityTypes.SCULK)) {
                     if (!livingEntity.getType().is(DDTags.EntityTypes.PURITY_RESISTANT)) {
                         livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
                         livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 8));
@@ -64,13 +65,14 @@ public class DDEffects {
                     livingEntity.removeEffect(MobEffects.WITHER);
                 }
             }
+            return true;
         }
 
         @Override
         public void applyInstantenousEffect(@Nullable Entity entity, @Nullable Entity entity2, LivingEntity livingEntity, int i, double d) {
             boolean converted = SculkConversionRegistry.purityConversion(livingEntity);
             if (!converted) {
-                if (livingEntity.getMobType() == DDMobType.SCULK) {
+                if (livingEntity.getType().is(DDTags.EntityTypes.SCULK)) {
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 0));
                     livingEntity.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 8));
                 } else {
@@ -81,8 +83,8 @@ public class DDEffects {
         }
     });
 
-    private static MobEffect register(String id, MobEffect mobEffect) {
-        return Registry.register(BuiltInRegistries.MOB_EFFECT, DeeperDarker.id(id), mobEffect);
+    private static Holder<MobEffect> register(String id, MobEffect mobEffect) {
+        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, DeeperDarker.id(id), mobEffect);
     }
 
     public static void init() {

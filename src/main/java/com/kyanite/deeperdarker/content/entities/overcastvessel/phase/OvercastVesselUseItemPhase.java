@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.content.entities.overcastvessel.phase;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVessel;
 import com.kyanite.deeperdarker.content.entities.overcastvessel.OvercastVesselItem;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.item.ItemStack;
 
@@ -12,7 +13,7 @@ import java.util.Deque;
 import java.util.List;
 
 public class OvercastVesselUseItemPhase extends OvercastVesselPhase {
-    public static final Codec<OvercastVesselUseItemPhase> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<OvercastVesselUseItemPhase> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             ItemStack.CODEC.listOf().<Deque<ItemStack>>xmap(ArrayDeque::new, ArrayList::new).fieldOf("stacks").forGetter(phase -> phase.stacks),
             Codec.INT.fieldOf("ticks_between_uses").forGetter(phase -> phase.ticksBetweenUses),
             Codec.INT.fieldOf("cooldown").forGetter(phase -> phase.cooldown)
@@ -56,7 +57,7 @@ public class OvercastVesselUseItemPhase extends OvercastVesselPhase {
     }
 
     @Override
-    public Codec<? extends OvercastVesselPhase> codec() {
+    public MapCodec<? extends OvercastVesselPhase> codec() {
         return CODEC;
     }
 

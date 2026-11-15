@@ -25,6 +25,6 @@ public class OvercastVesselRenderer extends MobRenderer<OvercastVessel, Overcast
     }
 
     @Override
-    protected void setupRotations(OvercastVessel vessel, PoseStack poseStack, float f, float g, float h) {
+    protected void setupRotations(OvercastVessel vessel, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks, float entityScale) {
     }
 }

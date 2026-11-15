@@ -30,8 +30,8 @@ public class AnglerFishRenderer extends MobRenderer<AnglerFish, AnglerFishModel>
     }
 
     @Override
-    protected void setupRotations(AnglerFish pEntityLiving, PoseStack pPoseStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks) {
-        super.setupRotations(pEntityLiving, pPoseStack, pAgeInTicks, pRotationYaw, pPartialTicks);
+    protected void setupRotations(AnglerFish pEntityLiving, PoseStack pPoseStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks, float entityScale) {
+        super.setupRotations(pEntityLiving, pPoseStack, pAgeInTicks, pRotationYaw, pPartialTicks, entityScale);
         float f = 1f;
         float f1 = 1f;
         if (!pEntityLiving.isInWater()) {

@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.blocks.vegetation;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -18,7 +19,7 @@ import net.minecraft.world.level.material.Fluids;
 public class LilyFlowerBlock extends FlowerBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public LilyFlowerBlock(MobEffect effect, int seconds, Properties properties) {
+    public LilyFlowerBlock(Holder<MobEffect> effect, int seconds, Properties properties) {
         super(effect, seconds, properties);
     }
 

@@ -2,6 +2,7 @@ package com.kyanite.deeperdarker.content.entities.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
@@ -25,8 +26,8 @@ public class ReturnStatueBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadAdditional(tag, provider);
         if (tag.contains(TELEPORT_POS_TAG, Tag.TAG_COMPOUND)) {
             CompoundTag posTag = tag.getCompound(TELEPORT_POS_TAG);
             if (posTag.contains("x", Tag.TAG_INT) && posTag.contains("y", Tag.TAG_INT) && posTag.contains("z", Tag.TAG_INT)) {
@@ -36,8 +37,8 @@ public class ReturnStatueBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.saveAdditional(tag, provider);
         if (teleportPos != null) {
             CompoundTag posTag = new CompoundTag();
             posTag.putInt("x", teleportPos.getX());

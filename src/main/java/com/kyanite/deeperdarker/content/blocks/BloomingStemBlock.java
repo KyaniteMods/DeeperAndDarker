@@ -166,7 +166,7 @@ public class BloomingStemBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
         if(state.is(DDBlocks.STRIPPED_BLOOMING_STEM)) return false;
         if(level.isEmptyBlock(pos.above())) return true;
         if(!state.getValue(DOWN)) return false;

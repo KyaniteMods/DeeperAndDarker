@@ -2,11 +2,11 @@ package com.kyanite.deeperdarker.content.items;
 
 import com.google.common.collect.Multimap;
 import com.kyanite.deeperdarker.content.DDEffects;
-import com.kyanite.deeperdarker.content.entities.DDMobType;
+import com.kyanite.deeperdarker.util.DDTags;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -25,14 +25,14 @@ public class PuritySoulItem extends SoulItem implements ShieldAugmentItem {
 
     @Override
     public void onShieldDefended(LivingEntity entity, DamageSource source, float amount) {
-        if (source.getDirectEntity() instanceof Mob mob && mob.getMobType() == DDMobType.SCULK) {
+        if (source.getDirectEntity() instanceof Mob mob && mob.getType().is(DDTags.EntityTypes.SCULK)) {
             mob.hurt(entity.damageSources().thorns(entity), 4);
         }
         entity.heal(1.0f);
     }
 
     @Override
-    public Optional<Multimap<Attribute, AttributeModifier>> getAugmentAttributeModifiers(EquipmentSlot equipmentSlot, boolean defending) {
+    public Optional<Multimap<Holder<Attribute>, AttributeModifier>> getAugmentAttributeModifiers(EquipmentSlot equipmentSlot, boolean defending) {
         return Optional.empty();
     }
 

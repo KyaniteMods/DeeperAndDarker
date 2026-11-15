@@ -1,10 +1,7 @@
 package com.kyanite.deeperdarker.util.datagen;
 
 import com.kyanite.deeperdarker.DeeperDarker;
-import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDCriteriaTriggers;
-import com.kyanite.deeperdarker.content.DDEntities;
-import com.kyanite.deeperdarker.content.DDItems;
+import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.world.otherside.OthersideBiomes;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
@@ -13,70 +10,88 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
 public class DDAdvancementProvider extends FabricAdvancementProvider {
-    public DDAdvancementProvider(FabricDataOutput output) {
-        super(output);
+    private final HolderLookup.Provider provider;
+
+    public DDAdvancementProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+        super(output, registryLookup);
+        try {
+            this.provider = registryLookup.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void generateAdvancement(Consumer<Advancement> consumer) {
+    public void generateAdvancement(HolderLookup.Provider registryLookup, Consumer<AdvancementHolder> consumer) {
         String id = "advancements." + DeeperDarker.MOD_ID + ".";
 
-        Advancement root = Advancement.Builder.advancement()
+        HolderLookup.RegistryLookup<Biome> biomeLookup = registryLookup.lookupOrThrow(Registries.BIOME);
+        HolderLookup.RegistryLookup<Structure> structureLookup = registryLookup.lookupOrThrow(Registries.STRUCTURE);
+
+        AdvancementHolder root = Advancement.Builder.advancement()
                 .display(
                         Blocks.SCULK,
                         Component.translatable(id + "root.title"),
                         Component.translatable(id + "root.description"),
                         DeeperDarker.id("textures/gui/advancements/root.png"),
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         false,
                         false,
                         false
-                ).addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(Biomes.DEEP_DARK).build()))
+                ).addCriterion("deep_dark", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(Biomes.DEEP_DARK))))
                 .save(consumer, path("root"));
 
-        Advancement findAncientCity = Advancement.Builder.advancement().parent(root)
+        AdvancementHolder findAncientCity = Advancement.Builder.advancement().parent(root)
                 .display(
                         Blocks.DEEPSLATE_TILES,
                         Component.translatable(id + "find_ancient_city.title"),
                         Component.translatable(id + "find_ancient_city.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
-                ).addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setStructure(BuiltinStructures.ANCIENT_CITY).build()))
+                ).addCriterion("ancient_city", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structureLookup.getOrThrow(BuiltinStructures.ANCIENT_CITY))))
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("find_ancient_city"));
 
-        Advancement enterOtherside = Advancement.Builder.advancement().parent(findAncientCity)
+        AdvancementHolder enterOtherside = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.OTHERSIDE_FIRE_STRIKER,
                         Component.translatable(id + "enter_otherside.title"),
                         Component.translatable(id + "enter_otherside.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
                 ).addCriterion("otherside", ChangeDimensionTrigger.TriggerInstance.changedDimensionTo(OthersideDimension.OTHERSIDE_LEVEL))
                 .save(consumer, path("enter_otherside"));
 
-        Advancement killWarden = Advancement.Builder.advancement().parent(findAncientCity)
+        AdvancementHolder killWarden = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.HEART_OF_THE_DEEP,
                         Component.translatable(id + "kill_warden.title"),
                         Component.translatable(id + "kill_warden.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
@@ -90,7 +105,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "fizz.title"),
                         Component.translatable(id + "fizz.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
@@ -103,24 +118,24 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "open_dead_mans_chest.title"),
                         Component.translatable(id + "open_dead_mans_chest.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
-                ).addCriterion("open_dead_mans_chest", new PlayerTrigger.TriggerInstance(DDCriteriaTriggers.OPEN_DEAD_MANS_CHEST.getId(), ContextAwarePredicate.ANY))
+                ).addCriterion("open_dead_mans_chest", DDCriteriaTriggers.openDeadMansChest(Optional.empty()))
                 .save(consumer, path("open_dead_mans_chest"));
 
-        Advancement findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
+        AdvancementHolder findAncientTemple = Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
                         DDBlocks.CUT_SCULK_STONE,
                         Component.translatable(id + "find_ancient_temple.title"),
                         Component.translatable(id + "find_ancient_temple.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
-                ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setStructure(DDStructures.ANCIENT_TEMPLE).build()))
+                ).addCriterion("ancient_temple", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structureLookup.getOrThrow(DDStructures.ANCIENT_TEMPLE))))
                 .save(consumer, path("find_ancient_temple"));
 
         Advancement.Builder.advancement().parent(findAncientTemple)
@@ -129,7 +144,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "obtain_sculk_transmitter.title"),
                         Component.translatable(id + "obtain_sculk_transmitter.description"),
                         null,
-                        FrameType.GOAL,
+                        AdvancementType.GOAL,
                         true,
                         true,
                         false
@@ -142,7 +157,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "obtain_sonorous_staff.title"),
                         Component.translatable(id + "obtain_sonorous_staff.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
@@ -155,29 +170,29 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "explore_otherside.title"),
                         Component.translatable(id + "explore_otherside.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false)
-                .addCriterion("acid_floes", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ACID_FLOES).build()))
-                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.DEEPLANDS).build()))
-                .addCriterion("lush_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.LUSH_DEEPLANDS).build()))
-                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.ECHOING_FOREST).build()))
-                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.BLOOMING_CAVERNS).build()))
-                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.OVERCAST_COLUMNS).build()))
-                .addCriterion("darklands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.DARKLANDS).build()))
-                .addCriterion("sculk_spruce_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.location().setBiome(OthersideBiomes.SCULK_SPRUCE_FOREST).build()))
-                .requirements(RequirementsStrategy.AND)
+                .addCriterion("acid_floes", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.ACID_FLOES))))
+                .addCriterion("deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.DEEPLANDS))))
+                .addCriterion("lush_deeplands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.LUSH_DEEPLANDS))))
+                .addCriterion("echoing_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.ECHOING_FOREST))))
+                .addCriterion("blooming_caverns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.BLOOMING_CAVERNS))))
+                .addCriterion("overcast_columns", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.OVERCAST_COLUMNS))))
+                .addCriterion("darklands", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.DARKLANDS))))
+                .addCriterion("sculk_spruce_forest", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(biomeLookup.getOrThrow(OthersideBiomes.SCULK_SPRUCE_FOREST))))
+                .requirements(AdvancementRequirements.Strategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(300))
                 .save(consumer, path("explore_otherside"));
 
-        Advancement killBloomingGolem = Advancement.Builder.advancement().parent(enterOtherside)
+        AdvancementHolder killBloomingGolem = Advancement.Builder.advancement().parent(enterOtherside)
                 .display(
-                        DDItems.PATIENCE_SOUL,
+                        DDBlockItems.PATIENCE_SOUL,
                         Component.translatable(id + "kill_blooming_golem.title"),
                         Component.translatable(id + "kill_blooming_golem.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false)
@@ -185,30 +200,30 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_blooming_golem"));
 
-        Advancement killAllPots = Advancement.Builder.advancement().parent(killBloomingGolem)
+        AdvancementHolder killAllPots = Advancement.Builder.advancement().parent(killBloomingGolem)
                 .display(
                         DDBlocks.GLOOMSLATE_BRICKS,
                         Component.translatable(id + "kill_all_pots.title"),
                         Component.translatable(id + "kill_all_pots.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false)
                 .addCriterion("potty", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTY)))
                 .addCriterion("pot", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POT)))
                 .addCriterion("potter", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDEntities.POTTER)))
-                .requirements(RequirementsStrategy.AND)
+                .requirements(AdvancementRequirements.Strategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_all_pots"));
 
-        Advancement killOvercastVessel = Advancement.Builder.advancement().parent(killAllPots)
+        AdvancementHolder killOvercastVessel = Advancement.Builder.advancement().parent(killAllPots)
                 .display(
-                        DDItems.FORTITUDE_SOUL,
+                        DDBlockItems.FORTITUDE_SOUL,
                         Component.translatable(id + "kill_overcast_vessel.title"),
                         Component.translatable(id + "kill_overcast_vessel.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false)
@@ -216,13 +231,13 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_overcast_vessel"));
 
-        Advancement killOverseer = Advancement.Builder.advancement().parent(killOvercastVessel)
+        AdvancementHolder killOverseer = Advancement.Builder.advancement().parent(killOvercastVessel)
                 .display(
-                        DDItems.CORRUPTION_SOUL,
+                        DDBlockItems.CORRUPTION_SOUL,
                         Component.translatable(id + "kill_overseer.title"),
                         Component.translatable(id + "kill_overseer.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false)
@@ -230,13 +245,13 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(50))
                 .save(consumer, path("kill_overseer"));
 
-        Advancement killSculkMillipede = Advancement.Builder.advancement().parent(killOverseer)
+        AdvancementHolder killSculkMillipede = Advancement.Builder.advancement().parent(killOverseer)
                 .display(
-                        DDItems.VIRTUE_SOUL,
+                        DDBlockItems.VIRTUE_SOUL,
                         Component.translatable(id + "kill_sculk_millipede.title"),
                         Component.translatable(id + "kill_sculk_millipede.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false)
@@ -250,7 +265,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "kill_all_otherside_mobs.title"),
                         Component.translatable(id + "kill_all_otherside_mobs.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false)
@@ -273,17 +288,17 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                 .addCriterion("overseer", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(DDTags.EntityTypes.OVERCASTERS)))
                 .addCriterion("floater", DDCriteriaTriggers.playerKilledWorm(EntityPredicate.Builder.entity().of(DDEntities.FLOATER)))
                 .addCriterion("sculk_millipede", DDCriteriaTriggers.playerKilledWorm(EntityPredicate.Builder.entity().of(DDEntities.SCULK_MILLIPEDE)))
-                .requirements(RequirementsStrategy.AND)
+                .requirements(AdvancementRequirements.Strategy.AND)
                 .rewards(AdvancementRewards.Builder.experience(200))
                 .save(consumer, path("kill_all_otherside_mobs"));
 
-        Advancement obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(findAncientCity)
+        AdvancementHolder obtainReinforcedEchoShard = Advancement.Builder.advancement().parent(findAncientCity)
                 .display(
                         DDItems.REINFORCED_ECHO_SHARD,
                         Component.translatable(id + "obtain_reinforced_echo_shard.title"),
                         Component.translatable(id + "obtain_reinforced_echo_shard.description"),
                         null,
-                        FrameType.TASK,
+                        AdvancementType.TASK,
                         true,
                         true,
                         false
@@ -296,7 +311,7 @@ public class DDAdvancementProvider extends FabricAdvancementProvider {
                         Component.translatable(id + "warden_armor.title"),
                         Component.translatable(id + "warden_armor.description"),
                         null,
-                        FrameType.CHALLENGE,
+                        AdvancementType.CHALLENGE,
                         true,
                         true,
                         false

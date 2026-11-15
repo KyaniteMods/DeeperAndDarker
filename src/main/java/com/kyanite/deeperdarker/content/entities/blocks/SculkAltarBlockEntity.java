@@ -1,12 +1,14 @@
 package com.kyanite.deeperdarker.content.entities.blocks;
 
 import com.kyanite.deeperdarker.content.DDBlockEntities;
+import com.kyanite.deeperdarker.content.DDBlockItems;
 import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.DDItems;
 import com.kyanite.deeperdarker.content.blocks.SculkAltarBlock;
 import com.kyanite.deeperdarker.content.entities.overseer.Overseer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -50,16 +52,16 @@ public class SculkAltarBlockEntity extends BlockEntity implements Clearable {
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
+    public void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.loadAdditional(compoundTag, provider);
         items.clear();
-        ContainerHelper.loadAllItems(compoundTag, items);
+        ContainerHelper.loadAllItems(compoundTag, items, provider);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
-        ContainerHelper.saveAllItems(compoundTag, items, true);
+    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.saveAdditional(compoundTag, provider);
+        ContainerHelper.saveAllItems(compoundTag, items, provider);
     }
 
     @Override
@@ -68,9 +70,9 @@ public class SculkAltarBlockEntity extends BlockEntity implements Clearable {
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
         CompoundTag compoundTag = new CompoundTag();
-        ContainerHelper.saveAllItems(compoundTag, items, true);
+        ContainerHelper.saveAllItems(compoundTag, items, provider);
         return compoundTag;
     }
 
@@ -141,10 +143,10 @@ public class SculkAltarBlockEntity extends BlockEntity implements Clearable {
         boolean hasFortitudeSoul = false;
         for (int i = 0; i < getItems().size(); i++) {
             ItemStack stack = getItems().get(i);
-            if (stack.is(DDItems.PATIENCE_SOUL)) {
+            if (stack.is(DDBlockItems.PATIENCE_SOUL)) {
                 if (hasPatienceSoul) return;
                 hasPatienceSoul = true;
-            } else if (stack.is(DDItems.FORTITUDE_SOUL)) {
+            } else if (stack.is(DDBlockItems.FORTITUDE_SOUL)) {
                 if (hasFortitudeSoul) return;
                 hasFortitudeSoul = true;
             } else if (!stack.is(DDItems.SHADOW_CRYSTAL)) return;

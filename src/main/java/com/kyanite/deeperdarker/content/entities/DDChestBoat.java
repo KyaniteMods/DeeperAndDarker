@@ -30,9 +30,9 @@ public class DDChestBoat extends ChestBoat implements DDBoatLike {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(WOOD_TYPE, DDBoat.Type.ECHO.getSerializedName());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WOOD_TYPE, DDBoat.Type.ECHO.getSerializedName());
     }
 
     @Override

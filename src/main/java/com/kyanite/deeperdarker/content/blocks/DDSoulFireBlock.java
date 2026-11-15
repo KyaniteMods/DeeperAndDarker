@@ -1,32 +1,26 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.content.DDParticleTypes;
 import com.kyanite.deeperdarker.content.items.SoulItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.function.Supplier;
-
-public class DDSoulFireBlock extends BaseFireBlock {
-    private final Supplier<ItemStack> soulItem;
-
-    public DDSoulFireBlock(Properties properties, Supplier<ItemStack> soulItem) {
+public abstract class DDSoulFireBlock extends BaseFireBlock {
+    public DDSoulFireBlock(Properties properties) {
         super(properties, 0.0f);
-        this.soulItem = soulItem;
     }
+
+    public abstract ItemStack getSoulStack();
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
@@ -58,14 +52,14 @@ public class DDSoulFireBlock extends BaseFireBlock {
         if (!blockState.canSurvive(level, blockPos)) {
             level.removeBlock(blockPos, false);
             if (!level.isClientSide()) {
-                level.addFreshEntity(new ItemEntity(level, blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5, soulItem.get()));
+                level.addFreshEntity(new ItemEntity(level, blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5, getSoulStack()));
             }
         }
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
-        return soulItem.get();
+    public ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+        return getSoulStack();
     }
 
     @Override
@@ -73,7 +67,7 @@ public class DDSoulFireBlock extends BaseFireBlock {
         if (randomSource.nextInt(24) == 0) {
             level.playLocalSound((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5, SoundEvents.FIRE_AMBIENT, SoundSource.BLOCKS, 1.0f + randomSource.nextFloat(), randomSource.nextFloat() * 0.7f + 0.3f, false);
         }
-        if (!(soulItem.get().getItem() instanceof SoulItem soulItem)) return;
+        if (!(getSoulStack().getItem() instanceof SoulItem soulItem)) return;
         for (int i = 0; i < 3; ++i) {
             double x = (double)blockPos.getX() + randomSource.nextDouble();
             double y = (double)blockPos.getY() + randomSource.nextDouble() * 0.5 + 0.5;
