@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
+    "deeperdarker:lead_sword",
+    "deeperdarker:radioactive_sword",
     "deeperdarker:resonarium_sword",
-    "deeperdarker:warden_sword"
+    "deeperdarker:warden_sword",
+    "deeperdarker:guardian_sword"
   ]
 }

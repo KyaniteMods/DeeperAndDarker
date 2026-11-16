@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
+    "deeperdarker:lead_axe",
+    "deeperdarker:radioactive_axe",
     "deeperdarker:resonarium_axe",
-    "deeperdarker:warden_axe"
+    "deeperdarker:warden_axe",
+    "deeperdarker:guardian_axe"
   ]
 }
