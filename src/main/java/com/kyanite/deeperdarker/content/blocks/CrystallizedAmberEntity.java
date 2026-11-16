@@ -6,9 +6,13 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.EntityType;
+
+import java.util.Optional;
 
 public record CrystallizedAmberEntity(EntityType<?> type, float rotation) implements CrystallizedAmberContent<CrystallizedAmberEntity> {
     public static final MapCodec<CrystallizedAmberEntity> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
@@ -30,5 +34,10 @@ public record CrystallizedAmberEntity(EntityType<?> type, float rotation) implem
     @Override
     public CrystallizedAmberContentType<CrystallizedAmberEntity> getType() {
         return CrystallizedAmberContentType.ENTITY;
+    }
+
+    @Override
+    public Optional<Component> getDisplayName() {
+        return Optional.of(ComponentUtils.wrapInSquareBrackets(type().getDescription().copy()));
     }
 }
