@@ -2,7 +2,11 @@ package com.kyanite.deeperdarker.content.blocks;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.Optional;
 
 public record CrystallizedAmberItemStack(ItemStack stack, float rotation) implements CrystallizedAmberContent<CrystallizedAmberItemStack> {
     public static final Codec<CrystallizedAmberItemStack> CODEC = RecordCodecBuilder.create(instance -> instance.group(
@@ -18,5 +22,10 @@ public record CrystallizedAmberItemStack(ItemStack stack, float rotation) implem
     @Override
     public CrystallizedAmberContentType<CrystallizedAmberItemStack> getType() {
         return CrystallizedAmberContentType.ITEM_STACK;
+    }
+
+    @Override
+    public Optional<Component> getDisplayName() {
+        return Optional.of(stack().getDisplayName());
     }
 }

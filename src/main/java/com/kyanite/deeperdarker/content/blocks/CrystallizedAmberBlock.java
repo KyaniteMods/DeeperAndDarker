@@ -1,21 +1,18 @@
 package com.kyanite.deeperdarker.content.blocks;
 
-import com.kyanite.deeperdarker.content.DDBlockEntities;
 import com.kyanite.deeperdarker.content.DDBlocks;
-import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -105,11 +102,9 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
         if (DDUtil.hasCrystallizedAmberContent(itemStack)) {
             CrystallizedAmberContent<?> content = DDUtil.getCrystallizedAmberContent(itemStack);
-            if (content.getType() == CrystallizedAmberContentType.ENTITY) {
-                list.add(ComponentUtils.wrapInSquareBrackets(((CrystallizedAmberEntity) content).type().getDescription().copy()).withStyle(ChatFormatting.GRAY));
-            } else if (content.getType() == CrystallizedAmberContentType.ITEM_STACK) {
-                list.add(((CrystallizedAmberItemStack) content).stack().getDisplayName().copy().withStyle(ChatFormatting.GRAY));
-            }
+            content.getDisplayName().ifPresent(component -> {
+                list.add(component.copy().withStyle(ChatFormatting.GRAY));
+            });
         }
         super.appendHoverText(itemStack, blockGetter, list, tooltipFlag);
     }
