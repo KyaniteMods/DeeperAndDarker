@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fizz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:fizz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:fizz_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fizz"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:fizz_block"
+    ]
+  }
+}

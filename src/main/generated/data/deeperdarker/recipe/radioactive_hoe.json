@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "l": {
+      "item": "deeperdarker:radioactive_ingot"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ll",
+    " |",
+    " |"
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:radioactive_hoe"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "f": {
+      "item": "deeperdarker:fizz"
+    },
+    "i": {
+      "item": "deeperdarker:lead_ingot"
+    }
+  },
+  "pattern": [
+    " f ",
+    "fif",
+    " f "
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:radioactive_ingot"
+  }
+}

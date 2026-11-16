@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:water",
+    "minecraft:deepslate",
+    "minecraft:sculk",
+    "deeperdarker:sculk_stone",
+    "deeperdarker:sculk_grime",
+    "deeperdarker:gloomslate",
+    "deeperdarker:gloomy_sculk",
+    "deeperdarker:sculk_permafrost",
+    "deeperdarker:snowy_sculk_permafrost",
+    "deeperdarker:blooming_sculk_stone",
+    "deeperdarker:blooming_moss_block",
+    "deeperdarker:sculk_tissue",
+    "deeperdarker:dark_fountain"
+  ]
+}

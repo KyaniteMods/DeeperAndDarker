@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "deeperdarker:fizz"
+    },
+    {
+      "item": "deeperdarker:sculk_berry"
+    },
+    {
+      "item": "deeperdarker:sculk_berry"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:sculk_drink"
+  }
+}

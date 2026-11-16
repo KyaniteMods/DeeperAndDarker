@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "deeperdarker:patience_soul"
+    },
+    {
+      "item": "deeperdarker:fortitude_soul"
+    },
+    {
+      "item": "deeperdarker:purity_soul"
+    },
+    {
+      "item": "minecraft:nether_star"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:virtue_soul"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "deeperdarker:sculk_bone_shard"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:otherside_fire_striker"
+  }
+}

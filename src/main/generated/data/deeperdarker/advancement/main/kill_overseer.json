@@ -1,0 +1,40 @@
+{
+  "parent": "deeperdarker:main/kill_overcast_vessel",
+  "criteria": {
+    "kill_overseer": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:overseer"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.deeperdarker.kill_overseer.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "deeperdarker:corruption_soul"
+    },
+    "title": {
+      "translate": "advancements.deeperdarker.kill_overseer.title"
+    }
+  },
+  "requirements": [
+    [
+      "kill_overseer"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

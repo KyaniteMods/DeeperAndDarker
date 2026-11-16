@@ -1,0 +1,40 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "blooming_golem": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "deeperdarker:blooming_golem"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.deeperdarker.kill_blooming_golem.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "deeperdarker:patience_soul"
+    },
+    "title": {
+      "translate": "advancements.deeperdarker.kill_blooming_golem.title"
+    }
+  },
+  "requirements": [
+    [
+      "blooming_golem"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

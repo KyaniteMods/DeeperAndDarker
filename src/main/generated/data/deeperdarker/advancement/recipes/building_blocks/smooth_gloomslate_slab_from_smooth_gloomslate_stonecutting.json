@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_gloomslate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:smooth_gloomslate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:smooth_gloomslate_slab_from_smooth_gloomslate_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smooth_gloomslate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:smooth_gloomslate_slab_from_smooth_gloomslate_stonecutting"
+    ]
+  }
+}

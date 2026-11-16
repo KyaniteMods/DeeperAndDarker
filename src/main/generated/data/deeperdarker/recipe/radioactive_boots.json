@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "l": {
+      "item": "deeperdarker:radioactive_ingot"
+    }
+  },
+  "pattern": [
+    "l l",
+    "l l"
+  ],
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:radioactive_boots"
+  }
+}

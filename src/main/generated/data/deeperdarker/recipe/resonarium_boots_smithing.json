@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "deeperdarker:resonarium_plate"
+  },
+  "base": {
+    "item": "minecraft:iron_boots"
+  },
+  "result": {
+    "count": 1,
+    "id": "deeperdarker:resonarium_boots"
+  },
+  "template": []
+}

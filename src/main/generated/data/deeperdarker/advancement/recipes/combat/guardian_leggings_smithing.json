@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:guardian_leggings_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_virtue_soul": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:virtue_soul"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_virtue_soul"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:guardian_leggings_smithing"
+    ]
+  }
+}

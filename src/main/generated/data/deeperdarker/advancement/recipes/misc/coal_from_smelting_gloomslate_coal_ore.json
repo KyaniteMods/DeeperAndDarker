@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gloomslate_coal_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:gloomslate_coal_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "deeperdarker:coal_from_smelting_gloomslate_coal_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gloomslate_coal_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "deeperdarker:coal_from_smelting_gloomslate_coal_ore"
+    ]
+  }
+}

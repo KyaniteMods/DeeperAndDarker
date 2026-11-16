@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "deeperdarker:gloomslate_tiles"
+  },
+  "result": {
+    "count": 2,
+    "id": "deeperdarker:gloomslate_tile_slab"
+  }
+}

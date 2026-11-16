@@ -1,0 +1,33 @@
+{
+  "parent": "deeperdarker:main/enter_otherside",
+  "criteria": {
+    "fizz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deeperdarker:fizz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.deeperdarker.fizz.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "deeperdarker:fizz"
+    },
+    "title": {
+      "translate": "advancements.deeperdarker.fizz.title"
+    }
+  },
+  "requirements": [
+    [
+      "fizz"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
