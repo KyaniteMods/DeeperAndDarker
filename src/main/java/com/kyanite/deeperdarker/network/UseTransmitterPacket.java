@@ -31,13 +31,13 @@ public record UseTransmitterPacket(boolean bool) implements CustomPacketPayload 
             Player player = context.player();
 
             if(SculkTransmitterItem.isLinked(player.getOffhandItem())) {
-                SculkTransmitterItem.transmit(player.level(), player, player.getOffhandItem(), null);
+                SculkTransmitterItem.transmit(player.level(), player, player.getOffhandItem(), null, false);
                 return;
             }
 
             for (ItemStack stack : player.getInventory().items) {
                 if (SculkTransmitterItem.isLinked(stack)) {
-                    SculkTransmitterItem.transmit(player.level(), player, stack, null);
+                    SculkTransmitterItem.transmit(player.level(), player, stack, null, false);
                     break;
                 }
             }
