@@ -13,6 +13,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class GloomyGrassBlock extends BushBlock {
+    public static final MapCodec<GloomyGrassBlock> CODEC = simpleCodec(GloomyGrassBlock::new);
     private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 10, 15);
 
     public GloomyGrassBlock(Properties pProperties) {
@@ -21,7 +22,7 @@ public class GloomyGrassBlock extends BushBlock {
 
     @Override
     protected MapCodec<? extends BushBlock> codec() {
-        return null;
+        return CODEC;
     }
 
     @Override
