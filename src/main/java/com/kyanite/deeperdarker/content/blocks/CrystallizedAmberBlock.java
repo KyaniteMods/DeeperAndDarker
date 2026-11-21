@@ -10,7 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,16 +28,16 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class CrystallizedAmberBlock extends BaseEntityBlock {
     public static final MapCodec<CrystallizedAmberBlock> CODEC = simpleCodec(CrystallizedAmberBlock::new);
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
+    public static final BooleanProperty INTACT = BooleanProperty.create("intact");
 
     public CrystallizedAmberBlock(Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FOSSILIZED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FOSSILIZED, false).setValue(INTACT, false));
     }
 
     @Override
@@ -48,7 +47,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FOSSILIZED);
+        pBuilder.add(FOSSILIZED, INTACT);
     }
 
     @Override
@@ -79,20 +78,21 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        ItemStack itemStack = player.getMainHandItem();
+        BlockState newState = state;
+        if (EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER) || player.getAbilities().instabuild) {
+            newState = state.setValue(INTACT, true);
+            level.setBlock(pos, newState, Block.UPDATE_INVISIBLE);
+        }
+        return super.playerWillDestroy(level, pos, newState, player);
+    }
+
+    @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
         if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
             boolean picksUp = EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER);
-            if(!picksUp && state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
-                if (crystallizedAmber.getContent() != null) {
-                    CrystallizedAmberContentType<?> type = crystallizedAmber.getContent().getType();
-                    if (type == CrystallizedAmberContentType.ENTITY) {
-                        if (level instanceof ServerLevel serverLevel)
-                            ((CrystallizedAmberEntity) crystallizedAmber.getContent()).type().spawn(serverLevel, pos, MobSpawnType.TRIGGERED);
-                    } else if (type == CrystallizedAmberContentType.ITEM_STACK) {
-                        Block.popResource(level, pos, ((CrystallizedAmberItemStack) crystallizedAmber.getContent()).stack());
-                    }
-                }
-            } else if(picksUp && !level.isClientSide()) {
+            if (picksUp && !level.isClientSide()) {
                 ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                     stack.set(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT, crystallizedAmber.getContent());
@@ -103,6 +103,19 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
                 level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
             }
         }
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean bl) {
+        if (state.is(newState.getBlock())) {
+            return;
+        }
+        if (!state.getValue(INTACT) && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+            if (blockEntity.getContent() != null) {
+                blockEntity.getContent().onDestroy(level, pos, state, blockEntity);
+            }
+        }
+        super.onRemove(state, level, pos, newState, bl);
     }
 
     @Override
