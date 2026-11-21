@@ -6,6 +6,8 @@ import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.compat.create.DDCreateCompatClient;
 import com.kyanite.deeperdarker.content.*;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
+import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DeadMansChestBlockEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
@@ -58,6 +60,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
     public static final Material DEAD_MANS_CHEST_LOCATION_RIGHT = new Material(Sheets.CHEST_SHEET, DeeperDarker.id("entity/chest/dead_mans_chest_normal_right"));
     public static final Material DEAD_MANS_CHEST_LOCATION_LEFT = new Material(Sheets.CHEST_SHEET, DeeperDarker.id("entity/chest/dead_mans_chest_normal_left"));
     public static final DeadMansChestBlockEntity RENDER_DEAD_MANS_CHEST = new DeadMansChestBlockEntity(BlockPos.ZERO, DDBlocks.DEAD_MANS_CHEST.defaultBlockState());
+    public static final CrystallizedAmberBlockEntity RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY = new CrystallizedAmberBlockEntity(BlockPos.ZERO, DDBlocks.CRYSTALLIZED_AMBER.defaultBlockState().setValue(CrystallizedAmberBlock.FOSSILIZED, true));
 
     @Override
     public void onInitializeClient() {
@@ -122,6 +125,11 @@ public class DeeperDarkerClient implements ClientModInitializer {
         BlockEntityRenderers.register(DDBlockEntities.SCULK_ALTAR, SculkAltarBlockRenderer::new);
         BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.DEAD_MANS_CHEST, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_DEAD_MANS_CHEST, matrices, vertexConsumers, light, overlay);
+        });
+        BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.CRYSTALLIZED_AMBER, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
+            RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.setContent(DDUtil.getCrystallizedAmberContent(stack));
+            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.getBlockState(), matrices, vertexConsumers, light, overlay);
+            Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY, matrices, vertexConsumers, light, overlay);
         });
 
         if (FabricLoader.getInstance().isModLoaded("create") && DeeperDarker.CONFIG.server.createCompatibility()) {
