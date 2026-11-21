@@ -219,8 +219,7 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
                 new Tuple<>(TextureSlot.PARTICLE, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_inner")),
                 new Tuple<>(TextureSlot.DOWN, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_outer")));
-
-        blockModelGenerators.delegateItemModel(DDBlocks.CRYSTALLIZED_AMBER, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER));
+        blockModelGenerators.skipAutoItemBlock(DDBlocks.CRYSTALLIZED_AMBER);
 
         blockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
         registerSculkJaw(blockModelGenerators, DDBlocks.SCULK_JAW);
@@ -687,6 +686,12 @@ public class DDModelProvider extends FabricModelProvider {
         ModelTemplate parentModel = new ModelTemplate(Optional.of(parent), Optional.empty(), textureKeys.toArray(new TextureSlot[0]));
 
         parentModel.create(child, textureMap, itemModelGenerators.output);
+    }
+
+    private static void registerBuiltin(ItemModelGenerators itemModelGenerator, Item item) {
+        JsonObject model = new JsonObject();
+        model.addProperty("parent", new ResourceLocation("entity").withPrefix("builtin/").toString());
+        itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
     }
 
     private void registerGrassLikeSculkStone(Block block, BlockModelGenerators blockModelGenerators) {

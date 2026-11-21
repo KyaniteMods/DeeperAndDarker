@@ -8,6 +8,7 @@ import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -33,13 +34,13 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
     }
 
     @Override
-    public void render(CrystallizedAmberBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
-        if(!pBlockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
+    public void render(CrystallizedAmberBlockEntity blockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+        if(!blockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
 
         pPoseStack.pushPose();
         pPoseStack.translate(0.5f, 0.5f, 0.5f);
         pPoseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
-        CrystallizedAmberContent<?> content = pBlockEntity.getContent();
+        CrystallizedAmberContent<?> content = blockEntity.getContent();
         if (content != null) {
             CrystallizedAmberContentType<?> type = content.getType();
             if (type == CrystallizedAmberContentType.ENTITY) {
@@ -48,14 +49,14 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
                 pPoseStack.mulPose(Axis.YP.rotationDegrees(((CrystallizedAmberEntity) content).rotation()));
                 pPoseStack.scale(0.9f, 0.9f, 0.9f);
 
-                Entity entity = getEntityFromType(pBlockEntity.getLevel(), entityType);
+                Entity entity = getEntityFromType(blockEntity.hasLevel() ? blockEntity.getLevel() : Minecraft.getInstance().level, entityType);
                 if (entity != null) {
                     entityRenderer.render(entity, 0, 0, 0, 0, 0.0f, pPoseStack, pBuffer, pPackedLight);
                 }
             } else if (type == CrystallizedAmberContentType.ITEM_STACK) {
                 pPoseStack.mulPose(Axis.YP.rotationDegrees(((CrystallizedAmberItemStack) content).rotation()));
                 pPoseStack.scale(0.6f, 0.6f, 0.6f);
-                itemRenderer.renderStatic(((CrystallizedAmberItemStack) content).stack(), ItemDisplayContext.FIXED, pPackedLight, pPackedOverlay, pPoseStack, pBuffer, pBlockEntity.getLevel(), 0);
+                itemRenderer.renderStatic(((CrystallizedAmberItemStack) content).stack(), ItemDisplayContext.FIXED, pPackedLight, pPackedOverlay, pPoseStack, pBuffer, blockEntity.getLevel(), 0);
             }
         }
 
