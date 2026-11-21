@@ -2,11 +2,13 @@ package com.kyanite.deeperdarker.world.features;
 
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContent;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.world.features.config.ColumnFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -57,7 +59,9 @@ public class OthersideColumnFeature extends Feature<ColumnFeatureConfiguration> 
                 boolean fossil = state.is(DDBlocks.CRYSTALLIZED_AMBER) && random.nextFloat() < 0.4f;
 
                 level.setBlock(pos, fossil ? state.setValue(CrystallizedAmberBlock.FOSSILIZED, true) : state, 3);
-                if(fossil && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) blockEntity.generateFossil(level.getLevel(), pos);
+                if (fossil && level.getBlockEntity(pos) instanceof CrystallizedAmberBlockEntity blockEntity) {
+                    CrystallizedAmberContent.getRandom(level.getLevel(), pos).ifPresent(blockEntity::setContent);
+                }
             } else {
                 level.setBlock(pos, config.block(), 3);
             }
