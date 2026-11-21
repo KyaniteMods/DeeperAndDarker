@@ -10,7 +10,8 @@
     "middleBlock": {
       "Name": "deeperdarker:crystallized_amber",
       "Properties": {
-        "fossilized": "false"
+        "fossilized": "false",
+        "intact": "false"
       }
     }
   }
