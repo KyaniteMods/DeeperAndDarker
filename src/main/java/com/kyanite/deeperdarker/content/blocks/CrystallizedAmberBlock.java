@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 @SuppressWarnings("deprecation, NullableProblems")
 public class CrystallizedAmberBlock extends BaseEntityBlock {
@@ -65,9 +66,10 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pMovedByPiston) {
-        if(pState.getValue(FOSSILIZED) && !pState.is(pOldState.getBlock()) && pLevel.getBlockEntity(pPos) instanceof CrystallizedAmberBlockEntity blockEntity) {
-            blockEntity.generateFossil(pLevel, pPos);
+    public void onPlace(BlockState pState, Level level, BlockPos pos, BlockState pOldState, boolean pMovedByPiston) {
+        if (level.isClientSide()) return;
+        if(pState.getValue(FOSSILIZED) && !pState.is(pOldState.getBlock()) && level.getBlockEntity(pos) instanceof final CrystallizedAmberBlockEntity blockEntity) {
+            CrystallizedAmberContent.getRandom((ServerLevel) level, pos).ifPresent(blockEntity::setContent);
         }
     }
 

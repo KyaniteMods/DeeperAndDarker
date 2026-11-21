@@ -32,7 +32,7 @@ import java.util.List;
 
 @SuppressWarnings("NullableProblems")
 public class CrystallizedAmberBlockEntity extends BlockEntity {
-    public @Nullable CrystallizedAmberContent<?> content;
+    private @Nullable CrystallizedAmberContent<?> content;
 
     public static final String LEGACY_ITEM_TAG = "item";
     public static final String LEGACY_LEECH_TAG = "leech";
@@ -44,28 +44,13 @@ public class CrystallizedAmberBlockEntity extends BlockEntity {
         super(DDBlockEntities.CRYSTALLIZED_AMBER, pPos, pBlockState);
     }
 
-    // maybe remove if crash isn't fixed? (Accessing LegacyRandomSource from multiple threads)
-    public void generateFossil(Level level, BlockPos pos) {
-        if (content != null) return;
-
-        RandomSource random = RandomSource.create(pos.asLong());
-        float rotation = random.nextFloat() * 180.0f;
-        if(random.nextFloat() < 0.15f) {
-            content = new CrystallizedAmberEntity(DDEntities.SCULK_LEECH, rotation);
-            return;
-        }
-
-        LootTable table = level.getServer().reloadableRegistries().getLootTable(DDChestLootTableProvider.CRYSTALLIZED_AMBER);
-        List<ItemStack> list = table.getRandomItems(new LootParams.Builder((ServerLevel) level).withParameter(LootContextParams.ORIGIN, getBlockPos().getCenter()).create(LootContextParamSets.CHEST), pos.asLong());
-        ItemStack loot = list.isEmpty() ? ItemStack.EMPTY : list.get(0);
-        if (!loot.isEmpty()) {
-            content = new CrystallizedAmberItemStack(loot, rotation);
-        }
-        setChanged();
-    }
-
     public @Nullable CrystallizedAmberContent<?> getContent() {
         return content;
+    }
+
+    public void setContent(@Nullable CrystallizedAmberContent<?> content) {
+        this.content = content;
+        setChanged();
     }
 
     @Override
