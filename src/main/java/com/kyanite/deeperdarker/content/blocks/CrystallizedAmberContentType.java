@@ -8,6 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
@@ -30,11 +31,16 @@ public record CrystallizedAmberContentType<T extends CrystallizedAmberContent<T>
         return factory.createRandom(level, pos);
     }
 
-    @FunctionalInterface
-    public interface CrystallizedAmberContentRandomFactory<T extends CrystallizedAmberContent<T>> {
-        Optional<T> createRandom(ServerLevel level, BlockPos pos);
+    @Override
+    public @NotNull String toString() {
+        return REGISTRY.getKey(this).getPath();
     }
 
     public static void init() {
+    }
+
+    @FunctionalInterface
+    public interface CrystallizedAmberContentRandomFactory<T extends CrystallizedAmberContent<T>> {
+        Optional<T> createRandom(ServerLevel level, BlockPos pos);
     }
 }

@@ -1,9 +1,7 @@
 package com.kyanite.deeperdarker.client.render;
 
-import com.kyanite.deeperdarker.content.DDEntities;
 import com.kyanite.deeperdarker.content.blocks.*;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
-import com.kyanite.deeperdarker.content.entities.SculkLeech;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
@@ -20,11 +18,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<CrystallizedAmberBlockEntity> {
     private final EntityRenderDispatcher entityRenderer;
     private final ItemRenderer itemRenderer;
-    private final Map<EntityType<?>, Entity> cachedEntities = new HashMap<>();
+    private static final Map<EntityType<?>, Entity> CACHED_ENTITIES = new HashMap<>();
+    private static final Map<CrystallizedAmberContentType<?>, CrystallizedAmberContentRenderer<?>> CONTENT_RENDERERS = new HashMap<>();
 
     public CrystallizedAmberBlockRenderer(BlockEntityRendererProvider.Context context) {
         this.entityRenderer = context.getEntityRenderer();
@@ -32,40 +32,61 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
     }
 
     @Override
-    public void render(CrystallizedAmberBlockEntity blockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+    public void render(CrystallizedAmberBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay) {
         if(!blockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
 
-        pPoseStack.pushPose();
-        pPoseStack.translate(0.5f, 0.5f, 0.5f);
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
+        poseStack.pushPose();
         CrystallizedAmberContent<?> content = blockEntity.getContent();
         if (content != null) {
-            CrystallizedAmberContentType<?> type = content.getType();
-            if (type == CrystallizedAmberContentType.ENTITY) {
-                EntityType<?> entityType = ((CrystallizedAmberEntity) content).type();
-
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(((CrystallizedAmberEntity) content).rotation()));
-                pPoseStack.scale(0.9f, 0.9f, 0.9f);
-
-                Entity entity = getEntityFromType(blockEntity.hasLevel() ? blockEntity.getLevel() : Minecraft.getInstance().level, entityType);
-                if (entity != null) {
-                    entityRenderer.render(entity, 0, 0, 0, 0, 0.0f, pPoseStack, pBuffer, pPackedLight);
-                }
-            } else if (type == CrystallizedAmberContentType.ITEM_STACK) {
-                pPoseStack.mulPose(Axis.YP.rotationDegrees(((CrystallizedAmberItemStack) content).rotation()));
-                pPoseStack.scale(0.6f, 0.6f, 0.6f);
-                itemRenderer.renderStatic(((CrystallizedAmberItemStack) content).stack(), ItemDisplayContext.FIXED, pPackedLight, pPackedOverlay, pPoseStack, pBuffer, blockEntity.getLevel(), 0);
-            }
+            renderContent(content, blockEntity.hasLevel() ? blockEntity.getLevel() : Minecraft.getInstance().level, partialTick, poseStack, buffer, light, overlay);
         }
 
-        pPoseStack.popPose();
+        poseStack.popPose();
     }
 
     @Nullable
-    private Entity getEntityFromType(Level level, EntityType<?> type) {
-        if (!cachedEntities.containsKey(type) && level != null) {
-            cachedEntities.put(type, type.create(level));
+    public static Entity getEntityFromType(Level level, EntityType<?> type) {
+        if (!CACHED_ENTITIES.containsKey(type) && level != null) {
+            CACHED_ENTITIES.put(type, type.create(level));
         }
-        return cachedEntities.get(type);
+        return CACHED_ENTITIES.get(type);
+    }
+
+    public static <T extends CrystallizedAmberContent<T>> CrystallizedAmberContentRenderer<T> renderEntityType(final Function<T, EntityType<?>> function) {
+        return (content, level, partialTick, poseStack, buffer, light, overlay) -> {
+            Entity entity = getEntityFromType(level, function.apply(content));
+
+            if (entity == null) return;
+
+            poseStack.translate(0.5f, 0.5f, 0.5f);
+            poseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
+            poseStack.translate(0.0f, -entity.getBbHeight() / 2.0f, 0.0f);
+            poseStack.mulPose(Axis.YP.rotationDegrees(((CrystallizedAmberEntity) content).rotation()));
+            poseStack.scale(0.9f, 0.9f, 0.9f);
+
+            Minecraft.getInstance().getEntityRenderDispatcher().render(entity, 0, 0, 0, 0, 0.0f, poseStack, buffer, light);
+        };
+    }
+
+    public static <T extends CrystallizedAmberContent<T>> void addContentRenderer(CrystallizedAmberContentType<T> type, CrystallizedAmberContentRenderer<T> renderer) {
+        if (!CONTENT_RENDERERS.containsKey(type)) {
+            CONTENT_RENDERERS.put(type, renderer);
+        }
+    }
+
+    public static <T extends CrystallizedAmberContent<T>> CrystallizedAmberContentRenderer<T> getContentRenderer(CrystallizedAmberContentType<T> type) {
+        if (CONTENT_RENDERERS.containsKey(type)) {
+            return (CrystallizedAmberContentRenderer<T>) CONTENT_RENDERERS.get(type);
+        }
+        throw new IllegalArgumentException("No content renderer registered for " + type.toString());
+    }
+
+    public static <T extends CrystallizedAmberContent<T>> void renderContent(CrystallizedAmberContent<T> content, @Nullable Level level, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay) {
+        CrystallizedAmberContentRenderer<T> renderer = getContentRenderer(content.getType());
+        renderer.render((T) content, level, partialTick, poseStack, buffer, light, overlay);
+    }
+
+    public interface CrystallizedAmberContentRenderer<T extends CrystallizedAmberContent<T>> {
+        void render(T content, @Nullable Level level, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay);
     }
 }
