@@ -38,7 +38,7 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
         poseStack.pushPose();
         CrystallizedAmberContent<?> content = blockEntity.getContent();
         if (content != null) {
-            renderContent(content, blockEntity.hasLevel() ? blockEntity.getLevel() : Minecraft.getInstance().level, partialTick, poseStack, buffer, light, overlay);
+            renderContent(content, partialTick, poseStack, buffer, light, overlay);
         }
 
         poseStack.popPose();
@@ -53,8 +53,8 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
     }
 
     public static <T extends CrystallizedAmberContent<T>> CrystallizedAmberContentRenderer<T> renderEntityType(final Function<T, EntityType<?>> function) {
-        return (content, level, partialTick, poseStack, buffer, light, overlay) -> {
-            Entity entity = getEntityFromType(level, function.apply(content));
+        return (content, partialTick, poseStack, buffer, light, overlay) -> {
+            Entity entity = getEntityFromType(Minecraft.getInstance().level, function.apply(content));
 
             if (entity == null) return;
 
@@ -81,12 +81,12 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
         throw new IllegalArgumentException("No content renderer registered for " + type.toString());
     }
 
-    public static <T extends CrystallizedAmberContent<T>> void renderContent(CrystallizedAmberContent<T> content, @Nullable Level level, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay) {
+    public static <T extends CrystallizedAmberContent<T>> void renderContent(CrystallizedAmberContent<T> content, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay) {
         CrystallizedAmberContentRenderer<T> renderer = getContentRenderer(content.getType());
-        renderer.render((T) content, level, partialTick, poseStack, buffer, light, overlay);
+        renderer.render((T) content, partialTick, poseStack, buffer, light, overlay);
     }
 
     public interface CrystallizedAmberContentRenderer<T extends CrystallizedAmberContent<T>> {
-        void render(T content, @Nullable Level level, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay);
+        void render(T content, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay);
     }
 }
