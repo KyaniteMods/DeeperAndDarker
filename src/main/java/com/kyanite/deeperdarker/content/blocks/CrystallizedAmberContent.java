@@ -15,13 +15,14 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public interface CrystallizedAmberContent<T extends CrystallizedAmberContent<T>> {
     Codec<CrystallizedAmberContent<?>> CODEC = CrystallizedAmberContentType.REGISTRY.byNameCodec().dispatch(CrystallizedAmberContent::getType, CrystallizedAmberContentType::codec);
     StreamCodec<RegistryFriendlyByteBuf, CrystallizedAmberContent<?>> STREAM_CODEC = ByteBufCodecs.registry(CrystallizedAmberContentType.RESOURCE_KEY).dispatch(CrystallizedAmberContent::getType, CrystallizedAmberContentType::streamCodec);
-    SimpleWeightedRandomList<CrystallizedAmberContentType<?>> RANDOM_LIST = SimpleWeightedRandomList.<CrystallizedAmberContentType<?>>builder()
-            .add(CrystallizedAmberContentType.ENTITY, 1)
-            .add(CrystallizedAmberContentType.ITEM_STACK, 6)
+    SimpleWeightedRandomList<Supplier<CrystallizedAmberContentType<?>>> RANDOM_LIST = SimpleWeightedRandomList.<Supplier<CrystallizedAmberContentType<?>>>builder()
+            .add(() -> CrystallizedAmberContentType.ENTITY, 1)
+            .add(() -> CrystallizedAmberContentType.ITEM_STACK, 6)
             .build();
 
     MapCodec<T> getCodec();
@@ -32,6 +33,6 @@ public interface CrystallizedAmberContent<T extends CrystallizedAmberContent<T>>
 
     static Optional<CrystallizedAmberContent<?>> getRandom(ServerLevel level, @Nullable BlockPos pos) {
         return RANDOM_LIST.getRandom(level.getRandom())
-                .flatMap(wrapper -> wrapper.data().createRandom(level, pos));
+                .flatMap(wrapper -> wrapper.data().get().createRandom(level, pos));
     }
 }
