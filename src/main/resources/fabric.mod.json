@@ -35,6 +35,7 @@
 		"minecraft": ">=1.21.1 <=1.21.2",
 		"java": ">=17",
 		"fabric-api": "*",
+		"kyaniteportals": "*",
 		"owo": "*"
 	},
 
