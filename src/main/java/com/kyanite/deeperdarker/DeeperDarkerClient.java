@@ -140,12 +140,14 @@ public class DeeperDarkerClient implements ClientModInitializer {
         });
 
         CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ENTITY, CrystallizedAmberBlockRenderer.renderEntityType(CrystallizedAmberEntity::type));
-        CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ITEM_STACK, (content, level, partialTick, poseStack, buffer, light, overlay) -> {
+        CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ITEM_STACK, (content, partialTick, poseStack, buffer, light, overlay) -> {
             poseStack.translate(0.5f, 0.5f, 0.5f);
             poseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
             poseStack.mulPose(Axis.YP.rotationDegrees(content.rotation()));
             poseStack.scale(0.6f, 0.6f, 0.6f);
-            Minecraft.getInstance().getItemRenderer().renderStatic(content.stack(), ItemDisplayContext.FIXED, light, overlay, poseStack, buffer, level, 0);
+            if (Minecraft.getInstance().level != null) {
+                Minecraft.getInstance().getItemRenderer().renderStatic(content.stack(), ItemDisplayContext.FIXED, light, overlay, poseStack, buffer, Minecraft.getInstance().level, 0);
+            }
         });
 
         DeeperDarker.LOGGER.info("Registering models");
