@@ -11,12 +11,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public interface CrystallizedAmberContent<T extends CrystallizedAmberContent<T>> {
     Codec<CrystallizedAmberContent<?>> CODEC = CrystallizedAmberContentType.REGISTRY.byNameCodec().dispatch(CrystallizedAmberContent::getType, CrystallizedAmberContentType::codec);
-    SimpleWeightedRandomList<CrystallizedAmberContentType<?>> RANDOM_LIST = SimpleWeightedRandomList.<CrystallizedAmberContentType<?>>builder()
-            .add(CrystallizedAmberContentType.ENTITY, 1)
-            .add(CrystallizedAmberContentType.ITEM_STACK, 6)
+    SimpleWeightedRandomList<Supplier<CrystallizedAmberContentType<?>>> RANDOM_LIST = SimpleWeightedRandomList.<Supplier<CrystallizedAmberContentType<?>>>builder()
+            .add(() -> CrystallizedAmberContentType.ENTITY, 1)
+            .add(() -> CrystallizedAmberContentType.ITEM_STACK, 6)
             .build();
 
     Codec<T> getCodec();
@@ -26,6 +27,6 @@ public interface CrystallizedAmberContent<T extends CrystallizedAmberContent<T>>
 
     static Optional<CrystallizedAmberContent<?>> getRandom(ServerLevel level, @Nullable BlockPos pos) {
         return RANDOM_LIST.getRandom(level.getRandom())
-                .flatMap(wrapper -> wrapper.getData().createRandom(level, pos));
+                .flatMap(wrapper -> wrapper.getData().get().createRandom(level, pos));
     }
 }

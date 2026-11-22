@@ -244,9 +244,13 @@ public class DDUtil {
     public static CrystallizedAmberContent<?> getCrystallizedAmberContent(ItemStack stack) {
         if (!hasCrystallizedAmberContent(stack)) return null;
         CompoundTag tag = BlockItem.getBlockEntityData(stack);
-        return CrystallizedAmberContent.CODEC.parse(NbtOps.INSTANCE, tag.getCompound(CrystallizedAmberBlockEntity.CONTENT_TAG))
+        CrystallizedAmberContent<?> result = CrystallizedAmberContent.CODEC.parse(NbtOps.INSTANCE, tag.getCompound(CrystallizedAmberBlockEntity.CONTENT_TAG))
                 .resultOrPartial(string -> DeeperDarker.LOGGER.error("Invalid crystallized amber content: '{}'", string))
                 .orElse(null);
+        if (result == null) {
+            setCrystallizedAmberContent(stack, null);
+        }
+        return result;
     }
 
     public static void setCrystallizedAmberContent(ItemStack stack, CrystallizedAmberContent<?> content) {
