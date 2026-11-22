@@ -4,8 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,6 +14,10 @@ import java.util.Optional;
 
 public interface CrystallizedAmberContent<T extends CrystallizedAmberContent<T>> {
     Codec<CrystallizedAmberContent<?>> CODEC = CrystallizedAmberContentType.REGISTRY.byNameCodec().dispatch(CrystallizedAmberContent::getType, CrystallizedAmberContentType::codec);
+    SimpleWeightedRandomList<CrystallizedAmberContentType<?>> RANDOM_LIST = SimpleWeightedRandomList.<CrystallizedAmberContentType<?>>builder()
+            .add(CrystallizedAmberContentType.ENTITY, 1)
+            .add(CrystallizedAmberContentType.ITEM_STACK, 6)
+            .build();
 
     Codec<T> getCodec();
     CrystallizedAmberContentType<T> getType();
@@ -22,7 +25,7 @@ public interface CrystallizedAmberContent<T extends CrystallizedAmberContent<T>>
     default void onDestroy(Level level, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity) {}
 
     static Optional<CrystallizedAmberContent<?>> getRandom(ServerLevel level, @Nullable BlockPos pos) {
-        return CrystallizedAmberContentType.REGISTRY.getRandom(level.getRandom())
-                .flatMap(reference -> reference.value().createRandom(level, pos));
+        return RANDOM_LIST.getRandom(level.getRandom())
+                .flatMap(wrapper -> wrapper.getData().createRandom(level, pos));
     }
 }
