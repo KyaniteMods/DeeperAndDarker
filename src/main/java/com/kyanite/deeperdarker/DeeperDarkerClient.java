@@ -6,15 +6,20 @@ import com.kyanite.deeperdarker.client.model.*;
 import com.kyanite.deeperdarker.client.render.*;
 import com.kyanite.deeperdarker.content.*;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberBlock;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberContentType;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
+import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
 import com.kyanite.deeperdarker.content.entities.blocks.DeadMansChestBlockEntity;
 import com.kyanite.deeperdarker.content.items.SculkTransmitterItem;
 import com.kyanite.deeperdarker.content.items.SoulElytraItem;
+import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import com.kyanite.deeperdarker.network.Messages;
 import com.kyanite.deeperdarker.network.SoulElytraBoostPayload;
 import com.kyanite.deeperdarker.network.UseTransmitterPayload;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.kyanite.deeperdarker.world.otherside.OthersideEffects;
+import com.mojang.math.Axis;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -45,6 +50,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 
@@ -125,9 +131,18 @@ public class DeeperDarkerClient implements ClientModInitializer {
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_DEAD_MANS_CHEST, matrices, vertexConsumers, light, overlay);
         });
         BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.CRYSTALLIZED_AMBER, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
-            RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.setContent(DDUtil.getCrystallizedAmberContent(stack));
+            RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.setContent(stack.get(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT));
             Minecraft.getInstance().getBlockRenderer().renderSingleBlock(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.getBlockState(), matrices, vertexConsumers, light, overlay);
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY, matrices, vertexConsumers, light, overlay);
+        });
+
+        CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ENTITY, CrystallizedAmberBlockRenderer.renderEntityType(CrystallizedAmberEntity::type));
+        CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ITEM_STACK, (content, level, partialTick, poseStack, buffer, light, overlay) -> {
+            poseStack.translate(0.5f, 0.5f, 0.5f);
+            poseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
+            poseStack.mulPose(Axis.YP.rotationDegrees(content.rotation()));
+            poseStack.scale(0.6f, 0.6f, 0.6f);
+            Minecraft.getInstance().getItemRenderer().renderStatic(content.stack(), ItemDisplayContext.FIXED, light, overlay, poseStack, buffer, level, 0);
         });
 
         DeeperDarker.LOGGER.info("Registering models");
