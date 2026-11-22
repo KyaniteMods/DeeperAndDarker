@@ -688,12 +688,6 @@ public class DDModelProvider extends FabricModelProvider {
         parentModel.create(child, textureMap, itemModelGenerators.output);
     }
 
-    private static void registerBuiltin(ItemModelGenerators itemModelGenerator, Item item) {
-        JsonObject model = new JsonObject();
-        model.addProperty("parent", new ResourceLocation("entity").withPrefix("builtin/").toString());
-        itemModelGenerator.output.accept(BuiltInRegistries.ITEM.getKey(item).withPrefix("item/"), () -> model);
-    }
-
     private void registerGrassLikeSculkStone(Block block, BlockModelGenerators blockModelGenerators) {
         TextureMapping textureMapping = new TextureMapping().put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(DDBlocks.SCULK_STONE)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, ModelTemplates.CUBE_BOTTOM_TOP.create(block, textureMapping, blockModelGenerators.modelOutput)));
