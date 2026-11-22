@@ -42,6 +42,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.IllusionerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.BlockPos;
@@ -53,6 +54,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class DeeperDarkerClient implements ClientModInitializer {
     public static final ModelResourceLocation KEYBRAND_MODEL = new ModelResourceLocation(DeeperDarker.id("keybrand"), "inventory");
@@ -132,7 +134,8 @@ public class DeeperDarkerClient implements ClientModInitializer {
         });
         BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.CRYSTALLIZED_AMBER, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
             RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.setContent(stack.get(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT));
-            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.getBlockState(), matrices, vertexConsumers, light, overlay);
+            BlockState state = RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.getBlockState();
+            Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(matrices.last(), vertexConsumers.getBuffer(Sheets.translucentCullBlockSheet()), state, Minecraft.getInstance().getBlockRenderer().getBlockModel(state), 1.0f, 1.0f, 1.0f, light, overlay);
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY, matrices, vertexConsumers, light, overlay);
         });
 
