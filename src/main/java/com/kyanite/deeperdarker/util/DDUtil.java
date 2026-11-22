@@ -250,6 +250,14 @@ public class DDUtil {
     }
 
     public static void setCrystallizedAmberContent(ItemStack stack, CrystallizedAmberContent<?> content) {
+        if (content == null) {
+            if (!stack.hasTag()) return;
+            CompoundTag tag = BlockItem.getBlockEntityData(stack);
+            if (tag != null) {
+                tag.remove(CrystallizedAmberBlockEntity.CONTENT_TAG);
+            }
+            return;
+        }
         CrystallizedAmberContent.CODEC.encodeStart(NbtOps.INSTANCE, content)
                 .resultOrPartial(string -> DeeperDarker.LOGGER.error("Error saving crystallized amber content: '{}'", string))
                 .ifPresent(result -> {

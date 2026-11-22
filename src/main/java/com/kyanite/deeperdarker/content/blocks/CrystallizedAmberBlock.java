@@ -122,9 +122,11 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
     public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
         if (DDUtil.hasCrystallizedAmberContent(itemStack)) {
             CrystallizedAmberContent<?> content = DDUtil.getCrystallizedAmberContent(itemStack);
-            content.getDisplayName().ifPresent(component -> {
-                list.add(component.copy().withStyle(ChatFormatting.GRAY));
-            });
+            if (content != null) {
+                content.getDisplayName().ifPresent(component -> {
+                    list.add(component.copy().withStyle(ChatFormatting.GRAY));
+                });
+            }
         }
         super.appendHoverText(itemStack, blockGetter, list, tooltipFlag);
     }
