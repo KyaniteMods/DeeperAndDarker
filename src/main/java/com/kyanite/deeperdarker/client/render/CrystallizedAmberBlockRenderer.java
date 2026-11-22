@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,14 +20,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<CrystallizedAmberBlockEntity> {
-    private final EntityRenderDispatcher entityRenderer;
-    private final ItemRenderer itemRenderer;
     private static final Map<EntityType<?>, Entity> CACHED_ENTITIES = new HashMap<>();
     private static final Map<CrystallizedAmberContentType<?>, CrystallizedAmberContentRenderer<?>> CONTENT_RENDERERS = new HashMap<>();
 
     public CrystallizedAmberBlockRenderer(BlockEntityRendererProvider.Context context) {
-        this.entityRenderer = context.getEntityRenderer();
-        this.itemRenderer = context.getItemRenderer();
     }
 
     @Override
