@@ -140,7 +140,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY, matrices, vertexConsumers, light, overlay);
         });
 
-        CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ENTITY, CrystallizedAmberBlockRenderer.renderEntityType(CrystallizedAmberEntity::type));
+        CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ENTITY, CrystallizedAmberBlockRenderer.renderEntityType(CrystallizedAmberEntity::type, CrystallizedAmberEntity::rotation));
         CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ITEM_STACK, (content, partialTick, poseStack, buffer, light, overlay) -> {
             poseStack.translate(0.5f, 0.5f, 0.5f);
             poseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
