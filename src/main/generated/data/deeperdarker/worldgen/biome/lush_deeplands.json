@@ -24,7 +24,9 @@
   "features": [
     [],
     [],
-    [],
+    [
+      "deeperdarker:floes_acid"
+    ],
     [
       "minecraft:fossil_upper",
       "minecraft:fossil_lower"
