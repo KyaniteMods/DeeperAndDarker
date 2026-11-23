@@ -34,13 +34,12 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
     public void render(CrystallizedAmberBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay) {
         if(!blockEntity.getBlockState().getValue(CrystallizedAmberBlock.FOSSILIZED)) return;
 
-        poseStack.pushPose();
         CrystallizedAmberContent<?> content = blockEntity.getContent();
         if (content != null) {
+            poseStack.pushPose();
             renderContent(content, partialTick, poseStack, buffer, light, overlay);
+            poseStack.popPose();
         }
-
-        poseStack.popPose();
     }
 
     @Nullable
@@ -51,7 +50,7 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
         return CACHED_ENTITIES.get(type);
     }
 
-    public static <T extends CrystallizedAmberContent<T>> CrystallizedAmberContentRenderer<T> renderEntityType(final Function<T, EntityType<?>> function) {
+    public static <T extends CrystallizedAmberContent<T>> CrystallizedAmberContentRenderer<T> renderEntityType(final Function<T, EntityType<?>> function, final Function<T, Float> rotation) {
         return (content, partialTick, poseStack, buffer, light, overlay) -> {
             Entity entity = getEntityFromType(Minecraft.getInstance().level, function.apply(content));
 
@@ -60,7 +59,7 @@ public class CrystallizedAmberBlockRenderer implements BlockEntityRenderer<Cryst
             poseStack.translate(0.5f, 0.5f, 0.5f);
             poseStack.mulPose(Axis.XP.rotationDegrees(-40.0f));
             poseStack.translate(0.0f, -entity.getBbHeight() / 2.0f, 0.0f);
-            poseStack.mulPose(Axis.YP.rotationDegrees(((CrystallizedAmberEntity) content).rotation()));
+            poseStack.mulPose(Axis.YP.rotationDegrees(rotation.apply(content)));
             poseStack.scale(0.9f, 0.9f, 0.9f);
 
             Minecraft.getInstance().getEntityRenderDispatcher().render(entity, 0, 0, 0, 0, 0.0f, poseStack, buffer, light);
