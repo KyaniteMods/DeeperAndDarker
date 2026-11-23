@@ -62,7 +62,9 @@ public class MazeStructurePieces {
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
             super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             compoundTag.putInt("orientation", orientation.get2DDataValue());
-            compoundTag.putString("loot_table", lootTable.toString());
+            if (lootTable != null) {
+                compoundTag.putString("loot_table", lootTable.location().toString());
+            }
         }
 
         @Override
@@ -149,7 +151,7 @@ public class MazeStructurePieces {
             super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             compoundTag.put("fluid", BlockState.CODEC.encodeStart(NbtOps.INSTANCE, fluid).result().orElseThrow());
             if (lootTable != null) {
-                compoundTag.putString("loot_table", lootTable.toString());
+                compoundTag.putString("loot_table", lootTable.location().toString());
             }
         }
 
@@ -199,10 +201,10 @@ public class MazeStructurePieces {
         protected void addAdditionalSaveData(StructurePieceSerializationContext structurePieceSerializationContext, CompoundTag compoundTag) {
             super.addAdditionalSaveData(structurePieceSerializationContext, compoundTag);
             if (leavesLootTable != null) {
-                compoundTag.putString("leaves_loot_table", leavesLootTable.toString());
+                compoundTag.putString("leaves_loot_table", leavesLootTable.location().toString());
             }
             if (secretLootTable != null) {
-                compoundTag.putString("secret_loot_table", secretLootTable.toString());
+                compoundTag.putString("secret_loot_table", secretLootTable.location().toString());
             }
         }
 
