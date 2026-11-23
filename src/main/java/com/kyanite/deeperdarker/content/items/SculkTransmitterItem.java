@@ -26,6 +26,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -45,7 +46,8 @@ public class SculkTransmitterItem extends Item {
         ItemStack stack = context.getItemInHand();
         BlockPos clickedPos = context.getClickedPos();
 
-        if(isLinked(stack)) return transmit(level, player, stack, clickedPos);
+        if(isLinked(stack)) return transmit(level, player, stack, clickedPos, context.getHand() == InteractionHand.MAIN_HAND);
+        if(context.getHand() != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
         if(!canConnect(level, clickedPos)) {
             tryConnect(null, stack, player, null, "not_transmittable", DDSounds.TRANSMITTER_ERROR);
             return InteractionResult.FAIL;
@@ -59,19 +61,24 @@ public class SculkTransmitterItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         if(isLinked(stack)) {
-            transmit(level, player, stack, null);
+            transmit(level, player, stack, null, usedHand == InteractionHand.MAIN_HAND);
             return InteractionResultHolder.success(stack);
         }
         return super.use(level, player, usedHand);
     }
 
-    public static InteractionResult transmit(Level level, Player player, ItemStack stack, BlockPos clickedPos) {
+    @Override
+    public boolean doesSneakBypassUse(ItemStack stack, LevelReader level, BlockPos pos, Player player) {
+        return !isLinked(stack) && player.getOffhandItem() == stack;
+    }
+
+    public static InteractionResult transmit(Level level, Player player, ItemStack stack, BlockPos clickedPos, boolean mainHand) {
         Transmitter transmitter = stack.get(DDDataComponents.TRANSMITTER);
         if(transmitter.linkedPos().isEmpty()) {
             return InteractionResult.FAIL;
         }
 
-        if(player.isCrouching()) {
+        if(mainHand && player.isShiftKeyDown()) {
             if(clickedPos != null && canConnect(level, clickedPos)) {
                 tryConnect(transmitter, stack, player, clickedPos, "linked", DDSounds.TRANSMITTER_LINK);
                 return InteractionResult.SUCCESS;
@@ -91,7 +98,8 @@ public class SculkTransmitterItem extends Item {
         }
 
         linkedLevel.gameEvent(GameEvent.ENTITY_INTERACT, player.blockPosition(), GameEvent.Context.of(player));
-        if(linkedLevel.getBlockEntity(linkedPos) instanceof MenuProvider menu) {
+        MenuProvider menu = linkedLevel.getBlockState(linkedPos).getMenuProvider(linkedLevel, linkedPos);
+        if(menu != null) {
             player.openMenu(menu);
         } else {
             linkedLevel.getBlockState(linkedPos).useWithoutItem(linkedLevel, player, new BlockHitResult(linkedPos.getCenter(), Direction.NORTH, linkedPos, false));
