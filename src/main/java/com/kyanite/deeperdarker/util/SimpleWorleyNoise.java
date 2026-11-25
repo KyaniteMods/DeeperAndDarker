@@ -7,6 +7,7 @@ import net.minecraft.world.level.levelgen.PositionalRandomFactory;
 import net.minecraft.world.phys.Vec2;
 
 public class SimpleWorleyNoise {
+    public static final float MAX_DISTANCE = Mth.sqrt(2.0f * 15.0f * 15.0f);
     private final PositionalRandomFactory random;
 
     protected SimpleWorleyNoise(RandomSource random) {
@@ -18,8 +19,8 @@ public class SimpleWorleyNoise {
     }
 
     public float get(int x, int z, ReturnValue returnValue) {
-        float lowestDistance = 21.213203f; // sqrt(15² + 15²), max distance from a point
-        float secondLowestDistance = 21.213203f;
+        float lowestDistance = MAX_DISTANCE;
+        float secondLowestDistance = MAX_DISTANCE;
         for (int dz = -1; dz <= 1; dz++) {
             for (int dx = -1; dx <= 1; dx++) {
                 Vec2 pointPos = getPointPosition(SectionPos.blockToSectionCoord(x) + dx, SectionPos.blockToSectionCoord(z) + dz);
@@ -32,7 +33,7 @@ public class SimpleWorleyNoise {
                 }
             }
         }
-        return returnValue == ReturnValue.VALUE ? lowestDistance / 21.213203f : Mth.abs(secondLowestDistance - lowestDistance) / 21.213203f;
+        return returnValue == ReturnValue.VALUE ? lowestDistance / MAX_DISTANCE : Mth.abs(secondLowestDistance - lowestDistance) / MAX_DISTANCE;
     }
 
     public static void logExample() {
