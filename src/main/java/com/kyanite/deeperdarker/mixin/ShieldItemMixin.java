@@ -6,7 +6,7 @@ import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -39,7 +39,7 @@ import java.util.stream.Stream;
 public abstract class ShieldItemMixin {
     @Inject(method = "overrideStackedOnOther", at = @At("HEAD"), cancellable = true)
     private void deeperdarker$overrideShieldStackedOnOther(ItemStack shield, Slot slot, ClickAction clickAction, Player player, CallbackInfoReturnable<Boolean> cir) {
-        if (!shield.is(ConventionalItemTags.SHIELDS) || !DDUtil.isAugmented(shield)) {
+        if (!shield.is(ConventionalItemTags.SHIELD_TOOLS) || !DDUtil.isAugmented(shield)) {
             return;
         }
         if (clickAction != ClickAction.SECONDARY) {
@@ -95,7 +95,7 @@ public abstract class ShieldItemMixin {
 
     @Inject(method = "overrideOtherStackedOnMe", at = @At("HEAD"), cancellable = true)
     public void deeperdarker$overrideOtherStackedOnShield(ItemStack shield, ItemStack stack, Slot slot, ClickAction clickAction, Player player, SlotAccess slotAccess, CallbackInfoReturnable<Boolean> cir) {
-        if (!shield.is(ConventionalItemTags.SHIELDS) || !DDUtil.isAugmented(shield)) {
+        if (!shield.is(ConventionalItemTags.SHIELD_TOOLS) || !DDUtil.isAugmented(shield)) {
             return;
         }
         if (clickAction != ClickAction.SECONDARY || !slot.allowModification(player)) {
@@ -187,7 +187,7 @@ public abstract class ShieldItemMixin {
 
     @Inject(method = "onDestroyed", at = @At("HEAD"))
     public void deeperdarker$onShieldDestroyed(ItemEntity itemEntity, CallbackInfo ci) {
-        if (!itemEntity.getItem().is(ConventionalItemTags.SHIELDS)) return;
+        if (!itemEntity.getItem().is(ConventionalItemTags.SHIELD_TOOLS)) return;
         ItemUtils.onContainerDestroyed(itemEntity, DDUtil.getStackAsStream(itemEntity.getItem()).toList());
     }
 
