@@ -38,7 +38,8 @@ public class DDBlockEntities {
         ));
         CRYSTALLIZED_AMBER = create("crystallized_amber", BlockEntityType.Builder.of(
                 CrystallizedAmberBlockEntity::new,
-                DDBlocks.CRYSTALLIZED_AMBER
+                DDBlocks.CRYSTALLIZED_AMBER,
+                DDBlocks.SMOOTH_CRYSTALLIZED_AMBER
         ));
         SKULL = create("skull", BlockEntityType.Builder.of(
                 DDSkullBlockEntity::new,

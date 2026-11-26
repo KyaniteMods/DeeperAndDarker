@@ -221,6 +221,9 @@ public class DDModelProvider extends FabricModelProvider {
                 new Tuple<>(TextureSlot.DOWN, ModelLocationUtils.getModelLocation(DDBlocks.CRYSTALLIZED_AMBER, "_outer")));
         blockModelGenerators.skipAutoItemBlock(DDBlocks.CRYSTALLIZED_AMBER);
 
+        blockModelGenerators.family(DDBlocks.SMOOTH_CRYSTALLIZED_AMBER);
+        blockModelGenerators.skipAutoItemBlock(DDBlocks.SMOOTH_CRYSTALLIZED_AMBER);
+
         blockModelGenerators.copyModel(Blocks.SCULK, DDBlocks.INFESTED_SCULK);
         registerSculkJaw(blockModelGenerators, DDBlocks.SCULK_JAW);
         blockModelGenerators.delegateItemModel(DDBlocks.SCULK_JAW, ModelLocationUtils.getModelLocation(DDBlocks.SCULK_JAW));

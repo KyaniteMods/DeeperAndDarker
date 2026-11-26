@@ -93,7 +93,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
         if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
             boolean picksUp = EnchantmentHelper.hasTag(itemStack, DDTags.Enchantments.PICKS_UP_CRYSTALLIZED_AMBER);
             if (picksUp && !level.isClientSide()) {
-                ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
+                ItemStack stack = new ItemStack(state.getBlock().asItem());
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                     stack.set(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT, crystallizedAmber.getContent());
                 }

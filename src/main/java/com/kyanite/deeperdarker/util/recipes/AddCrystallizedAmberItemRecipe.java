@@ -3,6 +3,7 @@ package com.kyanite.deeperdarker.util.recipes;
 import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.content.items.components.DDDataComponents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
@@ -22,7 +23,7 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
     @Override
     public Predicate<ItemStack> getFirst(HolderLookup.Provider provider) {
         return stack -> {
-            if (!stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) return false;
+            if (!stack.is(DDTags.Items.CRYSTALLIZED_AMBER)) return false;
             return !stack.has(DDDataComponents.CRYSTALLIZED_AMBER_CONTENT);
         };
     }

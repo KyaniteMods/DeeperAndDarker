@@ -174,6 +174,8 @@ public class DDItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptionalTag(ItemTags.WOOL)
                 .addOptionalTag(ItemTags.SAPLINGS);
 
+        add(DDTags.Items.CRYSTALLIZED_AMBER, DDBlocks.CRYSTALLIZED_AMBER, DDBlocks.SMOOTH_CRYSTALLIZED_AMBER);
+
         add(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS, DDBlockItems.SHATTERED_HEAD);
 
         add(ItemTags.TRIMMABLE_ARMOR,

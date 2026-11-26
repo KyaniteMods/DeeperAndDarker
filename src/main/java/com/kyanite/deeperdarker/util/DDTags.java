@@ -147,6 +147,9 @@ public class DDTags {
 
         public static final TagKey<Item> CLUTTER_ITEMS = TagKey.create(
                 Registries.ITEM, DeeperDarker.id("clutter_items"));
+
+        public static final TagKey<Item> CRYSTALLIZED_AMBER = TagKey.create(
+                Registries.ITEM, DeeperDarker.id("crystallized_amber"));
     }
 
     public static class EntityTypes {
