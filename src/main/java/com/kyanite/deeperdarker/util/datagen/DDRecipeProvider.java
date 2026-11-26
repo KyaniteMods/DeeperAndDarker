@@ -275,6 +275,7 @@ public class DDRecipeProvider extends FabricRecipeProvider {
         SpecialRecipeBuilder.special(RemoveHornsRecipe::new).save(output, "remove_horns");
         SpecialRecipeBuilder.special(AddHornsRecipe::new).save(output, "add_horns");
         SpecialRecipeBuilder.special(AddCrystallizedAmberItemRecipe::new).save(output, "add_crystallized_amber_item");
+        SpecialRecipeBuilder.special(SmoothCrystallizedAmberRecipe::new).save(output, "smooth_crystallized_amber");
     }
 
     private void addSmithingRecipes(RecipeOutput output) {
