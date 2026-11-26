@@ -168,6 +168,10 @@ public abstract class ShieldItemMixin {
 
     @Unique
     private static Optional<ItemStack> removeStack(ItemStack shield) {
+        if (!shield.hasTag()) {
+            return Optional.empty();
+        }
+
         CompoundTag compoundTag = shield.getOrCreateTag();
         if (!compoundTag.contains(DDUtil.ITEM_TAG, Tag.TAG_COMPOUND)) {
             return Optional.empty();
