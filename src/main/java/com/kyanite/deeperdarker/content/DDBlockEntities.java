@@ -40,7 +40,8 @@ public class DDBlockEntities {
         ));
         CRYSTALLIZED_AMBER = create("crystallized_amber", FabricBlockEntityTypeBuilder.create(
                 CrystallizedAmberBlockEntity::new,
-                DDBlocks.CRYSTALLIZED_AMBER
+                DDBlocks.CRYSTALLIZED_AMBER,
+                DDBlocks.SMOOTH_CRYSTALLIZED_AMBER
         ));
         SKULL = create("skull", FabricBlockEntityTypeBuilder.create(
                 DDSkullBlockEntity::new,

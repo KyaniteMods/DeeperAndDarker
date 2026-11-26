@@ -195,6 +195,7 @@ public class DDENLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(DDBlocks.POTTED_SCULK_SPRUCE_SAPLING, "Potted Sculk Spruce Sapling");
         translationBuilder.add(DDBlocks.ANCIENT_VASE, "Ancient Vase");
         translationBuilder.add(DDBlocks.CRYSTALLIZED_AMBER, "Crystallized Amber");
+        translationBuilder.add(DDBlocks.SMOOTH_CRYSTALLIZED_AMBER, "Smooth Crystallized Amber");
         translationBuilder.add(DDBlocks.INFESTED_SCULK, "Infested Sculk");
         translationBuilder.add(DDBlocks.SCULK_PERMAFROST, "Sculk Permafrost");
         translationBuilder.add(DDBlocks.SNOWY_SCULK_PERMAFROST, "Snowy Sculk Permafrost");

@@ -93,7 +93,7 @@ public class CrystallizedAmberBlock extends BaseEntityBlock {
         if(blockEntity instanceof CrystallizedAmberBlockEntity crystallizedAmber) {
             boolean picksUp = EnchantmentHelper.hasSilkTouch(itemStack);
             if (picksUp && !level.isClientSide()) {
-                ItemStack stack = new ItemStack(DDBlocks.CRYSTALLIZED_AMBER);
+                ItemStack stack = new ItemStack(state.getBlock().asItem());
                 if (state.getValue(CrystallizedAmberBlock.FOSSILIZED)) {
                     DDUtil.setCrystallizedAmberContent(stack, crystallizedAmber.getContent());
                 }

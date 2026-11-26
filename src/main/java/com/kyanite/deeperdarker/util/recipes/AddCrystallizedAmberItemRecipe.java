@@ -4,6 +4,7 @@ import com.kyanite.deeperdarker.content.DDBlocks;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberEntity;
 import com.kyanite.deeperdarker.content.blocks.CrystallizedAmberItemStack;
 import com.kyanite.deeperdarker.content.entities.blocks.CrystallizedAmberBlockEntity;
+import com.kyanite.deeperdarker.util.DDTags;
 import com.kyanite.deeperdarker.util.DDUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +24,7 @@ public class AddCrystallizedAmberItemRecipe extends ItemCombinerCustomRecipe {
     @Override
     public Predicate<ItemStack> getFirst() {
         return stack -> {
-            if (!stack.is(DDBlocks.CRYSTALLIZED_AMBER.asItem())) return false;
+            if (!stack.is(DDTags.Items.CRYSTALLIZED_AMBER)) return false;
             return !DDUtil.hasCrystallizedAmberContent(stack);
         };
     }

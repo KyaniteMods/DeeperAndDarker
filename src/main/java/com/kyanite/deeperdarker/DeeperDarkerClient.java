@@ -68,6 +68,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
     public static final Material DEAD_MANS_CHEST_LOCATION_LEFT = new Material(Sheets.CHEST_SHEET, DeeperDarker.id("entity/chest/dead_mans_chest_normal_left"));
     public static final DeadMansChestBlockEntity RENDER_DEAD_MANS_CHEST = new DeadMansChestBlockEntity(BlockPos.ZERO, DDBlocks.DEAD_MANS_CHEST.defaultBlockState());
     public static final CrystallizedAmberBlockEntity RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY = new CrystallizedAmberBlockEntity(BlockPos.ZERO, DDBlocks.CRYSTALLIZED_AMBER.defaultBlockState().setValue(CrystallizedAmberBlock.FOSSILIZED, true));
+    public static final CrystallizedAmberBlockEntity RENDER_SMOOTH_CRYSTALLIZED_AMBER_BLOCK_ENTITY = new CrystallizedAmberBlockEntity(BlockPos.ZERO, DDBlocks.SMOOTH_CRYSTALLIZED_AMBER.defaultBlockState().setValue(CrystallizedAmberBlock.FOSSILIZED, true));
 
     @Override
     public void onInitializeClient() {
@@ -116,6 +117,7 @@ public class DeeperDarkerClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 DDBlocks.CRYSTALLIZED_AMBER,
+                DDBlocks.SMOOTH_CRYSTALLIZED_AMBER,
                 DDBlocks.SOUNDPROOF_GLASS,
                 DDBlocks.GLOOMSLATE_BARRIER,
                 DDBlocks.PROTECTED_SCULK_GRIME_GLASS,
@@ -138,6 +140,12 @@ public class DeeperDarkerClient implements ClientModInitializer {
             BlockState state = RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY.getBlockState();
             Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(matrices.last(), vertexConsumers.getBuffer(Sheets.translucentCullBlockSheet()), state, Minecraft.getInstance().getBlockRenderer().getBlockModel(state), 1.0f, 1.0f, 1.0f, light, overlay);
             Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_CRYSTALLIZED_AMBER_BLOCK_ENTITY, matrices, vertexConsumers, light, overlay);
+        });
+        BuiltinItemRendererRegistry.INSTANCE.register(DDBlocks.SMOOTH_CRYSTALLIZED_AMBER, (stack, mode, matrices, vertexConsumers, light, overlay) -> {
+            RENDER_SMOOTH_CRYSTALLIZED_AMBER_BLOCK_ENTITY.setContent(DDUtil.getCrystallizedAmberContent(stack));
+            BlockState state = RENDER_SMOOTH_CRYSTALLIZED_AMBER_BLOCK_ENTITY.getBlockState();
+            Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(matrices.last(), vertexConsumers.getBuffer(Sheets.translucentCullBlockSheet()), state, Minecraft.getInstance().getBlockRenderer().getBlockModel(state), 1.0f, 1.0f, 1.0f, light, overlay);
+            Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(RENDER_SMOOTH_CRYSTALLIZED_AMBER_BLOCK_ENTITY, matrices, vertexConsumers, light, overlay);
         });
 
         CrystallizedAmberBlockRenderer.addContentRenderer(CrystallizedAmberContentType.ENTITY, CrystallizedAmberBlockRenderer.renderEntityType(CrystallizedAmberEntity::type, CrystallizedAmberEntity::rotation));

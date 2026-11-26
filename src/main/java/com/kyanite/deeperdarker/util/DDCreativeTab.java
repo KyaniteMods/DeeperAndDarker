@@ -161,6 +161,7 @@ public class DDCreativeTab {
         entries.accept(DDBlocks.GLOOMY_SCULK);
         entries.accept(DDBlocks.GLOOMY_GEYSER);
         entries.accept(DDBlocks.CRYSTALLIZED_AMBER);
+        entries.accept(DDBlocks.SMOOTH_CRYSTALLIZED_AMBER);
         entries.accept(DDBlocks.SCULK_GLEAM);
         entries.accept(DDBlocks.PROTECTED_SCULK_GLEAM);
         entries.accept(DDBlocks.SCULK_LAMP);
